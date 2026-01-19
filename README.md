@@ -33,3 +33,8 @@ puts client.get_caller_identity.to_json
 
 The development of the SDK generator relies on AI generation and has been based
 on the structure of aws-sdk-ruby.
+
+The api definitions can be updated by copying the api json files from https://github.com/aws/aws-sdk-ruby/tree/version-3/apis
+
+The `main` branch contains only the generator. The `main-generated` branch
+contains all the generated service interfaces ready for release.
