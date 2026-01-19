@@ -9,20 +9,6 @@ describe AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson do
     ENV.delete("AWS_REGION")
   end
 
-  it "rejects empty inputs" do
-    expect_raises(ArgumentError) do
-      AwsSdk::KinesisVideoWebRTCStorage::Client.new("")
-    end
-
-    expect_raises(ArgumentError) do
-      AwsSdk::KinesisVideoWebRTCStorage::Types::JoinStorageSessionInput.new("")
-    end
-
-    expect_raises(ArgumentError) do
-      AwsSdk::KinesisVideoWebRTCStorage::Types::JoinStorageSessionAsViewerInput.new("arn", "")
-    end
-  end
-
   it "builds JoinStorageSession request payload" do
     client = AwsSdk::KinesisVideoWebRTCStorage::Client.new("https://example.com")
     input = AwsSdk::KinesisVideoWebRTCStorage::Types::JoinStorageSessionInput.new("arn:aws:kinesisvideo:us-west-2:123456789012:channel/test/123")

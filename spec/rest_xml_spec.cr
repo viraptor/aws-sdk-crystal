@@ -28,7 +28,7 @@ describe AwsSdk::CloudFront::Protocol::RestXml do
     )
 
     request.method.should eq("GET")
-    request.uri.should contain("/2016-01-28/distribution")
+    request.uri.should contain("/2020-05-31/distribution")
     request.uri.should contain("Marker=abc")
     request.uri.should contain("MaxItems=25")
     request.headers["content-type"].should eq("application/xml")
