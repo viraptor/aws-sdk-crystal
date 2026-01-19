@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe AwsSdk::Cloudfront::Protocol::RestXml do
+describe AwsSdk::CloudFront::Protocol::RestXml do
   before_each do
     ENV["AWS_REGION"] = "us-east-1"
     ENV["AWS_ACCESS_KEY_ID"] = "AKID"
@@ -15,14 +15,14 @@ describe AwsSdk::Cloudfront::Protocol::RestXml do
 
   it "rejects empty inputs" do
     expect_raises(ArgumentError) do
-      AwsSdk::Cloudfront::Client.new("")
+      AwsSdk::CloudFront::Client.new("")
     end
   end
 
   it "builds ListDistributions request with query params" do
-    input = AwsSdk::Cloudfront::Types::ListDistributionsRequest.new("abc", "25")
-    request = AwsSdk::Cloudfront::Protocol::RestXml.build_request(
-      AwsSdk::Cloudfront::Model::LIST_DISTRIBUTIONS,
+    input = AwsSdk::CloudFront::Types::ListDistributionsRequest.new("abc", "25")
+    request = AwsSdk::CloudFront::Protocol::RestXml.build_request(
+      AwsSdk::CloudFront::Model::LIST_DISTRIBUTIONS,
       input,
       "https://example.com"
     )
@@ -49,8 +49,8 @@ describe AwsSdk::Cloudfront::Protocol::RestXml do
       XML
     )
 
-    error = AwsSdk::Cloudfront::Protocol::RestXml.parse_error(response)
-    error.should be_a(AwsSdk::Cloudfront::Errors::InvalidArgument)
+    error = AwsSdk::CloudFront::Protocol::RestXml.parse_error(response)
+    error.should be_a(AwsSdk::CloudFront::Errors::InvalidArgument)
     error.message.should eq("bad input")
   end
 end

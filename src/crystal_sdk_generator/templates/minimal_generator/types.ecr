@@ -1,0 +1,55 @@
+require "json"
+<% if needs_time %>
+require "time"
+<% end %>
+
+module AwsSdk
+  module <%= info.module_name %>
+    module Types
+<% shapes.each do |shape| %>
+
+<%= doc_lines(shape.documentation, 3) %>
+      struct <%= shape.name %>
+        include JSON::Serializable
+<% members = shape.members.keys.sort_by do |member_name|
+     ref = shape.members[member_name]
+     {ref.required ? 0 : 1, member_name}
+   end %>
+<% members.each do |member_name| %>
+<% ref = shape.members[member_name] %>
+<% json_key = member_json_name(member_name, ref) %>
+<% type_name = type_for_shape_ref(ref, model.shapes) %>
+<% type_name = "#{type_name}?" unless ref.required %>
+<% member_snake = to_snake_case(member_name) %>
+<% converter = "" %>
+<% if (info.protocol == "json_1.0" || info.protocol == "json_1.1") && type_name.gsub("?", "") == "Time" %>
+<% converter = ", converter: AwsSdk::Runtime::UnixTimestampConverter" %>
+<% end %>
+
+<%= doc_lines(ref.documentation, 4) %>
+        @[JSON::Field(key: "<%= json_key %>"<%= converter %>)]
+        getter <%= member_snake %> : <%= type_name %>
+<% end %>
+
+<% if members.empty? %>
+        def initialize
+        end
+<% else %>
+        def initialize(
+<% members.each_with_index do |member_name, index| %>
+<% ref = shape.members[member_name] %>
+<% type_name = type_for_shape_ref(ref, model.shapes) %>
+<% type_name = "#{type_name}?" unless ref.required %>
+<% member_snake = to_snake_case(member_name) %>
+<% default = ref.required ? "" : " = nil" %>
+<% suffix = index == members.size - 1 ? "" : "," %>
+          @<%= member_snake %> : <%= type_name %><%= default %><%= suffix %>
+<% end %>
+        )
+        end
+<% end %>
+      end
+<% end %>
+    end
+  end
+end

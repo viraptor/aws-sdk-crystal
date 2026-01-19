@@ -9,16 +9,16 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "kinesisvideo")
-      File.exists?(File.join(dir, "src", "aws_sdk", "kinesisvideo.cr")).should be_true
-      File.exists?(File.join(dir, "src", "aws_sdk", "customizations", "kinesisvideo", "customizations.cr")).should be_true
+      base = File.join(dir, "src", "aws_sdk", "kinesisvideowebrtcstorage")
+      File.exists?(File.join(dir, "src", "aws_sdk", "kinesisvideowebrtcstorage.cr")).should be_true
+      File.exists?(File.join(dir, "src", "aws_sdk", "customizations", "kinesisvideowebrtcstorage", "customizations.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true
       File.exists?(File.join(base, "types.cr")).should be_true
       File.exists?(File.join(base, "protocol", "rest_json.cr")).should be_true
 
-      File.read(File.join(dir, "src", "aws_sdk", "kinesisvideo.cr")).should contain("customizations/kinesisvideo/customizations")
+      File.read(File.join(dir, "src", "aws_sdk", "kinesisvideowebrtcstorage.cr")).should contain("customizations/kinesisvideowebrtcstorage/customizations")
       File.read(File.join(base, "client.cr")).should contain("class Client")
       File.read(File.join(base, "client.cr")).should contain("Join the ongoing one way-video")
       File.read(File.join(base, "protocol", "rest_json.cr")).should contain("module RestJson")
@@ -34,8 +34,8 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::DYNAMODB_STREAMS_API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "streams_dynamodb")
-      File.exists?(File.join(dir, "src", "aws_sdk", "streams_dynamodb.cr")).should be_true
+      base = File.join(dir, "src", "aws_sdk", "dynamodbstreams")
+      File.exists?(File.join(dir, "src", "aws_sdk", "dynamodbstreams.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true
