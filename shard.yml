@@ -1,0 +1,12 @@
+name: aws-sdk-crystal
+version: 0.1.0
+crystal: ">= 1.8.0"
+license: Apache-2.0
+authors:
+  - Stanislaw Pitucha <git@viraptor.info>
+repository: "https://github.com/viraptor/aws-sdk-crystal/"
+targets:
+  generate-services:
+    main: src/crystal_sdk_generator/minimal_generator_entry.cr
+  sts_test:
+    main: example/sts_test.cr
