@@ -1,0 +1,7 @@
+require "./runtime"
+require "./redshift_serverless/client"
+require "./redshift_serverless/errors"
+require "./redshift_serverless/model"
+require "./redshift_serverless/types"
+require "./redshift_serverless/protocol/json_rpc"
+require "./customizations/redshift_serverless/customizations"

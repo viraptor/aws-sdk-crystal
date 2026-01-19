@@ -1,0 +1,7 @@
+require "./runtime"
+require "./partnercentral_selling/client"
+require "./partnercentral_selling/errors"
+require "./partnercentral_selling/model"
+require "./partnercentral_selling/types"
+require "./partnercentral_selling/protocol/json_rpc"
+require "./customizations/partnercentral_selling/customizations"

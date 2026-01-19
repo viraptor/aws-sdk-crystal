@@ -1,0 +1,7 @@
+require "./runtime"
+require "./elasticache/client"
+require "./elasticache/errors"
+require "./elasticache/model"
+require "./elasticache/types"
+require "./elasticache/protocol/query"
+require "./customizations/elasticache/customizations"

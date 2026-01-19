@@ -1,0 +1,7 @@
+require "./runtime"
+require "./amplify/client"
+require "./amplify/errors"
+require "./amplify/model"
+require "./amplify/types"
+require "./amplify/protocol/rest_json"
+require "./customizations/amplify/customizations"

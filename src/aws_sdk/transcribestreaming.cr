@@ -1,0 +1,7 @@
+require "./runtime"
+require "./transcribestreaming/client"
+require "./transcribestreaming/errors"
+require "./transcribestreaming/model"
+require "./transcribestreaming/types"
+require "./transcribestreaming/protocol/rest_json"
+require "./customizations/transcribestreaming/customizations"

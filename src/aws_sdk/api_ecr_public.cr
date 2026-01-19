@@ -1,0 +1,7 @@
+require "./runtime"
+require "./api_ecr_public/client"
+require "./api_ecr_public/errors"
+require "./api_ecr_public/model"
+require "./api_ecr_public/types"
+require "./api_ecr_public/protocol/json_rpc"
+require "./customizations/api_ecr_public/customizations"

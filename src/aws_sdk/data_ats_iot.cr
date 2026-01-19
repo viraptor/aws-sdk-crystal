@@ -1,0 +1,7 @@
+require "./runtime"
+require "./data_ats_iot/client"
+require "./data_ats_iot/errors"
+require "./data_ats_iot/model"
+require "./data_ats_iot/types"
+require "./data_ats_iot/protocol/rest_json"
+require "./customizations/data_ats_iot/customizations"

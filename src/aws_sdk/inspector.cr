@@ -1,0 +1,7 @@
+require "./runtime"
+require "./inspector/client"
+require "./inspector/errors"
+require "./inspector/model"
+require "./inspector/types"
+require "./inspector/protocol/json_rpc"
+require "./customizations/inspector/customizations"

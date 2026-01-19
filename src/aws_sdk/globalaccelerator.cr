@@ -1,0 +1,7 @@
+require "./runtime"
+require "./globalaccelerator/client"
+require "./globalaccelerator/errors"
+require "./globalaccelerator/model"
+require "./globalaccelerator/types"
+require "./globalaccelerator/protocol/json_rpc"
+require "./customizations/globalaccelerator/customizations"

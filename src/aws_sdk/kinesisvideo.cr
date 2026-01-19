@@ -1,0 +1,7 @@
+require "./runtime"
+require "./kinesisvideo/client"
+require "./kinesisvideo/errors"
+require "./kinesisvideo/model"
+require "./kinesisvideo/types"
+require "./kinesisvideo/protocol/rest_json"
+require "./customizations/kinesisvideo/customizations"

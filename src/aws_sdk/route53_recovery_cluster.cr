@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53_recovery_cluster/client"
+require "./route53_recovery_cluster/errors"
+require "./route53_recovery_cluster/model"
+require "./route53_recovery_cluster/types"
+require "./route53_recovery_cluster/protocol/json_rpc"
+require "./customizations/route53_recovery_cluster/customizations"

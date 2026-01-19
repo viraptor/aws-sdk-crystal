@@ -1,0 +1,7 @@
+require "./runtime"
+require "./models_v2_lex/client"
+require "./models_v2_lex/errors"
+require "./models_v2_lex/model"
+require "./models_v2_lex/types"
+require "./models_v2_lex/protocol/rest_json"
+require "./customizations/models_v2_lex/customizations"

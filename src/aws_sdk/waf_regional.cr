@@ -1,0 +1,7 @@
+require "./runtime"
+require "./waf_regional/client"
+require "./waf_regional/errors"
+require "./waf_regional/model"
+require "./waf_regional/types"
+require "./waf_regional/protocol/json_rpc"
+require "./customizations/waf_regional/customizations"

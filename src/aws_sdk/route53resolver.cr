@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53resolver/client"
+require "./route53resolver/errors"
+require "./route53resolver/model"
+require "./route53resolver/types"
+require "./route53resolver/protocol/json_rpc"
+require "./customizations/route53resolver/customizations"

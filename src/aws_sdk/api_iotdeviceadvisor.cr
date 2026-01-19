@@ -1,0 +1,7 @@
+require "./runtime"
+require "./api_iotdeviceadvisor/client"
+require "./api_iotdeviceadvisor/errors"
+require "./api_iotdeviceadvisor/model"
+require "./api_iotdeviceadvisor/types"
+require "./api_iotdeviceadvisor/protocol/rest_json"
+require "./customizations/api_iotdeviceadvisor/customizations"

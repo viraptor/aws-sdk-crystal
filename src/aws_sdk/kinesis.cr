@@ -1,0 +1,7 @@
+require "./runtime"
+require "./kinesis/client"
+require "./kinesis/errors"
+require "./kinesis/model"
+require "./kinesis/types"
+require "./kinesis/protocol/json_rpc"
+require "./customizations/kinesis/customizations"

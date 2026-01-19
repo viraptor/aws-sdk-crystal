@@ -1,0 +1,7 @@
+require "./runtime"
+require "./kinesisanalytics/client"
+require "./kinesisanalytics/errors"
+require "./kinesisanalytics/model"
+require "./kinesisanalytics/types"
+require "./kinesisanalytics/protocol/json_rpc"
+require "./customizations/kinesisanalytics/customizations"

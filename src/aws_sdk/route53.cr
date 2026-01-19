@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53/client"
+require "./route53/errors"
+require "./route53/model"
+require "./route53/types"
+require "./route53/protocol/rest_xml"
+require "./customizations/route53/customizations"

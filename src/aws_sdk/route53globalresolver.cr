@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53globalresolver/client"
+require "./route53globalresolver/errors"
+require "./route53globalresolver/model"
+require "./route53globalresolver/types"
+require "./route53globalresolver/protocol/rest_json"
+require "./customizations/route53globalresolver/customizations"

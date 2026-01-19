@@ -1,0 +1,7 @@
+require "./runtime"
+require "./vpc_lattice/client"
+require "./vpc_lattice/errors"
+require "./vpc_lattice/model"
+require "./vpc_lattice/types"
+require "./vpc_lattice/protocol/rest_json"
+require "./customizations/vpc_lattice/customizations"

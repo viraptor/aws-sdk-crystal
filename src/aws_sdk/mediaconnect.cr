@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mediaconnect/client"
+require "./mediaconnect/errors"
+require "./mediaconnect/model"
+require "./mediaconnect/types"
+require "./mediaconnect/protocol/rest_json"
+require "./customizations/mediaconnect/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./docdb_elastic/client"
+require "./docdb_elastic/errors"
+require "./docdb_elastic/model"
+require "./docdb_elastic/types"
+require "./docdb_elastic/protocol/rest_json"
+require "./customizations/docdb_elastic/customizations"

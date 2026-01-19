@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudsearchdomain/client"
+require "./cloudsearchdomain/errors"
+require "./cloudsearchdomain/model"
+require "./cloudsearchdomain/types"
+require "./cloudsearchdomain/protocol/rest_json"
+require "./customizations/cloudsearchdomain/customizations"

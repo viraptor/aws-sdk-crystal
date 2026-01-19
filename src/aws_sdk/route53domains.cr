@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53domains/client"
+require "./route53domains/errors"
+require "./route53domains/model"
+require "./route53domains/types"
+require "./route53domains/protocol/json_rpc"
+require "./customizations/route53domains/customizations"

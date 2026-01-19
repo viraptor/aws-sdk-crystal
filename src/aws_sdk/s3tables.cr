@@ -1,0 +1,7 @@
+require "./runtime"
+require "./s3tables/client"
+require "./s3tables/errors"
+require "./s3tables/model"
+require "./s3tables/types"
+require "./s3tables/protocol/rest_json"
+require "./customizations/s3tables/customizations"

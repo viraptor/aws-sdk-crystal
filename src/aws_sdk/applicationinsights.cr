@@ -1,0 +1,7 @@
+require "./runtime"
+require "./applicationinsights/client"
+require "./applicationinsights/errors"
+require "./applicationinsights/model"
+require "./applicationinsights/types"
+require "./applicationinsights/protocol/json_rpc"
+require "./customizations/applicationinsights/customizations"

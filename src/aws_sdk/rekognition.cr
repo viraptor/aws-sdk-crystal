@@ -1,0 +1,7 @@
+require "./runtime"
+require "./rekognition/client"
+require "./rekognition/errors"
+require "./rekognition/model"
+require "./rekognition/types"
+require "./rekognition/protocol/json_rpc"
+require "./customizations/rekognition/customizations"

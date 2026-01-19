@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudfront/client"
+require "./cloudfront/errors"
+require "./cloudfront/model"
+require "./cloudfront/types"
+require "./cloudfront/protocol/rest_xml"
+require "./customizations/cloudfront/customizations"

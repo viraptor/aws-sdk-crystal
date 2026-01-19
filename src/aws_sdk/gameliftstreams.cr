@@ -1,0 +1,7 @@
+require "./runtime"
+require "./gameliftstreams/client"
+require "./gameliftstreams/errors"
+require "./gameliftstreams/model"
+require "./gameliftstreams/types"
+require "./gameliftstreams/protocol/rest_json"
+require "./customizations/gameliftstreams/customizations"

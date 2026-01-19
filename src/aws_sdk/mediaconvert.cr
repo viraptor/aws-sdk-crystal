@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mediaconvert/client"
+require "./mediaconvert/errors"
+require "./mediaconvert/model"
+require "./mediaconvert/types"
+require "./mediaconvert/protocol/rest_json"
+require "./customizations/mediaconvert/customizations"

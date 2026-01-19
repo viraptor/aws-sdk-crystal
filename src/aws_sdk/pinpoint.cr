@@ -1,0 +1,7 @@
+require "./runtime"
+require "./pinpoint/client"
+require "./pinpoint/errors"
+require "./pinpoint/model"
+require "./pinpoint/types"
+require "./pinpoint/protocol/rest_json"
+require "./customizations/pinpoint/customizations"

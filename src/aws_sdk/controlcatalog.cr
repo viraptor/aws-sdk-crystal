@@ -1,0 +1,7 @@
+require "./runtime"
+require "./controlcatalog/client"
+require "./controlcatalog/errors"
+require "./controlcatalog/model"
+require "./controlcatalog/types"
+require "./controlcatalog/protocol/rest_json"
+require "./customizations/controlcatalog/customizations"

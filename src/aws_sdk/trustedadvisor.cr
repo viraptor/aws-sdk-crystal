@@ -1,0 +1,7 @@
+require "./runtime"
+require "./trustedadvisor/client"
+require "./trustedadvisor/errors"
+require "./trustedadvisor/model"
+require "./trustedadvisor/types"
+require "./trustedadvisor/protocol/rest_json"
+require "./customizations/trustedadvisor/customizations"

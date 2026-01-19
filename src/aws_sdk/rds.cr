@@ -1,0 +1,7 @@
+require "./runtime"
+require "./rds/client"
+require "./rds/errors"
+require "./rds/model"
+require "./rds/types"
+require "./rds/protocol/query"
+require "./customizations/rds/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./synthetics/client"
+require "./synthetics/errors"
+require "./synthetics/model"
+require "./synthetics/types"
+require "./synthetics/protocol/rest_json"
+require "./customizations/synthetics/customizations"

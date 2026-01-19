@@ -1,0 +1,7 @@
+require "./runtime"
+require "./iot/client"
+require "./iot/errors"
+require "./iot/model"
+require "./iot/types"
+require "./iot/protocol/rest_json"
+require "./customizations/iot/customizations"

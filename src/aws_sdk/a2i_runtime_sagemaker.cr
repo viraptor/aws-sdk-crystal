@@ -1,0 +1,7 @@
+require "./runtime"
+require "./a2i_runtime_sagemaker/client"
+require "./a2i_runtime_sagemaker/errors"
+require "./a2i_runtime_sagemaker/model"
+require "./a2i_runtime_sagemaker/types"
+require "./a2i_runtime_sagemaker/protocol/rest_json"
+require "./customizations/a2i_runtime_sagemaker/customizations"

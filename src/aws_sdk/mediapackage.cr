@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mediapackage/client"
+require "./mediapackage/errors"
+require "./mediapackage/model"
+require "./mediapackage/types"
+require "./mediapackage/protocol/rest_json"
+require "./customizations/mediapackage/customizations"

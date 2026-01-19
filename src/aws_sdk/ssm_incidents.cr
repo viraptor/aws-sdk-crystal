@@ -1,0 +1,7 @@
+require "./runtime"
+require "./ssm_incidents/client"
+require "./ssm_incidents/errors"
+require "./ssm_incidents/model"
+require "./ssm_incidents/types"
+require "./ssm_incidents/protocol/rest_json"
+require "./customizations/ssm_incidents/customizations"

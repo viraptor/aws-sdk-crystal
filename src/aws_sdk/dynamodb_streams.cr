@@ -1,0 +1,5 @@
+require "./dynamodb_streams/client"
+require "./dynamodb_streams/errors"
+require "./dynamodb_streams/model"
+require "./dynamodb_streams/types"
+require "./dynamodb_streams/protocol/json_rpc"

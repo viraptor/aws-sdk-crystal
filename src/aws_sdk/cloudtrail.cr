@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudtrail/client"
+require "./cloudtrail/errors"
+require "./cloudtrail/model"
+require "./cloudtrail/types"
+require "./cloudtrail/protocol/json_rpc"
+require "./customizations/cloudtrail/customizations"

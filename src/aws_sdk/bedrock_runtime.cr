@@ -1,0 +1,7 @@
+require "./runtime"
+require "./bedrock_runtime/client"
+require "./bedrock_runtime/errors"
+require "./bedrock_runtime/model"
+require "./bedrock_runtime/types"
+require "./bedrock_runtime/protocol/rest_json"
+require "./customizations/bedrock_runtime/customizations"

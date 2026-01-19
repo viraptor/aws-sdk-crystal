@@ -1,0 +1,7 @@
+require "./runtime"
+require "./appstream2/client"
+require "./appstream2/errors"
+require "./appstream2/model"
+require "./appstream2/types"
+require "./appstream2/protocol/json_rpc"
+require "./customizations/appstream2/customizations"

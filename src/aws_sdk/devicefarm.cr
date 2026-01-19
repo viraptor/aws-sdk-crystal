@@ -1,0 +1,7 @@
+require "./runtime"
+require "./devicefarm/client"
+require "./devicefarm/errors"
+require "./devicefarm/model"
+require "./devicefarm/types"
+require "./devicefarm/protocol/json_rpc"
+require "./customizations/devicefarm/customizations"

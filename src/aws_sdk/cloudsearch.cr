@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudsearch/client"
+require "./cloudsearch/errors"
+require "./cloudsearch/model"
+require "./cloudsearch/types"
+require "./cloudsearch/protocol/query"
+require "./customizations/cloudsearch/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./featurestore_runtime_sagemaker/client"
+require "./featurestore_runtime_sagemaker/errors"
+require "./featurestore_runtime_sagemaker/model"
+require "./featurestore_runtime_sagemaker/types"
+require "./featurestore_runtime_sagemaker/protocol/rest_json"
+require "./customizations/featurestore_runtime_sagemaker/customizations"

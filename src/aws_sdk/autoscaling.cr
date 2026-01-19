@@ -1,0 +1,7 @@
+require "./runtime"
+require "./autoscaling/client"
+require "./autoscaling/errors"
+require "./autoscaling/model"
+require "./autoscaling/types"
+require "./autoscaling/protocol/query"
+require "./customizations/autoscaling/customizations"

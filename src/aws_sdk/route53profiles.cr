@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53profiles/client"
+require "./route53profiles/errors"
+require "./route53profiles/model"
+require "./route53profiles/types"
+require "./route53profiles/protocol/rest_json"
+require "./customizations/route53profiles/customizations"

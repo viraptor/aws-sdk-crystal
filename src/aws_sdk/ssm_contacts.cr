@@ -1,0 +1,7 @@
+require "./runtime"
+require "./ssm_contacts/client"
+require "./ssm_contacts/errors"
+require "./ssm_contacts/model"
+require "./ssm_contacts/types"
+require "./ssm_contacts/protocol/json_rpc"
+require "./customizations/ssm_contacts/customizations"

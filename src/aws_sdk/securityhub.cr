@@ -1,0 +1,7 @@
+require "./runtime"
+require "./securityhub/client"
+require "./securityhub/errors"
+require "./securityhub/model"
+require "./securityhub/types"
+require "./securityhub/protocol/rest_json"
+require "./customizations/securityhub/customizations"

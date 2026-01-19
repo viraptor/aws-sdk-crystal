@@ -1,0 +1,7 @@
+require "./runtime"
+require "./medical_imaging/client"
+require "./medical_imaging/errors"
+require "./medical_imaging/model"
+require "./medical_imaging/types"
+require "./medical_imaging/protocol/rest_json"
+require "./customizations/medical_imaging/customizations"

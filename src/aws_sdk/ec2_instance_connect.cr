@@ -1,0 +1,7 @@
+require "./runtime"
+require "./ec2_instance_connect/client"
+require "./ec2_instance_connect/errors"
+require "./ec2_instance_connect/model"
+require "./ec2_instance_connect/types"
+require "./ec2_instance_connect/protocol/json_rpc"
+require "./customizations/ec2_instance_connect/customizations"

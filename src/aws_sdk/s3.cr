@@ -1,0 +1,7 @@
+require "./runtime"
+require "./s3/client"
+require "./s3/errors"
+require "./s3/model"
+require "./s3/types"
+require "./s3/protocol/rest_xml"
+require "./customizations/s3/customizations"

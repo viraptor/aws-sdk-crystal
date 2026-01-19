@@ -1,0 +1,7 @@
+require "./runtime"
+require "./comprehendmedical/client"
+require "./comprehendmedical/errors"
+require "./comprehendmedical/model"
+require "./comprehendmedical/types"
+require "./comprehendmedical/protocol/json_rpc"
+require "./customizations/comprehendmedical/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./api_mediatailor/client"
+require "./api_mediatailor/errors"
+require "./api_mediatailor/model"
+require "./api_mediatailor/types"
+require "./api_mediatailor/protocol/rest_json"
+require "./customizations/api_mediatailor/customizations"

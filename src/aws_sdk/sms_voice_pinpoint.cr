@@ -1,0 +1,7 @@
+require "./runtime"
+require "./sms_voice_pinpoint/client"
+require "./sms_voice_pinpoint/errors"
+require "./sms_voice_pinpoint/model"
+require "./sms_voice_pinpoint/types"
+require "./sms_voice_pinpoint/protocol/rest_json"
+require "./customizations/sms_voice_pinpoint/customizations"

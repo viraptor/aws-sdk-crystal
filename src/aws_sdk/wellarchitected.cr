@@ -1,0 +1,7 @@
+require "./runtime"
+require "./wellarchitected/client"
+require "./wellarchitected/errors"
+require "./wellarchitected/model"
+require "./wellarchitected/types"
+require "./wellarchitected/protocol/rest_json"
+require "./customizations/wellarchitected/customizations"

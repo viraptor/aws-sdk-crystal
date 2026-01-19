@@ -1,0 +1,7 @@
+require "./runtime"
+require "./edge_sagemaker/client"
+require "./edge_sagemaker/errors"
+require "./edge_sagemaker/model"
+require "./edge_sagemaker/types"
+require "./edge_sagemaker/protocol/rest_json"
+require "./customizations/edge_sagemaker/customizations"

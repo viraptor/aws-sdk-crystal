@@ -1,0 +1,7 @@
+require "./runtime"
+require "./identity_chime/client"
+require "./identity_chime/errors"
+require "./identity_chime/model"
+require "./identity_chime/types"
+require "./identity_chime/protocol/rest_json"
+require "./customizations/identity_chime/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./kafkaconnect/client"
+require "./kafkaconnect/errors"
+require "./kafkaconnect/model"
+require "./kafkaconnect/types"
+require "./kafkaconnect/protocol/rest_json"
+require "./customizations/kafkaconnect/customizations"

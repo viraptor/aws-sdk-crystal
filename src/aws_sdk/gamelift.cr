@@ -1,0 +1,7 @@
+require "./runtime"
+require "./gamelift/client"
+require "./gamelift/errors"
+require "./gamelift/model"
+require "./gamelift/types"
+require "./gamelift/protocol/json_rpc"
+require "./customizations/gamelift/customizations"

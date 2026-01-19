@@ -1,0 +1,7 @@
+require "./runtime"
+require "./comprehend/client"
+require "./comprehend/errors"
+require "./comprehend/model"
+require "./comprehend/types"
+require "./comprehend/protocol/json_rpc"
+require "./customizations/comprehend/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./macie2/client"
+require "./macie2/errors"
+require "./macie2/model"
+require "./macie2/types"
+require "./macie2/protocol/rest_json"
+require "./customizations/macie2/customizations"

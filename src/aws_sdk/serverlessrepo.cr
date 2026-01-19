@@ -1,0 +1,7 @@
+require "./runtime"
+require "./serverlessrepo/client"
+require "./serverlessrepo/errors"
+require "./serverlessrepo/model"
+require "./serverlessrepo/types"
+require "./serverlessrepo/protocol/rest_json"
+require "./customizations/serverlessrepo/customizations"

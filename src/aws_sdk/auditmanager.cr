@@ -1,0 +1,7 @@
+require "./runtime"
+require "./auditmanager/client"
+require "./auditmanager/errors"
+require "./auditmanager/model"
+require "./auditmanager/types"
+require "./auditmanager/protocol/rest_json"
+require "./customizations/auditmanager/customizations"

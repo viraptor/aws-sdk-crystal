@@ -1,0 +1,7 @@
+require "./runtime"
+require "./s3vectors/client"
+require "./s3vectors/errors"
+require "./s3vectors/model"
+require "./s3vectors/types"
+require "./s3vectors/protocol/rest_json"
+require "./customizations/s3vectors/customizations"

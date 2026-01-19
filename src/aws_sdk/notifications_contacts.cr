@@ -1,0 +1,7 @@
+require "./runtime"
+require "./notifications_contacts/client"
+require "./notifications_contacts/errors"
+require "./notifications_contacts/model"
+require "./notifications_contacts/types"
+require "./notifications_contacts/protocol/rest_json"
+require "./customizations/notifications_contacts/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./lambda/client"
+require "./lambda/errors"
+require "./lambda/model"
+require "./lambda/types"
+require "./lambda/protocol/rest_json"
+require "./customizations/lambda/customizations"

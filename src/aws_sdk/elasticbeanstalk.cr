@@ -1,0 +1,7 @@
+require "./runtime"
+require "./elasticbeanstalk/client"
+require "./elasticbeanstalk/errors"
+require "./elasticbeanstalk/model"
+require "./elasticbeanstalk/types"
+require "./elasticbeanstalk/protocol/query"
+require "./customizations/elasticbeanstalk/customizations"

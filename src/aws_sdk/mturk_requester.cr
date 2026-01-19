@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mturk_requester/client"
+require "./mturk_requester/errors"
+require "./mturk_requester/model"
+require "./mturk_requester/types"
+require "./mturk_requester/protocol/json_rpc"
+require "./customizations/mturk_requester/customizations"

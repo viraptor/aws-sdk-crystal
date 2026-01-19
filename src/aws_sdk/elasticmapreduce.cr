@@ -1,0 +1,7 @@
+require "./runtime"
+require "./elasticmapreduce/client"
+require "./elasticmapreduce/errors"
+require "./elasticmapreduce/model"
+require "./elasticmapreduce/types"
+require "./elasticmapreduce/protocol/json_rpc"
+require "./customizations/elasticmapreduce/customizations"

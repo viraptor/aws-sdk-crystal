@@ -1,0 +1,7 @@
+require "./runtime"
+require "./secretsmanager/client"
+require "./secretsmanager/errors"
+require "./secretsmanager/model"
+require "./secretsmanager/types"
+require "./secretsmanager/protocol/json_rpc"
+require "./customizations/secretsmanager/customizations"

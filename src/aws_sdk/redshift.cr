@@ -1,0 +1,7 @@
+require "./runtime"
+require "./redshift/client"
+require "./redshift/errors"
+require "./redshift/model"
+require "./redshift/types"
+require "./redshift/protocol/query"
+require "./customizations/redshift/customizations"
