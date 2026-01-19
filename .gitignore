@@ -1,2 +1,5 @@
-bin/
-src/aws_sdk/
+/bin/
+/src/aws_sdk/**/*.cr
+!/src/aws_sdk/runtime/
+!/src/aws_sdk/runtime/**/*.cr
+!/src/aws_sdk/runtime.cr
