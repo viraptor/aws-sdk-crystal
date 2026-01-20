@@ -3,26 +3,26 @@ module AwsSdk
     module Errors
       class ServiceError < Exception
       end
-<% error_shapes.each do |shape| %>
+<% error_shapes.each do |shape| -%>
 
 <%= doc_lines(shape.documentation, 3) %>
       class <%= shape.name %> < ServiceError
       end
-<% end %>
+<% end -%>
 
       def self.build(error_type : String?, message : String?) : Exception
-<% if error_shapes.empty? %>
+<% if error_shapes.empty? -%>
         ServiceError.new(message || "Unknown error")
-<% else %>
+<% else -%>
         case error_type
-<% error_shapes.each do |shape| %>
+<% error_shapes.each do |shape| -%>
         when "<%= shape.name %>"
           <%= shape.name %>.new(message)
-<% end %>
+<% end -%>
         else
           ServiceError.new(message || "Unknown error")
         end
-<% end %>
+<% end -%>
       end
     end
   end
