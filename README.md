@@ -7,6 +7,9 @@ The goal is to provide a programming API as close to the Ruby one as possible.
 Ideally with the same behaviour. The internals may vary (for example Seahorse
 is not ported).
 
+This repository is mirrored to github for installation convenience. The
+canonical source is https://codeberg.org/viraptor/aws-sdk-crystal
+
 ## Currently still missing
 
 - protocol `smithy-rpc-v2-cbor` (arc-region-switch, monitoring)
@@ -19,10 +22,18 @@ work". It has not been widely tested yet or ran into enough edge cases.
 
 ## Example use
 
+Add to `shard.yml`:
+
+```
+dependencies:
+  aws-sdk-crystal:
+    github: viraptor/aws-sdk-crystal
+```
+
 For most use cases, the code should look the same as the Ruby equivalent.
 
 ```
-require "aws_sdk/sts"
+require "aws-sdk-crystal/sts"
 require "json"
 
 client = Aws::STS::Client.new
