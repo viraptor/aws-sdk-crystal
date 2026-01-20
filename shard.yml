@@ -10,5 +10,7 @@ targets:
     main: src/crystal_sdk_generator/minimal_generator_entry.cr
   cleanup:
     main: src/tools.cr
+  update-apis:
+    main: src/tools.cr
   sts_test:
     main: example/sts_test.cr
