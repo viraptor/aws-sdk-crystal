@@ -1,23 +1,23 @@
 require "./spec_helper"
 
-describe AwsSdk::DynamoDBStreams::Protocol::JsonRpc do
+describe Aws::DynamoDBStreams::Protocol::JsonRpc do
   it "rejects empty endpoints" do
     expect_raises(ArgumentError) do
-      AwsSdk::DynamoDBStreams::Protocol::JsonRpc.build_request(
-        AwsSdk::DynamoDBStreams::Model::LIST_STREAMS,
-        AwsSdk::DynamoDBStreams::Types::ListStreamsInput.new,
+      Aws::DynamoDBStreams::Protocol::JsonRpc.build_request(
+        Aws::DynamoDBStreams::Model::LIST_STREAMS,
+        Aws::DynamoDBStreams::Types::ListStreamsInput.new,
         ""
       )
     end
   end
 
   it "builds DescribeStream request payload" do
-    input = AwsSdk::DynamoDBStreams::Types::DescribeStreamInput.new(
+    input = Aws::DynamoDBStreams::Types::DescribeStreamInput.new(
       "arn:aws:dynamodb:us-west-2:123456789012:table/Test/stream/2024-01-01T00:00:00.000"
     )
 
-    request = AwsSdk::DynamoDBStreams::Protocol::JsonRpc.build_request(
-      AwsSdk::DynamoDBStreams::Model::DESCRIBE_STREAM,
+    request = Aws::DynamoDBStreams::Protocol::JsonRpc.build_request(
+      Aws::DynamoDBStreams::Model::DESCRIBE_STREAM,
       input,
       "https://example.com"
     )
@@ -30,10 +30,10 @@ describe AwsSdk::DynamoDBStreams::Protocol::JsonRpc do
   end
 
   it "builds ListStreams request payload with defaults" do
-    input = AwsSdk::DynamoDBStreams::Types::ListStreamsInput.new
+    input = Aws::DynamoDBStreams::Types::ListStreamsInput.new
 
-    request = AwsSdk::DynamoDBStreams::Protocol::JsonRpc.build_request(
-      AwsSdk::DynamoDBStreams::Model::LIST_STREAMS,
+    request = Aws::DynamoDBStreams::Protocol::JsonRpc.build_request(
+      Aws::DynamoDBStreams::Model::LIST_STREAMS,
       input,
       "https://example.com/"
     )
@@ -44,14 +44,14 @@ describe AwsSdk::DynamoDBStreams::Protocol::JsonRpc do
   end
 
   it "parses error responses from headers" do
-    response = AwsSdk::Runtime::Http::Response.new(
+    response = Aws::Runtime::Http::Response.new(
       400,
       {"x-amzn-errortype" => "LimitExceededException"},
       "{\"message\":\"slow down\"}"
     )
 
-    error = AwsSdk::DynamoDBStreams::Protocol::JsonRpc.parse_error(response)
-    error.should be_a(AwsSdk::DynamoDBStreams::Errors::LimitExceededException)
+    error = Aws::DynamoDBStreams::Protocol::JsonRpc.parse_error(response)
+    error.should be_a(Aws::DynamoDBStreams::Errors::LimitExceededException)
     error.message.should eq("slow down")
   end
 end

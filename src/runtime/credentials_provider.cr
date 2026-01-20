@@ -1,6 +1,6 @@
 require "json"
 
-module AwsSdk
+module Aws
   module Runtime
     module CredentialsProvider
       abstract def resolve : Credentials?

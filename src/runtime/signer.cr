@@ -1,6 +1,6 @@
 require "./signer/sigv4"
 
-module AwsSdk
+module Aws
   module Runtime
     module Signer
     end

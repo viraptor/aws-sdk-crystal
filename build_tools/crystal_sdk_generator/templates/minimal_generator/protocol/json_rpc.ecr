@@ -1,13 +1,13 @@
 require "json"
 require "../../runtime"
 
-module AwsSdk
+module Aws
   module <%= info.module_name %>
     module Protocol
       module JsonRpc
         CONTENT_TYPE = "<%= content_type %>"
 
-        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : AwsSdk::Runtime::Http::Request
+        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : Aws::Runtime::Http::Request
           raise ArgumentError.new("endpoint must not be empty") if endpoint.empty?
           raise ArgumentError.new("targetPrefix is missing") if Model::TARGET_PREFIX.empty?
 
@@ -17,23 +17,23 @@ module AwsSdk
             "x-amz-target" => "#{Model::TARGET_PREFIX}.#{operation.name}",
           }
           body = input ? input.to_json : "{}"
-          AwsSdk::Runtime::Http::Request.new("POST", uri, headers, body)
+          Aws::Runtime::Http::Request.new("POST", uri, headers, body)
         end
 
-        def self.parse_error(response : AwsSdk::Runtime::Http::Response) : Exception
+        def self.parse_error(response : Aws::Runtime::Http::Response) : Exception
           error_type = error_type_from_headers(response.headers) || error_type_from_body(response.body)
           message = error_message_from_body(response.body)
           Errors.build(error_type, message)
         end
 
-        def self.parse_response(response : AwsSdk::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
+        def self.parse_response(response : Aws::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
           body = response.body
           return output_type.from_json("{}") unless body
           output_type.from_json(body)
         rescue ex : JSON::ParseException | JSON::SerializableError
           snippet = body ? body[0, 200] : ""
           details = snippet.empty? ? "empty body" : "body=#{snippet}"
-          raise AwsSdk::Runtime::Errors::ResponseParseError.new("Failed to parse #{operation_name} response (#{details}): #{ex.message}")
+          raise Aws::Runtime::Errors::ResponseParseError.new("Failed to parse #{operation_name} response (#{details}): #{ex.message}")
         end
 
         private def self.error_type_from_headers(headers : Hash(String, String)) : String?

@@ -1,6 +1,6 @@
 require "json"
 
-module AwsSdk
+module Aws
   module Runtime
     class EndpointRuleError < Exception
     end

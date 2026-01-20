@@ -1,4 +1,4 @@
-module AwsSdk
+module Aws
   module Runtime
     module Defaults
       def self.resolve_region(profile : String?, transport : Transport = HttpTransport.new) : String

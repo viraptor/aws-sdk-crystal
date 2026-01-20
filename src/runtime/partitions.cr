@@ -1,4 +1,4 @@
-module AwsSdk
+module Aws
   module Runtime
     module Partitions
       def self.path : String

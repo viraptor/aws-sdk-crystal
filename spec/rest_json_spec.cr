@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson do
+describe Aws::KinesisVideoWebRTCStorage::Protocol::RestJson do
   before_each do
     ENV["AWS_REGION"] = "us-west-2"
   end
@@ -10,8 +10,8 @@ describe AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson do
   end
 
   it "builds JoinStorageSession request payload" do
-    client = AwsSdk::KinesisVideoWebRTCStorage::Client.new("https://example.com")
-    input = AwsSdk::KinesisVideoWebRTCStorage::Types::JoinStorageSessionInput.new("arn:aws:kinesisvideo:us-west-2:123456789012:channel/test/123")
+    client = Aws::KinesisVideoWebRTCStorage::Client.new("https://example.com")
+    input = Aws::KinesisVideoWebRTCStorage::Types::JoinStorageSessionInput.new("arn:aws:kinesisvideo:us-west-2:123456789012:channel/test/123")
 
     request = client.join_storage_session(input)
 
@@ -22,8 +22,8 @@ describe AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson do
   end
 
   it "builds JoinStorageSessionAsViewer request payload" do
-    client = AwsSdk::KinesisVideoWebRTCStorage::Client.new("https://example.com")
-    input = AwsSdk::KinesisVideoWebRTCStorage::Types::JoinStorageSessionAsViewerInput.new(
+    client = Aws::KinesisVideoWebRTCStorage::Client.new("https://example.com")
+    input = Aws::KinesisVideoWebRTCStorage::Types::JoinStorageSessionAsViewerInput.new(
       "arn:aws:kinesisvideo:us-west-2:123456789012:channel/test/123",
       "client-123"
     )
@@ -36,26 +36,26 @@ describe AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson do
   end
 
   it "parses error responses from headers" do
-    response = AwsSdk::KinesisVideoWebRTCStorage::Protocol::Response.new(
+    response = Aws::KinesisVideoWebRTCStorage::Protocol::Response.new(
       403,
       {"x-amzn-errortype" => "AccessDeniedException"},
       "{\"message\":\"nope\"}"
     )
 
-    error = AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson.parse_error(response)
-    error.should be_a(AwsSdk::KinesisVideoWebRTCStorage::Errors::AccessDeniedException)
+    error = Aws::KinesisVideoWebRTCStorage::Protocol::RestJson.parse_error(response)
+    error.should be_a(Aws::KinesisVideoWebRTCStorage::Errors::AccessDeniedException)
     error.message.should eq("nope")
   end
 
   it "parses error responses from body" do
-    response = AwsSdk::KinesisVideoWebRTCStorage::Protocol::Response.new(
+    response = Aws::KinesisVideoWebRTCStorage::Protocol::Response.new(
       404,
       {} of String => String,
       "{\"__type\":\"ResourceNotFoundException\",\"message\":\"missing\"}"
     )
 
-    error = AwsSdk::KinesisVideoWebRTCStorage::Protocol::RestJson.parse_error(response)
-    error.should be_a(AwsSdk::KinesisVideoWebRTCStorage::Errors::ResourceNotFoundException)
+    error = Aws::KinesisVideoWebRTCStorage::Protocol::RestJson.parse_error(response)
+    error.should be_a(Aws::KinesisVideoWebRTCStorage::Errors::ResourceNotFoundException)
     error.message.should eq("missing")
   end
 end

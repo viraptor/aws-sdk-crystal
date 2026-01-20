@@ -2,7 +2,7 @@ require "digest/sha256"
 require "openssl/hmac"
 require "uri"
 
-module AwsSdk
+module Aws
   module Runtime
     module Signer
       class SigV4

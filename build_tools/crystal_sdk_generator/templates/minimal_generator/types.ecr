@@ -3,7 +3,7 @@ require "json"
 require "time"
 <% end -%>
 
-module AwsSdk
+module Aws
   module <%= info.module_name %>
     module Types
 <% shapes.each do |shape| -%>
@@ -23,7 +23,7 @@ module AwsSdk
 <% member_snake = to_snake_case(member_name) -%>
 <% converter = "" -%>
 <% if (info.protocol == "json_1.0" || info.protocol == "json_1.1") && type_name.gsub("?", "") == "Time" -%>
-<% converter = ", converter: AwsSdk::Runtime::UnixTimestampConverter" -%>
+<% converter = ", converter: Aws::Runtime::UnixTimestampConverter" -%>
 <% end -%>
 
 <%= doc_lines(ref.documentation, 4) %>

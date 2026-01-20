@@ -3,13 +3,13 @@ require "uri"
 require "xml"
 require "../../runtime"
 
-module AwsSdk
+module Aws
   module <%= info.module_name %>
     module Protocol
       module Query
         CONTENT_TYPE = "application/x-www-form-urlencoded; charset=utf-8"
 
-        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : AwsSdk::Runtime::Http::Request
+        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : Aws::Runtime::Http::Request
           raise ArgumentError.new("endpoint must not be empty") if endpoint.empty?
           params = URI::Params.new
           params.add("Action", operation.name)
@@ -17,16 +17,16 @@ module AwsSdk
           add_input_params(params, input)
           uri = endpoint.rstrip("/") + "/"
           headers = {"content-type" => CONTENT_TYPE}
-          AwsSdk::Runtime::Http::Request.new("POST", uri, headers, params.to_s)
+          Aws::Runtime::Http::Request.new("POST", uri, headers, params.to_s)
         end
 
-        def self.parse_error(response : AwsSdk::Runtime::Http::Response) : Exception
+        def self.parse_error(response : Aws::Runtime::Http::Response) : Exception
           error_type = error_type_from_body(response.body)
           message = error_message_from_body(response.body)
           Errors.build(error_type, message)
         end
 
-        def self.parse_response(response : AwsSdk::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
+        def self.parse_response(response : Aws::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
           body = response.body
           return output_type.from_json("{}") unless body
           document = XML.parse(body)
@@ -36,7 +36,7 @@ module AwsSdk
         rescue ex : XML::Error | JSON::SerializableError
           snippet = body ? body[0, 200] : ""
           details = snippet.empty? ? "empty body" : "body=#{snippet}"
-          raise AwsSdk::Runtime::Errors::ResponseParseError.new("Failed to parse #{operation_name} response (#{details}): #{ex.message}")
+          raise Aws::Runtime::Errors::ResponseParseError.new("Failed to parse #{operation_name} response (#{details}): #{ex.message}")
         end
 
         private def self.add_input_params(params : URI::Params, input) : Nil

@@ -25,7 +25,7 @@ For most use cases, the code should look the same as the Ruby equivalent.
 require "aws_sdk/sts"
 require "json"
 
-client = AwsSdk::STS::Client.new
+client = Aws::STS::Client.new
 puts client.get_caller_identity.to_json
 ```
 

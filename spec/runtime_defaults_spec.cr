@@ -2,31 +2,31 @@ require "./spec_helper"
 require "file_utils"
 
 class DefaultsStubTransport
-  include AwsSdk::Runtime::Transport
+  include Aws::Runtime::Transport
 
-  getter requests = [] of AwsSdk::Runtime::Http::Request
+  getter requests = [] of Aws::Runtime::Http::Request
 
-  def initialize(@responses : Hash(String, AwsSdk::Runtime::Http::Response))
+  def initialize(@responses : Hash(String, Aws::Runtime::Http::Response))
   end
 
-  def execute(request : AwsSdk::Runtime::Http::Request) : AwsSdk::Runtime::Http::Response
+  def execute(request : Aws::Runtime::Http::Request) : Aws::Runtime::Http::Response
     @requests << request
     key = "#{request.method} #{request.uri}"
     @responses.fetch(key) do
-      AwsSdk::Runtime::Http::Response.new(404, {} of String => String, nil)
+      Aws::Runtime::Http::Response.new(404, {} of String => String, nil)
     end
   end
 end
 
-describe AwsSdk::Runtime::Defaults do
+describe Aws::Runtime::Defaults do
   it "resolves region and credentials from env" do
     ENV["AWS_REGION"] = "us-west-2"
     ENV["AWS_ACCESS_KEY_ID"] = "AKID"
     ENV["AWS_SECRET_ACCESS_KEY"] = "SECRET"
     ENV.delete("AWS_SESSION_TOKEN")
 
-    AwsSdk::Runtime::Defaults.resolve_region(nil).should eq("us-west-2")
-    credentials = AwsSdk::Runtime::Defaults.resolve_credentials(nil)
+    Aws::Runtime::Defaults.resolve_region(nil).should eq("us-west-2")
+    credentials = Aws::Runtime::Defaults.resolve_credentials(nil)
     credentials.access_key_id.should eq("AKID")
     credentials.secret_access_key.should eq("SECRET")
     credentials.session_token.should be_nil
@@ -61,8 +61,8 @@ describe AwsSdk::Runtime::Defaults do
       ENV["AWS_CONFIG_FILE"] = config_path
       ENV["AWS_SHARED_CREDENTIALS_FILE"] = credentials_path
 
-      AwsSdk::Runtime::Defaults.resolve_region(nil).should eq("us-east-2")
-      creds = AwsSdk::Runtime::Defaults.resolve_credentials(nil)
+      Aws::Runtime::Defaults.resolve_region(nil).should eq("us-east-2")
+      creds = Aws::Runtime::Defaults.resolve_credentials(nil)
       creds.access_key_id.should eq("AKID_SHARED")
       creds.secret_access_key.should eq("SECRET_SHARED")
       creds.session_token.should eq("TOKEN_SHARED")
@@ -78,12 +78,12 @@ describe AwsSdk::Runtime::Defaults do
   it "uses ECS credentials when configured" do
     response_body = %({"AccessKeyId":"AKID_ECS","SecretAccessKey":"SECRET_ECS","Token":"TOKEN_ECS"})
     transport = DefaultsStubTransport.new({
-      "GET http://169.254.170.2/v2/credentials" => AwsSdk::Runtime::Http::Response.new(200, {} of String => String, response_body),
+      "GET http://169.254.170.2/v2/credentials" => Aws::Runtime::Http::Response.new(200, {} of String => String, response_body),
     })
 
     ENV["AWS_CONTAINER_CREDENTIALS_RELATIVE_URI"] = "/v2/credentials"
 
-    creds = AwsSdk::Runtime::Defaults.resolve_credentials("default", transport)
+    creds = Aws::Runtime::Defaults.resolve_credentials("default", transport)
     creds.access_key_id.should eq("AKID_ECS")
     creds.secret_access_key.should eq("SECRET_ECS")
     creds.session_token.should eq("TOKEN_ECS")
@@ -92,14 +92,14 @@ describe AwsSdk::Runtime::Defaults do
   end
 
   it "uses IMDS region when env and shared config are missing" do
-    token_response = AwsSdk::Runtime::Http::Response.new(200, {} of String => String, "token")
-    region_response = AwsSdk::Runtime::Http::Response.new(200, {} of String => String, "us-east-1")
+    token_response = Aws::Runtime::Http::Response.new(200, {} of String => String, "token")
+    region_response = Aws::Runtime::Http::Response.new(200, {} of String => String, "us-east-1")
     transport = DefaultsStubTransport.new({
       "PUT http://169.254.169.254/latest/api/token" => token_response,
       "GET http://169.254.169.254/latest/meta-data/placement/region" => region_response,
     })
 
-    region = AwsSdk::Runtime::Defaults.resolve_region("default", transport)
+    region = Aws::Runtime::Defaults.resolve_region("default", transport)
     region.should eq("us-east-1")
   end
 end

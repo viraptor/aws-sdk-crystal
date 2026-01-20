@@ -3,7 +3,7 @@ require "uri"
 require "xml"
 require "../../runtime"
 
-module AwsSdk
+module Aws
   module <%= info.module_name %>
     module Protocol
       module RestXml
@@ -130,7 +130,7 @@ module AwsSdk
 <% end %>
         }
 
-        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : AwsSdk::Runtime::Http::Request
+        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : Aws::Runtime::Http::Request
           raise ArgumentError.new("endpoint must not be empty") if endpoint.empty?
           payload = input ? JSON.parse(input.to_json).as_h : {} of String => JSON::Any
           input_shape = OPERATION_INPUT_SHAPES[operation.name]?
@@ -155,16 +155,16 @@ module AwsSdk
           else
             nil
           end
-          AwsSdk::Runtime::Http::Request.new(operation.http_method, uri, headers, body)
+          Aws::Runtime::Http::Request.new(operation.http_method, uri, headers, body)
         end
 
-        def self.parse_error(response : AwsSdk::Runtime::Http::Response) : Exception
+        def self.parse_error(response : Aws::Runtime::Http::Response) : Exception
           error_type = error_type_from_body(response.body)
           message = error_message_from_body(response.body)
           Errors.build(error_type, message)
         end
 
-        def self.parse_response(response : AwsSdk::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
+        def self.parse_response(response : Aws::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
           payload = {} of String => JSON::Any
           output_shape = OPERATION_OUTPUT_SHAPES[operation_name]?
           if (body = response.body)

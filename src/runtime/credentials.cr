@@ -1,4 +1,4 @@
-module AwsSdk
+module Aws
   module Runtime
     struct Credentials
       getter access_key_id : String

@@ -1,4 +1,4 @@
-module AwsSdk
+module Aws
   module Runtime
     class Client
       getter endpoint : String

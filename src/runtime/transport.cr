@@ -1,7 +1,7 @@
 require "http/client"
 require "uri"
 
-module AwsSdk
+module Aws
   module Runtime
     module Transport
       abstract def execute(request : Http::Request) : Http::Response

@@ -1,7 +1,7 @@
 require "json"
 require "time"
 
-module AwsSdk
+module Aws
   module Runtime
     module UnixTimestampConverter
       def self.from_json(value : JSON::PullParser) : Time?

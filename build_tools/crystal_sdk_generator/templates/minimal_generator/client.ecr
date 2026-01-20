@@ -1,31 +1,31 @@
-module AwsSdk
+module Aws
   module <%= info.module_name %>
     class Client
 <% if info.protocol == "query" || info.protocol == "json_1.0" || info.protocol == "json_1.1" || info.protocol == "rest-xml" %>
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
-      getter credentials : AwsSdk::Runtime::Credentials
-      getter transport : AwsSdk::Runtime::Transport
-      getter runtime : AwsSdk::Runtime::Client
+      getter credentials : Aws::Runtime::Credentials
+      getter transport : Aws::Runtime::Transport
+      getter runtime : Aws::Runtime::Client
 
       def initialize(
         endpoint : String? = nil,
         region : String? = nil,
-        credentials : AwsSdk::Runtime::Credentials? = nil,
+        credentials : Aws::Runtime::Credentials? = nil,
         profile : String? = nil,
         use_fips : Bool? = nil,
         use_dualstack : Bool? = nil,
-        transport : AwsSdk::Runtime::Transport = AwsSdk::Runtime::HttpTransport.new
+        transport : Aws::Runtime::Transport = Aws::Runtime::HttpTransport.new
       )
         @transport = transport
-        @region = region || AwsSdk::Runtime::Defaults.resolve_region(profile, @transport)
-        @credentials = credentials || AwsSdk::Runtime::Defaults.resolve_credentials(profile, @transport)
-        endpoint_provider = AwsSdk::Runtime::EndpointProvider.new(Model::ENDPOINT_PREFIX, Model::ENDPOINT_RULE_SET_JSON)
+        @region = region || Aws::Runtime::Defaults.resolve_region(profile, @transport)
+        @credentials = credentials || Aws::Runtime::Defaults.resolve_credentials(profile, @transport)
+        endpoint_provider = Aws::Runtime::EndpointProvider.new(Model::ENDPOINT_PREFIX, Model::ENDPOINT_RULE_SET_JSON)
         endpoint_result = endpoint_provider.resolve(@region, endpoint, use_fips, use_dualstack)
         @endpoint = endpoint_result.url
         @endpoint_headers = endpoint_result.headers
-        @runtime = AwsSdk::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers)
+        @runtime = Aws::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers)
       end
 <% operations.each do |operation| -%>
 <% name = operation.name -%>
@@ -90,8 +90,8 @@ module AwsSdk
         use_fips : Bool? = nil,
         use_dualstack : Bool? = nil
       )
-        @region = region || AwsSdk::Runtime::Defaults.resolve_region(profile)
-        endpoint_provider = AwsSdk::Runtime::EndpointProvider.new(Model::ENDPOINT_PREFIX, Model::ENDPOINT_RULE_SET_JSON)
+        @region = region || Aws::Runtime::Defaults.resolve_region(profile)
+        endpoint_provider = Aws::Runtime::EndpointProvider.new(Model::ENDPOINT_PREFIX, Model::ENDPOINT_RULE_SET_JSON)
         endpoint_result = endpoint_provider.resolve(@region, endpoint, use_fips, use_dualstack)
         @endpoint = endpoint_result.url
         @endpoint_headers = endpoint_result.headers
