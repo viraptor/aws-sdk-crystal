@@ -1,4 +1,4 @@
-require "../src/aws_sdk/sts"
+require "../src/sts"
 require "json"
 
 client = AwsSdk::STS::Client.new

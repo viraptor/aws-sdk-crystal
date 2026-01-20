@@ -2,9 +2,9 @@ require "file_utils"
 
 def cleanup
   puts "Cleaning up services..."
-  service_dirs = Dir.glob("src/aws_sdk/*")
-  service_dirs.reject!("src/aws_sdk/runtime")
-  service_dirs.reject!("src/aws_sdk/runtime.cr")
+  service_dirs = Dir.glob("src/*")
+  service_dirs.reject!("src/runtime")
+  service_dirs.reject!("src/runtime.cr")
 
   service_dirs.sort.each do |service|
     puts "Deleting #{service}"

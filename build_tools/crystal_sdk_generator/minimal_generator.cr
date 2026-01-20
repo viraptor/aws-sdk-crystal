@@ -19,12 +19,12 @@ module CrystalSdkGenerator
       protocol = ProtocolSelector.select(model.metadata)
       info = service_info(model, api_path, protocol)
 
-      base_dir = File.join(output_root, "src", "aws_sdk", info.service_dir)
+      base_dir = File.join(output_root, "src", info.service_dir)
       FileUtils.mkdir_p(File.join(base_dir, "protocol"))
-      customizations_dir = File.join(output_root, "src", "aws_sdk", "customizations", info.service_dir)
+      customizations_dir = File.join(output_root, "src", "customizations", info.service_dir)
       FileUtils.mkdir_p(customizations_dir)
 
-      File.write(File.join(output_root, "src", "aws_sdk", "#{info.service_dir}.cr"), root_require(info))
+      File.write(File.join(output_root, "src", "#{info.service_dir}.cr"), root_require(info))
       File.write(File.join(base_dir, "types.cr"), render_types(model, info))
       File.write(File.join(base_dir, "errors.cr"), render_errors(model, info))
       File.write(File.join(base_dir, "model.cr"), render_model(model, info))

@@ -1,5 +1,5 @@
 /bin/
-/src/aws_sdk/**/*.cr
-!/src/aws_sdk/runtime/
-!/src/aws_sdk/runtime/**/*.cr
-!/src/aws_sdk/runtime.cr
+/src/**/*.cr
+!/src/runtime/
+!/src/runtime/**/*.cr
+!/src/runtime.cr
