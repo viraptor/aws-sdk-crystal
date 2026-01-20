@@ -1,7 +1,0 @@
-require "./runtime"
-require "./bedrock_data_automation_runtime/client"
-require "./bedrock_data_automation_runtime/errors"
-require "./bedrock_data_automation_runtime/model"
-require "./bedrock_data_automation_runtime/types"
-require "./bedrock_data_automation_runtime/protocol/json_rpc"
-require "./customizations/bedrock_data_automation_runtime/customizations"

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./license_manager_user_subscriptions/client"
-require "./license_manager_user_subscriptions/errors"
-require "./license_manager_user_subscriptions/model"
-require "./license_manager_user_subscriptions/types"
-require "./license_manager_user_subscriptions/protocol/rest_json"
-require "./customizations/license_manager_user_subscriptions/customizations"

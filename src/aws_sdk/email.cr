@@ -1,7 +1,0 @@
-require "./runtime"
-require "./email/client"
-require "./email/errors"
-require "./email/model"
-require "./email/types"
-require "./email/protocol/rest_json"
-require "./customizations/email/customizations"

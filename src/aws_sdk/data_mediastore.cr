@@ -1,7 +1,0 @@
-require "./runtime"
-require "./data_mediastore/client"
-require "./data_mediastore/errors"
-require "./data_mediastore/model"
-require "./data_mediastore/types"
-require "./data_mediastore/protocol/rest_json"
-require "./customizations/data_mediastore/customizations"

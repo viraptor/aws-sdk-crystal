@@ -1,5 +1,0 @@
-require "./kinesis_video_webrtc_storage/client"
-require "./kinesis_video_webrtc_storage/errors"
-require "./kinesis_video_webrtc_storage/model"
-require "./kinesis_video_webrtc_storage/types"
-require "./kinesis_video_webrtc_storage/protocol/rest_json"

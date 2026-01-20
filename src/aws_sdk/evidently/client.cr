@@ -32,6 +32,7 @@ module AwsSdk
       # the experiment, the variation they are served depends on the allocation of the various feature
       # variations used for the experiment. If the user is not assigned to a launch or experiment, they are
       # served the default variation.
+
       def batch_evaluate_feature(
         project : String,
         requests : Array(Types::EvaluationRequest)
@@ -39,6 +40,7 @@ module AwsSdk
         input = Types::BatchEvaluateFeatureRequest.new(project: project, requests: requests)
         batch_evaluate_feature(input)
       end
+
       def batch_evaluate_feature(input : Types::BatchEvaluateFeatureRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_EVALUATE_FEATURE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -52,6 +54,7 @@ module AwsSdk
       # audience types in the experiment, such as using only user sessions from a certain location or who
       # use a certain internet browser. Don't use this operation to update an existing experiment. Instead,
       # use UpdateExperiment .
+
       def create_experiment(
         metric_goals : Array(Types::MetricGoalConfig),
         name : String,
@@ -67,6 +70,7 @@ module AwsSdk
         input = Types::CreateExperimentRequest.new(metric_goals: metric_goals, name: name, project: project, treatments: treatments, description: description, online_ab_config: online_ab_config, randomization_salt: randomization_salt, sampling_rate: sampling_rate, segment: segment, tags: tags)
         create_experiment(input)
       end
+
       def create_experiment(input : Types::CreateExperimentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_EXPERIMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -76,6 +80,7 @@ module AwsSdk
       # of a feature, and use these variations in your launches and experiments. A feature must be created
       # in a project. For information about creating a project, see CreateProject . Don't use this operation
       # to update an existing feature. Instead, use UpdateFeature .
+
       def create_feature(
         name : String,
         project : String,
@@ -89,6 +94,7 @@ module AwsSdk
         input = Types::CreateFeatureRequest.new(name: name, project: project, variations: variations, default_variation: default_variation, description: description, entity_overrides: entity_overrides, evaluation_strategy: evaluation_strategy, tags: tags)
         create_feature(input)
       end
+
       def create_feature(input : Types::CreateFeatureRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_FEATURE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -100,6 +106,7 @@ module AwsSdk
       # feature to help you decide when to ramp up traffic to more users. This helps you reduce risk and
       # identify unintended consequences before you fully launch the feature. Don't use this operation to
       # update an existing launch. Instead, use UpdateLaunch .
+
       def create_launch(
         groups : Array(Types::LaunchGroupConfig),
         name : String,
@@ -113,6 +120,7 @@ module AwsSdk
         input = Types::CreateLaunchRequest.new(groups: groups, name: name, project: project, description: description, metric_monitors: metric_monitors, randomization_salt: randomization_salt, scheduled_splits_config: scheduled_splits_config, tags: tags)
         create_launch(input)
       end
+
       def create_launch(input : Types::CreateLaunchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_LAUNCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -121,6 +129,7 @@ module AwsSdk
       # Creates a project, which is the logical object in Evidently that can contain features, launches, and
       # experiments. Use projects to group similar features together. To update an existing project, use
       # UpdateProject .
+
       def create_project(
         name : String,
         app_config_resource : Types::ProjectAppConfigResourceConfig? = nil,
@@ -131,6 +140,7 @@ module AwsSdk
         input = Types::CreateProjectRequest.new(name: name, app_config_resource: app_config_resource, data_delivery: data_delivery, description: description, tags: tags)
         create_project(input)
       end
+
       def create_project(input : Types::CreateProjectRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_PROJECT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -145,6 +155,7 @@ module AwsSdk
       # Segment rule pattern syntax . The pattern that you define for a segment is matched against the value
       # of evaluationContext , which is passed into Evidently in the EvaluateFeature operation, when
       # Evidently assigns a feature variation to a user.
+
       def create_segment(
         name : String,
         pattern : String,
@@ -154,6 +165,7 @@ module AwsSdk
         input = Types::CreateSegmentRequest.new(name: name, pattern: pattern, description: description, tags: tags)
         create_segment(input)
       end
+
       def create_segment(input : Types::CreateSegmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_SEGMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -161,6 +173,7 @@ module AwsSdk
 
       # Deletes an Evidently experiment. The feature used for the experiment is not deleted. To stop an
       # experiment without deleting it, use StopExperiment .
+
       def delete_experiment(
         experiment : String,
         project : String
@@ -168,12 +181,14 @@ module AwsSdk
         input = Types::DeleteExperimentRequest.new(experiment: experiment, project: project)
         delete_experiment(input)
       end
+
       def delete_experiment(input : Types::DeleteExperimentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_EXPERIMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes an Evidently feature.
+
       def delete_feature(
         feature : String,
         project : String
@@ -181,6 +196,7 @@ module AwsSdk
         input = Types::DeleteFeatureRequest.new(feature: feature, project: project)
         delete_feature(input)
       end
+
       def delete_feature(input : Types::DeleteFeatureRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_FEATURE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -188,6 +204,7 @@ module AwsSdk
 
       # Deletes an Evidently launch. The feature used for the launch is not deleted. To stop a launch
       # without deleting it, use StopLaunch .
+
       def delete_launch(
         launch : String,
         project : String
@@ -195,6 +212,7 @@ module AwsSdk
         input = Types::DeleteLaunchRequest.new(launch: launch, project: project)
         delete_launch(input)
       end
+
       def delete_launch(input : Types::DeleteLaunchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_LAUNCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -202,12 +220,14 @@ module AwsSdk
 
       # Deletes an Evidently project. Before you can delete a project, you must delete all the features that
       # the project contains. To delete a feature, use DeleteFeature .
+
       def delete_project(
         project : String
       ) : Protocol::Request
         input = Types::DeleteProjectRequest.new(project: project)
         delete_project(input)
       end
+
       def delete_project(input : Types::DeleteProjectRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_PROJECT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -215,12 +235,14 @@ module AwsSdk
 
       # Deletes a segment. You can't delete a segment that is being used in a launch or experiment, even if
       # that launch or experiment is not currently running.
+
       def delete_segment(
         segment : String
       ) : Protocol::Request
         input = Types::DeleteSegmentRequest.new(segment: segment)
         delete_segment(input)
       end
+
       def delete_segment(input : Types::DeleteSegmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_SEGMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -243,6 +265,7 @@ module AwsSdk
       # segment rule are used in the experiment. If the user is enrolled in the experiment, the variation
       # they are served depends on the allocation of the various feature variations used for the experiment.
       # If the user is not assigned to a launch or experiment, they are served the default variation.
+
       def evaluate_feature(
         entity_id : String,
         feature : String,
@@ -252,6 +275,7 @@ module AwsSdk
         input = Types::EvaluateFeatureRequest.new(entity_id: entity_id, feature: feature, project: project, evaluation_context: evaluation_context)
         evaluate_feature(input)
       end
+
       def evaluate_feature(input : Types::EvaluateFeatureRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::EVALUATE_FEATURE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -259,6 +283,7 @@ module AwsSdk
 
       # Returns the details about one experiment. You must already know the experiment name. To retrieve a
       # list of experiments in your account, use ListExperiments .
+
       def get_experiment(
         experiment : String,
         project : String
@@ -266,6 +291,7 @@ module AwsSdk
         input = Types::GetExperimentRequest.new(experiment: experiment, project: project)
         get_experiment(input)
       end
+
       def get_experiment(input : Types::GetExperimentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EXPERIMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -278,6 +304,7 @@ module AwsSdk
       # in some cases where the anytime p-values used during the experiment do not find statistical
       # significance. Experiment results are available up to 63 days after the start of the experiment. They
       # are not available after that because of CloudWatch data retention policies.
+
       def get_experiment_results(
         experiment : String,
         metric_names : Array(String),
@@ -293,6 +320,7 @@ module AwsSdk
         input = Types::GetExperimentResultsRequest.new(experiment: experiment, metric_names: metric_names, project: project, treatment_names: treatment_names, base_stat: base_stat, end_time: end_time, period: period, report_names: report_names, result_stats: result_stats, start_time: start_time)
         get_experiment_results(input)
       end
+
       def get_experiment_results(input : Types::GetExperimentResultsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EXPERIMENT_RESULTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -300,6 +328,7 @@ module AwsSdk
 
       # Returns the details about one feature. You must already know the feature name. To retrieve a list of
       # features in your account, use ListFeatures .
+
       def get_feature(
         feature : String,
         project : String
@@ -307,6 +336,7 @@ module AwsSdk
         input = Types::GetFeatureRequest.new(feature: feature, project: project)
         get_feature(input)
       end
+
       def get_feature(input : Types::GetFeatureRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_FEATURE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -314,6 +344,7 @@ module AwsSdk
 
       # Returns the details about one launch. You must already know the launch name. To retrieve a list of
       # launches in your account, use ListLaunches .
+
       def get_launch(
         launch : String,
         project : String
@@ -321,6 +352,7 @@ module AwsSdk
         input = Types::GetLaunchRequest.new(launch: launch, project: project)
         get_launch(input)
       end
+
       def get_launch(input : Types::GetLaunchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_LAUNCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -328,12 +360,14 @@ module AwsSdk
 
       # Returns the details about one launch. You must already know the project name. To retrieve a list of
       # projects in your account, use ListProjects .
+
       def get_project(
         project : String
       ) : Protocol::Request
         input = Types::GetProjectRequest.new(project: project)
         get_project(input)
       end
+
       def get_project(input : Types::GetProjectRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_PROJECT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -341,18 +375,21 @@ module AwsSdk
 
       # Returns information about the specified segment. Specify the segment you want to view by specifying
       # its ARN.
+
       def get_segment(
         segment : String
       ) : Protocol::Request
         input = Types::GetSegmentRequest.new(segment: segment)
         get_segment(input)
       end
+
       def get_segment(input : Types::GetSegmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SEGMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns configuration details about all the experiments in the specified project.
+
       def list_experiments(
         project : String,
         max_results : Int32? = nil,
@@ -362,12 +399,14 @@ module AwsSdk
         input = Types::ListExperimentsRequest.new(project: project, max_results: max_results, next_token: next_token, status: status)
         list_experiments(input)
       end
+
       def list_experiments(input : Types::ListExperimentsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_EXPERIMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns configuration details about all the features in the specified project.
+
       def list_features(
         project : String,
         max_results : Int32? = nil,
@@ -376,12 +415,14 @@ module AwsSdk
         input = Types::ListFeaturesRequest.new(project: project, max_results: max_results, next_token: next_token)
         list_features(input)
       end
+
       def list_features(input : Types::ListFeaturesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_FEATURES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns configuration details about all the launches in the specified project.
+
       def list_launches(
         project : String,
         max_results : Int32? = nil,
@@ -391,12 +432,14 @@ module AwsSdk
         input = Types::ListLaunchesRequest.new(project: project, max_results: max_results, next_token: next_token, status: status)
         list_launches(input)
       end
+
       def list_launches(input : Types::ListLaunchesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_LAUNCHES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns configuration details about all the projects in the current Region in your account.
+
       def list_projects(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -404,12 +447,14 @@ module AwsSdk
         input = Types::ListProjectsRequest.new(max_results: max_results, next_token: next_token)
         list_projects(input)
       end
+
       def list_projects(input : Types::ListProjectsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_PROJECTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Use this operation to find which experiments or launches are using a specified segment.
+
       def list_segment_references(
         segment : String,
         type : String,
@@ -419,12 +464,14 @@ module AwsSdk
         input = Types::ListSegmentReferencesRequest.new(segment: segment, type: type, max_results: max_results, next_token: next_token)
         list_segment_references(input)
       end
+
       def list_segment_references(input : Types::ListSegmentReferencesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_SEGMENT_REFERENCES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of audience segments that you have created in your account in this Region.
+
       def list_segments(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -432,18 +479,21 @@ module AwsSdk
         input = Types::ListSegmentsRequest.new(max_results: max_results, next_token: next_token)
         list_segments(input)
       end
+
       def list_segments(input : Types::ListSegmentsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_SEGMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Displays the tags associated with an Evidently resource.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -451,6 +501,7 @@ module AwsSdk
 
       # Sends performance events to Evidently. These events can be used to evaluate a launch or an
       # experiment.
+
       def put_project_events(
         events : Array(Types::Event),
         project : String
@@ -458,12 +509,14 @@ module AwsSdk
         input = Types::PutProjectEventsRequest.new(events: events, project: project)
         put_project_events(input)
       end
+
       def put_project_events(input : Types::PutProjectEventsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_PROJECT_EVENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Starts an existing experiment. To create an experiment, use CreateExperiment .
+
       def start_experiment(
         analysis_complete_time : Time,
         experiment : String,
@@ -472,12 +525,14 @@ module AwsSdk
         input = Types::StartExperimentRequest.new(analysis_complete_time: analysis_complete_time, experiment: experiment, project: project)
         start_experiment(input)
       end
+
       def start_experiment(input : Types::StartExperimentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_EXPERIMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Starts an existing launch. To create a launch, use CreateLaunch .
+
       def start_launch(
         launch : String,
         project : String
@@ -485,6 +540,7 @@ module AwsSdk
         input = Types::StartLaunchRequest.new(launch: launch, project: project)
         start_launch(input)
       end
+
       def start_launch(input : Types::StartLaunchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_LAUNCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -492,6 +548,7 @@ module AwsSdk
 
       # Stops an experiment that is currently running. If you stop an experiment, you can't resume it or
       # restart it.
+
       def stop_experiment(
         experiment : String,
         project : String,
@@ -501,6 +558,7 @@ module AwsSdk
         input = Types::StopExperimentRequest.new(experiment: experiment, project: project, desired_state: desired_state, reason: reason)
         stop_experiment(input)
       end
+
       def stop_experiment(input : Types::StopExperimentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::STOP_EXPERIMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -510,6 +568,7 @@ module AwsSdk
       # or restart it. Also, it will not be evaluated as a rule for traffic allocation, and the traffic that
       # was allocated to the launch will instead be available to the feature's experiment, if there is one.
       # Otherwise, all traffic will be served the default variation after the launch is stopped.
+
       def stop_launch(
         launch : String,
         project : String,
@@ -519,6 +578,7 @@ module AwsSdk
         input = Types::StopLaunchRequest.new(launch: launch, project: project, desired_state: desired_state, reason: reason)
         stop_launch(input)
       end
+
       def stop_launch(input : Types::StopLaunchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::STOP_LAUNCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -534,6 +594,7 @@ module AwsSdk
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag. You can associate as many as 50 tags with a resource. For more information, see Tagging
       # Amazon Web Services resources .
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -541,6 +602,7 @@ module AwsSdk
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -548,6 +610,7 @@ module AwsSdk
 
       # Use this operation to test a rules pattern that you plan to use to create an audience segment. For
       # more information about segments, see CreateSegment .
+
       def test_segment_pattern(
         pattern : String,
         payload : String
@@ -555,12 +618,14 @@ module AwsSdk
         input = Types::TestSegmentPatternRequest.new(pattern: pattern, payload: payload)
         test_segment_pattern(input)
       end
+
       def test_segment_pattern(input : Types::TestSegmentPatternRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TEST_SEGMENT_PATTERN, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes one or more tags from the specified resource.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -568,6 +633,7 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -575,6 +641,7 @@ module AwsSdk
 
       # Updates an Evidently experiment. Don't use this operation to update an experiment's tag. Instead,
       # use TagResource .
+
       def update_experiment(
         experiment : String,
         project : String,
@@ -590,6 +657,7 @@ module AwsSdk
         input = Types::UpdateExperimentRequest.new(experiment: experiment, project: project, description: description, metric_goals: metric_goals, online_ab_config: online_ab_config, randomization_salt: randomization_salt, remove_segment: remove_segment, sampling_rate: sampling_rate, segment: segment, treatments: treatments)
         update_experiment(input)
       end
+
       def update_experiment(input : Types::UpdateExperimentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_EXPERIMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -597,6 +665,7 @@ module AwsSdk
 
       # Updates an existing feature. You can't use this operation to update the tags of an existing feature.
       # Instead, use TagResource .
+
       def update_feature(
         feature : String,
         project : String,
@@ -610,6 +679,7 @@ module AwsSdk
         input = Types::UpdateFeatureRequest.new(feature: feature, project: project, add_or_update_variations: add_or_update_variations, default_variation: default_variation, description: description, entity_overrides: entity_overrides, evaluation_strategy: evaluation_strategy, remove_variations: remove_variations)
         update_feature(input)
       end
+
       def update_feature(input : Types::UpdateFeatureRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_FEATURE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -617,6 +687,7 @@ module AwsSdk
 
       # Updates a launch of a given feature. Don't use this operation to update the tags of an existing
       # launch. Instead, use TagResource .
+
       def update_launch(
         launch : String,
         project : String,
@@ -629,6 +700,7 @@ module AwsSdk
         input = Types::UpdateLaunchRequest.new(launch: launch, project: project, description: description, groups: groups, metric_monitors: metric_monitors, randomization_salt: randomization_salt, scheduled_splits_config: scheduled_splits_config)
         update_launch(input)
       end
+
       def update_launch(input : Types::UpdateLaunchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_LAUNCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -638,6 +710,7 @@ module AwsSdk
       # use this operation to update the data storage options of a project. Instead, use
       # UpdateProjectDataDelivery . Don't use this operation to update the tags of a project. Instead, use
       # TagResource .
+
       def update_project(
         project : String,
         app_config_resource : Types::ProjectAppConfigResourceConfig? = nil,
@@ -646,6 +719,7 @@ module AwsSdk
         input = Types::UpdateProjectRequest.new(project: project, app_config_resource: app_config_resource, description: description)
         update_project(input)
       end
+
       def update_project(input : Types::UpdateProjectRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_PROJECT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -655,6 +729,7 @@ module AwsSdk
       # and analyze them on your own. If you choose not to store evaluation events, Evidently deletes them
       # after using them to produce metrics and other experiment results that you can view. You can't
       # specify both cloudWatchLogs and s3Destination in the same operation.
+
       def update_project_data_delivery(
         project : String,
         cloud_watch_logs : Types::CloudWatchLogsDestinationConfig? = nil,
@@ -663,6 +738,7 @@ module AwsSdk
         input = Types::UpdateProjectDataDeliveryRequest.new(project: project, cloud_watch_logs: cloud_watch_logs, s3_destination: s3_destination)
         update_project_data_delivery(input)
       end
+
       def update_project_data_delivery(input : Types::UpdateProjectDataDeliveryRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_PROJECT_DATA_DELIVERY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

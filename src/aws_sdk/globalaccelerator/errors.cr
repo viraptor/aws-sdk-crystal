@@ -5,85 +5,105 @@ module AwsSdk
       end
 
       # The accelerator that you specified could not be disabled.
+
       class AcceleratorNotDisabledException < ServiceError
       end
 
       # The accelerator that you specified doesn't exist.
+
       class AcceleratorNotFoundException < ServiceError
       end
 
       # You don't have access permission.
+
       class AccessDeniedException < ServiceError
       end
 
       # The listener that you specified has an endpoint group associated with it. You must remove all
       # dependent resources from a listener before you can delete it.
+
       class AssociatedEndpointGroupFoundException < ServiceError
       end
 
       # The accelerator that you specified has a listener associated with it. You must remove all dependent
       # resources from an accelerator before you can delete it.
+
       class AssociatedListenerFoundException < ServiceError
       end
 
       # No cross-account attachment was found.
+
       class AttachmentNotFoundException < ServiceError
       end
 
       # The CIDR that you specified was not found or is incorrect.
+
       class ByoipCidrNotFoundException < ServiceError
       end
 
       # You can't use both of those options.
+
       class ConflictException < ServiceError
       end
 
       # The endpoint that you specified doesn't exist.
+
       class EndpointAlreadyExistsException < ServiceError
       end
 
       # The endpoint group that you specified already exists.
+
       class EndpointGroupAlreadyExistsException < ServiceError
       end
 
       # The endpoint group that you specified doesn't exist.
+
       class EndpointGroupNotFoundException < ServiceError
       end
 
       # The endpoint that you specified doesn't exist.
+
       class EndpointNotFoundException < ServiceError
       end
 
       # The CIDR that you specified is not valid for this action. For example, the state of the CIDR might
       # be incorrect for this action.
+
       class IncorrectCidrStateException < ServiceError
       end
 
       # There was an internal error for Global Accelerator.
+
       class InternalServiceErrorException < ServiceError
       end
 
       # An argument that you specified is invalid.
+
       class InvalidArgumentException < ServiceError
       end
 
       # There isn't another item to return.
+
       class InvalidNextTokenException < ServiceError
       end
 
       # The port numbers that you specified are not valid numbers or are not unique for this accelerator.
+
       class InvalidPortRangeException < ServiceError
       end
 
       # Processing your request would cause you to exceed an Global Accelerator limit.
+
       class LimitExceededException < ServiceError
       end
 
       # The listener that you specified doesn't exist.
+
       class ListenerNotFoundException < ServiceError
       end
 
       # There's already a transaction in progress. Another transaction can't be processed.
+
       class TransactionInProgressException < ServiceError
       end
 

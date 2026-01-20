@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mediastoredata/client"
+require "./mediastoredata/errors"
+require "./mediastoredata/model"
+require "./mediastoredata/types"
+require "./mediastoredata/protocol/rest_json"
+require "./customizations/mediastoredata/customizations"

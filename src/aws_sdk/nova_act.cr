@@ -1,7 +1,0 @@
-require "./runtime"
-require "./nova_act/client"
-require "./nova_act/errors"
-require "./nova_act/model"
-require "./nova_act/types"
-require "./nova_act/protocol/rest_json"
-require "./customizations/nova_act/customizations"

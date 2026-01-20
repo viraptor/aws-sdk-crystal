@@ -1,5 +1,5 @@
 module AwsSdk
-  module KinesisVideoWebRTCStorage
+  module KinesisVideo
     module Customizations
     end
   end

@@ -5,18 +5,22 @@ module AwsSdk
       end
 
       # The input fails to satisfy the constraints specified by the service.
+
       class BadRequestException < ServiceError
       end
 
       # There was an internal failure in the service.
+
       class InternalServerException < ServiceError
       end
 
       # The requested resource could not be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 

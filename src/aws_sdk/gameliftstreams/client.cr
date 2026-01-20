@@ -27,6 +27,7 @@ module AwsSdk
       # and 'Win2022'. This operation also copies the content files of all associated applications to an
       # internal S3 bucket at each location. This allows Amazon GameLift Streams to host performant stream
       # sessions.
+
       def add_stream_group_locations(
         identifier : String,
         location_configurations : Array(Types::LocationConfiguration)
@@ -34,6 +35,7 @@ module AwsSdk
         input = Types::AddStreamGroupLocationsInput.new(identifier: identifier, location_configurations: location_configurations)
         add_stream_group_locations(input)
       end
+
       def add_stream_group_locations(input : Types::AddStreamGroupLocationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ADD_STREAM_GROUP_LOCATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -44,6 +46,7 @@ module AwsSdk
       # be in ACTIVE status. You can reverse this action by using DisassociateApplications . If a stream
       # group does not already have a linked application, Amazon GameLift Streams will automatically assign
       # the first application provided in ApplicationIdentifiers as the default.
+
       def associate_applications(
         application_identifiers : Array(String),
         identifier : String
@@ -51,6 +54,7 @@ module AwsSdk
         input = Types::AssociateApplicationsInput.new(application_identifiers: application_identifiers, identifier: identifier)
         associate_applications(input)
       end
+
       def associate_applications(input : Types::AssociateApplicationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ASSOCIATE_APPLICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -66,6 +70,7 @@ module AwsSdk
       # application and sets the status to INITIALIZED . When an application reaches READY status, you can
       # use the application to set up stream groups and start streams. To track application status, call
       # GetApplication .
+
       def create_application(
         application_source_uri : String,
         description : String,
@@ -79,6 +84,7 @@ module AwsSdk
         input = Types::CreateApplicationInput.new(application_source_uri: application_source_uri, description: description, executable_path: executable_path, runtime_environment: runtime_environment, application_log_output_uri: application_log_output_uri, application_log_paths: application_log_paths, client_token: client_token, tags: tags)
         create_application(input)
       end
+
       def create_application(input : Types::CreateApplicationInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -110,6 +116,7 @@ module AwsSdk
       # Stream groups that are older than 180 days can no longer be updated with new application
       # associations. Stream groups expire when they are 365 days old, at which point they can no longer
       # stream sessions. The exact expiration date is indicated by the date value in the ExpiresAt field.
+
       def create_stream_group(
         description : String,
         stream_class : String,
@@ -121,6 +128,7 @@ module AwsSdk
         input = Types::CreateStreamGroupInput.new(description: description, stream_class: stream_class, client_token: client_token, default_application_identifier: default_application_identifier, location_configurations: location_configurations, tags: tags)
         create_stream_group(input)
       end
+
       def create_stream_group(input : Types::CreateStreamGroupInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_STREAM_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -140,6 +148,7 @@ module AwsSdk
       # Amazon GameLift Streams Developer Guide . To begin re-connecting to an existing stream session,
       # specify the stream group ID and stream session ID that you want to reconnect to, and the signal
       # request to use with the stream.
+
       def create_stream_session_connection(
         identifier : String,
         signal_request : String,
@@ -149,6 +158,7 @@ module AwsSdk
         input = Types::CreateStreamSessionConnectionInput.new(identifier: identifier, signal_request: signal_request, stream_session_identifier: stream_session_identifier, client_token: client_token)
         create_stream_session_connection(input)
       end
+
       def create_stream_session_connection(input : Types::CreateStreamSessionConnectionInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_STREAM_SESSION_CONNECTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -166,12 +176,14 @@ module AwsSdk
       # DisassociateApplications . An application is not streaming in any ongoing stream session. You must
       # wait until the client ends the stream session or call TerminateStreamSession to end the stream. If
       # any active stream groups exist for this application, this request returns a ValidationException .
+
       def delete_application(
         identifier : String
       ) : Protocol::Request
         input = Types::DeleteApplicationInput.new(identifier: identifier)
         delete_application(input)
       end
+
       def delete_application(input : Types::DeleteApplicationInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -183,12 +195,14 @@ module AwsSdk
       # starting. As a best practice, before deleting the stream group, call ListStreamSessions to check for
       # streams in progress and take action to stop them. When you delete a stream group, any application
       # associations referring to that stream group are automatically removed.
+
       def delete_stream_group(
         identifier : String
       ) : Protocol::Request
         input = Types::DeleteStreamGroupInput.new(identifier: identifier)
         delete_stream_group(input)
       end
+
       def delete_stream_group(input : Types::DeleteStreamGroupInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_STREAM_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -203,6 +217,7 @@ module AwsSdk
       # Amazon GameLift Streams will automatically choose a new default application from the remaining
       # associated applications. To change which application is the default application, call
       # UpdateStreamGroup and specify a new DefaultApplicationIdentifier .
+
       def disassociate_applications(
         application_identifiers : Array(String),
         identifier : String
@@ -210,6 +225,7 @@ module AwsSdk
         input = Types::DisassociateApplicationsInput.new(application_identifiers: application_identifiers, identifier: identifier)
         disassociate_applications(input)
       end
+
       def disassociate_applications(input : Types::DisassociateApplicationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DISASSOCIATE_APPLICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -230,6 +246,7 @@ module AwsSdk
       # folder where your application or game is stored. profile/ : The user profile folder. temp/ : The
       # system temp folder. To verify the status of the exported files, use GetStreamSession. To delete the
       # files, delete the object in the S3 bucket.
+
       def export_stream_session_files(
         identifier : String,
         output_uri : String,
@@ -238,6 +255,7 @@ module AwsSdk
         input = Types::ExportStreamSessionFilesInput.new(identifier: identifier, output_uri: output_uri, stream_session_identifier: stream_session_identifier)
         export_stream_session_files(input)
       end
+
       def export_stream_session_files(input : Types::ExportStreamSessionFilesInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::EXPORT_STREAM_SESSION_FILES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -246,12 +264,14 @@ module AwsSdk
       # Retrieves properties for an Amazon GameLift Streams application resource. Specify the ID of the
       # application that you want to retrieve. If the operation is successful, it returns properties for the
       # requested application.
+
       def get_application(
         identifier : String
       ) : Protocol::Request
         input = Types::GetApplicationInput.new(identifier: identifier)
         get_application(input)
       end
+
       def get_application(input : Types::GetApplicationInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -260,12 +280,14 @@ module AwsSdk
       # Retrieves properties for a Amazon GameLift Streams stream group resource. Specify the ID of the
       # stream group that you want to retrieve. If the operation is successful, it returns properties for
       # the requested stream group.
+
       def get_stream_group(
         identifier : String
       ) : Protocol::Request
         input = Types::GetStreamGroupInput.new(identifier: identifier)
         get_stream_group(input)
       end
+
       def get_stream_group(input : Types::GetStreamGroupInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_STREAM_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -274,6 +296,7 @@ module AwsSdk
       # Retrieves properties for a Amazon GameLift Streams stream session resource. Specify the Amazon
       # Resource Name (ARN) of the stream session that you want to retrieve and its stream group ARN. If the
       # operation is successful, it returns properties for the requested resource.
+
       def get_stream_session(
         identifier : String,
         stream_session_identifier : String
@@ -281,6 +304,7 @@ module AwsSdk
         input = Types::GetStreamSessionInput.new(identifier: identifier, stream_session_identifier: stream_session_identifier)
         get_stream_session(input)
       end
+
       def get_stream_session(input : Types::GetStreamSessionInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_STREAM_SESSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -289,6 +313,7 @@ module AwsSdk
       # Retrieves a list of all Amazon GameLift Streams applications that are associated with the Amazon Web
       # Services account in use. This operation returns applications in all statuses, in no particular
       # order. You can paginate the results as needed.
+
       def list_applications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -296,6 +321,7 @@ module AwsSdk
         input = Types::ListApplicationsInput.new(max_results: max_results, next_token: next_token)
         list_applications(input)
       end
+
       def list_applications(input : Types::ListApplicationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_APPLICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -304,6 +330,7 @@ module AwsSdk
       # Retrieves a list of all Amazon GameLift Streams stream groups that are associated with the Amazon
       # Web Services account in use. This operation returns stream groups in all statuses, in no particular
       # order. You can paginate the results as needed.
+
       def list_stream_groups(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -311,6 +338,7 @@ module AwsSdk
         input = Types::ListStreamGroupsInput.new(max_results: max_results, next_token: next_token)
         list_stream_groups(input)
       end
+
       def list_stream_groups(input : Types::ListStreamGroupsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_STREAM_GROUPS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -320,6 +348,7 @@ module AwsSdk
       # retrieve stream sessions, specify the stream group, and optionally filter by stream session status.
       # You can paginate the results as needed. This operation returns the requested stream sessions in no
       # particular order.
+
       def list_stream_sessions(
         identifier : String,
         export_files_status : String? = nil,
@@ -330,6 +359,7 @@ module AwsSdk
         input = Types::ListStreamSessionsInput.new(identifier: identifier, export_files_status: export_files_status, max_results: max_results, next_token: next_token, status: status)
         list_stream_sessions(input)
       end
+
       def list_stream_sessions(input : Types::ListStreamSessionsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_STREAM_SESSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -340,6 +370,7 @@ module AwsSdk
       # To get the OutpurUri and StatusReason values, use GetStreamSession . We don't recommend using this
       # operation to regularly check stream session statuses because it's costly. Instead, to check status
       # updates for a specific stream session, use GetStreamSession .
+
       def list_stream_sessions_by_account(
         export_files_status : String? = nil,
         max_results : Int32? = nil,
@@ -349,6 +380,7 @@ module AwsSdk
         input = Types::ListStreamSessionsByAccountInput.new(export_files_status: export_files_status, max_results: max_results, next_token: next_token, status: status)
         list_stream_sessions_by_account(input)
       end
+
       def list_stream_sessions_by_account(input : Types::ListStreamSessionsByAccountInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_STREAM_SESSIONS_BY_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -357,12 +389,14 @@ module AwsSdk
       # Retrieves all tags assigned to a Amazon GameLift Streams resource. To list tags for a resource,
       # specify the ARN value for the resource. Learn more Tagging Amazon Web Services Resources in the
       # Amazon Web Services General Reference Amazon Web Services Tagging Strategies
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -376,6 +410,7 @@ module AwsSdk
       # the Amazon Web Services Region location where you initially created this stream group, known as the
       # primary location. However, you can set the stream capacity to zero to avoid incurring costs for
       # allocated compute resources in that location.
+
       def remove_stream_group_locations(
         identifier : String,
         locations : Array(String)
@@ -383,6 +418,7 @@ module AwsSdk
         input = Types::RemoveStreamGroupLocationsInput.new(identifier: identifier, locations: locations)
         remove_stream_group_locations(input)
       end
+
       def remove_stream_group_locations(input : Types::RemoveStreamGroupLocationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REMOVE_STREAM_GROUP_LOCATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -426,6 +462,7 @@ module AwsSdk
       # available location. An application must be finished replicating to a remote location before the
       # remote location can host a stream. To reconnect to a stream session after a client disconnects or
       # loses connection, use CreateStreamSessionConnection .
+
       def start_stream_session(
         application_identifier : String,
         identifier : String,
@@ -444,6 +481,7 @@ module AwsSdk
         input = Types::StartStreamSessionInput.new(application_identifier: application_identifier, identifier: identifier, protocol: protocol, signal_request: signal_request, additional_environment_variables: additional_environment_variables, additional_launch_args: additional_launch_args, client_token: client_token, connection_timeout_seconds: connection_timeout_seconds, description: description, locations: locations, performance_stats_configuration: performance_stats_configuration, session_length_seconds: session_length_seconds, user_id: user_id)
         start_stream_session(input)
       end
+
       def start_stream_session(input : Types::StartStreamSessionInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_STREAM_SESSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -453,6 +491,7 @@ module AwsSdk
       # Services resources for a range of purposes. You can assign tags to the following Amazon GameLift
       # Streams resource types: Application StreamGroup Learn more Tagging Amazon Web Services Resources in
       # the Amazon Web Services General Reference Amazon Web Services Tagging Strategies
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -460,6 +499,7 @@ module AwsSdk
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -468,6 +508,7 @@ module AwsSdk
       # Permanently terminates an active stream session. When called, the stream session status changes to
       # TERMINATING . You can terminate a stream session in any status except ACTIVATING . If the stream
       # session is in ACTIVATING status, an exception is thrown.
+
       def terminate_stream_session(
         identifier : String,
         stream_session_identifier : String
@@ -475,6 +516,7 @@ module AwsSdk
         input = Types::TerminateStreamSessionInput.new(identifier: identifier, stream_session_identifier: stream_session_identifier)
         terminate_stream_session(input)
       end
+
       def terminate_stream_session(input : Types::TerminateStreamSessionInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TERMINATE_STREAM_SESSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -482,6 +524,7 @@ module AwsSdk
 
       # Removes one or more tags from a Amazon GameLift Streams resource. To remove tags, specify the Amazon
       # GameLift Streams resource and a list of one or more tags to remove.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -489,6 +532,7 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -498,6 +542,7 @@ module AwsSdk
       # can change the Description , ApplicationLogOutputUri , and ApplicationLogPaths . To update
       # application settings, specify the application ID and provide the new values. If the operation is
       # successful, it returns the complete updated set of settings for the application.
+
       def update_application(
         identifier : String,
         application_log_output_uri : String? = nil,
@@ -507,6 +552,7 @@ module AwsSdk
         input = Types::UpdateApplicationInput.new(identifier: identifier, application_log_output_uri: application_log_output_uri, application_log_paths: application_log_paths, description: description)
         update_application(input)
       end
+
       def update_application(input : Types::UpdateApplicationInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -529,6 +575,7 @@ module AwsSdk
       # stream class. To update a stream group, specify the stream group's Amazon Resource Name (ARN) and
       # provide the new values. If the request is successful, Amazon GameLift Streams returns the complete
       # updated metadata for the stream group. Expired stream groups cannot be updated.
+
       def update_stream_group(
         identifier : String,
         default_application_identifier : String? = nil,
@@ -538,6 +585,7 @@ module AwsSdk
         input = Types::UpdateStreamGroupInput.new(identifier: identifier, default_application_identifier: default_application_identifier, description: description, location_configurations: location_configurations)
         update_stream_group(input)
       end
+
       def update_stream_group(input : Types::UpdateStreamGroupInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_STREAM_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

@@ -5,34 +5,42 @@ module AwsSdk
       end
 
       # You don't have sufficient permissions to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # This operation couldn't be completed because of a conflict in resource states.
+
       class ConflictException < ServiceError
       end
 
       # Access id denied for this operation, or this operation is not valid for the specified resource.
+
       class ForbiddenException < ServiceError
       end
 
       # An internal server error occurred. You can try again later.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource doesn't exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # This request exceeds a service quota.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was throttled because of quota limits. You can try again later.
+
       class ThrottlingException < ServiceError
       end
 
       # This operation or its parameters aren't formatted correctly.
+
       class ValidationException < ServiceError
       end
 

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./marketplacecatalog/client"
+require "./marketplacecatalog/errors"
+require "./marketplacecatalog/model"
+require "./marketplacecatalog/types"
+require "./marketplacecatalog/protocol/rest_json"
+require "./customizations/marketplacecatalog/customizations"

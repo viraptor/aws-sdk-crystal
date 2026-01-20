@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cassandra/client"
-require "./cassandra/errors"
-require "./cassandra/model"
-require "./cassandra/types"
-require "./cassandra/protocol/json_rpc"
-require "./customizations/cassandra/customizations"

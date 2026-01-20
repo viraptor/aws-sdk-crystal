@@ -1,7 +1,0 @@
-require "./runtime"
-require "./data_qapps/client"
-require "./data_qapps/errors"
-require "./data_qapps/model"
-require "./data_qapps/types"
-require "./data_qapps/protocol/rest_json"
-require "./customizations/data_qapps/customizations"

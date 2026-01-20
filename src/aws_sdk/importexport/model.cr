@@ -1,5 +1,5 @@
 module AwsSdk
-  module Importexport
+  module ImportExport
     module Model
       API_VERSION = "2010-06-01"
       TARGET_PREFIX = ""

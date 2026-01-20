@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cognito_sync/client"
-require "./cognito_sync/errors"
-require "./cognito_sync/model"
-require "./cognito_sync/types"
-require "./cognito_sync/protocol/rest_json"
-require "./customizations/cognito_sync/customizations"

@@ -20,6 +20,7 @@ module AwsSdk
       end
 
       # Creates new reviewed answers for a Q Topic.
+
       def batch_create_topic_reviewed_answer(
         answers : Array(Types::CreateTopicReviewedAnswer),
         aws_account_id : String,
@@ -28,12 +29,14 @@ module AwsSdk
         input = Types::BatchCreateTopicReviewedAnswerRequest.new(answers: answers, aws_account_id: aws_account_id, topic_id: topic_id)
         batch_create_topic_reviewed_answer(input)
       end
+
       def batch_create_topic_reviewed_answer(input : Types::BatchCreateTopicReviewedAnswerRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_CREATE_TOPIC_REVIEWED_ANSWER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes reviewed answers for Q Topic.
+
       def batch_delete_topic_reviewed_answer(
         aws_account_id : String,
         topic_id : String,
@@ -42,12 +45,14 @@ module AwsSdk
         input = Types::BatchDeleteTopicReviewedAnswerRequest.new(aws_account_id: aws_account_id, topic_id: topic_id, answer_ids: answer_ids)
         batch_delete_topic_reviewed_answer(input)
       end
+
       def batch_delete_topic_reviewed_answer(input : Types::BatchDeleteTopicReviewedAnswerRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_DELETE_TOPIC_REVIEWED_ANSWER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Cancels an ongoing ingestion of data into SPICE.
+
       def cancel_ingestion(
         aws_account_id : String,
         data_set_id : String,
@@ -56,6 +61,7 @@ module AwsSdk
         input = Types::CancelIngestionRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, ingestion_id: ingestion_id)
         cancel_ingestion(input)
       end
+
       def cancel_ingestion(input : Types::CancelIngestionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CANCEL_INGESTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -74,6 +80,7 @@ module AwsSdk
       # To check if the theme is shared, view the current permissions by using the DescribeThemePermissions
       # API operation. To share the theme, grant permissions by using the UpdateThemePermissions API
       # operation.
+
       def create_account_customization(
         account_customization : Types::AccountCustomization,
         aws_account_id : String,
@@ -83,6 +90,7 @@ module AwsSdk
         input = Types::CreateAccountCustomizationRequest.new(account_customization: account_customization, aws_account_id: aws_account_id, namespace: namespace, tags: tags)
         create_account_customization(input)
       end
+
       def create_account_customization(input : Types::CreateAccountCustomizationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ACCOUNT_CUSTOMIZATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -103,6 +111,7 @@ module AwsSdk
       # Quick Sight API. Instead, add default resource access from the Amazon Quick Sight console. For more
       # information about setting default resource access to Amazon Web Services services, see Setting
       # default resource access to Amazon Web Services services in the Amazon Quick Sight User Guide .
+
       def create_account_subscription(
         account_name : String,
         authentication_method : String,
@@ -127,6 +136,7 @@ module AwsSdk
         input = Types::CreateAccountSubscriptionRequest.new(account_name: account_name, authentication_method: authentication_method, aws_account_id: aws_account_id, notification_email: notification_email, active_directory_name: active_directory_name, admin_group: admin_group, admin_pro_group: admin_pro_group, author_group: author_group, author_pro_group: author_pro_group, contact_number: contact_number, directory_id: directory_id, edition: edition, email_address: email_address, first_name: first_name, iam_identity_center_instance_arn: iam_identity_center_instance_arn, last_name: last_name, reader_group: reader_group, reader_pro_group: reader_pro_group, realm: realm)
         create_account_subscription(input)
       end
+
       def create_account_subscription(input : Types::CreateAccountSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ACCOUNT_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -135,6 +145,7 @@ module AwsSdk
       # Creates an action connector that enables Amazon Quick Sight to connect to external services and
       # perform actions. Action connectors support various authentication methods and can be configured with
       # specific actions from supported connector types like Amazon S3, Salesforce, JIRA.
+
       def create_action_connector(
         action_connector_id : String,
         authentication_config : Types::AuthConfig,
@@ -149,6 +160,7 @@ module AwsSdk
         input = Types::CreateActionConnectorRequest.new(action_connector_id: action_connector_id, authentication_config: authentication_config, aws_account_id: aws_account_id, name: name, type: type, description: description, permissions: permissions, tags: tags, vpc_connection_arn: vpc_connection_arn)
         create_action_connector(input)
       end
+
       def create_action_connector(input : Types::CreateActionConnectorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ACTION_CONNECTOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -156,6 +168,7 @@ module AwsSdk
 
       # Creates an analysis in Amazon Quick Sight. Analyses can be created either from a template or from an
       # AnalysisDefinition .
+
       def create_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -172,12 +185,14 @@ module AwsSdk
         input = Types::CreateAnalysisRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id, name: name, definition: definition, folder_arns: folder_arns, parameters: parameters, permissions: permissions, source_entity: source_entity, tags: tags, theme_arn: theme_arn, validation_strategy: validation_strategy)
         create_analysis(input)
       end
+
       def create_analysis(input : Types::CreateAnalysisRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ANALYSIS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates an Quick Sight brand.
+
       def create_brand(
         aws_account_id : String,
         brand_id : String,
@@ -187,12 +202,14 @@ module AwsSdk
         input = Types::CreateBrandRequest.new(aws_account_id: aws_account_id, brand_id: brand_id, brand_definition: brand_definition, tags: tags)
         create_brand(input)
       end
+
       def create_brand(input : Types::CreateBrandRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_BRAND, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a custom permissions profile.
+
       def create_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -202,6 +219,7 @@ module AwsSdk
         input = Types::CreateCustomPermissionsRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name, capabilities: capabilities, tags: tags)
         create_custom_permissions(input)
       end
+
       def create_custom_permissions(input : Types::CreateCustomPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_CUSTOM_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -213,6 +231,7 @@ module AwsSdk
       # dashboards. With the right permissions, you can create scheduled email reports from them. If you
       # have the correct permissions, you can create a dashboard from a template that exists in a different
       # Amazon Web Services account.
+
       def create_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -233,12 +252,14 @@ module AwsSdk
         input = Types::CreateDashboardRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, name: name, dashboard_publish_options: dashboard_publish_options, definition: definition, folder_arns: folder_arns, link_entities: link_entities, link_sharing_configuration: link_sharing_configuration, parameters: parameters, permissions: permissions, source_entity: source_entity, tags: tags, theme_arn: theme_arn, validation_strategy: validation_strategy, version_description: version_description)
         create_dashboard(input)
       end
+
       def create_dashboard(input : Types::CreateDashboardRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DASHBOARD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
+
       def create_data_set(
         aws_account_id : String,
         data_set_id : String,
@@ -264,12 +285,14 @@ module AwsSdk
         input = Types::CreateDataSetRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, import_mode: import_mode, name: name, physical_table_map: physical_table_map, column_groups: column_groups, column_level_permission_rules: column_level_permission_rules, data_prep_configuration: data_prep_configuration, data_set_usage_configuration: data_set_usage_configuration, dataset_parameters: dataset_parameters, field_folders: field_folders, folder_arns: folder_arns, logical_table_map: logical_table_map, performance_configuration: performance_configuration, permissions: permissions, row_level_permission_data_set: row_level_permission_data_set, row_level_permission_tag_configuration: row_level_permission_tag_configuration, semantic_model_configuration: semantic_model_configuration, tags: tags, use_as: use_as)
         create_data_set(input)
       end
+
       def create_data_set(input : Types::CreateDataSetRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DATA_SET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a data source.
+
       def create_data_source(
         aws_account_id : String,
         data_source_id : String,
@@ -286,12 +309,14 @@ module AwsSdk
         input = Types::CreateDataSourceRequest.new(aws_account_id: aws_account_id, data_source_id: data_source_id, name: name, type: type, credentials: credentials, data_source_parameters: data_source_parameters, folder_arns: folder_arns, permissions: permissions, ssl_properties: ssl_properties, tags: tags, vpc_connection_properties: vpc_connection_properties)
         create_data_source(input)
       end
+
       def create_data_source(input : Types::CreateDataSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DATA_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates an empty shared folder.
+
       def create_folder(
         aws_account_id : String,
         folder_id : String,
@@ -305,12 +330,14 @@ module AwsSdk
         input = Types::CreateFolderRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, folder_type: folder_type, name: name, parent_folder_arn: parent_folder_arn, permissions: permissions, sharing_model: sharing_model, tags: tags)
         create_folder(input)
       end
+
       def create_folder(input : Types::CreateFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Adds an asset, such as a dashboard, analysis, or dataset into a folder.
+
       def create_folder_membership(
         aws_account_id : String,
         folder_id : String,
@@ -320,6 +347,7 @@ module AwsSdk
         input = Types::CreateFolderMembershipRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, member_id: member_id, member_type: member_type)
         create_folder_membership(input)
       end
+
       def create_folder_membership(input : Types::CreateFolderMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_FOLDER_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -329,6 +357,7 @@ module AwsSdk
       # in a namespace. If you want to create more than 10,000 groups in a namespace, contact Amazon Web
       # Services Support. The permissions resource is arn:aws:quicksight:&lt;your-region&gt;:
       # &lt;relevant-aws-account-id&gt; :group/default/ &lt;group-name&gt; . The response is a group object.
+
       def create_group(
         aws_account_id : String,
         group_name : String,
@@ -338,12 +367,14 @@ module AwsSdk
         input = Types::CreateGroupRequest.new(aws_account_id: aws_account_id, group_name: group_name, namespace: namespace, description: description)
         create_group(input)
       end
+
       def create_group(input : Types::CreateGroupRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Adds an Amazon Quick Sight user to an Amazon Quick Sight group.
+
       def create_group_membership(
         aws_account_id : String,
         group_name : String,
@@ -353,6 +384,7 @@ module AwsSdk
         input = Types::CreateGroupMembershipRequest.new(aws_account_id: aws_account_id, group_name: group_name, member_name: member_name, namespace: namespace)
         create_group_membership(input)
       end
+
       def create_group_membership(input : Types::CreateGroupMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_GROUP_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -362,6 +394,7 @@ module AwsSdk
       # This policy assignment is attached to the specified groups or users of Amazon Quick Sight.
       # Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other
       # namespaces, use assignment names that are unique.
+
       def create_iam_policy_assignment(
         assignment_name : String,
         assignment_status : String,
@@ -373,6 +406,7 @@ module AwsSdk
         input = Types::CreateIAMPolicyAssignmentRequest.new(assignment_name: assignment_name, assignment_status: assignment_status, aws_account_id: aws_account_id, namespace: namespace, identities: identities, policy_arn: policy_arn)
         create_iam_policy_assignment(input)
       end
+
       def create_iam_policy_assignment(input : Types::CreateIAMPolicyAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_IAM_POLICY_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -385,6 +419,7 @@ module AwsSdk
       # tags automatically for use in access control. For an example, see How do I create an IAM policy to
       # control access to Amazon EC2 resources using tags? in the Amazon Web Services Knowledge Center. Tags
       # are visible on the tagged dataset, but not on the ingestion resource.
+
       def create_ingestion(
         aws_account_id : String,
         data_set_id : String,
@@ -394,6 +429,7 @@ module AwsSdk
         input = Types::CreateIngestionRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, ingestion_id: ingestion_id, ingestion_type: ingestion_type)
         create_ingestion(input)
       end
+
       def create_ingestion(input : Types::CreateIngestionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_INGESTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -406,6 +442,7 @@ module AwsSdk
       # after your Amazon Web Services account is subscribed to Quick Sight. The namespace must be unique
       # within the Amazon Web Services account. By default, there is a limit of 100 namespaces per Amazon
       # Web Services account. To increase your limit, create a ticket with Amazon Web Services Support.
+
       def create_namespace(
         aws_account_id : String,
         identity_store : String,
@@ -415,6 +452,7 @@ module AwsSdk
         input = Types::CreateNamespaceRequest.new(aws_account_id: aws_account_id, identity_store: identity_store, namespace: namespace, tags: tags)
         create_namespace(input)
       end
+
       def create_namespace(input : Types::CreateNamespaceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_NAMESPACE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -422,6 +460,7 @@ module AwsSdk
 
       # Creates a refresh schedule for a dataset. You can create up to 5 different schedules for a single
       # dataset.
+
       def create_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -430,12 +469,14 @@ module AwsSdk
         input = Types::CreateRefreshScheduleRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, schedule: schedule)
         create_refresh_schedule(input)
       end
+
       def create_refresh_schedule(input : Types::CreateRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Use CreateRoleMembership to add an existing Quick Sight group to an existing role.
+
       def create_role_membership(
         aws_account_id : String,
         member_name : String,
@@ -445,6 +486,7 @@ module AwsSdk
         input = Types::CreateRoleMembershipRequest.new(aws_account_id: aws_account_id, member_name: member_name, namespace: namespace, role: role)
         create_role_membership(input)
       end
+
       def create_role_membership(input : Types::CreateRoleMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ROLE_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -457,6 +499,7 @@ module AwsSdk
       # using placeholders to replace the dataset associated with the analysis. You can use templates to
       # create dashboards by replacing dataset placeholders with datasets that follow the same schema that
       # was used to create the source analysis and template.
+
       def create_template(
         aws_account_id : String,
         template_id : String,
@@ -471,12 +514,14 @@ module AwsSdk
         input = Types::CreateTemplateRequest.new(aws_account_id: aws_account_id, template_id: template_id, definition: definition, name: name, permissions: permissions, source_entity: source_entity, tags: tags, validation_strategy: validation_strategy, version_description: version_description)
         create_template(input)
       end
+
       def create_template(input : Types::CreateTemplateRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_TEMPLATE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a template alias for a template.
+
       def create_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -486,6 +531,7 @@ module AwsSdk
         input = Types::CreateTemplateAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, template_id: template_id, template_version_number: template_version_number)
         create_template_alias(input)
       end
+
       def create_template_alias(input : Types::CreateTemplateAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_TEMPLATE_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -494,6 +540,7 @@ module AwsSdk
       # Creates a theme. A theme is set of configuration options for color and layout. Themes apply to
       # analyses and dashboards. For more information, see Using Themes in Amazon Quick Sight in the Amazon
       # Quick Sight User Guide .
+
       def create_theme(
         aws_account_id : String,
         base_theme_id : String,
@@ -507,12 +554,14 @@ module AwsSdk
         input = Types::CreateThemeRequest.new(aws_account_id: aws_account_id, base_theme_id: base_theme_id, configuration: configuration, name: name, theme_id: theme_id, permissions: permissions, tags: tags, version_description: version_description)
         create_theme(input)
       end
+
       def create_theme(input : Types::CreateThemeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_THEME, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a theme alias for a theme.
+
       def create_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -522,12 +571,14 @@ module AwsSdk
         input = Types::CreateThemeAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, theme_id: theme_id, theme_version_number: theme_version_number)
         create_theme_alias(input)
       end
+
       def create_theme_alias(input : Types::CreateThemeAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_THEME_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a new Q topic.
+
       def create_topic(
         aws_account_id : String,
         topic : Types::TopicDetails,
@@ -539,12 +590,14 @@ module AwsSdk
         input = Types::CreateTopicRequest.new(aws_account_id: aws_account_id, topic: topic, topic_id: topic_id, custom_instructions: custom_instructions, folder_arns: folder_arns, tags: tags)
         create_topic(input)
       end
+
       def create_topic(input : Types::CreateTopicRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_TOPIC, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a topic refresh schedule.
+
       def create_topic_refresh_schedule(
         aws_account_id : String,
         dataset_arn : String,
@@ -555,12 +608,14 @@ module AwsSdk
         input = Types::CreateTopicRefreshScheduleRequest.new(aws_account_id: aws_account_id, dataset_arn: dataset_arn, refresh_schedule: refresh_schedule, topic_id: topic_id, dataset_name: dataset_name)
         create_topic_refresh_schedule(input)
       end
+
       def create_topic_refresh_schedule(input : Types::CreateTopicRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_TOPIC_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a new VPC connection.
+
       def create_vpc_connection(
         aws_account_id : String,
         name : String,
@@ -574,18 +629,21 @@ module AwsSdk
         input = Types::CreateVPCConnectionRequest.new(aws_account_id: aws_account_id, name: name, role_arn: role_arn, security_group_ids: security_group_ids, subnet_ids: subnet_ids, vpc_connection_id: vpc_connection_id, dns_resolvers: dns_resolvers, tags: tags)
         create_vpc_connection(input)
       end
+
       def create_vpc_connection(input : Types::CreateVPCConnectionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_VPC_CONNECTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Unapplies a custom permissions profile from an account.
+
       def delete_account_custom_permission(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DeleteAccountCustomPermissionRequest.new(aws_account_id: aws_account_id)
         delete_account_custom_permission(input)
       end
+
       def delete_account_custom_permission(input : Types::DeleteAccountCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ACCOUNT_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -597,6 +655,7 @@ module AwsSdk
       # will see default Quick Sight styling after customizations are deleted Before proceeding: Ensure you
       # have backups of any custom themes or branding elements you may want to recreate. Deletes all Amazon
       # Quick Sight customizations for the specified Amazon Web Services account and Quick Sight namespace.
+
       def delete_account_customization(
         aws_account_id : String,
         namespace : String? = nil
@@ -604,6 +663,7 @@ module AwsSdk
         input = Types::DeleteAccountCustomizationRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         delete_account_customization(input)
       end
+
       def delete_account_customization(input : Types::DeleteAccountCustomizationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ACCOUNT_CUSTOMIZATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -625,12 +685,14 @@ module AwsSdk
       # True . To change this setting and delete your account, call the UpdateAccountSettings API and set
       # the value of the TerminationProtectionEnabled parameter to False , then make another call to the
       # DeleteAccountSubscription API.
+
       def delete_account_subscription(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DeleteAccountSubscriptionRequest.new(aws_account_id: aws_account_id)
         delete_account_subscription(input)
       end
+
       def delete_account_subscription(input : Types::DeleteAccountSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ACCOUNT_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -639,6 +701,7 @@ module AwsSdk
       # Hard deletes an action connector, making it unrecoverable. This operation removes the connector and
       # all its associated configurations. Any resources currently using this action connector will no
       # longer be able to perform actions through it.
+
       def delete_action_connector(
         action_connector_id : String,
         aws_account_id : String
@@ -646,6 +709,7 @@ module AwsSdk
         input = Types::DeleteActionConnectorRequest.new(action_connector_id: action_connector_id, aws_account_id: aws_account_id)
         delete_action_connector(input)
       end
+
       def delete_action_connector(input : Types::DeleteActionConnectorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ACTION_CONNECTOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -661,6 +725,7 @@ module AwsSdk
       # from it. An analysis that's scheduled for deletion isn't accessible in the Amazon Quick Sight
       # console. To access it in the console, restore it. Deleting an analysis doesn't delete the dashboards
       # that you publish from it.
+
       def delete_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -670,6 +735,7 @@ module AwsSdk
         input = Types::DeleteAnalysisRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id, force_delete_without_recovery: force_delete_without_recovery, recovery_window_in_days: recovery_window_in_days)
         delete_analysis(input)
       end
+
       def delete_analysis(input : Types::DeleteAnalysisRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ANALYSIS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -680,6 +746,7 @@ module AwsSdk
       # this brand will revert to default styling This action cannot be undone through the API Before
       # proceeding: Verify that the brand is no longer needed and consider the impact on any applications
       # currently using this brand. Deletes an Quick Sight brand.
+
       def delete_brand(
         aws_account_id : String,
         brand_id : String
@@ -687,24 +754,28 @@ module AwsSdk
         input = Types::DeleteBrandRequest.new(aws_account_id: aws_account_id, brand_id: brand_id)
         delete_brand(input)
       end
+
       def delete_brand(input : Types::DeleteBrandRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_BRAND, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a brand assignment.
+
       def delete_brand_assignment(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DeleteBrandAssignmentRequest.new(aws_account_id: aws_account_id)
         delete_brand_assignment(input)
       end
+
       def delete_brand_assignment(input : Types::DeleteBrandAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_BRAND_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a custom permissions profile.
+
       def delete_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String
@@ -712,12 +783,14 @@ module AwsSdk
         input = Types::DeleteCustomPermissionsRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name)
         delete_custom_permissions(input)
       end
+
       def delete_custom_permissions(input : Types::DeleteCustomPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_CUSTOM_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a dashboard.
+
       def delete_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -726,12 +799,14 @@ module AwsSdk
         input = Types::DeleteDashboardRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, version_number: version_number)
         delete_dashboard(input)
       end
+
       def delete_dashboard(input : Types::DeleteDashboardRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DASHBOARD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a dataset.
+
       def delete_data_set(
         aws_account_id : String,
         data_set_id : String
@@ -739,12 +814,14 @@ module AwsSdk
         input = Types::DeleteDataSetRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id)
         delete_data_set(input)
       end
+
       def delete_data_set(input : Types::DeleteDataSetRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DATA_SET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes the dataset refresh properties of the dataset.
+
       def delete_data_set_refresh_properties(
         aws_account_id : String,
         data_set_id : String
@@ -752,6 +829,7 @@ module AwsSdk
         input = Types::DeleteDataSetRefreshPropertiesRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id)
         delete_data_set_refresh_properties(input)
       end
+
       def delete_data_set_refresh_properties(input : Types::DeleteDataSetRefreshPropertiesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DATA_SET_REFRESH_PROPERTIES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -759,6 +837,7 @@ module AwsSdk
 
       # Deletes the data source permanently. This operation breaks all the datasets that reference the
       # deleted data source.
+
       def delete_data_source(
         aws_account_id : String,
         data_source_id : String
@@ -766,12 +845,14 @@ module AwsSdk
         input = Types::DeleteDataSourceRequest.new(aws_account_id: aws_account_id, data_source_id: data_source_id)
         delete_data_source(input)
       end
+
       def delete_data_source(input : Types::DeleteDataSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DATA_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a linked Amazon Q Business application from an Quick Sight account
+
       def delete_default_q_business_application(
         aws_account_id : String,
         namespace : String? = nil
@@ -779,12 +860,14 @@ module AwsSdk
         input = Types::DeleteDefaultQBusinessApplicationRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         delete_default_q_business_application(input)
       end
+
       def delete_default_q_business_application(input : Types::DeleteDefaultQBusinessApplicationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DEFAULT_Q_BUSINESS_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes an empty folder.
+
       def delete_folder(
         aws_account_id : String,
         folder_id : String
@@ -792,12 +875,14 @@ module AwsSdk
         input = Types::DeleteFolderRequest.new(aws_account_id: aws_account_id, folder_id: folder_id)
         delete_folder(input)
       end
+
       def delete_folder(input : Types::DeleteFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes an asset, such as a dashboard, analysis, or dataset, from a folder.
+
       def delete_folder_membership(
         aws_account_id : String,
         folder_id : String,
@@ -807,12 +892,14 @@ module AwsSdk
         input = Types::DeleteFolderMembershipRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, member_id: member_id, member_type: member_type)
         delete_folder_membership(input)
       end
+
       def delete_folder_membership(input : Types::DeleteFolderMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_FOLDER_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes a user group from Amazon Quick Sight.
+
       def delete_group(
         aws_account_id : String,
         group_name : String,
@@ -821,12 +908,14 @@ module AwsSdk
         input = Types::DeleteGroupRequest.new(aws_account_id: aws_account_id, group_name: group_name, namespace: namespace)
         delete_group(input)
       end
+
       def delete_group(input : Types::DeleteGroupRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes a user from a group so that the user is no longer a member of the group.
+
       def delete_group_membership(
         aws_account_id : String,
         group_name : String,
@@ -836,12 +925,14 @@ module AwsSdk
         input = Types::DeleteGroupMembershipRequest.new(aws_account_id: aws_account_id, group_name: group_name, member_name: member_name, namespace: namespace)
         delete_group_membership(input)
       end
+
       def delete_group_membership(input : Types::DeleteGroupMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_GROUP_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes an existing IAM policy assignment.
+
       def delete_iam_policy_assignment(
         assignment_name : String,
         aws_account_id : String,
@@ -850,6 +941,7 @@ module AwsSdk
         input = Types::DeleteIAMPolicyAssignmentRequest.new(assignment_name: assignment_name, aws_account_id: aws_account_id, namespace: namespace)
         delete_iam_policy_assignment(input)
       end
+
       def delete_iam_policy_assignment(input : Types::DeleteIAMPolicyAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_IAM_POLICY_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -858,6 +950,7 @@ module AwsSdk
       # Deletes all access scopes and authorized targets that are associated with a service from the Quick
       # Sight IAM Identity Center application. This operation is only supported for Quick Sight accounts
       # that use IAM Identity Center.
+
       def delete_identity_propagation_config(
         aws_account_id : String,
         service : String
@@ -865,6 +958,7 @@ module AwsSdk
         input = Types::DeleteIdentityPropagationConfigRequest.new(aws_account_id: aws_account_id, service: service)
         delete_identity_propagation_config(input)
       end
+
       def delete_identity_propagation_config(input : Types::DeleteIdentityPropagationConfigRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_IDENTITY_PROPAGATION_CONFIG, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -873,6 +967,7 @@ module AwsSdk
       # Deletes a namespace and the users and groups that are associated with the namespace. This is an
       # asynchronous process. Assets including dashboards, analyses, datasets and data sources are not
       # deleted. To delete these assets, you use the API operations for the relevant asset.
+
       def delete_namespace(
         aws_account_id : String,
         namespace : String
@@ -880,12 +975,14 @@ module AwsSdk
         input = Types::DeleteNamespaceRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         delete_namespace(input)
       end
+
       def delete_namespace(input : Types::DeleteNamespaceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_NAMESPACE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a refresh schedule from a dataset.
+
       def delete_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -894,12 +991,14 @@ module AwsSdk
         input = Types::DeleteRefreshScheduleRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, schedule_id: schedule_id)
         delete_refresh_schedule(input)
       end
+
       def delete_refresh_schedule(input : Types::DeleteRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes custom permissions from the role.
+
       def delete_role_custom_permission(
         aws_account_id : String,
         namespace : String,
@@ -908,12 +1007,14 @@ module AwsSdk
         input = Types::DeleteRoleCustomPermissionRequest.new(aws_account_id: aws_account_id, namespace: namespace, role: role)
         delete_role_custom_permission(input)
       end
+
       def delete_role_custom_permission(input : Types::DeleteRoleCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ROLE_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes a group from a role.
+
       def delete_role_membership(
         aws_account_id : String,
         member_name : String,
@@ -923,12 +1024,14 @@ module AwsSdk
         input = Types::DeleteRoleMembershipRequest.new(aws_account_id: aws_account_id, member_name: member_name, namespace: namespace, role: role)
         delete_role_membership(input)
       end
+
       def delete_role_membership(input : Types::DeleteRoleMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ROLE_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a template.
+
       def delete_template(
         aws_account_id : String,
         template_id : String,
@@ -937,6 +1040,7 @@ module AwsSdk
         input = Types::DeleteTemplateRequest.new(aws_account_id: aws_account_id, template_id: template_id, version_number: version_number)
         delete_template(input)
       end
+
       def delete_template(input : Types::DeleteTemplateRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_TEMPLATE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -944,6 +1048,7 @@ module AwsSdk
 
       # Deletes the item that the specified template alias points to. If you provide a specific alias, you
       # delete the version of the template that the alias points to.
+
       def delete_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -952,12 +1057,14 @@ module AwsSdk
         input = Types::DeleteTemplateAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, template_id: template_id)
         delete_template_alias(input)
       end
+
       def delete_template_alias(input : Types::DeleteTemplateAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_TEMPLATE_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a theme.
+
       def delete_theme(
         aws_account_id : String,
         theme_id : String,
@@ -966,6 +1073,7 @@ module AwsSdk
         input = Types::DeleteThemeRequest.new(aws_account_id: aws_account_id, theme_id: theme_id, version_number: version_number)
         delete_theme(input)
       end
+
       def delete_theme(input : Types::DeleteThemeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_THEME, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -973,6 +1081,7 @@ module AwsSdk
 
       # Deletes the version of the theme that the specified theme alias points to. If you provide a specific
       # alias, you delete the version of the theme that the alias points to.
+
       def delete_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -981,12 +1090,14 @@ module AwsSdk
         input = Types::DeleteThemeAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, theme_id: theme_id)
         delete_theme_alias(input)
       end
+
       def delete_theme_alias(input : Types::DeleteThemeAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_THEME_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a topic.
+
       def delete_topic(
         aws_account_id : String,
         topic_id : String
@@ -994,12 +1105,14 @@ module AwsSdk
         input = Types::DeleteTopicRequest.new(aws_account_id: aws_account_id, topic_id: topic_id)
         delete_topic(input)
       end
+
       def delete_topic(input : Types::DeleteTopicRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_TOPIC, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a topic refresh schedule.
+
       def delete_topic_refresh_schedule(
         aws_account_id : String,
         dataset_id : String,
@@ -1008,6 +1121,7 @@ module AwsSdk
         input = Types::DeleteTopicRefreshScheduleRequest.new(aws_account_id: aws_account_id, dataset_id: dataset_id, topic_id: topic_id)
         delete_topic_refresh_schedule(input)
       end
+
       def delete_topic_refresh_schedule(input : Types::DeleteTopicRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_TOPIC_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1015,6 +1129,7 @@ module AwsSdk
 
       # Deletes the Amazon Quick Sight user that is associated with the identity of the IAM user or role
       # that's making the call. The IAM user isn't deleted as a result of this call.
+
       def delete_user(
         aws_account_id : String,
         namespace : String,
@@ -1023,12 +1138,14 @@ module AwsSdk
         input = Types::DeleteUserRequest.new(aws_account_id: aws_account_id, namespace: namespace, user_name: user_name)
         delete_user(input)
       end
+
       def delete_user(input : Types::DeleteUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a user identified by its principal ID.
+
       def delete_user_by_principal_id(
         aws_account_id : String,
         namespace : String,
@@ -1037,12 +1154,14 @@ module AwsSdk
         input = Types::DeleteUserByPrincipalIdRequest.new(aws_account_id: aws_account_id, namespace: namespace, principal_id: principal_id)
         delete_user_by_principal_id(input)
       end
+
       def delete_user_by_principal_id(input : Types::DeleteUserByPrincipalIdRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_USER_BY_PRINCIPAL_ID, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a custom permissions profile from a user.
+
       def delete_user_custom_permission(
         aws_account_id : String,
         namespace : String,
@@ -1051,12 +1170,14 @@ module AwsSdk
         input = Types::DeleteUserCustomPermissionRequest.new(aws_account_id: aws_account_id, namespace: namespace, user_name: user_name)
         delete_user_custom_permission(input)
       end
+
       def delete_user_custom_permission(input : Types::DeleteUserCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_USER_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a VPC connection.
+
       def delete_vpc_connection(
         aws_account_id : String,
         vpc_connection_id : String
@@ -1064,18 +1185,21 @@ module AwsSdk
         input = Types::DeleteVPCConnectionRequest.new(aws_account_id: aws_account_id, vpc_connection_id: vpc_connection_id)
         delete_vpc_connection(input)
       end
+
       def delete_vpc_connection(input : Types::DeleteVPCConnectionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VPC_CONNECTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the custom permissions profile that is applied to an account.
+
       def describe_account_custom_permission(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeAccountCustomPermissionRequest.new(aws_account_id: aws_account_id)
         describe_account_custom_permission(input)
       end
+
       def describe_account_custom_permission(input : Types::DescribeAccountCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ACCOUNT_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1103,6 +1227,7 @@ module AwsSdk
       # the same Amazon Web Services account and Amazon Web Services Region. Applied customizations - Quick
       # Sight customizations can apply to an Amazon Web Services account or to a namespace. Settings that
       # you apply to a namespace override settings that you apply to an Amazon Web Services account.
+
       def describe_account_customization(
         aws_account_id : String,
         namespace : String? = nil,
@@ -1111,6 +1236,7 @@ module AwsSdk
         input = Types::DescribeAccountCustomizationRequest.new(aws_account_id: aws_account_id, namespace: namespace, resolved: resolved)
         describe_account_customization(input)
       end
+
       def describe_account_customization(input : Types::DescribeAccountCustomizationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ACCOUNT_CUSTOMIZATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1118,12 +1244,14 @@ module AwsSdk
 
       # Describes the settings that were used when your Quick Sight subscription was first created in this
       # Amazon Web Services account.
+
       def describe_account_settings(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeAccountSettingsRequest.new(aws_account_id: aws_account_id)
         describe_account_settings(input)
       end
+
       def describe_account_settings(input : Types::DescribeAccountSettingsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ACCOUNT_SETTINGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1132,12 +1260,14 @@ module AwsSdk
       # Use the DescribeAccountSubscription operation to receive a description of an Quick Sight account's
       # subscription. A successful API call returns an AccountInfo object that includes an account's name,
       # subscription status, authentication type, edition, and notification email address.
+
       def describe_account_subscription(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeAccountSubscriptionRequest.new(aws_account_id: aws_account_id)
         describe_account_subscription(input)
       end
+
       def describe_account_subscription(input : Types::DescribeAccountSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ACCOUNT_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1145,6 +1275,7 @@ module AwsSdk
 
       # Retrieves detailed information about an action connector, including its configuration,
       # authentication settings, enabled actions, and current status.
+
       def describe_action_connector(
         action_connector_id : String,
         aws_account_id : String
@@ -1152,6 +1283,7 @@ module AwsSdk
         input = Types::DescribeActionConnectorRequest.new(action_connector_id: action_connector_id, aws_account_id: aws_account_id)
         describe_action_connector(input)
       end
+
       def describe_action_connector(input : Types::DescribeActionConnectorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ACTION_CONNECTOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1159,6 +1291,7 @@ module AwsSdk
 
       # Retrieves the permissions configuration for an action connector, showing which users, groups, and
       # namespaces have access and what operations they can perform.
+
       def describe_action_connector_permissions(
         action_connector_id : String,
         aws_account_id : String
@@ -1166,12 +1299,14 @@ module AwsSdk
         input = Types::DescribeActionConnectorPermissionsRequest.new(action_connector_id: action_connector_id, aws_account_id: aws_account_id)
         describe_action_connector_permissions(input)
       end
+
       def describe_action_connector_permissions(input : Types::DescribeActionConnectorPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ACTION_CONNECTOR_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Provides a summary of the metadata for an analysis.
+
       def describe_analysis(
         analysis_id : String,
         aws_account_id : String
@@ -1179,6 +1314,7 @@ module AwsSdk
         input = Types::DescribeAnalysisRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id)
         describe_analysis(input)
       end
+
       def describe_analysis(input : Types::DescribeAnalysisRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ANALYSIS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1187,6 +1323,7 @@ module AwsSdk
       # Provides a detailed description of the definition of an analysis. If you do not need to know details
       # about the content of an Analysis, for instance if you are trying to check the status of a recently
       # created or updated Analysis, use the DescribeAnalysis instead.
+
       def describe_analysis_definition(
         analysis_id : String,
         aws_account_id : String
@@ -1194,12 +1331,14 @@ module AwsSdk
         input = Types::DescribeAnalysisDefinitionRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id)
         describe_analysis_definition(input)
       end
+
       def describe_analysis_definition(input : Types::DescribeAnalysisDefinitionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ANALYSIS_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Provides the read and write permissions for an analysis.
+
       def describe_analysis_permissions(
         analysis_id : String,
         aws_account_id : String
@@ -1207,6 +1346,7 @@ module AwsSdk
         input = Types::DescribeAnalysisPermissionsRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id)
         describe_analysis_permissions(input)
       end
+
       def describe_analysis_permissions(input : Types::DescribeAnalysisPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ANALYSIS_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1217,6 +1357,7 @@ module AwsSdk
       # URLs are valid for five minutes after they are generated. You can call the
       # DescribeAssetBundleExportJob API for a new download URL as needed. Job descriptions are available
       # for 14 days after the job starts.
+
       def describe_asset_bundle_export_job(
         asset_bundle_export_job_id : String,
         aws_account_id : String
@@ -1224,6 +1365,7 @@ module AwsSdk
         input = Types::DescribeAssetBundleExportJobRequest.new(asset_bundle_export_job_id: asset_bundle_export_job_id, aws_account_id: aws_account_id)
         describe_asset_bundle_export_job(input)
       end
+
       def describe_asset_bundle_export_job(input : Types::DescribeAssetBundleExportJobRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ASSET_BUNDLE_EXPORT_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1231,6 +1373,7 @@ module AwsSdk
 
       # Describes an existing import job. Poll job descriptions after starting a job to know when it has
       # succeeded or failed. Job descriptions are available for 14 days after job starts.
+
       def describe_asset_bundle_import_job(
         asset_bundle_import_job_id : String,
         aws_account_id : String
@@ -1238,12 +1381,14 @@ module AwsSdk
         input = Types::DescribeAssetBundleImportJobRequest.new(asset_bundle_import_job_id: asset_bundle_import_job_id, aws_account_id: aws_account_id)
         describe_asset_bundle_import_job(input)
       end
+
       def describe_asset_bundle_import_job(input : Types::DescribeAssetBundleImportJobRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ASSET_BUNDLE_IMPORT_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a brand.
+
       def describe_brand(
         aws_account_id : String,
         brand_id : String,
@@ -1252,24 +1397,28 @@ module AwsSdk
         input = Types::DescribeBrandRequest.new(aws_account_id: aws_account_id, brand_id: brand_id, version_id: version_id)
         describe_brand(input)
       end
+
       def describe_brand(input : Types::DescribeBrandRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_BRAND, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a brand assignment.
+
       def describe_brand_assignment(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeBrandAssignmentRequest.new(aws_account_id: aws_account_id)
         describe_brand_assignment(input)
       end
+
       def describe_brand_assignment(input : Types::DescribeBrandAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_BRAND_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the published version of the brand.
+
       def describe_brand_published_version(
         aws_account_id : String,
         brand_id : String
@@ -1277,12 +1426,14 @@ module AwsSdk
         input = Types::DescribeBrandPublishedVersionRequest.new(aws_account_id: aws_account_id, brand_id: brand_id)
         describe_brand_published_version(input)
       end
+
       def describe_brand_published_version(input : Types::DescribeBrandPublishedVersionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_BRAND_PUBLISHED_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a custom permissions profile.
+
       def describe_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String
@@ -1290,12 +1441,14 @@ module AwsSdk
         input = Types::DescribeCustomPermissionsRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name)
         describe_custom_permissions(input)
       end
+
       def describe_custom_permissions(input : Types::DescribeCustomPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_CUSTOM_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Provides a summary for a dashboard.
+
       def describe_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -1305,6 +1458,7 @@ module AwsSdk
         input = Types::DescribeDashboardRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, alias_name: alias_name, version_number: version_number)
         describe_dashboard(input)
       end
+
       def describe_dashboard(input : Types::DescribeDashboardRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DASHBOARD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1313,6 +1467,7 @@ module AwsSdk
       # Provides a detailed description of the definition of a dashboard. If you do not need to know details
       # about the content of a dashboard, for instance if you are trying to check the status of a recently
       # created or updated dashboard, use the DescribeDashboard instead.
+
       def describe_dashboard_definition(
         aws_account_id : String,
         dashboard_id : String,
@@ -1322,12 +1477,14 @@ module AwsSdk
         input = Types::DescribeDashboardDefinitionRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, alias_name: alias_name, version_number: version_number)
         describe_dashboard_definition(input)
       end
+
       def describe_dashboard_definition(input : Types::DescribeDashboardDefinitionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DASHBOARD_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes read and write permissions for a dashboard.
+
       def describe_dashboard_permissions(
         aws_account_id : String,
         dashboard_id : String
@@ -1335,6 +1492,7 @@ module AwsSdk
         input = Types::DescribeDashboardPermissionsRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id)
         describe_dashboard_permissions(input)
       end
+
       def describe_dashboard_permissions(input : Types::DescribeDashboardPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DASHBOARD_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1346,6 +1504,7 @@ module AwsSdk
       # scenarios Request will fail with an Access Denied error in the following scenarios: The credentials
       # have expired. Job has been started by a different user. Impersonated Quick Sight user doesn't have
       # access to the specified dashboard in the job.
+
       def describe_dashboard_snapshot_job(
         aws_account_id : String,
         dashboard_id : String,
@@ -1354,6 +1513,7 @@ module AwsSdk
         input = Types::DescribeDashboardSnapshotJobRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, snapshot_job_id: snapshot_job_id)
         describe_dashboard_snapshot_job(input)
       end
+
       def describe_dashboard_snapshot_job(input : Types::DescribeDashboardSnapshotJobRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DASHBOARD_SNAPSHOT_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1376,6 +1536,7 @@ module AwsSdk
       # job with current settings. CLS_CHANGED - Column-level security settings have changed. Re-run the job
       # with current settings. DATASET_DELETED - The dataset has been deleted. Verify the dataset exists
       # before re-running the job.
+
       def describe_dashboard_snapshot_job_result(
         aws_account_id : String,
         dashboard_id : String,
@@ -1384,18 +1545,21 @@ module AwsSdk
         input = Types::DescribeDashboardSnapshotJobResultRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, snapshot_job_id: snapshot_job_id)
         describe_dashboard_snapshot_job_result(input)
       end
+
       def describe_dashboard_snapshot_job_result(input : Types::DescribeDashboardSnapshotJobResultRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DASHBOARD_SNAPSHOT_JOB_RESULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes an existing dashboard QA configuration.
+
       def describe_dashboards_qa_configuration(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeDashboardsQAConfigurationRequest.new(aws_account_id: aws_account_id)
         describe_dashboards_qa_configuration(input)
       end
+
       def describe_dashboards_qa_configuration(input : Types::DescribeDashboardsQAConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DASHBOARDS_QA_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1403,6 +1567,7 @@ module AwsSdk
 
       # Describes a dataset. This operation doesn't support datasets that include uploaded files as a
       # source.
+
       def describe_data_set(
         aws_account_id : String,
         data_set_id : String
@@ -1410,6 +1575,7 @@ module AwsSdk
         input = Types::DescribeDataSetRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id)
         describe_data_set(input)
       end
+
       def describe_data_set(input : Types::DescribeDataSetRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DATA_SET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1417,6 +1583,7 @@ module AwsSdk
 
       # Describes the permissions on a dataset. The permissions resource is
       # arn:aws:quicksight:region:aws-account-id:dataset/data-set-id .
+
       def describe_data_set_permissions(
         aws_account_id : String,
         data_set_id : String
@@ -1424,12 +1591,14 @@ module AwsSdk
         input = Types::DescribeDataSetPermissionsRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id)
         describe_data_set_permissions(input)
       end
+
       def describe_data_set_permissions(input : Types::DescribeDataSetPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DATA_SET_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the refresh properties of a dataset.
+
       def describe_data_set_refresh_properties(
         aws_account_id : String,
         data_set_id : String
@@ -1437,12 +1606,14 @@ module AwsSdk
         input = Types::DescribeDataSetRefreshPropertiesRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id)
         describe_data_set_refresh_properties(input)
       end
+
       def describe_data_set_refresh_properties(input : Types::DescribeDataSetRefreshPropertiesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DATA_SET_REFRESH_PROPERTIES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a data source.
+
       def describe_data_source(
         aws_account_id : String,
         data_source_id : String
@@ -1450,12 +1621,14 @@ module AwsSdk
         input = Types::DescribeDataSourceRequest.new(aws_account_id: aws_account_id, data_source_id: data_source_id)
         describe_data_source(input)
       end
+
       def describe_data_source(input : Types::DescribeDataSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DATA_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the resource permissions for a data source.
+
       def describe_data_source_permissions(
         aws_account_id : String,
         data_source_id : String
@@ -1463,12 +1636,14 @@ module AwsSdk
         input = Types::DescribeDataSourcePermissionsRequest.new(aws_account_id: aws_account_id, data_source_id: data_source_id)
         describe_data_source_permissions(input)
       end
+
       def describe_data_source_permissions(input : Types::DescribeDataSourcePermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DATA_SOURCE_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a Amazon Q Business application that is linked to an Quick Sight account.
+
       def describe_default_q_business_application(
         aws_account_id : String,
         namespace : String? = nil
@@ -1476,12 +1651,14 @@ module AwsSdk
         input = Types::DescribeDefaultQBusinessApplicationRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         describe_default_q_business_application(input)
       end
+
       def describe_default_q_business_application(input : Types::DescribeDefaultQBusinessApplicationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_DEFAULT_Q_BUSINESS_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a folder.
+
       def describe_folder(
         aws_account_id : String,
         folder_id : String
@@ -1489,12 +1666,14 @@ module AwsSdk
         input = Types::DescribeFolderRequest.new(aws_account_id: aws_account_id, folder_id: folder_id)
         describe_folder(input)
       end
+
       def describe_folder(input : Types::DescribeFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes permissions for a folder.
+
       def describe_folder_permissions(
         aws_account_id : String,
         folder_id : String,
@@ -1505,6 +1684,7 @@ module AwsSdk
         input = Types::DescribeFolderPermissionsRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, max_results: max_results, namespace: namespace, next_token: next_token)
         describe_folder_permissions(input)
       end
+
       def describe_folder_permissions(input : Types::DescribeFolderPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_FOLDER_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1512,6 +1692,7 @@ module AwsSdk
 
       # Describes the folder resolved permissions. Permissions consists of both folder direct permissions
       # and the inherited permissions from the ancestor folders.
+
       def describe_folder_resolved_permissions(
         aws_account_id : String,
         folder_id : String,
@@ -1522,12 +1703,14 @@ module AwsSdk
         input = Types::DescribeFolderResolvedPermissionsRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, max_results: max_results, namespace: namespace, next_token: next_token)
         describe_folder_resolved_permissions(input)
       end
+
       def describe_folder_resolved_permissions(input : Types::DescribeFolderResolvedPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_FOLDER_RESOLVED_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns an Amazon Quick Sight group's description and Amazon Resource Name (ARN).
+
       def describe_group(
         aws_account_id : String,
         group_name : String,
@@ -1536,6 +1719,7 @@ module AwsSdk
         input = Types::DescribeGroupRequest.new(aws_account_id: aws_account_id, group_name: group_name, namespace: namespace)
         describe_group(input)
       end
+
       def describe_group(input : Types::DescribeGroupRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1544,6 +1728,7 @@ module AwsSdk
       # Use the DescribeGroupMembership operation to determine if a user is a member of the specified group.
       # If the user exists and is a member of the specified group, an associated GroupMember object is
       # returned.
+
       def describe_group_membership(
         aws_account_id : String,
         group_name : String,
@@ -1553,12 +1738,14 @@ module AwsSdk
         input = Types::DescribeGroupMembershipRequest.new(aws_account_id: aws_account_id, group_name: group_name, member_name: member_name, namespace: namespace)
         describe_group_membership(input)
       end
+
       def describe_group_membership(input : Types::DescribeGroupMembershipRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_GROUP_MEMBERSHIP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes an existing IAM policy assignment, as specified by the assignment name.
+
       def describe_iam_policy_assignment(
         assignment_name : String,
         aws_account_id : String,
@@ -1567,12 +1754,14 @@ module AwsSdk
         input = Types::DescribeIAMPolicyAssignmentRequest.new(assignment_name: assignment_name, aws_account_id: aws_account_id, namespace: namespace)
         describe_iam_policy_assignment(input)
       end
+
       def describe_iam_policy_assignment(input : Types::DescribeIAMPolicyAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_IAM_POLICY_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a SPICE ingestion.
+
       def describe_ingestion(
         aws_account_id : String,
         data_set_id : String,
@@ -1581,24 +1770,28 @@ module AwsSdk
         input = Types::DescribeIngestionRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, ingestion_id: ingestion_id)
         describe_ingestion(input)
       end
+
       def describe_ingestion(input : Types::DescribeIngestionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_INGESTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Provides a summary and status of IP rules.
+
       def describe_ip_restriction(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeIpRestrictionRequest.new(aws_account_id: aws_account_id)
         describe_ip_restriction(input)
       end
+
       def describe_ip_restriction(input : Types::DescribeIpRestrictionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_IP_RESTRICTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes all customer managed key registrations in a Quick Sight account.
+
       def describe_key_registration(
         aws_account_id : String,
         default_key_only : Bool? = nil
@@ -1606,12 +1799,14 @@ module AwsSdk
         input = Types::DescribeKeyRegistrationRequest.new(aws_account_id: aws_account_id, default_key_only: default_key_only)
         describe_key_registration(input)
       end
+
       def describe_key_registration(input : Types::DescribeKeyRegistrationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_KEY_REGISTRATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the current namespace.
+
       def describe_namespace(
         aws_account_id : String,
         namespace : String
@@ -1619,36 +1814,42 @@ module AwsSdk
         input = Types::DescribeNamespaceRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         describe_namespace(input)
       end
+
       def describe_namespace(input : Types::DescribeNamespaceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_NAMESPACE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a personalization configuration.
+
       def describe_q_personalization_configuration(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeQPersonalizationConfigurationRequest.new(aws_account_id: aws_account_id)
         describe_q_personalization_configuration(input)
       end
+
       def describe_q_personalization_configuration(input : Types::DescribeQPersonalizationConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_Q_PERSONALIZATION_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the state of a Quick Sight Q Search configuration.
+
       def describe_quick_sight_q_search_configuration(
         aws_account_id : String
       ) : Protocol::Request
         input = Types::DescribeQuickSightQSearchConfigurationRequest.new(aws_account_id: aws_account_id)
         describe_quick_sight_q_search_configuration(input)
       end
+
       def describe_quick_sight_q_search_configuration(input : Types::DescribeQuickSightQSearchConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_QUICK_SIGHT_Q_SEARCH_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Provides a summary of a refresh schedule.
+
       def describe_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -1657,12 +1858,14 @@ module AwsSdk
         input = Types::DescribeRefreshScheduleRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, schedule_id: schedule_id)
         describe_refresh_schedule(input)
       end
+
       def describe_refresh_schedule(input : Types::DescribeRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes all custom permissions that are mapped to a role.
+
       def describe_role_custom_permission(
         aws_account_id : String,
         namespace : String,
@@ -1671,12 +1874,14 @@ module AwsSdk
         input = Types::DescribeRoleCustomPermissionRequest.new(aws_account_id: aws_account_id, namespace: namespace, role: role)
         describe_role_custom_permission(input)
       end
+
       def describe_role_custom_permission(input : Types::DescribeRoleCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_ROLE_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the self-upgrade configuration for a Quick Suite account.
+
       def describe_self_upgrade_configuration(
         aws_account_id : String,
         namespace : String
@@ -1684,12 +1889,14 @@ module AwsSdk
         input = Types::DescribeSelfUpgradeConfigurationRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         describe_self_upgrade_configuration(input)
       end
+
       def describe_self_upgrade_configuration(input : Types::DescribeSelfUpgradeConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_SELF_UPGRADE_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a template's metadata.
+
       def describe_template(
         aws_account_id : String,
         template_id : String,
@@ -1699,12 +1906,14 @@ module AwsSdk
         input = Types::DescribeTemplateRequest.new(aws_account_id: aws_account_id, template_id: template_id, alias_name: alias_name, version_number: version_number)
         describe_template(input)
       end
+
       def describe_template(input : Types::DescribeTemplateRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TEMPLATE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the template alias for a template.
+
       def describe_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -1713,6 +1922,7 @@ module AwsSdk
         input = Types::DescribeTemplateAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, template_id: template_id)
         describe_template_alias(input)
       end
+
       def describe_template_alias(input : Types::DescribeTemplateAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TEMPLATE_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1721,6 +1931,7 @@ module AwsSdk
       # Provides a detailed description of the definition of a template. If you do not need to know details
       # about the content of a template, for instance if you are trying to check the status of a recently
       # created or updated template, use the DescribeTemplate instead.
+
       def describe_template_definition(
         aws_account_id : String,
         template_id : String,
@@ -1730,12 +1941,14 @@ module AwsSdk
         input = Types::DescribeTemplateDefinitionRequest.new(aws_account_id: aws_account_id, template_id: template_id, alias_name: alias_name, version_number: version_number)
         describe_template_definition(input)
       end
+
       def describe_template_definition(input : Types::DescribeTemplateDefinitionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TEMPLATE_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes read and write permissions on a template.
+
       def describe_template_permissions(
         aws_account_id : String,
         template_id : String
@@ -1743,12 +1956,14 @@ module AwsSdk
         input = Types::DescribeTemplatePermissionsRequest.new(aws_account_id: aws_account_id, template_id: template_id)
         describe_template_permissions(input)
       end
+
       def describe_template_permissions(input : Types::DescribeTemplatePermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TEMPLATE_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a theme.
+
       def describe_theme(
         aws_account_id : String,
         theme_id : String,
@@ -1758,12 +1973,14 @@ module AwsSdk
         input = Types::DescribeThemeRequest.new(aws_account_id: aws_account_id, theme_id: theme_id, alias_name: alias_name, version_number: version_number)
         describe_theme(input)
       end
+
       def describe_theme(input : Types::DescribeThemeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_THEME, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the alias for a theme.
+
       def describe_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -1772,12 +1989,14 @@ module AwsSdk
         input = Types::DescribeThemeAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, theme_id: theme_id)
         describe_theme_alias(input)
       end
+
       def describe_theme_alias(input : Types::DescribeThemeAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_THEME_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the read and write permissions for a theme.
+
       def describe_theme_permissions(
         aws_account_id : String,
         theme_id : String
@@ -1785,12 +2004,14 @@ module AwsSdk
         input = Types::DescribeThemePermissionsRequest.new(aws_account_id: aws_account_id, theme_id: theme_id)
         describe_theme_permissions(input)
       end
+
       def describe_theme_permissions(input : Types::DescribeThemePermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_THEME_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a topic.
+
       def describe_topic(
         aws_account_id : String,
         topic_id : String
@@ -1798,12 +2019,14 @@ module AwsSdk
         input = Types::DescribeTopicRequest.new(aws_account_id: aws_account_id, topic_id: topic_id)
         describe_topic(input)
       end
+
       def describe_topic(input : Types::DescribeTopicRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TOPIC, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the permissions of a topic.
+
       def describe_topic_permissions(
         aws_account_id : String,
         topic_id : String
@@ -1811,12 +2034,14 @@ module AwsSdk
         input = Types::DescribeTopicPermissionsRequest.new(aws_account_id: aws_account_id, topic_id: topic_id)
         describe_topic_permissions(input)
       end
+
       def describe_topic_permissions(input : Types::DescribeTopicPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TOPIC_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes the status of a topic refresh.
+
       def describe_topic_refresh(
         aws_account_id : String,
         refresh_id : String,
@@ -1825,12 +2050,14 @@ module AwsSdk
         input = Types::DescribeTopicRefreshRequest.new(aws_account_id: aws_account_id, refresh_id: refresh_id, topic_id: topic_id)
         describe_topic_refresh(input)
       end
+
       def describe_topic_refresh(input : Types::DescribeTopicRefreshRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TOPIC_REFRESH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a topic refresh schedule.
+
       def describe_topic_refresh_schedule(
         aws_account_id : String,
         dataset_id : String,
@@ -1839,12 +2066,14 @@ module AwsSdk
         input = Types::DescribeTopicRefreshScheduleRequest.new(aws_account_id: aws_account_id, dataset_id: dataset_id, topic_id: topic_id)
         describe_topic_refresh_schedule(input)
       end
+
       def describe_topic_refresh_schedule(input : Types::DescribeTopicRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_TOPIC_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns information about a user, given the user name.
+
       def describe_user(
         aws_account_id : String,
         namespace : String,
@@ -1853,12 +2082,14 @@ module AwsSdk
         input = Types::DescribeUserRequest.new(aws_account_id: aws_account_id, namespace: namespace, user_name: user_name)
         describe_user(input)
       end
+
       def describe_user(input : Types::DescribeUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Describes a VPC connection.
+
       def describe_vpc_connection(
         aws_account_id : String,
         vpc_connection_id : String
@@ -1866,6 +2097,7 @@ module AwsSdk
         input = Types::DescribeVPCConnectionRequest.new(aws_account_id: aws_account_id, vpc_connection_id: vpc_connection_id)
         describe_vpc_connection(input)
       end
+
       def describe_vpc_connection(input : Types::DescribeVPCConnectionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_VPC_CONNECTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1882,6 +2114,7 @@ module AwsSdk
       # Quick Suite. For more information, see Embedded Analytics in the Amazon Quick Suite User Guide . For
       # more information about the high-level steps for embedding and for an interactive demo of the ways
       # you can customize embedding, visit the Amazon Quick Suite Developer Portal .
+
       def generate_embed_url_for_anonymous_user(
         authorized_resource_arns : Array(String),
         aws_account_id : String,
@@ -1894,6 +2127,7 @@ module AwsSdk
         input = Types::GenerateEmbedUrlForAnonymousUserRequest.new(authorized_resource_arns: authorized_resource_arns, aws_account_id: aws_account_id, experience_configuration: experience_configuration, namespace: namespace, allowed_domains: allowed_domains, session_lifetime_in_minutes: session_lifetime_in_minutes, session_tags: session_tags)
         generate_embed_url_for_anonymous_user(input)
       end
+
       def generate_embed_url_for_anonymous_user(input : Types::GenerateEmbedUrlForAnonymousUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GENERATE_EMBED_URL_FOR_ANONYMOUS_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1911,6 +2145,7 @@ module AwsSdk
       # information, see Embedded Analytics in the Amazon Quick Suite User Guide . For more information
       # about the high-level steps for embedding and for an interactive demo of the ways you can customize
       # embedding, visit the Amazon Quick Suite Developer Portal .
+
       def generate_embed_url_for_registered_user(
         aws_account_id : String,
         experience_configuration : Types::RegisteredUserEmbeddingExperienceConfiguration,
@@ -1921,6 +2156,7 @@ module AwsSdk
         input = Types::GenerateEmbedUrlForRegisteredUserRequest.new(aws_account_id: aws_account_id, experience_configuration: experience_configuration, user_arn: user_arn, allowed_domains: allowed_domains, session_lifetime_in_minutes: session_lifetime_in_minutes)
         generate_embed_url_for_registered_user(input)
       end
+
       def generate_embed_url_for_registered_user(input : Types::GenerateEmbedUrlForRegisteredUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GENERATE_EMBED_URL_FOR_REGISTERED_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1935,6 +2171,7 @@ module AwsSdk
       # have trusted Identity Propagation enabled for Amazon Quick Sight with the scope value set to
       # quicksight:read . Before you use this action, make sure that you have configured the relevant Amazon
       # Quick Sight resource and permissions.
+
       def generate_embed_url_for_registered_user_with_identity(
         aws_account_id : String,
         experience_configuration : Types::RegisteredUserEmbeddingExperienceConfiguration,
@@ -1944,6 +2181,7 @@ module AwsSdk
         input = Types::GenerateEmbedUrlForRegisteredUserWithIdentityRequest.new(aws_account_id: aws_account_id, experience_configuration: experience_configuration, allowed_domains: allowed_domains, session_lifetime_in_minutes: session_lifetime_in_minutes)
         generate_embed_url_for_registered_user_with_identity(input)
       end
+
       def generate_embed_url_for_registered_user_with_identity(input : Types::GenerateEmbedUrlForRegisteredUserWithIdentityRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GENERATE_EMBED_URL_FOR_REGISTERED_USER_WITH_IDENTITY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -1961,6 +2199,7 @@ module AwsSdk
       # Quick Suite User Guide . For more information about the high-level steps for embedding and for an
       # interactive demo of the ways you can customize embedding, visit the Amazon Quick Suite Developer
       # Portal .
+
       def get_dashboard_embed_url(
         aws_account_id : String,
         dashboard_id : String,
@@ -1976,12 +2215,14 @@ module AwsSdk
         input = Types::GetDashboardEmbedUrlRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, identity_type: identity_type, additional_dashboard_ids: additional_dashboard_ids, namespace: namespace, reset_disabled: reset_disabled, session_lifetime_in_minutes: session_lifetime_in_minutes, state_persistence_enabled: state_persistence_enabled, undo_redo_disabled: undo_redo_disabled, user_arn: user_arn)
         get_dashboard_embed_url(input)
       end
+
       def get_dashboard_embed_url(input : Types::GetDashboardEmbedUrlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DASHBOARD_EMBED_URL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves the metadata of a flow, not including its definition specifying the steps.
+
       def get_flow_metadata(
         aws_account_id : String,
         flow_id : String
@@ -1989,12 +2230,14 @@ module AwsSdk
         input = Types::GetFlowMetadataInput.new(aws_account_id: aws_account_id, flow_id: flow_id)
         get_flow_metadata(input)
       end
+
       def get_flow_metadata(input : Types::GetFlowMetadataInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_FLOW_METADATA, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Get permissions for a flow.
+
       def get_flow_permissions(
         aws_account_id : String,
         flow_id : String
@@ -2002,6 +2245,7 @@ module AwsSdk
         input = Types::GetFlowPermissionsInput.new(aws_account_id: aws_account_id, flow_id: flow_id)
         get_flow_permissions(input)
       end
+
       def get_flow_permissions(input : Types::GetFlowPermissionsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_FLOW_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2024,6 +2268,7 @@ module AwsSdk
       # from this API. The assumed role must allow the sts:SetContext action in addition to sts:AssumeRole
       # in its trust relationship policy. The trust policy should include both actions for the principal
       # that will be assuming the role.
+
       def get_identity_context(
         aws_account_id : String,
         user_identifier : Types::UserIdentifier,
@@ -2033,6 +2278,7 @@ module AwsSdk
         input = Types::GetIdentityContextRequest.new(aws_account_id: aws_account_id, user_identifier: user_identifier, namespace: namespace, session_expires_at: session_expires_at)
         get_identity_context(input)
       end
+
       def get_identity_context(input : Types::GetIdentityContextRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_IDENTITY_CONTEXT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2046,6 +2292,7 @@ module AwsSdk
       # user with the UpdateUser API operation. Use RegisterUser API operation to add a new user with a
       # custom permission profile attached. For more information, see the following sections in the Amazon
       # Quick Suite User Guide : Embedding Analytics Customizing Access to the Amazon Quick Suite Console
+
       def get_session_embed_url(
         aws_account_id : String,
         entry_point : String? = nil,
@@ -2055,6 +2302,7 @@ module AwsSdk
         input = Types::GetSessionEmbedUrlRequest.new(aws_account_id: aws_account_id, entry_point: entry_point, session_lifetime_in_minutes: session_lifetime_in_minutes, user_arn: user_arn)
         get_session_embed_url(input)
       end
+
       def get_session_embed_url(input : Types::GetSessionEmbedUrlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SESSION_EMBED_URL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2062,6 +2310,7 @@ module AwsSdk
 
       # Lists all action connectors in the specified Amazon Web Services account. Returns summary
       # information for each connector including its name, type, creation time, and status.
+
       def list_action_connectors(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2070,12 +2319,14 @@ module AwsSdk
         input = Types::ListActionConnectorsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_action_connectors(input)
       end
+
       def list_action_connectors(input : Types::ListActionConnectorsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ACTION_CONNECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists Amazon Quick Sight analyses that exist in the specified Amazon Web Services account.
+
       def list_analyses(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2084,6 +2335,7 @@ module AwsSdk
         input = Types::ListAnalysesRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_analyses(input)
       end
+
       def list_analyses(input : Types::ListAnalysesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ANALYSES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2093,6 +2345,7 @@ module AwsSdk
       # than 14 days ago are deleted forever and are not returned. If you are using the same job ID for
       # multiple jobs, ListAssetBundleExportJobs only returns the most recent job that uses the repeated job
       # ID.
+
       def list_asset_bundle_export_jobs(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2101,6 +2354,7 @@ module AwsSdk
         input = Types::ListAssetBundleExportJobsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_asset_bundle_export_jobs(input)
       end
+
       def list_asset_bundle_export_jobs(input : Types::ListAssetBundleExportJobsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSET_BUNDLE_EXPORT_JOBS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2109,6 +2363,7 @@ module AwsSdk
       # Lists all asset bundle import jobs that have taken place in the last 14 days. Jobs created more than
       # 14 days ago are deleted forever and are not returned. If you are using the same job ID for multiple
       # jobs, ListAssetBundleImportJobs only returns the most recent job that uses the repeated job ID.
+
       def list_asset_bundle_import_jobs(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2117,12 +2372,14 @@ module AwsSdk
         input = Types::ListAssetBundleImportJobsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_asset_bundle_import_jobs(input)
       end
+
       def list_asset_bundle_import_jobs(input : Types::ListAssetBundleImportJobsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSET_BUNDLE_IMPORT_JOBS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all brands in an Quick Sight account.
+
       def list_brands(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2131,12 +2388,14 @@ module AwsSdk
         input = Types::ListBrandsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_brands(input)
       end
+
       def list_brands(input : Types::ListBrandsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_BRANDS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of all the custom permissions profiles.
+
       def list_custom_permissions(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2145,12 +2404,14 @@ module AwsSdk
         input = Types::ListCustomPermissionsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_custom_permissions(input)
       end
+
       def list_custom_permissions(input : Types::ListCustomPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_CUSTOM_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the versions of the dashboards in the Amazon Quick Sight subscription.
+
       def list_dashboard_versions(
         aws_account_id : String,
         dashboard_id : String,
@@ -2160,12 +2421,14 @@ module AwsSdk
         input = Types::ListDashboardVersionsRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, max_results: max_results, next_token: next_token)
         list_dashboard_versions(input)
       end
+
       def list_dashboard_versions(input : Types::ListDashboardVersionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DASHBOARD_VERSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists dashboards in an Amazon Web Services account.
+
       def list_dashboards(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2174,6 +2437,7 @@ module AwsSdk
         input = Types::ListDashboardsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_dashboards(input)
       end
+
       def list_dashboards(input : Types::ListDashboardsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DASHBOARDS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2181,6 +2445,7 @@ module AwsSdk
 
       # Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web
       # Services Region. The permissions resource is arn:aws:quicksight:region:aws-account-id:dataset/* .
+
       def list_data_sets(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2189,6 +2454,7 @@ module AwsSdk
         input = Types::ListDataSetsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_data_sets(input)
       end
+
       def list_data_sets(input : Types::ListDataSetsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DATA_SETS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2196,6 +2462,7 @@ module AwsSdk
 
       # Lists data sources in current Amazon Web Services Region that belong to this Amazon Web Services
       # account.
+
       def list_data_sources(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2204,12 +2471,14 @@ module AwsSdk
         input = Types::ListDataSourcesRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_data_sources(input)
       end
+
       def list_data_sources(input : Types::ListDataSourcesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DATA_SOURCES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists flows in an Amazon Web Services account.
+
       def list_flows(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2218,12 +2487,14 @@ module AwsSdk
         input = Types::ListFlowsInput.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_flows(input)
       end
+
       def list_flows(input : Types::ListFlowsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_FLOWS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # List all assets ( DASHBOARD , ANALYSIS , and DATASET ) in a folder.
+
       def list_folder_members(
         aws_account_id : String,
         folder_id : String,
@@ -2233,12 +2504,14 @@ module AwsSdk
         input = Types::ListFolderMembersRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, max_results: max_results, next_token: next_token)
         list_folder_members(input)
       end
+
       def list_folder_members(input : Types::ListFolderMembersRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_FOLDER_MEMBERS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all folders in an account.
+
       def list_folders(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2247,12 +2520,14 @@ module AwsSdk
         input = Types::ListFoldersRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_folders(input)
       end
+
       def list_folders(input : Types::ListFoldersRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_FOLDERS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # List all folders that a resource is a member of.
+
       def list_folders_for_resource(
         aws_account_id : String,
         resource_arn : String,
@@ -2262,12 +2537,14 @@ module AwsSdk
         input = Types::ListFoldersForResourceRequest.new(aws_account_id: aws_account_id, resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_folders_for_resource(input)
       end
+
       def list_folders_for_resource(input : Types::ListFoldersForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_FOLDERS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists member users in a group.
+
       def list_group_memberships(
         aws_account_id : String,
         group_name : String,
@@ -2278,12 +2555,14 @@ module AwsSdk
         input = Types::ListGroupMembershipsRequest.new(aws_account_id: aws_account_id, group_name: group_name, namespace: namespace, max_results: max_results, next_token: next_token)
         list_group_memberships(input)
       end
+
       def list_group_memberships(input : Types::ListGroupMembershipsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_GROUP_MEMBERSHIPS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all user groups in Amazon Quick Sight.
+
       def list_groups(
         aws_account_id : String,
         namespace : String,
@@ -2293,12 +2572,14 @@ module AwsSdk
         input = Types::ListGroupsRequest.new(aws_account_id: aws_account_id, namespace: namespace, max_results: max_results, next_token: next_token)
         list_groups(input)
       end
+
       def list_groups(input : Types::ListGroupsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_GROUPS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the IAM policy assignments in the current Amazon Quick Sight account.
+
       def list_iam_policy_assignments(
         aws_account_id : String,
         namespace : String,
@@ -2309,6 +2590,7 @@ module AwsSdk
         input = Types::ListIAMPolicyAssignmentsRequest.new(aws_account_id: aws_account_id, namespace: namespace, assignment_status: assignment_status, max_results: max_results, next_token: next_token)
         list_iam_policy_assignments(input)
       end
+
       def list_iam_policy_assignments(input : Types::ListIAMPolicyAssignmentsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_IAM_POLICY_ASSIGNMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2316,6 +2598,7 @@ module AwsSdk
 
       # Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM
       # policies assigned to the specified user and group, or groups that the user belongs to.
+
       def list_iam_policy_assignments_for_user(
         aws_account_id : String,
         namespace : String,
@@ -2326,6 +2609,7 @@ module AwsSdk
         input = Types::ListIAMPolicyAssignmentsForUserRequest.new(aws_account_id: aws_account_id, namespace: namespace, user_name: user_name, max_results: max_results, next_token: next_token)
         list_iam_policy_assignments_for_user(input)
       end
+
       def list_iam_policy_assignments_for_user(input : Types::ListIAMPolicyAssignmentsForUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_IAM_POLICY_ASSIGNMENTS_FOR_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2333,6 +2617,7 @@ module AwsSdk
 
       # Lists all services and authorized targets that the Quick Sight IAM Identity Center application can
       # access. This operation is only supported for Quick Sight accounts that use IAM Identity Center.
+
       def list_identity_propagation_configs(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2341,6 +2626,7 @@ module AwsSdk
         input = Types::ListIdentityPropagationConfigsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_identity_propagation_configs(input)
       end
+
       def list_identity_propagation_configs(input : Types::ListIdentityPropagationConfigsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_IDENTITY_PROPAGATION_CONFIGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2348,6 +2634,7 @@ module AwsSdk
 
       # Lists the history of SPICE ingestions for a dataset. Limited to 5 TPS per user and 25 TPS per
       # account.
+
       def list_ingestions(
         aws_account_id : String,
         data_set_id : String,
@@ -2357,6 +2644,7 @@ module AwsSdk
         input = Types::ListIngestionsRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, max_results: max_results, next_token: next_token)
         list_ingestions(input)
       end
+
       def list_ingestions(input : Types::ListIngestionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_INGESTIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2364,6 +2652,7 @@ module AwsSdk
 
       # Lists the namespaces for the specified Amazon Web Services account. This operation doesn't list
       # deleted namespaces.
+
       def list_namespaces(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2372,12 +2661,14 @@ module AwsSdk
         input = Types::ListNamespacesRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_namespaces(input)
       end
+
       def list_namespaces(input : Types::ListNamespacesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_NAMESPACES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the refresh schedules of a dataset. Each dataset can have up to 5 schedules.
+
       def list_refresh_schedules(
         aws_account_id : String,
         data_set_id : String
@@ -2385,12 +2676,14 @@ module AwsSdk
         input = Types::ListRefreshSchedulesRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id)
         list_refresh_schedules(input)
       end
+
       def list_refresh_schedules(input : Types::ListRefreshSchedulesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_REFRESH_SCHEDULES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all groups that are associated with a role.
+
       def list_role_memberships(
         aws_account_id : String,
         namespace : String,
@@ -2401,12 +2694,14 @@ module AwsSdk
         input = Types::ListRoleMembershipsRequest.new(aws_account_id: aws_account_id, namespace: namespace, role: role, max_results: max_results, next_token: next_token)
         list_role_memberships(input)
       end
+
       def list_role_memberships(input : Types::ListRoleMembershipsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ROLE_MEMBERSHIPS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all self-upgrade requests for a Quick Suite account.
+
       def list_self_upgrades(
         aws_account_id : String,
         namespace : String,
@@ -2416,24 +2711,28 @@ module AwsSdk
         input = Types::ListSelfUpgradesRequest.new(aws_account_id: aws_account_id, namespace: namespace, max_results: max_results, next_token: next_token)
         list_self_upgrades(input)
       end
+
       def list_self_upgrades(input : Types::ListSelfUpgradesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_SELF_UPGRADES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the tags assigned to a resource.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the aliases of a template.
+
       def list_template_aliases(
         aws_account_id : String,
         template_id : String,
@@ -2443,12 +2742,14 @@ module AwsSdk
         input = Types::ListTemplateAliasesRequest.new(aws_account_id: aws_account_id, template_id: template_id, max_results: max_results, next_token: next_token)
         list_template_aliases(input)
       end
+
       def list_template_aliases(input : Types::ListTemplateAliasesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TEMPLATE_ALIASES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the versions of the templates in the current Amazon Quick Sight account.
+
       def list_template_versions(
         aws_account_id : String,
         template_id : String,
@@ -2458,12 +2759,14 @@ module AwsSdk
         input = Types::ListTemplateVersionsRequest.new(aws_account_id: aws_account_id, template_id: template_id, max_results: max_results, next_token: next_token)
         list_template_versions(input)
       end
+
       def list_template_versions(input : Types::ListTemplateVersionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TEMPLATE_VERSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the templates in the current Amazon Quick Sight account.
+
       def list_templates(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2472,12 +2775,14 @@ module AwsSdk
         input = Types::ListTemplatesRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_templates(input)
       end
+
       def list_templates(input : Types::ListTemplatesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TEMPLATES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the aliases of a theme.
+
       def list_theme_aliases(
         aws_account_id : String,
         theme_id : String,
@@ -2487,12 +2792,14 @@ module AwsSdk
         input = Types::ListThemeAliasesRequest.new(aws_account_id: aws_account_id, theme_id: theme_id, max_results: max_results, next_token: next_token)
         list_theme_aliases(input)
       end
+
       def list_theme_aliases(input : Types::ListThemeAliasesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_THEME_ALIASES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the versions of the themes in the current Amazon Web Services account.
+
       def list_theme_versions(
         aws_account_id : String,
         theme_id : String,
@@ -2502,12 +2809,14 @@ module AwsSdk
         input = Types::ListThemeVersionsRequest.new(aws_account_id: aws_account_id, theme_id: theme_id, max_results: max_results, next_token: next_token)
         list_theme_versions(input)
       end
+
       def list_theme_versions(input : Types::ListThemeVersionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_THEME_VERSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all the themes in the current Amazon Web Services account.
+
       def list_themes(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2517,12 +2826,14 @@ module AwsSdk
         input = Types::ListThemesRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token, type: type)
         list_themes(input)
       end
+
       def list_themes(input : Types::ListThemesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_THEMES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all of the refresh schedules for a topic.
+
       def list_topic_refresh_schedules(
         aws_account_id : String,
         topic_id : String
@@ -2530,12 +2841,14 @@ module AwsSdk
         input = Types::ListTopicRefreshSchedulesRequest.new(aws_account_id: aws_account_id, topic_id: topic_id)
         list_topic_refresh_schedules(input)
       end
+
       def list_topic_refresh_schedules(input : Types::ListTopicRefreshSchedulesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TOPIC_REFRESH_SCHEDULES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all reviewed answers for a Q Topic.
+
       def list_topic_reviewed_answers(
         aws_account_id : String,
         topic_id : String
@@ -2543,12 +2856,14 @@ module AwsSdk
         input = Types::ListTopicReviewedAnswersRequest.new(aws_account_id: aws_account_id, topic_id: topic_id)
         list_topic_reviewed_answers(input)
       end
+
       def list_topic_reviewed_answers(input : Types::ListTopicReviewedAnswersRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TOPIC_REVIEWED_ANSWERS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists all of the topics within an account.
+
       def list_topics(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2557,12 +2872,14 @@ module AwsSdk
         input = Types::ListTopicsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_topics(input)
       end
+
       def list_topics(input : Types::ListTopicsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TOPICS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a member of.
+
       def list_user_groups(
         aws_account_id : String,
         namespace : String,
@@ -2573,12 +2890,14 @@ module AwsSdk
         input = Types::ListUserGroupsRequest.new(aws_account_id: aws_account_id, namespace: namespace, user_name: user_name, max_results: max_results, next_token: next_token)
         list_user_groups(input)
       end
+
       def list_user_groups(input : Types::ListUserGroupsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_USER_GROUPS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of all of the Amazon Quick Sight users belonging to this account.
+
       def list_users(
         aws_account_id : String,
         namespace : String,
@@ -2588,6 +2907,7 @@ module AwsSdk
         input = Types::ListUsersRequest.new(aws_account_id: aws_account_id, namespace: namespace, max_results: max_results, next_token: next_token)
         list_users(input)
       end
+
       def list_users(input : Types::ListUsersRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_USERS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2595,6 +2915,7 @@ module AwsSdk
 
       # Lists all of the VPC connections in the current set Amazon Web Services Region of an Amazon Web
       # Services account.
+
       def list_vpc_connections(
         aws_account_id : String,
         max_results : Int32? = nil,
@@ -2603,6 +2924,7 @@ module AwsSdk
         input = Types::ListVPCConnectionsRequest.new(aws_account_id: aws_account_id, max_results: max_results, next_token: next_token)
         list_vpc_connections(input)
       end
+
       def list_vpc_connections(input : Types::ListVPCConnectionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_VPC_CONNECTIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2618,6 +2940,7 @@ module AwsSdk
       # any existing visuals that match the question. If no matching visuals are found, PredictQnA uses
       # generative Q&amp;A to provide an answer. To update the QSearchStatus , see
       # UpdateQuickSightQSearchConfiguration .
+
       def predict_qa_results(
         aws_account_id : String,
         query_text : String,
@@ -2628,12 +2951,14 @@ module AwsSdk
         input = Types::PredictQAResultsRequest.new(aws_account_id: aws_account_id, query_text: query_text, include_generated_answer: include_generated_answer, include_quick_sight_q_index: include_quick_sight_q_index, max_topics_to_consider: max_topics_to_consider)
         predict_qa_results(input)
       end
+
       def predict_qa_results(input : Types::PredictQAResultsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PREDICT_QA_RESULTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates or updates the dataset refresh properties for the dataset.
+
       def put_data_set_refresh_properties(
         aws_account_id : String,
         data_set_id : String,
@@ -2642,6 +2967,7 @@ module AwsSdk
         input = Types::PutDataSetRefreshPropertiesRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, data_set_refresh_properties: data_set_refresh_properties)
         put_data_set_refresh_properties(input)
       end
+
       def put_data_set_refresh_properties(input : Types::PutDataSetRefreshPropertiesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_DATA_SET_REFRESH_PROPERTIES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2654,6 +2980,7 @@ module AwsSdk
       # from the Quick Sight API. If you want new users to receive a registration email, then add those
       # users in the Quick Sight console. For more information on registering a new user in the Quick Sight
       # console, see Inviting users to access Quick Sight .
+
       def register_user(
         aws_account_id : String,
         email : String,
@@ -2672,12 +2999,14 @@ module AwsSdk
         input = Types::RegisterUserRequest.new(aws_account_id: aws_account_id, email: email, identity_type: identity_type, namespace: namespace, user_role: user_role, custom_federation_provider_url: custom_federation_provider_url, custom_permissions_name: custom_permissions_name, external_login_federation_provider_type: external_login_federation_provider_type, external_login_id: external_login_id, iam_arn: iam_arn, session_name: session_name, tags: tags, user_name: user_name)
         register_user(input)
       end
+
       def register_user(input : Types::RegisterUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REGISTER_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Restores an analysis.
+
       def restore_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -2686,6 +3015,7 @@ module AwsSdk
         input = Types::RestoreAnalysisRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id, restore_to_folders: restore_to_folders)
         restore_analysis(input)
       end
+
       def restore_analysis(input : Types::RestoreAnalysisRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::RESTORE_ANALYSIS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2693,6 +3023,7 @@ module AwsSdk
 
       # Searches for action connectors in the specified Amazon Web Services account using filters. You can
       # search by connector name, type, or user permissions.
+
       def search_action_connectors(
         aws_account_id : String,
         filters : Array(Types::ActionConnectorSearchFilter),
@@ -2702,6 +3033,7 @@ module AwsSdk
         input = Types::SearchActionConnectorsRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_action_connectors(input)
       end
+
       def search_action_connectors(input : Types::SearchActionConnectorsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_ACTION_CONNECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2709,6 +3041,7 @@ module AwsSdk
 
       # Searches for analyses that belong to the user specified in the filter. This operation is eventually
       # consistent. The results are best effort and may not reflect very recent updates and changes.
+
       def search_analyses(
         aws_account_id : String,
         filters : Array(Types::AnalysisSearchFilter),
@@ -2718,6 +3051,7 @@ module AwsSdk
         input = Types::SearchAnalysesRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_analyses(input)
       end
+
       def search_analyses(input : Types::SearchAnalysesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_ANALYSES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2725,6 +3059,7 @@ module AwsSdk
 
       # Searches for dashboards that belong to a user. This operation is eventually consistent. The results
       # are best effort and may not reflect very recent updates and changes.
+
       def search_dashboards(
         aws_account_id : String,
         filters : Array(Types::DashboardSearchFilter),
@@ -2734,12 +3069,14 @@ module AwsSdk
         input = Types::SearchDashboardsRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_dashboards(input)
       end
+
       def search_dashboards(input : Types::SearchDashboardsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_DASHBOARDS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Use the SearchDataSets operation to search for datasets that belong to an account.
+
       def search_data_sets(
         aws_account_id : String,
         filters : Array(Types::DataSetSearchFilter),
@@ -2749,12 +3086,14 @@ module AwsSdk
         input = Types::SearchDataSetsRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_data_sets(input)
       end
+
       def search_data_sets(input : Types::SearchDataSetsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_DATA_SETS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Use the SearchDataSources operation to search for data sources that belong to an account.
+
       def search_data_sources(
         aws_account_id : String,
         filters : Array(Types::DataSourceSearchFilter),
@@ -2764,12 +3103,14 @@ module AwsSdk
         input = Types::SearchDataSourcesRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_data_sources(input)
       end
+
       def search_data_sources(input : Types::SearchDataSourcesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_DATA_SOURCES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Search for the flows in an Amazon Web Services account.
+
       def search_flows(
         aws_account_id : String,
         filters : Array(Types::SearchFlowsFilter),
@@ -2779,12 +3120,14 @@ module AwsSdk
         input = Types::SearchFlowsInput.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_flows(input)
       end
+
       def search_flows(input : Types::SearchFlowsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_FLOWS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Searches the subfolders in a folder.
+
       def search_folders(
         aws_account_id : String,
         filters : Array(Types::FolderSearchFilter),
@@ -2794,6 +3137,7 @@ module AwsSdk
         input = Types::SearchFoldersRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_folders(input)
       end
+
       def search_folders(input : Types::SearchFoldersRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_FOLDERS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2801,6 +3145,7 @@ module AwsSdk
 
       # Use the SearchGroups operation to search groups in a specified Quick Sight namespace using the
       # supplied filters.
+
       def search_groups(
         aws_account_id : String,
         filters : Array(Types::GroupSearchFilter),
@@ -2811,12 +3156,14 @@ module AwsSdk
         input = Types::SearchGroupsRequest.new(aws_account_id: aws_account_id, filters: filters, namespace: namespace, max_results: max_results, next_token: next_token)
         search_groups(input)
       end
+
       def search_groups(input : Types::SearchGroupsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_GROUPS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Searches for any Q topic that exists in an Quick Suite account.
+
       def search_topics(
         aws_account_id : String,
         filters : Array(Types::TopicSearchFilter),
@@ -2826,6 +3173,7 @@ module AwsSdk
         input = Types::SearchTopicsRequest.new(aws_account_id: aws_account_id, filters: filters, max_results: max_results, next_token: next_token)
         search_topics(input)
       end
+
       def search_topics(input : Types::SearchTopicsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH_TOPICS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2838,6 +3186,7 @@ module AwsSdk
       # valid for 5 minutes and can be refreshed with a DescribeAssetBundleExportJob API call. Each Amazon
       # Quick Sight account can run up to 5 export jobs concurrently. The API caller must have the necessary
       # permissions in their IAM role to access each resource before the resources can be exported.
+
       def start_asset_bundle_export_job(
         asset_bundle_export_job_id : String,
         aws_account_id : String,
@@ -2854,6 +3203,7 @@ module AwsSdk
         input = Types::StartAssetBundleExportJobRequest.new(asset_bundle_export_job_id: asset_bundle_export_job_id, aws_account_id: aws_account_id, export_format: export_format, resource_arns: resource_arns, cloud_formation_override_property_configuration: cloud_formation_override_property_configuration, include_all_dependencies: include_all_dependencies, include_folder_members: include_folder_members, include_folder_memberships: include_folder_memberships, include_permissions: include_permissions, include_tags: include_tags, validation_strategy: validation_strategy)
         start_asset_bundle_export_job(input)
       end
+
       def start_asset_bundle_export_job(input : Types::StartAssetBundleExportJobRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_ASSET_BUNDLE_EXPORT_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2866,6 +3216,7 @@ module AwsSdk
       # Quick Sight account can run up to 5 import jobs concurrently. The API caller must have the necessary
       # "create" , "describe" , and "update" permissions in their IAM role to access each resource type that
       # is contained in the bundle file before the resources can be imported.
+
       def start_asset_bundle_import_job(
         asset_bundle_import_job_id : String,
         asset_bundle_import_source : Types::AssetBundleImportSource,
@@ -2879,6 +3230,7 @@ module AwsSdk
         input = Types::StartAssetBundleImportJobRequest.new(asset_bundle_import_job_id: asset_bundle_import_job_id, asset_bundle_import_source: asset_bundle_import_source, aws_account_id: aws_account_id, failure_action: failure_action, override_parameters: override_parameters, override_permissions: override_permissions, override_tags: override_tags, override_validation_strategy: override_validation_strategy)
         start_asset_bundle_import_job(input)
       end
+
       def start_asset_bundle_import_job(input : Types::StartAssetBundleImportJobRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_ASSET_BUNDLE_IMPORT_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2950,6 +3302,7 @@ module AwsSdk
       # The impersonated Quick Sight user doesn't have access to the specified dashboard. The impersonated
       # Quick Sight user is restricted from exporting data in the selected formats. For more information
       # about export restrictions, see Customizing access to Amazon Quick Sight capabilities .
+
       def start_dashboard_snapshot_job(
         aws_account_id : String,
         dashboard_id : String,
@@ -2960,6 +3313,7 @@ module AwsSdk
         input = Types::StartDashboardSnapshotJobRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, snapshot_configuration: snapshot_configuration, snapshot_job_id: snapshot_job_id, user_configuration: user_configuration)
         start_dashboard_snapshot_job(input)
       end
+
       def start_dashboard_snapshot_job(input : Types::StartDashboardSnapshotJobRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_DASHBOARD_SNAPSHOT_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2970,6 +3324,7 @@ module AwsSdk
       # skipped with a 202 HTTP status code. For more information, see Scheduling and sending Amazon Quick
       # Sight reports by email and Configuring email report settings for a Amazon Quick Sight dashboard in
       # the Amazon Quick Sight User Guide .
+
       def start_dashboard_snapshot_job_schedule(
         aws_account_id : String,
         dashboard_id : String,
@@ -2978,6 +3333,7 @@ module AwsSdk
         input = Types::StartDashboardSnapshotJobScheduleRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, schedule_id: schedule_id)
         start_dashboard_snapshot_job_schedule(input)
       end
+
       def start_dashboard_snapshot_job_schedule(input : Types::StartDashboardSnapshotJobScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_DASHBOARD_SNAPSHOT_JOB_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -2996,6 +3352,7 @@ module AwsSdk
       # resources that Amazon Quick Sight costs are based on, such as storage capacoty (SPICE), session
       # usage, alert consumption, or reporting units. Amazon Quick Sight doesn't currently support the tag
       # editor for Resource Groups.
+
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -3003,12 +3360,14 @@ module AwsSdk
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes a tag or tags from a resource.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -3016,12 +3375,14 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Applies a custom permissions profile to an account.
+
       def update_account_custom_permission(
         aws_account_id : String,
         custom_permissions_name : String
@@ -3029,6 +3390,7 @@ module AwsSdk
         input = Types::UpdateAccountCustomPermissionRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name)
         update_account_custom_permission(input)
       end
+
       def update_account_custom_permission(input : Types::UpdateAccountCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ACCOUNT_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3039,6 +3401,7 @@ module AwsSdk
       # namespace, for a Quick Sight namespace instead. Customizations that apply to a namespace override
       # customizations that apply to an Amazon Web Services account. To find out which customizations apply,
       # use the DescribeAccountCustomization API operation.
+
       def update_account_customization(
         account_customization : Types::AccountCustomization,
         aws_account_id : String,
@@ -3047,12 +3410,14 @@ module AwsSdk
         input = Types::UpdateAccountCustomizationRequest.new(account_customization: account_customization, aws_account_id: aws_account_id, namespace: namespace)
         update_account_customization(input)
       end
+
       def update_account_customization(input : Types::UpdateAccountCustomizationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ACCOUNT_CUSTOMIZATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the Amazon Quick Sight settings in your Amazon Web Services account.
+
       def update_account_settings(
         aws_account_id : String,
         default_namespace : String,
@@ -3062,6 +3427,7 @@ module AwsSdk
         input = Types::UpdateAccountSettingsRequest.new(aws_account_id: aws_account_id, default_namespace: default_namespace, notification_email: notification_email, termination_protection_enabled: termination_protection_enabled)
         update_account_settings(input)
       end
+
       def update_account_settings(input : Types::UpdateAccountSettingsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ACCOUNT_SETTINGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3071,6 +3437,7 @@ module AwsSdk
       # enabled actions. You can modify the connector's name, description, authentication configuration, and
       # which actions are enabled. For more information,
       # https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html .
+
       def update_action_connector(
         action_connector_id : String,
         authentication_config : Types::AuthConfig,
@@ -3082,6 +3449,7 @@ module AwsSdk
         input = Types::UpdateActionConnectorRequest.new(action_connector_id: action_connector_id, authentication_config: authentication_config, aws_account_id: aws_account_id, name: name, description: description, vpc_connection_arn: vpc_connection_arn)
         update_action_connector(input)
       end
+
       def update_action_connector(input : Types::UpdateActionConnectorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ACTION_CONNECTOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3089,6 +3457,7 @@ module AwsSdk
 
       # Updates the permissions for an action connector by granting or revoking access for specific users
       # and groups. You can control who can view, use, or manage the action connector.
+
       def update_action_connector_permissions(
         action_connector_id : String,
         aws_account_id : String,
@@ -3098,12 +3467,14 @@ module AwsSdk
         input = Types::UpdateActionConnectorPermissionsRequest.new(action_connector_id: action_connector_id, aws_account_id: aws_account_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_action_connector_permissions(input)
       end
+
       def update_action_connector_permissions(input : Types::UpdateActionConnectorPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ACTION_CONNECTOR_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates an analysis in Amazon Quick Sight
+
       def update_analysis(
         analysis_id : String,
         aws_account_id : String,
@@ -3117,12 +3488,14 @@ module AwsSdk
         input = Types::UpdateAnalysisRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id, name: name, definition: definition, parameters: parameters, source_entity: source_entity, theme_arn: theme_arn, validation_strategy: validation_strategy)
         update_analysis(input)
       end
+
       def update_analysis(input : Types::UpdateAnalysisRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ANALYSIS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the read and write permissions for an analysis.
+
       def update_analysis_permissions(
         analysis_id : String,
         aws_account_id : String,
@@ -3132,6 +3505,7 @@ module AwsSdk
         input = Types::UpdateAnalysisPermissionsRequest.new(analysis_id: analysis_id, aws_account_id: aws_account_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_analysis_permissions(input)
       end
+
       def update_analysis_permissions(input : Types::UpdateAnalysisPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ANALYSIS_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3139,6 +3513,7 @@ module AwsSdk
 
       # Updates an Quick Suite application with a token exchange grant. This operation only supports Quick
       # Suite applications that are registered with IAM Identity Center.
+
       def update_application_with_token_exchange_grant(
         aws_account_id : String,
         namespace : String
@@ -3146,12 +3521,14 @@ module AwsSdk
         input = Types::UpdateApplicationWithTokenExchangeGrantRequest.new(aws_account_id: aws_account_id, namespace: namespace)
         update_application_with_token_exchange_grant(input)
       end
+
       def update_application_with_token_exchange_grant(input : Types::UpdateApplicationWithTokenExchangeGrantRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_APPLICATION_WITH_TOKEN_EXCHANGE_GRANT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a brand.
+
       def update_brand(
         aws_account_id : String,
         brand_id : String,
@@ -3160,12 +3537,14 @@ module AwsSdk
         input = Types::UpdateBrandRequest.new(aws_account_id: aws_account_id, brand_id: brand_id, brand_definition: brand_definition)
         update_brand(input)
       end
+
       def update_brand(input : Types::UpdateBrandRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_BRAND, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a brand assignment.
+
       def update_brand_assignment(
         aws_account_id : String,
         brand_arn : String
@@ -3173,12 +3552,14 @@ module AwsSdk
         input = Types::UpdateBrandAssignmentRequest.new(aws_account_id: aws_account_id, brand_arn: brand_arn)
         update_brand_assignment(input)
       end
+
       def update_brand_assignment(input : Types::UpdateBrandAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_BRAND_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the published version of a brand.
+
       def update_brand_published_version(
         aws_account_id : String,
         brand_id : String,
@@ -3187,12 +3568,14 @@ module AwsSdk
         input = Types::UpdateBrandPublishedVersionRequest.new(aws_account_id: aws_account_id, brand_id: brand_id, version_id: version_id)
         update_brand_published_version(input)
       end
+
       def update_brand_published_version(input : Types::UpdateBrandPublishedVersionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_BRAND_PUBLISHED_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a custom permissions profile.
+
       def update_custom_permissions(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -3201,6 +3584,7 @@ module AwsSdk
         input = Types::UpdateCustomPermissionsRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name, capabilities: capabilities)
         update_custom_permissions(input)
       end
+
       def update_custom_permissions(input : Types::UpdateCustomPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_CUSTOM_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3209,6 +3593,7 @@ module AwsSdk
       # Updates a dashboard in an Amazon Web Services account. Updating a Dashboard creates a new dashboard
       # version but does not immediately publish the new version. You can update the published version of a
       # dashboard by using the UpdateDashboardPublishedVersion API operation.
+
       def update_dashboard(
         aws_account_id : String,
         dashboard_id : String,
@@ -3224,12 +3609,14 @@ module AwsSdk
         input = Types::UpdateDashboardRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, name: name, dashboard_publish_options: dashboard_publish_options, definition: definition, parameters: parameters, source_entity: source_entity, theme_arn: theme_arn, validation_strategy: validation_strategy, version_description: version_description)
         update_dashboard(input)
       end
+
       def update_dashboard(input : Types::UpdateDashboardRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DASHBOARD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the linked analyses on a dashboard.
+
       def update_dashboard_links(
         aws_account_id : String,
         dashboard_id : String,
@@ -3238,12 +3625,14 @@ module AwsSdk
         input = Types::UpdateDashboardLinksRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, link_entities: link_entities)
         update_dashboard_links(input)
       end
+
       def update_dashboard_links(input : Types::UpdateDashboardLinksRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DASHBOARD_LINKS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates read and write permissions on a dashboard.
+
       def update_dashboard_permissions(
         aws_account_id : String,
         dashboard_id : String,
@@ -3255,12 +3644,14 @@ module AwsSdk
         input = Types::UpdateDashboardPermissionsRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, grant_link_permissions: grant_link_permissions, grant_permissions: grant_permissions, revoke_link_permissions: revoke_link_permissions, revoke_permissions: revoke_permissions)
         update_dashboard_permissions(input)
       end
+
       def update_dashboard_permissions(input : Types::UpdateDashboardPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DASHBOARD_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the published version of a dashboard.
+
       def update_dashboard_published_version(
         aws_account_id : String,
         dashboard_id : String,
@@ -3269,12 +3660,14 @@ module AwsSdk
         input = Types::UpdateDashboardPublishedVersionRequest.new(aws_account_id: aws_account_id, dashboard_id: dashboard_id, version_number: version_number)
         update_dashboard_published_version(input)
       end
+
       def update_dashboard_published_version(input : Types::UpdateDashboardPublishedVersionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DASHBOARD_PUBLISHED_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a Dashboard QA configuration.
+
       def update_dashboards_qa_configuration(
         aws_account_id : String,
         dashboards_qa_status : String
@@ -3282,6 +3675,7 @@ module AwsSdk
         input = Types::UpdateDashboardsQAConfigurationRequest.new(aws_account_id: aws_account_id, dashboards_qa_status: dashboards_qa_status)
         update_dashboards_qa_configuration(input)
       end
+
       def update_dashboards_qa_configuration(input : Types::UpdateDashboardsQAConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DASHBOARDS_QA_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3289,6 +3683,7 @@ module AwsSdk
 
       # Updates a dataset. This operation doesn't support datasets that include uploaded files as a source.
       # Partial updates are not supported by this operation.
+
       def update_data_set(
         aws_account_id : String,
         data_set_id : String,
@@ -3310,6 +3705,7 @@ module AwsSdk
         input = Types::UpdateDataSetRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, import_mode: import_mode, name: name, physical_table_map: physical_table_map, column_groups: column_groups, column_level_permission_rules: column_level_permission_rules, data_prep_configuration: data_prep_configuration, data_set_usage_configuration: data_set_usage_configuration, dataset_parameters: dataset_parameters, field_folders: field_folders, logical_table_map: logical_table_map, performance_configuration: performance_configuration, row_level_permission_data_set: row_level_permission_data_set, row_level_permission_tag_configuration: row_level_permission_tag_configuration, semantic_model_configuration: semantic_model_configuration)
         update_data_set(input)
       end
+
       def update_data_set(input : Types::UpdateDataSetRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DATA_SET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3317,6 +3713,7 @@ module AwsSdk
 
       # Updates the permissions on a dataset. The permissions resource is
       # arn:aws:quicksight:region:aws-account-id:dataset/data-set-id .
+
       def update_data_set_permissions(
         aws_account_id : String,
         data_set_id : String,
@@ -3326,12 +3723,14 @@ module AwsSdk
         input = Types::UpdateDataSetPermissionsRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_data_set_permissions(input)
       end
+
       def update_data_set_permissions(input : Types::UpdateDataSetPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DATA_SET_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a data source.
+
       def update_data_source(
         aws_account_id : String,
         data_source_id : String,
@@ -3344,12 +3743,14 @@ module AwsSdk
         input = Types::UpdateDataSourceRequest.new(aws_account_id: aws_account_id, data_source_id: data_source_id, name: name, credentials: credentials, data_source_parameters: data_source_parameters, ssl_properties: ssl_properties, vpc_connection_properties: vpc_connection_properties)
         update_data_source(input)
       end
+
       def update_data_source(input : Types::UpdateDataSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DATA_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the permissions to a data source.
+
       def update_data_source_permissions(
         aws_account_id : String,
         data_source_id : String,
@@ -3359,12 +3760,14 @@ module AwsSdk
         input = Types::UpdateDataSourcePermissionsRequest.new(aws_account_id: aws_account_id, data_source_id: data_source_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_data_source_permissions(input)
       end
+
       def update_data_source_permissions(input : Types::UpdateDataSourcePermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DATA_SOURCE_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a Amazon Q Business application that is linked to a Quick Sight account.
+
       def update_default_q_business_application(
         application_id : String,
         aws_account_id : String,
@@ -3373,12 +3776,14 @@ module AwsSdk
         input = Types::UpdateDefaultQBusinessApplicationRequest.new(application_id: application_id, aws_account_id: aws_account_id, namespace: namespace)
         update_default_q_business_application(input)
       end
+
       def update_default_q_business_application(input : Types::UpdateDefaultQBusinessApplicationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DEFAULT_Q_BUSINESS_APPLICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates permissions against principals on a flow.
+
       def update_flow_permissions(
         aws_account_id : String,
         flow_id : String,
@@ -3388,12 +3793,14 @@ module AwsSdk
         input = Types::UpdateFlowPermissionsInput.new(aws_account_id: aws_account_id, flow_id: flow_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_flow_permissions(input)
       end
+
       def update_flow_permissions(input : Types::UpdateFlowPermissionsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_FLOW_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the name of a folder.
+
       def update_folder(
         aws_account_id : String,
         folder_id : String,
@@ -3402,12 +3809,14 @@ module AwsSdk
         input = Types::UpdateFolderRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, name: name)
         update_folder(input)
       end
+
       def update_folder(input : Types::UpdateFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates permissions of a folder.
+
       def update_folder_permissions(
         aws_account_id : String,
         folder_id : String,
@@ -3417,12 +3826,14 @@ module AwsSdk
         input = Types::UpdateFolderPermissionsRequest.new(aws_account_id: aws_account_id, folder_id: folder_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_folder_permissions(input)
       end
+
       def update_folder_permissions(input : Types::UpdateFolderPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_FOLDER_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Changes a group description.
+
       def update_group(
         aws_account_id : String,
         group_name : String,
@@ -3432,6 +3843,7 @@ module AwsSdk
         input = Types::UpdateGroupRequest.new(aws_account_id: aws_account_id, group_name: group_name, namespace: namespace, description: description)
         update_group(input)
       end
+
       def update_group(input : Types::UpdateGroupRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_GROUP, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3440,6 +3852,7 @@ module AwsSdk
       # Updates an existing IAM policy assignment. This operation updates only the optional parameter or
       # parameters that are specified in the request. This overwrites all of the users included in
       # Identities .
+
       def update_iam_policy_assignment(
         assignment_name : String,
         aws_account_id : String,
@@ -3451,6 +3864,7 @@ module AwsSdk
         input = Types::UpdateIAMPolicyAssignmentRequest.new(assignment_name: assignment_name, aws_account_id: aws_account_id, namespace: namespace, assignment_status: assignment_status, identities: identities, policy_arn: policy_arn)
         update_iam_policy_assignment(input)
       end
+
       def update_iam_policy_assignment(input : Types::UpdateIAMPolicyAssignmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_IAM_POLICY_ASSIGNMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3459,6 +3873,7 @@ module AwsSdk
       # Adds or updates services and authorized targets to configure what the Quick Sight IAM Identity
       # Center application can access. This operation is only supported for Quick Sight accounts using IAM
       # Identity Center
+
       def update_identity_propagation_config(
         aws_account_id : String,
         service : String,
@@ -3467,6 +3882,7 @@ module AwsSdk
         input = Types::UpdateIdentityPropagationConfigRequest.new(aws_account_id: aws_account_id, service: service, authorized_targets: authorized_targets)
         update_identity_propagation_config(input)
       end
+
       def update_identity_propagation_config(input : Types::UpdateIdentityPropagationConfigRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_IDENTITY_PROPAGATION_CONFIG, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3476,6 +3892,7 @@ module AwsSdk
       # satisfies either the IpRestrictionRule , VpcIdRestrictionRule , or VpcEndpointIdRestrictionRule . To
       # use this operation, you must provide the entire map of rules. You can use the DescribeIpRestriction
       # operation to get the current rule map.
+
       def update_ip_restriction(
         aws_account_id : String,
         enabled : Bool? = nil,
@@ -3486,12 +3903,14 @@ module AwsSdk
         input = Types::UpdateIpRestrictionRequest.new(aws_account_id: aws_account_id, enabled: enabled, ip_restriction_rule_map: ip_restriction_rule_map, vpc_endpoint_id_restriction_rule_map: vpc_endpoint_id_restriction_rule_map, vpc_id_restriction_rule_map: vpc_id_restriction_rule_map)
         update_ip_restriction(input)
       end
+
       def update_ip_restriction(input : Types::UpdateIpRestrictionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_IP_RESTRICTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a customer managed key in a Quick Sight account.
+
       def update_key_registration(
         aws_account_id : String,
         key_registration : Array(Types::RegisteredCustomerManagedKey)
@@ -3499,6 +3918,7 @@ module AwsSdk
         input = Types::UpdateKeyRegistrationRequest.new(aws_account_id: aws_account_id, key_registration: key_registration)
         update_key_registration(input)
       end
+
       def update_key_registration(input : Types::UpdateKeyRegistrationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_KEY_REGISTRATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3514,6 +3934,7 @@ module AwsSdk
       # public sharing permissions to an administrative user in the Identity and Access Management (IAM)
       # console. For more information on using IAM with Amazon Quick Sight, see Using Quick Suite with IAM
       # in the Amazon Quick Sight User Guide .
+
       def update_public_sharing_settings(
         aws_account_id : String,
         public_sharing_enabled : Bool? = nil
@@ -3521,12 +3942,14 @@ module AwsSdk
         input = Types::UpdatePublicSharingSettingsRequest.new(aws_account_id: aws_account_id, public_sharing_enabled: public_sharing_enabled)
         update_public_sharing_settings(input)
       end
+
       def update_public_sharing_settings(input : Types::UpdatePublicSharingSettingsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_PUBLIC_SHARING_SETTINGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a personalization configuration.
+
       def update_q_personalization_configuration(
         aws_account_id : String,
         personalization_mode : String
@@ -3534,12 +3957,14 @@ module AwsSdk
         input = Types::UpdateQPersonalizationConfigurationRequest.new(aws_account_id: aws_account_id, personalization_mode: personalization_mode)
         update_q_personalization_configuration(input)
       end
+
       def update_q_personalization_configuration(input : Types::UpdateQPersonalizationConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_Q_PERSONALIZATION_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the state of a Quick Sight Q Search configuration.
+
       def update_quick_sight_q_search_configuration(
         aws_account_id : String,
         q_search_status : String
@@ -3547,12 +3972,14 @@ module AwsSdk
         input = Types::UpdateQuickSightQSearchConfigurationRequest.new(aws_account_id: aws_account_id, q_search_status: q_search_status)
         update_quick_sight_q_search_configuration(input)
       end
+
       def update_quick_sight_q_search_configuration(input : Types::UpdateQuickSightQSearchConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_QUICK_SIGHT_Q_SEARCH_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a refresh schedule for a dataset.
+
       def update_refresh_schedule(
         aws_account_id : String,
         data_set_id : String,
@@ -3561,12 +3988,14 @@ module AwsSdk
         input = Types::UpdateRefreshScheduleRequest.new(aws_account_id: aws_account_id, data_set_id: data_set_id, schedule: schedule)
         update_refresh_schedule(input)
       end
+
       def update_refresh_schedule(input : Types::UpdateRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the custom permissions that are associated with a role.
+
       def update_role_custom_permission(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -3576,12 +4005,14 @@ module AwsSdk
         input = Types::UpdateRoleCustomPermissionRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name, namespace: namespace, role: role)
         update_role_custom_permission(input)
       end
+
       def update_role_custom_permission(input : Types::UpdateRoleCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ROLE_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the SPICE capacity configuration for a Quick Sight account.
+
       def update_spice_capacity_configuration(
         aws_account_id : String,
         purchase_mode : String
@@ -3589,6 +4020,7 @@ module AwsSdk
         input = Types::UpdateSPICECapacityConfigurationRequest.new(aws_account_id: aws_account_id, purchase_mode: purchase_mode)
         update_spice_capacity_configuration(input)
       end
+
       def update_spice_capacity_configuration(input : Types::UpdateSPICECapacityConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SPICE_CAPACITY_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3596,6 +4028,7 @@ module AwsSdk
 
       # Updates a self-upgrade request for a Quick Suite user by approving, denying, or verifying the
       # request.
+
       def update_self_upgrade(
         action : String,
         aws_account_id : String,
@@ -3605,12 +4038,14 @@ module AwsSdk
         input = Types::UpdateSelfUpgradeRequest.new(action: action, aws_account_id: aws_account_id, namespace: namespace, upgrade_request_id: upgrade_request_id)
         update_self_upgrade(input)
       end
+
       def update_self_upgrade(input : Types::UpdateSelfUpgradeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SELF_UPGRADE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the self-upgrade configuration for a Quick Suite account.
+
       def update_self_upgrade_configuration(
         aws_account_id : String,
         namespace : String,
@@ -3619,12 +4054,14 @@ module AwsSdk
         input = Types::UpdateSelfUpgradeConfigurationRequest.new(aws_account_id: aws_account_id, namespace: namespace, self_upgrade_status: self_upgrade_status)
         update_self_upgrade_configuration(input)
       end
+
       def update_self_upgrade_configuration(input : Types::UpdateSelfUpgradeConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SELF_UPGRADE_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a template from an existing Amazon Quick Sight analysis or another template.
+
       def update_template(
         aws_account_id : String,
         template_id : String,
@@ -3637,12 +4074,14 @@ module AwsSdk
         input = Types::UpdateTemplateRequest.new(aws_account_id: aws_account_id, template_id: template_id, definition: definition, name: name, source_entity: source_entity, validation_strategy: validation_strategy, version_description: version_description)
         update_template(input)
       end
+
       def update_template(input : Types::UpdateTemplateRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_TEMPLATE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the template alias of a template.
+
       def update_template_alias(
         alias_name : String,
         aws_account_id : String,
@@ -3652,12 +4091,14 @@ module AwsSdk
         input = Types::UpdateTemplateAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, template_id: template_id, template_version_number: template_version_number)
         update_template_alias(input)
       end
+
       def update_template_alias(input : Types::UpdateTemplateAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_TEMPLATE_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the resource permissions for a template.
+
       def update_template_permissions(
         aws_account_id : String,
         template_id : String,
@@ -3667,12 +4108,14 @@ module AwsSdk
         input = Types::UpdateTemplatePermissionsRequest.new(aws_account_id: aws_account_id, template_id: template_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_template_permissions(input)
       end
+
       def update_template_permissions(input : Types::UpdateTemplatePermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_TEMPLATE_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a theme.
+
       def update_theme(
         aws_account_id : String,
         base_theme_id : String,
@@ -3684,12 +4127,14 @@ module AwsSdk
         input = Types::UpdateThemeRequest.new(aws_account_id: aws_account_id, base_theme_id: base_theme_id, theme_id: theme_id, configuration: configuration, name: name, version_description: version_description)
         update_theme(input)
       end
+
       def update_theme(input : Types::UpdateThemeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_THEME, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates an alias of a theme.
+
       def update_theme_alias(
         alias_name : String,
         aws_account_id : String,
@@ -3699,6 +4144,7 @@ module AwsSdk
         input = Types::UpdateThemeAliasRequest.new(alias_name: alias_name, aws_account_id: aws_account_id, theme_id: theme_id, theme_version_number: theme_version_number)
         update_theme_alias(input)
       end
+
       def update_theme_alias(input : Types::UpdateThemeAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_THEME_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -3713,6 +4159,7 @@ module AwsSdk
       # "quicksight:DeleteTheme" "quicksight:UpdateTheme" "quicksight:CreateThemeAlias"
       # "quicksight:DeleteThemeAlias" "quicksight:UpdateThemeAlias" "quicksight:UpdateThemePermissions"
       # "quicksight:DescribeThemePermissions" To specify no permissions, omit the permissions list.
+
       def update_theme_permissions(
         aws_account_id : String,
         theme_id : String,
@@ -3722,12 +4169,14 @@ module AwsSdk
         input = Types::UpdateThemePermissionsRequest.new(aws_account_id: aws_account_id, theme_id: theme_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_theme_permissions(input)
       end
+
       def update_theme_permissions(input : Types::UpdateThemePermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_THEME_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a topic.
+
       def update_topic(
         aws_account_id : String,
         topic : Types::TopicDetails,
@@ -3737,12 +4186,14 @@ module AwsSdk
         input = Types::UpdateTopicRequest.new(aws_account_id: aws_account_id, topic: topic, topic_id: topic_id, custom_instructions: custom_instructions)
         update_topic(input)
       end
+
       def update_topic(input : Types::UpdateTopicRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_TOPIC, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the permissions of a topic.
+
       def update_topic_permissions(
         aws_account_id : String,
         topic_id : String,
@@ -3752,12 +4203,14 @@ module AwsSdk
         input = Types::UpdateTopicPermissionsRequest.new(aws_account_id: aws_account_id, topic_id: topic_id, grant_permissions: grant_permissions, revoke_permissions: revoke_permissions)
         update_topic_permissions(input)
       end
+
       def update_topic_permissions(input : Types::UpdateTopicPermissionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_TOPIC_PERMISSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a topic refresh schedule.
+
       def update_topic_refresh_schedule(
         aws_account_id : String,
         dataset_id : String,
@@ -3767,12 +4220,14 @@ module AwsSdk
         input = Types::UpdateTopicRefreshScheduleRequest.new(aws_account_id: aws_account_id, dataset_id: dataset_id, refresh_schedule: refresh_schedule, topic_id: topic_id)
         update_topic_refresh_schedule(input)
       end
+
       def update_topic_refresh_schedule(input : Types::UpdateTopicRefreshScheduleRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_TOPIC_REFRESH_SCHEDULE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates an Amazon Quick Sight user.
+
       def update_user(
         aws_account_id : String,
         email : String,
@@ -3788,12 +4243,14 @@ module AwsSdk
         input = Types::UpdateUserRequest.new(aws_account_id: aws_account_id, email: email, namespace: namespace, role: role, user_name: user_name, custom_federation_provider_url: custom_federation_provider_url, custom_permissions_name: custom_permissions_name, external_login_federation_provider_type: external_login_federation_provider_type, external_login_id: external_login_id, unapply_custom_permissions: unapply_custom_permissions)
         update_user(input)
       end
+
       def update_user(input : Types::UpdateUserRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_USER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a custom permissions profile for a user.
+
       def update_user_custom_permission(
         aws_account_id : String,
         custom_permissions_name : String,
@@ -3803,12 +4260,14 @@ module AwsSdk
         input = Types::UpdateUserCustomPermissionRequest.new(aws_account_id: aws_account_id, custom_permissions_name: custom_permissions_name, namespace: namespace, user_name: user_name)
         update_user_custom_permission(input)
       end
+
       def update_user_custom_permission(input : Types::UpdateUserCustomPermissionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_USER_CUSTOM_PERMISSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a VPC connection.
+
       def update_vpc_connection(
         aws_account_id : String,
         name : String,
@@ -3821,6 +4280,7 @@ module AwsSdk
         input = Types::UpdateVPCConnectionRequest.new(aws_account_id: aws_account_id, name: name, role_arn: role_arn, security_group_ids: security_group_ids, subnet_ids: subnet_ids, vpc_connection_id: vpc_connection_id, dns_resolvers: dns_resolvers)
         update_vpc_connection(input)
       end
+
       def update_vpc_connection(input : Types::UpdateVPCConnectionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_VPC_CONNECTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

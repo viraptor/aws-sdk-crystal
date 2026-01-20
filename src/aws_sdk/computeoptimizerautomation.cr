@@ -1,0 +1,7 @@
+require "./runtime"
+require "./computeoptimizerautomation/client"
+require "./computeoptimizerautomation/errors"
+require "./computeoptimizerautomation/model"
+require "./computeoptimizerautomation/types"
+require "./computeoptimizerautomation/protocol/json_rpc"
+require "./customizations/computeoptimizerautomation/customizations"

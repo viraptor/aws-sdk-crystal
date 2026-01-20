@@ -1,7 +1,7 @@
 module AwsSdk
-  module GreengrassV2
+  module Greengrass
     module Model
-      API_VERSION = "2020-11-30"
+      API_VERSION = "2017-06-07"
       TARGET_PREFIX = ""
       SIGNING_NAME = "greengrass"
       ENDPOINT_PREFIX = "greengrass"
@@ -19,64 +19,184 @@ module AwsSdk
         end
       end
 
+      ASSOCIATE_ROLE_TO_GROUP = OperationModel.new(
+        name: "AssociateRoleToGroup",
+        http_method: "PUT",
+        request_uri: "/greengrass/groups/{GroupId}/role"
+      )
+
       ASSOCIATE_SERVICE_ROLE_TO_ACCOUNT = OperationModel.new(
         name: "AssociateServiceRoleToAccount",
         http_method: "PUT",
         request_uri: "/greengrass/servicerole"
       )
 
-      BATCH_ASSOCIATE_CLIENT_DEVICE_WITH_CORE_DEVICE = OperationModel.new(
-        name: "BatchAssociateClientDeviceWithCoreDevice",
+      CREATE_CONNECTOR_DEFINITION = OperationModel.new(
+        name: "CreateConnectorDefinition",
         http_method: "POST",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/associateClientDevices"
+        request_uri: "/greengrass/definition/connectors"
       )
 
-      BATCH_DISASSOCIATE_CLIENT_DEVICE_FROM_CORE_DEVICE = OperationModel.new(
-        name: "BatchDisassociateClientDeviceFromCoreDevice",
+      CREATE_CONNECTOR_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateConnectorDefinitionVersion",
         http_method: "POST",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/disassociateClientDevices"
+        request_uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions"
       )
 
-      CANCEL_DEPLOYMENT = OperationModel.new(
-        name: "CancelDeployment",
+      CREATE_CORE_DEFINITION = OperationModel.new(
+        name: "CreateCoreDefinition",
         http_method: "POST",
-        request_uri: "/greengrass/v2/deployments/{deploymentId}/cancel"
+        request_uri: "/greengrass/definition/cores"
       )
 
-      CREATE_COMPONENT_VERSION = OperationModel.new(
-        name: "CreateComponentVersion",
+      CREATE_CORE_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateCoreDefinitionVersion",
         http_method: "POST",
-        request_uri: "/greengrass/v2/createComponentVersion"
+        request_uri: "/greengrass/definition/cores/{CoreDefinitionId}/versions"
       )
 
       CREATE_DEPLOYMENT = OperationModel.new(
         name: "CreateDeployment",
         http_method: "POST",
-        request_uri: "/greengrass/v2/deployments"
+        request_uri: "/greengrass/groups/{GroupId}/deployments"
       )
 
-      DELETE_COMPONENT = OperationModel.new(
-        name: "DeleteComponent",
+      CREATE_DEVICE_DEFINITION = OperationModel.new(
+        name: "CreateDeviceDefinition",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/devices"
+      )
+
+      CREATE_DEVICE_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateDeviceDefinitionVersion",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/devices/{DeviceDefinitionId}/versions"
+      )
+
+      CREATE_FUNCTION_DEFINITION = OperationModel.new(
+        name: "CreateFunctionDefinition",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/functions"
+      )
+
+      CREATE_FUNCTION_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateFunctionDefinitionVersion",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/functions/{FunctionDefinitionId}/versions"
+      )
+
+      CREATE_GROUP = OperationModel.new(
+        name: "CreateGroup",
+        http_method: "POST",
+        request_uri: "/greengrass/groups"
+      )
+
+      CREATE_GROUP_CERTIFICATE_AUTHORITY = OperationModel.new(
+        name: "CreateGroupCertificateAuthority",
+        http_method: "POST",
+        request_uri: "/greengrass/groups/{GroupId}/certificateauthorities"
+      )
+
+      CREATE_GROUP_VERSION = OperationModel.new(
+        name: "CreateGroupVersion",
+        http_method: "POST",
+        request_uri: "/greengrass/groups/{GroupId}/versions"
+      )
+
+      CREATE_LOGGER_DEFINITION = OperationModel.new(
+        name: "CreateLoggerDefinition",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/loggers"
+      )
+
+      CREATE_LOGGER_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateLoggerDefinitionVersion",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/loggers/{LoggerDefinitionId}/versions"
+      )
+
+      CREATE_RESOURCE_DEFINITION = OperationModel.new(
+        name: "CreateResourceDefinition",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/resources"
+      )
+
+      CREATE_RESOURCE_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateResourceDefinitionVersion",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/resources/{ResourceDefinitionId}/versions"
+      )
+
+      CREATE_SOFTWARE_UPDATE_JOB = OperationModel.new(
+        name: "CreateSoftwareUpdateJob",
+        http_method: "POST",
+        request_uri: "/greengrass/updates"
+      )
+
+      CREATE_SUBSCRIPTION_DEFINITION = OperationModel.new(
+        name: "CreateSubscriptionDefinition",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/subscriptions"
+      )
+
+      CREATE_SUBSCRIPTION_DEFINITION_VERSION = OperationModel.new(
+        name: "CreateSubscriptionDefinitionVersion",
+        http_method: "POST",
+        request_uri: "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions"
+      )
+
+      DELETE_CONNECTOR_DEFINITION = OperationModel.new(
+        name: "DeleteConnectorDefinition",
         http_method: "DELETE",
-        request_uri: "/greengrass/v2/components/{arn}"
+        request_uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}"
       )
 
-      DELETE_CORE_DEVICE = OperationModel.new(
-        name: "DeleteCoreDevice",
+      DELETE_CORE_DEFINITION = OperationModel.new(
+        name: "DeleteCoreDefinition",
         http_method: "DELETE",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}"
+        request_uri: "/greengrass/definition/cores/{CoreDefinitionId}"
       )
 
-      DELETE_DEPLOYMENT = OperationModel.new(
-        name: "DeleteDeployment",
+      DELETE_DEVICE_DEFINITION = OperationModel.new(
+        name: "DeleteDeviceDefinition",
         http_method: "DELETE",
-        request_uri: "/greengrass/v2/deployments/{deploymentId}"
+        request_uri: "/greengrass/definition/devices/{DeviceDefinitionId}"
       )
 
-      DESCRIBE_COMPONENT = OperationModel.new(
-        name: "DescribeComponent",
-        http_method: "GET",
-        request_uri: "/greengrass/v2/components/{arn}/metadata"
+      DELETE_FUNCTION_DEFINITION = OperationModel.new(
+        name: "DeleteFunctionDefinition",
+        http_method: "DELETE",
+        request_uri: "/greengrass/definition/functions/{FunctionDefinitionId}"
+      )
+
+      DELETE_GROUP = OperationModel.new(
+        name: "DeleteGroup",
+        http_method: "DELETE",
+        request_uri: "/greengrass/groups/{GroupId}"
+      )
+
+      DELETE_LOGGER_DEFINITION = OperationModel.new(
+        name: "DeleteLoggerDefinition",
+        http_method: "DELETE",
+        request_uri: "/greengrass/definition/loggers/{LoggerDefinitionId}"
+      )
+
+      DELETE_RESOURCE_DEFINITION = OperationModel.new(
+        name: "DeleteResourceDefinition",
+        http_method: "DELETE",
+        request_uri: "/greengrass/definition/resources/{ResourceDefinitionId}"
+      )
+
+      DELETE_SUBSCRIPTION_DEFINITION = OperationModel.new(
+        name: "DeleteSubscriptionDefinition",
+        http_method: "DELETE",
+        request_uri: "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}"
+      )
+
+      DISASSOCIATE_ROLE_FROM_GROUP = OperationModel.new(
+        name: "DisassociateRoleFromGroup",
+        http_method: "DELETE",
+        request_uri: "/greengrass/groups/{GroupId}/role"
       )
 
       DISASSOCIATE_SERVICE_ROLE_FROM_ACCOUNT = OperationModel.new(
@@ -85,34 +205,124 @@ module AwsSdk
         request_uri: "/greengrass/servicerole"
       )
 
-      GET_COMPONENT = OperationModel.new(
-        name: "GetComponent",
+      GET_ASSOCIATED_ROLE = OperationModel.new(
+        name: "GetAssociatedRole",
         http_method: "GET",
-        request_uri: "/greengrass/v2/components/{arn}"
+        request_uri: "/greengrass/groups/{GroupId}/role"
       )
 
-      GET_COMPONENT_VERSION_ARTIFACT = OperationModel.new(
-        name: "GetComponentVersionArtifact",
+      GET_BULK_DEPLOYMENT_STATUS = OperationModel.new(
+        name: "GetBulkDeploymentStatus",
         http_method: "GET",
-        request_uri: "/greengrass/v2/components/{arn}/artifacts/{artifactName+}"
+        request_uri: "/greengrass/bulk/deployments/{BulkDeploymentId}/status"
       )
 
       GET_CONNECTIVITY_INFO = OperationModel.new(
         name: "GetConnectivityInfo",
         http_method: "GET",
-        request_uri: "/greengrass/things/{thingName}/connectivityInfo"
+        request_uri: "/greengrass/things/{ThingName}/connectivityInfo"
       )
 
-      GET_CORE_DEVICE = OperationModel.new(
-        name: "GetCoreDevice",
+      GET_CONNECTOR_DEFINITION = OperationModel.new(
+        name: "GetConnectorDefinition",
         http_method: "GET",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}"
+        request_uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}"
       )
 
-      GET_DEPLOYMENT = OperationModel.new(
-        name: "GetDeployment",
+      GET_CONNECTOR_DEFINITION_VERSION = OperationModel.new(
+        name: "GetConnectorDefinitionVersion",
         http_method: "GET",
-        request_uri: "/greengrass/v2/deployments/{deploymentId}"
+        request_uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions/{ConnectorDefinitionVersionId}"
+      )
+
+      GET_CORE_DEFINITION = OperationModel.new(
+        name: "GetCoreDefinition",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/cores/{CoreDefinitionId}"
+      )
+
+      GET_CORE_DEFINITION_VERSION = OperationModel.new(
+        name: "GetCoreDefinitionVersion",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}"
+      )
+
+      GET_DEPLOYMENT_STATUS = OperationModel.new(
+        name: "GetDeploymentStatus",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}/deployments/{DeploymentId}/status"
+      )
+
+      GET_DEVICE_DEFINITION = OperationModel.new(
+        name: "GetDeviceDefinition",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/devices/{DeviceDefinitionId}"
+      )
+
+      GET_DEVICE_DEFINITION_VERSION = OperationModel.new(
+        name: "GetDeviceDefinitionVersion",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}"
+      )
+
+      GET_FUNCTION_DEFINITION = OperationModel.new(
+        name: "GetFunctionDefinition",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/functions/{FunctionDefinitionId}"
+      )
+
+      GET_FUNCTION_DEFINITION_VERSION = OperationModel.new(
+        name: "GetFunctionDefinitionVersion",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}"
+      )
+
+      GET_GROUP = OperationModel.new(
+        name: "GetGroup",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}"
+      )
+
+      GET_GROUP_CERTIFICATE_AUTHORITY = OperationModel.new(
+        name: "GetGroupCertificateAuthority",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}/certificateauthorities/{CertificateAuthorityId}"
+      )
+
+      GET_GROUP_CERTIFICATE_CONFIGURATION = OperationModel.new(
+        name: "GetGroupCertificateConfiguration",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry"
+      )
+
+      GET_GROUP_VERSION = OperationModel.new(
+        name: "GetGroupVersion",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}/versions/{GroupVersionId}"
+      )
+
+      GET_LOGGER_DEFINITION = OperationModel.new(
+        name: "GetLoggerDefinition",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/loggers/{LoggerDefinitionId}"
+      )
+
+      GET_LOGGER_DEFINITION_VERSION = OperationModel.new(
+        name: "GetLoggerDefinitionVersion",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}"
+      )
+
+      GET_RESOURCE_DEFINITION = OperationModel.new(
+        name: "GetResourceDefinition",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/resources/{ResourceDefinitionId}"
+      )
+
+      GET_RESOURCE_DEFINITION_VERSION = OperationModel.new(
+        name: "GetResourceDefinitionVersion",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/resources/{ResourceDefinitionId}/versions/{ResourceDefinitionVersionId}"
       )
 
       GET_SERVICE_ROLE_FOR_ACCOUNT = OperationModel.new(
@@ -121,76 +331,244 @@ module AwsSdk
         request_uri: "/greengrass/servicerole"
       )
 
-      LIST_CLIENT_DEVICES_ASSOCIATED_WITH_CORE_DEVICE = OperationModel.new(
-        name: "ListClientDevicesAssociatedWithCoreDevice",
+      GET_SUBSCRIPTION_DEFINITION = OperationModel.new(
+        name: "GetSubscriptionDefinition",
         http_method: "GET",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/associatedClientDevices"
+        request_uri: "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}"
       )
 
-      LIST_COMPONENT_VERSIONS = OperationModel.new(
-        name: "ListComponentVersions",
+      GET_SUBSCRIPTION_DEFINITION_VERSION = OperationModel.new(
+        name: "GetSubscriptionDefinitionVersion",
         http_method: "GET",
-        request_uri: "/greengrass/v2/components/{arn}/versions"
+        request_uri: "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions/{SubscriptionDefinitionVersionId}"
       )
 
-      LIST_COMPONENTS = OperationModel.new(
-        name: "ListComponents",
+      GET_THING_RUNTIME_CONFIGURATION = OperationModel.new(
+        name: "GetThingRuntimeConfiguration",
         http_method: "GET",
-        request_uri: "/greengrass/v2/components"
+        request_uri: "/greengrass/things/{ThingName}/runtimeconfig"
       )
 
-      LIST_CORE_DEVICES = OperationModel.new(
-        name: "ListCoreDevices",
+      LIST_BULK_DEPLOYMENT_DETAILED_REPORTS = OperationModel.new(
+        name: "ListBulkDeploymentDetailedReports",
         http_method: "GET",
-        request_uri: "/greengrass/v2/coreDevices"
+        request_uri: "/greengrass/bulk/deployments/{BulkDeploymentId}/detailed-reports"
+      )
+
+      LIST_BULK_DEPLOYMENTS = OperationModel.new(
+        name: "ListBulkDeployments",
+        http_method: "GET",
+        request_uri: "/greengrass/bulk/deployments"
+      )
+
+      LIST_CONNECTOR_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListConnectorDefinitionVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions"
+      )
+
+      LIST_CONNECTOR_DEFINITIONS = OperationModel.new(
+        name: "ListConnectorDefinitions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/connectors"
+      )
+
+      LIST_CORE_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListCoreDefinitionVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/cores/{CoreDefinitionId}/versions"
+      )
+
+      LIST_CORE_DEFINITIONS = OperationModel.new(
+        name: "ListCoreDefinitions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/cores"
       )
 
       LIST_DEPLOYMENTS = OperationModel.new(
         name: "ListDeployments",
         http_method: "GET",
-        request_uri: "/greengrass/v2/deployments"
+        request_uri: "/greengrass/groups/{GroupId}/deployments"
       )
 
-      LIST_EFFECTIVE_DEPLOYMENTS = OperationModel.new(
-        name: "ListEffectiveDeployments",
+      LIST_DEVICE_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListDeviceDefinitionVersions",
         http_method: "GET",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/effectiveDeployments"
+        request_uri: "/greengrass/definition/devices/{DeviceDefinitionId}/versions"
       )
 
-      LIST_INSTALLED_COMPONENTS = OperationModel.new(
-        name: "ListInstalledComponents",
+      LIST_DEVICE_DEFINITIONS = OperationModel.new(
+        name: "ListDeviceDefinitions",
         http_method: "GET",
-        request_uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/installedComponents"
+        request_uri: "/greengrass/definition/devices"
+      )
+
+      LIST_FUNCTION_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListFunctionDefinitionVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/functions/{FunctionDefinitionId}/versions"
+      )
+
+      LIST_FUNCTION_DEFINITIONS = OperationModel.new(
+        name: "ListFunctionDefinitions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/functions"
+      )
+
+      LIST_GROUP_CERTIFICATE_AUTHORITIES = OperationModel.new(
+        name: "ListGroupCertificateAuthorities",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}/certificateauthorities"
+      )
+
+      LIST_GROUP_VERSIONS = OperationModel.new(
+        name: "ListGroupVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/groups/{GroupId}/versions"
+      )
+
+      LIST_GROUPS = OperationModel.new(
+        name: "ListGroups",
+        http_method: "GET",
+        request_uri: "/greengrass/groups"
+      )
+
+      LIST_LOGGER_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListLoggerDefinitionVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/loggers/{LoggerDefinitionId}/versions"
+      )
+
+      LIST_LOGGER_DEFINITIONS = OperationModel.new(
+        name: "ListLoggerDefinitions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/loggers"
+      )
+
+      LIST_RESOURCE_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListResourceDefinitionVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/resources/{ResourceDefinitionId}/versions"
+      )
+
+      LIST_RESOURCE_DEFINITIONS = OperationModel.new(
+        name: "ListResourceDefinitions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/resources"
+      )
+
+      LIST_SUBSCRIPTION_DEFINITION_VERSIONS = OperationModel.new(
+        name: "ListSubscriptionDefinitionVersions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions"
+      )
+
+      LIST_SUBSCRIPTION_DEFINITIONS = OperationModel.new(
+        name: "ListSubscriptionDefinitions",
+        http_method: "GET",
+        request_uri: "/greengrass/definition/subscriptions"
       )
 
       LIST_TAGS_FOR_RESOURCE = OperationModel.new(
         name: "ListTagsForResource",
         http_method: "GET",
-        request_uri: "/tags/{resourceArn}"
+        request_uri: "/tags/{resource-arn}"
       )
 
-      RESOLVE_COMPONENT_CANDIDATES = OperationModel.new(
-        name: "ResolveComponentCandidates",
+      RESET_DEPLOYMENTS = OperationModel.new(
+        name: "ResetDeployments",
         http_method: "POST",
-        request_uri: "/greengrass/v2/resolveComponentCandidates"
+        request_uri: "/greengrass/groups/{GroupId}/deployments/$reset"
+      )
+
+      START_BULK_DEPLOYMENT = OperationModel.new(
+        name: "StartBulkDeployment",
+        http_method: "POST",
+        request_uri: "/greengrass/bulk/deployments"
+      )
+
+      STOP_BULK_DEPLOYMENT = OperationModel.new(
+        name: "StopBulkDeployment",
+        http_method: "PUT",
+        request_uri: "/greengrass/bulk/deployments/{BulkDeploymentId}/$stop"
       )
 
       TAG_RESOURCE = OperationModel.new(
         name: "TagResource",
         http_method: "POST",
-        request_uri: "/tags/{resourceArn}"
+        request_uri: "/tags/{resource-arn}"
       )
 
       UNTAG_RESOURCE = OperationModel.new(
         name: "UntagResource",
         http_method: "DELETE",
-        request_uri: "/tags/{resourceArn}"
+        request_uri: "/tags/{resource-arn}"
       )
 
       UPDATE_CONNECTIVITY_INFO = OperationModel.new(
         name: "UpdateConnectivityInfo",
         http_method: "PUT",
-        request_uri: "/greengrass/things/{thingName}/connectivityInfo"
+        request_uri: "/greengrass/things/{ThingName}/connectivityInfo"
+      )
+
+      UPDATE_CONNECTOR_DEFINITION = OperationModel.new(
+        name: "UpdateConnectorDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}"
+      )
+
+      UPDATE_CORE_DEFINITION = OperationModel.new(
+        name: "UpdateCoreDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/cores/{CoreDefinitionId}"
+      )
+
+      UPDATE_DEVICE_DEFINITION = OperationModel.new(
+        name: "UpdateDeviceDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/devices/{DeviceDefinitionId}"
+      )
+
+      UPDATE_FUNCTION_DEFINITION = OperationModel.new(
+        name: "UpdateFunctionDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/functions/{FunctionDefinitionId}"
+      )
+
+      UPDATE_GROUP = OperationModel.new(
+        name: "UpdateGroup",
+        http_method: "PUT",
+        request_uri: "/greengrass/groups/{GroupId}"
+      )
+
+      UPDATE_GROUP_CERTIFICATE_CONFIGURATION = OperationModel.new(
+        name: "UpdateGroupCertificateConfiguration",
+        http_method: "PUT",
+        request_uri: "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry"
+      )
+
+      UPDATE_LOGGER_DEFINITION = OperationModel.new(
+        name: "UpdateLoggerDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/loggers/{LoggerDefinitionId}"
+      )
+
+      UPDATE_RESOURCE_DEFINITION = OperationModel.new(
+        name: "UpdateResourceDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/resources/{ResourceDefinitionId}"
+      )
+
+      UPDATE_SUBSCRIPTION_DEFINITION = OperationModel.new(
+        name: "UpdateSubscriptionDefinition",
+        http_method: "PUT",
+        request_uri: "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}"
+      )
+
+      UPDATE_THING_RUNTIME_CONFIGURATION = OperationModel.new(
+        name: "UpdateThingRuntimeConfiguration",
+        http_method: "PUT",
+        request_uri: "/greengrass/things/{ThingName}/runtimeconfig"
       )
     end
   end

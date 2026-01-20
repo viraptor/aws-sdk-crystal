@@ -6,11 +6,13 @@ module AwsSdk
     module Types
 
       # Data returned by the DescribeAccountAttributes action.
+
       struct AccountAttributesMessage
         include JSON::Serializable
 
         # A list of AccountQuota objects. Within this list, each quota has a name, a count of usage toward the
         # quota maximum, and a maximum value for the quota.
+
         @[JSON::Field(key: "AccountQuotas")]
         getter account_quotas : Array(Types::AccountQuota)?
 
@@ -59,18 +61,22 @@ module AwsSdk
       # number of subnets for a DB subnet group in the account. Other DB subnet groups in the account might
       # have a lower number of subnets. For more information, see Quotas for Amazon RDS in the Amazon RDS
       # User Guide and Quotas for Amazon Aurora in the Amazon Aurora User Guide .
+
       struct AccountQuota
         include JSON::Serializable
 
         # The name of the Amazon RDS quota for this Amazon Web Services account.
+
         @[JSON::Field(key: "AccountQuotaName")]
         getter account_quota_name : String?
 
         # The maximum allowed value for the quota.
+
         @[JSON::Field(key: "Max")]
         getter max : Int64?
 
         # The amount currently used toward the quota maximum.
+
         @[JSON::Field(key: "Used")]
         getter used : Int64?
 
@@ -82,20 +88,24 @@ module AwsSdk
         end
       end
 
+
       struct AddRoleToDBClusterMessage
         include JSON::Serializable
 
         # The name of the DB cluster to associate the IAM role with.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB cluster, for example
         # arn:aws:iam::123456789012:role/AuroraAccessRole .
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # The name of the feature for the DB cluster that the IAM role is to be associated with. For
         # information about supported feature names, see DBEngineVersion .
+
         @[JSON::Field(key: "FeatureName")]
         getter feature_name : String?
 
@@ -107,20 +117,24 @@ module AwsSdk
         end
       end
 
+
       struct AddRoleToDBInstanceMessage
         include JSON::Serializable
 
         # The name of the DB instance to associate the IAM role with.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The name of the feature for the DB instance that the IAM role is to be associated with. For
         # information about supported feature names, see DBEngineVersion .
+
         @[JSON::Field(key: "FeatureName")]
         getter feature_name : String
 
         # The Amazon Resource Name (ARN) of the IAM role to associate with the DB instance, for example
         # arn:aws:iam::123456789012:role/AccessRole .
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -131,6 +145,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct AddSourceIdentifierToSubscriptionMessage
         include JSON::Serializable
@@ -143,10 +158,12 @@ module AwsSdk
         # DBSnapshotIdentifier value must be supplied. If the source type is a DB cluster snapshot, a
         # DBClusterSnapshotIdentifier value must be supplied. If the source type is an RDS Proxy, a
         # DBProxyName value must be supplied.
+
         @[JSON::Field(key: "SourceIdentifier")]
         getter source_identifier : String
 
         # The name of the RDS event notification subscription you want to add a source identifier to.
+
         @[JSON::Field(key: "SubscriptionName")]
         getter subscription_name : String
 
@@ -157,8 +174,10 @@ module AwsSdk
         end
       end
 
+
       struct AddSourceIdentifierToSubscriptionResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EventSubscription")]
         getter event_subscription : Types::EventSubscription?
@@ -169,15 +188,18 @@ module AwsSdk
         end
       end
 
+
       struct AddTagsToResourceMessage
         include JSON::Serializable
 
         # The Amazon RDS resource that the tags are added to. This value is an Amazon Resource Name (ARN). For
         # information about creating an ARN, see Constructing an RDS Amazon Resource Name (ARN) .
+
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String
 
         # The tags to be assigned to the Amazon RDS resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -190,33 +212,40 @@ module AwsSdk
 
       # Contains details about an additional storage volume for a DB instance. RDS support additional
       # storage volumes for RDS for Oracle and RDS for SQL Server.
+
       struct AdditionalStorageVolume
         include JSON::Serializable
 
         # The name of the additional storage volume. Valid Values: RDSDBDATA2 | RDSDBDATA3 | RDSDBDATA4
+
         @[JSON::Field(key: "VolumeName")]
         getter volume_name : String
 
         # The amount of storage allocated for the additional storage volume, in gibibytes (GiB). The minimum
         # is 20 GiB. The maximum is 65,536 GiB (64 TiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The number of I/O operations per second (IOPS) provisioned for the additional storage volume.
+
         @[JSON::Field(key: "IOPS")]
         getter iops : Int32?
 
         # The upper limit in gibibytes (GiB) to which RDS can automatically scale the storage of the
         # additional storage volume.
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
         # The storage throughput value for the additional storage volume, in mebibytes per second (MiBps).
         # This setting applies only to the General Purpose SSD ( gp3 ) storage type.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type for the additional storage volume. Valid Values: GP3 | IO2
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
@@ -232,37 +261,45 @@ module AwsSdk
       end
 
       # Contains information about an additional storage volume for a DB instance.
+
       struct AdditionalStorageVolumeOutput
         include JSON::Serializable
 
         # The amount of storage allocated for the additional storage volume, in gibibytes (GiB). The minimum
         # is 20 GiB. The maximum is 65,536 GiB (64 TiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The number of I/O operations per second (IOPS) provisioned for the additional storage volume.
+
         @[JSON::Field(key: "IOPS")]
         getter iops : Int32?
 
         # The upper limit in gibibytes (GiB) to which RDS can automatically scale the storage of the
         # additional storage volume.
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
         # The storage throughput value for the additional storage volume, in mebibytes per second (MiBps).
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type for the additional storage volume. Valid Values: GP3 | IO2
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # The status of the additional storage volume. Valid Values: ACTIVE | CREATING | DELETING | MODIFYING
         # | NOT-IN-USE | STORAGE-OPTIMIZATION | VOLUME-FULL
+
         @[JSON::Field(key: "StorageVolumeStatus")]
         getter storage_volume_status : String?
 
         # The name of the additional storage volume.
+
         @[JSON::Field(key: "VolumeName")]
         getter volume_name : String?
 
@@ -278,12 +315,14 @@ module AwsSdk
         end
       end
 
+
       struct ApplyPendingMaintenanceActionMessage
         include JSON::Serializable
 
         # The pending maintenance action to apply to this resource. Valid Values: ca-certificate-rotation
         # db-upgrade hardware-maintenance os-upgrade system-update For more information about these actions,
         # see Maintenance actions for Amazon Aurora or Maintenance actions for Amazon RDS .
+
         @[JSON::Field(key: "ApplyAction")]
         getter apply_action : String
 
@@ -291,11 +330,13 @@ module AwsSdk
         # type immediate can't be undone. Valid Values: immediate - Apply the maintenance action immediately.
         # next-maintenance - Apply the maintenance action during the next maintenance window for the resource.
         # undo-opt-in - Cancel any existing next-maintenance opt-in requests.
+
         @[JSON::Field(key: "OptInType")]
         getter opt_in_type : String
 
         # The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to.
         # For information about creating an ARN, see Constructing an RDS Amazon Resource Name (ARN) .
+
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : String
 
@@ -307,8 +348,10 @@ module AwsSdk
         end
       end
 
+
       struct ApplyPendingMaintenanceActionResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ResourcePendingMaintenanceActions")]
         getter resource_pending_maintenance_actions : Types::ResourcePendingMaintenanceActions?
@@ -321,6 +364,7 @@ module AwsSdk
 
       # The specified CIDR IP range or Amazon EC2 security group is already authorized for the specified DB
       # security group.
+
       struct AuthorizationAlreadyExistsFault
         include JSON::Serializable
 
@@ -331,6 +375,7 @@ module AwsSdk
       # The specified CIDR IP range or Amazon EC2 security group might not be authorized for the specified
       # DB security group. Or, RDS might not be authorized to perform necessary actions using IAM on your
       # behalf.
+
       struct AuthorizationNotFoundFault
         include JSON::Serializable
 
@@ -339,6 +384,7 @@ module AwsSdk
       end
 
       # The DB security group authorization quota has been reached.
+
       struct AuthorizationQuotaExceededFault
         include JSON::Serializable
 
@@ -346,26 +392,31 @@ module AwsSdk
         end
       end
 
+
       struct AuthorizeDBSecurityGroupIngressMessage
         include JSON::Serializable
 
         # The name of the DB security group to add authorization to.
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String
 
         # The IP range to authorize.
+
         @[JSON::Field(key: "CIDRIP")]
         getter cidrip : String?
 
         # Id of the EC2 security group to authorize. For VPC DB security groups, EC2SecurityGroupId must be
         # provided. Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId
         # must be provided.
+
         @[JSON::Field(key: "EC2SecurityGroupId")]
         getter ec2_security_group_id : String?
 
         # Name of the EC2 security group to authorize. For VPC DB security groups, EC2SecurityGroupId must be
         # provided. Otherwise, EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId
         # must be provided.
+
         @[JSON::Field(key: "EC2SecurityGroupName")]
         getter ec2_security_group_name : String?
 
@@ -373,6 +424,7 @@ module AwsSdk
         # EC2SecurityGroupName parameter. The Amazon Web Services access key ID isn't an acceptable value. For
         # VPC DB security groups, EC2SecurityGroupId must be provided. Otherwise, EC2SecurityGroupOwnerId and
         # either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
+
         @[JSON::Field(key: "EC2SecurityGroupOwnerId")]
         getter ec2_security_group_owner_id : String?
 
@@ -386,8 +438,10 @@ module AwsSdk
         end
       end
 
+
       struct AuthorizeDBSecurityGroupIngressResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSecurityGroup")]
         getter db_security_group : Types::DBSecurityGroup?
@@ -400,10 +454,12 @@ module AwsSdk
 
       # Contains Availability Zone information. This data type is used as an element in the
       # OrderableDBInstanceOption data type.
+
       struct AvailabilityZone
         include JSON::Serializable
 
         # The name of the Availability Zone.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -414,60 +470,73 @@ module AwsSdk
       end
 
       # Contains the available options for additional storage volumes for a DB instance class.
+
       struct AvailableAdditionalStorageVolumesOption
         include JSON::Serializable
 
         # The maximum number of I/O operations per second (IOPS) that the additional storage volume supports.
+
         @[JSON::Field(key: "MaxIops")]
         getter max_iops : Int32?
 
         # The maximum ratio of I/O operations per second (IOPS) to gibibytes (GiB) of storage for the
         # additional storage volume.
+
         @[JSON::Field(key: "MaxIopsPerGib")]
         getter max_iops_per_gib : Float64?
 
         # The maximum amount of storage that you can allocate for the additional storage volume, in gibibytes
         # (GiB).
+
         @[JSON::Field(key: "MaxStorageSize")]
         getter max_storage_size : Int32?
 
         # The maximum storage throughput that the additional storage volume supports, in mebibytes per second
         # (MiBps).
+
         @[JSON::Field(key: "MaxStorageThroughput")]
         getter max_storage_throughput : Int32?
 
         # The minimum number of I/O operations per second (IOPS) that the additional storage volume supports.
+
         @[JSON::Field(key: "MinIops")]
         getter min_iops : Int32?
 
         # The minimum ratio of I/O operations per second (IOPS) to gibibytes (GiB) of storage for the
         # additional storage volume.
+
         @[JSON::Field(key: "MinIopsPerGib")]
         getter min_iops_per_gib : Float64?
 
         # The minimum amount of storage that you can allocate for the additional storage volume, in gibibytes
         # (GiB).
+
         @[JSON::Field(key: "MinStorageSize")]
         getter min_storage_size : Int32?
 
         # The minimum storage throughput that the additional storage volume supports, in mebibytes per second
         # (MiBps).
+
         @[JSON::Field(key: "MinStorageThroughput")]
         getter min_storage_throughput : Int32?
 
         # The storage type for the additional storage volume. Valid Values: GP3 | IO2
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Indicates whether the additional storage volume supports provisioned IOPS.
+
         @[JSON::Field(key: "SupportsIops")]
         getter supports_iops : Bool?
 
         # Indicates whether the additional storage volume supports storage autoscaling.
+
         @[JSON::Field(key: "SupportsStorageAutoscaling")]
         getter supports_storage_autoscaling : Bool?
 
         # Indicates whether the additional storage volume supports configurable storage throughput.
+
         @[JSON::Field(key: "SupportsStorageThroughput")]
         getter supports_storage_throughput : Bool?
 
@@ -491,18 +560,22 @@ module AwsSdk
       # Contains the available processor feature information for the DB instance class of a DB instance. For
       # more information, see Configuring the Processor of the DB Instance Class in the Amazon RDS User
       # Guide.
+
       struct AvailableProcessorFeature
         include JSON::Serializable
 
         # The allowed values for the processor feature of the DB instance class.
+
         @[JSON::Field(key: "AllowedValues")]
         getter allowed_values : String?
 
         # The default value for the processor feature of the DB instance class.
+
         @[JSON::Field(key: "DefaultValue")]
         getter default_value : String?
 
         # The name of the processor feature. Valid names are coreCount and threadsPerCore .
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -514,6 +587,7 @@ module AwsSdk
         end
       end
 
+
       struct BacktrackDBClusterMessage
         include JSON::Serializable
 
@@ -522,6 +596,7 @@ module AwsSdk
         # time for the DB cluster, Aurora automatically chooses the nearest possible consistent time for the
         # DB cluster. Constraints: Must contain a valid ISO 8601 timestamp. Can't contain a timestamp set in
         # the future. Example: 2017-07-08T18:00Z
+
         @[JSON::Field(key: "BacktrackTo")]
         getter backtrack_to : Time
 
@@ -529,11 +604,13 @@ module AwsSdk
         # lowercase string. Constraints: Must contain from 1 to 63 alphanumeric characters or hyphens. First
         # character must be a letter. Can't end with a hyphen or contain two consecutive hyphens. Example:
         # my-cluster1
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # Specifies whether to force the DB cluster to backtrack when binary logging is enabled. Otherwise, an
         # error occurs when binary logging is enabled.
+
         @[JSON::Field(key: "Force")]
         getter force : Bool?
 
@@ -541,6 +618,7 @@ module AwsSdk
         # BacktrackTo is set to a timestamp earlier than the earliest backtrack time. When this parameter is
         # disabled and BacktrackTo is set to a timestamp earlier than the earliest backtrack time, an error
         # occurs.
+
         @[JSON::Field(key: "UseEarliestTimeOnPointInTimeUnavailable")]
         getter use_earliest_time_on_point_in_time_unavailable : Bool?
 
@@ -553,6 +631,7 @@ module AwsSdk
         end
       end
 
+
       struct BackupPolicyNotFoundFault
         include JSON::Serializable
 
@@ -563,27 +642,33 @@ module AwsSdk
       # Details about a blue/green deployment. For more information, see Using Amazon RDS Blue/Green
       # Deployments for database updates in the Amazon RDS User Guide and Using Amazon RDS Blue/Green
       # Deployments for database updates in the Amazon Aurora User Guide .
+
       struct BlueGreenDeployment
         include JSON::Serializable
 
         # The unique identifier of the blue/green deployment.
+
         @[JSON::Field(key: "BlueGreenDeploymentIdentifier")]
         getter blue_green_deployment_identifier : String?
 
         # The user-supplied name of the blue/green deployment.
+
         @[JSON::Field(key: "BlueGreenDeploymentName")]
         getter blue_green_deployment_name : String?
 
         # The time when the blue/green deployment was created, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time?
 
         # The time when the blue/green deployment was deleted, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "DeleteTime")]
         getter delete_time : Time?
 
         # The source database for the blue/green deployment. Before switchover, the source database is the
         # production database in the blue environment.
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
@@ -594,27 +679,33 @@ module AwsSdk
         # complete. INVALID_CONFIGURATION - Resources in the green environment are invalid, so switchover
         # isn't possible. SWITCHOVER_FAILED - Switchover was attempted but failed. DELETING - The blue/green
         # deployment is being deleted.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Additional information about the status of the blue/green deployment.
+
         @[JSON::Field(key: "StatusDetails")]
         getter status_details : String?
 
         # The details about each source and target resource in the blue/green deployment.
+
         @[JSON::Field(key: "SwitchoverDetails")]
         getter switchover_details : Array(Types::SwitchoverDetail)?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The target database for the blue/green deployment. Before switchover, the target database is the
         # clone database in the green environment.
+
         @[JSON::Field(key: "Target")]
         getter target : String?
 
         # Either tasks to be performed or tasks that have been completed on the target database before
         # switchover.
+
         @[JSON::Field(key: "Tasks")]
         getter tasks : Array(Types::BlueGreenDeploymentTask)?
 
@@ -635,6 +726,7 @@ module AwsSdk
       end
 
       # A blue/green deployment with the specified name already exists.
+
       struct BlueGreenDeploymentAlreadyExistsFault
         include JSON::Serializable
 
@@ -643,6 +735,7 @@ module AwsSdk
       end
 
       # BlueGreenDeploymentIdentifier doesn't refer to an existing blue/green deployment.
+
       struct BlueGreenDeploymentNotFoundFault
         include JSON::Serializable
 
@@ -653,16 +746,19 @@ module AwsSdk
       # Details about a task for a blue/green deployment. For more information, see Using Amazon RDS
       # Blue/Green Deployments for database updates in the Amazon RDS User Guide and Using Amazon RDS
       # Blue/Green Deployments for database updates in the Amazon Aurora User Guide .
+
       struct BlueGreenDeploymentTask
         include JSON::Serializable
 
         # The name of the blue/green deployment task.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The status of the blue/green deployment task. Valid Values: PENDING - The resource is being prepared
         # for deployment. IN_PROGRESS - The resource is being deployed. COMPLETED - The resource has been
         # deployed. FAILED - Deployment of the resource failed.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -673,10 +769,12 @@ module AwsSdk
         end
       end
 
+
       struct CancelExportTaskMessage
         include JSON::Serializable
 
         # The identifier of the snapshot or cluster export task to cancel.
+
         @[JSON::Field(key: "ExportTaskIdentifier")]
         getter export_task_identifier : String
 
@@ -689,38 +787,47 @@ module AwsSdk
       # A CA certificate for an Amazon Web Services account. For more information, see Using SSL/TLS to
       # encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
       # connection to a DB cluster in the Amazon Aurora User Guide .
+
       struct Certificate
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the certificate.
+
         @[JSON::Field(key: "CertificateArn")]
         getter certificate_arn : String?
 
         # The unique key that identifies a certificate.
+
         @[JSON::Field(key: "CertificateIdentifier")]
         getter certificate_identifier : String?
 
         # The type of the certificate.
+
         @[JSON::Field(key: "CertificateType")]
         getter certificate_type : String?
 
         # Indicates whether there is an override for the default certificate identifier.
+
         @[JSON::Field(key: "CustomerOverride")]
         getter customer_override : Bool?
 
         # If there is an override for the default certificate identifier, when the override expires.
+
         @[JSON::Field(key: "CustomerOverrideValidTill")]
         getter customer_override_valid_till : Time?
 
         # The thumbprint of the certificate.
+
         @[JSON::Field(key: "Thumbprint")]
         getter thumbprint : String?
 
         # The starting date from which the certificate is valid.
+
         @[JSON::Field(key: "ValidFrom")]
         getter valid_from : Time?
 
         # The final date that the certificate continues to be valid.
+
         @[JSON::Field(key: "ValidTill")]
         getter valid_till : Time?
 
@@ -740,14 +847,17 @@ module AwsSdk
       # The details of the DB instance’s server certificate. For more information, see Using SSL/TLS to
       # encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
       # connection to a DB cluster in the Amazon Aurora User Guide .
+
       struct CertificateDetails
         include JSON::Serializable
 
         # The CA identifier of the CA certificate used for the DB instance's server certificate.
+
         @[JSON::Field(key: "CAIdentifier")]
         getter ca_identifier : String?
 
         # The expiration date of the DB instance’s server certificate.
+
         @[JSON::Field(key: "ValidTill")]
         getter valid_till : Time?
 
@@ -759,22 +869,26 @@ module AwsSdk
       end
 
       # Data returned by the DescribeCertificates action.
+
       struct CertificateMessage
         include JSON::Serializable
 
         # The list of Certificate objects for the Amazon Web Services account.
+
         @[JSON::Field(key: "Certificates")]
         getter certificates : Array(Types::Certificate)?
 
         # The default root CA for new databases created by your Amazon Web Services account. This is either
         # the root CA override set on your Amazon Web Services account or the system default CA for the Region
         # if no override exists. To override the default CA, use the ModifyCertificates operation.
+
         @[JSON::Field(key: "DefaultCertificateForNewLaunches")]
         getter default_certificate_for_new_launches : String?
 
         # An optional pagination token provided by a previous DescribeCertificates request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -787,6 +901,7 @@ module AwsSdk
       end
 
       # CertificateIdentifier doesn't refer to an existing certificate.
+
       struct CertificateNotFoundFault
         include JSON::Serializable
 
@@ -795,14 +910,17 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the action DescribeDBEngineVersions .
+
       struct CharacterSet
         include JSON::Serializable
 
         # The description of the character set.
+
         @[JSON::Field(key: "CharacterSetDescription")]
         getter character_set_description : String?
 
         # The name of the character set.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
@@ -820,18 +938,21 @@ module AwsSdk
       # instances, see Publishing Database Logs to Amazon CloudWatch Logs in the Amazon RDS User Guide . For
       # more information about exporting CloudWatch Logs for Amazon Aurora DB clusters, see Publishing
       # Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide .
+
       struct CloudwatchLogsExportConfiguration
         include JSON::Serializable
 
         # The list of log types to disable. The following values are valid for each DB engine: Aurora MySQL -
         # audit | error | general | slowquery Aurora PostgreSQL - postgresql RDS for MySQL - error | general |
         # slowquery RDS for PostgreSQL - postgresql | upgrade
+
         @[JSON::Field(key: "DisableLogTypes")]
         getter disable_log_types : Array(String)?
 
         # The list of log types to enable. The following values are valid for each DB engine: Aurora MySQL -
         # audit | error | general | slowquery Aurora PostgreSQL - postgresql RDS for MySQL - error | general |
         # slowquery RDS for PostgreSQL - postgresql | upgrade
+
         @[JSON::Field(key: "EnableLogTypes")]
         getter enable_log_types : Array(String)?
 
@@ -844,52 +965,64 @@ module AwsSdk
 
       # This data type is used as a response element in the ModifyDBCluster operation and contains changes
       # that will be applied during the next maintenance window.
+
       struct ClusterPendingModifiedValues
         include JSON::Serializable
 
         # The allocated storage size in gibibytes (GiB) for all database engines except Amazon Aurora. For
         # Aurora, AllocatedStorage always returns 1, because Aurora DB cluster storage size isn't fixed, but
         # instead automatically adjusts as needed.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The number of days for which automatic DB snapshots are retained.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
+
 
         @[JSON::Field(key: "CertificateDetails")]
         getter certificate_details : Types::CertificateDetails?
 
         # The DBClusterIdentifier value for the DB cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The database engine version.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to
         # database accounts is enabled.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # The Provisioned IOPS (I/O operations per second) value. This setting is only for non-Aurora Multi-AZ
         # DB clusters.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
         # The master credentials for the DB cluster.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
+
 
         @[JSON::Field(key: "PendingCloudwatchLogsExports")]
         getter pending_cloudwatch_logs_exports : Types::PendingCloudwatchLogsExports?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "RdsCustomClusterConfiguration")]
         getter rds_custom_cluster_configuration : Types::RdsCustomClusterConfiguration?
 
         # The storage type for the DB cluster.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
@@ -911,12 +1044,14 @@ module AwsSdk
 
       # Specifies the settings that control the size and behavior of the connection pool associated with a
       # DBProxyTargetGroup .
+
       struct ConnectionPoolConfiguration
         include JSON::Serializable
 
         # The number of seconds for a proxy to wait for a connection to become available in the connection
         # pool. This setting only applies when the proxy has opened its maximum number of connections and all
         # connections are busy with client sessions. Default: 120 Constraints: Must be between 0 and 300.
+
         @[JSON::Field(key: "ConnectionBorrowTimeout")]
         getter connection_borrow_timeout : Int32?
 
@@ -930,6 +1065,7 @@ module AwsSdk
         # cryptographic methods. Anyone with access to view or manage your proxy target group configuration
         # can view the initialization query. You should not add sensitive data, such as passwords or
         # long-lived encryption keys, to this option.
+
         @[JSON::Field(key: "InitQuery")]
         getter init_query : String?
 
@@ -938,6 +1074,7 @@ module AwsSdk
         # target group. If you specify MaxIdleConnectionsPercent , then you must also include a value for this
         # parameter. Default: 10 for RDS for Microsoft SQL Server, and 100 for all other engines Constraints:
         # Must be between 1 and 100.
+
         @[JSON::Field(key: "MaxConnectionsPercent")]
         getter max_connections_percent : Int32?
 
@@ -951,6 +1088,7 @@ module AwsSdk
         # 40. If the value of MaxConnectionsPercent isn't specified, then for SQL Server,
         # MaxIdleConnectionsPercent is 5 , and for all other engines, the default is 50 . Constraints: Must be
         # between 0 and the value of MaxConnectionsPercent .
+
         @[JSON::Field(key: "MaxIdleConnectionsPercent")]
         getter max_idle_connections_percent : Int32?
 
@@ -958,6 +1096,7 @@ module AwsSdk
         # in a session using a proxy to be pinned to the same underlying database connection. Including an
         # item in the list exempts that class of SQL operations from the pinning behavior. Default: no session
         # pinning filters
+
         @[JSON::Field(key: "SessionPinningFilters")]
         getter session_pinning_filters : Array(String)?
 
@@ -973,12 +1112,14 @@ module AwsSdk
 
       # Displays the settings that control the size and behavior of the connection pool associated with a
       # DBProxyTarget .
+
       struct ConnectionPoolConfigurationInfo
         include JSON::Serializable
 
         # The number of seconds for a proxy to wait for a connection to become available in the connection
         # pool. Only applies when the proxy has opened its maximum number of connections and all connections
         # are busy with client sessions.
+
         @[JSON::Field(key: "ConnectionBorrowTimeout")]
         getter connection_borrow_timeout : Int32?
 
@@ -990,12 +1131,14 @@ module AwsSdk
         # is not protected by authentication or cryptographic methods. Anyone with access to view or manage
         # your proxy target group configuration can view the initialization query. You should not add
         # sensitive data, such as passwords or long-lived encryption keys, to this option.
+
         @[JSON::Field(key: "InitQuery")]
         getter init_query : String?
 
         # The maximum size of the connection pool for each target in a target group. The value is expressed as
         # a percentage of the max_connections setting for the RDS DB instance or Aurora DB cluster used by the
         # target group.
+
         @[JSON::Field(key: "MaxConnectionsPercent")]
         getter max_connections_percent : Int32?
 
@@ -1004,6 +1147,7 @@ module AwsSdk
         # cluster used by the target group. With a high value, the proxy leaves a high percentage of idle
         # database connections open. A low value causes the proxy to close more idle connections and return
         # them to the database.
+
         @[JSON::Field(key: "MaxIdleConnectionsPercent")]
         getter max_idle_connections_percent : Int32?
 
@@ -1012,6 +1156,7 @@ module AwsSdk
         # item in the list exempts that class of SQL operations from the pinning behavior. This setting is
         # only supported for MySQL engine family databases. Currently, the only allowed value is
         # EXCLUDE_VARIABLE_SETS .
+
         @[JSON::Field(key: "SessionPinningFilters")]
         getter session_pinning_filters : Array(String)?
 
@@ -1026,14 +1171,17 @@ module AwsSdk
       end
 
       # The additional attributes of RecommendedAction data type.
+
       struct ContextAttribute
         include JSON::Serializable
 
         # The key of ContextAttribute .
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value of ContextAttribute .
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -1044,24 +1192,29 @@ module AwsSdk
         end
       end
 
+
       struct CopyDBClusterParameterGroupMessage
         include JSON::Serializable
 
         # The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For
         # information about creating an ARN, see Constructing an ARN for Amazon RDS in the Amazon Aurora User
         # Guide . Constraints: Must specify a valid DB cluster parameter group.
+
         @[JSON::Field(key: "SourceDBClusterParameterGroupIdentifier")]
         getter source_db_cluster_parameter_group_identifier : String
 
         # A description for the copied DB cluster parameter group.
+
         @[JSON::Field(key: "TargetDBClusterParameterGroupDescription")]
         getter target_db_cluster_parameter_group_description : String
 
         # The identifier for the copied DB cluster parameter group. Constraints: Can't be null, empty, or
         # blank Must contain from 1 to 255 letters, numbers, or hyphens First character must be a letter Can't
         # end with a hyphen or contain two consecutive hyphens Example: my-cluster-param-group1
+
         @[JSON::Field(key: "TargetDBClusterParameterGroupIdentifier")]
         getter target_db_cluster_parameter_group_identifier : String
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -1075,8 +1228,10 @@ module AwsSdk
         end
       end
 
+
       struct CopyDBClusterParameterGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterParameterGroup")]
         getter db_cluster_parameter_group : Types::DBClusterParameterGroup?
@@ -1086,6 +1241,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct CopyDBClusterSnapshotMessage
         include JSON::Serializable
@@ -1097,6 +1253,7 @@ module AwsSdk
         # snapshot ARN. You can also specify an ARN of a snapshot that is in a different account and a
         # different Amazon Web Services Region. For more information, go to Copying Snapshots Across Amazon
         # Web Services Regions in the Amazon Aurora User Guide . Example: my-cluster-snapshot1
+
         @[JSON::Field(key: "SourceDBClusterSnapshotIdentifier")]
         getter source_db_cluster_snapshot_identifier : String
 
@@ -1104,11 +1261,13 @@ module AwsSdk
         # parameter isn't case-sensitive. Constraints: Must contain from 1 to 63 letters, numbers, or hyphens.
         # First character must be a letter. Can't end with a hyphen or contain two consecutive hyphens.
         # Example: my-cluster-snapshot2
+
         @[JSON::Field(key: "TargetDBClusterSnapshotIdentifier")]
         getter target_db_cluster_snapshot_identifier : String
 
         # Specifies whether to copy all tags from the source DB cluster snapshot to the target DB cluster
         # snapshot. By default, tags are not copied.
+
         @[JSON::Field(key: "CopyTags")]
         getter copy_tags : Bool?
 
@@ -1125,6 +1284,7 @@ module AwsSdk
         # Services Region that they are created in, and you can't use KMS keys from one Amazon Web Services
         # Region in another Amazon Web Services Region. If you copy an unencrypted DB cluster snapshot and
         # specify a value for the KmsKeyId parameter, an error is returned.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -1154,8 +1314,10 @@ module AwsSdk
         # --source-region for the CLI) instead of specifying PreSignedUrl manually. Specifying SourceRegion
         # autogenerates a presigned URL that is a valid request for the operation that can run in the source
         # Amazon Web Services Region.
+
         @[JSON::Field(key: "PreSignedUrl")]
         getter pre_signed_url : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -1171,8 +1333,10 @@ module AwsSdk
         end
       end
 
+
       struct CopyDBClusterSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterSnapshot")]
         getter db_cluster_snapshot : Types::DBClusterSnapshot?
@@ -1183,24 +1347,29 @@ module AwsSdk
         end
       end
 
+
       struct CopyDBParameterGroupMessage
         include JSON::Serializable
 
         # The identifier or ARN for the source DB parameter group. For information about creating an ARN, see
         # Constructing an ARN for Amazon RDS in the Amazon RDS User Guide . Constraints: Must specify a valid
         # DB parameter group.
+
         @[JSON::Field(key: "SourceDBParameterGroupIdentifier")]
         getter source_db_parameter_group_identifier : String
 
         # A description for the copied DB parameter group.
+
         @[JSON::Field(key: "TargetDBParameterGroupDescription")]
         getter target_db_parameter_group_description : String
 
         # The identifier for the copied DB parameter group. Constraints: Can't be null, empty, or blank Must
         # contain from 1 to 255 letters, numbers, or hyphens First character must be a letter Can't end with a
         # hyphen or contain two consecutive hyphens Example: my-db-parameter-group
+
         @[JSON::Field(key: "TargetDBParameterGroupIdentifier")]
         getter target_db_parameter_group_identifier : String
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -1214,8 +1383,10 @@ module AwsSdk
         end
       end
 
+
       struct CopyDBParameterGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBParameterGroup")]
         getter db_parameter_group : Types::DBParameterGroup?
@@ -1225,6 +1396,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct CopyDBSnapshotMessage
         include JSON::Serializable
@@ -1239,23 +1411,27 @@ module AwsSdk
         # arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805 . Constraints: Must
         # specify a valid source snapshot in the "available" state. Example: rds:mydb-2012-04-02-00-01
         # Example: arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805
+
         @[JSON::Field(key: "SourceDBSnapshotIdentifier")]
         getter source_db_snapshot_identifier : String
 
         # The identifier for the copy of the snapshot. Constraints: Can't be null, empty, or blank Must
         # contain from 1 to 255 letters, numbers, or hyphens First character must be a letter Can't end with a
         # hyphen or contain two consecutive hyphens Example: my-db-snapshot
+
         @[JSON::Field(key: "TargetDBSnapshotIdentifier")]
         getter target_db_snapshot_identifier : String
 
         # Specifies whether to copy the DB option group associated with the source DB snapshot to the target
         # Amazon Web Services account and associate with the target DB snapshot. The associated option group
         # can be copied only with cross-account snapshot copy calls.
+
         @[JSON::Field(key: "CopyOptionGroup")]
         getter copy_option_group : Bool?
 
         # Specifies whether to copy all tags from the source DB snapshot to the target DB snapshot. By
         # default, tags aren't copied.
+
         @[JSON::Field(key: "CopyTags")]
         getter copy_tags : Bool?
 
@@ -1271,6 +1447,7 @@ module AwsSdk
         # identifier for the destination Amazon Web Services Region. KMS keys are specific to the Amazon Web
         # Services Region that they are created in, and you can't use KMS keys from one Amazon Web Services
         # Region in another Amazon Web Services Region.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -1279,6 +1456,7 @@ module AwsSdk
         # nondefault option group. If your source DB instance uses Transparent Data Encryption for Oracle or
         # Microsoft SQL Server, you must specify this option when copying across Amazon Web Services Regions.
         # For more information, see Option group considerations in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -1312,24 +1490,29 @@ module AwsSdk
         # an Amazon Web Services SDK tool or the CLI, you can specify SourceRegion (or --source-region for the
         # CLI) instead of specifying PreSignedUrl manually. Specifying SourceRegion autogenerates a presigned
         # URL that is a valid request for the operation that can run in the source Amazon Web Services Region.
+
         @[JSON::Field(key: "PreSignedUrl")]
         getter pre_signed_url : String?
 
         # Specifies the name of the Availability Zone where RDS stores the DB snapshot. This value is valid
         # only for snapshots that RDS stores on a Dedicated Local Zone.
+
         @[JSON::Field(key: "SnapshotAvailabilityZone")]
         getter snapshot_availability_zone : String?
 
         # Configures the location where RDS will store copied snapshots. Valid Values: local (Dedicated Local
         # Zone) outposts (Amazon Web Services Outposts) region (Amazon Web Services Region)
+
         @[JSON::Field(key: "SnapshotTarget")]
         getter snapshot_target : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The external custom Availability Zone (CAZ) identifier for the target CAZ. Example: rds-caz-aiqhTgQv
         # .
+
         @[JSON::Field(key: "TargetCustomAvailabilityZone")]
         getter target_custom_availability_zone : String?
 
@@ -1349,8 +1532,10 @@ module AwsSdk
         end
       end
 
+
       struct CopyDBSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSnapshot")]
         getter db_snapshot : Types::DBSnapshot?
@@ -1361,22 +1546,27 @@ module AwsSdk
         end
       end
 
+
       struct CopyOptionGroupMessage
         include JSON::Serializable
 
         # The identifier for the source option group. Constraints: Must specify a valid option group.
+
         @[JSON::Field(key: "SourceOptionGroupIdentifier")]
         getter source_option_group_identifier : String
 
         # The description for the copied option group.
+
         @[JSON::Field(key: "TargetOptionGroupDescription")]
         getter target_option_group_description : String
 
         # The identifier for the copied option group. Constraints: Can't be null, empty, or blank Must contain
         # from 1 to 255 letters, numbers, or hyphens First character must be a letter Can't end with a hyphen
         # or contain two consecutive hyphens Example: my-option-group
+
         @[JSON::Field(key: "TargetOptionGroupIdentifier")]
         getter target_option_group_identifier : String
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -1390,8 +1580,10 @@ module AwsSdk
         end
       end
 
+
       struct CopyOptionGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "OptionGroup")]
         getter option_group : Types::OptionGroup?
@@ -1402,11 +1594,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateBlueGreenDeploymentRequest
         include JSON::Serializable
 
         # The name of the blue/green deployment. Constraints: Can't be the same as an existing blue/green
         # deployment name in the same account and Amazon Web Services Region.
+
         @[JSON::Field(key: "BlueGreenDeploymentName")]
         getter blue_green_deployment_name : String
 
@@ -1414,22 +1608,26 @@ module AwsSdk
         # to clone. The blue/green deployment creates this database in the green environment. You can make
         # updates to the database in the green environment, such as an engine version upgrade. When you are
         # ready, you can switch the database in the green environment to be the production database.
+
         @[JSON::Field(key: "Source")]
         getter source : String
 
         # Tags to assign to the blue/green deployment.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The amount of storage in gibibytes (GiB) to allocate for the green DB instance. You can choose to
         # increase or decrease the allocated storage on the green DB instance. This setting doesn't apply to
         # Amazon Aurora blue/green deployments.
+
         @[JSON::Field(key: "TargetAllocatedStorage")]
         getter target_allocated_storage : Int32?
 
         # The DB cluster parameter group associated with the Aurora DB cluster in the green environment. To
         # test parameter changes, specify a DB cluster parameter group that is different from the one
         # associated with the source DB cluster.
+
         @[JSON::Field(key: "TargetDBClusterParameterGroupName")]
         getter target_db_cluster_parameter_group_name : String?
 
@@ -1438,39 +1636,46 @@ module AwsSdk
         # different instance classes. If you're creating a blue/green deployment from an Aurora DB cluster,
         # don't specify this parameter. After the green environment is created, you can individually modify
         # the instance classes of the DB instances within the green DB cluster.
+
         @[JSON::Field(key: "TargetDBInstanceClass")]
         getter target_db_instance_class : String?
 
         # The DB parameter group associated with the DB instance in the green environment. To test parameter
         # changes, specify a DB parameter group that is different from the one associated with the source DB
         # instance.
+
         @[JSON::Field(key: "TargetDBParameterGroupName")]
         getter target_db_parameter_group_name : String?
 
         # The engine version of the database in the green environment. Specify the engine version to upgrade
         # to in the green environment.
+
         @[JSON::Field(key: "TargetEngineVersion")]
         getter target_engine_version : String?
 
         # The amount of Provisioned IOPS (input/output operations per second) to allocate for the green DB
         # instance. For information about valid IOPS values, see Amazon RDS DB instance storage in the Amazon
         # RDS User Guide . This setting doesn't apply to Amazon Aurora blue/green deployments.
+
         @[JSON::Field(key: "TargetIops")]
         getter target_iops : Int32?
 
         # The storage throughput value for the green DB instance. This setting applies only to the gp3 storage
         # type. This setting doesn't apply to Amazon Aurora blue/green deployments.
+
         @[JSON::Field(key: "TargetStorageThroughput")]
         getter target_storage_throughput : Int32?
 
         # The storage type to associate with the green DB instance. Valid Values: gp2 | gp3 | io1 | io2 This
         # setting doesn't apply to Amazon Aurora blue/green deployments.
+
         @[JSON::Field(key: "TargetStorageType")]
         getter target_storage_type : String?
 
         # Whether to upgrade the storage file system configuration on the green database. This option migrates
         # the green DB instance from the older 32-bit file system to the preferred configuration. For more
         # information, see Upgrading the storage file system for a DB instance .
+
         @[JSON::Field(key: "UpgradeTargetStorageConfig")]
         getter upgrade_target_storage_config : Bool?
 
@@ -1491,8 +1696,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateBlueGreenDeploymentResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "BlueGreenDeployment")]
         getter blue_green_deployment : Types::BlueGreenDeployment?
@@ -1504,12 +1711,14 @@ module AwsSdk
       end
 
       # An error occurred while trying to create the CEV.
+
       struct CreateCustomDBEngineVersionFault
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct CreateCustomDBEngineVersionMessage
         include JSON::Serializable
@@ -1518,6 +1727,7 @@ module AwsSdk
         # custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the
         # following values: custom-sqlserver-ee custom-sqlserver-se ccustom-sqlserver-web custom-sqlserver-dev
         # RDS for SQL Server supports only sqlserver-dev-ee .
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
@@ -1526,25 +1736,30 @@ module AwsSdk
         # RDS Custom for SQL Server, the name format is major
         # engine_version*.*minor_engine_version*.*customized_string* . For example, a valid CEV name is
         # 16.00.4215.2.my_cev1 . The CEV name is unique per customer per Amazon Web Services Regions.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String
 
         # The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version
         # to import to Amazon RDS.
+
         @[JSON::Field(key: "DatabaseInstallationFiles")]
         getter database_installation_files : Array(String)?
 
         # The name of an Amazon S3 bucket that contains database installation files for your CEV. For example,
         # a valid bucket name is my-custom-installation-files .
+
         @[JSON::Field(key: "DatabaseInstallationFilesS3BucketName")]
         getter database_installation_files_s3_bucket_name : String?
 
         # The Amazon S3 directory that contains the database installation files for your CEV. For example, a
         # valid bucket name is 123456789012/cev1 . If this setting isn't specified, no prefix is assumed.
+
         @[JSON::Field(key: "DatabaseInstallationFilesS3Prefix")]
         getter database_installation_files_s3_prefix : String?
 
         # An optional description of your CEV.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -1552,6 +1767,7 @@ module AwsSdk
         # create a CEV. For RDS Custom for Oracle, the default is the most recent AMI available, but you can
         # specify an AMI ID that was used in a different Oracle CEV. Find the AMIs used by your CEVs by
         # calling the DescribeDBEngineVersions operation.
+
         @[JSON::Field(key: "ImageId")]
         getter image_id : String?
 
@@ -1562,6 +1778,7 @@ module AwsSdk
         # Creating a symmetric encryption KMS key in the Amazon Web Services Key Management Service Developer
         # Guide . You can choose the same symmetric encryption key when you create a CEV and a DB instance, or
         # choose different keys.
+
         @[JSON::Field(key: "KMSKeyId")]
         getter kms_key_id : String?
 
@@ -1574,20 +1791,24 @@ module AwsSdk
         # patches for this CEV. OtherPatchFileNames The patches that are not in the list of PSU and RU
         # patches. Amazon RDS applies these patches after applying the PSU and RU patches. For more
         # information, see Creating the CEV manifest in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "Manifest")]
         getter manifest : String?
 
         # The ARN of a CEV to use as a source for creating a new CEV. You can specify a different Amazon
         # Machine Imagine (AMI) by using either Source or UseAwsProvidedLatestImage . You can't specify a
         # different JSON manifest when you specify SourceCustomDbEngineVersionIdentifier .
+
         @[JSON::Field(key: "SourceCustomDbEngineVersionIdentifier")]
         getter source_custom_db_engine_version_identifier : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Specifies whether to use the latest service-provided Amazon Machine Image (AMI) for the CEV. If you
         # specify UseAwsProvidedLatestImage , you can't also specify ImageId .
+
         @[JSON::Field(key: "UseAwsProvidedLatestImage")]
         getter use_aws_provided_latest_image : Bool?
 
@@ -1608,33 +1829,40 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterEndpointMessage
         include JSON::Serializable
 
         # The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterEndpointIdentifier")]
         getter db_cluster_endpoint_identifier : String
 
         # The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored
         # as a lowercase string.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The type of the endpoint, one of: READER , WRITER , ANY .
+
         @[JSON::Field(key: "EndpointType")]
         getter endpoint_type : String
 
         # List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible
         # instances are reachable through the custom endpoint. This parameter is relevant only if the list of
         # static members is empty.
+
         @[JSON::Field(key: "ExcludedMembers")]
         getter excluded_members : Array(String)?
 
         # List of DB instance identifiers that are part of the custom endpoint group.
+
         @[JSON::Field(key: "StaticMembers")]
         getter static_members : Array(String)?
 
         # The tags to be assigned to the Amazon RDS resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1649,6 +1877,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterMessage
         include JSON::Serializable
 
@@ -1657,18 +1886,21 @@ module AwsSdk
         # (for Aurora DB clusters) or 1 to 52 (for Multi-AZ DB clusters) letters, numbers, or hyphens. First
         # character must be a letter. Can't end with a hyphen or contain two consecutive hyphens. Example:
         # my-cluster1
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The database engine to use for this DB cluster. Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters Valid Values: aurora-mysql aurora-postgresql mysql postgres neptune - For
         # information about using Amazon Neptune, see the Amazon Neptune User Guide .
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
         # The amount of storage in gibibytes (GiB) to allocate to each DB instance in the Multi-AZ DB cluster.
         # Valid for Cluster Type: Multi-AZ DB clusters only This setting is required to create a Multi-AZ DB
         # cluster.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
@@ -1676,6 +1908,7 @@ module AwsSdk
         # maintenance window. By default, minor engine upgrades are applied automatically. Valid for Cluster
         # Type: Aurora DB clusters and Multi-AZ DB cluster. For more information about automatic minor version
         # upgrades, see Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
@@ -1688,28 +1921,33 @@ module AwsSdk
         # AZ 2, or AZ 3. For more information, see Availability Zones and High availability for Aurora DB
         # instances in the Amazon Aurora User Guide . Valid for Cluster Type: Aurora DB clusters only
         # Constraints: Can't specify more than three AZs.
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(String)?
 
         # The target backtrack window, in seconds. To disable backtracking, set this value to 0 . Valid for
         # Cluster Type: Aurora MySQL DB clusters only Default: 0 Constraints: If specified, this value must be
         # set to a number from 0 to 259,200 (72 hours).
+
         @[JSON::Field(key: "BacktrackWindow")]
         getter backtrack_window : Int64?
 
         # The number of days for which automated backups are retained. Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters Default: 1 Constraints: Must be a value from 1 to 35.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The CA certificate identifier to use for the DB cluster's server certificate. For more information,
         # see Using SSL/TLS to encrypt a connection to a DB instance in the Amazon RDS User Guide . Valid for
         # Cluster Type: Multi-AZ DB clusters
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
         # The name of the character set ( CharacterSet ) to associate the DB cluster with. Valid for Cluster
         # Type: Aurora DB clusters only
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
@@ -1717,11 +1955,13 @@ module AwsSdk
         # operates as an Aurora Limitless Database. When set to standard (the default), the cluster uses
         # normal DB instance creation. Valid for: Aurora DB clusters only You can't modify this setting after
         # you create the DB cluster.
+
         @[JSON::Field(key: "ClusterScalabilityType")]
         getter cluster_scalability_type : String?
 
         # Specifies whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
         # is not to copy them. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -1730,6 +1970,7 @@ module AwsSdk
         # for all database engines. For the full list of DB instance classes and availability for your engine,
         # see DB instance class in the Amazon RDS User Guide . This setting is required to create a Multi-AZ
         # DB cluster. Valid for Cluster Type: Multi-AZ DB clusters only
+
         @[JSON::Field(key: "DBClusterInstanceClass")]
         getter db_cluster_instance_class : String?
 
@@ -1737,16 +1978,19 @@ module AwsSdk
         # value, then the default DB cluster parameter group for the specified DB engine and version is used.
         # Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Constraints: If supplied, must
         # match the name of an existing DB cluster parameter group.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
         # A DB subnet group to associate with this DB cluster. This setting is required to create a Multi-AZ
         # DB cluster. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Constraints: Must
         # match the name of an existing DB subnet group. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "DBSystemId")]
         getter db_system_id : String?
 
@@ -1754,18 +1998,21 @@ module AwsSdk
         # must also set the PerformanceInsightsEnabled parameter to true and the
         # PerformanceInsightsRetentionPeriod parameter to 465. Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # The name for your database of up to 64 alphanumeric characters. A database named postgres is always
         # created. If this parameter is specified, an additional database with this name is created. Valid for
         # Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DatabaseName")]
         getter database_name : String?
 
         # Specifies whether the DB cluster has deletion protection enabled. The database can't be deleted when
         # deletion protection is enabled. By default, deletion protection isn't enabled. Valid for Cluster
         # Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -1773,11 +2020,13 @@ module AwsSdk
         # RDS can use Kerberos authentication to authenticate users that connect to the DB cluster. For more
         # information, see Kerberos authentication in the Amazon Aurora User Guide . Valid for Cluster Type:
         # Aurora DB clusters only
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. Valid for Cluster
         # Type: Aurora DB clusters only
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
@@ -1789,6 +2038,7 @@ module AwsSdk
         # about exporting CloudWatch Logs for Amazon RDS, see Publishing Database Logs to Amazon CloudWatch
         # Logs in the Amazon RDS User Guide . For more information about exporting CloudWatch Logs for Amazon
         # Aurora, see Publishing Database Logs to Amazon CloudWatch Logs in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -1800,6 +2050,7 @@ module AwsSdk
         # replicated back to this cluster. For the primary DB cluster of an Aurora global database, this value
         # is used immediately if the primary is demoted by a global cluster API operation, but it does nothing
         # until then. Valid for Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "EnableGlobalWriteForwarding")]
         getter enable_global_write_forwarding : Bool?
 
@@ -1808,6 +2059,7 @@ module AwsSdk
         # API) for running SQL queries on the DB cluster. You can also query your database from inside the RDS
         # console with the RDS query editor. For more information, see Using RDS Data API in the Amazon Aurora
         # User Guide . Valid for Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "EnableHttpEndpoint")]
         getter enable_http_endpoint : Bool?
 
@@ -1816,24 +2068,28 @@ module AwsSdk
         # Database Authentication in the Amazon Aurora User Guide or IAM database authentication for MariaDB,
         # MySQL, and PostgreSQL in the Amazon RDS User Guide . Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to enable Aurora Limitless Database. You must enable Aurora Limitless Database to
         # create a DB shard group. Valid for: Aurora DB clusters only This setting is no longer used. Instead
         # use the ClusterScalabilityType setting.
+
         @[JSON::Field(key: "EnableLimitlessDatabase")]
         getter enable_limitless_database : Bool?
 
         # Specifies whether read replicas can forward write operations to the writer DB instance in the DB
         # cluster. By default, write operations aren't allowed on reader DB instances. Valid for: Aurora DB
         # clusters only
+
         @[JSON::Field(key: "EnableLocalWriteForwarding")]
         getter enable_local_write_forwarding : Bool?
 
         # Specifies whether to turn on Performance Insights for the DB cluster. For more information, see
         # Using Amazon Performance Insights in the Amazon RDS User Guide . Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
@@ -1849,6 +2105,7 @@ module AwsSdk
         # RDS in the Amazon RDS User Guide Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
         # Valid Values: open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
@@ -1857,6 +2114,7 @@ module AwsSdk
         # provisioned engine mode. For information about limitations and requirements for Serverless DB
         # clusters, see the following sections in the Amazon Aurora User Guide : Limitations of Aurora
         # Serverless v1 Requirements for Aurora Serverless v2 Valid for Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
@@ -1876,11 +2134,13 @@ module AwsSdk
         # engine versions in the Amazon Aurora User Guide . RDS for MySQL - see Amazon RDS for MySQL in the
         # Amazon RDS User Guide . RDS for PostgreSQL - see Amazon RDS for PostgreSQL in the Amazon RDS User
         # Guide . Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # The global cluster ID of an Aurora cluster that becomes the primary cluster in the new global
         # database cluster. Valid for Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String?
 
@@ -1889,6 +2149,7 @@ module AwsSdk
         # Provisioned IOPS storage in the Amazon RDS User Guide . This setting is required to create a
         # Multi-AZ DB cluster. Valid for Cluster Type: Multi-AZ DB clusters only Constraints: Must be a
         # multiple between .5 and 50 of the storage amount for the DB cluster.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -1904,6 +2165,7 @@ module AwsSdk
         # Services Region, make sure to set KmsKeyId to a KMS key identifier that is valid in the destination
         # Amazon Web Services Region. This KMS key is used to encrypt the read replica in that Amazon Web
         # Services Region. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -1913,6 +2175,7 @@ module AwsSdk
         # User Guide. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Constraints: Can't
         # manage the master user password with Amazon Web Services Secrets Manager if MasterUserPassword is
         # specified.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -1922,12 +2185,14 @@ module AwsSdk
         # password. iam-db-auth - Use IAM database authentication for the master user. Valid for Cluster Type:
         # Aurora DB clusters and Multi-AZ DB clusters This option is only valid for RDS for PostgreSQL and
         # Aurora PostgreSQL engines.
+
         @[JSON::Field(key: "MasterUserAuthenticationType")]
         getter master_user_authentication_type : String?
 
         # The password for the master database user. Valid for Cluster Type: Aurora DB clusters and Multi-AZ
         # DB clusters Constraints: Must contain from 8 to 41 characters. Can contain any printable ASCII
         # character except "/", """, or "@". Can't be specified if ManageMasterUserPassword is turned on.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -1942,12 +2207,14 @@ module AwsSdk
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region. Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
         # The name of the master user for the DB cluster. Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters Constraints: Must be 1 to 16 letters or numbers. First character must be a
         # letter. Can't be a reserved word for the chosen database engine.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
@@ -1955,6 +2222,7 @@ module AwsSdk
         # cluster. To turn off collecting Enhanced Monitoring metrics, specify 0 . If MonitoringRoleArn is
         # specified, also set MonitoringInterval to a value other than 0 . Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters Valid Values: 0 | 1 | 5 | 10 | 15 | 30 | 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
@@ -1963,6 +2231,7 @@ module AwsSdk
         # creating a monitoring role, see Setting up and enabling Enhanced Monitoring in the Amazon RDS User
         # Guide . If MonitoringInterval is set to a value other than 0 , supply a MonitoringRoleArn value.
         # Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
@@ -1970,11 +2239,13 @@ module AwsSdk
         # for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon
         # Aurora User Guide. Valid for Cluster Type: Aurora DB clusters only Valid Values: IPV4 | DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The option group to associate the DB cluster with. DB clusters are associated with a default option
         # group that can't be modified.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -1984,6 +2255,7 @@ module AwsSdk
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region. Valid for Cluster Type:
         # Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -1991,12 +2263,14 @@ module AwsSdk
         # and Multi-AZ DB clusters Valid Values: 7 month * 31, where month is a number of months from 1-23.
         # Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days If you
         # specify a retention period that isn't valid, such as 94 , Amazon RDS issues an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port number on which the instances in the DB cluster accept connections. Valid for Cluster Type:
         # Aurora DB clusters and Multi-AZ DB clusters Valid Values: 1150-65535 Default: RDS for MySQL and
         # Aurora MySQL - 3306 RDS for PostgreSQL and Aurora PostgreSQL - 5432
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -2022,6 +2296,7 @@ module AwsSdk
         # of specifying PreSignedUrl manually. Specifying SourceRegion autogenerates a presigned URL that is a
         # valid request for the operation that can run in the source Amazon Web Services Region. Valid for
         # Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "PreSignedUrl")]
         getter pre_signed_url : String?
 
@@ -2032,6 +2307,7 @@ module AwsSdk
         # Aurora User Guide . Constraints: Must be in the format hh24:mi-hh24:mi . Must be in Universal
         # Coordinated Time (UTC). Must not conflict with the preferred maintenance window. Must be at least 30
         # minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
@@ -2042,6 +2318,7 @@ module AwsSdk
         # Amazon Aurora User Guide . Constraints: Must be in the format ddd:hh24:mi-ddd:hh24:mi . Days must be
         # one of Mon | Tue | Wed | Thu | Fri | Sat | Sun . Must be in Universal Coordinated Time (UTC). Must
         # be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
@@ -2057,28 +2334,34 @@ module AwsSdk
         # DBSubnetGroup is default , in which case PubliclyAccessible defaults to true . If PubliclyAccessible
         # is true and the VPC that the DBSubnetGroup is in doesn't have an internet gateway attached to it,
         # Amazon RDS returns an error.
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "RdsCustomClusterConfiguration")]
         getter rds_custom_cluster_configuration : Types::RdsCustomClusterConfiguration?
 
         # The Amazon Resource Name (ARN) of the source DB instance or DB cluster if this DB cluster is created
         # as a read replica. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "ReplicationSourceIdentifier")]
         getter replication_source_identifier : String?
 
         # For DB clusters in serverless DB engine mode, the scaling properties of the DB cluster. Valid for
         # Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "ScalingConfiguration")]
         getter scaling_configuration : Types::ScalingConfiguration?
+
 
         @[JSON::Field(key: "ServerlessV2ScalingConfiguration")]
         getter serverless_v2_scaling_configuration : Types::ServerlessV2ScalingConfiguration?
 
         # Specifies whether the DB cluster is encrypted. Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
@@ -2091,21 +2374,25 @@ module AwsSdk
         # Default: Aurora DB clusters - aurora Multi-AZ DB clusters - io1 When you create an Aurora DB cluster
         # with the storage type set to aurora-iopt1 , the storage type is returned in the response. The
         # storage type isn't returned when you set it to aurora .
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB cluster. Valid Values: cluster-auto-backup - The
         # DB cluster's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
 
         # Tags to assign to the DB cluster. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # A list of EC2 VPC security groups to associate with this DB cluster. Valid for Cluster Type: Aurora
         # DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -2172,11 +2459,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB cluster parameter group. Constraints: Must not match the name of an existing DB
         # cluster parameter group. This value is stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String
 
@@ -2192,14 +2481,17 @@ module AwsSdk
         # "DBEngineVersions[].DBParameterGroupFamily" --engine aurora-postgresql The output contains
         # duplicates. The following are the valid DB engine values: aurora-mysql aurora-postgresql mysql
         # postgres
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String
 
         # The description for the DB cluster parameter group.
+
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # Tags to assign to the DB cluster parameter group.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -2212,8 +2504,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterParameterGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterParameterGroup")]
         getter db_cluster_parameter_group : Types::DBClusterParameterGroup?
@@ -2224,8 +2518,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -2236,21 +2532,25 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterSnapshotMessage
         include JSON::Serializable
 
         # The identifier of the DB cluster to create a snapshot for. This parameter isn't case-sensitive.
         # Constraints: Must match the identifier of an existing DBCluster. Example: my-cluster1
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.
         # Constraints: Must contain from 1 to 63 letters, numbers, or hyphens. First character must be a
         # letter. Can't end with a hyphen or contain two consecutive hyphens. Example: my-cluster1-snapshot1
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String
 
         # The tags to be assigned to the DB cluster snapshot.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -2262,8 +2562,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBClusterSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterSnapshot")]
         getter db_cluster_snapshot : Types::DBClusterSnapshot?
@@ -2274,6 +2576,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBInstanceMessage
         include JSON::Serializable
 
@@ -2281,12 +2584,14 @@ module AwsSdk
         # classes are available in all Amazon Web Services Regions, or for all database engines. For the full
         # list of DB instance classes, and availability for your engine, see DB instance classes in the Amazon
         # RDS User Guide or Aurora DB instance classes in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String
 
         # The identifier for this DB instance. This parameter is stored as a lowercase string. Constraints:
         # Must contain from 1 to 63 letters, numbers, or hyphens. First character must be a letter. Can't end
         # with a hyphen or contain two consecutive hyphens. Example: mydbinstance
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
@@ -2300,12 +2605,14 @@ module AwsSdk
         # custom-sqlserver-dev (for RDS Custom for SQL Server DB instances) db2-ae db2-se mariadb mysql
         # oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-dev-ee sqlserver-ee
         # sqlserver-se sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
         # A list of additional storage volumes to create for the DB instance. You can create up to three
         # additional storage volumes using the names rdsdbdata2 , rdsdbdata3 , and rdsdbdata4 . Additional
         # storage volumes are supported for RDS for Oracle and RDS for SQL Server DB instances only.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
@@ -2338,6 +2645,7 @@ module AwsSdk
         # to 16384. Web and Express editions: Must be an integer from 100 to 16384. Magnetic storage
         # (standard): Enterprise and Standard editions: Must be an integer from 20 to 1024. Web and Express
         # editions: Must be an integer from 20 to 1024.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
@@ -2345,6 +2653,7 @@ module AwsSdk
         # maintenance window. By default, minor engine upgrades are applied automatically. If you create an
         # RDS Custom DB instance, you must set AutoMinorVersionUpgrade to false . For more information about
         # automatic minor version upgrades, see Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
@@ -2356,6 +2665,7 @@ module AwsSdk
         # Services Region. Constraints: The AvailabilityZone parameter can't be specified if the DB instance
         # is a Multi-AZ deployment. The specified Availability Zone must be in the same Amazon Web Services
         # Region as the current endpoint. Example: us-east-1d
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
@@ -2364,6 +2674,7 @@ module AwsSdk
         # apply to Amazon Aurora DB instances. The retention period for automated backups is managed by the DB
         # cluster. Default: 1 Constraints: Must be a value from 0 to 35. Can't be set to 0 if the DB instance
         # is a source to read replicas. Can't be set to 0 for an RDS Custom for Oracle DB instance.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
@@ -2371,6 +2682,7 @@ module AwsSdk
         # Local Zone) outposts (Amazon Web Services Outposts) region (Amazon Web Services Region) Default:
         # region For more information, see Working with Amazon RDS on Amazon Web Services Outposts in the
         # Amazon RDS User Guide .
+
         @[JSON::Field(key: "BackupTarget")]
         getter backup_target : String?
 
@@ -2378,6 +2690,7 @@ module AwsSdk
         # apply to RDS Custom DB instances. For more information, see Using SSL/TLS to encrypt a connection to
         # a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
@@ -2385,6 +2698,7 @@ module AwsSdk
         # setting doesn't apply to the following DB instances: Amazon Aurora - The character set is managed by
         # the DB cluster. For more information, see CreateDBCluster . RDS Custom - However, if you need to
         # change the character set, you can change it on the database itself.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
@@ -2392,6 +2706,7 @@ module AwsSdk
         # tags are not copied. This setting doesn't apply to Amazon Aurora DB instances. Copying tags to
         # snapshots is managed by the DB cluster. Setting this value for an Aurora DB instance has no effect
         # on the DB cluster setting.
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -2401,11 +2716,13 @@ module AwsSdk
         # profile name and the associated IAM role name must start with the prefix AWSRDSCustom . For the list
         # of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User
         # Guide .
+
         @[JSON::Field(key: "CustomIamInstanceProfile")]
         getter custom_iam_instance_profile : String?
 
         # The identifier of the DB cluster that this DB instance will belong to. This setting doesn't apply to
         # RDS Custom DB instances.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
@@ -2444,6 +2761,7 @@ module AwsSdk
         # contain 1 to 63 letters, numbers, or underscores. Must begin with a letter. Subsequent characters
         # can be letters, underscores, or digits (0-9). Can't be a word reserved by the specified database
         # engine. RDS for SQL Server Not applicable. Must be null.
+
         @[JSON::Field(key: "DBName")]
         getter db_name : String?
 
@@ -2452,17 +2770,20 @@ module AwsSdk
         # setting doesn't apply to RDS Custom DB instances. Constraints: Must be 1 to 255 letters, numbers, or
         # hyphens. The first character must be a letter. Can't end with a hyphen or contain two consecutive
         # hyphens.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
         # A list of DB security groups to associate with this DB instance. This setting applies to the legacy
         # EC2-Classic platform, which is no longer used to create new DB instances. Use the
         # VpcSecurityGroupIds setting instead.
+
         @[JSON::Field(key: "DBSecurityGroups")]
         getter db_security_groups : Array(String)?
 
         # A DB subnet group to associate with this DB instance. Constraints: Must match the name of an
         # existing DB subnet group. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
@@ -2470,15 +2791,18 @@ module AwsSdk
         # your database files. In this context, the term "Oracle database instance" refers exclusively to the
         # system global area (SGA) and Oracle background processes. If you don't specify a SID, the value
         # defaults to RDSCDB . The Oracle SID is also the name of your CDB.
+
         @[JSON::Field(key: "DBSystemId")]
         getter db_system_id : String?
 
         # The mode of Database Insights to enable for the DB instance. Aurora DB instances inherit this value
         # from the DB cluster, so you can't change this value.
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
@@ -2488,6 +2812,7 @@ module AwsSdk
         # You can enable or disable deletion protection for the DB cluster. For more information, see
         # CreateDBCluster . DB instances in a DB cluster can be deleted even when deletion protection is
         # enabled for the DB cluster.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -2496,11 +2821,13 @@ module AwsSdk
         # more information, see Kerberos Authentication in the Amazon RDS User Guide . This setting doesn't
         # apply to the following DB instances: Amazon Aurora (The domain is managed by the DB cluster.) RDS
         # Custom
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The ARN for the Secrets Manager secret with the credentials for the user joining the domain.
         # Example: arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456
+
         @[JSON::Field(key: "DomainAuthSecretArn")]
         getter domain_auth_secret_arn : String?
 
@@ -2508,23 +2835,27 @@ module AwsSdk
         # Constraints: Two IP addresses must be provided. If there isn't a secondary domain controller, use
         # the IP address of the primary domain controller for both entries in the list. Example:
         # 123.124.125.126,234.235.236.237
+
         @[JSON::Field(key: "DomainDnsIps")]
         getter domain_dns_ips : Array(String)?
 
         # The fully qualified domain name (FQDN) of an Active Directory domain. Constraints: Can't be longer
         # than 64 characters. Example: mymanagedADtest.mymanagedAD.mydomain
+
         @[JSON::Field(key: "DomainFqdn")]
         getter domain_fqdn : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. This setting doesn't
         # apply to the following DB instances: Amazon Aurora (The domain is managed by the DB cluster.) RDS
         # Custom
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
         # The Active Directory organizational unit for your DB instance to join. Constraints: Must be in the
         # distinguished name format. Can't be longer than 64 characters. Example:
         # OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain
+
         @[JSON::Field(key: "DomainOu")]
         getter domain_ou : String?
 
@@ -2536,6 +2867,7 @@ module AwsSdk
         # iam-db-auth-error RDS for Microsoft SQL Server - agent | error RDS for MySQL - audit | error |
         # general | slowquery | iam-db-auth-error RDS for Oracle - alert | audit | listener | trace | oemagent
         # RDS for PostgreSQL - postgresql | upgrade | iam-db-auth-error
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -2546,6 +2878,7 @@ module AwsSdk
         # about RDS on Outposts, see Working with Amazon RDS on Amazon Web Services Outposts in the Amazon RDS
         # User Guide . For more information about CoIPs, see Customer-owned IP addresses in the Amazon Web
         # Services Outposts User Guide .
+
         @[JSON::Field(key: "EnableCustomerOwnedIp")]
         getter enable_customer_owned_ip : Bool?
 
@@ -2554,12 +2887,14 @@ module AwsSdk
         # Database Authentication for MySQL and PostgreSQL in the Amazon RDS User Guide . This setting doesn't
         # apply to the following DB instances: Amazon Aurora (Mapping Amazon Web Services IAM accounts to
         # database accounts is managed by the DB cluster.) RDS Custom
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to enable Performance Insights for the DB instance. For more information, see
         # Using Amazon Performance Insights in the Amazon RDS User Guide . This setting doesn't apply to RDS
         # Custom DB instances.
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
@@ -2575,6 +2910,7 @@ module AwsSdk
         # Support with Amazon RDS in the Amazon RDS User Guide . Valid Values:
         # open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
@@ -2595,6 +2931,7 @@ module AwsSdk
         # for Oracle For information, see Oracle Database Engine release notes in the Amazon RDS User Guide .
         # RDS for PostgreSQL For information, see Amazon RDS for PostgreSQL versions and extensions in the
         # Amazon RDS User Guide .
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -2604,6 +2941,7 @@ module AwsSdk
         # DB cluster. Constraints: For RDS for Db2, MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
         # multiple between .5 and 50 of the storage amount for the DB instance. For RDS for SQL Server - Must
         # be a multiple between 1 and 50 of the storage amount for the DB instance.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -2618,6 +2956,7 @@ module AwsSdk
         # required for DB instances. For most RDS engines, if you leave this parameter empty while enabling
         # StorageEncrypted , the engine uses the default KMS key. However, RDS Custom doesn't use the default
         # key when this parameter is empty. You must explicitly specify a key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -2631,6 +2970,7 @@ module AwsSdk
         # - general-public-license RDS for Microsoft SQL Server - license-included RDS for MySQL -
         # general-public-license RDS for Oracle - bring-your-own-license | license-included RDS for PostgreSQL
         # - postgresql-license
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
@@ -2638,6 +2978,7 @@ module AwsSdk
         # more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS
         # User Guide. Constraints: Can't manage the master user password with Amazon Web Services Secrets
         # Manager if MasterUserPassword is specified.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -2646,6 +2987,7 @@ module AwsSdk
         # specify one of the following values: password - Use standard database authentication with a
         # password. iam-db-auth - Use IAM database authentication for the master user. This option is only
         # valid for RDS for PostgreSQL and Aurora PostgreSQL engines.
+
         @[JSON::Field(key: "MasterUserAuthenticationType")]
         getter master_user_authentication_type : String?
 
@@ -2657,6 +2999,7 @@ module AwsSdk
         # contain from 8 to 41 characters. RDS for Microsoft SQL Server - Must contain from 8 to 128
         # characters. RDS for MySQL - Must contain from 8 to 41 characters. RDS for Oracle - Must contain from
         # 8 to 30 characters. RDS for PostgreSQL - Must contain from 8 to 128 characters.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -2670,6 +3013,7 @@ module AwsSdk
         # aws/secretsmanager KMS key to encrypt the secret, and you must use a customer managed KMS key. There
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
@@ -2677,6 +3021,7 @@ module AwsSdk
         # the master user is managed by the DB cluster. This setting is required for RDS DB instances.
         # Constraints: Must be 1 to 16 letters, numbers, or underscores. First character must be a letter.
         # Can't be a reserved word for the chosen database engine.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
@@ -2685,6 +3030,7 @@ module AwsSdk
         # Managing capacity automatically with Amazon RDS storage autoscaling in the Amazon RDS User Guide .
         # This setting doesn't apply to the following DB instances: Amazon Aurora (Storage is managed by the
         # DB cluster.) RDS Custom
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
@@ -2692,6 +3038,7 @@ module AwsSdk
         # instance. To disable collection of Enhanced Monitoring metrics, specify 0 . If MonitoringRoleArn is
         # specified, then you must set MonitoringInterval to a value other than 0 . This setting doesn't apply
         # to RDS Custom DB instances. Valid Values: 0 | 1 | 5 | 10 | 15 | 30 | 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
@@ -2700,12 +3047,14 @@ module AwsSdk
         # role, see Setting Up and Enabling Enhanced Monitoring in the Amazon RDS User Guide . If
         # MonitoringInterval is set to a value other than 0 , then you must supply a MonitoringRoleArn value.
         # This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
         # Specifies whether the DB instance is a Multi-AZ deployment. You can't set the AvailabilityZone
         # parameter if the DB instance is a Multi-AZ deployment. This setting doesn't apply to Amazon Aurora
         # because the DB instance Availability Zones (AZs) are managed by the DB cluster.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -2715,11 +3064,13 @@ module AwsSdk
         # configuration. If you attempt to enable the multi-tenant configuration on a DB engine that doesn't
         # support it, the request fails. If you specify the multi-tenant configuration when you create your DB
         # instance, you can't later modify this DB instance to use the single-tenant configuration.
+
         @[JSON::Field(key: "MultiTenant")]
         getter multi_tenant : Bool?
 
         # The name of the NCHAR character set for the Oracle DB instance. This setting doesn't apply to RDS
         # Custom DB instances.
+
         @[JSON::Field(key: "NcharCharacterSetName")]
         getter nchar_character_set_name : String?
 
@@ -2727,6 +3078,7 @@ module AwsSdk
         # for the DB instance. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon RDS
         # User Guide. Valid Values: IPV4 | DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
@@ -2734,6 +3086,7 @@ module AwsSdk
         # Oracle Advanced Security TDE, can't be removed from an option group. Also, that option group can't
         # be removed from a DB instance after it is associated with a DB instance. This setting doesn't apply
         # to Amazon Aurora or RDS Custom DB instances.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -2743,6 +3096,7 @@ module AwsSdk
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -2750,6 +3104,7 @@ module AwsSdk
         # instances. Valid Values: 7 month * 31, where month is a number of months from 1-23. Examples: 93 (3
         # months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days If you specify a
         # retention period that isn't valid, such as 94 , Amazon RDS returns an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
@@ -2758,6 +3113,7 @@ module AwsSdk
         # - 50000 RDS for MariaDB - 3306 RDS for Microsoft SQL Server - 1433 RDS for MySQL - 3306 RDS for
         # Oracle - 1521 RDS for PostgreSQL - 5432 Constraints: For RDS for Microsoft SQL Server, the value
         # can't be 1234 , 1434 , 3260 , 3343 , 3389 , 47001 , or 49152-49156 .
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -2768,6 +3124,7 @@ module AwsSdk
         # time range for creating automated backups is managed by the DB cluster. Constraints: Must be in the
         # format hh24:mi-hh24:mi . Must be in Universal Coordinated Time (UTC). Must not conflict with the
         # preferred maintenance window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
@@ -2777,11 +3134,13 @@ module AwsSdk
         # of the week. Constraints: Must be in the format ddd:hh24:mi-ddd:hh24:mi . The day values must be mon
         # | tue | wed | thu | fri | sat | sun . Must be in Universal Coordinated Time (UTC). Must not conflict
         # with the preferred backup window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance. This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
@@ -2789,6 +3148,7 @@ module AwsSdk
         # of the existing primary instance. For more information, see Fault Tolerance for an Aurora DB Cluster
         # in the Amazon Aurora User Guide . This setting doesn't apply to RDS Custom DB instances. Default: 1
         # Valid Values: 0 - 15
+
         @[JSON::Field(key: "PromotionTier")]
         getter promotion_tier : Int32?
 
@@ -2804,6 +3164,7 @@ module AwsSdk
         # the value of DBSubnetGroup is default , in which case PubliclyAccessible defaults to true . If
         # PubliclyAccessible is true and the VPC that the DBSubnetGroup is in doesn't have an internet gateway
         # attached to it, Amazon RDS returns an error.
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
@@ -2811,12 +3172,14 @@ module AwsSdk
         # instances, either enable this setting or leave it unset. Otherwise, Amazon RDS reports an error.
         # This setting doesn't apply to Amazon Aurora DB instances. The encryption for DB instances is managed
         # by the DB cluster.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # The storage throughput value, in mebibyte per second (MiBps), for the DB instance. This setting
         # applies only to the gp3 storage type. This setting doesn't apply to Amazon Aurora or RDS Custom DB
         # instances.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
@@ -2824,36 +3187,43 @@ module AwsSdk
         # also include a value for the Iops parameter. This setting doesn't apply to Amazon Aurora DB
         # instances. Storage is managed by the DB cluster. Valid Values: gp2 | gp3 | io1 | io2 | standard
         # Default: io1 , if the Iops parameter is specified. Otherwise, gp3 .
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
 
         # Tags to assign to the DB instance.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The ARN from the key store with which to associate the instance for TDE encryption. This setting
         # doesn't apply to Amazon Aurora or RDS Custom DB instances.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The password for the given ARN from the key store in order to access the device. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "TdeCredentialPassword")]
         getter tde_credential_password : String?
 
         # The time zone of the DB instance. The time zone parameter is currently supported only by RDS for Db2
         # and RDS for SQL Server .
+
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
         # A list of Amazon EC2 VPC security groups to associate with this DB instance. This setting doesn't
         # apply to Amazon Aurora DB instances. The associated list of EC2 VPC security groups is managed by
         # the DB cluster. Default: The default EC2 VPC security group for the DB subnet group's VPC.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -2929,17 +3299,20 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBInstanceReadReplicaMessage
         include JSON::Serializable
 
         # The DB instance identifier of the read replica. This identifier is the unique key that identifies a
         # DB instance. This parameter is stored as a lowercase string.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # A list of additional storage volumes to create for the DB instance. You can create up to three
         # additional storage volumes using the names rdsdbdata2 , rdsdbdata3 , and rdsdbdata4 . Additional
         # storage volumes are supported for RDS for Oracle and RDS for SQL Server DB instances only.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
@@ -2947,6 +3320,7 @@ module AwsSdk
         # allocation rules specified in CreateDBInstance . This setting isn't valid for RDS for SQL Server. Be
         # sure to allocate enough storage for your read replica so that the create operation can succeed. You
         # can also allocate additional storage for future growth.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
@@ -2954,16 +3328,19 @@ module AwsSdk
         # maintenance window. This setting doesn't apply to RDS Custom DB instances. Default: Inherits the
         # value from the source DB instance. For more information about automatic minor version upgrades, see
         # Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The Availability Zone (AZ) where the read replica will be created. Default: A random, system-chosen
         # Availability Zone in the endpoint's Amazon Web Services Region. Example: us-east-1d
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The location where RDS stores automated backups and manual snapshots. Valid Values: local for
         # Dedicated Local Zones region for Amazon Web Services Region
+
         @[JSON::Field(key: "BackupTarget")]
         getter backup_target : String?
 
@@ -2971,11 +3348,13 @@ module AwsSdk
         # apply to RDS Custom DB instances. For more information, see Using SSL/TLS to encrypt a connection to
         # a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
         # Specifies whether to copy all tags from the read replica to snapshots of the read replica. By
         # default, tags aren't copied.
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -2985,6 +3364,7 @@ module AwsSdk
         # profile name and the associated IAM role name must start with the prefix AWSRDSCustom . For the list
         # of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User
         # Guide . This setting is required for RDS Custom DB instances.
+
         @[JSON::Field(key: "CustomIamInstanceProfile")]
         getter custom_iam_instance_profile : String?
 
@@ -2992,6 +3372,7 @@ module AwsSdk
         # classes are available in all Amazon Web Services Regions, or for all database engines. For the full
         # list of DB instance classes, and availability for your engine, see DB Instance Class in the Amazon
         # RDS User Guide . Default: Inherits the value from the source DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
@@ -3012,6 +3393,7 @@ module AwsSdk
         # It isn't supported for MySQL DB instances for same Region read replicas or for RDS Custom.
         # Constraints: Must be 1 to 255 letters, numbers, or hyphens. First character must be a letter. Can't
         # end with a hyphen or contain two consecutive hyphens.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
@@ -3023,20 +3405,24 @@ module AwsSdk
         # must either: Specify DB subnet groups from the same VPC. All these read replicas are created in the
         # same VPC. Not specify a DB subnet group. All these read replicas are created outside of any VPC.
         # Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # The mode of Database Insights to enable for the read replica. This setting isn't supported.
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Specifies whether to enable deletion protection for the DB instance. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled. For more
         # information, see Deleting a DB Instance .
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -3044,11 +3430,13 @@ module AwsSdk
         # Server, Oracle, and PostgreSQL DB instances can be created in an Active Directory Domain. For more
         # information, see Kerberos Authentication in the Amazon RDS User Guide . This setting doesn't apply
         # to RDS Custom DB instances.
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The ARN for the Secrets Manager secret with the credentials for the user joining the domain.
         # Example: arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456
+
         @[JSON::Field(key: "DomainAuthSecretArn")]
         getter domain_auth_secret_arn : String?
 
@@ -3056,22 +3444,26 @@ module AwsSdk
         # Constraints: Two IP addresses must be provided. If there isn't a secondary domain controller, use
         # the IP address of the primary domain controller for both entries in the list. Example:
         # 123.124.125.126,234.235.236.237
+
         @[JSON::Field(key: "DomainDnsIps")]
         getter domain_dns_ips : Array(String)?
 
         # The fully qualified domain name (FQDN) of an Active Directory domain. Constraints: Can't be longer
         # than 64 characters. Example: mymanagedADtest.mymanagedAD.mydomain
+
         @[JSON::Field(key: "DomainFqdn")]
         getter domain_fqdn : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
         # The Active Directory organizational unit for your DB instance to join. Constraints: Must be in the
         # distinguished name format. Can't be longer than 64 characters. Example:
         # OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain
+
         @[JSON::Field(key: "DomainOu")]
         getter domain_ou : String?
 
@@ -3079,6 +3471,7 @@ module AwsSdk
         # depend on the DB engine being used. For more information, see Publishing Database Logs to Amazon
         # CloudWatch Logs in the Amazon RDS User Guide . This setting doesn't apply to RDS Custom DB
         # instances.
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -3089,6 +3482,7 @@ module AwsSdk
         # information about RDS on Outposts, see Working with Amazon RDS on Amazon Web Services Outposts in
         # the Amazon RDS User Guide . For more information about CoIPs, see Customer-owned IP addresses in the
         # Amazon Web Services Outposts User Guide .
+
         @[JSON::Field(key: "EnableCustomerOwnedIp")]
         getter enable_customer_owned_ip : Bool?
 
@@ -3096,17 +3490,20 @@ module AwsSdk
         # accounts to database accounts. By default, mapping isn't enabled. For more information about IAM
         # database authentication, see IAM Database Authentication for MySQL and PostgreSQL in the Amazon RDS
         # User Guide . This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to enable Performance Insights for the read replica. For more information, see
         # Using Amazon Performance Insights in the Amazon RDS User Guide . This setting doesn't apply to RDS
         # Custom DB instances.
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
         # The amount of Provisioned IOPS (input/output operations per second) to initially allocate for the DB
         # instance.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -3121,12 +3518,14 @@ module AwsSdk
         # Amazon Web Services Region in another Amazon Web Services Region. You can't create an encrypted read
         # replica from an unencrypted DB instance or Multi-AZ DB cluster. This setting doesn't apply to RDS
         # Custom, which uses the same KMS key as the primary replica.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The upper limit in gibibytes (GiB) to which Amazon RDS can automatically scale the storage of the DB
         # instance. For more information about this setting, including limitations that apply to it, see
         # Managing capacity automatically with Amazon RDS storage autoscaling in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
@@ -3134,6 +3533,7 @@ module AwsSdk
         # replica. To disable collection of Enhanced Monitoring metrics, specify 0 . The default is 0 . If
         # MonitoringRoleArn is specified, then you must set MonitoringInterval to a value other than 0 . This
         # setting doesn't apply to RDS Custom DB instances. Valid Values: 0, 1, 5, 10, 15, 30, 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
@@ -3142,6 +3542,7 @@ module AwsSdk
         # role, go to To create an IAM role for Amazon RDS Enhanced Monitoring in the Amazon RDS User Guide .
         # If MonitoringInterval is set to a value other than 0, then you must supply a MonitoringRoleArn
         # value. This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
@@ -3150,6 +3551,7 @@ module AwsSdk
         # failover support for the replica. Creating your read replica as a Multi-AZ DB instance is
         # independent of whether the source is a Multi-AZ DB instance or a Multi-AZ DB cluster. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -3157,12 +3559,14 @@ module AwsSdk
         # DBSubnetGroup specified for read replica. A DBSubnetGroup can support only the IPv4 protocol or the
         # IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a DB instance in a VPC
         # in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The option group to associate the DB instance with. If not specified, RDS uses the option group
         # associated with the source DB instance or cluster. For SQL Server, you must use the option group
         # associated with the source. This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -3172,6 +3576,7 @@ module AwsSdk
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -3179,11 +3584,13 @@ module AwsSdk
         # instances. Valid Values: 7 month * 31, where month is a number of months from 1-23. Examples: 93 (3
         # months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days If you specify a
         # retention period that isn't valid, such as 94 , Amazon RDS returns an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port number that the DB instance uses for connections. Valid Values: 1150-65535 Default:
         # Inherits the value from the source DB instance.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -3222,11 +3629,13 @@ module AwsSdk
         # instead of specifying PreSignedUrl manually. Specifying SourceRegion autogenerates a presigned URL
         # that is a valid request for the operation that can run in the source Amazon Web Services Region.
         # This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "PreSignedUrl")]
         getter pre_signed_url : String?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance. This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
@@ -3237,6 +3646,7 @@ module AwsSdk
         # That public access isn't permitted if the security group assigned to the DB cluster doesn't permit
         # it. When the DB instance isn't publicly accessible, it is an internal DB instance with a DNS name
         # that resolves to a private IP address. For more information, see CreateDBInstance .
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
@@ -3255,6 +3665,7 @@ module AwsSdk
         # RDS for Oracle in the Amazon RDS User Guide . For RDS Custom, you must specify this parameter and
         # set it to mounted . The value won't be set by default. After replica creation, you can manage the
         # open mode manually.
+
         @[JSON::Field(key: "ReplicaMode")]
         getter replica_mode : String?
 
@@ -3264,6 +3675,7 @@ module AwsSdk
         # specified DB cluster must have automatic backups enabled, that is, its backup retention period must
         # be greater than 0. The source DB cluster must be in the same Amazon Web Services Region as the read
         # replica. Cross-Region replication isn't supported.
+
         @[JSON::Field(key: "SourceDBClusterIdentifier")]
         getter source_db_cluster_identifier : String?
 
@@ -3281,41 +3693,49 @@ module AwsSdk
         # Amazon Web Services Region from the read replica, specify a valid DB instance ARN. For more
         # information, see Constructing an ARN for Amazon RDS in the Amazon RDS User Guide . This doesn't
         # apply to SQL Server or RDS Custom, which don't support cross-Region replicas.
+
         @[JSON::Field(key: "SourceDBInstanceIdentifier")]
         getter source_db_instance_identifier : String?
 
         # Specifies the storage throughput value for the read replica. This setting doesn't apply to RDS
         # Custom or Amazon Aurora DB instances.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type to associate with the read replica. If you specify io1 , io2 , or gp3 , you must
         # also include a value for the Iops parameter. Valid Values: gp2 | gp3 | io1 | io2 | standard Default:
         # io1 if the Iops parameter is specified. Otherwise, gp3 .
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Whether to upgrade the storage file system configuration on the read replica. This option migrates
         # the read replica from the old storage file system layout to the preferred layout.
+
         @[JSON::Field(key: "UpgradeStorageConfig")]
         getter upgrade_storage_config : Bool?
 
         # Specifies whether the DB instance class of the DB instance uses its default processor features. This
         # setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "UseDefaultProcessorFeatures")]
         getter use_default_processor_features : Bool?
 
         # A list of Amazon EC2 VPC security groups to associate with the read replica. This setting doesn't
         # apply to RDS Custom DB instances. Default: The default EC2 VPC security group for the DB subnet
         # group's VPC.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -3373,8 +3793,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBInstanceReadReplicaResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -3384,10 +3806,12 @@ module AwsSdk
         )
         end
       end
+
 
       struct CreateDBInstanceResult
         include JSON::Serializable
 
+
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
 
@@ -3396,6 +3820,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct CreateDBParameterGroupMessage
         include JSON::Serializable
@@ -3411,20 +3836,24 @@ module AwsSdk
         # following are the valid DB engine values: aurora-mysql aurora-postgresql db2-ae db2-se mysql
         # oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex
         # sqlserver-web
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String
 
         # The name of the DB parameter group. Constraints: Must be 1 to 255 letters, numbers, or hyphens.
         # First character must be a letter Can't end with a hyphen or contain two consecutive hyphens This
         # value is stored as a lowercase string.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String
 
         # The description for the DB parameter group.
+
         @[JSON::Field(key: "Description")]
         getter description : String
 
         # Tags to assign to the DB parameter group.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3437,8 +3866,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBParameterGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBParameterGroup")]
         getter db_parameter_group : Types::DBParameterGroup?
@@ -3449,19 +3880,23 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBProxyEndpointRequest
         include JSON::Serializable
 
         # The name of the DB proxy endpoint to create.
+
         @[JSON::Field(key: "DBProxyEndpointName")]
         getter db_proxy_endpoint_name : String
 
         # The name of the DB proxy associated with the DB proxy endpoint that you create.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # The VPC subnet IDs for the DB proxy endpoint that you create. You can specify a different set of
         # subnet IDs than for the original DB proxy.
+
         @[JSON::Field(key: "VpcSubnetIds")]
         getter vpc_subnet_ids : Array(String)
 
@@ -3470,8 +3905,10 @@ module AwsSdk
         # endpoint supports IPv6 only. DUAL - The proxy endpoint supports both IPv4 and IPv6. Default: IPV4
         # Constraints: If you specify IPV6 or DUAL , the VPC and all subnets must have an IPv6 CIDR block. If
         # you specify IPV6 or DUAL , the VPC tenancy cannot be dedicated .
+
         @[JSON::Field(key: "EndpointNetworkType")]
         getter endpoint_network_type : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -3479,12 +3916,14 @@ module AwsSdk
         # The role of the DB proxy endpoint. The role determines whether the endpoint can be used for
         # read/write or only read operations. The default is READ_WRITE . The only role that proxies for RDS
         # for Microsoft SQL Server support is READ_WRITE .
+
         @[JSON::Field(key: "TargetRole")]
         getter target_role : String?
 
         # The VPC security group IDs for the DB proxy endpoint that you create. You can specify a different
         # set of security group IDs than for the original DB proxy. The default is the default security group
         # for the VPC.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -3500,12 +3939,14 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBProxyEndpointResponse
         include JSON::Serializable
 
         # The DBProxyEndpoint object that is created by the API operation. The DB proxy endpoint that you
         # create might provide capabilities such as read/write or read-only operations, or using a different
         # VPC than the proxy's default VPC.
+
         @[JSON::Field(key: "DBProxyEndpoint")]
         getter db_proxy_endpoint : Types::DBProxyEndpoint?
 
@@ -3515,6 +3956,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBProxyRequest
         include JSON::Serializable
 
@@ -3522,6 +3964,7 @@ module AwsSdk
         # Services account in the specified Amazon Web Services Region. An identifier must begin with a letter
         # and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two
         # consecutive hyphens.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
@@ -3530,19 +3973,23 @@ module AwsSdk
         # Aurora MySQL, RDS for MariaDB, and RDS for MySQL databases, specify MYSQL . For Aurora PostgreSQL
         # and RDS for PostgreSQL databases, specify POSTGRESQL . For RDS for Microsoft SQL Server, specify
         # SQLSERVER .
+
         @[JSON::Field(key: "EngineFamily")]
         getter engine_family : String
 
         # The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in Amazon Web
         # Services Secrets Manager.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # One or more VPC subnet IDs to associate with the new proxy.
+
         @[JSON::Field(key: "VpcSubnetIds")]
         getter vpc_subnet_ids : Array(String)
 
         # The authorization mechanism that the proxy uses.
+
         @[JSON::Field(key: "Auth")]
         getter auth : Array(Types::UserAuthConfig)?
 
@@ -3550,6 +3997,7 @@ module AwsSdk
         # DebugLogging , the proxy captures connection details and connection pool behavior from your queries.
         # Debug logging increases CloudWatch costs and can impact proxy performance. Enable this option only
         # when you need to troubleshoot connection or performance issues.
+
         @[JSON::Field(key: "DebugLogging")]
         getter debug_logging : Bool?
 
@@ -3557,6 +4005,7 @@ module AwsSdk
         # connections from the proxy to the underlying database. Valid values are NONE and IAM_AUTH . When set
         # to IAM_AUTH , the proxy uses end-to-end IAM authentication to connect to the database. If you don't
         # specify DefaultAuthScheme or specify this parameter as NONE , you must specify the Auth option.
+
         @[JSON::Field(key: "DefaultAuthScheme")]
         getter default_auth_scheme : String?
 
@@ -3565,21 +4014,25 @@ module AwsSdk
         # endpoint supports IPv6 only. DUAL - The proxy endpoint supports both IPv4 and IPv6. Default: IPV4
         # Constraints: If you specify IPV6 or DUAL , the VPC and all subnets must have an IPv6 CIDR block. If
         # you specify IPV6 or DUAL , the VPC tenancy cannot be dedicated .
+
         @[JSON::Field(key: "EndpointNetworkType")]
         getter endpoint_network_type : String?
 
         # The number of seconds that a connection to the proxy can be inactive before the proxy disconnects
         # it. You can set this value higher or lower than the connection timeout limit for the associated
         # database.
+
         @[JSON::Field(key: "IdleClientTimeout")]
         getter idle_client_timeout : Int32?
 
         # Specifies whether Transport Layer Security (TLS) encryption is required for connections to the
         # proxy. By enabling this setting, you can enforce encrypted TLS connections to the proxy.
+
         @[JSON::Field(key: "RequireTLS")]
         getter require_tls : Bool?
 
         # An optional set of key-value pairs to associate arbitrary data of your choosing with the proxy.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3589,10 +4042,12 @@ module AwsSdk
         # Default: IPV4 Constraints: If you specify IPV6 , the database must support dual-stack mode. RDS
         # doesn't support IPv6-only databases. All targets registered with the proxy must be compatible with
         # the specified network type.
+
         @[JSON::Field(key: "TargetConnectionNetworkType")]
         getter target_connection_network_type : String?
 
         # One or more VPC security group IDs to associate with the new proxy.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -3614,10 +4069,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBProxyResponse
         include JSON::Serializable
 
         # The DBProxy structure corresponding to the new proxy.
+
         @[JSON::Field(key: "DBProxy")]
         getter db_proxy : Types::DBProxy?
 
@@ -3627,20 +4084,24 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBSecurityGroupMessage
         include JSON::Serializable
 
         # The description for the DB security group.
+
         @[JSON::Field(key: "DBSecurityGroupDescription")]
         getter db_security_group_description : String
 
         # The name for the DB security group. This value is stored as a lowercase string. Constraints: Must be
         # 1 to 255 letters, numbers, or hyphens. First character must be a letter Can't end with a hyphen or
         # contain two consecutive hyphens Must not be "Default" Example: mysecuritygroup
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String
 
         # Tags to assign to the DB security group.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3652,8 +4113,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBSecurityGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSecurityGroup")]
         getter db_security_group : Types::DBSecurityGroup?
@@ -3664,18 +4127,22 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBShardGroupMessage
         include JSON::Serializable
 
         # The name of the primary DB cluster for the DB shard group.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The name of the DB shard group.
+
         @[JSON::Field(key: "DBShardGroupIdentifier")]
         getter db_shard_group_identifier : String
 
         # The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MaxACU")]
         getter max_acu : Float64
 
@@ -3684,10 +4151,12 @@ module AwsSdk
         # is the default value. 1 - Creates a DB shard group with a standby DB data access shard in a
         # different Availability Zone (AZ). 2 - Creates a DB shard group with two standby DB data access shard
         # in two different AZs.
+
         @[JSON::Field(key: "ComputeRedundancy")]
         getter compute_redundancy : Int32?
 
         # The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MinACU")]
         getter min_acu : Float64?
 
@@ -3706,8 +4175,10 @@ module AwsSdk
         # applies: If the subnets are part of a VPC that doesn’t have an internet gateway attached to it, the
         # DB shard group is private. If the subnets are part of a VPC that has an internet gateway attached to
         # it, the DB shard group is public.
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -3724,19 +4195,23 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBSnapshotMessage
         include JSON::Serializable
 
         # The identifier of the DB instance that you want to create the snapshot of. Constraints: Must match
         # the identifier of an existing DBInstance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The identifier for the DB snapshot. Constraints: Can't be null, empty, or blank Must contain from 1
         # to 255 letters, numbers, or hyphens First character must be a letter Can't end with a hyphen or
         # contain two consecutive hyphens Example: my-snapshot-id
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -3749,8 +4224,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSnapshot")]
         getter db_snapshot : Types::DBSnapshot?
@@ -3761,24 +4238,29 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBSubnetGroupMessage
         include JSON::Serializable
 
         # The description for the DB subnet group.
+
         @[JSON::Field(key: "DBSubnetGroupDescription")]
         getter db_subnet_group_description : String
 
         # The name for the DB subnet group. This value is stored as a lowercase string. Constraints: Must
         # contain no more than 255 letters, numbers, periods, underscores, spaces, or hyphens. Must not be
         # default. First character must be a letter. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String
 
         # The EC2 Subnet IDs for the DB subnet group.
+
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)
 
         # Tags to assign to the DB subnet group.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3791,8 +4273,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDBSubnetGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSubnetGroup")]
         getter db_subnet_group : Types::DBSubnetGroup?
@@ -3803,6 +4287,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateEventSubscriptionMessage
         include JSON::Serializable
 
@@ -3810,15 +4295,18 @@ module AwsSdk
         # creates the ARN when you create a topic and subscribe to it. RDS doesn't support FIFO (first in,
         # first out) topics. For more information, see Message ordering and deduplication (FIFO topics) in the
         # Amazon Simple Notification Service Developer Guide .
+
         @[JSON::Field(key: "SnsTopicArn")]
         getter sns_topic_arn : String
 
         # The name of the subscription. Constraints: The name must be less than 255 characters.
+
         @[JSON::Field(key: "SubscriptionName")]
         getter subscription_name : String
 
         # Specifies whether to activate the subscription. If the event notification subscription isn't
         # activated, the subscription is created but not active.
+
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
@@ -3826,6 +4314,7 @@ module AwsSdk
         # to. You can see a list of the categories for a given source type in the "Amazon RDS event categories
         # and event messages" section of the Amazon RDS User Guide or the Amazon Aurora User Guide . You can
         # also see this list by using the DescribeEventCategories operation.
+
         @[JSON::Field(key: "EventCategories")]
         getter event_categories : Array(String)?
 
@@ -3840,6 +4329,7 @@ module AwsSdk
         # DBSnapshotIdentifier value must be supplied. If the source type is a DB cluster snapshot, a
         # DBClusterSnapshotIdentifier value must be supplied. If the source type is an RDS Proxy, a
         # DBProxyName value must be supplied.
+
         @[JSON::Field(key: "SourceIds")]
         getter source_ids : Array(String)?
 
@@ -3848,8 +4338,10 @@ module AwsSdk
         # db-proxy . If this value isn't specified, all events are returned. Valid Values: db-instance |
         # db-cluster | db-parameter-group | db-security-group | db-snapshot | db-cluster-snapshot | db-proxy |
         # zero-etl | custom-engine-version | blue-green-deployment
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -3866,8 +4358,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateEventSubscriptionResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EventSubscription")]
         getter event_subscription : Types::EventSubscription?
@@ -3878,11 +4372,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateGlobalClusterMessage
         include JSON::Serializable
 
         # The cluster identifier for this global database cluster. This parameter is stored as a lowercase
         # string.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String
 
@@ -3890,17 +4386,20 @@ module AwsSdk
         # Aurora doesn't create a database in the global database cluster. Constraints: Can't be specified if
         # SourceDBClusterIdentifier is specified. In this case, Amazon Aurora uses the database name from the
         # source DB cluster.
+
         @[JSON::Field(key: "DatabaseName")]
         getter database_name : String?
 
         # Specifies whether to enable deletion protection for the new global database cluster. The global
         # database can't be deleted when deletion protection is enabled.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
         # The database engine to use for this global database cluster. Valid Values: aurora-mysql |
         # aurora-postgresql Constraints: Can't be specified if SourceDBClusterIdentifier is specified. In this
         # case, Amazon Aurora uses the engine of the source DB cluster.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
@@ -3915,12 +4414,14 @@ module AwsSdk
         # information, see Amazon RDS Extended Support with Amazon Aurora in the Amazon Aurora User Guide .
         # Valid Values: open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # The engine version to use for this global database cluster. Constraints: Can't be specified if
         # SourceDBClusterIdentifier is specified. In this case, Amazon Aurora uses the engine version of the
         # source DB cluster.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -3928,16 +4429,19 @@ module AwsSdk
         # a value for this parameter, don't specify values for the following settings because Amazon Aurora
         # uses the values from the specified source DB cluster: DatabaseName Engine EngineVersion
         # StorageEncrypted
+
         @[JSON::Field(key: "SourceDBClusterIdentifier")]
         getter source_db_cluster_identifier : String?
 
         # Specifies whether to enable storage encryption for the new global database cluster. Constraints:
         # Can't be specified if SourceDBClusterIdentifier is specified. In this case, Amazon Aurora uses the
         # setting from the source DB cluster.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # Tags to assign to the global cluster.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -3955,8 +4459,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateGlobalClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GlobalCluster")]
         getter global_cluster : Types::GlobalCluster?
@@ -3967,42 +4473,51 @@ module AwsSdk
         end
       end
 
+
       struct CreateIntegrationMessage
         include JSON::Serializable
 
         # The name of the integration.
+
         @[JSON::Field(key: "IntegrationName")]
         getter integration_name : String
 
         # The Amazon Resource Name (ARN) of the database to use as the source for replication.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String
 
         # The ARN of the Redshift data warehouse to use as the target for replication.
+
         @[JSON::Field(key: "TargetArn")]
         getter target_arn : String
 
         # An optional set of non-secret key–value pairs that contains additional contextual information about
         # the data. For more information, see Encryption context in the Amazon Web Services Key Management
         # Service Developer Guide . You can only include this parameter if you specify the KMSKeyId parameter.
+
         @[JSON::Field(key: "AdditionalEncryptionContext")]
         getter additional_encryption_context : Hash(String, String)?
 
         # Data filtering options for the integration. For more information, see Data filtering for Aurora
         # zero-ETL integrations with Amazon Redshift or Data filtering for Amazon RDS zero-ETL integrations
         # with Amazon Redshift .
+
         @[JSON::Field(key: "DataFilter")]
         getter data_filter : String?
 
         # A description of the integration.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The Amazon Web Services Key Management System (Amazon Web Services KMS) key identifier for the key
         # to use to encrypt the integration. If you don't specify an encryption key, RDS uses a default Amazon
         # Web Services owned key.
+
         @[JSON::Field(key: "KMSKeyId")]
         getter kms_key_id : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -4020,30 +4535,36 @@ module AwsSdk
         end
       end
 
+
       struct CreateOptionGroupMessage
         include JSON::Serializable
 
         # The name of the engine to associate this option group with. Valid Values: db2-ae db2-se mariadb
         # mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se
         # sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "EngineName")]
         getter engine_name : String
 
         # Specifies the major version of the engine that this option group should be associated with.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String
 
         # The description of the option group.
+
         @[JSON::Field(key: "OptionGroupDescription")]
         getter option_group_description : String
 
         # Specifies the name of the option group to be created. Constraints: Must be 1 to 255 letters,
         # numbers, or hyphens First character must be a letter Can't end with a hyphen or contain two
         # consecutive hyphens Example: myoptiongroup
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String
 
         # Tags to assign to the option group.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -4057,8 +4578,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateOptionGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "OptionGroup")]
         getter option_group : Types::OptionGroup?
@@ -4069,11 +4592,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateTenantDatabaseMessage
         include JSON::Serializable
 
         # The user-supplied DB instance identifier. RDS creates your tenant database in this DB instance. This
         # parameter isn't case-sensitive.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
@@ -4081,16 +4606,19 @@ module AwsSdk
         # tenant database and grants privileges to the master user. This parameter is case-sensitive.
         # Constraints: Must be 1 to 16 letters, numbers, or underscores. First character must be a letter.
         # Can't be a reserved word for the chosen database engine.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String
 
         # The user-supplied name of the tenant database that you want to create in your DB instance. This
         # parameter has the same constraints as DBName in CreateDBInstance .
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String
 
         # The character set for your tenant database. If you don't specify a value, the character set name
         # defaults to AL32UTF8 .
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
@@ -4098,6 +4626,7 @@ module AwsSdk
         # more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS
         # User Guide. Constraints: Can't manage the master user password with Amazon Web Services Secrets
         # Manager if MasterUserPassword is specified.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -4105,6 +4634,7 @@ module AwsSdk
         # Can include any printable ASCII character except forward slash ( / ), double quote ( " ), at symbol
         # ( @ ), ampersand ( &amp; ), or single quote ( ' ). Can't be specified when ManageMasterUserPassword
         # is enabled.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -4118,12 +4648,15 @@ module AwsSdk
         # aws/secretsmanager KMS key to encrypt the secret, and you must use a customer managed KMS key. There
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
         # The NCHAR value for the tenant database.
+
         @[JSON::Field(key: "NcharCharacterSetName")]
         getter nchar_character_set_name : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -4142,8 +4675,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateTenantDatabaseResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "TenantDatabase")]
         getter tenant_database : Types::TenantDatabase?
@@ -4155,6 +4690,7 @@ module AwsSdk
       end
 
       # CustomAvailabilityZoneId doesn't refer to an existing custom Availability Zone identifier.
+
       struct CustomAvailabilityZoneNotFoundFault
         include JSON::Serializable
 
@@ -4163,14 +4699,17 @@ module AwsSdk
       end
 
       # A value that indicates the AMI information.
+
       struct CustomDBEngineVersionAMI
         include JSON::Serializable
 
         # A value that indicates the ID of the AMI.
+
         @[JSON::Field(key: "ImageId")]
         getter image_id : String?
 
         # A value that indicates the status of a custom engine version (CEV).
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4182,6 +4721,7 @@ module AwsSdk
       end
 
       # A CEV with the specified name already exists.
+
       struct CustomDBEngineVersionAlreadyExistsFault
         include JSON::Serializable
 
@@ -4190,6 +4730,7 @@ module AwsSdk
       end
 
       # The specified CEV was not found.
+
       struct CustomDBEngineVersionNotFoundFault
         include JSON::Serializable
 
@@ -4198,6 +4739,7 @@ module AwsSdk
       end
 
       # You have exceeded your CEV quota.
+
       struct CustomDBEngineVersionQuotaExceededFault
         include JSON::Serializable
 
@@ -4216,81 +4758,98 @@ module AwsSdk
       # Aurora DB clusters, see What is Amazon Aurora? in the Amazon Aurora User Guide. For more information
       # on Multi-AZ DB clusters, see Multi-AZ deployments with two readable standby DB instances in the
       # Amazon RDS User Guide.
+
       struct DBCluster
         include JSON::Serializable
 
         # The name of the Amazon Kinesis data stream used for the database activity stream.
+
         @[JSON::Field(key: "ActivityStreamKinesisStreamName")]
         getter activity_stream_kinesis_stream_name : String?
 
         # The Amazon Web Services KMS key identifier used for encrypting messages in the database activity
         # stream. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name
         # for the KMS key.
+
         @[JSON::Field(key: "ActivityStreamKmsKeyId")]
         getter activity_stream_kms_key_id : String?
 
         # The mode of the database activity stream. Database events such as a change or access generate an
         # activity stream event. The database session can handle these events either synchronously or
         # asynchronously.
+
         @[JSON::Field(key: "ActivityStreamMode")]
         getter activity_stream_mode : String?
 
         # The status of the database activity stream.
+
         @[JSON::Field(key: "ActivityStreamStatus")]
         getter activity_stream_status : String?
 
         # AllocatedStorage specifies the allocated storage size in gibibytes (GiB). For Aurora,
         # AllocatedStorage can vary because Aurora DB cluster storage size adjusts as needed.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # A list of the Amazon Web Services Identity and Access Management (IAM) roles that are associated
         # with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB
         # cluster to access other Amazon Web Services on your behalf.
+
         @[JSON::Field(key: "AssociatedRoles")]
         getter associated_roles : Array(Types::DBClusterRole)?
 
         # Indicates whether minor version patches are applied automatically. This setting is for Aurora DB
         # clusters and Multi-AZ DB clusters. For more information about automatic minor version upgrades, see
         # Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The time when a stopped DB cluster is restarted automatically.
+
         @[JSON::Field(key: "AutomaticRestartTime")]
         getter automatic_restart_time : Time?
 
         # The list of Availability Zones (AZs) where instances in the DB cluster can be created.
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(String)?
 
         # The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.
+
         @[JSON::Field(key: "AwsBackupRecoveryPointArn")]
         getter aws_backup_recovery_point_arn : String?
 
         # The number of change records stored for Backtrack.
+
         @[JSON::Field(key: "BacktrackConsumedChangeRecords")]
         getter backtrack_consumed_change_records : Int64?
 
         # The target backtrack window, in seconds. If this value is set to 0 , backtracking is disabled for
         # the DB cluster. Otherwise, backtracking is enabled.
+
         @[JSON::Field(key: "BacktrackWindow")]
         getter backtrack_window : Int64?
 
         # The number of days for which automatic DB snapshots are retained.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The current capacity of an Aurora Serverless v1 DB cluster. The capacity is 0 (zero) when the
         # cluster is paused. For more information about Aurora Serverless v1, see Using Amazon Aurora
         # Serverless v1 in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "Capacity")]
         getter capacity : Int32?
+
 
         @[JSON::Field(key: "CertificateDetails")]
         getter certificate_details : Types::CertificateDetails?
 
         # If present, specifies the name of the character set that this cluster is associated with.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
@@ -4301,142 +4860,173 @@ module AwsSdk
         # source cluster to show that it was used in a cloning operation. For PITR, the clone group ID is
         # inherited from the source cluster. For snapshot restore operations, the clone group ID isn't
         # inherited from the source cluster.
+
         @[JSON::Field(key: "CloneGroupId")]
         getter clone_group_id : String?
 
         # The time when the DB cluster was created, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "ClusterCreateTime")]
         getter cluster_create_time : Time?
 
         # The scalability mode of the Aurora DB cluster. When set to limitless , the cluster operates as an
         # Aurora Limitless Database. When set to standard (the default), the cluster uses normal DB instance
         # creation.
+
         @[JSON::Field(key: "ClusterScalabilityType")]
         getter cluster_scalability_type : String?
 
         # Indicates whether tags are copied from the DB cluster to snapshots of the DB cluster.
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
         # Indicates whether the DB cluster is a clone of a DB cluster owned by a different Amazon Web Services
         # account.
+
         @[JSON::Field(key: "CrossAccountClone")]
         getter cross_account_clone : Bool?
 
         # The custom endpoints associated with the DB cluster.
+
         @[JSON::Field(key: "CustomEndpoints")]
         getter custom_endpoints : Array(String)?
 
         # The Amazon Resource Name (ARN) for the DB cluster.
+
         @[JSON::Field(key: "DBClusterArn")]
         getter db_cluster_arn : String?
 
         # The user-supplied identifier for the DB cluster. This identifier is the unique key that identifies a
         # DB cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The name of the compute and memory capacity class of the DB instance. This setting is only for
         # non-Aurora Multi-AZ DB clusters.
+
         @[JSON::Field(key: "DBClusterInstanceClass")]
         getter db_cluster_instance_class : String?
 
         # The list of DB instances that make up the DB cluster.
+
         @[JSON::Field(key: "DBClusterMembers")]
         getter db_cluster_members : Array(Types::DBClusterMember)?
 
         # The list of option group memberships for this DB cluster.
+
         @[JSON::Field(key: "DBClusterOptionGroupMemberships")]
         getter db_cluster_option_group_memberships : Array(Types::DBClusterOptionGroupStatus)?
 
         # The name of the DB cluster parameter group for the DB cluster.
+
         @[JSON::Field(key: "DBClusterParameterGroup")]
         getter db_cluster_parameter_group : String?
 
         # Information about the subnet group associated with the DB cluster, including the name, description,
         # and subnets in the subnet group.
+
         @[JSON::Field(key: "DBSubnetGroup")]
         getter db_subnet_group : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "DBSystemId")]
         getter db_system_id : String?
 
         # The mode of Database Insights that is enabled for the DB cluster.
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # The name of the initial database that was specified for the DB cluster when it was created, if one
         # was provided. This same name is returned for the life of the DB cluster.
+
         @[JSON::Field(key: "DatabaseName")]
         getter database_name : String?
 
         # The Amazon Web Services Region-unique, immutable identifier for the DB cluster. This identifier is
         # found in Amazon Web Services CloudTrail log entries whenever the KMS key for the DB cluster is
         # accessed.
+
         @[JSON::Field(key: "DbClusterResourceId")]
         getter db_cluster_resource_id : String?
 
         # Indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
         # deletion protection is enabled.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
         # The Active Directory Domain membership records associated with the DB cluster.
+
         @[JSON::Field(key: "DomainMemberships")]
         getter domain_memberships : Array(Types::DomainMembership)?
 
         # The earliest time to which a DB cluster can be backtracked.
+
         @[JSON::Field(key: "EarliestBacktrackTime")]
         getter earliest_backtrack_time : Time?
 
         # The earliest time to which a database can be restored with point-in-time restore.
+
         @[JSON::Field(key: "EarliestRestorableTime")]
         getter earliest_restorable_time : Time?
 
         # A list of log types that this DB cluster is configured to export to CloudWatch Logs. Log types vary
         # by DB engine. For information about the log types for each DB engine, see Amazon RDS Database Log
         # Files in the Amazon Aurora User Guide.
+
         @[JSON::Field(key: "EnabledCloudwatchLogsExports")]
         getter enabled_cloudwatch_logs_exports : Array(String)?
 
         # The connection endpoint for the primary instance of the DB cluster.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The database engine used for this DB cluster.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The lifecycle type for the DB cluster. For more information, see CreateDBCluster.
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # The DB engine mode of the DB cluster, either provisioned or serverless . For more information, see
         # CreateDBCluster .
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
         # The version of the database engine.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Contains a user-supplied global database cluster identifier. This identifier is the unique key that
         # identifies a global database cluster.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String?
 
         # Indicates whether write forwarding is enabled for a secondary cluster in an Aurora global database.
         # Because write forwarding takes time to enable, check the value of GlobalWriteForwardingStatus to
         # confirm that the request has completed before using the write forwarding feature for this cluster.
+
         @[JSON::Field(key: "GlobalWriteForwardingRequested")]
         getter global_write_forwarding_requested : Bool?
 
         # The status of write forwarding for a secondary cluster in an Aurora global database.
+
         @[JSON::Field(key: "GlobalWriteForwardingStatus")]
         getter global_write_forwarding_status : String?
 
         # The ID that Amazon Route 53 assigns when you create a hosted zone.
+
         @[JSON::Field(key: "HostedZoneId")]
         getter hosted_zone_id : String?
 
@@ -4444,40 +5034,48 @@ module AwsSdk
         # endpoint provides a connectionless web service API (RDS Data API) for running SQL queries on the DB
         # cluster. You can also query your database from inside the RDS console with the RDS query editor. For
         # more information, see Using RDS Data API in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "HttpEndpointEnabled")]
         getter http_endpoint_enabled : Bool?
 
         # Indicates whether the mapping of Amazon Web Services Identity and Access Management (IAM) accounts
         # to database accounts is enabled.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # The next time you can modify the DB cluster to use the aurora-iopt1 storage type. This setting is
         # only for Aurora DB clusters.
+
         @[JSON::Field(key: "IOOptimizedNextAllowedModificationTime")]
         getter io_optimized_next_allowed_modification_time : Time?
 
         # The Provisioned IOPS (I/O operations per second) value. This setting is only for non-Aurora Multi-AZ
         # DB clusters.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
         # If StorageEncrypted is enabled, the Amazon Web Services KMS key identifier for the encrypted DB
         # cluster. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name
         # for the KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The latest time to which a database can be restored with point-in-time restore.
+
         @[JSON::Field(key: "LatestRestorableTime")]
         getter latest_restorable_time : Time?
 
         # The details for Aurora Limitless Database.
+
         @[JSON::Field(key: "LimitlessDatabase")]
         getter limitless_database : Types::LimitlessDatabase?
 
         # Indicates whether an Aurora DB cluster has in-cluster write forwarding enabled, not enabled,
         # requested, or is in the process of enabling it.
+
         @[JSON::Field(key: "LocalWriteForwardingStatus")]
         getter local_write_forwarding_status : String?
 
@@ -4485,24 +5083,29 @@ module AwsSdk
         # more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS
         # User Guide and Password management with Amazon Web Services Secrets Manager in the Amazon Aurora
         # User Guide.
+
         @[JSON::Field(key: "MasterUserSecret")]
         getter master_user_secret : Types::MasterUserSecret?
 
         # The master username for the DB cluster.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB
         # cluster. This setting is only for -Aurora DB clusters and Multi-AZ DB clusters.
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
         # The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch
         # Logs. This setting is only for Aurora DB clusters and Multi-AZ DB clusters.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
         # Indicates whether the DB cluster has instances in multiple Availability Zones.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -4510,46 +5113,55 @@ module AwsSdk
         # for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon
         # Aurora User Guide. This setting is only for Aurora DB clusters. Valid Values: IPV4 | DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # Information about pending changes to the DB cluster. This information is returned only when there
         # are pending changes. Specific changes are identified by subelements.
+
         @[JSON::Field(key: "PendingModifiedValues")]
         getter pending_modified_values : Types::ClusterPendingModifiedValues?
 
         # The progress of the operation as a percentage.
+
         @[JSON::Field(key: "PercentProgress")]
         getter percent_progress : String?
 
         # Indicates whether Performance Insights is enabled for the DB cluster. This setting is only for
         # Aurora DB clusters and Multi-AZ DB clusters.
+
         @[JSON::Field(key: "PerformanceInsightsEnabled")]
         getter performance_insights_enabled : Bool?
 
         # The Amazon Web Services KMS key identifier for encryption of Performance Insights data. The Amazon
         # Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
         # This setting is only for Aurora DB clusters and Multi-AZ DB clusters.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
         # The number of days to retain Performance Insights data. This setting is only for Aurora DB clusters
         # and Multi-AZ DB clusters. Valid Values: 7 month * 31, where month is a number of months from 1-23.
         # Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port that the database engine is listening on.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The daily time range during which automated backups are created if automated backups are enabled, as
         # determined by the BackupRetentionPeriod .
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
         # The weekly time range during which system maintenance can occur, in Universal Coordinated Time
         # (UTC).
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
@@ -4561,14 +5173,17 @@ module AwsSdk
         # assigned to the DB cluster doesn't permit it. When the DB cluster isn't publicly accessible, it is
         # an internal DB cluster with a DNS name that resolves to a private IP address. For more information,
         # see CreateDBCluster . This setting is only for non-Aurora Multi-AZ DB clusters.
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "RdsCustomClusterConfiguration")]
         getter rds_custom_cluster_configuration : Types::RdsCustomClusterConfiguration?
 
         # Contains one or more identifiers of the read replicas associated with this DB cluster.
+
         @[JSON::Field(key: "ReadReplicaIdentifiers")]
         getter read_replica_identifiers : Array(String)?
 
@@ -4580,45 +5195,56 @@ module AwsSdk
         # connected to is promoted to be the primary instance, your connection is dropped. To continue sending
         # your read workload to other Aurora Replicas in the cluster, you can then reconnect to the reader
         # endpoint.
+
         @[JSON::Field(key: "ReaderEndpoint")]
         getter reader_endpoint : String?
 
         # The identifier of the source DB cluster if this DB cluster is a read replica.
+
         @[JSON::Field(key: "ReplicationSourceIdentifier")]
         getter replication_source_identifier : String?
+
 
         @[JSON::Field(key: "ScalingConfigurationInfo")]
         getter scaling_configuration_info : Types::ScalingConfigurationInfo?
 
         # The version of the Aurora Serverless V2 platform used by the DB cluster. For more information, see
         # Using Aurora Serverless v2 in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "ServerlessV2PlatformVersion")]
         getter serverless_v2_platform_version : String?
+
 
         @[JSON::Field(key: "ServerlessV2ScalingConfiguration")]
         getter serverless_v2_scaling_configuration : Types::ServerlessV2ScalingConfigurationInfo?
 
         # The current state of this DB cluster.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "StatusInfos")]
         getter status_infos : Array(Types::DBClusterStatusInfo)?
 
         # Indicates whether the DB cluster is encrypted.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # The storage throughput for the DB cluster. The throughput is automatically set based on the IOPS
         # that you provision, and is not configurable. This setting is only for non-Aurora Multi-AZ DB
         # clusters.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type associated with the DB cluster.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
@@ -4626,10 +5252,12 @@ module AwsSdk
         # This data type represents the order in which the clusters are upgraded. [first] - Typically used for
         # development or testing environments. [second] - Default order for resources not specifically
         # configured. [last] - Usually reserved for production environments.
+
         @[JSON::Field(key: "UpgradeRolloutOrder")]
         getter upgrade_rollout_order : String?
 
         # The list of VPC security groups that the DB cluster belongs to.
+
         @[JSON::Field(key: "VpcSecurityGroups")]
         getter vpc_security_groups : Array(Types::VpcSecurityGroupMembership)?
 
@@ -4724,6 +5352,7 @@ module AwsSdk
       end
 
       # The user already has a DB cluster with the given identifier.
+
       struct DBClusterAlreadyExistsFault
         include JSON::Serializable
 
@@ -4733,121 +5362,148 @@ module AwsSdk
 
       # An automated backup of a DB cluster. It consists of system backups, transaction logs, and the
       # database cluster properties that existed at the time you deleted the source cluster.
+
       struct DBClusterAutomatedBackup
         include JSON::Serializable
 
         # For all database engines except Amazon Aurora, AllocatedStorage specifies the allocated storage size
         # in gibibytes (GiB). For Aurora, AllocatedStorage always returns 1, because Aurora DB cluster storage
         # size isn't fixed, but instead automatically adjusts as needed.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The Availability Zones where instances in the DB cluster can be created. For information on Amazon
         # Web Services Regions and Availability Zones, see Regions and Availability Zones .
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(String)?
 
         # The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.
+
         @[JSON::Field(key: "AwsBackupRecoveryPointArn")]
         getter aws_backup_recovery_point_arn : String?
 
         # The retention period for the automated backups.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The time when the DB cluster was created, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "ClusterCreateTime")]
         getter cluster_create_time : Time?
 
         # The Amazon Resource Name (ARN) for the source DB cluster.
+
         @[JSON::Field(key: "DBClusterArn")]
         getter db_cluster_arn : String?
 
         # The Amazon Resource Name (ARN) for the automated backups.
+
         @[JSON::Field(key: "DBClusterAutomatedBackupsArn")]
         getter db_cluster_automated_backups_arn : String?
 
         # The identifier for the source DB cluster, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The resource ID for the source DB cluster, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DbClusterResourceId")]
         getter db_cluster_resource_id : String?
 
         # The name of the database engine for this automated backup.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The engine mode of the database engine for the automated backup.
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
         # The version of the database engine for the automated backup.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to
         # database accounts is enabled.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # The IOPS (I/O operations per second) value for the automated backup. This setting is only for
         # non-Aurora Multi-AZ DB clusters.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
         # The Amazon Web Services KMS key ID for an automated backup. The Amazon Web Services KMS key
         # identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The license model information for this DB cluster automated backup.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # The master user name of the automated backup.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The port number that the automated backup used for connections. Default: Inherits from the source DB
         # cluster Valid Values: 1150-65535
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The Amazon Web Services Region associated with the automated backup.
+
         @[JSON::Field(key: "Region")]
         getter region : String?
+
 
         @[JSON::Field(key: "RestoreWindow")]
         getter restore_window : Types::RestoreWindow?
 
         # A list of status information for an automated backup: retained - Automated backups for deleted
         # clusters.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Indicates whether the source DB cluster is encrypted.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # The storage throughput for the automated backup. The throughput is automatically set based on the
         # IOPS that you provision, and is not configurable. This setting is only for non-Aurora Multi-AZ DB
         # clusters.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type associated with the DB cluster. This setting is only for non-Aurora Multi-AZ DB
         # clusters.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The VPC ID associated with the DB cluster.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -4882,15 +5538,18 @@ module AwsSdk
         end
       end
 
+
       struct DBClusterAutomatedBackupMessage
         include JSON::Serializable
 
         # A list of DBClusterAutomatedBackup backups.
+
         @[JSON::Field(key: "DBClusterAutomatedBackups")]
         getter db_cluster_automated_backups : Array(Types::DBClusterAutomatedBackup)?
 
         # The pagination token provided in the previous request. If this parameter is specified the response
         # includes only records beyond the marker, up to MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -4902,6 +5561,7 @@ module AwsSdk
       end
 
       # No automated backup for this DB cluster was found.
+
       struct DBClusterAutomatedBackupNotFoundFault
         include JSON::Serializable
 
@@ -4912,6 +5572,7 @@ module AwsSdk
       # The quota for retained automated backups was exceeded. This prevents you from retaining any
       # additional automated backups. The retained automated backups quota is the same as your DB cluster
       # quota.
+
       struct DBClusterAutomatedBackupQuotaExceededFault
         include JSON::Serializable
 
@@ -4920,27 +5581,33 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the DescribeDBClusterBacktracks action.
+
       struct DBClusterBacktrack
         include JSON::Serializable
 
         # Contains the backtrack identifier.
+
         @[JSON::Field(key: "BacktrackIdentifier")]
         getter backtrack_identifier : String?
 
         # The timestamp of the time at which the backtrack was requested.
+
         @[JSON::Field(key: "BacktrackRequestCreationTime")]
         getter backtrack_request_creation_time : Time?
 
         # The timestamp of the time to which the DB cluster was backtracked.
+
         @[JSON::Field(key: "BacktrackTo")]
         getter backtrack_to : Time?
 
         # The timestamp of the time from which the DB cluster was backtracked.
+
         @[JSON::Field(key: "BacktrackedFrom")]
         getter backtracked_from : Time?
 
         # Contains a user-supplied DB cluster identifier. This identifier is the unique key that identifies a
         # DB cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
@@ -4949,6 +5616,7 @@ module AwsSdk
         # backtrack has successfully been applied to or rolled back from the DB cluster. failed - An error
         # occurred while the backtrack was applied to or rolled back from the DB cluster. pending - The
         # backtrack is currently pending application to or rollback from the DB cluster.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -4964,14 +5632,17 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBClusterBacktracks action.
+
       struct DBClusterBacktrackMessage
         include JSON::Serializable
 
         # Contains a list of backtracks for the user.
+
         @[JSON::Field(key: "DBClusterBacktracks")]
         getter db_cluster_backtracks : Array(Types::DBClusterBacktrack)?
 
         # A pagination token that can be used in a later DescribeDBClusterBacktracks request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -4983,6 +5654,7 @@ module AwsSdk
       end
 
       # BacktrackIdentifier doesn't refer to an existing backtrack.
+
       struct DBClusterBacktrackNotFoundFault
         include JSON::Serializable
 
@@ -4990,28 +5662,34 @@ module AwsSdk
         end
       end
 
+
       struct DBClusterCapacityInfo
         include JSON::Serializable
 
         # The current capacity of the DB cluster.
+
         @[JSON::Field(key: "CurrentCapacity")]
         getter current_capacity : Int32?
 
         # A user-supplied DB cluster identifier. This identifier is the unique key that identifies a DB
         # cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # A value that specifies the capacity that the DB cluster scales to next.
+
         @[JSON::Field(key: "PendingCapacity")]
         getter pending_capacity : Int32?
 
         # The number of seconds before a call to ModifyCurrentDBClusterCapacity times out.
+
         @[JSON::Field(key: "SecondsBeforeTimeout")]
         getter seconds_before_timeout : Int32?
 
         # The timeout action of a call to ModifyCurrentDBClusterCapacity , either ForceApplyCapacityChange or
         # RollbackCapacityChange .
+
         @[JSON::Field(key: "TimeoutAction")]
         getter timeout_action : String?
 
@@ -5029,52 +5707,63 @@ module AwsSdk
       # data type is used as a response element in the following actions: CreateDBClusterEndpoint
       # DescribeDBClusterEndpoints ModifyDBClusterEndpoint DeleteDBClusterEndpoint For the data structure
       # that represents Amazon RDS DB instance endpoints, see Endpoint .
+
       struct DBClusterEndpoint
         include JSON::Serializable
 
         # The type associated with a custom endpoint. One of: READER , WRITER , ANY .
+
         @[JSON::Field(key: "CustomEndpointType")]
         getter custom_endpoint_type : String?
 
         # The Amazon Resource Name (ARN) for the endpoint.
+
         @[JSON::Field(key: "DBClusterEndpointArn")]
         getter db_cluster_endpoint_arn : String?
 
         # The identifier associated with the endpoint. This parameter is stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterEndpointIdentifier")]
         getter db_cluster_endpoint_identifier : String?
 
         # A unique system-generated identifier for an endpoint. It remains the same for the whole life of the
         # endpoint.
+
         @[JSON::Field(key: "DBClusterEndpointResourceIdentifier")]
         getter db_cluster_endpoint_resource_identifier : String?
 
         # The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored
         # as a lowercase string.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The DNS address of the endpoint.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The type of the endpoint. One of: READER , WRITER , CUSTOM .
+
         @[JSON::Field(key: "EndpointType")]
         getter endpoint_type : String?
 
         # List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible
         # instances are reachable through the custom endpoint. Only relevant if the list of static members is
         # empty.
+
         @[JSON::Field(key: "ExcludedMembers")]
         getter excluded_members : Array(String)?
 
         # List of DB instance identifiers that are part of the custom endpoint group.
+
         @[JSON::Field(key: "StaticMembers")]
         getter static_members : Array(String)?
 
         # The current status of the endpoint. One of: creating , available , deleting , inactive , modifying .
         # The inactive state applies to an endpoint that can't be used for a certain kind of cluster, such as
         # a writer endpoint for a read-only secondary cluster in a global database.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5094,6 +5783,7 @@ module AwsSdk
       end
 
       # The specified custom endpoint can't be created because it already exists.
+
       struct DBClusterEndpointAlreadyExistsFault
         include JSON::Serializable
 
@@ -5101,17 +5791,20 @@ module AwsSdk
         end
       end
 
+
       struct DBClusterEndpointMessage
         include JSON::Serializable
 
         # Contains the details of the endpoints associated with the cluster and matching any filter
         # conditions.
+
         @[JSON::Field(key: "DBClusterEndpoints")]
         getter db_cluster_endpoints : Array(Types::DBClusterEndpoint)?
 
         # An optional pagination token provided by a previous DescribeDBClusterEndpoints request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -5123,6 +5816,7 @@ module AwsSdk
       end
 
       # The specified custom endpoint doesn't exist.
+
       struct DBClusterEndpointNotFoundFault
         include JSON::Serializable
 
@@ -5131,6 +5825,7 @@ module AwsSdk
       end
 
       # The cluster already has the maximum number of custom endpoints.
+
       struct DBClusterEndpointQuotaExceededFault
         include JSON::Serializable
 
@@ -5139,24 +5834,29 @@ module AwsSdk
       end
 
       # Contains information about an instance that is part of a DB cluster.
+
       struct DBClusterMember
         include JSON::Serializable
 
         # Specifies the status of the DB cluster parameter group for this member of the DB cluster.
+
         @[JSON::Field(key: "DBClusterParameterGroupStatus")]
         getter db_cluster_parameter_group_status : String?
 
         # Specifies the instance identifier for this member of the DB cluster.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # Indicates whether the cluster member is the primary DB instance for the DB cluster.
+
         @[JSON::Field(key: "IsClusterWriter")]
         getter is_cluster_writer : Bool?
 
         # A value that specifies the order in which an Aurora Replica is promoted to the primary instance
         # after a failure of the existing primary instance. For more information, see Fault Tolerance for an
         # Aurora DB Cluster in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "PromotionTier")]
         getter promotion_tier : Int32?
 
@@ -5170,14 +5870,17 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBClusters action.
+
       struct DBClusterMessage
         include JSON::Serializable
 
         # Contains a list of DB clusters for the user.
+
         @[JSON::Field(key: "DBClusters")]
         getter db_clusters : Array(Types::DBCluster)?
 
         # A pagination token that can be used in a later DescribeDBClusters request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -5189,6 +5892,7 @@ module AwsSdk
       end
 
       # DBClusterIdentifier doesn't refer to an existing DB cluster.
+
       struct DBClusterNotFoundFault
         include JSON::Serializable
 
@@ -5197,14 +5901,17 @@ module AwsSdk
       end
 
       # Contains status information for a DB cluster option group.
+
       struct DBClusterOptionGroupStatus
         include JSON::Serializable
 
         # Specifies the name of the DB cluster option group.
+
         @[JSON::Field(key: "DBClusterOptionGroupName")]
         getter db_cluster_option_group_name : String?
 
         # Specifies the status of the DB cluster option group.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5217,22 +5924,27 @@ module AwsSdk
 
       # Contains the details of an Amazon RDS DB cluster parameter group. This data type is used as a
       # response element in the DescribeDBClusterParameterGroups action.
+
       struct DBClusterParameterGroup
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the DB cluster parameter group.
+
         @[JSON::Field(key: "DBClusterParameterGroupArn")]
         getter db_cluster_parameter_group_arn : String?
 
         # The name of the DB cluster parameter group.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
         # The name of the DB parameter group family that this DB cluster parameter group is compatible with.
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String?
 
         # Provides the customer-specified description for this DB cluster parameter group.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -5247,16 +5959,19 @@ module AwsSdk
 
       # Provides details about a DB cluster parameter group including the parameters in the DB cluster
       # parameter group.
+
       struct DBClusterParameterGroupDetails
         include JSON::Serializable
 
         # An optional pagination token provided by a previous DescribeDBClusterParameters request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # Provides a list of parameters for the DB cluster parameter group.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -5267,12 +5982,14 @@ module AwsSdk
         end
       end
 
+
       struct DBClusterParameterGroupNameMessage
         include JSON::Serializable
 
         # The name of the DB cluster parameter group. Constraints: Must be 1 to 255 letters or numbers. First
         # character must be a letter Can't end with a hyphen or contain two consecutive hyphens This value is
         # stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
@@ -5283,6 +6000,7 @@ module AwsSdk
       end
 
       # DBClusterParameterGroupName doesn't refer to an existing DB cluster parameter group.
+
       struct DBClusterParameterGroupNotFoundFault
         include JSON::Serializable
 
@@ -5290,16 +6008,19 @@ module AwsSdk
         end
       end
 
+
       struct DBClusterParameterGroupsMessage
         include JSON::Serializable
 
         # A list of DB cluster parameter groups.
+
         @[JSON::Field(key: "DBClusterParameterGroups")]
         getter db_cluster_parameter_groups : Array(Types::DBClusterParameterGroup)?
 
         # An optional pagination token provided by a previous DescribeDBClusterParameterGroups request. If
         # this parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -5312,6 +6033,7 @@ module AwsSdk
 
       # The user attempted to create a new DB cluster and the user has already reached the maximum allowed
       # DB cluster quota.
+
       struct DBClusterQuotaExceededFault
         include JSON::Serializable
 
@@ -5321,15 +6043,18 @@ module AwsSdk
 
       # Describes an Amazon Web Services Identity and Access Management (IAM) role that is associated with a
       # DB cluster.
+
       struct DBClusterRole
         include JSON::Serializable
 
         # The name of the feature associated with the Amazon Web Services Identity and Access Management (IAM)
         # role. For information about supported feature names, see DBEngineVersion .
+
         @[JSON::Field(key: "FeatureName")]
         getter feature_name : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -5339,6 +6064,7 @@ module AwsSdk
         # associated with the DB cluster. INVALID - the IAM role ARN is associated with the DB cluster, but
         # the DB cluster is unable to assume the IAM role in order to access other Amazon Web Services on your
         # behalf.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5352,6 +6078,7 @@ module AwsSdk
 
       # The specified IAM role Amazon Resource Name (ARN) is already associated with the specified DB
       # cluster.
+
       struct DBClusterRoleAlreadyExistsFault
         include JSON::Serializable
 
@@ -5360,6 +6087,7 @@ module AwsSdk
       end
 
       # The specified IAM role Amazon Resource Name (ARN) isn't associated with the specified DB cluster.
+
       struct DBClusterRoleNotFoundFault
         include JSON::Serializable
 
@@ -5369,6 +6097,7 @@ module AwsSdk
 
       # You have exceeded the maximum number of IAM roles that can be associated with the specified DB
       # cluster.
+
       struct DBClusterRoleQuotaExceededFault
         include JSON::Serializable
 
@@ -5378,116 +6107,143 @@ module AwsSdk
 
       # Contains the details for an Amazon RDS DB cluster snapshot This data type is used as a response
       # element in the DescribeDBClusterSnapshots action.
+
       struct DBClusterSnapshot
         include JSON::Serializable
 
         # The allocated storage size of the DB cluster snapshot in gibibytes (GiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The list of Availability Zones (AZs) where instances in the DB cluster snapshot can be restored.
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(String)?
 
         # The time when the DB cluster was created, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "ClusterCreateTime")]
         getter cluster_create_time : Time?
 
         # The DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The Amazon Resource Name (ARN) for the DB cluster snapshot.
+
         @[JSON::Field(key: "DBClusterSnapshotArn")]
         getter db_cluster_snapshot_arn : String?
 
         # The identifier for the DB cluster snapshot.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "DBSystemId")]
         getter db_system_id : String?
 
         # The resource ID of the DB cluster that this DB cluster snapshot was created from.
+
         @[JSON::Field(key: "DbClusterResourceId")]
         getter db_cluster_resource_id : String?
 
         # The name of the database engine for this DB cluster snapshot.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The engine mode of the database engine for this DB cluster snapshot.
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
         # The version of the database engine for this DB cluster snapshot.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to
         # database accounts is enabled.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # If StorageEncrypted is true, the Amazon Web Services KMS key identifier for the encrypted DB cluster
         # snapshot. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias
         # name for the KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The license model information for this DB cluster snapshot.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # The master username for this DB cluster snapshot.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The percentage of the estimated data that has been transferred.
+
         @[JSON::Field(key: "PercentProgress")]
         getter percent_progress : Int32?
 
         # The port that the DB cluster was listening on at the time of the snapshot.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The time when the snapshot was taken, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "SnapshotCreateTime")]
         getter snapshot_create_time : Time?
 
         # The type of the DB cluster snapshot.
+
         @[JSON::Field(key: "SnapshotType")]
         getter snapshot_type : String?
 
         # If the DB cluster snapshot was copied from a source DB cluster snapshot, the Amazon Resource Name
         # (ARN) for the source DB cluster snapshot, otherwise, a null value.
+
         @[JSON::Field(key: "SourceDBClusterSnapshotArn")]
         getter source_db_cluster_snapshot_arn : String?
 
         # The status of this DB cluster snapshot. Valid statuses are the following: available copying creating
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Indicates whether the DB cluster snapshot is encrypted.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # The storage throughput for the DB cluster snapshot. The throughput is automatically set based on the
         # IOPS that you provision, and is not configurable. This setting is only for non-Aurora Multi-AZ DB
         # clusters.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type associated with the DB cluster snapshot. This setting is only for Aurora DB
         # clusters.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The VPC ID associated with the DB cluster snapshot.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -5523,6 +6279,7 @@ module AwsSdk
       end
 
       # The user already has a DB cluster snapshot with the given identifier.
+
       struct DBClusterSnapshotAlreadyExistsFault
         include JSON::Serializable
 
@@ -5533,12 +6290,14 @@ module AwsSdk
       # Contains the name and values of a manual DB cluster snapshot attribute. Manual DB cluster snapshot
       # attributes are used to authorize other Amazon Web Services accounts to restore a manual DB cluster
       # snapshot. For more information, see the ModifyDBClusterSnapshotAttribute API action.
+
       struct DBClusterSnapshotAttribute
         include JSON::Serializable
 
         # The name of the manual DB cluster snapshot attribute. The attribute named restore refers to the list
         # of Amazon Web Services accounts that have permission to copy or restore the manual DB cluster
         # snapshot. For more information, see the ModifyDBClusterSnapshotAttribute API action.
+
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String?
 
@@ -5547,6 +6306,7 @@ module AwsSdk
         # authorized to copy or restore the manual DB cluster snapshot. If a value of all is in the list, then
         # the manual DB cluster snapshot is public and available for any Amazon Web Services account to copy
         # or restore.
+
         @[JSON::Field(key: "AttributeValues")]
         getter attribute_values : Array(String)?
 
@@ -5561,14 +6321,17 @@ module AwsSdk
       # Manual DB cluster snapshot attributes are used to authorize other Amazon Web Services accounts to
       # copy or restore a manual DB cluster snapshot. For more information, see the
       # ModifyDBClusterSnapshotAttribute API action.
+
       struct DBClusterSnapshotAttributesResult
         include JSON::Serializable
 
         # The list of attributes and values for the manual DB cluster snapshot.
+
         @[JSON::Field(key: "DBClusterSnapshotAttributes")]
         getter db_cluster_snapshot_attributes : Array(Types::DBClusterSnapshotAttribute)?
 
         # The identifier of the manual DB cluster snapshot that the attributes apply to.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String?
 
@@ -5581,16 +6344,19 @@ module AwsSdk
 
       # Provides a list of DB cluster snapshots for the user as the result of a call to the
       # DescribeDBClusterSnapshots action.
+
       struct DBClusterSnapshotMessage
         include JSON::Serializable
 
         # Provides a list of DB cluster snapshots for the user.
+
         @[JSON::Field(key: "DBClusterSnapshots")]
         getter db_cluster_snapshots : Array(Types::DBClusterSnapshot)?
 
         # An optional pagination token provided by a previous DescribeDBClusterSnapshots request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -5602,6 +6368,7 @@ module AwsSdk
       end
 
       # DBClusterSnapshotIdentifier doesn't refer to an existing DB cluster snapshot.
+
       struct DBClusterSnapshotNotFoundFault
         include JSON::Serializable
 
@@ -5610,22 +6377,27 @@ module AwsSdk
       end
 
       # Reserved for future use.
+
       struct DBClusterStatusInfo
         include JSON::Serializable
 
         # Reserved for future use.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "Normal")]
         getter normal : Bool?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "StatusType")]
         getter status_type : String?
 
@@ -5639,10 +6411,12 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the action DescribeDBEngineVersions .
+
       struct DBEngineVersion
         include JSON::Serializable
 
         # The creation time of the DB engine version.
+
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time?
 
@@ -5651,76 +6425,93 @@ module AwsSdk
         # manifest. You can set the Oracle home, Oracle base, and UNIX/Linux user and group using the
         # installation parameters. For more information, see JSON fields in the CEV manifest in the Amazon RDS
         # User Guide .
+
         @[JSON::Field(key: "CustomDBEngineVersionManifest")]
         getter custom_db_engine_version_manifest : String?
 
         # The description of the database engine.
+
         @[JSON::Field(key: "DBEngineDescription")]
         getter db_engine_description : String?
 
         # A value that indicates the source media provider of the AMI based on the usage operation. Applicable
         # for RDS Custom for SQL Server.
+
         @[JSON::Field(key: "DBEngineMediaType")]
         getter db_engine_media_type : String?
 
         # The ARN of the custom engine version.
+
         @[JSON::Field(key: "DBEngineVersionArn")]
         getter db_engine_version_arn : String?
 
         # The description of the database engine version.
+
         @[JSON::Field(key: "DBEngineVersionDescription")]
         getter db_engine_version_description : String?
 
         # The name of the DB parameter group family for the database engine.
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String?
 
         # The database installation files (ISO and EXE) uploaded to Amazon S3 for your database engine version
         # to import to Amazon RDS. Required for sqlserver-dev-ee .
+
         @[JSON::Field(key: "DatabaseInstallationFiles")]
         getter database_installation_files : Array(String)?
 
         # The name of the Amazon S3 bucket that contains your database installation files.
+
         @[JSON::Field(key: "DatabaseInstallationFilesS3BucketName")]
         getter database_installation_files_s3_bucket_name : String?
 
         # The Amazon S3 directory that contains the database installation files. If not specified, then no
         # prefix is assumed.
+
         @[JSON::Field(key: "DatabaseInstallationFilesS3Prefix")]
         getter database_installation_files_s3_prefix : String?
 
         # The default character set for new instances of this engine version, if the CharacterSetName
         # parameter of the CreateDBInstance API isn't specified.
+
         @[JSON::Field(key: "DefaultCharacterSet")]
         getter default_character_set : Types::CharacterSet?
 
         # The name of the database engine.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The version number of the database engine.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # The types of logs that the database engine has available for export to CloudWatch Logs.
+
         @[JSON::Field(key: "ExportableLogTypes")]
         getter exportable_log_types : Array(String)?
 
         # The reason that the custom engine version creation for sqlserver-dev-ee failed with an
         # incompatible-installation-media status.
+
         @[JSON::Field(key: "FailureReason")]
         getter failure_reason : String?
 
         # The EC2 image
+
         @[JSON::Field(key: "Image")]
         getter image : Types::CustomDBEngineVersionAMI?
 
         # The Amazon Web Services KMS key identifier for an encrypted CEV. This parameter is required for RDS
         # Custom, but optional for Amazon RDS.
+
         @[JSON::Field(key: "KMSKeyId")]
         getter kms_key_id : String?
 
         # The major engine version of the CEV.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
@@ -5729,25 +6520,30 @@ module AwsSdk
         # upgraded DB cluster. You can also retrieve the version of an existing DB cluster and check whether
         # that version supports certain Aurora Serverless v2 features before you attempt to use those
         # features.
+
         @[JSON::Field(key: "ServerlessV2FeaturesSupport")]
         getter serverless_v2_features_support : Types::ServerlessV2FeaturesSupport?
 
         # The status of the DB engine version, either available or deprecated .
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A list of the supported CA certificate identifiers. For more information, see Using SSL/TLS to
         # encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
         # connection to a DB cluster in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "SupportedCACertificateIdentifiers")]
         getter supported_ca_certificate_identifiers : Array(String)?
 
         # A list of the character sets supported by this engine for the CharacterSetName parameter of the
         # CreateDBInstance operation.
+
         @[JSON::Field(key: "SupportedCharacterSets")]
         getter supported_character_sets : Array(Types::CharacterSet)?
 
         # A list of the supported DB engine modes.
+
         @[JSON::Field(key: "SupportedEngineModes")]
         getter supported_engine_modes : Array(String)?
 
@@ -5758,63 +6554,77 @@ module AwsSdk
         # features for RDS for PostgreSQL version 13.3 using the CLI, use the following command: aws rds
         # describe-db-engine-versions --engine postgres --engine-version 13.3 The supported features are
         # listed under SupportedFeatureNames in the output.
+
         @[JSON::Field(key: "SupportedFeatureNames")]
         getter supported_feature_names : Array(String)?
 
         # A list of the character sets supported by the Oracle DB engine for the NcharCharacterSetName
         # parameter of the CreateDBInstance operation.
+
         @[JSON::Field(key: "SupportedNcharCharacterSets")]
         getter supported_nchar_character_sets : Array(Types::CharacterSet)?
 
         # A list of the time zones supported by this engine for the Timezone parameter of the CreateDBInstance
         # action.
+
         @[JSON::Field(key: "SupportedTimezones")]
         getter supported_timezones : Array(Types::Timezone)?
 
         # Indicates whether the engine version supports Babelfish for Aurora PostgreSQL.
+
         @[JSON::Field(key: "SupportsBabelfish")]
         getter supports_babelfish : Bool?
 
         # Indicates whether the engine version supports rotating the server certificate without rebooting the
         # DB instance.
+
         @[JSON::Field(key: "SupportsCertificateRotationWithoutRestart")]
         getter supports_certificate_rotation_without_restart : Bool?
 
         # Indicates whether you can use Aurora global databases with a specific DB engine version.
+
         @[JSON::Field(key: "SupportsGlobalDatabases")]
         getter supports_global_databases : Bool?
 
         # Indicates whether the DB engine version supports zero-ETL integrations with Amazon Redshift.
+
         @[JSON::Field(key: "SupportsIntegrations")]
         getter supports_integrations : Bool?
 
         # Indicates whether the DB engine version supports Aurora Limitless Database.
+
         @[JSON::Field(key: "SupportsLimitlessDatabase")]
         getter supports_limitless_database : Bool?
 
         # Indicates whether the DB engine version supports forwarding write operations from reader DB
         # instances to the writer DB instance in the DB cluster. By default, write operations aren't allowed
         # on reader DB instances. Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "SupportsLocalWriteForwarding")]
         getter supports_local_write_forwarding : Bool?
 
         # Indicates whether the engine version supports exporting the log types specified by
         # ExportableLogTypes to CloudWatch Logs.
+
         @[JSON::Field(key: "SupportsLogExportsToCloudwatchLogs")]
         getter supports_log_exports_to_cloudwatch_logs : Bool?
 
         # Indicates whether you can use Aurora parallel query with a specific DB engine version.
+
         @[JSON::Field(key: "SupportsParallelQuery")]
         getter supports_parallel_query : Bool?
 
         # Indicates whether the database engine version supports read replicas.
+
         @[JSON::Field(key: "SupportsReadReplica")]
         getter supports_read_replica : Bool?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # A list of engine versions that this database engine version can be upgraded to.
+
         @[JSON::Field(key: "ValidUpgradeTarget")]
         getter valid_upgrade_target : Array(Types::UpgradeTarget)?
 
@@ -5861,15 +6671,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBEngineVersions action.
+
       struct DBEngineVersionMessage
         include JSON::Serializable
 
         # A list of DBEngineVersion elements.
+
         @[JSON::Field(key: "DBEngineVersions")]
         getter db_engine_versions : Array(Types::DBEngineVersion)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -5885,92 +6698,112 @@ module AwsSdk
       # DescribeDBInstances , ModifyDBInstance , PromoteReadReplica , RebootDBInstance ,
       # RestoreDBInstanceFromDBSnapshot , RestoreDBInstanceFromS3 , RestoreDBInstanceToPointInTime ,
       # StartDBInstance , and StopDBInstance .
+
       struct DBInstance
         include JSON::Serializable
 
         # Indicates whether engine-native audit fields are included in the database activity stream.
+
         @[JSON::Field(key: "ActivityStreamEngineNativeAuditFieldsIncluded")]
         getter activity_stream_engine_native_audit_fields_included : Bool?
 
         # The name of the Amazon Kinesis data stream used for the database activity stream.
+
         @[JSON::Field(key: "ActivityStreamKinesisStreamName")]
         getter activity_stream_kinesis_stream_name : String?
 
         # The Amazon Web Services KMS key identifier used for encrypting messages in the database activity
         # stream. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name
         # for the KMS key.
+
         @[JSON::Field(key: "ActivityStreamKmsKeyId")]
         getter activity_stream_kms_key_id : String?
 
         # The mode of the database activity stream. Database events such as a change or access generate an
         # activity stream event. RDS for Oracle always handles these events asynchronously.
+
         @[JSON::Field(key: "ActivityStreamMode")]
         getter activity_stream_mode : String?
 
         # The status of the policy state of the activity stream.
+
         @[JSON::Field(key: "ActivityStreamPolicyStatus")]
         getter activity_stream_policy_status : String?
 
         # The status of the database activity stream.
+
         @[JSON::Field(key: "ActivityStreamStatus")]
         getter activity_stream_status : String?
 
         # The additional storage volumes associated with the DB instance. RDS supports additional storage
         # volumes for RDS for Oracle and RDS for SQL Server.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolumeOutput)?
 
         # The amount of storage in gibibytes (GiB) allocated for the DB instance.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The Amazon Web Services Identity and Access Management (IAM) roles associated with the DB instance.
+
         @[JSON::Field(key: "AssociatedRoles")]
         getter associated_roles : Array(Types::DBInstanceRole)?
 
         # Indicates whether minor version patches are applied automatically. For more information about
         # automatic minor version upgrades, see Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The time when a stopped DB instance is restarted automatically.
+
         @[JSON::Field(key: "AutomaticRestartTime")]
         getter automatic_restart_time : Time?
 
         # The automation mode of the RDS Custom DB instance: full or all paused . If full , the DB instance
         # automates monitoring and instance recovery. If all paused , the instance pauses automation for the
         # duration set by --resume-full-automation-mode-minutes .
+
         @[JSON::Field(key: "AutomationMode")]
         getter automation_mode : String?
 
         # The name of the Availability Zone where the DB instance is located.
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.
+
         @[JSON::Field(key: "AwsBackupRecoveryPointArn")]
         getter aws_backup_recovery_point_arn : String?
 
         # The number of days for which automatic DB snapshots are retained.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The location where automated backups and manual snapshots are stored: Dedicated Local Zones, Amazon
         # Web Services Outposts or the Amazon Web Services Region.
+
         @[JSON::Field(key: "BackupTarget")]
         getter backup_target : String?
 
         # The identifier of the CA certificate for this DB instance. For more information, see Using SSL/TLS
         # to encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
         # connection to a DB cluster in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
         # The details of the DB instance's server certificate.
+
         @[JSON::Field(key: "CertificateDetails")]
         getter certificate_details : Types::CertificateDetails?
 
         # If present, specifies the name of the character set that this instance is associated with.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
@@ -5978,6 +6811,7 @@ module AwsSdk
         # doesn't apply to Amazon Aurora DB instances. Copying tags to snapshots is managed by the DB cluster.
         # Setting this value for an Aurora DB instance has no effect on the DB cluster setting. For more
         # information, see DBCluster .
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -5987,6 +6821,7 @@ module AwsSdk
         # profile name and the associated IAM role name must start with the prefix AWSRDSCustom . For the list
         # of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User
         # Guide .
+
         @[JSON::Field(key: "CustomIamInstanceProfile")]
         getter custom_iam_instance_profile : String?
 
@@ -5997,114 +6832,138 @@ module AwsSdk
         # about RDS on Outposts, see Working with Amazon RDS on Amazon Web Services Outposts in the Amazon RDS
         # User Guide . For more information about CoIPs, see Customer-owned IP addresses in the Amazon Web
         # Services Outposts User Guide .
+
         @[JSON::Field(key: "CustomerOwnedIpEnabled")]
         getter customer_owned_ip_enabled : Bool?
 
         # If the DB instance is a member of a DB cluster, indicates the name of the DB cluster that the DB
         # instance is a member of.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The Amazon Resource Name (ARN) for the DB instance.
+
         @[JSON::Field(key: "DBInstanceArn")]
         getter db_instance_arn : String?
 
         # The list of replicated automated backups associated with the DB instance.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackupsReplications")]
         getter db_instance_automated_backups_replications : Array(Types::DBInstanceAutomatedBackupsReplication)?
 
         # The name of the compute and memory capacity class of the DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The user-supplied database identifier. This identifier is the unique key that identifies a DB
         # instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The current state of this database. For information about DB instance statuses, see Viewing DB
         # instance status in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "DBInstanceStatus")]
         getter db_instance_status : String?
 
         # The initial database name that you provided (if required) when you created the DB instance. This
         # name is returned for the life of your DB instance. For an RDS for Oracle CDB instance, the name
         # identifies the PDB rather than the CDB.
+
         @[JSON::Field(key: "DBName")]
         getter db_name : String?
 
         # The list of DB parameter groups applied to this DB instance.
+
         @[JSON::Field(key: "DBParameterGroups")]
         getter db_parameter_groups : Array(Types::DBParameterGroupStatus)?
 
         # A list of DB security group elements containing DBSecurityGroup.Name and DBSecurityGroup.Status
         # subelements.
+
         @[JSON::Field(key: "DBSecurityGroups")]
         getter db_security_groups : Array(Types::DBSecurityGroupMembership)?
 
         # Information about the subnet group associated with the DB instance, including the name, description,
         # and subnets in the subnet group.
+
         @[JSON::Field(key: "DBSubnetGroup")]
         getter db_subnet_group : Types::DBSubnetGroup?
 
         # The Oracle system ID (Oracle SID) for a container database (CDB). The Oracle SID is also the name of
         # the CDB. This setting is only valid for RDS Custom DB instances.
+
         @[JSON::Field(key: "DBSystemId")]
         getter db_system_id : String?
 
         # The mode of Database Insights that is enabled for the instance.
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # The port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a
         # different port than the DB cluster port.
+
         @[JSON::Field(key: "DbInstancePort")]
         getter db_instance_port : Int32?
 
         # The Amazon Web Services Region-unique, immutable identifier for the DB instance. This identifier is
         # found in Amazon Web Services CloudTrail log entries whenever the Amazon Web Services KMS key for the
         # DB instance is accessed.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Indicates whether the DB instance has deletion protection enabled. The database can't be deleted
         # when deletion protection is enabled. For more information, see Deleting a DB Instance .
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
         # The Active Directory Domain membership records associated with the DB instance.
+
         @[JSON::Field(key: "DomainMemberships")]
         getter domain_memberships : Array(Types::DomainMembership)?
 
         # A list of log types that this DB instance is configured to export to CloudWatch Logs. Log types vary
         # by DB engine. For information about the log types for each DB engine, see Monitoring Amazon RDS log
         # files in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "EnabledCloudwatchLogsExports")]
         getter enabled_cloudwatch_logs_exports : Array(String)?
 
         # The connection endpoint for the DB instance. The endpoint might not be shown for instances with the
         # status of creating .
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : Types::Endpoint?
 
         # The database engine used for this DB instance.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The lifecycle type for the DB instance. For more information, see CreateDBInstance.
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # The version of the database engine.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced
         # Monitoring metrics data for the DB instance.
+
         @[JSON::Field(key: "EnhancedMonitoringResourceArn")]
         getter enhanced_monitoring_resource_arn : String?
 
@@ -6112,14 +6971,17 @@ module AwsSdk
         # database accounts is enabled for the DB instance. For a list of engine versions that support IAM
         # database authentication, see IAM database authentication in the Amazon RDS User Guide and IAM
         # database authentication in Aurora in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # The date and time when the DB instance was created.
+
         @[JSON::Field(key: "InstanceCreateTime")]
         getter instance_create_time : Time?
 
         # The Provisioned IOPS (I/O operations per second) value for the DB instance.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -6127,65 +6989,78 @@ module AwsSdk
         # instance. To migrate to the preferred configuration, you can either create a blue/green deployment,
         # or create a read replica from the DB instance. For more information, see Upgrading the storage file
         # system for a DB instance .
+
         @[JSON::Field(key: "IsStorageConfigUpgradeAvailable")]
         getter is_storage_config_upgrade_available : Bool?
 
         # If StorageEncrypted is enabled, the Amazon Web Services KMS key identifier for the encrypted DB
         # instance. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias
         # name for the KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The latest time to which a database in this DB instance can be restored with point-in-time restore.
+
         @[JSON::Field(key: "LatestRestorableTime")]
         getter latest_restorable_time : Time?
 
         # The license model information for this DB instance. This setting doesn't apply to Amazon Aurora or
         # RDS Custom DB instances.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # The listener connection endpoint for SQL Server Always On.
+
         @[JSON::Field(key: "ListenerEndpoint")]
         getter listener_endpoint : Types::Endpoint?
 
         # The secret managed by RDS in Amazon Web Services Secrets Manager for the master user password. For
         # more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS
         # User Guide.
+
         @[JSON::Field(key: "MasterUserSecret")]
         getter master_user_secret : Types::MasterUserSecret?
 
         # The master username for the DB instance.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The upper limit in gibibytes (GiB) to which Amazon RDS can automatically scale the storage of the DB
         # instance.
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
         # The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB
         # instance.
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
         # The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch
         # Logs.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
         # Indicates whether the DB instance is a Multi-AZ deployment. This setting doesn't apply to RDS Custom
         # DB instances.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
         # Specifies whether the DB instance is in the multi-tenant configuration (TRUE) or the single-tenant
         # configuration (FALSE).
+
         @[JSON::Field(key: "MultiTenant")]
         getter multi_tenant : Bool?
 
         # The name of the NCHAR character set for the Oracle DB instance. This character set specifies the
         # Unicode encoding for data stored in table columns of type NCHAR, NCLOB, or NVARCHAR2.
+
         @[JSON::Field(key: "NcharCharacterSetName")]
         getter nchar_character_set_name : String?
 
@@ -6194,55 +7069,66 @@ module AwsSdk
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon RDS
         # User Guide and Working with a DB instance in a VPC in the Amazon Aurora User Guide. Valid Values:
         # IPV4 | DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The list of option group memberships for this DB instance.
+
         @[JSON::Field(key: "OptionGroupMemberships")]
         getter option_group_memberships : Array(Types::OptionGroupMembership)?
 
         # Information about pending changes to the DB instance. This information is returned only when there
         # are pending changes. Specific changes are identified by subelements.
+
         @[JSON::Field(key: "PendingModifiedValues")]
         getter pending_modified_values : Types::PendingModifiedValues?
 
         # The progress of the storage optimization operation as a percentage.
+
         @[JSON::Field(key: "PercentProgress")]
         getter percent_progress : String?
 
         # Indicates whether Performance Insights is enabled for the DB instance.
+
         @[JSON::Field(key: "PerformanceInsightsEnabled")]
         getter performance_insights_enabled : Bool?
 
         # The Amazon Web Services KMS key identifier for encryption of Performance Insights data. The Amazon
         # Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
         # The number of days to retain Performance Insights data. Valid Values: 7 month * 31, where month is a
         # number of months from 1-23. Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31)
         # 731 Default: 7 days
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The daily time range during which automated backups are created if automated backups are enabled, as
         # determined by the BackupRetentionPeriod .
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
         # The weekly time range during which system maintenance can occur, in Universal Coordinated Time
         # (UTC).
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
         # The order of priority in which an Aurora Replica is promoted to the primary instance after a failure
         # of the existing primary instance. For more information, see Fault Tolerance for an Aurora DB Cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "PromotionTier")]
         getter promotion_tier : Int32?
 
@@ -6254,6 +7140,7 @@ module AwsSdk
         # security group assigned to the DB cluster doesn't permit it. When the DB instance isn't publicly
         # accessible, it is an internal DB instance with a DNS name that resolves to a private IP address. For
         # more information, see CreateDBInstance .
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
@@ -6262,18 +7149,22 @@ module AwsSdk
         # MySQL DB cluster for the Aurora read replica is shown. This output doesn't contain information about
         # cross-Region Aurora read replicas. Currently, each RDS DB instance can have only one Aurora read
         # replica.
+
         @[JSON::Field(key: "ReadReplicaDBClusterIdentifiers")]
         getter read_replica_db_cluster_identifiers : Array(String)?
 
         # The identifiers of the read replicas associated with this DB instance.
+
         @[JSON::Field(key: "ReadReplicaDBInstanceIdentifiers")]
         getter read_replica_db_instance_identifiers : Array(String)?
 
         # The identifier of the source DB cluster if this DB instance is a read replica.
+
         @[JSON::Field(key: "ReadReplicaSourceDBClusterIdentifier")]
         getter read_replica_source_db_cluster_identifier : String?
 
         # The identifier of the source DB instance if this DB instance is a read replica.
+
         @[JSON::Field(key: "ReadReplicaSourceDBInstanceIdentifier")]
         getter read_replica_source_db_instance_identifier : String?
 
@@ -6281,61 +7172,74 @@ module AwsSdk
         # information, see Working with replicas for Amazon RDS for Db2 and Working with read replicas for
         # Amazon RDS for Oracle in the Amazon RDS User Guide . This attribute is only supported in RDS for
         # Db2, RDS for Oracle, and RDS Custom for Oracle.
+
         @[JSON::Field(key: "ReplicaMode")]
         getter replica_mode : String?
 
         # The number of minutes to pause the automation. When the time period ends, RDS Custom resumes full
         # automation. The minimum value is 60 (default). The maximum value is 1,440.
+
         @[JSON::Field(key: "ResumeFullAutomationModeTime")]
         getter resume_full_automation_mode_time : Time?
 
         # If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ
         # support.
+
         @[JSON::Field(key: "SecondaryAvailabilityZone")]
         getter secondary_availability_zone : String?
 
         # The status of a read replica. If the DB instance isn't a read replica, the value is blank.
+
         @[JSON::Field(key: "StatusInfos")]
         getter status_infos : Array(Types::DBInstanceStatusInfo)?
 
         # Indicates whether the DB instance is encrypted.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # The storage throughput for the DB instance. This setting applies only to the gp3 storage type.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type associated with the DB instance.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # The detailed status information for storage volumes associated with the DB instance. This
         # information helps identify which specific volume is causing the instance to be in a storage-full
         # state.
+
         @[JSON::Field(key: "StorageVolumeStatus")]
         getter storage_volume_status : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The ARN from the key store with which the instance is associated for TDE encryption.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The time zone of the DB instance. In most cases, the Timezone element is empty. Timezone content
         # appears only for RDS for Db2 and RDS for SQL Server DB instances that were created with a time zone
         # specified.
+
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
         # This data type represents the order in which the instances are upgraded. [first] - Typically used
         # for development or testing environments. [second] - Default order for resources not specifically
         # configured. [last] - Usually reserved for production environments.
+
         @[JSON::Field(key: "UpgradeRolloutOrder")]
         getter upgrade_rollout_order : String?
 
         # The list of Amazon EC2 VPC security groups that the DB instance belongs to.
+
         @[JSON::Field(key: "VpcSecurityGroups")]
         getter vpc_security_groups : Array(Types::VpcSecurityGroupMembership)?
 
@@ -6435,6 +7339,7 @@ module AwsSdk
       end
 
       # The user already has a DB instance with the given identifier.
+
       struct DBInstanceAlreadyExistsFault
         include JSON::Serializable
 
@@ -6444,151 +7349,185 @@ module AwsSdk
 
       # An automated backup of a DB instance. It consists of system backups, transaction logs, and the
       # database instance properties that existed at the time you deleted the source instance.
+
       struct DBInstanceAutomatedBackup
         include JSON::Serializable
 
         # The additional storage volumes associated with the automated backup. Valid Values: GP3 | IO2
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
         # The allocated storage size for the automated backup in gibibytes (GiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The Availability Zone that the automated backup was created in. For information on Amazon Web
         # Services Regions and Availability Zones, see Regions and Availability Zones .
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.
+
         @[JSON::Field(key: "AwsBackupRecoveryPointArn")]
         getter aws_backup_recovery_point_arn : String?
 
         # The retention period for the automated backups.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The location where automated backups are stored: Dedicated Local Zones, Amazon Web Services Outposts
         # or the Amazon Web Services Region.
+
         @[JSON::Field(key: "BackupTarget")]
         getter backup_target : String?
 
         # The Amazon Resource Name (ARN) for the automated backups.
+
         @[JSON::Field(key: "DBInstanceArn")]
         getter db_instance_arn : String?
 
         # The Amazon Resource Name (ARN) for the replicated automated backups.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackupsArn")]
         getter db_instance_automated_backups_arn : String?
 
         # The list of replications to different Amazon Web Services Regions associated with the automated
         # backup.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackupsReplications")]
         getter db_instance_automated_backups_replications : Array(Types::DBInstanceAutomatedBackupsReplication)?
 
         # The identifier for the source DB instance, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The resource ID for the source DB instance, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Indicates whether the automated backup is encrypted.
+
         @[JSON::Field(key: "Encrypted")]
         getter encrypted : Bool?
 
         # The name of the database engine for this automated backup.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The version of the database engine for the automated backup.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # True if mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database
         # accounts is enabled, and otherwise false.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # The date and time when the DB instance was created.
+
         @[JSON::Field(key: "InstanceCreateTime")]
         getter instance_create_time : Time?
 
         # The IOPS (I/O operations per second) value for the automated backup.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
         # The Amazon Web Services KMS key ID for an automated backup. The Amazon Web Services KMS key
         # identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The license model information for the automated backup.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # The master user name of an automated backup.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # Specifies whether the automatic backup is for a DB instance in the multi-tenant configuration (TRUE)
         # or the single-tenant configuration (FALSE).
+
         @[JSON::Field(key: "MultiTenant")]
         getter multi_tenant : Bool?
 
         # The option group the automated backup is associated with. If omitted, the default option group for
         # the engine specified is used.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # The port number that the automated backup used for connections. Default: Inherits from the source DB
         # instance Valid Values: 1150-65535
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The Amazon Web Services Region associated with the automated backup.
+
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # The earliest and latest time a DB instance can be restored to.
+
         @[JSON::Field(key: "RestoreWindow")]
         getter restore_window : Types::RestoreWindow?
 
         # A list of status information for an automated backup: active - Automated backups for current
         # instances. retained - Automated backups for deleted instances. creating - Automated backups that are
         # waiting for the first automated snapshot to be available.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The storage throughput for the automated backup.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type associated with the automated backup.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The ARN from the key store with which the automated backup is associated for TDE encryption.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The time zone of the automated backup. In most cases, the Timezone element is empty. Timezone
         # content appears only for Microsoft SQL Server DB instances that were created with a time zone
         # specified.
+
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
         # The VPC ID associated with the DB instance.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -6631,15 +7570,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBInstanceAutomatedBackups action.
+
       struct DBInstanceAutomatedBackupMessage
         include JSON::Serializable
 
         # A list of DBInstanceAutomatedBackup instances.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackups")]
         getter db_instance_automated_backups : Array(Types::DBInstanceAutomatedBackup)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -6651,6 +7593,7 @@ module AwsSdk
       end
 
       # No automated backup for this DB instance was found.
+
       struct DBInstanceAutomatedBackupNotFoundFault
         include JSON::Serializable
 
@@ -6661,6 +7604,7 @@ module AwsSdk
       # The quota for retained automated backups was exceeded. This prevents you from retaining any
       # additional automated backups. The retained automated backups quota is the same as your DB instance
       # quota.
+
       struct DBInstanceAutomatedBackupQuotaExceededFault
         include JSON::Serializable
 
@@ -6670,10 +7614,12 @@ module AwsSdk
 
       # Automated backups of a DB instance replicated to another Amazon Web Services Region. They consist of
       # system backups, transaction logs, and database instance properties.
+
       struct DBInstanceAutomatedBackupsReplication
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the replicated automated backups.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackupsArn")]
         getter db_instance_automated_backups_arn : String?
 
@@ -6684,15 +7630,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBInstances action.
+
       struct DBInstanceMessage
         include JSON::Serializable
 
         # A list of DBInstance instances.
+
         @[JSON::Field(key: "DBInstances")]
         getter db_instances : Array(Types::DBInstance)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -6704,6 +7653,7 @@ module AwsSdk
       end
 
       # DBInstanceIdentifier doesn't refer to an existing DB instance.
+
       struct DBInstanceNotFoundFault
         include JSON::Serializable
 
@@ -6713,6 +7663,7 @@ module AwsSdk
 
       # An attempt to download or examine log files didn't succeed because an Aurora Serverless v2 instance
       # was paused.
+
       struct DBInstanceNotReadyFault
         include JSON::Serializable
 
@@ -6722,15 +7673,18 @@ module AwsSdk
 
       # Information about an Amazon Web Services Identity and Access Management (IAM) role that is
       # associated with a DB instance.
+
       struct DBInstanceRole
         include JSON::Serializable
 
         # The name of the feature associated with the Amazon Web Services Identity and Access Management (IAM)
         # role. For information about supported feature names, see DBEngineVersion .
+
         @[JSON::Field(key: "FeatureName")]
         getter feature_name : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that is associated with the DB instance.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -6740,6 +7694,7 @@ module AwsSdk
         # IAM role ARN is being associated with the DB instance. INVALID - the IAM role ARN is associated with
         # the DB instance, but the DB instance is unable to assume the IAM role in order to access other
         # Amazon Web Services services on your behalf.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -6752,6 +7707,7 @@ module AwsSdk
       end
 
       # The specified RoleArn or FeatureName value is already associated with the DB instance.
+
       struct DBInstanceRoleAlreadyExistsFault
         include JSON::Serializable
 
@@ -6760,6 +7716,7 @@ module AwsSdk
       end
 
       # The specified RoleArn value doesn't match the specified feature for the DB instance.
+
       struct DBInstanceRoleNotFoundFault
         include JSON::Serializable
 
@@ -6769,6 +7726,7 @@ module AwsSdk
 
       # You can't associate any more Amazon Web Services Identity and Access Management (IAM) roles with the
       # DB instance because the quota has been reached.
+
       struct DBInstanceRoleQuotaExceededFault
         include JSON::Serializable
 
@@ -6777,24 +7735,29 @@ module AwsSdk
       end
 
       # Provides a list of status information for a DB instance.
+
       struct DBInstanceStatusInfo
         include JSON::Serializable
 
         # Details of the error if there is an error for the instance. If the instance isn't in an error state,
         # this value is blank.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # Indicates whether the instance is operating normally (TRUE) or is in an error state (FALSE).
+
         @[JSON::Field(key: "Normal")]
         getter normal : Bool?
 
         # The status of the DB instance. For a StatusType of read replica, the values can be replicating,
         # replication stop point set, replication stop point reached, error, stopped, or terminated.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # This value is currently "read replication."
+
         @[JSON::Field(key: "StatusType")]
         getter status_type : String?
 
@@ -6808,6 +7771,7 @@ module AwsSdk
       end
 
       # LogFileName doesn't refer to an existing DB log file.
+
       struct DBLogFileNotFoundFault
         include JSON::Serializable
 
@@ -6816,18 +7780,22 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the operation DescribeDBMajorEngineVersions .
+
       struct DBMajorEngineVersion
         include JSON::Serializable
 
         # The name of the database engine.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The major version number of the database engine.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
         # A list of the lifecycles supported by this engine for the DescribeDBMajorEngineVersions operation.
+
         @[JSON::Field(key: "SupportedEngineLifecycles")]
         getter supported_engine_lifecycles : Array(Types::SupportedEngineLifecycle)?
 
@@ -6841,22 +7809,27 @@ module AwsSdk
 
       # Contains the details of an Amazon RDS DB parameter group. This data type is used as a response
       # element in the DescribeDBParameterGroups action.
+
       struct DBParameterGroup
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the DB parameter group.
+
         @[JSON::Field(key: "DBParameterGroupArn")]
         getter db_parameter_group_arn : String?
 
         # The name of the DB parameter group family that this DB parameter group is compatible with.
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String?
 
         # The name of the DB parameter group.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
         # Provides the customer-specified description for this DB parameter group.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -6870,6 +7843,7 @@ module AwsSdk
       end
 
       # A DB parameter group with the same name exists.
+
       struct DBParameterGroupAlreadyExistsFault
         include JSON::Serializable
 
@@ -6878,15 +7852,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBParameters action.
+
       struct DBParameterGroupDetails
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # A list of Parameter values.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -6899,10 +7876,12 @@ module AwsSdk
 
       # Contains the result of a successful invocation of the ModifyDBParameterGroup or
       # ResetDBParameterGroup operation.
+
       struct DBParameterGroupNameMessage
         include JSON::Serializable
 
         # The name of the DB parameter group.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
@@ -6913,6 +7892,7 @@ module AwsSdk
       end
 
       # DBParameterGroupName doesn't refer to an existing DB parameter group.
+
       struct DBParameterGroupNotFoundFault
         include JSON::Serializable
 
@@ -6921,6 +7901,7 @@ module AwsSdk
       end
 
       # The request would result in the user exceeding the allowed number of DB parameter groups.
+
       struct DBParameterGroupQuotaExceededFault
         include JSON::Serializable
 
@@ -6931,10 +7912,12 @@ module AwsSdk
       # The status of the DB parameter group. This data type is used as a response element in the following
       # actions: CreateDBInstance CreateDBInstanceReadReplica DeleteDBInstance ModifyDBInstance
       # RebootDBInstance RestoreDBInstanceFromDBSnapshot
+
       struct DBParameterGroupStatus
         include JSON::Serializable
 
         # The name of the DB parameter group.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
@@ -6943,6 +7926,7 @@ module AwsSdk
         # parameter group change is synchronized with the database. pending-database-upgrade : The parameter
         # group change will be applied after the DB instance is upgraded. pending-reboot : The parameter group
         # change will be applied after the DB instance reboots.
+
         @[JSON::Field(key: "ParameterApplyStatus")]
         getter parameter_apply_status : String?
 
@@ -6954,15 +7938,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBParameterGroups action.
+
       struct DBParameterGroupsMessage
         include JSON::Serializable
 
         # A list of DBParameterGroup instances.
+
         @[JSON::Field(key: "DBParameterGroups")]
         getter db_parameter_groups : Array(Types::DBParameterGroup)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -6975,24 +7962,29 @@ module AwsSdk
 
       # The data structure representing a proxy managed by the RDS Proxy. This data type is used as a
       # response element in the DescribeDBProxies action.
+
       struct DBProxy
         include JSON::Serializable
 
         # One or more data structures specifying the authorization mechanism to connect to the associated RDS
         # DB instance or Aurora DB cluster.
+
         @[JSON::Field(key: "Auth")]
         getter auth : Array(Types::UserAuthConfigInfo)?
 
         # The date and time when the proxy was first created.
+
         @[JSON::Field(key: "CreatedDate")]
         getter created_date : Time?
 
         # The Amazon Resource Name (ARN) for the proxy.
+
         @[JSON::Field(key: "DBProxyArn")]
         getter db_proxy_arn : String?
 
         # The identifier for the proxy. This name must be unique for all proxies owned by your Amazon Web
         # Services account in the specified Amazon Web Services Region.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String?
 
@@ -7000,23 +7992,27 @@ module AwsSdk
         # DebugLogging , the proxy captures connection details and connection pool behavior from your queries.
         # Debug logging increases CloudWatch costs and can impact proxy performance. Enable this option only
         # when you need to troubleshoot connection or performance issues.
+
         @[JSON::Field(key: "DebugLogging")]
         getter debug_logging : Bool?
 
         # The default authentication scheme that the proxy uses for client connections to the proxy and
         # connections from the proxy to the underlying database. Valid values are NONE and IAM_AUTH . When set
         # to IAM_AUTH , the proxy uses end-to-end IAM authentication to connect to the database.
+
         @[JSON::Field(key: "DefaultAuthScheme")]
         getter default_auth_scheme : String?
 
         # The endpoint that you can use to connect to the DB proxy. You include the endpoint value in the
         # connection string for a database client application.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The network type of the DB proxy endpoint. The network type determines the IP version that the proxy
         # endpoint supports. Valid values: IPV4 - The proxy endpoint supports IPv4 only. IPV6 - The proxy
         # endpoint supports IPv6 only. DUAL - The proxy endpoint supports both IPv4 and IPv6.
+
         @[JSON::Field(key: "EndpointNetworkType")]
         getter endpoint_network_type : String?
 
@@ -7025,6 +8021,7 @@ module AwsSdk
         # supports Aurora MySQL, RDS for MariaDB, and RDS for MySQL databases. POSTGRESQL supports Aurora
         # PostgreSQL and RDS for PostgreSQL databases. SQLSERVER supports RDS for Microsoft SQL Server
         # databases.
+
         @[JSON::Field(key: "EngineFamily")]
         getter engine_family : String?
 
@@ -7032,44 +8029,53 @@ module AwsSdk
         # client connection. The proxy keeps the underlying database connection open and puts it back into the
         # connection pool for reuse by later connection requests. Default: 1800 (30 minutes) Constraints: 1 to
         # 28,800
+
         @[JSON::Field(key: "IdleClientTimeout")]
         getter idle_client_timeout : Int32?
 
         # Indicates whether Transport Layer Security (TLS) encryption is required for connections to the
         # proxy.
+
         @[JSON::Field(key: "RequireTLS")]
         getter require_tls : Bool?
 
         # The Amazon Resource Name (ARN) for the IAM role that the proxy uses to access Amazon Secrets
         # Manager.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The current status of this proxy. A status of available means the proxy is ready to handle requests.
         # Other values indicate that you must wait for the proxy to be ready, or take some action to resolve
         # an issue.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The network type that the proxy uses to connect to the target database. The network type determines
         # the IP version that the proxy uses for connections to the database. Valid values: IPV4 - The proxy
         # connects to the database using IPv4 only. IPV6 - The proxy connects to the database using IPv6 only.
+
         @[JSON::Field(key: "TargetConnectionNetworkType")]
         getter target_connection_network_type : String?
 
         # The date and time when the proxy was last updated.
+
         @[JSON::Field(key: "UpdatedDate")]
         getter updated_date : Time?
 
         # Provides the VPC ID of the DB proxy.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
         # Provides a list of VPC security groups that the proxy belongs to.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
         # The EC2 subnet IDs for the proxy.
+
         @[JSON::Field(key: "VpcSubnetIds")]
         getter vpc_subnet_ids : Array(String)?
 
@@ -7098,6 +8104,7 @@ module AwsSdk
 
       # The specified proxy name must be unique for all proxies owned by your Amazon Web Services account in
       # the specified Amazon Web Services Region.
+
       struct DBProxyAlreadyExistsFault
         include JSON::Serializable
 
@@ -7110,63 +8117,76 @@ module AwsSdk
       # the same DB proxy. These endpoints can be read/write or read-only. They can also reside in different
       # VPCs than the associated DB proxy. This data type is used as a response element in the
       # DescribeDBProxyEndpoints operation.
+
       struct DBProxyEndpoint
         include JSON::Serializable
 
         # The date and time when the DB proxy endpoint was first created.
+
         @[JSON::Field(key: "CreatedDate")]
         getter created_date : Time?
 
         # The Amazon Resource Name (ARN) for the DB proxy endpoint.
+
         @[JSON::Field(key: "DBProxyEndpointArn")]
         getter db_proxy_endpoint_arn : String?
 
         # The name for the DB proxy endpoint. An identifier must begin with a letter and must contain only
         # ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+
         @[JSON::Field(key: "DBProxyEndpointName")]
         getter db_proxy_endpoint_name : String?
 
         # The identifier for the DB proxy that is associated with this DB proxy endpoint.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String?
 
         # The endpoint that you can use to connect to the DB proxy. You include the endpoint value in the
         # connection string for a database client application.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The network type of the DB proxy endpoint. The network type determines the IP version that the proxy
         # endpoint supports. Valid values: IPV4 - The proxy endpoint supports IPv4 only. IPV6 - The proxy
         # endpoint supports IPv6 only. DUAL - The proxy endpoint supports both IPv4 and IPv6.
+
         @[JSON::Field(key: "EndpointNetworkType")]
         getter endpoint_network_type : String?
 
         # Indicates whether this endpoint is the default endpoint for the associated DB proxy. Default DB
         # proxy endpoints always have read/write capability. Other endpoints that you associate with the DB
         # proxy can be either read/write or read-only.
+
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The current status of this DB proxy endpoint. A status of available means the endpoint is ready to
         # handle requests. Other values indicate that you must wait for the endpoint to be ready, or take some
         # action to resolve an issue.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A value that indicates whether the DB proxy endpoint can be used for read/write or read-only
         # operations.
+
         @[JSON::Field(key: "TargetRole")]
         getter target_role : String?
 
         # Provides the VPC ID of the DB proxy endpoint.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
         # Provides a list of VPC security groups that the DB proxy endpoint belongs to.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
         # The EC2 subnet IDs for the DB proxy endpoint.
+
         @[JSON::Field(key: "VpcSubnetIds")]
         getter vpc_subnet_ids : Array(String)?
 
@@ -7189,6 +8209,7 @@ module AwsSdk
 
       # The specified DB proxy endpoint name must be unique for all DB proxy endpoints owned by your Amazon
       # Web Services account in the specified Amazon Web Services Region.
+
       struct DBProxyEndpointAlreadyExistsFault
         include JSON::Serializable
 
@@ -7197,6 +8218,7 @@ module AwsSdk
       end
 
       # The DB proxy endpoint doesn't exist.
+
       struct DBProxyEndpointNotFoundFault
         include JSON::Serializable
 
@@ -7205,6 +8227,7 @@ module AwsSdk
       end
 
       # The DB proxy already has the maximum number of endpoints.
+
       struct DBProxyEndpointQuotaExceededFault
         include JSON::Serializable
 
@@ -7214,6 +8237,7 @@ module AwsSdk
 
       # The specified proxy name doesn't correspond to a proxy owned by your Amazon Web Services account in
       # the specified Amazon Web Services Region.
+
       struct DBProxyNotFoundFault
         include JSON::Serializable
 
@@ -7223,6 +8247,7 @@ module AwsSdk
 
       # Your Amazon Web Services account already has the maximum number of proxies in the specified Amazon
       # Web Services Region.
+
       struct DBProxyQuotaExceededFault
         include JSON::Serializable
 
@@ -7233,42 +8258,51 @@ module AwsSdk
       # Contains the details for an RDS Proxy target. It represents an RDS DB instance or Aurora DB cluster
       # that the proxy can connect to. One or more targets are associated with an RDS Proxy target group.
       # This data type is used as a response element in the DescribeDBProxyTargets action.
+
       struct DBProxyTarget
         include JSON::Serializable
 
         # The writer endpoint for the RDS DB instance or Aurora DB cluster.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The port that the RDS Proxy uses to connect to the target RDS DB instance or Aurora DB cluster.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The identifier representing the target. It can be the instance identifier for an RDS DB instance, or
         # the cluster identifier for an Aurora DB cluster.
+
         @[JSON::Field(key: "RdsResourceId")]
         getter rds_resource_id : String?
 
         # A value that indicates whether the target of the proxy can be used for read/write or read-only
         # operations.
+
         @[JSON::Field(key: "Role")]
         getter role : String?
 
         # The Amazon Resource Name (ARN) for the RDS DB instance or Aurora DB cluster.
+
         @[JSON::Field(key: "TargetArn")]
         getter target_arn : String?
 
         # Information about the connection health of the RDS Proxy target.
+
         @[JSON::Field(key: "TargetHealth")]
         getter target_health : Types::TargetHealth?
 
         # The DB cluster identifier when the target represents an Aurora DB cluster. This field is blank when
         # the target represents an RDS DB instance.
+
         @[JSON::Field(key: "TrackedClusterId")]
         getter tracked_cluster_id : String?
 
         # Specifies the kind of database, such as an RDS DB instance or an Aurora DB cluster, that the target
         # represents.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -7286,6 +8320,7 @@ module AwsSdk
       end
 
       # The proxy is already associated with the specified RDS DB instance or Aurora DB cluster.
+
       struct DBProxyTargetAlreadyRegisteredFault
         include JSON::Serializable
 
@@ -7296,43 +8331,52 @@ module AwsSdk
       # Represents a set of RDS DB instances, Aurora DB clusters, or both that a proxy can connect to.
       # Currently, each target group is associated with exactly one RDS DB instance or Aurora DB cluster.
       # This data type is used as a response element in the DescribeDBProxyTargetGroups action.
+
       struct DBProxyTargetGroup
         include JSON::Serializable
 
         # The settings that determine the size and behavior of the connection pool for the target group.
+
         @[JSON::Field(key: "ConnectionPoolConfig")]
         getter connection_pool_config : Types::ConnectionPoolConfigurationInfo?
 
         # The date and time when the target group was first created.
+
         @[JSON::Field(key: "CreatedDate")]
         getter created_date : Time?
 
         # The identifier for the RDS proxy associated with this target group.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String?
 
         # Indicates whether this target group is the first one used for connection requests by the associated
         # proxy. Because each proxy is currently associated with a single target group, currently this setting
         # is always true .
+
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The current status of this target group. A status of available means the target group is correctly
         # associated with a database. Other values indicate that you must wait for the target group to be
         # ready, or take some action to resolve an issue.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The Amazon Resource Name (ARN) representing the target group.
+
         @[JSON::Field(key: "TargetGroupArn")]
         getter target_group_arn : String?
 
         # The identifier for the target group. This name must be unique for all target groups owned by your
         # Amazon Web Services account in the specified Amazon Web Services Region.
+
         @[JSON::Field(key: "TargetGroupName")]
         getter target_group_name : String?
 
         # The date and time when the target group was last updated.
+
         @[JSON::Field(key: "UpdatedDate")]
         getter updated_date : Time?
 
@@ -7351,6 +8395,7 @@ module AwsSdk
 
       # The specified target group isn't available for a proxy owned by your Amazon Web Services account in
       # the specified Amazon Web Services Region.
+
       struct DBProxyTargetGroupNotFoundFault
         include JSON::Serializable
 
@@ -7360,6 +8405,7 @@ module AwsSdk
 
       # The specified RDS DB instance or Aurora DB cluster isn't available for a proxy owned by your Amazon
       # Web Services account in the specified Amazon Web Services Region.
+
       struct DBProxyTargetNotFoundFault
         include JSON::Serializable
 
@@ -7368,94 +8414,115 @@ module AwsSdk
       end
 
       # The recommendation for your DB instances, DB clusters, and DB parameter groups.
+
       struct DBRecommendation
         include JSON::Serializable
 
         # Additional information about the recommendation. The information might contain markdown.
+
         @[JSON::Field(key: "AdditionalInfo")]
         getter additional_info : String?
 
         # The category of the recommendation. Valid values: performance efficiency security reliability cost
         # optimization operational excellence sustainability
+
         @[JSON::Field(key: "Category")]
         getter category : String?
 
         # The time when the recommendation was created. For example, 2023-09-28T01:13:53.931000+00:00 .
+
         @[JSON::Field(key: "CreatedTime")]
         getter created_time : Time?
 
         # A detailed description of the recommendation. The description might contain markdown.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A short description of the issue identified for this recommendation. The description might contain
         # markdown.
+
         @[JSON::Field(key: "Detection")]
         getter detection : String?
 
         # A short description that explains the possible impact of an issue.
+
         @[JSON::Field(key: "Impact")]
         getter impact : String?
 
         # Details of the issue that caused the recommendation.
+
         @[JSON::Field(key: "IssueDetails")]
         getter issue_details : Types::IssueDetails?
 
         # A link to documentation that provides additional information about the recommendation.
+
         @[JSON::Field(key: "Links")]
         getter links : Array(Types::DocLink)?
 
         # The reason why this recommendation was created. The information might contain markdown.
+
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
         # A short description of the recommendation to resolve an issue. The description might contain
         # markdown.
+
         @[JSON::Field(key: "Recommendation")]
         getter recommendation : String?
 
         # The unique identifier of the recommendation.
+
         @[JSON::Field(key: "RecommendationId")]
         getter recommendation_id : String?
 
         # A list of recommended actions.
+
         @[JSON::Field(key: "RecommendedActions")]
         getter recommended_actions : Array(Types::RecommendedAction)?
 
         # The Amazon Resource Name (ARN) of the RDS resource associated with the recommendation.
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
         # The severity level of the recommendation. The severity level can help you decide the urgency with
         # which to address the recommendation. Valid values: high medium low informational
+
         @[JSON::Field(key: "Severity")]
         getter severity : String?
 
         # The Amazon Web Services service that generated the recommendations.
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The current status of the recommendation. Valid values: active - The recommendations which are ready
         # for you to apply. pending - The applied or scheduled recommendations which are in progress. resolved
         # - The recommendations which are completed. dismissed - The recommendations that you dismissed.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A short description of the recommendation type. The description might contain markdown.
+
         @[JSON::Field(key: "TypeDetection")]
         getter type_detection : String?
 
         # A value that indicates the type of recommendation. This value determines how the description is
         # rendered.
+
         @[JSON::Field(key: "TypeId")]
         getter type_id : String?
 
         # A short description that summarizes the recommendation to fix all the issues of the recommendation
         # type. The description might contain markdown.
+
         @[JSON::Field(key: "TypeRecommendation")]
         getter type_recommendation : String?
 
         # The time when the recommendation was last updated.
+
         @[JSON::Field(key: "UpdatedTime")]
         getter updated_time : Time?
 
@@ -7484,8 +8551,10 @@ module AwsSdk
         end
       end
 
+
       struct DBRecommendationMessage
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBRecommendation")]
         getter db_recommendation : Types::DBRecommendation?
@@ -7496,15 +8565,18 @@ module AwsSdk
         end
       end
 
+
       struct DBRecommendationsMessage
         include JSON::Serializable
 
         # A list of recommendations which is returned from DescribeDBRecommendations API request.
+
         @[JSON::Field(key: "DBRecommendations")]
         getter db_recommendations : Array(Types::DBRecommendation)?
 
         # An optional pagination token provided by a previous DBRecommendationsMessage request. This token can
         # be used later in a DescribeDBRecomendations request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -7517,34 +8589,42 @@ module AwsSdk
 
       # Contains the details for an Amazon RDS DB security group. This data type is used as a response
       # element in the DescribeDBSecurityGroups action.
+
       struct DBSecurityGroup
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the DB security group.
+
         @[JSON::Field(key: "DBSecurityGroupArn")]
         getter db_security_group_arn : String?
 
         # Provides the description of the DB security group.
+
         @[JSON::Field(key: "DBSecurityGroupDescription")]
         getter db_security_group_description : String?
 
         # Specifies the name of the DB security group.
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String?
 
         # Contains a list of EC2SecurityGroup elements.
+
         @[JSON::Field(key: "EC2SecurityGroups")]
         getter ec2_security_groups : Array(Types::EC2SecurityGroup)?
 
         # Contains a list of IPRange elements.
+
         @[JSON::Field(key: "IPRanges")]
         getter ip_ranges : Array(Types::IPRange)?
 
         # Provides the Amazon Web Services ID of the owner of a specific DB security group.
+
         @[JSON::Field(key: "OwnerId")]
         getter owner_id : String?
 
         # Provides the VpcId of the DB security group.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -7561,6 +8641,7 @@ module AwsSdk
       end
 
       # A DB security group with the name specified in DBSecurityGroupName already exists.
+
       struct DBSecurityGroupAlreadyExistsFault
         include JSON::Serializable
 
@@ -7570,14 +8651,17 @@ module AwsSdk
 
       # This data type is used as a response element in the following actions: ModifyDBInstance
       # RebootDBInstance RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime
+
       struct DBSecurityGroupMembership
         include JSON::Serializable
 
         # The name of the DB security group.
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String?
 
         # The status of the DB security group.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -7589,15 +8673,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBSecurityGroups action.
+
       struct DBSecurityGroupMessage
         include JSON::Serializable
 
         # A list of DBSecurityGroup instances.
+
         @[JSON::Field(key: "DBSecurityGroups")]
         getter db_security_groups : Array(Types::DBSecurityGroup)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -7609,6 +8696,7 @@ module AwsSdk
       end
 
       # DBSecurityGroupName doesn't refer to an existing DB security group.
+
       struct DBSecurityGroupNotFoundFault
         include JSON::Serializable
 
@@ -7617,6 +8705,7 @@ module AwsSdk
       end
 
       # A DB security group isn't allowed for this action.
+
       struct DBSecurityGroupNotSupportedFault
         include JSON::Serializable
 
@@ -7625,6 +8714,7 @@ module AwsSdk
       end
 
       # The request would result in the user exceeding the allowed number of DB security groups.
+
       struct DBSecurityGroupQuotaExceededFault
         include JSON::Serializable
 
@@ -7633,6 +8723,7 @@ module AwsSdk
       end
 
       # Contains the details for an Amazon RDS DB shard group.
+
       struct DBShardGroup
         include JSON::Serializable
 
@@ -7640,34 +8731,42 @@ module AwsSdk
         # following: 0 - Creates a DB shard group without a standby DB shard group. This is the default value.
         # 1 - Creates a DB shard group with a standby DB shard group in a different Availability Zone (AZ). 2
         # - Creates a DB shard group with two standby DB shard groups in two different AZs.
+
         @[JSON::Field(key: "ComputeRedundancy")]
         getter compute_redundancy : Int32?
 
         # The name of the primary DB cluster for the DB shard group.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The Amazon Resource Name (ARN) for the DB shard group.
+
         @[JSON::Field(key: "DBShardGroupArn")]
         getter db_shard_group_arn : String?
 
         # The name of the DB shard group.
+
         @[JSON::Field(key: "DBShardGroupIdentifier")]
         getter db_shard_group_identifier : String?
 
         # The Amazon Web Services Region-unique, immutable identifier for the DB shard group.
+
         @[JSON::Field(key: "DBShardGroupResourceId")]
         getter db_shard_group_resource_id : String?
 
         # The connection endpoint for the DB shard group.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MaxACU")]
         getter max_acu : Float64?
 
         # The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MinACU")]
         getter min_acu : Float64?
 
@@ -7679,12 +8778,15 @@ module AwsSdk
         # group doesn't permit it. When the DB shard group isn't publicly accessible, it is an internal DB
         # shard group with a DNS name that resolves to a private IP address. For more information, see
         # CreateDBShardGroup . This setting is only for Aurora Limitless Database.
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # The status of the DB shard group.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
@@ -7707,6 +8809,7 @@ module AwsSdk
 
       # The specified DB shard group name must be unique in your Amazon Web Services account in the
       # specified Amazon Web Services Region.
+
       struct DBShardGroupAlreadyExistsFault
         include JSON::Serializable
 
@@ -7715,6 +8818,7 @@ module AwsSdk
       end
 
       # The specified DB shard group name wasn't found.
+
       struct DBShardGroupNotFoundFault
         include JSON::Serializable
 
@@ -7724,124 +8828,151 @@ module AwsSdk
 
       # Contains the details of an Amazon RDS DB snapshot. This data type is used as a response element in
       # the DescribeDBSnapshots action.
+
       struct DBSnapshot
         include JSON::Serializable
 
         # The additional storage volumes associated with the DB snapshot. RDS supports additional storage
         # volumes for RDS for Oracle and RDS for SQL Server.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
         # Specifies the allocated storage size in gibibytes (GiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # Specifies the name of the Availability Zone the DB instance was located in at the time of the DB
         # snapshot.
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # Specifies the DB instance identifier of the DB instance this DB snapshot was created from.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The Amazon Resource Name (ARN) for the DB snapshot.
+
         @[JSON::Field(key: "DBSnapshotArn")]
         getter db_snapshot_arn : String?
 
         # Specifies the identifier for the DB snapshot.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
         # The Oracle system identifier (SID), which is the name of the Oracle database instance that manages
         # your database files. The Oracle SID is also the name of your CDB.
+
         @[JSON::Field(key: "DBSystemId")]
         getter db_system_id : String?
 
         # The identifier for the source DB instance, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Indicates whether the DB snapshot is encrypted.
+
         @[JSON::Field(key: "Encrypted")]
         getter encrypted : Bool?
 
         # Specifies the name of the database engine.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # Specifies the version of the database engine.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to
         # database accounts is enabled.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # Specifies the time in Coordinated Universal Time (UTC) when the DB instance, from which the snapshot
         # was taken, was created.
+
         @[JSON::Field(key: "InstanceCreateTime")]
         getter instance_create_time : Time?
 
         # Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of
         # the snapshot.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
         # If Encrypted is true, the Amazon Web Services KMS key identifier for the encrypted DB snapshot. The
         # Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS
         # key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # License model information for the restored DB instance.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # Provides the master username for the DB snapshot.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # Indicates whether the snapshot is of a DB instance using the multi-tenant configuration (TRUE) or
         # the single-tenant configuration (FALSE).
+
         @[JSON::Field(key: "MultiTenant")]
         getter multi_tenant : Bool?
 
         # Provides the option group name for the DB snapshot.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # Specifies the time of the CreateDBSnapshot operation in Coordinated Universal Time (UTC). Doesn't
         # change when the snapshot is copied.
+
         @[JSON::Field(key: "OriginalSnapshotCreateTime")]
         getter original_snapshot_create_time : Time?
 
         # The percentage of the estimated data that has been transferred.
+
         @[JSON::Field(key: "PercentProgress")]
         getter percent_progress : Int32?
 
         # Specifies the port that the database engine was listening on at the time of the snapshot.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance when the DB snapshot was created.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
         # Specifies the name of the Availability Zone where RDS stores the DB snapshot. This value is valid
         # only for snapshots that RDS stores on a Dedicated Local Zone.
+
         @[JSON::Field(key: "SnapshotAvailabilityZone")]
         getter snapshot_availability_zone : String?
 
         # Specifies when the snapshot was taken in Coordinated Universal Time (UTC). Changes for the copy when
         # the snapshot is copied.
+
         @[JSON::Field(key: "SnapshotCreateTime")]
         getter snapshot_create_time : Time?
 
@@ -7851,53 +8982,65 @@ module AwsSdk
         # completed. If you back up a read replica, you can determine the replica lag by comparing
         # SnapshotDatabaseTime with originalSnapshotCreateTime. For example, if originalSnapshotCreateTime is
         # two hours later than SnapshotDatabaseTime, then the replica lag is two hours.
+
         @[JSON::Field(key: "SnapshotDatabaseTime")]
         getter snapshot_database_time : Time?
 
         # Specifies where manual snapshots are stored: Dedicated Local Zones, Amazon Web Services Outposts or
         # the Amazon Web Services Region.
+
         @[JSON::Field(key: "SnapshotTarget")]
         getter snapshot_target : String?
 
         # Provides the type of the DB snapshot.
+
         @[JSON::Field(key: "SnapshotType")]
         getter snapshot_type : String?
 
         # The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has a value
         # in the case of a cross-account or cross-Region copy.
+
         @[JSON::Field(key: "SourceDBSnapshotIdentifier")]
         getter source_db_snapshot_identifier : String?
 
         # The Amazon Web Services Region that the DB snapshot was created in or copied from.
+
         @[JSON::Field(key: "SourceRegion")]
         getter source_region : String?
 
         # Specifies the status of this DB snapshot.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Specifies the storage throughput for the DB snapshot.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # Specifies the storage type associated with DB snapshot.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The ARN from the key store with which to associate the instance for TDE encryption.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The time zone of the DB snapshot. In most cases, the Timezone element is empty. Timezone content
         # appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a
         # time zone specified.
+
         @[JSON::Field(key: "Timezone")]
         getter timezone : String?
 
         # Provides the VPC ID associated with the DB snapshot.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -7945,6 +9088,7 @@ module AwsSdk
       end
 
       # DBSnapshotIdentifier is already used by an existing snapshot.
+
       struct DBSnapshotAlreadyExistsFault
         include JSON::Serializable
 
@@ -7955,12 +9099,14 @@ module AwsSdk
       # Contains the name and values of a manual DB snapshot attribute Manual DB snapshot attributes are
       # used to authorize other Amazon Web Services accounts to restore a manual DB snapshot. For more
       # information, see the ModifyDBSnapshotAttribute API.
+
       struct DBSnapshotAttribute
         include JSON::Serializable
 
         # The name of the manual DB snapshot attribute. The attribute named restore refers to the list of
         # Amazon Web Services accounts that have permission to copy or restore the manual DB cluster snapshot.
         # For more information, see the ModifyDBSnapshotAttribute API action.
+
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String?
 
@@ -7968,6 +9114,7 @@ module AwsSdk
         # restore , then this element returns a list of IDs of the Amazon Web Services accounts that are
         # authorized to copy or restore the manual DB snapshot. If a value of all is in the list, then the
         # manual DB snapshot is public and available for any Amazon Web Services account to copy or restore.
+
         @[JSON::Field(key: "AttributeValues")]
         getter attribute_values : Array(String)?
 
@@ -7981,14 +9128,17 @@ module AwsSdk
       # Contains the results of a successful call to the DescribeDBSnapshotAttributes API action. Manual DB
       # snapshot attributes are used to authorize other Amazon Web Services accounts to copy or restore a
       # manual DB snapshot. For more information, see the ModifyDBSnapshotAttribute API action.
+
       struct DBSnapshotAttributesResult
         include JSON::Serializable
 
         # The list of attributes and values for the manual DB snapshot.
+
         @[JSON::Field(key: "DBSnapshotAttributes")]
         getter db_snapshot_attributes : Array(Types::DBSnapshotAttribute)?
 
         # The identifier of the manual DB snapshot that the attributes apply to.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
@@ -8000,15 +9150,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBSnapshots action.
+
       struct DBSnapshotMessage
         include JSON::Serializable
 
         # A list of DBSnapshot instances.
+
         @[JSON::Field(key: "DBSnapshots")]
         getter db_snapshots : Array(Types::DBSnapshot)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -8020,6 +9173,7 @@ module AwsSdk
       end
 
       # DBSnapshotIdentifier doesn't refer to an existing DB snapshot.
+
       struct DBSnapshotNotFoundFault
         include JSON::Serializable
 
@@ -8028,59 +9182,73 @@ module AwsSdk
       end
 
       # Contains the details of a tenant database in a snapshot of a DB instance.
+
       struct DBSnapshotTenantDatabase
         include JSON::Serializable
 
         # The name of the character set of a tenant database.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
         # The ID for the DB instance that contains the tenant databases.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The identifier for the snapshot of the DB instance.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
         # The Amazon Resource Name (ARN) for the snapshot tenant database.
+
         @[JSON::Field(key: "DBSnapshotTenantDatabaseARN")]
         getter db_snapshot_tenant_database_arn : String?
 
         # The resource identifier of the source CDB instance. This identifier can't be changed and is unique
         # to an Amazon Web Services Region.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
         # The name of the database engine.
+
         @[JSON::Field(key: "EngineName")]
         getter engine_name : String?
 
         # The master username of the tenant database.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The NCHAR character set name of the tenant database.
+
         @[JSON::Field(key: "NcharCharacterSetName")]
         getter nchar_character_set_name : String?
 
         # The type of DB snapshot.
+
         @[JSON::Field(key: "SnapshotType")]
         getter snapshot_type : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The name of the tenant database.
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String?
 
         # The time the DB snapshot was taken, specified in Coordinated Universal Time (UTC). If you copy the
         # snapshot, the creation time changes.
+
         @[JSON::Field(key: "TenantDatabaseCreateTime")]
         getter tenant_database_create_time : Time?
 
         # The resource ID of the tenant database.
+
         @[JSON::Field(key: "TenantDatabaseResourceId")]
         getter tenant_database_resource_id : String?
 
@@ -8103,6 +9271,7 @@ module AwsSdk
       end
 
       # The specified snapshot tenant database wasn't found.
+
       struct DBSnapshotTenantDatabaseNotFoundFault
         include JSON::Serializable
 
@@ -8110,15 +9279,18 @@ module AwsSdk
         end
       end
 
+
       struct DBSnapshotTenantDatabasesMessage
         include JSON::Serializable
 
         # A list of DB snapshot tenant databases.
+
         @[JSON::Field(key: "DBSnapshotTenantDatabases")]
         getter db_snapshot_tenant_databases : Array(Types::DBSnapshotTenantDatabase)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -8131,38 +9303,46 @@ module AwsSdk
 
       # Contains the details of an Amazon RDS DB subnet group. This data type is used as a response element
       # in the DescribeDBSubnetGroups action.
+
       struct DBSubnetGroup
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the DB subnet group.
+
         @[JSON::Field(key: "DBSubnetGroupArn")]
         getter db_subnet_group_arn : String?
 
         # Provides the description of the DB subnet group.
+
         @[JSON::Field(key: "DBSubnetGroupDescription")]
         getter db_subnet_group_description : String?
 
         # The name of the DB subnet group.
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Provides the status of the DB subnet group.
+
         @[JSON::Field(key: "SubnetGroupStatus")]
         getter subnet_group_status : String?
 
         # Contains a list of Subnet elements. The list of subnets shown here might not reflect the current
         # state of your VPC. For the most up-to-date information, we recommend checking your VPC configuration
         # directly.
+
         @[JSON::Field(key: "Subnets")]
         getter subnets : Array(Types::Subnet)?
 
         # The network type of the DB subnet group. Valid values: IPV4 DUAL A DBSubnetGroup can support only
         # the IPv4 protocol or the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working
         # with a DB instance in a VPC in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "SupportedNetworkTypes")]
         getter supported_network_types : Array(String)?
 
         # Provides the VpcId of the DB subnet group.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -8179,6 +9359,7 @@ module AwsSdk
       end
 
       # DBSubnetGroupName is already used by an existing DB subnet group.
+
       struct DBSubnetGroupAlreadyExistsFault
         include JSON::Serializable
 
@@ -8188,6 +9369,7 @@ module AwsSdk
 
       # Subnets in the DB subnet group should cover at least two Availability Zones unless there is only one
       # Availability Zone.
+
       struct DBSubnetGroupDoesNotCoverEnoughAZs
         include JSON::Serializable
 
@@ -8196,15 +9378,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeDBSubnetGroups action.
+
       struct DBSubnetGroupMessage
         include JSON::Serializable
 
         # A list of DBSubnetGroup instances.
+
         @[JSON::Field(key: "DBSubnetGroups")]
         getter db_subnet_groups : Array(Types::DBSubnetGroup)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -8217,6 +9402,7 @@ module AwsSdk
 
       # The DBSubnetGroup shouldn't be specified while creating read replicas that lie in the same region as
       # the source instance.
+
       struct DBSubnetGroupNotAllowedFault
         include JSON::Serializable
 
@@ -8225,6 +9411,7 @@ module AwsSdk
       end
 
       # DBSubnetGroupName doesn't refer to an existing DB subnet group.
+
       struct DBSubnetGroupNotFoundFault
         include JSON::Serializable
 
@@ -8233,6 +9420,7 @@ module AwsSdk
       end
 
       # The request would result in the user exceeding the allowed number of DB subnet groups.
+
       struct DBSubnetGroupQuotaExceededFault
         include JSON::Serializable
 
@@ -8241,6 +9429,7 @@ module AwsSdk
       end
 
       # The request would result in the user exceeding the allowed number of subnets in a DB subnet groups.
+
       struct DBSubnetQuotaExceededFault
         include JSON::Serializable
 
@@ -8249,6 +9438,7 @@ module AwsSdk
       end
 
       # The DB upgrade failed because a resource the DB depends on can't be modified.
+
       struct DBUpgradeDependencyFailureFault
         include JSON::Serializable
 
@@ -8256,16 +9446,19 @@ module AwsSdk
         end
       end
 
+
       struct DeleteBlueGreenDeploymentRequest
         include JSON::Serializable
 
         # The unique identifier of the blue/green deployment to delete. This parameter isn't case-sensitive.
         # Constraints: Must match an existing blue/green deployment identifier.
+
         @[JSON::Field(key: "BlueGreenDeploymentIdentifier")]
         getter blue_green_deployment_identifier : String
 
         # Specifies whether to delete the resources in the green environment. You can't specify this option if
         # the blue/green deployment status is SWITCHOVER_COMPLETED .
+
         @[JSON::Field(key: "DeleteTarget")]
         getter delete_target : Bool?
 
@@ -8276,8 +9469,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteBlueGreenDeploymentResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "BlueGreenDeployment")]
         getter blue_green_deployment : Types::BlueGreenDeployment?
@@ -8288,6 +9483,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteCustomDBEngineVersionMessage
         include JSON::Serializable
 
@@ -8295,12 +9491,14 @@ module AwsSdk
         # custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the
         # following values: custom-sqlserver-ee custom-sqlserver-se ccustom-sqlserver-web custom-sqlserver-dev
         # RDS for SQL Server supports only sqlserver-dev-ee .
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
         # The custom engine version (CEV) for your DB instance. This option is required for RDS Custom, but
         # optional for Amazon RDS. The combination of Engine and EngineVersion is unique per customer per
         # Amazon Web Services Region.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String
 
@@ -8311,11 +9509,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterAutomatedBackupMessage
         include JSON::Serializable
 
         # The identifier for the source DB cluster, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DbClusterResourceId")]
         getter db_cluster_resource_id : String
 
@@ -8325,8 +9525,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterAutomatedBackupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterAutomatedBackup")]
         getter db_cluster_automated_backup : Types::DBClusterAutomatedBackup?
@@ -8337,10 +9539,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterEndpointMessage
         include JSON::Serializable
 
         # The identifier associated with the custom endpoint. This parameter is stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterEndpointIdentifier")]
         getter db_cluster_endpoint_identifier : String
 
@@ -8350,11 +9554,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterMessage
         include JSON::Serializable
 
         # The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.
         # Constraints: Must match an existing DBClusterIdentifier.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
@@ -8362,6 +9568,7 @@ module AwsSdk
         # parameter isn't case-sensitive. The default is to remove automated backups immediately after the DB
         # cluster is deleted, unless the Amazon Web Services Backup policy specifies a point-in-time restore
         # rule.
+
         @[JSON::Field(key: "DeleteAutomatedBackups")]
         getter delete_automated_backups : Bool?
 
@@ -8370,6 +9577,7 @@ module AwsSdk
         # with the SkipFinalShapshot parameter, the request results in an error. Constraints: Must be 1 to 255
         # letters, numbers, or hyphens. First character must be a letter Can't end with a hyphen or contain
         # two consecutive hyphens
+
         @[JSON::Field(key: "FinalDBSnapshotIdentifier")]
         getter final_db_snapshot_identifier : String?
 
@@ -8378,6 +9586,7 @@ module AwsSdk
         # this value to false or don't specify it, RDS creates a DB cluster snapshot before it deletes the DB
         # cluster. By default, this parameter is disabled, so RDS creates a final DB cluster snapshot. If
         # SkipFinalSnapshot is disabled, you must specify a value for the FinalDBSnapshotIdentifier parameter.
+
         @[JSON::Field(key: "SkipFinalSnapshot")]
         getter skip_final_snapshot : Bool?
 
@@ -8390,12 +9599,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB cluster parameter group. Constraints: Must be the name of an existing DB cluster
         # parameter group. You can't delete a default DB cluster parameter group. Can't be associated with any
         # DB clusters.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String
 
@@ -8405,8 +9616,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -8417,11 +9630,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterSnapshotMessage
         include JSON::Serializable
 
         # The identifier of the DB cluster snapshot to delete. Constraints: Must be the name of an existing DB
         # cluster snapshot in the available state.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String
 
@@ -8431,8 +9646,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBClusterSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterSnapshot")]
         getter db_cluster_snapshot : Types::DBClusterSnapshot?
@@ -8444,17 +9661,20 @@ module AwsSdk
       end
 
       # Parameter input for the DeleteDBInstanceAutomatedBackup operation.
+
       struct DeleteDBInstanceAutomatedBackupMessage
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the automated backups to delete, for example,
         # arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE . This setting doesn't
         # apply to RDS Custom.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackupsArn")]
         getter db_instance_automated_backups_arn : String?
 
         # The identifier for the source DB instance, which can't be changed and which is unique to an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
@@ -8465,8 +9685,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBInstanceAutomatedBackupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstanceAutomatedBackup")]
         getter db_instance_automated_backup : Types::DBInstanceAutomatedBackup?
@@ -8477,17 +9699,20 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBInstanceMessage
         include JSON::Serializable
 
         # The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.
         # Constraints: Must match the name of an existing DB instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # Specifies whether to remove automated backups immediately after the DB instance is deleted. This
         # parameter isn't case-sensitive. The default is to remove automated backups immediately after the DB
         # instance is deleted.
+
         @[JSON::Field(key: "DeleteAutomatedBackups")]
         getter delete_automated_backups : Bool?
 
@@ -8496,6 +9721,7 @@ module AwsSdk
         # error. This setting doesn't apply to RDS Custom. Constraints: Must be 1 to 255 letters or numbers.
         # First character must be a letter. Can't end with a hyphen or contain two consecutive hyphens. Can't
         # be specified when deleting a read replica.
+
         @[JSON::Field(key: "FinalDBSnapshotIdentifier")]
         getter final_db_snapshot_identifier : String?
 
@@ -8507,6 +9733,7 @@ module AwsSdk
         # failed , incompatible-restore , or incompatible-network , RDS can delete the instance only if you
         # enable this parameter. If you delete a read replica or an RDS Custom instance, you must enable this
         # setting. This setting is required for RDS Custom.
+
         @[JSON::Field(key: "SkipFinalSnapshot")]
         getter skip_final_snapshot : Bool?
 
@@ -8519,8 +9746,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBInstanceResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -8531,11 +9760,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB parameter group. Constraints: Must be the name of an existing DB parameter group
         # You can't delete a default DB parameter group Can't be associated with any DB instances
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String
 
@@ -8545,10 +9776,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBProxyEndpointRequest
         include JSON::Serializable
 
         # The name of the DB proxy endpoint to delete.
+
         @[JSON::Field(key: "DBProxyEndpointName")]
         getter db_proxy_endpoint_name : String
 
@@ -8558,10 +9791,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBProxyEndpointResponse
         include JSON::Serializable
 
         # The data structure representing the details of the DB proxy endpoint that you delete.
+
         @[JSON::Field(key: "DBProxyEndpoint")]
         getter db_proxy_endpoint : Types::DBProxyEndpoint?
 
@@ -8571,10 +9806,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBProxyRequest
         include JSON::Serializable
 
         # The name of the DB proxy to delete.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
@@ -8584,10 +9821,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBProxyResponse
         include JSON::Serializable
 
         # The data structure representing the details of the DB proxy that you delete.
+
         @[JSON::Field(key: "DBProxy")]
         getter db_proxy : Types::DBProxy?
 
@@ -8597,12 +9836,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBSecurityGroupMessage
         include JSON::Serializable
 
         # The name of the DB security group to delete. You can't delete the default DB security group.
         # Constraints: Must be 1 to 255 letters, numbers, or hyphens. First character must be a letter Can't
         # end with a hyphen or contain two consecutive hyphens Must not be "Default"
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String
 
@@ -8612,10 +9853,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBShardGroupMessage
         include JSON::Serializable
 
         # The name of the DB shard group to delete.
+
         @[JSON::Field(key: "DBShardGroupIdentifier")]
         getter db_shard_group_identifier : String
 
@@ -8625,11 +9868,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBSnapshotMessage
         include JSON::Serializable
 
         # The DB snapshot identifier. Constraints: Must be the name of an existing DB snapshot in the
         # available state.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String
 
@@ -8639,8 +9884,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSnapshot")]
         getter db_snapshot : Types::DBSnapshot?
@@ -8651,12 +9898,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDBSubnetGroupMessage
         include JSON::Serializable
 
         # The name of the database subnet group to delete. You can't delete the default subnet group.
         # Constraints: Must match the name of an existing DBSubnetGroup. Must not be default. Example:
         # mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String
 
@@ -8666,10 +9915,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteEventSubscriptionMessage
         include JSON::Serializable
 
         # The name of the RDS event notification subscription you want to delete.
+
         @[JSON::Field(key: "SubscriptionName")]
         getter subscription_name : String
 
@@ -8679,8 +9930,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteEventSubscriptionResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EventSubscription")]
         getter event_subscription : Types::EventSubscription?
@@ -8691,10 +9944,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteGlobalClusterMessage
         include JSON::Serializable
 
         # The cluster identifier of the global database cluster being deleted.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String
 
@@ -8704,8 +9959,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteGlobalClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GlobalCluster")]
         getter global_cluster : Types::GlobalCluster?
@@ -8716,10 +9973,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteIntegrationMessage
         include JSON::Serializable
 
         # The unique identifier of the integration.
+
         @[JSON::Field(key: "IntegrationIdentifier")]
         getter integration_identifier : String
 
@@ -8729,10 +9988,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteOptionGroupMessage
         include JSON::Serializable
 
         # The name of the option group to be deleted. You can't delete default option groups.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String
 
@@ -8742,22 +10003,26 @@ module AwsSdk
         end
       end
 
+
       struct DeleteTenantDatabaseMessage
         include JSON::Serializable
 
         # The user-supplied identifier for the DB instance that contains the tenant database that you want to
         # delete.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The user-supplied name of the tenant database that you want to remove from your DB instance. Amazon
         # RDS deletes the tenant database with this name. This parameter isn’t case-sensitive.
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String
 
         # The DBSnapshotIdentifier of the new DBSnapshot created when the SkipFinalSnapshot parameter is
         # disabled. If you enable this parameter and also enable SkipFinalShapshot , the command results in an
         # error.
+
         @[JSON::Field(key: "FinalDBSnapshotIdentifier")]
         getter final_db_snapshot_identifier : String?
 
@@ -8766,6 +10031,7 @@ module AwsSdk
         # enable this parameter, RDS creates a DB snapshot before it deletes the tenant database. By default,
         # RDS doesn't skip the final snapshot. If you don't enable this parameter, you must specify the
         # FinalDBSnapshotIdentifier parameter.
+
         @[JSON::Field(key: "SkipFinalSnapshot")]
         getter skip_final_snapshot : Bool?
 
@@ -8778,8 +10044,10 @@ module AwsSdk
         end
       end
 
+
       struct DeleteTenantDatabaseResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "TenantDatabase")]
         getter tenant_database : Types::TenantDatabase?
@@ -8790,22 +10058,27 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterDBProxyTargetsRequest
         include JSON::Serializable
 
         # The identifier of the DBProxy that is associated with the DBProxyTargetGroup .
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # One or more DB cluster identifiers.
+
         @[JSON::Field(key: "DBClusterIdentifiers")]
         getter db_cluster_identifiers : Array(String)?
 
         # One or more DB instance identifiers.
+
         @[JSON::Field(key: "DBInstanceIdentifiers")]
         getter db_instance_identifiers : Array(String)?
 
         # The identifier of the DBProxyTargetGroup .
+
         @[JSON::Field(key: "TargetGroupName")]
         getter target_group_name : String?
 
@@ -8818,12 +10091,14 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterDBProxyTargetsResponse
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct DescribeAccountAttributesMessage
         include JSON::Serializable
@@ -8832,12 +10107,14 @@ module AwsSdk
         end
       end
 
+
       struct DescribeBlueGreenDeploymentsRequest
         include JSON::Serializable
 
         # The blue/green deployment identifier. If you specify this parameter, the response only includes
         # information about the specific blue/green deployment. This parameter isn't case-sensitive.
         # Constraints: Must match an existing blue/green deployment identifier.
+
         @[JSON::Field(key: "BlueGreenDeploymentIdentifier")]
         getter blue_green_deployment_identifier : String?
 
@@ -8850,18 +10127,21 @@ module AwsSdk
         # information about the blue/green deployments with the specified source databases. target - Accepts
         # target databases for a blue/green deployment. The results list only includes information about the
         # blue/green deployments with the specified target databases.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeBlueGreenDeployments request. If you
         # specify this parameter, the response only includes records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Must be a minimum of 20. Can't exceed 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -8874,14 +10154,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeBlueGreenDeploymentsResponse
         include JSON::Serializable
 
         # A list of blue/green deployments in the current account and Amazon Web Services Region.
+
         @[JSON::Field(key: "BlueGreenDeployments")]
         getter blue_green_deployments : Array(Types::BlueGreenDeployment)?
 
         # A pagination token that can be used in a later DescribeBlueGreenDeployments request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -8892,28 +10175,33 @@ module AwsSdk
         end
       end
 
+
       struct DescribeCertificatesMessage
         include JSON::Serializable
 
         # The user-supplied certificate identifier. If this parameter is specified, information for only the
         # identified certificate is returned. This parameter isn't case-sensitive. Constraints: Must match an
         # existing CertificateIdentifier.
+
         @[JSON::Field(key: "CertificateIdentifier")]
         getter certificate_identifier : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeCertificates request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -8926,17 +10214,20 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterAutomatedBackupsMessage
         include JSON::Serializable
 
         # (Optional) The user-supplied DB cluster identifier. If this parameter is specified, it must match
         # the identifier of an existing DB cluster. It returns information from the specific DB cluster's
         # automated backup. This parameter isn't case-sensitive.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
         # The resource ID of the DB cluster that is the source of the automated backup. This parameter isn't
         # case-sensitive.
+
         @[JSON::Field(key: "DbClusterResourceId")]
         getter db_cluster_resource_id : String?
 
@@ -8947,17 +10238,20 @@ module AwsSdk
         # ARNs. db-cluster-resource-id - Accepts DB resource identifiers and Amazon Resource Names (ARNs). The
         # results list includes only information about the DB cluster resources identified by these ARNs.
         # Returns all resources by default. The status for each resource is specified in the response.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The pagination token provided in the previous request. If this parameter is specified the response
         # includes only records beyond the marker, up to MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -8971,18 +10265,21 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterBacktracksMessage
         include JSON::Serializable
 
         # The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase
         # string. Constraints: Must contain from 1 to 63 alphanumeric characters or hyphens. First character
         # must be a letter. Can't end with a hyphen or contain two consecutive hyphens. Example: my-cluster1
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # If specified, this value is the backtrack identifier of the backtrack to be described. Constraints:
         # Must contain a valid universally unique identifier (UUID). For more information about UUIDs, see
         # Universally unique identifier . Example: 123e4567-e89b-12d3-a456-426655440000
+
         @[JSON::Field(key: "BacktrackIdentifier")]
         getter backtrack_identifier : String?
 
@@ -8991,18 +10288,21 @@ module AwsSdk
         # information about only the backtracks identified by these identifiers. db-cluster-backtrack-status -
         # Accepts any of the following backtrack status values: applying completed failed pending The results
         # list includes information about only the backtracks identified by these values.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBClusterBacktracks request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9016,15 +10316,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterEndpointsMessage
         include JSON::Serializable
 
         # The identifier of the endpoint to describe. This parameter is stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterEndpointIdentifier")]
         getter db_cluster_endpoint_identifier : String?
 
         # The DB cluster identifier of the DB cluster associated with the endpoint. This parameter is stored
         # as a lowercase string.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
@@ -9036,18 +10339,21 @@ module AwsSdk
         # db-cluster-endpoint-custom-type filter can be one or more of: reader , any . Values for the
         # db-cluster-endpoint-status filter can be one or more of: available , creating , deleting , inactive
         # , modifying .
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBClusterEndpoints request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9061,27 +10367,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterParameterGroupsMessage
         include JSON::Serializable
 
         # The name of a specific DB cluster parameter group to return details for. Constraints: If supplied,
         # must match the name of an existing DBClusterParameterGroup.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBClusterParameterGroups request. If
         # this parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9094,33 +10405,39 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterParametersMessage
         include JSON::Serializable
 
         # The name of a specific DB cluster parameter group to return parameter details for. Constraints: If
         # supplied, must match the name of an existing DBClusterParameterGroup.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String
 
         # A filter that specifies one or more DB cluster parameters to describe. The only supported filter is
         # parameter-name . The results list only includes information about the DB cluster parameters with
         # these names.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBClusterParameters request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # A specific source to return parameters for. Valid Values: engine-default system user
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
@@ -9134,10 +10451,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterSnapshotAttributesMessage
         include JSON::Serializable
 
         # The identifier for the DB cluster snapshot to describe the attributes for.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String
 
@@ -9147,8 +10466,10 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterSnapshotAttributesResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterSnapshotAttributesResult")]
         getter db_cluster_snapshot_attributes_result : Types::DBClusterSnapshotAttributesResult?
@@ -9159,12 +10480,14 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClusterSnapshotsMessage
         include JSON::Serializable
 
         # The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This parameter can't be
         # used in conjunction with the DBClusterSnapshotIdentifier parameter. This parameter isn't
         # case-sensitive. Constraints: If supplied, must match the identifier of an existing DBCluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
@@ -9172,10 +10495,12 @@ module AwsSdk
         # with the DBClusterIdentifier parameter. This value is stored as a lowercase string. Constraints: If
         # supplied, must match the identifier of an existing DBClusterSnapshot. If this identifier is for an
         # automated snapshot, the SnapshotType parameter must also be specified.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String?
 
         # A specific DB cluster resource ID to describe.
+
         @[JSON::Field(key: "DbClusterResourceId")]
         getter db_cluster_resource_id : String?
 
@@ -9183,6 +10508,7 @@ module AwsSdk
         # db-cluster-id - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs).
         # db-cluster-snapshot-id - Accepts DB cluster snapshot identifiers. snapshot-type - Accepts types of
         # DB cluster snapshots. engine - Accepts names of database engines.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
@@ -9190,6 +10516,7 @@ module AwsSdk
         # restored by any Amazon Web Services account. By default, the public snapshots are not included. You
         # can share a manual DB cluster snapshot as public by using the ModifyDBClusterSnapshotAttribute API
         # action.
+
         @[JSON::Field(key: "IncludePublic")]
         getter include_public : Bool?
 
@@ -9198,18 +10525,21 @@ module AwsSdk
         # default, these snapshots are not included. You can give an Amazon Web Services account permission to
         # restore a manual DB cluster snapshot from another Amazon Web Services account by the
         # ModifyDBClusterSnapshotAttribute API action.
+
         @[JSON::Field(key: "IncludeShared")]
         getter include_shared : Bool?
 
         # An optional pagination token provided by a previous DescribeDBClusterSnapshots request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9225,6 +10555,7 @@ module AwsSdk
         # SnapshotType values of manual or automated . The IncludePublic parameter doesn't apply when
         # SnapshotType is set to shared . The IncludeShared parameter doesn't apply when SnapshotType is set
         # to public .
+
         @[JSON::Field(key: "SnapshotType")]
         getter snapshot_type : String?
 
@@ -9242,12 +10573,14 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBClustersMessage
         include JSON::Serializable
 
         # The user-supplied DB cluster identifier or the Amazon Resource Name (ARN) of the DB cluster. If this
         # parameter is specified, information for only the specific DB cluster is returned. This parameter
         # isn't case-sensitive. Constraints: If supplied, must match an existing DB cluster identifier.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String?
 
@@ -9260,23 +10593,27 @@ module AwsSdk
         # resource identifiers. domain - Accepts Active Directory directory IDs. The results list only
         # includes information about the DB clusters associated with these domains. engine - Accepts engine
         # names. The results list only includes information about the DB clusters for these engines.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # Specifies whether the output includes information about clusters shared from other Amazon Web
         # Services accounts.
+
         @[JSON::Field(key: "IncludeShared")]
         getter include_shared : Bool?
 
         # An optional pagination token provided by a previous DescribeDBClusters request. If this parameter is
         # specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9290,16 +10627,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBEngineVersionsMessage
         include JSON::Serializable
 
         # The name of a specific DB parameter group family to return details for. Constraints: If supplied,
         # must match an existing DB parameter group family.
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String?
 
         # Specifies whether to return only the default version of the specified engine or the engine and major
         # version combination.
+
         @[JSON::Field(key: "DefaultOnly")]
         getter default_only : Bool?
 
@@ -9307,10 +10647,12 @@ module AwsSdk
         # custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb db2-ae db2-se mariadb
         # mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se
         # sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # A specific database engine version to return details for. Example: 5.1.49
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -9324,11 +10666,13 @@ module AwsSdk
         # includes information about the DB engine versions for these engine versions. status - Accepts engine
         # version statuses. The results list only includes information about the DB engine versions for these
         # statuses. Valid statuses are the following: available deprecated
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # Specifies whether to also list the engine versions that aren't available. The default is to list
         # only available engine versions.
+
         @[JSON::Field(key: "IncludeAll")]
         getter include_all : Bool?
 
@@ -9337,6 +10681,7 @@ module AwsSdk
         # response includes a list of supported character sets for each engine version. For RDS Custom, the
         # default is not to list supported character sets. If you enable this parameter, RDS Custom returns no
         # results.
+
         @[JSON::Field(key: "ListSupportedCharacterSets")]
         getter list_supported_character_sets : Bool?
 
@@ -9344,17 +10689,20 @@ module AwsSdk
         # enabled and the requested engine supports the TimeZone parameter for CreateDBInstance , the response
         # includes a list of supported time zones for each engine version. For RDS Custom, the default is not
         # to list supported time zones. If you enable this parameter, RDS Custom returns no results.
+
         @[JSON::Field(key: "ListSupportedTimezones")]
         getter list_supported_timezones : Bool?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more than the MaxRecords value is
         # available, a pagination token called a marker is included in the response so you can retrieve the
         # remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9374,23 +10722,27 @@ module AwsSdk
       end
 
       # Parameter input for DescribeDBInstanceAutomatedBackups.
+
       struct DescribeDBInstanceAutomatedBackupsMessage
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the replicated automated backups, for example,
         # arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE . This setting doesn't
         # apply to RDS Custom.
+
         @[JSON::Field(key: "DBInstanceAutomatedBackupsArn")]
         getter db_instance_automated_backups_arn : String?
 
         # (Optional) The user-supplied instance identifier. If this parameter is specified, it must match the
         # identifier of an existing DB instance. It returns information from the specific DB instance's
         # automated backup. This parameter isn't case-sensitive.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The resource ID of the DB instance that is the source of the automated backup. This parameter isn't
         # case-sensitive.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
@@ -9403,17 +10755,20 @@ module AwsSdk
         # identifiers and Amazon Resource Names (ARNs). The results list includes only information about the
         # DB instance resources identified by these ARNs. Returns all resources by default. The status for
         # each resource is specified in the response.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The pagination token provided in the previous request. If this parameter is specified the response
         # includes only records beyond the marker, up to MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9428,6 +10783,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBInstancesMessage
         include JSON::Serializable
 
@@ -9435,6 +10791,7 @@ module AwsSdk
         # parameter is specified, information from only the specific DB instance is returned. This parameter
         # isn't case-sensitive. Constraints: If supplied, must match the identifier of an existing DB
         # instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
@@ -9448,18 +10805,21 @@ module AwsSdk
         # Accepts Active Directory directory IDs. The results list only includes information about the DB
         # instances associated with these domains. engine - Accepts engine names. The results list only
         # includes information about the DB instances for these engines.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBInstances request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9473,18 +10833,22 @@ module AwsSdk
       end
 
       # This data type is used as a response element to DescribeDBLogFiles .
+
       struct DescribeDBLogFilesDetails
         include JSON::Serializable
 
         # A POSIX timestamp when the last log entry was written.
+
         @[JSON::Field(key: "LastWritten")]
         getter last_written : Int64?
 
         # The name of the log file for the specified DB instance.
+
         @[JSON::Field(key: "LogFileName")]
         getter log_file_name : String?
 
         # The size, in bytes, of the log file for the specified DB instance.
+
         @[JSON::Field(key: "Size")]
         getter size : Int64?
 
@@ -9496,39 +10860,47 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBLogFilesMessage
         include JSON::Serializable
 
         # The customer-assigned name of the DB instance that contains the log files you want to list.
         # Constraints: Must match the identifier of an existing DBInstance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # Filters the available log files for files written since the specified date, in POSIX timestamp
         # format with milliseconds.
+
         @[JSON::Field(key: "FileLastWritten")]
         getter file_last_written : Int64?
 
         # Filters the available log files for files larger than the specified size.
+
         @[JSON::Field(key: "FileSize")]
         getter file_size : Int64?
 
         # Filters the available log files for log file names that contain the specified string.
+
         @[JSON::Field(key: "FilenameContains")]
         getter filename_contains : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The pagination token provided in the previous request. If this parameter is specified the response
         # includes only records beyond the marker, up to MaxRecords.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9545,14 +10917,17 @@ module AwsSdk
       end
 
       # The response from a call to DescribeDBLogFiles .
+
       struct DescribeDBLogFilesResponse
         include JSON::Serializable
 
         # The DB log files returned.
+
         @[JSON::Field(key: "DescribeDBLogFiles")]
         getter describe_db_log_files : Array(Types::DescribeDBLogFilesDetails)?
 
         # A pagination token that can be used in a later DescribeDBLogFiles request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -9563,6 +10938,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBMajorEngineVersionsRequest
         include JSON::Serializable
 
@@ -9570,21 +10946,25 @@ module AwsSdk
         # aurora-postgresql custom-sqlserver-ee custom-sqlserver-se custom-sqlserver-web db2-ae db2-se mariadb
         # mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se
         # sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # A specific database major engine version to return details for. Example: 8.4
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more than the MaxRecords value is
         # available, a pagination token called a marker is included in the response so you can retrieve the
         # remaining results. Default: 100
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9597,15 +10977,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBMajorEngineVersionsResponse
         include JSON::Serializable
 
         # A list of DBMajorEngineVersion elements.
+
         @[JSON::Field(key: "DBMajorEngineVersions")]
         getter db_major_engine_versions : Array(Types::DBMajorEngineVersion)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -9616,27 +10999,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBParameterGroupsMessage
         include JSON::Serializable
 
         # The name of a specific DB parameter group to return details for. Constraints: If supplied, must
         # match the name of an existing DBClusterParameterGroup.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBParameterGroups request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9649,34 +11037,40 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBParametersMessage
         include JSON::Serializable
 
         # The name of a specific DB parameter group to return details for. Constraints: If supplied, must
         # match the name of an existing DBParameterGroup.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String
 
         # A filter that specifies one or more DB parameters to describe. The only supported filter is
         # parameter-name . The results list only includes information about the DB parameters with these
         # names.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBParameters request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The parameter types to return. Default: All parameter types returned Valid Values: user | system |
         # engine-default
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
@@ -9690,26 +11084,31 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxiesRequest
         include JSON::Serializable
 
         # The name of the DB proxy. If you omit this parameter, the output includes information about all DB
         # proxies owned by your Amazon Web Services account ID.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String?
 
         # This parameter is not currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that the
         # remaining results can be retrieved. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9722,15 +11121,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxiesResponse
         include JSON::Serializable
 
         # A return value representing an arbitrary number of DBProxy data structures.
+
         @[JSON::Field(key: "DBProxies")]
         getter db_proxies : Array(Types::DBProxy)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -9741,31 +11143,37 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxyEndpointsRequest
         include JSON::Serializable
 
         # The name of a DB proxy endpoint to describe. If you omit this parameter, the output includes
         # information about all DB proxy endpoints associated with the specified proxy.
+
         @[JSON::Field(key: "DBProxyEndpointName")]
         getter db_proxy_endpoint_name : String?
 
         # The name of the DB proxy whose endpoints you want to describe. If you omit this parameter, the
         # output includes information about all DB proxy endpoints associated with all your DB proxies.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String?
 
         # This parameter is not currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that the
         # remaining results can be retrieved. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9779,15 +11187,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxyEndpointsResponse
         include JSON::Serializable
 
         # The list of ProxyEndpoint objects returned by the API operation.
+
         @[JSON::Field(key: "DBProxyEndpoints")]
         getter db_proxy_endpoints : Array(Types::DBProxyEndpoint)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -9798,29 +11209,35 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxyTargetGroupsRequest
         include JSON::Serializable
 
         # The identifier of the DBProxy associated with the target group.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # This parameter is not currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that the
         # remaining results can be retrieved. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The identifier of the DBProxyTargetGroup to describe.
+
         @[JSON::Field(key: "TargetGroupName")]
         getter target_group_name : String?
 
@@ -9834,16 +11251,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxyTargetGroupsResponse
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # An arbitrary number of DBProxyTargetGroup objects, containing details of the corresponding target
         # groups.
+
         @[JSON::Field(key: "TargetGroups")]
         getter target_groups : Array(Types::DBProxyTargetGroup)?
 
@@ -9854,29 +11274,35 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxyTargetsRequest
         include JSON::Serializable
 
         # The identifier of the DBProxyTarget to describe.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # This parameter is not currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that the
         # remaining results can be retrieved. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The identifier of the DBProxyTargetGroup to describe.
+
         @[JSON::Field(key: "TargetGroupName")]
         getter target_group_name : String?
 
@@ -9890,15 +11316,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBProxyTargetsResponse
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # An arbitrary number of DBProxyTarget objects, containing details of the corresponding targets.
+
         @[JSON::Field(key: "Targets")]
         getter targets : Array(Types::DBProxyTarget)?
 
@@ -9908,6 +11337,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct DescribeDBRecommendationsMessage
         include JSON::Serializable
@@ -9930,31 +11360,37 @@ module AwsSdk
         # generated for the specified parameter groups. cluster-pg-arn - Accepts a list of cluster parameter
         # group ARNs. The results list only includes the recommendations that generated for the specified
         # cluster parameter groups.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # A filter to include only the recommendations that were updated after this specified time.
+
         @[JSON::Field(key: "LastUpdatedAfter")]
         getter last_updated_after : Time?
 
         # A filter to include only the recommendations that were updated before this specified time.
+
         @[JSON::Field(key: "LastUpdatedBefore")]
         getter last_updated_before : Time?
 
         # The language that you choose to return the list of recommendations. Valid values: en en_UK de es fr
         # id it ja ko pt_BR zh_TW zh_CN
+
         @[JSON::Field(key: "Locale")]
         getter locale : String?
 
         # An optional pagination token provided by a previous DescribeDBRecommendations request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of recommendations to include in the response. If more records exist than the
         # specified MaxRecords value, a pagination token called a marker is included in the response so that
         # you can retrieve the remaining results.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -9969,26 +11405,31 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBSecurityGroupsMessage
         include JSON::Serializable
 
         # The name of the DB security group to return details for.
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBSecurityGroups request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10001,28 +11442,33 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBShardGroupsMessage
         include JSON::Serializable
 
         # The user-supplied DB shard group identifier. If this parameter is specified, information for only
         # the specific DB shard group is returned. This parameter isn't case-sensitive. Constraints: If
         # supplied, must match an existing DB shard group identifier.
+
         @[JSON::Field(key: "DBShardGroupIdentifier")]
         getter db_shard_group_identifier : String?
 
         # A filter that specifies one or more DB shard groups to describe.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBShardGroups request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10035,14 +11481,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBShardGroupsResponse
         include JSON::Serializable
 
         # Contains a list of DB shard groups for the user.
+
         @[JSON::Field(key: "DBShardGroups")]
         getter db_shard_groups : Array(Types::DBShardGroup)?
 
         # A pagination token that can be used in a later DescribeDBClusters request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -10053,10 +11502,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBSnapshotAttributesMessage
         include JSON::Serializable
 
         # The identifier for the DB snapshot to describe the attributes for.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String
 
@@ -10066,8 +11517,10 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBSnapshotAttributesResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSnapshotAttributesResult")]
         getter db_snapshot_attributes_result : Types::DBSnapshotAttributesResult?
@@ -10078,21 +11531,25 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBSnapshotTenantDatabasesMessage
         include JSON::Serializable
 
         # The ID of the DB instance used to create the DB snapshots. This parameter isn't case-sensitive.
         # Constraints: If supplied, must match the identifier of an existing DBInstance .
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The ID of a DB snapshot that contains the tenant databases to describe. This value is stored as a
         # lowercase string. Constraints: If you specify this parameter, the value must match the ID of an
         # existing DB snapshot. If you specify an automatic snapshot, you must also specify SnapshotType .
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
         # A specific DB resource identifier to describe.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
@@ -10105,18 +11562,21 @@ module AwsSdk
         # identifiers. db-instance-id - Accepts DB instance identifiers and DB instance Amazon Resource Names
         # (ARNs). db-snapshot-id - Accepts DB snapshot identifiers. snapshot-type - Accepts types of DB
         # snapshots.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBSnapshotTenantDatabases request. If
         # this parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10126,6 +11586,7 @@ module AwsSdk
         # All manual DB snapshots that have been shared to my Amazon Web Services account. public – All DB
         # snapshots that have been marked as public. awsbackup – All DB snapshots managed by the Amazon Web
         # Services Backup service.
+
         @[JSON::Field(key: "SnapshotType")]
         getter snapshot_type : String?
 
@@ -10141,21 +11602,25 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBSnapshotsMessage
         include JSON::Serializable
 
         # The ID of the DB instance to retrieve the list of DB snapshots for. This parameter isn't
         # case-sensitive. Constraints: If supplied, must match the identifier of an existing DBInstance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # A specific DB snapshot identifier to describe. This value is stored as a lowercase string.
         # Constraints: If supplied, must match the identifier of an existing DBSnapshot. If this identifier is
         # for an automated snapshot, the SnapshotType parameter must also be specified.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
         # A specific DB resource ID to describe.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
@@ -10163,6 +11628,7 @@ module AwsSdk
         # Accepts DB instance identifiers and DB instance Amazon Resource Names (ARNs). db-snapshot-id -
         # Accepts DB snapshot identifiers. dbi-resource-id - Accepts identifiers of source DB instances.
         # snapshot-type - Accepts types of DB snapshots. engine - Accepts names of database engines.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
@@ -10170,6 +11636,7 @@ module AwsSdk
         # restored by any Amazon Web Services account. By default, the public snapshots are not included. You
         # can share a manual DB snapshot as public by using the ModifyDBSnapshotAttribute API. This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "IncludePublic")]
         getter include_public : Bool?
 
@@ -10178,18 +11645,21 @@ module AwsSdk
         # default, these snapshots are not included. You can give an Amazon Web Services account permission to
         # restore a manual DB snapshot from another Amazon Web Services account by using the
         # ModifyDBSnapshotAttribute API action. This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "IncludeShared")]
         getter include_shared : Bool?
 
         # An optional pagination token provided by a previous DescribeDBSnapshots request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10207,6 +11677,7 @@ module AwsSdk
         # IncludeShared and IncludePublic parameters don't apply for SnapshotType values of manual or
         # automated . The IncludePublic parameter doesn't apply when SnapshotType is set to shared . The
         # IncludeShared parameter doesn't apply when SnapshotType is set to public .
+
         @[JSON::Field(key: "SnapshotType")]
         getter snapshot_type : String?
 
@@ -10224,26 +11695,31 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDBSubnetGroupsMessage
         include JSON::Serializable
 
         # The name of the DB subnet group to return details for.
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeDBSubnetGroups request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10256,26 +11732,31 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEngineDefaultClusterParametersMessage
         include JSON::Serializable
 
         # The name of the DB cluster parameter group family to return engine parameter information for.
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeEngineDefaultClusterParameters request.
         # If this parameter is specified, the response includes only records beyond the marker, up to the
         # value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10288,8 +11769,10 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEngineDefaultClusterParametersResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EngineDefaults")]
         getter engine_defaults : Types::EngineDefaults?
@@ -10299,6 +11782,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct DescribeEngineDefaultParametersMessage
         include JSON::Serializable
@@ -10312,23 +11796,27 @@ module AwsSdk
         # sqlserver-ex-11.0 sqlserver-ex-12.0 sqlserver-ex-13.0 sqlserver-ex-14.0 sqlserver-ex-15.0
         # sqlserver-se-11.0 sqlserver-se-12.0 sqlserver-se-13.0 sqlserver-se-14.0 sqlserver-se-15.0
         # sqlserver-web-11.0 sqlserver-web-12.0 sqlserver-web-13.0 sqlserver-web-14.0 sqlserver-web-15.0
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String
 
         # A filter that specifies one or more parameters to describe. The only supported filter is
         # parameter-name . The results list only includes information about the parameters with these names.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeEngineDefaultParameters request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10341,8 +11829,10 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEngineDefaultParametersResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EngineDefaults")]
         getter engine_defaults : Types::EngineDefaults?
@@ -10353,16 +11843,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEventCategoriesMessage
         include JSON::Serializable
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The type of source that is generating the events. For RDS Proxy events, specify db-proxy . Valid
         # Values: db-instance | db-cluster | db-parameter-group | db-security-group | db-snapshot |
         # db-cluster-snapshot | db-proxy
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
@@ -10373,26 +11866,31 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEventSubscriptionsMessage
         include JSON::Serializable
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If
         # this parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The name of the RDS event notification subscription you want to describe.
+
         @[JSON::Field(key: "SubscriptionName")]
         getter subscription_name : String?
 
@@ -10405,35 +11903,42 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEventsMessage
         include JSON::Serializable
 
         # The number of minutes to retrieve events for. Default: 60
+
         @[JSON::Field(key: "Duration")]
         getter duration : Int32?
 
         # The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more
         # information about ISO 8601, go to the ISO8601 Wikipedia page. Example: 2009-07-08T18:00Z
+
         @[JSON::Field(key: "EndTime")]
         getter end_time : Time?
 
         # A list of event categories that trigger notifications for a event notification subscription.
+
         @[JSON::Field(key: "EventCategories")]
         getter event_categories : Array(String)?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeEvents request. If this parameter is
         # specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10446,15 +11951,18 @@ module AwsSdk
         # DBSnapshotIdentifier value must be supplied. If the source type is a DB cluster snapshot, a
         # DBClusterSnapshotIdentifier value must be supplied. If the source type is an RDS Proxy, a
         # DBProxyName value must be supplied. Can't end with a hyphen or contain two consecutive hyphens.
+
         @[JSON::Field(key: "SourceIdentifier")]
         getter source_identifier : String?
 
         # The event source to retrieve events for. If no value is specified, all events are returned.
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
         # The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more
         # information about ISO 8601, go to the ISO8601 Wikipedia page. Example: 2009-07-08T18:00Z
+
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time?
 
@@ -10472,10 +11980,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeExportTasksMessage
         include JSON::Serializable
 
         # The identifier of the snapshot or cluster export task to be described.
+
         @[JSON::Field(key: "ExportTaskIdentifier")]
         getter export_task_identifier : String?
 
@@ -10486,12 +11996,14 @@ module AwsSdk
         # source-arn - The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3. status
         # - The status of the export task. Must be lowercase. Valid statuses are the following: canceled
         # canceling complete failed in_progress starting
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeExportTasks request. If you specify this
         # parameter, the response includes only records beyond the marker, up to the value specified by the
         # MaxRecords parameter.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -10499,14 +12011,17 @@ module AwsSdk
         # value, a pagination token called a marker is included in the response. You can use the marker in a
         # later DescribeExportTasks request to retrieve the remaining results. Default: 100 Constraints:
         # Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String?
 
         # The type of source for the export.
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
@@ -10521,6 +12036,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGlobalClustersMessage
         include JSON::Serializable
 
@@ -10528,24 +12044,28 @@ module AwsSdk
         # case-sensitive. Currently, the only supported filter is region . If used, the request returns
         # information about any global cluster with at least one member (primary or secondary) in the
         # specified Amazon Web Services Regions.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The user-supplied DB cluster identifier. If this parameter is specified, information from only the
         # specific DB cluster is returned. This parameter isn't case-sensitive. Constraints: If supplied, must
         # match an existing DBClusterIdentifier.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String?
 
         # An optional pagination token provided by a previous DescribeGlobalClusters request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10558,26 +12078,31 @@ module AwsSdk
         end
       end
 
+
       struct DescribeIntegrationsMessage
         include JSON::Serializable
 
         # A filter that specifies one or more resources to return.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The unique identifier of the integration.
+
         @[JSON::Field(key: "IntegrationIdentifier")]
         getter integration_identifier : String?
 
         # An optional pagination token provided by a previous DescribeIntegrations request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10590,14 +12115,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeIntegrationsResponse
         include JSON::Serializable
 
         # A list of integrations.
+
         @[JSON::Field(key: "Integrations")]
         getter integrations : Array(Types::Integration)?
 
         # A pagination token that can be used in a later DescribeIntegrations request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -10608,31 +12136,37 @@ module AwsSdk
         end
       end
 
+
       struct DescribeOptionGroupOptionsMessage
         include JSON::Serializable
 
         # The name of the engine to describe options for. Valid Values: db2-ae db2-se mariadb mysql oracle-ee
         # oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se sqlserver-ex
         # sqlserver-web
+
         @[JSON::Field(key: "EngineName")]
         getter engine_name : String
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # If specified, filters the results to include only options for the specified major engine version.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
@@ -10646,38 +12180,45 @@ module AwsSdk
         end
       end
 
+
       struct DescribeOptionGroupsMessage
         include JSON::Serializable
 
         # A filter to only include option groups associated with this database engine. Valid Values: db2-ae
         # db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee
         # sqlserver-se sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "EngineName")]
         getter engine_name : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # Filters the list of option groups to only include groups associated with a specific database engine
         # version. If specified, then EngineName must also be specified.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
         # An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The name of the option group to describe. Can't be supplied together with EngineName or
         # MajorEngineVersion.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -10692,6 +12233,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeOrderableDBInstanceOptionsMessage
         include JSON::Serializable
 
@@ -10699,6 +12241,7 @@ module AwsSdk
         # aurora-postgresql custom-oracle-ee custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb
         # db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee
         # sqlserver-se sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
@@ -10706,41 +12249,49 @@ module AwsSdk
         # available options for the Local Zones in the group. Omit this parameter to show the available
         # options in the specified Amazon Web Services Region. This setting doesn't apply to RDS Custom DB
         # instances.
+
         @[JSON::Field(key: "AvailabilityZoneGroup")]
         getter availability_zone_group : String?
 
         # A filter to include only the available options for the specified DB instance class.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # A filter to include only the available options for the specified engine version.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # A filter to include only the available options for the specified license model. RDS Custom supports
         # only the BYOL licensing model.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If
         # this parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 1000.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # Specifies whether to show only VPC or non-VPC offerings. RDS Custom supports only VPC offerings. RDS
         # Custom supports only VPC offerings. If you describe non-VPC offerings for RDS Custom, the output
         # shows VPC offerings.
+
         @[JSON::Field(key: "Vpc")]
         getter vpc : Bool?
 
@@ -10758,6 +12309,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribePendingMaintenanceActionsMessage
         include JSON::Serializable
 
@@ -10766,22 +12318,26 @@ module AwsSdk
         # The results list only includes pending maintenance actions for the DB clusters identified by these
         # ARNs. db-instance-id - Accepts DB instance identifiers and DB instance ARNs. The results list only
         # includes pending maintenance actions for the DB instances identified by these ARNs.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribePendingMaintenanceActions request. If
         # this parameter is specified, the response includes only records beyond the marker, up to a number of
         # records specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The ARN of a resource to return pending maintenance actions for.
+
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : String?
 
@@ -10794,61 +12350,73 @@ module AwsSdk
         end
       end
 
+
       struct DescribeReservedDBInstancesMessage
         include JSON::Serializable
 
         # The DB instance class filter value. Specify this parameter to show only those reservations matching
         # the specified DB instances class.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The duration filter value, specified in years or seconds. Specify this parameter to show only
         # reservations for this duration. Valid Values: 1 | 3 | 31536000 | 94608000
+
         @[JSON::Field(key: "Duration")]
         getter duration : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The lease identifier filter value. Specify this parameter to show only the reservation that matches
         # the specified lease ID. Amazon Web Services Support might request the lease ID for an issue related
         # to a reserved DB instance.
+
         @[JSON::Field(key: "LeaseId")]
         getter lease_id : String?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more than the MaxRecords value is
         # available, a pagination token called a marker is included in the response so you can retrieve the
         # remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # Specifies whether to show only those reservations that support Multi-AZ.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
         # The offering type filter value. Specify this parameter to show only the available offerings matching
         # the specified offering type. Valid Values: "Partial Upfront" | "All Upfront" | "No Upfront"
+
         @[JSON::Field(key: "OfferingType")]
         getter offering_type : String?
 
         # The product description filter value. Specify this parameter to show only those reservations
         # matching the specified product description.
+
         @[JSON::Field(key: "ProductDescription")]
         getter product_description : String?
 
         # The reserved DB instance identifier filter value. Specify this parameter to show only the
         # reservation that matches the specified reservation ID.
+
         @[JSON::Field(key: "ReservedDBInstanceId")]
         getter reserved_db_instance_id : String?
 
         # The offering identifier filter value. Specify this parameter to show only purchased reservations
         # matching the specified offering identifier.
+
         @[JSON::Field(key: "ReservedDBInstancesOfferingId")]
         getter reserved_db_instances_offering_id : String?
 
@@ -10868,51 +12436,61 @@ module AwsSdk
         end
       end
 
+
       struct DescribeReservedDBInstancesOfferingsMessage
         include JSON::Serializable
 
         # The DB instance class filter value. Specify this parameter to show only the available offerings
         # matching the specified DB instance class.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # Duration filter value, specified in years or seconds. Specify this parameter to show only
         # reservations for this duration. Valid Values: 1 | 3 | 31536000 | 94608000
+
         @[JSON::Field(key: "Duration")]
         getter duration : String?
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more than the MaxRecords value is
         # available, a pagination token called a marker is included in the response so you can retrieve the
         # remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # Specifies whether to show only those reservations that support Multi-AZ.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
         # The offering type filter value. Specify this parameter to show only the available offerings matching
         # the specified offering type. Valid Values: "Partial Upfront" | "All Upfront" | "No Upfront"
+
         @[JSON::Field(key: "OfferingType")]
         getter offering_type : String?
 
         # Product description filter value. Specify this parameter to show only the available offerings that
         # contain the specified product description. The results show offerings that partially match the
         # filter value.
+
         @[JSON::Field(key: "ProductDescription")]
         getter product_description : String?
 
         # The offering identifier filter value. Specify this parameter to show only the available offering
         # that matches the specified reservation identifier. Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706
+
         @[JSON::Field(key: "ReservedDBInstancesOfferingId")]
         getter reserved_db_instances_offering_id : String?
 
@@ -10930,27 +12508,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSourceRegionsMessage
         include JSON::Serializable
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeSourceRegions request. If this parameter
         # is specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so you can retrieve
         # the remaining results. Default: 100 Constraints: Minimum 20, maximum 100.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The source Amazon Web Services Region name. For example, us-east-1 . Constraints: Must specify a
         # valid Amazon Web Services Region name.
+
         @[JSON::Field(key: "RegionName")]
         getter region_name : String?
 
@@ -10963,11 +12546,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeTenantDatabasesMessage
         include JSON::Serializable
 
         # The user-supplied DB instance identifier, which must match the identifier of an existing instance
         # owned by the Amazon Web Services account. This parameter isn't case-sensitive.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
@@ -10976,24 +12561,28 @@ module AwsSdk
         # match these tenant DB names. tenant-database-resource-id - Tenant database resource identifiers.
         # dbi-resource-id - DB instance resource identifiers. The results list only includes information about
         # the tenants contained within the DB instances identified by these resource identifiers.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # An optional pagination token provided by a previous DescribeTenantDatabases request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # The maximum number of records to include in the response. If more records exist than the specified
         # MaxRecords value, a pagination token called a marker is included in the response so that you can
         # retrieve the remaining results.
+
         @[JSON::Field(key: "MaxRecords")]
         getter max_records : Int32?
 
         # The user-supplied tenant database name, which must match the name of an existing tenant database on
         # the specified DB instance owned by your Amazon Web Services account. This parameter isn’t
         # case-sensitive.
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String?
 
@@ -11007,10 +12596,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeValidDBInstanceModificationsMessage
         include JSON::Serializable
 
         # The customer identifier or the ARN of your DB instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
@@ -11020,8 +12611,10 @@ module AwsSdk
         end
       end
 
+
       struct DescribeValidDBInstanceModificationsResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ValidDBInstanceModificationsMessage")]
         getter valid_db_instance_modifications_message : Types::ValidDBInstanceModificationsMessage?
@@ -11032,10 +12625,12 @@ module AwsSdk
         end
       end
 
+
       struct DisableHttpEndpointRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the DB cluster.
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -11045,14 +12640,17 @@ module AwsSdk
         end
       end
 
+
       struct DisableHttpEndpointResponse
         include JSON::Serializable
 
         # Indicates whether the HTTP endpoint is enabled or disabled for the DB cluster.
+
         @[JSON::Field(key: "HttpEndpointEnabled")]
         getter http_endpoint_enabled : Bool?
 
         # The ARN of the DB cluster.
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
@@ -11064,14 +12662,17 @@ module AwsSdk
       end
 
       # A link to documentation that provides additional information for a recommendation.
+
       struct DocLink
         include JSON::Serializable
 
         # The text with the link to documentation for the recommendation.
+
         @[JSON::Field(key: "Text")]
         getter text : String?
 
         # The URL for the documentation for the recommendation.
+
         @[JSON::Field(key: "Url")]
         getter url : String?
 
@@ -11083,36 +12684,44 @@ module AwsSdk
       end
 
       # An Active Directory Domain membership record associated with the DB instance or cluster.
+
       struct DomainMembership
         include JSON::Serializable
 
         # The ARN for the Secrets Manager secret with the credentials for the user that's a member of the
         # domain.
+
         @[JSON::Field(key: "AuthSecretArn")]
         getter auth_secret_arn : String?
 
         # The IPv4 DNS IP addresses of the primary and secondary Active Directory domain controllers.
+
         @[JSON::Field(key: "DnsIps")]
         getter dns_ips : Array(String)?
 
         # The identifier of the Active Directory Domain.
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The fully qualified domain name (FQDN) of the Active Directory Domain.
+
         @[JSON::Field(key: "FQDN")]
         getter fqdn : String?
 
         # The name of the IAM role used when making API calls to the Directory Service.
+
         @[JSON::Field(key: "IAMRoleName")]
         getter iam_role_name : String?
 
         # The Active Directory organizational unit for the DB instance or cluster.
+
         @[JSON::Field(key: "OU")]
         getter ou : String?
 
         # The status of the Active Directory Domain membership for the DB instance or cluster. Values include
         # joined , pending-join , failed , and so on.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -11129,6 +12738,7 @@ module AwsSdk
       end
 
       # Domain doesn't refer to an existing Active Directory domain.
+
       struct DomainNotFoundFault
         include JSON::Serializable
 
@@ -11137,14 +12747,17 @@ module AwsSdk
       end
 
       # A range of double values.
+
       struct DoubleRange
         include JSON::Serializable
 
         # The minimum value in the range.
+
         @[JSON::Field(key: "From")]
         getter from : Float64?
 
         # The maximum value in the range.
+
         @[JSON::Field(key: "To")]
         getter to : Float64?
 
@@ -11156,18 +12769,22 @@ module AwsSdk
       end
 
       # This data type is used as a response element to DownloadDBLogFilePortion .
+
       struct DownloadDBLogFilePortionDetails
         include JSON::Serializable
 
         # A Boolean value that, if true, indicates there is more data to be downloaded.
+
         @[JSON::Field(key: "AdditionalDataPending")]
         getter additional_data_pending : Bool?
 
         # Entries from the specified log file.
+
         @[JSON::Field(key: "LogFileData")]
         getter log_file_data : String?
 
         # A pagination token that can be used in a later DownloadDBLogFilePortion request.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -11179,21 +12796,25 @@ module AwsSdk
         end
       end
 
+
       struct DownloadDBLogFilePortionMessage
         include JSON::Serializable
 
         # The customer-assigned name of the DB instance that contains the log files you want to list.
         # Constraints: Must match the identifier of an existing DBInstance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The name of the log file to be downloaded.
+
         @[JSON::Field(key: "LogFileName")]
         getter log_file_name : String
 
         # The pagination token provided in the previous request or "0". If the Marker parameter is specified
         # the response includes only records beyond the marker until the end of the file or up to
         # NumberOfLines.
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -11209,6 +12830,7 @@ module AwsSdk
         # for the Marker parameter in your first request. Include the Marker value returned in the response as
         # the Marker value for the next request, continuing until the AdditionalDataPending response element
         # returns false.
+
         @[JSON::Field(key: "NumberOfLines")]
         getter number_of_lines : Int32?
 
@@ -11223,24 +12845,29 @@ module AwsSdk
 
       # This data type is used as a response element in the following actions:
       # AuthorizeDBSecurityGroupIngress DescribeDBSecurityGroups RevokeDBSecurityGroupIngress
+
       struct EC2SecurityGroup
         include JSON::Serializable
 
         # Specifies the id of the EC2 security group.
+
         @[JSON::Field(key: "EC2SecurityGroupId")]
         getter ec2_security_group_id : String?
 
         # Specifies the name of the EC2 security group.
+
         @[JSON::Field(key: "EC2SecurityGroupName")]
         getter ec2_security_group_name : String?
 
         # Specifies the Amazon Web Services ID of the owner of the EC2 security group specified in the
         # EC2SecurityGroupName field.
+
         @[JSON::Field(key: "EC2SecurityGroupOwnerId")]
         getter ec2_security_group_owner_id : String?
 
         # Provides the status of the EC2 security group. Status can be "authorizing", "authorized",
         # "revoking", and "revoked".
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -11254,6 +12881,7 @@ module AwsSdk
       end
 
       # The AMI configuration prerequisite has not been met.
+
       struct Ec2ImagePropertiesNotSupportedFault
         include JSON::Serializable
 
@@ -11261,10 +12889,12 @@ module AwsSdk
         end
       end
 
+
       struct EnableHttpEndpointRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the DB cluster.
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
@@ -11274,14 +12904,17 @@ module AwsSdk
         end
       end
 
+
       struct EnableHttpEndpointResponse
         include JSON::Serializable
 
         # Indicates whether the HTTP endpoint is enabled or disabled for the DB cluster.
+
         @[JSON::Field(key: "HttpEndpointEnabled")]
         getter http_endpoint_enabled : Bool?
 
         # The ARN of the DB cluster.
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
@@ -11296,18 +12929,22 @@ module AwsSdk
       # data type is used as a response element in the following actions: CreateDBInstance
       # DescribeDBInstances DeleteDBInstance For the data structure that represents Amazon Aurora DB cluster
       # endpoints, see DBClusterEndpoint .
+
       struct Endpoint
         include JSON::Serializable
 
         # Specifies the DNS address of the DB instance.
+
         @[JSON::Field(key: "Address")]
         getter address : String?
 
         # Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
+
         @[JSON::Field(key: "HostedZoneId")]
         getter hosted_zone_id : String?
 
         # Specifies the port that the database engine is listening on.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -11320,20 +12957,24 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeEngineDefaultParameters action.
+
       struct EngineDefaults
         include JSON::Serializable
 
         # Specifies the name of the DB parameter group family that the engine default parameters apply to.
+
         @[JSON::Field(key: "DBParameterGroupFamily")]
         getter db_parameter_group_family : String?
 
         # An optional pagination token provided by a previous EngineDefaults request. If this parameter is
         # specified, the response includes only records beyond the marker, up to the value specified by
         # MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # Contains a list of engine default parameters.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
@@ -11346,30 +12987,37 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the DescribeEvents action.
+
       struct Event
         include JSON::Serializable
 
         # Specifies the date and time of the event.
+
         @[JSON::Field(key: "Date")]
         getter date : Time?
 
         # Specifies the category for the event.
+
         @[JSON::Field(key: "EventCategories")]
         getter event_categories : Array(String)?
 
         # Provides the text of this event.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The Amazon Resource Name (ARN) for the event.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String?
 
         # Provides the identifier for the source of the event.
+
         @[JSON::Field(key: "SourceIdentifier")]
         getter source_identifier : String?
 
         # Specifies the source type for this event.
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
@@ -11385,14 +13033,17 @@ module AwsSdk
       end
 
       # Contains the results of a successful invocation of the DescribeEventCategories operation.
+
       struct EventCategoriesMap
         include JSON::Serializable
 
         # The event categories for the specified source type
+
         @[JSON::Field(key: "EventCategories")]
         getter event_categories : Array(String)?
 
         # The source type that the returned categories belong to
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
@@ -11404,10 +13055,12 @@ module AwsSdk
       end
 
       # Data returned from the DescribeEventCategories operation.
+
       struct EventCategoriesMessage
         include JSON::Serializable
 
         # A list of EventCategoriesMap data types.
+
         @[JSON::Field(key: "EventCategoriesMapList")]
         getter event_categories_map_list : Array(Types::EventCategoriesMap)?
 
@@ -11418,38 +13071,47 @@ module AwsSdk
       end
 
       # Contains the results of a successful invocation of the DescribeEventSubscriptions action.
+
       struct EventSubscription
         include JSON::Serializable
 
         # The RDS event notification subscription Id.
+
         @[JSON::Field(key: "CustSubscriptionId")]
         getter cust_subscription_id : String?
 
         # The Amazon Web Services customer account associated with the RDS event notification subscription.
+
         @[JSON::Field(key: "CustomerAwsId")]
         getter customer_aws_id : String?
 
         # Specifies whether the subscription is enabled. True indicates the subscription is enabled.
+
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # A list of event categories for the RDS event notification subscription.
+
         @[JSON::Field(key: "EventCategoriesList")]
         getter event_categories_list : Array(String)?
 
         # The Amazon Resource Name (ARN) for the event subscription.
+
         @[JSON::Field(key: "EventSubscriptionArn")]
         getter event_subscription_arn : String?
 
         # The topic ARN of the RDS event notification subscription.
+
         @[JSON::Field(key: "SnsTopicArn")]
         getter sns_topic_arn : String?
 
         # A list of source IDs for the RDS event notification subscription.
+
         @[JSON::Field(key: "SourceIdsList")]
         getter source_ids_list : Array(String)?
 
         # The source type for the RDS event notification subscription.
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
@@ -11457,10 +13119,12 @@ module AwsSdk
         # creating | modifying | deleting | active | no-permission | topic-not-exist The status
         # "no-permission" indicates that RDS no longer has permission to post to the SNS topic. The status
         # "topic-not-exist" indicates that the topic was deleted after the subscription was created.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The time the RDS event notification subscription was created.
+
         @[JSON::Field(key: "SubscriptionCreationTime")]
         getter subscription_creation_time : String?
 
@@ -11480,6 +13144,7 @@ module AwsSdk
       end
 
       # You have reached the maximum number of event subscriptions.
+
       struct EventSubscriptionQuotaExceededFault
         include JSON::Serializable
 
@@ -11488,16 +13153,19 @@ module AwsSdk
       end
 
       # Data returned by the DescribeEventSubscriptions action.
+
       struct EventSubscriptionsMessage
         include JSON::Serializable
 
         # A list of EventSubscriptions data types.
+
         @[JSON::Field(key: "EventSubscriptionsList")]
         getter event_subscriptions_list : Array(Types::EventSubscription)?
 
         # An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If
         # this parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -11509,15 +13177,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeEvents action.
+
       struct EventsMessage
         include JSON::Serializable
 
         # A list of Event instances.
+
         @[JSON::Field(key: "Events")]
         getter events : Array(Types::Event)?
 
         # An optional pagination token provided by a previous Events request. If this parameter is specified,
         # the response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -11530,6 +13201,7 @@ module AwsSdk
 
       # Contains the details of a snapshot or cluster export to Amazon S3. This data type is used as a
       # response element in the DescribeExportTasks operation.
+
       struct ExportTask
         include JSON::Serializable
 
@@ -11539,70 +13211,86 @@ module AwsSdk
         # schema-name - Export a database schema of the snapshot or cluster. This format is valid only for RDS
         # for PostgreSQL and Aurora PostgreSQL. database.schema.table table-name - Export a table of the
         # database schema. This format is valid only for RDS for PostgreSQL and Aurora PostgreSQL.
+
         @[JSON::Field(key: "ExportOnly")]
         getter export_only : Array(String)?
 
         # A unique identifier for the snapshot or cluster export task. This ID isn't an identifier for the
         # Amazon S3 bucket where the data is exported.
+
         @[JSON::Field(key: "ExportTaskIdentifier")]
         getter export_task_identifier : String?
 
         # The reason the export failed, if it failed.
+
         @[JSON::Field(key: "FailureCause")]
         getter failure_cause : String?
 
         # The name of the IAM role that is used to write to Amazon S3 when exporting a snapshot or cluster.
+
         @[JSON::Field(key: "IamRoleArn")]
         getter iam_role_arn : String?
 
         # The key identifier of the Amazon Web Services KMS key that is used to encrypt the data when it's
         # exported to Amazon S3. The KMS key identifier is its key ARN, key ID, alias ARN, or alias name. The
         # IAM role used for the export must have encryption and decryption permissions to use this KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The progress of the snapshot or cluster export task as a percentage.
+
         @[JSON::Field(key: "PercentProgress")]
         getter percent_progress : Int32?
 
         # The Amazon S3 bucket where the snapshot or cluster is exported to.
+
         @[JSON::Field(key: "S3Bucket")]
         getter s3_bucket : String?
 
         # The Amazon S3 bucket prefix that is the file name and path of the exported data.
+
         @[JSON::Field(key: "S3Prefix")]
         getter s3_prefix : String?
 
         # The time when the snapshot was created.
+
         @[JSON::Field(key: "SnapshotTime")]
         getter snapshot_time : Time?
 
         # The Amazon Resource Name (ARN) of the snapshot or cluster exported to Amazon S3.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String?
 
         # The type of source for the export.
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
         # The progress status of the export task. The status can be one of the following: CANCELED CANCELING
         # COMPLETE FAILED IN_PROGRESS STARTING
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The time when the snapshot or cluster export task ended.
+
         @[JSON::Field(key: "TaskEndTime")]
         getter task_end_time : Time?
 
         # The time when the snapshot or cluster export task started.
+
         @[JSON::Field(key: "TaskStartTime")]
         getter task_start_time : Time?
 
         # The total amount of data exported, in gigabytes.
+
         @[JSON::Field(key: "TotalExtractedDataInGB")]
         getter total_extracted_data_in_gb : Int32?
 
         # A warning about the snapshot or cluster export task.
+
         @[JSON::Field(key: "WarningMessage")]
         getter warning_message : String?
 
@@ -11628,6 +13316,7 @@ module AwsSdk
       end
 
       # You can't start an export task that's already running.
+
       struct ExportTaskAlreadyExistsFault
         include JSON::Serializable
 
@@ -11636,6 +13325,7 @@ module AwsSdk
       end
 
       # The export task doesn't exist.
+
       struct ExportTaskNotFoundFault
         include JSON::Serializable
 
@@ -11643,15 +13333,18 @@ module AwsSdk
         end
       end
 
+
       struct ExportTasksMessage
         include JSON::Serializable
 
         # Information about an export of a snapshot or cluster to Amazon S3.
+
         @[JSON::Field(key: "ExportTasks")]
         getter export_tasks : Array(Types::ExportTask)?
 
         # A pagination token that can be used in a later DescribeExportTasks request. A marker is used for
         # pagination to identify the location to begin output for the next response of DescribeExportTasks .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -11662,17 +13355,20 @@ module AwsSdk
         end
       end
 
+
       struct FailoverDBClusterMessage
         include JSON::Serializable
 
         # The identifier of the DB cluster to force a failover for. This parameter isn't case-sensitive.
         # Constraints: Must match the identifier of an existing DB cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The name of the DB instance to promote to the primary DB instance. Specify the DB instance
         # identifier for an Aurora Replica or a Multi-AZ readable standby in the DB cluster, for example
         # mydbcluster-replica1 . This setting isn't supported for RDS for MySQL Multi-AZ DB clusters.
+
         @[JSON::Field(key: "TargetDBInstanceIdentifier")]
         getter target_db_instance_identifier : String?
 
@@ -11683,8 +13379,10 @@ module AwsSdk
         end
       end
 
+
       struct FailoverDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -11695,6 +13393,7 @@ module AwsSdk
         end
       end
 
+
       struct FailoverGlobalClusterMessage
         include JSON::Serializable
 
@@ -11702,12 +13401,14 @@ module AwsSdk
         # to. The identifier is the unique key assigned by the user when the Aurora global database is
         # created. In other words, it's the name of the Aurora global database. Constraints: Must match the
         # identifier of an existing global database cluster.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String
 
         # The identifier of the secondary Aurora DB cluster that you want to promote to the primary for the
         # global database cluster. Use the Amazon Resource Name (ARN) for the identifier so that Aurora can
         # locate the cluster in its Amazon Web Services Region.
+
         @[JSON::Field(key: "TargetDbClusterIdentifier")]
         getter target_db_cluster_identifier : String
 
@@ -11715,11 +13416,13 @@ module AwsSdk
         # triggers a global failover operation. If you don't specify AllowDataLoss , the global database
         # cluster operation defaults to a switchover. Constraints: Can't be specified together with the
         # Switchover parameter.
+
         @[JSON::Field(key: "AllowDataLoss")]
         getter allow_data_loss : Bool?
 
         # Specifies whether to switch over this global database cluster. Constraints: Can't be specified
         # together with the AllowDataLoss parameter.
+
         @[JSON::Field(key: "Switchover")]
         getter switchover : Bool?
 
@@ -11732,8 +13435,10 @@ module AwsSdk
         end
       end
 
+
       struct FailoverGlobalClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GlobalCluster")]
         getter global_cluster : Types::GlobalCluster?
@@ -11747,16 +13452,19 @@ module AwsSdk
       # Contains the state of scheduled or in-process operations on a global cluster (Aurora global
       # database). This data type is empty unless a switchover or failover operation is scheduled or is in
       # progress on the Aurora global database.
+
       struct FailoverState
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Aurora DB cluster that is currently being demoted, and which
         # is associated with this state.
+
         @[JSON::Field(key: "FromDbClusterArn")]
         getter from_db_cluster_arn : String?
 
         # Indicates whether the operation is a global switchover or a global failover. If data loss is
         # allowed, then the operation is a global failover. Otherwise, it's a switchover.
+
         @[JSON::Field(key: "IsDataLossAllowed")]
         getter is_data_loss_allowed : Bool?
 
@@ -11770,11 +13478,13 @@ module AwsSdk
         # status covers the range of Aurora internal operations that take place during the switchover process,
         # such as demoting the primary Aurora DB cluster, promoting the secondary Aurora DB cluster, and
         # synchronizing replicas.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The Amazon Resource Name (ARN) of the Aurora DB cluster that is currently being promoted, and which
         # is associated with this state.
+
         @[JSON::Field(key: "ToDbClusterArn")]
         getter to_db_cluster_arn : String?
 
@@ -11793,14 +13503,17 @@ module AwsSdk
       # wildcards are not supported in filters. The following actions can be filtered:
       # DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusters DescribeDBInstances
       # DescribeDBRecommendations DescribeDBShardGroups DescribePendingMaintenanceActions
+
       struct Filter
         include JSON::Serializable
 
         # The name of the filter. Filter names are case-sensitive.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # One or more filter values. Filter values are case-sensitive.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -11812,66 +13525,81 @@ module AwsSdk
       end
 
       # A data type representing an Aurora global database.
+
       struct GlobalCluster
         include JSON::Serializable
 
         # The default database name within the new global database cluster.
+
         @[JSON::Field(key: "DatabaseName")]
         getter database_name : String?
 
         # The deletion protection setting for the new global database cluster.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
         # The writer endpoint for the new global database cluster. This endpoint always points to the writer
         # DB instance in the current primary cluster.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The Aurora database engine used by the global database cluster.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The lifecycle type for the global cluster. For more information, see CreateGlobalCluster.
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # Indicates the database engine version.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # A data object containing all properties for the current state of an in-process or pending switchover
         # or failover process for this global cluster (Aurora global database). This object is empty unless
         # the SwitchoverGlobalCluster or FailoverGlobalCluster operation was called on this global cluster.
+
         @[JSON::Field(key: "FailoverState")]
         getter failover_state : Types::FailoverState?
 
         # The Amazon Resource Name (ARN) for the global database cluster.
+
         @[JSON::Field(key: "GlobalClusterArn")]
         getter global_cluster_arn : String?
 
         # Contains a user-supplied global database cluster identifier. This identifier is the unique key that
         # identifies a global database cluster.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String?
 
         # The list of primary and secondary clusters within the global database cluster.
+
         @[JSON::Field(key: "GlobalClusterMembers")]
         getter global_cluster_members : Array(Types::GlobalClusterMember)?
 
         # The Amazon Web Services partition -unique, immutable identifier for the global database cluster.
         # This identifier is found in Amazon Web Services CloudTrail log entries whenever the Amazon Web
         # Services KMS key for the DB cluster is accessed.
+
         @[JSON::Field(key: "GlobalClusterResourceId")]
         getter global_cluster_resource_id : String?
 
         # Specifies the current state of this global database cluster.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The storage encryption setting for the global database cluster.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
@@ -11897,6 +13625,7 @@ module AwsSdk
 
       # The GlobalClusterIdentifier already exists. Specify a new global database identifier (unique name)
       # to create a new global database cluster or to rename an existing one.
+
       struct GlobalClusterAlreadyExistsFault
         include JSON::Serializable
 
@@ -11906,28 +13635,34 @@ module AwsSdk
 
       # A data structure with information about any primary and secondary clusters associated with a global
       # cluster (Aurora global database).
+
       struct GlobalClusterMember
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for each Aurora DB cluster in the global cluster.
+
         @[JSON::Field(key: "DBClusterArn")]
         getter db_cluster_arn : String?
 
         # The status of write forwarding for a secondary cluster in the global cluster.
+
         @[JSON::Field(key: "GlobalWriteForwardingStatus")]
         getter global_write_forwarding_status : String?
 
         # Indicates whether the Aurora DB cluster is the primary cluster (that is, has read-write capability)
         # for the global cluster with which it is associated.
+
         @[JSON::Field(key: "IsWriter")]
         getter is_writer : Bool?
 
         # The Amazon Resource Name (ARN) for each read-only secondary cluster associated with the global
         # cluster.
+
         @[JSON::Field(key: "Readers")]
         getter readers : Array(String)?
 
         # The status of synchronization of each Aurora DB cluster in the global cluster.
+
         @[JSON::Field(key: "SynchronizationStatus")]
         getter synchronization_status : String?
 
@@ -11942,6 +13677,7 @@ module AwsSdk
       end
 
       # The GlobalClusterIdentifier doesn't refer to an existing global database cluster.
+
       struct GlobalClusterNotFoundFault
         include JSON::Serializable
 
@@ -11950,6 +13686,7 @@ module AwsSdk
       end
 
       # The number of global database clusters for this account is already at the maximum allowed.
+
       struct GlobalClusterQuotaExceededFault
         include JSON::Serializable
 
@@ -11957,16 +13694,19 @@ module AwsSdk
         end
       end
 
+
       struct GlobalClustersMessage
         include JSON::Serializable
 
         # The list of global clusters returned by this request.
+
         @[JSON::Field(key: "GlobalClusters")]
         getter global_clusters : Array(Types::GlobalCluster)?
 
         # An optional pagination token provided by a previous DescribeGlobalClusters request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
@@ -11978,14 +13718,17 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the DescribeDBSecurityGroups action.
+
       struct IPRange
         include JSON::Serializable
 
         # The IP range.
+
         @[JSON::Field(key: "CIDRIP")]
         getter cidrip : String?
 
         # The status of the IP range. Status can be "authorizing", "authorized", "revoking", and "revoked".
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -11997,6 +13740,7 @@ module AwsSdk
       end
 
       # The IAM role requires additional permissions to export to an Amazon S3 bucket.
+
       struct IamRoleMissingPermissionsFault
         include JSON::Serializable
 
@@ -12005,6 +13749,7 @@ module AwsSdk
       end
 
       # The IAM role is missing for exporting to an Amazon S3 bucket.
+
       struct IamRoleNotFoundFault
         include JSON::Serializable
 
@@ -12013,6 +13758,7 @@ module AwsSdk
       end
 
       # The request would result in the user exceeding the allowed number of DB instances.
+
       struct InstanceQuotaExceededFault
         include JSON::Serializable
 
@@ -12023,6 +13769,7 @@ module AwsSdk
       # The requested operation can't be performed because there aren't enough available IP addresses in the
       # proxy's subnets. Add more CIDR blocks to the VPC or remove IP address that aren't required from the
       # subnets.
+
       struct InsufficientAvailableIPsInSubnetFault
         include JSON::Serializable
 
@@ -12031,6 +13778,7 @@ module AwsSdk
       end
 
       # The DB cluster doesn't have enough capacity for the current operation.
+
       struct InsufficientDBClusterCapacityFault
         include JSON::Serializable
 
@@ -12039,6 +13787,7 @@ module AwsSdk
       end
 
       # The specified DB instance class isn't available in the specified Availability Zone.
+
       struct InsufficientDBInstanceCapacityFault
         include JSON::Serializable
 
@@ -12049,6 +13798,7 @@ module AwsSdk
       # There is insufficient storage available for the current action. You might be able to resolve this
       # error by updating your subnet group to use different Availability Zones that have more storage
       # available.
+
       struct InsufficientStorageClusterCapacityFault
         include JSON::Serializable
 
@@ -12057,56 +13807,69 @@ module AwsSdk
       end
 
       # A zero-ETL integration with Amazon Redshift.
+
       struct Integration
         include JSON::Serializable
 
         # The encryption context for the integration. For more information, see Encryption context in the
         # Amazon Web Services Key Management Service Developer Guide .
+
         @[JSON::Field(key: "AdditionalEncryptionContext")]
         getter additional_encryption_context : Hash(String, String)?
 
         # The time when the integration was created, in Universal Coordinated Time (UTC).
+
         @[JSON::Field(key: "CreateTime")]
         getter create_time : Time?
 
         # Data filters for the integration. These filters determine which tables from the source database are
         # sent to the target Amazon Redshift data warehouse.
+
         @[JSON::Field(key: "DataFilter")]
         getter data_filter : String?
 
         # A description of the integration.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Any errors associated with the integration.
+
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::IntegrationError)?
 
         # The ARN of the integration.
+
         @[JSON::Field(key: "IntegrationArn")]
         getter integration_arn : String?
 
         # The name of the integration.
+
         @[JSON::Field(key: "IntegrationName")]
         getter integration_name : String?
 
         # The Amazon Web Services Key Management System (Amazon Web Services KMS) key identifier for the key
         # used to to encrypt the integration.
+
         @[JSON::Field(key: "KMSKeyId")]
         getter kms_key_id : String?
 
         # The Amazon Resource Name (ARN) of the database used as the source for replication.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String?
 
         # The current status of the integration.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The ARN of the Redshift data warehouse used as the target for replication.
+
         @[JSON::Field(key: "TargetArn")]
         getter target_arn : String?
 
@@ -12128,6 +13891,7 @@ module AwsSdk
       end
 
       # The integration you are trying to create already exists.
+
       struct IntegrationAlreadyExistsFault
         include JSON::Serializable
 
@@ -12138,6 +13902,7 @@ module AwsSdk
       # A conflicting conditional operation is currently in progress against this resource. Typically occurs
       # when there are multiple requests being made to the same resource at the same time, and these
       # requests conflict with each other.
+
       struct IntegrationConflictOperationFault
         include JSON::Serializable
 
@@ -12146,14 +13911,17 @@ module AwsSdk
       end
 
       # An error associated with a zero-ETL integration with Amazon Redshift.
+
       struct IntegrationError
         include JSON::Serializable
 
         # The error code associated with the integration.
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String
 
         # A message explaining the error.
+
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
@@ -12165,6 +13933,7 @@ module AwsSdk
       end
 
       # The specified integration could not be found.
+
       struct IntegrationNotFoundFault
         include JSON::Serializable
 
@@ -12173,6 +13942,7 @@ module AwsSdk
       end
 
       # You can't crate any more zero-ETL integrations because the quota has been reached.
+
       struct IntegrationQuotaExceededFault
         include JSON::Serializable
 
@@ -12182,6 +13952,7 @@ module AwsSdk
 
       # The blue/green deployment can't be switched over or deleted because there is an invalid
       # configuration in the green environment.
+
       struct InvalidBlueGreenDeploymentStateFault
         include JSON::Serializable
 
@@ -12190,6 +13961,7 @@ module AwsSdk
       end
 
       # You can't delete the CEV.
+
       struct InvalidCustomDBEngineVersionStateFault
         include JSON::Serializable
 
@@ -12199,6 +13971,7 @@ module AwsSdk
 
       # The automated backup is in an invalid state. For example, this automated backup is associated with
       # an active cluster.
+
       struct InvalidDBClusterAutomatedBackupStateFault
         include JSON::Serializable
 
@@ -12208,6 +13981,7 @@ module AwsSdk
 
       # Capacity isn't a valid Aurora Serverless DB cluster capacity. Valid capacity values are 2 , 4 , 8 ,
       # 16 , 32 , 64 , 128 , and 256 .
+
       struct InvalidDBClusterCapacityFault
         include JSON::Serializable
 
@@ -12216,6 +13990,7 @@ module AwsSdk
       end
 
       # The requested operation can't be performed on the endpoint while the endpoint is in this state.
+
       struct InvalidDBClusterEndpointStateFault
         include JSON::Serializable
 
@@ -12224,6 +13999,7 @@ module AwsSdk
       end
 
       # The supplied value isn't a valid DB cluster snapshot state.
+
       struct InvalidDBClusterSnapshotStateFault
         include JSON::Serializable
 
@@ -12232,6 +14008,7 @@ module AwsSdk
       end
 
       # The requested operation can't be performed while the cluster is in this state.
+
       struct InvalidDBClusterStateFault
         include JSON::Serializable
 
@@ -12241,6 +14018,7 @@ module AwsSdk
 
       # The automated backup is in an invalid state. For example, this automated backup is associated with
       # an active instance.
+
       struct InvalidDBInstanceAutomatedBackupStateFault
         include JSON::Serializable
 
@@ -12249,6 +14027,7 @@ module AwsSdk
       end
 
       # The DB instance isn't in a valid state.
+
       struct InvalidDBInstanceStateFault
         include JSON::Serializable
 
@@ -12258,6 +14037,7 @@ module AwsSdk
 
       # The DB parameter group is in use or is in an invalid state. If you are attempting to delete the
       # parameter group, you can't delete it when the parameter group is in this state.
+
       struct InvalidDBParameterGroupStateFault
         include JSON::Serializable
 
@@ -12266,6 +14046,7 @@ module AwsSdk
       end
 
       # You can't perform this operation while the DB proxy endpoint is in a particular state.
+
       struct InvalidDBProxyEndpointStateFault
         include JSON::Serializable
 
@@ -12274,6 +14055,7 @@ module AwsSdk
       end
 
       # The requested operation can't be performed while the proxy is in this state.
+
       struct InvalidDBProxyStateFault
         include JSON::Serializable
 
@@ -12282,6 +14064,7 @@ module AwsSdk
       end
 
       # The state of the DB security group doesn't allow deletion.
+
       struct InvalidDBSecurityGroupStateFault
         include JSON::Serializable
 
@@ -12290,6 +14073,7 @@ module AwsSdk
       end
 
       # The DB shard group must be in the available state.
+
       struct InvalidDBShardGroupStateFault
         include JSON::Serializable
 
@@ -12298,6 +14082,7 @@ module AwsSdk
       end
 
       # The state of the DB snapshot doesn't allow deletion.
+
       struct InvalidDBSnapshotStateFault
         include JSON::Serializable
 
@@ -12307,6 +14092,7 @@ module AwsSdk
 
       # The DBSubnetGroup doesn't belong to the same VPC as that of an existing cross-region read replica of
       # the same source instance.
+
       struct InvalidDBSubnetGroupFault
         include JSON::Serializable
 
@@ -12315,6 +14101,7 @@ module AwsSdk
       end
 
       # The DB subnet group cannot be deleted because it's in use.
+
       struct InvalidDBSubnetGroupStateFault
         include JSON::Serializable
 
@@ -12323,6 +14110,7 @@ module AwsSdk
       end
 
       # The DB subnet isn't in the available state.
+
       struct InvalidDBSubnetStateFault
         include JSON::Serializable
 
@@ -12331,6 +14119,7 @@ module AwsSdk
       end
 
       # This error can occur if someone else is modifying a subscription. You should retry the action.
+
       struct InvalidEventSubscriptionStateFault
         include JSON::Serializable
 
@@ -12339,6 +14128,7 @@ module AwsSdk
       end
 
       # The export is invalid for exporting to an Amazon S3 bucket.
+
       struct InvalidExportOnlyFault
         include JSON::Serializable
 
@@ -12347,6 +14137,7 @@ module AwsSdk
       end
 
       # The state of the export snapshot is invalid for exporting to an Amazon S3 bucket.
+
       struct InvalidExportSourceStateFault
         include JSON::Serializable
 
@@ -12355,6 +14146,7 @@ module AwsSdk
       end
 
       # You can't cancel an export task that has completed.
+
       struct InvalidExportTaskStateFault
         include JSON::Serializable
 
@@ -12363,6 +14155,7 @@ module AwsSdk
       end
 
       # The global cluster is in an invalid state and can't perform the requested operation.
+
       struct InvalidGlobalClusterStateFault
         include JSON::Serializable
 
@@ -12371,6 +14164,7 @@ module AwsSdk
       end
 
       # The integration is in an invalid state and can't perform the requested operation.
+
       struct InvalidIntegrationStateFault
         include JSON::Serializable
 
@@ -12379,6 +14173,7 @@ module AwsSdk
       end
 
       # The option group isn't in the available state.
+
       struct InvalidOptionGroupStateFault
         include JSON::Serializable
 
@@ -12387,6 +14182,7 @@ module AwsSdk
       end
 
       # The operation can't be performed because another operation is in progress.
+
       struct InvalidResourceStateFault
         include JSON::Serializable
 
@@ -12395,6 +14191,7 @@ module AwsSdk
       end
 
       # Cannot restore from VPC backup to non-VPC DB instance.
+
       struct InvalidRestoreFault
         include JSON::Serializable
 
@@ -12405,6 +14202,7 @@ module AwsSdk
       # The specified Amazon S3 bucket name can't be found or Amazon RDS isn't authorized to access the
       # specified Amazon S3 bucket. Verify the SourceS3BucketName and S3IngestionRoleArn values and try
       # again.
+
       struct InvalidS3BucketFault
         include JSON::Serializable
 
@@ -12414,6 +14212,7 @@ module AwsSdk
 
       # The requested subnet is invalid, or multiple subnets were requested that are not all in a common
       # VPC.
+
       struct InvalidSubnet
         include JSON::Serializable
 
@@ -12423,6 +14222,7 @@ module AwsSdk
 
       # The DB subnet group doesn't cover all Availability Zones after it's created because of users'
       # change.
+
       struct InvalidVPCNetworkStateFault
         include JSON::Serializable
 
@@ -12431,10 +14231,12 @@ module AwsSdk
       end
 
       # The details of an issue with your DB instances, DB clusters, and DB parameter groups.
+
       struct IssueDetails
         include JSON::Serializable
 
         # A detailed description of the issue when the recommendation category is performance .
+
         @[JSON::Field(key: "PerformanceIssueDetails")]
         getter performance_issue_details : Types::PerformanceIssueDetails?
 
@@ -12445,6 +14247,7 @@ module AwsSdk
       end
 
       # An error occurred accessing an Amazon Web Services KMS key.
+
       struct KMSKeyNotAccessibleFault
         include JSON::Serializable
 
@@ -12453,14 +14256,17 @@ module AwsSdk
       end
 
       # Contains details for Aurora Limitless Database.
+
       struct LimitlessDatabase
         include JSON::Serializable
 
         # The minimum required capacity for Aurora Limitless Database in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MinRequiredACU")]
         getter min_required_acu : Float64?
 
         # The status of Aurora Limitless Database.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -12471,16 +14277,19 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceMessage
         include JSON::Serializable
 
         # The Amazon RDS resource with tags to be listed. This value is an Amazon Resource Name (ARN). For
         # information about creating an ARN, see Constructing an ARN for Amazon RDS in the Amazon RDS User
         # Guide .
+
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String
 
         # This parameter isn't currently supported.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
@@ -12495,14 +14304,17 @@ module AwsSdk
       # password. For more information, see Password management with Amazon Web Services Secrets Manager in
       # the Amazon RDS User Guide and Password management with Amazon Web Services Secrets Manager in the
       # Amazon Aurora User Guide.
+
       struct MasterUserSecret
         include JSON::Serializable
 
         # The Amazon Web Services KMS key identifier that is used to encrypt the secret.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The Amazon Resource Name (ARN) of the secret.
+
         @[JSON::Field(key: "SecretArn")]
         getter secret_arn : String?
 
@@ -12514,6 +14326,7 @@ module AwsSdk
         # can correct the condition that caused the status. Alternatively, modify the DB instance to turn off
         # automatic management of database credentials, and then modify the DB instance again to turn on
         # automatic management of database credentials.
+
         @[JSON::Field(key: "SecretStatus")]
         getter secret_status : String?
 
@@ -12527,6 +14340,7 @@ module AwsSdk
 
       # The maximum number of DB shard groups for your Amazon Web Services account in the specified Amazon
       # Web Services Region has been reached.
+
       struct MaxDBShardGroupLimitReached
         include JSON::Serializable
 
@@ -12535,22 +14349,27 @@ module AwsSdk
       end
 
       # The representation of a metric.
+
       struct Metric
         include JSON::Serializable
 
         # The query to retrieve metric data points.
+
         @[JSON::Field(key: "MetricQuery")]
         getter metric_query : Types::MetricQuery?
 
         # The name of a metric.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A list of metric references (thresholds).
+
         @[JSON::Field(key: "References")]
         getter references : Array(Types::MetricReference)?
 
         # The details of different statistics for a metric. The description might contain markdown.
+
         @[JSON::Field(key: "StatisticsDetails")]
         getter statistics_details : String?
 
@@ -12564,10 +14383,12 @@ module AwsSdk
       end
 
       # The query to retrieve metric data points.
+
       struct MetricQuery
         include JSON::Serializable
 
         # The Performance Insights query that you can use to retrieve Performance Insights metric data points.
+
         @[JSON::Field(key: "PerformanceInsightsMetricQuery")]
         getter performance_insights_metric_query : Types::PerformanceInsightsMetricQuery?
 
@@ -12578,14 +14399,17 @@ module AwsSdk
       end
 
       # The reference (threshold) for a metric.
+
       struct MetricReference
         include JSON::Serializable
 
         # The name of the metric reference.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The details of a performance issue.
+
         @[JSON::Field(key: "ReferenceDetails")]
         getter reference_details : Types::ReferenceDetails?
 
@@ -12597,14 +14421,17 @@ module AwsSdk
       end
 
       # The minimum DB engine version required for each corresponding allowed value for an option setting.
+
       struct MinimumEngineVersionPerAllowedValue
         include JSON::Serializable
 
         # The allowed value for an option setting.
+
         @[JSON::Field(key: "AllowedValue")]
         getter allowed_value : String?
 
         # The minimum DB engine version required for the allowed value.
+
         @[JSON::Field(key: "MinimumEngineVersion")]
         getter minimum_engine_version : String?
 
@@ -12615,16 +14442,19 @@ module AwsSdk
         end
       end
 
+
       struct ModifyActivityStreamRequest
         include JSON::Serializable
 
         # The audit policy state. When a policy is unlocked, it is read/write. When it is locked, it is
         # read-only. You can edit your audit policy only when the activity stream is unlocked or stopped.
+
         @[JSON::Field(key: "AuditPolicyState")]
         getter audit_policy_state : String?
 
         # The Amazon Resource Name (ARN) of the RDS for Oracle or Microsoft SQL Server DB instance. For
         # example, arn:aws:rds:us-east-1:12345667890:db:my-orcl-db .
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String?
 
@@ -12635,31 +14465,38 @@ module AwsSdk
         end
       end
 
+
       struct ModifyActivityStreamResponse
         include JSON::Serializable
 
         # Indicates whether engine-native audit fields are included in the database activity stream.
+
         @[JSON::Field(key: "EngineNativeAuditFieldsIncluded")]
         getter engine_native_audit_fields_included : Bool?
 
         # The name of the Amazon Kinesis data stream to be used for the database activity stream.
+
         @[JSON::Field(key: "KinesisStreamName")]
         getter kinesis_stream_name : String?
 
         # The Amazon Web Services KMS key identifier for encryption of messages in the database activity
         # stream.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The mode of the database activity stream.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String?
 
         # The status of the modification to the policy state of the database activity stream.
+
         @[JSON::Field(key: "PolicyStatus")]
         getter policy_status : String?
 
         # The status of the modification to the database activity stream.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -12675,41 +14512,49 @@ module AwsSdk
       end
 
       # Contains details about the modification of an additional storage volume.
+
       struct ModifyAdditionalStorageVolume
         include JSON::Serializable
 
         # The name of the additional storage volume that you want to modify. Valid Values: RDSDBDATA2 |
         # RDSDBDATA3 | RDSDBDATA4
+
         @[JSON::Field(key: "VolumeName")]
         getter volume_name : String
 
         # The amount of storage allocated for the additional storage volume, in gibibytes (GiB). The minimum
         # is 20 GiB. The maximum is 65,536 GiB (64 TiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The number of I/O operations per second (IOPS) provisioned for the additional storage volume. This
         # setting is only supported for Provisioned IOPS SSD ( io1 and io2 ) storage types.
+
         @[JSON::Field(key: "IOPS")]
         getter iops : Int32?
 
         # The upper limit in gibibytes (GiB) to which RDS can automatically scale the storage of the
         # additional storage volume. You must provide a value greater than or equal to AllocatedStorage .
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
         # Indicates whether to delete the additional storage volume. The value true schedules the volume for
         # deletion. You can delete an additional storage volume only when it doesn't contain database files or
         # other data.
+
         @[JSON::Field(key: "SetForDelete")]
         getter set_for_delete : Bool?
 
         # The storage throughput value for the additional storage volume, in mebibytes per second (MiBps).
         # This setting applies only to the General Purpose SSD ( gp3 ) storage type.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The new storage type for the additional storage volume. Valid Values: GP3 | IO2
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
@@ -12725,16 +14570,19 @@ module AwsSdk
         end
       end
 
+
       struct ModifyCertificatesMessage
         include JSON::Serializable
 
         # The new default certificate identifier to override the current one with. To determine the valid
         # values, use the describe-certificates CLI command or the DescribeCertificates API operation.
+
         @[JSON::Field(key: "CertificateIdentifier")]
         getter certificate_identifier : String?
 
         # Specifies whether to remove the override for the default certificate. If the override is removed,
         # the default certificate is the system default.
+
         @[JSON::Field(key: "RemoveCustomerOverride")]
         getter remove_customer_override : Bool?
 
@@ -12745,8 +14593,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyCertificatesResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Certificate")]
         getter certificate : Types::Certificate?
@@ -12757,11 +14607,13 @@ module AwsSdk
         end
       end
 
+
       struct ModifyCurrentDBClusterCapacityMessage
         include JSON::Serializable
 
         # The DB cluster identifier for the cluster being modified. This parameter isn't case-sensitive.
         # Constraints: Must match the identifier of an existing DB cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
@@ -12769,12 +14621,14 @@ module AwsSdk
         # it automatically resumes. Constraints: For Aurora MySQL, valid capacity values are 1 , 2 , 4 , 8 ,
         # 16 , 32 , 64 , 128 , and 256 . For Aurora PostgreSQL, valid capacity values are 2 , 4 , 8 , 16 , 32
         # , 64 , 192 , and 384 .
+
         @[JSON::Field(key: "Capacity")]
         getter capacity : Int32?
 
         # The amount of time, in seconds, that Aurora Serverless v1 tries to find a scaling point to perform
         # seamless scaling before enforcing the timeout action. The default is 300. Specify a value between 10
         # and 600 seconds.
+
         @[JSON::Field(key: "SecondsBeforeTimeout")]
         getter seconds_before_timeout : Int32?
 
@@ -12782,6 +14636,7 @@ module AwsSdk
         # RollbackCapacityChange . ForceApplyCapacityChange , the default, sets the capacity to the specified
         # value as soon as possible. RollbackCapacityChange ignores the capacity change if a scaling point
         # isn't found in the timeout period.
+
         @[JSON::Field(key: "TimeoutAction")]
         getter timeout_action : String?
 
@@ -12794,6 +14649,7 @@ module AwsSdk
         end
       end
 
+
       struct ModifyCustomDBEngineVersionMessage
         include JSON::Serializable
 
@@ -12801,16 +14657,19 @@ module AwsSdk
         # custom-oracle-ee-cdb custom-oracle-se2 custom-oracle-se2-cdb RDS Custom for SQL Server supports the
         # following values: custom-sqlserver-ee custom-sqlserver-se ccustom-sqlserver-web custom-sqlserver-dev
         # RDS for SQL Server supports only sqlserver-dev-ee .
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
         # The custom engine version (CEV) that you want to modify. This option is required for RDS Custom for
         # Oracle, but optional for Amazon RDS. The combination of Engine and EngineVersion is unique per
         # customer per Amazon Web Services Region.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String
 
         # An optional description of your CEV.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -12822,6 +14681,7 @@ module AwsSdk
         # change the status of your CEV from available to inactive , and from inactive back to available . To
         # change the availability status of the CEV, it must not currently be in use by an RDS Custom
         # instance, snapshot, or automated backup.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -12834,24 +14694,29 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBClusterEndpointMessage
         include JSON::Serializable
 
         # The identifier of the endpoint to modify. This parameter is stored as a lowercase string.
+
         @[JSON::Field(key: "DBClusterEndpointIdentifier")]
         getter db_cluster_endpoint_identifier : String
 
         # The type of the endpoint. One of: READER , WRITER , ANY .
+
         @[JSON::Field(key: "EndpointType")]
         getter endpoint_type : String?
 
         # List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible
         # instances are reachable through the custom endpoint. Only relevant if the list of static members is
         # empty.
+
         @[JSON::Field(key: "ExcludedMembers")]
         getter excluded_members : Array(String)?
 
         # List of DB instance identifiers that are part of the custom endpoint group.
+
         @[JSON::Field(key: "StaticMembers")]
         getter static_members : Array(String)?
 
@@ -12864,29 +14729,34 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBClusterMessage
         include JSON::Serializable
 
         # The DB cluster identifier for the cluster being modified. This parameter isn't case-sensitive. Valid
         # for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Constraints: Must match the identifier
         # of an existing DB cluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The amount of storage in gibibytes (GiB) to allocate to each DB instance in the Multi-AZ DB cluster.
         # Valid for Cluster Type: Multi-AZ DB clusters only
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # Specifies whether engine mode changes from serverless to provisioned are allowed. Valid for Cluster
         # Type: Aurora Serverless v1 DB clusters only Constraints: You must allow engine mode changes when
         # specifying a different value for the EngineMode parameter from the DB cluster's current engine mode.
+
         @[JSON::Field(key: "AllowEngineModeChange")]
         getter allow_engine_mode_change : Bool?
 
         # Specifies whether major version upgrades are allowed. Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters Constraints: You must allow major version upgrades when specifying a value for
         # the EngineVersion parameter that is a different major version than the DB cluster's current version.
+
         @[JSON::Field(key: "AllowMajorVersionUpgrade")]
         getter allow_major_version_upgrade : Bool?
 
@@ -12897,6 +14767,7 @@ module AwsSdk
         # modifications, such as turning on deletion protection and changing the master password, are applied
         # immediately—regardless of when you choose to apply them. By default, this parameter is disabled.
         # Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "ApplyImmediately")]
         getter apply_immediately : Bool?
 
@@ -12904,28 +14775,33 @@ module AwsSdk
         # maintenance window. By default, minor engine upgrades are applied automatically. Valid for Cluster
         # Type: Aurora DB clusters and Multi-AZ DB clusters. For more information about automatic minor
         # version upgrades, see Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup.
+
         @[JSON::Field(key: "AwsBackupRecoveryPointArn")]
         getter aws_backup_recovery_point_arn : String?
 
         # The target backtrack window, in seconds. To disable backtracking, set this value to 0 . Valid for
         # Cluster Type: Aurora MySQL DB clusters only Default: 0 Constraints: If specified, this value must be
         # set to a number from 0 to 259,200 (72 hours).
+
         @[JSON::Field(key: "BacktrackWindow")]
         getter backtrack_window : Int64?
 
         # The number of days for which automated backups are retained. Specify a minimum value of 1 . Valid
         # for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Default: 1 Constraints: Must be a
         # value from 1 to 35.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The CA certificate identifier to use for the DB cluster's server certificate. For more information,
         # see Using SSL/TLS to encrypt a connection to a DB instance in the Amazon RDS User Guide . Valid for
         # Cluster Type: Multi-AZ DB clusters
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
@@ -12938,11 +14814,13 @@ module AwsSdk
         # Publishing Database Logs to Amazon CloudWatch Logs in the Amazon RDS User Guide . For more
         # information about exporting CloudWatch Logs for Amazon Aurora, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CloudwatchLogsExportConfiguration")]
         getter cloudwatch_logs_export_configuration : Types::CloudwatchLogsExportConfiguration?
 
         # Specifies whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
         # is not to copy them. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -12951,11 +14829,13 @@ module AwsSdk
         # for all database engines. For the full list of DB instance classes and availability for your engine,
         # see DB Instance Class in the Amazon RDS User Guide . Valid for Cluster Type: Multi-AZ DB clusters
         # only
+
         @[JSON::Field(key: "DBClusterInstanceClass")]
         getter db_cluster_instance_class : String?
 
         # The name of the DB cluster parameter group to use for the DB cluster. Valid for Cluster Type: Aurora
         # DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
@@ -12966,6 +14846,7 @@ module AwsSdk
         # setting Constraints: The DB parameter group must be in the same DB parameter group family as this DB
         # cluster. The DBInstanceParameterGroupName parameter is valid in combination with the
         # AllowMajorVersionUpgrade parameter for a major version upgrade only.
+
         @[JSON::Field(key: "DBInstanceParameterGroupName")]
         getter db_instance_parameter_group_name : String?
 
@@ -12974,12 +14855,14 @@ module AwsSdk
         # PerformanceInsightsRetentionPeriod parameter to 465. If you change the value from advanced to
         # standard , you can set the PerformanceInsightsEnabled parameter to true to collect detailed database
         # counter and per-query metrics. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # Specifies whether the DB cluster has deletion protection enabled. The database can't be deleted when
         # deletion protection is enabled. By default, deletion protection isn't enabled. Valid for Cluster
         # Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -12987,11 +14870,13 @@ module AwsSdk
         # its current domain. The domain must be created prior to this operation. For more information, see
         # Kerberos Authentication in the Amazon Aurora User Guide . Valid for Cluster Type: Aurora DB clusters
         # only
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. Valid for Cluster
         # Type: Aurora DB clusters only
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
@@ -13003,6 +14888,7 @@ module AwsSdk
         # replicated back to this cluster. For the primary DB cluster of an Aurora global database, this value
         # is used immediately if the primary is demoted by a global cluster API operation, but it does nothing
         # until then. Valid for Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "EnableGlobalWriteForwarding")]
         getter enable_global_write_forwarding : Bool?
 
@@ -13014,6 +14900,7 @@ module AwsSdk
         # Aurora Serverless v1 DB clusters. To enable or disable the HTTP endpoint for an Aurora Serverless v2
         # or provisioned DB cluster, use the EnableHttpEndpoint and DisableHttpEndpoint operations. Valid for
         # Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "EnableHttpEndpoint")]
         getter enable_http_endpoint : Bool?
 
@@ -13022,30 +14909,35 @@ module AwsSdk
         # Database Authentication in the Amazon Aurora User Guide or IAM database authentication for MariaDB,
         # MySQL, and PostgreSQL in the Amazon RDS User Guide . Valid for Cluster Type: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to enable Aurora Limitless Database. You must enable Aurora Limitless Database to
         # create a DB shard group. Valid for: Aurora DB clusters only This setting is no longer used. Instead
         # use the ClusterScalabilityType setting when you create your Aurora Limitless Database DB cluster.
+
         @[JSON::Field(key: "EnableLimitlessDatabase")]
         getter enable_limitless_database : Bool?
 
         # Specifies whether read replicas can forward write operations to the writer DB instance in the DB
         # cluster. By default, write operations aren't allowed on reader DB instances. Valid for: Aurora DB
         # clusters only
+
         @[JSON::Field(key: "EnableLocalWriteForwarding")]
         getter enable_local_write_forwarding : Bool?
 
         # Specifies whether to turn on Performance Insights for the DB cluster. For more information, see
         # Using Amazon Performance Insights in the Amazon RDS User Guide . Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
         # The DB engine mode of the DB cluster, either provisioned or serverless . The DB engine mode can be
         # modified only from serverless to provisioned . For more information, see CreateDBCluster . Valid for
         # Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
@@ -13062,6 +14954,7 @@ module AwsSdk
         # the available engine versions for RDS for PostgreSQL, use the following command: aws rds
         # describe-db-engine-versions --engine postgres --query "DBEngineVersions[].EngineVersion" Valid for
         # Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -13069,6 +14962,7 @@ module AwsSdk
         # each DB instance in the Multi-AZ DB cluster. For information about valid IOPS values, see Amazon RDS
         # Provisioned IOPS storage in the Amazon RDS User Guide . Valid for Cluster Type: Multi-AZ DB clusters
         # only Constraints: Must be a multiple between .5 and 50 of the storage amount for the DB cluster.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -13082,6 +14976,7 @@ module AwsSdk
         # Amazon Web Services Secrets Manager in the Amazon RDS User Guide and Password management with Amazon
         # Web Services Secrets Manager in the Amazon Aurora User Guide. Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -13090,6 +14985,7 @@ module AwsSdk
         # values: password - Use standard database authentication with a password. iam-db-auth - Use IAM
         # database authentication for the master user. Valid for Cluster Type: Aurora DB clusters and Multi-AZ
         # DB clusters This option is only valid for RDS for PostgreSQL and Aurora PostgreSQL engines.
+
         @[JSON::Field(key: "MasterUserAuthenticationType")]
         getter master_user_authentication_type : String?
 
@@ -13097,6 +14993,7 @@ module AwsSdk
         # Multi-AZ DB clusters Constraints: Must contain from 8 to 41 characters. Can contain any printable
         # ASCII character except "/", """, or "@". Can't be specified if ManageMasterUserPassword is turned
         # on.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -13114,6 +15011,7 @@ module AwsSdk
         # account, specify the key ARN or alias ARN. There is a default KMS key for your Amazon Web Services
         # account. Your Amazon Web Services account has a different default KMS key for each Amazon Web
         # Services Region. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
@@ -13121,6 +15019,7 @@ module AwsSdk
         # cluster. To turn off collecting Enhanced Monitoring metrics, specify 0 . If MonitoringRoleArn is
         # specified, also set MonitoringInterval to a value other than 0 . Valid for Cluster Type: Multi-AZ DB
         # clusters only Valid Values: 0 | 1 | 5 | 10 | 15 | 30 | 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
@@ -13129,6 +15028,7 @@ module AwsSdk
         # creating a monitoring role, see To create an IAM role for Amazon RDS Enhanced Monitoring in the
         # Amazon RDS User Guide. If MonitoringInterval is set to a value other than 0 , supply a
         # MonitoringRoleArn value. Valid for Cluster Type: Multi-AZ DB clusters only
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
@@ -13136,6 +15036,7 @@ module AwsSdk
         # for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon
         # Aurora User Guide. Valid for Cluster Type: Aurora DB clusters only Valid Values: IPV4 | DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
@@ -13143,11 +15044,13 @@ module AwsSdk
         # a lowercase string. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Constraints:
         # Must contain from 1 to 63 letters, numbers, or hyphens. The first character must be a letter. Can't
         # end with a hyphen or contain two consecutive hyphens. Example: my-cluster2
+
         @[JSON::Field(key: "NewDBClusterIdentifier")]
         getter new_db_cluster_identifier : String?
 
         # The option group to associate the DB cluster with. DB clusters are associated with a default option
         # group that can't be modified.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -13157,6 +15060,7 @@ module AwsSdk
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region. Valid for Cluster Type:
         # Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -13164,11 +15068,13 @@ module AwsSdk
         # and Multi-AZ DB clusters Valid Values: 7 month * 31, where month is a number of months from 1-23.
         # Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days If you
         # specify a retention period that isn't valid, such as 94 , Amazon RDS issues an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port number on which the DB cluster accepts connections. Valid for Cluster Type: Aurora DB
         # clusters only Valid Values: 1150-65535 Default: The same port as the original DB cluster.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -13179,6 +15085,7 @@ module AwsSdk
         # Multi-AZ DB clusters Constraints: Must be in the format hh24:mi-hh24:mi . Must be in Universal
         # Coordinated Time (UTC). Must not conflict with the preferred maintenance window. Must be at least 30
         # minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
@@ -13189,6 +15096,7 @@ module AwsSdk
         # Preferred DB Cluster Maintenance Window in the Amazon Aurora User Guide . Constraints: Must be in
         # the format ddd:hh24:mi-ddd:hh24:mi . Days must be one of Mon | Tue | Wed | Thu | Fri | Sat | Sun .
         # Must be in Universal Coordinated Time (UTC). Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
@@ -13199,13 +15107,16 @@ module AwsSdk
         # User Guide and Password management with Amazon Web Services Secrets Manager in the Amazon Aurora
         # User Guide. Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Constraints: You
         # must apply the change immediately when rotating the master user password.
+
         @[JSON::Field(key: "RotateMasterUserPassword")]
         getter rotate_master_user_password : Bool?
 
         # The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
         # serverless DB engine mode. Valid for Cluster Type: Aurora DB clusters only
+
         @[JSON::Field(key: "ScalingConfiguration")]
         getter scaling_configuration : Types::ScalingConfiguration?
+
 
         @[JSON::Field(key: "ServerlessV2ScalingConfiguration")]
         getter serverless_v2_scaling_configuration : Types::ServerlessV2ScalingConfiguration?
@@ -13216,11 +15127,13 @@ module AwsSdk
         # a Multi-AZ DB cluster, a value for the Iops parameter is required. Valid for Cluster Type: Aurora DB
         # clusters and Multi-AZ DB clusters Valid Values: Aurora DB clusters - aurora | aurora-iopt1 Multi-AZ
         # DB clusters - io1 | io2 | gp3 Default: Aurora DB clusters - aurora Multi-AZ DB clusters - io1
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # A list of EC2 VPC security groups to associate with this DB cluster. Valid for Cluster Type: Aurora
         # DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -13276,10 +15189,12 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBClusterParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB cluster parameter group to modify.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String
 
@@ -13290,6 +15205,7 @@ module AwsSdk
         # associated with the parameter group. When the application method is pending-reboot , changes to
         # dynamic and static parameters are applied after a reboot without failover to the DB clusters
         # associated with the parameter group.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)
 
@@ -13300,8 +15216,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -13312,6 +15230,7 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBClusterSnapshotAttributeMessage
         include JSON::Serializable
 
@@ -13319,10 +15238,12 @@ module AwsSdk
         # Web Services accounts to copy or restore a manual DB cluster snapshot, set this value to restore .
         # To view the list of attributes available to modify, use the DescribeDBClusterSnapshotAttributes API
         # operation.
+
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The identifier for the DB cluster snapshot to modify the attributes for.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String
 
@@ -13332,6 +15253,7 @@ module AwsSdk
         # cluster snapshot restorable by any Amazon Web Services account. Do not add the all value for any
         # manual DB cluster snapshots that contain private information that you don't want available to all
         # Amazon Web Services accounts.
+
         @[JSON::Field(key: "ValuesToAdd")]
         getter values_to_add : Array(String)?
 
@@ -13341,6 +15263,7 @@ module AwsSdk
         # all to remove authorization for any Amazon Web Services account to copy or restore the DB cluster
         # snapshot. If you specify all , an Amazon Web Services account whose account ID is explicitly added
         # to the restore attribute can still copy or restore a manual DB cluster snapshot.
+
         @[JSON::Field(key: "ValuesToRemove")]
         getter values_to_remove : Array(String)?
 
@@ -13353,8 +15276,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBClusterSnapshotAttributeResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBClusterSnapshotAttributesResult")]
         getter db_cluster_snapshot_attributes_result : Types::DBClusterSnapshotAttributesResult?
@@ -13365,17 +15290,20 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBInstanceMessage
         include JSON::Serializable
 
         # The identifier of DB instance to modify. This value is stored as a lowercase string. Constraints:
         # Must match the identifier of an existing DB instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # A list of additional storage volumes to modify or delete for the DB instance. You can create up to 3
         # additional storage volumes. Additional storage volumes are supported for RDS for Oracle and RDS for
         # SQL Server DB instances only.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::ModifyAdditionalStorageVolume)?
 
@@ -13386,6 +15314,7 @@ module AwsSdk
         # allocated storage for each engine, see CreateDBInstance . Constraints: When you increase the
         # allocated storage for a DB instance that uses Provisioned IOPS ( gp3 , io1 , or io2 storage type),
         # you must also specify the Iops parameter. You can use the current value for Iops .
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
@@ -13394,6 +15323,7 @@ module AwsSdk
         # RDS Custom DB instances. Constraints: Major version upgrades must be allowed when specifying a value
         # for the EngineVersion parameter that's a different major version than the DB instance's current
         # version.
+
         @[JSON::Field(key: "AllowMajorVersionUpgrade")]
         getter allow_major_version_upgrade : Bool?
 
@@ -13405,6 +15335,7 @@ module AwsSdk
         # of parameters in Modifying a DB Instance in the Amazon RDS User Guide to see the impact of enabling
         # or disabling ApplyImmediately for each modified parameter and to determine when the changes are
         # applied.
+
         @[JSON::Field(key: "ApplyImmediately")]
         getter apply_immediately : Bool?
 
@@ -13415,17 +15346,20 @@ module AwsSdk
         # applies the change as soon as possible and doesn't cause an outage. For an RDS Custom DB instance,
         # don't enable this setting. Otherwise, the operation returns an error. For more information about
         # automatic minor version upgrades, see Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The automation mode of the RDS Custom DB instance. If full , the DB instance automates monitoring
         # and instance recovery. If all paused , the instance pauses automation for the duration set by
         # ResumeFullAutomationModeMinutes .
+
         @[JSON::Field(key: "AutomationMode")]
         getter automation_mode : String?
 
         # The Amazon Resource Name (ARN) of the recovery point in Amazon Web Services Backup. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "AwsBackupRecoveryPointArn")]
         getter aws_backup_recovery_point_arn : String?
 
@@ -13439,6 +15373,7 @@ module AwsSdk
         # automated backups is managed by the DB cluster. For more information, see ModifyDBCluster . Default:
         # Uses existing setting Constraints: Must be a value from 0 to 35. Can't be set to 0 if the DB
         # instance is a source to read replicas. Can't be set to 0 for an RDS Custom for Oracle DB instance.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
@@ -13446,6 +15381,7 @@ module AwsSdk
         # apply to RDS Custom DB instances. For more information, see Using SSL/TLS to encrypt a connection to
         # a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
@@ -13458,6 +15394,7 @@ module AwsSdk
         # in the Amazon RDS User Guide. For more information about rotating your SSL/TLS certificate for
         # Aurora DB engines, see Rotating Your SSL/TLS Certificate in the Amazon Aurora User Guide . This
         # setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "CertificateRotationRestart")]
         getter certificate_rotation_restart : Bool?
 
@@ -13471,6 +15408,7 @@ module AwsSdk
         # Publishing Database Logs to Amazon CloudWatch Logs in the Amazon RDS User Guide . For more
         # information about exporting CloudWatch Logs for Amazon Aurora, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CloudwatchLogsExportConfiguration")]
         getter cloudwatch_logs_export_configuration : Types::CloudwatchLogsExportConfiguration?
 
@@ -13478,6 +15416,7 @@ module AwsSdk
         # tags aren't copied. This setting doesn't apply to Amazon Aurora DB instances. Copying tags to
         # snapshots is managed by the DB cluster. Setting this value for an Aurora DB instance has no effect
         # on the DB cluster setting. For more information, see ModifyDBCluster .
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -13493,6 +15432,7 @@ module AwsSdk
         # supported on the specified DB instance class. Otherwise, the operation returns an error. In this
         # case, first run the operation to upgrade the engine version, and then run it again to modify the DB
         # instance class.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
@@ -13504,6 +15444,7 @@ module AwsSdk
         # group, these changes are applied immediately without a reboot. This setting doesn't apply to RDS
         # Custom DB instances. Default: Uses existing setting Constraints: Must be in the same DB parameter
         # group family as the DB instance.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
@@ -13515,12 +15456,14 @@ module AwsSdk
         # Microsoft SQL Server - 1433 RDS for MySQL - 3306 RDS for Oracle - 1521 RDS for PostgreSQL - 5432
         # Constraints: For RDS for Microsoft SQL Server, the value can't be 1234 , 1434 , 3260 , 3343 , 3389 ,
         # 47001 , or 49152-49156 .
+
         @[JSON::Field(key: "DBPortNumber")]
         getter db_port_number : Int32?
 
         # A list of DB security groups to authorize on this DB instance. Changing this setting doesn't result
         # in an outage and the change is asynchronously applied as soon as possible. This setting doesn't
         # apply to RDS Custom DB instances. Constraints: If supplied, must match existing DB security groups.
+
         @[JSON::Field(key: "DBSecurityGroups")]
         getter db_security_groups : Array(String)?
 
@@ -13531,15 +15474,18 @@ module AwsSdk
         # during the next maintenance window, unless you enable ApplyImmediately . This setting doesn't apply
         # to RDS Custom DB instances. Constraints: If supplied, must match existing DB subnet group. Example:
         # mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Specifies the mode of Database Insights to enable for the DB instance. Aurora DB instances inherit
         # this value from the DB cluster, so you can't change this value.
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
@@ -13549,10 +15495,12 @@ module AwsSdk
         # You can enable or disable deletion protection for the DB cluster. For more information, see
         # ModifyDBCluster . DB instances in a DB cluster can be deleted even when deletion protection is
         # enabled for the DB cluster.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
         # Specifies whether to remove the DB instance from the Active Directory domain.
+
         @[JSON::Field(key: "DisableDomain")]
         getter disable_domain : Bool?
 
@@ -13561,11 +15509,13 @@ module AwsSdk
         # only Db2, MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an Active Directory
         # Domain. For more information, see Kerberos Authentication in the Amazon RDS User Guide . This
         # setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The ARN for the Secrets Manager secret with the credentials for the user joining the domain.
         # Example: arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456
+
         @[JSON::Field(key: "DomainAuthSecretArn")]
         getter domain_auth_secret_arn : String?
 
@@ -13573,22 +15523,26 @@ module AwsSdk
         # Constraints: Two IP addresses must be provided. If there isn't a secondary domain controller, use
         # the IP address of the primary domain controller for both entries in the list. Example:
         # 123.124.125.126,234.235.236.237
+
         @[JSON::Field(key: "DomainDnsIps")]
         getter domain_dns_ips : Array(String)?
 
         # The fully qualified domain name (FQDN) of an Active Directory domain. Constraints: Can't be longer
         # than 64 characters. Example: mymanagedADtest.mymanagedAD.mydomain
+
         @[JSON::Field(key: "DomainFqdn")]
         getter domain_fqdn : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
         # The Active Directory organizational unit for your DB instance to join. Constraints: Must be in the
         # distinguished name format. Example:
         # OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain
+
         @[JSON::Field(key: "DomainOu")]
         getter domain_ou : String?
 
@@ -13599,6 +15553,7 @@ module AwsSdk
         # about RDS on Outposts, see Working with Amazon RDS on Amazon Web Services Outposts in the Amazon RDS
         # User Guide . For more information about CoIPs, see Customer-owned IP addresses in the Amazon Web
         # Services Outposts User Guide .
+
         @[JSON::Field(key: "EnableCustomerOwnedIp")]
         getter enable_customer_owned_ip : Bool?
 
@@ -13608,12 +15563,14 @@ module AwsSdk
         # cluster. For more information about IAM database authentication, see IAM Database Authentication for
         # MySQL and PostgreSQL in the Amazon RDS User Guide. This setting doesn't apply to RDS Custom DB
         # instances.
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to enable Performance Insights for the DB instance. For more information, see
         # Using Amazon Performance Insights in the Amazon RDS User Guide . This setting doesn't apply to RDS
         # Custom DB instances.
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
@@ -13627,6 +15584,7 @@ module AwsSdk
         # this situation, the DB instance reverts to the default option and parameter group. To avoid
         # reverting to the default, specify a new parameter group with --db-parameter-group-name and a new
         # option group with --option-group-name .
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
@@ -13645,6 +15603,7 @@ module AwsSdk
         # time, the currently running engine version must be supported on the specified DB instance class.
         # Otherwise, the operation returns an error. In this case, first run the operation to upgrade the
         # engine version, and then run it again to modify the DB instance class.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -13667,6 +15626,7 @@ module AwsSdk
         # existing value are rounded up so that they are 10% greater than the current value. When you increase
         # the Provisioned IOPS, you must also specify the AllocatedStorage parameter. You can use the current
         # value for AllocatedStorage . Default: Uses existing setting
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -13675,6 +15635,7 @@ module AwsSdk
         # general-public-license RDS for Microsoft SQL Server - license-included RDS for MySQL -
         # general-public-license RDS for Oracle - bring-your-own-license | license-included RDS for PostgreSQL
         # - postgresql-license
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
@@ -13690,6 +15651,7 @@ module AwsSdk
         # specified. Can't specify for RDS for Oracle CDB instances in the multi-tenant configuration. Use
         # ModifyTenantDatabase instead. Can't specify the parameters ManageMasterUserPassword and MultiTenant
         # in the same operation.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -13698,6 +15660,7 @@ module AwsSdk
         # values: password - Use standard database authentication with a password. iam-db-auth - Use IAM
         # database authentication for the master user. This option is only valid for RDS for PostgreSQL and
         # Aurora PostgreSQL engines.
+
         @[JSON::Field(key: "MasterUserAuthenticationType")]
         getter master_user_authentication_type : String?
 
@@ -13717,6 +15680,7 @@ module AwsSdk
         # Microsoft SQL Server - Must contain from 8 to 128 characters. RDS for MySQL - Must contain from 8 to
         # 41 characters. RDS for Oracle - Must contain from 8 to 30 characters. RDS for PostgreSQL - Must
         # contain from 8 to 128 characters.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -13734,6 +15698,7 @@ module AwsSdk
         # account, specify the key ARN or alias ARN. There is a default KMS key for your Amazon Web Services
         # account. Your Amazon Web Services account has a different default KMS key for each Amazon Web
         # Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
@@ -13741,6 +15706,7 @@ module AwsSdk
         # instance. For more information about this setting, including limitations that apply to it, see
         # Managing capacity automatically with Amazon RDS storage autoscaling in the Amazon RDS User Guide .
         # This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
@@ -13748,6 +15714,7 @@ module AwsSdk
         # instance. To disable collection of Enhanced Monitoring metrics, specify 0 . If MonitoringRoleArn is
         # specified, set MonitoringInterval to a value other than 0 . This setting doesn't apply to RDS Custom
         # DB instances. Valid Values: 0 | 1 | 5 | 10 | 15 | 30 | 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
@@ -13756,12 +15723,14 @@ module AwsSdk
         # role, see To create an IAM role for Amazon RDS Enhanced Monitoring in the Amazon RDS User Guide. If
         # MonitoringInterval is set to a value other than 0 , supply a MonitoringRoleArn value. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
         # Specifies whether the DB instance is a Multi-AZ deployment. Changing this parameter doesn't result
         # in an outage. The change is applied during the next maintenance window unless the ApplyImmediately
         # parameter is enabled for this request. This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -13773,6 +15742,7 @@ module AwsSdk
         # instance by using the CreateTenantDatabase operation. The conversion to the multi-tenant
         # configuration is permanent and irreversible, so you can't later convert back to the single-tenant
         # configuration. When you specify this parameter, you must also specify ApplyImmediately .
+
         @[JSON::Field(key: "MultiTenant")]
         getter multi_tenant : Bool?
 
@@ -13780,6 +15750,7 @@ module AwsSdk
         # for the DB instance. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon RDS
         # User Guide. Valid Values: IPV4 | DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
@@ -13789,6 +15760,7 @@ module AwsSdk
         # lowercase string. This setting doesn't apply to RDS Custom DB instances. Constraints: Must contain
         # from 1 to 63 letters, numbers, or hyphens. The first character must be a letter. Can't end with a
         # hyphen or contain two consecutive hyphens. Example: mydbinstance
+
         @[JSON::Field(key: "NewDBInstanceIdentifier")]
         getter new_db_instance_identifier : String?
 
@@ -13800,6 +15772,7 @@ module AwsSdk
         # TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option
         # group can't be removed from a DB instance after it is associated with a DB instance. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -13809,6 +15782,7 @@ module AwsSdk
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -13816,6 +15790,7 @@ module AwsSdk
         # instances. Valid Values: 7 month * 31, where month is a number of months from 1-23. Examples: 93 (3
         # months * 31), 341 (11 months * 31), 589 (19 months * 31) 731 Default: 7 days If you specify a
         # retention period that isn't valid, such as 94 , Amazon RDS returns an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
@@ -13828,6 +15803,7 @@ module AwsSdk
         # cluster. For more information, see ModifyDBCluster . Constraints: Must be in the format
         # hh24:mi-hh24:mi . Must be in Universal Coordinated Time (UTC). Must not conflict with the preferred
         # maintenance window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
@@ -13841,11 +15817,13 @@ module AwsSdk
         # Default: Uses existing setting Constraints: Must be in the format ddd:hh24:mi-ddd:hh24:mi . The day
         # values must be mon | tue | wed | thu | fri | sat | sun . Must be in Universal Coordinated Time
         # (UTC). Must not conflict with the preferred backup window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance. This setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
@@ -13853,6 +15831,7 @@ module AwsSdk
         # of the existing primary instance. For more information, see Fault Tolerance for an Aurora DB Cluster
         # in the Amazon Aurora User Guide . This setting doesn't apply to RDS Custom DB instances. Default: 1
         # Valid Values: 0 - 15
+
         @[JSON::Field(key: "PromotionTier")]
         getter promotion_tier : Int32?
 
@@ -13867,6 +15846,7 @@ module AwsSdk
         # subnet and PubliclyAccessible must be enabled for it to be publicly accessible. Changes to the
         # PubliclyAccessible parameter are applied immediately regardless of the value of the ApplyImmediately
         # parameter.
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
@@ -13885,11 +15865,13 @@ module AwsSdk
         # RDS for Oracle in the Amazon RDS User Guide . For RDS Custom, you must specify this parameter and
         # set it to mounted . The value won't be set by default. After replica creation, you can manage the
         # open mode manually.
+
         @[JSON::Field(key: "ReplicaMode")]
         getter replica_mode : String?
 
         # The number of minutes to pause the automation. When the time period ends, RDS Custom resumes full
         # automation. Default: 60 Constraints: Must be at least 60. Must be no more than 1,440.
+
         @[JSON::Field(key: "ResumeFullAutomationModeMinutes")]
         getter resume_full_automation_mode_minutes : Int32?
 
@@ -13899,11 +15881,13 @@ module AwsSdk
         # For more information, see Password management with Amazon Web Services Secrets Manager in the Amazon
         # RDS User Guide. Constraints: You must apply the change immediately when rotating the master user
         # password.
+
         @[JSON::Field(key: "RotateMasterUserPassword")]
         getter rotate_master_user_password : Bool?
 
         # The storage throughput value for the DB instance. This setting applies only to the gp3 storage type.
         # This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
@@ -13920,26 +15904,31 @@ module AwsSdk
         # rebooting the instance, deleting the instance, creating a read replica for the instance, and
         # creating a DB snapshot of the instance. Valid Values: gp2 | gp3 | io1 | io2 | standard Default: io1
         # , if the Iops parameter is specified. Otherwise, gp2 .
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
 
         # The ARN from the key store with which to associate the instance for TDE encryption. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The password for the given ARN from the key store in order to access the device. This setting
         # doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "TdeCredentialPassword")]
         getter tde_credential_password : String?
 
         # Specifies whether the DB instance class of the DB instance uses its default processor features. This
         # setting doesn't apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "UseDefaultProcessorFeatures")]
         getter use_default_processor_features : Bool?
 
@@ -13948,6 +15937,7 @@ module AwsSdk
         # instances: Amazon Aurora (The associated list of EC2 VPC security groups is managed by the DB
         # cluster. For more information, see ModifyDBCluster .) RDS Custom Constraints: If supplied, must
         # match existing VPC security group IDs.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -14020,8 +16010,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBInstanceResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -14032,11 +16024,13 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB parameter group. Constraints: If supplied, must match the name of an existing
         # DBParameterGroup .
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String
 
@@ -14051,6 +16045,7 @@ module AwsSdk
         # associated with the parameter group. You can't use pending-reboot with dynamic parameters on RDS for
         # SQL Server DB instances. Use immediate . For more information on modifying DB parameters, see
         # Working with DB parameter groups in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)
 
@@ -14061,22 +16056,26 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBProxyEndpointRequest
         include JSON::Serializable
 
         # The name of the DB proxy sociated with the DB proxy endpoint that you want to modify.
+
         @[JSON::Field(key: "DBProxyEndpointName")]
         getter db_proxy_endpoint_name : String
 
         # The new identifier for the DBProxyEndpoint . An identifier must begin with a letter and must contain
         # only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive
         # hyphens.
+
         @[JSON::Field(key: "NewDBProxyEndpointName")]
         getter new_db_proxy_endpoint_name : String?
 
         # The VPC security group IDs for the DB proxy endpoint. When the DB proxy endpoint uses a different
         # VPC than the original proxy, you also specify a different set of security group IDs than for the
         # original proxy.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -14088,10 +16087,12 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBProxyEndpointResponse
         include JSON::Serializable
 
         # The DBProxyEndpoint object representing the new settings for the DB proxy endpoint.
+
         @[JSON::Field(key: "DBProxyEndpoint")]
         getter db_proxy_endpoint : Types::DBProxyEndpoint?
 
@@ -14101,14 +16102,17 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBProxyRequest
         include JSON::Serializable
 
         # The identifier for the DBProxy to modify.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # The new authentication settings for the DBProxy .
+
         @[JSON::Field(key: "Auth")]
         getter auth : Array(Types::UserAuthConfig)?
 
@@ -14116,38 +16120,45 @@ module AwsSdk
         # DebugLogging , the proxy captures connection details and connection pool behavior from your queries.
         # Debug logging increases CloudWatch costs and can impact proxy performance. Enable this option only
         # when you need to troubleshoot connection or performance issues.
+
         @[JSON::Field(key: "DebugLogging")]
         getter debug_logging : Bool?
 
         # The default authentication scheme that the proxy uses for client connections to the proxy and
         # connections from the proxy to the underlying database. Valid values are NONE and IAM_AUTH . When set
         # to IAM_AUTH , the proxy uses end-to-end IAM authentication to connect to the database.
+
         @[JSON::Field(key: "DefaultAuthScheme")]
         getter default_auth_scheme : String?
 
         # The number of seconds that a connection to the proxy can be inactive before the proxy disconnects
         # it. You can set this value higher or lower than the connection timeout limit for the associated
         # database.
+
         @[JSON::Field(key: "IdleClientTimeout")]
         getter idle_client_timeout : Int32?
 
         # The new identifier for the DBProxy . An identifier must begin with a letter and must contain only
         # ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+
         @[JSON::Field(key: "NewDBProxyName")]
         getter new_db_proxy_name : String?
 
         # Whether Transport Layer Security (TLS) encryption is required for connections to the proxy. By
         # enabling this setting, you can enforce encrypted TLS connections to the proxy, even if the
         # associated database doesn't use TLS.
+
         @[JSON::Field(key: "RequireTLS")]
         getter require_tls : Bool?
 
         # The Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in Amazon Web
         # Services Secrets Manager.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The new list of security groups for the DBProxy .
+
         @[JSON::Field(key: "SecurityGroups")]
         getter security_groups : Array(String)?
 
@@ -14165,10 +16176,12 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBProxyResponse
         include JSON::Serializable
 
         # The DBProxy object representing the new settings for the proxy.
+
         @[JSON::Field(key: "DBProxy")]
         getter db_proxy : Types::DBProxy?
 
@@ -14178,24 +16191,29 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBProxyTargetGroupRequest
         include JSON::Serializable
 
         # The name of the proxy.
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # The name of the target group to modify.
+
         @[JSON::Field(key: "TargetGroupName")]
         getter target_group_name : String
 
         # The settings that determine the size and behavior of the connection pool for the target group.
+
         @[JSON::Field(key: "ConnectionPoolConfig")]
         getter connection_pool_config : Types::ConnectionPoolConfiguration?
 
         # The new name for the modified DBProxyTarget . An identifier must begin with a letter and must
         # contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two
         # consecutive hyphens. You can't rename the default target group.
+
         @[JSON::Field(key: "NewName")]
         getter new_name : String?
 
@@ -14208,10 +16226,12 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBProxyTargetGroupResponse
         include JSON::Serializable
 
         # The settings of the modified DBProxyTarget .
+
         @[JSON::Field(key: "DBProxyTargetGroup")]
         getter db_proxy_target_group : Types::DBProxyTargetGroup?
 
@@ -14221,23 +16241,28 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBRecommendationMessage
         include JSON::Serializable
 
         # The identifier of the recommendation to update.
+
         @[JSON::Field(key: "RecommendationId")]
         getter recommendation_id : String
 
         # The language of the modified recommendation.
+
         @[JSON::Field(key: "Locale")]
         getter locale : String?
 
         # The list of recommended action status to update. You can update multiple recommended actions at one
         # time.
+
         @[JSON::Field(key: "RecommendedActionUpdates")]
         getter recommended_action_updates : Array(Types::RecommendedActionUpdate)?
 
         # The recommendation status to update. Valid values: active dismissed
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -14250,10 +16275,12 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBShardGroupMessage
         include JSON::Serializable
 
         # The name of the DB shard group to modify.
+
         @[JSON::Field(key: "DBShardGroupIdentifier")]
         getter db_shard_group_identifier : String
 
@@ -14261,14 +16288,17 @@ module AwsSdk
         # following: 0 - Creates a DB shard group without a standby DB shard group. This is the default value.
         # 1 - Creates a DB shard group with a standby DB shard group in a different Availability Zone (AZ). 2
         # - Creates a DB shard group with two standby DB shard groups in two different AZs.
+
         @[JSON::Field(key: "ComputeRedundancy")]
         getter compute_redundancy : Int32?
 
         # The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MaxACU")]
         getter max_acu : Float64?
 
         # The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
+
         @[JSON::Field(key: "MinACU")]
         getter min_acu : Float64?
 
@@ -14281,16 +16311,19 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBSnapshotAttributeMessage
         include JSON::Serializable
 
         # The name of the DB snapshot attribute to modify. To manage authorization for other Amazon Web
         # Services accounts to copy or restore a manual DB snapshot, set this value to restore . To view the
         # list of attributes available to modify, use the DescribeDBSnapshotAttributes API operation.
+
         @[JSON::Field(key: "AttributeName")]
         getter attribute_name : String
 
         # The identifier for the DB snapshot to modify the attributes for.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String
 
@@ -14299,6 +16332,7 @@ module AwsSdk
         # one or more Amazon Web Services account IDs, or all to make the manual DB snapshot restorable by any
         # Amazon Web Services account. Do not add the all value for any manual DB snapshots that contain
         # private information that you don't want available to all Amazon Web Services accounts.
+
         @[JSON::Field(key: "ValuesToAdd")]
         getter values_to_add : Array(String)?
 
@@ -14308,6 +16342,7 @@ module AwsSdk
         # for any Amazon Web Services account to copy or restore the DB snapshot. If you specify all , an
         # Amazon Web Services account whose account ID is explicitly added to the restore attribute can still
         # copy or restore the manual DB snapshot.
+
         @[JSON::Field(key: "ValuesToRemove")]
         getter values_to_remove : Array(String)?
 
@@ -14320,8 +16355,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBSnapshotAttributeResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSnapshotAttributesResult")]
         getter db_snapshot_attributes_result : Types::DBSnapshotAttributesResult?
@@ -14332,10 +16369,12 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBSnapshotMessage
         include JSON::Serializable
 
         # The identifier of the DB snapshot to modify.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String
 
@@ -14355,6 +16394,7 @@ module AwsSdk
         # 11.2.0.4.v11 (supported for 11.2.0.3 DB snapshots) PostgreSQL For the list of engine versions that
         # are available for upgrading a DB snapshot, see Upgrading a PostgreSQL DB snapshot engine version in
         # the Amazon RDS User Guide.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -14362,6 +16402,7 @@ module AwsSdk
         # upgrade an Oracle DB snapshot. The same option group considerations apply when upgrading a DB
         # snapshot as when upgrading a DB instance. For more information, see Option group considerations in
         # the Amazon RDS User Guide.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -14373,8 +16414,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSnapshot")]
         getter db_snapshot : Types::DBSnapshot?
@@ -14385,20 +16428,24 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBSubnetGroupMessage
         include JSON::Serializable
 
         # The name for the DB subnet group. This value is stored as a lowercase string. You can't modify the
         # default subnet group. Constraints: Must match the name of an existing DBSubnetGroup. Must not be
         # default. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String
 
         # The EC2 subnet IDs for the DB subnet group.
+
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)
 
         # The description for the DB subnet group.
+
         @[JSON::Field(key: "DBSubnetGroupDescription")]
         getter db_subnet_group_description : String?
 
@@ -14410,8 +16457,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyDBSubnetGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSubnetGroup")]
         getter db_subnet_group : Types::DBSubnetGroup?
@@ -14422,25 +16471,30 @@ module AwsSdk
         end
       end
 
+
       struct ModifyEventSubscriptionMessage
         include JSON::Serializable
 
         # The name of the RDS event notification subscription.
+
         @[JSON::Field(key: "SubscriptionName")]
         getter subscription_name : String
 
         # Specifies whether to activate the subscription.
+
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool?
 
         # A list of event categories for a source type ( SourceType ) that you want to subscribe to. You can
         # see a list of the categories for a given source type in Events in the Amazon RDS User Guide or by
         # using the DescribeEventCategories operation.
+
         @[JSON::Field(key: "EventCategories")]
         getter event_categories : Array(String)?
 
         # The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created
         # by Amazon SNS when you create a topic and subscribe to it.
+
         @[JSON::Field(key: "SnsTopicArn")]
         getter sns_topic_arn : String?
 
@@ -14449,6 +16503,7 @@ module AwsSdk
         # specify db-proxy . If this value isn't specified, all events are returned. Valid Values: db-instance
         # | db-cluster | db-parameter-group | db-security-group | db-snapshot | db-cluster-snapshot | db-proxy
         # | zero-etl | custom-engine-version | blue-green-deployment
+
         @[JSON::Field(key: "SourceType")]
         getter source_type : String?
 
@@ -14462,8 +16517,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyEventSubscriptionResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EventSubscription")]
         getter event_subscription : Types::EventSubscription?
@@ -14474,11 +16531,13 @@ module AwsSdk
         end
       end
 
+
       struct ModifyGlobalClusterMessage
         include JSON::Serializable
 
         # The cluster identifier for the global cluster to modify. This parameter isn't case-sensitive.
         # Constraints: Must match the identifier of an existing global database cluster.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String
 
@@ -14487,11 +16546,13 @@ module AwsSdk
         # current version. If you upgrade the major version of a global database, the cluster and DB instance
         # parameter groups are set to the default parameter groups for the new version. Apply any custom
         # parameter groups after completing the upgrade.
+
         @[JSON::Field(key: "AllowMajorVersionUpgrade")]
         getter allow_major_version_upgrade : Bool?
 
         # Specifies whether to enable deletion protection for the global database cluster. The global database
         # cluster can't be deleted when deletion protection is enabled.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -14502,12 +16563,14 @@ module AwsSdk
         # versions for aurora-postgresql (for PostgreSQL-based Aurora global databases), use the following
         # command: aws rds describe-db-engine-versions --engine aurora-postgresql --query
         # '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # The new cluster identifier for the global database cluster. This value is stored as a lowercase
         # string. Constraints: Must contain from 1 to 63 letters, numbers, or hyphens. The first character
         # must be a letter. Can't end with a hyphen or contain two consecutive hyphens. Example: my-cluster2
+
         @[JSON::Field(key: "NewGlobalClusterIdentifier")]
         getter new_global_cluster_identifier : String?
 
@@ -14521,8 +16584,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyGlobalClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GlobalCluster")]
         getter global_cluster : Types::GlobalCluster?
@@ -14533,24 +16598,29 @@ module AwsSdk
         end
       end
 
+
       struct ModifyIntegrationMessage
         include JSON::Serializable
 
         # The unique identifier of the integration to modify.
+
         @[JSON::Field(key: "IntegrationIdentifier")]
         getter integration_identifier : String
 
         # A new data filter for the integration. For more information, see Data filtering for Aurora zero-ETL
         # integrations with Amazon Redshift or Data filtering for Amazon RDS zero-ETL integrations with Amazon
         # Redshift .
+
         @[JSON::Field(key: "DataFilter")]
         getter data_filter : String?
 
         # A new description for the integration.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A new name for the integration.
+
         @[JSON::Field(key: "IntegrationName")]
         getter integration_name : String?
 
@@ -14563,26 +16633,31 @@ module AwsSdk
         end
       end
 
+
       struct ModifyOptionGroupMessage
         include JSON::Serializable
 
         # The name of the option group to be modified. Permanent options, such as the TDE option for Oracle
         # Advanced Security TDE, can't be removed from an option group, and that option group can't be removed
         # from a DB instance once it is associated with a DB instance
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String
 
         # Specifies whether to apply the change immediately or during the next maintenance window for each
         # instance associated with the option group.
+
         @[JSON::Field(key: "ApplyImmediately")]
         getter apply_immediately : Bool?
 
         # Options in this list are added to the option group or, if already present, the specified
         # configuration is used to update the existing configuration.
+
         @[JSON::Field(key: "OptionsToInclude")]
         getter options_to_include : Array(Types::OptionConfiguration)?
 
         # Options in this list are removed from the option group.
+
         @[JSON::Field(key: "OptionsToRemove")]
         getter options_to_remove : Array(String)?
 
@@ -14595,8 +16670,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyOptionGroupResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "OptionGroup")]
         getter option_group : Types::OptionGroup?
@@ -14607,16 +16684,19 @@ module AwsSdk
         end
       end
 
+
       struct ModifyTenantDatabaseMessage
         include JSON::Serializable
 
         # The identifier of the DB instance that contains the tenant database that you are modifying. This
         # parameter isn't case-sensitive. Constraints: Must match the identifier of an existing DB instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The user-supplied name of the tenant database that you want to modify. This parameter isn’t
         # case-sensitive. Constraints: Must match the identifier of an existing tenant database.
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String
 
@@ -14630,6 +16710,7 @@ module AwsSdk
         # information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS User
         # Guide. Constraints: Can't manage the master user password with Amazon Web Services Secrets Manager
         # if MasterUserPassword is specified.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -14639,6 +16720,7 @@ module AwsSdk
         # accidentally revoked. Constraints: Can include any printable ASCII character except / , " (double
         # quote), @ , &amp; (ampersand), and ' (single quote). Length constraints: Must contain between 8 and
         # 30 characters.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -14656,12 +16738,14 @@ module AwsSdk
         # key in a different Amazon Web Services account, specify the key ARN or alias ARN. A default KMS key
         # exists for your Amazon Web Services account. Your Amazon Web Services account has a different
         # default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
         # The new name of the tenant database when renaming a tenant database. This parameter isn’t
         # case-sensitive. Constraints: Can't be the string null or any other reserved word. Can't be longer
         # than 8 characters.
+
         @[JSON::Field(key: "NewTenantDBName")]
         getter new_tenant_db_name : String?
 
@@ -14671,6 +16755,7 @@ module AwsSdk
         # For more information, see Password management with Amazon Web Services Secrets Manager in the Amazon
         # RDS User Guide. Constraints: You must apply the change immediately when rotating the master user
         # password.
+
         @[JSON::Field(key: "RotateMasterUserPassword")]
         getter rotate_master_user_password : Bool?
 
@@ -14686,8 +16771,10 @@ module AwsSdk
         end
       end
 
+
       struct ModifyTenantDatabaseResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "TenantDatabase")]
         getter tenant_database : Types::TenantDatabase?
@@ -14699,6 +16786,7 @@ module AwsSdk
       end
 
       # The network type is invalid for the DB instance. Valid nework type values are IPV4 and DUAL .
+
       struct NetworkTypeNotSupported
         include JSON::Serializable
 
@@ -14707,42 +16795,52 @@ module AwsSdk
       end
 
       # The details of an option.
+
       struct Option
         include JSON::Serializable
 
         # If the option requires access to a port, then this DB security group allows access to the port.
+
         @[JSON::Field(key: "DBSecurityGroupMemberships")]
         getter db_security_group_memberships : Array(Types::DBSecurityGroupMembership)?
 
         # The description of the option.
+
         @[JSON::Field(key: "OptionDescription")]
         getter option_description : String?
 
         # The name of the option.
+
         @[JSON::Field(key: "OptionName")]
         getter option_name : String?
 
         # The option settings for this option.
+
         @[JSON::Field(key: "OptionSettings")]
         getter option_settings : Array(Types::OptionSetting)?
 
         # The version of the option.
+
         @[JSON::Field(key: "OptionVersion")]
         getter option_version : String?
 
         # Indicates whether this option is permanent.
+
         @[JSON::Field(key: "Permanent")]
         getter permanent : Bool?
 
         # Indicates whether this option is persistent.
+
         @[JSON::Field(key: "Persistent")]
         getter persistent : Bool?
 
         # If required, the port configured for this option to use.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # If the option requires access to a port, then this VPC security group allows access to the port.
+
         @[JSON::Field(key: "VpcSecurityGroupMemberships")]
         getter vpc_security_group_memberships : Array(Types::VpcSecurityGroupMembership)?
 
@@ -14761,30 +16859,37 @@ module AwsSdk
       end
 
       # A list of all available options for an option group.
+
       struct OptionConfiguration
         include JSON::Serializable
 
         # The configuration of options to include in a group.
+
         @[JSON::Field(key: "OptionName")]
         getter option_name : String
 
         # A list of DB security groups used for this option.
+
         @[JSON::Field(key: "DBSecurityGroupMemberships")]
         getter db_security_group_memberships : Array(String)?
 
         # The option settings to include in an option group.
+
         @[JSON::Field(key: "OptionSettings")]
         getter option_settings : Array(Types::OptionSetting)?
 
         # The version for the option.
+
         @[JSON::Field(key: "OptionVersion")]
         getter option_version : String?
 
         # The optional port for the option.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # A list of VPC security group names used for this option.
+
         @[JSON::Field(key: "VpcSecurityGroupMemberships")]
         getter vpc_security_group_memberships : Array(String)?
 
@@ -14799,48 +16904,59 @@ module AwsSdk
         end
       end
 
+
       struct OptionGroup
         include JSON::Serializable
 
         # Indicates whether this option group can be applied to both VPC and non-VPC instances. The value true
         # indicates the option group can be applied to both VPC and non-VPC instances.
+
         @[JSON::Field(key: "AllowsVpcAndNonVpcInstanceMemberships")]
         getter allows_vpc_and_non_vpc_instance_memberships : Bool?
 
         # Indicates when the option group was copied.
+
         @[JSON::Field(key: "CopyTimestamp")]
         getter copy_timestamp : Time?
 
         # Indicates the name of the engine that this option group can be applied to.
+
         @[JSON::Field(key: "EngineName")]
         getter engine_name : String?
 
         # Indicates the major engine version associated with this option group.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
         # Specifies the Amazon Resource Name (ARN) for the option group.
+
         @[JSON::Field(key: "OptionGroupArn")]
         getter option_group_arn : String?
 
         # Provides a description of the option group.
+
         @[JSON::Field(key: "OptionGroupDescription")]
         getter option_group_description : String?
 
         # Specifies the name of the option group.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # Indicates what options are available in the option group.
+
         @[JSON::Field(key: "Options")]
         getter options : Array(Types::Option)?
 
         # Specifies the Amazon Web Services account ID for the option group from which this option group is
         # copied.
+
         @[JSON::Field(key: "SourceAccountId")]
         getter source_account_id : String?
 
         # Specifies the name of the option group from which this option group is copied.
+
         @[JSON::Field(key: "SourceOptionGroup")]
         getter source_option_group : String?
 
@@ -14848,6 +16964,7 @@ module AwsSdk
         # AllowsVpcAndNonVpcInstanceMemberships is true and this field is blank, then this option group can be
         # applied to both VPC and non-VPC instances. If this field contains a value, then this option group
         # can only be applied to instances that are in the VPC indicated by this field.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -14868,6 +16985,7 @@ module AwsSdk
       end
 
       # The option group you are trying to create already exists.
+
       struct OptionGroupAlreadyExistsFault
         include JSON::Serializable
 
@@ -14876,16 +16994,19 @@ module AwsSdk
       end
 
       # Provides information on the option groups the DB instance is a member of.
+
       struct OptionGroupMembership
         include JSON::Serializable
 
         # The name of the option group that the instance belongs to.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # The status of the DB instance's option group membership. Valid values are: in-sync , pending-apply ,
         # pending-removal , pending-maintenance-apply , pending-maintenance-removal , applying , removing ,
         # and failed .
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -14897,6 +17018,7 @@ module AwsSdk
       end
 
       # The specified option group could not be found.
+
       struct OptionGroupNotFoundFault
         include JSON::Serializable
 
@@ -14905,80 +17027,98 @@ module AwsSdk
       end
 
       # Available option.
+
       struct OptionGroupOption
         include JSON::Serializable
 
         # Indicates whether the option can be copied across Amazon Web Services accounts.
+
         @[JSON::Field(key: "CopyableCrossAccount")]
         getter copyable_cross_account : Bool?
 
         # If the option requires a port, specifies the default port for the option.
+
         @[JSON::Field(key: "DefaultPort")]
         getter default_port : Int32?
 
         # The description of the option.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the engine that this option can be applied to.
+
         @[JSON::Field(key: "EngineName")]
         getter engine_name : String?
 
         # Indicates the major engine version that the option is available for.
+
         @[JSON::Field(key: "MajorEngineVersion")]
         getter major_engine_version : String?
 
         # The minimum required engine version for the option to be applied.
+
         @[JSON::Field(key: "MinimumRequiredMinorEngineVersion")]
         getter minimum_required_minor_engine_version : String?
 
         # The name of the option.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The option settings that are available (and the default value) for each option in an option group.
+
         @[JSON::Field(key: "OptionGroupOptionSettings")]
         getter option_group_option_settings : Array(Types::OptionGroupOptionSetting)?
 
         # The versions that are available for the option.
+
         @[JSON::Field(key: "OptionGroupOptionVersions")]
         getter option_group_option_versions : Array(Types::OptionVersion)?
 
         # The options that conflict with this option.
+
         @[JSON::Field(key: "OptionsConflictsWith")]
         getter options_conflicts_with : Array(String)?
 
         # The options that are prerequisites for this option.
+
         @[JSON::Field(key: "OptionsDependedOn")]
         getter options_depended_on : Array(String)?
 
         # Permanent options can never be removed from an option group. An option group containing a permanent
         # option can't be removed from a DB instance.
+
         @[JSON::Field(key: "Permanent")]
         getter permanent : Bool?
 
         # Persistent options can't be removed from an option group while DB instances are associated with the
         # option group. If you disassociate all DB instances from the option group, your can remove the
         # persistent option from the option group.
+
         @[JSON::Field(key: "Persistent")]
         getter persistent : Bool?
 
         # Indicates whether the option requires a port.
+
         @[JSON::Field(key: "PortRequired")]
         getter port_required : Bool?
 
         # If true, you must enable the Auto Minor Version Upgrade setting for your DB instance before you can
         # use this option. You can enable Auto Minor Version Upgrade when you first create your DB instance,
         # or by modifying your DB instance later.
+
         @[JSON::Field(key: "RequiresAutoMinorEngineVersionUpgrade")]
         getter requires_auto_minor_engine_version_upgrade : Bool?
 
         # If true, you can change the option to an earlier version of the option. This only applies to options
         # that have different versions available.
+
         @[JSON::Field(key: "SupportsOptionVersionDowngrade")]
         getter supports_option_version_downgrade : Bool?
 
         # If true, you can only use this option with a DB instance that is in a VPC.
+
         @[JSON::Field(key: "VpcOnly")]
         getter vpc_only : Bool?
 
@@ -15007,38 +17147,47 @@ module AwsSdk
       # Option group option settings are used to display settings available for each option with their
       # default values and other information. These values are used with the DescribeOptionGroupOptions
       # action.
+
       struct OptionGroupOptionSetting
         include JSON::Serializable
 
         # Indicates the acceptable values for the option group option.
+
         @[JSON::Field(key: "AllowedValues")]
         getter allowed_values : String?
 
         # The DB engine specific parameter type for the option group option.
+
         @[JSON::Field(key: "ApplyType")]
         getter apply_type : String?
 
         # The default value for the option group option.
+
         @[JSON::Field(key: "DefaultValue")]
         getter default_value : String?
 
         # Indicates whether this option group option can be changed from the default value.
+
         @[JSON::Field(key: "IsModifiable")]
         getter is_modifiable : Bool?
 
         # Indicates whether a value must be specified for this option setting of the option group option.
+
         @[JSON::Field(key: "IsRequired")]
         getter is_required : Bool?
 
         # The minimum DB engine version required for the corresponding allowed value for this option setting.
+
         @[JSON::Field(key: "MinimumEngineVersionPerAllowedValue")]
         getter minimum_engine_version_per_allowed_value : Array(Types::MinimumEngineVersionPerAllowedValue)?
 
         # The description of the option group option.
+
         @[JSON::Field(key: "SettingDescription")]
         getter setting_description : String?
 
         # The name of the option group option.
+
         @[JSON::Field(key: "SettingName")]
         getter setting_name : String?
 
@@ -15055,13 +17204,16 @@ module AwsSdk
         end
       end
 
+
       struct OptionGroupOptionsMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
+
 
         @[JSON::Field(key: "OptionGroupOptions")]
         getter option_group_options : Array(Types::OptionGroupOption)?
@@ -15074,6 +17226,7 @@ module AwsSdk
       end
 
       # The quota of 20 option groups was exceeded for this Amazon Web Services account.
+
       struct OptionGroupQuotaExceededFault
         include JSON::Serializable
 
@@ -15082,15 +17235,18 @@ module AwsSdk
       end
 
       # List of option groups.
+
       struct OptionGroups
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # List of option groups.
+
         @[JSON::Field(key: "OptionGroupsList")]
         getter option_groups_list : Array(Types::OptionGroup)?
 
@@ -15104,42 +17260,52 @@ module AwsSdk
       # Option settings are the actual settings being applied or configured for that option. It is used when
       # you modify an option group or describe option groups. For example, the NATIVE_NETWORK_ENCRYPTION
       # option has a setting called SQLNET.ENCRYPTION_SERVER that can have several different values.
+
       struct OptionSetting
         include JSON::Serializable
 
         # The allowed values of the option setting.
+
         @[JSON::Field(key: "AllowedValues")]
         getter allowed_values : String?
 
         # The DB engine specific parameter type.
+
         @[JSON::Field(key: "ApplyType")]
         getter apply_type : String?
 
         # The data type of the option setting.
+
         @[JSON::Field(key: "DataType")]
         getter data_type : String?
 
         # The default value of the option setting.
+
         @[JSON::Field(key: "DefaultValue")]
         getter default_value : String?
 
         # The description of the option setting.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Indicates whether the option setting is part of a collection.
+
         @[JSON::Field(key: "IsCollection")]
         getter is_collection : Bool?
 
         # Indicates whether the option setting can be modified from the default.
+
         @[JSON::Field(key: "IsModifiable")]
         getter is_modifiable : Bool?
 
         # The name of the option that has settings that you can set.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The current value of the option setting.
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -15159,14 +17325,17 @@ module AwsSdk
 
       # The version for an option. Option group option versions are returned by the
       # DescribeOptionGroupOptions action.
+
       struct OptionVersion
         include JSON::Serializable
 
         # Indicates whether the version is the default version of the option.
+
         @[JSON::Field(key: "IsDefault")]
         getter is_default : Bool?
 
         # The version of the option.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -15179,171 +17348,211 @@ module AwsSdk
 
       # Contains a list of available options for a DB instance. This data type is used as a response element
       # in the DescribeOrderableDBInstanceOptions action.
+
       struct OrderableDBInstanceOption
         include JSON::Serializable
 
         # The Availability Zone group for a DB instance.
+
         @[JSON::Field(key: "AvailabilityZoneGroup")]
         getter availability_zone_group : String?
 
         # A list of Availability Zones for a DB instance.
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(Types::AvailabilityZone)?
 
         # The available options for additional storage volumes for the DB instance class.
+
         @[JSON::Field(key: "AvailableAdditionalStorageVolumesOptions")]
         getter available_additional_storage_volumes_options : Array(Types::AvailableAdditionalStorageVolumesOption)?
 
         # A list of the available processor features for the DB instance class of a DB instance.
+
         @[JSON::Field(key: "AvailableProcessorFeatures")]
         getter available_processor_features : Array(Types::AvailableProcessorFeature)?
 
         # The DB instance class for a DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The engine type of a DB instance.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The engine version of a DB instance.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # The license model for a DB instance.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # Maximum total provisioned IOPS for a DB instance.
+
         @[JSON::Field(key: "MaxIopsPerDbInstance")]
         getter max_iops_per_db_instance : Int32?
 
         # Maximum provisioned IOPS per GiB for a DB instance.
+
         @[JSON::Field(key: "MaxIopsPerGib")]
         getter max_iops_per_gib : Float64?
 
         # Maximum storage size for a DB instance.
+
         @[JSON::Field(key: "MaxStorageSize")]
         getter max_storage_size : Int32?
 
         # Maximum storage throughput for a DB instance.
+
         @[JSON::Field(key: "MaxStorageThroughputPerDbInstance")]
         getter max_storage_throughput_per_db_instance : Int32?
 
         # Maximum storage throughput to provisioned IOPS ratio for a DB instance.
+
         @[JSON::Field(key: "MaxStorageThroughputPerIops")]
         getter max_storage_throughput_per_iops : Float64?
 
         # Minimum total provisioned IOPS for a DB instance.
+
         @[JSON::Field(key: "MinIopsPerDbInstance")]
         getter min_iops_per_db_instance : Int32?
 
         # Minimum provisioned IOPS per GiB for a DB instance.
+
         @[JSON::Field(key: "MinIopsPerGib")]
         getter min_iops_per_gib : Float64?
 
         # Minimum storage size for a DB instance.
+
         @[JSON::Field(key: "MinStorageSize")]
         getter min_storage_size : Int32?
 
         # Minimum storage throughput for a DB instance.
+
         @[JSON::Field(key: "MinStorageThroughputPerDbInstance")]
         getter min_storage_throughput_per_db_instance : Int32?
 
         # Minimum storage throughput to provisioned IOPS ratio for a DB instance.
+
         @[JSON::Field(key: "MinStorageThroughputPerIops")]
         getter min_storage_throughput_per_iops : Float64?
 
         # Indicates whether a DB instance is Multi-AZ capable.
+
         @[JSON::Field(key: "MultiAZCapable")]
         getter multi_az_capable : Bool?
 
         # Indicates whether a DB instance supports RDS on Outposts. For more information about RDS on
         # Outposts, see Amazon RDS on Amazon Web Services Outposts in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "OutpostCapable")]
         getter outpost_capable : Bool?
 
         # Indicates whether a DB instance can have a read replica.
+
         @[JSON::Field(key: "ReadReplicaCapable")]
         getter read_replica_capable : Bool?
 
         # The storage type for a DB instance.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # The list of supported modes for Database Activity Streams. Aurora PostgreSQL returns the value
         # [sync, async] . Aurora MySQL and RDS for Oracle return [async] only. If Database Activity Streams
         # isn't supported, the return value is an empty list.
+
         @[JSON::Field(key: "SupportedActivityStreamModes")]
         getter supported_activity_stream_modes : Array(String)?
 
         # A list of the supported DB engine modes.
+
         @[JSON::Field(key: "SupportedEngineModes")]
         getter supported_engine_modes : Array(String)?
 
         # The network types supported by the DB instance ( IPV4 or DUAL ). A DB instance can support only the
         # IPv4 protocol or the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a
         # DB instance in a VPC in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "SupportedNetworkTypes")]
         getter supported_network_types : Array(String)?
 
         # Indicates whether the DB instance class supports additional storage volumes.
+
         @[JSON::Field(key: "SupportsAdditionalStorageVolumes")]
         getter supports_additional_storage_volumes : Bool?
 
         # Indicates whether DB instances can be configured as a Multi-AZ DB cluster. For more information on
         # Multi-AZ DB clusters, see Multi-AZ deployments with two readable standby DB instances in the Amazon
         # RDS User Guide.
+
         @[JSON::Field(key: "SupportsClusters")]
         getter supports_clusters : Bool?
 
         # Indicates whether a DB instance supports using a dedicated log volume (DLV).
+
         @[JSON::Field(key: "SupportsDedicatedLogVolume")]
         getter supports_dedicated_log_volume : Bool?
 
         # Indicates whether a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.
+
         @[JSON::Field(key: "SupportsEnhancedMonitoring")]
         getter supports_enhanced_monitoring : Bool?
 
         # Indicates whether you can use Aurora global databases with a specific combination of other DB engine
         # attributes.
+
         @[JSON::Field(key: "SupportsGlobalDatabases")]
         getter supports_global_databases : Bool?
 
         # Indicates whether a DB instance supports HTTP endpoints.
+
         @[JSON::Field(key: "SupportsHttpEndpoint")]
         getter supports_http_endpoint : Bool?
 
         # Indicates whether a DB instance supports IAM database authentication.
+
         @[JSON::Field(key: "SupportsIAMDatabaseAuthentication")]
         getter supports_iam_database_authentication : Bool?
 
         # Indicates whether a DB instance supports provisioned IOPS.
+
         @[JSON::Field(key: "SupportsIops")]
         getter supports_iops : Bool?
 
         # Indicates whether a DB instance supports Kerberos Authentication.
+
         @[JSON::Field(key: "SupportsKerberosAuthentication")]
         getter supports_kerberos_authentication : Bool?
 
         # Indicates whether a DB instance supports Performance Insights.
+
         @[JSON::Field(key: "SupportsPerformanceInsights")]
         getter supports_performance_insights : Bool?
 
         # Indicates whether Amazon RDS can automatically scale storage for DB instances that use the specified
         # DB instance class.
+
         @[JSON::Field(key: "SupportsStorageAutoscaling")]
         getter supports_storage_autoscaling : Bool?
 
         # Indicates whether a DB instance supports encrypted storage.
+
         @[JSON::Field(key: "SupportsStorageEncryption")]
         getter supports_storage_encryption : Bool?
 
         # Indicates whether a DB instance supports storage throughput.
+
         @[JSON::Field(key: "SupportsStorageThroughput")]
         getter supports_storage_throughput : Bool?
 
         # Indicates whether a DB instance is in a VPC.
+
         @[JSON::Field(key: "Vpc")]
         getter vpc : Bool?
 
@@ -15392,17 +17601,20 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeOrderableDBInstanceOptions action.
+
       struct OrderableDBInstanceOptionsMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous OrderableDBInstanceOptions request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # An OrderableDBInstanceOption structure containing information about orderable options for the DB
         # instance.
+
         @[JSON::Field(key: "OrderableDBInstanceOptions")]
         getter orderable_db_instance_options : Array(Types::OrderableDBInstanceOption)?
 
@@ -15415,10 +17627,12 @@ module AwsSdk
 
       # A data type that represents an Outpost. For more information about RDS on Outposts, see Amazon RDS
       # on Amazon Web Services Outposts in the Amazon RDS User Guide.
+
       struct Outpost
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Outpost.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -15431,51 +17645,63 @@ module AwsSdk
       # This data type is used as a request parameter in the ModifyDBParameterGroup and
       # ResetDBParameterGroup actions. This data type is used as a response element in the
       # DescribeEngineDefaultParameters and DescribeDBParameters actions.
+
       struct Parameter
         include JSON::Serializable
 
         # Specifies the valid range of values for the parameter.
+
         @[JSON::Field(key: "AllowedValues")]
         getter allowed_values : String?
 
         # Indicates when to apply parameter updates.
+
         @[JSON::Field(key: "ApplyMethod")]
         getter apply_method : String?
 
         # Specifies the engine specific parameters type.
+
         @[JSON::Field(key: "ApplyType")]
         getter apply_type : String?
 
         # Specifies the valid data type for the parameter.
+
         @[JSON::Field(key: "DataType")]
         getter data_type : String?
 
         # Provides a description of the parameter.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Indicates whether ( true ) or not ( false ) the parameter can be modified. Some parameters have
         # security or operational implications that prevent them from being changed.
+
         @[JSON::Field(key: "IsModifiable")]
         getter is_modifiable : Bool?
 
         # The earliest engine version to which the parameter can apply.
+
         @[JSON::Field(key: "MinimumEngineVersion")]
         getter minimum_engine_version : String?
 
         # The name of the parameter.
+
         @[JSON::Field(key: "ParameterName")]
         getter parameter_name : String?
 
         # The value of the parameter.
+
         @[JSON::Field(key: "ParameterValue")]
         getter parameter_value : String?
 
         # The source of the parameter value.
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The valid DB engine modes.
+
         @[JSON::Field(key: "SupportedEngineModes")]
         getter supported_engine_modes : Array(String)?
 
@@ -15497,16 +17723,19 @@ module AwsSdk
 
       # A list of the log types whose configuration is still pending. In other words, these log types are in
       # the process of being activated or deactivated.
+
       struct PendingCloudwatchLogsExports
         include JSON::Serializable
 
         # Log types that are in the process of being enabled. After they are enabled, these log types are
         # exported to CloudWatch Logs.
+
         @[JSON::Field(key: "LogTypesToDisable")]
         getter log_types_to_disable : Array(String)?
 
         # Log types that are in the process of being deactivated. After they are deactivated, these log types
         # aren't exported to CloudWatch Logs.
+
         @[JSON::Field(key: "LogTypesToEnable")]
         getter log_types_to_enable : Array(String)?
 
@@ -15518,6 +17747,7 @@ module AwsSdk
       end
 
       # Provides information about a pending maintenance action for a resource.
+
       struct PendingMaintenanceAction
         include JSON::Serializable
 
@@ -15525,11 +17755,13 @@ module AwsSdk
         # about maintenance actions, see Maintaining a DB instance . Valid Values: ca-certificate-rotation
         # db-upgrade hardware-maintenance os-upgrade system-update For more information about these actions,
         # see Maintenance actions for Amazon Aurora or Maintenance actions for Amazon RDS .
+
         @[JSON::Field(key: "Action")]
         getter action : String?
 
         # The date of the maintenance window when the action is applied. The maintenance action is applied to
         # the resource during its first maintenance window after this date.
+
         @[JSON::Field(key: "AutoAppliedAfterDate")]
         getter auto_applied_after_date : Time?
 
@@ -15537,10 +17769,12 @@ module AwsSdk
         # into account opt-in requests received from the ApplyPendingMaintenanceAction API, the
         # AutoAppliedAfterDate , and the ForcedApplyDate . This value is blank if an opt-in request has not
         # been received and nothing has been specified as AutoAppliedAfterDate or ForcedApplyDate .
+
         @[JSON::Field(key: "CurrentApplyDate")]
         getter current_apply_date : Time?
 
         # A description providing more detail about the maintenance action.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -15548,10 +17782,12 @@ module AwsSdk
         # is applied to the resource as soon as possible, regardless of the maintenance window for the
         # resource. There might be a delay of one or more days from this date before the maintenance action is
         # applied.
+
         @[JSON::Field(key: "ForcedApplyDate")]
         getter forced_apply_date : Time?
 
         # Indicates the type of opt-in request that has been received for the resource.
+
         @[JSON::Field(key: "OptInStatus")]
         getter opt_in_status : String?
 
@@ -15567,16 +17803,19 @@ module AwsSdk
       end
 
       # Data returned from the DescribePendingMaintenanceActions action.
+
       struct PendingMaintenanceActionsMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous DescribePendingMaintenanceActions request. If
         # this parameter is specified, the response includes only records beyond the marker, up to a number of
         # records specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # A list of the pending maintenance actions for the resource.
+
         @[JSON::Field(key: "PendingMaintenanceActions")]
         getter pending_maintenance_actions : Array(Types::ResourcePendingMaintenanceActions)?
 
@@ -15589,106 +17828,130 @@ module AwsSdk
 
       # This data type is used as a response element in the ModifyDBInstance operation and contains changes
       # that will be applied during the next maintenance window.
+
       struct PendingModifiedValues
         include JSON::Serializable
 
         # The additional storage volume modifications that are pending for the DB instance.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
         # The allocated storage size for the DB instance specified in gibibytes (GiB).
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # The automation mode of the RDS Custom DB instance: full or all-paused . If full , the DB instance
         # automates monitoring and instance recovery. If all-paused , the instance pauses automation for the
         # duration set by --resume-full-automation-mode-minutes .
+
         @[JSON::Field(key: "AutomationMode")]
         getter automation_mode : String?
 
         # The number of days for which automated backups are retained.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The identifier of the CA certificate for the DB instance. For more information, see Using SSL/TLS to
         # encrypt a connection to a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
         # connection to a DB cluster in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
         # The name of the compute and memory capacity class for the DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The database identifier for the DB instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The DB subnet group for the DB instance.
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Indicates whether the DB instance has a dedicated log volume (DLV) enabled.&gt;
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # The database engine of the DB instance.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The database engine version.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to
         # database accounts is enabled.
+
         @[JSON::Field(key: "IAMDatabaseAuthenticationEnabled")]
         getter iam_database_authentication_enabled : Bool?
 
         # The Provisioned IOPS value for the DB instance.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
         # The license model for the DB instance. Valid values: license-included | bring-your-own-license |
         # general-public-license
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # The master credentials for the DB instance.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
         # Indicates whether the Single-AZ DB instance will change to a Multi-AZ deployment.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
         # Indicates whether the DB instance will change to the multi-tenant configuration (TRUE) or the
         # single-tenant configuration (FALSE).
+
         @[JSON::Field(key: "MultiTenant")]
         getter multi_tenant : Bool?
+
 
         @[JSON::Field(key: "PendingCloudwatchLogsExports")]
         getter pending_cloudwatch_logs_exports : Types::PendingCloudwatchLogsExports?
 
         # The port for the DB instance.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
         # The number of minutes to pause the automation. When the time period ends, RDS Custom resumes full
         # automation. The minimum value is 60 (default). The maximum value is 1,440.
+
         @[JSON::Field(key: "ResumeFullAutomationModeTime")]
         getter resume_full_automation_mode_time : Time?
 
         # The storage throughput of the DB instance.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type of the DB instance.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
@@ -15728,19 +17991,23 @@ module AwsSdk
       # employees . db.sql_tokenized.id - The hash of the SQL digest generated by Performance Insights. Each
       # response element returns a maximum of 500 bytes. For larger elements, such as SQL statements, only
       # the first 500 bytes are returned.
+
       struct PerformanceInsightsMetricDimensionGroup
         include JSON::Serializable
 
         # A list of specific dimensions from a dimension group. If this list isn't included, then all of the
         # dimensions in the group were requested, or are present in the response.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(String)?
 
         # The available dimension groups for Performance Insights metric type.
+
         @[JSON::Field(key: "Group")]
         getter group : String?
 
         # The maximum number of items to fetch for this dimension group.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -15757,6 +18024,7 @@ module AwsSdk
       # metric. Optionally, you can request the data points to be aggregated by dimension group ( GroupBy )
       # and return only those data points that match your criteria ( Filter ). Constraints: Must be a valid
       # Performance Insights query.
+
       struct PerformanceInsightsMetricQuery
         include JSON::Serializable
 
@@ -15764,6 +18032,7 @@ module AwsSdk
         # dimension group. Performance Insights will return all of the dimensions within that group, unless
         # you provide the names of specific dimensions within that group. You can also request that
         # Performance Insights return a limited number of values for a dimension.
+
         @[JSON::Field(key: "GroupBy")]
         getter group_by : Types::PerformanceInsightsMetricDimensionGroup?
 
@@ -15776,6 +18045,7 @@ module AwsSdk
         # Performance Insights samples the active sessions, with db.load.avg showing the scaled values,
         # db.sampledload.avg showing the raw values, and db.sampledload.avg less than db.load.avg . For most
         # use cases, you can query db.load.avg only.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String?
 
@@ -15787,22 +18057,27 @@ module AwsSdk
       end
 
       # Details of the performance issue.
+
       struct PerformanceIssueDetails
         include JSON::Serializable
 
         # The analysis of the performance issue. The information might contain markdown.
+
         @[JSON::Field(key: "Analysis")]
         getter analysis : String?
 
         # The time when the performance issue stopped.
+
         @[JSON::Field(key: "EndTime")]
         getter end_time : Time?
 
         # The metrics that are relevant to the performance issue.
+
         @[JSON::Field(key: "Metrics")]
         getter metrics : Array(Types::Metric)?
 
         # The time when the performance issue started.
+
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time?
 
@@ -15816,6 +18091,7 @@ module AwsSdk
       end
 
       # SourceDBInstanceIdentifier refers to a DB instance with BackupRetentionPeriod equal to 0.
+
       struct PointInTimeRestoreNotEnabledFault
         include JSON::Serializable
 
@@ -15838,14 +18114,17 @@ module AwsSdk
       # number CPU cores and threads is set to a non-default value. For more information, see Configuring
       # the processor for a DB instance class in RDS for Oracle , Optimizing your RDS for SQL Server CPU ,
       # and DB instance classes in the Amazon RDS User Guide.
+
       struct ProcessorFeature
         include JSON::Serializable
 
         # The name of the processor feature. Valid names are coreCount and threadsPerCore .
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value of a processor feature.
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -15856,12 +18135,14 @@ module AwsSdk
         end
       end
 
+
       struct PromoteReadReplicaDBClusterMessage
         include JSON::Serializable
 
         # The identifier of the DB cluster read replica to promote. This parameter isn't case-sensitive.
         # Constraints: Must match the identifier of an existing DB cluster read replica. Example:
         # my-cluster-replica1
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
@@ -15871,8 +18152,10 @@ module AwsSdk
         end
       end
 
+
       struct PromoteReadReplicaDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -15883,11 +18166,13 @@ module AwsSdk
         end
       end
 
+
       struct PromoteReadReplicaMessage
         include JSON::Serializable
 
         # The DB instance identifier. This value is stored as a lowercase string. Constraints: Must match the
         # identifier of an existing read replica DB instance. Example: mydbinstance
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
@@ -15895,6 +18180,7 @@ module AwsSdk
         # number enables backups. Setting this parameter to 0 disables automated backups. Default: 1
         # Constraints: Must be a value from 0 to 35. Can't be set to 0 if the DB instance is a source to read
         # replicas.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
@@ -15904,11 +18190,13 @@ module AwsSdk
         # Adjusting the Preferred Maintenance Window in the Amazon RDS User Guide. Constraints: Must be in the
         # format hh24:mi-hh24:mi . Must be in Universal Coordinated Time (UTC). Must not conflict with the
         # preferred maintenance window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
 
@@ -15921,8 +18209,10 @@ module AwsSdk
         end
       end
 
+
       struct PromoteReadReplicaResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -15934,6 +18224,7 @@ module AwsSdk
       end
 
       # Provisioned IOPS not available in the specified Availability Zone.
+
       struct ProvisionedIopsNotAvailableInAZFault
         include JSON::Serializable
 
@@ -15941,21 +18232,26 @@ module AwsSdk
         end
       end
 
+
       struct PurchaseReservedDBInstancesOfferingMessage
         include JSON::Serializable
 
         # The ID of the Reserved DB instance offering to purchase. Example:
         # 438012d3-4052-4cc7-b2e3-8d3372e0e706
+
         @[JSON::Field(key: "ReservedDBInstancesOfferingId")]
         getter reserved_db_instances_offering_id : String
 
         # The number of instances to reserve. Default: 1
+
         @[JSON::Field(key: "DBInstanceCount")]
         getter db_instance_count : Int32?
 
         # Customer-specified identifier to track this reservation. Example: myreservationID
+
         @[JSON::Field(key: "ReservedDBInstanceId")]
         getter reserved_db_instance_id : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -15969,8 +18265,10 @@ module AwsSdk
         end
       end
 
+
       struct PurchaseReservedDBInstancesOfferingResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ReservedDBInstance")]
         getter reserved_db_instance : Types::ReservedDBInstance?
@@ -15982,20 +18280,24 @@ module AwsSdk
       end
 
       # A range of integer values.
+
       struct Range
         include JSON::Serializable
 
         # The minimum value in the range.
+
         @[JSON::Field(key: "From")]
         getter from : Int32?
 
         # The step value for the range. For example, if you have a range of 5,000 to 10,000, with a step value
         # of 1,000, the valid values start at 5,000 and step up by 1,000. Even though 7,500 is within the
         # range, it isn't a valid value for the range. The valid values are 5,000, 6,000, 7,000, 8,000...
+
         @[JSON::Field(key: "Step")]
         getter step : Int32?
 
         # The maximum value in the range.
+
         @[JSON::Field(key: "To")]
         getter to : Int32?
 
@@ -16008,18 +18310,22 @@ module AwsSdk
       end
 
       # Reserved for future use.
+
       struct RdsCustomClusterConfiguration
         include JSON::Serializable
 
         # Reserved for future use.
+
         @[JSON::Field(key: "InterconnectSubnetId")]
         getter interconnect_subnet_id : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "ReplicaMode")]
         getter replica_mode : String?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "TransitGatewayMulticastDomainId")]
         getter transit_gateway_multicast_domain_id : String?
 
@@ -16031,11 +18337,13 @@ module AwsSdk
         end
       end
 
+
       struct RebootDBClusterMessage
         include JSON::Serializable
 
         # The DB cluster identifier. This parameter is stored as a lowercase string. Constraints: Must match
         # the identifier of an existing DBCluster.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
@@ -16045,8 +18353,10 @@ module AwsSdk
         end
       end
 
+
       struct RebootDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -16057,16 +18367,19 @@ module AwsSdk
         end
       end
 
+
       struct RebootDBInstanceMessage
         include JSON::Serializable
 
         # The DB instance identifier. This parameter is stored as a lowercase string. Constraints: Must match
         # the identifier of an existing DBInstance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # Specifies whether the reboot is conducted through a Multi-AZ failover. Constraint: You can't enable
         # force failover if the instance isn't configured for Multi-AZ.
+
         @[JSON::Field(key: "ForceFailover")]
         getter force_failover : Bool?
 
@@ -16077,8 +18390,10 @@ module AwsSdk
         end
       end
 
+
       struct RebootDBInstanceResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -16089,10 +18404,12 @@ module AwsSdk
         end
       end
 
+
       struct RebootDBShardGroupMessage
         include JSON::Serializable
 
         # The name of the DB shard group to reboot.
+
         @[JSON::Field(key: "DBShardGroupIdentifier")]
         getter db_shard_group_identifier : String
 
@@ -16104,44 +18421,54 @@ module AwsSdk
 
       # The recommended actions to apply to resolve the issues associated with your DB instances, DB
       # clusters, and DB parameter groups.
+
       struct RecommendedAction
         include JSON::Serializable
 
         # The unique identifier of the recommended action.
+
         @[JSON::Field(key: "ActionId")]
         getter action_id : String?
 
         # The methods to apply the recommended action. Valid values: manual - The action requires you to
         # resolve the recommendation manually. immediately - The action is applied immediately.
         # next-maintainance-window - The action is applied during the next scheduled maintainance.
+
         @[JSON::Field(key: "ApplyModes")]
         getter apply_modes : Array(String)?
 
         # The supporting attributes to explain the recommended action.
+
         @[JSON::Field(key: "ContextAttributes")]
         getter context_attributes : Array(Types::ContextAttribute)?
 
         # A detailed description of the action. The description might contain markdown.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The details of the issue.
+
         @[JSON::Field(key: "IssueDetails")]
         getter issue_details : Types::IssueDetails?
 
         # An API operation for the action.
+
         @[JSON::Field(key: "Operation")]
         getter operation : String?
 
         # The parameters for the API operation.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::RecommendedActionParameter)?
 
         # The status of the action. ready applied scheduled resolved
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A short description to summarize the action. The description might contain markdown.
+
         @[JSON::Field(key: "Title")]
         getter title : String?
 
@@ -16160,14 +18487,17 @@ module AwsSdk
       end
 
       # A single parameter to use with the RecommendedAction API operation to apply the action.
+
       struct RecommendedActionParameter
         include JSON::Serializable
 
         # The key of the parameter to use with the RecommendedAction API operation.
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value of the parameter to use with the RecommendedAction API operation.
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -16179,14 +18509,17 @@ module AwsSdk
       end
 
       # The recommended status to update for the specified recommendation action ID.
+
       struct RecommendedActionUpdate
         include JSON::Serializable
 
         # A unique identifier of the updated recommendation action.
+
         @[JSON::Field(key: "ActionId")]
         getter action_id : String
 
         # The status of the updated recommendation action. applied scheduled
+
         @[JSON::Field(key: "Status")]
         getter status : String
 
@@ -16199,14 +18532,17 @@ module AwsSdk
 
       # This data type is used as a response element in the DescribeReservedDBInstances and
       # DescribeReservedDBInstancesOfferings actions.
+
       struct RecurringCharge
         include JSON::Serializable
 
         # The amount of the recurring charge.
+
         @[JSON::Field(key: "RecurringChargeAmount")]
         getter recurring_charge_amount : Float64?
 
         # The frequency of the recurring charge.
+
         @[JSON::Field(key: "RecurringChargeFrequency")]
         getter recurring_charge_frequency : String?
 
@@ -16218,10 +18554,12 @@ module AwsSdk
       end
 
       # The reference details of a metric.
+
       struct ReferenceDetails
         include JSON::Serializable
 
         # The metric reference details when the reference is a scalar.
+
         @[JSON::Field(key: "ScalarReferenceDetails")]
         getter scalar_reference_details : Types::ScalarReferenceDetails?
 
@@ -16231,22 +18569,27 @@ module AwsSdk
         end
       end
 
+
       struct RegisterDBProxyTargetsRequest
         include JSON::Serializable
 
         # The identifier of the DBProxy that is associated with the DBProxyTargetGroup .
+
         @[JSON::Field(key: "DBProxyName")]
         getter db_proxy_name : String
 
         # One or more DB cluster identifiers.
+
         @[JSON::Field(key: "DBClusterIdentifiers")]
         getter db_cluster_identifiers : Array(String)?
 
         # One or more DB instance identifiers.
+
         @[JSON::Field(key: "DBInstanceIdentifiers")]
         getter db_instance_identifiers : Array(String)?
 
         # The identifier of the DBProxyTargetGroup .
+
         @[JSON::Field(key: "TargetGroupName")]
         getter target_group_name : String?
 
@@ -16259,10 +18602,12 @@ module AwsSdk
         end
       end
 
+
       struct RegisterDBProxyTargetsResponse
         include JSON::Serializable
 
         # One or more DBProxyTarget objects that are created when you register targets with a target group.
+
         @[JSON::Field(key: "DBProxyTargets")]
         getter db_proxy_targets : Array(Types::DBProxyTarget)?
 
@@ -16272,15 +18617,18 @@ module AwsSdk
         end
       end
 
+
       struct RemoveFromGlobalClusterMessage
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) identifying the cluster that was detached from the Aurora global
         # database cluster.
+
         @[JSON::Field(key: "DbClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The cluster identifier to detach from the Aurora global database cluster.
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String
 
@@ -16291,8 +18639,10 @@ module AwsSdk
         end
       end
 
+
       struct RemoveFromGlobalClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GlobalCluster")]
         getter global_cluster : Types::GlobalCluster?
@@ -16303,20 +18653,24 @@ module AwsSdk
         end
       end
 
+
       struct RemoveRoleFromDBClusterMessage
         include JSON::Serializable
 
         # The name of the DB cluster to disassociate the IAM role from.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The Amazon Resource Name (ARN) of the IAM role to disassociate from the Aurora DB cluster, for
         # example arn:aws:iam::123456789012:role/AuroraAccessRole .
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # The name of the feature for the DB cluster that the IAM role is to be disassociated from. For
         # information about supported feature names, see DBEngineVersion .
+
         @[JSON::Field(key: "FeatureName")]
         getter feature_name : String?
 
@@ -16328,20 +18682,24 @@ module AwsSdk
         end
       end
 
+
       struct RemoveRoleFromDBInstanceMessage
         include JSON::Serializable
 
         # The name of the DB instance to disassociate the IAM role from.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The name of the feature for the DB instance that the IAM role is to be disassociated from. For
         # information about supported feature names, see DBEngineVersion .
+
         @[JSON::Field(key: "FeatureName")]
         getter feature_name : String
 
         # The Amazon Resource Name (ARN) of the IAM role to disassociate from the DB instance, for example,
         # arn:aws:iam::123456789012:role/AccessRole .
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -16353,15 +18711,18 @@ module AwsSdk
         end
       end
 
+
       struct RemoveSourceIdentifierFromSubscriptionMessage
         include JSON::Serializable
 
         # The source identifier to be removed from the subscription, such as the DB instance identifier for a
         # DB instance or the name of a security group.
+
         @[JSON::Field(key: "SourceIdentifier")]
         getter source_identifier : String
 
         # The name of the RDS event notification subscription you want to remove a source identifier from.
+
         @[JSON::Field(key: "SubscriptionName")]
         getter subscription_name : String
 
@@ -16372,8 +18733,10 @@ module AwsSdk
         end
       end
 
+
       struct RemoveSourceIdentifierFromSubscriptionResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "EventSubscription")]
         getter event_subscription : Types::EventSubscription?
@@ -16384,16 +18747,19 @@ module AwsSdk
         end
       end
 
+
       struct RemoveTagsFromResourceMessage
         include JSON::Serializable
 
         # The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN).
         # For information about creating an ARN, see Constructing an ARN for Amazon RDS in the Amazon RDS User
         # Guide.
+
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String
 
         # The tag key (name) of the tag to be removed.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -16406,71 +18772,88 @@ module AwsSdk
 
       # This data type is used as a response element in the DescribeReservedDBInstances and
       # PurchaseReservedDBInstancesOffering actions.
+
       struct ReservedDBInstance
         include JSON::Serializable
 
         # The currency code for the reserved DB instance.
+
         @[JSON::Field(key: "CurrencyCode")]
         getter currency_code : String?
 
         # The DB instance class for the reserved DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The number of reserved DB instances.
+
         @[JSON::Field(key: "DBInstanceCount")]
         getter db_instance_count : Int32?
 
         # The duration of the reservation in seconds.
+
         @[JSON::Field(key: "Duration")]
         getter duration : Int32?
 
         # The fixed price charged for this reserved DB instance.
+
         @[JSON::Field(key: "FixedPrice")]
         getter fixed_price : Float64?
 
         # The unique identifier for the lease associated with the reserved DB instance. Amazon Web Services
         # Support might request the lease ID for an issue related to a reserved DB instance.
+
         @[JSON::Field(key: "LeaseId")]
         getter lease_id : String?
 
         # Indicates whether the reservation applies to Multi-AZ deployments.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
         # The offering type of this reserved DB instance.
+
         @[JSON::Field(key: "OfferingType")]
         getter offering_type : String?
 
         # The description of the reserved DB instance.
+
         @[JSON::Field(key: "ProductDescription")]
         getter product_description : String?
 
         # The recurring price charged to run this reserved DB instance.
+
         @[JSON::Field(key: "RecurringCharges")]
         getter recurring_charges : Array(Types::RecurringCharge)?
 
         # The Amazon Resource Name (ARN) for the reserved DB instance.
+
         @[JSON::Field(key: "ReservedDBInstanceArn")]
         getter reserved_db_instance_arn : String?
 
         # The unique identifier for the reservation.
+
         @[JSON::Field(key: "ReservedDBInstanceId")]
         getter reserved_db_instance_id : String?
 
         # The offering identifier.
+
         @[JSON::Field(key: "ReservedDBInstancesOfferingId")]
         getter reserved_db_instances_offering_id : String?
 
         # The time the reservation started.
+
         @[JSON::Field(key: "StartTime")]
         getter start_time : Time?
 
         # The state of the reserved DB instance.
+
         @[JSON::Field(key: "State")]
         getter state : String?
 
         # The hourly price charged for this reserved DB instance.
+
         @[JSON::Field(key: "UsagePrice")]
         getter usage_price : Float64?
 
@@ -16496,6 +18879,7 @@ module AwsSdk
       end
 
       # User already has a reservation with the given identifier.
+
       struct ReservedDBInstanceAlreadyExistsFault
         include JSON::Serializable
 
@@ -16504,15 +18888,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeReservedDBInstances action.
+
       struct ReservedDBInstanceMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # A list of reserved DB instances.
+
         @[JSON::Field(key: "ReservedDBInstances")]
         getter reserved_db_instances : Array(Types::ReservedDBInstance)?
 
@@ -16524,6 +18911,7 @@ module AwsSdk
       end
 
       # The specified reserved DB Instance not found.
+
       struct ReservedDBInstanceNotFoundFault
         include JSON::Serializable
 
@@ -16532,6 +18920,7 @@ module AwsSdk
       end
 
       # Request would exceed the user's DB Instance quota.
+
       struct ReservedDBInstanceQuotaExceededFault
         include JSON::Serializable
 
@@ -16540,46 +18929,57 @@ module AwsSdk
       end
 
       # This data type is used as a response element in the DescribeReservedDBInstancesOfferings action.
+
       struct ReservedDBInstancesOffering
         include JSON::Serializable
 
         # The currency code for the reserved DB instance offering.
+
         @[JSON::Field(key: "CurrencyCode")]
         getter currency_code : String?
 
         # The DB instance class for the reserved DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The duration of the offering in seconds.
+
         @[JSON::Field(key: "Duration")]
         getter duration : Int32?
 
         # The fixed price charged for this offering.
+
         @[JSON::Field(key: "FixedPrice")]
         getter fixed_price : Float64?
 
         # Indicates whether the offering applies to Multi-AZ deployments.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
         # The offering type.
+
         @[JSON::Field(key: "OfferingType")]
         getter offering_type : String?
 
         # The database engine used by the offering.
+
         @[JSON::Field(key: "ProductDescription")]
         getter product_description : String?
 
         # The recurring price charged to run this reserved DB instance.
+
         @[JSON::Field(key: "RecurringCharges")]
         getter recurring_charges : Array(Types::RecurringCharge)?
 
         # The offering identifier.
+
         @[JSON::Field(key: "ReservedDBInstancesOfferingId")]
         getter reserved_db_instances_offering_id : String?
 
         # The hourly price charged for this offering.
+
         @[JSON::Field(key: "UsagePrice")]
         getter usage_price : Float64?
 
@@ -16599,15 +18999,18 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeReservedDBInstancesOfferings action.
+
       struct ReservedDBInstancesOfferingMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # A list of reserved DB instance offerings.
+
         @[JSON::Field(key: "ReservedDBInstancesOfferings")]
         getter reserved_db_instances_offerings : Array(Types::ReservedDBInstancesOffering)?
 
@@ -16619,6 +19022,7 @@ module AwsSdk
       end
 
       # Specified offering does not exist.
+
       struct ReservedDBInstancesOfferingNotFoundFault
         include JSON::Serializable
 
@@ -16626,21 +19030,25 @@ module AwsSdk
         end
       end
 
+
       struct ResetDBClusterParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB cluster parameter group to reset.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String
 
         # A list of parameter names in the DB cluster parameter group to reset to the default values. You
         # can't use this parameter if the ResetAllParameters parameter is enabled.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
         # Specifies whether to reset all parameters in the DB cluster parameter group to their default values.
         # You can't use this parameter if there is a list of parameter names specified for the Parameters
         # parameter.
+
         @[JSON::Field(key: "ResetAllParameters")]
         getter reset_all_parameters : Bool?
 
@@ -16652,11 +19060,13 @@ module AwsSdk
         end
       end
 
+
       struct ResetDBParameterGroupMessage
         include JSON::Serializable
 
         # The name of the DB parameter group. Constraints: Must match the name of an existing DBParameterGroup
         # .
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String
 
@@ -16669,11 +19079,13 @@ module AwsSdk
         # pending-reboot You can use the immediate value with dynamic parameters only. You can use the
         # pending-reboot value for both dynamic and static parameters, and changes are applied when DB
         # instance reboots. Oracle Valid Values (for Apply method): pending-reboot
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Array(Types::Parameter)?
 
         # Specifies whether to reset all parameters in the DB parameter group to default values. By default,
         # all parameters in the DB parameter group are reset to default values.
+
         @[JSON::Field(key: "ResetAllParameters")]
         getter reset_all_parameters : Bool?
 
@@ -16686,6 +19098,7 @@ module AwsSdk
       end
 
       # The specified resource ID was not found.
+
       struct ResourceNotFoundFault
         include JSON::Serializable
 
@@ -16694,14 +19107,17 @@ module AwsSdk
       end
 
       # Describes the pending maintenance actions for a resource.
+
       struct ResourcePendingMaintenanceActions
         include JSON::Serializable
 
         # A list that provides details about the pending maintenance actions for the resource.
+
         @[JSON::Field(key: "PendingMaintenanceActionDetails")]
         getter pending_maintenance_action_details : Array(Types::PendingMaintenanceAction)?
 
         # The ARN of the resource that has pending maintenance actions.
+
         @[JSON::Field(key: "ResourceIdentifier")]
         getter resource_identifier : String?
 
@@ -16712,6 +19128,7 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBClusterFromS3Message
         include JSON::Serializable
 
@@ -16719,80 +19136,96 @@ module AwsSdk
         # isn't case-sensitive. Constraints: Must contain from 1 to 63 letters, numbers, or hyphens. First
         # character must be a letter. Can't end with a hyphen or contain two consecutive hyphens. Example:
         # my-cluster1
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The name of the database engine to be used for this DB cluster. Valid Values: aurora-mysql (for
         # Aurora MySQL)
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
         # The name of the master user for the restored DB cluster. Constraints: Must be 1 to 16 letters or
         # numbers. First character must be a letter. Can't be a reserved word for the chosen database engine.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String
 
         # The name of the Amazon S3 bucket that contains the data used to create the Amazon Aurora DB cluster.
+
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String
 
         # The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role
         # that authorizes Amazon RDS to access the Amazon S3 bucket on your behalf.
+
         @[JSON::Field(key: "S3IngestionRoleArn")]
         getter s3_ingestion_role_arn : String
 
         # The identifier for the database engine that was backed up to create the files stored in the Amazon
         # S3 bucket. Valid Values: mysql
+
         @[JSON::Field(key: "SourceEngine")]
         getter source_engine : String
 
         # The version of the database that the backup files were created from. MySQL versions 5.7 and 8.0 are
         # supported. Example: 5.7.40 , 8.0.28
+
         @[JSON::Field(key: "SourceEngineVersion")]
         getter source_engine_version : String
 
         # A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(String)?
 
         # The target backtrack window, in seconds. To disable backtracking, set this value to 0. Currently,
         # Backtrack is only supported for Aurora MySQL DB clusters. Default: 0 Constraints: If specified, this
         # value must be set to a number from 0 to 259,200 (72 hours).
+
         @[JSON::Field(key: "BacktrackWindow")]
         getter backtrack_window : Int64?
 
         # The number of days for which automated backups of the restored DB cluster are retained. You must
         # specify a minimum value of 1. Default: 1 Constraints: Must be a value from 1 to 35
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # A value that indicates that the restored DB cluster should be associated with the specified
         # CharacterSet.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
         # Specifies whether to copy all tags from the restored DB cluster to snapshots of the restored DB
         # cluster. The default is not to copy them.
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
         # The name of the DB cluster parameter group to associate with the restored DB cluster. If this
         # argument is omitted, the default parameter group for the engine version is used. Constraints: If
         # supplied, must match the name of an existing DBClusterParameterGroup.
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
         # A DB subnet group to associate with the restored DB cluster. Constraints: If supplied, must match
         # the name of an existing DBSubnetGroup. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # The database name for the restored DB cluster.
+
         @[JSON::Field(key: "DatabaseName")]
         getter database_name : String?
 
         # Specifies whether to enable deletion protection for the DB cluster. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -16800,10 +19233,12 @@ module AwsSdk
         # prior to this operation. For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication
         # to authenticate users that connect to the DB cluster. For more information, see Kerberos
         # Authentication in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # Specify the name of the IAM role to be used when making API calls to the Directory Service.
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
@@ -16814,12 +19249,14 @@ module AwsSdk
         # RDS, see Publishing Database Logs to Amazon CloudWatch Logs in the Amazon RDS User Guide . For more
         # information about exporting CloudWatch Logs for Amazon Aurora, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
         # Specifies whether to enable mapping of Amazon Web Services Identity and Access Management (IAM)
         # accounts to database accounts. By default, mapping isn't enabled. For more information, see IAM
         # Database Authentication in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
@@ -16836,6 +19273,7 @@ module AwsSdk
         # Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Valid Values:
         # open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
@@ -16843,6 +19281,7 @@ module AwsSdk
         # aurora-mysql (Aurora MySQL), use the following command: aws rds describe-db-engine-versions --engine
         # aurora-mysql --query "DBEngineVersions[].EngineVersion" Aurora MySQL Examples:
         # 5.7.mysql_aurora.2.12.0 , 8.0.mysql_aurora.3.04.0
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -16852,6 +19291,7 @@ module AwsSdk
         # parameter is enabled, and you do not specify a value for the KmsKeyId parameter, then Amazon RDS
         # will use your default KMS key. There is a default KMS key for your Amazon Web Services account. Your
         # Amazon Web Services account has a different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -16860,12 +19300,14 @@ module AwsSdk
         # User Guide and Password management with Amazon Web Services Secrets Manager in the Amazon Aurora
         # User Guide. Constraints: Can't manage the master user password with Amazon Web Services Secrets
         # Manager if MasterUserPassword is specified.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
         # The password for the master database user. This password can contain any printable ASCII character
         # except "/", """, or "@". Constraints: Must contain from 8 to 41 characters. Can't be specified if
         # ManageMasterUserPassword is turned on.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -16879,6 +19321,7 @@ module AwsSdk
         # aws/secretsmanager KMS key to encrypt the secret, and you must use a customer managed KMS key. There
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
@@ -16886,16 +19329,19 @@ module AwsSdk
         # DBSubnetGroup specified for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or
         # the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a DB instance in a
         # VPC in the Amazon Aurora User Guide.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # A value that indicates that the restored DB cluster should be associated with the specified option
         # group. Permanent options can't be removed from an option group. An option group can't be removed
         # from a DB cluster once it is associated with a DB cluster.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # The port number on which the instances in the restored DB cluster accept connections. Default: 3306
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -16905,6 +19351,7 @@ module AwsSdk
         # Backup window in the Amazon Aurora User Guide . Constraints: Must be in the format hh24:mi-hh24:mi .
         # Must be in Universal Coordinated Time (UTC). Must not conflict with the preferred maintenance
         # window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
@@ -16913,36 +19360,44 @@ module AwsSdk
         # 8-hour block of time for each Amazon Web Services Region, occurring on a random day of the week. To
         # see the time blocks available, see Adjusting the Preferred Maintenance Window in the Amazon Aurora
         # User Guide . Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun. Constraints: Minimum 30-minute window.
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
         # The prefix for all of the file names that contain the data used to create the Amazon Aurora DB
         # cluster. If you do not specify a SourceS3Prefix value, then the Amazon Aurora DB cluster is created
         # by using all of the files in the Amazon S3 bucket.
+
         @[JSON::Field(key: "S3Prefix")]
         getter s3_prefix : String?
+
 
         @[JSON::Field(key: "ServerlessV2ScalingConfiguration")]
         getter serverless_v2_scaling_configuration : Types::ServerlessV2ScalingConfiguration?
 
         # Specifies whether the restored DB cluster is encrypted.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # Specifies the storage type to be associated with the DB cluster. Valid Values: aurora , aurora-iopt1
         # Default: aurora Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB cluster. Valid Values: cluster-auto-backup - The
         # DB cluster's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # A list of EC2 VPC security groups to associate with the restored DB cluster.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -16989,8 +19444,10 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBClusterFromS3Result
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -17001,6 +19458,7 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBClusterFromSnapshotMessage
         include JSON::Serializable
 
@@ -17008,11 +19466,13 @@ module AwsSdk
         # isn't case-sensitive. Constraints: Must contain from 1 to 63 letters, numbers, or hyphens First
         # character must be a letter Can't end with a hyphen or contain two consecutive hyphens Example:
         # my-snapshot-id Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The database engine to use for the new DB cluster. Default: The same as source Constraint: Must be
         # compatible with the engine of the source Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
@@ -17020,22 +19480,26 @@ module AwsSdk
         # name or the Amazon Resource Name (ARN) to specify a DB cluster snapshot. However, you can use only
         # the ARN to specify a DB snapshot. Constraints: Must match the identifier of an existing Snapshot.
         # Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "SnapshotIdentifier")]
         getter snapshot_identifier : String
 
         # Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be
         # created. Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "AvailabilityZones")]
         getter availability_zones : Array(String)?
 
         # The target backtrack window, in seconds. To disable backtracking, set this value to 0. Currently,
         # Backtrack is only supported for Aurora MySQL DB clusters. Default: 0 Constraints: If specified, this
         # value must be set to a number from 0 to 259,200 (72 hours). Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "BacktrackWindow")]
         getter backtrack_window : Int64?
 
         # Specifies whether to copy all tags from the restored DB cluster to snapshots of the restored DB
         # cluster. The default is not to copy them. Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -17043,6 +19507,7 @@ module AwsSdk
         # db.m6gd.xlarge. Not all DB instance classes are available in all Amazon Web Services Regions, or for
         # all database engines. For the full list of DB instance classes, and availability for your engine,
         # see DB Instance Class in the Amazon RDS User Guide. Valid for: Multi-AZ DB clusters only
+
         @[JSON::Field(key: "DBClusterInstanceClass")]
         getter db_cluster_instance_class : String?
 
@@ -17051,23 +19516,27 @@ module AwsSdk
         # supplied, must match the name of an existing default DB cluster parameter group. Must be 1 to 255
         # letters, numbers, or hyphens. First character must be a letter. Can't end with a hyphen or contain
         # two consecutive hyphens. Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
         # The name of the DB subnet group to use for the new DB cluster. Constraints: If supplied, must match
         # the name of an existing DB subnet group. Example: mydbsubnetgroup Valid for: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # The database name for the restored DB cluster. Valid for: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "DatabaseName")]
         getter database_name : String?
 
         # Specifies whether to enable deletion protection for the DB cluster. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled. Valid for:
         # Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -17075,11 +19544,13 @@ module AwsSdk
         # this operation. Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can
         # be created in an Active Directory Domain. For more information, see Kerberos Authentication in the
         # Amazon RDS User Guide . Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The name of the IAM role to be used when making API calls to the Directory Service. Valid for:
         # Aurora DB clusters only
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
@@ -17093,6 +19564,7 @@ module AwsSdk
         # information about exporting CloudWatch Logs for Amazon Aurora, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon Aurora User Guide . Valid for: Aurora DB clusters and Multi-AZ
         # DB clusters
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -17101,10 +19573,12 @@ module AwsSdk
         # Database Authentication in the Amazon Aurora User Guide or IAM database authentication for MariaDB,
         # MySQL, and PostgreSQL in the Amazon RDS User Guide . Valid for: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to turn on Performance Insights for the DB cluster.
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
@@ -17121,11 +19595,13 @@ module AwsSdk
         # Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Valid Values:
         # open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # The DB engine mode of the DB cluster, either provisioned or serverless . For more information, see
         # CreateDBCluster . Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
@@ -17144,6 +19620,7 @@ module AwsSdk
         # . MySQL See Amazon RDS for MySQL in the Amazon RDS User Guide. PostgreSQL See Amazon RDS for
         # PostgreSQL versions and extensions in the Amazon RDS User Guide. Valid for: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
@@ -17152,6 +19629,7 @@ module AwsSdk
         # Provisioned IOPS storage in the Amazon RDS User Guide . Constraints: Must be a multiple between .5
         # and 50 of the storage amount for the DB instance. Valid for: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -17164,6 +19642,7 @@ module AwsSdk
         # was used to encrypt the DB snapshot or DB cluster snapshot. If the DB snapshot or DB cluster
         # snapshot in SnapshotIdentifier isn't encrypted, then the restored DB cluster isn't encrypted. Valid
         # for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -17171,12 +19650,14 @@ module AwsSdk
         # cluster. To turn off collecting Enhanced Monitoring metrics, specify 0 . If MonitoringRoleArn is
         # specified, also set MonitoringInterval to a value other than 0 . Valid Values: 0 | 1 | 5 | 10 | 15 |
         # 30 | 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
         # The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics
         # to Amazon CloudWatch Logs. An example is arn:aws:iam:123456789012:role/emaccess . If
         # MonitoringInterval is set to a value other than 0 , supply a MonitoringRoleArn value.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
@@ -17184,11 +19665,13 @@ module AwsSdk
         # DBSubnetGroup specified for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or
         # the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a DB instance in a
         # VPC in the Amazon Aurora User Guide. Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The name of the option group to use for the restored DB cluster. DB clusters are associated with a
         # default option group that can't be modified.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -17197,6 +19680,7 @@ module AwsSdk
         # you don't specify a value for PerformanceInsightsKMSKeyId , then Amazon RDS uses your default KMS
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -17204,12 +19688,14 @@ module AwsSdk
         # number of months from 1-23. Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31)
         # 731 Default: 7 days If you specify a retention period that isn't valid, such as 94 , Amazon RDS
         # issues an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port number on which the new DB cluster accepts connections. Constraints: This value must be
         # 1150-65535 Default: The same port as the original DB cluster. Valid for: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -17228,17 +19714,21 @@ module AwsSdk
         # doesn’t have an internet gateway attached to it, the DB cluster is private. If the subnets are part
         # of a VPC that has an internet gateway attached to it, the DB cluster is public. Valid for: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "RdsCustomClusterConfiguration")]
         getter rds_custom_cluster_configuration : Types::RdsCustomClusterConfiguration?
 
         # For DB clusters in serverless DB engine mode, the scaling properties of the DB cluster. Valid for:
         # Aurora DB clusters only
+
         @[JSON::Field(key: "ScalingConfiguration")]
         getter scaling_configuration : Types::ScalingConfiguration?
+
 
         @[JSON::Field(key: "ServerlessV2ScalingConfiguration")]
         getter serverless_v2_scaling_configuration : Types::ServerlessV2ScalingConfiguration?
@@ -17247,21 +19737,25 @@ module AwsSdk
         # cluster, a value for the Iops parameter is required. Valid Values: aurora , aurora-iopt1 (Aurora DB
         # clusters); io1 (Multi-AZ DB clusters) Default: aurora (Aurora DB clusters); io1 (Multi-AZ DB
         # clusters) Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB cluster. Valid Values: cluster-auto-backup - The
         # DB cluster's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
 
         # The tags to be assigned to the restored DB cluster. Valid for: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # A list of VPC security groups that the new DB cluster will belong to. Valid for: Aurora DB clusters
         # and Multi-AZ DB clusters
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -17306,8 +19800,10 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBClusterFromSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -17318,23 +19814,27 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBClusterToPointInTimeMessage
         include JSON::Serializable
 
         # The name of the new DB cluster to be created. Constraints: Must contain from 1 to 63 letters,
         # numbers, or hyphens First character must be a letter Can't end with a hyphen or contain two
         # consecutive hyphens Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
         # The target backtrack window, in seconds. To disable backtracking, set this value to 0. Default: 0
         # Constraints: If specified, this value must be set to a number from 0 to 259,200 (72 hours). Valid
         # for: Aurora MySQL DB clusters only
+
         @[JSON::Field(key: "BacktrackWindow")]
         getter backtrack_window : Int64?
 
         # Specifies whether to copy all tags from the restored DB cluster to snapshots of the restored DB
         # cluster. The default is not to copy them. Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -17342,6 +19842,7 @@ module AwsSdk
         # db.m6gd.xlarge. Not all DB instance classes are available in all Amazon Web Services Regions, or for
         # all database engines. For the full list of DB instance classes, and availability for your engine,
         # see DB instance class in the Amazon RDS User Guide . Valid for: Multi-AZ DB clusters only
+
         @[JSON::Field(key: "DBClusterInstanceClass")]
         getter db_cluster_instance_class : String?
 
@@ -17351,18 +19852,21 @@ module AwsSdk
         # parameter group. Must be 1 to 255 letters, numbers, or hyphens. First character must be a letter.
         # Can't end with a hyphen or contain two consecutive hyphens. Valid for: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBClusterParameterGroupName")]
         getter db_cluster_parameter_group_name : String?
 
         # The DB subnet group name to use for the new DB cluster. Constraints: If supplied, must match the
         # name of an existing DBSubnetGroup. Example: mydbsubnetgroup Valid for: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Specifies whether to enable deletion protection for the DB cluster. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled. Valid for:
         # Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -17370,11 +19874,13 @@ module AwsSdk
         # this operation. For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to
         # authenticate users that connect to the DB cluster. For more information, see Kerberos Authentication
         # in the Amazon Aurora User Guide . Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The name of the IAM role to be used when making API calls to the Directory Service. Valid for:
         # Aurora DB clusters only
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
@@ -17388,6 +19894,7 @@ module AwsSdk
         # information about exporting CloudWatch Logs for Amazon Aurora, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon Aurora User Guide . Valid for: Aurora DB clusters and Multi-AZ
         # DB clusters
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -17396,10 +19903,12 @@ module AwsSdk
         # Database Authentication in the Amazon Aurora User Guide or IAM database authentication for MariaDB,
         # MySQL, and PostgreSQL in the Amazon RDS User Guide . Valid for: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to turn on Performance Insights for the DB cluster.
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
@@ -17416,6 +19925,7 @@ module AwsSdk
         # Cluster Type: Aurora DB clusters and Multi-AZ DB clusters Valid Values:
         # open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
@@ -17425,6 +19935,7 @@ module AwsSdk
         # Serverless v1 cluster, the original cluster must be an Aurora Serverless v1 cluster or an encrypted
         # provisioned cluster. To create a full copy that is an Aurora Serverless v1 cluster, specify the
         # engine mode serverless . Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "EngineMode")]
         getter engine_mode : String?
 
@@ -17432,6 +19943,7 @@ module AwsSdk
         # each DB instance in the Multi-AZ DB cluster. For information about valid IOPS values, see Amazon RDS
         # Provisioned IOPS storage in the Amazon RDS User Guide . Constraints: Must be a multiple between .5
         # and 50 of the storage amount for the DB instance. Valid for: Multi-AZ DB clusters only
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -17446,6 +19958,7 @@ module AwsSdk
         # cluster isn't encrypted, then the restored DB cluster isn't encrypted. If DBClusterIdentifier refers
         # to a DB cluster that isn't encrypted, then the restore request is rejected. Valid for: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -17453,12 +19966,14 @@ module AwsSdk
         # cluster. To turn off collecting Enhanced Monitoring metrics, specify 0 . If MonitoringRoleArn is
         # specified, also set MonitoringInterval to a value other than 0 . Valid Values: 0 | 1 | 5 | 10 | 15 |
         # 30 | 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
         # The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics
         # to Amazon CloudWatch Logs. An example is arn:aws:iam:123456789012:role/emaccess . If
         # MonitoringInterval is set to a value other than 0 , supply a MonitoringRoleArn value.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
@@ -17466,11 +19981,13 @@ module AwsSdk
         # DBSubnetGroup specified for the DB cluster. A DBSubnetGroup can support only the IPv4 protocol or
         # the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a DB instance in a
         # VPC in the Amazon Aurora User Guide. Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The name of the option group for the new DB cluster. DB clusters are associated with a default
         # option group that can't be modified.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -17479,6 +19996,7 @@ module AwsSdk
         # you don't specify a value for PerformanceInsightsKMSKeyId , then Amazon RDS uses your default KMS
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -17486,12 +20004,14 @@ module AwsSdk
         # number of months from 1-23. Examples: 93 (3 months * 31), 341 (11 months * 31), 589 (19 months * 31)
         # 731 Default: 7 days If you specify a retention period that isn't valid, such as 94 , Amazon RDS
         # issues an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port number on which the new DB cluster accepts connections. Constraints: A value from
         # 1150-65535 . Default: The default port for the engine. Valid for: Aurora DB clusters and Multi-AZ DB
         # clusters
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -17510,10 +20030,12 @@ module AwsSdk
         # doesn’t have an internet gateway attached to it, the DB cluster is private. If the subnets are part
         # of a VPC that has an internet gateway attached to it, the DB cluster is public. Valid for: Multi-AZ
         # DB clusters only
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # Reserved for future use.
+
         @[JSON::Field(key: "RdsCustomClusterConfiguration")]
         getter rds_custom_cluster_configuration : Types::RdsCustomClusterConfiguration?
 
@@ -17522,6 +20044,7 @@ module AwsSdk
         # instance Must be specified if UseLatestRestorableTime parameter isn't provided Can't be specified if
         # the UseLatestRestorableTime parameter is enabled Can't be specified if the RestoreType parameter is
         # copy-on-write Example: 2015-03-07T23:45:00Z Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "RestoreToTime")]
         getter restore_to_time : Time?
 
@@ -17530,23 +20053,28 @@ module AwsSdk
         # cluster is restored as a clone of the source DB cluster. If you don't specify a RestoreType value,
         # then the new DB cluster is restored as a full copy of the source DB cluster. Valid for: Aurora DB
         # clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "RestoreType")]
         getter restore_type : String?
 
         # For DB clusters in serverless DB engine mode, the scaling properties of the DB cluster. Valid for:
         # Aurora DB clusters only
+
         @[JSON::Field(key: "ScalingConfiguration")]
         getter scaling_configuration : Types::ScalingConfiguration?
+
 
         @[JSON::Field(key: "ServerlessV2ScalingConfiguration")]
         getter serverless_v2_scaling_configuration : Types::ServerlessV2ScalingConfiguration?
 
         # The identifier of the source DB cluster from which to restore. Constraints: Must match the
         # identifier of an existing DBCluster. Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "SourceDBClusterIdentifier")]
         getter source_db_cluster_identifier : String?
 
         # The resource ID of the source DB cluster from which to restore.
+
         @[JSON::Field(key: "SourceDbClusterResourceId")]
         getter source_db_cluster_resource_id : String?
 
@@ -17554,13 +20082,16 @@ module AwsSdk
         # cluster, a value for the Iops parameter is required. Valid Values: aurora , aurora-iopt1 (Aurora DB
         # clusters); io1 (Multi-AZ DB clusters) Default: aurora (Aurora DB clusters); io1 (Multi-AZ DB
         # clusters) Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB cluster. Valid Values: cluster-auto-backup - The
         # DB cluster's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -17568,11 +20099,13 @@ module AwsSdk
         # Specifies whether to restore the DB cluster to the latest restorable backup time. By default, the DB
         # cluster isn't restored to the latest restorable backup time. Constraints: Can't be specified if
         # RestoreToTime parameter is provided. Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
         @[JSON::Field(key: "UseLatestRestorableTime")]
         getter use_latest_restorable_time : Bool?
 
         # A list of VPC security groups that the new DB cluster belongs to. Valid for: Aurora DB clusters and
         # Multi-AZ DB clusters
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -17617,8 +20150,10 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBClusterToPointInTimeResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -17629,18 +20164,21 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBInstanceFromDBSnapshotMessage
         include JSON::Serializable
 
         # The name of the DB instance to create from the DB snapshot. This parameter isn't case-sensitive.
         # Constraints: Must contain from 1 to 63 numbers, letters, or hyphens. First character must be a
         # letter. Can't end with a hyphen or contain two consecutive hyphens. Example: my-snapshot-id
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # A list of additional storage volumes to create for the DB instance. You can create up to three
         # additional storage volumes using the names rdsdbdata2 , rdsdbdata3 , and rdsdbdata4 . Additional
         # storage volumes are supported for RDS for Oracle and RDS for SQL Server DB instances only.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
@@ -17648,6 +20186,7 @@ module AwsSdk
         # allocation rules specified in CreateDBInstance. This setting isn't valid for RDS for SQL Server. Be
         # sure to allocate enough storage for your new DB instance so that the restore operation can succeed.
         # You can also allocate additional storage for future growth.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
@@ -17655,12 +20194,14 @@ module AwsSdk
         # maintenance window. If you restore an RDS Custom DB instance, you must disable this parameter. For
         # more information about automatic minor version upgrades, see Automatically upgrading the minor
         # engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The Availability Zone (AZ) where the DB instance will be created. Default: A random, system-chosen
         # Availability Zone. Constraint: You can't specify the AvailabilityZone parameter if the DB instance
         # is a Multi-AZ deployment. Example: us-east-1a
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
@@ -17668,6 +20209,7 @@ module AwsSdk
         # Possible values are local (Dedicated Local Zone), outposts (Amazon Web Services Outposts), and
         # region (Amazon Web Services Region). The default is region . For more information, see Working with
         # Amazon RDS on Amazon Web Services Outposts in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "BackupTarget")]
         getter backup_target : String?
 
@@ -17675,6 +20217,7 @@ module AwsSdk
         # apply to RDS Custom DB instances. For more information, see Using SSL/TLS to encrypt a connection to
         # a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
@@ -17684,6 +20227,7 @@ module AwsSdk
         # instance. If there are no new tags, RDS looks for the tags from the source DB instance for the DB
         # snapshot, and then adds those tags to the restored DB instance. For more information, see Copying
         # tags to DB instance snapshots in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -17693,6 +20237,7 @@ module AwsSdk
         # profile name and the associated IAM role name must start with the prefix AWSRDSCustom . For the list
         # of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User
         # Guide . This setting is required for RDS Custom.
+
         @[JSON::Field(key: "CustomIamInstanceProfile")]
         getter custom_iam_instance_profile : String?
 
@@ -17703,6 +20248,7 @@ module AwsSdk
         # specified. If you are restoring from a shared manual Multi-AZ DB cluster snapshot, the
         # DBClusterSnapshotIdentifier must be the ARN of the shared snapshot. Can't be the identifier of an
         # Aurora DB cluster snapshot.
+
         @[JSON::Field(key: "DBClusterSnapshotIdentifier")]
         getter db_cluster_snapshot_identifier : String?
 
@@ -17710,12 +20256,14 @@ module AwsSdk
         # instance classes are available in all Amazon Web Services Regions, or for all database engines. For
         # the full list of DB instance classes, and availability for your engine, see DB Instance Class in the
         # Amazon RDS User Guide. Default: The same DBInstanceClass as the original DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The name of the database for the restored DB instance. This parameter only applies to RDS for Oracle
         # and RDS for SQL Server DB instances. It doesn't apply to the other engines or to RDS Custom DB
         # instances.
+
         @[JSON::Field(key: "DBName")]
         getter db_name : String?
 
@@ -17724,6 +20272,7 @@ module AwsSdk
         # This setting doesn't apply to RDS Custom. Constraints: If supplied, must match the name of an
         # existing DB parameter group. Must be 1 to 255 letters, numbers, or hyphens. First character must be
         # a letter. Can't end with a hyphen or contain two consecutive hyphens.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
@@ -17731,21 +20280,25 @@ module AwsSdk
         # existing DB snapshot. Can't be specified when DBClusterSnapshotIdentifier is specified. Must be
         # specified when DBClusterSnapshotIdentifier isn't specified. If you are restoring from a shared
         # manual DB snapshot, the DBSnapshotIdentifier must be the ARN of the shared DB snapshot.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
         # The name of the DB subnet group to use for the new instance. Constraints: If supplied, must match
         # the name of an existing DB subnet group. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Specifies whether to enable a dedicated log volume (DLV) for the DB instance.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Specifies whether to enable deletion protection for the DB instance. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled. For more
         # information, see Deleting a DB Instance .
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -17753,12 +20306,14 @@ module AwsSdk
         # to this operation. Currently, you can create only Db2, MySQL, Microsoft SQL Server, Oracle, and
         # PostgreSQL DB instances in an Active Directory Domain. For more information, see Kerberos
         # Authentication in the Amazon RDS User Guide . This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The ARN for the Secrets Manager secret with the credentials for the user joining the domain.
         # Constraints: Can't be longer than 64 characters. Example:
         # arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456
+
         @[JSON::Field(key: "DomainAuthSecretArn")]
         getter domain_auth_secret_arn : String?
 
@@ -17766,28 +20321,33 @@ module AwsSdk
         # Constraints: Two IP addresses must be provided. If there isn't a secondary domain controller, use
         # the IP address of the primary domain controller for both entries in the list. Example:
         # 123.124.125.126,234.235.236.237
+
         @[JSON::Field(key: "DomainDnsIps")]
         getter domain_dns_ips : Array(String)?
 
         # The fully qualified domain name (FQDN) of an Active Directory domain. Constraints: Can't be longer
         # than 64 characters. Example: mymanagedADtest.mymanagedAD.mydomain
+
         @[JSON::Field(key: "DomainFqdn")]
         getter domain_fqdn : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
         # The Active Directory organizational unit for your DB instance to join. Constraints: Must be in the
         # distinguished name format. Can't be longer than 64 characters. Example:
         # OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain
+
         @[JSON::Field(key: "DomainOu")]
         getter domain_ou : String?
 
         # The list of logs for the restored DB instance to export to CloudWatch Logs. The values in the list
         # depend on the DB engine. For more information, see Publishing Database Logs to Amazon CloudWatch
         # Logs in the Amazon RDS User Guide . This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -17798,6 +20358,7 @@ module AwsSdk
         # apply to RDS Custom. For more information about RDS on Outposts, see Working with Amazon RDS on
         # Amazon Web Services Outposts in the Amazon RDS User Guide . For more information about CoIPs, see
         # Customer-owned IP addresses in the Amazon Web Services Outposts User Guide .
+
         @[JSON::Field(key: "EnableCustomerOwnedIp")]
         getter enable_customer_owned_ip : Bool?
 
@@ -17805,6 +20366,7 @@ module AwsSdk
         # accounts to database accounts. By default, mapping is disabled. For more information about IAM
         # database authentication, see IAM Database Authentication for MySQL and PostgreSQL in the Amazon RDS
         # User Guide. This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
@@ -17813,6 +20375,7 @@ module AwsSdk
         # can restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot. Valid Values: db2-ae db2-se
         # mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres sqlserver-ee sqlserver-se
         # sqlserver-ex sqlserver-web
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
@@ -17828,6 +20391,7 @@ module AwsSdk
         # and RDS for PostgreSQL. For Amazon Aurora DB instances, the life cycle type is managed by the DB
         # cluster. Valid Values: open-source-rds-extended-support | open-source-rds-extended-support-disabled
         # Default: open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
@@ -17838,6 +20402,7 @@ module AwsSdk
         # The provisioned IOPS value must follow the requirements for your database engine. For more
         # information, see Amazon RDS Provisioned IOPS storage in the Amazon RDS User Guide. Constraints: Must
         # be an integer greater than 1000.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -17851,12 +20416,14 @@ module AwsSdk
         # Microsoft SQL Server - license-included RDS for MySQL - general-public-license RDS for Oracle -
         # bring-your-own-license | license-included RDS for PostgreSQL - postgresql-license Default: Same as
         # the source.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # Specifies whether to manage the master user password with Amazon Web Services Secrets Manager in the
         # restored DB instance. For more information, see Password management with Amazon Web Services Secrets
         # Manager in the Amazon RDS User Guide . Constraints: Applies to RDS for Oracle only.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -17870,12 +20437,14 @@ module AwsSdk
         # aws/secretsmanager KMS key to encrypt the secret, and you must use a customer managed KMS key. There
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
         # Specifies whether the DB instance is a Multi-AZ deployment. This setting doesn't apply to RDS
         # Custom. Constraint: You can't specify the AvailabilityZone parameter if the DB instance is a
         # Multi-AZ deployment.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -17883,6 +20452,7 @@ module AwsSdk
         # DBSubnetGroup specified for the DB instance. A DBSubnetGroup can support only the IPv4 protocol or
         # the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a DB instance in a
         # VPC in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
@@ -17890,16 +20460,19 @@ module AwsSdk
         # TDE option for Oracle Advanced Security TDE, can't be removed from an option group, and that option
         # group can't be removed from a DB instance after it is associated with a DB instance. This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # The port number on which the database accepts connections. Default: The same port as the original DB
         # instance Constraints: Value must be 1150-65535
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance. This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
@@ -17910,45 +20483,54 @@ module AwsSdk
         # That public access is not permitted if the security group assigned to the DB instance doesn't permit
         # it. When the DB instance isn't publicly accessible, it is an internal DB instance with a DNS name
         # that resolves to a private IP address. For more information, see CreateDBInstance .
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # Specifies the storage throughput value for the DB instance. This setting doesn't apply to RDS Custom
         # or Amazon Aurora.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # Specifies the storage type to be associated with the DB instance. Valid Values: gp2 | gp3 | io1 |
         # io2 | standard If you specify io1 , io2 , or gp3 , you must also include a value for the Iops
         # parameter. Default: io1 if the Iops parameter is specified, otherwise gp3
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The ARN from the key store with which to associate the instance for TDE encryption. This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The password for the given ARN from the key store in order to access the device. This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "TdeCredentialPassword")]
         getter tde_credential_password : String?
 
         # Specifies whether the DB instance class of the DB instance uses its default processor features. This
         # setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "UseDefaultProcessorFeatures")]
         getter use_default_processor_features : Bool?
 
         # A list of EC2 VPC security groups to associate with this DB instance. Default: The default EC2 VPC
         # security group for the DB subnet group's VPC.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -18003,8 +20585,10 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBInstanceFromDBSnapshotResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -18015,6 +20599,7 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBInstanceFromS3Message
         include JSON::Serializable
 
@@ -18022,35 +20607,42 @@ module AwsSdk
         # classes are available in all Amazon Web Services Regions, or for all database engines. For the full
         # list of DB instance classes, and availability for your engine, see DB Instance Class in the Amazon
         # RDS User Guide. Importing from Amazon S3 isn't supported on the db.t2.micro DB instance class.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String
 
         # The DB instance identifier. This parameter is stored as a lowercase string. Constraints: Must
         # contain from 1 to 63 letters, numbers, or hyphens. First character must be a letter. Can't end with
         # a hyphen or contain two consecutive hyphens. Example: mydbinstance
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The name of the database engine to be used for this instance. Valid Values: mysql
+
         @[JSON::Field(key: "Engine")]
         getter engine : String
 
         # The name of your Amazon S3 bucket that contains your database backup file.
+
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String
 
         # An Amazon Web Services Identity and Access Management (IAM) role with a trust policy and a
         # permissions policy that allows Amazon RDS to access your Amazon S3 bucket. For information about
         # this role, see Creating an IAM role manually in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "S3IngestionRoleArn")]
         getter s3_ingestion_role_arn : String
 
         # The name of the engine of your source database. Valid Values: mysql
+
         @[JSON::Field(key: "SourceEngine")]
         getter source_engine : String
 
         # The version of the database that the backup files were created from. MySQL versions 5.6 and 5.7 are
         # supported. Example: 5.6.40
+
         @[JSON::Field(key: "SourceEngineVersion")]
         getter source_engine_version : String
 
@@ -18058,6 +20650,7 @@ module AwsSdk
         # delete up to three additional storage volumes using the names rdsdbdata2 , rdsdbdata3 , and
         # rdsdbdata4 . Additional storage volumes are supported for RDS for Oracle and RDS for SQL Server DB
         # instances only.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
@@ -18065,6 +20658,7 @@ module AwsSdk
         # allocation rules specified in CreateDBInstance . This setting isn't valid for RDS for SQL Server. Be
         # sure to allocate enough storage for your new DB instance so that the restore operation can succeed.
         # You can also allocate additional storage for future growth.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
@@ -18072,6 +20666,7 @@ module AwsSdk
         # maintenance window. By default, minor engine upgrades are not applied automatically. For more
         # information about automatic minor version upgrades, see Automatically upgrading the minor engine
         # version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
@@ -18081,11 +20676,13 @@ module AwsSdk
         # Example: us-east-1d Constraint: The AvailabilityZone parameter can't be specified if the DB instance
         # is a Multi-AZ deployment. The specified Availability Zone must be in the same Amazon Web Services
         # Region as the current endpoint.
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
         # The number of days for which automated backups are retained. Setting this parameter to a positive
         # number enables backups. For more information, see CreateDBInstance .
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
@@ -18093,52 +20690,62 @@ module AwsSdk
         # apply to RDS Custom DB instances. For more information, see Using SSL/TLS to encrypt a connection to
         # a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
         # Specifies whether to copy all tags from the DB instance to snapshots of the DB instance. By default,
         # tags are not copied.
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
         # The name of the database to create when the DB instance is created. Follow the naming rules
         # specified in CreateDBInstance .
+
         @[JSON::Field(key: "DBName")]
         getter db_name : String?
 
         # The name of the DB parameter group to associate with this DB instance. If you do not specify a value
         # for DBParameterGroupName , then the default DBParameterGroup for the specified DB engine is used.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
         # A list of DB security groups to associate with this DB instance. Default: The default DB security
         # group for the database engine.
+
         @[JSON::Field(key: "DBSecurityGroups")]
         getter db_security_groups : Array(String)?
 
         # A DB subnet group to associate with this DB instance. Constraints: If supplied, must match the name
         # of an existing DBSubnetGroup. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Specifies the mode of Database Insights to enable for the DB instance. Aurora DB instances inherit
         # this value from the DB cluster, so you can't change this value.
+
         @[JSON::Field(key: "DatabaseInsightsMode")]
         getter database_insights_mode : String?
 
         # Specifies whether to enable a dedicated log volume (DLV) for the DB instance.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Specifies whether to enable deletion protection for the DB instance. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled. For more
         # information, see Deleting a DB Instance .
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
         # The list of logs that the restored DB instance is to export to CloudWatch Logs. The values in the
         # list depend on the DB engine being used. For more information, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -18146,11 +20753,13 @@ module AwsSdk
         # accounts to database accounts. By default, mapping isn't enabled. For more information about IAM
         # database authentication, see IAM Database Authentication for MySQL and PostgreSQL in the Amazon RDS
         # User Guide.
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
         # Specifies whether to enable Performance Insights for the DB instance. For more information, see
         # Using Amazon Performance Insights in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "EnablePerformanceInsights")]
         getter enable_performance_insights : Bool?
 
@@ -18166,18 +20775,21 @@ module AwsSdk
         # for PostgreSQL. For Amazon Aurora DB instances, the life cycle type is managed by the DB cluster.
         # Valid Values: open-source-rds-extended-support | open-source-rds-extended-support-disabled Default:
         # open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # The version number of the database engine to use. Choose the latest minor version of your database
         # engine. For information about engine versions, see CreateDBInstance , or call
         # DescribeDBEngineVersions .
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # The amount of Provisioned IOPS (input/output operations per second) to allocate initially for the DB
         # instance. For information about valid IOPS values, see Amazon RDS Provisioned IOPS storage in the
         # Amazon RDS User Guide.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -18187,10 +20799,12 @@ module AwsSdk
         # parameter is enabled, and you do not specify a value for the KmsKeyId parameter, then Amazon RDS
         # will use your default KMS key. There is a default KMS key for your Amazon Web Services account. Your
         # Amazon Web Services account has a different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The license model for this DB instance. Use general-public-license .
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
@@ -18198,6 +20812,7 @@ module AwsSdk
         # more information, see Password management with Amazon Web Services Secrets Manager in the Amazon RDS
         # User Guide. Constraints: Can't manage the master user password with Amazon Web Services Secrets
         # Manager if MasterUserPassword is specified.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -18208,6 +20823,7 @@ module AwsSdk
         # characters. RDS for Microsoft SQL Server - Must contain from 8 to 128 characters. RDS for MySQL -
         # Must contain from 8 to 41 characters. RDS for Oracle - Must contain from 8 to 30 characters. RDS for
         # PostgreSQL - Must contain from 8 to 128 characters.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
@@ -18221,17 +20837,20 @@ module AwsSdk
         # aws/secretsmanager KMS key to encrypt the secret, and you must use a customer managed KMS key. There
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
         # The name for the master user. Constraints: Must be 1 to 16 letters or numbers. First character must
         # be a letter. Can't be a reserved word for the chosen database engine.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The upper limit in gibibytes (GiB) to which Amazon RDS can automatically scale the storage of the DB
         # instance. For more information about this setting, including limitations that apply to it, see
         # Managing capacity automatically with Amazon RDS storage autoscaling in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
@@ -18239,6 +20858,7 @@ module AwsSdk
         # instance. To disable collecting Enhanced Monitoring metrics, specify 0. If MonitoringRoleArn is
         # specified, then you must also set MonitoringInterval to a value other than 0. Valid Values: 0, 1, 5,
         # 10, 15, 30, 60 Default: 0
+
         @[JSON::Field(key: "MonitoringInterval")]
         getter monitoring_interval : Int32?
 
@@ -18246,11 +20866,13 @@ module AwsSdk
         # Logs. For example, arn:aws:iam:123456789012:role/emaccess . For information on creating a monitoring
         # role, see Setting Up and Enabling Enhanced Monitoring in the Amazon RDS User Guide. If
         # MonitoringInterval is set to a value other than 0, then you must supply a MonitoringRoleArn value.
+
         @[JSON::Field(key: "MonitoringRoleArn")]
         getter monitoring_role_arn : String?
 
         # Specifies whether the DB instance is a Multi-AZ deployment. If the DB instance is a Multi-AZ
         # deployment, you can't set the AvailabilityZone parameter.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -18258,11 +20880,13 @@ module AwsSdk
         # DBSubnetGroup specified for the DB instance. A DBSubnetGroup can support only the IPv4 protocol or
         # the IPv4 and the IPv6 protocols ( DUAL ). For more information, see Working with a DB instance in a
         # VPC in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The name of the option group to associate with this DB instance. If this argument is omitted, the
         # default option group for the specified engine is used.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
@@ -18271,6 +20895,7 @@ module AwsSdk
         # you do not specify a value for PerformanceInsightsKMSKeyId , then Amazon RDS uses your default KMS
         # key. There is a default KMS key for your Amazon Web Services account. Your Amazon Web Services
         # account has a different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "PerformanceInsightsKMSKeyId")]
         getter performance_insights_kms_key_id : String?
 
@@ -18278,11 +20903,13 @@ module AwsSdk
         # are valid: 7 month * 31, where month is a number of months from 1-23 731 For example, the following
         # values are valid: 93 (3 months * 31) 341 (11 months * 31) 589 (19 months * 31) 731 If you specify a
         # retention period such as 94, which isn't a valid value, RDS issues an error.
+
         @[JSON::Field(key: "PerformanceInsightsRetentionPeriod")]
         getter performance_insights_retention_period : Int32?
 
         # The port number on which the database accepts connections. Type: Integer Valid Values: 1150 - 65535
         # Default: 3306
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -18290,6 +20917,7 @@ module AwsSdk
         # For more information, see Backup window in the Amazon RDS User Guide. Constraints: Must be in the
         # format hh24:mi-hh24:mi . Must be in Universal Coordinated Time (UTC). Must not conflict with the
         # preferred maintenance window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredBackupWindow")]
         getter preferred_backup_window : String?
 
@@ -18298,11 +20926,13 @@ module AwsSdk
         # Constraints: Must be in the format ddd:hh24:mi-ddd:hh24:mi . Valid Days: Mon, Tue, Wed, Thu, Fri,
         # Sat, Sun. Must be in Universal Coordinated Time (UTC). Must not conflict with the preferred backup
         # window. Must be at least 30 minutes.
+
         @[JSON::Field(key: "PreferredMaintenanceWindow")]
         getter preferred_maintenance_window : String?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
@@ -18313,43 +20943,52 @@ module AwsSdk
         # That public access is not permitted if the security group assigned to the DB instance doesn't permit
         # it. When the DB instance isn't publicly accessible, it is an internal DB instance with a DNS name
         # that resolves to a private IP address. For more information, see CreateDBInstance .
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # The prefix of your Amazon S3 bucket.
+
         @[JSON::Field(key: "S3Prefix")]
         getter s3_prefix : String?
 
         # Specifies whether the new DB instance is encrypted or not.
+
         @[JSON::Field(key: "StorageEncrypted")]
         getter storage_encrypted : Bool?
 
         # Specifies the storage throughput value for the DB instance. This setting doesn't apply to RDS Custom
         # or Amazon Aurora.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # Specifies the storage type to be associated with the DB instance. Valid Values: gp2 | gp3 | io1 |
         # io2 | standard If you specify io1 , io2 , or gp3 , you must also include a value for the Iops
         # parameter. Default: io1 if the Iops parameter is specified; otherwise gp2
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
 
         # A list of tags to associate with this DB instance. For more information, see Tagging Amazon RDS
         # Resources in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Specifies whether the DB instance class of the DB instance uses its default processor features.
+
         @[JSON::Field(key: "UseDefaultProcessorFeatures")]
         getter use_default_processor_features : Bool?
 
         # A list of VPC security groups to associate with this DB instance.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -18412,8 +21051,10 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBInstanceFromS3Result
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -18424,18 +21065,21 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBInstanceToPointInTimeMessage
         include JSON::Serializable
 
         # The name of the new DB instance to create. Constraints: Must contain from 1 to 63 letters, numbers,
         # or hyphens. First character must be a letter. Can't end with a hyphen or contain two consecutive
         # hyphens.
+
         @[JSON::Field(key: "TargetDBInstanceIdentifier")]
         getter target_db_instance_identifier : String
 
         # A list of additional storage volumes to restore to the DB instance. You can restore up to three
         # additional storage volumes using the names rdsdbdata2 , rdsdbdata3 , and rdsdbdata4 . Additional
         # storage volumes are supported for RDS for Oracle and RDS for SQL Server DB instances only.
+
         @[JSON::Field(key: "AdditionalStorageVolumes")]
         getter additional_storage_volumes : Array(Types::AdditionalStorageVolume)?
 
@@ -18443,18 +21087,21 @@ module AwsSdk
         # allocation rules specified in CreateDBInstance . This setting isn't valid for RDS for SQL Server. Be
         # sure to allocate enough storage for your new DB instance so that the restore operation can succeed.
         # You can also allocate additional storage for future growth.
+
         @[JSON::Field(key: "AllocatedStorage")]
         getter allocated_storage : Int32?
 
         # Specifies whether minor version upgrades are applied automatically to the DB instance during the
         # maintenance window. This setting doesn't apply to RDS Custom. For more information about automatic
         # minor version upgrades, see Automatically upgrading the minor engine version .
+
         @[JSON::Field(key: "AutoMinorVersionUpgrade")]
         getter auto_minor_version_upgrade : Bool?
 
         # The Availability Zone (AZ) where the DB instance will be created. Default: A random, system-chosen
         # Availability Zone. Constraints: You can't specify the AvailabilityZone parameter if the DB instance
         # is a Multi-AZ deployment. Example: us-east-1a
+
         @[JSON::Field(key: "AvailabilityZone")]
         getter availability_zone : String?
 
@@ -18462,6 +21109,7 @@ module AwsSdk
         # Values: local (Dedicated Local Zone) outposts (Amazon Web Services Outposts) region (Amazon Web
         # Services Region) Default: region For more information, see Working with Amazon RDS on Amazon Web
         # Services Outposts in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "BackupTarget")]
         getter backup_target : String?
 
@@ -18469,11 +21117,13 @@ module AwsSdk
         # apply to RDS Custom DB instances. For more information, see Using SSL/TLS to encrypt a connection to
         # a DB instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a connection to a DB cluster
         # in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "CACertificateIdentifier")]
         getter ca_certificate_identifier : String?
 
         # Specifies whether to copy all tags from the restored DB instance to snapshots of the DB instance. By
         # default, tags are not copied.
+
         @[JSON::Field(key: "CopyTagsToSnapshot")]
         getter copy_tags_to_snapshot : Bool?
 
@@ -18483,6 +21133,7 @@ module AwsSdk
         # profile name and the associated IAM role name must start with the prefix AWSRDSCustom . For the list
         # of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User
         # Guide . This setting is required for RDS Custom.
+
         @[JSON::Field(key: "CustomIamInstanceProfile")]
         getter custom_iam_instance_profile : String?
 
@@ -18490,11 +21141,13 @@ module AwsSdk
         # instance classes are available in all Amazon Web Services Regions, or for all database engines. For
         # the full list of DB instance classes, and availability for your engine, see DB Instance Class in the
         # Amazon RDS User Guide . Default: The same DB instance class as the original DB instance.
+
         @[JSON::Field(key: "DBInstanceClass")]
         getter db_instance_class : String?
 
         # The database name for the restored DB instance. This parameter doesn't apply to the following DB
         # instances: RDS Custom RDS for Db2 RDS for MariaDB RDS for MySQL
+
         @[JSON::Field(key: "DBName")]
         getter db_name : String?
 
@@ -18503,21 +21156,25 @@ module AwsSdk
         # This setting doesn't apply to RDS Custom. Constraints: If supplied, must match the name of an
         # existing DB parameter group. Must be 1 to 255 letters, numbers, or hyphens. First character must be
         # a letter. Can't end with a hyphen or contain two consecutive hyphens.
+
         @[JSON::Field(key: "DBParameterGroupName")]
         getter db_parameter_group_name : String?
 
         # The DB subnet group name to use for the new instance. Constraints: If supplied, must match the name
         # of an existing DB subnet group. Example: mydbsubnetgroup
+
         @[JSON::Field(key: "DBSubnetGroupName")]
         getter db_subnet_group_name : String?
 
         # Specifies whether to enable a dedicated log volume (DLV) for the DB instance.
+
         @[JSON::Field(key: "DedicatedLogVolume")]
         getter dedicated_log_volume : Bool?
 
         # Specifies whether the DB instance has deletion protection enabled. The database can't be deleted
         # when deletion protection is enabled. By default, deletion protection isn't enabled. For more
         # information, see Deleting a DB Instance .
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
 
@@ -18525,12 +21182,14 @@ module AwsSdk
         # this command. Currently, you can create only the MySQL, Microsoft SQL Server, Oracle, and PostgreSQL
         # DB instances in an Active Directory Domain. This setting doesn't apply to RDS Custom. For more
         # information, see Kerberos Authentication in the Amazon RDS User Guide .
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The ARN for the Secrets Manager secret with the credentials for the user joining the domain.
         # Constraints: Can't be longer than 64 characters. Example:
         # arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456
+
         @[JSON::Field(key: "DomainAuthSecretArn")]
         getter domain_auth_secret_arn : String?
 
@@ -18538,28 +21197,33 @@ module AwsSdk
         # Constraints: Two IP addresses must be provided. If there isn't a secondary domain controller, use
         # the IP address of the primary domain controller for both entries in the list. Example:
         # 123.124.125.126,234.235.236.237
+
         @[JSON::Field(key: "DomainDnsIps")]
         getter domain_dns_ips : Array(String)?
 
         # The fully qualified domain name (FQDN) of an Active Directory domain. Constraints: Can't be longer
         # than 64 characters. Example: mymanagedADtest.mymanagedAD.mydomain
+
         @[JSON::Field(key: "DomainFqdn")]
         getter domain_fqdn : String?
 
         # The name of the IAM role to use when making API calls to the Directory Service. This setting doesn't
         # apply to RDS Custom DB instances.
+
         @[JSON::Field(key: "DomainIAMRoleName")]
         getter domain_iam_role_name : String?
 
         # The Active Directory organizational unit for your DB instance to join. Constraints: Must be in the
         # distinguished name format. Can't be longer than 64 characters. Example:
         # OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain
+
         @[JSON::Field(key: "DomainOu")]
         getter domain_ou : String?
 
         # The list of logs that the restored DB instance is to export to CloudWatch Logs. The values in the
         # list depend on the DB engine being used. For more information, see Publishing Database Logs to
         # Amazon CloudWatch Logs in the Amazon RDS User Guide . This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "EnableCloudwatchLogsExports")]
         getter enable_cloudwatch_logs_exports : Array(String)?
 
@@ -18570,6 +21234,7 @@ module AwsSdk
         # apply to RDS Custom. For more information about RDS on Outposts, see Working with Amazon RDS on
         # Amazon Web Services Outposts in the Amazon RDS User Guide . For more information about CoIPs, see
         # Customer-owned IP addresses in the Amazon Web Services Outposts User Guide .
+
         @[JSON::Field(key: "EnableCustomerOwnedIp")]
         getter enable_customer_owned_ip : Bool?
 
@@ -18577,6 +21242,7 @@ module AwsSdk
         # accounts to database accounts. By default, mapping isn't enabled. This setting doesn't apply to RDS
         # Custom. For more information about IAM database authentication, see IAM Database Authentication for
         # MySQL and PostgreSQL in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "EnableIAMDatabaseAuthentication")]
         getter enable_iam_database_authentication : Bool?
 
@@ -18584,6 +21250,7 @@ module AwsSdk
         # Values: db2-ae db2-se mariadb mysql oracle-ee oracle-ee-cdb oracle-se2 oracle-se2-cdb postgres
         # sqlserver-ee sqlserver-se sqlserver-ex sqlserver-web Default: The same as source Constraints: Must
         # be compatible with the engine of the source.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
@@ -18599,12 +21266,14 @@ module AwsSdk
         # and RDS for PostgreSQL. For Amazon Aurora DB instances, the life cycle type is managed by the DB
         # cluster. Valid Values: open-source-rds-extended-support | open-source-rds-extended-support-disabled
         # Default: open-source-rds-extended-support
+
         @[JSON::Field(key: "EngineLifecycleSupport")]
         getter engine_lifecycle_support : String?
 
         # The amount of Provisioned IOPS (input/output operations per second) to initially allocate for the DB
         # instance. This setting doesn't apply to SQL Server. Constraints: Must be an integer greater than
         # 1000.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -18618,12 +21287,14 @@ module AwsSdk
         # Microsoft SQL Server - license-included RDS for MySQL - general-public-license RDS for Oracle -
         # bring-your-own-license | license-included RDS for PostgreSQL - postgresql-license Default: Same as
         # the source.
+
         @[JSON::Field(key: "LicenseModel")]
         getter license_model : String?
 
         # Specifies whether to manage the master user password with Amazon Web Services Secrets Manager in the
         # restored DB instance. For more information, see Password management with Amazon Web Services Secrets
         # Manager in the Amazon RDS User Guide . Constraints: Applies to RDS for Oracle only.
+
         @[JSON::Field(key: "ManageMasterUserPassword")]
         getter manage_master_user_password : Bool?
 
@@ -18637,6 +21308,7 @@ module AwsSdk
         # aws/secretsmanager KMS key to encrypt the secret, and you must use a customer managed KMS key. There
         # is a default KMS key for your Amazon Web Services account. Your Amazon Web Services account has a
         # different default KMS key for each Amazon Web Services Region.
+
         @[JSON::Field(key: "MasterUserSecretKmsKeyId")]
         getter master_user_secret_kms_key_id : String?
 
@@ -18644,12 +21316,14 @@ module AwsSdk
         # instance. For more information about this setting, including limitations that apply to it, see
         # Managing capacity automatically with Amazon RDS storage autoscaling in the Amazon RDS User Guide .
         # This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "MaxAllocatedStorage")]
         getter max_allocated_storage : Int32?
 
         # Secifies whether the DB instance is a Multi-AZ deployment. This setting doesn't apply to RDS Custom.
         # Constraints: You can't specify the AvailabilityZone parameter if the DB instance is a Multi-AZ
         # deployment.
+
         @[JSON::Field(key: "MultiAZ")]
         getter multi_az : Bool?
 
@@ -18657,6 +21331,7 @@ module AwsSdk
         # for the DB instance. A DBSubnetGroup can support only the IPv4 protocol or the IPv4 and the IPv6
         # protocols ( DUAL ). For more information, see Working with a DB instance in a VPC in the Amazon RDS
         # User Guide. Valid Values: IPV4 DUAL
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
@@ -18664,16 +21339,19 @@ module AwsSdk
         # option for Oracle Advanced Security TDE, can't be removed from an option group, and that option
         # group can't be removed from a DB instance after it is associated with a DB instance This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "OptionGroupName")]
         getter option_group_name : String?
 
         # The port number on which the database accepts connections. Default: The same port as the original DB
         # instance. Constraints: The value must be 1150-65535 .
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # The number of CPU cores and the number of threads per core for the DB instance class of the DB
         # instance. This setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "ProcessorFeatures")]
         getter processor_features : Array(Types::ProcessorFeature)?
 
@@ -18684,72 +21362,86 @@ module AwsSdk
         # That public access isn't permitted if the security group assigned to the DB cluster doesn't permit
         # it. When the DB instance isn't publicly accessible, it is an internal DB instance with a DNS name
         # that resolves to a private IP address. For more information, see CreateDBInstance .
+
         @[JSON::Field(key: "PubliclyAccessible")]
         getter publicly_accessible : Bool?
 
         # The date and time to restore from. Constraints: Must be a time in Universal Coordinated Time (UTC)
         # format. Must be before the latest restorable time for the DB instance. Can't be specified if the
         # UseLatestRestorableTime parameter is enabled. Example: 2009-09-07T23:45:00Z
+
         @[JSON::Field(key: "RestoreTime")]
         getter restore_time : Time?
 
         # The Amazon Resource Name (ARN) of the replicated automated backups from which to restore, for
         # example, arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE . This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "SourceDBInstanceAutomatedBackupsArn")]
         getter source_db_instance_automated_backups_arn : String?
 
         # The identifier of the source DB instance from which to restore. Constraints: Must match the
         # identifier of an existing DB instance.
+
         @[JSON::Field(key: "SourceDBInstanceIdentifier")]
         getter source_db_instance_identifier : String?
 
         # The resource ID of the source DB instance from which to restore.
+
         @[JSON::Field(key: "SourceDbiResourceId")]
         getter source_dbi_resource_id : String?
 
         # The storage throughput value for the DB instance. This setting doesn't apply to RDS Custom or Amazon
         # Aurora.
+
         @[JSON::Field(key: "StorageThroughput")]
         getter storage_throughput : Int32?
 
         # The storage type to associate with the DB instance. Valid Values: gp2 | gp3 | io1 | io2 | standard
         # Default: io1 , if the Iops parameter is specified. Otherwise, gp3 . Constraints: If you specify io1
         # , io2 , or gp3 , you must also include a value for the Iops parameter.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Tags to assign to resources associated with the DB instance. Valid Values: auto-backup - The DB
         # instance's automated backup.
+
         @[JSON::Field(key: "TagSpecifications")]
         getter tag_specifications : Array(Types::TagSpecification)?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The ARN from the key store with which to associate the instance for TDE encryption. This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "TdeCredentialArn")]
         getter tde_credential_arn : String?
 
         # The password for the given ARN from the key store in order to access the device. This setting
         # doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "TdeCredentialPassword")]
         getter tde_credential_password : String?
 
         # Specifies whether the DB instance class of the DB instance uses its default processor features. This
         # setting doesn't apply to RDS Custom.
+
         @[JSON::Field(key: "UseDefaultProcessorFeatures")]
         getter use_default_processor_features : Bool?
 
         # Specifies whether the DB instance is restored from the latest backup time. By default, the DB
         # instance isn't restored from the latest backup time. Constraints: Can't be specified if the
         # RestoreTime parameter is provided.
+
         @[JSON::Field(key: "UseLatestRestorableTime")]
         getter use_latest_restorable_time : Bool?
 
         # A list of EC2 VPC security groups to associate with this DB instance. Default: The default EC2 VPC
         # security group for the DB subnet group's VPC.
+
         @[JSON::Field(key: "VpcSecurityGroupIds")]
         getter vpc_security_group_ids : Array(String)?
 
@@ -18808,8 +21500,10 @@ module AwsSdk
         end
       end
 
+
       struct RestoreDBInstanceToPointInTimeResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -18821,14 +21515,17 @@ module AwsSdk
       end
 
       # Earliest and latest time an instance can be restored to:
+
       struct RestoreWindow
         include JSON::Serializable
 
         # The earliest time you can restore an instance to.
+
         @[JSON::Field(key: "EarliestTime")]
         getter earliest_time : Time?
 
         # The latest time you can restore an instance to.
+
         @[JSON::Field(key: "LatestTime")]
         getter latest_time : Time?
 
@@ -18839,27 +21536,32 @@ module AwsSdk
         end
       end
 
+
       struct RevokeDBSecurityGroupIngressMessage
         include JSON::Serializable
 
         # The name of the DB security group to revoke ingress from.
+
         @[JSON::Field(key: "DBSecurityGroupName")]
         getter db_security_group_name : String
 
         # The IP range to revoke access from. Must be a valid CIDR range. If CIDRIP is specified,
         # EC2SecurityGroupName , EC2SecurityGroupId and EC2SecurityGroupOwnerId can't be provided.
+
         @[JSON::Field(key: "CIDRIP")]
         getter cidrip : String?
 
         # The id of the EC2 security group to revoke access from. For VPC DB security groups,
         # EC2SecurityGroupId must be provided. Otherwise, EC2SecurityGroupOwnerId and either
         # EC2SecurityGroupName or EC2SecurityGroupId must be provided.
+
         @[JSON::Field(key: "EC2SecurityGroupId")]
         getter ec2_security_group_id : String?
 
         # The name of the EC2 security group to revoke access from. For VPC DB security groups,
         # EC2SecurityGroupId must be provided. Otherwise, EC2SecurityGroupOwnerId and either
         # EC2SecurityGroupName or EC2SecurityGroupId must be provided.
+
         @[JSON::Field(key: "EC2SecurityGroupName")]
         getter ec2_security_group_name : String?
 
@@ -18867,6 +21569,7 @@ module AwsSdk
         # EC2SecurityGroupName parameter. The Amazon Web Services access key ID isn't an acceptable value. For
         # VPC DB security groups, EC2SecurityGroupId must be provided. Otherwise, EC2SecurityGroupOwnerId and
         # either EC2SecurityGroupName or EC2SecurityGroupId must be provided.
+
         @[JSON::Field(key: "EC2SecurityGroupOwnerId")]
         getter ec2_security_group_owner_id : String?
 
@@ -18880,8 +21583,10 @@ module AwsSdk
         end
       end
 
+
       struct RevokeDBSecurityGroupIngressResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBSecurityGroup")]
         getter db_security_group : Types::DBSecurityGroup?
@@ -18893,6 +21598,7 @@ module AwsSdk
       end
 
       # SNS has responded that there is a problem with the SNS topic specified.
+
       struct SNSInvalidTopicFault
         include JSON::Serializable
 
@@ -18901,6 +21607,7 @@ module AwsSdk
       end
 
       # You do not have permission to publish to the SNS topic ARN.
+
       struct SNSNoAuthorizationFault
         include JSON::Serializable
 
@@ -18909,6 +21616,7 @@ module AwsSdk
       end
 
       # The SNS topic ARN does not exist.
+
       struct SNSTopicArnNotFoundFault
         include JSON::Serializable
 
@@ -18917,10 +21625,12 @@ module AwsSdk
       end
 
       # The metric reference details when the reference is a scalar.
+
       struct ScalarReferenceDetails
         include JSON::Serializable
 
         # The value of a scalar reference.
+
         @[JSON::Field(key: "Value")]
         getter value : Float64?
 
@@ -18932,6 +21642,7 @@ module AwsSdk
 
       # Contains the scaling configuration of an Aurora Serverless v1 DB cluster. For more information, see
       # Using Amazon Aurora Serverless v1 in the Amazon Aurora User Guide .
+
       struct ScalingConfiguration
         include JSON::Serializable
 
@@ -18939,6 +21650,7 @@ module AwsSdk
         # engine mode. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster
         # is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case,
         # the DB cluster is restored when there is a request to connect to it.
+
         @[JSON::Field(key: "AutoPause")]
         getter auto_pause : Bool?
 
@@ -18946,6 +21658,7 @@ module AwsSdk
         # capacity values are 1 , 2 , 4 , 8 , 16 , 32 , 64 , 128 , and 256 . For Aurora PostgreSQL, valid
         # capacity values are 2 , 4 , 8 , 16 , 32 , 64 , 192 , and 384 . The maximum capacity must be greater
         # than or equal to the minimum capacity.
+
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32?
 
@@ -18953,17 +21666,20 @@ module AwsSdk
         # capacity values are 1 , 2 , 4 , 8 , 16 , 32 , 64 , 128 , and 256 . For Aurora PostgreSQL, valid
         # capacity values are 2 , 4 , 8 , 16 , 32 , 64 , 192 , and 384 . The minimum capacity must be less
         # than or equal to the maximum capacity.
+
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32?
 
         # The amount of time, in seconds, that Aurora Serverless v1 tries to find a scaling point to perform
         # seamless scaling before enforcing the timeout action. The default is 300. Specify a value between 60
         # and 600 seconds.
+
         @[JSON::Field(key: "SecondsBeforeTimeout")]
         getter seconds_before_timeout : Int32?
 
         # The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Specify a value
         # between 300 and 86,400 seconds.
+
         @[JSON::Field(key: "SecondsUntilAutoPause")]
         getter seconds_until_auto_pause : Int32?
 
@@ -18973,6 +21689,7 @@ module AwsSdk
         # isn't found in the timeout period. If you specify ForceApplyCapacityChange , connections that
         # prevent Aurora Serverless v1 from finding a scaling point might be dropped. For more information,
         # see Autoscaling for Aurora Serverless v1 in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "TimeoutAction")]
         getter timeout_action : String?
 
@@ -18989,30 +21706,36 @@ module AwsSdk
 
       # The scaling configuration for an Aurora DB cluster in serverless DB engine mode. For more
       # information, see Using Amazon Aurora Serverless v1 in the Amazon Aurora User Guide .
+
       struct ScalingConfigurationInfo
         include JSON::Serializable
 
         # Indicates whether automatic pause is allowed for the Aurora DB cluster in serverless DB engine mode.
         # When the value is set to false for an Aurora Serverless v1 DB cluster, the DB cluster automatically
         # resumes.
+
         @[JSON::Field(key: "AutoPause")]
         getter auto_pause : Bool?
 
         # The maximum capacity for an Aurora DB cluster in serverless DB engine mode.
+
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Int32?
 
         # The minimum capacity for an Aurora DB cluster in serverless DB engine mode.
+
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Int32?
 
         # The number of seconds before scaling times out. What happens when an attempted scaling action times
         # out is determined by the TimeoutAction setting.
+
         @[JSON::Field(key: "SecondsBeforeTimeout")]
         getter seconds_before_timeout : Int32?
 
         # The remaining amount of time, in seconds, before the Aurora DB cluster in serverless mode is paused.
         # A DB cluster can be paused only when it's idle (it has no connections).
+
         @[JSON::Field(key: "SecondsUntilAutoPause")]
         getter seconds_until_auto_pause : Int32?
 
@@ -19021,6 +21744,7 @@ module AwsSdk
         # ForceApplyCapacityChange , the default, sets the capacity to the specified value as soon as
         # possible. RollbackCapacityChange ignores the capacity change if a scaling point isn't found in the
         # timeout period.
+
         @[JSON::Field(key: "TimeoutAction")]
         getter timeout_action : String?
 
@@ -19040,17 +21764,20 @@ module AwsSdk
       # to use in a new or upgraded DB cluster. You can also retrieve the version of an existing DB cluster
       # and check whether that version supports certain Aurora Serverless v2 features before you attempt to
       # use those features.
+
       struct ServerlessV2FeaturesSupport
         include JSON::Serializable
 
         # Specifies the upper Aurora Serverless v2 capacity limit for a particular engine version or platform
         # version. Depending on the engine version, the maximum capacity for an Aurora Serverless v2 cluster
         # might be 256 or 128 .
+
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Float64?
 
         # If the minimum capacity is 0 ACUs, the engine version or platform version supports the automatic
         # pause/resume feature of Aurora Serverless v2.
+
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Float64?
 
@@ -19063,6 +21790,7 @@ module AwsSdk
 
       # Contains the scaling configuration of an Aurora Serverless v2 DB cluster. For more information, see
       # Using Amazon Aurora Serverless v2 in the Amazon Aurora User Guide .
+
       struct ServerlessV2ScalingConfiguration
         include JSON::Serializable
 
@@ -19071,6 +21799,7 @@ module AwsSdk
         # largest value that you can use is 256 for recent Aurora versions, or 128 for older versions. You can
         # check the attributes of your engine version or platform version to determine the specific maximum
         # capacity supported.
+
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Float64?
 
@@ -19079,12 +21808,14 @@ module AwsSdk
         # Aurora versions that support the Aurora Serverless v2 auto-pause feature, the smallest value that
         # you can use is 0. For versions that don't support Aurora Serverless v2 auto-pause, the smallest
         # value that you can use is 0.5.
+
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Float64?
 
         # Specifies the number of seconds an Aurora Serverless v2 DB instance must be idle before Aurora
         # attempts to automatically pause it. Specify a value between 300 seconds (five minutes) and 86,400
         # seconds (one day). The default is 300 seconds.
+
         @[JSON::Field(key: "SecondsUntilAutoPause")]
         getter seconds_until_auto_pause : Int32?
 
@@ -19098,6 +21829,7 @@ module AwsSdk
 
       # The scaling configuration for an Aurora Serverless v2 DB cluster. For more information, see Using
       # Amazon Aurora Serverless v2 in the Amazon Aurora User Guide .
+
       struct ServerlessV2ScalingConfigurationInfo
         include JSON::Serializable
 
@@ -19106,6 +21838,7 @@ module AwsSdk
         # largest value that you can use is 256 for recent Aurora versions, or 128 for older versions. You can
         # check the attributes of your engine version or platform version to determine the specific maximum
         # capacity supported.
+
         @[JSON::Field(key: "MaxCapacity")]
         getter max_capacity : Float64?
 
@@ -19114,6 +21847,7 @@ module AwsSdk
         # Aurora versions that support the Aurora Serverless v2 auto-pause feature, the smallest value that
         # you can use is 0. For versions that don't support Aurora Serverless v2 auto-pause, the smallest
         # value that you can use is 0.5.
+
         @[JSON::Field(key: "MinCapacity")]
         getter min_capacity : Float64?
 
@@ -19123,6 +21857,7 @@ module AwsSdk
         # change the minimum capacity back to 0 ACUs, this property is reset to its default value unless you
         # specify it again. This value ranges between 300 seconds (five minutes) and 86,400 seconds (one day).
         # The default is 300 seconds.
+
         @[JSON::Field(key: "SecondsUntilAutoPause")]
         getter seconds_until_auto_pause : Int32?
 
@@ -19135,6 +21870,7 @@ module AwsSdk
       end
 
       # You have exceeded the maximum number of accounts that you can share a manual DB snapshot with.
+
       struct SharedSnapshotQuotaExceededFault
         include JSON::Serializable
 
@@ -19143,6 +21879,7 @@ module AwsSdk
       end
 
       # The request would result in the user exceeding the allowed number of DB snapshots.
+
       struct SnapshotQuotaExceededFault
         include JSON::Serializable
 
@@ -19151,6 +21888,7 @@ module AwsSdk
       end
 
       # The source DB cluster isn't supported for a blue/green deployment.
+
       struct SourceClusterNotSupportedFault
         include JSON::Serializable
 
@@ -19159,6 +21897,7 @@ module AwsSdk
       end
 
       # The source DB instance isn't supported for a blue/green deployment.
+
       struct SourceDatabaseNotSupportedFault
         include JSON::Serializable
 
@@ -19167,6 +21906,7 @@ module AwsSdk
       end
 
       # The requested source could not be found.
+
       struct SourceNotFoundFault
         include JSON::Serializable
 
@@ -19176,23 +21916,28 @@ module AwsSdk
 
       # Contains an Amazon Web Services Region name as the result of a successful call to the
       # DescribeSourceRegions action.
+
       struct SourceRegion
         include JSON::Serializable
 
         # The endpoint for the source Amazon Web Services Region endpoint.
+
         @[JSON::Field(key: "Endpoint")]
         getter endpoint : String?
 
         # The name of the source Amazon Web Services Region.
+
         @[JSON::Field(key: "RegionName")]
         getter region_name : String?
 
         # The status of the source Amazon Web Services Region.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Indicates whether the source Amazon Web Services Region supports replicating automated backups to
         # the current Amazon Web Services Region.
+
         @[JSON::Field(key: "SupportsDBInstanceAutomatedBackupsReplication")]
         getter supports_db_instance_automated_backups_replication : Bool?
 
@@ -19206,16 +21951,19 @@ module AwsSdk
       end
 
       # Contains the result of a successful invocation of the DescribeSourceRegions action.
+
       struct SourceRegionMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the marker, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # A list of SourceRegion instances that contains each source Amazon Web Services Region that the
         # current Amazon Web Services Region can get a read replica or a DB snapshot from.
+
         @[JSON::Field(key: "SourceRegions")]
         getter source_regions : Array(Types::SourceRegion)?
 
@@ -19226,34 +21974,40 @@ module AwsSdk
         end
       end
 
+
       struct StartActivityStreamRequest
         include JSON::Serializable
 
         # The Amazon Web Services KMS key identifier for encrypting messages in the database activity stream.
         # The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the
         # KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String
 
         # Specifies the mode of the database activity stream. Database events such as a change or access
         # generate an activity stream event. The database session can handle these events either synchronously
         # or asynchronously.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String
 
         # The Amazon Resource Name (ARN) of the DB cluster, for example,
         # arn:aws:rds:us-east-1:12345667890:cluster:das-cluster .
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # Specifies whether or not the database activity stream is to start as soon as possible, regardless of
         # the maintenance window for the database.
+
         @[JSON::Field(key: "ApplyImmediately")]
         getter apply_immediately : Bool?
 
         # Specifies whether the database activity stream includes engine-native audit fields. This option
         # applies to an Oracle or Microsoft SQL Server DB instance. By default, no engine-native audit fields
         # are included.
+
         @[JSON::Field(key: "EngineNativeAuditFieldsIncluded")]
         getter engine_native_audit_fields_included : Bool?
 
@@ -19267,32 +22021,39 @@ module AwsSdk
         end
       end
 
+
       struct StartActivityStreamResponse
         include JSON::Serializable
 
         # Indicates whether or not the database activity stream will start as soon as possible, regardless of
         # the maintenance window for the database.
+
         @[JSON::Field(key: "ApplyImmediately")]
         getter apply_immediately : Bool?
 
         # Indicates whether engine-native audit fields are included in the database activity stream.
+
         @[JSON::Field(key: "EngineNativeAuditFieldsIncluded")]
         getter engine_native_audit_fields_included : Bool?
 
         # The name of the Amazon Kinesis data stream to be used for the database activity stream.
+
         @[JSON::Field(key: "KinesisStreamName")]
         getter kinesis_stream_name : String?
 
         # The Amazon Web Services KMS key identifier for encryption of messages in the database activity
         # stream.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The mode of the database activity stream.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String?
 
         # The status of the database activity stream.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -19307,11 +22068,13 @@ module AwsSdk
         end
       end
 
+
       struct StartDBClusterMessage
         include JSON::Serializable
 
         # The DB cluster identifier of the Amazon Aurora DB cluster to be started. This parameter is stored as
         # a lowercase string.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
@@ -19321,8 +22084,10 @@ module AwsSdk
         end
       end
 
+
       struct StartDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -19333,21 +22098,25 @@ module AwsSdk
         end
       end
 
+
       struct StartDBInstanceAutomatedBackupsReplicationMessage
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the source DB instance for the replicated automated backups, for
         # example, arn:aws:rds:us-west-2:123456789012:db:mydatabase .
+
         @[JSON::Field(key: "SourceDBInstanceArn")]
         getter source_db_instance_arn : String
 
         # The retention period for the replicated automated backups.
+
         @[JSON::Field(key: "BackupRetentionPeriod")]
         getter backup_retention_period : Int32?
 
         # The Amazon Web Services KMS key identifier for encryption of the replicated automated backups. The
         # KMS key ID is the Amazon Resource Name (ARN) for the KMS encryption key in the destination Amazon
         # Web Services Region, for example, arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE .
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -19362,10 +22131,12 @@ module AwsSdk
         # Web Services SDK tool or the CLI, you can specify SourceRegion (or --source-region for the CLI)
         # instead of specifying PreSignedUrl manually. Specifying SourceRegion autogenerates a presigned URL
         # that is a valid request for the operation that can run in the source Amazon Web Services Region.
+
         @[JSON::Field(key: "PreSignedUrl")]
         getter pre_signed_url : String?
 
         # A list of tags to associate with the replicated automated backups.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -19379,8 +22150,10 @@ module AwsSdk
         end
       end
 
+
       struct StartDBInstanceAutomatedBackupsReplicationResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstanceAutomatedBackup")]
         getter db_instance_automated_backup : Types::DBInstanceAutomatedBackup?
@@ -19391,10 +22164,12 @@ module AwsSdk
         end
       end
 
+
       struct StartDBInstanceMessage
         include JSON::Serializable
 
         # The user-supplied instance identifier.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
@@ -19404,8 +22179,10 @@ module AwsSdk
         end
       end
 
+
       struct StartDBInstanceResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -19416,11 +22193,13 @@ module AwsSdk
         end
       end
 
+
       struct StartExportTaskMessage
         include JSON::Serializable
 
         # A unique identifier for the export task. This ID isn't an identifier for the Amazon S3 bucket where
         # the data is to be exported.
+
         @[JSON::Field(key: "ExportTaskIdentifier")]
         getter export_task_identifier : String
 
@@ -19431,6 +22210,7 @@ module AwsSdk
         # resources to identify the S3 bucket and objects in the bucket. The following list of resources shows
         # the Amazon Resource Name (ARN) format for accessing S3: arn:aws:s3::: your-s3-bucket arn:aws:s3:::
         # your-s3-bucket /*
+
         @[JSON::Field(key: "IamRoleArn")]
         getter iam_role_arn : String
 
@@ -19438,14 +22218,17 @@ module AwsSdk
         # Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS
         # key. The caller of this operation must be authorized to run the following operations. These can be
         # set in the Amazon Web Services KMS key policy: kms:CreateGrant kms:DescribeKey
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String
 
         # The name of the Amazon S3 bucket to export the snapshot or cluster data to.
+
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String
 
         # The Amazon Resource Name (ARN) of the snapshot or cluster to export to Amazon S3.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String
 
@@ -19456,10 +22239,12 @@ module AwsSdk
         # schema of the snapshot or cluster. This format is valid only for RDS for PostgreSQL and Aurora
         # PostgreSQL. database.schema.table table-name - Export a table of the database schema. This format is
         # valid only for RDS for PostgreSQL and Aurora PostgreSQL.
+
         @[JSON::Field(key: "ExportOnly")]
         getter export_only : Array(String)?
 
         # The Amazon S3 bucket prefix to use as the file name and path of the exported data.
+
         @[JSON::Field(key: "S3Prefix")]
         getter s3_prefix : String?
 
@@ -19475,16 +22260,19 @@ module AwsSdk
         end
       end
 
+
       struct StopActivityStreamRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the DB cluster for the database activity stream. For example,
         # arn:aws:rds:us-east-1:12345667890:cluster:das-cluster .
+
         @[JSON::Field(key: "ResourceArn")]
         getter resource_arn : String
 
         # Specifies whether or not the database activity stream is to stop as soon as possible, regardless of
         # the maintenance window for the database.
+
         @[JSON::Field(key: "ApplyImmediately")]
         getter apply_immediately : Bool?
 
@@ -19495,20 +22283,24 @@ module AwsSdk
         end
       end
 
+
       struct StopActivityStreamResponse
         include JSON::Serializable
 
         # The name of the Amazon Kinesis data stream used for the database activity stream.
+
         @[JSON::Field(key: "KinesisStreamName")]
         getter kinesis_stream_name : String?
 
         # The Amazon Web Services KMS key identifier used for encrypting messages in the database activity
         # stream. The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name
         # for the KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The status of the database activity stream.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -19520,11 +22312,13 @@ module AwsSdk
         end
       end
 
+
       struct StopDBClusterMessage
         include JSON::Serializable
 
         # The DB cluster identifier of the Amazon Aurora DB cluster to be stopped. This parameter is stored as
         # a lowercase string.
+
         @[JSON::Field(key: "DBClusterIdentifier")]
         getter db_cluster_identifier : String
 
@@ -19534,8 +22328,10 @@ module AwsSdk
         end
       end
 
+
       struct StopDBClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBCluster")]
         getter db_cluster : Types::DBCluster?
@@ -19546,11 +22342,13 @@ module AwsSdk
         end
       end
 
+
       struct StopDBInstanceAutomatedBackupsReplicationMessage
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the source DB instance for which to stop replicating automate
         # backups, for example, arn:aws:rds:us-west-2:123456789012:db:mydatabase .
+
         @[JSON::Field(key: "SourceDBInstanceArn")]
         getter source_db_instance_arn : String
 
@@ -19560,8 +22358,10 @@ module AwsSdk
         end
       end
 
+
       struct StopDBInstanceAutomatedBackupsReplicationResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstanceAutomatedBackup")]
         getter db_instance_automated_backup : Types::DBInstanceAutomatedBackup?
@@ -19572,15 +22372,18 @@ module AwsSdk
         end
       end
 
+
       struct StopDBInstanceMessage
         include JSON::Serializable
 
         # The user-supplied instance identifier.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
         # The user-supplied instance identifier of the DB Snapshot created immediately before the DB instance
         # is stopped.
+
         @[JSON::Field(key: "DBSnapshotIdentifier")]
         getter db_snapshot_identifier : String?
 
@@ -19591,8 +22394,10 @@ module AwsSdk
         end
       end
 
+
       struct StopDBInstanceResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -19605,6 +22410,7 @@ module AwsSdk
 
       # The request would result in the user exceeding the allowed amount of storage available across all DB
       # instances.
+
       struct StorageQuotaExceededFault
         include JSON::Serializable
 
@@ -19614,6 +22420,7 @@ module AwsSdk
 
       # The aurora-iopt1 storage type isn't available, because you modified the DB cluster to use this
       # storage type less than one month ago.
+
       struct StorageTypeNotAvailableFault
         include JSON::Serializable
 
@@ -19622,6 +22429,7 @@ module AwsSdk
       end
 
       # The specified StorageType can't be associated with the DB instance.
+
       struct StorageTypeNotSupportedFault
         include JSON::Serializable
 
@@ -19630,22 +22438,27 @@ module AwsSdk
       end
 
       # This data type is used as a response element for the DescribeDBSubnetGroups operation.
+
       struct Subnet
         include JSON::Serializable
+
 
         @[JSON::Field(key: "SubnetAvailabilityZone")]
         getter subnet_availability_zone : Types::AvailabilityZone?
 
         # The identifier of the subnet.
+
         @[JSON::Field(key: "SubnetIdentifier")]
         getter subnet_identifier : String?
 
         # If the subnet is associated with an Outpost, this value specifies the Outpost. For more information
         # about RDS on Outposts, see Amazon RDS on Amazon Web Services Outposts in the Amazon RDS User Guide.
+
         @[JSON::Field(key: "SubnetOutpost")]
         getter subnet_outpost : Types::Outpost?
 
         # The status of the subnet.
+
         @[JSON::Field(key: "SubnetStatus")]
         getter subnet_status : String?
 
@@ -19659,6 +22472,7 @@ module AwsSdk
       end
 
       # The DB subnet is already in use in the Availability Zone.
+
       struct SubnetAlreadyInUse
         include JSON::Serializable
 
@@ -19667,6 +22481,7 @@ module AwsSdk
       end
 
       # The supplied subscription name already exists.
+
       struct SubscriptionAlreadyExistFault
         include JSON::Serializable
 
@@ -19675,6 +22490,7 @@ module AwsSdk
       end
 
       # The supplied category does not exist.
+
       struct SubscriptionCategoryNotFoundFault
         include JSON::Serializable
 
@@ -19683,6 +22499,7 @@ module AwsSdk
       end
 
       # The subscription name does not exist.
+
       struct SubscriptionNotFoundFault
         include JSON::Serializable
 
@@ -19694,10 +22511,12 @@ module AwsSdk
       # can use the information that this data type returns to plan for upgrades. This data type only
       # returns information for the open source engines Amazon RDS for MariaDB, Amazon RDS for MySQL, Amazon
       # RDS for PostgreSQL, Aurora MySQL, and Aurora PostgreSQL.
+
       struct SupportedEngineLifecycle
         include JSON::Serializable
 
         # The end date for the type of support returned by LifecycleSupportName .
+
         @[JSON::Field(key: "LifecycleSupportEndDate")]
         getter lifecycle_support_end_date : Time
 
@@ -19709,10 +22528,12 @@ module AwsSdk
         # MariaDB, this parameter only returns the value open-source-rds-standard-support . For information
         # about Amazon RDS Extended Support, see Amazon RDS Extended Support with Amazon RDS in the Amazon RDS
         # User Guide and Amazon RDS Extended Support with Amazon Aurora in the Amazon Aurora User Guide .
+
         @[JSON::Field(key: "LifecycleSupportName")]
         getter lifecycle_support_name : String
 
         # The start date for the type of support returned by LifecycleSupportName .
+
         @[JSON::Field(key: "LifecycleSupportStartDate")]
         getter lifecycle_support_start_date : Time
 
@@ -19724,17 +22545,20 @@ module AwsSdk
         end
       end
 
+
       struct SwitchoverBlueGreenDeploymentRequest
         include JSON::Serializable
 
         # The resource ID of the blue/green deployment. Constraints: Must match an existing blue/green
         # deployment resource ID.
+
         @[JSON::Field(key: "BlueGreenDeploymentIdentifier")]
         getter blue_green_deployment_identifier : String
 
         # The amount of time, in seconds, for the switchover to complete. Default: 300 If the switchover takes
         # longer than the specified duration, then any changes are rolled back, and no changes are made to the
         # environments.
+
         @[JSON::Field(key: "SwitchoverTimeout")]
         getter switchover_timeout : Int32?
 
@@ -19745,8 +22569,10 @@ module AwsSdk
         end
       end
 
+
       struct SwitchoverBlueGreenDeploymentResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "BlueGreenDeployment")]
         getter blue_green_deployment : Types::BlueGreenDeployment?
@@ -19760,10 +22586,12 @@ module AwsSdk
       # Contains the details about a blue/green deployment. For more information, see Using Amazon RDS
       # Blue/Green Deployments for database updates in the Amazon RDS User Guide and Using Amazon RDS
       # Blue/Green Deployments for database updates in the Amazon Aurora User Guide .
+
       struct SwitchoverDetail
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of a resource in the blue environment.
+
         @[JSON::Field(key: "SourceMember")]
         getter source_member : String?
 
@@ -19773,10 +22601,12 @@ module AwsSdk
         # has been switched over. SWITCHOVER_FAILED - The resource attempted to switch over but failed.
         # MISSING_SOURCE - The source resource has been deleted. MISSING_TARGET - The target resource has been
         # deleted.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The Amazon Resource Name (ARN) of a resource in the green environment.
+
         @[JSON::Field(key: "TargetMember")]
         getter target_member : String?
 
@@ -19788,18 +22618,21 @@ module AwsSdk
         end
       end
 
+
       struct SwitchoverGlobalClusterMessage
         include JSON::Serializable
 
         # The identifier of the global database cluster to switch over. This parameter isn't case-sensitive.
         # Constraints: Must match the identifier of an existing global database cluster (Aurora global
         # database).
+
         @[JSON::Field(key: "GlobalClusterIdentifier")]
         getter global_cluster_identifier : String
 
         # The identifier of the secondary Aurora DB cluster to promote to the new primary for the global
         # database cluster. Use the Amazon Resource Name (ARN) for the identifier so that Aurora can locate
         # the cluster in its Amazon Web Services Region.
+
         @[JSON::Field(key: "TargetDbClusterIdentifier")]
         getter target_db_cluster_identifier : String
 
@@ -19810,8 +22643,10 @@ module AwsSdk
         end
       end
 
+
       struct SwitchoverGlobalClusterResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GlobalCluster")]
         getter global_cluster : Types::GlobalCluster?
@@ -19822,11 +22657,13 @@ module AwsSdk
         end
       end
 
+
       struct SwitchoverReadReplicaMessage
         include JSON::Serializable
 
         # The DB instance identifier of the current standby database. This value is stored as a lowercase
         # string. Constraints: Must match the identiﬁer of an existing Oracle read replica DB instance.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String
 
@@ -19836,8 +22673,10 @@ module AwsSdk
         end
       end
 
+
       struct SwitchoverReadReplicaResult
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DBInstance")]
         getter db_instance : Types::DBInstance?
@@ -19851,6 +22690,7 @@ module AwsSdk
       # Metadata assigned to an Amazon RDS resource consisting of a key-value pair. For more information,
       # see Tagging Amazon RDS resources in the Amazon RDS User Guide or Tagging Amazon Aurora and Amazon
       # RDS resources in the Amazon Aurora User Guide .
+
       struct Tag
         include JSON::Serializable
 
@@ -19858,6 +22698,7 @@ module AwsSdk
         # length and can't be prefixed with aws: or rds: . The string can only contain only the set of Unicode
         # letters, digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java regex:
         # "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$").
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
@@ -19865,6 +22706,7 @@ module AwsSdk
         # in length and can't be prefixed with aws: or rds: . The string can only contain only the set of
         # Unicode letters, digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java regex:
         # "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$").
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -19875,10 +22717,12 @@ module AwsSdk
         end
       end
 
+
       struct TagListMessage
         include JSON::Serializable
 
         # List of tags returned by the ListTagsForResource operation.
+
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
@@ -19890,13 +22734,16 @@ module AwsSdk
 
       # The tags to apply to resources when creating or modifying a DB instance or DB cluster. When you
       # specify a tag, you must specify the resource type to tag, otherwise the request will fail.
+
       struct TagSpecification
         include JSON::Serializable
 
         # The type of resource to tag on creation. Valid Values: auto-backup - The DB instance's automated
         # backup. cluster-auto-backup - The DB cluster's automated backup.
+
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -19909,21 +22756,25 @@ module AwsSdk
       end
 
       # Information about the connection health of an RDS Proxy target.
+
       struct TargetHealth
         include JSON::Serializable
 
         # A description of the health of the RDS Proxy target. If the State is AVAILABLE , a description is
         # not included.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The reason for the current health State of the RDS Proxy target.
+
         @[JSON::Field(key: "Reason")]
         getter reason : String?
 
         # The current state of the connection health lifecycle for the RDS Proxy target. The following is a
         # typical lifecycle example for the states of an RDS Proxy target: registering &gt; unavailable &gt;
         # available &gt; unavailable &gt; available
+
         @[JSON::Field(key: "State")]
         getter state : String?
 
@@ -19937,60 +22788,75 @@ module AwsSdk
 
       # A tenant database in the DB instance. This data type is an element in the response to the
       # DescribeTenantDatabases action.
+
       struct TenantDatabase
         include JSON::Serializable
 
         # The character set of the tenant database.
+
         @[JSON::Field(key: "CharacterSetName")]
         getter character_set_name : String?
 
         # The ID of the DB instance that contains the tenant database.
+
         @[JSON::Field(key: "DBInstanceIdentifier")]
         getter db_instance_identifier : String?
 
         # The Amazon Web Services Region-unique, immutable identifier for the DB instance.
+
         @[JSON::Field(key: "DbiResourceId")]
         getter dbi_resource_id : String?
 
         # Specifies whether deletion protection is enabled for the DB instance.
+
         @[JSON::Field(key: "DeletionProtection")]
         getter deletion_protection : Bool?
+
 
         @[JSON::Field(key: "MasterUserSecret")]
         getter master_user_secret : Types::MasterUserSecret?
 
         # The master username of the tenant database.
+
         @[JSON::Field(key: "MasterUsername")]
         getter master_username : String?
 
         # The NCHAR character set name of the tenant database.
+
         @[JSON::Field(key: "NcharCharacterSetName")]
         getter nchar_character_set_name : String?
 
         # Information about pending changes for a tenant database.
+
         @[JSON::Field(key: "PendingModifiedValues")]
         getter pending_modified_values : Types::TenantDatabasePendingModifiedValues?
 
         # The status of the tenant database.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
+
 
         @[JSON::Field(key: "TagList")]
         getter tag_list : Array(Types::Tag)?
 
         # The database name of the tenant database.
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String?
 
         # The Amazon Resource Name (ARN) for the tenant database.
+
         @[JSON::Field(key: "TenantDatabaseARN")]
         getter tenant_database_arn : String?
 
         # The creation time of the tenant database.
+
         @[JSON::Field(key: "TenantDatabaseCreateTime")]
         getter tenant_database_create_time : Time?
 
         # The Amazon Web Services Region-unique, immutable identifier for the tenant database.
+
         @[JSON::Field(key: "TenantDatabaseResourceId")]
         getter tenant_database_resource_id : String?
 
@@ -20015,6 +22881,7 @@ module AwsSdk
 
       # You attempted to either create a tenant database that already exists or modify a tenant database to
       # use the name of an existing tenant database.
+
       struct TenantDatabaseAlreadyExistsFault
         include JSON::Serializable
 
@@ -20023,6 +22890,7 @@ module AwsSdk
       end
 
       # The specified tenant database wasn't found in the DB instance.
+
       struct TenantDatabaseNotFoundFault
         include JSON::Serializable
 
@@ -20032,14 +22900,17 @@ module AwsSdk
 
       # A response element in the ModifyTenantDatabase operation that describes changes that will be
       # applied. Specific changes are identified by subelements.
+
       struct TenantDatabasePendingModifiedValues
         include JSON::Serializable
 
         # The master password for the tenant database.
+
         @[JSON::Field(key: "MasterUserPassword")]
         getter master_user_password : String?
 
         # The name of the tenant database.
+
         @[JSON::Field(key: "TenantDBName")]
         getter tenant_db_name : String?
 
@@ -20052,6 +22923,7 @@ module AwsSdk
 
       # You attempted to create more tenant databases than are permitted in your Amazon Web Services
       # account.
+
       struct TenantDatabaseQuotaExceededFault
         include JSON::Serializable
 
@@ -20059,16 +22931,19 @@ module AwsSdk
         end
       end
 
+
       struct TenantDatabasesMessage
         include JSON::Serializable
 
         # An optional pagination token provided by a previous DescribeTenantDatabases request. If this
         # parameter is specified, the response includes only records beyond the marker, up to the value
         # specified by MaxRecords .
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
 
         # An array of the tenant databases requested by the DescribeTenantDatabases operation.
+
         @[JSON::Field(key: "TenantDatabases")]
         getter tenant_databases : Array(Types::TenantDatabase)?
 
@@ -20082,10 +22957,12 @@ module AwsSdk
       # A time zone associated with a DBInstance or a DBSnapshot . This data type is an element in the
       # response to the DescribeDBInstances , the DescribeDBSnapshots , and the DescribeDBEngineVersions
       # actions.
+
       struct Timezone
         include JSON::Serializable
 
         # The name of the time zone.
+
         @[JSON::Field(key: "TimezoneName")]
         getter timezone_name : String?
 
@@ -20096,6 +22973,7 @@ module AwsSdk
       end
 
       # The specified DB engine version isn't supported for Aurora Limitless Database.
+
       struct UnsupportedDBEngineVersionFault
         include JSON::Serializable
 
@@ -20104,58 +22982,71 @@ module AwsSdk
       end
 
       # The version of the database engine that a DB instance can be upgraded to.
+
       struct UpgradeTarget
         include JSON::Serializable
 
         # Indicates whether the target version is applied to any source DB instances that have
         # AutoMinorVersionUpgrade set to true. This parameter is dynamic, and is set by RDS.
+
         @[JSON::Field(key: "AutoUpgrade")]
         getter auto_upgrade : Bool?
 
         # The version of the database engine that a DB instance can be upgraded to.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of the upgrade target database engine.
+
         @[JSON::Field(key: "Engine")]
         getter engine : String?
 
         # The version number of the upgrade target database engine.
+
         @[JSON::Field(key: "EngineVersion")]
         getter engine_version : String?
 
         # Indicates whether upgrading to the target version requires upgrading the major version of the
         # database engine.
+
         @[JSON::Field(key: "IsMajorVersionUpgrade")]
         getter is_major_version_upgrade : Bool?
 
         # A list of the supported DB engine modes for the target engine version.
+
         @[JSON::Field(key: "SupportedEngineModes")]
         getter supported_engine_modes : Array(String)?
 
         # Indicates whether you can use Babelfish for Aurora PostgreSQL with the target engine version.
+
         @[JSON::Field(key: "SupportsBabelfish")]
         getter supports_babelfish : Bool?
 
         # Indicates whether you can use Aurora global databases with the target engine version.
+
         @[JSON::Field(key: "SupportsGlobalDatabases")]
         getter supports_global_databases : Bool?
 
         # Indicates whether the DB engine version supports zero-ETL integrations with Amazon Redshift.
+
         @[JSON::Field(key: "SupportsIntegrations")]
         getter supports_integrations : Bool?
 
         # Indicates whether the DB engine version supports Aurora Limitless Database.
+
         @[JSON::Field(key: "SupportsLimitlessDatabase")]
         getter supports_limitless_database : Bool?
 
         # Indicates whether the target engine version supports forwarding write operations from reader DB
         # instances to the writer DB instance in the DB cluster. By default, write operations aren't allowed
         # on reader DB instances. Valid for: Aurora DB clusters only
+
         @[JSON::Field(key: "SupportsLocalWriteForwarding")]
         getter supports_local_write_forwarding : Bool?
 
         # Indicates whether you can use Aurora parallel query with the target engine version.
+
         @[JSON::Field(key: "SupportsParallelQuery")]
         getter supports_parallel_query : Bool?
 
@@ -20177,37 +23068,44 @@ module AwsSdk
       end
 
       # Specifies the details of authentication used by a proxy to log in as a specific database user.
+
       struct UserAuthConfig
         include JSON::Serializable
 
         # The type of authentication that the proxy uses for connections from the proxy to the underlying
         # database.
+
         @[JSON::Field(key: "AuthScheme")]
         getter auth_scheme : String?
 
         # The type of authentication the proxy uses for connections from clients. The following values are
         # defaults for the corresponding engines: RDS for MySQL: MYSQL_CACHING_SHA2_PASSWORD RDS for SQL
         # Server: SQL_SERVER_AUTHENTICATION RDS for PostgreSQL: POSTGRES_SCRAM_SHA2_256
+
         @[JSON::Field(key: "ClientPasswordAuthType")]
         getter client_password_auth_type : String?
 
         # A user-specified description about the authentication used by a proxy to log in as a specific
         # database user.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A value that indicates whether to require or disallow Amazon Web Services Identity and Access
         # Management (IAM) authentication for connections to the proxy. The ENABLED value is valid only for
         # proxies with RDS for Microsoft SQL Server.
+
         @[JSON::Field(key: "IAMAuth")]
         getter iam_auth : String?
 
         # The Amazon Resource Name (ARN) representing the secret that the proxy uses to authenticate to the
         # RDS DB instance or Aurora DB cluster. These secrets are stored within Amazon Secrets Manager.
+
         @[JSON::Field(key: "SecretArn")]
         getter secret_arn : String?
 
         # The name of the database user to which the proxy connects.
+
         @[JSON::Field(key: "UserName")]
         getter user_name : String?
 
@@ -20223,34 +23121,41 @@ module AwsSdk
       end
 
       # Returns the details of authentication used by a proxy to log in as a specific database user.
+
       struct UserAuthConfigInfo
         include JSON::Serializable
 
         # The type of authentication that the proxy uses for connections from the proxy to the underlying
         # database.
+
         @[JSON::Field(key: "AuthScheme")]
         getter auth_scheme : String?
 
         # The type of authentication the proxy uses for connections from clients.
+
         @[JSON::Field(key: "ClientPasswordAuthType")]
         getter client_password_auth_type : String?
 
         # A user-specified description about the authentication used by a proxy to log in as a specific
         # database user.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Whether to require or disallow Amazon Web Services Identity and Access Management (IAM)
         # authentication for connections to the proxy.
+
         @[JSON::Field(key: "IAMAuth")]
         getter iam_auth : String?
 
         # The Amazon Resource Name (ARN) representing the secret that the proxy uses to authenticate to the
         # RDS DB instance or Aurora DB cluster. These secrets are stored within Amazon Secrets Manager.
+
         @[JSON::Field(key: "SecretArn")]
         getter secret_arn : String?
 
         # The name of the database user to which the proxy connects.
+
         @[JSON::Field(key: "UserName")]
         getter user_name : String?
 
@@ -20266,14 +23171,17 @@ module AwsSdk
       end
 
       # Contains the valid options for additional storage volumes for a DB instance.
+
       struct ValidAdditionalStorageOptions
         include JSON::Serializable
 
         # Indicates whether the DB instance supports additional storage volumes.
+
         @[JSON::Field(key: "SupportsAdditionalStorageVolumes")]
         getter supports_additional_storage_volumes : Bool?
 
         # The valid additional storage volume options for the DB instance.
+
         @[JSON::Field(key: "Volumes")]
         getter volumes : Array(Types::ValidVolumeOptions)?
 
@@ -20287,22 +23195,27 @@ module AwsSdk
       # Information about valid modifications that you can make to your DB instance. Contains the result of
       # a successful call to the DescribeValidDBInstanceModifications action. You can use this information
       # when you call ModifyDBInstance .
+
       struct ValidDBInstanceModificationsMessage
         include JSON::Serializable
 
         # The valid additional storage options for the DB instance.
+
         @[JSON::Field(key: "AdditionalStorage")]
         getter additional_storage : Types::ValidAdditionalStorageOptions?
 
         # Valid storage options for your DB instance.
+
         @[JSON::Field(key: "Storage")]
         getter storage : Array(Types::ValidStorageOptions)?
 
         # Indicates whether a DB instance supports using a dedicated log volume (DLV).
+
         @[JSON::Field(key: "SupportsDedicatedLogVolume")]
         getter supports_dedicated_log_volume : Bool?
 
         # Valid processor features for your DB instance.
+
         @[JSON::Field(key: "ValidProcessorFeatures")]
         getter valid_processor_features : Array(Types::AvailableProcessorFeature)?
 
@@ -20317,37 +23230,45 @@ module AwsSdk
 
       # Information about valid modifications that you can make to your DB instance. Contains the result of
       # a successful call to the DescribeValidDBInstanceModifications action.
+
       struct ValidStorageOptions
         include JSON::Serializable
 
         # The valid range of Provisioned IOPS to gibibytes of storage multiplier. For example, 3-10, which
         # means that provisioned IOPS can be between 3 and 10 times storage.
+
         @[JSON::Field(key: "IopsToStorageRatio")]
         getter iops_to_storage_ratio : Array(Types::DoubleRange)?
 
         # The valid range of provisioned IOPS. For example, 1000-256,000.
+
         @[JSON::Field(key: "ProvisionedIops")]
         getter provisioned_iops : Array(Types::Range)?
 
         # The valid range of provisioned storage throughput. For example, 500-4,000 mebibytes per second
         # (MiBps).
+
         @[JSON::Field(key: "ProvisionedStorageThroughput")]
         getter provisioned_storage_throughput : Array(Types::Range)?
 
         # The valid range of storage in gibibytes (GiB). For example, 100 to 16,384.
+
         @[JSON::Field(key: "StorageSize")]
         getter storage_size : Array(Types::Range)?
 
         # The valid range of storage throughput to provisioned IOPS ratios. For example, 0-0.25.
+
         @[JSON::Field(key: "StorageThroughputToIopsRatio")]
         getter storage_throughput_to_iops_ratio : Array(Types::DoubleRange)?
 
         # The valid storage types for your DB instance. For example: gp2, gp3, io1, io2.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # Indicates whether or not Amazon RDS can automatically scale storage for DB instances that use the
         # new instance class.
+
         @[JSON::Field(key: "SupportsStorageAutoscaling")]
         getter supports_storage_autoscaling : Bool?
 
@@ -20364,14 +23285,17 @@ module AwsSdk
       end
 
       # Contains the valid options for an additional storage volume.
+
       struct ValidVolumeOptions
         include JSON::Serializable
 
         # The valid storage options for the additional storage volume.
+
         @[JSON::Field(key: "Storage")]
         getter storage : Array(Types::ValidStorageOptions)?
 
         # The name of the additional storage volume.
+
         @[JSON::Field(key: "VolumeName")]
         getter volume_name : String?
 
@@ -20385,6 +23309,7 @@ module AwsSdk
       # The operation violates VPC encryption control settings. Make sure that your DB instance type
       # supports the Nitro encryption-in-transit capability, or modify your VPC's encryption controls to not
       # enforce encryption-in-transit.
+
       struct VpcEncryptionControlViolationException
         include JSON::Serializable
 
@@ -20393,14 +23318,17 @@ module AwsSdk
       end
 
       # This data type is used as a response element for queries on VPC security group membership.
+
       struct VpcSecurityGroupMembership
         include JSON::Serializable
 
         # The membership status of the VPC security group. Currently, the only valid status is active .
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The name of the VPC security group.
+
         @[JSON::Field(key: "VpcSecurityGroupId")]
         getter vpc_security_group_id : String?
 

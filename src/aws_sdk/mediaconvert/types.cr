@@ -9,6 +9,7 @@ module AwsSdk
       # groups of AAC settings--VBR and CBR. To select one of these modes, set the value of Bitrate control
       # mode to "VBR" or "CBR". In VBR mode, you control the audio quality with the setting VBR quality. In
       # CBR mode, you use the setting Bitrate. Defaults and valid values depend on the rate control mode.
+
       struct AacSettings
         include JSON::Serializable
 
@@ -20,6 +21,7 @@ module AwsSdk
         # FollowInputAudioType. Choose NORMAL when the input does not contain pre-mixed audio + audio
         # description (AD). In this case, the encoder will use any values you provide for AudioType and
         # FollowInputAudioType.
+
         @[JSON::Field(key: "audioDescriptionBroadcasterMix")]
         getter audio_description_broadcaster_mix : String?
 
@@ -29,6 +31,7 @@ module AwsSdk
         # 576000, 640000, 768000, 896000, 1024000. The value you set is also constrained by the values that
         # you choose for Profile, Bitrate control mode, and Sample rate. Default values depend on Bitrate
         # control mode and Profile.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
@@ -38,6 +41,7 @@ module AwsSdk
         # bitrates. HEV2 (AAC-HE v2) adds parametric stereo, which optimizes for encoding stereo audio at very
         # low bitrates. For improved audio quality at lower bitrates, adaptive audio bitrate switching, and
         # loudness control: Choose XHE.
+
         @[JSON::Field(key: "codecProfile")]
         getter codec_profile : String?
 
@@ -47,6 +51,7 @@ module AwsSdk
         # coding mode. * 1.0 Audio Description (Receiver Mix): One channel, C. Includes audio description data
         # from your stereo input. For more information see ETSI TS 101 154 Annex E. * 1.0 Mono: One channel,
         # C. * 2.0 Stereo: Two channels, L, R. * 5.1 Surround: Six channels, C, L, R, Ls, Rs, LFE.
+
         @[JSON::Field(key: "codingMode")]
         getter coding_mode : String?
 
@@ -54,6 +59,7 @@ module AwsSdk
         # recommend that you keep the default value, Program. For speech or other content: We recommend that
         # you choose Anchor. When you do, MediaConvert optimizes the loudness of your output for clarify by
         # applying speech gates.
+
         @[JSON::Field(key: "loudnessMeasurementMode")]
         getter loudness_measurement_mode : String?
 
@@ -63,6 +69,7 @@ module AwsSdk
         # in milliseconds. Smaller values allow for better seeking and more frequent stream switching, while
         # large values improve compression efficiency. To have MediaConvert automatically determine the RAP
         # interval: Leave blank.
+
         @[JSON::Field(key: "rapInterval")]
         getter rap_interval : Int32?
 
@@ -70,32 +77,38 @@ module AwsSdk
         # be equal to the value that you choose for Bitrate. For a variable bitrate: Choose VBR. Your AAC
         # output bitrate will vary according to your audio content and the value that you choose for Bitrate
         # quality.
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
         # Enables LATM/LOAS AAC output. Note that if you use LATM/LOAS AAC in an output, you must choose "No
         # container" for the output container.
+
         @[JSON::Field(key: "rawFormat")]
         getter raw_format : String?
 
         # Specify the AAC sample rate in samples per second (Hz). Valid sample rates depend on the AAC profile
         # and Coding mode that you select. For a list of supported sample rates, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/aac-support.html
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
         # Use MPEG-2 AAC instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
+
         @[JSON::Field(key: "specification")]
         getter specification : String?
 
         # Specify the xHE-AAC loudness target. Enter an integer from 6 to 16, representing "loudness units".
         # For more information, see the following specification: Supplementary information for R 128 EBU Tech
         # 3342-2023.
+
         @[JSON::Field(key: "targetLoudnessRange")]
         getter target_loudness_range : Int32?
 
         # Specify the quality of your variable bitrate (VBR) AAC audio. For a list of approximate VBR
         # bitrates, see: https://docs.aws.amazon.com/mediaconvert/latest/ug/aac-support.html#aac_vbr
+
         @[JSON::Field(key: "vbrQuality")]
         getter vbr_quality : String?
 
@@ -117,6 +130,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value AC3.
+
       struct Ac3Settings
         include JSON::Serializable
 
@@ -127,20 +141,24 @@ module AwsSdk
         # Minimum: 128000. Maximum: 384000. Valid bitrates for coding mode 2/0: Default: 192000. Minimum:
         # 128000. Maximum: 384000. Valid bitrates for coding mode 3/2 with FLE: Default: 384000. Minimum:
         # 384000. Maximum: 640000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Specify the bitstream mode for the AC-3 stream that the encoder emits. For more information about
         # the AC3 bitstream mode, see ATSC A/52-2012 (Annex E).
+
         @[JSON::Field(key: "bitstreamMode")]
         getter bitstream_mode : String?
 
         # Dolby Digital coding mode. Determines number of channels.
+
         @[JSON::Field(key: "codingMode")]
         getter coding_mode : String?
 
         # Sets the dialnorm for the output. If blank and input audio is Dolby Digital, dialnorm will be passed
         # through.
+
         @[JSON::Field(key: "dialnorm")]
         getter dialnorm : Int32?
 
@@ -150,6 +168,7 @@ module AwsSdk
         # information about the Dolby Digital DRC operating modes and profiles, see the Dynamic Range Control
         # chapter of the Dolby Metadata Guide at
         # https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
         @[JSON::Field(key: "dynamicRangeCompressionLine")]
         getter dynamic_range_compression_line : String?
 
@@ -160,6 +179,7 @@ module AwsSdk
         # ignores the value of this setting in favor of the mode-specific settings. If you do use this setting
         # instead of the mode-specific settings, choose None to leave out DRC signaling. Keep the default Film
         # standard to set the profile to Dolby's film standard profile for all operating modes.
+
         @[JSON::Field(key: "dynamicRangeCompressionProfile")]
         getter dynamic_range_compression_profile : String?
 
@@ -169,21 +189,25 @@ module AwsSdk
         # information about the Dolby Digital DRC operating modes and profiles, see the Dynamic Range Control
         # chapter of the Dolby Metadata Guide at
         # https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
         @[JSON::Field(key: "dynamicRangeCompressionRf")]
         getter dynamic_range_compression_rf : String?
 
         # Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding
         # mode.
+
         @[JSON::Field(key: "lfeFilter")]
         getter lfe_filter : String?
 
         # When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that
         # supplied this audio data. If audio was not supplied from one of these streams, then the static
         # metadata settings will be used.
+
         @[JSON::Field(key: "metadataControl")]
         getter metadata_control : String?
 
         # This value is always 48000. It represents the sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -203,10 +227,12 @@ module AwsSdk
       end
 
       # Accelerated transcoding can significantly speed up jobs with long, visually complex content.
+
       struct AccelerationSettings
         include JSON::Serializable
 
         # Specify the conditions when the service will run your job with accelerated transcoding.
+
         @[JSON::Field(key: "mode")]
         getter mode : String
 
@@ -217,6 +243,7 @@ module AwsSdk
       end
 
       # Optional settings for Advanced input filter when you set Advanced input filter to Enabled.
+
       struct AdvancedInputFilterSettings
         include JSON::Serializable
 
@@ -224,6 +251,7 @@ module AwsSdk
         # Advanced input filter. To adaptively add texture and reduce softness: Choose Enabled. To not add any
         # texture: Keep the default value, Disabled. We recommend that you choose Disabled for input video
         # content that doesn't have texture, including screen recordings, computer graphics, or cartoons.
+
         @[JSON::Field(key: "addTexture")]
         getter add_texture : String?
 
@@ -231,6 +259,7 @@ module AwsSdk
         # Sharpening adds contrast to the edges of your video content and can reduce softness. To apply no
         # sharpening: Keep the default value, Off. To apply a minimal amount of sharpening choose Low, or for
         # the maximum choose High.
+
         @[JSON::Field(key: "sharpening")]
         getter sharpening : String?
 
@@ -242,19 +271,23 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value AIFF.
+
       struct AiffSettings
         include JSON::Serializable
 
         # Specify Bit depth, in bits per sample, to choose the encoding quality for this audio track.
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : Int32?
 
         # Specify the number of channels in this output audio track. Valid values are 1 and even numbers up to
         # 64. For example, 1, 2, 4, 6, and so on, up to 64.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -273,18 +306,22 @@ module AwsSdk
       # greater than or equal to any resolutions that you specify in Min top rendition size or Min bottom
       # rendition size. * If you specify Allowed renditions, you must not specify a separate rule for Force
       # include renditions.
+
       struct AllowedRenditionSize
         include JSON::Serializable
 
         # Use Height to define the video resolution height, in pixels, for this rule.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Set to ENABLED to force a rendition to be included.
+
         @[JSON::Field(key: "required")]
         getter required : String?
 
         # Use Width to define the video resolution width, in pixels, for this rule.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -297,6 +334,7 @@ module AwsSdk
       end
 
       # Settings for ancillary captions source.
+
       struct AncillarySourceSettings
         include JSON::Serializable
 
@@ -304,16 +342,19 @@ module AwsSdk
         # you choose Upconvert, MediaConvert includes the captions data in two ways: it passes the 608 data
         # through using the 608 compatibility bytes fields of the 708 wrapper, and it also translates the 608
         # data into 708.
+
         @[JSON::Field(key: "convert608To708")]
         getter convert608_to708 : String?
 
         # Specifies the 608 channel number in the ancillary data track from which to extract captions. Unused
         # for passthrough.
+
         @[JSON::Field(key: "sourceAncillaryChannelNumber")]
         getter source_ancillary_channel_number : Int32?
 
         # By default, the service terminates any unterminated captions at the end of each input. If you want
         # the caption to continue onto your next input, disable this setting.
+
         @[JSON::Field(key: "terminateCaptions")]
         getter terminate_captions : String?
 
@@ -327,10 +368,12 @@ module AwsSdk
 
       # Associates the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate with an
       # AWS Elemental MediaConvert resource.
+
       struct AssociateCertificateRequest
         include JSON::Serializable
 
         # The ARN of the ACM certificate that you want to associate with your MediaConvert resource.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
@@ -342,6 +385,7 @@ module AwsSdk
 
       # Successful association of Certificate Manager Amazon Resource Name (ARN) with Mediaconvert returns
       # an OK message.
+
       struct AssociateCertificateResponse
         include JSON::Serializable
 
@@ -353,6 +397,7 @@ module AwsSdk
       # don't specify a value, MediaConvert labels your track as Center (C) by default. To use Audio layout
       # tagging, your output must be in a QuickTime (MOV) container and your audio codec must be AAC, WAV,
       # or AIFF.
+
       struct AudioChannelTaggingSettings
         include JSON::Serializable
 
@@ -361,6 +406,7 @@ module AwsSdk
         # output audio track has a left and a right channel, enter Left (L) for the first channel and Right
         # (R) for the second. If your output has multiple single-channel audio tracks, enter a single channel
         # layout tag for each track.
+
         @[JSON::Field(key: "channelTag")]
         getter channel_tag : String?
 
@@ -369,6 +415,7 @@ module AwsSdk
         # output audio track has a left and a right channel, enter Left (L) for the first channel and Right
         # (R) for the second. If your output has multiple single-channel audio tracks, enter a single channel
         # layout tag for each track.
+
         @[JSON::Field(key: "channelTags")]
         getter channel_tags : Array(String)?
 
@@ -381,6 +428,7 @@ module AwsSdk
 
       # Settings related to audio encoding. The settings in this group vary depending on the value that you
       # choose for your audio codec.
+
       struct AudioCodecSettings
         include JSON::Serializable
 
@@ -388,14 +436,17 @@ module AwsSdk
         # groups of AAC settings--VBR and CBR. To select one of these modes, set the value of Bitrate control
         # mode to "VBR" or "CBR". In VBR mode, you control the audio quality with the setting VBR quality. In
         # CBR mode, you use the setting Bitrate. Defaults and valid values depend on the rate control mode.
+
         @[JSON::Field(key: "aacSettings")]
         getter aac_settings : Types::AacSettings?
 
         # Required when you set Codec to the value AC3.
+
         @[JSON::Field(key: "ac3Settings")]
         getter ac3_settings : Types::Ac3Settings?
 
         # Required when you set Codec to the value AIFF.
+
         @[JSON::Field(key: "aiffSettings")]
         getter aiff_settings : Types::AiffSettings?
 
@@ -408,38 +459,47 @@ module AwsSdk
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers-input.html#reference-codecs-containers-input-audio-only
         # and
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#audio-only-output
+
         @[JSON::Field(key: "codec")]
         getter codec : String?
 
         # Required when you set Codec to the value EAC3_ATMOS.
+
         @[JSON::Field(key: "eac3AtmosSettings")]
         getter eac3_atmos_settings : Types::Eac3AtmosSettings?
 
         # Required when you set Codec to the value EAC3.
+
         @[JSON::Field(key: "eac3Settings")]
         getter eac3_settings : Types::Eac3Settings?
 
         # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value FLAC.
+
         @[JSON::Field(key: "flacSettings")]
         getter flac_settings : Types::FlacSettings?
 
         # Required when you set Codec to the value MP2.
+
         @[JSON::Field(key: "mp2Settings")]
         getter mp2_settings : Types::Mp2Settings?
 
         # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value MP3.
+
         @[JSON::Field(key: "mp3Settings")]
         getter mp3_settings : Types::Mp3Settings?
 
         # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value OPUS.
+
         @[JSON::Field(key: "opusSettings")]
         getter opus_settings : Types::OpusSettings?
 
         # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value Vorbis.
+
         @[JSON::Field(key: "vorbisSettings")]
         getter vorbis_settings : Types::VorbisSettings?
 
         # Required when you set Codec to the value WAV.
+
         @[JSON::Field(key: "wavSettings")]
         getter wav_settings : Types::WavSettings?
 
@@ -464,6 +524,7 @@ module AwsSdk
       # AudioDescription is equivalent to one audio tab in the console. Usually, one audio tab corresponds
       # to one output audio track. Depending on how you set up your input audio selectors and whether you
       # use audio selector groups, one audio tab can correspond to a group of output audio tracks.
+
       struct AudioDescription
         include JSON::Serializable
 
@@ -471,15 +532,18 @@ module AwsSdk
         # don't specify a value, MediaConvert labels your track as Center (C) by default. To use Audio layout
         # tagging, your output must be in a QuickTime (MOV) container and your audio codec must be AAC, WAV,
         # or AIFF.
+
         @[JSON::Field(key: "audioChannelTaggingSettings")]
         getter audio_channel_tagging_settings : Types::AudioChannelTaggingSettings?
 
         # Advanced audio normalization settings. Ignore these settings unless you need to comply with a
         # loudness standard.
+
         @[JSON::Field(key: "audioNormalizationSettings")]
         getter audio_normalization_settings : Types::AudioNormalizationSettings?
 
         # Settings for audio pitch correction during framerate conversion.
+
         @[JSON::Field(key: "audioPitchCorrectionSettings")]
         getter audio_pitch_correction_settings : Types::AudioPitchCorrectionSettings?
 
@@ -491,12 +555,14 @@ module AwsSdk
         # duration of that input. Alternatively, an "Audio Selector Group":#inputs-audio_selector_group name
         # may be specified, with similar default/silence behavior. If no audio_source_name is specified, then
         # "Audio Selector 1" will be chosen automatically.
+
         @[JSON::Field(key: "audioSourceName")]
         getter audio_source_name : String?
 
         # Applies only if Follow Input Audio Type is unchecked (false). A number between 0 and 255. The
         # following are defined in ISO-IEC 13818-1: 0 = Undefined, 1 = Clean Effects, 2 = Hearing Impaired, 3
         # = Visually Impaired Commentary, 4-255 = Reserved.
+
         @[JSON::Field(key: "audioType")]
         getter audio_type : Int32?
 
@@ -505,11 +571,13 @@ module AwsSdk
         # included in the output. Otherwise the value in Audio Type is included in the output. Note that this
         # field and audioType are both ignored if audioDescriptionBroadcasterMix is set to
         # BROADCASTER_MIXED_AD.
+
         @[JSON::Field(key: "audioTypeControl")]
         getter audio_type_control : String?
 
         # Settings related to audio encoding. The settings in this group vary depending on the value that you
         # choose for your audio codec.
+
         @[JSON::Field(key: "codecSettings")]
         getter codec_settings : Types::AudioCodecSettings?
 
@@ -520,6 +588,7 @@ module AwsSdk
         # For streaming outputs, you can also use any other code in the full RFC-5646 specification. Streaming
         # outputs are those that are in one of the following output groups: CMAF, DASH ISO, Apple HLS, or
         # Microsoft Smooth Streaming.
+
         @[JSON::Field(key: "customLanguageCode")]
         getter custom_language_code : String?
 
@@ -530,6 +599,7 @@ module AwsSdk
         # language code in all capital letters. When you do, also set Language code control to Follow input.
         # To specify the language code: Enter an ISO 639 three-letter language code in all capital letters.
         # When you do, also set Language code control to Use configured.
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
@@ -537,10 +607,12 @@ module AwsSdk
         # input, the service uses the language code from the input track if it's present. If there's no
         # languge code on the input track, the service uses the code that you specify in the setting Language
         # code. When you choose Use configured, the service uses the language code that you specify.
+
         @[JSON::Field(key: "languageCodeControl")]
         getter language_code_control : String?
 
         # Advanced audio remixing settings.
+
         @[JSON::Field(key: "remixSettings")]
         getter remix_settings : Types::RemixSettings?
 
@@ -548,6 +620,7 @@ module AwsSdk
         # "track_2". For streaming outputs, MediaConvert passes this information into destination manifests
         # for display on the end-viewer's player device. For outputs in other output groups, the service
         # ignores this setting.
+
         @[JSON::Field(key: "streamName")]
         getter stream_name : String?
 
@@ -570,6 +643,7 @@ module AwsSdk
 
       # Advanced audio normalization settings. Ignore these settings unless you need to comply with a
       # loudness standard.
+
       struct AudioNormalizationSettings
         include JSON::Serializable
 
@@ -581,24 +655,29 @@ module AwsSdk
         # measurement algorithm as 1770-2, with an updated true peak measurement. ITU-R BS.1770-4: Higher
         # channel count. Allows for more audio channels than the other algorithms, including configurations
         # such as 7.1.
+
         @[JSON::Field(key: "algorithm")]
         getter algorithm : String?
 
         # When enabled the output audio is corrected using the chosen algorithm. If disabled, the audio will
         # be measured but not adjusted.
+
         @[JSON::Field(key: "algorithmControl")]
         getter algorithm_control : String?
 
         # Content measuring above this level will be corrected to the target level. Content measuring below
         # this level will not be corrected.
+
         @[JSON::Field(key: "correctionGateLevel")]
         getter correction_gate_level : Int32?
 
         # If set to LOG, log each output's audio track loudness to a CSV file.
+
         @[JSON::Field(key: "loudnessLogging")]
         getter loudness_logging : String?
 
         # If set to TRUE_PEAK, calculate and log the TruePeak for each output's audio track loudness.
+
         @[JSON::Field(key: "peakCalculation")]
         getter peak_calculation : String?
 
@@ -606,6 +685,7 @@ module AwsSdk
         # don't specify a value here, the encoder chooses a value for you, based on the algorithm that you
         # choose for Algorithm. If you choose algorithm 1770-1, the encoder will choose -24 LKFS; otherwise,
         # the encoder will choose -23 LKFS.
+
         @[JSON::Field(key: "targetLkfs")]
         getter target_lkfs : Float64?
 
@@ -613,6 +693,7 @@ module AwsSdk
         # inter-audio sample loudness in your output will be limited to the value that you specify, without
         # affecting the overall target LKFS. Enter a value from 0 to -8. Leave blank to use the default value
         # 0.
+
         @[JSON::Field(key: "truePeakLimiterThreshold")]
         getter true_peak_limiter_threshold : Float64?
 
@@ -629,6 +710,7 @@ module AwsSdk
       end
 
       # Settings for audio pitch correction during framerate conversion.
+
       struct AudioPitchCorrectionSettings
         include JSON::Serializable
 
@@ -637,6 +719,7 @@ module AwsSdk
         # To automatically apply audio pitch correction: Choose Enabled. MediaConvert automatically applies a
         # pitch correction to your output to match the original content's audio pitch. To not apply audio
         # pitch correction: Keep the default value, Disabled.
+
         @[JSON::Field(key: "slowPalPitchCorrection")]
         getter slow_pal_pitch_correction : String?
 
@@ -647,31 +730,38 @@ module AwsSdk
       end
 
       # Details about the media file's audio track.
+
       struct AudioProperties
         include JSON::Serializable
 
         # The bit depth of the audio track.
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : Int32?
 
         # The bit rate of the audio track, in bits per second.
+
         @[JSON::Field(key: "bitRate")]
         getter bit_rate : Int64?
 
         # The number of audio channels in the audio track.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # The frame rate of the video or audio track, expressed as a fraction with numerator and denominator
         # values.
+
         @[JSON::Field(key: "frameRate")]
         getter frame_rate : Types::FrameRate?
 
         # The language code of the audio track, in three character ISO 639-3 format.
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
         # The sample rate of the audio track.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -688,6 +778,7 @@ module AwsSdk
 
       # Use Audio selectors to specify a track or set of tracks from the input that you will use in your
       # outputs. You can use multiple Audio selectors per input.
+
       struct AudioSelector
         include JSON::Serializable
 
@@ -705,11 +796,13 @@ module AwsSdk
         # correction, either Track or Frame depending on your input, regardless of the accuracy of your
         # input's STTS table. Your output audio and video may not be aligned or it may contain audio
         # artifacts.
+
         @[JSON::Field(key: "audioDurationCorrection")]
         getter audio_duration_correction : String?
 
         # Selects a specific language code from within an audio source, using the ISO 639-2 or ISO 639-3
         # three-letter language code
+
         @[JSON::Field(key: "customLanguageCode")]
         getter custom_language_code : String?
 
@@ -720,10 +813,12 @@ module AwsSdk
         # with a different number of audio tracks. NOT_DEFAULT (Unchecked in the MediaConvert console):
         # MediaConvert will not fallback from any missing audio selector. Any output specifying a missing
         # audio selector will be silent.
+
         @[JSON::Field(key: "defaultSelection")]
         getter default_selection : String?
 
         # Specify the S3, HTTP, or HTTPS URL for your external audio file input.
+
         @[JSON::Field(key: "externalAudioFileInput")]
         getter external_audio_file_input : String?
 
@@ -733,21 +828,25 @@ module AwsSdk
         # multiple tracks match the properties provided, the job fails. If no properties in
         # hlsRenditionGroupSettings are specified, the default audio track within the video segment is chosen.
         # If there is no audio within video segment, the alternative audio with DEFAULT=YES is chosen instead.
+
         @[JSON::Field(key: "hlsRenditionGroupSettings")]
         getter hls_rendition_group_settings : Types::HlsRenditionGroupSettings?
 
         # Specify the language, using an ISO 639-2 three-letter code in all capital letters. You can find a
         # list of codes at: https://www.loc.gov/standards/iso639-2/php/code_list.php
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
         # Specify a time delta, in milliseconds, to offset the audio from the input video. To specify no
         # offset: Keep the default value, 0. To specify an offset: Enter an integer from -2147483648 to
         # 2147483647
+
         @[JSON::Field(key: "offset")]
         getter offset : Int32?
 
         # Selects a specific PID from within an audio source (e.g. 257 selects PID 0x101).
+
         @[JSON::Field(key: "pids")]
         getter pids : Array(Int32)?
 
@@ -757,11 +856,13 @@ module AwsSdk
         # type to Track. Choose the program number from the dropdown list. If your input file has incorrect
         # metadata, you can choose All channels instead of a program number to have the service ignore the
         # program IDs and include all the programs in the track.
+
         @[JSON::Field(key: "programSelection")]
         getter program_selection : Int32?
 
         # Use these settings to reorder the audio channels of one input to match those of another input. This
         # allows you to combine the two files into a single output, one after the other.
+
         @[JSON::Field(key: "remixSettings")]
         getter remix_settings : Types::RemixSettings?
 
@@ -783,6 +884,7 @@ module AwsSdk
         # containing audio data may be used. If your source file contains a track which is not recognized by
         # the service, then the corresponding stream number will still be reserved for future use. If more
         # types of audio data get recognized in the future, these numberings will not shift.
+
         @[JSON::Field(key: "selectorType")]
         getter selector_type : String?
 
@@ -791,6 +893,7 @@ module AwsSdk
         # may be used here. To include several tracks in a single audio selector, specify multiple tracks as
         # follows. Using the console, enter a comma-separated list. For example, type "1,2,3" to include
         # tracks 1 through 3.
+
         @[JSON::Field(key: "streams")]
         getter streams : Array(Int32)?
 
@@ -799,6 +902,7 @@ module AwsSdk
         # types of audio tracks in the future, these numberings may shift. To include several tracks in a
         # single audio selector, specify multiple tracks as follows. Using the console, enter a
         # comma-separated list. For example, type "1,2,3" to include tracks 1 through 3.
+
         @[JSON::Field(key: "tracks")]
         getter tracks : Array(Int32)?
 
@@ -823,12 +927,14 @@ module AwsSdk
       # Use audio selector groups to combine multiple sidecar audio inputs so that you can assign them to a
       # single output audio tab. Note that, if you're working with embedded audio, it's simpler to assign
       # multiple input tracks into a single audio selector rather than use an audio selector group.
+
       struct AudioSelectorGroup
         include JSON::Serializable
 
         # Name of an Audio Selector within the same input to include in the group. Audio selector names are
         # standardized, based on their order within the input (e.g., "Audio Selector 1"). The audio selector
         # name parameter can be repeated to add any number of audio selectors to the group.
+
         @[JSON::Field(key: "audioSelectorNames")]
         getter audio_selector_names : Array(String)?
 
@@ -840,16 +946,19 @@ module AwsSdk
 
       # Specify one or more Automated ABR rule types. Note: Force include and Allowed renditions are
       # mutually exclusive.
+
       struct AutomatedAbrRule
         include JSON::Serializable
 
         # When customer adds the allowed renditions rule for auto ABR ladder, they are required to add at leat
         # one rendition to allowedRenditions list
+
         @[JSON::Field(key: "allowedRenditions")]
         getter allowed_renditions : Array(Types::AllowedRenditionSize)?
 
         # When customer adds the force include renditions rule for auto ABR ladder, they are required to add
         # at leat one rendition to forceIncludeRenditions list
+
         @[JSON::Field(key: "forceIncludeRenditions")]
         getter force_include_renditions : Array(Types::ForceIncludeRenditionSize)?
 
@@ -858,6 +967,7 @@ module AwsSdk
         # For example: If you specify 640x360 the lowest resolution in your ABR stack will be equal to or
         # greater than to 640x360. * If you specify a Min top rendition size rule, the value that you specify
         # for Min bottom rendition size must be less than, or equal to, Min top rendition size.
+
         @[JSON::Field(key: "minBottomRenditionSize")]
         getter min_bottom_rendition_size : Types::MinBottomRenditionSize?
 
@@ -866,6 +976,7 @@ module AwsSdk
         # For example: If you specify 1280x720 the highest resolution in your ABR stack will be equal to or
         # greater than 1280x720. * If you specify a value for Max resolution, the value that you specify for
         # Min top rendition size must be less than, or equal to, Max resolution.
+
         @[JSON::Field(key: "minTopRenditionSize")]
         getter min_top_rendition_size : Types::MinTopRenditionSize?
 
@@ -895,6 +1006,7 @@ module AwsSdk
         # equal to any resolutions that you specify in Min top rendition size or Min bottom rendition size. *
         # If you specify Allowed renditions, you must not specify a separate rule for Force include
         # renditions.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -911,6 +1023,7 @@ module AwsSdk
       # Use automated ABR to have MediaConvert set up the renditions in your ABR package for you
       # automatically, based on characteristics of your input video. This feature optimizes video quality
       # while minimizing the overall size of your ABR package.
+
       struct AutomatedAbrSettings
         include JSON::Serializable
 
@@ -919,6 +1032,7 @@ module AwsSdk
         # highest-quality rendition will be equal to or below this value, depending on the quality,
         # complexity, and resolution of your content. Note that the instantaneous maximum bitrate may vary
         # above the value that you specify.
+
         @[JSON::Field(key: "maxAbrBitrate")]
         getter max_abr_bitrate : Int32?
 
@@ -927,6 +1041,7 @@ module AwsSdk
         # quality level: Enter a value from 1 to 10. MediaConvert will use a quality level up to the value
         # that you specify, depending on your source. For more information about QVBR quality levels, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/qvbr-guidelines.html
+
         @[JSON::Field(key: "maxQualityLevel")]
         getter max_quality_level : Float64?
 
@@ -934,6 +1049,7 @@ module AwsSdk
         # stack. The number of renditions is determined automatically, based on analysis of each job, but will
         # never exceed this limit. When you set this to Auto in the console, which is equivalent to excluding
         # it from your JSON job specification, MediaConvert defaults to a limit of 15.
+
         @[JSON::Field(key: "maxRenditions")]
         getter max_renditions : Int32?
 
@@ -941,12 +1057,14 @@ module AwsSdk
         # don't specify a value, MediaConvert uses 600,000 (600 kb/s) by default. The average bitrate of your
         # lowest-quality rendition will be near this value. Note that the instantaneous minimum bitrate may
         # vary below the value that you specify.
+
         @[JSON::Field(key: "minAbrBitrate")]
         getter min_abr_bitrate : Int32?
 
         # Optional. Use Automated ABR rules to specify restrictions for the rendition sizes MediaConvert will
         # create in your ABR stack. You can use these rules if your ABR workflow has specific rendition size
         # requirements, but you still want MediaConvert to optimize for video quality and overall file size.
+
         @[JSON::Field(key: "rules")]
         getter rules : Array(Types::AutomatedAbrRule)?
 
@@ -962,12 +1080,14 @@ module AwsSdk
 
       # Use automated encoding to have MediaConvert choose your encoding settings for you, based on
       # characteristics of your input video.
+
       struct AutomatedEncodingSettings
         include JSON::Serializable
 
         # Use automated ABR to have MediaConvert set up the renditions in your ABR package for you
         # automatically, based on characteristics of your input video. This feature optimizes video quality
         # while minimizing the overall size of your ABR package.
+
         @[JSON::Field(key: "abrSettings")]
         getter abr_settings : Types::AutomatedAbrSettings?
 
@@ -979,6 +1099,7 @@ module AwsSdk
 
       # Settings for quality-defined variable bitrate encoding with the AV1 codec. Use these settings only
       # when you set QVBR for Rate control mode.
+
       struct Av1QvbrSettings
         include JSON::Serializable
 
@@ -991,6 +1112,7 @@ module AwsSdk
         # transcodes is between 6 and 9. Optionally, to specify a value between whole numbers, also provide a
         # value for the setting qvbrQualityLevelFineTune. For example, if you want your QVBR quality level to
         # be 7.33, set qvbrQualityLevel to 7 and set qvbrQualityLevelFineTune to .33.
+
         @[JSON::Field(key: "qvbrQualityLevel")]
         getter qvbr_quality_level : Int32?
 
@@ -999,6 +1121,7 @@ module AwsSdk
         # qvbrQualityLevelFineTune to .33. MediaConvert rounds your QVBR quality level to the nearest third of
         # a whole number. For example, if you set qvbrQualityLevel to 7 and you set qvbrQualityLevelFineTune
         # to .25, your actual QVBR quality level is 7.33.
+
         @[JSON::Field(key: "qvbrQualityLevelFineTune")]
         getter qvbr_quality_level_fine_tune : Float64?
 
@@ -1010,15 +1133,18 @@ module AwsSdk
       end
 
       # Required when you set Codec, under VideoDescription>CodecSettings to the value AV1.
+
       struct Av1Settings
         include JSON::Serializable
 
         # Specify the strength of any adaptive quantization filters that you enable. The value that you choose
         # here applies to Spatial adaptive quantization.
+
         @[JSON::Field(key: "adaptiveQuantization")]
         getter adaptive_quantization : String?
 
         # Specify the Bit depth. You can choose 8-bit or 10-bit.
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : String?
 
@@ -1027,6 +1153,7 @@ module AwsSdk
         # level 5, 6, 7, or 8 outputs. For QVBR quality level 9 or 10 outputs we recommend that you keep the
         # default value, Disabled. When you include Film grain synthesis, you cannot include the Noise reducer
         # preprocessor.
+
         @[JSON::Field(key: "filmGrainSynthesis")]
         getter film_grain_synthesis : String?
 
@@ -1034,6 +1161,7 @@ module AwsSdk
         # frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose
         # a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are
         # decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -1049,6 +1177,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -1057,6 +1186,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -1065,23 +1195,27 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
         # Specify the GOP length (keyframe interval) in frames. With AV1, MediaConvert doesn't support GOP
         # length in seconds. This value must be greater than zero and preferably equal to 1 + ((numberBFrames
         # + 1) * x), where x is an integer value.
+
         @[JSON::Field(key: "gopSize")]
         getter gop_size : Float64?
 
         # Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000. Required
         # when Rate control mode is QVBR.
+
         @[JSON::Field(key: "maxBitrate")]
         getter max_bitrate : Int32?
 
         # Specify from the number of B-frames, in the range of 0-15. For AV1 encoding, we recommend using 7 or
         # 15. Choose a larger number for a lower bitrate and smaller file size; choose a smaller number for
         # better video quality.
+
         @[JSON::Field(key: "numberBFramesBetweenReferenceFrames")]
         getter number_b_frames_between_reference_frames : Int32?
 
@@ -1099,22 +1233,26 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
         # Settings for quality-defined variable bitrate encoding with the H.265 codec. Use these settings only
         # when you set QVBR for Rate control mode.
+
         @[JSON::Field(key: "qvbrSettings")]
         getter qvbr_settings : Types::Av1QvbrSettings?
 
         # 'With AV1 outputs, for rate control mode, MediaConvert supports only quality-defined variable
         # bitrate (QVBR). You can''t use CBR or VBR.'
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
         # Specify the number of slices per picture. This value must be 1, 2, 4, 8, 16, or 32. For progressive
         # pictures, this value must be less than or equal to the number of macroblock rows. For interlaced
         # pictures, this value must be less than or equal to half the number of macroblock rows.
+
         @[JSON::Field(key: "slices")]
         getter slices : Int32?
 
@@ -1129,6 +1267,7 @@ module AwsSdk
         # setting: When you enable spatial adaptive quantization, set the value for Adaptive quantization
         # depending on your content. For homogeneous content, such as cartoons and video games, set it to Low.
         # For content with a wider variety of textures, set it to High or Higher.
+
         @[JSON::Field(key: "spatialAdaptiveQuantization")]
         getter spatial_adaptive_quantization : String?
 
@@ -1156,10 +1295,12 @@ module AwsSdk
       # You can blank your video or overlay it with an image. MediaConvert also removes any audio and
       # embedded captions during the ad avail. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/ad-avail-blanking.html.
+
       struct AvailBlanking
         include JSON::Serializable
 
         # Blanking image to be used. Leave empty for solid black. Only bmp and png images are supported.
+
         @[JSON::Field(key: "availBlankingImage")]
         getter avail_blanking_image : String?
 
@@ -1173,6 +1314,7 @@ module AwsSdk
       # AVC-Intra settings, see the relevant specification. For detailed information about SD and HD in
       # AVC-Intra, see https://ieeexplore.ieee.org/document/7290936. For information about 4K/2K in
       # AVC-Intra, see https://pro-av.panasonic.net/en/avc-ultra/AVC-ULTRAoverview.pdf.
+
       struct AvcIntraSettings
         include JSON::Serializable
 
@@ -1180,11 +1322,13 @@ module AwsSdk
         # video bit rate depending on the frame rate of the output. Outputs with higher class values have
         # higher bitrates and improved image quality. Note that for Class 4K/2K, MediaConvert supports only
         # 4:2:2 chroma subsampling.
+
         @[JSON::Field(key: "avcIntraClass")]
         getter avc_intra_class : String?
 
         # Optional when you set AVC-Intra class to Class 4K/2K. When you set AVC-Intra class to a different
         # value, this object isn't allowed.
+
         @[JSON::Field(key: "avcIntraUhdSettings")]
         getter avc_intra_uhd_settings : Types::AvcIntraUhdSettings?
 
@@ -1193,6 +1337,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -1208,6 +1353,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -1216,6 +1362,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -1224,6 +1371,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -1235,6 +1383,7 @@ module AwsSdk
         # output. Follow behavior depends on the input scan type. If the source is interlaced, the output will
         # be interlaced with the same polarity as the source. If the source is progressive, the output will be
         # interlaced with top field bottom field first, depending on which of the Follow options you choose.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
@@ -1252,6 +1401,7 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
@@ -1265,6 +1415,7 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
@@ -1273,6 +1424,7 @@ module AwsSdk
         # to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this
         # setting will slightly reduce the duration of your video. Required settings: You must also set
         # Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -1280,6 +1432,7 @@ module AwsSdk
         # scan type is interlaced, you can optionally enable hard telecine to create a smoother picture. When
         # you keep the default value, None, MediaConvert does a standard frame rate conversion to 29.97
         # without doing anything with the field polarity to create a smoother picture.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -1301,6 +1454,7 @@ module AwsSdk
 
       # Optional when you set AVC-Intra class to Class 4K/2K. When you set AVC-Intra class to a different
       # value, this object isn't allowed.
+
       struct AvcIntraUhdSettings
         include JSON::Serializable
 
@@ -1309,6 +1463,7 @@ module AwsSdk
         # accurate. That is, the actual bitrate of your output is closer to the target bitrate defined in the
         # specification. When you choose Single-pass, your encoding time is faster. The default behavior is
         # Single-pass.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
@@ -1318,8 +1473,10 @@ module AwsSdk
         end
       end
 
+
       struct BadRequestException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1336,6 +1493,7 @@ module AwsSdk
       # to the bitrate that you specify. Bandwidth reduction increases further when your input is low
       # quality or noisy. Outputs that use this feature incur pro-tier pricing. When you include Bandwidth
       # reduction filter, you cannot include the Noise reducer preprocessor.
+
       struct BandwidthReductionFilter
         include JSON::Serializable
 
@@ -1343,6 +1501,7 @@ module AwsSdk
         # Sharpening adds contrast to the edges of your video content and can reduce softness. Keep the
         # default value Off to apply no sharpening. Set Sharpening strength to Low to apply a minimal amount
         # of sharpening, or High to apply a maximum amount of sharpening.
+
         @[JSON::Field(key: "sharpening")]
         getter sharpening : String?
 
@@ -1351,6 +1510,7 @@ module AwsSdk
         # quality. For high quality and high bitrate outputs, choose Low. For the most bandwidth reduction,
         # choose High. We recommend that you choose High for low bitrate outputs. Note that High may incur a
         # slight increase in the softness of your output.
+
         @[JSON::Field(key: "strength")]
         getter strength : String?
 
@@ -1365,6 +1525,7 @@ module AwsSdk
       # directly on your video frames, replacing pixels of video content with the captions. Set up burn-in
       # captions in the same output as your video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
+
       struct BurninDestinationSettings
         include JSON::Serializable
 
@@ -1373,6 +1534,7 @@ module AwsSdk
         # alignment willalign captions to the bottom left of the output. If x and y positions are given in
         # conjunction with the alignment parameter, the font will be justified (either left or centered)
         # relative to those coordinates.
+
         @[JSON::Field(key: "alignment")]
         getter alignment : String?
 
@@ -1382,11 +1544,13 @@ module AwsSdk
         # captions. For example, if your font color setting is Yellow, and your input captions have red and
         # white text, your output captions will have red and yellow text. When you choose ALL_TEXT, your font
         # color setting applies to all of your output captions text.
+
         @[JSON::Field(key: "applyFontColor")]
         getter apply_font_color : String?
 
         # Specify the color of the rectangle behind the captions. Leave background color blank and set Style
         # passthrough to enabled to use the background color data from your input captions, if present.
+
         @[JSON::Field(key: "backgroundColor")]
         getter background_color : String?
 
@@ -1395,6 +1559,7 @@ module AwsSdk
         # background style information in your input captions to your output captions. If Style passthrough is
         # set to disabled, leave blank to use a value of 0 and remove all backgrounds from your output
         # captions.
+
         @[JSON::Field(key: "backgroundOpacity")]
         getter background_opacity : Int32?
 
@@ -1404,54 +1569,64 @@ module AwsSdk
         # captions specify. When there are multiple unsupported fonts in your input captions, MediaConvert
         # matches each font with the supported font that matches best. When you explicitly choose a
         # replacement font, MediaConvert uses that font to replace all unsupported fonts from your input.
+
         @[JSON::Field(key: "fallbackFont")]
         getter fallback_font : String?
 
         # Specify the color of the burned-in captions text. Leave Font color blank and set Style passthrough
         # to enabled to use the font color data from your input captions, if present.
+
         @[JSON::Field(key: "fontColor")]
         getter font_color : String?
 
         # Specify a bold TrueType font file to use when rendering your output captions. Enter an S3, HTTP, or
         # HTTPS URL. When you do, you must also separately specify a regular, an italic, and a bold italic
         # font file.
+
         @[JSON::Field(key: "fontFileBold")]
         getter font_file_bold : String?
 
         # Specify a bold italic TrueType font file to use when rendering your output captions. Enter an S3,
         # HTTP, or HTTPS URL. When you do, you must also separately specify a regular, a bold, and an italic
         # font file.
+
         @[JSON::Field(key: "fontFileBoldItalic")]
         getter font_file_bold_italic : String?
 
         # Specify an italic TrueType font file to use when rendering your output captions. Enter an S3, HTTP,
         # or HTTPS URL. When you do, you must also separately specify a regular, a bold, and a bold italic
         # font file.
+
         @[JSON::Field(key: "fontFileItalic")]
         getter font_file_italic : String?
 
         # Specify a regular TrueType font file to use when rendering your output captions. Enter an S3, HTTP,
         # or HTTPS URL. When you do, you must also separately specify a bold, an italic, and a bold italic
         # font file.
+
         @[JSON::Field(key: "fontFileRegular")]
         getter font_file_regular : String?
 
         # Specify the opacity of the burned-in captions. 255 is opaque; 0 is transparent.
+
         @[JSON::Field(key: "fontOpacity")]
         getter font_opacity : Int32?
 
         # Specify the Font resolution in DPI (dots per inch).
+
         @[JSON::Field(key: "fontResolution")]
         getter font_resolution : Int32?
 
         # Set Font script to Automatically determined, or leave blank, to automatically determine the font
         # script in your input captions. Otherwise, set to Simplified Chinese (HANS) or Traditional Chinese
         # (HANT) if your input font script uses Simplified or Traditional Chinese.
+
         @[JSON::Field(key: "fontScript")]
         getter font_script : String?
 
         # Specify the Font size in pixels. Must be a positive integer. Set to 0, or leave blank, for automatic
         # font size.
+
         @[JSON::Field(key: "fontSize")]
         getter font_size : Int32?
 
@@ -1459,16 +1634,19 @@ module AwsSdk
         # digits, representing red, green, and blue, with two optional extra digits for alpha. For example a
         # value of 1122AABB is a red value of 0x11, a green value of 0x22, a blue value of 0xAA, and an alpha
         # value of 0xBB.
+
         @[JSON::Field(key: "hexFontColor")]
         getter hex_font_color : String?
 
         # Specify font outline color. Leave Outline color blank and set Style passthrough to enabled to use
         # the font outline color data from your input captions, if present.
+
         @[JSON::Field(key: "outlineColor")]
         getter outline_color : String?
 
         # Specify the Outline size of the caption text, in pixels. Leave Outline size blank and set Style
         # passthrough to enabled to use the outline size data from your input captions, if present.
+
         @[JSON::Field(key: "outlineSize")]
         getter outline_size : Int32?
 
@@ -1476,11 +1654,13 @@ module AwsSdk
         # attribute in the same element, from your output. Use if your vertical Japanese output captions have
         # alignment issues. To remove ruby reserve attributes when present: Choose Enabled. To not remove any
         # ruby reserve attributes: Keep the default value, Disabled.
+
         @[JSON::Field(key: "removeRubyReserveAttributes")]
         getter remove_ruby_reserve_attributes : String?
 
         # Specify the color of the shadow cast by the captions. Leave Shadow color blank and set Style
         # passthrough to enabled to use the shadow color data from your input captions, if present.
+
         @[JSON::Field(key: "shadowColor")]
         getter shadow_color : String?
 
@@ -1488,17 +1668,20 @@ module AwsSdk
         # opaque. If Style passthrough is set to Enabled, leave Shadow opacity blank to pass through the
         # shadow style information in your input captions to your output captions. If Style passthrough is set
         # to disabled, leave blank to use a value of 0 and remove all shadows from your output captions.
+
         @[JSON::Field(key: "shadowOpacity")]
         getter shadow_opacity : Int32?
 
         # Specify the horizontal offset of the shadow, relative to the captions in pixels. A value of -2 would
         # result in a shadow offset 2 pixels to the left.
+
         @[JSON::Field(key: "shadowXOffset")]
         getter shadow_x_offset : Int32?
 
         # Specify the vertical offset of the shadow relative to the captions in pixels. A value of -2 would
         # result in a shadow offset 2 pixels above the text. Leave Shadow y-offset blank and set Style
         # passthrough to enabled to use the shadow y-offset data from your input captions, if present.
+
         @[JSON::Field(key: "shadowYOffset")]
         getter shadow_y_offset : Int32?
 
@@ -1510,12 +1693,14 @@ module AwsSdk
         # Whether you set Style passthrough to enabled or not, you can also choose to manually override any of
         # the individual style and position settings. You can also override any fonts by manually specifying
         # custom font files.
+
         @[JSON::Field(key: "stylePassthrough")]
         getter style_passthrough : String?
 
         # Specify whether the text spacing in your captions is set by the captions grid, or varies depending
         # on letter width. Choose fixed grid to conform to the spacing specified in the captions file more
         # accurately. Choose proportional to make the text easier to read for closed captions.
+
         @[JSON::Field(key: "teletextSpacing")]
         getter teletext_spacing : String?
 
@@ -1523,12 +1708,14 @@ module AwsSdk
         # A value of 10 would result in the captions starting 10 pixels from the left of the output. If no
         # explicit x_position is provided, the horizontal caption position will be determined by the alignment
         # parameter.
+
         @[JSON::Field(key: "xPosition")]
         getter x_position : Int32?
 
         # Specify the vertical position of the captions, relative to the top of the output in pixels. A value
         # of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit
         # y_position is provided, the caption will be positioned towards the bottom of the output.
+
         @[JSON::Field(key: "yPosition")]
         getter y_position : Int32?
 
@@ -1564,10 +1751,12 @@ module AwsSdk
       end
 
       # Cancel a job by sending a request with the job ID
+
       struct CancelJobRequest
         include JSON::Serializable
 
         # The Job ID of the job to be cancelled.
+
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -1578,6 +1767,7 @@ module AwsSdk
       end
 
       # A cancel job request will receive a response with an empty body.
+
       struct CancelJobResponse
         include JSON::Serializable
 
@@ -1587,12 +1777,14 @@ module AwsSdk
 
       # This object holds groups of settings related to captions for one output. For each output that has
       # captions, include one instance of CaptionDescriptions.
+
       struct CaptionDescription
         include JSON::Serializable
 
         # Specifies which "Caption Selector":#inputs-caption_selector to use from each input when generating
         # captions. The name should be of the format "Caption Selector ", which denotes that the Nth Caption
         # Selector will be used from each input.
+
         @[JSON::Field(key: "captionSelectorName")]
         getter caption_selector_name : String?
 
@@ -1603,6 +1795,7 @@ module AwsSdk
         # For streaming outputs, you can also use any other code in the full RFC-5646 specification. Streaming
         # outputs are those that are in one of the following output groups: CMAF, DASH ISO, Apple HLS, or
         # Microsoft Smooth Streaming.
+
         @[JSON::Field(key: "customLanguageCode")]
         getter custom_language_code : String?
 
@@ -1610,6 +1803,7 @@ module AwsSdk
         # corresponds to one output captions track. Depending on your output captions format, one tab might
         # correspond to a set of output captions tracks. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/including-captions.html.
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::CaptionDestinationSettings?
 
@@ -1617,6 +1811,7 @@ module AwsSdk
         # puts this language information in the output captions metadata. If your output captions format is
         # DVB-Sub or Burn in, the encoder uses this language information to choose the font language for
         # rendering the captions text.
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
@@ -1624,6 +1819,7 @@ module AwsSdk
         # "track_2". For streaming outputs, MediaConvert passes this information into destination manifests
         # for display on the end-viewer's player device. For outputs in other output groups, the service
         # ignores this setting.
+
         @[JSON::Field(key: "languageDescription")]
         getter language_description : String?
 
@@ -1638,6 +1834,7 @@ module AwsSdk
       end
 
       # Caption Description for preset
+
       struct CaptionDescriptionPreset
         include JSON::Serializable
 
@@ -1648,6 +1845,7 @@ module AwsSdk
         # For streaming outputs, you can also use any other code in the full RFC-5646 specification. Streaming
         # outputs are those that are in one of the following output groups: CMAF, DASH ISO, Apple HLS, or
         # Microsoft Smooth Streaming.
+
         @[JSON::Field(key: "customLanguageCode")]
         getter custom_language_code : String?
 
@@ -1655,6 +1853,7 @@ module AwsSdk
         # corresponds to one output captions track. Depending on your output captions format, one tab might
         # correspond to a set of output captions tracks. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/including-captions.html.
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::CaptionDestinationSettings?
 
@@ -1662,6 +1861,7 @@ module AwsSdk
         # puts this language information in the output captions metadata. If your output captions format is
         # DVB-Sub or Burn in, the encoder uses this language information to choose the font language for
         # rendering the captions text.
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
@@ -1669,6 +1869,7 @@ module AwsSdk
         # "track_2". For streaming outputs, MediaConvert passes this information into destination manifests
         # for display on the end-viewer's player device. For outputs in other output groups, the service
         # ignores this setting.
+
         @[JSON::Field(key: "languageDescription")]
         getter language_description : String?
 
@@ -1685,6 +1886,7 @@ module AwsSdk
       # corresponds to one output captions track. Depending on your output captions format, one tab might
       # correspond to a set of output captions tracks. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/including-captions.html.
+
       struct CaptionDestinationSettings
         include JSON::Serializable
 
@@ -1692,6 +1894,7 @@ module AwsSdk
         # directly on your video frames, replacing pixels of video content with the captions. Set up burn-in
         # captions in the same output as your video. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
+
         @[JSON::Field(key: "burninDestinationSettings")]
         getter burnin_destination_settings : Types::BurninDestinationSettings?
 
@@ -1702,18 +1905,21 @@ module AwsSdk
         # SCTE-20 and you want to create an output that complies with the SCTE-43 spec, choose SCTE-20 plus
         # embedded. To create a non-compliant output where the embedded captions come first, choose Embedded
         # plus SCTE-20.
+
         @[JSON::Field(key: "destinationType")]
         getter destination_type : String?
 
         # Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output as your video. For
         # more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
+
         @[JSON::Field(key: "dvbSubDestinationSettings")]
         getter dvb_sub_destination_settings : Types::DvbSubDestinationSettings?
 
         # Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or ancillary) captions. Set up
         # embedded captions in the same output as your video. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
+
         @[JSON::Field(key: "embeddedDestinationSettings")]
         getter embedded_destination_settings : Types::EmbeddedDestinationSettings?
 
@@ -1721,6 +1927,7 @@ module AwsSdk
         # separate from the video container. Set up sidecar captions in the same output group, but different
         # output from your video. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+
         @[JSON::Field(key: "imscDestinationSettings")]
         getter imsc_destination_settings : Types::ImscDestinationSettings?
 
@@ -1728,18 +1935,21 @@ module AwsSdk
         # separate from the video container. Set up sidecar captions in the same output group, but different
         # output from your video. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
+
         @[JSON::Field(key: "sccDestinationSettings")]
         getter scc_destination_settings : Types::SccDestinationSettings?
 
         # Settings related to SRT captions. SRT is a sidecar format that holds captions in a file that is
         # separate from the video container. Set up sidecar captions in the same output group, but different
         # output from your video.
+
         @[JSON::Field(key: "srtDestinationSettings")]
         getter srt_destination_settings : Types::SrtDestinationSettings?
 
         # Settings related to teletext captions. Set up teletext captions in the same output as your video.
         # For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
+
         @[JSON::Field(key: "teletextDestinationSettings")]
         getter teletext_destination_settings : Types::TeletextDestinationSettings?
 
@@ -1747,6 +1957,7 @@ module AwsSdk
         # separate from the video container. Set up sidecar captions in the same output group, but different
         # output from your video. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+
         @[JSON::Field(key: "ttmlDestinationSettings")]
         getter ttml_destination_settings : Types::TtmlDestinationSettings?
 
@@ -1754,6 +1965,7 @@ module AwsSdk
         # is separate from the video container. Set up sidecar captions in the same output group, but
         # different output from your video. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+
         @[JSON::Field(key: "webvttDestinationSettings")]
         getter webvtt_destination_settings : Types::WebvttDestinationSettings?
 
@@ -1774,6 +1986,7 @@ module AwsSdk
 
       # Use captions selectors to specify the captions data from your input that you use in your outputs.
       # You can use up to 100 captions selectors per input.
+
       struct CaptionSelector
         include JSON::Serializable
 
@@ -1782,6 +1995,7 @@ module AwsSdk
         # If input is DVB-Sub and output is Burn-in, complete this field and/or PID to select the caption
         # language to extract. If input is DVB-Sub that is being passed through, omit this field (and PID
         # field); there is no way to extract a specific language with pass-through captions.
+
         @[JSON::Field(key: "customLanguageCode")]
         getter custom_language_code : String?
 
@@ -1790,12 +2004,14 @@ module AwsSdk
         # field and/or PID to select the caption language to extract. If input is DVB-Sub that is being passed
         # through, omit this field (and PID field); there is no way to extract a specific language with
         # pass-through captions.
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
         # If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the
         # input captions source file. If your input captions are IMSC in an IMF package, use
         # TrackSourceSettings instead of FileSoureSettings.
+
         @[JSON::Field(key: "sourceSettings")]
         getter source_settings : Types::CaptionSourceSettings?
 
@@ -1811,16 +2027,19 @@ module AwsSdk
       # differing frame rates between your input captions and input video, specify the frame rate of the
       # captions file. Specify this value as a fraction. For example, you might specify 24 / 1 for 24 fps,
       # 25 / 1 for 25 fps, 24000 / 1001 for 23.976 fps, or 30000 / 1001 for 29.97 fps.
+
       struct CaptionSourceFramerate
         include JSON::Serializable
 
         # Specify the denominator of the fraction that represents the frame rate for the setting Caption
         # source frame rate. Use this setting along with the setting Framerate numerator.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
         # Specify the numerator of the fraction that represents the frame rate for the setting Caption source
         # frame rate. Use this setting along with the setting Framerate denominator.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -1834,39 +2053,47 @@ module AwsSdk
       # If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the
       # input captions source file. If your input captions are IMSC in an IMF package, use
       # TrackSourceSettings instead of FileSoureSettings.
+
       struct CaptionSourceSettings
         include JSON::Serializable
 
         # Settings for ancillary captions source.
+
         @[JSON::Field(key: "ancillarySourceSettings")]
         getter ancillary_source_settings : Types::AncillarySourceSettings?
 
         # DVB Sub Source Settings
+
         @[JSON::Field(key: "dvbSubSourceSettings")]
         getter dvb_sub_source_settings : Types::DvbSubSourceSettings?
 
         # Settings for embedded captions Source
+
         @[JSON::Field(key: "embeddedSourceSettings")]
         getter embedded_source_settings : Types::EmbeddedSourceSettings?
 
         # If your input captions are SCC, SMI, SRT, STL, TTML, WebVTT, or IMSC 1.1 in an xml file, specify the
         # URI of the input caption source file. If your caption source is IMSC in an IMF package, use
         # TrackSourceSettings instead of FileSoureSettings.
+
         @[JSON::Field(key: "fileSourceSettings")]
         getter file_source_settings : Types::FileSourceSettings?
 
         # Use Source to identify the format of your input captions. The service cannot auto-detect caption
         # format.
+
         @[JSON::Field(key: "sourceType")]
         getter source_type : String?
 
         # Settings specific to Teletext caption sources, including Page number.
+
         @[JSON::Field(key: "teletextSourceSettings")]
         getter teletext_source_settings : Types::TeletextSourceSettings?
 
         # Settings specific to caption sources that are specified by track number. Currently, this is only
         # IMSC captions in an IMF package. If your caption source is IMSC 1.1 in a separate xml file, use
         # FileSourceSettings instead of TrackSourceSettings.
+
         @[JSON::Field(key: "trackSourceSettings")]
         getter track_source_settings : Types::TrackSourceSettings?
 
@@ -1877,6 +2104,7 @@ module AwsSdk
         # in the rendition group, the settings can be left empty and the default subtitle track will be
         # chosen. If your caption source is a sidecar file, use FileSourceSettings instead of
         # WebvttHlsSourceSettings.
+
         @[JSON::Field(key: "webvttHlsSourceSettings")]
         getter webvtt_hls_source_settings : Types::WebvttHlsSourceSettings?
 
@@ -1902,12 +2130,14 @@ module AwsSdk
       # within the range from -60 (mute) through 6. A setting of 0 passes the input channel unchanged to the
       # output channel (no attenuation or amplification). Use InputChannels or InputChannelsFineTune to
       # specify your remix values. Don't use both.
+
       struct ChannelMapping
         include JSON::Serializable
 
         # In your JSON job specification, include one child of OutputChannels for each audio channel that you
         # want in your output. Each child should contain one instance of InputChannels or
         # InputChannelsFineTune.
+
         @[JSON::Field(key: "outputChannels")]
         getter output_channels : Array(Types::OutputChannelMapping)?
 
@@ -1918,6 +2148,7 @@ module AwsSdk
       end
 
       # Specify YUV limits and RGB tolerances when you set Sample range conversion to Limited range clip.
+
       struct ClipLimits
         include JSON::Serializable
 
@@ -1926,6 +2157,7 @@ module AwsSdk
         # integer from 90 to 105 as an offset percentage to the maximum possible value. Leave blank to use the
         # default value 100. When you specify a value for Maximum RGB tolerance, you must set Sample range
         # conversion to Limited range clip.
+
         @[JSON::Field(key: "maximumRGBTolerance")]
         getter maximum_rgb_tolerance : Int32?
 
@@ -1934,6 +2166,7 @@ module AwsSdk
         # blank to use the default value 940. The value that you enter applies to 10-bit ranges. For 8-bit
         # ranges, MediaConvert automatically scales this value down. When you specify a value for Maximum YUV,
         # you must set Sample range conversion to Limited range clip.
+
         @[JSON::Field(key: "maximumYUV")]
         getter maximum_yuv : Int32?
 
@@ -1942,6 +2175,7 @@ module AwsSdk
         # integer from -5 to 10 as an offset percentage to the minimum possible value. Leave blank to use the
         # default value 0. When you specify a value for Minimum RGB tolerance, you must set Sample range
         # conversion to Limited range clip.
+
         @[JSON::Field(key: "minimumRGBTolerance")]
         getter minimum_rgb_tolerance : Int32?
 
@@ -1950,6 +2184,7 @@ module AwsSdk
         # to use the default value 64. The value that you enter applies to 10-bit ranges. For 8-bit ranges,
         # MediaConvert automatically scales this value down. When you specify a value for Minumum YUV, you
         # must set Sample range conversion to Limited range clip.
+
         @[JSON::Field(key: "minimumYUV")]
         getter minimum_yuv : Int32?
 
@@ -1965,6 +2200,7 @@ module AwsSdk
       # Specify the details for each pair of HLS and DASH additional manifests that you want the service to
       # generate for this CMAF output group. Each pair of manifests can reference a different subset of
       # outputs in the group.
+
       struct CmafAdditionalManifest
         include JSON::Serializable
 
@@ -1975,10 +2211,12 @@ module AwsSdk
         # For HLS output groups, specify a manifestNameModifier that is different from the nameModifier of the
         # output. The service uses the output name modifier to create unique names for the individual variant
         # manifests.
+
         @[JSON::Field(key: "manifestNameModifier")]
         getter manifest_name_modifier : String?
 
         # Specify the outputs that you want this additional top-level manifest to reference.
+
         @[JSON::Field(key: "selectedOutputs")]
         getter selected_outputs : Array(String)?
 
@@ -1990,37 +2228,44 @@ module AwsSdk
       end
 
       # Settings for CMAF encryption
+
       struct CmafEncryptionSettings
         include JSON::Serializable
 
         # This is a 128-bit, 16-byte hex value represented by a 32-character text string. If this parameter is
         # not set then the Initialization Vector will follow the segment number by default.
+
         @[JSON::Field(key: "constantInitializationVector")]
         getter constant_initialization_vector : String?
 
         # Specify the encryption scheme that you want the service to use when encrypting your CMAF segments.
         # Choose AES-CBC subsample or AES_CTR.
+
         @[JSON::Field(key: "encryptionMethod")]
         getter encryption_method : String?
 
         # When you use DRM with CMAF outputs, choose whether the service writes the 128-bit encryption
         # initialization vector in the HLS and DASH manifests.
+
         @[JSON::Field(key: "initializationVectorInManifest")]
         getter initialization_vector_in_manifest : String?
 
         # If your output group type is CMAF, use these settings when doing DRM encryption with a
         # SPEKE-compliant key provider. If your output group type is HLS, DASH, or Microsoft Smooth, use the
         # SpekeKeyProvider settings instead.
+
         @[JSON::Field(key: "spekeKeyProvider")]
         getter speke_key_provider : Types::SpekeKeyProviderCmaf?
 
         # Use these settings to set up encryption with a static key provider.
+
         @[JSON::Field(key: "staticKeyProvider")]
         getter static_key_provider : Types::StaticKeyProvider?
 
         # Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE
         # standard. For more information about SPEKE, see
         # https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -2037,6 +2282,7 @@ module AwsSdk
 
       # Settings related to your CMAF output package. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
       struct CmafGroupSettings
         include JSON::Serializable
 
@@ -2045,21 +2291,25 @@ module AwsSdk
         # the output group. To create additional top-level manifests that reference a subset of the outputs in
         # the output group, specify a list of them here. For each additional manifest that you specify, the
         # service creates one HLS manifest and one DASH manifest.
+
         @[JSON::Field(key: "additionalManifests")]
         getter additional_manifests : Array(Types::CmafAdditionalManifest)?
 
         # A partial URI prefix that will be put in the manifest file at the top level BaseURL element. Can be
         # used if streams are delivered from a different URL than the manifest file.
+
         @[JSON::Field(key: "baseUrl")]
         getter base_url : String?
 
         # Disable this setting only when your workflow requires the #EXT-X-ALLOW-CACHE:no tag. Otherwise, keep
         # the default value Enabled and control caching in your video distribution set up. For example, use
         # the Cache-Control http header.
+
         @[JSON::Field(key: "clientCache")]
         getter client_cache : String?
 
         # Specification to use (RFC-6381 or the default RFC-4281) during m3u8 playlist generation.
+
         @[JSON::Field(key: "codecSpecification")]
         getter codec_specification : String?
 
@@ -2071,6 +2321,7 @@ module AwsSdk
         # segment files. You may also include format identifiers. For more information, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/using-variables-in-your-job-settings.html#using-settings-variables-with-streaming-outputs
         # To not generate I-frame only video segments: Leave blank.
+
         @[JSON::Field(key: "dashIFrameTrickPlayNameModifier")]
         getter dash_i_frame_trick_play_name_modifier : String?
 
@@ -2082,6 +2333,7 @@ module AwsSdk
         # not share a common timeline. To write a video AdaptationSet for each different output framerate, and
         # a common SegmentTimeline in each AdaptationSet: Choose Distinct. To write a SegmentTimeline in each
         # AdaptationSet: Choose Full.
+
         @[JSON::Field(key: "dashManifestStyle")]
         getter dash_manifest_style : String?
 
@@ -2089,20 +2341,24 @@ module AwsSdk
         # format identifiers. If you do not specify the base filename in the URI, the service will use the
         # filename of the input file. If your job has multiple inputs, the service uses the filename of the
         # first input file.
+
         @[JSON::Field(key: "destination")]
         getter destination : String?
 
         # Settings associated with the destination. Will vary based on the type of destination
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::DestinationSettings?
 
         # DRM settings.
+
         @[JSON::Field(key: "encryption")]
         getter encryption : Types::CmafEncryptionSettings?
 
         # Specify the length, in whole seconds, of the mp4 fragments. When you don't specify a value,
         # MediaConvert defaults to 2. Related setting: Use Fragment length control to specify whether the
         # encoder enforces this value strictly.
+
         @[JSON::Field(key: "fragmentLength")]
         getter fragment_length : Int32?
 
@@ -2115,22 +2371,27 @@ module AwsSdk
         # these images is Roku trick mode. The thumbnails and full-frame images that MediaConvert creates with
         # this feature are compatible with this Roku specification:
         # https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
+
         @[JSON::Field(key: "imageBasedTrickPlay")]
         getter image_based_trick_play : String?
 
         # Tile and thumbnail settings applicable when imageBasedTrickPlay is ADVANCED
+
         @[JSON::Field(key: "imageBasedTrickPlaySettings")]
         getter image_based_trick_play_settings : Types::CmafImageBasedTrickPlaySettings?
 
         # When set to GZIP, compresses HLS playlist.
+
         @[JSON::Field(key: "manifestCompression")]
         getter manifest_compression : String?
 
         # Indicates whether the output manifest should use floating point values for segment duration.
+
         @[JSON::Field(key: "manifestDurationFormat")]
         getter manifest_duration_format : String?
 
         # Minimum time of initially buffered media that is needed to ensure smooth playout.
+
         @[JSON::Field(key: "minBufferTime")]
         getter min_buffer_time : Int32?
 
@@ -2143,6 +2404,7 @@ module AwsSdk
         # segment. For example, your segment length is 3 seconds and your final segment is .5 seconds without
         # a minimum final segment length; when you set the minimum final segment length to 1, your final
         # segment is 3.5 seconds.
+
         @[JSON::Field(key: "minFinalSegmentLength")]
         getter min_final_segment_length : Float64?
 
@@ -2151,6 +2413,7 @@ module AwsSdk
         # downstream player configuration. Max: Use the same value that you specify for Max bitrate in the
         # video output, in bits per second. Average: Use the calculated average bitrate of the encoded video
         # output, in bits per second.
+
         @[JSON::Field(key: "mpdManifestBandwidthType")]
         getter mpd_manifest_bandwidth_type : String?
 
@@ -2158,6 +2421,7 @@ module AwsSdk
         # signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand,
         # the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
         # On-demand, you must also set the output group setting Segment control to Single file.
+
         @[JSON::Field(key: "mpdProfile")]
         getter mpd_profile : String?
 
@@ -2168,12 +2432,14 @@ module AwsSdk
         # Zero-based to have MediaConvert ignore the initial PTS in the video stream and instead write the
         # initial time stamp as zero in the manifest. For outputs that don't have B-frames, the time stamps in
         # your DASH manifests start at zero regardless of your choice here.
+
         @[JSON::Field(key: "ptsOffsetHandlingForBFrames")]
         getter pts_offset_handling_for_b_frames : String?
 
         # When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the
         # Fragment Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be
         # created.
+
         @[JSON::Field(key: "segmentControl")]
         getter segment_control : String?
 
@@ -2181,6 +2447,7 @@ module AwsSdk
         # defaults to 10. Related settings: Use Segment length control to specify whether the encoder enforces
         # this value strictly. Use Segment control to specify whether MediaConvert creates separate segment
         # files or one content file that has metadata to mark the segment boundaries.
+
         @[JSON::Field(key: "segmentLength")]
         getter segment_length : Int32?
 
@@ -2197,10 +2464,12 @@ module AwsSdk
         # outputs, we recommend they share a similar frame rate (as in X/3, X/2, X, or 2X). For example: 5,
         # 15, 30 and 60. Or: 25 and 50. (Outputs must share an integer multiple.) - Output audio codec:
         # Specify Advanced Audio Coding (AAC). - Output sample rate: Choose 48kHz.
+
         @[JSON::Field(key: "segmentLengthControl")]
         getter segment_length_control : String?
 
         # Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
+
         @[JSON::Field(key: "streamInfResolution")]
         getter stream_inf_resolution : String?
 
@@ -2211,6 +2480,7 @@ module AwsSdk
         # ensure that the target duration is always longer than the actual duration of the segment. Some older
         # players may experience interrupted playback when the actual duration of a track in a segment is
         # longer than the target duration.
+
         @[JSON::Field(key: "targetDurationCompatibilityMode")]
         getter target_duration_compatibility_mode : String?
 
@@ -2220,14 +2490,17 @@ module AwsSdk
         # integers. For strict fMP4 video and audio timing, set Video composition offsets to Signed. The
         # earliest presentation time will be equal to zero, and sample composition time offsets will increment
         # using signed integers.
+
         @[JSON::Field(key: "videoCompositionOffsets")]
         getter video_composition_offsets : String?
 
         # When set to ENABLED, a DASH MPD manifest will be generated for this output.
+
         @[JSON::Field(key: "writeDashManifest")]
         getter write_dash_manifest : String?
 
         # When set to ENABLED, an Apple HLS manifest will be generated for this output.
+
         @[JSON::Field(key: "writeHlsManifest")]
         getter write_hls_manifest : String?
 
@@ -2236,6 +2509,7 @@ module AwsSdk
         # SegmentTemplate at the Representation level. When this feature isn't enabled, the segment durations
         # in your DASH manifest are approximate. The segment duration information appears in the duration
         # attribute of the SegmentTemplate element.
+
         @[JSON::Field(key: "writeSegmentTimelineInRepresentation")]
         getter write_segment_timeline_in_representation : String?
 
@@ -2273,6 +2547,7 @@ module AwsSdk
       end
 
       # Tile and thumbnail settings applicable when imageBasedTrickPlay is ADVANCED
+
       struct CmafImageBasedTrickPlaySettings
         include JSON::Serializable
 
@@ -2280,12 +2555,14 @@ module AwsSdk
         # generates thumbnails for each IDR frame in the output (matching the GOP cadence). If set to
         # FOLLOW_CUSTOM, MediaConvert generates thumbnails according to the interval you specify in
         # thumbnailInterval.
+
         @[JSON::Field(key: "intervalCadence")]
         getter interval_cadence : String?
 
         # Height of each thumbnail within each tile image, in pixels. Leave blank to maintain aspect ratio
         # with thumbnail width. If following the aspect ratio would lead to a total tile height greater than
         # 4096, then the job will be rejected. Must be divisible by 2.
+
         @[JSON::Field(key: "thumbnailHeight")]
         getter thumbnail_height : Int32?
 
@@ -2293,19 +2570,23 @@ module AwsSdk
         # enter doesn't align with the output frame rate, MediaConvert automatically rounds the interval to
         # align with the output frame rate. For example, if the output frame rate is 29.97 frames per second
         # and you enter 5, MediaConvert uses a 150 frame interval to generate thumbnails.
+
         @[JSON::Field(key: "thumbnailInterval")]
         getter thumbnail_interval : Float64?
 
         # Width of each thumbnail within each tile image, in pixels. Default is 312. Must be divisible by 8.
+
         @[JSON::Field(key: "thumbnailWidth")]
         getter thumbnail_width : Int32?
 
         # Number of thumbnails in each column of a tile image. Set a value between 2 and 2048. Must be
         # divisible by 2.
+
         @[JSON::Field(key: "tileHeight")]
         getter tile_height : Int32?
 
         # Number of thumbnails in each row of a tile image. Set a value between 1 and 512.
+
         @[JSON::Field(key: "tileWidth")]
         getter tile_width : Int32?
 
@@ -2321,6 +2602,7 @@ module AwsSdk
       end
 
       # These settings relate to the fragmented MP4 container for the segments in your CMAF outputs.
+
       struct CmfcSettings
         include JSON::Serializable
 
@@ -2334,6 +2616,7 @@ module AwsSdk
         # end of the last segment of the output. For unsegmented outputs, MediaConvert adds padding only to
         # the end of the file. When you keep the default value, any minor discrepancies between audio and
         # video duration will depend on your output audio codec.
+
         @[JSON::Field(key: "audioDuration")]
         getter audio_duration : String?
 
@@ -2344,6 +2627,7 @@ module AwsSdk
         # #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio_aac_1". Related setting: To associate the rendition group
         # that this audio track belongs to with a video rendition, include the same value that you provide
         # here for that video output's setting Audio rendition sets.
+
         @[JSON::Field(key: "audioGroupId")]
         getter audio_group_id : String?
 
@@ -2360,6 +2644,7 @@ module AwsSdk
         # "amazing_video_1.m3u8". Then, in your parent manifest, each value will appear on separate lines,
         # like this: #EXT-X-STREAM-INF:AUDIO="audio_aac_1"... amazing_video_1.m3u8
         # #EXT-X-STREAM-INF:AUDIO="audio_dolby"... amazing_video_1.m3u8
+
         @[JSON::Field(key: "audioRenditionSets")]
         getter audio_rendition_sets : String?
 
@@ -2377,11 +2662,13 @@ module AwsSdk
         # AUTOSELECT=NO. When you don't specify a value for this setting, MediaConvert defaults to Alternate
         # audio, auto select, default. When there is more than one variant in your output group, you must
         # explicitly choose a value for this setting.
+
         @[JSON::Field(key: "audioTrackType")]
         getter audio_track_type : String?
 
         # When enabled, a C2PA compliant manifest will be generated, signed and embeded in the output. For
         # more information on C2PA, see https://c2pa.org/specifications/specifications/2.1/index.html
+
         @[JSON::Field(key: "c2paManifest")]
         getter c2pa_manifest : String?
 
@@ -2391,6 +2678,7 @@ module AwsSdk
         # for signature validation. Include the signer's certificate and all intermediate certificates. Do not
         # include the root certificate. For details on COSE, see:
         # https://opensource.contentauthenticity.org/docs/manifest/signing-manifests
+
         @[JSON::Field(key: "certificateSecret")]
         getter certificate_secret : String?
 
@@ -2399,6 +2687,7 @@ module AwsSdk
         # CHARACTERISTICS="public.accessibility.describes-video" in the EXT-X-MEDIA entry for this track. When
         # you keep the default choice, Don't flag, MediaConvert leaves this parameter out. The DVS flag can
         # help with accessibility on Apple devices. For more information, see the Apple documentation.
+
         @[JSON::Field(key: "descriptiveVideoServiceFlag")]
         getter descriptive_video_service_flag : String?
 
@@ -2407,6 +2696,7 @@ module AwsSdk
         # as part of a workflow that creates preview functions for your video. MediaConvert adds both the
         # I-frame only child manifest and the regular child manifest to the parent manifest. When you don't
         # need the I-frame only child manifest, keep the default value Exclude.
+
         @[JSON::Field(key: "iFrameOnlyManifest")]
         getter i_frame_only_manifest : String?
 
@@ -2414,6 +2704,7 @@ module AwsSdk
         # MediaConvert reads KLV metadata present in your input and writes each instance to a separate event
         # message box in the output, according to MISB ST1910.1. To exclude this KLV metadata: Set KLV
         # metadata insertion to None or leave blank.
+
         @[JSON::Field(key: "klvMetadata")]
         getter klv_metadata : String?
 
@@ -2424,35 +2715,41 @@ module AwsSdk
         # these elements out of your output MPD manifest, set Manifest metadata signaling to Disabled. To
         # enable Manifest metadata signaling, you must also set SCTE-35 source to Passthrough, ESAM SCTE-35 to
         # insert, or ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "manifestMetadataSignaling")]
         getter manifest_metadata_signaling : String?
 
         # Use this setting only when you specify SCTE-35 markers from ESAM. Choose INSERT to put SCTE-35
         # markers in this output at the insertion points that you specify in an ESAM XML document. Provide the
         # document in the setting SCC XML.
+
         @[JSON::Field(key: "scte35Esam")]
         getter scte35_esam : String?
 
         # Ignore this setting unless you have SCTE-35 markers in your input video file. Choose Passthrough if
         # you want SCTE-35 markers that appear in your input to also appear in this output. Choose None if you
         # don't want those SCTE-35 markers in this output.
+
         @[JSON::Field(key: "scte35Source")]
         getter scte35_source : String?
 
         # Specify the ID or ARN of the AWS KMS key used to sign the C2PA manifest in your MP4 output. Provide
         # a valid KMS key ARN. Note that your MediaConvert service role must allow access to this key.
+
         @[JSON::Field(key: "signingKmsKey")]
         getter signing_kms_key : String?
 
         # To include ID3 metadata in this output: Set ID3 metadata to Passthrough. Specify this ID3 metadata
         # in Custom ID3 metadata inserter. MediaConvert writes each instance of ID3 metadata in a separate
         # Event Message (eMSG) box. To exclude this ID3 metadata: Set ID3 metadata to None or leave blank.
+
         @[JSON::Field(key: "timedMetadata")]
         getter timed_metadata : String?
 
         # Specify the event message box (eMSG) version for ID3 timed metadata in your output. For more
         # information, see ISO/IEC 23009-1:2022 section 5.10.3.3.3 Syntax. Leave blank to use the default
         # value Version 0. When you specify Version 1, you must also set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataBoxVersion")]
         getter timed_metadata_box_version : String?
 
@@ -2460,12 +2757,14 @@ module AwsSdk
         # information, see ISO/IEC 23009-1:2022 section 5.10.3.3.4 Semantics. Leave blank to use the default
         # value: https://aomedia.org/emsg/ID3 When you specify a value for ID3 metadata scheme ID URI, you
         # must also set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataSchemeIdUri")]
         getter timed_metadata_scheme_id_uri : String?
 
         # Specify the event message box (eMSG) value for ID3 timed metadata in your output. For more
         # information, see ISO/IEC 23009-1:2022 section 5.10.3.3.4 Semantics. When you specify a value for ID3
         # Metadata Value, you must also set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataValue")]
         getter timed_metadata_value : String?
 
@@ -2495,11 +2794,13 @@ module AwsSdk
       # technical specifications about how the video was encoded, including profile settings, resolution
       # details, and color space information that can help you understand the source video characteristics
       # and make informed encoding decisions.
+
       struct CodecMetadata
         include JSON::Serializable
 
         # The number of bits used per color component in the video essence such as 8, 10, or 12 bits. Standard
         # range (SDR) video typically uses 8-bit, while 10-bit is common for high dynamic range (HDR).
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : Int32?
 
@@ -2507,54 +2808,64 @@ module AwsSdk
         # how color information is sampled relative to brightness information. Different subsampling ratios
         # affect video quality and file size, with "4:4:4" providing the highest color fidelity and "4:2:0"
         # being most common for standard video.
+
         @[JSON::Field(key: "chromaSubsampling")]
         getter chroma_subsampling : String?
 
         # The frame rate of the video or audio track, expressed as a fraction with numerator and denominator
         # values.
+
         @[JSON::Field(key: "codedFrameRate")]
         getter coded_frame_rate : Types::FrameRate?
 
         # The color space primaries of the video track, defining the red, green, and blue color coordinates
         # used for the video. This information helps ensure accurate color reproduction during playback and
         # transcoding.
+
         @[JSON::Field(key: "colorPrimaries")]
         getter color_primaries : String?
 
         # The height in pixels as coded by the codec. This represents the actual encoded video height as
         # specified in the video stream headers.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # The codec level or tier that specifies the maximum processing requirements and capabilities. Levels
         # define constraints such as maximum bit rate, frame rate, and resolution.
+
         @[JSON::Field(key: "level")]
         getter level : String?
 
         # The color space matrix coefficients of the video track, defining how RGB color values are converted
         # to and from YUV color space. This affects color accuracy during encoding and decoding processes.
+
         @[JSON::Field(key: "matrixCoefficients")]
         getter matrix_coefficients : String?
 
         # The codec profile used to encode the video. Profiles define specific feature sets and capabilities
         # within a codec standard. For example, H.264 profiles include Baseline, Main, and High, each
         # supporting different encoding features and complexity levels.
+
         @[JSON::Field(key: "profile")]
         getter profile : String?
 
         # The scanning method specified in the video essence, indicating whether the video uses progressive or
         # interlaced scanning.
+
         @[JSON::Field(key: "scanType")]
         getter scan_type : String?
 
         # The color space transfer characteristics of the video track, defining the relationship between
         # linear light values and the encoded signal values. This affects brightness and contrast
         # reproduction.
+
         @[JSON::Field(key: "transferCharacteristics")]
         getter transfer_characteristics : String?
 
         # The width in pixels as coded by the codec. This represents the actual encoded video width as
         # specified in the video stream headers.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -2575,15 +2886,18 @@ module AwsSdk
       end
 
       # Custom 3D lut settings
+
       struct ColorConversion3DLUTSetting
         include JSON::Serializable
 
         # Specify the input file S3, HTTP, or HTTPS URL for your 3D LUT .cube file. Note that MediaConvert
         # accepts 3D LUT files up to 8MB in size.
+
         @[JSON::Field(key: "fileInput")]
         getter file_input : String?
 
         # Specify which inputs use this 3D LUT, according to their color space.
+
         @[JSON::Field(key: "inputColorSpace")]
         getter input_color_space : String?
 
@@ -2591,10 +2905,12 @@ module AwsSdk
         # P3D65 (HDR) inputs with a specific mastering luminance: Enter an integer from 0 to 2147483647,
         # corresponding to the input's Maximum luminance value. To apply this 3D LUT to any input regardless
         # of its luminance: Leave blank, or enter 0.
+
         @[JSON::Field(key: "inputMasteringLuminance")]
         getter input_mastering_luminance : Int32?
 
         # Specify which outputs use this 3D LUT, according to their color space.
+
         @[JSON::Field(key: "outputColorSpace")]
         getter output_color_space : String?
 
@@ -2602,6 +2918,7 @@ module AwsSdk
         # or P3D65 (HDR) outputs with a specific luminance: Enter an integer from 0 to 2147483647,
         # corresponding to the output's luminance. To apply this 3D LUT to any output regardless of its
         # luminance: Leave blank, or enter 0.
+
         @[JSON::Field(key: "outputMasteringLuminance")]
         getter output_mastering_luminance : Int32?
 
@@ -2616,14 +2933,17 @@ module AwsSdk
       end
 
       # Settings for color correction.
+
       struct ColorCorrector
         include JSON::Serializable
 
         # Brightness level.
+
         @[JSON::Field(key: "brightness")]
         getter brightness : Int32?
 
         # Specify YUV limits and RGB tolerances when you set Sample range conversion to Limited range clip.
+
         @[JSON::Field(key: "clipLimits")]
         getter clip_limits : Types::ClipLimits?
 
@@ -2636,10 +2956,12 @@ module AwsSdk
         # coefficients: * HDR 10: BT.2020, PQ, BT.2020 non-constant * HLG 2020: BT.2020, HLG, BT.2020
         # non-constant * P3DCI (Theater): DCIP3, SMPTE 428M, BT.709 * P3D65 (SDR): Display P3, sRGB, BT.709 *
         # P3D65 (HDR): Display P3, PQ, BT.709
+
         @[JSON::Field(key: "colorSpaceConversion")]
         getter color_space_conversion : String?
 
         # Contrast level.
+
         @[JSON::Field(key: "contrast")]
         getter contrast : Int32?
 
@@ -2652,6 +2974,7 @@ module AwsSdk
         # The default values for the other HDR 10 metadata settings are defined by the P3D65 color space. For
         # more information about MediaConvert HDR jobs, see
         # https://docs.aws.amazon.com/console/mediaconvert/hdr.
+
         @[JSON::Field(key: "hdr10Metadata")]
         getter hdr10_metadata : Types::Hdr10Metadata?
 
@@ -2664,15 +2987,18 @@ module AwsSdk
         # when any of your source content is HDR10, and for the best results when it is mastered for 1000
         # nits. You may notice loss of details in bright or saturated areas of your output. HDR to SDR tone
         # mapping has no effect when your input is SDR.
+
         @[JSON::Field(key: "hdrToSdrToneMapper")]
         getter hdr_to_sdr_tone_mapper : String?
 
         # Hue in degrees.
+
         @[JSON::Field(key: "hue")]
         getter hue : Int32?
 
         # Specify the maximum mastering display luminance. Enter an integer from 0 to 2147483647, in units of
         # 0.0001 nits. For example, enter 10000000 for 1000 nits.
+
         @[JSON::Field(key: "maxLuminance")]
         getter max_luminance : Int32?
 
@@ -2687,10 +3013,12 @@ module AwsSdk
         # bounds. MediaConvert also corrects any YUV values that, when converted to RGB, would be outside the
         # bounds you specify under Minimum RGB tolerance and Maximum RGB tolerance. With either limited range
         # conversion, MediaConvert writes the sample range metadata in the output.
+
         @[JSON::Field(key: "sampleRangeConversion")]
         getter sample_range_conversion : String?
 
         # Saturation level.
+
         @[JSON::Field(key: "saturation")]
         getter saturation : Int32?
 
@@ -2701,6 +3029,7 @@ module AwsSdk
         # input video selector. For 1,000 nit peak brightness displays, we recommend that you set SDR
         # reference white level to 203 (according to ITU-R BT.2408). Leave blank to use the default value of
         # 100, or specify an integer from 100 to 1000.
+
         @[JSON::Field(key: "sdrReferenceWhiteLevel")]
         getter sdr_reference_white_level : Int32?
 
@@ -2720,8 +3049,10 @@ module AwsSdk
         end
       end
 
+
       struct ConflictException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2734,20 +3065,24 @@ module AwsSdk
 
       # The container of your media file. This information helps you understand the overall structure and
       # details of your media, including format, duration, and track layout.
+
       struct Container
         include JSON::Serializable
 
         # The total duration of your media file, in seconds.
+
         @[JSON::Field(key: "duration")]
         getter duration : Float64?
 
         # The format of your media file. For example: MP4, QuickTime (MOV), Matroska (MKV), WebM or MXF. Note
         # that this will be blank if your media file has a format that the MediaConvert Probe operation does
         # not recognize.
+
         @[JSON::Field(key: "format")]
         getter format : String?
 
         # Details about each track (video, audio, or data) in the media file.
+
         @[JSON::Field(key: "tracks")]
         getter tracks : Array(Types::Track)?
 
@@ -2760,19 +3095,23 @@ module AwsSdk
       end
 
       # Container specific settings.
+
       struct ContainerSettings
         include JSON::Serializable
 
         # These settings relate to the fragmented MP4 container for the segments in your CMAF outputs.
+
         @[JSON::Field(key: "cmfcSettings")]
         getter cmfc_settings : Types::CmfcSettings?
 
         # Container for this output. Some containers require a container settings object. If not specified,
         # the default object will be created.
+
         @[JSON::Field(key: "container")]
         getter container : String?
 
         # Settings for F4v container
+
         @[JSON::Field(key: "f4vSettings")]
         getter f4v_settings : Types::F4vSettings?
 
@@ -2784,29 +3123,35 @@ module AwsSdk
         # a program along with their PID. Downstream systems and players use the program map table to look up
         # the PID for each type of data it accesses and then uses the PIDs to locate specific data within the
         # asset.
+
         @[JSON::Field(key: "m2tsSettings")]
         getter m2ts_settings : Types::M2tsSettings?
 
         # These settings relate to the MPEG-2 transport stream (MPEG2-TS) container for the MPEG2-TS segments
         # in your HLS outputs.
+
         @[JSON::Field(key: "m3u8Settings")]
         getter m3u8_settings : Types::M3u8Settings?
 
         # These settings relate to your QuickTime MOV output container.
+
         @[JSON::Field(key: "movSettings")]
         getter mov_settings : Types::MovSettings?
 
         # These settings relate to your MP4 output container. You can create audio only outputs with this
         # container. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/supported-codecs-containers-audio-only.html#output-codecs-and-containers-supported-for-audio-only.
+
         @[JSON::Field(key: "mp4Settings")]
         getter mp4_settings : Types::Mp4Settings?
 
         # These settings relate to the fragmented MP4 container for the segments in your DASH outputs.
+
         @[JSON::Field(key: "mpdSettings")]
         getter mpd_settings : Types::MpdSettings?
 
         # These settings relate to your MXF output container.
+
         @[JSON::Field(key: "mxfSettings")]
         getter mxf_settings : Types::MxfSettings?
 
@@ -2826,27 +3171,32 @@ module AwsSdk
 
       # Send your create job request with your job settings and IAM role. Optionally, include user metadata
       # and the ARN for the queue.
+
       struct CreateJobRequest
         include JSON::Serializable
 
         # Required. The IAM role you use for creating this job. For details about permissions, see the User
         # Guide topic at the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
+
         @[JSON::Field(key: "role")]
         getter role : String
 
         # JobSettings contains all the transcode settings for a job.
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::JobSettings
 
         # Optional. Accelerated transcoding can significantly speed up jobs with long, visually complex
         # content. Outputs that use this feature incur pro-tier pricing. For information about feature
         # limitations, see the AWS Elemental MediaConvert User Guide.
+
         @[JSON::Field(key: "accelerationSettings")]
         getter acceleration_settings : Types::AccelerationSettings?
 
         # Optionally choose a Billing tags source that AWS Billing and Cost Management will use to display
         # tags for individual output costs on any billing report that you set up. Leave blank to use the
         # default value, Job.
+
         @[JSON::Field(key: "billingTagsSource")]
         getter billing_tags_source : String?
 
@@ -2855,6 +3205,7 @@ module AwsSdk
         # within one minute of a successful request, the API returns the job details of the original request
         # instead. For more information see
         # https://docs.aws.amazon.com/mediaconvert/latest/apireference/idempotency.html.
+
         @[JSON::Field(key: "clientRequestToken")]
         getter client_request_token : String?
 
@@ -2862,6 +3213,7 @@ module AwsSdk
         # your job to. Specify an alternate queue and the maximum time that your job will wait in the initial
         # queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert
         # User Guide.
+
         @[JSON::Field(key: "hopDestinations")]
         getter hop_destinations : Array(Types::HopDestination)?
 
@@ -2870,11 +3222,13 @@ module AwsSdk
         # releases with new features, updates, improvements, and fixes. Job engine versions are in a
         # YYYY-MM-DD format. Note that the Job engine version feature is not publicly available at this time.
         # To request access, contact AWS support.
+
         @[JSON::Field(key: "jobEngineVersion")]
         getter job_engine_version : String?
 
         # Optional. When you create a job, you can either specify a job template or specify the transcoding
         # settings individually.
+
         @[JSON::Field(key: "jobTemplate")]
         getter job_template : String?
 
@@ -2882,12 +3236,14 @@ module AwsSdk
         # processing the job with the highest value first. When more than one job has the same priority, the
         # service begins processing the job that you submitted first. If you don't specify a priority, the
         # service uses the default value 0.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
         # Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the
         # job will go to the default queue. For more about queues, see the User Guide topic at
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
@@ -2895,6 +3251,7 @@ module AwsSdk
         # slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with
         # similar performance to what you will see with one RTS in a reserved queue. This setting is disabled
         # by default.
+
         @[JSON::Field(key: "simulateReservedQueue")]
         getter simulate_reserved_queue : String?
 
@@ -2902,18 +3259,21 @@ module AwsSdk
         # the interval, in seconds, between status updates. MediaConvert sends an update at this interval from
         # the time the service begins processing your job to the time it completes the transcode or encounters
         # an error.
+
         @[JSON::Field(key: "statusUpdateInterval")]
         getter status_update_interval : String?
 
         # Optional. The tags that you want to add to the resource. You can tag resources with a key-value pair
         # or with only a key. Use standard AWS tags on your job for automatic integration with AWS services
         # and for custom integrations and workflows.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # Optional. User-defined metadata that you want to associate with an MediaConvert job. You specify
         # metadata in key/value pairs. Use only for existing integrations or workflows that rely on job
         # metadata tags. Otherwise, we recommend that you use standard AWS tags.
+
         @[JSON::Field(key: "userMetadata")]
         getter user_metadata : Hash(String, String)?
 
@@ -2937,11 +3297,13 @@ module AwsSdk
       end
 
       # Successful create job requests will return the job JSON.
+
       struct CreateJobResponse
         include JSON::Serializable
 
         # Each job converts an input file into an output file or files. For more information, see the User
         # Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
         @[JSON::Field(key: "job")]
         getter job : Types::Job?
 
@@ -2954,29 +3316,35 @@ module AwsSdk
       # Send your create job template request with the name of the template and the JSON for the template.
       # The template JSON should include everything in a valid job, except for input location and filename,
       # IAM role, and user metadata.
+
       struct CreateJobTemplateRequest
         include JSON::Serializable
 
         # The name of the job template you are creating.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # JobTemplateSettings contains all the transcode settings saved in the template that will be applied
         # to jobs created from it.
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::JobTemplateSettings
 
         # Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs
         # that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS
         # Elemental MediaConvert User Guide.
+
         @[JSON::Field(key: "accelerationSettings")]
         getter acceleration_settings : Types::AccelerationSettings?
 
         # Optional. A category for the job template you are creating
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # Optional. A description of the job template you are creating.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -2984,6 +3352,7 @@ module AwsSdk
         # your job to. Specify an alternate queue and the maximum time that your job will wait in the initial
         # queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert
         # User Guide.
+
         @[JSON::Field(key: "hopDestinations")]
         getter hop_destinations : Array(Types::HopDestination)?
 
@@ -2991,11 +3360,13 @@ module AwsSdk
         # job with the highest value first. When more than one job has the same priority, the service begins
         # processing the job that you submitted first. If you don't specify a priority, the service uses the
         # default value 0.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
         # Optional. The queue that jobs created from this template are assigned to. If you don't specify this,
         # jobs will go to the default queue.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
@@ -3003,11 +3374,13 @@ module AwsSdk
         # interval, in seconds, between status updates. MediaConvert sends an update at this interval from the
         # time the service begins processing your job to the time it completes the transcode or encounters an
         # error.
+
         @[JSON::Field(key: "statusUpdateInterval")]
         getter status_update_interval : String?
 
         # The tags that you want to add to the resource. You can tag resources with a key-value pair or with
         # only a key.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -3027,10 +3400,12 @@ module AwsSdk
       end
 
       # Successful create job template requests will return the template JSON.
+
       struct CreateJobTemplateResponse
         include JSON::Serializable
 
         # A job template is a pre-made set of encoding instructions that you can use to quickly create a job.
+
         @[JSON::Field(key: "jobTemplate")]
         getter job_template : Types::JobTemplate?
 
@@ -3042,27 +3417,33 @@ module AwsSdk
 
       # Send your create preset request with the name of the preset and the JSON for the output settings
       # specified by the preset.
+
       struct CreatePresetRequest
         include JSON::Serializable
 
         # The name of the preset you are creating.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # Settings for preset
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::PresetSettings
 
         # Optional. A category for the preset you are creating.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # Optional. A description of the preset you are creating.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The tags that you want to add to the resource. You can tag resources with a key-value pair or with
         # only a key.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -3077,11 +3458,13 @@ module AwsSdk
       end
 
       # Successful create preset requests will return the preset JSON.
+
       struct CreatePresetResponse
         include JSON::Serializable
 
         # A preset is a collection of preconfigured media conversion settings that you want MediaConvert to
         # apply to the output during the conversion process.
+
         @[JSON::Field(key: "preset")]
         getter preset : Types::Preset?
 
@@ -3096,10 +3479,12 @@ module AwsSdk
       # values specified for the settings under reservationPlanSettings. When you create a reserved queue,
       # you enter into a 12-month commitment to purchase the RTS that you specify. You can't cancel this
       # commitment.
+
       struct CreateQueueRequest
         include JSON::Serializable
 
         # The name of the queue that you are creating.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -3107,10 +3492,12 @@ module AwsSdk
         # value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand
         # queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you
         # can process concurrently in your reservation plan instead.
+
         @[JSON::Field(key: "concurrentJobs")]
         getter concurrent_jobs : Int32?
 
         # Optional. A description of the queue that you are creating.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3118,20 +3505,24 @@ module AwsSdk
         # per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity
         # of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a
         # 12-month commitment. When you use the API to create a queue, the default is on-demand.
+
         @[JSON::Field(key: "pricingPlan")]
         getter pricing_plan : String?
 
         # Details about the pricing plan for your reserved queue. Required for reserved queues and not
         # applicable to on-demand queues.
+
         @[JSON::Field(key: "reservationPlanSettings")]
         getter reservation_plan_settings : Types::ReservationPlanSettings?
 
         # Initial state of the queue. If you create a paused queue, then jobs in that queue won't begin.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The tags that you want to add to the resource. You can tag resources with a key-value pair or with
         # only a key.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -3149,6 +3540,7 @@ module AwsSdk
 
       # Successful create queue requests return the name of the queue that you just created and information
       # about it.
+
       struct CreateQueueResponse
         include JSON::Serializable
 
@@ -3156,6 +3548,7 @@ module AwsSdk
         # multiple transcoding jobs at the same time. If you don't specify a queue, the service sends all jobs
         # through the default queue. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
+
         @[JSON::Field(key: "queue")]
         getter queue : Types::Queue?
 
@@ -3166,14 +3559,17 @@ module AwsSdk
       end
 
       # The request to share MediaConvert resources with Support.
+
       struct CreateResourceShareRequest
         include JSON::Serializable
 
         # Specify MediaConvert Job ID or ARN to share
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # AWS Support case identifier
+
         @[JSON::Field(key: "supportCaseId")]
         getter support_case_id : String
 
@@ -3185,6 +3581,7 @@ module AwsSdk
       end
 
       # Successfully accepted the request to share MediaConvert resources.
+
       struct CreateResourceShareResponse
         include JSON::Serializable
 
@@ -3194,6 +3591,7 @@ module AwsSdk
 
       # Specify the details for each additional DASH manifest that you want the service to generate for this
       # output group. Each manifest can reference a different subset of outputs in the group.
+
       struct DashAdditionalManifest
         include JSON::Serializable
 
@@ -3201,10 +3599,12 @@ module AwsSdk
         # the file names of the other main manifests in the output group. For example, say that the default
         # main manifest for your DASH group is film-name.mpd. If you enter "-no-premium" for this setting,
         # then the file name the service generates for this top-level manifest is film-name-no-premium.mpd.
+
         @[JSON::Field(key: "manifestNameModifier")]
         getter manifest_name_modifier : String?
 
         # Specify the outputs that you want this additional top-level manifest to reference.
+
         @[JSON::Field(key: "selectedOutputs")]
         getter selected_outputs : Array(String)?
 
@@ -3216,6 +3616,7 @@ module AwsSdk
       end
 
       # Specifies DRM settings for DASH outputs.
+
       struct DashIsoEncryptionSettings
         include JSON::Serializable
 
@@ -3224,12 +3625,14 @@ module AwsSdk
         # problems with playback on older devices. Otherwise, keep the default setting CENC v1. If you choose
         # Unencrypted SEI, for that output, the service will exclude the access unit delimiter and will leave
         # the SEI NAL units unencrypted.
+
         @[JSON::Field(key: "playbackDeviceCompatibility")]
         getter playback_device_compatibility : String?
 
         # If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM
         # encryption with a SPEKE-compliant key provider. If your output group type is CMAF, use the
         # SpekeKeyProviderCmaf settings instead.
+
         @[JSON::Field(key: "spekeKeyProvider")]
         getter speke_key_provider : Types::SpekeKeyProvider?
 
@@ -3242,12 +3645,14 @@ module AwsSdk
 
       # Settings related to your DASH output package. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
       struct DashIsoGroupSettings
         include JSON::Serializable
 
         # By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job.
         # This default manifest references every output in the output group. To create additional DASH
         # manifests that reference a subset of the outputs in the output group, specify a list of them here.
+
         @[JSON::Field(key: "additionalManifests")]
         getter additional_manifests : Array(Types::DashAdditionalManifest)?
 
@@ -3258,11 +3663,13 @@ module AwsSdk
         # default value, MPEG channel configuration, to have MediaConvert write this:
         # urn:mpeg:mpegB:cicp:ChannelConfiguration. Choose Dolby channel configuration to have MediaConvert
         # write this instead: tag:dolby.com,2014:dash:audio_channel_configuration:2011.
+
         @[JSON::Field(key: "audioChannelConfigSchemeIdUri")]
         getter audio_channel_config_scheme_id_uri : String?
 
         # A partial URI prefix that will be put in the manifest (.mpd) file at the top level BaseURL element.
         # Can be used if streams are delivered from a different URL than the manifest file.
+
         @[JSON::Field(key: "baseUrl")]
         getter base_url : String?
 
@@ -3274,6 +3681,7 @@ module AwsSdk
         # segment files. You may also include format identifiers. For more information, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/using-variables-in-your-job-settings.html#using-settings-variables-with-streaming-outputs
         # To not generate I-frame only video segments: Leave blank.
+
         @[JSON::Field(key: "dashIFrameTrickPlayNameModifier")]
         getter dash_i_frame_trick_play_name_modifier : String?
 
@@ -3285,6 +3693,7 @@ module AwsSdk
         # not share a common timeline. To write a video AdaptationSet for each different output framerate, and
         # a common SegmentTimeline in each AdaptationSet: Choose Distinct. To write a SegmentTimeline in each
         # AdaptationSet: Choose Full.
+
         @[JSON::Field(key: "dashManifestStyle")]
         getter dash_manifest_style : String?
 
@@ -3292,14 +3701,17 @@ module AwsSdk
         # format identifiers. If you do not specify the base filename in the URI, the service will use the
         # filename of the input file. If your job has multiple inputs, the service uses the filename of the
         # first input file.
+
         @[JSON::Field(key: "destination")]
         getter destination : String?
 
         # Settings associated with the destination. Will vary based on the type of destination
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::DestinationSettings?
 
         # DRM settings.
+
         @[JSON::Field(key: "encryption")]
         getter encryption : Types::DashIsoEncryptionSettings?
 
@@ -3307,10 +3719,12 @@ module AwsSdk
         # Framerate. Note that fragments will end on the next keyframe after this number of seconds, so actual
         # fragment length may be longer. When Emit Single File is checked, the fragmentation is internal to a
         # single output file and it does not cause the creation of many output files as in other output types.
+
         @[JSON::Field(key: "fragmentLength")]
         getter fragment_length : Int32?
 
         # Supports HbbTV specification as indicated
+
         @[JSON::Field(key: "hbbtvCompliance")]
         getter hbbtv_compliance : String?
 
@@ -3321,14 +3735,17 @@ module AwsSdk
         # is Roku trick mode. The thumbnails and full-frame images that MediaConvert creates with this feature
         # are compatible with this Roku specification:
         # https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
+
         @[JSON::Field(key: "imageBasedTrickPlay")]
         getter image_based_trick_play : String?
 
         # Tile and thumbnail settings applicable when imageBasedTrickPlay is ADVANCED
+
         @[JSON::Field(key: "imageBasedTrickPlaySettings")]
         getter image_based_trick_play_settings : Types::DashIsoImageBasedTrickPlaySettings?
 
         # Minimum time of initially buffered media that is needed to ensure smooth playout.
+
         @[JSON::Field(key: "minBufferTime")]
         getter min_buffer_time : Int32?
 
@@ -3341,6 +3758,7 @@ module AwsSdk
         # segment. For example, your segment length is 3 seconds and your final segment is .5 seconds without
         # a minimum final segment length; when you set the minimum final segment length to 1, your final
         # segment is 3.5 seconds.
+
         @[JSON::Field(key: "minFinalSegmentLength")]
         getter min_final_segment_length : Float64?
 
@@ -3349,6 +3767,7 @@ module AwsSdk
         # downstream player configuration. Max: Use the same value that you specify for Max bitrate in the
         # video output, in bits per second. Average: Use the calculated average bitrate of the encoded video
         # output, in bits per second.
+
         @[JSON::Field(key: "mpdManifestBandwidthType")]
         getter mpd_manifest_bandwidth_type : String?
 
@@ -3356,6 +3775,7 @@ module AwsSdk
         # signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand,
         # the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
         # On-demand, you must also set the output group setting Segment control to Single file.
+
         @[JSON::Field(key: "mpdProfile")]
         getter mpd_profile : String?
 
@@ -3366,12 +3786,14 @@ module AwsSdk
         # Zero-based to have MediaConvert ignore the initial PTS in the video stream and instead write the
         # initial time stamp as zero in the manifest. For outputs that don't have B-frames, the time stamps in
         # your DASH manifests start at zero regardless of your choice here.
+
         @[JSON::Field(key: "ptsOffsetHandlingForBFrames")]
         getter pts_offset_handling_for_b_frames : String?
 
         # When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the
         # Fragment Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be
         # created.
+
         @[JSON::Field(key: "segmentControl")]
         getter segment_control : String?
 
@@ -3379,6 +3801,7 @@ module AwsSdk
         # defaults to 30. Related settings: Use Segment length control to specify whether the encoder enforces
         # this value strictly. Use Segment control to specify whether MediaConvert creates separate segment
         # files or one content file that has metadata to mark the segment boundaries.
+
         @[JSON::Field(key: "segmentLength")]
         getter segment_length : Int32?
 
@@ -3395,6 +3818,7 @@ module AwsSdk
         # outputs, we recommend they share a similar frame rate (as in X/3, X/2, X, or 2X). For example: 5,
         # 15, 30 and 60. Or: 25 and 50. (Outputs must share an integer multiple.) - Output audio codec:
         # Specify Advanced Audio Coding (AAC). - Output sample rate: Choose 48kHz.
+
         @[JSON::Field(key: "segmentLengthControl")]
         getter segment_length_control : String?
 
@@ -3404,6 +3828,7 @@ module AwsSdk
         # integers. For strict fMP4 video and audio timing, set Video composition offsets to Signed. The
         # earliest presentation time will be equal to zero, and sample composition time offsets will increment
         # using signed integers.
+
         @[JSON::Field(key: "videoCompositionOffsets")]
         getter video_composition_offsets : String?
 
@@ -3412,6 +3837,7 @@ module AwsSdk
         # durations in the DASH manifest. The segment duration information appears inside the SegmentTimeline
         # element, inside SegmentTemplate at the Representation level. When you don't enable this setting, the
         # service writes approximate segment durations in your DASH manifest.
+
         @[JSON::Field(key: "writeSegmentTimelineInRepresentation")]
         getter write_segment_timeline_in_representation : String?
 
@@ -3443,6 +3869,7 @@ module AwsSdk
       end
 
       # Tile and thumbnail settings applicable when imageBasedTrickPlay is ADVANCED
+
       struct DashIsoImageBasedTrickPlaySettings
         include JSON::Serializable
 
@@ -3450,12 +3877,14 @@ module AwsSdk
         # generates thumbnails for each IDR frame in the output (matching the GOP cadence). If set to
         # FOLLOW_CUSTOM, MediaConvert generates thumbnails according to the interval you specify in
         # thumbnailInterval.
+
         @[JSON::Field(key: "intervalCadence")]
         getter interval_cadence : String?
 
         # Height of each thumbnail within each tile image, in pixels. Leave blank to maintain aspect ratio
         # with thumbnail width. If following the aspect ratio would lead to a total tile height greater than
         # 4096, then the job will be rejected. Must be divisible by 2.
+
         @[JSON::Field(key: "thumbnailHeight")]
         getter thumbnail_height : Int32?
 
@@ -3463,19 +3892,23 @@ module AwsSdk
         # enter doesn't align with the output frame rate, MediaConvert automatically rounds the interval to
         # align with the output frame rate. For example, if the output frame rate is 29.97 frames per second
         # and you enter 5, MediaConvert uses a 150 frame interval to generate thumbnails.
+
         @[JSON::Field(key: "thumbnailInterval")]
         getter thumbnail_interval : Float64?
 
         # Width of each thumbnail within each tile image, in pixels. Default is 312. Must be divisible by 8.
+
         @[JSON::Field(key: "thumbnailWidth")]
         getter thumbnail_width : Int32?
 
         # Number of thumbnails in each column of a tile image. Set a value between 2 and 2048. Must be
         # divisible by 2.
+
         @[JSON::Field(key: "tileHeight")]
         getter tile_height : Int32?
 
         # Number of thumbnails in each row of a tile image. Set a value between 1 and 512.
+
         @[JSON::Field(key: "tileWidth")]
         getter tile_width : Int32?
 
@@ -3491,10 +3924,12 @@ module AwsSdk
       end
 
       # Details about the media file's data track.
+
       struct DataProperties
         include JSON::Serializable
 
         # The language code of the data track, in three character ISO 639-3 format.
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
@@ -3505,6 +3940,7 @@ module AwsSdk
       end
 
       # Settings for deinterlacer
+
       struct Deinterlacer
         include JSON::Serializable
 
@@ -3513,6 +3949,7 @@ module AwsSdk
         # scrolling headline at the bottom of the frame: Choose Interpolate ticker or Blend ticker. To apply
         # field doubling: Choose Linear interpolation. Note that Linear interpolation may introduce video
         # artifacts into your output.
+
         @[JSON::Field(key: "algorithm")]
         getter algorithm : String?
 
@@ -3522,12 +3959,14 @@ module AwsSdk
         # tagged as progressive. Turn Force mode on only if there is a good chance that the metadata has
         # tagged frames as progressive when they are not progressive. Do not turn on otherwise; processing
         # frames that are already progressive into progressive will probably result in lower quality video.
+
         @[JSON::Field(key: "control")]
         getter control : String?
 
         # Use Deinterlacer to choose how the service will do deinterlacing. Default is Deinterlace. -
         # Deinterlace converts interlaced to progressive. - Inverse telecine converts Hard Telecine 29.97i to
         # progressive 23.976p. - Adaptive auto-detects and converts to progressive.
+
         @[JSON::Field(key: "mode")]
         getter mode : String?
 
@@ -3540,10 +3979,12 @@ module AwsSdk
       end
 
       # Delete a job template by sending a request with the job template name
+
       struct DeleteJobTemplateRequest
         include JSON::Serializable
 
         # The name of the job template to be deleted.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -3554,6 +3995,7 @@ module AwsSdk
       end
 
       # Delete job template requests will return an OK message or error message with an empty body.
+
       struct DeleteJobTemplateResponse
         include JSON::Serializable
 
@@ -3562,6 +4004,7 @@ module AwsSdk
       end
 
       # Send a request to permanently delete a policy that you created.
+
       struct DeletePolicyRequest
         include JSON::Serializable
 
@@ -3570,6 +4013,7 @@ module AwsSdk
       end
 
       # Successful DELETE policy requests will return an OK message.
+
       struct DeletePolicyResponse
         include JSON::Serializable
 
@@ -3578,10 +4022,12 @@ module AwsSdk
       end
 
       # Delete a preset by sending a request with the preset name
+
       struct DeletePresetRequest
         include JSON::Serializable
 
         # The name of the preset to be deleted.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -3592,6 +4038,7 @@ module AwsSdk
       end
 
       # Delete preset requests will return an OK message or error message with an empty body.
+
       struct DeletePresetResponse
         include JSON::Serializable
 
@@ -3601,10 +4048,12 @@ module AwsSdk
 
       # Delete a queue by sending a request with the queue name. You can't delete a queue with an active
       # pricing plan or one that has unprocessed jobs in it.
+
       struct DeleteQueueRequest
         include JSON::Serializable
 
         # The name of the queue that you want to delete.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -3615,6 +4064,7 @@ module AwsSdk
       end
 
       # Delete queue requests return an OK message or error message with an empty body.
+
       struct DeleteQueueResponse
         include JSON::Serializable
 
@@ -3625,21 +4075,25 @@ module AwsSdk
       # Send a request with an empty body to the regional API endpoint to get your account API endpoint.
       # Note that DescribeEndpoints is no longer required. We recommend that you send your requests directly
       # to the regional endpoint instead.
+
       struct DescribeEndpointsRequest
         include JSON::Serializable
 
         # Optional. Max number of endpoints, up to twenty, that will be returned at one time.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Optional field, defaults to DEFAULT. Specify DEFAULT for this operation to return your endpoints if
         # any exist, or to create an endpoint for you and return it if one doesn't already exist. Specify
         # GET_ONLY to return your endpoints if any exist, or an empty list if none exist.
+
         @[JSON::Field(key: "mode")]
         getter mode : String?
 
         # Use this string, provided with the response to a previous request, to request the next batch of
         # endpoints.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -3652,14 +4106,17 @@ module AwsSdk
       end
 
       # Successful describe endpoints requests will return your account API endpoint.
+
       struct DescribeEndpointsResponse
         include JSON::Serializable
 
         # List of endpoints
+
         @[JSON::Field(key: "endpoints")]
         getter endpoints : Array(Types::Endpoint)?
 
         # Use this string to request the next batch of endpoints.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -3671,10 +4128,12 @@ module AwsSdk
       end
 
       # Settings associated with the destination. Will vary based on the type of destination
+
       struct DestinationSettings
         include JSON::Serializable
 
         # Settings associated with S3 destination
+
         @[JSON::Field(key: "s3Settings")]
         getter s3_settings : Types::S3DestinationSettings?
 
@@ -3686,10 +4145,12 @@ module AwsSdk
 
       # Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM)
       # certificate and an AWS Elemental MediaConvert resource.
+
       struct DisassociateCertificateRequest
         include JSON::Serializable
 
         # The ARN of the ACM certificate that you want to disassociate from your MediaConvert resource.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
@@ -3701,6 +4162,7 @@ module AwsSdk
 
       # Successful disassociation of Certificate Manager Amazon Resource Name (ARN) with Mediaconvert
       # returns an OK message.
+
       struct DisassociateCertificateResponse
         include JSON::Serializable
 
@@ -3709,16 +4171,19 @@ module AwsSdk
       end
 
       # Create Dolby Vision Profile 5 or Profile 8.1 compatible video output.
+
       struct DolbyVision
         include JSON::Serializable
 
         # Use these settings when you set DolbyVisionLevel6Mode to SPECIFY to override the MaxCLL and MaxFALL
         # values in your input with new values.
+
         @[JSON::Field(key: "l6Metadata")]
         getter l6_metadata : Types::DolbyVisionLevel6Metadata?
 
         # Use Dolby Vision Mode to choose how the service will handle Dolby Vision MaxCLL and MaxFALL
         # properies.
+
         @[JSON::Field(key: "l6Mode")]
         getter l6_mode : String?
 
@@ -3729,6 +4194,7 @@ module AwsSdk
         # content mapping to the source. This mode is speed-optimized for PQ10 sources with metadata that is
         # created from analysis. For graded Dolby Vision content, be aware that creative intent might not be
         # guaranteed with extreme 1,000 nits trims.
+
         @[JSON::Field(key: "mapping")]
         getter mapping : String?
 
@@ -3736,6 +4202,7 @@ module AwsSdk
         # metadata in your output. Your input must include Dolby Vision metadata or an HDR10 YUV color space.
         # Use Profile 8.1 to include frame-interleaved Dolby Vision metadata and HDR10 metadata in your
         # output. Your input must include Dolby Vision metadata.
+
         @[JSON::Field(key: "profile")]
         getter profile : String?
 
@@ -3750,16 +4217,19 @@ module AwsSdk
 
       # Use these settings when you set DolbyVisionLevel6Mode to SPECIFY to override the MaxCLL and MaxFALL
       # values in your input with new values.
+
       struct DolbyVisionLevel6Metadata
         include JSON::Serializable
 
         # Maximum Content Light Level. Static HDR metadata that corresponds to the brightest pixel in the
         # entire stream. Measured in nits.
+
         @[JSON::Field(key: "maxCll")]
         getter max_cll : Int32?
 
         # Maximum Frame-Average Light Level. Static HDR metadata that corresponds to the highest frame-average
         # brightness in the entire stream. Measured in nits.
+
         @[JSON::Field(key: "maxFall")]
         getter max_fall : Int32?
 
@@ -3772,19 +4242,23 @@ module AwsSdk
 
       # Use these settings to insert a DVB Network Information Table (NIT) in the transport stream of this
       # output.
+
       struct DvbNitSettings
         include JSON::Serializable
 
         # The numeric value placed in the Network Information Table (NIT).
+
         @[JSON::Field(key: "networkId")]
         getter network_id : Int32?
 
         # The network name text placed in the network_name_descriptor inside the Network Information Table.
         # Maximum length is 256 characters.
+
         @[JSON::Field(key: "networkName")]
         getter network_name : String?
 
         # The number of milliseconds between instances of this table in the output transport stream.
+
         @[JSON::Field(key: "nitInterval")]
         getter nit_interval : Int32?
 
@@ -3798,6 +4272,7 @@ module AwsSdk
 
       # Use these settings to insert a DVB Service Description Table (SDT) in the transport stream of this
       # output.
+
       struct DvbSdtSettings
         include JSON::Serializable
 
@@ -3806,20 +4281,24 @@ module AwsSdk
         # from input stream to output stream if SDT information is present in the input, otherwise it will
         # fall back on the user-defined values. Enter "SDT Manually" means user will enter the SDT
         # information. "No SDT" means output stream will not contain SDT information.
+
         @[JSON::Field(key: "outputSdt")]
         getter output_sdt : String?
 
         # The number of milliseconds between instances of this table in the output transport stream.
+
         @[JSON::Field(key: "sdtInterval")]
         getter sdt_interval : Int32?
 
         # The service name placed in the service_descriptor in the Service Description Table. Maximum length
         # is 256 characters.
+
         @[JSON::Field(key: "serviceName")]
         getter service_name : String?
 
         # The service provider name placed in the service_descriptor in the Service Description Table. Maximum
         # length is 256 characters.
+
         @[JSON::Field(key: "serviceProviderName")]
         getter service_provider_name : String?
 
@@ -3835,6 +4314,7 @@ module AwsSdk
       # Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output as your video. For
       # more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
+
       struct DvbSubDestinationSettings
         include JSON::Serializable
 
@@ -3844,6 +4324,7 @@ module AwsSdk
         # conjunction with the alignment parameter, the font will be justified (either left or centered)
         # relative to those coordinates. Within your job settings, all of your DVB-Sub settings must be
         # identical.
+
         @[JSON::Field(key: "alignment")]
         getter alignment : String?
 
@@ -3853,11 +4334,13 @@ module AwsSdk
         # captions. For example, if your font color setting is Yellow, and your input captions have red and
         # white text, your output captions will have red and yellow text. When you choose ALL_TEXT, your font
         # color setting applies to all of your output captions text.
+
         @[JSON::Field(key: "applyFontColor")]
         getter apply_font_color : String?
 
         # Specify the color of the rectangle behind the captions. Leave background color blank and set Style
         # passthrough to enabled to use the background color data from your input captions, if present.
+
         @[JSON::Field(key: "backgroundColor")]
         getter background_color : String?
 
@@ -3866,6 +4349,7 @@ module AwsSdk
         # background style information in your input captions to your output captions. If Style passthrough is
         # set to disabled, leave blank to use a value of 0 and remove all backgrounds from your output
         # captions. Within your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "backgroundOpacity")]
         getter background_opacity : Int32?
 
@@ -3881,6 +4365,7 @@ module AwsSdk
         # positioning as Specified while using less bandwidth. This also supports resolutions higher than
         # 1080p while maintaining full DVB-Sub compatibility. When you do, also specify the offset coordinates
         # of the display window with DDS x-coordinate and DDS y-coordinate.
+
         @[JSON::Field(key: "ddsHandling")]
         getter dds_handling : String?
 
@@ -3891,6 +4376,7 @@ module AwsSdk
         # you must set DDS handling to a value other than None. MediaConvert uses these values to determine
         # whether to write page position data to the DDS or to the page composition segment. All burn-in and
         # DVB-Sub font settings must match.
+
         @[JSON::Field(key: "ddsXCoordinate")]
         getter dds_x_coordinate : Int32?
 
@@ -3901,6 +4387,7 @@ module AwsSdk
         # set DDS handling to a value other than None. MediaConvert uses these values to determine whether to
         # write page position data to the DDS or to the page composition segment (PCS). All burn-in and
         # DVB-Sub font settings must match.
+
         @[JSON::Field(key: "ddsYCoordinate")]
         getter dds_y_coordinate : Int32?
 
@@ -3910,46 +4397,54 @@ module AwsSdk
         # captions specify. When there are multiple unsupported fonts in your input captions, MediaConvert
         # matches each font with the supported font that matches best. When you explicitly choose a
         # replacement font, MediaConvert uses that font to replace all unsupported fonts from your input.
+
         @[JSON::Field(key: "fallbackFont")]
         getter fallback_font : String?
 
         # Specify the color of the captions text. Leave Font color blank and set Style passthrough to enabled
         # to use the font color data from your input captions, if present. Within your job settings, all of
         # your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "fontColor")]
         getter font_color : String?
 
         # Specify a bold TrueType font file to use when rendering your output captions. Enter an S3, HTTP, or
         # HTTPS URL. When you do, you must also separately specify a regular, an italic, and a bold italic
         # font file.
+
         @[JSON::Field(key: "fontFileBold")]
         getter font_file_bold : String?
 
         # Specify a bold italic TrueType font file to use when rendering your output captions. Enter an S3,
         # HTTP, or HTTPS URL. When you do, you must also separately specify a regular, a bold, and an italic
         # font file.
+
         @[JSON::Field(key: "fontFileBoldItalic")]
         getter font_file_bold_italic : String?
 
         # Specify an italic TrueType font file to use when rendering your output captions. Enter an S3, HTTP,
         # or HTTPS URL. When you do, you must also separately specify a regular, a bold, and a bold italic
         # font file.
+
         @[JSON::Field(key: "fontFileItalic")]
         getter font_file_italic : String?
 
         # Specify a regular TrueType font file to use when rendering your output captions. Enter an S3, HTTP,
         # or HTTPS URL. When you do, you must also separately specify a bold, an italic, and a bold italic
         # font file.
+
         @[JSON::Field(key: "fontFileRegular")]
         getter font_file_regular : String?
 
         # Specify the opacity of the burned-in captions. 255 is opaque; 0 is transparent. Within your job
         # settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "fontOpacity")]
         getter font_opacity : Int32?
 
         # Specify the Font resolution in DPI (dots per inch). Within your job settings, all of your DVB-Sub
         # settings must be identical.
+
         @[JSON::Field(key: "fontResolution")]
         getter font_resolution : Int32?
 
@@ -3957,17 +4452,20 @@ module AwsSdk
         # script in your input captions. Otherwise, set to Simplified Chinese (HANS) or Traditional Chinese
         # (HANT) if your input font script uses Simplified or Traditional Chinese. Within your job settings,
         # all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "fontScript")]
         getter font_script : String?
 
         # Specify the Font size in pixels. Must be a positive integer. Set to 0, or leave blank, for automatic
         # font size. Within your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "fontSize")]
         getter font_size : Int32?
 
         # Specify the height, in pixels, of this set of DVB-Sub captions. The default value is 576 pixels.
         # Related setting: When you use this setting, you must set DDS handling to a value other than None.
         # All burn-in and DVB-Sub font settings must match.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
@@ -3975,24 +4473,28 @@ module AwsSdk
         # digits, representing red, green, and blue, with two optional extra digits for alpha. For example a
         # value of 1122AABB is a red value of 0x11, a green value of 0x22, a blue value of 0xAA, and an alpha
         # value of 0xBB.
+
         @[JSON::Field(key: "hexFontColor")]
         getter hex_font_color : String?
 
         # Specify font outline color. Leave Outline color blank and set Style passthrough to enabled to use
         # the font outline color data from your input captions, if present. Within your job settings, all of
         # your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "outlineColor")]
         getter outline_color : String?
 
         # Specify the Outline size of the caption text, in pixels. Leave Outline size blank and set Style
         # passthrough to enabled to use the outline size data from your input captions, if present. Within
         # your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "outlineSize")]
         getter outline_size : Int32?
 
         # Specify the color of the shadow cast by the captions. Leave Shadow color blank and set Style
         # passthrough to enabled to use the shadow color data from your input captions, if present. Within
         # your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "shadowColor")]
         getter shadow_color : String?
 
@@ -4001,12 +4503,14 @@ module AwsSdk
         # shadow style information in your input captions to your output captions. If Style passthrough is set
         # to disabled, leave blank to use a value of 0 and remove all shadows from your output captions.
         # Within your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "shadowOpacity")]
         getter shadow_opacity : Int32?
 
         # Specify the horizontal offset of the shadow, relative to the captions in pixels. A value of -2 would
         # result in a shadow offset 2 pixels to the left. Within your job settings, all of your DVB-Sub
         # settings must be identical.
+
         @[JSON::Field(key: "shadowXOffset")]
         getter shadow_x_offset : Int32?
 
@@ -4014,6 +4518,7 @@ module AwsSdk
         # result in a shadow offset 2 pixels above the text. Leave Shadow y-offset blank and set Style
         # passthrough to enabled to use the shadow y-offset data from your input captions, if present. Within
         # your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "shadowYOffset")]
         getter shadow_y_offset : Int32?
 
@@ -4025,12 +4530,14 @@ module AwsSdk
         # Whether you set Style passthrough to enabled or not, you can also choose to manually override any of
         # the individual style and position settings. You can also override any fonts by manually specifying
         # custom font files.
+
         @[JSON::Field(key: "stylePassthrough")]
         getter style_passthrough : String?
 
         # Specify whether your DVB subtitles are standard or for hearing impaired. Choose hearing impaired if
         # your subtitles include audio descriptions and dialogue. Choose standard if your subtitles include
         # only dialogue.
+
         @[JSON::Field(key: "subtitlingType")]
         getter subtitling_type : String?
 
@@ -4038,12 +4545,14 @@ module AwsSdk
         # on letter width. Choose fixed grid to conform to the spacing specified in the captions file more
         # accurately. Choose proportional to make the text easier to read for closed captions. Within your job
         # settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "teletextSpacing")]
         getter teletext_spacing : String?
 
         # Specify the width, in pixels, of this set of DVB-Sub captions. The default value is 720 pixels.
         # Related setting: When you use this setting, you must set DDS handling to a value other than None.
         # All burn-in and DVB-Sub font settings must match.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -4051,6 +4560,7 @@ module AwsSdk
         # A value of 10 would result in the captions starting 10 pixels from the left of the output. If no
         # explicit x_position is provided, the horizontal caption position will be determined by the alignment
         # parameter. Within your job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "xPosition")]
         getter x_position : Int32?
 
@@ -4058,6 +4568,7 @@ module AwsSdk
         # of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit
         # y_position is provided, the caption will be positioned towards the bottom of the output. Within your
         # job settings, all of your DVB-Sub settings must be identical.
+
         @[JSON::Field(key: "yPosition")]
         getter y_position : Int32?
 
@@ -4098,11 +4609,13 @@ module AwsSdk
       end
 
       # DVB Sub Source Settings
+
       struct DvbSubSourceSettings
         include JSON::Serializable
 
         # When using DVB-Sub with Burn-in, use this PID for the source content. Unused for DVB-Sub
         # passthrough. All DVB-Sub content is passed through, regardless of selectors.
+
         @[JSON::Field(key: "pid")]
         getter pid : Int32?
 
@@ -4113,10 +4626,12 @@ module AwsSdk
       end
 
       # Use these settings to insert a DVB Time and Date Table (TDT) in the transport stream of this output.
+
       struct DvbTdtSettings
         include JSON::Serializable
 
         # The number of milliseconds between instances of this table in the output transport stream.
+
         @[JSON::Field(key: "tdtInterval")]
         getter tdt_interval : Int32?
 
@@ -4132,6 +4647,7 @@ module AwsSdk
       # within that output for each dynamically selected track. Note that when you include a Dynamic audio
       # selector for two or more inputs, each input must have the same number of audio tracks and audio
       # channels.
+
       struct DynamicAudioSelector
         include JSON::Serializable
 
@@ -4149,21 +4665,25 @@ module AwsSdk
         # correction, either Track or Frame depending on your input, regardless of the accuracy of your
         # input's STTS table. Your output audio and video may not be aligned or it may contain audio
         # artifacts.
+
         @[JSON::Field(key: "audioDurationCorrection")]
         getter audio_duration_correction : String?
 
         # Specify the S3, HTTP, or HTTPS URL for your external audio file input.
+
         @[JSON::Field(key: "externalAudioFileInput")]
         getter external_audio_file_input : String?
 
         # Specify the language, using an ISO 639-2 three-letter code in all capital letters. You can find a
         # list of codes at: https://www.loc.gov/standards/iso639-2/php/code_list.php
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
         # Specify a time delta, in milliseconds, to offset the audio from the input video. To specify no
         # offset: Keep the default value, 0. To specify an offset: Enter an integer from -2147483648 to
         # 2147483647
+
         @[JSON::Field(key: "offset")]
         getter offset : Int32?
 
@@ -4171,6 +4691,7 @@ module AwsSdk
         # the default value, All tracks. To select all audio tracks with a specific language code: Choose
         # Language code. When you do, you must also specify a language code under the Language code setting.
         # If there is no matching Language code in your source, then no track will be selected.
+
         @[JSON::Field(key: "selectorType")]
         getter selector_type : String?
 
@@ -4185,6 +4706,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value EAC3_ATMOS.
+
       struct Eac3AtmosSettings
         include JSON::Serializable
 
@@ -4192,19 +4714,23 @@ module AwsSdk
         # 640k, 768k, 1024k Default value: 448k Note that MediaConvert supports 384k only with channel-based
         # immersive (CBI) 7.1.4 and 5.1.4 inputs. For CBI 9.1.6 and other input types, MediaConvert
         # automatically increases your output bitrate to 448k.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about
         # the EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
+
         @[JSON::Field(key: "bitstreamMode")]
         getter bitstream_mode : String?
 
         # The coding mode for Dolby Digital Plus JOC (Atmos).
+
         @[JSON::Field(key: "codingMode")]
         getter coding_mode : String?
 
         # Enable Dolby Dialogue Intelligence to adjust loudness based on dialogue analysis.
+
         @[JSON::Field(key: "dialogueIntelligence")]
         getter dialogue_intelligence : String?
 
@@ -4214,6 +4740,7 @@ module AwsSdk
         # only/Right only surround, Left total/Right total surround, Left total/Right total center, Left
         # only/Right only center, and Stereo downmix. When you keep Custom for Downmix control and you don't
         # specify values for the related settings, MediaConvert uses default values for those settings.
+
         @[JSON::Field(key: "downmixControl")]
         getter downmix_control : String?
 
@@ -4224,6 +4751,7 @@ module AwsSdk
         # information about the Dolby DRC operating modes and profiles, see the Dynamic Range Control chapter
         # of the Dolby Metadata Guide at
         # https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
         @[JSON::Field(key: "dynamicRangeCompressionLine")]
         getter dynamic_range_compression_line : String?
 
@@ -4234,6 +4762,7 @@ module AwsSdk
         # about the Dolby DRC operating modes and profiles, see the Dynamic Range Control chapter of the Dolby
         # Metadata Guide at
         # https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
         @[JSON::Field(key: "dynamicRangeCompressionRf")]
         getter dynamic_range_compression_rf : String?
 
@@ -4243,6 +4772,7 @@ module AwsSdk
         # your dynamic range control values: Dynamic range compression line and Dynamic range compression RF.
         # When you keep the value Custom for Dynamic range control and you don't specify values for the
         # related settings, MediaConvert uses default values for those settings.
+
         @[JSON::Field(key: "dynamicRangeControl")]
         getter dynamic_range_control : String?
 
@@ -4252,6 +4782,7 @@ module AwsSdk
         # value that you choose for Stereo downmix. Related setting: To have MediaConvert use this value, keep
         # the default value, Custom for the setting Downmix control. Otherwise, MediaConvert ignores Left
         # only/Right only center.
+
         @[JSON::Field(key: "loRoCenterMixLevel")]
         getter lo_ro_center_mix_level : Float64?
 
@@ -4261,6 +4792,7 @@ module AwsSdk
         # you choose for Stereo downmix. Related setting: To have MediaConvert use this value, keep the
         # default value, Custom for the setting Downmix control. Otherwise, MediaConvert ignores Left
         # only/Right only surround.
+
         @[JSON::Field(key: "loRoSurroundMixLevel")]
         getter lo_ro_surround_mix_level : Float64?
 
@@ -4270,6 +4802,7 @@ module AwsSdk
         # value that you choose for Stereo downmix. Related setting: To have MediaConvert use this value, keep
         # the default value, Custom for the setting Downmix control. Otherwise, MediaConvert ignores Left
         # total/Right total center.
+
         @[JSON::Field(key: "ltRtCenterMixLevel")]
         getter lt_rt_center_mix_level : Float64?
 
@@ -4279,30 +4812,36 @@ module AwsSdk
         # this value depends on the value that you choose for Stereo downmix. Related setting: To have
         # MediaConvert use this value, keep the default value, Custom for the setting Downmix control.
         # Otherwise, the service ignores Left total/Right total surround.
+
         @[JSON::Field(key: "ltRtSurroundMixLevel")]
         getter lt_rt_surround_mix_level : Float64?
 
         # Choose how the service meters the loudness of your audio.
+
         @[JSON::Field(key: "meteringMode")]
         getter metering_mode : String?
 
         # This value is always 48000. It represents the sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
         # Specify the percentage of audio content, from 0% to 100%, that must be speech in order for the
         # encoder to use the measured speech loudness as the overall program loudness. Default value: 15%
+
         @[JSON::Field(key: "speechThreshold")]
         getter speech_threshold : Int32?
 
         # Choose how the service does stereo downmixing. Default value: Not indicated Related setting: To have
         # MediaConvert use this value, keep the default value, Custom for the setting Downmix control.
         # Otherwise, MediaConvert ignores Stereo downmix.
+
         @[JSON::Field(key: "stereoDownmix")]
         getter stereo_downmix : String?
 
         # Specify whether your input audio has an additional center rear surround channel matrix encoded into
         # your left and right surround channels.
+
         @[JSON::Field(key: "surroundExMode")]
         getter surround_ex_mode : String?
 
@@ -4329,11 +4868,13 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value EAC3.
+
       struct Eac3Settings
         include JSON::Serializable
 
         # If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2
         # coding mode.
+
         @[JSON::Field(key: "attenuationControl")]
         getter attenuation_control : String?
 
@@ -4343,24 +4884,29 @@ module AwsSdk
         # 96000. Minimum: 32000. Maximum: 3024000. Valid bitrates for coding mode 2/0: Default: 192000.
         # Minimum: 96000. Maximum: 3024000. Valid bitrates for coding mode 3/2: Default: 384000. Minimum:
         # 192000. Maximum: 3024000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about
         # the EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
+
         @[JSON::Field(key: "bitstreamMode")]
         getter bitstream_mode : String?
 
         # Dolby Digital Plus coding mode. Determines number of channels.
+
         @[JSON::Field(key: "codingMode")]
         getter coding_mode : String?
 
         # Activates a DC highpass filter for all input channels.
+
         @[JSON::Field(key: "dcFilter")]
         getter dc_filter : String?
 
         # Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be
         # passed through.
+
         @[JSON::Field(key: "dialnorm")]
         getter dialnorm : Int32?
 
@@ -4370,6 +4916,7 @@ module AwsSdk
         # information about the Dolby Digital DRC operating modes and profiles, see the Dynamic Range Control
         # chapter of the Dolby Metadata Guide at
         # https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
         @[JSON::Field(key: "dynamicRangeCompressionLine")]
         getter dynamic_range_compression_line : String?
 
@@ -4379,15 +4926,18 @@ module AwsSdk
         # information about the Dolby Digital DRC operating modes and profiles, see the Dynamic Range Control
         # chapter of the Dolby Metadata Guide at
         # https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
         @[JSON::Field(key: "dynamicRangeCompressionRf")]
         getter dynamic_range_compression_rf : String?
 
         # When encoding 3/2 audio, controls whether the LFE channel is enabled
+
         @[JSON::Field(key: "lfeControl")]
         getter lfe_control : String?
 
         # Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding
         # mode.
+
         @[JSON::Field(key: "lfeFilter")]
         getter lfe_filter : String?
 
@@ -4397,6 +4947,7 @@ module AwsSdk
         # The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L,
         # R, C, Ls, Rs for the setting Coding mode. If you choose a different value for Coding mode, the
         # service ignores Left only/Right only center.
+
         @[JSON::Field(key: "loRoCenterMixLevel")]
         getter lo_ro_center_mix_level : Float64?
 
@@ -4406,6 +4957,7 @@ module AwsSdk
         # This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs for the setting
         # Coding mode. If you choose a different value for Coding mode, the service ignores Left only/Right
         # only surround.
+
         @[JSON::Field(key: "loRoSurroundMixLevel")]
         getter lo_ro_surround_mix_level : Float64?
 
@@ -4415,6 +4967,7 @@ module AwsSdk
         # The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L,
         # R, C, Ls, Rs for the setting Coding mode. If you choose a different value for Coding mode, the
         # service ignores Left total/Right total center.
+
         @[JSON::Field(key: "ltRtCenterMixLevel")]
         getter lt_rt_center_mix_level : Float64?
 
@@ -4424,12 +4977,14 @@ module AwsSdk
         # mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
         # for the setting Coding mode. If you choose a different value for Coding mode, the service ignores
         # Left total/Right total surround.
+
         @[JSON::Field(key: "ltRtSurroundMixLevel")]
         getter lt_rt_surround_mix_level : Float64?
 
         # When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that
         # supplied this audio data. If audio was not supplied from one of these streams, then the static
         # metadata settings will be used.
+
         @[JSON::Field(key: "metadataControl")]
         getter metadata_control : String?
 
@@ -4437,29 +4992,35 @@ module AwsSdk
         # this detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and
         # non-DD+ content will have a consistent DD+ output as the system alternates between passthrough and
         # encoding.
+
         @[JSON::Field(key: "passthroughControl")]
         getter passthrough_control : String?
 
         # Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
+
         @[JSON::Field(key: "phaseControl")]
         getter phase_control : String?
 
         # This value is always 48000. It represents the sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
         # Choose how the service does stereo downmixing. This setting only applies if you keep the default
         # value of 3/2 - L, R, C, Ls, Rs for the setting Coding mode. If you choose a different value for
         # Coding mode, the service ignores Stereo downmix.
+
         @[JSON::Field(key: "stereoDownmix")]
         getter stereo_downmix : String?
 
         # When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into
         # the left and right surround channels.
+
         @[JSON::Field(key: "surroundExMode")]
         getter surround_ex_mode : String?
 
         # When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
+
         @[JSON::Field(key: "surroundMode")]
         getter surround_mode : String?
 
@@ -4492,6 +5053,7 @@ module AwsSdk
       # Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or ancillary) captions. Set up
       # embedded captions in the same output as your video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
+
       struct EmbeddedDestinationSettings
         include JSON::Serializable
 
@@ -4499,6 +5061,7 @@ module AwsSdk
         # in the video stream. Specify a CC number for each captions channel in this output. If you have two
         # channels, choose CC numbers that aren't in the same field. For example, choose 1 and 3. For more
         # information, see https://docs.aws.amazon.com/console/mediaconvert/dual-scc-to-embedded.
+
         @[JSON::Field(key: "destination608ChannelNumber")]
         getter destination608_channel_number : Int32?
 
@@ -4509,6 +5072,7 @@ module AwsSdk
         # don't specify a 708 service number, MediaConvert uses the number that you specify for CC channel
         # number for the 708 service number. For more information, see
         # https://docs.aws.amazon.com/console/mediaconvert/dual-scc-to-embedded.
+
         @[JSON::Field(key: "destination708ServiceNumber")]
         getter destination708_service_number : Int32?
 
@@ -4520,6 +5084,7 @@ module AwsSdk
       end
 
       # Settings for embedded captions Source
+
       struct EmbeddedSourceSettings
         include JSON::Serializable
 
@@ -4527,21 +5092,25 @@ module AwsSdk
         # you choose Upconvert, MediaConvert includes the captions data in two ways: it passes the 608 data
         # through using the 608 compatibility bytes fields of the 708 wrapper, and it also translates the 608
         # data into 708.
+
         @[JSON::Field(key: "convert608To708")]
         getter convert608_to708 : String?
 
         # Specifies the 608/708 channel number within the video track from which to extract captions. Unused
         # for passthrough.
+
         @[JSON::Field(key: "source608ChannelNumber")]
         getter source608_channel_number : Int32?
 
         # Specifies the video track index used for extracting captions. The system only supports one input
         # video track, so this should always be set to '1'.
+
         @[JSON::Field(key: "source608TrackNumber")]
         getter source608_track_number : Int32?
 
         # By default, the service terminates any unterminated captions at the end of each input. If you want
         # the caption to continue onto your next input, disable this setting.
+
         @[JSON::Field(key: "terminateCaptions")]
         getter terminate_captions : String?
 
@@ -4559,6 +5128,7 @@ module AwsSdk
       # https://docs.aws.amazon.com/speke/latest/documentation/speke-api-specification.html To use SPEKE
       # v1.0: Leave blank. To use SPEKE v2.0: Specify a SPEKE v2.0 video preset and a SPEKE v2.0 audio
       # preset.
+
       struct EncryptionContractConfiguration
         include JSON::Serializable
 
@@ -4570,6 +5140,7 @@ module AwsSdk
         # Shared. When you do, you must also set SPEKE v2.0 video preset to Shared. To not encrypt your audio
         # outputs: Choose Unencrypted. When you do, to encrypt your video outputs, you must also specify a
         # SPEKE v2.0 video preset (other than Shared or Unencrypted).
+
         @[JSON::Field(key: "spekeAudioPreset")]
         getter speke_audio_preset : String?
 
@@ -4582,6 +5153,7 @@ module AwsSdk
         # do, you must also set SPEKE v2.0 audio preset to Shared. To not encrypt your video outputs: Choose
         # Unencrypted. When you do, to encrypt your audio outputs, you must also specify a SPEKE v2.0 audio
         # preset (other than Shared or Unencrypted).
+
         @[JSON::Field(key: "spekeVideoPreset")]
         getter speke_video_preset : String?
 
@@ -4593,10 +5165,12 @@ module AwsSdk
       end
 
       # Describes an account-specific API endpoint.
+
       struct Endpoint
         include JSON::Serializable
 
         # URL of endpoint
+
         @[JSON::Field(key: "url")]
         getter url : String?
 
@@ -4607,12 +5181,14 @@ module AwsSdk
       end
 
       # ESAM ManifestConfirmConditionNotification defined by OC-SP-ESAM-API-I03-131025.
+
       struct EsamManifestConfirmConditionNotification
         include JSON::Serializable
 
         # Provide your ESAM ManifestConfirmConditionNotification XML document inside your JSON job settings.
         # Form the XML document as per OC-SP-ESAM-API-I03-131025. The transcoder will use the Manifest
         # Conditioning instructions in the message that you supply.
+
         @[JSON::Field(key: "mccXml")]
         getter mcc_xml : String?
 
@@ -4624,11 +5200,13 @@ module AwsSdk
 
       # Settings for Event Signaling And Messaging (ESAM). If you don't do ad insertion, you can ignore
       # these settings.
+
       struct EsamSettings
         include JSON::Serializable
 
         # Specifies an ESAM ManifestConfirmConditionNotification XML as per OC-SP-ESAM-API-I03-131025. The
         # transcoder uses the manifest conditioning instructions that you provide in the setting MCC XML.
+
         @[JSON::Field(key: "manifestConfirmConditionNotification")]
         getter manifest_confirm_condition_notification : Types::EsamManifestConfirmConditionNotification?
 
@@ -4636,11 +5214,13 @@ module AwsSdk
         # places and the splice points that they refer to. If the time between the start of the asset and the
         # SCTE-35 message is less than this value, then the transcoder places the SCTE-35 marker at the
         # beginning of the stream.
+
         @[JSON::Field(key: "responseSignalPreroll")]
         getter response_signal_preroll : Int32?
 
         # Specifies an ESAM SignalProcessingNotification XML as per OC-SP-ESAM-API-I03-131025. The transcoder
         # uses the signal processing instructions that you provide in the setting SCC XML.
+
         @[JSON::Field(key: "signalProcessingNotification")]
         getter signal_processing_notification : Types::EsamSignalProcessingNotification?
 
@@ -4653,6 +5233,7 @@ module AwsSdk
       end
 
       # ESAM SignalProcessingNotification data defined by OC-SP-ESAM-API-I03-131025.
+
       struct EsamSignalProcessingNotification
         include JSON::Serializable
 
@@ -4662,6 +5243,7 @@ module AwsSdk
         # to place SCTE-35 markers at the insertion points you specify in the XML document, you must also
         # enable SCTE-35 ESAM. Note that you can either specify an ESAM XML document or enable SCTE-35
         # passthrough. You can't do both.
+
         @[JSON::Field(key: "sccXml")]
         getter scc_xml : String?
 
@@ -4671,8 +5253,10 @@ module AwsSdk
         end
       end
 
+
       struct ExceptionBody
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4687,16 +5271,19 @@ module AwsSdk
       # MediaConvert does with the Extended Data Services (XDS) packets. You can choose to pass through XDS
       # packets, or remove them from the output. For more information about XDS, see EIA-608 Line Data
       # Services, section 9.5.1.5 05h Content Advisory.
+
       struct ExtendedDataServices
         include JSON::Serializable
 
         # The action to take on copy and redistribution control XDS packets. If you select PASSTHROUGH,
         # packets will not be changed. If you select STRIP, any packets will be removed in output captions.
+
         @[JSON::Field(key: "copyProtectionAction")]
         getter copy_protection_action : String?
 
         # The action to take on content advisory XDS packets. If you select PASSTHROUGH, packets will not be
         # changed. If you select STRIP, any packets will be removed in output captions.
+
         @[JSON::Field(key: "vchipAction")]
         getter vchip_action : String?
 
@@ -4708,12 +5295,14 @@ module AwsSdk
       end
 
       # Settings for F4v container
+
       struct F4vSettings
         include JSON::Serializable
 
         # To place the MOOV atom at the beginning of your output, which is useful for progressive downloading:
         # Leave blank or choose Progressive download. To place the MOOV at the end of your output: Choose
         # Normal.
+
         @[JSON::Field(key: "moovPlacement")]
         getter moov_placement : String?
 
@@ -4725,6 +5314,7 @@ module AwsSdk
 
       # Settings related to your File output group. MediaConvert uses this group of settings to generate a
       # single standalone file, rather than a streaming package.
+
       struct FileGroupSettings
         include JSON::Serializable
 
@@ -4732,10 +5322,12 @@ module AwsSdk
         # format identifiers. If you do not specify the base filename in the URI, the service will use the
         # filename of the input file. If your job has multiple inputs, the service uses the filename of the
         # first input file.
+
         @[JSON::Field(key: "destination")]
         getter destination : String?
 
         # Settings associated with the destination. Will vary based on the type of destination
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::DestinationSettings?
 
@@ -4749,6 +5341,7 @@ module AwsSdk
       # If your input captions are SCC, SMI, SRT, STL, TTML, WebVTT, or IMSC 1.1 in an xml file, specify the
       # URI of the input caption source file. If your caption source is IMSC in an IMF package, use
       # TrackSourceSettings instead of FileSoureSettings.
+
       struct FileSourceSettings
         include JSON::Serializable
 
@@ -4759,6 +5352,7 @@ module AwsSdk
         # limit your output caption rate: Choose Enabled. Choose this option if your downstream systems
         # require a maximum of 2 caption bytes per frame. Note that this setting has no effect when your
         # output frame rate is 30 or 60.
+
         @[JSON::Field(key: "byteRateLimit")]
         getter byte_rate_limit : String?
 
@@ -4766,6 +5360,7 @@ module AwsSdk
         # you choose Upconvert, MediaConvert includes the captions data in two ways: it passes the 608 data
         # through using the 608 compatibility bytes fields of the 708 wrapper, and it also translates the 608
         # data into 708.
+
         @[JSON::Field(key: "convert608To708")]
         getter convert608_to708 : String?
 
@@ -4773,6 +5368,7 @@ module AwsSdk
         # input: Keep the default value, Disabled. To convert paint-on captions to pop-on: Choose Enabled. We
         # also recommend that you choose Enabled if you notice additional repeated lines in your output
         # captions.
+
         @[JSON::Field(key: "convertPaintToPop")]
         getter convert_paint_to_pop : String?
 
@@ -4780,11 +5376,13 @@ module AwsSdk
         # differing frame rates between your input captions and input video, specify the frame rate of the
         # captions file. Specify this value as a fraction. For example, you might specify 24 / 1 for 24 fps,
         # 25 / 1 for 25 fps, 24000 / 1001 for 23.976 fps, or 30000 / 1001 for 29.97 fps.
+
         @[JSON::Field(key: "framerate")]
         getter framerate : Types::CaptionSourceFramerate?
 
         # External caption file used for loading captions. Accepted file extensions are 'scc', 'ttml', 'dfxp',
         # 'stl', 'srt', 'xml', 'smi', 'webvtt', and 'vtt'.
+
         @[JSON::Field(key: "sourceFile")]
         getter source_file : String?
 
@@ -4799,12 +5397,14 @@ module AwsSdk
         # input frame rate, MediaConvert snaps the captions to the nearest frame. For example, when your input
         # video frame rate is 25 fps and you specify 1010ms for time delta, MediaConvert delays your captions
         # by 1000 ms.
+
         @[JSON::Field(key: "timeDelta")]
         getter time_delta : Int32?
 
         # When you use the setting Time delta to adjust the sync between your sidecar captions and your video,
         # use this setting to specify the units for the delta that you specify. When you don't specify a value
         # for Time delta units, MediaConvert uses seconds by default.
+
         @[JSON::Field(key: "timeDeltaUnits")]
         getter time_delta_units : String?
 
@@ -4812,6 +5412,7 @@ module AwsSdk
         # If you choose Upconvert, MediaConvert includes the captions data in two ways: it passes the STL data
         # through using the Teletext compatibility bytes fields of the Teletext wrapper, and it also
         # translates the STL data into Teletext.
+
         @[JSON::Field(key: "upconvertSTLToTeletext")]
         getter upconvert_stl_to_teletext : String?
 
@@ -4829,20 +5430,24 @@ module AwsSdk
       end
 
       # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value FLAC.
+
       struct FlacSettings
         include JSON::Serializable
 
         # Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality for this audio
         # track.
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : Int32?
 
         # Specify the number of channels in this output audio track. Choosing Mono on the console gives you 1
         # output channel; choosing Stereo gives you 2. In the API, valid values are between 1 and 8.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -4854,8 +5459,10 @@ module AwsSdk
         end
       end
 
+
       struct ForbiddenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -4875,14 +5482,17 @@ module AwsSdk
       # a Force include renditions rule, do not specify a separate rule for Allowed renditions. * Note: The
       # ABR stack may include other resolutions that you do not specify here, depending on the Max
       # renditions setting.
+
       struct ForceIncludeRenditionSize
         include JSON::Serializable
 
         # Use Height to define the video resolution height, in pixels, for this rule.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Use Width to define the video resolution width, in pixels, for this rule.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -4894,6 +5504,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value FRAME_CAPTURE.
+
       struct FrameCaptureSettings
         include JSON::Serializable
 
@@ -4902,6 +5513,7 @@ module AwsSdk
         # framerateDenominator = 3 (a rate of 1/3 frame per second) will capture the first frame, then 1 frame
         # every 3s. Files will be named as filename.n.jpg where n is the 0-based sequence number of each
         # Capture.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -4910,14 +5522,17 @@ module AwsSdk
         # framerateDenominator = 3 (a rate of 1/3 frame per second) will capture the first frame, then 1 frame
         # every 3s. Files will be named as filename.NNNNNNN.jpg where N is the 0-based frame sequence number
         # zero padded to 7 decimal places.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
         # Maximum number of captures (encoded jpg output files).
+
         @[JSON::Field(key: "maxCaptures")]
         getter max_captures : Int32?
 
         # JPEG Quality - a higher value equals higher quality.
+
         @[JSON::Field(key: "quality")]
         getter quality : Int32?
 
@@ -4932,16 +5547,19 @@ module AwsSdk
 
       # The frame rate of the video or audio track, expressed as a fraction with numerator and denominator
       # values.
+
       struct FrameRate
         include JSON::Serializable
 
         # The denominator, or bottom number, in the fractional frame rate. For example, if your frame rate is
         # 24000 / 1001 (23.976 frames per second), then the denominator would be 1001.
+
         @[JSON::Field(key: "denominator")]
         getter denominator : Int32?
 
         # The numerator, or top number, in the fractional frame rate. For example, if your frame rate is 24000
         # / 1001 (23.976 frames per second), then the numerator would be 24000.
+
         @[JSON::Field(key: "numerator")]
         getter numerator : Int32?
 
@@ -4953,10 +5571,12 @@ module AwsSdk
       end
 
       # Query a job by sending a request with the job ID.
+
       struct GetJobRequest
         include JSON::Serializable
 
         # the job ID of the job.
+
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -4967,11 +5587,13 @@ module AwsSdk
       end
 
       # Successful get job requests will return an OK message and the job JSON.
+
       struct GetJobResponse
         include JSON::Serializable
 
         # Each job converts an input file into an output file or files. For more information, see the User
         # Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
         @[JSON::Field(key: "job")]
         getter job : Types::Job?
 
@@ -4982,10 +5604,12 @@ module AwsSdk
       end
 
       # Query a job template by sending a request with the job template name.
+
       struct GetJobTemplateRequest
         include JSON::Serializable
 
         # The name of the job template.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -4996,10 +5620,12 @@ module AwsSdk
       end
 
       # Successful get job template requests will return an OK message and the job template JSON.
+
       struct GetJobTemplateResponse
         include JSON::Serializable
 
         # A job template is a pre-made set of encoding instructions that you can use to quickly create a job.
+
         @[JSON::Field(key: "jobTemplate")]
         getter job_template : Types::JobTemplate?
 
@@ -5010,10 +5636,12 @@ module AwsSdk
       end
 
       # Retrieve a JSON array of up to twenty of your most recent jobs matched by a jobs query.
+
       struct GetJobsQueryResultsRequest
         include JSON::Serializable
 
         # The ID of the jobs query.
+
         @[JSON::Field(key: "id")]
         getter id : String
 
@@ -5026,18 +5654,22 @@ module AwsSdk
       # If the jobs query completed successfully, then a JSON array of jobs will be included in this
       # response. To retrieve the twenty next most recent jobs matched by your jobs query, call the
       # StartJobsQuery using the nextToken string returned in this response.
+
       struct GetJobsQueryResultsResponse
         include JSON::Serializable
 
         # List of jobs.
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(Types::Job)?
 
         # Use this string to request the next batch of jobs via the StartJobsQuery API.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The status of the jobs query.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -5050,6 +5682,7 @@ module AwsSdk
       end
 
       # Send a request to retrieve the JSON for your policy.
+
       struct GetPolicyRequest
         include JSON::Serializable
 
@@ -5058,12 +5691,14 @@ module AwsSdk
       end
 
       # Successful GET policy requests will return the JSON for your policy.
+
       struct GetPolicyResponse
         include JSON::Serializable
 
         # A policy configures behavior that you allow or disallow for your account. For information about
         # MediaConvert policies, see the user guide at
         # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
         @[JSON::Field(key: "policy")]
         getter policy : Types::Policy?
 
@@ -5074,10 +5709,12 @@ module AwsSdk
       end
 
       # Query a preset by sending a request with the preset name.
+
       struct GetPresetRequest
         include JSON::Serializable
 
         # The name of the preset.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -5088,11 +5725,13 @@ module AwsSdk
       end
 
       # Successful get preset requests will return an OK message and the preset JSON.
+
       struct GetPresetResponse
         include JSON::Serializable
 
         # A preset is a collection of preconfigured media conversion settings that you want MediaConvert to
         # apply to the output during the conversion process.
+
         @[JSON::Field(key: "preset")]
         getter preset : Types::Preset?
 
@@ -5103,10 +5742,12 @@ module AwsSdk
       end
 
       # Get information about a queue by sending a request with the queue name.
+
       struct GetQueueRequest
         include JSON::Serializable
 
         # The name of the queue that you want information about.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -5117,6 +5758,7 @@ module AwsSdk
       end
 
       # Successful get queue requests return an OK message and information about the queue in JSON.
+
       struct GetQueueResponse
         include JSON::Serializable
 
@@ -5124,6 +5766,7 @@ module AwsSdk
         # multiple transcoding jobs at the same time. If you don't specify a queue, the service sends all jobs
         # through the default queue. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
+
         @[JSON::Field(key: "queue")]
         getter queue : Types::Queue?
 
@@ -5134,6 +5777,7 @@ module AwsSdk
       end
 
       # Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value GIF
+
       struct GifSettings
         include JSON::Serializable
 
@@ -5146,12 +5790,14 @@ module AwsSdk
         # for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from
         # the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the
         # settings FramerateNumerator and FramerateDenominator.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
         # Optional. Specify how the transcoder performs framerate conversion. The default behavior is to use
         # Drop duplicate (DUPLICATE_DROP) conversion. When you choose Interpolate (INTERPOLATE) instead, the
         # conversion produces smoother motion.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -5160,6 +5806,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -5168,6 +5815,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -5182,6 +5830,7 @@ module AwsSdk
 
       # Settings for quality-defined variable bitrate encoding with the H.264 codec. Use these settings only
       # when you set QVBR for Rate control mode.
+
       struct H264QvbrSettings
         include JSON::Serializable
 
@@ -5190,6 +5839,7 @@ module AwsSdk
         # average bitrate of the video part of this output to the value that you choose. That is, the total
         # size of the video element is less than or equal to the value you set multiplied by the number of
         # seconds of encoded output.
+
         @[JSON::Field(key: "maxAverageBitrate")]
         getter max_average_bitrate : Int32?
 
@@ -5202,6 +5852,7 @@ module AwsSdk
         # transcodes is between 6 and 9. Optionally, to specify a value between whole numbers, also provide a
         # value for the setting qvbrQualityLevelFineTune. For example, if you want your QVBR quality level to
         # be 7.33, set qvbrQualityLevel to 7 and set qvbrQualityLevelFineTune to .33.
+
         @[JSON::Field(key: "qvbrQualityLevel")]
         getter qvbr_quality_level : Int32?
 
@@ -5210,6 +5861,7 @@ module AwsSdk
         # qvbrQualityLevelFineTune to .33. MediaConvert rounds your QVBR quality level to the nearest third of
         # a whole number. For example, if you set qvbrQualityLevel to 7 and you set qvbrQualityLevelFineTune
         # to .25, your actual QVBR quality level is 7.33.
+
         @[JSON::Field(key: "qvbrQualityLevelFineTune")]
         getter qvbr_quality_level_fine_tune : Float64?
 
@@ -5222,6 +5874,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value H_264.
+
       struct H264Settings
         include JSON::Serializable
 
@@ -5233,6 +5886,7 @@ module AwsSdk
         # Related settings: The value that you choose here applies to the following settings:
         # H264FlickerAdaptiveQuantization, H264SpatialAdaptiveQuantization, and
         # H264TemporalAdaptiveQuantization.
+
         @[JSON::Field(key: "adaptiveQuantization")]
         getter adaptive_quantization : String?
 
@@ -5242,20 +5896,24 @@ module AwsSdk
         # to the bitrate that you specify. Bandwidth reduction increases further when your input is low
         # quality or noisy. Outputs that use this feature incur pro-tier pricing. When you include Bandwidth
         # reduction filter, you cannot include the Noise reducer preprocessor.
+
         @[JSON::Field(key: "bandwidthReductionFilter")]
         getter bandwidth_reduction_filter : Types::BandwidthReductionFilter?
 
         # Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs,
         # bitrates must be unique when rounded down to the nearest multiple of 1000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Specify an H.264 level that is consistent with your output video settings. If you aren't sure what
         # level to specify, choose Auto.
+
         @[JSON::Field(key: "codecLevel")]
         getter codec_level : String?
 
         # H.264 Profile. High 4:2:2 and 10-bit profiles are only available with the AVC-I License.
+
         @[JSON::Field(key: "codecProfile")]
         getter codec_profile : String?
 
@@ -5265,6 +5923,7 @@ module AwsSdk
         # B-frames for high-motion video content than low-motion content. The maximum number of B- frames is
         # limited by the value that you choose for B-frames between reference frames. To use the same number
         # B-frames for all types of content: Choose Static.
+
         @[JSON::Field(key: "dynamicSubGop")]
         getter dynamic_sub_gop : String?
 
@@ -5272,10 +5931,12 @@ module AwsSdk
         # stream. To include end of stream markers: Leave blank or keep the default value, Include. To not
         # include end of stream markers: Choose Suppress. This is useful when your output will be inserted
         # into another stream.
+
         @[JSON::Field(key: "endOfStreamMarkers")]
         getter end_of_stream_markers : String?
 
         # Entropy encoding mode. Use CABAC (must be in Main or High profile) or CAVLC.
+
         @[JSON::Field(key: "entropyEncoding")]
         getter entropy_encoding : String?
 
@@ -5283,6 +5944,7 @@ module AwsSdk
         # MediaConvert use PAFF encoding for interlaced outputs. Choose Force field to disable PAFF encoding
         # and create separate interlaced fields. Choose MBAFF to disable PAFF and have MediaConvert use MBAFF
         # encoding for interlaced outputs.
+
         @[JSON::Field(key: "fieldEncoding")]
         getter field_encoding : String?
 
@@ -5296,6 +5958,7 @@ module AwsSdk
         # refreshes them at the I-frame. When you enable this setting, the encoder updates these macroblocks
         # slightly more often to smooth out the flicker. To manually enable or disable
         # H264FlickerAdaptiveQuantization, you must set Adaptive quantization to a value other than AUTO.
+
         @[JSON::Field(key: "flickerAdaptiveQuantization")]
         getter flicker_adaptive_quantization : String?
 
@@ -5304,6 +5967,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -5319,6 +5983,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -5327,6 +5992,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -5335,6 +6001,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -5342,6 +6009,7 @@ module AwsSdk
         # when your GOP structure has 1 or more B-frames: Leave blank or keep the default value Enabled. We
         # recommend that you choose Enabled to help improve the video quality of your output relative to its
         # bitrate. To not use reference B-frames: Choose Disabled.
+
         @[JSON::Field(key: "gopBReference")]
         getter gop_b_reference : String?
 
@@ -5350,6 +6018,7 @@ module AwsSdk
         # the transcoder automatically choose this value for you based on characteristics of your input video.
         # In the console, do this by keeping the default empty value. If you do explicitly specify a value,
         # for segmented outputs, don't set this value to 0.
+
         @[JSON::Field(key: "gopClosedCadence")]
         getter gop_closed_cadence : Int32?
 
@@ -5359,6 +6028,7 @@ module AwsSdk
         # control. If you want to allow MediaConvert to automatically determine GOP size, leave GOP size blank
         # and set GOP mode control to Auto. If your output group specifies HLS, DASH, or CMAF, leave GOP size
         # blank and set GOP mode control to Auto in each output in your output group.
+
         @[JSON::Field(key: "gopSize")]
         getter gop_size : Float64?
 
@@ -5369,20 +6039,24 @@ module AwsSdk
         # HLS, DASH, or CMAF, set GOP mode control to Auto and leave GOP size blank in each output in your
         # output group. To explicitly specify the GOP length, choose Specified, frames or Specified, seconds
         # and then provide the GOP length in the related setting GOP size.
+
         @[JSON::Field(key: "gopSizeUnits")]
         getter gop_size_units : String?
 
         # If your downstream systems have strict buffer requirements: Specify the minimum percentage of the
         # HRD buffer that's available at the end of each encoded video segment. For the best video quality:
         # Set to 0 or leave blank to automatically determine the final buffer fill percentage.
+
         @[JSON::Field(key: "hrdBufferFinalFillPercentage")]
         getter hrd_buffer_final_fill_percentage : Int32?
 
         # Percentage of the buffer that should initially be filled (HRD buffer model).
+
         @[JSON::Field(key: "hrdBufferInitialFillPercentage")]
         getter hrd_buffer_initial_fill_percentage : Int32?
 
         # Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
@@ -5394,11 +6068,13 @@ module AwsSdk
         # output. Follow behavior depends on the input scan type. If the source is interlaced, the output will
         # be interlaced with the same polarity as the source. If the source is progressive, the output will be
         # interlaced with top field bottom field first, depending on which of the Follow options you choose.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
         # Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000. Required
         # when Rate control mode is QVBR.
+
         @[JSON::Field(key: "maxBitrate")]
         getter max_bitrate : Int32?
 
@@ -5415,6 +6091,7 @@ module AwsSdk
         # Use when your downstream systems have specific GOP size requirements. To disable GOP size variance:
         # Enter 0. MediaConvert will only create IDR-frames at the start of your output's cadence-driven GOP.
         # Use when your downstream systems require a regular GOP size.
+
         @[JSON::Field(key: "minIInterval")]
         getter min_i_interval : Int32?
 
@@ -5422,11 +6099,13 @@ module AwsSdk
         # Leave blank. MediaConvert automatically determines the number of B-frames to use based on the
         # characteristics of your input video. To manually specify the number of B-frames between reference
         # frames: Enter an integer from 0 to 7.
+
         @[JSON::Field(key: "numberBFramesBetweenReferenceFrames")]
         getter number_b_frames_between_reference_frames : Int32?
 
         # Number of reference frames to use. The encoder may use more than requested if using B-frames and/or
         # interlaced encoding.
+
         @[JSON::Field(key: "numberReferenceFrames")]
         getter number_reference_frames : Int32?
 
@@ -5434,6 +6113,7 @@ module AwsSdk
         # default behavior, Follow source, uses the PAR from your input video for your output. To specify a
         # different PAR in the console, choose any value other than Follow source. When you choose SPECIFIED
         # for this setting, you must also specify values for the parNumerator and parDenominator settings.
+
         @[JSON::Field(key: "parControl")]
         getter par_control : String?
 
@@ -5441,6 +6121,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parDenominator is 33.
+
         @[JSON::Field(key: "parDenominator")]
         getter par_denominator : Int32?
 
@@ -5448,6 +6129,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parNumerator is 40.
+
         @[JSON::Field(key: "parNumerator")]
         getter par_numerator : Int32?
 
@@ -5465,6 +6147,7 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
@@ -5474,20 +6157,24 @@ module AwsSdk
         # default value Single pass HQ. For the best video quality, at the cost of encoding speed: Choose
         # Multi pass HQ. MediaConvert performs an analysis pass on your input followed by an encoding pass.
         # Outputs that use this feature incur pro-tier pricing.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # Settings for quality-defined variable bitrate encoding with the H.265 codec. Use these settings only
         # when you set QVBR for Rate control mode.
+
         @[JSON::Field(key: "qvbrSettings")]
         getter qvbr_settings : Types::H264QvbrSettings?
 
         # Use this setting to specify whether this output has a variable bitrate (VBR), constant bitrate (CBR)
         # or quality-defined variable bitrate (QVBR).
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
         # Places a PPS header on each encoded picture, even if repeated.
+
         @[JSON::Field(key: "repeatPps")]
         getter repeat_pps : String?
 
@@ -5498,6 +6185,7 @@ module AwsSdk
         # Preferred, note that Saliency aware encoding will only apply to outputs that are 720p or higher in
         # resolution. To not apply saliency aware encoding, prioritizing encoding speed over perceptual video
         # quality: Choose Disabled.
+
         @[JSON::Field(key: "saliencyAwareEncoding")]
         getter saliency_aware_encoding : String?
 
@@ -5511,6 +6199,7 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
@@ -5518,12 +6207,14 @@ module AwsSdk
         # improves video quality and is enabled by default. If this output uses QVBR, choose Transition
         # detection for further video quality improvement. For more information about QVBR, see
         # https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
+
         @[JSON::Field(key: "sceneChangeDetect")]
         getter scene_change_detect : String?
 
         # Number of slices per picture. Must be less than or equal to the number of macroblock rows for
         # progressive pictures, and less than or equal to half the number of macroblock rows for interlaced
         # pictures.
+
         @[JSON::Field(key: "slices")]
         getter slices : Int32?
 
@@ -5532,6 +6223,7 @@ module AwsSdk
         # to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this
         # setting will slightly reduce the duration of your video. Required settings: You must also set
         # Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -5543,6 +6235,7 @@ module AwsSdk
         # matricies from the H.264 specification. Choose a value from 17 to 128 to use planar interpolation.
         # Increasing values from 17 to 128 result in increasing reduction of high-frequency data. The value
         # 128 results in the softest video.
+
         @[JSON::Field(key: "softness")]
         getter softness : Int32?
 
@@ -5564,10 +6257,12 @@ module AwsSdk
         # For content with a wider variety of textures, set it to High or Higher. To manually enable or
         # disable H264SpatialAdaptiveQuantization, you must set Adaptive quantization to a value other than
         # AUTO.
+
         @[JSON::Field(key: "spatialAdaptiveQuantization")]
         getter spatial_adaptive_quantization : String?
 
         # Produces a bitstream compliant with SMPTE RP-2027.
+
         @[JSON::Field(key: "syntax")]
         getter syntax : String?
 
@@ -5577,6 +6272,7 @@ module AwsSdk
         # output that signals to the video player device to do the conversion during play back. When you keep
         # the default value, None, MediaConvert does a standard frame rate conversion to 29.97 without doing
         # anything with the field polarity to create a smoother picture.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -5597,10 +6293,12 @@ module AwsSdk
         # quantization, adjust the strength of the filter with the setting Adaptive quantization. To manually
         # enable or disable H264TemporalAdaptiveQuantization, you must set Adaptive quantization to a value
         # other than AUTO.
+
         @[JSON::Field(key: "temporalAdaptiveQuantization")]
         getter temporal_adaptive_quantization : String?
 
         # Inserts timecode for each frame as 4 bytes of an unregistered SEI message.
+
         @[JSON::Field(key: "unregisteredSeiTimecode")]
         getter unregistered_sei_timecode : String?
 
@@ -5610,6 +6308,7 @@ module AwsSdk
         # not into samples directly). To write SPS and PPS NAL units directly into samples (but not in the
         # 'stsd' box): Choose AVC3. When you do, note that your output might not play properly with some
         # downstream systems or players.
+
         @[JSON::Field(key: "writeMp4PackagingType")]
         getter write_mp4_packaging_type : String?
 
@@ -5666,6 +6365,7 @@ module AwsSdk
 
       # Settings for quality-defined variable bitrate encoding with the H.265 codec. Use these settings only
       # when you set QVBR for Rate control mode.
+
       struct H265QvbrSettings
         include JSON::Serializable
 
@@ -5674,6 +6374,7 @@ module AwsSdk
         # average bitrate of the video part of this output to the value that you choose. That is, the total
         # size of the video element is less than or equal to the value you set multiplied by the number of
         # seconds of encoded output.
+
         @[JSON::Field(key: "maxAverageBitrate")]
         getter max_average_bitrate : Int32?
 
@@ -5686,6 +6387,7 @@ module AwsSdk
         # transcodes is between 6 and 9. Optionally, to specify a value between whole numbers, also provide a
         # value for the setting qvbrQualityLevelFineTune. For example, if you want your QVBR quality level to
         # be 7.33, set qvbrQualityLevel to 7 and set qvbrQualityLevelFineTune to .33.
+
         @[JSON::Field(key: "qvbrQualityLevel")]
         getter qvbr_quality_level : Int32?
 
@@ -5694,6 +6396,7 @@ module AwsSdk
         # qvbrQualityLevelFineTune to .33. MediaConvert rounds your QVBR quality level to the nearest third of
         # a whole number. For example, if you set qvbrQualityLevel to 7 and you set qvbrQualityLevelFineTune
         # to .25, your actual QVBR quality level is 7.33.
+
         @[JSON::Field(key: "qvbrQualityLevelFineTune")]
         getter qvbr_quality_level_fine_tune : Float64?
 
@@ -5706,6 +6409,7 @@ module AwsSdk
       end
 
       # Settings for H265 codec
+
       struct H265Settings
         include JSON::Serializable
 
@@ -5715,11 +6419,13 @@ module AwsSdk
         # can specify a value for Spatial Adaptive Quantization, Temporal Adaptive Quantization, and Flicker
         # Adaptive Quantization, to further control the quantization filter. Set Adaptive Quantization to Off
         # to apply no quantization to your output.
+
         @[JSON::Field(key: "adaptiveQuantization")]
         getter adaptive_quantization : String?
 
         # Enables Alternate Transfer Function SEI message for outputs using Hybrid Log Gamma (HLG)
         # Electro-Optical Transfer Function (EOTF).
+
         @[JSON::Field(key: "alternateTransferFunctionSei")]
         getter alternate_transfer_function_sei : String?
 
@@ -5729,21 +6435,25 @@ module AwsSdk
         # to the bitrate that you specify. Bandwidth reduction increases further when your input is low
         # quality or noisy. Outputs that use this feature incur pro-tier pricing. When you include Bandwidth
         # reduction filter, you cannot include the Noise reducer preprocessor.
+
         @[JSON::Field(key: "bandwidthReductionFilter")]
         getter bandwidth_reduction_filter : Types::BandwidthReductionFilter?
 
         # Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs,
         # bitrates must be unique when rounded down to the nearest multiple of 1000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # H.265 Level.
+
         @[JSON::Field(key: "codecLevel")]
         getter codec_level : String?
 
         # Represents the Profile and Tier, per the HEVC (H.265) specification. Selections are grouped as
         # [Profile] / [Tier], so "Main/High" represents Main Profile with High Tier. 4:2:2 profiles are only
         # available with the HEVC 4:2:2 License.
+
         @[JSON::Field(key: "codecProfile")]
         getter codec_profile : String?
 
@@ -5751,6 +6461,7 @@ module AwsSdk
         # artifacts created during video compression. To reduce blocking artifacts at block boundaries, and
         # improve overall video quality: Keep the default value, Enabled. To not apply any deblocking: Choose
         # Disabled. Visible block edge artifacts might appear in the output, especially at lower bitrates.
+
         @[JSON::Field(key: "deblocking")]
         getter deblocking : String?
 
@@ -5760,6 +6471,7 @@ module AwsSdk
         # B-frames for high-motion video content than low-motion content. The maximum number of B- frames is
         # limited by the value that you choose for B-frames between reference frames. To use the same number
         # B-frames for all types of content: Choose Static.
+
         @[JSON::Field(key: "dynamicSubGop")]
         getter dynamic_sub_gop : String?
 
@@ -5767,6 +6479,7 @@ module AwsSdk
         # stream. To include end of stream markers: Leave blank or keep the default value, Include. To not
         # include end of stream markers: Choose Suppress. This is useful when your output will be inserted
         # into another stream.
+
         @[JSON::Field(key: "endOfStreamMarkers")]
         getter end_of_stream_markers : String?
 
@@ -5776,6 +6489,7 @@ module AwsSdk
         # these macroblocks slightly more often to smooth out the flicker. This setting is disabled by
         # default. Related setting: In addition to enabling this setting, you must also set
         # adaptiveQuantization to a value other than Off.
+
         @[JSON::Field(key: "flickerAdaptiveQuantization")]
         getter flicker_adaptive_quantization : String?
 
@@ -5783,6 +6497,7 @@ module AwsSdk
         # frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose
         # a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are
         # decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -5798,6 +6513,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -5806,6 +6522,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -5814,6 +6531,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -5821,6 +6539,7 @@ module AwsSdk
         # when your GOP structure has 1 or more B-frames: Leave blank or keep the default value Enabled. We
         # recommend that you choose Enabled to help improve the video quality of your output relative to its
         # bitrate. To not use reference B-frames: Choose Disabled.
+
         @[JSON::Field(key: "gopBReference")]
         getter gop_b_reference : String?
 
@@ -5829,6 +6548,7 @@ module AwsSdk
         # the transcoder automatically choose this value for you based on characteristics of your input video.
         # To enable this automatic behavior, do this by keeping the default empty value. If you do explicitly
         # specify a value, for segmented outputs, don't set this value to 0.
+
         @[JSON::Field(key: "gopClosedCadence")]
         getter gop_closed_cadence : Int32?
 
@@ -5838,6 +6558,7 @@ module AwsSdk
         # control. If you want to allow MediaConvert to automatically determine GOP size, leave GOP size blank
         # and set GOP mode control to Auto. If your output group specifies HLS, DASH, or CMAF, leave GOP size
         # blank and set GOP mode control to Auto in each output in your output group.
+
         @[JSON::Field(key: "gopSize")]
         getter gop_size : Float64?
 
@@ -5848,20 +6569,24 @@ module AwsSdk
         # HLS, DASH, or CMAF, set GOP mode control to Auto and leave GOP size blank in each output in your
         # output group. To explicitly specify the GOP length, choose Specified, frames or Specified, seconds
         # and then provide the GOP length in the related setting GOP size.
+
         @[JSON::Field(key: "gopSizeUnits")]
         getter gop_size_units : String?
 
         # If your downstream systems have strict buffer requirements: Specify the minimum percentage of the
         # HRD buffer that's available at the end of each encoded video segment. For the best video quality:
         # Set to 0 or leave blank to automatically determine the final buffer fill percentage.
+
         @[JSON::Field(key: "hrdBufferFinalFillPercentage")]
         getter hrd_buffer_final_fill_percentage : Int32?
 
         # Percentage of the buffer that should initially be filled (HRD buffer model).
+
         @[JSON::Field(key: "hrdBufferInitialFillPercentage")]
         getter hrd_buffer_initial_fill_percentage : Int32?
 
         # Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
@@ -5873,11 +6598,13 @@ module AwsSdk
         # output. Follow behavior depends on the input scan type. If the source is interlaced, the output will
         # be interlaced with the same polarity as the source. If the source is progressive, the output will be
         # interlaced with top field bottom field first, depending on which of the Follow options you choose.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
         # Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000. Required
         # when Rate control mode is QVBR.
+
         @[JSON::Field(key: "maxBitrate")]
         getter max_bitrate : Int32?
 
@@ -5894,16 +6621,19 @@ module AwsSdk
         # Use when your downstream systems have specific GOP size requirements. To disable GOP size variance:
         # Enter 0. MediaConvert will only create IDR-frames at the start of your output's cadence-driven GOP.
         # Use when your downstream systems require a regular GOP size.
+
         @[JSON::Field(key: "minIInterval")]
         getter min_i_interval : Int32?
 
         # If you are setting up the picture as a tile, you must set this to "disabled". In all other
         # configurations, you typically enter "enabled".
+
         @[JSON::Field(key: "mvOverPictureBoundaries")]
         getter mv_over_picture_boundaries : String?
 
         # If you are setting up the picture as a tile, you must set this to "disabled". In other
         # configurations, you typically enter "enabled".
+
         @[JSON::Field(key: "mvTemporalPredictor")]
         getter mv_temporal_predictor : String?
 
@@ -5911,11 +6641,13 @@ module AwsSdk
         # Leave blank. MediaConvert automatically determines the number of B-frames to use based on the
         # characteristics of your input video. To manually specify the number of B-frames between reference
         # frames: Enter an integer from 0 to 7.
+
         @[JSON::Field(key: "numberBFramesBetweenReferenceFrames")]
         getter number_b_frames_between_reference_frames : Int32?
 
         # Number of reference frames to use. The encoder may use more than requested if using B-frames and/or
         # interlaced encoding.
+
         @[JSON::Field(key: "numberReferenceFrames")]
         getter number_reference_frames : Int32?
 
@@ -5923,6 +6655,7 @@ module AwsSdk
         # default behavior, Follow source, uses the PAR from your input video for your output. To specify a
         # different PAR, choose any value other than Follow source. When you choose SPECIFIED for this
         # setting, you must also specify values for the parNumerator and parDenominator settings.
+
         @[JSON::Field(key: "parControl")]
         getter par_control : String?
 
@@ -5930,6 +6663,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parDenominator is 33.
+
         @[JSON::Field(key: "parDenominator")]
         getter par_denominator : Int32?
 
@@ -5937,6 +6671,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parNumerator is 40.
+
         @[JSON::Field(key: "parNumerator")]
         getter par_numerator : Int32?
 
@@ -5954,26 +6689,31 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
         # Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output
         # video quality. The default behavior is faster, lower quality, single-pass encoding.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # Settings for quality-defined variable bitrate encoding with the H.265 codec. Use these settings only
         # when you set QVBR for Rate control mode.
+
         @[JSON::Field(key: "qvbrSettings")]
         getter qvbr_settings : Types::H265QvbrSettings?
 
         # Use this setting to specify whether this output has a variable bitrate (VBR), constant bitrate (CBR)
         # or quality-defined variable bitrate (QVBR).
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
         # Specify Sample Adaptive Offset (SAO) filter strength. Adaptive mode dynamically selects best
         # strength based on content
+
         @[JSON::Field(key: "sampleAdaptiveOffsetFilterMode")]
         getter sample_adaptive_offset_filter_mode : String?
 
@@ -5987,6 +6727,7 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
@@ -5994,12 +6735,14 @@ module AwsSdk
         # improves video quality and is enabled by default. If this output uses QVBR, choose Transition
         # detection for further video quality improvement. For more information about QVBR, see
         # https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
+
         @[JSON::Field(key: "sceneChangeDetect")]
         getter scene_change_detect : String?
 
         # Number of slices per picture. Must be less than or equal to the number of macroblock rows for
         # progressive pictures, and less than or equal to half the number of macroblock rows for interlaced
         # pictures.
+
         @[JSON::Field(key: "slices")]
         getter slices : Int32?
 
@@ -6008,6 +6751,7 @@ module AwsSdk
         # to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this
         # setting will slightly reduce the duration of your video. Required settings: You must also set
         # Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -6022,6 +6766,7 @@ module AwsSdk
         # setting: When you enable spatial adaptive quantization, set the value for Adaptive quantization
         # depending on your content. For homogeneous content, such as cartoons and video games, set it to Low.
         # For content with a wider variety of textures, set it to High or Higher.
+
         @[JSON::Field(key: "spatialAdaptiveQuantization")]
         getter spatial_adaptive_quantization : String?
 
@@ -6030,6 +6775,7 @@ module AwsSdk
         # Interlaced Mode field to identify the scan type for the output: Progressive, Interlaced, Hard
         # Telecine or Soft Telecine. - Hard: produces 29.97i output from 23.976 input. - Soft: produces
         # 23.976; the player converts this output to 29.97i.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -6043,6 +6789,7 @@ module AwsSdk
         # objects with sharp edges, such as sports athletes' faces, you might choose to disable this feature.
         # Related setting: When you enable temporal quantization, adjust the strength of the filter with the
         # setting Adaptive quantization.
+
         @[JSON::Field(key: "temporalAdaptiveQuantization")]
         getter temporal_adaptive_quantization : String?
 
@@ -6053,6 +6800,7 @@ module AwsSdk
         # IDs and with b-frames = 1 (i.e. IbPbPb display order), a decoder could decode all the frames for
         # full frame rate output or only the I and P frames (lowest temporal layer) for a half frame rate
         # output.
+
         @[JSON::Field(key: "temporalIds")]
         getter temporal_ids : String?
 
@@ -6061,30 +6809,36 @@ module AwsSdk
         # frame. And finally, the product of the column count and row count must be 64 or less. If the tile
         # width and height are specified, MediaConvert will override the video codec slices field with a value
         # that MediaConvert calculates.
+
         @[JSON::Field(key: "tileHeight")]
         getter tile_height : Int32?
 
         # Set to "padded" to force MediaConvert to add padding to the frame, to obtain a frame that is a whole
         # multiple of the tile size. If you are setting up the picture as a tile, you must enter "padded". In
         # all other configurations, you typically enter "none".
+
         @[JSON::Field(key: "tilePadding")]
         getter tile_padding : String?
 
         # Set this field to set up the picture as a tile. See TileHeight for more information.
+
         @[JSON::Field(key: "tileWidth")]
         getter tile_width : Int32?
 
         # Enable use of tiles, allowing horizontal as well as vertical subdivision of the encoded pictures.
+
         @[JSON::Field(key: "tiles")]
         getter tiles : String?
 
         # Select the tree block size used for encoding. If you enter "auto", the encoder will pick the best
         # size. If you are setting up the picture as a tile, you must set this to 32x32. In all other
         # configurations, you typically enter "auto".
+
         @[JSON::Field(key: "treeBlockSize")]
         getter tree_block_size : String?
 
         # Inserts timecode for each frame as 4 bytes of an unregistered SEI message.
+
         @[JSON::Field(key: "unregisteredSeiTimecode")]
         getter unregistered_sei_timecode : String?
 
@@ -6096,6 +6850,7 @@ module AwsSdk
         # directly. For MP4 outputs, when you choose HVC1, your output video might not work properly with some
         # downstream systems and video players. The service defaults to marking your output as HEV1. For these
         # outputs, the service writes parameter set NAL units directly into the samples.
+
         @[JSON::Field(key: "writeMp4PackagingType")]
         getter write_mp4_packaging_type : String?
 
@@ -6159,74 +6914,87 @@ module AwsSdk
       # values don't affect the pixel values that are encoded in the video stream. They are intended to help
       # the downstream video player display content in a way that reflects the intentions of the the content
       # creator.
+
       struct Hdr10Metadata
         include JSON::Serializable
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "bluePrimaryX")]
         getter blue_primary_x : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "bluePrimaryY")]
         getter blue_primary_y : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "greenPrimaryX")]
         getter green_primary_x : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "greenPrimaryY")]
         getter green_primary_y : Int32?
 
         # Maximum light level among all samples in the coded video sequence, in units of candelas per square
         # meter. This setting doesn't have a default value; you must specify a value that is suitable for the
         # content.
+
         @[JSON::Field(key: "maxContentLightLevel")]
         getter max_content_light_level : Int32?
 
         # Maximum average light level of any frame in the coded video sequence, in units of candelas per
         # square meter. This setting doesn't have a default value; you must specify a value that is suitable
         # for the content.
+
         @[JSON::Field(key: "maxFrameAverageLightLevel")]
         getter max_frame_average_light_level : Int32?
 
         # Nominal maximum mastering display luminance in units of of 0.0001 candelas per square meter.
+
         @[JSON::Field(key: "maxLuminance")]
         getter max_luminance : Int32?
 
         # Nominal minimum mastering display luminance in units of of 0.0001 candelas per square meter
+
         @[JSON::Field(key: "minLuminance")]
         getter min_luminance : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "redPrimaryX")]
         getter red_primary_x : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "redPrimaryY")]
         getter red_primary_y : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "whitePointX")]
         getter white_point_x : Int32?
 
         # HDR Master Display Information must be provided by a color grader, using color grading tools. Range
         # is 0 to 50,000, each increment represents 0.00002 in CIE1931 color coordinate. Note that this
         # setting is not for color correction.
+
         @[JSON::Field(key: "whitePointY")]
         getter white_point_y : Int32?
 
@@ -6248,16 +7016,19 @@ module AwsSdk
       end
 
       # Setting for HDR10+ metadata insertion
+
       struct Hdr10Plus
         include JSON::Serializable
 
         # Specify the HDR10+ mastering display normalized peak luminance, in nits. This is the normalized
         # actual peak luminance of the mastering display, as defined by ST 2094-40.
+
         @[JSON::Field(key: "masteringMonitorNits")]
         getter mastering_monitor_nits : Int32?
 
         # Specify the HDR10+ target display nominal peak luminance, in nits. This is the nominal maximum
         # luminance of the target display as defined by ST 2094-40.
+
         @[JSON::Field(key: "targetMonitorNits")]
         getter target_monitor_nits : Int32?
 
@@ -6270,6 +7041,7 @@ module AwsSdk
 
       # Specify the details for each additional HLS manifest that you want the service to generate for this
       # output group. Each manifest can reference a different subset of outputs in the group.
+
       struct HlsAdditionalManifest
         include JSON::Serializable
 
@@ -6280,10 +7052,12 @@ module AwsSdk
         # For HLS output groups, specify a manifestNameModifier that is different from the nameModifier of the
         # output. The service uses the output name modifier to create unique names for the individual variant
         # manifests.
+
         @[JSON::Field(key: "manifestNameModifier")]
         getter manifest_name_modifier : String?
 
         # Specify the outputs that you want this additional top-level manifest to reference.
+
         @[JSON::Field(key: "selectedOutputs")]
         getter selected_outputs : Array(String)?
 
@@ -6295,24 +7069,29 @@ module AwsSdk
       end
 
       # Caption Language Mapping
+
       struct HlsCaptionLanguageMapping
         include JSON::Serializable
 
         # Caption channel.
+
         @[JSON::Field(key: "captionChannel")]
         getter caption_channel : Int32?
 
         # Specify the language, using an ISO 639-2 three-letter code in all capital letters. You can find a
         # list of codes at: https://www.loc.gov/standards/iso639-2/php/code_list.php
+
         @[JSON::Field(key: "customLanguageCode")]
         getter custom_language_code : String?
 
         # Specify the language, using an ISO 639-2 three-letter code in all capital letters. You can find a
         # list of codes at: https://www.loc.gov/standards/iso639-2/php/code_list.php
+
         @[JSON::Field(key: "languageCode")]
         getter language_code : String?
 
         # Caption language description.
+
         @[JSON::Field(key: "languageDescription")]
         getter language_description : String?
 
@@ -6326,43 +7105,51 @@ module AwsSdk
       end
 
       # Settings for HLS encryption
+
       struct HlsEncryptionSettings
         include JSON::Serializable
 
         # This is a 128-bit, 16-byte hex value represented by a 32-character text string. If this parameter is
         # not set then the Initialization Vector will follow the segment number by default.
+
         @[JSON::Field(key: "constantInitializationVector")]
         getter constant_initialization_vector : String?
 
         # Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled'
         # in the web interface also disables encryption.
+
         @[JSON::Field(key: "encryptionMethod")]
         getter encryption_method : String?
 
         # The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting
         # blocks. If set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization
         # Vector is not in the manifest.
+
         @[JSON::Field(key: "initializationVectorInManifest")]
         getter initialization_vector_in_manifest : String?
 
         # Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows
         # for offline Apple HLS FairPlay content protection.
+
         @[JSON::Field(key: "offlineEncrypted")]
         getter offline_encrypted : String?
 
         # If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM
         # encryption with a SPEKE-compliant key provider. If your output group type is CMAF, use the
         # SpekeKeyProviderCmaf settings instead.
+
         @[JSON::Field(key: "spekeKeyProvider")]
         getter speke_key_provider : Types::SpekeKeyProvider?
 
         # Use these settings to set up encryption with a static key provider.
+
         @[JSON::Field(key: "staticKeyProvider")]
         getter static_key_provider : Types::StaticKeyProvider?
 
         # Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE
         # standard. For more information about SPEKE, see
         # https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -6380,11 +7167,13 @@ module AwsSdk
 
       # Settings related to your HLS output package. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
       struct HlsGroupSettings
         include JSON::Serializable
 
         # Choose one or more ad marker types to decorate your Apple HLS manifest. This setting does not
         # determine whether SCTE-35 markers appear in the outputs themselves.
+
         @[JSON::Field(key: "adMarkers")]
         getter ad_markers : Array(String)?
 
@@ -6392,21 +7181,25 @@ module AwsSdk
         # job. This default manifest references every output in the output group. To create additional
         # top-level manifests that reference a subset of the outputs in the output group, specify a list of
         # them here.
+
         @[JSON::Field(key: "additionalManifests")]
         getter additional_manifests : Array(Types::HlsAdditionalManifest)?
 
         # Ignore this setting unless you are using FairPlay DRM with Verimatrix and you encounter playback
         # issues. Keep the default value, Include, to output audio-only headers. Choose Exclude to remove the
         # audio-only headers from your audio segments.
+
         @[JSON::Field(key: "audioOnlyHeader")]
         getter audio_only_header : String?
 
         # A partial URI prefix that will be prepended to each output in the media .m3u8 file. Can be used if
         # base manifest is delivered from a different URL than the main .m3u8 file.
+
         @[JSON::Field(key: "baseUrl")]
         getter base_url : String?
 
         # Language to be used on Caption outputs
+
         @[JSON::Field(key: "captionLanguageMappings")]
         getter caption_language_mappings : Array(Types::HlsCaptionLanguageMapping)?
 
@@ -6417,6 +7210,7 @@ module AwsSdk
         # the source is other than embedded). Otherwise, languages in the manifest will not match up properly
         # with the output captions. None: Include CLOSED-CAPTIONS=NONE line in the manifest. Omit: Omit any
         # CLOSED-CAPTIONS line from the manifest.
+
         @[JSON::Field(key: "captionLanguageSetting")]
         getter caption_language_setting : String?
 
@@ -6424,16 +7218,19 @@ module AwsSdk
         # video segments from the first video output in this output group. For example, if the video segments
         # are 2 seconds long, your WebVTT segments will also be 2 seconds long. Keep the default setting,
         # Large segments to create caption segments that are 300 seconds long.
+
         @[JSON::Field(key: "captionSegmentLengthControl")]
         getter caption_segment_length_control : String?
 
         # Disable this setting only when your workflow requires the #EXT-X-ALLOW-CACHE:no tag. Otherwise, keep
         # the default value Enabled and control caching in your video distribution set up. For example, use
         # the Cache-Control http header.
+
         @[JSON::Field(key: "clientCache")]
         getter client_cache : String?
 
         # Specification to use (RFC-6381 or the default RFC-4281) during m3u8 playlist generation.
+
         @[JSON::Field(key: "codecSpecification")]
         getter codec_specification : String?
 
@@ -6441,18 +7238,22 @@ module AwsSdk
         # format identifiers. If you do not specify the base filename in the URI, the service will use the
         # filename of the input file. If your job has multiple inputs, the service uses the filename of the
         # first input file.
+
         @[JSON::Field(key: "destination")]
         getter destination : String?
 
         # Settings associated with the destination. Will vary based on the type of destination
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::DestinationSettings?
 
         # Indicates whether segments should be placed in subdirectories.
+
         @[JSON::Field(key: "directoryStructure")]
         getter directory_structure : String?
 
         # DRM settings.
+
         @[JSON::Field(key: "encryption")]
         getter encryption : Types::HlsEncryptionSettings?
 
@@ -6463,18 +7264,22 @@ module AwsSdk
         # manifest. A common application for these images is Roku trick mode. The thumbnails and full-frame
         # images that MediaConvert creates with this feature are compatible with this Roku specification:
         # https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
+
         @[JSON::Field(key: "imageBasedTrickPlay")]
         getter image_based_trick_play : String?
 
         # Tile and thumbnail settings applicable when imageBasedTrickPlay is ADVANCED
+
         @[JSON::Field(key: "imageBasedTrickPlaySettings")]
         getter image_based_trick_play_settings : Types::HlsImageBasedTrickPlaySettings?
 
         # When set to GZIP, compresses HLS playlist.
+
         @[JSON::Field(key: "manifestCompression")]
         getter manifest_compression : String?
 
         # Indicates whether the output manifest should use floating point values for segment duration.
+
         @[JSON::Field(key: "manifestDurationFormat")]
         getter manifest_duration_format : String?
 
@@ -6487,15 +7292,18 @@ module AwsSdk
         # segment. For example, your segment length is 3 seconds and your final segment is .5 seconds without
         # a minimum final segment length; when you set the minimum final segment length to 1, your final
         # segment is 3.5 seconds.
+
         @[JSON::Field(key: "minFinalSegmentLength")]
         getter min_final_segment_length : Float64?
 
         # When set, Minimum Segment Size is enforced by looking ahead and back within the specified range for
         # a nearby avail and extending the segment size if needed.
+
         @[JSON::Field(key: "minSegmentLength")]
         getter min_segment_length : Int32?
 
         # Indicates whether the .m3u8 manifest file should be generated for this HLS output group.
+
         @[JSON::Field(key: "outputSelection")]
         getter output_selection : String?
 
@@ -6503,10 +7311,12 @@ module AwsSdk
         # follows: either the program date and time are initialized using the input timecode source, or the
         # time is initialized using the input timecode source and the date is initialized using the
         # timestamp_offset.
+
         @[JSON::Field(key: "programDateTime")]
         getter program_date_time : String?
 
         # Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
+
         @[JSON::Field(key: "programDateTimePeriod")]
         getter program_date_time_period : Int32?
 
@@ -6518,11 +7328,13 @@ module AwsSdk
         # BANDWIDTH and AVERAGE-BANDWIDTH attributes, and child manifests include the latest available media
         # segment. When your job completes, the final child playlists include an EXT-X-ENDLIST tag. To
         # generate HLS manifests only when your job completes: Choose Disabled.
+
         @[JSON::Field(key: "progressiveWriteHlsManifest")]
         getter progressive_write_hls_manifest : String?
 
         # When set to SINGLE_FILE, emits program as a single media resource (.ts) file, uses #EXT-X-BYTERANGE
         # tags to index segment for playback.
+
         @[JSON::Field(key: "segmentControl")]
         getter segment_control : String?
 
@@ -6530,6 +7342,7 @@ module AwsSdk
         # defaults to 10. Related settings: Use Segment length control to specify whether the encoder enforces
         # this value strictly. Use Segment control to specify whether MediaConvert creates separate segment
         # files or one content file that has metadata to mark the segment boundaries.
+
         @[JSON::Field(key: "segmentLength")]
         getter segment_length : Int32?
 
@@ -6546,15 +7359,18 @@ module AwsSdk
         # outputs, we recommend they share a similar frame rate (as in X/3, X/2, X, or 2X). For example: 5,
         # 15, 30 and 60. Or: 25 and 50. (Outputs must share an integer multiple.) - Output audio codec:
         # Specify Advanced Audio Coding (AAC). - Output sample rate: Choose 48kHz.
+
         @[JSON::Field(key: "segmentLengthControl")]
         getter segment_length_control : String?
 
         # Specify the number of segments to write to a subdirectory before starting a new one. You must also
         # set Directory structure to Subdirectory per stream for this setting to have an effect.
+
         @[JSON::Field(key: "segmentsPerSubdirectory")]
         getter segments_per_subdirectory : Int32?
 
         # Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
+
         @[JSON::Field(key: "streamInfResolution")]
         getter stream_inf_resolution : String?
 
@@ -6565,12 +7381,14 @@ module AwsSdk
         # ensure that the target duration is always longer than the actual duration of the segment. Some older
         # players may experience interrupted playback when the actual duration of a track in a segment is
         # longer than the target duration.
+
         @[JSON::Field(key: "targetDurationCompatibilityMode")]
         getter target_duration_compatibility_mode : String?
 
         # Specify the type of the ID3 frame to use for ID3 timestamps in your output. To include ID3
         # timestamps: Specify PRIV or TDRL and set ID3 metadata to Passthrough. To exclude ID3 timestamps: Set
         # ID3 timestamp frame type to None.
+
         @[JSON::Field(key: "timedMetadataId3Frame")]
         getter timed_metadata_id3_frame : String?
 
@@ -6578,10 +7396,12 @@ module AwsSdk
         # at the output timecode and date, and increases incrementally with each ID3 timestamp. To use the
         # default interval of 10 seconds: Leave blank. To include this metadata in your output: Set ID3
         # timestamp frame type to PRIV or TDRL, and set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataId3Period")]
         getter timed_metadata_id3_period : Int32?
 
         # Provides an extra millisecond delta offset to fine tune the timestamps.
+
         @[JSON::Field(key: "timestampDeltaMilliseconds")]
         getter timestamp_delta_milliseconds : Int32?
 
@@ -6623,6 +7443,7 @@ module AwsSdk
       end
 
       # Tile and thumbnail settings applicable when imageBasedTrickPlay is ADVANCED
+
       struct HlsImageBasedTrickPlaySettings
         include JSON::Serializable
 
@@ -6630,12 +7451,14 @@ module AwsSdk
         # generates thumbnails for each IDR frame in the output (matching the GOP cadence). If set to
         # FOLLOW_CUSTOM, MediaConvert generates thumbnails according to the interval you specify in
         # thumbnailInterval.
+
         @[JSON::Field(key: "intervalCadence")]
         getter interval_cadence : String?
 
         # Height of each thumbnail within each tile image, in pixels. Leave blank to maintain aspect ratio
         # with thumbnail width. If following the aspect ratio would lead to a total tile height greater than
         # 4096, then the job will be rejected. Must be divisible by 2.
+
         @[JSON::Field(key: "thumbnailHeight")]
         getter thumbnail_height : Int32?
 
@@ -6643,19 +7466,23 @@ module AwsSdk
         # enter doesn't align with the output frame rate, MediaConvert automatically rounds the interval to
         # align with the output frame rate. For example, if the output frame rate is 29.97 frames per second
         # and you enter 5, MediaConvert uses a 150 frame interval to generate thumbnails.
+
         @[JSON::Field(key: "thumbnailInterval")]
         getter thumbnail_interval : Float64?
 
         # Width of each thumbnail within each tile image, in pixels. Default is 312. Must be divisible by 8.
+
         @[JSON::Field(key: "thumbnailWidth")]
         getter thumbnail_width : Int32?
 
         # Number of thumbnails in each column of a tile image. Set a value between 2 and 2048. Must be
         # divisible by 2.
+
         @[JSON::Field(key: "tileHeight")]
         getter tile_height : Int32?
 
         # Number of thumbnails in each row of a tile image. Set a value between 1 and 512.
+
         @[JSON::Field(key: "tileWidth")]
         getter tile_width : Int32?
 
@@ -6676,19 +7503,23 @@ module AwsSdk
       # multiple tracks match the properties provided, the job fails. If no properties in
       # hlsRenditionGroupSettings are specified, the default audio track within the video segment is chosen.
       # If there is no audio within video segment, the alternative audio with DEFAULT=YES is chosen instead.
+
       struct HlsRenditionGroupSettings
         include JSON::Serializable
 
         # Optional. Specify alternative group ID
+
         @[JSON::Field(key: "renditionGroupId")]
         getter rendition_group_id : String?
 
         # Optionally specify the language, using an ISO 639-2 or ISO 639-3 three-letter code in all capital
         # letters. You can find a list of codes at: https://www.loc.gov/standards/iso639-2/php/code_list.php
+
         @[JSON::Field(key: "renditionLanguageCode")]
         getter rendition_language_code : String?
 
         # Optional. Specify media name
+
         @[JSON::Field(key: "renditionName")]
         getter rendition_name : String?
 
@@ -6701,10 +7532,12 @@ module AwsSdk
       end
 
       # Settings for HLS output groups
+
       struct HlsSettings
         include JSON::Serializable
 
         # Specifies the group to which the audio rendition belongs.
+
         @[JSON::Field(key: "audioGroupId")]
         getter audio_group_id : String?
 
@@ -6712,11 +7545,13 @@ module AwsSdk
         # in an MPEG2-TS container. Keep the default value Automatic to create an audio-only file in a raw
         # container. Regardless of the value that you specify here, if this output has video, the service will
         # place the output into an MPEG2-TS container.
+
         @[JSON::Field(key: "audioOnlyContainer")]
         getter audio_only_container : String?
 
         # List all the audio groups that are used with the video output stream. Input all the audio GROUP-IDs
         # that are associated to the video, separate by ','.
+
         @[JSON::Field(key: "audioRenditionSets")]
         getter audio_rendition_sets : String?
 
@@ -6729,6 +7564,7 @@ module AwsSdk
         # DEFAULT=NO, AUTOSELECT=YES Alternate Audio, not Auto Select Alternate rendition that the client will
         # not try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO,
         # AUTOSELECT=NO
+
         @[JSON::Field(key: "audioTrackType")]
         getter audio_track_type : String?
 
@@ -6737,6 +7573,7 @@ module AwsSdk
         # CHARACTERISTICS="public.accessibility.describes-video" in the EXT-X-MEDIA entry for this track. When
         # you keep the default choice, Don't flag, MediaConvert leaves this parameter out. The DVS flag can
         # help with accessibility on Apple devices. For more information, see the Apple documentation.
+
         @[JSON::Field(key: "descriptiveVideoServiceFlag")]
         getter descriptive_video_service_flag : String?
 
@@ -6747,6 +7584,7 @@ module AwsSdk
         # EXT-X-BYTERANGE tags: Choose Include. To have MediaConvert output I-frames as single frame TS files
         # and a corresponding variant manifest that references them: Choose Include as TS. When you don't need
         # the I-frame only variant manifest: Keep the default value, Exclude.
+
         @[JSON::Field(key: "iFrameOnlyManifest")]
         getter i_frame_only_manifest : String?
 
@@ -6754,6 +7592,7 @@ module AwsSdk
         # string between the name modifier and segment index number. You can use format identifiers in the
         # string. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/using-variables-in-your-job-settings.html
+
         @[JSON::Field(key: "segmentModifier")]
         getter segment_modifier : String?
 
@@ -6771,12 +7610,14 @@ module AwsSdk
 
       # Optional. Configuration for a destination queue to which the job can hop once a customer-defined
       # minimum wait time has passed.
+
       struct HopDestination
         include JSON::Serializable
 
         # Optional. When you set up a job to use queue hopping, you can specify a different relative priority
         # for the job in the destination queue. If you don't specify, the relative priority will remain the
         # same as in the previous queue.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
@@ -6784,11 +7625,13 @@ module AwsSdk
         # hopping, you can specify a destination queue. This queue cannot be the original queue to which the
         # job is submitted. If the original queue isn't the default queue and you don't specify the
         # destination queue, the job will move to the default queue.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
         # Required for setting up a job to use queue hopping. Minimum wait time in minutes until the job can
         # hop to the destination queue. Valid range is 1 to 4320 minutes, inclusive.
+
         @[JSON::Field(key: "waitMinutes")]
         getter wait_minutes : Int32?
 
@@ -6803,14 +7646,17 @@ module AwsSdk
       # To insert ID3 tags in your output, specify two values. Use ID3 tag to specify the base 64 encoded
       # string and use Timecode to specify the time when the tag should be inserted. To insert multiple ID3
       # tags in your output, create multiple instances of ID3 insertion.
+
       struct Id3Insertion
         include JSON::Serializable
 
         # Use ID3 tag to provide a fully formed ID3 tag in base64-encode format.
+
         @[JSON::Field(key: "id3")]
         getter id3 : String?
 
         # Provide a Timecode in HH:MM:SS:FF or HH:MM:SS;FF format.
+
         @[JSON::Field(key: "timecode")]
         getter timecode : String?
 
@@ -6825,10 +7671,12 @@ module AwsSdk
       # feature for each input or output individually. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/graphic-overlay.html. This setting is disabled by
       # default.
+
       struct ImageInserter
         include JSON::Serializable
 
         # Specify the images that you want to overlay on your video. The images must be PNG or TGA files.
+
         @[JSON::Field(key: "insertableImages")]
         getter insertable_images : Array(Types::InsertableImage)?
 
@@ -6836,6 +7684,7 @@ module AwsSdk
         # brightness levels within HDR10 outputs. For 1,000 nit peak brightness displays, we recommend that
         # you set SDR reference white level to 203 (according to ITU-R BT.2408). Leave blank to use the
         # default value of 100, or specify an integer from 100 to 1000.
+
         @[JSON::Field(key: "sdrReferenceWhiteLevel")]
         getter sdr_reference_white_level : Int32?
 
@@ -6850,6 +7699,7 @@ module AwsSdk
       # separate from the video container. Set up sidecar captions in the same output group, but different
       # output from your video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+
       struct ImscDestinationSettings
         include JSON::Serializable
 
@@ -6862,12 +7712,14 @@ module AwsSdk
         # this track: . If the captions track is not intended to provide such accessibility: Keep the default
         # value, Disabled. When you do, for DASH manifests, MediaConvert instead adds the following in the
         # adaptation set for this track: .
+
         @[JSON::Field(key: "accessibility")]
         getter accessibility : String?
 
         # Keep this setting enabled to have MediaConvert use the font style and position information from the
         # captions source in the output. This option is available only when your input captions are IMSC,
         # SMPTE-TT, or TTML. Disable this setting for simplified output captions.
+
         @[JSON::Field(key: "stylePassthrough")]
         getter style_passthrough : String?
 
@@ -6882,6 +7734,7 @@ module AwsSdk
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/specify-input-settings.html. You can use multiple
       # video inputs to do input stitching. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/assembling-multiple-inputs-and-input-clips.html
+
       struct Input
         include JSON::Serializable
 
@@ -6894,48 +7747,57 @@ module AwsSdk
         # filter, you can optionally add texture or sharpening as an additional step. Jobs that use this
         # feature incur pro-tier pricing. To not apply advanced input filtering: Choose Disabled. Note that
         # you can still apply basic filtering with Deblock and Denoise.
+
         @[JSON::Field(key: "advancedInputFilter")]
         getter advanced_input_filter : String?
 
         # Optional settings for Advanced input filter when you set Advanced input filter to Enabled.
+
         @[JSON::Field(key: "advancedInputFilterSettings")]
         getter advanced_input_filter_settings : Types::AdvancedInputFilterSettings?
 
         # Use audio selector groups to combine multiple sidecar audio inputs so that you can assign them to a
         # single output audio tab. Note that, if you're working with embedded audio, it's simpler to assign
         # multiple input tracks into a single audio selector rather than use an audio selector group.
+
         @[JSON::Field(key: "audioSelectorGroups")]
         getter audio_selector_groups : Hash(String, Types::AudioSelectorGroup)?
 
         # Use Audio selectors to specify a track or set of tracks from the input that you will use in your
         # outputs. You can use multiple Audio selectors per input.
+
         @[JSON::Field(key: "audioSelectors")]
         getter audio_selectors : Hash(String, Types::AudioSelector)?
 
         # Use captions selectors to specify the captions data from your input that you use in your outputs.
         # You can use up to 100 captions selectors per input.
+
         @[JSON::Field(key: "captionSelectors")]
         getter caption_selectors : Hash(String, Types::CaptionSelector)?
 
         # Use Cropping selection to specify the video area that the service will include in the output video
         # frame. If you specify a value here, it will override any value that you specify in the output
         # setting Cropping selection.
+
         @[JSON::Field(key: "crop")]
         getter crop : Types::Rectangle?
 
         # Enable Deblock to produce smoother motion in the output. Default is disabled. Only manually
         # controllable for MPEG2 and uncompressed video inputs.
+
         @[JSON::Field(key: "deblockFilter")]
         getter deblock_filter : String?
 
         # Settings for decrypting any input files that you encrypt before you upload them to Amazon S3.
         # MediaConvert can decrypt files only when you use AWS Key Management Service (KMS) to encrypt the
         # data key that you use to encrypt your content.
+
         @[JSON::Field(key: "decryptionSettings")]
         getter decryption_settings : Types::InputDecryptionSettings?
 
         # Enable Denoise to filter noise from the input. Default is disabled. Only applicable to MPEG2, H.264,
         # H.265, and uncompressed video inputs.
+
         @[JSON::Field(key: "denoiseFilter")]
         getter denoise_filter : String?
 
@@ -6947,6 +7809,7 @@ module AwsSdk
         # this external XML file. Note that your IAM service role must grant MediaConvert read permissions to
         # this file. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
+
         @[JSON::Field(key: "dolbyVisionMetadataXml")]
         getter dolby_vision_metadata_xml : String?
 
@@ -6955,6 +7818,7 @@ module AwsSdk
         # and specify this Dynamic audio selector as the Audio source, MediaConvert creates an output audio
         # track for each dynamically selected track. Note that when you include a Dynamic audio selector for
         # two or more inputs, each input must have the same number of audio tracks and audio channels.
+
         @[JSON::Field(key: "dynamicAudioSelectors")]
         getter dynamic_audio_selectors : Hash(String, Types::DynamicAudioSelector)?
 
@@ -6968,6 +7832,7 @@ module AwsSdk
         # file URL.) For IMF inputs, specify your input by providing the path to your CPL. For example,
         # s3://amzn-s3-demo-bucket/vf/cpl.xml . If the CPL is in an incomplete IMP, make sure to use
         # Supplemental IMPsto specify any supplemental IMPs that contain assets referenced by the CPL.
+
         @[JSON::Field(key: "fileInput")]
         getter file_input : String?
 
@@ -6975,6 +7840,7 @@ module AwsSdk
         # filtering depending on your input type and quality: Choose Auto. To apply no filtering: Choose
         # Disable. To apply filtering regardless of your input type and quality: Choose Force. When you do,
         # you must also specify a value for Filter strength.
+
         @[JSON::Field(key: "filterEnable")]
         getter filter_enable : String?
 
@@ -6983,11 +7849,13 @@ module AwsSdk
         # set Filter enable to Auto. To manually apply filtering: Enter a value from 1 to 5, where 1 is the
         # least amount of filtering and 5 is the most. The value that you enter applies to the strength of the
         # Deblock or Denoise filters, or to the strength of the Advanced input filter.
+
         @[JSON::Field(key: "filterStrength")]
         getter filter_strength : Int32?
 
         # Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this
         # feature for each input individually. This setting is disabled by default.
+
         @[JSON::Field(key: "imageInserter")]
         getter image_inserter : Types::ImageInserter?
 
@@ -6996,6 +7864,7 @@ module AwsSdk
         # end. If you provide only an end time, it will be the entire input up to that point. When you specify
         # more than one input clip, the transcoding service creates the job outputs by stringing the clips
         # together in the order you specify them.
+
         @[JSON::Field(key: "inputClippings")]
         getter input_clippings : Array(Types::InputClipping)?
 
@@ -7005,6 +7874,7 @@ module AwsSdk
         # don't specify, the default value is Auto. Auto is the correct setting for all inputs that are not
         # PsF. Don't set this value to PsF when your input is interlaced. Doing so creates horizontal
         # interlacing artifacts.
+
         @[JSON::Field(key: "inputScanType")]
         getter input_scan_type : String?
 
@@ -7013,17 +7883,20 @@ module AwsSdk
         # that you specify in the output setting Selection placement. If you specify a value here, this will
         # override any AFD values in your input, even if you set Respond to AFD to Respond. If you specify a
         # value here, this will ignore anything that you specify for the setting Scaling Behavior.
+
         @[JSON::Field(key: "position")]
         getter position : Types::Rectangle?
 
         # Use Program to select a specific program from within a multi-program transport stream. Note that
         # Quad 4K is not currently supported. Default is the first program within the transport stream. If the
         # program you specify doesn't exist, the transcoding service will use this default.
+
         @[JSON::Field(key: "programNumber")]
         getter program_number : Int32?
 
         # Set PSI control for transport stream inputs to specify which data the demux process to scans. *
         # Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+
         @[JSON::Field(key: "psiControl")]
         getter psi_control : String?
 
@@ -7032,6 +7905,7 @@ module AwsSdk
         # trailing slash or the ASSETMAP.xml files. For example ["s3://bucket/ov/",
         # "s3://bucket/vf2/ASSETMAP.xml"]. You don't need to specify the IMP that contains your input CPL,
         # because the service automatically detects it.
+
         @[JSON::Field(key: "supplementalImps")]
         getter supplemental_imps : Array(String)?
 
@@ -7043,6 +7917,7 @@ module AwsSdk
         # processing specific portions of archived content. To use TAMS, you must: 1. Have access to a
         # TAMS-compliant server 2. Specify the server URL in the Input file URL field 3. Provide the required
         # SourceId and Timerange parameters 4. Configure authentication, if your TAMS server requires it
+
         @[JSON::Field(key: "tamsSettings")]
         getter tams_settings : Types::InputTamsSettings?
 
@@ -7054,6 +7929,7 @@ module AwsSdk
         # setting Start timecode. If you don't specify a value for Timecode source, the service will use
         # Embedded by default. For more information about timecodes, see
         # https://docs.aws.amazon.com/console/mediaconvert/timecode.
+
         @[JSON::Field(key: "timecodeSource")]
         getter timecode_source : String?
 
@@ -7061,6 +7937,7 @@ module AwsSdk
         # setting, you must set the Timecode source setting, located under the input settings, to Specified
         # start. For more information about timecodes, see
         # https://docs.aws.amazon.com/console/mediaconvert/timecode.
+
         @[JSON::Field(key: "timecodeStart")]
         getter timecode_start : String?
 
@@ -7069,15 +7946,18 @@ module AwsSdk
         # other inputs. You can specify Video generator, or you can specify an Input file, but you cannot
         # specify both. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/video-generator.html
+
         @[JSON::Field(key: "videoGenerator")]
         getter video_generator : Types::InputVideoGenerator?
 
         # Contains an array of video overlays.
+
         @[JSON::Field(key: "videoOverlays")]
         getter video_overlays : Array(Types::VideoOverlay)?
 
         # Input video selectors contain the video settings for the input. Each of your inputs can have up to
         # one video selector.
+
         @[JSON::Field(key: "videoSelector")]
         getter video_selector : Types::VideoSelector?
 
@@ -7117,6 +7997,7 @@ module AwsSdk
       # you want in your output. All input clips that you specify will be included in every output of the
       # job. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/assembling-multiple-inputs-and-input-clips.html.
+
       struct InputClipping
         include JSON::Serializable
 
@@ -7126,6 +8007,7 @@ module AwsSdk
         # is the second, and FF is the frame number. When choosing this value, take into account your setting
         # for timecode source under input settings. For example, if you have embedded timecodes that start at
         # 01:00:00:00 and you want your clip to end six minutes into the video, use 01:06:00:00.
+
         @[JSON::Field(key: "endTimecode")]
         getter end_timecode : String?
 
@@ -7135,6 +8017,7 @@ module AwsSdk
         # is the minute, SS is the second, and FF is the frame number. When choosing this value, take into
         # account your setting for Input timecode source. For example, if you have embedded timecodes that
         # start at 01:00:00:00 and you want your clip to begin five minutes into the video, use 01:05:00:00.
+
         @[JSON::Field(key: "startTimecode")]
         getter start_timecode : String?
 
@@ -7148,10 +8031,12 @@ module AwsSdk
       # Settings for decrypting any input files that you encrypt before you upload them to Amazon S3.
       # MediaConvert can decrypt files only when you use AWS Key Management Service (KMS) to encrypt the
       # data key that you use to encrypt your content.
+
       struct InputDecryptionSettings
         include JSON::Serializable
 
         # Specify the encryption mode that you used to encrypt your input files.
+
         @[JSON::Field(key: "decryptionMode")]
         getter decryption_mode : String?
 
@@ -7159,6 +8044,7 @@ module AwsSdk
         # making your encrypted content vulnerable. Specify the encrypted version of the data key that you
         # used to encrypt your content. The data key must be encrypted by AWS Key Management Service (KMS).
         # The key can be 128, 192, or 256 bits.
+
         @[JSON::Field(key: "encryptedDecryptionKey")]
         getter encrypted_decryption_key : String?
 
@@ -7166,11 +8052,13 @@ module AwsSdk
         # to Amazon S3. You can use a 16-byte initialization vector with any encryption mode. Or, you can use
         # a 12-byte initialization vector with GCM or CTR. MediaConvert accepts only initialization vectors
         # that are base64-encoded.
+
         @[JSON::Field(key: "initializationVector")]
         getter initialization_vector : String?
 
         # Specify the AWS Region for AWS Key Management Service (KMS) that you used to encrypt your data key,
         # if that Region is different from the one you are using for AWS Elemental MediaConvert.
+
         @[JSON::Field(key: "kmsKeyRegion")]
         getter kms_key_region : String?
 
@@ -7191,6 +8079,7 @@ module AwsSdk
       # processing specific portions of archived content. To use TAMS, you must: 1. Have access to a
       # TAMS-compliant server 2. Specify the server URL in the Input file URL field 3. Provide the required
       # SourceId and Timerange parameters 4. Configure authentication, if your TAMS server requires it
+
       struct InputTamsSettings
         include JSON::Serializable
 
@@ -7201,6 +8090,7 @@ module AwsSdk
         # secretsmanager:GetSecretValue permissions. Format:
         # arn:aws:events:region:account-id:connection/connection-name/unique-id This setting is required when
         # you include TAMS settings in your job.
+
         @[JSON::Field(key: "authConnectionArn")]
         getter auth_connection_arn : String?
 
@@ -7211,6 +8101,7 @@ module AwsSdk
         # fill gaps between segments. This maintains timeline continuity but adds black frames where content
         # is missing. * Hold last frame - Repeat the last frame before a gap until the next segment begins.
         # This maintains visual continuity during gaps.
+
         @[JSON::Field(key: "gapHandling")]
         getter gap_handling : String?
 
@@ -7220,6 +8111,7 @@ module AwsSdk
         # of type urn:x-nmos:format:multi, and can can reference multiple flows for audio, video, or combined
         # audio/video content. MediaConvert automatically selects the highest quality flows available for your
         # job. This setting is required when you include TAMS settings in your job.
+
         @[JSON::Field(key: "sourceId")]
         getter source_id : String?
 
@@ -7228,6 +8120,7 @@ module AwsSdk
         # implementation. This must be two timestamp values with the format {sign?}{seconds}:{nanoseconds},
         # separated by an underscore, surrounded by either parentheses or square brackets. Example:
         # [15:0_35:0) This setting is required when you include TAMS settings in your job.
+
         @[JSON::Field(key: "timerange")]
         getter timerange : String?
 
@@ -7241,6 +8134,7 @@ module AwsSdk
       end
 
       # Specified video input in a template.
+
       struct InputTemplate
         include JSON::Serializable
 
@@ -7253,42 +8147,50 @@ module AwsSdk
         # filter, you can optionally add texture or sharpening as an additional step. Jobs that use this
         # feature incur pro-tier pricing. To not apply advanced input filtering: Choose Disabled. Note that
         # you can still apply basic filtering with Deblock and Denoise.
+
         @[JSON::Field(key: "advancedInputFilter")]
         getter advanced_input_filter : String?
 
         # Optional settings for Advanced input filter when you set Advanced input filter to Enabled.
+
         @[JSON::Field(key: "advancedInputFilterSettings")]
         getter advanced_input_filter_settings : Types::AdvancedInputFilterSettings?
 
         # Use audio selector groups to combine multiple sidecar audio inputs so that you can assign them to a
         # single output audio tab. Note that, if you're working with embedded audio, it's simpler to assign
         # multiple input tracks into a single audio selector rather than use an audio selector group.
+
         @[JSON::Field(key: "audioSelectorGroups")]
         getter audio_selector_groups : Hash(String, Types::AudioSelectorGroup)?
 
         # Use Audio selectors to specify a track or set of tracks from the input that you will use in your
         # outputs. You can use multiple Audio selectors per input.
+
         @[JSON::Field(key: "audioSelectors")]
         getter audio_selectors : Hash(String, Types::AudioSelector)?
 
         # Use captions selectors to specify the captions data from your input that you use in your outputs.
         # You can use up to 100 captions selectors per input.
+
         @[JSON::Field(key: "captionSelectors")]
         getter caption_selectors : Hash(String, Types::CaptionSelector)?
 
         # Use Cropping selection to specify the video area that the service will include in the output video
         # frame. If you specify a value here, it will override any value that you specify in the output
         # setting Cropping selection.
+
         @[JSON::Field(key: "crop")]
         getter crop : Types::Rectangle?
 
         # Enable Deblock to produce smoother motion in the output. Default is disabled. Only manually
         # controllable for MPEG2 and uncompressed video inputs.
+
         @[JSON::Field(key: "deblockFilter")]
         getter deblock_filter : String?
 
         # Enable Denoise to filter noise from the input. Default is disabled. Only applicable to MPEG2, H.264,
         # H.265, and uncompressed video inputs.
+
         @[JSON::Field(key: "denoiseFilter")]
         getter denoise_filter : String?
 
@@ -7300,6 +8202,7 @@ module AwsSdk
         # this external XML file. Note that your IAM service role must grant MediaConvert read permissions to
         # this file. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
+
         @[JSON::Field(key: "dolbyVisionMetadataXml")]
         getter dolby_vision_metadata_xml : String?
 
@@ -7308,6 +8211,7 @@ module AwsSdk
         # and specify this Dynamic audio selector as the Audio source, MediaConvert creates an output audio
         # track for each dynamically selected track. Note that when you include a Dynamic audio selector for
         # two or more inputs, each input must have the same number of audio tracks and audio channels.
+
         @[JSON::Field(key: "dynamicAudioSelectors")]
         getter dynamic_audio_selectors : Hash(String, Types::DynamicAudioSelector)?
 
@@ -7315,6 +8219,7 @@ module AwsSdk
         # filtering depending on your input type and quality: Choose Auto. To apply no filtering: Choose
         # Disable. To apply filtering regardless of your input type and quality: Choose Force. When you do,
         # you must also specify a value for Filter strength.
+
         @[JSON::Field(key: "filterEnable")]
         getter filter_enable : String?
 
@@ -7323,11 +8228,13 @@ module AwsSdk
         # set Filter enable to Auto. To manually apply filtering: Enter a value from 1 to 5, where 1 is the
         # least amount of filtering and 5 is the most. The value that you enter applies to the strength of the
         # Deblock or Denoise filters, or to the strength of the Advanced input filter.
+
         @[JSON::Field(key: "filterStrength")]
         getter filter_strength : Int32?
 
         # Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this
         # feature for each input individually. This setting is disabled by default.
+
         @[JSON::Field(key: "imageInserter")]
         getter image_inserter : Types::ImageInserter?
 
@@ -7336,6 +8243,7 @@ module AwsSdk
         # end. If you provide only an end time, it will be the entire input up to that point. When you specify
         # more than one input clip, the transcoding service creates the job outputs by stringing the clips
         # together in the order you specify them.
+
         @[JSON::Field(key: "inputClippings")]
         getter input_clippings : Array(Types::InputClipping)?
 
@@ -7345,6 +8253,7 @@ module AwsSdk
         # don't specify, the default value is Auto. Auto is the correct setting for all inputs that are not
         # PsF. Don't set this value to PsF when your input is interlaced. Doing so creates horizontal
         # interlacing artifacts.
+
         @[JSON::Field(key: "inputScanType")]
         getter input_scan_type : String?
 
@@ -7353,17 +8262,20 @@ module AwsSdk
         # that you specify in the output setting Selection placement. If you specify a value here, this will
         # override any AFD values in your input, even if you set Respond to AFD to Respond. If you specify a
         # value here, this will ignore anything that you specify for the setting Scaling Behavior.
+
         @[JSON::Field(key: "position")]
         getter position : Types::Rectangle?
 
         # Use Program to select a specific program from within a multi-program transport stream. Note that
         # Quad 4K is not currently supported. Default is the first program within the transport stream. If the
         # program you specify doesn't exist, the transcoding service will use this default.
+
         @[JSON::Field(key: "programNumber")]
         getter program_number : Int32?
 
         # Set PSI control for transport stream inputs to specify which data the demux process to scans. *
         # Ignore PSI - Scan all PIDs for audio and video. * Use PSI - Scan only PSI data.
+
         @[JSON::Field(key: "psiControl")]
         getter psi_control : String?
 
@@ -7375,6 +8287,7 @@ module AwsSdk
         # setting Start timecode. If you don't specify a value for Timecode source, the service will use
         # Embedded by default. For more information about timecodes, see
         # https://docs.aws.amazon.com/console/mediaconvert/timecode.
+
         @[JSON::Field(key: "timecodeSource")]
         getter timecode_source : String?
 
@@ -7382,15 +8295,18 @@ module AwsSdk
         # setting, you must set the Timecode source setting, located under the input settings, to Specified
         # start. For more information about timecodes, see
         # https://docs.aws.amazon.com/console/mediaconvert/timecode.
+
         @[JSON::Field(key: "timecodeStart")]
         getter timecode_start : String?
 
         # Contains an array of video overlays.
+
         @[JSON::Field(key: "videoOverlays")]
         getter video_overlays : Array(Types::VideoOverlay)?
 
         # Input video selectors contain the video settings for the input. Each of your inputs can have up to
         # one video selector.
+
         @[JSON::Field(key: "videoSelector")]
         getter video_selector : Types::VideoSelector?
 
@@ -7426,28 +8342,33 @@ module AwsSdk
       # other inputs. You can specify Video generator, or you can specify an Input file, but you cannot
       # specify both. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/video-generator.html
+
       struct InputVideoGenerator
         include JSON::Serializable
 
         # Specify the number of audio channels to include in your video generator input. MediaConvert creates
         # these audio channels as silent audio within a single audio track. Enter an integer from 1 to 32.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Specify the duration, in milliseconds, for your video generator input. Enter an integer from 1 to
         # 86400000.
+
         @[JSON::Field(key: "duration")]
         getter duration : Int32?
 
         # Specify the denominator of the fraction that represents the frame rate for your video generator
         # input. When you do, you must also specify a value for Frame rate numerator. MediaConvert uses a
         # default frame rate of 29.97 when you leave Frame rate numerator and Frame rate denominator blank.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
         # Specify the numerator of the fraction that represents the frame rate for your video generator input.
         # When you do, you must also specify a value for Frame rate denominator. MediaConvert uses a default
         # frame rate of 29.97 when you leave Frame rate numerator and Frame rate denominator blank.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -7455,16 +8376,19 @@ module AwsSdk
         # you include one or more video overlays for this input. To use the default resolution 540x360: Leave
         # both width and height blank. To specify a height: Enter an even integer from 32 to 8192. When you
         # do, you must also specify a value for width.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Specify the HTTP, HTTPS, or Amazon S3 location of the image that you want to overlay on the video.
         # Use a PNG or TGA file.
+
         @[JSON::Field(key: "imageInput")]
         getter image_input : String?
 
         # Specify the audio sample rate, in Hz, for the silent audio in your video generator input. Enter an
         # integer from 32000 to 48000.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -7472,6 +8396,7 @@ module AwsSdk
         # you include one or more video overlays for this input. To use the default resolution 540x360: Leave
         # both width and height blank. To specify a width: Enter an even integer from 32 to 8192. When you do,
         # you must also specify a value for height.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -7489,11 +8414,13 @@ module AwsSdk
       end
 
       # These settings apply to a specific graphic overlay. You can include multiple overlays in your job.
+
       struct InsertableImage
         include JSON::Serializable
 
         # Specify the time, in milliseconds, for the image to remain on the output video. This duration
         # includes fade-in time but not fade-out time.
+
         @[JSON::Field(key: "duration")]
         getter duration : Int32?
 
@@ -7501,6 +8428,7 @@ module AwsSdk
         # insertion and the time that the image appears at full opacity. Full opacity is the level that you
         # specify for the opacity setting. If you don't specify a value for Fade-in, the image will appear
         # abruptly at the overlay start time.
+
         @[JSON::Field(key: "fadeIn")]
         getter fade_in : Int32?
 
@@ -7508,49 +8436,58 @@ module AwsSdk
         # the image overlay Duration and when the overlaid image has faded to total transparency. If you don't
         # specify a value for Fade-out, the image will disappear abruptly at the end of the inserted image
         # duration.
+
         @[JSON::Field(key: "fadeOut")]
         getter fade_out : Int32?
 
         # Specify the height of the inserted image in pixels. If you specify a value that's larger than the
         # video resolution height, the service will crop your overlaid image to fit. To use the native height
         # of the image, keep this setting blank.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Specify the HTTP, HTTPS, or Amazon S3 location of the image that you want to overlay on the video.
         # Use a PNG or TGA file.
+
         @[JSON::Field(key: "imageInserterInput")]
         getter image_inserter_input : String?
 
         # Specify the distance, in pixels, between the inserted image and the left edge of the video frame.
         # Required for any image overlay that you specify.
+
         @[JSON::Field(key: "imageX")]
         getter image_x : Int32?
 
         # Specify the distance, in pixels, between the overlaid image and the top edge of the video frame.
         # Required for any image overlay that you specify.
+
         @[JSON::Field(key: "imageY")]
         getter image_y : Int32?
 
         # Specify how overlapping inserted images appear. Images with higher values for Layer appear on top of
         # images with lower values for Layer.
+
         @[JSON::Field(key: "layer")]
         getter layer : Int32?
 
         # Use Opacity to specify how much of the underlying video shows through the inserted image. 0 is
         # transparent and 100 is fully opaque. Default is 50.
+
         @[JSON::Field(key: "opacity")]
         getter opacity : Int32?
 
         # Specify the timecode of the frame that you want the overlay to first appear on. This must be in
         # timecode (HH:MM:SS:FF or HH:MM:SS;FF) format. Remember to take into account your timecode source
         # settings.
+
         @[JSON::Field(key: "startTime")]
         getter start_time : String?
 
         # Specify the width of the inserted image in pixels. If you specify a value that's larger than the
         # video resolution width, the service will crop your overlaid image to fit. To use the native width of
         # the image, keep this setting blank.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -7570,8 +8507,10 @@ module AwsSdk
         end
       end
 
+
       struct InternalServerErrorException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -7584,19 +8523,23 @@ module AwsSdk
 
       # Each job converts an input file into an output file or files. For more information, see the User
       # Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
       struct Job
         include JSON::Serializable
 
         # The IAM role you use for creating this job. For details about permissions, see the User Guide topic
         # at the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html
+
         @[JSON::Field(key: "role")]
         getter role : String
 
         # JobSettings contains all the transcode settings for a job.
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::JobSettings
 
         # Accelerated transcoding can significantly speed up jobs with long, visually complex content.
+
         @[JSON::Field(key: "accelerationSettings")]
         getter acceleration_settings : Types::AccelerationSettings?
 
@@ -7609,15 +8552,18 @@ module AwsSdk
         # accelerated transcoding, the service either fails your job or runs it without accelerated
         # transcoding, depending on how you set Acceleration (AccelerationMode). When the service runs your
         # job without accelerated transcoding, AccelerationStatus is NOT_ACCELERATED.
+
         @[JSON::Field(key: "accelerationStatus")]
         getter acceleration_status : String?
 
         # An identifier for this resource that is unique within all of AWS.
+
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert
         # costs on any billing report that you set up.
+
         @[JSON::Field(key: "billingTagsSource")]
         getter billing_tags_source : String?
 
@@ -7626,34 +8572,42 @@ module AwsSdk
         # within one minute of a successful request, the API returns the job details of the original request
         # instead. For more information see
         # https://docs.aws.amazon.com/mediaconvert/latest/apireference/idempotency.html.
+
         @[JSON::Field(key: "clientRequestToken")]
         getter client_request_token : String?
 
         # The time, in Unix epoch format in seconds, when the job got created.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # A job's phase can be PROBING, TRANSCODING OR UPLOADING
+
         @[JSON::Field(key: "currentPhase")]
         getter current_phase : String?
 
         # Error code for the job
+
         @[JSON::Field(key: "errorCode")]
         getter error_code : Int32?
 
         # Error message of Job
+
         @[JSON::Field(key: "errorMessage")]
         getter error_message : String?
 
         # Optional list of hop destinations.
+
         @[JSON::Field(key: "hopDestinations")]
         getter hop_destinations : Array(Types::HopDestination)?
 
         # A portion of the job's ARN, unique within your AWS Elemental MediaConvert resources
+
         @[JSON::Field(key: "id")]
         getter id : String?
 
         # The Job engine version that you requested for your job. Valid versions are in a YYYY-MM-DD format.
+
         @[JSON::Field(key: "jobEngineVersionRequested")]
         getter job_engine_version_requested : String?
 
@@ -7662,6 +8616,7 @@ module AwsSdk
         # with an expired version result in a regular job, as if no specific Job engine version was requested.
         # When you request an invalid version, the response for this property will be empty. Requests to
         # create jobs with an invalid version result in a 400 error message, and no job is created.
+
         @[JSON::Field(key: "jobEngineVersionUsed")]
         getter job_engine_version_used : String?
 
@@ -7672,46 +8627,56 @@ module AwsSdk
         # the following input containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, the
         # service can't provide information about job progress. In those cases, jobPercentComplete returns a
         # null value.
+
         @[JSON::Field(key: "jobPercentComplete")]
         getter job_percent_complete : Int32?
 
         # The job template that the job is created from, if it is created from a job template.
+
         @[JSON::Field(key: "jobTemplate")]
         getter job_template : String?
 
         # Contains information about the most recent share attempt for the job. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/creating-resource-share.html
+
         @[JSON::Field(key: "lastShareDetails")]
         getter last_share_details : String?
 
         # Provides messages from the service about jobs that you have already successfully submitted.
+
         @[JSON::Field(key: "messages")]
         getter messages : Types::JobMessages?
 
         # List of output group details
+
         @[JSON::Field(key: "outputGroupDetails")]
         getter output_group_details : Array(Types::OutputGroupDetail)?
 
         # Relative priority on the job.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
         # When you create a job, you can specify a queue to send it to. If you don't specify, the job will go
         # to the default queue. For more about queues, see the User Guide topic at
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
         # The job's queue hopping history.
+
         @[JSON::Field(key: "queueTransitions")]
         getter queue_transitions : Array(Types::QueueTransition)?
 
         # The number of times that the service automatically attempted to process your job after encountering
         # an error.
+
         @[JSON::Field(key: "retryCount")]
         getter retry_count : Int32?
 
         # A job's share status can be NOT_SHARED, INITIATED, or SHARED
+
         @[JSON::Field(key: "shareStatus")]
         getter share_status : String?
 
@@ -7719,10 +8684,12 @@ module AwsSdk
         # you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar
         # performance to what you will see with one RTS in a reserved queue. This setting is disabled by
         # default.
+
         @[JSON::Field(key: "simulateReservedQueue")]
         getter simulate_reserved_queue : String?
 
         # A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -7730,22 +8697,26 @@ module AwsSdk
         # interval, in seconds, between status updates. MediaConvert sends an update at this interval from the
         # time the service begins processing your job to the time it completes the transcode or encounters an
         # error.
+
         @[JSON::Field(key: "statusUpdateInterval")]
         getter status_update_interval : String?
 
         # Information about when jobs are submitted, started, and finished is specified in Unix epoch format
         # in seconds.
+
         @[JSON::Field(key: "timing")]
         getter timing : Types::Timing?
 
         # User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in
         # key/value pairs.
+
         @[JSON::Field(key: "userMetadata")]
         getter user_metadata : Hash(String, String)?
 
         # Contains any warning messages for the job. Use to help identify potential issues with your input,
         # output, or job. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html
+
         @[JSON::Field(key: "warnings")]
         getter warnings : Array(Types::WarningGroup)?
 
@@ -7787,11 +8758,13 @@ module AwsSdk
 
       # Use Job engine versions to run jobs for your production workflow on one version, while you test and
       # validate the latest version. Job engine versions are in a YYYY-MM-DD format.
+
       struct JobEngineVersion
         include JSON::Serializable
 
         # The date that this Job engine version expires. Requests to create jobs with an expired version
         # result in a regular job, as if no specific Job engine version was requested.
+
         @[JSON::Field(key: "expirationDate")]
         getter expiration_date : Time?
 
@@ -7800,6 +8773,7 @@ module AwsSdk
         # releases with new features, updates, improvements, and fixes. Job engine versions are in a
         # YYYY-MM-DD format. Note that the Job engine version feature is not publicly available at this time.
         # To request access, contact AWS support.
+
         @[JSON::Field(key: "version")]
         getter version : String?
 
@@ -7811,14 +8785,17 @@ module AwsSdk
       end
 
       # Provides messages from the service about jobs that you have already successfully submitted.
+
       struct JobMessages
         include JSON::Serializable
 
         # List of messages that are informational only and don't indicate a problem with your job.
+
         @[JSON::Field(key: "info")]
         getter info : Array(String)?
 
         # List of messages that warn about conditions that might cause your job not to run or to fail.
+
         @[JSON::Field(key: "warning")]
         getter warning : Array(String)?
 
@@ -7830,26 +8807,31 @@ module AwsSdk
       end
 
       # JobSettings contains all the transcode settings for a job.
+
       struct JobSettings
         include JSON::Serializable
 
         # When specified, this offset (in milliseconds) is added to the input Ad Avail PTS time.
+
         @[JSON::Field(key: "adAvailOffset")]
         getter ad_avail_offset : Int32?
 
         # Settings for ad avail blanking. Video can be blanked or overlaid with an image, and audio muted
         # during SCTE-35 triggered ad avails.
+
         @[JSON::Field(key: "availBlanking")]
         getter avail_blanking : Types::AvailBlanking?
 
         # Use 3D LUTs to specify custom color mapping behavior when you convert from one color space into
         # another. You can include up to 8 different 3D LUTs. For more information, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/3d-luts.html
+
         @[JSON::Field(key: "colorConversion3DLUTSettings")]
         getter color_conversion3_dlut_settings : Array(Types::ColorConversion3DLUTSetting)?
 
         # Settings for Event Signaling And Messaging (ESAM). If you don't do ad insertion, you can ignore
         # these settings.
+
         @[JSON::Field(key: "esam")]
         getter esam : Types::EsamSettings?
 
@@ -7857,6 +8839,7 @@ module AwsSdk
         # MediaConvert does with the Extended Data Services (XDS) packets. You can choose to pass through XDS
         # packets, or remove them from the output. For more information about XDS, see EIA-608 Line Data
         # Services, section 9.5.1.5 05h Content Advisory.
+
         @[JSON::Field(key: "extendedDataServices")]
         getter extended_data_services : Types::ExtendedDataServices?
 
@@ -7866,11 +8849,13 @@ module AwsSdk
         # other inputs. If MediaConvert cannot follow your source, for example if you specify an audio-only
         # input, MediaConvert uses the first followable input instead. In your JSON job specification, enter
         # an integer from 1 to 150 corresponding to the order of your inputs.
+
         @[JSON::Field(key: "followSource")]
         getter follow_source : Int32?
 
         # Use Inputs to define source file used in the transcode job. There can be multiple inputs add in a
         # job. These inputs will be concantenated together to create the output.
+
         @[JSON::Field(key: "inputs")]
         getter inputs : Array(Types::Input)?
 
@@ -7879,18 +8864,21 @@ module AwsSdk
         # in your job. In addition to specifying these values, you also need to store your Kantar credentials
         # in AWS Secrets Manager. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/kantar-watermarking.html.
+
         @[JSON::Field(key: "kantarWatermark")]
         getter kantar_watermark : Types::KantarWatermarkSettings?
 
         # Overlay motion graphics on top of your video. The motion graphics that you specify here appear on
         # all outputs in all output groups. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
+
         @[JSON::Field(key: "motionImageInserter")]
         getter motion_image_inserter : Types::MotionImageInserter?
 
         # Settings for your Nielsen configuration. If you don't do Nielsen measurement and analytics, ignore
         # these settings. When you enable Nielsen configuration, MediaConvert enables PCM to ID3 tagging for
         # all outputs in the job.
+
         @[JSON::Field(key: "nielsenConfiguration")]
         getter nielsen_configuration : Types::NielsenConfiguration?
 
@@ -7900,6 +8888,7 @@ module AwsSdk
         # every output in your job. The MediaConvert implementation is currently with the following Nielsen
         # versions: Nielsen Watermark SDK Version 6.0.13 Nielsen NLM Watermark Engine Version 1.3.3 Nielsen
         # Watermark Authenticator [SID_TIC] Version [7.0.0]
+
         @[JSON::Field(key: "nielsenNonLinearWatermark")]
         getter nielsen_non_linear_watermark : Types::NielsenNonLinearWatermarkSettings?
 
@@ -7910,16 +8899,19 @@ module AwsSdk
         # FILE_GROUP_SETTINGS, FileGroupSettings * HLS_GROUP_SETTINGS, HlsGroupSettings *
         # DASH_ISO_GROUP_SETTINGS, DashIsoGroupSettings * MS_SMOOTH_GROUP_SETTINGS, MsSmoothGroupSettings *
         # CMAF_GROUP_SETTINGS, CmafGroupSettings
+
         @[JSON::Field(key: "outputGroups")]
         getter output_groups : Array(Types::OutputGroup)?
 
         # These settings control how the service handles timecodes throughout the job. These settings don't
         # affect input clipping.
+
         @[JSON::Field(key: "timecodeConfig")]
         getter timecode_config : Types::TimecodeConfig?
 
         # Insert user-defined custom ID3 metadata at timecodes that you specify. In each output that you want
         # to include this metadata, you must set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataInsertion")]
         getter timed_metadata_insertion : Types::TimedMetadataInsertion?
 
@@ -7943,52 +8935,64 @@ module AwsSdk
       end
 
       # A job template is a pre-made set of encoding instructions that you can use to quickly create a job.
+
       struct JobTemplate
         include JSON::Serializable
 
         # A name you create for each job template. Each name must be unique within your account.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # JobTemplateSettings contains all the transcode settings saved in the template that will be applied
         # to jobs created from it.
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::JobTemplateSettings
 
         # Accelerated transcoding can significantly speed up jobs with long, visually complex content.
+
         @[JSON::Field(key: "accelerationSettings")]
         getter acceleration_settings : Types::AccelerationSettings?
 
         # An identifier for this resource that is unique within all of AWS.
+
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # An optional category you create to organize your job templates.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # The timestamp in epoch seconds for Job template creation.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # An optional description you create for each job template.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # Optional list of hop destinations.
+
         @[JSON::Field(key: "hopDestinations")]
         getter hop_destinations : Array(Types::HopDestination)?
 
         # The timestamp in epoch seconds when the Job template was last updated.
+
         @[JSON::Field(key: "lastUpdated")]
         getter last_updated : Time?
 
         # Relative priority on the job.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
         # Optional. The queue that jobs created from this template are assigned to. If you don't specify this,
         # jobs will go to the default queue.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
@@ -7996,11 +9000,13 @@ module AwsSdk
         # interval, in seconds, between status updates. MediaConvert sends an update at this interval from the
         # time the service begins processing your job to the time it completes the transcode or encounters an
         # error.
+
         @[JSON::Field(key: "statusUpdateInterval")]
         getter status_update_interval : String?
 
         # A job template can be of two types: system or custom. System or built-in job templates can't be
         # modified or deleted by the user.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -8024,26 +9030,31 @@ module AwsSdk
 
       # JobTemplateSettings contains all the transcode settings saved in the template that will be applied
       # to jobs created from it.
+
       struct JobTemplateSettings
         include JSON::Serializable
 
         # When specified, this offset (in milliseconds) is added to the input Ad Avail PTS time.
+
         @[JSON::Field(key: "adAvailOffset")]
         getter ad_avail_offset : Int32?
 
         # Settings for ad avail blanking. Video can be blanked or overlaid with an image, and audio muted
         # during SCTE-35 triggered ad avails.
+
         @[JSON::Field(key: "availBlanking")]
         getter avail_blanking : Types::AvailBlanking?
 
         # Use 3D LUTs to specify custom color mapping behavior when you convert from one color space into
         # another. You can include up to 8 different 3D LUTs. For more information, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/3d-luts.html
+
         @[JSON::Field(key: "colorConversion3DLUTSettings")]
         getter color_conversion3_dlut_settings : Array(Types::ColorConversion3DLUTSetting)?
 
         # Settings for Event Signaling And Messaging (ESAM). If you don't do ad insertion, you can ignore
         # these settings.
+
         @[JSON::Field(key: "esam")]
         getter esam : Types::EsamSettings?
 
@@ -8051,6 +9062,7 @@ module AwsSdk
         # MediaConvert does with the Extended Data Services (XDS) packets. You can choose to pass through XDS
         # packets, or remove them from the output. For more information about XDS, see EIA-608 Line Data
         # Services, section 9.5.1.5 05h Content Advisory.
+
         @[JSON::Field(key: "extendedDataServices")]
         getter extended_data_services : Types::ExtendedDataServices?
 
@@ -8060,11 +9072,13 @@ module AwsSdk
         # other inputs. If MediaConvert cannot follow your source, for example if you specify an audio-only
         # input, MediaConvert uses the first followable input instead. In your JSON job specification, enter
         # an integer from 1 to 150 corresponding to the order of your inputs.
+
         @[JSON::Field(key: "followSource")]
         getter follow_source : Int32?
 
         # Use Inputs to define the source file used in the transcode job. There can only be one input in a job
         # template. Using the API, you can include multiple inputs when referencing a job template.
+
         @[JSON::Field(key: "inputs")]
         getter inputs : Array(Types::InputTemplate)?
 
@@ -8073,18 +9087,21 @@ module AwsSdk
         # in your job. In addition to specifying these values, you also need to store your Kantar credentials
         # in AWS Secrets Manager. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/kantar-watermarking.html.
+
         @[JSON::Field(key: "kantarWatermark")]
         getter kantar_watermark : Types::KantarWatermarkSettings?
 
         # Overlay motion graphics on top of your video. The motion graphics that you specify here appear on
         # all outputs in all output groups. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
+
         @[JSON::Field(key: "motionImageInserter")]
         getter motion_image_inserter : Types::MotionImageInserter?
 
         # Settings for your Nielsen configuration. If you don't do Nielsen measurement and analytics, ignore
         # these settings. When you enable Nielsen configuration, MediaConvert enables PCM to ID3 tagging for
         # all outputs in the job.
+
         @[JSON::Field(key: "nielsenConfiguration")]
         getter nielsen_configuration : Types::NielsenConfiguration?
 
@@ -8094,6 +9111,7 @@ module AwsSdk
         # every output in your job. The MediaConvert implementation is currently with the following Nielsen
         # versions: Nielsen Watermark SDK Version 6.0.13 Nielsen NLM Watermark Engine Version 1.3.3 Nielsen
         # Watermark Authenticator [SID_TIC] Version [7.0.0]
+
         @[JSON::Field(key: "nielsenNonLinearWatermark")]
         getter nielsen_non_linear_watermark : Types::NielsenNonLinearWatermarkSettings?
 
@@ -8104,16 +9122,19 @@ module AwsSdk
         # FILE_GROUP_SETTINGS, FileGroupSettings * HLS_GROUP_SETTINGS, HlsGroupSettings *
         # DASH_ISO_GROUP_SETTINGS, DashIsoGroupSettings * MS_SMOOTH_GROUP_SETTINGS, MsSmoothGroupSettings *
         # CMAF_GROUP_SETTINGS, CmafGroupSettings
+
         @[JSON::Field(key: "outputGroups")]
         getter output_groups : Array(Types::OutputGroup)?
 
         # These settings control how the service handles timecodes throughout the job. These settings don't
         # affect input clipping.
+
         @[JSON::Field(key: "timecodeConfig")]
         getter timecode_config : Types::TimecodeConfig?
 
         # Insert user-defined custom ID3 metadata at timecodes that you specify. In each output that you want
         # to include this metadata, you must set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataInsertion")]
         getter timed_metadata_insertion : Types::TimedMetadataInsertion?
 
@@ -8138,6 +9159,7 @@ module AwsSdk
 
       # Provide one or more JobsQueryFilter objects, each containing a Key with an associated Values array.
       # Note that MediaConvert queries jobs using OR logic.
+
       struct JobsQueryFilter
         include JSON::Serializable
 
@@ -8152,10 +9174,12 @@ module AwsSdk
         # AC3| EAC3 | EAC3_ATMOS | VORBIS | OPUS | PASSTHROUGH | FLAC) * videoCodec - Your output's video
         # codec. (AV1 | AVC_INTRA | FRAME_CAPTURE | H_264 | H_265 | MPEG2 | PASSTHROUGH | PRORES |
         # UNCOMPRESSED | VC3 | VP8 | VP9 | XAVC)
+
         @[JSON::Field(key: "key")]
         getter key : String?
 
         # A list of values associated with a JobsQueryFilterKey.
+
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -8171,14 +9195,17 @@ module AwsSdk
       # in your job. In addition to specifying these values, you also need to store your Kantar credentials
       # in AWS Secrets Manager. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/kantar-watermarking.html.
+
       struct KantarWatermarkSettings
         include JSON::Serializable
 
         # Provide an audio channel name from your Kantar audio license.
+
         @[JSON::Field(key: "channelName")]
         getter channel_name : String?
 
         # Specify a unique identifier for Kantar to use for this piece of content.
+
         @[JSON::Field(key: "contentReference")]
         getter content_reference : String?
 
@@ -8188,19 +9215,23 @@ module AwsSdk
         # For instructions on creating a secret, see
         # https://docs.aws.amazon.com/secretsmanager/latest/userguide/tutorials_basic.html, in the AWS Secrets
         # Manager User Guide.
+
         @[JSON::Field(key: "credentialsSecretName")]
         getter credentials_secret_name : String?
 
         # Optional. Specify an offset, in whole seconds, from the start of your output and the beginning of
         # the watermarking. When you don't specify an offset, Kantar defaults to zero.
+
         @[JSON::Field(key: "fileOffset")]
         getter file_offset : Float64?
 
         # Provide your Kantar license ID number. You should get this number from Kantar.
+
         @[JSON::Field(key: "kantarLicenseId")]
         getter kantar_license_id : Int32?
 
         # Provide the HTTPS endpoint to the Kantar server. You should get this endpoint from Kantar.
+
         @[JSON::Field(key: "kantarServerUrl")]
         getter kantar_server_url : String?
 
@@ -8208,6 +9239,7 @@ module AwsSdk
         # XML logs. When you don't specify a bucket, MediaConvert doesn't save these logs. Note that your
         # MediaConvert service role must provide access to this location. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html
+
         @[JSON::Field(key: "logDestination")]
         getter log_destination : String?
 
@@ -8215,26 +9247,32 @@ module AwsSdk
         # watermarking. Kantar suggests that you be very cautious when using this Kantar feature, and that you
         # use it only on channels that are managed specifically for use with this feature by your Audience
         # Measurement Operator. For more information about this feature, contact Kantar technical support.
+
         @[JSON::Field(key: "metadata3")]
         getter metadata3 : String?
 
         # Additional metadata that MediaConvert sends to Kantar. Maximum length is 50 characters.
+
         @[JSON::Field(key: "metadata4")]
         getter metadata4 : String?
 
         # Additional metadata that MediaConvert sends to Kantar. Maximum length is 50 characters.
+
         @[JSON::Field(key: "metadata5")]
         getter metadata5 : String?
 
         # Additional metadata that MediaConvert sends to Kantar. Maximum length is 50 characters.
+
         @[JSON::Field(key: "metadata6")]
         getter metadata6 : String?
 
         # Additional metadata that MediaConvert sends to Kantar. Maximum length is 50 characters.
+
         @[JSON::Field(key: "metadata7")]
         getter metadata7 : String?
 
         # Additional metadata that MediaConvert sends to Kantar. Maximum length is 50 characters.
+
         @[JSON::Field(key: "metadata8")]
         getter metadata8 : String?
 
@@ -8259,30 +9297,36 @@ module AwsSdk
       # You can send list job templates requests with an empty body. Optionally, you can filter the response
       # by category by specifying it in your request body. You can also optionally specify the maximum
       # number, up to twenty, of job templates to be returned.
+
       struct ListJobTemplatesRequest
         include JSON::Serializable
 
         # Optionally, specify a job template category to limit responses to only job templates from that
         # category.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # Optional. When you request a list of job templates, you can choose to list them alphabetically by
         # NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
+
         @[JSON::Field(key: "listBy")]
         getter list_by : String?
 
         # Optional. Number of job templates, up to twenty, that will be returned at one time.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Use this string, provided with the response to a previous request, to request the next batch of job
         # templates.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING
         # or DESCENDING order. Default varies by resource.
+
         @[JSON::Field(key: "order")]
         getter order : String?
 
@@ -8298,14 +9342,17 @@ module AwsSdk
 
       # Successful list job templates requests return a JSON array of job templates. If you don't specify
       # how they are ordered, you will receive them in alphabetical order by name.
+
       struct ListJobTemplatesResponse
         include JSON::Serializable
 
         # List of Job templates.
+
         @[JSON::Field(key: "jobTemplates")]
         getter job_templates : Array(Types::JobTemplate)?
 
         # Use this string to request the next batch of job templates.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -8319,28 +9366,34 @@ module AwsSdk
       # You can send list jobs requests with an empty body. Optionally, you can filter the response by queue
       # and/or job status by specifying them in your request body. You can also optionally specify the
       # maximum number, up to twenty, of jobs to be returned.
+
       struct ListJobsRequest
         include JSON::Serializable
 
         # Optional. Number of jobs, up to twenty, that will be returned at one time.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Optional. Use this string, provided with the response to a previous request, to request the next
         # batch of jobs.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING
         # or DESCENDING order. Default varies by resource.
+
         @[JSON::Field(key: "order")]
         getter order : String?
 
         # Optional. Provide a queue name to get back only jobs from that queue.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
         # Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -8356,14 +9409,17 @@ module AwsSdk
 
       # Successful list jobs requests return a JSON array of jobs. If you don't specify how they are
       # ordered, you will receive the most recently created first.
+
       struct ListJobsResponse
         include JSON::Serializable
 
         # List of jobs
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(Types::Job)?
 
         # Use this string to request the next batch of jobs.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -8377,29 +9433,35 @@ module AwsSdk
       # You can send list presets requests with an empty body. Optionally, you can filter the response by
       # category by specifying it in your request body. You can also optionally specify the maximum number,
       # up to twenty, of queues to be returned.
+
       struct ListPresetsRequest
         include JSON::Serializable
 
         # Optionally, specify a preset category to limit responses to only presets from that category.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # Optional. When you request a list of presets, you can choose to list them alphabetically by NAME or
         # chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
+
         @[JSON::Field(key: "listBy")]
         getter list_by : String?
 
         # Optional. Number of presets, up to twenty, that will be returned at one time
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Use this string, provided with the response to a previous request, to request the next batch of
         # presets.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING
         # or DESCENDING order. Default varies by resource.
+
         @[JSON::Field(key: "order")]
         getter order : String?
 
@@ -8415,14 +9477,17 @@ module AwsSdk
 
       # Successful list presets requests return a JSON array of presets. If you don't specify how they are
       # ordered, you will receive them alphabetically by name.
+
       struct ListPresetsResponse
         include JSON::Serializable
 
         # Use this string to request the next batch of presets.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # List of presets
+
         @[JSON::Field(key: "presets")]
         getter presets : Array(Types::Preset)?
 
@@ -8435,25 +9500,30 @@ module AwsSdk
 
       # You can send list queues requests with an empty body. You can optionally specify the maximum number,
       # up to twenty, of queues to be returned.
+
       struct ListQueuesRequest
         include JSON::Serializable
 
         # Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or
         # chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
+
         @[JSON::Field(key: "listBy")]
         getter list_by : String?
 
         # Optional. Number of queues, up to twenty, that will be returned at one time.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Use this string, provided with the response to a previous request, to request the next batch of
         # queues.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING
         # or DESCENDING order. Default varies by resource.
+
         @[JSON::Field(key: "order")]
         getter order : String?
 
@@ -8468,24 +9538,29 @@ module AwsSdk
 
       # Successful list queues requests return a JSON array of queues. If you don't specify how they are
       # ordered, you will receive them alphabetically by name.
+
       struct ListQueuesResponse
         include JSON::Serializable
 
         # Use this string to request the next batch of queues.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # List of queues.
+
         @[JSON::Field(key: "queues")]
         getter queues : Array(Types::Queue)?
 
         # The maximum number of jobs that MediaConvert can process at one time, across all of your on-demand
         # queues in the current AWS Region.
+
         @[JSON::Field(key: "totalConcurrentJobs")]
         getter total_concurrent_jobs : Int32?
 
         # The remaining number of concurrent jobs that are not associated with a queue and are available to
         # allocate to a queue. You can allocate these jobs when you create or update a queue.
+
         @[JSON::Field(key: "unallocatedConcurrentJobs")]
         getter unallocated_concurrent_jobs : Int32?
 
@@ -8500,11 +9575,13 @@ module AwsSdk
 
       # List the tags for your AWS Elemental MediaConvert resource by sending a request with the Amazon
       # Resource Name (ARN) of the resource. To get the ARN, send a GET request with the resource name.
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to list tags for. To get the ARN, send
         # a GET request with the resource name.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
@@ -8515,10 +9592,12 @@ module AwsSdk
       end
 
       # A successful request to list the tags for a resource returns a JSON map of tags.
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) and tags for an AWS Elemental MediaConvert resource.
+
         @[JSON::Field(key: "resourceTags")]
         getter resource_tags : Types::ResourceTags?
 
@@ -8531,15 +9610,18 @@ module AwsSdk
       # Retrieve a JSON array of all available Job engine versions and the date they expire. Job engine
       # versions are in YYYY-MM-DD format. Note that the Job engine version feature is not publicly
       # available at this time. To request access, contact AWS support.
+
       struct ListVersionsRequest
         include JSON::Serializable
 
         # Optional. Number of valid Job engine versions, up to twenty, that will be returned at one time.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Optional. Use this string, provided with the response to a previous request, to request the next
         # batch of Job engine versions.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -8551,15 +9633,18 @@ module AwsSdk
       end
 
       # Successful list versions requests will return a JSON for available Job engine versions.
+
       struct ListVersionsResponse
         include JSON::Serializable
 
         # Optional. Use this string, provided with the response to a previous request, to request the next
         # batch of Job engine versions.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Retrieve a JSON array of all available Job engine versions and the date they expire.
+
         @[JSON::Field(key: "versions")]
         getter versions : Array(Types::JobEngineVersion)?
 
@@ -8573,10 +9658,12 @@ module AwsSdk
       # Settings for SCTE-35 signals from ESAM. Include this in your job settings to put SCTE-35 markers in
       # your HLS and transport stream outputs at the insertion points that you specify in an ESAM XML
       # document. Provide the document in the setting SCC XML.
+
       struct M2tsScte35Esam
         include JSON::Serializable
 
         # Packet Identifier (PID) of the SCTE-35 stream in the transport stream generated by ESAM.
+
         @[JSON::Field(key: "scte35EsamPid")]
         getter scte35_esam_pid : Int32?
 
@@ -8594,10 +9681,12 @@ module AwsSdk
       # a program along with their PID. Downstream systems and players use the program map table to look up
       # the PID for each type of data it accesses and then uses the PIDs to locate specific data within the
       # asset.
+
       struct M2tsSettings
         include JSON::Serializable
 
         # Selects between the DVB and ATSC buffer models for Dolby Digital audio.
+
         @[JSON::Field(key: "audioBufferModel")]
         getter audio_buffer_model : String?
 
@@ -8611,63 +9700,75 @@ module AwsSdk
         # end of the last segment of the output. For unsegmented outputs, MediaConvert adds padding only to
         # the end of the file. When you keep the default value, any minor discrepancies between audio and
         # video duration will depend on your output audio codec.
+
         @[JSON::Field(key: "audioDuration")]
         getter audio_duration : String?
 
         # The number of audio frames to insert for each PES packet.
+
         @[JSON::Field(key: "audioFramesPerPes")]
         getter audio_frames_per_pes : Int32?
 
         # Specify the packet identifiers (PIDs) for any elementary audio streams you include in this output.
         # Specify multiple PIDs as a JSON array. Default is the range 482-492.
+
         @[JSON::Field(key: "audioPids")]
         getter audio_pids : Array(Int32)?
 
         # Manually specify the difference in PTS offset that will be applied to the audio track, in seconds or
         # milliseconds, when you set PTS offset to Seconds or Milliseconds. Enter an integer from -10000 to
         # 10000. Leave blank to keep the default value 0.
+
         @[JSON::Field(key: "audioPtsOffsetDelta")]
         getter audio_pts_offset_delta : Int32?
 
         # Specify the output bitrate of the transport stream in bits per second. Setting to 0 lets the muxer
         # automatically determine the appropriate bitrate. Other common values are 3750000, 7500000, and
         # 15000000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Controls what buffer model to use for accurate interleaving. If set to MULTIPLEX, use multiplex
         # buffer model. If set to NONE, this can lead to lower latency, but low-memory devices may not be able
         # to play back the stream without interruptions.
+
         @[JSON::Field(key: "bufferModel")]
         getter buffer_model : String?
 
         # If you select ALIGN_TO_VIDEO, MediaConvert writes captions and data packets with Presentation
         # Timestamp (PTS) values greater than or equal to the first video packet PTS (MediaConvert drops
         # captions and data packets with lesser PTS values). Keep the default value to allow all PTS values.
+
         @[JSON::Field(key: "dataPTSControl")]
         getter data_pts_control : String?
 
         # Use these settings to insert a DVB Network Information Table (NIT) in the transport stream of this
         # output.
+
         @[JSON::Field(key: "dvbNitSettings")]
         getter dvb_nit_settings : Types::DvbNitSettings?
 
         # Use these settings to insert a DVB Service Description Table (SDT) in the transport stream of this
         # output.
+
         @[JSON::Field(key: "dvbSdtSettings")]
         getter dvb_sdt_settings : Types::DvbSdtSettings?
 
         # Specify the packet identifiers (PIDs) for DVB subtitle data included in this output. Specify
         # multiple PIDs as a JSON array. Default is the range 460-479.
+
         @[JSON::Field(key: "dvbSubPids")]
         getter dvb_sub_pids : Array(Int32)?
 
         # Use these settings to insert a DVB Time and Date Table (TDT) in the transport stream of this output.
+
         @[JSON::Field(key: "dvbTdtSettings")]
         getter dvb_tdt_settings : Types::DvbTdtSettings?
 
         # Specify the packet identifier (PID) for DVB teletext data you include in this output. Default is
         # 499.
+
         @[JSON::Field(key: "dvbTeletextPid")]
         getter dvb_teletext_pid : Int32?
 
@@ -8675,36 +9776,43 @@ module AwsSdk
         # interval between these additional markers will be fixed, and will be slightly shorter than the video
         # EBP marker interval. When set to VIDEO_INTERVAL, these additional markers will not be inserted. Only
         # applicable when EBP segmentation markers are is selected (segmentationMarkers is EBP or EBP_LEGACY).
+
         @[JSON::Field(key: "ebpAudioInterval")]
         getter ebp_audio_interval : String?
 
         # Selects which PIDs to place EBP markers on. They can either be placed only on the video PID, or on
         # both the video PID and all audio PIDs. Only applicable when EBP segmentation markers are is selected
         # (segmentationMarkers is EBP or EBP_LEGACY).
+
         @[JSON::Field(key: "ebpPlacement")]
         getter ebp_placement : String?
 
         # Controls whether to include the ES Rate field in the PES header.
+
         @[JSON::Field(key: "esRateInPes")]
         getter es_rate_in_pes : String?
 
         # Keep the default value unless you know that your audio EBP markers are incorrectly appearing before
         # your video EBP markers. To correct this problem, set this value to Force.
+
         @[JSON::Field(key: "forceTsVideoEbpOrder")]
         getter force_ts_video_ebp_order : String?
 
         # The length, in seconds, of each fragment. Only used with EBP markers.
+
         @[JSON::Field(key: "fragmentTime")]
         getter fragment_time : Float64?
 
         # To include key-length-value metadata in this output: Set KLV metadata insertion to Passthrough.
         # MediaConvert reads KLV metadata present in your input and passes it through to the output transport
         # stream. To exclude this KLV metadata: Set KLV metadata insertion to None or leave blank.
+
         @[JSON::Field(key: "klvMetadata")]
         getter klv_metadata : String?
 
         # Specify the maximum time, in milliseconds, between Program Clock References (PCRs) inserted into the
         # transport stream.
+
         @[JSON::Field(key: "maxPcrInterval")]
         getter max_pcr_interval : Int32?
 
@@ -8713,40 +9821,48 @@ module AwsSdk
         # time interval, the current EBP is not emitted, and the segment is "stretched" to the next marker.
         # The lookahead value does not add latency to the system. The Live Event must be configured elsewhere
         # to create sufficient latency to make the lookahead accurate.
+
         @[JSON::Field(key: "minEbpInterval")]
         getter min_ebp_interval : Int32?
 
         # If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an
         # equivalent ID3 tag will be inserted in the output.
+
         @[JSON::Field(key: "nielsenId3")]
         getter nielsen_id3 : String?
 
         # Value in bits per second of extra null packets to insert into the transport stream. This can be used
         # if a downstream encryption system requires periodic null packets.
+
         @[JSON::Field(key: "nullPacketBitrate")]
         getter null_packet_bitrate : Float64?
 
         # The number of milliseconds between instances of this table in the output transport stream.
+
         @[JSON::Field(key: "patInterval")]
         getter pat_interval : Int32?
 
         # When set to PCR_EVERY_PES_PACKET, a Program Clock Reference value is inserted for every Packetized
         # Elementary Stream (PES) header. This is effective only when the PCR PID is the same as the video or
         # audio elementary stream.
+
         @[JSON::Field(key: "pcrControl")]
         getter pcr_control : String?
 
         # Specify the packet identifier (PID) for the program clock reference (PCR) in this output. If you do
         # not specify a value, the service will use the value for Video PID.
+
         @[JSON::Field(key: "pcrPid")]
         getter pcr_pid : Int32?
 
         # Specify the number of milliseconds between instances of the program map table (PMT) in the output
         # transport stream.
+
         @[JSON::Field(key: "pmtInterval")]
         getter pmt_interval : Int32?
 
         # Specify the packet identifier (PID) for the program map table (PMT) itself. Default is 480.
+
         @[JSON::Field(key: "pmtPid")]
         getter pmt_pid : Int32?
 
@@ -8756,21 +9872,25 @@ module AwsSdk
         # the default value, Disabled. To prevent decoder buffer underflows in your output, when possible:
         # Choose Enabled. Note that if MediaConvert prevents a decoder buffer underflow in your output, output
         # video quality is reduced and your job will take longer to complete.
+
         @[JSON::Field(key: "preventBufferUnderflow")]
         getter prevent_buffer_underflow : String?
 
         # Specify the packet identifier (PID) of the private metadata stream. Default is 503.
+
         @[JSON::Field(key: "privateMetadataPid")]
         getter private_metadata_pid : Int32?
 
         # Use Program number to specify the program number used in the program map table (PMT) for this
         # output. Default is 1. Program numbers and program map tables are parts of MPEG-2 transport stream
         # containers, used for organizing data.
+
         @[JSON::Field(key: "programNumber")]
         getter program_number : Int32?
 
         # Manually specify the initial PTS offset, in seconds, when you set PTS offset to Seconds. Enter an
         # integer from 0 to 3600. Leave blank to keep the default value 2.
+
         @[JSON::Field(key: "ptsOffset")]
         getter pts_offset : Int32?
 
@@ -8780,22 +9900,26 @@ module AwsSdk
         # two seconds and vary depending on your output's bitrate, HRD buffer size and HRD buffer initial fill
         # percentage. To manually specify an initial PTS offset: Choose Seconds or Milliseconds. Then specify
         # the number of seconds or milliseconds with PTS offset.
+
         @[JSON::Field(key: "ptsOffsetMode")]
         getter pts_offset_mode : String?
 
         # When set to CBR, inserts null packets into transport stream to fill specified bitrate. When set to
         # VBR, the bitrate setting acts as the maximum bitrate, but the output will not be padded up to that
         # bitrate.
+
         @[JSON::Field(key: "rateMode")]
         getter rate_mode : String?
 
         # Include this in your job settings to put SCTE-35 markers in your HLS and transport stream outputs at
         # the insertion points that you specify in an ESAM XML document. Provide the document in the setting
         # SCC XML.
+
         @[JSON::Field(key: "scte35Esam")]
         getter scte35_esam : Types::M2tsScte35Esam?
 
         # Specify the packet identifier (PID) of the SCTE-35 stream in the transport stream.
+
         @[JSON::Field(key: "scte35Pid")]
         getter scte35_pid : Int32?
 
@@ -8804,6 +9928,7 @@ module AwsSdk
         # output. For SCTE-35 markers from an ESAM XML document-- Choose None. Also provide the ESAM XML as a
         # string in the setting Signal processing notification XML. Also enable ESAM SCTE-35 (include the
         # property scte35Esam).
+
         @[JSON::Field(key: "scte35Source")]
         getter scte35_source : String?
 
@@ -8813,6 +9938,7 @@ module AwsSdk
         # Encoder Boundary Point information to the adaptation field as per OpenCable specification
         # OC-SP-EBP-I01-130118. ebp_legacy adds Encoder Boundary Point information to the adaptation field
         # using a legacy proprietary format.
+
         @[JSON::Field(key: "segmentationMarkers")]
         getter segmentation_markers : String?
 
@@ -8825,24 +9951,29 @@ module AwsSdk
         # segmentation cadence. This means the subsequent segment will likely be truncated as well. However,
         # all segments after that will have a duration of $segmentation_time seconds. Note that EBP lookahead
         # is a slight exception to this rule.
+
         @[JSON::Field(key: "segmentationStyle")]
         getter segmentation_style : String?
 
         # Specify the length, in seconds, of each segment. Required unless markers is set to _none_.
+
         @[JSON::Field(key: "segmentationTime")]
         getter segmentation_time : Float64?
 
         # Packet Identifier (PID) of the ID3 metadata stream in the transport stream.
+
         @[JSON::Field(key: "timedMetadataPid")]
         getter timed_metadata_pid : Int32?
 
         # Specify the ID for the transport stream itself in the program map table for this output. Transport
         # stream IDs and program map tables are parts of MPEG-2 transport stream containers, used for
         # organizing data.
+
         @[JSON::Field(key: "transportStreamId")]
         getter transport_stream_id : Int32?
 
         # Specify the packet identifier (PID) of the elementary video stream in the transport stream.
+
         @[JSON::Field(key: "videoPid")]
         getter video_pid : Int32?
 
@@ -8896,6 +10027,7 @@ module AwsSdk
 
       # These settings relate to the MPEG-2 transport stream (MPEG2-TS) container for the MPEG2-TS segments
       # in your HLS outputs.
+
       struct M3u8Settings
         include JSON::Serializable
 
@@ -8909,21 +10041,25 @@ module AwsSdk
         # end of the last segment of the output. For unsegmented outputs, MediaConvert adds padding only to
         # the end of the file. When you keep the default value, any minor discrepancies between audio and
         # video duration will depend on your output audio codec.
+
         @[JSON::Field(key: "audioDuration")]
         getter audio_duration : String?
 
         # The number of audio frames to insert for each PES packet.
+
         @[JSON::Field(key: "audioFramesPerPes")]
         getter audio_frames_per_pes : Int32?
 
         # Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values
         # are accepted, and can be entered in ranges and/or by comma separation.
+
         @[JSON::Field(key: "audioPids")]
         getter audio_pids : Array(Int32)?
 
         # Manually specify the difference in PTS offset that will be applied to the audio track, in seconds or
         # milliseconds, when you set PTS offset to Seconds or Milliseconds. Enter an integer from -10000 to
         # 10000. Leave blank to keep the default value 0.
+
         @[JSON::Field(key: "audioPtsOffsetDelta")]
         getter audio_pts_offset_delta : Int32?
 
@@ -8931,52 +10067,63 @@ module AwsSdk
         # Timestamp (PTS) values greater than or equal to the first video packet PTS (MediaConvert drops
         # captions and data packets with lesser PTS values). Keep the default value AUTO to allow all PTS
         # values.
+
         @[JSON::Field(key: "dataPTSControl")]
         getter data_pts_control : String?
 
         # Specify the maximum time, in milliseconds, between Program Clock References (PCRs) inserted into the
         # transport stream.
+
         @[JSON::Field(key: "maxPcrInterval")]
         getter max_pcr_interval : Int32?
 
         # If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an
         # equivalent ID3 tag will be inserted in the output.
+
         @[JSON::Field(key: "nielsenId3")]
         getter nielsen_id3 : String?
 
         # The number of milliseconds between instances of this table in the output transport stream.
+
         @[JSON::Field(key: "patInterval")]
         getter pat_interval : Int32?
 
         # When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized
         # Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the
         # video or audio elementary stream.
+
         @[JSON::Field(key: "pcrControl")]
         getter pcr_control : String?
 
         # Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value
         # is given, the encoder will assign the same value as the Video PID.
+
         @[JSON::Field(key: "pcrPid")]
         getter pcr_pid : Int32?
 
         # The number of milliseconds between instances of this table in the output transport stream.
+
         @[JSON::Field(key: "pmtInterval")]
         getter pmt_interval : Int32?
 
         # Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream.
+
         @[JSON::Field(key: "pmtPid")]
         getter pmt_pid : Int32?
 
         # Packet Identifier (PID) of the private metadata stream in the transport stream.
+
         @[JSON::Field(key: "privateMetadataPid")]
         getter private_metadata_pid : Int32?
 
         # The value of the program number field in the Program Map Table.
+
         @[JSON::Field(key: "programNumber")]
         getter program_number : Int32?
 
         # Manually specify the initial PTS offset, in seconds, when you set PTS offset to Seconds. Enter an
         # integer from 0 to 3600. Leave blank to keep the default value 2.
+
         @[JSON::Field(key: "ptsOffset")]
         getter pts_offset : Int32?
 
@@ -8986,10 +10133,12 @@ module AwsSdk
         # two seconds and vary depending on your output's bitrate, HRD buffer size and HRD buffer initial fill
         # percentage. To manually specify an initial PTS offset: Choose Seconds or Milliseconds. Then specify
         # the number of seconds or milliseconds with PTS offset.
+
         @[JSON::Field(key: "ptsOffsetMode")]
         getter pts_offset_mode : String?
 
         # Packet Identifier (PID) of the SCTE-35 stream in the transport stream.
+
         @[JSON::Field(key: "scte35Pid")]
         getter scte35_pid : Int32?
 
@@ -8998,24 +10147,29 @@ module AwsSdk
         # output. For SCTE-35 markers from an ESAM XML document-- Choose None if you don't want manifest
         # conditioning. Choose Passthrough and choose Ad markers if you do want manifest conditioning. In both
         # cases, also provide the ESAM XML as a string in the setting Signal processing notification XML.
+
         @[JSON::Field(key: "scte35Source")]
         getter scte35_source : String?
 
         # Set ID3 metadata to Passthrough to include ID3 metadata in this output. This includes ID3 metadata
         # from the following features: ID3 timestamp period, and Custom ID3 metadata inserter. To exclude this
         # ID3 metadata in this output: set ID3 metadata to None or leave blank.
+
         @[JSON::Field(key: "timedMetadata")]
         getter timed_metadata : String?
 
         # Packet Identifier (PID) of the ID3 metadata stream in the transport stream.
+
         @[JSON::Field(key: "timedMetadataPid")]
         getter timed_metadata_pid : Int32?
 
         # The value of the transport stream ID field in the Program Map Table.
+
         @[JSON::Field(key: "transportStreamId")]
         getter transport_stream_id : Int32?
 
         # Packet Identifier (PID) of the elementary video stream in the transport stream.
+
         @[JSON::Field(key: "videoPid")]
         getter video_pid : Int32?
 
@@ -9047,22 +10201,27 @@ module AwsSdk
       end
 
       # Metadata and other file information.
+
       struct Metadata
         include JSON::Serializable
 
         # The entity tag (ETag) of the file.
+
         @[JSON::Field(key: "eTag")]
         getter e_tag : String?
 
         # The size of the media file, in bytes.
+
         @[JSON::Field(key: "fileSize")]
         getter file_size : Int64?
 
         # The last modification timestamp of the media file, in Unix time.
+
         @[JSON::Field(key: "lastModified")]
         getter last_modified : Time?
 
         # The MIME type of the media file.
+
         @[JSON::Field(key: "mimeType")]
         getter mime_type : String?
 
@@ -9080,14 +10239,17 @@ module AwsSdk
       # For example: If you specify 640x360 the lowest resolution in your ABR stack will be equal to or
       # greater than to 640x360. * If you specify a Min top rendition size rule, the value that you specify
       # for Min bottom rendition size must be less than, or equal to, Min top rendition size.
+
       struct MinBottomRenditionSize
         include JSON::Serializable
 
         # Use Height to define the video resolution height, in pixels, for this rule.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Use Width to define the video resolution width, in pixels, for this rule.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -9103,14 +10265,17 @@ module AwsSdk
       # For example: If you specify 1280x720 the highest resolution in your ABR stack will be equal to or
       # greater than 1280x720. * If you specify a value for Max resolution, the value that you specify for
       # Min top rendition size must be less than, or equal to, Max resolution.
+
       struct MinTopRenditionSize
         include JSON::Serializable
 
         # Use Height to define the video resolution height, in pixels, for this rule.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Use Width to define the video resolution width, in pixels, for this rule.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -9124,6 +10289,7 @@ module AwsSdk
       # Overlay motion graphics on top of your video. The motion graphics that you specify here appear on
       # all outputs in all output groups. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
+
       struct MotionImageInserter
         include JSON::Serializable
 
@@ -9133,6 +10299,7 @@ module AwsSdk
         # matches the frame rate and your intended overlay duration. For example, if you want a 30-second
         # overlay at 30 fps, you should have 900 .png images. This overlay frame rate doesn't need to match
         # the frame rate of the underlying video.
+
         @[JSON::Field(key: "framerate")]
         getter framerate : Types::MotionImageInsertionFramerate?
 
@@ -9144,11 +10311,13 @@ module AwsSdk
         # zeros to complete the sequence. For example, if the first image is overlay_0.png, there can be only
         # 10 images in the sequence, with the last image being overlay_9.png. But if the first image is
         # overlay_00.png, there can be 100 images in the sequence.
+
         @[JSON::Field(key: "input")]
         getter input : String?
 
         # Choose the type of motion graphic asset that you are providing for your overlay. You can choose
         # either a .mov file or a series of .png files.
+
         @[JSON::Field(key: "insertionMode")]
         getter insertion_mode : String?
 
@@ -9156,10 +10325,12 @@ module AwsSdk
         # pixels, from the upper-left corner of the frame. If you don't specify an offset, the service scales
         # your overlay to the full size of the frame. Otherwise, the service inserts the overlay at its native
         # resolution and scales the size up or down with any video scaling.
+
         @[JSON::Field(key: "offset")]
         getter offset : Types::MotionImageInsertionOffset?
 
         # Specify whether your motion graphic overlay repeats on a loop or plays only once.
+
         @[JSON::Field(key: "playback")]
         getter playback : String?
 
@@ -9170,6 +10341,7 @@ module AwsSdk
         # start at zero, make sure that you specify a start time that is after the first embedded timecode.
         # For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/setting-up-timecode.html
+
         @[JSON::Field(key: "startTime")]
         getter start_time : String?
 
@@ -9187,16 +10359,19 @@ module AwsSdk
       # For motion overlays that don't have a built-in frame rate, specify the frame rate of the overlay in
       # frames per second, as a fraction. For example, specify 24 fps as 24/1. The overlay frame rate
       # doesn't need to match the frame rate of the underlying video.
+
       struct MotionImageInsertionFramerate
         include JSON::Serializable
 
         # The bottom of the fraction that expresses your overlay frame rate. For example, if your frame rate
         # is 24 fps, set this value to 1.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
         # The top of the fraction that expresses your overlay frame rate. For example, if your frame rate is
         # 24 fps, set this value to 24.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -9209,14 +10384,17 @@ module AwsSdk
 
       # Specify the offset between the upper-left corner of the video frame and the top left corner of the
       # overlay.
+
       struct MotionImageInsertionOffset
         include JSON::Serializable
 
         # Set the distance, in pixels, between the overlay and the left edge of the video frame.
+
         @[JSON::Field(key: "imageX")]
         getter image_x : Int32?
 
         # Set the distance, in pixels, between the overlay and the top edge of the video frame.
+
         @[JSON::Field(key: "imageY")]
         getter image_y : Int32?
 
@@ -9228,10 +10406,12 @@ module AwsSdk
       end
 
       # These settings relate to your QuickTime MOV output container.
+
       struct MovSettings
         include JSON::Serializable
 
         # When enabled, include 'clap' atom if appropriate for the video output settings.
+
         @[JSON::Field(key: "clapAtom")]
         getter clap_atom : String?
 
@@ -9239,12 +10419,14 @@ module AwsSdk
         # (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift
         # least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple
         # players and tools.
+
         @[JSON::Field(key: "cslgAtom")]
         getter cslg_atom : String?
 
         # When set to XDCAM, writes MPEG2 video streams into the QuickTime file using XDCAM fourcc codes. This
         # increases compatibility with Apple editors and players, but may decrease compatibility with other
         # players. Only applicable when the video codec is MPEG2.
+
         @[JSON::Field(key: "mpeg2FourCCControl")]
         getter mpeg2_four_cc_control : String?
 
@@ -9252,10 +10434,12 @@ module AwsSdk
         # with Omneon: Choose Omneon. When you do, MediaConvert increases the length of the 'elst' edit list
         # atom. Note that this might cause file rejections when a recipient of the output file doesn't expect
         # this extra padding.
+
         @[JSON::Field(key: "paddingControl")]
         getter padding_control : String?
 
         # Always keep the default value (SELF_CONTAINED) for this setting.
+
         @[JSON::Field(key: "reference")]
         getter reference : String?
 
@@ -9270,6 +10454,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value MP2.
+
       struct Mp2Settings
         include JSON::Serializable
 
@@ -9281,19 +10466,23 @@ module AwsSdk
         # FollowInputAudioType. Choose NONE when the input does not contain pre-mixed audio + audio
         # description (AD). In this case, the encoder will use any values you provide for AudioType and
         # FollowInputAudioType.
+
         @[JSON::Field(key: "audioDescriptionMix")]
         getter audio_description_mix : String?
 
         # Specify the average bitrate in bits per second.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Set Channels to specify the number of channels in this output audio track. Choosing Mono in will
         # give you 1 output channel; choosing Stereo will give you 2. In the API, valid values are 1 and 2.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -9307,29 +10496,35 @@ module AwsSdk
       end
 
       # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value MP3.
+
       struct Mp3Settings
         include JSON::Serializable
 
         # Specify the average bitrate in bits per second.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Specify the number of channels in this output audio track. Choosing Mono gives you 1 output channel;
         # choosing Stereo gives you 2. In the API, valid values are 1 and 2.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Specify whether the service encodes this MP3 audio output with a constant bitrate (CBR) or a
         # variable bitrate (VBR).
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
         # Sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
         # Required when you set Bitrate control mode to VBR. Specify the audio quality of this MP3 output from
         # 0 (highest quality) to 9 (lowest quality).
+
         @[JSON::Field(key: "vbrQuality")]
         getter vbr_quality : Int32?
 
@@ -9346,6 +10541,7 @@ module AwsSdk
       # These settings relate to your MP4 output container. You can create audio only outputs with this
       # container. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/supported-codecs-containers-audio-only.html#output-codecs-and-containers-supported-for-audio-only.
+
       struct Mp4Settings
         include JSON::Serializable
 
@@ -9359,11 +10555,13 @@ module AwsSdk
         # end of the last segment of the output. For unsegmented outputs, MediaConvert adds padding only to
         # the end of the file. When you keep the default value, any minor discrepancies between audio and
         # video duration will depend on your output audio codec.
+
         @[JSON::Field(key: "audioDuration")]
         getter audio_duration : String?
 
         # When enabled, a C2PA compliant manifest will be generated, signed and embeded in the output. For
         # more information on C2PA, see https://c2pa.org/specifications/specifications/2.1/index.html
+
         @[JSON::Field(key: "c2paManifest")]
         getter c2pa_manifest : String?
 
@@ -9373,6 +10571,7 @@ module AwsSdk
         # for signature validation. Include the signer's certificate and all intermediate certificates. Do not
         # include the root certificate. For details on COSE, see:
         # https://opensource.contentauthenticity.org/docs/manifest/signing-manifests
+
         @[JSON::Field(key: "certificateSecret")]
         getter certificate_secret : String?
 
@@ -9380,6 +10579,7 @@ module AwsSdk
         # (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift
         # least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple
         # players and tools.
+
         @[JSON::Field(key: "cslgAtom")]
         getter cslg_atom : String?
 
@@ -9388,25 +10588,30 @@ module AwsSdk
         # the specification. When you specify a value of 1, you must also set CSLG atom to the value INCLUDE.
         # Keep the default value 0 to set your CTTS box version to 0. This can provide backward compatibility
         # for some players and packagers.
+
         @[JSON::Field(key: "cttsVersion")]
         getter ctts_version : Int32?
 
         # Inserts a free-space box immediately after the moov box.
+
         @[JSON::Field(key: "freeSpaceBox")]
         getter free_space_box : String?
 
         # To place the MOOV atom at the beginning of your output, which is useful for progressive downloading:
         # Leave blank or choose Progressive download. To place the MOOV at the end of your output: Choose
         # Normal.
+
         @[JSON::Field(key: "moovPlacement")]
         getter moov_placement : String?
 
         # Overrides the "Major Brand" field in the output file. Usually not necessary to specify.
+
         @[JSON::Field(key: "mp4MajorBrand")]
         getter mp4_major_brand : String?
 
         # Specify the ID or ARN of the AWS KMS key used to sign the C2PA manifest in your MP4 output. Provide
         # a valid KMS key ARN. Note that your MediaConvert service role must allow access to this key.
+
         @[JSON::Field(key: "signingKmsKey")]
         getter signing_kms_key : String?
 
@@ -9425,6 +10630,7 @@ module AwsSdk
       end
 
       # These settings relate to the fragmented MP4 container for the segments in your DASH outputs.
+
       struct MpdSettings
         include JSON::Serializable
 
@@ -9432,6 +10638,7 @@ module AwsSdk
         # 608 captions. This markup isn't generally required, but some video players require it to discover
         # and play embedded 608 captions. Keep the default value, Exclude, to leave these elements out. When
         # you enable this setting, this is the markup that MediaConvert includes in your manifest:
+
         @[JSON::Field(key: "accessibilityCaptionHints")]
         getter accessibility_caption_hints : String?
 
@@ -9445,11 +10652,13 @@ module AwsSdk
         # end of the last segment of the output. For unsegmented outputs, MediaConvert adds padding only to
         # the end of the file. When you keep the default value, any minor discrepancies between audio and
         # video duration will depend on your output audio codec.
+
         @[JSON::Field(key: "audioDuration")]
         getter audio_duration : String?
 
         # When enabled, a C2PA compliant manifest will be generated, signed and embeded in the output. For
         # more information on C2PA, see https://c2pa.org/specifications/specifications/2.1/index.html
+
         @[JSON::Field(key: "c2paManifest")]
         getter c2pa_manifest : String?
 
@@ -9458,6 +10667,7 @@ module AwsSdk
         # a single XML file in a raw container. Choose Fragmented MPEG-4 for captions in XML format contained
         # within fragmented MP4 files. This set of fragmented MP4 files is separate from your video and audio
         # fragmented MP4 files.
+
         @[JSON::Field(key: "captionContainerType")]
         getter caption_container_type : String?
 
@@ -9467,6 +10677,7 @@ module AwsSdk
         # for signature validation. Include the signer's certificate and all intermediate certificates. Do not
         # include the root certificate. For details on COSE, see:
         # https://opensource.contentauthenticity.org/docs/manifest/signing-manifests
+
         @[JSON::Field(key: "certificateSecret")]
         getter certificate_secret : String?
 
@@ -9474,6 +10685,7 @@ module AwsSdk
         # MediaConvert reads KLV metadata present in your input and writes each instance to a separate event
         # message box in the output, according to MISB ST1910.1. To exclude this KLV metadata: Set KLV
         # metadata insertion to None or leave blank.
+
         @[JSON::Field(key: "klvMetadata")]
         getter klv_metadata : String?
 
@@ -9484,35 +10696,41 @@ module AwsSdk
         # these elements out of your output MPD manifest, set Manifest metadata signaling to Disabled. To
         # enable Manifest metadata signaling, you must also set SCTE-35 source to Passthrough, ESAM SCTE-35 to
         # insert, or ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "manifestMetadataSignaling")]
         getter manifest_metadata_signaling : String?
 
         # Use this setting only when you specify SCTE-35 markers from ESAM. Choose INSERT to put SCTE-35
         # markers in this output at the insertion points that you specify in an ESAM XML document. Provide the
         # document in the setting SCC XML.
+
         @[JSON::Field(key: "scte35Esam")]
         getter scte35_esam : String?
 
         # Ignore this setting unless you have SCTE-35 markers in your input video file. Choose Passthrough if
         # you want SCTE-35 markers that appear in your input to also appear in this output. Choose None if you
         # don't want those SCTE-35 markers in this output.
+
         @[JSON::Field(key: "scte35Source")]
         getter scte35_source : String?
 
         # Specify the ID or ARN of the AWS KMS key used to sign the C2PA manifest in your MP4 output. Provide
         # a valid KMS key ARN. Note that your MediaConvert service role must allow access to this key.
+
         @[JSON::Field(key: "signingKmsKey")]
         getter signing_kms_key : String?
 
         # To include ID3 metadata in this output: Set ID3 metadata to Passthrough. Specify this ID3 metadata
         # in Custom ID3 metadata inserter. MediaConvert writes each instance of ID3 metadata in a separate
         # Event Message (eMSG) box. To exclude this ID3 metadata: Set ID3 metadata to None or leave blank.
+
         @[JSON::Field(key: "timedMetadata")]
         getter timed_metadata : String?
 
         # Specify the event message box (eMSG) version for ID3 timed metadata in your output. For more
         # information, see ISO/IEC 23009-1:2022 section 5.10.3.3.3 Syntax. Leave blank to use the default
         # value Version 0. When you specify Version 1, you must also set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataBoxVersion")]
         getter timed_metadata_box_version : String?
 
@@ -9520,12 +10738,14 @@ module AwsSdk
         # information, see ISO/IEC 23009-1:2022 section 5.10.3.3.4 Semantics. Leave blank to use the default
         # value: https://aomedia.org/emsg/ID3 When you specify a value for ID3 metadata scheme ID URI, you
         # must also set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataSchemeIdUri")]
         getter timed_metadata_scheme_id_uri : String?
 
         # Specify the event message box (eMSG) value for ID3 timed metadata in your output. For more
         # information, see ISO/IEC 23009-1:2022 section 5.10.3.3.4 Semantics. When you specify a value for ID3
         # Metadata Value, you must also set ID3 metadata to Passthrough.
+
         @[JSON::Field(key: "timedMetadataValue")]
         getter timed_metadata_value : String?
 
@@ -9549,25 +10769,30 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value MPEG2.
+
       struct Mpeg2Settings
         include JSON::Serializable
 
         # Specify the strength of any adaptive quantization filters that you enable. The value that you choose
         # here applies to the following settings: Spatial adaptive quantization, and Temporal adaptive
         # quantization.
+
         @[JSON::Field(key: "adaptiveQuantization")]
         getter adaptive_quantization : String?
 
         # Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs,
         # bitrates must be unique when rounded down to the nearest multiple of 1000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Use Level to set the MPEG-2 level for the video output.
+
         @[JSON::Field(key: "codecLevel")]
         getter codec_level : String?
 
         # Use Profile to set the MPEG-2 profile for the video output.
+
         @[JSON::Field(key: "codecProfile")]
         getter codec_profile : String?
 
@@ -9575,6 +10800,7 @@ module AwsSdk
         # service to use fewer B-frames (which infer information based on other frames) for high-motion
         # portions of the video and more B-frames for low-motion portions. The maximum number of B-frames is
         # limited by the value you provide for the setting B frames between reference frames.
+
         @[JSON::Field(key: "dynamicSubGop")]
         getter dynamic_sub_gop : String?
 
@@ -9583,6 +10809,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -9598,6 +10825,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -9606,6 +10834,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -9614,6 +10843,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -9621,31 +10851,37 @@ module AwsSdk
         # allow four open GOPs and then require a closed GOP, set this value to 5. When you create a streaming
         # output, we recommend that you keep the default value, 1, so that players starting mid-stream receive
         # an IDR frame as quickly as possible. Don't set this value to 0; that would break output segmenting.
+
         @[JSON::Field(key: "gopClosedCadence")]
         getter gop_closed_cadence : Int32?
 
         # Specify the interval between keyframes, in seconds or frames, for this output. Default: 12 Related
         # settings: When you specify the GOP size in seconds, set GOP mode control to Specified, seconds. The
         # default value for GOP mode control is Frames.
+
         @[JSON::Field(key: "gopSize")]
         getter gop_size : Float64?
 
         # Specify the units for GOP size. If you don't specify a value here, by default the encoder measures
         # GOP size in frames.
+
         @[JSON::Field(key: "gopSizeUnits")]
         getter gop_size_units : String?
 
         # If your downstream systems have strict buffer requirements: Specify the minimum percentage of the
         # HRD buffer that's available at the end of each encoded video segment. For the best video quality:
         # Set to 0 or leave blank to automatically determine the final buffer fill percentage.
+
         @[JSON::Field(key: "hrdBufferFinalFillPercentage")]
         getter hrd_buffer_final_fill_percentage : Int32?
 
         # Percentage of the buffer that should initially be filled (HRD buffer model).
+
         @[JSON::Field(key: "hrdBufferInitialFillPercentage")]
         getter hrd_buffer_initial_fill_percentage : Int32?
 
         # Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
@@ -9657,16 +10893,19 @@ module AwsSdk
         # output. Follow behavior depends on the input scan type. If the source is interlaced, the output will
         # be interlaced with the same polarity as the source. If the source is progressive, the output will be
         # interlaced with top field bottom field first, depending on which of the Follow options you choose.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
         # Use Intra DC precision to set quantization precision for intra-block DC coefficients. If you choose
         # the value auto, the service will automatically select the precision based on the per-frame
         # compression ratio.
+
         @[JSON::Field(key: "intraDcPrecision")]
         getter intra_dc_precision : String?
 
         # Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000.
+
         @[JSON::Field(key: "maxBitrate")]
         getter max_bitrate : Int32?
 
@@ -9681,12 +10920,14 @@ module AwsSdk
         # size requirements. To disable GOP size variance: Enter 0. MediaConvert will only create IDR-frames
         # at the start of your output's cadence-driven GOP. Use when your downstream systems require a regular
         # GOP size.
+
         @[JSON::Field(key: "minIInterval")]
         getter min_i_interval : Int32?
 
         # Specify the number of B-frames that MediaConvert puts between reference frames in this output. Valid
         # values are whole numbers from 0 through 7. When you don't specify a value, MediaConvert defaults to
         # 2.
+
         @[JSON::Field(key: "numberBFramesBetweenReferenceFrames")]
         getter number_b_frames_between_reference_frames : Int32?
 
@@ -9694,6 +10935,7 @@ module AwsSdk
         # default behavior, Follow source, uses the PAR from your input video for your output. To specify a
         # different PAR in the console, choose any value other than Follow source. When you choose SPECIFIED
         # for this setting, you must also specify values for the parNumerator and parDenominator settings.
+
         @[JSON::Field(key: "parControl")]
         getter par_control : String?
 
@@ -9701,6 +10943,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parDenominator is 33.
+
         @[JSON::Field(key: "parDenominator")]
         getter par_denominator : Int32?
 
@@ -9708,6 +10951,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parNumerator is 40.
+
         @[JSON::Field(key: "parNumerator")]
         getter par_numerator : Int32?
 
@@ -9725,15 +10969,18 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
         # Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output
         # video quality. The default behavior is faster, lower quality, single-pass encoding.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # Use Rate control mode to specify whether the bitrate is variable (vbr) or constant (cbr).
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
@@ -9747,11 +10994,13 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
         # Enable this setting to insert I-frames at scene changes that the service automatically detects. This
         # improves video quality and is enabled by default.
+
         @[JSON::Field(key: "sceneChangeDetect")]
         getter scene_change_detect : String?
 
@@ -9760,6 +11009,7 @@ module AwsSdk
         # to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this
         # setting will slightly reduce the duration of your video. Required settings: You must also set
         # Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -9770,6 +11020,7 @@ module AwsSdk
         # 0, to use the AWS Elemental default matrices. Choose a value from 17 to 128 to use planar
         # interpolation. Increasing values from 17 to 128 result in increasing reduction of high-frequency
         # data. The value 128 results in the softest video.
+
         @[JSON::Field(key: "softness")]
         getter softness : Int32?
 
@@ -9784,12 +11035,14 @@ module AwsSdk
         # setting: When you enable spatial adaptive quantization, set the value for Adaptive quantization
         # depending on your content. For homogeneous content, such as cartoons and video games, set it to Low.
         # For content with a wider variety of textures, set it to High or Higher.
+
         @[JSON::Field(key: "spatialAdaptiveQuantization")]
         getter spatial_adaptive_quantization : String?
 
         # Specify whether this output's video uses the D10 syntax. Keep the default value to not use the
         # syntax. Related settings: When you choose D10 for your MXF profile, you must also set this value to
         # D10.
+
         @[JSON::Field(key: "syntax")]
         getter syntax : String?
 
@@ -9799,6 +11052,7 @@ module AwsSdk
         # output that signals to the video player device to do the conversion during play back. When you keep
         # the default value, None, MediaConvert does a standard frame rate conversion to 29.97 without doing
         # anything with the field polarity to create a smoother picture.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -9812,6 +11066,7 @@ module AwsSdk
         # objects with sharp edges, such as sports athletes' faces, you might choose to disable this feature.
         # Related setting: When you enable temporal quantization, adjust the strength of the filter with the
         # setting Adaptive quantization.
+
         @[JSON::Field(key: "temporalAdaptiveQuantization")]
         getter temporal_adaptive_quantization : String?
 
@@ -9857,6 +11112,7 @@ module AwsSdk
       # Specify the details for each additional Microsoft Smooth Streaming manifest that you want the
       # service to generate for this output group. Each manifest can reference a different subset of outputs
       # in the group.
+
       struct MsSmoothAdditionalManifest
         include JSON::Serializable
 
@@ -9865,10 +11121,12 @@ module AwsSdk
         # main manifest for your Microsoft Smooth group is film-name.ismv. If you enter "-no-premium" for this
         # setting, then the file name the service generates for this top-level manifest is
         # film-name-no-premium.ismv.
+
         @[JSON::Field(key: "manifestNameModifier")]
         getter manifest_name_modifier : String?
 
         # Specify the outputs that you want this additional top-level manifest to reference.
+
         @[JSON::Field(key: "selectedOutputs")]
         getter selected_outputs : Array(String)?
 
@@ -9880,12 +11138,14 @@ module AwsSdk
       end
 
       # If you are using DRM, set DRM System to specify the value SpekeKeyProvider.
+
       struct MsSmoothEncryptionSettings
         include JSON::Serializable
 
         # If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM
         # encryption with a SPEKE-compliant key provider. If your output group type is CMAF, use the
         # SpekeKeyProviderCmaf settings instead.
+
         @[JSON::Field(key: "spekeKeyProvider")]
         getter speke_key_provider : Types::SpekeKeyProvider?
 
@@ -9897,6 +11157,7 @@ module AwsSdk
 
       # Settings related to your Microsoft Smooth Streaming output package. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
       struct MsSmoothGroupSettings
         include JSON::Serializable
 
@@ -9904,11 +11165,13 @@ module AwsSdk
         # Smooth Streaming output group in your job. This default manifest references every output in the
         # output group. To create additional manifests that reference a subset of the outputs in the output
         # group, specify a list of them here.
+
         @[JSON::Field(key: "additionalManifests")]
         getter additional_manifests : Array(Types::MsSmoothAdditionalManifest)?
 
         # COMBINE_DUPLICATE_STREAMS combines identical audio encoding settings across a Microsoft Smooth
         # output group into a single audio stream.
+
         @[JSON::Field(key: "audioDeduplication")]
         getter audio_deduplication : String?
 
@@ -9916,14 +11179,17 @@ module AwsSdk
         # format identifiers. If you do not specify the base filename in the URI, the service will use the
         # filename of the input file. If your job has multiple inputs, the service uses the filename of the
         # first input file.
+
         @[JSON::Field(key: "destination")]
         getter destination : String?
 
         # Settings associated with the destination. Will vary based on the type of destination
+
         @[JSON::Field(key: "destinationSettings")]
         getter destination_settings : Types::DestinationSettings?
 
         # If you are using DRM, set DRM System to specify the value SpekeKeyProvider.
+
         @[JSON::Field(key: "encryption")]
         getter encryption : Types::MsSmoothEncryptionSettings?
 
@@ -9931,6 +11197,7 @@ module AwsSdk
         # use the exact length that you specify with the setting Fragment length. This might result in extra
         # I-frames. Choose Multiple of GOP to have the encoder round up the segment lengths to match the next
         # GOP boundary.
+
         @[JSON::Field(key: "fragmentLength")]
         getter fragment_length : Int32?
 
@@ -9938,11 +11205,13 @@ module AwsSdk
         # use the exact length that you specify with the setting Fragment length. This might result in extra
         # I-frames. Choose Multiple of GOP to have the encoder round up the segment lengths to match the next
         # GOP boundary.
+
         @[JSON::Field(key: "fragmentLengthControl")]
         getter fragment_length_control : String?
 
         # Use Manifest encoding to specify the encoding format for the server and client manifest. Valid
         # options are utf8 and utf16.
+
         @[JSON::Field(key: "manifestEncoding")]
         getter manifest_encoding : String?
 
@@ -9960,6 +11229,7 @@ module AwsSdk
       end
 
       # These settings relate to your MXF output container.
+
       struct MxfSettings
         include JSON::Serializable
 
@@ -9970,6 +11240,7 @@ module AwsSdk
         # stream. Related settings: To set up your output to include or exclude AFD values, see AfdSignaling,
         # under VideoDescription. On the console, find AFD signaling under the output's video encoding
         # settings.
+
         @[JSON::Field(key: "afdSignaling")]
         getter afd_signaling : String?
 
@@ -9979,10 +11250,12 @@ module AwsSdk
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/codecs-supported-with-each-mxf-profile.html. For
         # more information about the automatic selection behavior, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/default-automatic-selection-of-mxf-profiles.html.
+
         @[JSON::Field(key: "profile")]
         getter profile : String?
 
         # Specify the XAVC profile settings for MXF outputs when you set your MXF profile to XAVC.
+
         @[JSON::Field(key: "xavcProfileSettings")]
         getter xavc_profile_settings : Types::MxfXavcProfileSettings?
 
@@ -9995,6 +11268,7 @@ module AwsSdk
       end
 
       # Specify the XAVC profile settings for MXF outputs when you set your MXF profile to XAVC.
+
       struct MxfXavcProfileSettings
         include JSON::Serializable
 
@@ -10002,6 +11276,7 @@ module AwsSdk
         # the default value, Drop frames for compliance. To include all frames from your input in this output,
         # keep the default setting, Allow any duration. The number of frames that MediaConvert excludes when
         # you set this to Drop frames for compliance depends on the output frame rate and duration.
+
         @[JSON::Field(key: "durationMode")]
         getter duration_mode : String?
 
@@ -10011,6 +11286,7 @@ module AwsSdk
         # is 1492 bytes per frame. This should be sufficient to prevent overflow unless you have multiple
         # pages of teletext captions data. If you have a large amount of teletext data, specify a larger
         # number.
+
         @[JSON::Field(key: "maxAncDataSize")]
         getter max_anc_data_size : Int32?
 
@@ -10023,12 +11299,14 @@ module AwsSdk
 
       # For forensic video watermarking, MediaConvert supports Nagra NexGuard File Marker watermarking.
       # MediaConvert supports both PreRelease Content (NGPR/G2) and OTT Streaming workflows.
+
       struct NexGuardFileMarkerSettings
         include JSON::Serializable
 
         # Use the base64 license string that Nagra provides you. Enter it directly in your JSON job
         # specification or in the console. Required when you include Nagra NexGuard File Marker watermarking
         # in your job.
+
         @[JSON::Field(key: "license")]
         getter license : String?
 
@@ -10040,16 +11318,19 @@ module AwsSdk
         # between output files and your IDs. For OTT Streaming, create two adaptive bitrate (ABR) stacks for
         # each asset. Do this by setting up two output groups. For one output group, set the value of Payload
         # ID to 0 in every output. For the other output group, set Payload ID to 1 in every output.
+
         @[JSON::Field(key: "payload")]
         getter payload : Int32?
 
         # Enter one of the watermarking preset strings that Nagra provides you. Required when you include
         # Nagra NexGuard File Marker watermarking in your job.
+
         @[JSON::Field(key: "preset")]
         getter preset : String?
 
         # Optional. Ignore this setting unless Nagra support directs you to specify a value. When you don't
         # specify a value here, the Nagra NexGuard library uses its default value.
+
         @[JSON::Field(key: "strength")]
         getter strength : String?
 
@@ -10065,15 +11346,18 @@ module AwsSdk
       # Settings for your Nielsen configuration. If you don't do Nielsen measurement and analytics, ignore
       # these settings. When you enable Nielsen configuration, MediaConvert enables PCM to ID3 tagging for
       # all outputs in the job.
+
       struct NielsenConfiguration
         include JSON::Serializable
 
         # Nielsen has discontinued the use of breakout code functionality. If you must include this property,
         # set the value to zero.
+
         @[JSON::Field(key: "breakoutCode")]
         getter breakout_code : Int32?
 
         # Use Distributor ID to specify the distributor ID that is assigned to your organization by Nielsen.
+
         @[JSON::Field(key: "distributorId")]
         getter distributor_id : String?
 
@@ -10090,6 +11374,7 @@ module AwsSdk
       # every output in your job. The MediaConvert implementation is currently with the following Nielsen
       # versions: Nielsen Watermark SDK Version 6.0.13 Nielsen NLM Watermark Engine Version 1.3.3 Nielsen
       # Watermark Authenticator [SID_TIC] Version [7.0.0]
+
       struct NielsenNonLinearWatermarkSettings
         include JSON::Serializable
 
@@ -10097,6 +11382,7 @@ module AwsSdk
         # you must provide a value for the setting SID. When you choose CBET, you must provide a value for the
         # setting CSID. When you choose NAES 2, NW, and CBET, you must provide values for both of these
         # settings.
+
         @[JSON::Field(key: "activeWatermarkProcess")]
         getter active_watermark_process : String?
 
@@ -10104,26 +11390,31 @@ module AwsSdk
         # .zip file. To provide an ADI file, store it in Amazon S3 and provide a URL to it here. The URL
         # should be in the following format: S3://bucket/path/ADI-file. For more information about the
         # metadata .zip file, see the setting Metadata destination.
+
         @[JSON::Field(key: "adiFilename")]
         getter adi_filename : String?
 
         # Use the asset ID that you provide to Nielsen to uniquely identify this asset. Required for all
         # Nielsen non-linear watermarking.
+
         @[JSON::Field(key: "assetId")]
         getter asset_id : String?
 
         # Use the asset name that you provide to Nielsen for this asset. Required for all Nielsen non-linear
         # watermarking.
+
         @[JSON::Field(key: "assetName")]
         getter asset_name : String?
 
         # Use the CSID that Nielsen provides to you. This CBET source ID should be unique to your Nielsen
         # account but common to all of your output assets that have CBET watermarking. Required when you
         # choose a value for the setting Watermark types that includes CBET.
+
         @[JSON::Field(key: "cbetSourceId")]
         getter cbet_source_id : String?
 
         # Optional. If this asset uses an episode ID with Nielsen, provide it here.
+
         @[JSON::Field(key: "episodeId")]
         getter episode_id : String?
 
@@ -10133,6 +11424,7 @@ module AwsSdk
         # file to specify it. MediaConvert delivers the Nielsen metadata .zip files only to your metadata
         # destination Amazon S3 bucket. It doesn't deliver the .zip files to Nielsen. You are responsible for
         # delivering the metadata .zip files to Nielsen.
+
         @[JSON::Field(key: "metadataDestination")]
         getter metadata_destination : String?
 
@@ -10140,6 +11432,7 @@ module AwsSdk
         # but common to all of your output assets. Required for all Nielsen non-linear watermarking. This ID
         # should be unique to your Nielsen account but common to all of your output assets. Required for all
         # Nielsen non-linear watermarking.
+
         @[JSON::Field(key: "sourceId")]
         getter source_id : Int32?
 
@@ -10147,6 +11440,7 @@ module AwsSdk
         # you set this value to Watermarked, the service fails the job. Nielsen requires that you add
         # non-linear watermarking to only clean content that doesn't already have non-linear Nielsen
         # watermarks.
+
         @[JSON::Field(key: "sourceWatermarkStatus")]
         getter source_watermark_status : String?
 
@@ -10155,11 +11449,13 @@ module AwsSdk
         # server. Instead, you must use API Gateway to provide a RESTful interface between MediaConvert and a
         # TIC server that you deploy in your AWS account. For more information on deploying a TIC server in
         # your AWS account and the required API Gateway, contact Nielsen support.
+
         @[JSON::Field(key: "ticServerUrl")]
         getter tic_server_url : String?
 
         # To create assets that have the same TIC values in each audio track, keep the default value Share
         # TICs. To create assets that have unique TIC values for each audio track, choose Use unique TICs.
+
         @[JSON::Field(key: "uniqueTicPerAudioTrack")]
         getter unique_tic_per_audio_track : String?
 
@@ -10183,6 +11479,7 @@ module AwsSdk
       # disable this feature for each output individually. This setting is disabled by default. When you
       # enable Noise reducer, you must also select a value for Noise reducer filter. For AVC outputs, when
       # you include Noise reducer, you cannot include the Bandwidth reduction filter.
+
       struct NoiseReducer
         include JSON::Serializable
 
@@ -10191,18 +11488,22 @@ module AwsSdk
         # * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve
         # does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. *
         # Temporal optimizes video quality for complex motion.
+
         @[JSON::Field(key: "filter")]
         getter filter : String?
 
         # Settings for a noise reducer filter
+
         @[JSON::Field(key: "filterSettings")]
         getter filter_settings : Types::NoiseReducerFilterSettings?
 
         # Noise reducer filter settings for spatial filter.
+
         @[JSON::Field(key: "spatialFilterSettings")]
         getter spatial_filter_settings : Types::NoiseReducerSpatialFilterSettings?
 
         # Noise reducer filter settings for temporal filter.
+
         @[JSON::Field(key: "temporalFilterSettings")]
         getter temporal_filter_settings : Types::NoiseReducerTemporalFilterSettings?
 
@@ -10216,10 +11517,12 @@ module AwsSdk
       end
 
       # Settings for a noise reducer filter
+
       struct NoiseReducerFilterSettings
         include JSON::Serializable
 
         # Relative strength of noise reducing filter. Higher values produce stronger filtering.
+
         @[JSON::Field(key: "strength")]
         getter strength : Int32?
 
@@ -10230,19 +11533,23 @@ module AwsSdk
       end
 
       # Noise reducer filter settings for spatial filter.
+
       struct NoiseReducerSpatialFilterSettings
         include JSON::Serializable
 
         # Specify strength of post noise reduction sharpening filter, with 0 disabling the filter and 3
         # enabling it at maximum strength.
+
         @[JSON::Field(key: "postFilterSharpenStrength")]
         getter post_filter_sharpen_strength : Int32?
 
         # The speed of the filter, from -2 (lower speed) to 3 (higher speed), with 0 being the nominal value.
+
         @[JSON::Field(key: "speed")]
         getter speed : Int32?
 
         # Relative strength of noise reducing filter. Higher values produce stronger filtering.
+
         @[JSON::Field(key: "strength")]
         getter strength : Int32?
 
@@ -10255,12 +11562,14 @@ module AwsSdk
       end
 
       # Noise reducer filter settings for temporal filter.
+
       struct NoiseReducerTemporalFilterSettings
         include JSON::Serializable
 
         # Use Aggressive mode for content that has complex motion. Higher values produce stronger temporal
         # filtering. This filters highly complex scenes more aggressively and creates better VQ for low
         # bitrate outputs.
+
         @[JSON::Field(key: "aggressiveMode")]
         getter aggressive_mode : Int32?
 
@@ -10271,17 +11580,20 @@ module AwsSdk
         # depending on your input type and quality. When you set Post temporal sharpening to Enabled, specify
         # how much sharpening is applied using Post temporal sharpening strength. Set Post temporal sharpening
         # to Disabled to not apply sharpening.
+
         @[JSON::Field(key: "postTemporalSharpening")]
         getter post_temporal_sharpening : String?
 
         # Use Post temporal sharpening strength to define the amount of sharpening the transcoder applies to
         # your output. Set Post temporal sharpening strength to Low, Medium, or High to indicate the amount of
         # sharpening.
+
         @[JSON::Field(key: "postTemporalSharpeningStrength")]
         getter post_temporal_sharpening_strength : String?
 
         # The speed of the filter (higher number is faster). Low setting reduces bit rate at the cost of
         # transcode time, high setting improves transcode time at the cost of bit rate.
+
         @[JSON::Field(key: "speed")]
         getter speed : Int32?
 
@@ -10289,6 +11601,7 @@ module AwsSdk
         # filtering. We recommend the following value ranges, depending on the result that you want: * 0-2 for
         # complexity reduction with minimal sharpness loss * 2-8 for complexity reduction with image
         # preservation * 8-16 for a high level of complexity reduction
+
         @[JSON::Field(key: "strength")]
         getter strength : Int32?
 
@@ -10302,8 +11615,10 @@ module AwsSdk
         end
       end
 
+
       struct NotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -10315,20 +11630,24 @@ module AwsSdk
       end
 
       # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value OPUS.
+
       struct OpusSettings
         include JSON::Serializable
 
         # Optional. Specify the average bitrate in bits per second. Valid values are multiples of 8000, from
         # 32000 through 192000. The default value is 96000, which we recommend for quality and bandwidth.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
         # Specify the number of channels in this output audio track. Choosing Mono on gives you 1 output
         # channel; choosing Stereo gives you 2. In the API, valid values are 1 and 2.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Optional. Sample rate in Hz. Valid values are 16000, 24000, and 48000. The default value is 48000.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -10343,20 +11662,24 @@ module AwsSdk
       # Each output in your job is a collection of settings that describes how you want MediaConvert to
       # encode a single output file or stream. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/create-outputs.html.
+
       struct Output
         include JSON::Serializable
 
         # Contains groups of audio encoding settings organized by audio codec. Include one instance of per
         # output. Can contain multiple groups of encoding settings.
+
         @[JSON::Field(key: "audioDescriptions")]
         getter audio_descriptions : Array(Types::AudioDescription)?
 
         # Contains groups of captions settings. For each output that has captions, include one instance of
         # CaptionDescriptions. Can contain multiple groups of captions settings.
+
         @[JSON::Field(key: "captionDescriptions")]
         getter caption_descriptions : Array(Types::CaptionDescription)?
 
         # Container specific settings.
+
         @[JSON::Field(key: "containerSettings")]
         getter container_settings : Types::ContainerSettings?
 
@@ -10365,6 +11688,7 @@ module AwsSdk
         # stream, m2ts * Quicktime, mov * MXF container, mxf * MPEG-4 container, mp4 * WebM container, webm *
         # Animated GIF container, gif * No Container, the service will use codec extensions (e.g. AAC, H265,
         # H265, AC3)
+
         @[JSON::Field(key: "extension")]
         getter extension : String?
 
@@ -10373,21 +11697,25 @@ module AwsSdk
         # output group, Name modifier is required. Name modifier also accepts format identifiers. For DASH ISO
         # outputs, if you use the format identifiers $Number$ or $Time$ in one output, you must use them in
         # the same way in all outputs of the output group.
+
         @[JSON::Field(key: "nameModifier")]
         getter name_modifier : String?
 
         # Specific settings for this type of output.
+
         @[JSON::Field(key: "outputSettings")]
         getter output_settings : Types::OutputSettings?
 
         # Use Preset to specify a preset for your transcoding settings. Provide the system or custom preset
         # name. You can specify either Preset or Container settings, but not both.
+
         @[JSON::Field(key: "preset")]
         getter preset : String?
 
         # VideoDescription contains a group of video encoding settings. The specific video settings depend on
         # the video codec that you choose for the property codec. Include one instance of VideoDescription per
         # output.
+
         @[JSON::Field(key: "videoDescription")]
         getter video_description : Types::VideoDescription?
 
@@ -10405,15 +11733,18 @@ module AwsSdk
       end
 
       # OutputChannel mapping settings.
+
       struct OutputChannelMapping
         include JSON::Serializable
 
         # Use this setting to specify your remix values when they are integers, such as -10, 0, or 4.
+
         @[JSON::Field(key: "inputChannels")]
         getter input_channels : Array(Int32)?
 
         # Use this setting to specify your remix values when they have a decimal component, such as -10.312,
         # 0.08, or 4.9. MediaConvert rounds your remixing values to the nearest thousandth.
+
         @[JSON::Field(key: "inputChannelsFineTune")]
         getter input_channels_fine_tune : Array(Float64)?
 
@@ -10425,14 +11756,17 @@ module AwsSdk
       end
 
       # Details regarding output
+
       struct OutputDetail
         include JSON::Serializable
 
         # Duration in milliseconds
+
         @[JSON::Field(key: "durationInMs")]
         getter duration_in_ms : Int32?
 
         # Contains details about the output's video stream
+
         @[JSON::Field(key: "videoDetails")]
         getter video_details : Types::VideoDetail?
 
@@ -10444,29 +11778,35 @@ module AwsSdk
       end
 
       # Group of outputs
+
       struct OutputGroup
         include JSON::Serializable
 
         # Use automated encoding to have MediaConvert choose your encoding settings for you, based on
         # characteristics of your input video.
+
         @[JSON::Field(key: "automatedEncodingSettings")]
         getter automated_encoding_settings : Types::AutomatedEncodingSettings?
 
         # Use Custom Group Name to specify a name for the output group. This value is displayed on the console
         # and can make your job settings JSON more human-readable. It does not affect your outputs. Use up to
         # twelve characters that are either letters, numbers, spaces, or underscores.
+
         @[JSON::Field(key: "customName")]
         getter custom_name : String?
 
         # Name of the output group
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # Output Group settings, including type
+
         @[JSON::Field(key: "outputGroupSettings")]
         getter output_group_settings : Types::OutputGroupSettings?
 
         # This object holds groups of encoding settings, one group of settings per output.
+
         @[JSON::Field(key: "outputs")]
         getter outputs : Array(Types::Output)?
 
@@ -10481,10 +11821,12 @@ module AwsSdk
       end
 
       # Contains details about the output groups specified in the job settings.
+
       struct OutputGroupDetail
         include JSON::Serializable
 
         # Details about the output
+
         @[JSON::Field(key: "outputDetails")]
         getter output_details : Array(Types::OutputDetail)?
 
@@ -10495,31 +11837,37 @@ module AwsSdk
       end
 
       # Output Group settings, including type
+
       struct OutputGroupSettings
         include JSON::Serializable
 
         # Settings related to your CMAF output package. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
         @[JSON::Field(key: "cmafGroupSettings")]
         getter cmaf_group_settings : Types::CmafGroupSettings?
 
         # Settings related to your DASH output package. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
         @[JSON::Field(key: "dashIsoGroupSettings")]
         getter dash_iso_group_settings : Types::DashIsoGroupSettings?
 
         # Settings related to your File output group. MediaConvert uses this group of settings to generate a
         # single standalone file, rather than a streaming package.
+
         @[JSON::Field(key: "fileGroupSettings")]
         getter file_group_settings : Types::FileGroupSettings?
 
         # Settings related to your HLS output package. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
         @[JSON::Field(key: "hlsGroupSettings")]
         getter hls_group_settings : Types::HlsGroupSettings?
 
         # Settings related to your Microsoft Smooth Streaming output package. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+
         @[JSON::Field(key: "msSmoothGroupSettings")]
         getter ms_smooth_group_settings : Types::MsSmoothGroupSettings?
 
@@ -10537,10 +11885,12 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
         # Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming, CMAF)
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -10557,10 +11907,12 @@ module AwsSdk
       end
 
       # Specific settings for this type of output.
+
       struct OutputSettings
         include JSON::Serializable
 
         # Settings for HLS output groups
+
         @[JSON::Field(key: "hlsSettings")]
         getter hls_settings : Types::HlsSettings?
 
@@ -10572,11 +11924,13 @@ module AwsSdk
 
       # If you work with a third party video watermarking partner, use the group of settings that correspond
       # with your watermarking partner to include watermarks in your output.
+
       struct PartnerWatermarking
         include JSON::Serializable
 
         # For forensic video watermarking, MediaConvert supports Nagra NexGuard File Marker watermarking.
         # MediaConvert supports both PreRelease Content (NGPR/G2) and OTT Streaming workflows.
+
         @[JSON::Field(key: "nexguardFileMarkerSettings")]
         getter nexguard_file_marker_settings : Types::NexGuardFileMarkerSettings?
 
@@ -10587,6 +11941,7 @@ module AwsSdk
       end
 
       # Optional settings when you set Codec to the value Passthrough.
+
       struct PassthroughSettings
         include JSON::Serializable
 
@@ -10598,6 +11953,7 @@ module AwsSdk
         # specify, MediaConvert uses the next compatible I-frame. Note that your output may be shorter than
         # your input clip duration. We only recommend this setting for special workflows, and when you choose
         # this setting your output may not be compatible with most players.
+
         @[JSON::Field(key: "frameControl")]
         getter frame_control : String?
 
@@ -10605,6 +11961,7 @@ module AwsSdk
         # all the selected streams in the video selector source. When selecting streams from multiple
         # renditions (i.e. using Stream video selector type): REMUX_ALL will only remux all streams selected,
         # and AUTO will use the highest bitrate video stream among the selected streams as source.
+
         @[JSON::Field(key: "videoSelectorMode")]
         getter video_selector_mode : String?
 
@@ -10618,18 +11975,22 @@ module AwsSdk
       # A policy configures behavior that you allow or disallow for your account. For information about
       # MediaConvert policies, see the user guide at
       # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
       struct Policy
         include JSON::Serializable
 
         # Allow or disallow jobs that specify HTTP inputs.
+
         @[JSON::Field(key: "httpInputs")]
         getter http_inputs : String?
 
         # Allow or disallow jobs that specify HTTPS inputs.
+
         @[JSON::Field(key: "httpsInputs")]
         getter https_inputs : String?
 
         # Allow or disallow jobs that specify Amazon S3 inputs.
+
         @[JSON::Field(key: "s3Inputs")]
         getter s3_inputs : String?
 
@@ -10643,39 +12004,48 @@ module AwsSdk
 
       # A preset is a collection of preconfigured media conversion settings that you want MediaConvert to
       # apply to the output during the conversion process.
+
       struct Preset
         include JSON::Serializable
 
         # A name you create for each preset. Each name must be unique within your account.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # Settings for preset
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::PresetSettings
 
         # An identifier for this resource that is unique within all of AWS.
+
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # An optional category you create to organize your presets.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # The timestamp in epoch seconds for preset creation.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # An optional description you create for each preset.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The timestamp in epoch seconds when the preset was last updated.
+
         @[JSON::Field(key: "lastUpdated")]
         getter last_updated : Time?
 
         # A preset can be of two types: system or custom. System or built-in preset can't be modified or
         # deleted by the user.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -10693,26 +12063,31 @@ module AwsSdk
       end
 
       # Settings for preset
+
       struct PresetSettings
         include JSON::Serializable
 
         # Contains groups of audio encoding settings organized by audio codec. Include one instance of per
         # output. Can contain multiple groups of encoding settings.
+
         @[JSON::Field(key: "audioDescriptions")]
         getter audio_descriptions : Array(Types::AudioDescription)?
 
         # This object holds groups of settings related to captions for one output. For each output that has
         # captions, include one instance of CaptionDescriptions.
+
         @[JSON::Field(key: "captionDescriptions")]
         getter caption_descriptions : Array(Types::CaptionDescriptionPreset)?
 
         # Container specific settings.
+
         @[JSON::Field(key: "containerSettings")]
         getter container_settings : Types::ContainerSettings?
 
         # VideoDescription contains a group of video encoding settings. The specific video settings depend on
         # the video codec that you choose for the property codec. Include one instance of VideoDescription per
         # output.
+
         @[JSON::Field(key: "videoDescription")]
         getter video_description : Types::VideoDescription?
 
@@ -10726,10 +12101,12 @@ module AwsSdk
       end
 
       # The input file that needs to be analyzed.
+
       struct ProbeInputFile
         include JSON::Serializable
 
         # Specify the S3, HTTP, or HTTPS URL for your media file.
+
         @[JSON::Field(key: "fileUrl")]
         getter file_url : String?
 
@@ -10740,10 +12117,12 @@ module AwsSdk
       end
 
       # The request to probe one or more media files and retrieve metadata about them.
+
       struct ProbeRequest
         include JSON::Serializable
 
         # Specify a media file to probe.
+
         @[JSON::Field(key: "inputFiles")]
         getter input_files : Array(Types::ProbeInputFile)?
 
@@ -10755,10 +12134,12 @@ module AwsSdk
 
       # The response from a MediaConvert Probe operation, in JSON form, with detailed information about your
       # input media.
+
       struct ProbeResponse
         include JSON::Serializable
 
         # Probe results for your media file.
+
         @[JSON::Field(key: "probeResults")]
         getter probe_results : Array(Types::ProbeResult)?
 
@@ -10769,19 +12150,23 @@ module AwsSdk
       end
 
       # Probe results for your media file.
+
       struct ProbeResult
         include JSON::Serializable
 
         # The container of your media file. This information helps you understand the overall structure and
         # details of your media, including format, duration, and track layout.
+
         @[JSON::Field(key: "container")]
         getter container : Types::Container?
 
         # Metadata and other file information.
+
         @[JSON::Field(key: "metadata")]
         getter metadata : Types::Metadata?
 
         # An array containing track mapping information.
+
         @[JSON::Field(key: "trackMappings")]
         getter track_mappings : Array(Types::TrackMapping)?
 
@@ -10794,6 +12179,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value PRORES.
+
       struct ProresSettings
         include JSON::Serializable
 
@@ -10804,10 +12190,12 @@ module AwsSdk
         # Preserve 4:4:4 sampling. Use when your input has 4:4:4 chroma sampling and your output codec Profile
         # is Apple ProRes 4444 or 4444 XQ. Note that when you choose Preserve 4:4:4 sampling, you cannot
         # include any of the following Preprocessors: Dolby Vision, HDR10+, or Noise reducer.
+
         @[JSON::Field(key: "chromaSampling")]
         getter chroma_sampling : String?
 
         # Use Profile to specify the type of Apple ProRes codec to use for this output.
+
         @[JSON::Field(key: "codecProfile")]
         getter codec_profile : String?
 
@@ -10816,6 +12204,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -10831,6 +12220,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -10839,6 +12229,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -10847,6 +12238,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -10858,6 +12250,7 @@ module AwsSdk
         # output. Follow behavior depends on the input scan type. If the source is interlaced, the output will
         # be interlaced with the same polarity as the source. If the source is progressive, the output will be
         # interlaced with top field bottom field first, depending on which of the Follow options you choose.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
@@ -10865,6 +12258,7 @@ module AwsSdk
         # default behavior, Follow source, uses the PAR from your input video for your output. To specify a
         # different PAR, choose any value other than Follow source. When you choose SPECIFIED for this
         # setting, you must also specify values for the parNumerator and parDenominator settings.
+
         @[JSON::Field(key: "parControl")]
         getter par_control : String?
 
@@ -10872,6 +12266,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parDenominator is 33.
+
         @[JSON::Field(key: "parDenominator")]
         getter par_denominator : Int32?
 
@@ -10879,6 +12274,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parNumerator is 40.
+
         @[JSON::Field(key: "parNumerator")]
         getter par_numerator : Int32?
 
@@ -10896,6 +12292,7 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
@@ -10909,6 +12306,7 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
@@ -10917,6 +12315,7 @@ module AwsSdk
         # to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this
         # setting will slightly reduce the duration of your video. Required settings: You must also set
         # Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -10924,6 +12323,7 @@ module AwsSdk
         # scan type is interlaced, you can optionally enable hard telecine to create a smoother picture. When
         # you keep the default value, None, MediaConvert does a standard frame rate conversion to 29.97
         # without doing anything with the field polarity to create a smoother picture.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -10947,12 +12347,14 @@ module AwsSdk
       end
 
       # Create or change a policy by sending a request that includes your policy in JSON.
+
       struct PutPolicyRequest
         include JSON::Serializable
 
         # A policy configures behavior that you allow or disallow for your account. For information about
         # MediaConvert policies, see the user guide at
         # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
         @[JSON::Field(key: "policy")]
         getter policy : Types::Policy
 
@@ -10963,12 +12365,14 @@ module AwsSdk
       end
 
       # Successful PUT policy requests will return your policy.
+
       struct PutPolicyResponse
         include JSON::Serializable
 
         # A policy configures behavior that you allow or disallow for your account. For information about
         # MediaConvert policies, see the user guide at
         # http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
         @[JSON::Field(key: "policy")]
         getter policy : Types::Policy?
 
@@ -10982,30 +12386,37 @@ module AwsSdk
       # multiple transcoding jobs at the same time. If you don't specify a queue, the service sends all jobs
       # through the default queue. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
+
       struct Queue
         include JSON::Serializable
 
         # A name that you create for each queue. Each name must be unique within your account.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # An identifier for this resource that is unique within all of AWS.
+
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The maximum number of jobs your queue can process concurrently.
+
         @[JSON::Field(key: "concurrentJobs")]
         getter concurrent_jobs : Int32?
 
         # The timestamp in epoch seconds for when you created the queue.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Time?
 
         # An optional description that you create for each queue.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The timestamp in epoch seconds for when you most recently updated the queue.
+
         @[JSON::Field(key: "lastUpdated")]
         getter last_updated : Time?
 
@@ -11013,35 +12424,42 @@ module AwsSdk
         # per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity
         # of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a
         # 12-month commitment.
+
         @[JSON::Field(key: "pricingPlan")]
         getter pricing_plan : String?
 
         # The estimated number of jobs with a PROGRESSING status.
+
         @[JSON::Field(key: "progressingJobsCount")]
         getter progressing_jobs_count : Int32?
 
         # Details about the pricing plan for your reserved queue. Required for reserved queues and not
         # applicable to on-demand queues.
+
         @[JSON::Field(key: "reservationPlan")]
         getter reservation_plan : Types::ReservationPlan?
 
         # A list of any service overrides applied by MediaConvert to the settings that you have configured. If
         # you see any overrides, we recommend that you contact AWS Support.
+
         @[JSON::Field(key: "serviceOverrides")]
         getter service_overrides : Array(Types::ServiceOverride)?
 
         # Queues can be ACTIVE or PAUSED. If you pause a queue, the service won't begin processing jobs in
         # that queue. Jobs that are running when you pause the queue continue to run until they finish or
         # result in an error.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The estimated number of jobs with a SUBMITTED status.
+
         @[JSON::Field(key: "submittedJobsCount")]
         getter submitted_jobs_count : Int32?
 
         # Specifies whether this on-demand queue is system or custom. System queues are built in. You can't
         # modify or delete system queues. You can create and modify custom queues.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -11065,18 +12483,22 @@ module AwsSdk
 
       # Description of the source and destination queues between which the job has moved, along with the
       # timestamp of the move
+
       struct QueueTransition
         include JSON::Serializable
 
         # The queue that the job was on after the transition.
+
         @[JSON::Field(key: "destinationQueue")]
         getter destination_queue : String?
 
         # The queue that the job was on before the transition.
+
         @[JSON::Field(key: "sourceQueue")]
         getter source_queue : String?
 
         # The time, in Unix epoch format, that the job moved from the source queue to the destination queue.
+
         @[JSON::Field(key: "timestamp")]
         getter timestamp : Time?
 
@@ -11089,24 +12511,29 @@ module AwsSdk
       end
 
       # Use Rectangle to identify a specific area of the video frame.
+
       struct Rectangle
         include JSON::Serializable
 
         # Height of rectangle in pixels. Specify only even numbers.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Width of rectangle in pixels. Specify only even numbers.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
         # The distance, in pixels, between the rectangle and the left edge of the video frame. Specify only
         # even numbers.
+
         @[JSON::Field(key: "x")]
         getter x : Int32?
 
         # The distance, in pixels, between the rectangle and the top edge of the video frame. Specify only
         # even numbers.
+
         @[JSON::Field(key: "y")]
         getter y : Int32?
 
@@ -11122,6 +12549,7 @@ module AwsSdk
       # Use Manual audio remixing to adjust audio levels for each audio channel in each output of your job.
       # With audio remixing, you can output more or fewer audio channels than your input audio source
       # provides.
+
       struct RemixSettings
         include JSON::Serializable
 
@@ -11130,6 +12558,7 @@ module AwsSdk
         # according to your data stream. When you specify an audio description audio channel, you must also
         # specify an audio description data channel. For more information about audio description signals, see
         # the BBC WHP 198 and 051 white papers.
+
         @[JSON::Field(key: "audioDescriptionAudioChannel")]
         getter audio_description_audio_channel : Int32?
 
@@ -11138,6 +12567,7 @@ module AwsSdk
         # according to your data stream. When you specify an audio description data channel, you must also
         # specify an audio description audio channel. For more information about audio description signals,
         # see the BBC WHP 198 and 051 white papers.
+
         @[JSON::Field(key: "audioDescriptionDataChannel")]
         getter audio_description_data_channel : Int32?
 
@@ -11150,6 +12580,7 @@ module AwsSdk
         # within the range from -60 (mute) through 6. A setting of 0 passes the input channel unchanged to the
         # output channel (no attenuation or amplification). Use InputChannels or InputChannelsFineTune to
         # specify your remix values. Don't use both.
+
         @[JSON::Field(key: "channelMapping")]
         getter channel_mapping : Types::ChannelMapping?
 
@@ -11158,6 +12589,7 @@ module AwsSdk
         # final output might be different. If you are doing both input channel mapping and output channel
         # mapping, the number of output channels in your input mapping must be the same as the number of input
         # channels in your output mapping.
+
         @[JSON::Field(key: "channelsIn")]
         getter channels_in : Int32?
 
@@ -11165,6 +12597,7 @@ module AwsSdk
         # and even numbers to 64.) If you are doing both input channel mapping and output channel mapping, the
         # number of output channels in your input mapping must be the same as the number of input channels in
         # your output mapping.
+
         @[JSON::Field(key: "channelsOut")]
         getter channels_out : Int32?
 
@@ -11180,24 +12613,29 @@ module AwsSdk
 
       # Details about the pricing plan for your reserved queue. Required for reserved queues and not
       # applicable to on-demand queues.
+
       struct ReservationPlan
         include JSON::Serializable
 
         # The length of the term of your reserved queue pricing plan commitment.
+
         @[JSON::Field(key: "commitment")]
         getter commitment : String?
 
         # The timestamp in epoch seconds for when the current pricing plan term for this reserved queue
         # expires.
+
         @[JSON::Field(key: "expiresAt")]
         getter expires_at : Time?
 
         # The timestamp in epoch seconds for when you set up the current pricing plan for this reserved queue.
+
         @[JSON::Field(key: "purchasedAt")]
         getter purchased_at : Time?
 
         # Specifies whether the term of your reserved queue pricing plan is automatically extended
         # (AUTO_RENEW) or expires (EXPIRE) at the end of the term.
+
         @[JSON::Field(key: "renewalType")]
         getter renewal_type : String?
 
@@ -11206,10 +12644,12 @@ module AwsSdk
         # increase this number, you extend your existing commitment with a new 12-month commitment for a
         # larger number of RTS. The new commitment begins when you purchase the additional capacity. You can't
         # decrease the number of RTS in your reserved queue.
+
         @[JSON::Field(key: "reservedSlots")]
         getter reserved_slots : Int32?
 
         # Specifies whether the pricing plan for your reserved queue is ACTIVE or EXPIRED.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -11226,16 +12666,19 @@ module AwsSdk
 
       # Details about the pricing plan for your reserved queue. Required for reserved queues and not
       # applicable to on-demand queues.
+
       struct ReservationPlanSettings
         include JSON::Serializable
 
         # The length of the term of your reserved queue pricing plan commitment.
+
         @[JSON::Field(key: "commitment")]
         getter commitment : String
 
         # Specifies whether the term of your reserved queue pricing plan is automatically extended
         # (AUTO_RENEW) or expires (EXPIRE) at the end of the term. When your term is auto renewed, you extend
         # your commitment by 12 months from the auto renew date. You can cancel this commitment.
+
         @[JSON::Field(key: "renewalType")]
         getter renewal_type : String
 
@@ -11245,6 +12688,7 @@ module AwsSdk
         # your existing commitment with a new 12-month commitment for the larger number. The new commitment
         # begins when you purchase the additional capacity. You can't cancel your commitment or revert to your
         # original commitment after you increase the capacity.
+
         @[JSON::Field(key: "reservedSlots")]
         getter reserved_slots : Int32
 
@@ -11257,14 +12701,17 @@ module AwsSdk
       end
 
       # The Amazon Resource Name (ARN) and tags for an AWS Elemental MediaConvert resource.
+
       struct ResourceTags
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource.
+
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
         # The tags for the resource.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -11278,10 +12725,12 @@ module AwsSdk
       # Optional. Have MediaConvert automatically apply Amazon S3 access control for the outputs in this
       # output group. When you don't use this setting, S3 automatically applies the default access control
       # list PRIVATE.
+
       struct S3DestinationAccessControl
         include JSON::Serializable
 
         # Choose an Amazon S3 canned ACL for MediaConvert to apply to this output.
+
         @[JSON::Field(key: "cannedAcl")]
         getter canned_acl : String?
 
@@ -11292,22 +12741,26 @@ module AwsSdk
       end
 
       # Settings associated with S3 destination
+
       struct S3DestinationSettings
         include JSON::Serializable
 
         # Optional. Have MediaConvert automatically apply Amazon S3 access control for the outputs in this
         # output group. When you don't use this setting, S3 automatically applies the default access control
         # list PRIVATE.
+
         @[JSON::Field(key: "accessControl")]
         getter access_control : Types::S3DestinationAccessControl?
 
         # Settings for how your job outputs are encrypted as they are uploaded to Amazon S3.
+
         @[JSON::Field(key: "encryption")]
         getter encryption : Types::S3EncryptionSettings?
 
         # Specify the S3 storage class to use for this output. To use your destination's default storage
         # class: Keep the default value, Not set. For more information about S3 storage classes, see
         # https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html
+
         @[JSON::Field(key: "storageClass")]
         getter storage_class : String?
 
@@ -11320,6 +12773,7 @@ module AwsSdk
       end
 
       # Settings for how your job outputs are encrypted as they are uploaded to Amazon S3.
+
       struct S3EncryptionSettings
         include JSON::Serializable
 
@@ -11331,6 +12785,7 @@ module AwsSdk
         # managed customer master key (CMK) associated with Amazon S3 to encrypt your data keys. You can
         # optionally choose to specify a different, customer managed CMK. Do so by specifying the Amazon
         # Resource Name (ARN) of the key for the setting KMS ARN.
+
         @[JSON::Field(key: "encryptionType")]
         getter encryption_type : String?
 
@@ -11340,6 +12795,7 @@ module AwsSdk
         # To use this setting, you must also set Server-side encryption to AWS KMS. For more information about
         # encryption context, see:
         # https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context.
+
         @[JSON::Field(key: "kmsEncryptionContext")]
         getter kms_encryption_context : String?
 
@@ -11347,6 +12803,7 @@ module AwsSdk
         # AWS uses to encrypt your output content. Enter the Amazon Resource Name (ARN) of the CMK. To use
         # this setting, you must also set Server-side encryption to AWS KMS. If you set Server-side encryption
         # to AWS KMS but don't specify a CMK here, AWS uses the AWS managed CMK associated with Amazon S3.
+
         @[JSON::Field(key: "kmsKeyArn")]
         getter kms_key_arn : String?
 
@@ -11362,6 +12819,7 @@ module AwsSdk
       # separate from the video container. Set up sidecar captions in the same output group, but different
       # output from your video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
+
       struct SccDestinationSettings
         include JSON::Serializable
 
@@ -11369,6 +12827,7 @@ module AwsSdk
         # frame rate that matches the frame rate of the associated video. If the video frame rate is 29.97,
         # choose 29.97 dropframe only if the video has video_insertion=true and drop_frame_timecode=true;
         # otherwise, choose 29.97 non-dropframe.
+
         @[JSON::Field(key: "framerate")]
         getter framerate : String?
 
@@ -11381,33 +12840,40 @@ module AwsSdk
       # Retrieve a JSON array that includes job details for up to twenty of your most recent jobs.
       # Optionally filter results further according to input file, queue, or status. To retrieve the twenty
       # next most recent jobs, use the nextToken string returned with the array.
+
       struct SearchJobsRequest
         include JSON::Serializable
 
         # Optional. Provide your input file URL or your partial input file name. The maximum length for an
         # input file is 300 characters.
+
         @[JSON::Field(key: "inputFile")]
         getter input_file : String?
 
         # Optional. Number of jobs, up to twenty, that will be returned at one time.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Optional. Use this string, provided with the response to a previous request, to request the next
         # batch of jobs.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING
         # or DESCENDING order. Default varies by resource.
+
         @[JSON::Field(key: "order")]
         getter order : String?
 
         # Optional. Provide a queue name, or a queue ARN, to return only jobs from that queue.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
         # Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -11424,14 +12890,17 @@ module AwsSdk
 
       # Successful search jobs requests return a JSON array of jobs. If you don't specify how they are
       # ordered, you will receive the most recently created first.
+
       struct SearchJobsResponse
         include JSON::Serializable
 
         # List of jobs.
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(Types::Job)?
 
         # Use this string to request the next batch of jobs.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -11444,22 +12913,27 @@ module AwsSdk
 
       # A service override applied by MediaConvert to the settings that you have configured. If you see any
       # overrides, we recommend that you contact AWS Support.
+
       struct ServiceOverride
         include JSON::Serializable
 
         # Details about the service override that MediaConvert has applied.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
         # The name of the setting that MediaConvert has applied an override to.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The current value of the service override that MediaConvert has applied.
+
         @[JSON::Field(key: "overrideValue")]
         getter override_value : String?
 
         # The value of the setting that you configured, prior to any overrides that MediaConvert has applied.
+
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -11472,8 +12946,10 @@ module AwsSdk
         end
       end
 
+
       struct ServiceQuotaExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -11487,12 +12963,14 @@ module AwsSdk
       # If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM
       # encryption with a SPEKE-compliant key provider. If your output group type is CMAF, use the
       # SpekeKeyProviderCmaf settings instead.
+
       struct SpekeKeyProvider
         include JSON::Serializable
 
         # If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a
         # certificate with a master key using AWS Certificate Manager. Specify the certificate's Amazon
         # Resource Name (ARN) here.
+
         @[JSON::Field(key: "certificateArn")]
         getter certificate_arn : String?
 
@@ -11501,21 +12979,25 @@ module AwsSdk
         # https://docs.aws.amazon.com/speke/latest/documentation/speke-api-specification.html To use SPEKE
         # v1.0: Leave blank. To use SPEKE v2.0: Specify a SPEKE v2.0 video preset and a SPEKE v2.0 audio
         # preset.
+
         @[JSON::Field(key: "encryptionContractConfiguration")]
         getter encryption_contract_configuration : Types::EncryptionContractConfiguration?
 
         # Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two
         # system ids. HLS output groups support a max of 3 system ids. Other group types support one system
         # id. See https://dashif.org/identifiers/content_protection/ for more details.
+
         @[JSON::Field(key: "systemIds")]
         getter system_ids : Array(String)?
 
         # Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys
         # for encrypting your content.
+
         @[JSON::Field(key: "url")]
         getter url : String?
 
@@ -11532,18 +13014,21 @@ module AwsSdk
       # If your output group type is CMAF, use these settings when doing DRM encryption with a
       # SPEKE-compliant key provider. If your output group type is HLS, DASH, or Microsoft Smooth, use the
       # SpekeKeyProvider settings instead.
+
       struct SpekeKeyProviderCmaf
         include JSON::Serializable
 
         # If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a
         # certificate with a master key using AWS Certificate Manager. Specify the certificate's Amazon
         # Resource Name (ARN) here.
+
         @[JSON::Field(key: "certificateArn")]
         getter certificate_arn : String?
 
         # Specify the DRM system IDs that you want signaled in the DASH manifest that MediaConvert creates as
         # part of this CMAF package. The DASH manifest can currently signal up to three system IDs. For more
         # information, see https://dashif.org/identifiers/content_protection/.
+
         @[JSON::Field(key: "dashSignaledSystemIds")]
         getter dash_signaled_system_ids : Array(String)?
 
@@ -11552,21 +13037,25 @@ module AwsSdk
         # https://docs.aws.amazon.com/speke/latest/documentation/speke-api-specification.html To use SPEKE
         # v1.0: Leave blank. To use SPEKE v2.0: Specify a SPEKE v2.0 video preset and a SPEKE v2.0 audio
         # preset.
+
         @[JSON::Field(key: "encryptionContractConfiguration")]
         getter encryption_contract_configuration : Types::EncryptionContractConfiguration?
 
         # Specify up to 3 DRM system IDs that you want signaled in the HLS manifest that MediaConvert creates
         # as part of this CMAF package. For more information, see
         # https://dashif.org/identifiers/content_protection/.
+
         @[JSON::Field(key: "hlsSignaledSystemIds")]
         getter hls_signaled_system_ids : Array(String)?
 
         # Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys
         # for encrypting your content.
+
         @[JSON::Field(key: "url")]
         getter url : String?
 
@@ -11584,6 +13073,7 @@ module AwsSdk
       # Settings related to SRT captions. SRT is a sidecar format that holds captions in a file that is
       # separate from the video container. Set up sidecar captions in the same output group, but different
       # output from your video.
+
       struct SrtDestinationSettings
         include JSON::Serializable
 
@@ -11591,6 +13081,7 @@ module AwsSdk
         # your input captions. MediaConvert uses default settings for any missing style and position
         # information in your input captions. Set Style passthrough to DISABLED, or leave blank, to ignore the
         # style and position information from your input captions and use simplified output captions.
+
         @[JSON::Field(key: "stylePassthrough")]
         getter style_passthrough : String?
 
@@ -11602,23 +13093,28 @@ module AwsSdk
 
       # Start an asynchronous jobs query using the provided filters. To receive the list of jobs that match
       # your query, call the GetJobsQueryResults API using the query ID returned by this API.
+
       struct StartJobsQueryRequest
         include JSON::Serializable
 
         # Optional. Provide an array of JobsQueryFilters for your StartJobsQuery request.
+
         @[JSON::Field(key: "filterList")]
         getter filter_list : Array(Types::JobsQueryFilter)?
 
         # Optional. Number of jobs, up to twenty, that will be included in the jobs query.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # Use this string to request the next batch of jobs matched by a jobs query.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING
         # or DESCENDING order. Default varies by resource.
+
         @[JSON::Field(key: "order")]
         getter order : String?
 
@@ -11632,10 +13128,12 @@ module AwsSdk
       end
 
       # Successful requests return an ID that corresponds to an asynchronous jobs query.
+
       struct StartJobsQueryResponse
         include JSON::Serializable
 
         # The ID of the jobs query.
+
         @[JSON::Field(key: "id")]
         getter id : String?
 
@@ -11646,24 +13144,29 @@ module AwsSdk
       end
 
       # Use these settings to set up encryption with a static key provider.
+
       struct StaticKeyProvider
         include JSON::Serializable
 
         # Relates to DRM implementation. Sets the value of the KEYFORMAT attribute. Must be 'identity' or a
         # reverse DNS string. May be omitted to indicate an implicit value of 'identity'.
+
         @[JSON::Field(key: "keyFormat")]
         getter key_format : String?
 
         # Relates to DRM implementation. Either a single positive integer version value or a slash delimited
         # list of version values (1/2/3).
+
         @[JSON::Field(key: "keyFormatVersions")]
         getter key_format_versions : String?
 
         # Relates to DRM implementation. Use a 32-character hexidecimal string to specify Key Value.
+
         @[JSON::Field(key: "staticKeyValue")]
         getter static_key_value : String?
 
         # Relates to DRM implementation. The location of the license server used for protecting content.
+
         @[JSON::Field(key: "url")]
         getter url : String?
 
@@ -11678,16 +13181,19 @@ module AwsSdk
 
       # To add tags to a queue, preset, or job template, send a request with the Amazon Resource Name (ARN)
       # of the resource and the tags that you want to add.
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to tag. To get the ARN, send a GET
         # request with the resource name.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The tags that you want to add to the resource. You can tag resources with a key-value pair or with
         # only a key.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)
 
@@ -11699,6 +13205,7 @@ module AwsSdk
       end
 
       # A successful request to add tags to a resource returns an OK message.
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -11709,12 +13216,14 @@ module AwsSdk
       # Settings related to teletext captions. Set up teletext captions in the same output as your video.
       # For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
+
       struct TeletextDestinationSettings
         include JSON::Serializable
 
         # Set pageNumber to the Teletext page number for the destination captions for this output. This value
         # must be a three-digit hexadecimal string; strings ending in -FF are invalid. If you are passing
         # through the entire set of Teletext data, do not use this field.
+
         @[JSON::Field(key: "pageNumber")]
         getter page_number : String?
 
@@ -11722,6 +13231,7 @@ module AwsSdk
         # the page type to the default value Subtitle. If you pass through the entire set of Teletext data,
         # don't use this field. When you pass through a set of Teletext pages, your output has the same page
         # types as your input.
+
         @[JSON::Field(key: "pageTypes")]
         getter page_types : Array(String)?
 
@@ -11733,12 +13243,14 @@ module AwsSdk
       end
 
       # Settings specific to Teletext caption sources, including Page number.
+
       struct TeletextSourceSettings
         include JSON::Serializable
 
         # Use Page Number to specify the three-digit hexadecimal page number that will be used for Teletext
         # captions. Do not use this setting if you are passing through teletext from the input source to
         # output.
+
         @[JSON::Field(key: "pageNumber")]
         getter page_number : String?
 
@@ -11749,14 +13261,17 @@ module AwsSdk
       end
 
       # Settings for burning the output timecode and specified prefix into the output.
+
       struct TimecodeBurnin
         include JSON::Serializable
 
         # Use Font size to set the font size of any burned-in timecode. Valid values are 10, 16, 32, 48.
+
         @[JSON::Field(key: "fontSize")]
         getter font_size : Int32?
 
         # Use Position under Timecode burn-in to specify the location the burned-in timecode on output video.
+
         @[JSON::Field(key: "position")]
         getter position : String?
 
@@ -11764,6 +13279,7 @@ module AwsSdk
         # will result in the timecode "EZ-00:00:00:00". Provide either the characters themselves or the ASCII
         # code equivalents. The supported range of characters is 0x20 through 0x7e. This includes letters,
         # numbers, and all special characters represented on a standard English keyboard.
+
         @[JSON::Field(key: "prefix")]
         getter prefix : String?
 
@@ -11777,6 +13293,7 @@ module AwsSdk
 
       # These settings control how the service handles timecodes throughout the job. These settings don't
       # affect input clipping.
+
       struct TimecodeConfig
         include JSON::Serializable
 
@@ -11788,6 +13305,7 @@ module AwsSdk
         # Start Timecode are used calculate output timecode. * If Source is set to Start at 0 the first frame
         # is 00:00:00:00. * If Source is set to Embedded, the first frame is the timecode value on the first
         # input frame of the input.
+
         @[JSON::Field(key: "anchor")]
         getter anchor : String?
 
@@ -11798,11 +13316,13 @@ module AwsSdk
         # video. If no embedded timecode is in the source, the service will use Start at 0 instead. * Start at
         # 0 - Set the timecode of the initial frame to 00:00:00:00. * Specified Start - Set the timecode of
         # the initial frame to a value other than zero. You use Start timecode to provide this value.
+
         @[JSON::Field(key: "source")]
         getter source : String?
 
         # Only use when you set Source to Specified start. Use Start timecode to specify the timecode for the
         # initial frame. Use 24-hour format with frame number, (HH:MM:SS:FF) or (HH:MM:SS;FF).
+
         @[JSON::Field(key: "start")]
         getter start : String?
 
@@ -11811,6 +13331,7 @@ module AwsSdk
         # format "yyyy-mm-dd". To use Timestamp offset, you must also enable Insert program-date-time in the
         # output settings. For example, if the date part of your timecodes is 2002-1-25 and you want to change
         # it to one year later, set Timestamp offset to 2003-1-25.
+
         @[JSON::Field(key: "timestampOffset")]
         getter timestamp_offset : String?
 
@@ -11825,10 +13346,12 @@ module AwsSdk
 
       # Insert user-defined custom ID3 metadata at timecodes that you specify. In each output that you want
       # to include this metadata, you must set ID3 metadata to Passthrough.
+
       struct TimedMetadataInsertion
         include JSON::Serializable
 
         # Id3Insertions contains the array of Id3Insertion instances.
+
         @[JSON::Field(key: "id3Insertions")]
         getter id3_insertions : Array(Types::Id3Insertion)?
 
@@ -11840,18 +13363,22 @@ module AwsSdk
 
       # Information about when jobs are submitted, started, and finished is specified in Unix epoch format
       # in seconds.
+
       struct Timing
         include JSON::Serializable
 
         # The time, in Unix epoch format, that the transcoding job finished
+
         @[JSON::Field(key: "finishTime")]
         getter finish_time : Time?
 
         # The time, in Unix epoch format, that transcoding for the job began.
+
         @[JSON::Field(key: "startTime")]
         getter start_time : Time?
 
         # The time, in Unix epoch format, that you submitted the job.
+
         @[JSON::Field(key: "submitTime")]
         getter submit_time : Time?
 
@@ -11863,8 +13390,10 @@ module AwsSdk
         end
       end
 
+
       struct TooManyRequestsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -11876,34 +13405,42 @@ module AwsSdk
       end
 
       # Details about each track (video, audio, or data) in the media file.
+
       struct Track
         include JSON::Serializable
 
         # Details about the media file's audio track.
+
         @[JSON::Field(key: "audioProperties")]
         getter audio_properties : Types::AudioProperties?
 
         # The codec of the audio or video track, or caption format of the data track.
+
         @[JSON::Field(key: "codec")]
         getter codec : String?
 
         # Details about the media file's data track.
+
         @[JSON::Field(key: "dataProperties")]
         getter data_properties : Types::DataProperties?
 
         # The duration of the track, in seconds.
+
         @[JSON::Field(key: "duration")]
         getter duration : Float64?
 
         # The unique index number of the track, starting at 1.
+
         @[JSON::Field(key: "index")]
         getter index : Int32?
 
         # The type of track: video, audio, or data.
+
         @[JSON::Field(key: "trackType")]
         getter track_type : String?
 
         # Details about the media file's video track.
+
         @[JSON::Field(key: "videoProperties")]
         getter video_properties : Types::VideoProperties?
 
@@ -11920,18 +13457,22 @@ module AwsSdk
       end
 
       # An array containing track mapping information.
+
       struct TrackMapping
         include JSON::Serializable
 
         # The index numbers of the audio tracks in your media file.
+
         @[JSON::Field(key: "audioTrackIndexes")]
         getter audio_track_indexes : Array(Int32)?
 
         # The index numbers of the data tracks in your media file.
+
         @[JSON::Field(key: "dataTrackIndexes")]
         getter data_track_indexes : Array(Int32)?
 
         # The index numbers of the video tracks in your media file.
+
         @[JSON::Field(key: "videoTrackIndexes")]
         getter video_track_indexes : Array(Int32)?
 
@@ -11946,6 +13487,7 @@ module AwsSdk
       # Settings specific to caption sources that are specified by track number. Currently, this is only
       # IMSC captions in an IMF package. If your caption source is IMSC 1.1 in a separate xml file, use
       # FileSourceSettings instead of TrackSourceSettings.
+
       struct TrackSourceSettings
         include JSON::Serializable
 
@@ -11958,6 +13500,7 @@ module AwsSdk
         # track which is not recognized by the service, then the corresponding stream number will still be
         # reserved for future use. If more types of caption data get recognized in the future, these
         # numberings will not shift.
+
         @[JSON::Field(key: "streamNumber")]
         getter stream_number : Int32?
 
@@ -11967,6 +13510,7 @@ module AwsSdk
         # the CPL. To include more than one captions track in your job outputs, create multiple input captions
         # selectors. Specify one track per selector. If more types of caption data get recognized in the
         # future, these numberings may shift, but the numberings used for streamNumber will not.
+
         @[JSON::Field(key: "trackNumber")]
         getter track_number : Int32?
 
@@ -11981,11 +13525,13 @@ module AwsSdk
       # separate from the video container. Set up sidecar captions in the same output group, but different
       # output from your video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+
       struct TtmlDestinationSettings
         include JSON::Serializable
 
         # Pass through style and position information from a TTML-like input source (TTML, IMSC, SMPTE-TT) to
         # the TTML output.
+
         @[JSON::Field(key: "stylePassthrough")]
         getter style_passthrough : String?
 
@@ -11996,10 +13542,12 @@ module AwsSdk
       end
 
       # Required when you set Codec, under VideoDescription>CodecSettings to the value UNCOMPRESSED.
+
       struct UncompressedSettings
         include JSON::Serializable
 
         # The four character code for the uncompressed video.
+
         @[JSON::Field(key: "fourcc")]
         getter fourcc : String?
 
@@ -12007,6 +13555,7 @@ module AwsSdk
         # frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose
         # a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are
         # decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -12022,6 +13571,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -12030,6 +13580,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -12038,11 +13589,13 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
         # Optional. Choose the scan line type for this output. If you don't specify a value, MediaConvert will
         # create a progressive output.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
@@ -12056,6 +13609,7 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
@@ -12063,6 +13617,7 @@ module AwsSdk
         # slow PAL to create a 25 fps output by relabeling the video frames and resampling your audio. Note
         # that enabling this setting will slightly reduce the duration of your video. Related settings: You
         # must also set Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -12070,6 +13625,7 @@ module AwsSdk
         # scan type is interlaced, you can optionally enable hard telecine to create a smoother picture. When
         # you keep the default value, None, MediaConvert does a standard frame rate conversion to 29.97
         # without doing anything with the field polarity to create a smoother picture.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -12089,15 +13645,18 @@ module AwsSdk
 
       # To remove tags from a resource, send a request with the Amazon Resource Name (ARN) of the resource
       # and the keys of the tags that you want to remove.
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN,
         # send a GET request with the resource name.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The keys of the tags that you want to remove from the resource.
+
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)?
 
@@ -12109,6 +13668,7 @@ module AwsSdk
       end
 
       # A successful request to remove tags from a resource returns an OK message.
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -12118,28 +13678,34 @@ module AwsSdk
 
       # Modify a job template by sending a request with the job template name and any of the following that
       # you wish to change: description, category, and queue.
+
       struct UpdateJobTemplateRequest
         include JSON::Serializable
 
         # The name of the job template you are modifying
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs
         # that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS
         # Elemental MediaConvert User Guide.
+
         @[JSON::Field(key: "accelerationSettings")]
         getter acceleration_settings : Types::AccelerationSettings?
 
         # The new category for the job template, if you are changing it.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # The new description for the job template, if you are changing it.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # Optional list of hop destinations.
+
         @[JSON::Field(key: "hopDestinations")]
         getter hop_destinations : Array(Types::HopDestination)?
 
@@ -12147,15 +13713,18 @@ module AwsSdk
         # job with the highest value first. When more than one job has the same priority, the service begins
         # processing the job that you submitted first. If you don't specify a priority, the service uses the
         # default value 0.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
         # The new queue for the job template, if you are changing it.
+
         @[JSON::Field(key: "queue")]
         getter queue : String?
 
         # JobTemplateSettings contains all the transcode settings saved in the template that will be applied
         # to jobs created from it.
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::JobTemplateSettings?
 
@@ -12163,6 +13732,7 @@ module AwsSdk
         # interval, in seconds, between status updates. MediaConvert sends an update at this interval from the
         # time the service begins processing your job to the time it completes the transcode or encounters an
         # error.
+
         @[JSON::Field(key: "statusUpdateInterval")]
         getter status_update_interval : String?
 
@@ -12181,10 +13751,12 @@ module AwsSdk
       end
 
       # Successful update job template requests will return the new job template JSON.
+
       struct UpdateJobTemplateResponse
         include JSON::Serializable
 
         # A job template is a pre-made set of encoding instructions that you can use to quickly create a job.
+
         @[JSON::Field(key: "jobTemplate")]
         getter job_template : Types::JobTemplate?
 
@@ -12196,22 +13768,27 @@ module AwsSdk
 
       # Modify a preset by sending a request with the preset name and any of the following that you wish to
       # change: description, category, and transcoding settings.
+
       struct UpdatePresetRequest
         include JSON::Serializable
 
         # The name of the preset you are modifying.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # The new category for the preset, if you are changing it.
+
         @[JSON::Field(key: "category")]
         getter category : String?
 
         # The new description for the preset, if you are changing it.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # Settings for preset
+
         @[JSON::Field(key: "settings")]
         getter settings : Types::PresetSettings?
 
@@ -12225,11 +13802,13 @@ module AwsSdk
       end
 
       # Successful update preset requests will return the new preset JSON.
+
       struct UpdatePresetResponse
         include JSON::Serializable
 
         # A preset is a collection of preconfigured media conversion settings that you want MediaConvert to
         # apply to the output during the conversion process.
+
         @[JSON::Field(key: "preset")]
         getter preset : Types::Preset?
 
@@ -12240,10 +13819,12 @@ module AwsSdk
       end
 
       # Modify a queue by sending a request with the queue name and any changes to the queue.
+
       struct UpdateQueueRequest
         include JSON::Serializable
 
         # The name of the queue that you are modifying.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -12251,10 +13832,12 @@ module AwsSdk
         # value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand
         # queue and Maximum concurrent jobs, per account. For reserved queues, update your reservation plan
         # instead in order to increase your yearly commitment.
+
         @[JSON::Field(key: "concurrentJobs")]
         getter concurrent_jobs : Int32?
 
         # The new description for the queue, if you are changing it.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -12262,12 +13845,14 @@ module AwsSdk
         # replace an expired one, you enter into another 12-month commitment. When you add capacity to your
         # queue by increasing the number of RTS, you extend the term of your commitment to 12 months from when
         # you add capacity. After you make these commitments, you can't cancel them.
+
         @[JSON::Field(key: "reservationPlanSettings")]
         getter reservation_plan_settings : Types::ReservationPlanSettings?
 
         # Pause or activate a queue by changing its status between ACTIVE and PAUSED. If you pause a queue,
         # jobs in that queue won't begin. Jobs that are running when you pause the queue continue to run until
         # they finish or result in an error.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -12282,6 +13867,7 @@ module AwsSdk
       end
 
       # Successful update queue requests return the new queue information in JSON format.
+
       struct UpdateQueueResponse
         include JSON::Serializable
 
@@ -12289,6 +13875,7 @@ module AwsSdk
         # multiple transcoding jobs at the same time. If you don't specify a queue, the service sends all jobs
         # through the default queue. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
+
         @[JSON::Field(key: "queue")]
         getter queue : Types::Queue?
 
@@ -12299,6 +13886,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value VC3
+
       struct Vc3Settings
         include JSON::Serializable
 
@@ -12307,6 +13895,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -12322,6 +13911,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -12330,6 +13920,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -12338,11 +13929,13 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
         # Optional. Choose the scan line type for this output. If you don't specify a value, MediaConvert will
         # create a progressive output.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
@@ -12356,6 +13949,7 @@ module AwsSdk
         # Required settings: To use optimized interlacing, you must set Telecine to None or Soft. You can't
         # use optimized interlacing for hard telecine outputs. You must also set Interlace mode to a value
         # other than Progressive.
+
         @[JSON::Field(key: "scanTypeConversionMode")]
         getter scan_type_conversion_mode : String?
 
@@ -12363,6 +13957,7 @@ module AwsSdk
         # slow PAL to create a 25 fps output by relabeling the video frames and resampling your audio. Note
         # that enabling this setting will slightly reduce the duration of your video. Related settings: You
         # must also set Framerate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -12370,6 +13965,7 @@ module AwsSdk
         # scan type is interlaced, you can optionally enable hard telecine to create a smoother picture. When
         # you keep the default value, None, MediaConvert does a standard frame rate conversion to 29.97
         # without doing anything with the field polarity to create a smoother picture.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -12379,6 +13975,7 @@ module AwsSdk
         # your framerate is 29.97. Then Class 145 gives you an output with a bitrate of approximately 145 Mbps
         # and Class 220 gives you and output with a bitrate of approximately 220 Mbps. VC3 class also
         # specifies the color bit depth of your output.
+
         @[JSON::Field(key: "vc3Class")]
         getter vc3_class : String?
 
@@ -12403,10 +14000,12 @@ module AwsSdk
       # * GIF, GifSettings * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES,
       # ProresSettings * UNCOMPRESSED, UncompressedSettings * VC3, Vc3Settings * VP8, Vp8Settings * VP9,
       # Vp9Settings * XAVC, XavcSettings
+
       struct VideoCodecSettings
         include JSON::Serializable
 
         # Required when you set Codec, under VideoDescription>CodecSettings to the value AV1.
+
         @[JSON::Field(key: "av1Settings")]
         getter av1_settings : Types::Av1Settings?
 
@@ -12414,6 +14013,7 @@ module AwsSdk
         # AVC-Intra settings, see the relevant specification. For detailed information about SD and HD in
         # AVC-Intra, see https://ieeexplore.ieee.org/document/7290936. For information about 4K/2K in
         # AVC-Intra, see https://pro-av.panasonic.net/en/avc-ultra/AVC-ULTRAoverview.pdf.
+
         @[JSON::Field(key: "avcIntraSettings")]
         getter avc_intra_settings : Types::AvcIntraSettings?
 
@@ -12421,54 +14021,67 @@ module AwsSdk
         # VideoCodec. To passthrough the video stream of your input without any video encoding: Choose
         # Passthrough. More information about passthrough codec support and job settings requirements, see:
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/video-passthrough-feature-restrictions.html
+
         @[JSON::Field(key: "codec")]
         getter codec : String?
 
         # Required when you set Codec to the value FRAME_CAPTURE.
+
         @[JSON::Field(key: "frameCaptureSettings")]
         getter frame_capture_settings : Types::FrameCaptureSettings?
 
         # Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value GIF
+
         @[JSON::Field(key: "gifSettings")]
         getter gif_settings : Types::GifSettings?
 
         # Required when you set Codec to the value H_264.
+
         @[JSON::Field(key: "h264Settings")]
         getter h264_settings : Types::H264Settings?
 
         # Settings for H265 codec
+
         @[JSON::Field(key: "h265Settings")]
         getter h265_settings : Types::H265Settings?
 
         # Required when you set Codec to the value MPEG2.
+
         @[JSON::Field(key: "mpeg2Settings")]
         getter mpeg2_settings : Types::Mpeg2Settings?
 
         # Optional settings when you set Codec to the value Passthrough.
+
         @[JSON::Field(key: "passthroughSettings")]
         getter passthrough_settings : Types::PassthroughSettings?
 
         # Required when you set Codec to the value PRORES.
+
         @[JSON::Field(key: "proresSettings")]
         getter prores_settings : Types::ProresSettings?
 
         # Required when you set Codec, under VideoDescription>CodecSettings to the value UNCOMPRESSED.
+
         @[JSON::Field(key: "uncompressedSettings")]
         getter uncompressed_settings : Types::UncompressedSettings?
 
         # Required when you set Codec to the value VC3
+
         @[JSON::Field(key: "vc3Settings")]
         getter vc3_settings : Types::Vc3Settings?
 
         # Required when you set Codec to the value VP8.
+
         @[JSON::Field(key: "vp8Settings")]
         getter vp8_settings : Types::Vp8Settings?
 
         # Required when you set Codec to the value VP9.
+
         @[JSON::Field(key: "vp9Settings")]
         getter vp9_settings : Types::Vp9Settings?
 
         # Required when you set Codec to the value XAVC.
+
         @[JSON::Field(key: "xavcSettings")]
         getter xavc_settings : Types::XavcSettings?
 
@@ -12494,6 +14107,7 @@ module AwsSdk
 
       # Settings related to video encoding of your output. The specific video settings depend on the video
       # codec that you choose.
+
       struct VideoDescription
         include JSON::Serializable
 
@@ -12502,11 +14116,13 @@ module AwsSdk
         # None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and
         # instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on
         # the input AFD scaler data.
+
         @[JSON::Field(key: "afdSignaling")]
         getter afd_signaling : String?
 
         # The anti-alias filter is automatically applied to all outputs. The service no longer accepts the
         # value DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
+
         @[JSON::Field(key: "antiAlias")]
         getter anti_alias : String?
 
@@ -12514,6 +14130,7 @@ module AwsSdk
         # automatically determine chroma positioning: We recommend that you keep the default value, Auto. To
         # specify center positioning: Choose Force center. To specify top left positioning: Choose Force top
         # left.
+
         @[JSON::Field(key: "chromaPositionMode")]
         getter chroma_position_mode : String?
 
@@ -12524,17 +14141,20 @@ module AwsSdk
         # * GIF, GifSettings * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES,
         # ProresSettings * UNCOMPRESSED, UncompressedSettings * VC3, Vc3Settings * VP8, Vp8Settings * VP9,
         # Vp9Settings * XAVC, XavcSettings
+
         @[JSON::Field(key: "codecSettings")]
         getter codec_settings : Types::VideoCodecSettings?
 
         # Choose Insert for this setting to include color metadata in this output. Choose Ignore to exclude
         # color metadata from this output. If you don't specify a value, the service sets this to Insert by
         # default.
+
         @[JSON::Field(key: "colorMetadata")]
         getter color_metadata : String?
 
         # Use Cropping selection to specify the video area that the service will include in the output video
         # frame.
+
         @[JSON::Field(key: "crop")]
         getter crop : Types::Rectangle?
 
@@ -12542,11 +14162,13 @@ module AwsSdk
         # timecode on outputs. If it is not possible to use drop-frame timecode, the system will fall back to
         # non-drop-frame. This setting is enabled by default when Timecode insertion or Timecode track is
         # enabled.
+
         @[JSON::Field(key: "dropFrameTimecode")]
         getter drop_frame_timecode : String?
 
         # Applies only if you set AFD Signaling to Fixed. Use Fixed to specify a four-bit AFD value which the
         # service will write on all frames of this video output.
+
         @[JSON::Field(key: "fixedAfd")]
         getter fixed_afd : Int32?
 
@@ -12554,11 +14176,13 @@ module AwsSdk
         # resolution as your input: Leave both Width and Height blank. To evenly scale from your input
         # resolution: Leave Height blank and enter a value for Width. For example, if your input is 1920x1080
         # and you set Width to 1280, your output will be 1280x720.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Use Selection placement to define the video area in your output frame. The area outside of the
         # rectangle that you specify here is black.
+
         @[JSON::Field(key: "position")]
         getter position : Types::Rectangle?
 
@@ -12568,11 +14192,13 @@ module AwsSdk
         # Do not choose this when AfdSignaling is set to NONE. A preferred implementation of this workflow is
         # to set RespondToAfd to and set AfdSignaling to AUTO. * Choose None to remove all input AFD values
         # from this output.
+
         @[JSON::Field(key: "respondToAfd")]
         getter respond_to_afd : String?
 
         # Specify the video Scaling behavior when your output has a different resolution than your input. For
         # more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/video-scaling.html
+
         @[JSON::Field(key: "scalingBehavior")]
         getter scaling_behavior : String?
 
@@ -12580,6 +14206,7 @@ module AwsSdk
         # the anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is
         # different from your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended
         # for most content.
+
         @[JSON::Field(key: "sharpness")]
         getter sharpness : Int32?
 
@@ -12592,6 +14219,7 @@ module AwsSdk
         # these settings are located under Job > Job settings > Timecode configuration. Note - Timecode source
         # under input settings does not affect the timecodes that are inserted in the output. Source under Job
         # settings > Timecode configuration does.
+
         @[JSON::Field(key: "timecodeInsertion")]
         getter timecode_insertion : String?
 
@@ -12599,11 +14227,13 @@ module AwsSdk
         # track in the Null Media Header box (NMHD), without any timecode text formatting information. You can
         # also specify dropframe or non-dropframe timecode under the Drop Frame Timecode setting. To not
         # include a timecode track: Keep the default value, Disabled.
+
         @[JSON::Field(key: "timecodeTrack")]
         getter timecode_track : String?
 
         # Find additional transcoding features under Preprocessors. Enable the features at each output
         # individually. These features are disabled by default.
+
         @[JSON::Field(key: "videoPreprocessors")]
         getter video_preprocessors : Types::VideoPreprocessor?
 
@@ -12611,6 +14241,7 @@ module AwsSdk
         # resolution as your input: Leave both Width and Height blank. To evenly scale from your input
         # resolution: Leave Width blank and enter a value for Height. For example, if your input is 1920x1080
         # and you set Height to 720, your output will be 1280x720.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -12637,14 +14268,17 @@ module AwsSdk
       end
 
       # Contains details about the output's video stream
+
       struct VideoDetail
         include JSON::Serializable
 
         # Height in pixels for the output
+
         @[JSON::Field(key: "heightInPx")]
         getter height_in_px : Int32?
 
         # Width in pixels for the output
+
         @[JSON::Field(key: "widthInPx")]
         getter width_in_px : Int32?
 
@@ -12657,12 +14291,14 @@ module AwsSdk
 
       # Overlay one or more videos on top of your input video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/video-overlays.html
+
       struct VideoOverlay
         include JSON::Serializable
 
         # Specify a rectangle of content to crop and use from your video overlay's input video. When you do,
         # MediaConvert uses the cropped dimensions that you specify under X offset, Y offset, Width, and
         # Height.
+
         @[JSON::Field(key: "crop")]
         getter crop : Types::VideoOverlayCrop?
 
@@ -12672,6 +14308,7 @@ module AwsSdk
         # FF is the frame number. When entering this value, take into account your choice for the base input
         # video's timecode source. For example, if you have embedded timecodes that start at 01:00:00:00 and
         # you want your overlay to end ten minutes into the video, enter 01:10:00:00.
+
         @[JSON::Field(key: "endTimecode")]
         getter end_timecode : String?
 
@@ -12679,11 +14316,13 @@ module AwsSdk
         # overlay, including distance from the left or top edge of the base input video's frame, or size:
         # Enter a value for X position, Y position, Width, or Height. To use the full frame of the base input
         # video: Leave blank.
+
         @[JSON::Field(key: "initialPosition")]
         getter initial_position : Types::VideoOverlayPosition?
 
         # Input settings for Video overlay. You can include one or more video overlays in sequence at
         # different times that you specify.
+
         @[JSON::Field(key: "input")]
         getter input : Types::VideoOverlayInput?
 
@@ -12691,6 +14330,7 @@ module AwsSdk
         # loop: Keep the default value, Repeat. Your overlay will repeat for the duration of the base input
         # video. To playback your video overlay only once: Choose Once. With either option, you can end
         # playback at a time that you specify by entering a value for End timecode.
+
         @[JSON::Field(key: "playback")]
         getter playback : String?
 
@@ -12701,6 +14341,7 @@ module AwsSdk
         # your choice for the base input video's timecode source. For example, if you have embedded timecodes
         # that start at 01:00:00:00 and you want your overlay to begin five minutes into the video, enter
         # 01:05:00:00.
+
         @[JSON::Field(key: "startTimecode")]
         getter start_timecode : String?
 
@@ -12708,6 +14349,7 @@ module AwsSdk
         # overlay over time. To use the same position and size for the duration of your video overlay: Leave
         # blank. To specify a Transition: Enter a value for Start timecode, End Timecode, X Position, Y
         # Position, Width, or Height.
+
         @[JSON::Field(key: "transitions")]
         getter transitions : Array(Types::VideoOverlayTransition)?
 
@@ -12726,6 +14368,7 @@ module AwsSdk
       # Specify a rectangle of content to crop and use from your video overlay's input video. When you do,
       # MediaConvert uses the cropped dimensions that you specify under X offset, Y offset, Width, and
       # Height.
+
       struct VideoOverlayCrop
         include JSON::Serializable
 
@@ -12735,11 +14378,13 @@ module AwsSdk
         # when you enter 100 and choose Pixels, the cropping rectangle will be 100 pixels high. When you enter
         # 10, choose Percentage, and your overlay input video is 1920x1080, the cropping rectangle will be 108
         # pixels high.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Specify the Unit type to use when you enter a value for X position, Y position, Width, or Height.
         # You can choose Pixels or Percentage. Leave blank to use the default value, Pixels.
+
         @[JSON::Field(key: "unit")]
         getter unit : String?
 
@@ -12749,6 +14394,7 @@ module AwsSdk
         # when you enter 100 and choose Pixels, the cropping rectangle will be 100 pixels wide. When you enter
         # 10, choose Percentage, and your overlay input video is 1920x1080, the cropping rectangle will be 192
         # pixels wide.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -12760,6 +14406,7 @@ module AwsSdk
         # edge of the overlay video's frame. When you enter 10, choose Percentage, and your overlay input
         # video is 1920x1080, the cropping rectangle will be positioned 192 pixels from the left edge of the
         # overlay video's frame.
+
         @[JSON::Field(key: "x")]
         getter x : Int32?
 
@@ -12771,6 +14418,7 @@ module AwsSdk
         # overlay video's frame. When you enter 10, choose Percentage, and your overlay input video is
         # 1920x1080, the cropping rectangle will be positioned 108 pixels from the top edge of the overlay
         # video's frame.
+
         @[JSON::Field(key: "y")]
         getter y : Int32?
 
@@ -12786,6 +14434,7 @@ module AwsSdk
 
       # Input settings for Video overlay. You can include one or more video overlays in sequence at
       # different times that you specify.
+
       struct VideoOverlayInput
         include JSON::Serializable
 
@@ -12797,16 +14446,19 @@ module AwsSdk
         # replace all audio for all Audio selectors from the underlying input by using a single Audio selector
         # in your overlay, set DefaultSelection to DEFAULT (Check \"Use as default\" in the MediaConvert
         # console).
+
         @[JSON::Field(key: "audioSelectors")]
         getter audio_selectors : Hash(String, Types::AudioSelector)?
 
         # Specify the input file S3, HTTP, or HTTPS URL for your video overlay. To specify one or more
         # Transitions for your base input video instead: Leave blank.
+
         @[JSON::Field(key: "fileInput")]
         getter file_input : String?
 
         # Specify one or more clips to use from your video overlay. When you include an input clip, you must
         # also specify its start timecode, end timecode, or both start and end timecode.
+
         @[JSON::Field(key: "inputClippings")]
         getter input_clippings : Array(Types::VideoOverlayInputClipping)?
 
@@ -12814,11 +14466,13 @@ module AwsSdk
         # video overlay: Choose Embedded. To use a zerobased timecode: Choose Start at 0. To choose a
         # timecode: Choose Specified start. When you do, enter the starting timecode in Start timecode. If you
         # don't specify a value for Timecode source, MediaConvert uses Embedded by default.
+
         @[JSON::Field(key: "timecodeSource")]
         getter timecode_source : String?
 
         # Specify the starting timecode for this video overlay. To use this setting, you must set Timecode
         # source to Specified start.
+
         @[JSON::Field(key: "timecodeStart")]
         getter timecode_start : String?
 
@@ -12834,18 +14488,21 @@ module AwsSdk
 
       # To transcode only portions of your video overlay, include one input clip for each part of your video
       # overlay that you want in your output.
+
       struct VideoOverlayInputClipping
         include JSON::Serializable
 
         # Specify the timecode of the last frame to include in your video overlay's clip. Use the format
         # HH:MM:SS:FF or HH:MM:SS;FF, where HH is the hour, MM is the minute, SS is the second, and FF is the
         # frame number. When entering this value, take into account your choice for Timecode source.
+
         @[JSON::Field(key: "endTimecode")]
         getter end_timecode : String?
 
         # Specify the timecode of the first frame to include in your video overlay's clip. Use the format
         # HH:MM:SS:FF or HH:MM:SS;FF, where HH is the hour, MM is the minute, SS is the second, and FF is the
         # frame number. When entering this value, take into account your choice for Timecode source.
+
         @[JSON::Field(key: "startTimecode")]
         getter start_timecode : String?
 
@@ -12857,6 +14514,7 @@ module AwsSdk
       end
 
       # position of video overlay
+
       struct VideoOverlayPosition
         include JSON::Serializable
 
@@ -12867,16 +14525,19 @@ module AwsSdk
         # overlay's source has a height of 1080, your video overlay will be rendered with a height of 540. To
         # scale your overlay to a specific height while automatically maintaining its original aspect ratio,
         # enter a value for Height and leave Width blank.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # Use Opacity to specify how much of the underlying video shows through the overlay video. 0 is
         # transparent and 100 is fully opaque. Default is 100.
+
         @[JSON::Field(key: "opacity")]
         getter opacity : Int32?
 
         # Specify the Unit type to use when you enter a value for X position, Y position, Width, or Height.
         # You can choose Pixels or Percentage. Leave blank to use the default value, Pixels.
+
         @[JSON::Field(key: "unit")]
         getter unit : String?
 
@@ -12887,6 +14548,7 @@ module AwsSdk
         # overlay's source has a width of 1920, your video overlay will scale to a width of 960. To scale your
         # overlay to a specific width while automatically maintaining its original aspect ratio, enter a value
         # for Width and leave Height blank.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -12897,6 +14559,7 @@ module AwsSdk
         # overlay will be positioned 10 pixels from the left edge of the base input video's frame. When you
         # enter 10, choose Percentage, and your base input video is 1920x1080, your video overlay will be
         # positioned 192 pixels from the left edge of the base input video's frame.
+
         @[JSON::Field(key: "xPosition")]
         getter x_position : Int32?
 
@@ -12907,6 +14570,7 @@ module AwsSdk
         # will be positioned 10 pixels from the top edge of the base input video's frame. When you enter 10,
         # choose Percentage, and your underlying video is 1920x1080, your video overlay will be positioned 108
         # pixels from the top edge of the base input video's frame.
+
         @[JSON::Field(key: "yPosition")]
         getter y_position : Int32?
 
@@ -12925,24 +14589,28 @@ module AwsSdk
       # overlay over time. To use the same position and size for the duration of your video overlay: Leave
       # blank. To specify a Transition: Enter a value for Start timecode, End Timecode, X Position, Y
       # Position, Width, Height, or Opacity
+
       struct VideoOverlayTransition
         include JSON::Serializable
 
         # Specify the ending position for this transition, relative to the base input video's frame. Your
         # video overlay will move smoothly to this position, beginning at this transition's Start timecode and
         # ending at this transition's End timecode.
+
         @[JSON::Field(key: "endPosition")]
         getter end_position : Types::VideoOverlayPosition?
 
         # Specify the timecode for when this transition ends. Use the format HH:MM:SS:FF or HH:MM:SS;FF, where
         # HH is the hour, MM is the minute, SS is the second, and FF is the frame number. When entering this
         # value, take into account your choice for Timecode source.
+
         @[JSON::Field(key: "endTimecode")]
         getter end_timecode : String?
 
         # Specify the timecode for when this transition begins. Use the format HH:MM:SS:FF or HH:MM:SS;FF,
         # where HH is the hour, MM is the minute, SS is the second, and FF is the frame number. When entering
         # this value, take into account your choice for Timecode source.
+
         @[JSON::Field(key: "startTimecode")]
         getter start_timecode : String?
 
@@ -12956,30 +14624,36 @@ module AwsSdk
 
       # Find additional transcoding features under Preprocessors. Enable the features at each output
       # individually. These features are disabled by default.
+
       struct VideoPreprocessor
         include JSON::Serializable
 
         # Use these settings to convert the color space or to modify properties such as hue and contrast for
         # this output. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/converting-the-color-space.html.
+
         @[JSON::Field(key: "colorCorrector")]
         getter color_corrector : Types::ColorCorrector?
 
         # Use the deinterlacer to produce smoother motion and a clearer picture. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-scan-type.html.
+
         @[JSON::Field(key: "deinterlacer")]
         getter deinterlacer : Types::Deinterlacer?
 
         # Enable Dolby Vision feature to produce Dolby Vision compatible video output.
+
         @[JSON::Field(key: "dolbyVision")]
         getter dolby_vision : Types::DolbyVision?
 
         # Enable HDR10+ analysis and metadata injection. Compatible with HEVC only.
+
         @[JSON::Field(key: "hdr10Plus")]
         getter hdr10_plus : Types::Hdr10Plus?
 
         # Enable the Image inserter feature to include a graphic overlay on your video. Enable or disable this
         # feature for each output individually. This setting is disabled by default.
+
         @[JSON::Field(key: "imageInserter")]
         getter image_inserter : Types::ImageInserter?
 
@@ -12987,15 +14661,18 @@ module AwsSdk
         # disable this feature for each output individually. This setting is disabled by default. When you
         # enable Noise reducer, you must also select a value for Noise reducer filter. For AVC outputs, when
         # you include Noise reducer, you cannot include the Bandwidth reduction filter.
+
         @[JSON::Field(key: "noiseReducer")]
         getter noise_reducer : Types::NoiseReducer?
 
         # If you work with a third party video watermarking partner, use the group of settings that correspond
         # with your watermarking partner to include watermarks in your output.
+
         @[JSON::Field(key: "partnerWatermarking")]
         getter partner_watermarking : Types::PartnerWatermarking?
 
         # Settings for burning the output timecode and specified prefix into the output.
+
         @[JSON::Field(key: "timecodeBurnin")]
         getter timecode_burnin : Types::TimecodeBurnin?
 
@@ -13013,15 +14690,18 @@ module AwsSdk
       end
 
       # Details about the media file's video track.
+
       struct VideoProperties
         include JSON::Serializable
 
         # The number of bits used per color component such as 8, 10, or 12 bits. Standard range (SDR) video
         # typically uses 8-bit, while 10-bit is common for high dynamic range (HDR).
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : Int32?
 
         # The bit rate of the video track, in bits per second.
+
         @[JSON::Field(key: "bitRate")]
         getter bit_rate : Int64?
 
@@ -13029,36 +14709,43 @@ module AwsSdk
         # technical specifications about how the video was encoded, including profile settings, resolution
         # details, and color space information that can help you understand the source video characteristics
         # and make informed encoding decisions.
+
         @[JSON::Field(key: "codecMetadata")]
         getter codec_metadata : Types::CodecMetadata?
 
         # The color space primaries of the video track, defining the red, green, and blue color coordinates
         # used for the video. This information helps ensure accurate color reproduction during playback and
         # transcoding.
+
         @[JSON::Field(key: "colorPrimaries")]
         getter color_primaries : String?
 
         # The frame rate of the video or audio track, expressed as a fraction with numerator and denominator
         # values.
+
         @[JSON::Field(key: "frameRate")]
         getter frame_rate : Types::FrameRate?
 
         # The height of the video track, in pixels.
+
         @[JSON::Field(key: "height")]
         getter height : Int32?
 
         # The color space matrix coefficients of the video track, defining how RGB color values are converted
         # to and from YUV color space. This affects color accuracy during encoding and decoding processes.
+
         @[JSON::Field(key: "matrixCoefficients")]
         getter matrix_coefficients : String?
 
         # The color space transfer characteristics of the video track, defining the relationship between
         # linear light values and the encoded signal values. This affects brightness and contrast
         # reproduction.
+
         @[JSON::Field(key: "transferCharacteristics")]
         getter transfer_characteristics : String?
 
         # The width of the video track, in pixels.
+
         @[JSON::Field(key: "width")]
         getter width : Int32?
 
@@ -13078,6 +14765,7 @@ module AwsSdk
 
       # Input video selectors contain the video settings for the input. Each of your inputs can have up to
       # one video selector.
+
       struct VideoSelector
         include JSON::Serializable
 
@@ -13086,6 +14774,7 @@ module AwsSdk
         # MediaConvert uses. Leave this setting at the default value DISCARD to delete the alpha channel and
         # preserve the video. Set it to REMAP_TO_LUMA to delete the video and map the alpha channel to the
         # luma channel of your outputs.
+
         @[JSON::Field(key: "alphaBehavior")]
         getter alpha_behavior : String?
 
@@ -13100,6 +14789,7 @@ module AwsSdk
         # color primaries, transfer characteristics, and matrix coefficients: * HDR 10: BT.2020, PQ, BT.2020
         # non-constant * HLG 2020: BT.2020, HLG, BT.2020 non-constant * P3DCI (Theater): DCIP3, SMPTE 428M,
         # BT.709 * P3D65 (SDR): Display P3, sRGB, BT.709 * P3D65 (HDR): Display P3, PQ, BT.709
+
         @[JSON::Field(key: "colorSpace")]
         getter color_space : String?
 
@@ -13109,6 +14799,7 @@ module AwsSdk
         # values for those settings, the service defaults to using metadata from your input. FALLBACK - Choose
         # Fallback to use color metadata from the source when it is present. If there's no color metadata in
         # your input file, the service defaults to using values you specify in the input settings.
+
         @[JSON::Field(key: "colorSpaceUsage")]
         getter color_space_usage : String?
 
@@ -13116,6 +14807,7 @@ module AwsSdk
         # Modified Digital Video Pack Metadata. When you do, we recommend you also set Timecode source to
         # Embedded. Leave Embedded timecode override blank, or set to None, when your input does not contain
         # MDPM timecode.
+
         @[JSON::Field(key: "embeddedTimecodeOverride")]
         getter embedded_timecode_override : String?
 
@@ -13128,11 +14820,13 @@ module AwsSdk
         # your input file, set Color space usage. To specify whether color metadata is included in an output,
         # set Color metadata. For more information about MediaConvert HDR jobs, see
         # https://docs.aws.amazon.com/console/mediaconvert/hdr.
+
         @[JSON::Field(key: "hdr10Metadata")]
         getter hdr10_metadata : Types::Hdr10Metadata?
 
         # Specify the maximum mastering display luminance. Enter an integer from 0 to 2147483647, in units of
         # 0.0001 nits. For example, enter 10000000 for 1000 nits.
+
         @[JSON::Field(key: "maxLuminance")]
         getter max_luminance : Int32?
 
@@ -13142,6 +14836,7 @@ module AwsSdk
         # video frames so that output video and audio durations match. Black video frames are added at the
         # beginning or end, depending on your input. To keep the default behavior and not generate black
         # video, set Pad video to Disabled or leave blank.
+
         @[JSON::Field(key: "padVideo")]
         getter pad_video : String?
 
@@ -13149,11 +14844,13 @@ module AwsSdk
         # system automatically converts it to the hexidecimal value. For example, 257 selects PID 0x101. A
         # PID, or packet identifier, is an identifier for a set of data in an MPEG-2 transport stream
         # container.
+
         @[JSON::Field(key: "pid")]
         getter pid : Int32?
 
         # Selects a specific program from within a multi-program transport stream. Note that Quad 4K is not
         # currently supported.
+
         @[JSON::Field(key: "programNumber")]
         getter program_number : Int32?
 
@@ -13165,6 +14862,7 @@ module AwsSdk
         # any other rotation, the service will default to no rotation. By default, the service does no
         # rotation, even if your input video has rotation metadata. The service doesn't pass through rotation
         # metadata.
+
         @[JSON::Field(key: "rotate")]
         getter rotate : String?
 
@@ -13175,6 +14873,7 @@ module AwsSdk
         # information in the input metadata. Regardless of whether MediaConvert uses the input sample range or
         # the sample range that you specify, MediaConvert uses the sample range for transcoding and also
         # writes it to the output metadata.
+
         @[JSON::Field(key: "sampleRange")]
         getter sample_range : String?
 
@@ -13183,6 +14882,7 @@ module AwsSdk
         # your HLS input: Keep the default value, Auto. To manually specify a rendition: Choose Stream. Then
         # enter the unique stream number in the Streams array, starting at 1, corresponding to the stream
         # order in the manifest.
+
         @[JSON::Field(key: "selectorType")]
         getter selector_type : String?
 
@@ -13192,6 +14892,7 @@ module AwsSdk
         # bitrate as the input.For video passthrough workflows, you specify whether to passthrough a single
         # video stream or multiple video streams under Video selector source in the output video encoding
         # settings.
+
         @[JSON::Field(key: "streams")]
         getter streams : Array(Int32)?
 
@@ -13214,23 +14915,27 @@ module AwsSdk
       end
 
       # Required when you set Codec, under AudioDescriptions>CodecSettings, to the value Vorbis.
+
       struct VorbisSettings
         include JSON::Serializable
 
         # Optional. Specify the number of channels in this output audio track. Choosing Mono on the console
         # gives you 1 output channel; choosing Stereo gives you 2. In the API, valid values are 1 and 2. The
         # default value is 2.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
         # Optional. Specify the audio sample rate in Hz. Valid values are 22050, 32000, 44100, and 48000. The
         # default value is 48000.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
         # Optional. Specify the variable audio quality of this Vorbis output from -1 (lowest quality, ~45
         # kbit/s) to 10 (highest quality, ~500 kbit/s). The default value is 4 (~128 kbit/s). Values 5 and 6
         # are approximately 160 and 192 kbit/s, respectively.
+
         @[JSON::Field(key: "vbrQuality")]
         getter vbr_quality : Int32?
 
@@ -13243,10 +14948,12 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value VP8.
+
       struct Vp8Settings
         include JSON::Serializable
 
         # Target bitrate in bits/second. For example, enter five megabits per second as 5000000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
@@ -13255,6 +14962,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -13270,6 +14978,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -13278,6 +14987,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -13286,20 +14996,24 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
         # GOP Length (keyframe interval) in frames. Must be greater than zero.
+
         @[JSON::Field(key: "gopSize")]
         getter gop_size : Float64?
 
         # Optional. Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
         # Ignore this setting unless you set qualityTuningLevel to MULTI_PASS. Optional. Specify the maximum
         # bitrate in bits/second. For example, enter five megabits per second as 5000000. The default behavior
         # uses twice the target bitrate as the maximum bitrate.
+
         @[JSON::Field(key: "maxBitrate")]
         getter max_bitrate : Int32?
 
@@ -13307,6 +15021,7 @@ module AwsSdk
         # default behavior, Follow source, uses the PAR from your input video for your output. To specify a
         # different PAR in the console, choose any value other than Follow source. When you choose SPECIFIED
         # for this setting, you must also specify values for the parNumerator and parDenominator settings.
+
         @[JSON::Field(key: "parControl")]
         getter par_control : String?
 
@@ -13314,6 +15029,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parDenominator is 33.
+
         @[JSON::Field(key: "parDenominator")]
         getter par_denominator : Int32?
 
@@ -13321,15 +15037,18 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parNumerator is 40.
+
         @[JSON::Field(key: "parNumerator")]
         getter par_numerator : Int32?
 
         # Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output
         # video quality. The default behavior is faster, lower quality, multi-pass encoding.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # With the VP8 codec, you can use only the variable bitrate (VBR) rate control mode.
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
@@ -13352,10 +15071,12 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value VP9.
+
       struct Vp9Settings
         include JSON::Serializable
 
         # Target bitrate in bits/second. For example, enter five megabits per second as 5000000.
+
         @[JSON::Field(key: "bitrate")]
         getter bitrate : Int32?
 
@@ -13364,6 +15085,7 @@ module AwsSdk
         # frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates
         # shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify
         # your frame rate as a fraction.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -13379,6 +15101,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -13387,6 +15110,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -13395,25 +15119,30 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
         # GOP Length (keyframe interval) in frames. Must be greater than zero.
+
         @[JSON::Field(key: "gopSize")]
         getter gop_size : Float64?
 
         # Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
         # Ignore this setting unless you set qualityTuningLevel to MULTI_PASS. Optional. Specify the maximum
         # bitrate in bits/second. For example, enter five megabits per second as 5000000. The default behavior
         # uses twice the target bitrate as the maximum bitrate.
+
         @[JSON::Field(key: "maxBitrate")]
         getter max_bitrate : Int32?
 
         # Optional. Specify how the service determines the pixel aspect ratio for this output. The default
         # behavior is to use the same pixel aspect ratio as your input video.
+
         @[JSON::Field(key: "parControl")]
         getter par_control : String?
 
@@ -13421,6 +15150,7 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parDenominator is 33.
+
         @[JSON::Field(key: "parDenominator")]
         getter par_denominator : Int32?
 
@@ -13428,15 +15158,18 @@ module AwsSdk
         # other than Follow source. When you specify an output pixel aspect ratio (PAR) that is different from
         # your input video PAR, provide your output PAR as a ratio. For example, for D1/DV NTSC widescreen,
         # you would specify the ratio 40:33. In this example, the value for parNumerator is 40.
+
         @[JSON::Field(key: "parNumerator")]
         getter par_numerator : Int32?
 
         # Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output
         # video quality. The default behavior is faster, lower quality, multi-pass encoding.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # With the VP9 codec, you can use only the variable bitrate (VBR) rate control mode.
+
         @[JSON::Field(key: "rateControlMode")]
         getter rate_control_mode : String?
 
@@ -13459,15 +15192,18 @@ module AwsSdk
       end
 
       # Contains any warning codes and their count for the job.
+
       struct WarningGroup
         include JSON::Serializable
 
         # Warning code that identifies a specific warning in the job. For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/warning_codes.html
+
         @[JSON::Field(key: "code")]
         getter code : Int32
 
         # The number of times this warning occurred in the job.
+
         @[JSON::Field(key: "count")]
         getter count : Int32
 
@@ -13479,15 +15215,18 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value WAV.
+
       struct WavSettings
         include JSON::Serializable
 
         # Specify Bit depth, in bits per sample, to choose the encoding quality for this audio track.
+
         @[JSON::Field(key: "bitDepth")]
         getter bit_depth : Int32?
 
         # Specify the number of channels in this output audio track. Valid values are 1 and even numbers up to
         # 64. For example, 1, 2, 4, 6, and so on, up to 64.
+
         @[JSON::Field(key: "channels")]
         getter channels : Int32?
 
@@ -13495,10 +15234,12 @@ module AwsSdk
         # value, RIFF. If your output audio is likely to exceed 4GB in file size, or if you otherwise need the
         # extended support of the RF64 format: Choose RF64. If your player only supports the extensible wave
         # format: Choose Extensible.
+
         @[JSON::Field(key: "format")]
         getter format : String?
 
         # Sample rate in Hz.
+
         @[JSON::Field(key: "sampleRate")]
         getter sample_rate : Int32?
 
@@ -13515,6 +15256,7 @@ module AwsSdk
       # is separate from the video container. Set up sidecar captions in the same output group, but
       # different output from your video. For more information, see
       # https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+
       struct WebvttDestinationSettings
         include JSON::Serializable
 
@@ -13527,6 +15269,7 @@ module AwsSdk
         # this track: . If the captions track is not intended to provide such accessibility: Keep the default
         # value, Disabled. When you do, for DASH manifests, MediaConvert instead adds the following in the
         # adaptation set for this track: .
+
         @[JSON::Field(key: "accessibility")]
         getter accessibility : String?
 
@@ -13540,6 +15283,7 @@ module AwsSdk
         # To use the available style, color, and position information from your input captions, while merging
         # cues with identical time ranges: Choose merge. This setting can help prevent positioning overlaps
         # for certain players that expect a single single cue for any given time range.
+
         @[JSON::Field(key: "stylePassthrough")]
         getter style_passthrough : String?
 
@@ -13557,19 +15301,23 @@ module AwsSdk
       # in the rendition group, the settings can be left empty and the default subtitle track will be
       # chosen. If your caption source is a sidecar file, use FileSourceSettings instead of
       # WebvttHlsSourceSettings.
+
       struct WebvttHlsSourceSettings
         include JSON::Serializable
 
         # Optional. Specify alternative group ID
+
         @[JSON::Field(key: "renditionGroupId")]
         getter rendition_group_id : String?
 
         # Optionally specify the language, using an ISO 639-2 or ISO 639-3 three-letter code in all capital
         # letters. You can find a list of codes at: https://www.loc.gov/standards/iso639-2/php/code_list.php
+
         @[JSON::Field(key: "renditionLanguageCode")]
         getter rendition_language_code : String?
 
         # Optional. Specify media name
+
         @[JSON::Field(key: "renditionName")]
         getter rendition_name : String?
 
@@ -13582,11 +15330,13 @@ module AwsSdk
       end
 
       # Required when you set Profile to the value XAVC_4K_INTRA_CBG.
+
       struct Xavc4kIntraCbgProfileSettings
         include JSON::Serializable
 
         # Specify the XAVC Intra 4k (CBG) Class to set the bitrate of your output. Outputs of the same class
         # have similar image quality over the operating points that are valid for that class.
+
         @[JSON::Field(key: "xavcClass")]
         getter xavc_class : String?
 
@@ -13597,11 +15347,13 @@ module AwsSdk
       end
 
       # Required when you set Profile to the value XAVC_4K_INTRA_VBR.
+
       struct Xavc4kIntraVbrProfileSettings
         include JSON::Serializable
 
         # Specify the XAVC Intra 4k (VBR) Class to set the bitrate of your output. Outputs of the same class
         # have similar image quality over the operating points that are valid for that class.
+
         @[JSON::Field(key: "xavcClass")]
         getter xavc_class : String?
 
@@ -13612,16 +15364,19 @@ module AwsSdk
       end
 
       # Required when you set Profile to the value XAVC_4K.
+
       struct Xavc4kProfileSettings
         include JSON::Serializable
 
         # Specify the XAVC 4k (Long GOP) Bitrate Class to set the bitrate of your output. Outputs of the same
         # class have similar image quality over the operating points that are valid for that class.
+
         @[JSON::Field(key: "bitrateClass")]
         getter bitrate_class : String?
 
         # Specify the codec profile for this output. Choose High, 8-bit, 4:2:0 (HIGH) or High, 10-bit, 4:2:2
         # (HIGH_422). These profiles are specified in ITU-T H.264.
+
         @[JSON::Field(key: "codecProfile")]
         getter codec_profile : String?
 
@@ -13636,18 +15391,21 @@ module AwsSdk
         # enabling this setting, you must also set Adaptive quantization to a value other than Off or Auto.
         # Use Adaptive quantization to adjust the degree of smoothing that Flicker adaptive quantization
         # provides.
+
         @[JSON::Field(key: "flickerAdaptiveQuantization")]
         getter flicker_adaptive_quantization : String?
 
         # Specify whether the encoder uses B-frames as reference frames for other pictures in the same GOP.
         # Choose Allow to allow the encoder to use B-frames as reference frames. Choose Don't allow to prevent
         # the encoder from using B-frames as reference frames.
+
         @[JSON::Field(key: "gopBReference")]
         getter gop_b_reference : String?
 
         # Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a
         # decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0
         # will break output segmenting.
+
         @[JSON::Field(key: "gopClosedCadence")]
         getter gop_closed_cadence : Int32?
 
@@ -13655,17 +15413,20 @@ module AwsSdk
         # Specify this value in bits; for example, enter five megabits as 5000000. When you don't set this
         # value, or you set it to zero, MediaConvert calculates the default by doubling the bitrate of this
         # output point.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
         # Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output
         # video quality. The default behavior is faster, lower quality, single-pass encoding.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # Number of slices per picture. Must be less than or equal to the number of macroblock rows for
         # progressive pictures, and less than or equal to half the number of macroblock rows for interlaced
         # pictures.
+
         @[JSON::Field(key: "slices")]
         getter slices : Int32?
 
@@ -13683,11 +15444,13 @@ module AwsSdk
       end
 
       # Required when you set Profile to the value XAVC_HD_INTRA_CBG.
+
       struct XavcHdIntraCbgProfileSettings
         include JSON::Serializable
 
         # Specify the XAVC Intra HD (CBG) Class to set the bitrate of your output. Outputs of the same class
         # have similar image quality over the operating points that are valid for that class.
+
         @[JSON::Field(key: "xavcClass")]
         getter xavc_class : String?
 
@@ -13698,11 +15461,13 @@ module AwsSdk
       end
 
       # Required when you set Profile to the value XAVC_HD.
+
       struct XavcHdProfileSettings
         include JSON::Serializable
 
         # Specify the XAVC HD (Long GOP) Bitrate Class to set the bitrate of your output. Outputs of the same
         # class have similar image quality over the operating points that are valid for that class.
+
         @[JSON::Field(key: "bitrateClass")]
         getter bitrate_class : String?
 
@@ -13717,18 +15482,21 @@ module AwsSdk
         # enabling this setting, you must also set Adaptive quantization to a value other than Off or Auto.
         # Use Adaptive quantization to adjust the degree of smoothing that Flicker adaptive quantization
         # provides.
+
         @[JSON::Field(key: "flickerAdaptiveQuantization")]
         getter flicker_adaptive_quantization : String?
 
         # Specify whether the encoder uses B-frames as reference frames for other pictures in the same GOP.
         # Choose Allow to allow the encoder to use B-frames as reference frames. Choose Don't allow to prevent
         # the encoder from using B-frames as reference frames.
+
         @[JSON::Field(key: "gopBReference")]
         getter gop_b_reference : String?
 
         # Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a
         # decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0
         # will break output segmenting.
+
         @[JSON::Field(key: "gopClosedCadence")]
         getter gop_closed_cadence : Int32?
 
@@ -13736,6 +15504,7 @@ module AwsSdk
         # Specify this value in bits; for example, enter five megabits as 5000000. When you don't set this
         # value, or you set it to zero, MediaConvert calculates the default by doubling the bitrate of this
         # output point.
+
         @[JSON::Field(key: "hrdBufferSize")]
         getter hrd_buffer_size : Int32?
 
@@ -13747,17 +15516,20 @@ module AwsSdk
         # output. Follow behavior depends on the input scan type. If the source is interlaced, the output will
         # be interlaced with the same polarity as the source. If the source is progressive, the output will be
         # interlaced with top field bottom field first, depending on which of the Follow options you choose.
+
         @[JSON::Field(key: "interlaceMode")]
         getter interlace_mode : String?
 
         # Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output
         # video quality. The default behavior is faster, lower quality, single-pass encoding.
+
         @[JSON::Field(key: "qualityTuningLevel")]
         getter quality_tuning_level : String?
 
         # Number of slices per picture. Must be less than or equal to the number of macroblock rows for
         # progressive pictures, and less than or equal to half the number of macroblock rows for interlaced
         # pictures.
+
         @[JSON::Field(key: "slices")]
         getter slices : Int32?
 
@@ -13765,6 +15537,7 @@ module AwsSdk
         # to 29.970. If your input framerate is 23.976, choose Hard. Otherwise, keep the default value None.
         # For more information, see
         # https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-telecine-and-inverse-telecine.html.
+
         @[JSON::Field(key: "telecine")]
         getter telecine : String?
 
@@ -13783,6 +15556,7 @@ module AwsSdk
       end
 
       # Required when you set Codec to the value XAVC.
+
       struct XavcSettings
         include JSON::Serializable
 
@@ -13793,12 +15567,14 @@ module AwsSdk
         # do any adaptive quantization in this transcode, set Adaptive quantization to Off. Related settings:
         # The value that you choose here applies to the following settings: Flicker adaptive quantization
         # (flickerAdaptiveQuantization), Spatial adaptive quantization, and Temporal adaptive quantization.
+
         @[JSON::Field(key: "adaptiveQuantization")]
         getter adaptive_quantization : String?
 
         # Optional. Choose a specific entropy encoding mode only when you want to override XAVC
         # recommendations. If you choose the value auto, MediaConvert uses the mode that the XAVC file format
         # specifies given this output's operating point.
+
         @[JSON::Field(key: "entropyEncoding")]
         getter entropy_encoding : String?
 
@@ -13806,6 +15582,7 @@ module AwsSdk
         # If you want to keep the same frame rate as the input video, choose Follow source. If you want to do
         # frame rate conversion, choose a frame rate from the dropdown list. The framerates shown in the
         # dropdown list are decimal approximations of fractions.
+
         @[JSON::Field(key: "framerateControl")]
         getter framerate_control : String?
 
@@ -13821,6 +15598,7 @@ module AwsSdk
         # Maintain frame count. When you do, MediaConvert will not drop, interpolate, add, or otherwise change
         # the frame count from your input to your output. Note that since the frame count is maintained, the
         # duration of your output will become shorter at higher frame rates and longer at lower frame rates.
+
         @[JSON::Field(key: "framerateConversionAlgorithm")]
         getter framerate_conversion_algorithm : String?
 
@@ -13829,6 +15607,7 @@ module AwsSdk
         # denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When
         # you use the console for transcode jobs that use frame rate conversion, provide the value as a
         # decimal number for Frame rate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateDenominator")]
         getter framerate_denominator : Int32?
 
@@ -13837,6 +15616,7 @@ module AwsSdk
         # this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the
         # console for transcode jobs that use frame rate conversion, provide the value as a decimal number for
         # Framerate. In this example, specify 23.976.
+
         @[JSON::Field(key: "framerateNumerator")]
         getter framerate_numerator : Int32?
 
@@ -13854,6 +15634,7 @@ module AwsSdk
         # Ratio, Human Visual System * VMAF: Video Multi-Method Assessment Fusion * QVBR: Quality-Defined
         # Variable Bitrate. This option is only available when your output uses the QVBR rate control mode. *
         # SHOT_CHANGE: Shot Changes
+
         @[JSON::Field(key: "perFrameMetrics")]
         getter per_frame_metrics : Array(String)?
 
@@ -13861,6 +15642,7 @@ module AwsSdk
         # https://www.xavc-info.org/. Note that MediaConvert doesn't support the interlaced video XAVC
         # operating points for XAVC_HD_INTRA_CBG. To create an interlaced XAVC output, choose the profile
         # XAVC_HD.
+
         @[JSON::Field(key: "profile")]
         getter profile : String?
 
@@ -13868,6 +15650,7 @@ module AwsSdk
         # slow PAL to create a 25 fps output by relabeling the video frames and resampling your audio. Note
         # that enabling this setting will slightly reduce the duration of your video. Related settings: You
         # must also set Frame rate to 25.
+
         @[JSON::Field(key: "slowPal")]
         getter slow_pal : String?
 
@@ -13879,6 +15662,7 @@ module AwsSdk
         # specification. Choose a value from 17 to 128 to use planar interpolation. Increasing values from 17
         # to 128 result in increasing reduction of high-frequency data. The value 128 results in the softest
         # video.
+
         @[JSON::Field(key: "softness")]
         getter softness : Int32?
 
@@ -13897,6 +15681,7 @@ module AwsSdk
         # When you enable spatial adaptive quantization, set the value for Adaptive quantization depending on
         # your content. For homogeneous content, such as cartoons and video games, set it to Low. For content
         # with a wider variety of textures, set it to High or Higher.
+
         @[JSON::Field(key: "spatialAdaptiveQuantization")]
         getter spatial_adaptive_quantization : String?
 
@@ -13914,26 +15699,32 @@ module AwsSdk
         # sharp edges, such as sports athletes' faces, you might choose to disable this feature. Related
         # setting: When you enable temporal adaptive quantization, adjust the strength of the filter with the
         # setting Adaptive quantization.
+
         @[JSON::Field(key: "temporalAdaptiveQuantization")]
         getter temporal_adaptive_quantization : String?
 
         # Required when you set Profile to the value XAVC_4K_INTRA_CBG.
+
         @[JSON::Field(key: "xavc4kIntraCbgProfileSettings")]
         getter xavc4k_intra_cbg_profile_settings : Types::Xavc4kIntraCbgProfileSettings?
 
         # Required when you set Profile to the value XAVC_4K_INTRA_VBR.
+
         @[JSON::Field(key: "xavc4kIntraVbrProfileSettings")]
         getter xavc4k_intra_vbr_profile_settings : Types::Xavc4kIntraVbrProfileSettings?
 
         # Required when you set Profile to the value XAVC_4K.
+
         @[JSON::Field(key: "xavc4kProfileSettings")]
         getter xavc4k_profile_settings : Types::Xavc4kProfileSettings?
 
         # Required when you set Profile to the value XAVC_HD_INTRA_CBG.
+
         @[JSON::Field(key: "xavcHdIntraCbgProfileSettings")]
         getter xavc_hd_intra_cbg_profile_settings : Types::XavcHdIntraCbgProfileSettings?
 
         # Required when you set Profile to the value XAVC_HD.
+
         @[JSON::Field(key: "xavcHdProfileSettings")]
         getter xavc_hd_profile_settings : Types::XavcHdProfileSettings?
 

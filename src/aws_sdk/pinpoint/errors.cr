@@ -5,34 +5,42 @@ module AwsSdk
       end
 
       # Provides information about an API request or response.
+
       class BadRequestException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class ConflictException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class ForbiddenException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class InternalServerErrorException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class MethodNotAllowedException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class NotFoundException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class PayloadTooLargeException < ServiceError
       end
 
       # Provides information about an API request or response.
+
       class TooManyRequestsException < ServiceError
       end
 

@@ -1,5 +1,5 @@
 module AwsSdk
-  module GreengrassV2
+  module Greengrass
     class Client
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
@@ -19,462 +19,1272 @@ module AwsSdk
         @endpoint_headers = endpoint_result.headers
       end
 
-      # Associates a Greengrass service role with IoT Greengrass for your Amazon Web Services account in
-      # this Amazon Web Services Region. IoT Greengrass uses this role to verify the identity of client
-      # devices and manage core device connectivity information. The role must include the
-      # AWSGreengrassResourceAccessRolePolicy managed policy or a custom policy that defines equivalent
-      # permissions for the IoT Greengrass features that you use. For more information, see Greengrass
-      # service role in the IoT Greengrass Version 2 Developer Guide .
+      # Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services.
+      # The role's permissions should allow Greengrass core Lambda functions to perform actions against the
+      # cloud.
+
+      def associate_role_to_group(
+        group_id : String,
+        role_arn : String
+      ) : Protocol::Request
+        input = Types::AssociateRoleToGroupRequest.new(group_id: group_id, role_arn: role_arn)
+        associate_role_to_group(input)
+      end
+
+      def associate_role_to_group(input : Types::AssociateRoleToGroupRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::ASSOCIATE_ROLE_TO_GROUP, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda
+      # functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at
+      # least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
+
       def associate_service_role_to_account(
         role_arn : String
       ) : Protocol::Request
         input = Types::AssociateServiceRoleToAccountRequest.new(role_arn: role_arn)
         associate_service_role_to_account(input)
       end
+
       def associate_service_role_to_account(input : Types::AssociateServiceRoleToAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ASSOCIATE_SERVICE_ROLE_TO_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Associates a list of client devices with a core device. Use this API operation to specify which
-      # client devices can discover a core device through cloud discovery. With cloud discovery, client
-      # devices connect to IoT Greengrass to retrieve associated core devices' connectivity information and
-      # certificates. For more information, see Configure cloud discovery in the IoT Greengrass V2 Developer
-      # Guide . Client devices are local IoT devices that connect to and communicate with an IoT Greengrass
-      # core device over MQTT. You can connect client devices to a core device to sync MQTT messages and
-      # data to Amazon Web Services IoT Core and interact with client devices in Greengrass components. For
-      # more information, see Interact with local IoT devices in the IoT Greengrass V2 Developer Guide .
-      def batch_associate_client_device_with_core_device(
-        core_device_thing_name : String,
-        entries : Array(Types::AssociateClientDeviceWithCoreDeviceEntry)? = nil
-      ) : Protocol::Request
-        input = Types::BatchAssociateClientDeviceWithCoreDeviceRequest.new(core_device_thing_name: core_device_thing_name, entries: entries)
-        batch_associate_client_device_with_core_device(input)
-      end
-      def batch_associate_client_device_with_core_device(input : Types::BatchAssociateClientDeviceWithCoreDeviceRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::BATCH_ASSOCIATE_CLIENT_DEVICE_WITH_CORE_DEVICE, input, endpoint)
-        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
-      end
+      # Creates a connector definition. You may provide the initial version of the connector definition now
+      # or use ''CreateConnectorDefinitionVersion'' at a later time.
 
-      # Disassociates a list of client devices from a core device. After you disassociate a client device
-      # from a core device, the client device won't be able to use cloud discovery to retrieve the core
-      # device's connectivity information and certificates.
-      def batch_disassociate_client_device_from_core_device(
-        core_device_thing_name : String,
-        entries : Array(Types::DisassociateClientDeviceFromCoreDeviceEntry)? = nil
-      ) : Protocol::Request
-        input = Types::BatchDisassociateClientDeviceFromCoreDeviceRequest.new(core_device_thing_name: core_device_thing_name, entries: entries)
-        batch_disassociate_client_device_from_core_device(input)
-      end
-      def batch_disassociate_client_device_from_core_device(input : Types::BatchDisassociateClientDeviceFromCoreDeviceRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::BATCH_DISASSOCIATE_CLIENT_DEVICE_FROM_CORE_DEVICE, input, endpoint)
-        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
-      end
-
-      # Cancels a deployment. This operation cancels the deployment for devices that haven't yet received
-      # it. If a device already received the deployment, this operation doesn't change anything for that
-      # device.
-      def cancel_deployment(
-        deployment_id : String
-      ) : Protocol::Request
-        input = Types::CancelDeploymentRequest.new(deployment_id: deployment_id)
-        cancel_deployment(input)
-      end
-      def cancel_deployment(input : Types::CancelDeploymentRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::CANCEL_DEPLOYMENT, input, endpoint)
-        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
-      end
-
-      # Creates a component. Components are software that run on Greengrass core devices. After you develop
-      # and test a component on your core device, you can use this operation to upload your component to IoT
-      # Greengrass. Then, you can deploy the component to other core devices. You can use this operation to
-      # do the following: Create components from recipes Create a component from a recipe, which is a file
-      # that defines the component's metadata, parameters, dependencies, lifecycle, artifacts, and platform
-      # capability. For more information, see IoT Greengrass component recipe reference in the IoT
-      # Greengrass V2 Developer Guide . To create a component from a recipe, specify inlineRecipe when you
-      # call this operation. Create components from Lambda functions Create a component from an Lambda
-      # function that runs on IoT Greengrass. This creates a recipe and artifacts from the Lambda function's
-      # deployment package. You can use this operation to migrate Lambda functions from IoT Greengrass V1 to
-      # IoT Greengrass V2. This function accepts Lambda functions in all supported versions of Python,
-      # Node.js, and Java runtimes. IoT Greengrass doesn't apply any additional restrictions on deprecated
-      # Lambda runtime versions. To create a component from a Lambda function, specify lambdaFunction when
-      # you call this operation. IoT Greengrass currently supports Lambda functions on only Linux core
-      # devices.
-      def create_component_version(
-        client_token : String? = nil,
-        inline_recipe : Bytes? = nil,
-        lambda_function : Types::LambdaFunctionRecipeSource? = nil,
+      def create_connector_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::ConnectorDefinitionVersion? = nil,
+        name : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Protocol::Request
-        input = Types::CreateComponentVersionRequest.new(client_token: client_token, inline_recipe: inline_recipe, lambda_function: lambda_function, tags: tags)
-        create_component_version(input)
+        input = Types::CreateConnectorDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_connector_definition(input)
       end
-      def create_component_version(input : Types::CreateComponentVersionRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::CREATE_COMPONENT_VERSION, input, endpoint)
+
+      def create_connector_definition(input : Types::CreateConnectorDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_CONNECTOR_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Creates a continuous deployment for a target, which is a Greengrass core device or group of core
-      # devices. When you add a new core device to a group of core devices that has a deployment, IoT
-      # Greengrass deploys that group's deployment to the new device. You can define one deployment for each
-      # target. When you create a new deployment for a target that has an existing deployment, you replace
-      # the previous deployment. IoT Greengrass applies the new deployment to the target devices. Every
-      # deployment has a revision number that indicates how many deployment revisions you define for a
-      # target. Use this operation to create a new revision of an existing deployment. For more information,
-      # see the Create deployments in the IoT Greengrass V2 Developer Guide .
+      # Creates a version of a connector definition which has already been defined.
+
+      def create_connector_definition_version(
+        connector_definition_id : String,
+        amzn_client_token : String? = nil,
+        connectors : Array(Types::Connector)? = nil
+      ) : Protocol::Request
+        input = Types::CreateConnectorDefinitionVersionRequest.new(connector_definition_id: connector_definition_id, amzn_client_token: amzn_client_token, connectors: connectors)
+        create_connector_definition_version(input)
+      end
+
+      def create_connector_definition_version(input : Types::CreateConnectorDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_CONNECTOR_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a core definition. You may provide the initial version of the core definition now or use
+      # ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one
+      # Greengrass core.
+
+      def create_core_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::CoreDefinitionVersion? = nil,
+        name : String? = nil,
+        tags : Hash(String, String)? = nil
+      ) : Protocol::Request
+        input = Types::CreateCoreDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_core_definition(input)
+      end
+
+      def create_core_definition(input : Types::CreateCoreDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_CORE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a version of a core definition that has already been defined. Greengrass groups must each
+      # contain exactly one Greengrass core.
+
+      def create_core_definition_version(
+        core_definition_id : String,
+        amzn_client_token : String? = nil,
+        cores : Array(Types::Core)? = nil
+      ) : Protocol::Request
+        input = Types::CreateCoreDefinitionVersionRequest.new(core_definition_id: core_definition_id, amzn_client_token: amzn_client_token, cores: cores)
+        create_core_definition_version(input)
+      end
+
+      def create_core_definition_version(input : Types::CreateCoreDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_CORE_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the
+      # ''X-Amzn-Client-Token'' token and the request parameters.
+
       def create_deployment(
-        target_arn : String,
-        client_token : String? = nil,
-        components : Hash(String, Types::ComponentDeploymentSpecification)? = nil,
-        deployment_name : String? = nil,
-        deployment_policies : Types::DeploymentPolicies? = nil,
-        iot_job_configuration : Types::DeploymentIoTJobConfiguration? = nil,
-        parent_target_arn : String? = nil,
-        tags : Hash(String, String)? = nil
+        deployment_type : String,
+        group_id : String,
+        amzn_client_token : String? = nil,
+        deployment_id : String? = nil,
+        group_version_id : String? = nil
       ) : Protocol::Request
-        input = Types::CreateDeploymentRequest.new(target_arn: target_arn, client_token: client_token, components: components, deployment_name: deployment_name, deployment_policies: deployment_policies, iot_job_configuration: iot_job_configuration, parent_target_arn: parent_target_arn, tags: tags)
+        input = Types::CreateDeploymentRequest.new(deployment_type: deployment_type, group_id: group_id, amzn_client_token: amzn_client_token, deployment_id: deployment_id, group_version_id: group_version_id)
         create_deployment(input)
       end
+
       def create_deployment(input : Types::CreateDeploymentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DEPLOYMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Deletes a version of a component from IoT Greengrass. This operation deletes the component's recipe
-      # and artifacts. As a result, deployments that refer to this component version will fail. If you have
-      # deployments that use this component version, you can remove the component from the deployment or
-      # update the deployment to use a valid version.
-      def delete_component(
-        arn : String
+      # Creates a device definition. You may provide the initial version of the device definition now or use
+      # ''CreateDeviceDefinitionVersion'' at a later time.
+
+      def create_device_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::DeviceDefinitionVersion? = nil,
+        name : String? = nil,
+        tags : Hash(String, String)? = nil
       ) : Protocol::Request
-        input = Types::DeleteComponentRequest.new(arn: arn)
-        delete_component(input)
+        input = Types::CreateDeviceDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_device_definition(input)
       end
-      def delete_component(input : Types::DeleteComponentRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::DELETE_COMPONENT, input, endpoint)
+
+      def create_device_definition(input : Types::CreateDeviceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_DEVICE_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Deletes a Greengrass core device, which is an IoT thing. This operation removes the core device from
-      # the list of core devices. This operation doesn't delete the IoT thing. For more information about
-      # how to delete the IoT thing, see DeleteThing in the IoT API Reference .
-      def delete_core_device(
-        core_device_thing_name : String
+      # Creates a version of a device definition that has already been defined.
+
+      def create_device_definition_version(
+        device_definition_id : String,
+        amzn_client_token : String? = nil,
+        devices : Array(Types::Device)? = nil
       ) : Protocol::Request
-        input = Types::DeleteCoreDeviceRequest.new(core_device_thing_name: core_device_thing_name)
-        delete_core_device(input)
+        input = Types::CreateDeviceDefinitionVersionRequest.new(device_definition_id: device_definition_id, amzn_client_token: amzn_client_token, devices: devices)
+        create_device_definition_version(input)
       end
-      def delete_core_device(input : Types::DeleteCoreDeviceRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::DELETE_CORE_DEVICE, input, endpoint)
+
+      def create_device_definition_version(input : Types::CreateDeviceDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_DEVICE_DEFINITION_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Deletes a deployment. To delete an active deployment, you must first cancel it. For more
-      # information, see CancelDeployment . Deleting a deployment doesn't affect core devices that run that
-      # deployment, because core devices store the deployment's configuration on the device. Additionally,
-      # core devices can roll back to a previous deployment that has been deleted.
-      def delete_deployment(
-        deployment_id : String
+      # Creates a Lambda function definition which contains a list of Lambda functions and their
+      # configurations to be used in a group. You can create an initial version of the definition by
+      # providing a list of Lambda functions and their configurations now, or use
+      # ''CreateFunctionDefinitionVersion'' later.
+
+      def create_function_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::FunctionDefinitionVersion? = nil,
+        name : String? = nil,
+        tags : Hash(String, String)? = nil
       ) : Protocol::Request
-        input = Types::DeleteDeploymentRequest.new(deployment_id: deployment_id)
-        delete_deployment(input)
+        input = Types::CreateFunctionDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_function_definition(input)
       end
-      def delete_deployment(input : Types::DeleteDeploymentRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::DELETE_DEPLOYMENT, input, endpoint)
+
+      def create_function_definition(input : Types::CreateFunctionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_FUNCTION_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves metadata for a version of a component.
-      def describe_component(
-        arn : String
+      # Creates a version of a Lambda function definition that has already been defined.
+
+      def create_function_definition_version(
+        function_definition_id : String,
+        amzn_client_token : String? = nil,
+        default_config : Types::FunctionDefaultConfig? = nil,
+        functions : Array(Types::Function)? = nil
       ) : Protocol::Request
-        input = Types::DescribeComponentRequest.new(arn: arn)
-        describe_component(input)
+        input = Types::CreateFunctionDefinitionVersionRequest.new(function_definition_id: function_definition_id, amzn_client_token: amzn_client_token, default_config: default_config, functions: functions)
+        create_function_definition_version(input)
       end
-      def describe_component(input : Types::DescribeComponentRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::DESCRIBE_COMPONENT, input, endpoint)
+
+      def create_function_definition_version(input : Types::CreateFunctionDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_FUNCTION_DEFINITION_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Disassociates the Greengrass service role from IoT Greengrass for your Amazon Web Services account
-      # in this Amazon Web Services Region. Without a service role, IoT Greengrass can't verify the identity
-      # of client devices or manage core device connectivity information. For more information, see
-      # Greengrass service role in the IoT Greengrass Version 2 Developer Guide .
+      # Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a
+      # later time. Tip: You can use the ''gg_group_setup'' package
+      # (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to
+      # create and deploy Greengrass groups.
+
+      def create_group(
+        name : String,
+        amzn_client_token : String? = nil,
+        initial_version : Types::GroupVersion? = nil,
+        tags : Hash(String, String)? = nil
+      ) : Protocol::Request
+        input = Types::CreateGroupRequest.new(name: name, amzn_client_token: amzn_client_token, initial_version: initial_version, tags: tags)
+        create_group(input)
+      end
+
+      def create_group(input : Types::CreateGroupRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_GROUP, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
+
+      def create_group_certificate_authority(
+        group_id : String,
+        amzn_client_token : String? = nil
+      ) : Protocol::Request
+        input = Types::CreateGroupCertificateAuthorityRequest.new(group_id: group_id, amzn_client_token: amzn_client_token)
+        create_group_certificate_authority(input)
+      end
+
+      def create_group_certificate_authority(input : Types::CreateGroupCertificateAuthorityRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_GROUP_CERTIFICATE_AUTHORITY, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a version of a group which has already been defined.
+
+      def create_group_version(
+        group_id : String,
+        amzn_client_token : String? = nil,
+        connector_definition_version_arn : String? = nil,
+        core_definition_version_arn : String? = nil,
+        device_definition_version_arn : String? = nil,
+        function_definition_version_arn : String? = nil,
+        logger_definition_version_arn : String? = nil,
+        resource_definition_version_arn : String? = nil,
+        subscription_definition_version_arn : String? = nil
+      ) : Protocol::Request
+        input = Types::CreateGroupVersionRequest.new(group_id: group_id, amzn_client_token: amzn_client_token, connector_definition_version_arn: connector_definition_version_arn, core_definition_version_arn: core_definition_version_arn, device_definition_version_arn: device_definition_version_arn, function_definition_version_arn: function_definition_version_arn, logger_definition_version_arn: logger_definition_version_arn, resource_definition_version_arn: resource_definition_version_arn, subscription_definition_version_arn: subscription_definition_version_arn)
+        create_group_version(input)
+      end
+
+      def create_group_version(input : Types::CreateGroupVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_GROUP_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a logger definition. You may provide the initial version of the logger definition now or use
+      # ''CreateLoggerDefinitionVersion'' at a later time.
+
+      def create_logger_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::LoggerDefinitionVersion? = nil,
+        name : String? = nil,
+        tags : Hash(String, String)? = nil
+      ) : Protocol::Request
+        input = Types::CreateLoggerDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_logger_definition(input)
+      end
+
+      def create_logger_definition(input : Types::CreateLoggerDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_LOGGER_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a version of a logger definition that has already been defined.
+
+      def create_logger_definition_version(
+        logger_definition_id : String,
+        amzn_client_token : String? = nil,
+        loggers : Array(Types::Logger)? = nil
+      ) : Protocol::Request
+        input = Types::CreateLoggerDefinitionVersionRequest.new(logger_definition_id: logger_definition_id, amzn_client_token: amzn_client_token, loggers: loggers)
+        create_logger_definition_version(input)
+      end
+
+      def create_logger_definition_version(input : Types::CreateLoggerDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_LOGGER_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a resource definition which contains a list of resources to be used in a group. You can
+      # create an initial version of the definition by providing a list of resources now, or use
+      # ''CreateResourceDefinitionVersion'' later.
+
+      def create_resource_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::ResourceDefinitionVersion? = nil,
+        name : String? = nil,
+        tags : Hash(String, String)? = nil
+      ) : Protocol::Request
+        input = Types::CreateResourceDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_resource_definition(input)
+      end
+
+      def create_resource_definition(input : Types::CreateResourceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_RESOURCE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a version of a resource definition that has already been defined.
+
+      def create_resource_definition_version(
+        resource_definition_id : String,
+        amzn_client_token : String? = nil,
+        resources : Array(Types::Resource)? = nil
+      ) : Protocol::Request
+        input = Types::CreateResourceDefinitionVersionRequest.new(resource_definition_id: resource_definition_id, amzn_client_token: amzn_client_token, resources: resources)
+        create_resource_definition_version(input)
+      end
+
+      def create_resource_definition_version(input : Types::CreateResourceDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_RESOURCE_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a software update for a core or group of cores (specified as an IoT thing group.) Use this
+      # to update the OTA Agent as well as the Greengrass core software. It makes use of the IoT Jobs
+      # feature which provides additional commands to manage a Greengrass core software update job.
+
+      def create_software_update_job(
+        s3_url_signer_role : String,
+        software_to_update : String,
+        update_targets : Array(String),
+        update_targets_architecture : String,
+        update_targets_operating_system : String,
+        amzn_client_token : String? = nil,
+        update_agent_log_level : String? = nil
+      ) : Protocol::Request
+        input = Types::CreateSoftwareUpdateJobRequest.new(s3_url_signer_role: s3_url_signer_role, software_to_update: software_to_update, update_targets: update_targets, update_targets_architecture: update_targets_architecture, update_targets_operating_system: update_targets_operating_system, amzn_client_token: amzn_client_token, update_agent_log_level: update_agent_log_level)
+        create_software_update_job(input)
+      end
+
+      def create_software_update_job(input : Types::CreateSoftwareUpdateJobRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_SOFTWARE_UPDATE_JOB, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a subscription definition. You may provide the initial version of the subscription
+      # definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.
+
+      def create_subscription_definition(
+        amzn_client_token : String? = nil,
+        initial_version : Types::SubscriptionDefinitionVersion? = nil,
+        name : String? = nil,
+        tags : Hash(String, String)? = nil
+      ) : Protocol::Request
+        input = Types::CreateSubscriptionDefinitionRequest.new(amzn_client_token: amzn_client_token, initial_version: initial_version, name: name, tags: tags)
+        create_subscription_definition(input)
+      end
+
+      def create_subscription_definition(input : Types::CreateSubscriptionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_SUBSCRIPTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Creates a version of a subscription definition which has already been defined.
+
+      def create_subscription_definition_version(
+        subscription_definition_id : String,
+        amzn_client_token : String? = nil,
+        subscriptions : Array(Types::Subscription)? = nil
+      ) : Protocol::Request
+        input = Types::CreateSubscriptionDefinitionVersionRequest.new(subscription_definition_id: subscription_definition_id, amzn_client_token: amzn_client_token, subscriptions: subscriptions)
+        create_subscription_definition_version(input)
+      end
+
+      def create_subscription_definition_version(input : Types::CreateSubscriptionDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::CREATE_SUBSCRIPTION_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a connector definition.
+
+      def delete_connector_definition(
+        connector_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteConnectorDefinitionRequest.new(connector_definition_id: connector_definition_id)
+        delete_connector_definition(input)
+      end
+
+      def delete_connector_definition(input : Types::DeleteConnectorDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_CONNECTOR_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a core definition.
+
+      def delete_core_definition(
+        core_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteCoreDefinitionRequest.new(core_definition_id: core_definition_id)
+        delete_core_definition(input)
+      end
+
+      def delete_core_definition(input : Types::DeleteCoreDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_CORE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a device definition.
+
+      def delete_device_definition(
+        device_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteDeviceDefinitionRequest.new(device_definition_id: device_definition_id)
+        delete_device_definition(input)
+      end
+
+      def delete_device_definition(input : Types::DeleteDeviceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_DEVICE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a Lambda function definition.
+
+      def delete_function_definition(
+        function_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteFunctionDefinitionRequest.new(function_definition_id: function_definition_id)
+        delete_function_definition(input)
+      end
+
+      def delete_function_definition(input : Types::DeleteFunctionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_FUNCTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a group.
+
+      def delete_group(
+        group_id : String
+      ) : Protocol::Request
+        input = Types::DeleteGroupRequest.new(group_id: group_id)
+        delete_group(input)
+      end
+
+      def delete_group(input : Types::DeleteGroupRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_GROUP, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a logger definition.
+
+      def delete_logger_definition(
+        logger_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteLoggerDefinitionRequest.new(logger_definition_id: logger_definition_id)
+        delete_logger_definition(input)
+      end
+
+      def delete_logger_definition(input : Types::DeleteLoggerDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_LOGGER_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a resource definition.
+
+      def delete_resource_definition(
+        resource_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteResourceDefinitionRequest.new(resource_definition_id: resource_definition_id)
+        delete_resource_definition(input)
+      end
+
+      def delete_resource_definition(input : Types::DeleteResourceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_RESOURCE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Deletes a subscription definition.
+
+      def delete_subscription_definition(
+        subscription_definition_id : String
+      ) : Protocol::Request
+        input = Types::DeleteSubscriptionDefinitionRequest.new(subscription_definition_id: subscription_definition_id)
+        delete_subscription_definition(input)
+      end
+
+      def delete_subscription_definition(input : Types::DeleteSubscriptionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DELETE_SUBSCRIPTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Disassociates the role from a group.
+
+      def disassociate_role_from_group(
+        group_id : String
+      ) : Protocol::Request
+        input = Types::DisassociateRoleFromGroupRequest.new(group_id: group_id)
+        disassociate_role_from_group(input)
+      end
+
+      def disassociate_role_from_group(input : Types::DisassociateRoleFromGroupRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::DISASSOCIATE_ROLE_FROM_GROUP, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Disassociates the service role from your account. Without a service role, deployments will not work.
+
       def disassociate_service_role_from_account : Protocol::Request
         input = Types::DisassociateServiceRoleFromAccountRequest.new
         disassociate_service_role_from_account(input)
       end
+
       def disassociate_service_role_from_account(input : Types::DisassociateServiceRoleFromAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DISASSOCIATE_SERVICE_ROLE_FROM_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Gets the recipe for a version of a component.
-      def get_component(
-        arn : String,
-        recipe_output_format : String? = nil
+      # Retrieves the role associated with a particular group.
+
+      def get_associated_role(
+        group_id : String
       ) : Protocol::Request
-        input = Types::GetComponentRequest.new(arn: arn, recipe_output_format: recipe_output_format)
-        get_component(input)
+        input = Types::GetAssociatedRoleRequest.new(group_id: group_id)
+        get_associated_role(input)
       end
-      def get_component(input : Types::GetComponentRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::GET_COMPONENT, input, endpoint)
+
+      def get_associated_role(input : Types::GetAssociatedRoleRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_ASSOCIATED_ROLE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Gets the pre-signed URL to download a public or a Lambda component artifact. Core devices call this
-      # operation to identify the URL that they can use to download an artifact to install.
-      def get_component_version_artifact(
-        arn : String,
-        artifact_name : String,
-        iot_endpoint_type : String? = nil,
-        s3_endpoint_type : String? = nil
+      # Returns the status of a bulk deployment.
+
+      def get_bulk_deployment_status(
+        bulk_deployment_id : String
       ) : Protocol::Request
-        input = Types::GetComponentVersionArtifactRequest.new(arn: arn, artifact_name: artifact_name, iot_endpoint_type: iot_endpoint_type, s3_endpoint_type: s3_endpoint_type)
-        get_component_version_artifact(input)
+        input = Types::GetBulkDeploymentStatusRequest.new(bulk_deployment_id: bulk_deployment_id)
+        get_bulk_deployment_status(input)
       end
-      def get_component_version_artifact(input : Types::GetComponentVersionArtifactRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::GET_COMPONENT_VERSION_ARTIFACT, input, endpoint)
+
+      def get_bulk_deployment_status(input : Types::GetBulkDeploymentStatusRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_BULK_DEPLOYMENT_STATUS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves connectivity information for a Greengrass core device. Connectivity information includes
-      # endpoints and ports where client devices can connect to an MQTT broker on the core device. When a
-      # client device calls the IoT Greengrass discovery API , IoT Greengrass returns connectivity
-      # information for all of the core devices where the client device can connect. For more information,
-      # see Connect client devices to core devices in the IoT Greengrass Version 2 Developer Guide .
+      # Retrieves the connectivity information for a core.
+
       def get_connectivity_info(
         thing_name : String
       ) : Protocol::Request
         input = Types::GetConnectivityInfoRequest.new(thing_name: thing_name)
         get_connectivity_info(input)
       end
+
       def get_connectivity_info(input : Types::GetConnectivityInfoRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_CONNECTIVITY_INFO, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves metadata for a Greengrass core device. IoT Greengrass relies on individual devices to send
-      # status updates to the Amazon Web Services Cloud. If the IoT Greengrass Core software isn't running
-      # on the device, or if device isn't connected to the Amazon Web Services Cloud, then the reported
-      # status of that device might not reflect its current status. The status timestamp indicates when the
-      # device status was last updated. Core devices send status updates at the following times: When the
-      # IoT Greengrass Core software starts When the core device receives a deployment from the Amazon Web
-      # Services Cloud When the status of any component on the core device becomes BROKEN At a regular
-      # interval that you can configure , which defaults to 24 hours For IoT Greengrass Core v2.7.0, the
-      # core device sends status updates upon local deployment and cloud deployment
-      def get_core_device(
-        core_device_thing_name : String
+      # Retrieves information about a connector definition.
+
+      def get_connector_definition(
+        connector_definition_id : String
       ) : Protocol::Request
-        input = Types::GetCoreDeviceRequest.new(core_device_thing_name: core_device_thing_name)
-        get_core_device(input)
+        input = Types::GetConnectorDefinitionRequest.new(connector_definition_id: connector_definition_id)
+        get_connector_definition(input)
       end
-      def get_core_device(input : Types::GetCoreDeviceRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::GET_CORE_DEVICE, input, endpoint)
+
+      def get_connector_definition(input : Types::GetConnectorDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_CONNECTOR_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Gets a deployment. Deployments define the components that run on Greengrass core devices.
-      def get_deployment(
-        deployment_id : String
+      # Retrieves information about a connector definition version, including the connectors that the
+      # version contains. Connectors are prebuilt modules that interact with local infrastructure, device
+      # protocols, AWS, and other cloud services.
+
+      def get_connector_definition_version(
+        connector_definition_id : String,
+        connector_definition_version_id : String,
+        next_token : String? = nil
       ) : Protocol::Request
-        input = Types::GetDeploymentRequest.new(deployment_id: deployment_id)
-        get_deployment(input)
+        input = Types::GetConnectorDefinitionVersionRequest.new(connector_definition_id: connector_definition_id, connector_definition_version_id: connector_definition_version_id, next_token: next_token)
+        get_connector_definition_version(input)
       end
-      def get_deployment(input : Types::GetDeploymentRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::GET_DEPLOYMENT, input, endpoint)
+
+      def get_connector_definition_version(input : Types::GetConnectorDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_CONNECTOR_DEFINITION_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Gets the service role associated with IoT Greengrass for your Amazon Web Services account in this
-      # Amazon Web Services Region. IoT Greengrass uses this role to verify the identity of client devices
-      # and manage core device connectivity information. For more information, see Greengrass service role
-      # in the IoT Greengrass Version 2 Developer Guide .
+      # Retrieves information about a core definition version.
+
+      def get_core_definition(
+        core_definition_id : String
+      ) : Protocol::Request
+        input = Types::GetCoreDefinitionRequest.new(core_definition_id: core_definition_id)
+        get_core_definition(input)
+      end
+
+      def get_core_definition(input : Types::GetCoreDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_CORE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a core definition version.
+
+      def get_core_definition_version(
+        core_definition_id : String,
+        core_definition_version_id : String
+      ) : Protocol::Request
+        input = Types::GetCoreDefinitionVersionRequest.new(core_definition_id: core_definition_id, core_definition_version_id: core_definition_version_id)
+        get_core_definition_version(input)
+      end
+
+      def get_core_definition_version(input : Types::GetCoreDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_CORE_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Returns the status of a deployment.
+
+      def get_deployment_status(
+        deployment_id : String,
+        group_id : String
+      ) : Protocol::Request
+        input = Types::GetDeploymentStatusRequest.new(deployment_id: deployment_id, group_id: group_id)
+        get_deployment_status(input)
+      end
+
+      def get_deployment_status(input : Types::GetDeploymentStatusRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_DEPLOYMENT_STATUS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a device definition.
+
+      def get_device_definition(
+        device_definition_id : String
+      ) : Protocol::Request
+        input = Types::GetDeviceDefinitionRequest.new(device_definition_id: device_definition_id)
+        get_device_definition(input)
+      end
+
+      def get_device_definition(input : Types::GetDeviceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_DEVICE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a device definition version.
+
+      def get_device_definition_version(
+        device_definition_id : String,
+        device_definition_version_id : String,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::GetDeviceDefinitionVersionRequest.new(device_definition_id: device_definition_id, device_definition_version_id: device_definition_version_id, next_token: next_token)
+        get_device_definition_version(input)
+      end
+
+      def get_device_definition_version(input : Types::GetDeviceDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_DEVICE_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a Lambda function definition, including its creation time and latest
+      # version.
+
+      def get_function_definition(
+        function_definition_id : String
+      ) : Protocol::Request
+        input = Types::GetFunctionDefinitionRequest.new(function_definition_id: function_definition_id)
+        get_function_definition(input)
+      end
+
+      def get_function_definition(input : Types::GetFunctionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_FUNCTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a Lambda function definition version, including which Lambda functions
+      # are included in the version and their configurations.
+
+      def get_function_definition_version(
+        function_definition_id : String,
+        function_definition_version_id : String,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::GetFunctionDefinitionVersionRequest.new(function_definition_id: function_definition_id, function_definition_version_id: function_definition_version_id, next_token: next_token)
+        get_function_definition_version(input)
+      end
+
+      def get_function_definition_version(input : Types::GetFunctionDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_FUNCTION_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a group.
+
+      def get_group(
+        group_id : String
+      ) : Protocol::Request
+        input = Types::GetGroupRequest.new(group_id: group_id)
+        get_group(input)
+      end
+
+      def get_group(input : Types::GetGroupRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_GROUP, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retreives the CA associated with a group. Returns the public key of the CA.
+
+      def get_group_certificate_authority(
+        certificate_authority_id : String,
+        group_id : String
+      ) : Protocol::Request
+        input = Types::GetGroupCertificateAuthorityRequest.new(certificate_authority_id: certificate_authority_id, group_id: group_id)
+        get_group_certificate_authority(input)
+      end
+
+      def get_group_certificate_authority(input : Types::GetGroupCertificateAuthorityRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_GROUP_CERTIFICATE_AUTHORITY, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves the current configuration for the CA used by the group.
+
+      def get_group_certificate_configuration(
+        group_id : String
+      ) : Protocol::Request
+        input = Types::GetGroupCertificateConfigurationRequest.new(group_id: group_id)
+        get_group_certificate_configuration(input)
+      end
+
+      def get_group_certificate_configuration(input : Types::GetGroupCertificateConfigurationRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_GROUP_CERTIFICATE_CONFIGURATION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a group version.
+
+      def get_group_version(
+        group_id : String,
+        group_version_id : String
+      ) : Protocol::Request
+        input = Types::GetGroupVersionRequest.new(group_id: group_id, group_version_id: group_version_id)
+        get_group_version(input)
+      end
+
+      def get_group_version(input : Types::GetGroupVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_GROUP_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a logger definition.
+
+      def get_logger_definition(
+        logger_definition_id : String
+      ) : Protocol::Request
+        input = Types::GetLoggerDefinitionRequest.new(logger_definition_id: logger_definition_id)
+        get_logger_definition(input)
+      end
+
+      def get_logger_definition(input : Types::GetLoggerDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_LOGGER_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a logger definition version.
+
+      def get_logger_definition_version(
+        logger_definition_id : String,
+        logger_definition_version_id : String,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::GetLoggerDefinitionVersionRequest.new(logger_definition_id: logger_definition_id, logger_definition_version_id: logger_definition_version_id, next_token: next_token)
+        get_logger_definition_version(input)
+      end
+
+      def get_logger_definition_version(input : Types::GetLoggerDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_LOGGER_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a resource definition, including its creation time and latest version.
+
+      def get_resource_definition(
+        resource_definition_id : String
+      ) : Protocol::Request
+        input = Types::GetResourceDefinitionRequest.new(resource_definition_id: resource_definition_id)
+        get_resource_definition(input)
+      end
+
+      def get_resource_definition(input : Types::GetResourceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_RESOURCE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a resource definition version, including which resources are included in
+      # the version.
+
+      def get_resource_definition_version(
+        resource_definition_id : String,
+        resource_definition_version_id : String
+      ) : Protocol::Request
+        input = Types::GetResourceDefinitionVersionRequest.new(resource_definition_id: resource_definition_id, resource_definition_version_id: resource_definition_version_id)
+        get_resource_definition_version(input)
+      end
+
+      def get_resource_definition_version(input : Types::GetResourceDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_RESOURCE_DEFINITION_VERSION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves the service role that is attached to your account.
+
       def get_service_role_for_account : Protocol::Request
         input = Types::GetServiceRoleForAccountRequest.new
         get_service_role_for_account(input)
       end
+
       def get_service_role_for_account(input : Types::GetServiceRoleForAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SERVICE_ROLE_FOR_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of client devices that are associated with a core device.
-      def list_client_devices_associated_with_core_device(
-        core_device_thing_name : String,
-        max_results : Int32? = nil,
+      # Retrieves information about a subscription definition.
+
+      def get_subscription_definition(
+        subscription_definition_id : String
+      ) : Protocol::Request
+        input = Types::GetSubscriptionDefinitionRequest.new(subscription_definition_id: subscription_definition_id)
+        get_subscription_definition(input)
+      end
+
+      def get_subscription_definition(input : Types::GetSubscriptionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_SUBSCRIPTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves information about a subscription definition version.
+
+      def get_subscription_definition_version(
+        subscription_definition_id : String,
+        subscription_definition_version_id : String,
         next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListClientDevicesAssociatedWithCoreDeviceRequest.new(core_device_thing_name: core_device_thing_name, max_results: max_results, next_token: next_token)
-        list_client_devices_associated_with_core_device(input)
+        input = Types::GetSubscriptionDefinitionVersionRequest.new(subscription_definition_id: subscription_definition_id, subscription_definition_version_id: subscription_definition_version_id, next_token: next_token)
+        get_subscription_definition_version(input)
       end
-      def list_client_devices_associated_with_core_device(input : Types::ListClientDevicesAssociatedWithCoreDeviceRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::LIST_CLIENT_DEVICES_ASSOCIATED_WITH_CORE_DEVICE, input, endpoint)
+
+      def get_subscription_definition_version(input : Types::GetSubscriptionDefinitionVersionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_SUBSCRIPTION_DEFINITION_VERSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of all versions for a component. Greater versions are listed first.
-      def list_component_versions(
-        arn : String,
-        max_results : Int32? = nil,
+      # Get the runtime configuration of a thing.
+
+      def get_thing_runtime_configuration(
+        thing_name : String
+      ) : Protocol::Request
+        input = Types::GetThingRuntimeConfigurationRequest.new(thing_name: thing_name)
+        get_thing_runtime_configuration(input)
+      end
+
+      def get_thing_runtime_configuration(input : Types::GetThingRuntimeConfigurationRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::GET_THING_RUNTIME_CONFIGURATION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Gets a paginated list of the deployments that have been started in a bulk deployment operation, and
+      # their current deployment status.
+
+      def list_bulk_deployment_detailed_reports(
+        bulk_deployment_id : String,
+        max_results : String? = nil,
         next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListComponentVersionsRequest.new(arn: arn, max_results: max_results, next_token: next_token)
-        list_component_versions(input)
+        input = Types::ListBulkDeploymentDetailedReportsRequest.new(bulk_deployment_id: bulk_deployment_id, max_results: max_results, next_token: next_token)
+        list_bulk_deployment_detailed_reports(input)
       end
-      def list_component_versions(input : Types::ListComponentVersionsRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::LIST_COMPONENT_VERSIONS, input, endpoint)
+
+      def list_bulk_deployment_detailed_reports(input : Types::ListBulkDeploymentDetailedReportsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_BULK_DEPLOYMENT_DETAILED_REPORTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of component summaries. This list includes components that you have
-      # permission to view.
-      def list_components(
-        max_results : Int32? = nil,
-        next_token : String? = nil,
-        scope : String? = nil
+      # Returns a list of bulk deployments.
+
+      def list_bulk_deployments(
+        max_results : String? = nil,
+        next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListComponentsRequest.new(max_results: max_results, next_token: next_token, scope: scope)
-        list_components(input)
+        input = Types::ListBulkDeploymentsRequest.new(max_results: max_results, next_token: next_token)
+        list_bulk_deployments(input)
       end
-      def list_components(input : Types::ListComponentsRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::LIST_COMPONENTS, input, endpoint)
+
+      def list_bulk_deployments(input : Types::ListBulkDeploymentsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_BULK_DEPLOYMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of Greengrass core devices. IoT Greengrass relies on individual devices
-      # to send status updates to the Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
-      # running on the device, or if device isn't connected to the Amazon Web Services Cloud, then the
-      # reported status of that device might not reflect its current status. The status timestamp indicates
-      # when the device status was last updated. Core devices send status updates at the following times:
-      # When the IoT Greengrass Core software starts When the core device receives a deployment from the
-      # Amazon Web Services Cloud For Greengrass nucleus 2.12.2 and earlier, the core device sends status
-      # updates when the status of any component on the core device becomes ERRORED or BROKEN . For
-      # Greengrass nucleus 2.12.3 and later, the core device sends status updates when the status of any
-      # component on the core device becomes ERRORED , BROKEN , RUNNING , or FINISHED . At a regular
-      # interval that you can configure , which defaults to 24 hours For IoT Greengrass Core v2.7.0, the
-      # core device sends status updates upon local deployment and cloud deployment
-      def list_core_devices(
-        max_results : Int32? = nil,
-        next_token : String? = nil,
-        runtime : String? = nil,
-        status : String? = nil,
-        thing_group_arn : String? = nil
+      # Lists the versions of a connector definition, which are containers for connectors. Connectors run on
+      # the Greengrass core and contain built-in integration with local infrastructure, device protocols,
+      # AWS, and other cloud services.
+
+      def list_connector_definition_versions(
+        connector_definition_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListCoreDevicesRequest.new(max_results: max_results, next_token: next_token, runtime: runtime, status: status, thing_group_arn: thing_group_arn)
-        list_core_devices(input)
+        input = Types::ListConnectorDefinitionVersionsRequest.new(connector_definition_id: connector_definition_id, max_results: max_results, next_token: next_token)
+        list_connector_definition_versions(input)
       end
-      def list_core_devices(input : Types::ListCoreDevicesRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::LIST_CORE_DEVICES, input, endpoint)
+
+      def list_connector_definition_versions(input : Types::ListConnectorDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_CONNECTOR_DEFINITION_VERSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of deployments.
+      # Retrieves a list of connector definitions.
+
+      def list_connector_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListConnectorDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_connector_definitions(input)
+      end
+
+      def list_connector_definitions(input : Types::ListConnectorDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_CONNECTOR_DEFINITIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Lists the versions of a core definition.
+
+      def list_core_definition_versions(
+        core_definition_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListCoreDefinitionVersionsRequest.new(core_definition_id: core_definition_id, max_results: max_results, next_token: next_token)
+        list_core_definition_versions(input)
+      end
+
+      def list_core_definition_versions(input : Types::ListCoreDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_CORE_DEFINITION_VERSIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of core definitions.
+
+      def list_core_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListCoreDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_core_definitions(input)
+      end
+
+      def list_core_definitions(input : Types::ListCoreDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_CORE_DEFINITIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Returns a history of deployments for the group.
+
       def list_deployments(
-        history_filter : String? = nil,
-        max_results : Int32? = nil,
-        next_token : String? = nil,
-        parent_target_arn : String? = nil,
-        target_arn : String? = nil
+        group_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListDeploymentsRequest.new(history_filter: history_filter, max_results: max_results, next_token: next_token, parent_target_arn: parent_target_arn, target_arn: target_arn)
+        input = Types::ListDeploymentsRequest.new(group_id: group_id, max_results: max_results, next_token: next_token)
         list_deployments(input)
       end
+
       def list_deployments(input : Types::ListDeploymentsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DEPLOYMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of deployment jobs that IoT Greengrass sends to Greengrass core devices.
-      def list_effective_deployments(
-        core_device_thing_name : String,
-        max_results : Int32? = nil,
+      # Lists the versions of a device definition.
+
+      def list_device_definition_versions(
+        device_definition_id : String,
+        max_results : String? = nil,
         next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListEffectiveDeploymentsRequest.new(core_device_thing_name: core_device_thing_name, max_results: max_results, next_token: next_token)
-        list_effective_deployments(input)
+        input = Types::ListDeviceDefinitionVersionsRequest.new(device_definition_id: device_definition_id, max_results: max_results, next_token: next_token)
+        list_device_definition_versions(input)
       end
-      def list_effective_deployments(input : Types::ListEffectiveDeploymentsRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::LIST_EFFECTIVE_DEPLOYMENTS, input, endpoint)
+
+      def list_device_definition_versions(input : Types::ListDeviceDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_DEVICE_DEFINITION_VERSIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a paginated list of the components that a Greengrass core device runs. By default, this
-      # list doesn't include components that are deployed as dependencies of other components. To include
-      # dependencies in the response, set the topologyFilter parameter to ALL . IoT Greengrass relies on
-      # individual devices to send status updates to the Amazon Web Services Cloud. If the IoT Greengrass
-      # Core software isn't running on the device, or if device isn't connected to the Amazon Web Services
-      # Cloud, then the reported status of that device might not reflect its current status. The status
-      # timestamp indicates when the device status was last updated. Core devices send status updates at the
-      # following times: When the IoT Greengrass Core software starts When the core device receives a
-      # deployment from the Amazon Web Services Cloud When the status of any component on the core device
-      # becomes BROKEN At a regular interval that you can configure , which defaults to 24 hours For IoT
-      # Greengrass Core v2.7.0, the core device sends status updates upon local deployment and cloud
-      # deployment
-      def list_installed_components(
-        core_device_thing_name : String,
-        max_results : Int32? = nil,
-        next_token : String? = nil,
-        topology_filter : String? = nil
+      # Retrieves a list of device definitions.
+
+      def list_device_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
       ) : Protocol::Request
-        input = Types::ListInstalledComponentsRequest.new(core_device_thing_name: core_device_thing_name, max_results: max_results, next_token: next_token, topology_filter: topology_filter)
-        list_installed_components(input)
+        input = Types::ListDeviceDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_device_definitions(input)
       end
-      def list_installed_components(input : Types::ListInstalledComponentsRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::LIST_INSTALLED_COMPONENTS, input, endpoint)
+
+      def list_device_definitions(input : Types::ListDeviceDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_DEVICE_DEFINITIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves the list of tags for an IoT Greengrass resource.
+      # Lists the versions of a Lambda function definition.
+
+      def list_function_definition_versions(
+        function_definition_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListFunctionDefinitionVersionsRequest.new(function_definition_id: function_definition_id, max_results: max_results, next_token: next_token)
+        list_function_definition_versions(input)
+      end
+
+      def list_function_definition_versions(input : Types::ListFunctionDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_FUNCTION_DEFINITION_VERSIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of Lambda function definitions.
+
+      def list_function_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListFunctionDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_function_definitions(input)
+      end
+
+      def list_function_definitions(input : Types::ListFunctionDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_FUNCTION_DEFINITIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves the current CAs for a group.
+
+      def list_group_certificate_authorities(
+        group_id : String
+      ) : Protocol::Request
+        input = Types::ListGroupCertificateAuthoritiesRequest.new(group_id: group_id)
+        list_group_certificate_authorities(input)
+      end
+
+      def list_group_certificate_authorities(input : Types::ListGroupCertificateAuthoritiesRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_GROUP_CERTIFICATE_AUTHORITIES, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Lists the versions of a group.
+
+      def list_group_versions(
+        group_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListGroupVersionsRequest.new(group_id: group_id, max_results: max_results, next_token: next_token)
+        list_group_versions(input)
+      end
+
+      def list_group_versions(input : Types::ListGroupVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_GROUP_VERSIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of groups.
+
+      def list_groups(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListGroupsRequest.new(max_results: max_results, next_token: next_token)
+        list_groups(input)
+      end
+
+      def list_groups(input : Types::ListGroupsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_GROUPS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Lists the versions of a logger definition.
+
+      def list_logger_definition_versions(
+        logger_definition_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListLoggerDefinitionVersionsRequest.new(logger_definition_id: logger_definition_id, max_results: max_results, next_token: next_token)
+        list_logger_definition_versions(input)
+      end
+
+      def list_logger_definition_versions(input : Types::ListLoggerDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_LOGGER_DEFINITION_VERSIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of logger definitions.
+
+      def list_logger_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListLoggerDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_logger_definitions(input)
+      end
+
+      def list_logger_definitions(input : Types::ListLoggerDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_LOGGER_DEFINITIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Lists the versions of a resource definition.
+
+      def list_resource_definition_versions(
+        resource_definition_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListResourceDefinitionVersionsRequest.new(resource_definition_id: resource_definition_id, max_results: max_results, next_token: next_token)
+        list_resource_definition_versions(input)
+      end
+
+      def list_resource_definition_versions(input : Types::ListResourceDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_RESOURCE_DEFINITION_VERSIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of resource definitions.
+
+      def list_resource_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListResourceDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_resource_definitions(input)
+      end
+
+      def list_resource_definitions(input : Types::ListResourceDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_RESOURCE_DEFINITIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Lists the versions of a subscription definition.
+
+      def list_subscription_definition_versions(
+        subscription_definition_id : String,
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListSubscriptionDefinitionVersionsRequest.new(subscription_definition_id: subscription_definition_id, max_results: max_results, next_token: next_token)
+        list_subscription_definition_versions(input)
+      end
+
+      def list_subscription_definition_versions(input : Types::ListSubscriptionDefinitionVersionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_SUBSCRIPTION_DEFINITION_VERSIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of subscription definitions.
+
+      def list_subscription_definitions(
+        max_results : String? = nil,
+        next_token : String? = nil
+      ) : Protocol::Request
+        input = Types::ListSubscriptionDefinitionsRequest.new(max_results: max_results, next_token: next_token)
+        list_subscription_definitions(input)
+      end
+
+      def list_subscription_definitions(input : Types::ListSubscriptionDefinitionsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::LIST_SUBSCRIPTION_DEFINITIONS, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Retrieves a list of resource tags for a resource arn.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Retrieves a list of components that meet the component, version, and platform requirements of a
-      # deployment. Greengrass core devices call this operation when they receive a deployment to identify
-      # the components to install. This operation identifies components that meet all dependency
-      # requirements for a deployment. If the requirements conflict, then this operation returns an error
-      # and the deployment fails. For example, this occurs if component A requires version &gt;2.0.0 and
-      # component B requires version &lt;2.0.0 of a component dependency. When you specify the component
-      # candidates to resolve, IoT Greengrass compares each component's digest from the core device with the
-      # component's digest in the Amazon Web Services Cloud. If the digests don't match, then IoT Greengrass
-      # specifies to use the version from the Amazon Web Services Cloud. To use this operation, you must use
-      # the data plane API endpoint and authenticate with an IoT device certificate. For more information,
-      # see IoT Greengrass endpoints and quotas .
-      def resolve_component_candidates(
-        component_candidates : Array(Types::ComponentCandidate)? = nil,
-        platform : Types::ComponentPlatform? = nil
+      # Resets a group's deployments.
+
+      def reset_deployments(
+        group_id : String,
+        amzn_client_token : String? = nil,
+        force : Bool? = nil
       ) : Protocol::Request
-        input = Types::ResolveComponentCandidatesRequest.new(component_candidates: component_candidates, platform: platform)
-        resolve_component_candidates(input)
+        input = Types::ResetDeploymentsRequest.new(group_id: group_id, amzn_client_token: amzn_client_token, force: force)
+        reset_deployments(input)
       end
-      def resolve_component_candidates(input : Types::ResolveComponentCandidatesRequest) : Protocol::Request
-        request = Protocol::RestJson.build_request(Model::RESOLVE_COMPONENT_CANDIDATES, input, endpoint)
+
+      def reset_deployments(input : Types::ResetDeploymentsRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::RESET_DEPLOYMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Adds tags to an IoT Greengrass resource. If a tag already exists for the resource, this operation
-      # updates the tag's value.
+      # Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set
+      # of group versions. Each group version deployment will be triggered with an adaptive rate that has a
+      # fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every
+      # ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the
+      # request parameters.
+
+      def start_bulk_deployment(
+        execution_role_arn : String,
+        input_file_uri : String,
+        amzn_client_token : String? = nil,
+        tags : Hash(String, String)? = nil
+      ) : Protocol::Request
+        input = Types::StartBulkDeploymentRequest.new(execution_role_arn: execution_role_arn, input_file_uri: input_file_uri, amzn_client_token: amzn_client_token, tags: tags)
+        start_bulk_deployment(input)
+      end
+
+      def start_bulk_deployment(input : Types::StartBulkDeploymentRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::START_BULK_DEPLOYMENT, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the
+      # deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the
+      # ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending
+      # deployments.
+
+      def stop_bulk_deployment(
+        bulk_deployment_id : String
+      ) : Protocol::Request
+        input = Types::StopBulkDeploymentRequest.new(bulk_deployment_id: bulk_deployment_id)
+        stop_bulk_deployment(input)
+      end
+
+      def stop_bulk_deployment(input : Types::StopBulkDeploymentRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::STOP_BULK_DEPLOYMENT, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition',
+      # 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
+      # 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
+
       def tag_resource(
         resource_arn : String,
-        tags : Hash(String, String)
+        tags : Hash(String, String)? = nil
       ) : Protocol::Request
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Removes a tag from an IoT Greengrass resource.
+      # Remove resource tags from a Greengrass Resource.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -482,25 +1292,175 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
-      # Updates connectivity information for a Greengrass core device. Connectivity information includes
-      # endpoints and ports where client devices can connect to an MQTT broker on the core device. When a
-      # client device calls the IoT Greengrass discovery API , IoT Greengrass returns connectivity
-      # information for all of the core devices where the client device can connect. For more information,
-      # see Connect client devices to core devices in the IoT Greengrass Version 2 Developer Guide .
+      # Updates the connectivity information for the core. Any devices that belong to the group which has
+      # this core will receive this information in order to find the location of the core and connect to it.
+
       def update_connectivity_info(
-        connectivity_info : Array(Types::ConnectivityInfo),
-        thing_name : String
+        thing_name : String,
+        connectivity_info : Array(Types::ConnectivityInfo)? = nil
       ) : Protocol::Request
-        input = Types::UpdateConnectivityInfoRequest.new(connectivity_info: connectivity_info, thing_name: thing_name)
+        input = Types::UpdateConnectivityInfoRequest.new(thing_name: thing_name, connectivity_info: connectivity_info)
         update_connectivity_info(input)
       end
+
       def update_connectivity_info(input : Types::UpdateConnectivityInfoRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_CONNECTIVITY_INFO, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a connector definition.
+
+      def update_connector_definition(
+        connector_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateConnectorDefinitionRequest.new(connector_definition_id: connector_definition_id, name: name)
+        update_connector_definition(input)
+      end
+
+      def update_connector_definition(input : Types::UpdateConnectorDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_CONNECTOR_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a core definition.
+
+      def update_core_definition(
+        core_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateCoreDefinitionRequest.new(core_definition_id: core_definition_id, name: name)
+        update_core_definition(input)
+      end
+
+      def update_core_definition(input : Types::UpdateCoreDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_CORE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a device definition.
+
+      def update_device_definition(
+        device_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateDeviceDefinitionRequest.new(device_definition_id: device_definition_id, name: name)
+        update_device_definition(input)
+      end
+
+      def update_device_definition(input : Types::UpdateDeviceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_DEVICE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a Lambda function definition.
+
+      def update_function_definition(
+        function_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateFunctionDefinitionRequest.new(function_definition_id: function_definition_id, name: name)
+        update_function_definition(input)
+      end
+
+      def update_function_definition(input : Types::UpdateFunctionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_FUNCTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a group.
+
+      def update_group(
+        group_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateGroupRequest.new(group_id: group_id, name: name)
+        update_group(input)
+      end
+
+      def update_group(input : Types::UpdateGroupRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_GROUP, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates the Certificate expiry time for a group.
+
+      def update_group_certificate_configuration(
+        group_id : String,
+        certificate_expiry_in_milliseconds : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateGroupCertificateConfigurationRequest.new(group_id: group_id, certificate_expiry_in_milliseconds: certificate_expiry_in_milliseconds)
+        update_group_certificate_configuration(input)
+      end
+
+      def update_group_certificate_configuration(input : Types::UpdateGroupCertificateConfigurationRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_GROUP_CERTIFICATE_CONFIGURATION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a logger definition.
+
+      def update_logger_definition(
+        logger_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateLoggerDefinitionRequest.new(logger_definition_id: logger_definition_id, name: name)
+        update_logger_definition(input)
+      end
+
+      def update_logger_definition(input : Types::UpdateLoggerDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_LOGGER_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a resource definition.
+
+      def update_resource_definition(
+        resource_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateResourceDefinitionRequest.new(resource_definition_id: resource_definition_id, name: name)
+        update_resource_definition(input)
+      end
+
+      def update_resource_definition(input : Types::UpdateResourceDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_RESOURCE_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates a subscription definition.
+
+      def update_subscription_definition(
+        subscription_definition_id : String,
+        name : String? = nil
+      ) : Protocol::Request
+        input = Types::UpdateSubscriptionDefinitionRequest.new(subscription_definition_id: subscription_definition_id, name: name)
+        update_subscription_definition(input)
+      end
+
+      def update_subscription_definition(input : Types::UpdateSubscriptionDefinitionRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_SUBSCRIPTION_DEFINITION, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+
+      # Updates the runtime configuration of a thing.
+
+      def update_thing_runtime_configuration(
+        thing_name : String,
+        telemetry_configuration : Types::TelemetryConfigurationUpdate? = nil
+      ) : Protocol::Request
+        input = Types::UpdateThingRuntimeConfigurationRequest.new(thing_name: thing_name, telemetry_configuration: telemetry_configuration)
+        update_thing_runtime_configuration(input)
+      end
+
+      def update_thing_runtime_configuration(input : Types::UpdateThingRuntimeConfigurationRequest) : Protocol::Request
+        request = Protocol::RestJson.build_request(Model::UPDATE_THING_RUNTIME_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
     end

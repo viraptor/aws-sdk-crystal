@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mediapackagevod/client"
+require "./mediapackagevod/errors"
+require "./mediapackagevod/model"
+require "./mediapackagevod/types"
+require "./mediapackagevod/protocol/rest_json"
+require "./customizations/mediapackagevod/customizations"

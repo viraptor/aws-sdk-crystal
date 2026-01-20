@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudfrontkeyvaluestore/client"
+require "./cloudfrontkeyvaluestore/errors"
+require "./cloudfrontkeyvaluestore/model"
+require "./cloudfrontkeyvaluestore/types"
+require "./cloudfrontkeyvaluestore/protocol/rest_json"
+require "./customizations/cloudfrontkeyvaluestore/customizations"

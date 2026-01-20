@@ -5,46 +5,57 @@ module AwsSdk
       end
 
       # You don't have permission to perform this operation on this resource.
+
       class AccessDeniedException < ServiceError
       end
 
       # The request was not valid.
+
       class BadRequestException < ServiceError
       end
 
       # A conflicting operation is already in progress.
+
       class ConflictException < ServiceError
       end
 
       # An internal failure occurred. Try the operation again.
+
       class InternalFailureException < ServiceError
       end
 
       # An unknown internal error occurred.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource was not found.
+
       class NotFoundException < ServiceError
       end
 
       # One of the input resources is larger than is allowed.
+
       class RequestEntityTooLargeException < ServiceError
       end
 
       # One of the specified resources was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request exceeded a service quota value.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # There were too many simultaneous requests. Try the operation again.
+
       class TooManyRequestsException < ServiceError
       end
 
       # A parameter could not be validated.
+
       class ValidationException < ServiceError
       end
 

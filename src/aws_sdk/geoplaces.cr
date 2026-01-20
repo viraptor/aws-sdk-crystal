@@ -1,0 +1,7 @@
+require "./runtime"
+require "./geoplaces/client"
+require "./geoplaces/errors"
+require "./geoplaces/model"
+require "./geoplaces/types"
+require "./geoplaces/protocol/rest_json"
+require "./customizations/geoplaces/customizations"

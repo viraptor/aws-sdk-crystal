@@ -5,24 +5,29 @@ module AwsSdk
       end
 
       # An internal service error occurred.
+
       class InternalServiceError < ServiceError
       end
 
       # The request was not valid. Verify that your request was properly formatted, that the signature was
       # generated with the correct credentials, and that you haven't exceeded any of the service limits for
       # your account.
+
       class InvalidRequestException < ServiceError
       end
 
       # The specified pipeline has been deleted.
+
       class PipelineDeletedException < ServiceError
       end
 
       # The specified pipeline was not found. Verify that you used the correct user and account identifiers.
+
       class PipelineNotFoundException < ServiceError
       end
 
       # The specified task was not found.
+
       class TaskNotFoundException < ServiceError
       end
 

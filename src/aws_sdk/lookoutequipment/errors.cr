@@ -5,31 +5,38 @@ module AwsSdk
       end
 
       # The request could not be completed because you do not have access to the resource.
+
       class AccessDeniedException < ServiceError
       end
 
       # The request could not be completed due to a conflict with the current state of the target resource.
+
       class ConflictException < ServiceError
       end
 
       # Processing of the request has failed because of an unknown error, exception or failure.
+
       class InternalServerException < ServiceError
       end
 
       # The resource requested could not be found. Verify the resource ID and retry your request.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # Resource limitations have been exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy constraints specified by Amazon Lookout for Equipment or a related Amazon
       # Web Services service that's being utilized.
+
       class ValidationException < ServiceError
       end
 

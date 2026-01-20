@@ -5,6 +5,7 @@ module AwsSdk
       end
 
       # You don't have sufficient permission to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
@@ -16,25 +17,30 @@ module AwsSdk
       # RegisterSlackWorkspaceForOrganization API from an Amazon Web Services account that doesn't belong to
       # an organization. Call the RegisterSlackWorkspaceForOrganization API from a member account, but the
       # management account hasn't registered that workspace yet for the organization.
+
       class ConflictException < ServiceError
       end
 
       # We can’t process your request right now because of a server issue. Try again later.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource is missing or doesn't exist, such as an account alias, Slack channel
       # configuration, or Slack workspace configuration.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # Your Service Quotas request exceeds the quota for the service. For example, your Service Quotas
       # request to Amazon Web Services Support App might exceed the maximum number of workspaces or channels
       # per account, or the maximum number of accounts per Slack channel.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Your request input doesn't meet the constraints that the Amazon Web Services Support App specifies.
+
       class ValidationException < ServiceError
       end
 

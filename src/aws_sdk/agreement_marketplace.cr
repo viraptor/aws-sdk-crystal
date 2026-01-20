@@ -1,7 +1,0 @@
-require "./runtime"
-require "./agreement_marketplace/client"
-require "./agreement_marketplace/errors"
-require "./agreement_marketplace/model"
-require "./agreement_marketplace/types"
-require "./agreement_marketplace/protocol/json_rpc"
-require "./customizations/agreement_marketplace/customizations"

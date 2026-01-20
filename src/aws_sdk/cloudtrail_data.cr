@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cloudtrail_data/client"
-require "./cloudtrail_data/errors"
-require "./cloudtrail_data/model"
-require "./cloudtrail_data/types"
-require "./cloudtrail_data/protocol/rest_json"
-require "./customizations/cloudtrail_data/customizations"

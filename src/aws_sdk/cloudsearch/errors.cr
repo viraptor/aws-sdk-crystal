@@ -5,35 +5,43 @@ module AwsSdk
       end
 
       # An error occurred while processing the request.
+
       class BaseException < ServiceError
       end
 
       # The request was rejected because it attempted an operation which is not enabled.
+
       class DisabledOperationException < ServiceError
       end
 
       # An internal error occurred while processing the request. If this problem persists, report an issue
       # from the Service Health Dashboard .
+
       class InternalException < ServiceError
       end
 
       # The request was rejected because it specified an invalid type definition.
+
       class InvalidTypeException < ServiceError
       end
 
       # The request was rejected because a resource limit has already been met.
+
       class LimitExceededException < ServiceError
       end
 
       # The request was rejected because it attempted to create a resource that already exists.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # The request was rejected because it attempted to reference a resource that does not exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was rejected because it has invalid parameters.
+
       class ValidationException < ServiceError
       end
 

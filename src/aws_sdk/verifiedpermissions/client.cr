@@ -1,6 +1,7 @@
 module AwsSdk
   module VerifiedPermissions
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -30,12 +31,15 @@ module AwsSdk
       # Retrieves information about a group (batch) of policies. The BatchGetPolicy operation doesn't have
       # its own IAM permission. To authorize this operation for Amazon Web Services principals, include the
       # permission verifiedpermissions:GetPolicy in their IAM policies.
+
       def batch_get_policy(
         requests : Array(Types::BatchGetPolicyInputItem)
       ) : Types::BatchGetPolicyOutput
+
         input = Types::BatchGetPolicyInput.new(requests: requests)
         batch_get_policy(input)
       end
+
       def batch_get_policy(input : Types::BatchGetPolicyInput) : Types::BatchGetPolicyOutput
         request = Protocol::JsonRpc.build_request(Model::BATCH_GET_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -56,14 +60,17 @@ module AwsSdk
       # of a BatchIsAuthorized API request can contain up to 30 requests. The BatchIsAuthorized operation
       # doesn't have its own IAM permission. To authorize this operation for Amazon Web Services principals,
       # include the permission verifiedpermissions:IsAuthorized in their IAM policies.
+
       def batch_is_authorized(
         policy_store_id : String,
         requests : Array(Types::BatchIsAuthorizedInputItem),
         entities : Types::EntitiesDefinition? = nil
       ) : Types::BatchIsAuthorizedOutput
+
         input = Types::BatchIsAuthorizedInput.new(policy_store_id: policy_store_id, requests: requests, entities: entities)
         batch_is_authorized(input)
       end
+
       def batch_is_authorized(input : Types::BatchIsAuthorizedInput) : Types::BatchIsAuthorizedOutput
         request = Protocol::JsonRpc.build_request(Model::BATCH_IS_AUTHORIZED, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -84,6 +91,7 @@ module AwsSdk
       # BatchIsAuthorizedWithToken operation doesn't have its own IAM permission. To authorize this
       # operation for Amazon Web Services principals, include the permission
       # verifiedpermissions:IsAuthorizedWithToken in their IAM policies.
+
       def batch_is_authorized_with_token(
         policy_store_id : String,
         requests : Array(Types::BatchIsAuthorizedWithTokenInputItem),
@@ -91,9 +99,11 @@ module AwsSdk
         entities : Types::EntitiesDefinition? = nil,
         identity_token : String? = nil
       ) : Types::BatchIsAuthorizedWithTokenOutput
+
         input = Types::BatchIsAuthorizedWithTokenInput.new(policy_store_id: policy_store_id, requests: requests, access_token: access_token, entities: entities, identity_token: identity_token)
         batch_is_authorized_with_token(input)
       end
+
       def batch_is_authorized_with_token(input : Types::BatchIsAuthorizedWithTokenInput) : Types::BatchIsAuthorizedWithTokenOutput
         request = Protocol::JsonRpc.build_request(Model::BATCH_IS_AUTHORIZED_WITH_TOKEN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -119,15 +129,18 @@ module AwsSdk
       # MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222 . Verified Permissions is
       # eventually consistent . It can take a few seconds for a new or changed element to propagate through
       # the service and be visible in the results of other Verified Permissions operations.
+
       def create_identity_source(
         configuration : Types::Configuration,
         policy_store_id : String,
         client_token : String? = nil,
         principal_entity_type : String? = nil
       ) : Types::CreateIdentitySourceOutput
+
         input = Types::CreateIdentitySourceInput.new(configuration: configuration, policy_store_id: policy_store_id, client_token: client_token, principal_entity_type: principal_entity_type)
         create_identity_source(input)
       end
+
       def create_identity_source(input : Types::CreateIdentitySourceInput) : Types::CreateIdentitySourceOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_IDENTITY_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -147,14 +160,17 @@ module AwsSdk
       # Permissions is eventually consistent . It can take a few seconds for a new or changed element to
       # propagate through the service and be visible in the results of other Verified Permissions
       # operations.
+
       def create_policy(
         definition : Types::PolicyDefinition,
         policy_store_id : String,
         client_token : String? = nil
       ) : Types::CreatePolicyOutput
+
         input = Types::CreatePolicyInput.new(definition: definition, policy_store_id: policy_store_id, client_token: client_token)
         create_policy(input)
       end
+
       def create_policy(input : Types::CreatePolicyInput) : Types::CreatePolicyOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -168,6 +184,7 @@ module AwsSdk
       # Verified Permissions is eventually consistent . It can take a few seconds for a new or changed
       # element to propagate through the service and be visible in the results of other Verified Permissions
       # operations.
+
       def create_policy_store(
         validation_settings : Types::ValidationSettings,
         client_token : String? = nil,
@@ -175,9 +192,11 @@ module AwsSdk
         description : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreatePolicyStoreOutput
+
         input = Types::CreatePolicyStoreInput.new(validation_settings: validation_settings, client_token: client_token, deletion_protection: deletion_protection, description: description, tags: tags)
         create_policy_store(input)
       end
+
       def create_policy_store(input : Types::CreatePolicyStoreInput) : Types::CreatePolicyStoreOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_POLICY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -194,15 +213,18 @@ module AwsSdk
       # that template are immediately updated as well. Verified Permissions is eventually consistent . It
       # can take a few seconds for a new or changed element to propagate through the service and be visible
       # in the results of other Verified Permissions operations.
+
       def create_policy_template(
         policy_store_id : String,
         statement : String,
         client_token : String? = nil,
         description : String? = nil
       ) : Types::CreatePolicyTemplateOutput
+
         input = Types::CreatePolicyTemplateInput.new(policy_store_id: policy_store_id, statement: statement, client_token: client_token, description: description)
         create_policy_template(input)
       end
+
       def create_policy_template(input : Types::CreatePolicyTemplateInput) : Types::CreatePolicyTemplateOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_POLICY_TEMPLATE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -215,13 +237,16 @@ module AwsSdk
       # you delete the identity source, you can no longer use tokens for identities from that identity
       # source to represent principals in authorization queries made using IsAuthorizedWithToken .
       # operations.
+
       def delete_identity_source(
         identity_source_id : String,
         policy_store_id : String
       ) : Types::DeleteIdentitySourceOutput
+
         input = Types::DeleteIdentitySourceInput.new(identity_source_id: identity_source_id, policy_store_id: policy_store_id)
         delete_identity_source(input)
       end
+
       def delete_identity_source(input : Types::DeleteIdentitySourceInput) : Types::DeleteIdentitySourceOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_IDENTITY_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -232,13 +257,16 @@ module AwsSdk
 
       # Deletes the specified policy from the policy store. This operation is idempotent; if you specify a
       # policy that doesn't exist, the request response returns a successful HTTP 200 status code.
+
       def delete_policy(
         policy_id : String,
         policy_store_id : String
       ) : Types::DeletePolicyOutput
+
         input = Types::DeletePolicyInput.new(policy_id: policy_id, policy_store_id: policy_store_id)
         delete_policy(input)
       end
+
       def delete_policy(input : Types::DeletePolicyInput) : Types::DeletePolicyOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -249,12 +277,15 @@ module AwsSdk
 
       # Deletes the specified policy store. This operation is idempotent. If you specify a policy store that
       # does not exist, the request response will still return a successful HTTP 200 status code.
+
       def delete_policy_store(
         policy_store_id : String
       ) : Types::DeletePolicyStoreOutput
+
         input = Types::DeletePolicyStoreInput.new(policy_store_id: policy_store_id)
         delete_policy_store(input)
       end
+
       def delete_policy_store(input : Types::DeletePolicyStoreInput) : Types::DeletePolicyStoreOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_POLICY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -266,13 +297,16 @@ module AwsSdk
       # Deletes the specified policy template from the policy store. This operation also deletes any
       # policies that were created from the specified policy template. Those policies are immediately
       # removed from all future API responses, and are asynchronously deleted from the policy store.
+
       def delete_policy_template(
         policy_store_id : String,
         policy_template_id : String
       ) : Types::DeletePolicyTemplateOutput
+
         input = Types::DeletePolicyTemplateInput.new(policy_store_id: policy_store_id, policy_template_id: policy_template_id)
         delete_policy_template(input)
       end
+
       def delete_policy_template(input : Types::DeletePolicyTemplateInput) : Types::DeletePolicyTemplateOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_POLICY_TEMPLATE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -282,13 +316,16 @@ module AwsSdk
       end
 
       # Retrieves the details about the specified identity source.
+
       def get_identity_source(
         identity_source_id : String,
         policy_store_id : String
       ) : Types::GetIdentitySourceOutput
+
         input = Types::GetIdentitySourceInput.new(identity_source_id: identity_source_id, policy_store_id: policy_store_id)
         get_identity_source(input)
       end
+
       def get_identity_source(input : Types::GetIdentitySourceInput) : Types::GetIdentitySourceOutput
         request = Protocol::JsonRpc.build_request(Model::GET_IDENTITY_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -298,13 +335,16 @@ module AwsSdk
       end
 
       # Retrieves information about the specified policy.
+
       def get_policy(
         policy_id : String,
         policy_store_id : String
       ) : Types::GetPolicyOutput
+
         input = Types::GetPolicyInput.new(policy_id: policy_id, policy_store_id: policy_store_id)
         get_policy(input)
       end
+
       def get_policy(input : Types::GetPolicyInput) : Types::GetPolicyOutput
         request = Protocol::JsonRpc.build_request(Model::GET_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -314,13 +354,16 @@ module AwsSdk
       end
 
       # Retrieves details about a policy store.
+
       def get_policy_store(
         policy_store_id : String,
         tags : Bool? = nil
       ) : Types::GetPolicyStoreOutput
+
         input = Types::GetPolicyStoreInput.new(policy_store_id: policy_store_id, tags: tags)
         get_policy_store(input)
       end
+
       def get_policy_store(input : Types::GetPolicyStoreInput) : Types::GetPolicyStoreOutput
         request = Protocol::JsonRpc.build_request(Model::GET_POLICY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -330,13 +373,16 @@ module AwsSdk
       end
 
       # Retrieve the details for the specified policy template in the specified policy store.
+
       def get_policy_template(
         policy_store_id : String,
         policy_template_id : String
       ) : Types::GetPolicyTemplateOutput
+
         input = Types::GetPolicyTemplateInput.new(policy_store_id: policy_store_id, policy_template_id: policy_template_id)
         get_policy_template(input)
       end
+
       def get_policy_template(input : Types::GetPolicyTemplateInput) : Types::GetPolicyTemplateOutput
         request = Protocol::JsonRpc.build_request(Model::GET_POLICY_TEMPLATE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -346,12 +392,15 @@ module AwsSdk
       end
 
       # Retrieve the details for the specified schema in the specified policy store.
+
       def get_schema(
         policy_store_id : String
       ) : Types::GetSchemaOutput
+
         input = Types::GetSchemaInput.new(policy_store_id: policy_store_id)
         get_schema(input)
       end
+
       def get_schema(input : Types::GetSchemaInput) : Types::GetSchemaOutput
         request = Protocol::JsonRpc.build_request(Model::GET_SCHEMA, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -365,6 +414,7 @@ module AwsSdk
       # evaluation. The request is evaluated against all matching policies in the specified policy store.
       # The result of the decision is either Allow or Deny , along with a list of the policies that resulted
       # in the decision.
+
       def is_authorized(
         policy_store_id : String,
         action : Types::ActionIdentifier? = nil,
@@ -373,9 +423,11 @@ module AwsSdk
         principal : Types::EntityIdentifier? = nil,
         resource : Types::EntityIdentifier? = nil
       ) : Types::IsAuthorizedOutput
+
         input = Types::IsAuthorizedInput.new(policy_store_id: policy_store_id, action: action, context: context, entities: entities, principal: principal, resource: resource)
         is_authorized(input)
       end
+
       def is_authorized(input : Types::IsAuthorizedInput) : Types::IsAuthorizedOutput
         request = Protocol::JsonRpc.build_request(Model::IS_AUTHORIZED, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -393,6 +445,7 @@ module AwsSdk
       # that is specified in a request by checking its expiration date and its signature. Tokens from an
       # identity source user continue to be usable until they expire. Token revocation and resource deletion
       # have no effect on the validity of a token in your policy store
+
       def is_authorized_with_token(
         policy_store_id : String,
         access_token : String? = nil,
@@ -402,9 +455,11 @@ module AwsSdk
         identity_token : String? = nil,
         resource : Types::EntityIdentifier? = nil
       ) : Types::IsAuthorizedWithTokenOutput
+
         input = Types::IsAuthorizedWithTokenInput.new(policy_store_id: policy_store_id, access_token: access_token, action: action, context: context, entities: entities, identity_token: identity_token, resource: resource)
         is_authorized_with_token(input)
       end
+
       def is_authorized_with_token(input : Types::IsAuthorizedWithTokenInput) : Types::IsAuthorizedWithTokenOutput
         request = Protocol::JsonRpc.build_request(Model::IS_AUTHORIZED_WITH_TOKEN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -414,15 +469,18 @@ module AwsSdk
       end
 
       # Returns a paginated list of all of the identity sources defined in the specified policy store.
+
       def list_identity_sources(
         policy_store_id : String,
         filters : Array(Types::IdentitySourceFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListIdentitySourcesOutput
+
         input = Types::ListIdentitySourcesInput.new(policy_store_id: policy_store_id, filters: filters, max_results: max_results, next_token: next_token)
         list_identity_sources(input)
       end
+
       def list_identity_sources(input : Types::ListIdentitySourcesInput) : Types::ListIdentitySourcesOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_IDENTITY_SOURCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -432,15 +490,18 @@ module AwsSdk
       end
 
       # Returns a paginated list of all policies stored in the specified policy store.
+
       def list_policies(
         policy_store_id : String,
         filter : Types::PolicyFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPoliciesOutput
+
         input = Types::ListPoliciesInput.new(policy_store_id: policy_store_id, filter: filter, max_results: max_results, next_token: next_token)
         list_policies(input)
       end
+
       def list_policies(input : Types::ListPoliciesInput) : Types::ListPoliciesOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -450,13 +511,16 @@ module AwsSdk
       end
 
       # Returns a paginated list of all policy stores in the calling Amazon Web Services account.
+
       def list_policy_stores(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPolicyStoresOutput
+
         input = Types::ListPolicyStoresInput.new(max_results: max_results, next_token: next_token)
         list_policy_stores(input)
       end
+
       def list_policy_stores(input : Types::ListPolicyStoresInput) : Types::ListPolicyStoresOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_POLICY_STORES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -466,14 +530,17 @@ module AwsSdk
       end
 
       # Returns a paginated list of all policy templates in the specified policy store.
+
       def list_policy_templates(
         policy_store_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPolicyTemplatesOutput
+
         input = Types::ListPolicyTemplatesInput.new(policy_store_id: policy_store_id, max_results: max_results, next_token: next_token)
         list_policy_templates(input)
       end
+
       def list_policy_templates(input : Types::ListPolicyTemplatesInput) : Types::ListPolicyTemplatesOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_POLICY_TEMPLATES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -484,12 +551,15 @@ module AwsSdk
 
       # Returns the tags associated with the specified Amazon Verified Permissions resource. In Verified
       # Permissions, policy stores can be tagged.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceOutput
+
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceInput) : Types::ListTagsForResourceOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -505,13 +575,16 @@ module AwsSdk
       # evaluated against the new schema at that time. Verified Permissions is eventually consistent . It
       # can take a few seconds for a new or changed element to propagate through the service and be visible
       # in the results of other Verified Permissions operations.
+
       def put_schema(
         definition : Types::SchemaDefinition,
         policy_store_id : String
       ) : Types::PutSchemaOutput
+
         input = Types::PutSchemaInput.new(definition: definition, policy_store_id: policy_store_id)
         put_schema(input)
       end
+
       def put_schema(input : Types::PutSchemaInput) : Types::PutSchemaOutput
         request = Protocol::JsonRpc.build_request(Model::PUT_SCHEMA, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -529,13 +602,16 @@ module AwsSdk
       # appended to the list of tags associated with the resource. If you specify a tag key that is already
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag. You can associate as many as 50 tags with a resource.
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceOutput
+
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceInput) : Types::TagResourceOutput
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -546,13 +622,16 @@ module AwsSdk
 
       # Removes one or more tags from the specified Amazon Verified Permissions resource. In Verified
       # Permissions, policy stores can be tagged.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceOutput
+
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceInput) : Types::UntagResourceOutput
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -565,15 +644,18 @@ module AwsSdk
       # of identities from the IdP to a different principal entity type. Verified Permissions is eventually
       # consistent . It can take a few seconds for a new or changed element to propagate through the service
       # and be visible in the results of other Verified Permissions operations.
+
       def update_identity_source(
         identity_source_id : String,
         policy_store_id : String,
         update_configuration : Types::UpdateConfiguration,
         principal_entity_type : String? = nil
       ) : Types::UpdateIdentitySourceOutput
+
         input = Types::UpdateIdentitySourceInput.new(identity_source_id: identity_source_id, policy_store_id: policy_store_id, update_configuration: update_configuration, principal_entity_type: principal_entity_type)
         update_identity_source(input)
       end
+
       def update_identity_source(input : Types::UpdateIdentitySourceInput) : Types::UpdateIdentitySourceOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_IDENTITY_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -596,14 +678,17 @@ module AwsSdk
       # Verified Permissions is eventually consistent . It can take a few seconds for a new or changed
       # element to propagate through the service and be visible in the results of other Verified Permissions
       # operations.
+
       def update_policy(
         definition : Types::UpdatePolicyDefinition,
         policy_id : String,
         policy_store_id : String
       ) : Types::UpdatePolicyOutput
+
         input = Types::UpdatePolicyInput.new(definition: definition, policy_id: policy_id, policy_store_id: policy_store_id)
         update_policy(input)
       end
+
       def update_policy(input : Types::UpdatePolicyInput) : Types::UpdatePolicyOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -615,15 +700,18 @@ module AwsSdk
       # Modifies the validation setting for a policy store. Verified Permissions is eventually consistent .
       # It can take a few seconds for a new or changed element to propagate through the service and be
       # visible in the results of other Verified Permissions operations.
+
       def update_policy_store(
         policy_store_id : String,
         validation_settings : Types::ValidationSettings,
         deletion_protection : String? = nil,
         description : String? = nil
       ) : Types::UpdatePolicyStoreOutput
+
         input = Types::UpdatePolicyStoreInput.new(policy_store_id: policy_store_id, validation_settings: validation_settings, deletion_protection: deletion_protection, description: description)
         update_policy_store(input)
       end
+
       def update_policy_store(input : Types::UpdatePolicyStoreInput) : Types::UpdatePolicyStoreOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_POLICY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -638,15 +726,18 @@ module AwsSdk
       # template-linked policies instantiated from this template. Verified Permissions is eventually
       # consistent . It can take a few seconds for a new or changed element to propagate through the service
       # and be visible in the results of other Verified Permissions operations.
+
       def update_policy_template(
         policy_store_id : String,
         policy_template_id : String,
         statement : String,
         description : String? = nil
       ) : Types::UpdatePolicyTemplateOutput
+
         input = Types::UpdatePolicyTemplateInput.new(policy_store_id: policy_store_id, policy_template_id: policy_template_id, statement: statement, description: description)
         update_policy_template(input)
       end
+
       def update_policy_template(input : Types::UpdatePolicyTemplateInput) : Types::UpdatePolicyTemplateOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_POLICY_TEMPLATE, input, endpoint)
         request = request.with_headers(endpoint_headers)

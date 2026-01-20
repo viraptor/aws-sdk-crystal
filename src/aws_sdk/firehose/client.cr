@@ -1,6 +1,7 @@
 module AwsSdk
   module Firehose
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -68,6 +69,7 @@ module AwsSdk
       # Firehose principal to assume the role, and the role should have permissions that allow the service
       # to deliver the data. For more information, see Grant Firehose Access to an Amazon S3 Destination in
       # the Amazon Firehose Developer Guide .
+
       def create_delivery_stream(
         delivery_stream_name : String,
         amazon_open_search_serverless_destination_configuration : Types::AmazonOpenSearchServerlessDestinationConfiguration? = nil,
@@ -88,9 +90,11 @@ module AwsSdk
         splunk_destination_configuration : Types::SplunkDestinationConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDeliveryStreamOutput
+
         input = Types::CreateDeliveryStreamInput.new(delivery_stream_name: delivery_stream_name, amazon_open_search_serverless_destination_configuration: amazon_open_search_serverless_destination_configuration, amazonopensearchservice_destination_configuration: amazonopensearchservice_destination_configuration, database_source_configuration: database_source_configuration, delivery_stream_encryption_configuration_input: delivery_stream_encryption_configuration_input, delivery_stream_type: delivery_stream_type, direct_put_source_configuration: direct_put_source_configuration, elasticsearch_destination_configuration: elasticsearch_destination_configuration, extended_s3_destination_configuration: extended_s3_destination_configuration, http_endpoint_destination_configuration: http_endpoint_destination_configuration, iceberg_destination_configuration: iceberg_destination_configuration, kinesis_stream_source_configuration: kinesis_stream_source_configuration, msk_source_configuration: msk_source_configuration, redshift_destination_configuration: redshift_destination_configuration, s3_destination_configuration: s3_destination_configuration, snowflake_destination_configuration: snowflake_destination_configuration, splunk_destination_configuration: splunk_destination_configuration, tags: tags)
         create_delivery_stream(input)
       end
+
       def create_delivery_stream(input : Types::CreateDeliveryStreamInput) : Types::CreateDeliveryStreamOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_DELIVERY_STREAM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -110,13 +114,16 @@ module AwsSdk
       # Firehose stream. Removal of a Firehose stream that is in the DELETING state is a low priority
       # operation for the service. A stream may remain in the DELETING state for several minutes. Therefore,
       # as a best practice, applications should not wait for streams in the DELETING state to be removed.
+
       def delete_delivery_stream(
         delivery_stream_name : String,
         allow_force_delete : Bool? = nil
       ) : Types::DeleteDeliveryStreamOutput
+
         input = Types::DeleteDeliveryStreamInput.new(delivery_stream_name: delivery_stream_name, allow_force_delete: allow_force_delete)
         delete_delivery_stream(input)
       end
+
       def delete_delivery_stream(input : Types::DeleteDeliveryStreamInput) : Types::DeleteDeliveryStreamOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_DELIVERY_STREAM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -132,14 +139,17 @@ module AwsSdk
       # DeleteDeliveryStream operation to delete it. If the status is DELETING_FAILED , you can force
       # deletion by invoking DeleteDeliveryStream again but with DeleteDeliveryStreamInput$AllowForceDelete
       # set to true.
+
       def describe_delivery_stream(
         delivery_stream_name : String,
         exclusive_start_destination_id : String? = nil,
         limit : Int32? = nil
       ) : Types::DescribeDeliveryStreamOutput
+
         input = Types::DescribeDeliveryStreamInput.new(delivery_stream_name: delivery_stream_name, exclusive_start_destination_id: exclusive_start_destination_id, limit: limit)
         describe_delivery_stream(input)
       end
+
       def describe_delivery_stream(input : Types::DescribeDeliveryStreamInput) : Types::DescribeDeliveryStreamOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_DELIVERY_STREAM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -155,14 +165,17 @@ module AwsSdk
       # Firehose streams to list, you can request them by calling this operation again and setting the
       # ExclusiveStartDeliveryStreamName parameter to the name of the last Firehose stream returned in the
       # last call.
+
       def list_delivery_streams(
         delivery_stream_type : String? = nil,
         exclusive_start_delivery_stream_name : String? = nil,
         limit : Int32? = nil
       ) : Types::ListDeliveryStreamsOutput
+
         input = Types::ListDeliveryStreamsInput.new(delivery_stream_type: delivery_stream_type, exclusive_start_delivery_stream_name: exclusive_start_delivery_stream_name, limit: limit)
         list_delivery_streams(input)
       end
+
       def list_delivery_streams(input : Types::ListDeliveryStreamsInput) : Types::ListDeliveryStreamsOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_DELIVERY_STREAMS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -173,14 +186,17 @@ module AwsSdk
 
       # Lists the tags for the specified Firehose stream. This operation has a limit of five transactions
       # per second per account.
+
       def list_tags_for_delivery_stream(
         delivery_stream_name : String,
         exclusive_start_tag_key : String? = nil,
         limit : Int32? = nil
       ) : Types::ListTagsForDeliveryStreamOutput
+
         input = Types::ListTagsForDeliveryStreamInput.new(delivery_stream_name: delivery_stream_name, exclusive_start_tag_key: exclusive_start_tag_key, limit: limit)
         list_tags_for_delivery_stream(input)
       end
+
       def list_tags_for_delivery_stream(input : Types::ListTagsForDeliveryStreamInput) : Types::ListTagsForDeliveryStreamOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_DELIVERY_STREAM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -220,13 +236,16 @@ module AwsSdk
       # more than 24 hours, the data is no longer available. Don't concatenate two or more base64 strings to
       # form the data fields of your records. Instead, concatenate the raw data, then perform base64
       # encoding.
+
       def put_record(
         delivery_stream_name : String,
         record : Types::Record
       ) : Types::PutRecordOutput
+
         input = Types::PutRecordInput.new(delivery_stream_name: delivery_stream_name, record: record)
         put_record(input)
       end
+
       def put_record(input : Types::PutRecordInput) : Types::PutRecordOutput
         request = Protocol::JsonRpc.build_request(Model::PUT_RECORD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -280,13 +299,16 @@ module AwsSdk
       # records to the destination. If the destination is unreachable for more than 24 hours, the data is no
       # longer available. Don't concatenate two or more base64 strings to form the data fields of your
       # records. Instead, concatenate the raw data, then perform base64 encoding.
+
       def put_record_batch(
         delivery_stream_name : String,
         records : Array(Types::Record)
       ) : Types::PutRecordBatchOutput
+
         input = Types::PutRecordBatchInput.new(delivery_stream_name: delivery_stream_name, records: records)
         put_record_batch(input)
       end
+
       def put_record_batch(input : Types::PutRecordBatchInput) : Types::PutRecordBatchOutput
         request = Protocol::JsonRpc.build_request(Model::PUT_RECORD_BATCH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -322,13 +344,16 @@ module AwsSdk
       # StopDeliveryStreamEncryption operations have a combined limit of 25 calls per Firehose stream per 24
       # hours. For example, you reach the limit if you call StartDeliveryStreamEncryption 13 times and
       # StopDeliveryStreamEncryption 12 times for the same Firehose stream in a 24-hour period.
+
       def start_delivery_stream_encryption(
         delivery_stream_name : String,
         delivery_stream_encryption_configuration_input : Types::DeliveryStreamEncryptionConfigurationInput? = nil
       ) : Types::StartDeliveryStreamEncryptionOutput
+
         input = Types::StartDeliveryStreamEncryptionInput.new(delivery_stream_name: delivery_stream_name, delivery_stream_encryption_configuration_input: delivery_stream_encryption_configuration_input)
         start_delivery_stream_encryption(input)
       end
+
       def start_delivery_stream_encryption(input : Types::StartDeliveryStreamEncryptionInput) : Types::StartDeliveryStreamEncryptionOutput
         request = Protocol::JsonRpc.build_request(Model::START_DELIVERY_STREAM_ENCRYPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -351,12 +376,15 @@ module AwsSdk
       # combined limit of 25 calls per Firehose stream per 24 hours. For example, you reach the limit if you
       # call StartDeliveryStreamEncryption 13 times and StopDeliveryStreamEncryption 12 times for the same
       # Firehose stream in a 24-hour period.
+
       def stop_delivery_stream_encryption(
         delivery_stream_name : String
       ) : Types::StopDeliveryStreamEncryptionOutput
+
         input = Types::StopDeliveryStreamEncryptionInput.new(delivery_stream_name: delivery_stream_name)
         stop_delivery_stream_encryption(input)
       end
+
       def stop_delivery_stream_encryption(input : Types::StopDeliveryStreamEncryptionInput) : Types::StopDeliveryStreamEncryptionOutput
         request = Protocol::JsonRpc.build_request(Model::STOP_DELIVERY_STREAM_ENCRYPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -372,13 +400,16 @@ module AwsSdk
       # distinguish the Firehose stream. For more information about tags, see Using Cost Allocation Tags in
       # the Amazon Web Services Billing and Cost Management User Guide . Each Firehose stream can have up to
       # 50 tags. This operation has a limit of five transactions per second per account.
+
       def tag_delivery_stream(
         delivery_stream_name : String,
         tags : Array(Types::Tag)
       ) : Types::TagDeliveryStreamOutput
+
         input = Types::TagDeliveryStreamInput.new(delivery_stream_name: delivery_stream_name, tags: tags)
         tag_delivery_stream(input)
       end
+
       def tag_delivery_stream(input : Types::TagDeliveryStreamInput) : Types::TagDeliveryStreamOutput
         request = Protocol::JsonRpc.build_request(Model::TAG_DELIVERY_STREAM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -390,13 +421,16 @@ module AwsSdk
       # Removes tags from the specified Firehose stream. Removed tags are deleted, and you can't recover
       # them after this operation successfully completes. If you specify a tag that doesn't exist, the
       # operation ignores it. This operation has a limit of five transactions per second per account.
+
       def untag_delivery_stream(
         delivery_stream_name : String,
         tag_keys : Array(String)
       ) : Types::UntagDeliveryStreamOutput
+
         input = Types::UntagDeliveryStreamInput.new(delivery_stream_name: delivery_stream_name, tag_keys: tag_keys)
         untag_delivery_stream(input)
       end
+
       def untag_delivery_stream(input : Types::UntagDeliveryStreamInput) : Types::UntagDeliveryStreamOutput
         request = Protocol::JsonRpc.build_request(Model::UNTAG_DELIVERY_STREAM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -424,6 +458,7 @@ module AwsSdk
       # configuration only if the existing configuration has a version ID that matches. After the update is
       # applied successfully, the version ID is updated, and can be retrieved using DescribeDeliveryStream .
       # Use the new version ID to set CurrentDeliveryStreamVersionId in the next call.
+
       def update_destination(
         current_delivery_stream_version_id : String,
         delivery_stream_name : String,
@@ -439,9 +474,11 @@ module AwsSdk
         snowflake_destination_update : Types::SnowflakeDestinationUpdate? = nil,
         splunk_destination_update : Types::SplunkDestinationUpdate? = nil
       ) : Types::UpdateDestinationOutput
+
         input = Types::UpdateDestinationInput.new(current_delivery_stream_version_id: current_delivery_stream_version_id, delivery_stream_name: delivery_stream_name, destination_id: destination_id, amazon_open_search_serverless_destination_update: amazon_open_search_serverless_destination_update, amazonopensearchservice_destination_update: amazonopensearchservice_destination_update, elasticsearch_destination_update: elasticsearch_destination_update, extended_s3_destination_update: extended_s3_destination_update, http_endpoint_destination_update: http_endpoint_destination_update, iceberg_destination_update: iceberg_destination_update, redshift_destination_update: redshift_destination_update, s3_destination_update: s3_destination_update, snowflake_destination_update: snowflake_destination_update, splunk_destination_update: splunk_destination_update)
         update_destination(input)
       end
+
       def update_destination(input : Types::UpdateDestinationInput) : Types::UpdateDestinationOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DESTINATION, input, endpoint)
         request = request.with_headers(endpoint_headers)

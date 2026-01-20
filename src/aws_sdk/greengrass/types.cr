@@ -2,81 +2,36 @@ require "json"
 require "time"
 
 module AwsSdk
-  module GreengrassV2
+  module Greengrass
     module Types
 
-      # You don't have permission to perform the action.
-      struct AccessDeniedException
+
+      struct AssociateRoleToGroupRequest
         include JSON::Serializable
 
-        @[JSON::Field(key: "message")]
-        getter message : String
 
-        def initialize(
-          @message : String
-        )
-        end
-      end
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
 
-      # Contains a request to associate a client device with a core device. The
-      # BatchAssociateClientDeviceWithCoreDevice operation consumes a list of these requests.
-      struct AssociateClientDeviceWithCoreDeviceEntry
-        include JSON::Serializable
+        # The ARN of the role you wish to associate with this group. The existence of the role is not
+        # validated.
 
-        # The name of the IoT thing that represents the client device to associate.
-        @[JSON::Field(key: "thingName")]
-        getter thing_name : String
-
-        def initialize(
-          @thing_name : String
-        )
-        end
-      end
-
-      # Contains an error that occurs from a request to associate a client device with a core device. The
-      # BatchAssociateClientDeviceWithCoreDevice operation returns a list of these errors.
-      struct AssociateClientDeviceWithCoreDeviceErrorEntry
-        include JSON::Serializable
-
-        # The error code for the request.
-        @[JSON::Field(key: "code")]
-        getter code : String?
-
-        # A message that provides additional information about the error.
-        @[JSON::Field(key: "message")]
-        getter message : String?
-
-        # The name of the IoT thing whose associate request failed.
-        @[JSON::Field(key: "thingName")]
-        getter thing_name : String?
-
-        def initialize(
-          @code : String? = nil,
-          @message : String? = nil,
-          @thing_name : String? = nil
-        )
-        end
-      end
-
-      struct AssociateServiceRoleToAccountRequest
-        include JSON::Serializable
-
-        # The Amazon Resource Name (ARN) of the service role to associate with IoT Greengrass for your Amazon
-        # Web Services account in this Amazon Web Services Region.
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         def initialize(
+          @group_id : String,
           @role_arn : String
         )
         end
       end
 
-      struct AssociateServiceRoleToAccountResponse
+
+      struct AssociateRoleToGroupResponse
         include JSON::Serializable
 
-        # The time when the service role was associated with IoT Greengrass for your Amazon Web Services
-        # account in this Amazon Web Services Region.
+        # The time, in milliseconds since the epoch, when the role ARN was associated with the group.
+
         @[JSON::Field(key: "AssociatedAt")]
         getter associated_at : String?
 
@@ -86,460 +41,198 @@ module AwsSdk
         end
       end
 
-      # Contains information about a client device that is associated to a core device for cloud discovery.
-      struct AssociatedClientDevice
+
+      struct AssociateServiceRoleToAccountRequest
         include JSON::Serializable
 
-        # The time that the client device was associated, expressed in ISO 8601 format.
-        @[JSON::Field(key: "associationTimestamp")]
-        getter association_timestamp : Time?
+        # The ARN of the service role you wish to associate with your account.
 
-        # The name of the IoT thing that represents the associated client device.
-        @[JSON::Field(key: "thingName")]
-        getter thing_name : String?
+        @[JSON::Field(key: "RoleArn")]
+        getter role_arn : String
 
         def initialize(
-          @association_timestamp : Time? = nil,
-          @thing_name : String? = nil
+          @role_arn : String
         )
         end
       end
 
-      struct BatchAssociateClientDeviceWithCoreDeviceRequest
+
+      struct AssociateServiceRoleToAccountResponse
         include JSON::Serializable
 
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
+        # The time when the service role was associated with the account.
 
-        # The list of client devices to associate.
-        @[JSON::Field(key: "entries")]
-        getter entries : Array(Types::AssociateClientDeviceWithCoreDeviceEntry)?
+        @[JSON::Field(key: "AssociatedAt")]
+        getter associated_at : String?
 
         def initialize(
-          @core_device_thing_name : String,
-          @entries : Array(Types::AssociateClientDeviceWithCoreDeviceEntry)? = nil
+          @associated_at : String? = nil
         )
         end
       end
 
-      struct BatchAssociateClientDeviceWithCoreDeviceResponse
+      # General error information.
+
+      struct BadRequestException
         include JSON::Serializable
 
-        # The list of any errors for the entries in the request. Each error entry contains the name of the IoT
-        # thing that failed to associate.
-        @[JSON::Field(key: "errorEntries")]
-        getter error_entries : Array(Types::AssociateClientDeviceWithCoreDeviceErrorEntry)?
 
-        def initialize(
-          @error_entries : Array(Types::AssociateClientDeviceWithCoreDeviceErrorEntry)? = nil
-        )
-        end
-      end
+        @[JSON::Field(key: "ErrorDetails")]
+        getter error_details : Array(Types::ErrorDetail)?
 
-      struct BatchDisassociateClientDeviceFromCoreDeviceRequest
-        include JSON::Serializable
 
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
-
-        # The list of client devices to disassociate.
-        @[JSON::Field(key: "entries")]
-        getter entries : Array(Types::DisassociateClientDeviceFromCoreDeviceEntry)?
-
-        def initialize(
-          @core_device_thing_name : String,
-          @entries : Array(Types::DisassociateClientDeviceFromCoreDeviceEntry)? = nil
-        )
-        end
-      end
-
-      struct BatchDisassociateClientDeviceFromCoreDeviceResponse
-        include JSON::Serializable
-
-        # The list of any errors for the entries in the request. Each error entry contains the name of the IoT
-        # thing that failed to disassociate.
-        @[JSON::Field(key: "errorEntries")]
-        getter error_entries : Array(Types::DisassociateClientDeviceFromCoreDeviceErrorEntry)?
-
-        def initialize(
-          @error_entries : Array(Types::DisassociateClientDeviceFromCoreDeviceErrorEntry)? = nil
-        )
-        end
-      end
-
-      struct CancelDeploymentRequest
-        include JSON::Serializable
-
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String
-
-        def initialize(
-          @deployment_id : String
-        )
-        end
-      end
-
-      struct CancelDeploymentResponse
-        include JSON::Serializable
-
-        # A message that communicates if the cancel was successful.
-        @[JSON::Field(key: "message")]
+        @[JSON::Field(key: "Message")]
         getter message : String?
 
         def initialize(
+          @error_details : Array(Types::ErrorDetail)? = nil,
           @message : String? = nil
         )
         end
       end
 
-      # Contains the status of a component version in the IoT Greengrass service.
-      struct CloudComponentStatus
+      # Information about a bulk deployment. You cannot start a new bulk deployment while another one is
+      # still running or in a non-terminal state.
+
+      struct BulkDeployment
         include JSON::Serializable
 
-        # The state of the component version.
-        @[JSON::Field(key: "componentState")]
-        getter component_state : String?
+        # The ARN of the bulk deployment.
 
-        # A dictionary of errors that communicate why the component version is in an error state. For example,
-        # if IoT Greengrass can't access an artifact for the component version, then errors contains the
-        # artifact's URI as a key, and the error message as the value for that key.
-        @[JSON::Field(key: "errors")]
-        getter errors : Hash(String, String)?
+        @[JSON::Field(key: "BulkDeploymentArn")]
+        getter bulk_deployment_arn : String?
 
-        # A message that communicates details, such as errors, about the status of the component version.
-        @[JSON::Field(key: "message")]
-        getter message : String?
+        # The ID of the bulk deployment.
 
-        # The vendor guidance state for the component version. This state indicates whether the component
-        # version has any issues that you should consider before you deploy it. The vendor guidance state can
-        # be: ACTIVE – This component version is available and recommended for use. DISCONTINUED – This
-        # component version has been discontinued by its publisher. You can deploy this component version, but
-        # we recommend that you use a different version of this component. DELETED – This component version
-        # has been deleted by its publisher, so you can't deploy it. If you have any existing deployments that
-        # specify this component version, those deployments will fail.
-        @[JSON::Field(key: "vendorGuidance")]
-        getter vendor_guidance : String?
+        @[JSON::Field(key: "BulkDeploymentId")]
+        getter bulk_deployment_id : String?
 
-        # A message that communicates details about the vendor guidance state of the component version. This
-        # message communicates why a component version is discontinued or deleted.
-        @[JSON::Field(key: "vendorGuidanceMessage")]
-        getter vendor_guidance_message : String?
+        # The time, in ISO format, when the deployment was created.
+
+        @[JSON::Field(key: "CreatedAt")]
+        getter created_at : String?
 
         def initialize(
-          @component_state : String? = nil,
-          @errors : Hash(String, String)? = nil,
-          @message : String? = nil,
-          @vendor_guidance : String? = nil,
-          @vendor_guidance_message : String? = nil
+          @bulk_deployment_arn : String? = nil,
+          @bulk_deployment_id : String? = nil,
+          @created_at : String? = nil
         )
         end
       end
 
-      # Contains information about a component.
-      struct Component
+      # Relevant metrics on input records processed during bulk deployment.
+
+      struct BulkDeploymentMetrics
         include JSON::Serializable
 
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String?
+        # The total number of records that returned a non-retryable error. For example, this can occur if a
+        # group record from the input file uses an invalid format or specifies a nonexistent group version, or
+        # if the execution role doesn't grant permission to deploy a group or group version.
 
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
+        @[JSON::Field(key: "InvalidInputRecords")]
+        getter invalid_input_records : Int32?
 
-        # The latest version of the component and its details.
-        @[JSON::Field(key: "latestVersion")]
-        getter latest_version : Types::ComponentLatestVersion?
+        # The total number of group records from the input file that have been processed so far, or attempted.
+
+        @[JSON::Field(key: "RecordsProcessed")]
+        getter records_processed : Int32?
+
+        # The total number of deployment attempts that returned a retryable error. For example, a retry is
+        # triggered if the attempt to deploy a group returns a throttling error. ''StartBulkDeployment''
+        # retries a group deployment up to five times.
+
+        @[JSON::Field(key: "RetryAttempts")]
+        getter retry_attempts : Int32?
 
         def initialize(
-          @arn : String? = nil,
-          @component_name : String? = nil,
-          @latest_version : Types::ComponentLatestVersion? = nil
+          @invalid_input_records : Int32? = nil,
+          @records_processed : Int32? = nil,
+          @retry_attempts : Int32? = nil
         )
         end
       end
 
-      # Contains information about a component that is a candidate to deploy to a Greengrass core device.
-      struct ComponentCandidate
+      # Information about an individual group deployment in a bulk deployment operation.
+
+      struct BulkDeploymentResult
         include JSON::Serializable
 
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
+        # The time, in ISO format, when the deployment was created.
 
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
+        @[JSON::Field(key: "CreatedAt")]
+        getter created_at : String?
 
-        # The version requirements for the component's dependencies. Greengrass core devices get the version
-        # requirements from component recipes. IoT Greengrass V2 uses semantic version constraints. For more
-        # information, see Semantic Versioning .
-        @[JSON::Field(key: "versionRequirements")]
-        getter version_requirements : Hash(String, String)?
+        # The ARN of the group deployment.
+
+        @[JSON::Field(key: "DeploymentArn")]
+        getter deployment_arn : String?
+
+        # The ID of the group deployment.
+
+        @[JSON::Field(key: "DeploymentId")]
+        getter deployment_id : String?
+
+        # The current status of the group deployment: ''InProgress'', ''Building'', ''Success'', or
+        # ''Failure''.
+
+        @[JSON::Field(key: "DeploymentStatus")]
+        getter deployment_status : String?
+
+        # The type of the deployment.
+
+        @[JSON::Field(key: "DeploymentType")]
+        getter deployment_type : String?
+
+        # Details about the error.
+
+        @[JSON::Field(key: "ErrorDetails")]
+        getter error_details : Array(Types::ErrorDetail)?
+
+        # The error message for a failed deployment
+
+        @[JSON::Field(key: "ErrorMessage")]
+        getter error_message : String?
+
+        # The ARN of the Greengrass group.
+
+        @[JSON::Field(key: "GroupArn")]
+        getter group_arn : String?
 
         def initialize(
-          @component_name : String? = nil,
-          @component_version : String? = nil,
-          @version_requirements : Hash(String, String)? = nil
+          @created_at : String? = nil,
+          @deployment_arn : String? = nil,
+          @deployment_id : String? = nil,
+          @deployment_status : String? = nil,
+          @deployment_type : String? = nil,
+          @error_details : Array(Types::ErrorDetail)? = nil,
+          @error_message : String? = nil,
+          @group_arn : String? = nil
         )
         end
       end
 
-      # Contains information about a deployment's update to a component's configuration on Greengrass core
-      # devices. For more information, see Update component configurations in the IoT Greengrass V2
-      # Developer Guide .
-      struct ComponentConfigurationUpdate
-        include JSON::Serializable
+      # Information about a Greengrass core's connectivity.
 
-        # A serialized JSON string that contains the configuration object to merge to target devices. The core
-        # device merges this configuration with the component's existing configuration. If this is the first
-        # time a component deploys on a device, the core device merges this configuration with the component's
-        # default configuration. This means that the core device keeps it's existing configuration for keys
-        # and values that you don't specify in this object. For more information, see Merge configuration
-        # updates in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "merge")]
-        getter merge : String?
-
-        # The list of configuration nodes to reset to default values on target devices. Use JSON pointers to
-        # specify each node to reset. JSON pointers start with a forward slash ( / ) and use forward slashes
-        # to separate the key for each level in the object. For more information, see the JSON pointer
-        # specification and Reset configuration updates in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "reset")]
-        getter reset : Array(String)?
-
-        def initialize(
-          @merge : String? = nil,
-          @reset : Array(String)? = nil
-        )
-        end
-      end
-
-      # Contains information about a component dependency for a Lambda function component.
-      struct ComponentDependencyRequirement
-        include JSON::Serializable
-
-        # The type of this dependency. Choose from the following options: SOFT – The component doesn't restart
-        # if the dependency changes state. HARD – The component restarts if the dependency changes state.
-        # Default: HARD
-        @[JSON::Field(key: "dependencyType")]
-        getter dependency_type : String?
-
-        # The component version requirement for the component dependency. IoT Greengrass V2 uses semantic
-        # version constraints. For more information, see Semantic Versioning .
-        @[JSON::Field(key: "versionRequirement")]
-        getter version_requirement : String?
-
-        def initialize(
-          @dependency_type : String? = nil,
-          @version_requirement : String? = nil
-        )
-        end
-      end
-
-      # Contains information about a component to deploy.
-      struct ComponentDeploymentSpecification
-        include JSON::Serializable
-
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String
-
-        # The configuration updates to deploy for the component. You can define reset updates and merge
-        # updates. A reset updates the keys that you specify to the default configuration for the component. A
-        # merge updates the core device's component configuration with the keys and values that you specify.
-        # The IoT Greengrass Core software applies reset updates before it applies merge updates. For more
-        # information, see Update component configurations in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "configurationUpdate")]
-        getter configuration_update : Types::ComponentConfigurationUpdate?
-
-        # The system user and group that the IoT Greengrass Core software uses to run component processes on
-        # the core device. If you omit this parameter, the IoT Greengrass Core software uses the system user
-        # and group that you configure for the core device. For more information, see Configure the user and
-        # group that run components in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "runWith")]
-        getter run_with : Types::ComponentRunWith?
-
-        def initialize(
-          @component_version : String,
-          @configuration_update : Types::ComponentConfigurationUpdate? = nil,
-          @run_with : Types::ComponentRunWith? = nil
-        )
-        end
-      end
-
-      # Contains information about the latest version of a component.
-      struct ComponentLatestVersion
-        include JSON::Serializable
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String?
-
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
-
-        # The time at which the component was created, expressed in ISO 8601 format.
-        @[JSON::Field(key: "creationTimestamp")]
-        getter creation_timestamp : Time?
-
-        # The description of the component version.
-        @[JSON::Field(key: "description")]
-        getter description : String?
-
-        # The platforms that the component version supports.
-        @[JSON::Field(key: "platforms")]
-        getter platforms : Array(Types::ComponentPlatform)?
-
-        # The publisher of the component version.
-        @[JSON::Field(key: "publisher")]
-        getter publisher : String?
-
-        def initialize(
-          @arn : String? = nil,
-          @component_version : String? = nil,
-          @creation_timestamp : Time? = nil,
-          @description : String? = nil,
-          @platforms : Array(Types::ComponentPlatform)? = nil,
-          @publisher : String? = nil
-        )
-        end
-      end
-
-      # Contains information about a platform that a component supports.
-      struct ComponentPlatform
-        include JSON::Serializable
-
-        # A dictionary of attributes for the platform. The IoT Greengrass Core software defines the os and
-        # architecture by default. You can specify additional platform attributes for a core device when you
-        # deploy the Greengrass nucleus component. For more information, see the Greengrass nucleus component
-        # in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "attributes")]
-        getter attributes : Hash(String, String)?
-
-        # The friendly name of the platform. This name helps you identify the platform. If you omit this
-        # parameter, IoT Greengrass creates a friendly name from the os and architecture of the platform.
-        @[JSON::Field(key: "name")]
-        getter name : String?
-
-        def initialize(
-          @attributes : Hash(String, String)? = nil,
-          @name : String? = nil
-        )
-        end
-      end
-
-      # Contains information system user and group that the IoT Greengrass Core software uses to run
-      # component processes on the core device. For more information, see Configure the user and group that
-      # run components in the IoT Greengrass V2 Developer Guide .
-      struct ComponentRunWith
-        include JSON::Serializable
-
-        # The POSIX system user and, optionally, group to use to run this component on Linux core devices. The
-        # user, and group if specified, must exist on each Linux core device. Specify the user and group
-        # separated by a colon ( : ) in the following format: user:group . The group is optional. If you don't
-        # specify a group, the IoT Greengrass Core software uses the primary user for the group. If you omit
-        # this parameter, the IoT Greengrass Core software uses the default system user and group that you
-        # configure on the Greengrass nucleus component. For more information, see Configure the user and
-        # group that run components .
-        @[JSON::Field(key: "posixUser")]
-        getter posix_user : String?
-
-        # The system resource limits to apply to this component's process on the core device. IoT Greengrass
-        # currently supports this feature on only Linux core devices. If you omit this parameter, the IoT
-        # Greengrass Core software uses the default system resource limits that you configure on the
-        # Greengrass nucleus component. For more information, see Configure system resource limits for
-        # components .
-        @[JSON::Field(key: "systemResourceLimits")]
-        getter system_resource_limits : Types::SystemResourceLimits?
-
-        # The Windows user to use to run this component on Windows core devices. The user must exist on each
-        # Windows core device, and its name and password must be in the LocalSystem account's Credentials
-        # Manager instance. If you omit this parameter, the IoT Greengrass Core software uses the default
-        # Windows user that you configure on the Greengrass nucleus component. For more information, see
-        # Configure the user and group that run components .
-        @[JSON::Field(key: "windowsUser")]
-        getter windows_user : String?
-
-        def initialize(
-          @posix_user : String? = nil,
-          @system_resource_limits : Types::SystemResourceLimits? = nil,
-          @windows_user : String? = nil
-        )
-        end
-      end
-
-      # Contains information about a component version in a list.
-      struct ComponentVersionListItem
-        include JSON::Serializable
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String?
-
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
-
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
-
-        def initialize(
-          @arn : String? = nil,
-          @component_name : String? = nil,
-          @component_version : String? = nil
-        )
-        end
-      end
-
-      # Your request has conflicting operations. This can occur if you're trying to perform more than one
-      # operation on the same resource at the same time.
-      struct ConflictException
-        include JSON::Serializable
-
-        @[JSON::Field(key: "message")]
-        getter message : String
-
-        # The ID of the resource that conflicts with the request.
-        @[JSON::Field(key: "resourceId")]
-        getter resource_id : String
-
-        # The type of the resource that conflicts with the request.
-        @[JSON::Field(key: "resourceType")]
-        getter resource_type : String
-
-        def initialize(
-          @message : String,
-          @resource_id : String,
-          @resource_type : String
-        )
-        end
-      end
-
-      # Contains information about an endpoint and port where client devices can connect to an MQTT broker
-      # on a Greengrass core device.
       struct ConnectivityInfo
         include JSON::Serializable
 
-        # The IP address or DNS address where client devices can connect to an MQTT broker on the Greengrass
-        # core device.
+        # The endpoint for the Greengrass core. Can be an IP address or DNS.
+
         @[JSON::Field(key: "HostAddress")]
         getter host_address : String?
 
-        # An ID for the connectivity information.
+        # The ID of the connectivity information.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
-        # Additional metadata to provide to client devices that connect to this core device.
+        # Metadata for this endpoint.
+
         @[JSON::Field(key: "Metadata")]
         getter metadata : String?
 
-        # The port where the MQTT broker operates on the core device. This port is typically 8883, which is
-        # the default port for the MQTT broker component that runs on core devices.
+        # The port of the Greengrass core. Usually 8883.
+
         @[JSON::Field(key: "PortNumber")]
         getter port_number : Int32?
 
@@ -552,513 +245,1657 @@ module AwsSdk
         end
       end
 
-      # Contains information about a Greengrass core device, which is an IoT thing that runs the IoT
-      # Greengrass Core software.
-      struct CoreDevice
+      # Information about a connector. Connectors run on the Greengrass core and contain built-in
+      # integration with local infrastructure, device protocols, AWS, and other cloud services.
+
+      struct Connector
         include JSON::Serializable
 
-        # The computer architecture of the core device.
-        @[JSON::Field(key: "architecture")]
-        getter architecture : String?
+        # The ARN of the connector.
 
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String?
+        @[JSON::Field(key: "ConnectorArn")]
+        getter connector_arn : String
 
-        # The time at which the core device's status last updated, expressed in ISO 8601 format.
-        @[JSON::Field(key: "lastStatusUpdateTimestamp")]
-        getter last_status_update_timestamp : Time?
+        # A descriptive or arbitrary ID for the connector. This value must be unique within the connector
+        # definition version. Max length is 128 characters with pattern [a-zA-Z0-9:_-]+.
 
-        # The operating system platform that the core device runs.
-        @[JSON::Field(key: "platform")]
-        getter platform : String?
+        @[JSON::Field(key: "Id")]
+        getter id : String
 
-        # The runtime for the core device. The runtime can be: aws_nucleus_classic aws_nucleus_lite
-        @[JSON::Field(key: "runtime")]
-        getter runtime : String?
+        # The parameters or configuration that the connector uses.
 
-        # The status of the core device. Core devices can have the following statuses: HEALTHY – The IoT
-        # Greengrass Core software and all components run on the core device without issue. UNHEALTHY – The
-        # IoT Greengrass Core software or a component is in a failed state on the core device.
-        @[JSON::Field(key: "status")]
-        getter status : String?
+        @[JSON::Field(key: "Parameters")]
+        getter parameters : Hash(String, String)?
 
         def initialize(
-          @architecture : String? = nil,
-          @core_device_thing_name : String? = nil,
-          @last_status_update_timestamp : Time? = nil,
-          @platform : String? = nil,
-          @runtime : String? = nil,
-          @status : String? = nil
+          @connector_arn : String,
+          @id : String,
+          @parameters : Hash(String, String)? = nil
         )
         end
       end
 
-      struct CreateComponentVersionRequest
+      # Information about the connector definition version, which is a container for connectors.
+
+      struct ConnectorDefinitionVersion
         include JSON::Serializable
 
-        # A unique, case-sensitive identifier that you can provide to ensure that the request is idempotent.
-        # Idempotency means that the request is successfully processed only once, even if you send the request
-        # multiple times. When a request succeeds, and you specify the same client token for subsequent
-        # successful requests, the IoT Greengrass V2 service returns the successful response that it caches
-        # from the previous request. IoT Greengrass V2 caches successful responses for idempotent requests for
-        # up to 8 hours.
-        @[JSON::Field(key: "clientToken")]
-        getter client_token : String?
+        # A list of references to connectors in this version, with their corresponding configuration settings.
 
-        # The recipe to use to create the component. The recipe defines the component's metadata, parameters,
-        # dependencies, lifecycle, artifacts, and platform compatibility. You must specify either inlineRecipe
-        # or lambdaFunction .
-        @[JSON::Field(key: "inlineRecipe")]
-        getter inline_recipe : Bytes?
+        @[JSON::Field(key: "Connectors")]
+        getter connectors : Array(Types::Connector)?
 
-        # The parameters to create a component from a Lambda function. You must specify either inlineRecipe or
-        # lambdaFunction .
-        @[JSON::Field(key: "lambdaFunction")]
-        getter lambda_function : Types::LambdaFunctionRecipeSource?
+        def initialize(
+          @connectors : Array(Types::Connector)? = nil
+        )
+        end
+      end
 
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
+      # Information about a core.
+
+      struct Core
+        include JSON::Serializable
+
+        # The ARN of the certificate associated with the core.
+
+        @[JSON::Field(key: "CertificateArn")]
+        getter certificate_arn : String
+
+        # A descriptive or arbitrary ID for the core. This value must be unique within the core definition
+        # version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String
+
+        # The ARN of the thing which is the core.
+
+        @[JSON::Field(key: "ThingArn")]
+        getter thing_arn : String
+
+        # If true, the core's local shadow is automatically synced with the cloud.
+
+        @[JSON::Field(key: "SyncShadow")]
+        getter sync_shadow : Bool?
+
+        def initialize(
+          @certificate_arn : String,
+          @id : String,
+          @thing_arn : String,
+          @sync_shadow : Bool? = nil
+        )
+        end
+      end
+
+      # Information about a core definition version.
+
+      struct CoreDefinitionVersion
+        include JSON::Serializable
+
+        # A list of cores in the core definition version.
+
+        @[JSON::Field(key: "Cores")]
+        getter cores : Array(Types::Core)?
+
+        def initialize(
+          @cores : Array(Types::Core)? = nil
+        )
+        end
+      end
+
+
+      struct CreateConnectorDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::ConnectorDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         def initialize(
-          @client_token : String? = nil,
-          @inline_recipe : Bytes? = nil,
-          @lambda_function : Types::LambdaFunctionRecipeSource? = nil,
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::ConnectorDefinitionVersion? = nil,
+          @name : String? = nil,
           @tags : Hash(String, String)? = nil
         )
         end
       end
 
-      struct CreateComponentVersionResponse
+
+      struct CreateConnectorDefinitionResponse
         include JSON::Serializable
 
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String
 
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String
-
-        # The time at which the component was created, expressed in ISO 8601 format.
-        @[JSON::Field(key: "creationTimestamp")]
-        getter creation_timestamp : Time
-
-        # The status of the component version in IoT Greengrass V2. This status is different from the status
-        # of the component on a core device.
-        @[JSON::Field(key: "status")]
-        getter status : Types::CloudComponentStatus
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
+        @[JSON::Field(key: "Arn")]
         getter arn : String?
 
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
         def initialize(
-          @component_name : String,
-          @component_version : String,
-          @creation_timestamp : Time,
-          @status : Types::CloudComponentStatus,
-          @arn : String? = nil
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
         )
         end
       end
+
+
+      struct CreateConnectorDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ConnectorDefinitionId")]
+        getter connector_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "Connectors")]
+        getter connectors : Array(Types::Connector)?
+
+        def initialize(
+          @connector_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @connectors : Array(Types::Connector)? = nil
+        )
+        end
+      end
+
+
+      struct CreateConnectorDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateCoreDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::CoreDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::CoreDefinitionVersion? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateCoreDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateCoreDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CoreDefinitionId")]
+        getter core_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "Cores")]
+        getter cores : Array(Types::Core)?
+
+        def initialize(
+          @core_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @cores : Array(Types::Core)? = nil
+        )
+        end
+      end
+
+
+      struct CreateCoreDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+      # Information about a deployment.
 
       struct CreateDeploymentRequest
         include JSON::Serializable
 
-        # The ARN of the target IoT thing or thing group. When creating a subdeployment, the targetARN can
-        # only be a thing group.
-        @[JSON::Field(key: "targetArn")]
-        getter target_arn : String
+        # The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and
+        # ''Redeployment'' are valid.
 
-        # A unique, case-sensitive identifier that you can provide to ensure that the request is idempotent.
-        # Idempotency means that the request is successfully processed only once, even if you send the request
-        # multiple times. When a request succeeds, and you specify the same client token for subsequent
-        # successful requests, the IoT Greengrass V2 service returns the successful response that it caches
-        # from the previous request. IoT Greengrass V2 caches successful responses for idempotent requests for
-        # up to 8 hours.
-        @[JSON::Field(key: "clientToken")]
-        getter client_token : String?
+        @[JSON::Field(key: "DeploymentType")]
+        getter deployment_type : String
 
-        # The components to deploy. This is a dictionary, where each key is the name of a component, and each
-        # key's value is the version and configuration to deploy for that component.
-        @[JSON::Field(key: "components")]
-        getter components : Hash(String, Types::ComponentDeploymentSpecification)?
 
-        # The name of the deployment.
-        @[JSON::Field(key: "deploymentName")]
-        getter deployment_name : String?
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
 
-        # The deployment policies for the deployment. These policies define how the deployment updates
-        # components and handles failure.
-        @[JSON::Field(key: "deploymentPolicies")]
-        getter deployment_policies : Types::DeploymentPolicies?
 
-        # The job configuration for the deployment configuration. The job configuration specifies the rollout,
-        # timeout, and stop configurations for the deployment configuration.
-        @[JSON::Field(key: "iotJobConfiguration")]
-        getter iot_job_configuration : Types::DeploymentIoTJobConfiguration?
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
 
-        # The parent deployment's target ARN within a subdeployment.
-        @[JSON::Field(key: "parentTargetArn")]
-        getter parent_target_arn : String?
+        # The ID of the deployment if you wish to redeploy a previous deployment.
 
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
+        @[JSON::Field(key: "DeploymentId")]
+        getter deployment_id : String?
+
+        # The ID of the group version to be deployed.
+
+        @[JSON::Field(key: "GroupVersionId")]
+        getter group_version_id : String?
+
+        def initialize(
+          @deployment_type : String,
+          @group_id : String,
+          @amzn_client_token : String? = nil,
+          @deployment_id : String? = nil,
+          @group_version_id : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateDeploymentResponse
+        include JSON::Serializable
+
+        # The ARN of the deployment.
+
+        @[JSON::Field(key: "DeploymentArn")]
+        getter deployment_arn : String?
+
+        # The ID of the deployment.
+
+        @[JSON::Field(key: "DeploymentId")]
+        getter deployment_id : String?
+
+        def initialize(
+          @deployment_arn : String? = nil,
+          @deployment_id : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateDeviceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::DeviceDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         def initialize(
-          @target_arn : String,
-          @client_token : String? = nil,
-          @components : Hash(String, Types::ComponentDeploymentSpecification)? = nil,
-          @deployment_name : String? = nil,
-          @deployment_policies : Types::DeploymentPolicies? = nil,
-          @iot_job_configuration : Types::DeploymentIoTJobConfiguration? = nil,
-          @parent_target_arn : String? = nil,
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::DeviceDefinitionVersion? = nil,
+          @name : String? = nil,
           @tags : Hash(String, String)? = nil
         )
         end
       end
 
-      struct CreateDeploymentResponse
+
+      struct CreateDeviceDefinitionResponse
         include JSON::Serializable
 
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String?
 
-        # The ARN of the IoT job that applies the deployment to target devices.
-        @[JSON::Field(key: "iotJobArn")]
-        getter iot_job_arn : String?
-
-        # The ID of the IoT job that applies the deployment to target devices.
-        @[JSON::Field(key: "iotJobId")]
-        getter iot_job_id : String?
-
-        def initialize(
-          @deployment_id : String? = nil,
-          @iot_job_arn : String? = nil,
-          @iot_job_id : String? = nil
-        )
-        end
-      end
-
-      struct DeleteComponentRequest
-        include JSON::Serializable
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String
-
-        def initialize(
-          @arn : String
-        )
-        end
-      end
-
-      struct DeleteCoreDeviceRequest
-        include JSON::Serializable
-
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
-
-        def initialize(
-          @core_device_thing_name : String
-        )
-        end
-      end
-
-      struct DeleteDeploymentRequest
-        include JSON::Serializable
-
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String
-
-        def initialize(
-          @deployment_id : String
-        )
-        end
-      end
-
-      # Contains information about a deployment.
-      struct Deployment
-        include JSON::Serializable
-
-        # The time at which the deployment was created, expressed in ISO 8601 format.
-        @[JSON::Field(key: "creationTimestamp")]
-        getter creation_timestamp : Time?
-
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String?
-
-        # The name of the deployment.
-        @[JSON::Field(key: "deploymentName")]
-        getter deployment_name : String?
-
-        # The status of the deployment.
-        @[JSON::Field(key: "deploymentStatus")]
-        getter deployment_status : String?
-
-        # Whether or not the deployment is the latest revision for its target.
-        @[JSON::Field(key: "isLatestForTarget")]
-        getter is_latest_for_target : Bool?
-
-        # The parent deployment's target ARN within a subdeployment.
-        @[JSON::Field(key: "parentTargetArn")]
-        getter parent_target_arn : String?
-
-        # The revision number of the deployment.
-        @[JSON::Field(key: "revisionId")]
-        getter revision_id : String?
-
-        # The ARN of the target IoT thing or thing group. When creating a subdeployment, the targetARN can
-        # only be a thing group.
-        @[JSON::Field(key: "targetArn")]
-        getter target_arn : String?
-
-        def initialize(
-          @creation_timestamp : Time? = nil,
-          @deployment_id : String? = nil,
-          @deployment_name : String? = nil,
-          @deployment_status : String? = nil,
-          @is_latest_for_target : Bool? = nil,
-          @parent_target_arn : String? = nil,
-          @revision_id : String? = nil,
-          @target_arn : String? = nil
-        )
-        end
-      end
-
-      # Contains information about a deployment's policy that defines when components are safe to update.
-      # Each component on a device can report whether or not it's ready to update. After a component and its
-      # dependencies are ready, they can apply the update in the deployment. You can configure whether or
-      # not the deployment notifies components of an update and waits for a response. You specify the amount
-      # of time each component has to respond to the update notification.
-      struct DeploymentComponentUpdatePolicy
-        include JSON::Serializable
-
-        # Whether or not to notify components and wait for components to become safe to update. Choose from
-        # the following options: NOTIFY_COMPONENTS – The deployment notifies each component before it stops
-        # and updates that component. Components can use the SubscribeToComponentUpdates IPC operation to
-        # receive these notifications. Then, components can respond with the DeferComponentUpdate IPC
-        # operation. For more information, see Create deployments in the IoT Greengrass V2 Developer Guide .
-        # SKIP_NOTIFY_COMPONENTS – The deployment doesn't notify components or wait for them to be safe to
-        # update. Default: NOTIFY_COMPONENTS
-        @[JSON::Field(key: "action")]
-        getter action : String?
-
-        # The amount of time in seconds that each component on a device has to report that it's safe to
-        # update. If the component waits for longer than this timeout, then the deployment proceeds on the
-        # device. Default: 60
-        @[JSON::Field(key: "timeoutInSeconds")]
-        getter timeout_in_seconds : Int32?
-
-        def initialize(
-          @action : String? = nil,
-          @timeout_in_seconds : Int32? = nil
-        )
-        end
-      end
-
-      # Contains information about how long a component on a core device can validate its configuration
-      # updates before it times out. Components can use the SubscribeToValidateConfigurationUpdates IPC
-      # operation to receive notifications when a deployment specifies a configuration update. Then,
-      # components can respond with the SendConfigurationValidityReport IPC operation. For more information,
-      # see Create deployments in the IoT Greengrass V2 Developer Guide .
-      struct DeploymentConfigurationValidationPolicy
-        include JSON::Serializable
-
-        # The amount of time in seconds that a component can validate its configuration updates. If the
-        # validation time exceeds this timeout, then the deployment proceeds for the device. Default: 30
-        @[JSON::Field(key: "timeoutInSeconds")]
-        getter timeout_in_seconds : Int32?
-
-        def initialize(
-          @timeout_in_seconds : Int32? = nil
-        )
-        end
-      end
-
-      # Contains information about an IoT job configuration.
-      struct DeploymentIoTJobConfiguration
-        include JSON::Serializable
-
-        # The stop configuration for the job. This configuration defines when and how to stop a job rollout.
-        @[JSON::Field(key: "abortConfig")]
-        getter abort_config : Types::IoTJobAbortConfig?
-
-        # The rollout configuration for the job. This configuration defines the rate at which the job rolls
-        # out to the fleet of target devices.
-        @[JSON::Field(key: "jobExecutionsRolloutConfig")]
-        getter job_executions_rollout_config : Types::IoTJobExecutionsRolloutConfig?
-
-        # The timeout configuration for the job. This configuration defines the amount of time each device has
-        # to complete the job.
-        @[JSON::Field(key: "timeoutConfig")]
-        getter timeout_config : Types::IoTJobTimeoutConfig?
-
-        def initialize(
-          @abort_config : Types::IoTJobAbortConfig? = nil,
-          @job_executions_rollout_config : Types::IoTJobExecutionsRolloutConfig? = nil,
-          @timeout_config : Types::IoTJobTimeoutConfig? = nil
-        )
-        end
-      end
-
-      # Contains information about policies that define how a deployment updates components and handles
-      # failure.
-      struct DeploymentPolicies
-        include JSON::Serializable
-
-        # The component update policy for the configuration deployment. This policy defines when it's safe to
-        # deploy the configuration to devices.
-        @[JSON::Field(key: "componentUpdatePolicy")]
-        getter component_update_policy : Types::DeploymentComponentUpdatePolicy?
-
-        # The configuration validation policy for the configuration deployment. This policy defines how long
-        # each component has to validate its configure updates.
-        @[JSON::Field(key: "configurationValidationPolicy")]
-        getter configuration_validation_policy : Types::DeploymentConfigurationValidationPolicy?
-
-        # The failure handling policy for the configuration deployment. This policy defines what to do if the
-        # deployment fails. Default: ROLLBACK
-        @[JSON::Field(key: "failureHandlingPolicy")]
-        getter failure_handling_policy : String?
-
-        def initialize(
-          @component_update_policy : Types::DeploymentComponentUpdatePolicy? = nil,
-          @configuration_validation_policy : Types::DeploymentConfigurationValidationPolicy? = nil,
-          @failure_handling_policy : String? = nil
-        )
-        end
-      end
-
-      struct DescribeComponentRequest
-        include JSON::Serializable
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String
-
-        def initialize(
-          @arn : String
-        )
-        end
-      end
-
-      struct DescribeComponentResponse
-        include JSON::Serializable
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
+        @[JSON::Field(key: "Arn")]
         getter arn : String?
 
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
 
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
 
-        # The time at which the component was created, expressed in ISO 8601 format.
-        @[JSON::Field(key: "creationTimestamp")]
-        getter creation_timestamp : Time?
 
-        # The description of the component version.
-        @[JSON::Field(key: "description")]
-        getter description : String?
+        @[JSON::Field(key: "Id")]
+        getter id : String?
 
-        # The platforms that the component version supports.
-        @[JSON::Field(key: "platforms")]
-        getter platforms : Array(Types::ComponentPlatform)?
 
-        # The publisher of the component version.
-        @[JSON::Field(key: "publisher")]
-        getter publisher : String?
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
 
-        # The status of the component version in IoT Greengrass V2. This status is different from the status
-        # of the component on a core device.
-        @[JSON::Field(key: "status")]
-        getter status : Types::CloudComponentStatus?
 
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateDeviceDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "DeviceDefinitionId")]
+        getter device_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "Devices")]
+        getter devices : Array(Types::Device)?
+
+        def initialize(
+          @device_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @devices : Array(Types::Device)? = nil
+        )
+        end
+      end
+
+
+      struct CreateDeviceDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateFunctionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::FunctionDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::FunctionDefinitionVersion? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateFunctionDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateFunctionDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "FunctionDefinitionId")]
+        getter function_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "DefaultConfig")]
+        getter default_config : Types::FunctionDefaultConfig?
+
+
+        @[JSON::Field(key: "Functions")]
+        getter functions : Array(Types::Function)?
+
+        def initialize(
+          @function_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @default_config : Types::FunctionDefaultConfig? = nil,
+          @functions : Array(Types::Function)? = nil
+        )
+        end
+      end
+
+
+      struct CreateFunctionDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateGroupCertificateAuthorityRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+        def initialize(
+          @group_id : String,
+          @amzn_client_token : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateGroupCertificateAuthorityResponse
+        include JSON::Serializable
+
+        # The ARN of the group certificate authority.
+
+        @[JSON::Field(key: "GroupCertificateAuthorityArn")]
+        getter group_certificate_authority_arn : String?
+
+        def initialize(
+          @group_certificate_authority_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateGroupRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::GroupVersion?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @name : String,
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::GroupVersion? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateGroupResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateGroupVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "ConnectorDefinitionVersionArn")]
+        getter connector_definition_version_arn : String?
+
+
+        @[JSON::Field(key: "CoreDefinitionVersionArn")]
+        getter core_definition_version_arn : String?
+
+
+        @[JSON::Field(key: "DeviceDefinitionVersionArn")]
+        getter device_definition_version_arn : String?
+
+
+        @[JSON::Field(key: "FunctionDefinitionVersionArn")]
+        getter function_definition_version_arn : String?
+
+
+        @[JSON::Field(key: "LoggerDefinitionVersionArn")]
+        getter logger_definition_version_arn : String?
+
+
+        @[JSON::Field(key: "ResourceDefinitionVersionArn")]
+        getter resource_definition_version_arn : String?
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionVersionArn")]
+        getter subscription_definition_version_arn : String?
+
+        def initialize(
+          @group_id : String,
+          @amzn_client_token : String? = nil,
+          @connector_definition_version_arn : String? = nil,
+          @core_definition_version_arn : String? = nil,
+          @device_definition_version_arn : String? = nil,
+          @function_definition_version_arn : String? = nil,
+          @logger_definition_version_arn : String? = nil,
+          @resource_definition_version_arn : String? = nil,
+          @subscription_definition_version_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateGroupVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateLoggerDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::LoggerDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::LoggerDefinitionVersion? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateLoggerDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateLoggerDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "LoggerDefinitionId")]
+        getter logger_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "Loggers")]
+        getter loggers : Array(Types::Logger)?
+
+        def initialize(
+          @logger_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @loggers : Array(Types::Logger)? = nil
+        )
+        end
+      end
+
+
+      struct CreateLoggerDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateResourceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::ResourceDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::ResourceDefinitionVersion? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateResourceDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateResourceDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ResourceDefinitionId")]
+        getter resource_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "Resources")]
+        getter resources : Array(Types::Resource)?
+
+        def initialize(
+          @resource_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @resources : Array(Types::Resource)? = nil
+        )
+        end
+      end
+
+
+      struct CreateResourceDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+      # Request for the CreateSoftwareUpdateJob API.
+
+      struct CreateSoftwareUpdateJobRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "S3UrlSignerRole")]
+        getter s3_url_signer_role : String
+
+
+        @[JSON::Field(key: "SoftwareToUpdate")]
+        getter software_to_update : String
+
+
+        @[JSON::Field(key: "UpdateTargets")]
+        getter update_targets : Array(String)
+
+
+        @[JSON::Field(key: "UpdateTargetsArchitecture")]
+        getter update_targets_architecture : String
+
+
+        @[JSON::Field(key: "UpdateTargetsOperatingSystem")]
+        getter update_targets_operating_system : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "UpdateAgentLogLevel")]
+        getter update_agent_log_level : String?
+
+        def initialize(
+          @s3_url_signer_role : String,
+          @software_to_update : String,
+          @update_targets : Array(String),
+          @update_targets_architecture : String,
+          @update_targets_operating_system : String,
+          @amzn_client_token : String? = nil,
+          @update_agent_log_level : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateSoftwareUpdateJobResponse
+        include JSON::Serializable
+
+        # The IoT Job ARN corresponding to this update.
+
+        @[JSON::Field(key: "IotJobArn")]
+        getter iot_job_arn : String?
+
+        # The IoT Job Id corresponding to this update.
+
+        @[JSON::Field(key: "IotJobId")]
+        getter iot_job_id : String?
+
+        # The software version installed on the device or devices after the update.
+
+        @[JSON::Field(key: "PlatformSoftwareVersion")]
+        getter platform_software_version : String?
+
+        def initialize(
+          @iot_job_arn : String? = nil,
+          @iot_job_id : String? = nil,
+          @platform_software_version : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateSubscriptionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "InitialVersion")]
+        getter initial_version : Types::SubscriptionDefinitionVersion?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @amzn_client_token : String? = nil,
+          @initial_version : Types::SubscriptionDefinitionVersion? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateSubscriptionDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateSubscriptionDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionId")]
+        getter subscription_definition_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+
+        @[JSON::Field(key: "Subscriptions")]
+        getter subscriptions : Array(Types::Subscription)?
+
+        def initialize(
+          @subscription_definition_id : String,
+          @amzn_client_token : String? = nil,
+          @subscriptions : Array(Types::Subscription)? = nil
+        )
+        end
+      end
+
+
+      struct CreateSubscriptionDefinitionVersionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+      # Information about a definition.
+
+      struct DefinitionInformation
+        include JSON::Serializable
+
+        # The ARN of the definition.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the definition was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # The ID of the definition.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The time, in milliseconds since the epoch, when the definition was last updated.
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+        # The ID of the latest version associated with the definition.
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+        # The ARN of the latest version associated with the definition.
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+        # The name of the definition.
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        # Tag(s) attached to the resource arn.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         def initialize(
           @arn : String? = nil,
-          @component_name : String? = nil,
-          @component_version : String? = nil,
-          @creation_timestamp : Time? = nil,
-          @description : String? = nil,
-          @platforms : Array(Types::ComponentPlatform)? = nil,
-          @publisher : String? = nil,
-          @status : Types::CloudComponentStatus? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
           @tags : Hash(String, String)? = nil
         )
         end
       end
 
-      # Contains a request to disassociate a client device from a core device. The
-      # BatchDisassociateClientDeviceWithCoreDevice operation consumes a list of these requests.
-      struct DisassociateClientDeviceFromCoreDeviceEntry
+
+      struct DeleteConnectorDefinitionRequest
         include JSON::Serializable
 
-        # The name of the IoT thing that represents the client device to disassociate.
-        @[JSON::Field(key: "thingName")]
-        getter thing_name : String
+
+        @[JSON::Field(key: "ConnectorDefinitionId")]
+        getter connector_definition_id : String
 
         def initialize(
-          @thing_name : String
+          @connector_definition_id : String
         )
         end
       end
 
-      # Contains an error that occurs from a request to disassociate a client device from a core device. The
-      # BatchDisassociateClientDeviceWithCoreDevice operation returns a list of these errors.
-      struct DisassociateClientDeviceFromCoreDeviceErrorEntry
-        include JSON::Serializable
 
-        # The error code for the request.
-        @[JSON::Field(key: "code")]
-        getter code : String?
-
-        # A message that provides additional information about the error.
-        @[JSON::Field(key: "message")]
-        getter message : String?
-
-        # The name of the IoT thing whose disassociate request failed.
-        @[JSON::Field(key: "thingName")]
-        getter thing_name : String?
-
-        def initialize(
-          @code : String? = nil,
-          @message : String? = nil,
-          @thing_name : String? = nil
-        )
-        end
-      end
-
-      struct DisassociateServiceRoleFromAccountRequest
+      struct DeleteConnectorDefinitionResponse
         include JSON::Serializable
 
         def initialize
         end
       end
 
-      struct DisassociateServiceRoleFromAccountResponse
+
+      struct DeleteCoreDefinitionRequest
         include JSON::Serializable
 
-        # The time when the service role was disassociated from IoT Greengrass for your Amazon Web Services
-        # account in this Amazon Web Services Region.
+
+        @[JSON::Field(key: "CoreDefinitionId")]
+        getter core_definition_id : String
+
+        def initialize(
+          @core_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteCoreDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteDeviceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "DeviceDefinitionId")]
+        getter device_definition_id : String
+
+        def initialize(
+          @device_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteDeviceDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteFunctionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "FunctionDefinitionId")]
+        getter function_definition_id : String
+
+        def initialize(
+          @function_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteFunctionDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteGroupRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @group_id : String
+        )
+        end
+      end
+
+
+      struct DeleteGroupResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteLoggerDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "LoggerDefinitionId")]
+        getter logger_definition_id : String
+
+        def initialize(
+          @logger_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteLoggerDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteResourceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ResourceDefinitionId")]
+        getter resource_definition_id : String
+
+        def initialize(
+          @resource_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteResourceDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteSubscriptionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionId")]
+        getter subscription_definition_id : String
+
+        def initialize(
+          @subscription_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteSubscriptionDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # Information about a deployment.
+
+      struct Deployment
+        include JSON::Serializable
+
+        # The time, in milliseconds since the epoch, when the deployment was created.
+
+        @[JSON::Field(key: "CreatedAt")]
+        getter created_at : String?
+
+        # The ARN of the deployment.
+
+        @[JSON::Field(key: "DeploymentArn")]
+        getter deployment_arn : String?
+
+        # The ID of the deployment.
+
+        @[JSON::Field(key: "DeploymentId")]
+        getter deployment_id : String?
+
+        # The type of the deployment.
+
+        @[JSON::Field(key: "DeploymentType")]
+        getter deployment_type : String?
+
+        # The ARN of the group for this deployment.
+
+        @[JSON::Field(key: "GroupArn")]
+        getter group_arn : String?
+
+        def initialize(
+          @created_at : String? = nil,
+          @deployment_arn : String? = nil,
+          @deployment_id : String? = nil,
+          @deployment_type : String? = nil,
+          @group_arn : String? = nil
+        )
+        end
+      end
+
+      # Information about a device.
+
+      struct Device
+        include JSON::Serializable
+
+        # The ARN of the certificate associated with the device.
+
+        @[JSON::Field(key: "CertificateArn")]
+        getter certificate_arn : String
+
+        # A descriptive or arbitrary ID for the device. This value must be unique within the device definition
+        # version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String
+
+        # The thing ARN of the device.
+
+        @[JSON::Field(key: "ThingArn")]
+        getter thing_arn : String
+
+        # If true, the device's local shadow will be automatically synced with the cloud.
+
+        @[JSON::Field(key: "SyncShadow")]
+        getter sync_shadow : Bool?
+
+        def initialize(
+          @certificate_arn : String,
+          @id : String,
+          @thing_arn : String,
+          @sync_shadow : Bool? = nil
+        )
+        end
+      end
+
+      # Information about a device definition version.
+
+      struct DeviceDefinitionVersion
+        include JSON::Serializable
+
+        # A list of devices in the definition version.
+
+        @[JSON::Field(key: "Devices")]
+        getter devices : Array(Types::Device)?
+
+        def initialize(
+          @devices : Array(Types::Device)? = nil
+        )
+        end
+      end
+
+
+      struct DisassociateRoleFromGroupRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @group_id : String
+        )
+        end
+      end
+
+
+      struct DisassociateRoleFromGroupResponse
+        include JSON::Serializable
+
+        # The time, in milliseconds since the epoch, when the role was disassociated from the group.
+
         @[JSON::Field(key: "DisassociatedAt")]
         getter disassociated_at : String?
 
@@ -1068,401 +1905,341 @@ module AwsSdk
         end
       end
 
-      # Contains information about a deployment job that IoT Greengrass sends to a Greengrass core device.
-      struct EffectiveDeployment
-        include JSON::Serializable
 
-        # The status of the deployment job on the Greengrass core device. IN_PROGRESS – The deployment job is
-        # running. QUEUED – The deployment job is in the job queue and waiting to run. FAILED – The deployment
-        # failed. For more information, see the statusDetails field. COMPLETED – The deployment to an IoT
-        # thing was completed successfully. TIMED_OUT – The deployment didn't complete in the allotted time.
-        # CANCELED – The deployment was canceled by the user. REJECTED – The deployment was rejected. For more
-        # information, see the statusDetails field. SUCCEEDED – The deployment to an IoT thing group was
-        # completed successfully.
-        @[JSON::Field(key: "coreDeviceExecutionStatus")]
-        getter core_device_execution_status : String
-
-        # The time at which the deployment was created, expressed in ISO 8601 format.
-        @[JSON::Field(key: "creationTimestamp")]
-        getter creation_timestamp : Time
-
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String
-
-        # The name of the deployment.
-        @[JSON::Field(key: "deploymentName")]
-        getter deployment_name : String
-
-        # The time at which the deployment job was last modified, expressed in ISO 8601 format.
-        @[JSON::Field(key: "modifiedTimestamp")]
-        getter modified_timestamp : Time
-
-        # The ARN of the target IoT thing or thing group.
-        @[JSON::Field(key: "targetArn")]
-        getter target_arn : String
-
-        # The description of the deployment job.
-        @[JSON::Field(key: "description")]
-        getter description : String?
-
-        # The ARN of the IoT job that applies the deployment to target devices.
-        @[JSON::Field(key: "iotJobArn")]
-        getter iot_job_arn : String?
-
-        # The ID of the IoT job that applies the deployment to target devices.
-        @[JSON::Field(key: "iotJobId")]
-        getter iot_job_id : String?
-
-        # The reason code for the update, if the job was updated.
-        @[JSON::Field(key: "reason")]
-        getter reason : String?
-
-        # The status details that explain why a deployment has an error. This response will be null if the
-        # deployment is in a success state.
-        @[JSON::Field(key: "statusDetails")]
-        getter status_details : Types::EffectiveDeploymentStatusDetails?
-
-        def initialize(
-          @core_device_execution_status : String,
-          @creation_timestamp : Time,
-          @deployment_id : String,
-          @deployment_name : String,
-          @modified_timestamp : Time,
-          @target_arn : String,
-          @description : String? = nil,
-          @iot_job_arn : String? = nil,
-          @iot_job_id : String? = nil,
-          @reason : String? = nil,
-          @status_details : Types::EffectiveDeploymentStatusDetails? = nil
-        )
-        end
-      end
-
-      # Contains all error-related information for the deployment record. The status details will be null if
-      # the deployment is in a success state. Greengrass nucleus v2.8.0 or later is required to get an
-      # accurate errorStack and errorTypes response. This field will not be returned for earlier Greengrass
-      # nucleus versions.
-      struct EffectiveDeploymentStatusDetails
-        include JSON::Serializable
-
-        # Contains an ordered list of short error codes that range from the most generic error to the most
-        # specific one. The error codes describe the reason for failure whenever the coreDeviceExecutionStatus
-        # is in a failed state. The response will be an empty list if there is no error.
-        @[JSON::Field(key: "errorStack")]
-        getter error_stack : Array(String)?
-
-        # Contains tags which describe the error. You can use the error types to classify errors to assist
-        # with remediating the failure. The response will be an empty list if there is no error.
-        @[JSON::Field(key: "errorTypes")]
-        getter error_types : Array(String)?
-
-        def initialize(
-          @error_stack : Array(String)? = nil,
-          @error_types : Array(String)? = nil
-        )
-        end
-      end
-
-      struct GetComponentRequest
-        include JSON::Serializable
-
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String
-
-        # The format of the recipe.
-        @[JSON::Field(key: "recipeOutputFormat")]
-        getter recipe_output_format : String?
-
-        def initialize(
-          @arn : String,
-          @recipe_output_format : String? = nil
-        )
-        end
-      end
-
-      struct GetComponentResponse
-        include JSON::Serializable
-
-        # The recipe of the component version.
-        @[JSON::Field(key: "recipe")]
-        getter recipe : Bytes
-
-        # The format of the recipe.
-        @[JSON::Field(key: "recipeOutputFormat")]
-        getter recipe_output_format : String
-
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "tags")]
-        getter tags : Hash(String, String)?
-
-        def initialize(
-          @recipe : Bytes,
-          @recipe_output_format : String,
-          @tags : Hash(String, String)? = nil
-        )
-        end
-      end
-
-      struct GetComponentVersionArtifactRequest
-        include JSON::Serializable
-
-        # The ARN of the component version. Specify the ARN of a public or a Lambda component version.
-        @[JSON::Field(key: "arn")]
-        getter arn : String
-
-        # The name of the artifact. You can use the GetComponent operation to download the component recipe,
-        # which includes the URI of the artifact. The artifact name is the section of the URI after the
-        # scheme. For example, in the artifact URI greengrass:SomeArtifact.zip , the artifact name is
-        # SomeArtifact.zip .
-        @[JSON::Field(key: "artifactName")]
-        getter artifact_name : String
-
-        # Determines if the Amazon S3 URL returned is a FIPS pre-signed URL endpoint. Specify fips if you want
-        # the returned Amazon S3 pre-signed URL to point to an Amazon S3 FIPS endpoint. If you don't specify a
-        # value, the default is standard .
-        @[JSON::Field(key: "x-amz-iot-endpoint-type")]
-        getter iot_endpoint_type : String?
-
-        # Specifies the endpoint to use when getting Amazon S3 pre-signed URLs. All Amazon Web Services
-        # Regions except US East (N. Virginia) use REGIONAL in all cases. In the US East (N. Virginia) Region
-        # the default is GLOBAL , but you can change it to REGIONAL with this parameter.
-        @[JSON::Field(key: "s3EndpointType")]
-        getter s3_endpoint_type : String?
-
-        def initialize(
-          @arn : String,
-          @artifact_name : String,
-          @iot_endpoint_type : String? = nil,
-          @s3_endpoint_type : String? = nil
-        )
-        end
-      end
-
-      struct GetComponentVersionArtifactResponse
-        include JSON::Serializable
-
-        # The URL of the artifact.
-        @[JSON::Field(key: "preSignedUrl")]
-        getter pre_signed_url : String
-
-        def initialize(
-          @pre_signed_url : String
-        )
-        end
-      end
-
-      struct GetConnectivityInfoRequest
-        include JSON::Serializable
-
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "thingName")]
-        getter thing_name : String
-
-        def initialize(
-          @thing_name : String
-        )
-        end
-      end
-
-      struct GetConnectivityInfoResponse
-        include JSON::Serializable
-
-        # The connectivity information for the core device.
-        @[JSON::Field(key: "ConnectivityInfo")]
-        getter connectivity_info : Array(Types::ConnectivityInfo)?
-
-        # A message about the connectivity information request.
-        @[JSON::Field(key: "Message")]
-        getter message : String?
-
-        def initialize(
-          @connectivity_info : Array(Types::ConnectivityInfo)? = nil,
-          @message : String? = nil
-        )
-        end
-      end
-
-      struct GetCoreDeviceRequest
-        include JSON::Serializable
-
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
-
-        def initialize(
-          @core_device_thing_name : String
-        )
-        end
-      end
-
-      struct GetCoreDeviceResponse
-        include JSON::Serializable
-
-        # The computer architecture of the core device.
-        @[JSON::Field(key: "architecture")]
-        getter architecture : String?
-
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String?
-
-        # The version of the IoT Greengrass Core software that the core device runs. This version is
-        # equivalent to the version of the Greengrass nucleus component that runs on the core device. For more
-        # information, see the Greengrass nucleus component in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "coreVersion")]
-        getter core_version : String?
-
-        # The time at which the core device's status last updated, expressed in ISO 8601 format.
-        @[JSON::Field(key: "lastStatusUpdateTimestamp")]
-        getter last_status_update_timestamp : Time?
-
-        # The operating system platform that the core device runs.
-        @[JSON::Field(key: "platform")]
-        getter platform : String?
-
-        # The runtime for the core device. The runtime can be: aws_nucleus_classic aws_nucleus_lite
-        @[JSON::Field(key: "runtime")]
-        getter runtime : String?
-
-        # The status of the core device. The core device status can be: HEALTHY – The IoT Greengrass Core
-        # software and all components run on the core device without issue. UNHEALTHY – The IoT Greengrass
-        # Core software or a component is in a failed state on the core device.
-        @[JSON::Field(key: "status")]
-        getter status : String?
-
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "tags")]
-        getter tags : Hash(String, String)?
-
-        def initialize(
-          @architecture : String? = nil,
-          @core_device_thing_name : String? = nil,
-          @core_version : String? = nil,
-          @last_status_update_timestamp : Time? = nil,
-          @platform : String? = nil,
-          @runtime : String? = nil,
-          @status : String? = nil,
-          @tags : Hash(String, String)? = nil
-        )
-        end
-      end
-
-      struct GetDeploymentRequest
-        include JSON::Serializable
-
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String
-
-        def initialize(
-          @deployment_id : String
-        )
-        end
-      end
-
-      struct GetDeploymentResponse
-        include JSON::Serializable
-
-        # The components to deploy. This is a dictionary, where each key is the name of a component, and each
-        # key's value is the version and configuration to deploy for that component.
-        @[JSON::Field(key: "components")]
-        getter components : Hash(String, Types::ComponentDeploymentSpecification)?
-
-        # The time at which the deployment was created, expressed in ISO 8601 format.
-        @[JSON::Field(key: "creationTimestamp")]
-        getter creation_timestamp : Time?
-
-        # The ID of the deployment.
-        @[JSON::Field(key: "deploymentId")]
-        getter deployment_id : String?
-
-        # The name of the deployment.
-        @[JSON::Field(key: "deploymentName")]
-        getter deployment_name : String?
-
-        # The deployment policies for the deployment. These policies define how the deployment updates
-        # components and handles failure.
-        @[JSON::Field(key: "deploymentPolicies")]
-        getter deployment_policies : Types::DeploymentPolicies?
-
-        # The status of the deployment.
-        @[JSON::Field(key: "deploymentStatus")]
-        getter deployment_status : String?
-
-        # The ARN of the IoT job that applies the deployment to target devices.
-        @[JSON::Field(key: "iotJobArn")]
-        getter iot_job_arn : String?
-
-        # The job configuration for the deployment configuration. The job configuration specifies the rollout,
-        # timeout, and stop configurations for the deployment configuration.
-        @[JSON::Field(key: "iotJobConfiguration")]
-        getter iot_job_configuration : Types::DeploymentIoTJobConfiguration?
-
-        # The ID of the IoT job that applies the deployment to target devices.
-        @[JSON::Field(key: "iotJobId")]
-        getter iot_job_id : String?
-
-        # Whether or not the deployment is the latest revision for its target.
-        @[JSON::Field(key: "isLatestForTarget")]
-        getter is_latest_for_target : Bool?
-
-        # The parent deployment's target ARN within a subdeployment.
-        @[JSON::Field(key: "parentTargetArn")]
-        getter parent_target_arn : String?
-
-        # The revision number of the deployment.
-        @[JSON::Field(key: "revisionId")]
-        getter revision_id : String?
-
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
-        @[JSON::Field(key: "tags")]
-        getter tags : Hash(String, String)?
-
-        # The ARN of the target IoT thing or thing group.
-        @[JSON::Field(key: "targetArn")]
-        getter target_arn : String?
-
-        def initialize(
-          @components : Hash(String, Types::ComponentDeploymentSpecification)? = nil,
-          @creation_timestamp : Time? = nil,
-          @deployment_id : String? = nil,
-          @deployment_name : String? = nil,
-          @deployment_policies : Types::DeploymentPolicies? = nil,
-          @deployment_status : String? = nil,
-          @iot_job_arn : String? = nil,
-          @iot_job_configuration : Types::DeploymentIoTJobConfiguration? = nil,
-          @iot_job_id : String? = nil,
-          @is_latest_for_target : Bool? = nil,
-          @parent_target_arn : String? = nil,
-          @revision_id : String? = nil,
-          @tags : Hash(String, String)? = nil,
-          @target_arn : String? = nil
-        )
-        end
-      end
-
-      struct GetServiceRoleForAccountRequest
+      struct DisassociateServiceRoleFromAccountRequest
         include JSON::Serializable
 
         def initialize
         end
       end
 
-      struct GetServiceRoleForAccountResponse
+
+      struct DisassociateServiceRoleFromAccountResponse
         include JSON::Serializable
 
-        # The time when the service role was associated with IoT Greengrass for your Amazon Web Services
-        # account in this Amazon Web Services Region.
+        # The time when the service role was disassociated from the account.
+
+        @[JSON::Field(key: "DisassociatedAt")]
+        getter disassociated_at : String?
+
+        def initialize(
+          @disassociated_at : String? = nil
+        )
+        end
+      end
+
+      # Empty
+
+      struct Empty
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # Details about the error.
+
+      struct ErrorDetail
+        include JSON::Serializable
+
+        # A detailed error code.
+
+        @[JSON::Field(key: "DetailedErrorCode")]
+        getter detailed_error_code : String?
+
+        # A detailed error message.
+
+        @[JSON::Field(key: "DetailedErrorMessage")]
+        getter detailed_error_message : String?
+
+        def initialize(
+          @detailed_error_code : String? = nil,
+          @detailed_error_message : String? = nil
+        )
+        end
+      end
+
+      # Information about a Lambda function.
+
+      struct Function
+        include JSON::Serializable
+
+        # A descriptive or arbitrary ID for the function. This value must be unique within the function
+        # definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String
+
+        # The ARN of the Lambda function.
+
+        @[JSON::Field(key: "FunctionArn")]
+        getter function_arn : String?
+
+        # The configuration of the Lambda function.
+
+        @[JSON::Field(key: "FunctionConfiguration")]
+        getter function_configuration : Types::FunctionConfiguration?
+
+        def initialize(
+          @id : String,
+          @function_arn : String? = nil,
+          @function_configuration : Types::FunctionConfiguration? = nil
+        )
+        end
+      end
+
+      # The configuration of the Lambda function.
+
+      struct FunctionConfiguration
+        include JSON::Serializable
+
+        # The expected encoding type of the input payload for the function. The default is ''json''.
+
+        @[JSON::Field(key: "EncodingType")]
+        getter encoding_type : String?
+
+        # The environment configuration of the function.
+
+        @[JSON::Field(key: "Environment")]
+        getter environment : Types::FunctionConfigurationEnvironment?
+
+        # The execution arguments.
+
+        @[JSON::Field(key: "ExecArgs")]
+        getter exec_args : String?
+
+        # The name of the function executable.
+
+        @[JSON::Field(key: "Executable")]
+        getter executable : String?
+
+        # The Lambda runtime supported by Greengrass which is to be used instead of the one specified in the
+        # Lambda function.
+
+        @[JSON::Field(key: "FunctionRuntimeOverride")]
+        getter function_runtime_override : String?
+
+        # The memory size, in KB, which the function requires. This setting is not applicable and should be
+        # cleared when you run the Lambda function without containerization.
+
+        @[JSON::Field(key: "MemorySize")]
+        getter memory_size : Int32?
+
+        # True if the function is pinned. Pinned means the function is long-lived and starts when the core
+        # starts.
+
+        @[JSON::Field(key: "Pinned")]
+        getter pinned : Bool?
+
+        # The allowed function execution time, after which Lambda should terminate the function. This timeout
+        # still applies to pinned Lambda functions for each request.
+
+        @[JSON::Field(key: "Timeout")]
+        getter timeout : Int32?
+
+        def initialize(
+          @encoding_type : String? = nil,
+          @environment : Types::FunctionConfigurationEnvironment? = nil,
+          @exec_args : String? = nil,
+          @executable : String? = nil,
+          @function_runtime_override : String? = nil,
+          @memory_size : Int32? = nil,
+          @pinned : Bool? = nil,
+          @timeout : Int32? = nil
+        )
+        end
+      end
+
+      # The environment configuration of the function.
+
+      struct FunctionConfigurationEnvironment
+        include JSON::Serializable
+
+        # If true, the Lambda function is allowed to access the host's /sys folder. Use this when the Lambda
+        # function needs to read device information from /sys. This setting applies only when you run the
+        # Lambda function in a Greengrass container.
+
+        @[JSON::Field(key: "AccessSysfs")]
+        getter access_sysfs : Bool?
+
+        # Configuration related to executing the Lambda function
+
+        @[JSON::Field(key: "Execution")]
+        getter execution : Types::FunctionExecutionConfig?
+
+        # A list of the resources, with their permissions, to which the Lambda function will be granted
+        # access. A Lambda function can have at most 10 resources. ResourceAccessPolicies apply only when you
+        # run the Lambda function in a Greengrass container.
+
+        @[JSON::Field(key: "ResourceAccessPolicies")]
+        getter resource_access_policies : Array(Types::ResourceAccessPolicy)?
+
+        # Environment variables for the Lambda function's configuration.
+
+        @[JSON::Field(key: "Variables")]
+        getter variables : Hash(String, String)?
+
+        def initialize(
+          @access_sysfs : Bool? = nil,
+          @execution : Types::FunctionExecutionConfig? = nil,
+          @resource_access_policies : Array(Types::ResourceAccessPolicy)? = nil,
+          @variables : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # The default configuration that applies to all Lambda functions in the group. Individual Lambda
+      # functions can override these settings.
+
+      struct FunctionDefaultConfig
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Execution")]
+        getter execution : Types::FunctionDefaultExecutionConfig?
+
+        def initialize(
+          @execution : Types::FunctionDefaultExecutionConfig? = nil
+        )
+        end
+      end
+
+      # Configuration information that specifies how a Lambda function runs.
+
+      struct FunctionDefaultExecutionConfig
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "IsolationMode")]
+        getter isolation_mode : String?
+
+
+        @[JSON::Field(key: "RunAs")]
+        getter run_as : Types::FunctionRunAsConfig?
+
+        def initialize(
+          @isolation_mode : String? = nil,
+          @run_as : Types::FunctionRunAsConfig? = nil
+        )
+        end
+      end
+
+      # Information about a function definition version.
+
+      struct FunctionDefinitionVersion
+        include JSON::Serializable
+
+        # The default configuration that applies to all Lambda functions in this function definition version.
+        # Individual Lambda functions can override these settings.
+
+        @[JSON::Field(key: "DefaultConfig")]
+        getter default_config : Types::FunctionDefaultConfig?
+
+        # A list of Lambda functions in this function definition version.
+
+        @[JSON::Field(key: "Functions")]
+        getter functions : Array(Types::Function)?
+
+        def initialize(
+          @default_config : Types::FunctionDefaultConfig? = nil,
+          @functions : Array(Types::Function)? = nil
+        )
+        end
+      end
+
+      # Configuration information that specifies how a Lambda function runs.
+
+      struct FunctionExecutionConfig
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "IsolationMode")]
+        getter isolation_mode : String?
+
+
+        @[JSON::Field(key: "RunAs")]
+        getter run_as : Types::FunctionRunAsConfig?
+
+        def initialize(
+          @isolation_mode : String? = nil,
+          @run_as : Types::FunctionRunAsConfig? = nil
+        )
+        end
+      end
+
+      # Specifies the user and group whose permissions are used when running the Lambda function. You can
+      # specify one or both values to override the default values. We recommend that you avoid running as
+      # root unless absolutely necessary to minimize the risk of unintended changes or malicious attacks. To
+      # run as root, you must set ''IsolationMode'' to ''NoContainer'' and update config.json in
+      # ''greengrass-root/config'' to set ''allowFunctionsToRunAsRoot'' to ''yes''.
+
+      struct FunctionRunAsConfig
+        include JSON::Serializable
+
+        # The group ID whose permissions are used to run a Lambda function.
+
+        @[JSON::Field(key: "Gid")]
+        getter gid : Int32?
+
+        # The user ID whose permissions are used to run a Lambda function.
+
+        @[JSON::Field(key: "Uid")]
+        getter uid : Int32?
+
+        def initialize(
+          @gid : Int32? = nil,
+          @uid : Int32? = nil
+        )
+        end
+      end
+
+      # General error information.
+
+      struct GeneralError
+        include JSON::Serializable
+
+        # Details about the error.
+
+        @[JSON::Field(key: "ErrorDetails")]
+        getter error_details : Array(Types::ErrorDetail)?
+
+        # A message containing information about the error.
+
+        @[JSON::Field(key: "Message")]
+        getter message : String?
+
+        def initialize(
+          @error_details : Array(Types::ErrorDetail)? = nil,
+          @message : String? = nil
+        )
+        end
+      end
+
+
+      struct GetAssociatedRoleRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @group_id : String
+        )
+        end
+      end
+
+
+      struct GetAssociatedRoleResponse
+        include JSON::Serializable
+
+        # The time when the role was associated with the group.
+
         @[JSON::Field(key: "AssociatedAt")]
         getter associated_at : String?
 
-        # The ARN of the service role that is associated with IoT Greengrass for your Amazon Web Services
-        # account in this Amazon Web Services Region.
+        # The ARN of the role that is associated with the group.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -1473,686 +2250,1837 @@ module AwsSdk
         end
       end
 
-      # Contains information about a component on a Greengrass core device.
-      struct InstalledComponent
+
+      struct GetBulkDeploymentStatusRequest
         include JSON::Serializable
 
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
 
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
-
-        # Whether or not the component is a root component.
-        @[JSON::Field(key: "isRoot")]
-        getter is_root : Bool?
-
-        # The most recent deployment source that brought the component to the Greengrass core device. For a
-        # thing group deployment or thing deployment, the source will be the ID of the last deployment that
-        # contained the component. For local deployments it will be LOCAL . Any deployment will attempt to
-        # reinstall currently broken components on the device, which will update the last installation source.
-        @[JSON::Field(key: "lastInstallationSource")]
-        getter last_installation_source : String?
-
-        # The last time the Greengrass core device sent a message containing a component's state to the Amazon
-        # Web Services Cloud. A component does not need to see a state change for this field to update.
-        @[JSON::Field(key: "lastReportedTimestamp")]
-        getter last_reported_timestamp : Time?
-
-        # The status of how current the data is. This response is based off of component state changes. The
-        # status reflects component disruptions and deployments. If a component only sees a configuration
-        # update during a deployment, it might not undergo a state change and this status would not be
-        # updated.
-        @[JSON::Field(key: "lastStatusChangeTimestamp")]
-        getter last_status_change_timestamp : Time?
-
-        # The lifecycle state of the component.
-        @[JSON::Field(key: "lifecycleState")]
-        getter lifecycle_state : String?
-
-        # A detailed response about the lifecycle state of the component that explains the reason why a
-        # component has an error or is broken.
-        @[JSON::Field(key: "lifecycleStateDetails")]
-        getter lifecycle_state_details : String?
-
-        # The status codes that indicate the reason for failure whenever the lifecycleState has an error or is
-        # in a broken state. Greengrass nucleus v2.8.0 or later is required to get an accurate
-        # lifecycleStatusCodes response. This response can be inaccurate in earlier Greengrass nucleus
-        # versions.
-        @[JSON::Field(key: "lifecycleStatusCodes")]
-        getter lifecycle_status_codes : Array(String)?
+        @[JSON::Field(key: "BulkDeploymentId")]
+        getter bulk_deployment_id : String
 
         def initialize(
-          @component_name : String? = nil,
-          @component_version : String? = nil,
-          @is_root : Bool? = nil,
-          @last_installation_source : String? = nil,
-          @last_reported_timestamp : Time? = nil,
-          @last_status_change_timestamp : Time? = nil,
-          @lifecycle_state : String? = nil,
-          @lifecycle_state_details : String? = nil,
-          @lifecycle_status_codes : Array(String)? = nil
+          @bulk_deployment_id : String
         )
         end
       end
 
-      # IoT Greengrass can't process your request right now. Try again later.
-      struct InternalServerException
+      # Information about the status of a bulk deployment at the time of the request.
+
+      struct GetBulkDeploymentStatusResponse
         include JSON::Serializable
+
+        # Relevant metrics on input records processed during bulk deployment.
+
+        @[JSON::Field(key: "BulkDeploymentMetrics")]
+        getter bulk_deployment_metrics : Types::BulkDeploymentMetrics?
+
+        # The status of the bulk deployment.
+
+        @[JSON::Field(key: "BulkDeploymentStatus")]
+        getter bulk_deployment_status : String?
+
+        # The time, in ISO format, when the deployment was created.
+
+        @[JSON::Field(key: "CreatedAt")]
+        getter created_at : String?
+
+        # Error details
+
+        @[JSON::Field(key: "ErrorDetails")]
+        getter error_details : Array(Types::ErrorDetail)?
+
+        # Error message
+
+        @[JSON::Field(key: "ErrorMessage")]
+        getter error_message : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @bulk_deployment_metrics : Types::BulkDeploymentMetrics? = nil,
+          @bulk_deployment_status : String? = nil,
+          @created_at : String? = nil,
+          @error_details : Array(Types::ErrorDetail)? = nil,
+          @error_message : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetConnectivityInfoRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ThingName")]
+        getter thing_name : String
+
+        def initialize(
+          @thing_name : String
+        )
+        end
+      end
+
+      # Information about a Greengrass core's connectivity.
+
+      struct GetConnectivityInfoResponse
+        include JSON::Serializable
+
+        # Connectivity info list.
+
+        @[JSON::Field(key: "ConnectivityInfo")]
+        getter connectivity_info : Array(Types::ConnectivityInfo)?
+
+        # A message about the connectivity info request.
 
         @[JSON::Field(key: "message")]
-        getter message : String
-
-        # The amount of time to wait before you retry the request.
-        @[JSON::Field(key: "Retry-After")]
-        getter retry_after_seconds : Int32?
+        getter message : String?
 
         def initialize(
-          @message : String,
-          @retry_after_seconds : Int32? = nil
+          @connectivity_info : Array(Types::ConnectivityInfo)? = nil,
+          @message : String? = nil
         )
         end
       end
 
-      # Contains a list of criteria that define when and how to cancel a configuration deployment.
-      struct IoTJobAbortConfig
+
+      struct GetConnectorDefinitionRequest
         include JSON::Serializable
 
-        # The list of criteria that define when and how to cancel the configuration deployment.
-        @[JSON::Field(key: "criteriaList")]
-        getter criteria_list : Array(Types::IoTJobAbortCriteria)
+
+        @[JSON::Field(key: "ConnectorDefinitionId")]
+        getter connector_definition_id : String
 
         def initialize(
-          @criteria_list : Array(Types::IoTJobAbortCriteria)
+          @connector_definition_id : String
         )
         end
       end
 
-      # Contains criteria that define when and how to cancel a job. The deployment stops if the following
-      # conditions are true: The number of things that receive the deployment exceeds the
-      # minNumberOfExecutedThings . The percentage of failures with type failureType exceeds the
-      # thresholdPercentage .
-      struct IoTJobAbortCriteria
+
+      struct GetConnectorDefinitionResponse
         include JSON::Serializable
 
-        # The action to perform when the criteria are met.
-        @[JSON::Field(key: "action")]
-        getter action : String
 
-        # The type of job deployment failure that can cancel a job.
-        @[JSON::Field(key: "failureType")]
-        getter failure_type : String
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
 
-        # The minimum number of things that receive the configuration before the job can cancel.
-        @[JSON::Field(key: "minNumberOfExecutedThings")]
-        getter min_number_of_executed_things : Int32
 
-        # The minimum percentage of failureType failures that occur before the job can cancel. This parameter
-        # supports up to two digits after the decimal (for example, you can specify 10.9 or 10.99 , but not
-        # 10.999 ).
-        @[JSON::Field(key: "thresholdPercentage")]
-        getter threshold_percentage : Float64
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
 
         def initialize(
-          @action : String,
-          @failure_type : String,
-          @min_number_of_executed_things : Int32,
-          @threshold_percentage : Float64
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
         )
         end
       end
 
-      # Contains information about the rollout configuration for a job. This configuration defines the rate
-      # at which the job deploys a configuration to a fleet of target devices.
-      struct IoTJobExecutionsRolloutConfig
+
+      struct GetConnectorDefinitionVersionRequest
         include JSON::Serializable
 
-        # The exponential rate to increase the job rollout rate.
-        @[JSON::Field(key: "exponentialRate")]
-        getter exponential_rate : Types::IoTJobExponentialRolloutRate?
 
-        # The maximum number of devices that receive a pending job notification, per minute.
-        @[JSON::Field(key: "maximumPerMinute")]
-        getter maximum_per_minute : Int32?
+        @[JSON::Field(key: "ConnectorDefinitionId")]
+        getter connector_definition_id : String
 
-        def initialize(
-          @exponential_rate : Types::IoTJobExponentialRolloutRate? = nil,
-          @maximum_per_minute : Int32? = nil
-        )
-        end
-      end
 
-      # Contains information about an exponential rollout rate for a configuration deployment job.
-      struct IoTJobExponentialRolloutRate
-        include JSON::Serializable
+        @[JSON::Field(key: "ConnectorDefinitionVersionId")]
+        getter connector_definition_version_id : String
 
-        # The minimum number of devices that receive a pending job notification, per minute, when the job
-        # starts. This parameter defines the initial rollout rate of the job.
-        @[JSON::Field(key: "baseRatePerMinute")]
-        getter base_rate_per_minute : Int32
 
-        # The exponential factor to increase the rollout rate for the job. This parameter supports up to one
-        # digit after the decimal (for example, you can specify 1.5 , but not 1.55 ).
-        @[JSON::Field(key: "incrementFactor")]
-        getter increment_factor : Float64
-
-        # The criteria to increase the rollout rate for the job.
-        @[JSON::Field(key: "rateIncreaseCriteria")]
-        getter rate_increase_criteria : Types::IoTJobRateIncreaseCriteria
-
-        def initialize(
-          @base_rate_per_minute : Int32,
-          @increment_factor : Float64,
-          @rate_increase_criteria : Types::IoTJobRateIncreaseCriteria
-        )
-        end
-      end
-
-      # Contains information about criteria to meet before a job increases its rollout rate. Specify either
-      # numberOfNotifiedThings or numberOfSucceededThings .
-      struct IoTJobRateIncreaseCriteria
-        include JSON::Serializable
-
-        # The number of devices to receive the job notification before the rollout rate increases.
-        @[JSON::Field(key: "numberOfNotifiedThings")]
-        getter number_of_notified_things : Int32?
-
-        # The number of devices to successfully run the configuration job before the rollout rate increases.
-        @[JSON::Field(key: "numberOfSucceededThings")]
-        getter number_of_succeeded_things : Int32?
-
-        def initialize(
-          @number_of_notified_things : Int32? = nil,
-          @number_of_succeeded_things : Int32? = nil
-        )
-        end
-      end
-
-      # Contains information about the timeout configuration for a job.
-      struct IoTJobTimeoutConfig
-        include JSON::Serializable
-
-        # The amount of time, in minutes, that devices have to complete the job. The timer starts when the job
-        # status is set to IN_PROGRESS . If the job status doesn't change to a terminal state before the time
-        # expires, then the job status is set to TIMED_OUT . The timeout interval must be between 1 minute and
-        # 7 days (10080 minutes).
-        @[JSON::Field(key: "inProgressTimeoutInMinutes")]
-        getter in_progress_timeout_in_minutes : Int64?
-
-        def initialize(
-          @in_progress_timeout_in_minutes : Int64? = nil
-        )
-        end
-      end
-
-      # Contains information about a container in which Lambda functions run on Greengrass core devices.
-      struct LambdaContainerParams
-        include JSON::Serializable
-
-        # The list of system devices that the container can access.
-        @[JSON::Field(key: "devices")]
-        getter devices : Array(Types::LambdaDeviceMount)?
-
-        # The memory size of the container, expressed in kilobytes. Default: 16384 (16 MB)
-        @[JSON::Field(key: "memorySizeInKB")]
-        getter memory_size_in_kb : Int32?
-
-        # Whether or not the container can read information from the device's /sys folder. Default: false
-        @[JSON::Field(key: "mountROSysfs")]
-        getter mount_ro_sysfs : Bool?
-
-        # The list of volumes that the container can access.
-        @[JSON::Field(key: "volumes")]
-        getter volumes : Array(Types::LambdaVolumeMount)?
-
-        def initialize(
-          @devices : Array(Types::LambdaDeviceMount)? = nil,
-          @memory_size_in_kb : Int32? = nil,
-          @mount_ro_sysfs : Bool? = nil,
-          @volumes : Array(Types::LambdaVolumeMount)? = nil
-        )
-        end
-      end
-
-      # Contains information about a device that Linux processes in a container can access.
-      struct LambdaDeviceMount
-        include JSON::Serializable
-
-        # The mount path for the device in the file system.
-        @[JSON::Field(key: "path")]
-        getter path : String
-
-        # Whether or not to add the component's system user as an owner of the device. Default: false
-        @[JSON::Field(key: "addGroupOwner")]
-        getter add_group_owner : Bool?
-
-        # The permission to access the device: read/only ( ro ) or read/write ( rw ). Default: ro
-        @[JSON::Field(key: "permission")]
-        getter permission : String?
-
-        def initialize(
-          @path : String,
-          @add_group_owner : Bool? = nil,
-          @permission : String? = nil
-        )
-        end
-      end
-
-      # Contains information about an event source for an Lambda function. The event source defines the
-      # topics on which this Lambda function subscribes to receive messages that run the function.
-      struct LambdaEventSource
-        include JSON::Serializable
-
-        # The topic to which to subscribe to receive event messages.
-        @[JSON::Field(key: "topic")]
-        getter topic : String
-
-        # The type of event source. Choose from the following options: PUB_SUB – Subscribe to local
-        # publish/subscribe messages. This event source type doesn't support MQTT wildcards ( + and # ) in the
-        # event source topic. IOT_CORE – Subscribe to Amazon Web Services IoT Core MQTT messages. This event
-        # source type supports MQTT wildcards ( + and # ) in the event source topic.
-        @[JSON::Field(key: "type")]
-        getter type : String
-
-        def initialize(
-          @topic : String,
-          @type : String
-        )
-        end
-      end
-
-      # Contains parameters for a Lambda function that runs on IoT Greengrass.
-      struct LambdaExecutionParameters
-        include JSON::Serializable
-
-        # The map of environment variables that are available to the Lambda function when it runs.
-        @[JSON::Field(key: "environmentVariables")]
-        getter environment_variables : Hash(String, String)?
-
-        # The list of event sources to which to subscribe to receive work messages. The Lambda function runs
-        # when it receives a message from an event source. You can subscribe this function to local
-        # publish/subscribe messages and Amazon Web Services IoT Core MQTT messages.
-        @[JSON::Field(key: "eventSources")]
-        getter event_sources : Array(Types::LambdaEventSource)?
-
-        # The list of arguments to pass to the Lambda function when it runs.
-        @[JSON::Field(key: "execArgs")]
-        getter exec_args : Array(String)?
-
-        # The encoding type that the Lambda function supports. Default: json
-        @[JSON::Field(key: "inputPayloadEncodingType")]
-        getter input_payload_encoding_type : String?
-
-        # The parameters for the Linux process that contains the Lambda function.
-        @[JSON::Field(key: "linuxProcessParams")]
-        getter linux_process_params : Types::LambdaLinuxProcessParams?
-
-        # The maximum amount of time in seconds that a non-pinned Lambda function can idle before the IoT
-        # Greengrass Core software stops its process.
-        @[JSON::Field(key: "maxIdleTimeInSeconds")]
-        getter max_idle_time_in_seconds : Int32?
-
-        # The maximum number of instances that a non-pinned Lambda function can run at the same time.
-        @[JSON::Field(key: "maxInstancesCount")]
-        getter max_instances_count : Int32?
-
-        # The maximum size of the message queue for the Lambda function component. The IoT Greengrass core
-        # stores messages in a FIFO (first-in-first-out) queue until it can run the Lambda function to consume
-        # each message.
-        @[JSON::Field(key: "maxQueueSize")]
-        getter max_queue_size : Int32?
-
-        # Whether or not the Lambda function is pinned, or long-lived. A pinned Lambda function starts when
-        # IoT Greengrass starts and keeps running in its own container. A non-pinned Lambda function starts
-        # only when it receives a work item and exists after it idles for maxIdleTimeInSeconds . If the
-        # function has multiple work items, the IoT Greengrass Core software creates multiple instances of the
-        # function. Default: true
-        @[JSON::Field(key: "pinned")]
-        getter pinned : Bool?
-
-        # The interval in seconds at which a pinned (also known as long-lived) Lambda function component sends
-        # status updates to the Lambda manager component.
-        @[JSON::Field(key: "statusTimeoutInSeconds")]
-        getter status_timeout_in_seconds : Int32?
-
-        # The maximum amount of time in seconds that the Lambda function can process a work item.
-        @[JSON::Field(key: "timeoutInSeconds")]
-        getter timeout_in_seconds : Int32?
-
-        def initialize(
-          @environment_variables : Hash(String, String)? = nil,
-          @event_sources : Array(Types::LambdaEventSource)? = nil,
-          @exec_args : Array(String)? = nil,
-          @input_payload_encoding_type : String? = nil,
-          @linux_process_params : Types::LambdaLinuxProcessParams? = nil,
-          @max_idle_time_in_seconds : Int32? = nil,
-          @max_instances_count : Int32? = nil,
-          @max_queue_size : Int32? = nil,
-          @pinned : Bool? = nil,
-          @status_timeout_in_seconds : Int32? = nil,
-          @timeout_in_seconds : Int32? = nil
-        )
-        end
-      end
-
-      # Contains information about an Lambda function to import to create a component.
-      struct LambdaFunctionRecipeSource
-        include JSON::Serializable
-
-        # The ARN of the Lambda function. The ARN must include the version of the function to import. You
-        # can't use version aliases like $LATEST .
-        @[JSON::Field(key: "lambdaArn")]
-        getter lambda_arn : String
-
-        # The component versions on which this Lambda function component depends.
-        @[JSON::Field(key: "componentDependencies")]
-        getter component_dependencies : Hash(String, Types::ComponentDependencyRequirement)?
-
-        # The system and runtime parameters for the Lambda function as it runs on the Greengrass core device.
-        @[JSON::Field(key: "componentLambdaParameters")]
-        getter component_lambda_parameters : Types::LambdaExecutionParameters?
-
-        # The name of the component. Defaults to the name of the Lambda function.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
-
-        # The platforms that the component version supports.
-        @[JSON::Field(key: "componentPlatforms")]
-        getter component_platforms : Array(Types::ComponentPlatform)?
-
-        # The version of the component. Defaults to the version of the Lambda function as a semantic version.
-        # For example, if your function version is 3 , the component version becomes 3.0.0 .
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
-
-        def initialize(
-          @lambda_arn : String,
-          @component_dependencies : Hash(String, Types::ComponentDependencyRequirement)? = nil,
-          @component_lambda_parameters : Types::LambdaExecutionParameters? = nil,
-          @component_name : String? = nil,
-          @component_platforms : Array(Types::ComponentPlatform)? = nil,
-          @component_version : String? = nil
-        )
-        end
-      end
-
-      # Contains parameters for a Linux process that contains an Lambda function.
-      struct LambdaLinuxProcessParams
-        include JSON::Serializable
-
-        # The parameters for the container in which the Lambda function runs.
-        @[JSON::Field(key: "containerParams")]
-        getter container_params : Types::LambdaContainerParams?
-
-        # The isolation mode for the process that contains the Lambda function. The process can run in an
-        # isolated runtime environment inside the IoT Greengrass container, or as a regular process outside
-        # any container. Default: GreengrassContainer
-        @[JSON::Field(key: "isolationMode")]
-        getter isolation_mode : String?
-
-        def initialize(
-          @container_params : Types::LambdaContainerParams? = nil,
-          @isolation_mode : String? = nil
-        )
-        end
-      end
-
-      # Contains information about a volume that Linux processes in a container can access. When you define
-      # a volume, the IoT Greengrass Core software mounts the source files to the destination inside the
-      # container.
-      struct LambdaVolumeMount
-        include JSON::Serializable
-
-        # The path to the logical volume in the file system.
-        @[JSON::Field(key: "destinationPath")]
-        getter destination_path : String
-
-        # The path to the physical volume in the file system.
-        @[JSON::Field(key: "sourcePath")]
-        getter source_path : String
-
-        # Whether or not to add the IoT Greengrass user group as an owner of the volume. Default: false
-        @[JSON::Field(key: "addGroupOwner")]
-        getter add_group_owner : Bool?
-
-        # The permission to access the volume: read/only ( ro ) or read/write ( rw ). Default: ro
-        @[JSON::Field(key: "permission")]
-        getter permission : String?
-
-        def initialize(
-          @destination_path : String,
-          @source_path : String,
-          @add_group_owner : Bool? = nil,
-          @permission : String? = nil
-        )
-        end
-      end
-
-      struct ListClientDevicesAssociatedWithCoreDeviceRequest
-        include JSON::Serializable
-
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
-
-        # The maximum number of results to be returned per paginated request.
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
-
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         def initialize(
-          @core_device_thing_name : String,
-          @max_results : Int32? = nil,
+          @connector_definition_id : String,
+          @connector_definition_version_id : String,
           @next_token : String? = nil
         )
         end
       end
 
-      struct ListClientDevicesAssociatedWithCoreDeviceResponse
+      # Information about a connector definition version.
+
+      struct GetConnectorDefinitionVersionResponse
         include JSON::Serializable
 
-        # A list that describes the client devices that are associated with the core device.
-        @[JSON::Field(key: "associatedClientDevices")]
-        getter associated_client_devices : Array(Types::AssociatedClientDevice)?
+        # The ARN of the connector definition version.
 
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the connector definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the connector definition version.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::ConnectorDefinitionVersion?
+
+        # The ID of the connector definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
-        def initialize(
-          @associated_client_devices : Array(Types::AssociatedClientDevice)? = nil,
-          @next_token : String? = nil
-        )
-        end
-      end
+        # The version of the connector definition version.
 
-      struct ListComponentVersionsRequest
-        include JSON::Serializable
-
-        # The ARN of the component.
-        @[JSON::Field(key: "arn")]
-        getter arn : String
-
-        # The maximum number of results to be returned per paginated request.
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
-
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
-        getter next_token : String?
+        @[JSON::Field(key: "Version")]
+        getter version : String?
 
         def initialize(
-          @arn : String,
-          @max_results : Int32? = nil,
-          @next_token : String? = nil
-        )
-        end
-      end
-
-      struct ListComponentVersionsResponse
-        include JSON::Serializable
-
-        # A list of versions that exist for the component.
-        @[JSON::Field(key: "componentVersions")]
-        getter component_versions : Array(Types::ComponentVersionListItem)?
-
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
-        getter next_token : String?
-
-        def initialize(
-          @component_versions : Array(Types::ComponentVersionListItem)? = nil,
-          @next_token : String? = nil
-        )
-        end
-      end
-
-      struct ListComponentsRequest
-        include JSON::Serializable
-
-        # The maximum number of results to be returned per paginated request.
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
-
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
-        getter next_token : String?
-
-        # The scope of the components to list. Default: PRIVATE
-        @[JSON::Field(key: "scope")]
-        getter scope : String?
-
-        def initialize(
-          @max_results : Int32? = nil,
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::ConnectorDefinitionVersion? = nil,
+          @id : String? = nil,
           @next_token : String? = nil,
-          @scope : String? = nil
+          @version : String? = nil
         )
         end
       end
 
-      struct ListComponentsResponse
+
+      struct GetCoreDefinitionRequest
         include JSON::Serializable
 
-        # A list that summarizes each component.
-        @[JSON::Field(key: "components")]
-        getter components : Array(Types::Component)?
 
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
-        getter next_token : String?
+        @[JSON::Field(key: "CoreDefinitionId")]
+        getter core_definition_id : String
 
         def initialize(
-          @components : Array(Types::Component)? = nil,
-          @next_token : String? = nil
+          @core_definition_id : String
         )
         end
       end
 
-      struct ListCoreDevicesRequest
+
+      struct GetCoreDefinitionResponse
         include JSON::Serializable
 
-        # The maximum number of results to be returned per paginated request.
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
 
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
-        getter next_token : String?
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
 
-        # The runtime to be used by the core device. The runtime can be: aws_nucleus_classic aws_nucleus_lite
-        @[JSON::Field(key: "runtime")]
-        getter runtime : String?
 
-        # The core device status by which to filter. If you specify this parameter, the list includes only
-        # core devices that have this status. Choose one of the following options: HEALTHY – The IoT
-        # Greengrass Core software and all components run on the core device without issue. UNHEALTHY – The
-        # IoT Greengrass Core software or a component is in a failed state on the core device.
-        @[JSON::Field(key: "status")]
-        getter status : String?
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
 
-        # The ARN of the IoT thing group by which to filter. If you specify this parameter, the list includes
-        # only core devices that have successfully deployed a deployment that targets the thing group. When
-        # you remove a core device from a thing group, the list continues to include that core device.
-        @[JSON::Field(key: "thingGroupArn")]
-        getter thing_group_arn : String?
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
 
         def initialize(
-          @max_results : Int32? = nil,
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetCoreDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CoreDefinitionId")]
+        getter core_definition_id : String
+
+
+        @[JSON::Field(key: "CoreDefinitionVersionId")]
+        getter core_definition_version_id : String
+
+        def initialize(
+          @core_definition_id : String,
+          @core_definition_version_id : String
+        )
+        end
+      end
+
+
+      struct GetCoreDefinitionVersionResponse
+        include JSON::Serializable
+
+        # The ARN of the core definition version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the core definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the core definition version.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::CoreDefinitionVersion?
+
+        # The ID of the core definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        # The version of the core definition version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::CoreDefinitionVersion? = nil,
+          @id : String? = nil,
           @next_token : String? = nil,
-          @runtime : String? = nil,
-          @status : String? = nil,
-          @thing_group_arn : String? = nil
+          @version : String? = nil
         )
         end
       end
 
-      struct ListCoreDevicesResponse
+
+      struct GetDeploymentStatusRequest
         include JSON::Serializable
 
-        # A list that summarizes each core device.
-        @[JSON::Field(key: "coreDevices")]
-        getter core_devices : Array(Types::CoreDevice)?
 
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
+        @[JSON::Field(key: "DeploymentId")]
+        getter deployment_id : String
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @deployment_id : String,
+          @group_id : String
+        )
+        end
+      end
+
+      # Information about the status of a deployment for a group.
+
+      struct GetDeploymentStatusResponse
+        include JSON::Serializable
+
+        # The status of the deployment: ''InProgress'', ''Building'', ''Success'', or ''Failure''.
+
+        @[JSON::Field(key: "DeploymentStatus")]
+        getter deployment_status : String?
+
+        # The type of the deployment.
+
+        @[JSON::Field(key: "DeploymentType")]
+        getter deployment_type : String?
+
+        # Error details
+
+        @[JSON::Field(key: "ErrorDetails")]
+        getter error_details : Array(Types::ErrorDetail)?
+
+        # Error message
+
+        @[JSON::Field(key: "ErrorMessage")]
+        getter error_message : String?
+
+        # The time, in milliseconds since the epoch, when the deployment status was updated.
+
+        @[JSON::Field(key: "UpdatedAt")]
+        getter updated_at : String?
+
+        def initialize(
+          @deployment_status : String? = nil,
+          @deployment_type : String? = nil,
+          @error_details : Array(Types::ErrorDetail)? = nil,
+          @error_message : String? = nil,
+          @updated_at : String? = nil
+        )
+        end
+      end
+
+
+      struct GetDeviceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "DeviceDefinitionId")]
+        getter device_definition_id : String
+
+        def initialize(
+          @device_definition_id : String
+        )
+        end
+      end
+
+
+      struct GetDeviceDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetDeviceDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "DeviceDefinitionId")]
+        getter device_definition_id : String
+
+
+        @[JSON::Field(key: "DeviceDefinitionVersionId")]
+        getter device_definition_version_id : String
+
+
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         def initialize(
-          @core_devices : Array(Types::CoreDevice)? = nil,
+          @device_definition_id : String,
+          @device_definition_version_id : String,
           @next_token : String? = nil
         )
         end
       end
+
+
+      struct GetDeviceDefinitionVersionResponse
+        include JSON::Serializable
+
+        # The ARN of the device definition version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the device definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the device definition version.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::DeviceDefinitionVersion?
+
+        # The ID of the device definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        # The version of the device definition version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::DeviceDefinitionVersion? = nil,
+          @id : String? = nil,
+          @next_token : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct GetFunctionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "FunctionDefinitionId")]
+        getter function_definition_id : String
+
+        def initialize(
+          @function_definition_id : String
+        )
+        end
+      end
+
+
+      struct GetFunctionDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetFunctionDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "FunctionDefinitionId")]
+        getter function_definition_id : String
+
+
+        @[JSON::Field(key: "FunctionDefinitionVersionId")]
+        getter function_definition_version_id : String
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @function_definition_id : String,
+          @function_definition_version_id : String,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+      # Information about a function definition version.
+
+      struct GetFunctionDefinitionVersionResponse
+        include JSON::Serializable
+
+        # The ARN of the function definition version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the function definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information on the definition.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::FunctionDefinitionVersion?
+
+        # The ID of the function definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        # The version of the function definition version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::FunctionDefinitionVersion? = nil,
+          @id : String? = nil,
+          @next_token : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct GetGroupCertificateAuthorityRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CertificateAuthorityId")]
+        getter certificate_authority_id : String
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @certificate_authority_id : String,
+          @group_id : String
+        )
+        end
+      end
+
+      # Information about a certificate authority for a group.
+
+      struct GetGroupCertificateAuthorityResponse
+        include JSON::Serializable
+
+        # The ARN of the certificate authority for the group.
+
+        @[JSON::Field(key: "GroupCertificateAuthorityArn")]
+        getter group_certificate_authority_arn : String?
+
+        # The ID of the certificate authority for the group.
+
+        @[JSON::Field(key: "GroupCertificateAuthorityId")]
+        getter group_certificate_authority_id : String?
+
+        # The PEM encoded certificate for the group.
+
+        @[JSON::Field(key: "PemEncodedCertificate")]
+        getter pem_encoded_certificate : String?
+
+        def initialize(
+          @group_certificate_authority_arn : String? = nil,
+          @group_certificate_authority_id : String? = nil,
+          @pem_encoded_certificate : String? = nil
+        )
+        end
+      end
+
+
+      struct GetGroupCertificateConfigurationRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @group_id : String
+        )
+        end
+      end
+
+
+      struct GetGroupCertificateConfigurationResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CertificateAuthorityExpiryInMilliseconds")]
+        getter certificate_authority_expiry_in_milliseconds : String?
+
+
+        @[JSON::Field(key: "CertificateExpiryInMilliseconds")]
+        getter certificate_expiry_in_milliseconds : String?
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String?
+
+        def initialize(
+          @certificate_authority_expiry_in_milliseconds : String? = nil,
+          @certificate_expiry_in_milliseconds : String? = nil,
+          @group_id : String? = nil
+        )
+        end
+      end
+
+
+      struct GetGroupRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @group_id : String
+        )
+        end
+      end
+
+
+      struct GetGroupResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetGroupVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+
+        @[JSON::Field(key: "GroupVersionId")]
+        getter group_version_id : String
+
+        def initialize(
+          @group_id : String,
+          @group_version_id : String
+        )
+        end
+      end
+
+      # Information about a group version.
+
+      struct GetGroupVersionResponse
+        include JSON::Serializable
+
+        # The ARN of the group version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the group version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the group version definition.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::GroupVersion?
+
+        # The ID of the group that the version is associated with.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The ID of the group version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::GroupVersion? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct GetLoggerDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "LoggerDefinitionId")]
+        getter logger_definition_id : String
+
+        def initialize(
+          @logger_definition_id : String
+        )
+        end
+      end
+
+
+      struct GetLoggerDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetLoggerDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "LoggerDefinitionId")]
+        getter logger_definition_id : String
+
+
+        @[JSON::Field(key: "LoggerDefinitionVersionId")]
+        getter logger_definition_version_id : String
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @logger_definition_id : String,
+          @logger_definition_version_id : String,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+      # Information about a logger definition version.
+
+      struct GetLoggerDefinitionVersionResponse
+        include JSON::Serializable
+
+        # The ARN of the logger definition version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the logger definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the logger definition version.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::LoggerDefinitionVersion?
+
+        # The ID of the logger definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The version of the logger definition version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::LoggerDefinitionVersion? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct GetResourceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ResourceDefinitionId")]
+        getter resource_definition_id : String
+
+        def initialize(
+          @resource_definition_id : String
+        )
+        end
+      end
+
+
+      struct GetResourceDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetResourceDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ResourceDefinitionId")]
+        getter resource_definition_id : String
+
+
+        @[JSON::Field(key: "ResourceDefinitionVersionId")]
+        getter resource_definition_version_id : String
+
+        def initialize(
+          @resource_definition_id : String,
+          @resource_definition_version_id : String
+        )
+        end
+      end
+
+      # Information about a resource definition version.
+
+      struct GetResourceDefinitionVersionResponse
+        include JSON::Serializable
+
+        # Arn of the resource definition version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the resource definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the definition.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::ResourceDefinitionVersion?
+
+        # The ID of the resource definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The version of the resource definition version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::ResourceDefinitionVersion? = nil,
+          @id : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct GetServiceRoleForAccountRequest
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct GetServiceRoleForAccountResponse
+        include JSON::Serializable
+
+        # The time when the service role was associated with the account.
+
+        @[JSON::Field(key: "AssociatedAt")]
+        getter associated_at : String?
+
+        # The ARN of the role which is associated with the account.
+
+        @[JSON::Field(key: "RoleArn")]
+        getter role_arn : String?
+
+        def initialize(
+          @associated_at : String? = nil,
+          @role_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct GetSubscriptionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionId")]
+        getter subscription_definition_id : String
+
+        def initialize(
+          @subscription_definition_id : String
+        )
+        end
+      end
+
+
+      struct GetSubscriptionDefinitionResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetSubscriptionDefinitionVersionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionId")]
+        getter subscription_definition_id : String
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionVersionId")]
+        getter subscription_definition_version_id : String
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @subscription_definition_id : String,
+          @subscription_definition_version_id : String,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+      # Information about a subscription definition version.
+
+      struct GetSubscriptionDefinitionVersionResponse
+        include JSON::Serializable
+
+        # The ARN of the subscription definition version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the subscription definition version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # Information about the subscription definition version.
+
+        @[JSON::Field(key: "Definition")]
+        getter definition : Types::SubscriptionDefinitionVersion?
+
+        # The ID of the subscription definition version.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        # The version of the subscription definition version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @definition : Types::SubscriptionDefinitionVersion? = nil,
+          @id : String? = nil,
+          @next_token : String? = nil,
+          @version : String? = nil
+        )
+        end
+      end
+
+
+      struct GetThingRuntimeConfigurationRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ThingName")]
+        getter thing_name : String
+
+        def initialize(
+          @thing_name : String
+        )
+        end
+      end
+
+      # The runtime configuration for a thing.
+
+      struct GetThingRuntimeConfigurationResponse
+        include JSON::Serializable
+
+        # Runtime configuration for a thing.
+
+        @[JSON::Field(key: "RuntimeConfiguration")]
+        getter runtime_configuration : Types::RuntimeConfiguration?
+
+        def initialize(
+          @runtime_configuration : Types::RuntimeConfiguration? = nil
+        )
+        end
+      end
+
+      # Information about a certificate authority for a group.
+
+      struct GroupCertificateAuthorityProperties
+        include JSON::Serializable
+
+        # The ARN of the certificate authority for the group.
+
+        @[JSON::Field(key: "GroupCertificateAuthorityArn")]
+        getter group_certificate_authority_arn : String?
+
+        # The ID of the certificate authority for the group.
+
+        @[JSON::Field(key: "GroupCertificateAuthorityId")]
+        getter group_certificate_authority_id : String?
+
+        def initialize(
+          @group_certificate_authority_arn : String? = nil,
+          @group_certificate_authority_id : String? = nil
+        )
+        end
+      end
+
+      # Information about a group certificate configuration.
+
+      struct GroupCertificateConfiguration
+        include JSON::Serializable
+
+        # The amount of time remaining before the certificate authority expires, in milliseconds.
+
+        @[JSON::Field(key: "CertificateAuthorityExpiryInMilliseconds")]
+        getter certificate_authority_expiry_in_milliseconds : String?
+
+        # The amount of time remaining before the certificate expires, in milliseconds.
+
+        @[JSON::Field(key: "CertificateExpiryInMilliseconds")]
+        getter certificate_expiry_in_milliseconds : String?
+
+        # The ID of the group certificate configuration.
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String?
+
+        def initialize(
+          @certificate_authority_expiry_in_milliseconds : String? = nil,
+          @certificate_expiry_in_milliseconds : String? = nil,
+          @group_id : String? = nil
+        )
+        end
+      end
+
+      # Information about a group.
+
+      struct GroupInformation
+        include JSON::Serializable
+
+        # The ARN of the group.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the group was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # The ID of the group.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The time, in milliseconds since the epoch, when the group was last updated.
+
+        @[JSON::Field(key: "LastUpdatedTimestamp")]
+        getter last_updated_timestamp : String?
+
+        # The ID of the latest version associated with the group.
+
+        @[JSON::Field(key: "LatestVersion")]
+        getter latest_version : String?
+
+        # The ARN of the latest version associated with the group.
+
+        @[JSON::Field(key: "LatestVersionArn")]
+        getter latest_version_arn : String?
+
+        # The name of the group.
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @last_updated_timestamp : String? = nil,
+          @latest_version : String? = nil,
+          @latest_version_arn : String? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+      # Group owner related settings for local resources.
+
+      struct GroupOwnerSetting
+        include JSON::Serializable
+
+        # If true, AWS IoT Greengrass automatically adds the specified Linux OS group owner of the resource to
+        # the Lambda process privileges. Thus the Lambda process will have the file access permissions of the
+        # added Linux group.
+
+        @[JSON::Field(key: "AutoAddGroupOwner")]
+        getter auto_add_group_owner : Bool?
+
+        # The name of the Linux OS group whose privileges will be added to the Lambda process. This field is
+        # optional.
+
+        @[JSON::Field(key: "GroupOwner")]
+        getter group_owner : String?
+
+        def initialize(
+          @auto_add_group_owner : Bool? = nil,
+          @group_owner : String? = nil
+        )
+        end
+      end
+
+      # Information about a group version.
+
+      struct GroupVersion
+        include JSON::Serializable
+
+        # The ARN of the connector definition version for this group.
+
+        @[JSON::Field(key: "ConnectorDefinitionVersionArn")]
+        getter connector_definition_version_arn : String?
+
+        # The ARN of the core definition version for this group.
+
+        @[JSON::Field(key: "CoreDefinitionVersionArn")]
+        getter core_definition_version_arn : String?
+
+        # The ARN of the device definition version for this group.
+
+        @[JSON::Field(key: "DeviceDefinitionVersionArn")]
+        getter device_definition_version_arn : String?
+
+        # The ARN of the function definition version for this group.
+
+        @[JSON::Field(key: "FunctionDefinitionVersionArn")]
+        getter function_definition_version_arn : String?
+
+        # The ARN of the logger definition version for this group.
+
+        @[JSON::Field(key: "LoggerDefinitionVersionArn")]
+        getter logger_definition_version_arn : String?
+
+        # The ARN of the resource definition version for this group.
+
+        @[JSON::Field(key: "ResourceDefinitionVersionArn")]
+        getter resource_definition_version_arn : String?
+
+        # The ARN of the subscription definition version for this group.
+
+        @[JSON::Field(key: "SubscriptionDefinitionVersionArn")]
+        getter subscription_definition_version_arn : String?
+
+        def initialize(
+          @connector_definition_version_arn : String? = nil,
+          @core_definition_version_arn : String? = nil,
+          @device_definition_version_arn : String? = nil,
+          @function_definition_version_arn : String? = nil,
+          @logger_definition_version_arn : String? = nil,
+          @resource_definition_version_arn : String? = nil,
+          @subscription_definition_version_arn : String? = nil
+        )
+        end
+      end
+
+      # General error information.
+
+      struct InternalServerErrorException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ErrorDetails")]
+        getter error_details : Array(Types::ErrorDetail)?
+
+
+        @[JSON::Field(key: "Message")]
+        getter message : String?
+
+        def initialize(
+          @error_details : Array(Types::ErrorDetail)? = nil,
+          @message : String? = nil
+        )
+        end
+      end
+
+
+      struct ListBulkDeploymentDetailedReportsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "BulkDeploymentId")]
+        getter bulk_deployment_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @bulk_deployment_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListBulkDeploymentDetailedReportsResponse
+        include JSON::Serializable
+
+        # A list of the individual group deployments in the bulk deployment operation.
+
+        @[JSON::Field(key: "Deployments")]
+        getter deployments : Array(Types::BulkDeploymentResult)?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @deployments : Array(Types::BulkDeploymentResult)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListBulkDeploymentsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListBulkDeploymentsResponse
+        include JSON::Serializable
+
+        # A list of bulk deployments.
+
+        @[JSON::Field(key: "BulkDeployments")]
+        getter bulk_deployments : Array(Types::BulkDeployment)?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @bulk_deployments : Array(Types::BulkDeployment)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListConnectorDefinitionVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ConnectorDefinitionId")]
+        getter connector_definition_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @connector_definition_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListConnectorDefinitionVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListConnectorDefinitionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListConnectorDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListCoreDefinitionVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CoreDefinitionId")]
+        getter core_definition_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @core_definition_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListCoreDefinitionVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListCoreDefinitionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListCoreDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+      # A list of definitions.
+
+      struct ListDefinitionsResponse
+        include JSON::Serializable
+
+        # Information about a definition.
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
 
       struct ListDeploymentsRequest
         include JSON::Serializable
 
-        # The filter for the list of deployments. Choose one of the following options: ALL – The list includes
-        # all deployments. LATEST_ONLY – The list includes only the latest revision of each deployment.
-        # Default: LATEST_ONLY
-        @[JSON::Field(key: "historyFilter")]
-        getter history_filter : String?
 
-        # The maximum number of results to be returned per paginated request. Default: 50
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
 
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
-        # The parent deployment's target ARN within a subdeployment.
-        @[JSON::Field(key: "parentTargetArn")]
-        getter parent_target_arn : String?
-
-        # The ARN of the target IoT thing or thing group.
-        @[JSON::Field(key: "targetArn")]
-        getter target_arn : String?
-
         def initialize(
-          @history_filter : String? = nil,
-          @max_results : Int32? = nil,
-          @next_token : String? = nil,
-          @parent_target_arn : String? = nil,
-          @target_arn : String? = nil
+          @group_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
         )
         end
       end
 
+
       struct ListDeploymentsResponse
         include JSON::Serializable
 
-        # A list that summarizes each deployment.
-        @[JSON::Field(key: "deployments")]
+        # A list of deployments for the requested groups.
+
+        @[JSON::Field(key: "Deployments")]
         getter deployments : Array(Types::Deployment)?
 
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         def initialize(
@@ -2162,105 +4090,529 @@ module AwsSdk
         end
       end
 
-      struct ListEffectiveDeploymentsRequest
+
+      struct ListDeviceDefinitionVersionsRequest
         include JSON::Serializable
 
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
 
-        # The maximum number of results to be returned per paginated request.
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
+        @[JSON::Field(key: "DeviceDefinitionId")]
+        getter device_definition_id : String
 
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         def initialize(
-          @core_device_thing_name : String,
-          @max_results : Int32? = nil,
+          @device_definition_id : String,
+          @max_results : String? = nil,
           @next_token : String? = nil
         )
         end
       end
 
-      struct ListEffectiveDeploymentsResponse
+
+      struct ListDeviceDefinitionVersionsResponse
         include JSON::Serializable
 
-        # A list that summarizes each deployment on the core device.
-        @[JSON::Field(key: "effectiveDeployments")]
-        getter effective_deployments : Array(Types::EffectiveDeployment)?
 
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
-        def initialize(
-          @effective_deployments : Array(Types::EffectiveDeployment)? = nil,
-          @next_token : String? = nil
-        )
-        end
-      end
 
-      struct ListInstalledComponentsRequest
-        include JSON::Serializable
-
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "coreDeviceThingName")]
-        getter core_device_thing_name : String
-
-        # The maximum number of results to be returned per paginated request.
-        @[JSON::Field(key: "maxResults")]
-        getter max_results : Int32?
-
-        # The token to be used for the next set of paginated results.
-        @[JSON::Field(key: "nextToken")]
-        getter next_token : String?
-
-        # The filter for the list of components. Choose from the following options: ALL – The list includes
-        # all components installed on the core device. ROOT – The list includes only root components, which
-        # are components that you specify in a deployment. When you choose this option, the list doesn't
-        # include components that the core device installs as dependencies of other components. Default: ROOT
-        @[JSON::Field(key: "topologyFilter")]
-        getter topology_filter : String?
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
 
         def initialize(
-          @core_device_thing_name : String,
-          @max_results : Int32? = nil,
           @next_token : String? = nil,
-          @topology_filter : String? = nil
+          @versions : Array(Types::VersionInformation)? = nil
         )
         end
       end
 
-      struct ListInstalledComponentsResponse
+
+      struct ListDeviceDefinitionsRequest
         include JSON::Serializable
 
-        # A list that summarizes each component on the core device. Greengrass nucleus v2.7.0 or later is
-        # required to get an accurate lastStatusChangeTimestamp response. This response can be inaccurate in
-        # earlier Greengrass nucleus versions. Greengrass nucleus v2.8.0 or later is required to get an
-        # accurate lastInstallationSource and lastReportedTimestamp response. This response can be inaccurate
-        # or null in earlier Greengrass nucleus versions.
-        @[JSON::Field(key: "installedComponents")]
-        getter installed_components : Array(Types::InstalledComponent)?
 
-        # The token for the next set of results, or null if there are no additional results.
-        @[JSON::Field(key: "nextToken")]
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         def initialize(
-          @installed_components : Array(Types::InstalledComponent)? = nil,
+          @max_results : String? = nil,
           @next_token : String? = nil
         )
         end
       end
+
+
+      struct ListDeviceDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListFunctionDefinitionVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "FunctionDefinitionId")]
+        getter function_definition_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @function_definition_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListFunctionDefinitionVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListFunctionDefinitionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListFunctionDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListGroupCertificateAuthoritiesRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        def initialize(
+          @group_id : String
+        )
+        end
+      end
+
+
+      struct ListGroupCertificateAuthoritiesResponse
+        include JSON::Serializable
+
+        # A list of certificate authorities associated with the group.
+
+        @[JSON::Field(key: "GroupCertificateAuthorities")]
+        getter group_certificate_authorities : Array(Types::GroupCertificateAuthorityProperties)?
+
+        def initialize(
+          @group_certificate_authorities : Array(Types::GroupCertificateAuthorityProperties)? = nil
+        )
+        end
+      end
+
+
+      struct ListGroupVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @group_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListGroupVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListGroupsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListGroupsResponse
+        include JSON::Serializable
+
+        # Information about a group.
+
+        @[JSON::Field(key: "Groups")]
+        getter groups : Array(Types::GroupInformation)?
+
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @groups : Array(Types::GroupInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLoggerDefinitionVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "LoggerDefinitionId")]
+        getter logger_definition_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @logger_definition_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLoggerDefinitionVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListLoggerDefinitionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLoggerDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListResourceDefinitionVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ResourceDefinitionId")]
+        getter resource_definition_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @resource_definition_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListResourceDefinitionVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListResourceDefinitionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListResourceDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListSubscriptionDefinitionVersionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionId")]
+        getter subscription_definition_id : String
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @subscription_definition_id : String,
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListSubscriptionDefinitionVersionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
+        )
+        end
+      end
+
+
+      struct ListSubscriptionDefinitionsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "MaxResults")]
+        getter max_results : String?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @max_results : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListSubscriptionDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "Definitions")]
+        getter definitions : Array(Types::DefinitionInformation)?
+
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @definitions : Array(Types::DefinitionInformation)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
 
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
-        # The ARN of the resource.
-        @[JSON::Field(key: "resourceArn")]
+
+        @[JSON::Field(key: "resource-arn")]
         getter resource_arn : String
 
         def initialize(
@@ -2269,11 +4621,11 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -2283,247 +4635,634 @@ module AwsSdk
         end
       end
 
-      # The request is already in progress. This exception occurs when you use a client token for multiple
-      # requests while IoT Greengrass is still processing an earlier request that uses the same client
-      # token.
-      struct RequestAlreadyInProgressException
+      # A list of versions.
+
+      struct ListVersionsResponse
         include JSON::Serializable
 
-        @[JSON::Field(key: "message")]
-        getter message : String
+        # The token for the next set of results, or ''null'' if there are no additional results.
+
+        @[JSON::Field(key: "NextToken")]
+        getter next_token : String?
+
+        # Information about a version.
+
+        @[JSON::Field(key: "Versions")]
+        getter versions : Array(Types::VersionInformation)?
 
         def initialize(
-          @message : String
+          @next_token : String? = nil,
+          @versions : Array(Types::VersionInformation)? = nil
         )
         end
       end
 
-      struct ResolveComponentCandidatesRequest
+      # Attributes that define a local device resource.
+
+      struct LocalDeviceResourceData
         include JSON::Serializable
 
-        # The list of components to resolve.
-        @[JSON::Field(key: "componentCandidates")]
-        getter component_candidates : Array(Types::ComponentCandidate)?
+        # Group/owner related settings for local resources.
 
-        # The platform to use to resolve compatible components.
-        @[JSON::Field(key: "platform")]
-        getter platform : Types::ComponentPlatform?
+        @[JSON::Field(key: "GroupOwnerSetting")]
+        getter group_owner_setting : Types::GroupOwnerSetting?
+
+        # The local absolute path of the device resource. The source path for a device resource can refer only
+        # to a character device or block device under ''/dev''.
+
+        @[JSON::Field(key: "SourcePath")]
+        getter source_path : String?
 
         def initialize(
-          @component_candidates : Array(Types::ComponentCandidate)? = nil,
-          @platform : Types::ComponentPlatform? = nil
+          @group_owner_setting : Types::GroupOwnerSetting? = nil,
+          @source_path : String? = nil
         )
         end
       end
 
-      struct ResolveComponentCandidatesResponse
+      # Attributes that define a local volume resource.
+
+      struct LocalVolumeResourceData
         include JSON::Serializable
 
-        # A list of components that meet the requirements that you specify in the request. This list includes
-        # each component's recipe that you can use to install the component.
-        @[JSON::Field(key: "resolvedComponentVersions")]
-        getter resolved_component_versions : Array(Types::ResolvedComponentVersion)?
+        # The absolute local path of the resource inside the Lambda environment.
+
+        @[JSON::Field(key: "DestinationPath")]
+        getter destination_path : String?
+
+        # Allows you to configure additional group privileges for the Lambda process. This field is optional.
+
+        @[JSON::Field(key: "GroupOwnerSetting")]
+        getter group_owner_setting : Types::GroupOwnerSetting?
+
+        # The local absolute path of the volume resource on the host. The source path for a volume resource
+        # type cannot start with ''/sys''.
+
+        @[JSON::Field(key: "SourcePath")]
+        getter source_path : String?
 
         def initialize(
-          @resolved_component_versions : Array(Types::ResolvedComponentVersion)? = nil
+          @destination_path : String? = nil,
+          @group_owner_setting : Types::GroupOwnerSetting? = nil,
+          @source_path : String? = nil
         )
         end
       end
 
-      # Contains information about a component version that is compatible to run on a Greengrass core
-      # device.
-      struct ResolvedComponentVersion
+      # Information about a logger
+
+      struct Logger
         include JSON::Serializable
 
-        # The ARN of the component version.
-        @[JSON::Field(key: "arn")]
+        # The component that will be subject to logging.
+
+        @[JSON::Field(key: "Component")]
+        getter component : String
+
+        # A descriptive or arbitrary ID for the logger. This value must be unique within the logger definition
+        # version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String
+
+        # The level of the logs.
+
+        @[JSON::Field(key: "Level")]
+        getter level : String
+
+        # The type of log output which will be used.
+
+        @[JSON::Field(key: "Type")]
+        getter type : String
+
+        # The amount of file space, in KB, to use if the local file system is used for logging purposes.
+
+        @[JSON::Field(key: "Space")]
+        getter space : Int32?
+
+        def initialize(
+          @component : String,
+          @id : String,
+          @level : String,
+          @type : String,
+          @space : Int32? = nil
+        )
+        end
+      end
+
+      # Information about a logger definition version.
+
+      struct LoggerDefinitionVersion
+        include JSON::Serializable
+
+        # A list of loggers.
+
+        @[JSON::Field(key: "Loggers")]
+        getter loggers : Array(Types::Logger)?
+
+        def initialize(
+          @loggers : Array(Types::Logger)? = nil
+        )
+        end
+      end
+
+      # Information about a group reset request.
+
+      struct ResetDeploymentsRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
+
+        # If true, performs a best-effort only core reset.
+
+        @[JSON::Field(key: "Force")]
+        getter force : Bool?
+
+        def initialize(
+          @group_id : String,
+          @amzn_client_token : String? = nil,
+          @force : Bool? = nil
+        )
+        end
+      end
+
+
+      struct ResetDeploymentsResponse
+        include JSON::Serializable
+
+        # The ARN of the deployment.
+
+        @[JSON::Field(key: "DeploymentArn")]
+        getter deployment_arn : String?
+
+        # The ID of the deployment.
+
+        @[JSON::Field(key: "DeploymentId")]
+        getter deployment_id : String?
+
+        def initialize(
+          @deployment_arn : String? = nil,
+          @deployment_id : String? = nil
+        )
+        end
+      end
+
+      # Information about a resource.
+
+      struct Resource
+        include JSON::Serializable
+
+        # The resource ID, used to refer to a resource in the Lambda function configuration. Max length is 128
+        # characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String
+
+        # The descriptive resource name, which is displayed on the AWS IoT Greengrass console. Max length 128
+        # characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
+
+        @[JSON::Field(key: "Name")]
+        getter name : String
+
+        # A container of data for all resource types.
+
+        @[JSON::Field(key: "ResourceDataContainer")]
+        getter resource_data_container : Types::ResourceDataContainer
+
+        def initialize(
+          @id : String,
+          @name : String,
+          @resource_data_container : Types::ResourceDataContainer
+        )
+        end
+      end
+
+      # A policy used by the function to access a resource.
+
+      struct ResourceAccessPolicy
+        include JSON::Serializable
+
+        # The ID of the resource. (This ID is assigned to the resource when you create the resource
+        # definiton.)
+
+        @[JSON::Field(key: "ResourceId")]
+        getter resource_id : String
+
+        # The permissions that the Lambda function has to the resource. Can be one of ''rw'' (read/write) or
+        # ''ro'' (read-only).
+
+        @[JSON::Field(key: "Permission")]
+        getter permission : String?
+
+        def initialize(
+          @resource_id : String,
+          @permission : String? = nil
+        )
+        end
+      end
+
+      # A container for resource data. The container takes only one of the following supported resource data
+      # types: ''LocalDeviceResourceData'', ''LocalVolumeResourceData'',
+      # ''SageMakerMachineLearningModelResourceData'', ''S3MachineLearningModelResourceData'',
+      # ''SecretsManagerSecretResourceData''.
+
+      struct ResourceDataContainer
+        include JSON::Serializable
+
+        # Attributes that define the local device resource.
+
+        @[JSON::Field(key: "LocalDeviceResourceData")]
+        getter local_device_resource_data : Types::LocalDeviceResourceData?
+
+        # Attributes that define the local volume resource.
+
+        @[JSON::Field(key: "LocalVolumeResourceData")]
+        getter local_volume_resource_data : Types::LocalVolumeResourceData?
+
+        # Attributes that define an Amazon S3 machine learning resource.
+
+        @[JSON::Field(key: "S3MachineLearningModelResourceData")]
+        getter s3_machine_learning_model_resource_data : Types::S3MachineLearningModelResourceData?
+
+        # Attributes that define an Amazon SageMaker machine learning resource.
+
+        @[JSON::Field(key: "SageMakerMachineLearningModelResourceData")]
+        getter sage_maker_machine_learning_model_resource_data : Types::SageMakerMachineLearningModelResourceData?
+
+        # Attributes that define a secret resource, which references a secret from AWS Secrets Manager.
+
+        @[JSON::Field(key: "SecretsManagerSecretResourceData")]
+        getter secrets_manager_secret_resource_data : Types::SecretsManagerSecretResourceData?
+
+        def initialize(
+          @local_device_resource_data : Types::LocalDeviceResourceData? = nil,
+          @local_volume_resource_data : Types::LocalVolumeResourceData? = nil,
+          @s3_machine_learning_model_resource_data : Types::S3MachineLearningModelResourceData? = nil,
+          @sage_maker_machine_learning_model_resource_data : Types::SageMakerMachineLearningModelResourceData? = nil,
+          @secrets_manager_secret_resource_data : Types::SecretsManagerSecretResourceData? = nil
+        )
+        end
+      end
+
+      # Information about a resource definition version.
+
+      struct ResourceDefinitionVersion
+        include JSON::Serializable
+
+        # A list of resources.
+
+        @[JSON::Field(key: "Resources")]
+        getter resources : Array(Types::Resource)?
+
+        def initialize(
+          @resources : Array(Types::Resource)? = nil
+        )
+        end
+      end
+
+      # The owner setting for downloaded machine learning resources.
+
+      struct ResourceDownloadOwnerSetting
+        include JSON::Serializable
+
+        # The group owner of the resource. This is the name of an existing Linux OS group on the system or a
+        # GID. The group's permissions are added to the Lambda process.
+
+        @[JSON::Field(key: "GroupOwner")]
+        getter group_owner : String
+
+        # The permissions that the group owner has to the resource. Valid values are ''rw'' (read/write) or
+        # ''ro'' (read-only).
+
+        @[JSON::Field(key: "GroupPermission")]
+        getter group_permission : String
+
+        def initialize(
+          @group_owner : String,
+          @group_permission : String
+        )
+        end
+      end
+
+      # Runtime configuration for a thing.
+
+      struct RuntimeConfiguration
+        include JSON::Serializable
+
+        # Configuration for telemetry service.
+
+        @[JSON::Field(key: "TelemetryConfiguration")]
+        getter telemetry_configuration : Types::TelemetryConfiguration?
+
+        def initialize(
+          @telemetry_configuration : Types::TelemetryConfiguration? = nil
+        )
+        end
+      end
+
+      # Runtime configuration for a thing.
+
+      struct RuntimeConfigurationUpdate
+        include JSON::Serializable
+
+        # Configuration for telemetry service.
+
+        @[JSON::Field(key: "TelemetryConfiguration")]
+        getter telemetry_configuration : Types::TelemetryConfigurationUpdate?
+
+        def initialize(
+          @telemetry_configuration : Types::TelemetryConfigurationUpdate? = nil
+        )
+        end
+      end
+
+      # Attributes that define an Amazon S3 machine learning resource.
+
+      struct S3MachineLearningModelResourceData
+        include JSON::Serializable
+
+        # The absolute local path of the resource inside the Lambda environment.
+
+        @[JSON::Field(key: "DestinationPath")]
+        getter destination_path : String?
+
+
+        @[JSON::Field(key: "OwnerSetting")]
+        getter owner_setting : Types::ResourceDownloadOwnerSetting?
+
+        # The URI of the source model in an S3 bucket. The model package must be in tar.gz or .zip format.
+
+        @[JSON::Field(key: "S3Uri")]
+        getter s3_uri : String?
+
+        def initialize(
+          @destination_path : String? = nil,
+          @owner_setting : Types::ResourceDownloadOwnerSetting? = nil,
+          @s3_uri : String? = nil
+        )
+        end
+      end
+
+      # Attributes that define an Amazon SageMaker machine learning resource.
+
+      struct SageMakerMachineLearningModelResourceData
+        include JSON::Serializable
+
+        # The absolute local path of the resource inside the Lambda environment.
+
+        @[JSON::Field(key: "DestinationPath")]
+        getter destination_path : String?
+
+
+        @[JSON::Field(key: "OwnerSetting")]
+        getter owner_setting : Types::ResourceDownloadOwnerSetting?
+
+        # The ARN of the Amazon SageMaker training job that represents the source model.
+
+        @[JSON::Field(key: "SageMakerJobArn")]
+        getter sage_maker_job_arn : String?
+
+        def initialize(
+          @destination_path : String? = nil,
+          @owner_setting : Types::ResourceDownloadOwnerSetting? = nil,
+          @sage_maker_job_arn : String? = nil
+        )
+        end
+      end
+
+      # Attributes that define a secret resource, which references a secret from AWS Secrets Manager. AWS
+      # IoT Greengrass stores a local, encrypted copy of the secret on the Greengrass core, where it can be
+      # securely accessed by connectors and Lambda functions.
+
+      struct SecretsManagerSecretResourceData
+        include JSON::Serializable
+
+        # The ARN of the Secrets Manager secret to make available on the core. The value of the secret's
+        # latest version (represented by the ''AWSCURRENT'' staging label) is included by default.
+
+        @[JSON::Field(key: "ARN")]
         getter arn : String?
 
-        # The name of the component.
-        @[JSON::Field(key: "componentName")]
-        getter component_name : String?
+        # Optional. The staging labels whose values you want to make available on the core, in addition to
+        # ''AWSCURRENT''.
 
-        # The version of the component.
-        @[JSON::Field(key: "componentVersion")]
-        getter component_version : String?
-
-        # A message that communicates details about the vendor guidance state of the component version. This
-        # message communicates why a component version is discontinued or deleted.
-        @[JSON::Field(key: "message")]
-        getter message : String?
-
-        # The recipe of the component version.
-        @[JSON::Field(key: "recipe")]
-        getter recipe : Bytes?
-
-        # The vendor guidance state for the component version. This state indicates whether the component
-        # version has any issues that you should consider before you deploy it. The vendor guidance state can
-        # be: ACTIVE – This component version is available and recommended for use. DISCONTINUED – This
-        # component version has been discontinued by its publisher. You can deploy this component version, but
-        # we recommend that you use a different version of this component. DELETED – This component version
-        # has been deleted by its publisher, so you can't deploy it. If you have any existing deployments that
-        # specify this component version, those deployments will fail.
-        @[JSON::Field(key: "vendorGuidance")]
-        getter vendor_guidance : String?
+        @[JSON::Field(key: "AdditionalStagingLabelsToDownload")]
+        getter additional_staging_labels_to_download : Array(String)?
 
         def initialize(
           @arn : String? = nil,
-          @component_name : String? = nil,
-          @component_version : String? = nil,
-          @message : String? = nil,
-          @recipe : Bytes? = nil,
-          @vendor_guidance : String? = nil
+          @additional_staging_labels_to_download : Array(String)? = nil
         )
         end
       end
 
-      # The requested resource can't be found.
-      struct ResourceNotFoundException
+      # Information about a bulk deployment. You cannot start a new bulk deployment while another one is
+      # still running or in a non-terminal state.
+
+      struct StartBulkDeploymentRequest
         include JSON::Serializable
 
-        @[JSON::Field(key: "message")]
-        getter message : String
+        # The ARN of the execution role to associate with the bulk deployment operation. This IAM role must
+        # allow the ''greengrass:CreateDeployment'' action for all group versions that are listed in the input
+        # file. This IAM role must have access to the S3 bucket containing the input file.
 
-        # The ID of the resource that isn't found.
-        @[JSON::Field(key: "resourceId")]
-        getter resource_id : String
+        @[JSON::Field(key: "ExecutionRoleArn")]
+        getter execution_role_arn : String
 
-        # The type of the resource that isn't found.
-        @[JSON::Field(key: "resourceType")]
-        getter resource_type : String
+        # The URI of the input file contained in the S3 bucket. The execution role must have ''getObject''
+        # permissions on this bucket to access the input file. The input file is a JSON-serialized, line
+        # delimited file with UTF-8 encoding that provides a list of group and version IDs and the deployment
+        # type. This file must be less than 100 MB. Currently, AWS IoT Greengrass supports only
+        # ''NewDeployment'' deployment types.
 
-        def initialize(
-          @message : String,
-          @resource_id : String,
-          @resource_type : String
-        )
-        end
-      end
+        @[JSON::Field(key: "InputFileUri")]
+        getter input_file_uri : String
 
-      # Your request exceeds a service quota. For example, you might have the maximum number of components
-      # that you can create.
-      struct ServiceQuotaExceededException
-        include JSON::Serializable
 
-        @[JSON::Field(key: "message")]
-        getter message : String
+        @[JSON::Field(key: "X-Amzn-Client-Token")]
+        getter amzn_client_token : String?
 
-        # The code for the quota in Service Quotas .
-        @[JSON::Field(key: "quotaCode")]
-        getter quota_code : String
 
-        # The code for the service in Service Quotas .
-        @[JSON::Field(key: "serviceCode")]
-        getter service_code : String
-
-        # The ID of the resource that exceeds the service quota.
-        @[JSON::Field(key: "resourceId")]
-        getter resource_id : String?
-
-        # The type of the resource that exceeds the service quota.
-        @[JSON::Field(key: "resourceType")]
-        getter resource_type : String?
-
-        def initialize(
-          @message : String,
-          @quota_code : String,
-          @service_code : String,
-          @resource_id : String? = nil,
-          @resource_type : String? = nil
-        )
-        end
-      end
-
-      # Contains information about system resource limits that the IoT Greengrass Core software applies to a
-      # component's processes. For more information, see Configure system resource limits for components .
-      struct SystemResourceLimits
-        include JSON::Serializable
-
-        # The maximum amount of CPU time that a component's processes can use on the core device. A core
-        # device's total CPU time is equivalent to the device's number of CPU cores. For example, on a core
-        # device with 4 CPU cores, you can set this value to 2 to limit the component's processes to 50
-        # percent usage of each CPU core. On a device with 1 CPU core, you can set this value to 0.25 to limit
-        # the component's processes to 25 percent usage of the CPU. If you set this value to a number greater
-        # than the number of CPU cores, the IoT Greengrass Core software doesn't limit the component's CPU
-        # usage.
-        @[JSON::Field(key: "cpus")]
-        getter cpus : Float64?
-
-        # The maximum amount of RAM, expressed in kilobytes, that a component's processes can use on the core
-        # device.
-        @[JSON::Field(key: "memory")]
-        getter memory : Int64?
-
-        def initialize(
-          @cpus : Float64? = nil,
-          @memory : Int64? = nil
-        )
-        end
-      end
-
-      struct TagResourceRequest
-        include JSON::Serializable
-
-        # The ARN of the resource to tag.
-        @[JSON::Field(key: "resourceArn")]
-        getter resource_arn : String
-
-        # A list of key-value pairs that contain metadata for the resource. For more information, see Tag your
-        # resources in the IoT Greengrass V2 Developer Guide .
         @[JSON::Field(key: "tags")]
-        getter tags : Hash(String, String)
+        getter tags : Hash(String, String)?
 
         def initialize(
-          @resource_arn : String,
-          @tags : Hash(String, String)
+          @execution_role_arn : String,
+          @input_file_uri : String,
+          @amzn_client_token : String? = nil,
+          @tags : Hash(String, String)? = nil
         )
         end
       end
 
-      struct TagResourceResponse
+
+      struct StartBulkDeploymentResponse
+        include JSON::Serializable
+
+        # The ARN of the bulk deployment.
+
+        @[JSON::Field(key: "BulkDeploymentArn")]
+        getter bulk_deployment_arn : String?
+
+        # The ID of the bulk deployment.
+
+        @[JSON::Field(key: "BulkDeploymentId")]
+        getter bulk_deployment_id : String?
+
+        def initialize(
+          @bulk_deployment_arn : String? = nil,
+          @bulk_deployment_id : String? = nil
+        )
+        end
+      end
+
+
+      struct StopBulkDeploymentRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "BulkDeploymentId")]
+        getter bulk_deployment_id : String
+
+        def initialize(
+          @bulk_deployment_id : String
+        )
+        end
+      end
+
+
+      struct StopBulkDeploymentResponse
         include JSON::Serializable
 
         def initialize
         end
       end
 
-      # Your request exceeded a request rate quota. For example, you might have exceeded the amount of times
-      # that you can retrieve device or deployment status per second.
-      struct ThrottlingException
+      # Information about a subscription.
+
+      struct Subscription
         include JSON::Serializable
 
-        @[JSON::Field(key: "message")]
-        getter message : String
+        # A descriptive or arbitrary ID for the subscription. This value must be unique within the
+        # subscription definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
 
-        # The code for the quota in Service Quotas .
-        @[JSON::Field(key: "quotaCode")]
-        getter quota_code : String?
+        @[JSON::Field(key: "Id")]
+        getter id : String
 
-        # The amount of time to wait before you retry the request.
-        @[JSON::Field(key: "Retry-After")]
-        getter retry_after_seconds : Int32?
+        # The source of the subscription. Can be a thing ARN, a Lambda function ARN, a connector ARN, 'cloud'
+        # (which represents the AWS IoT cloud), or 'GGShadowService'.
 
-        # The code for the service in Service Quotas .
-        @[JSON::Field(key: "serviceCode")]
-        getter service_code : String?
+        @[JSON::Field(key: "Source")]
+        getter source : String
+
+        # The MQTT topic used to route the message.
+
+        @[JSON::Field(key: "Subject")]
+        getter subject : String
+
+        # Where the message is sent to. Can be a thing ARN, a Lambda function ARN, a connector ARN, 'cloud'
+        # (which represents the AWS IoT cloud), or 'GGShadowService'.
+
+        @[JSON::Field(key: "Target")]
+        getter target : String
 
         def initialize(
-          @message : String,
-          @quota_code : String? = nil,
-          @retry_after_seconds : Int32? = nil,
-          @service_code : String? = nil
+          @id : String,
+          @source : String,
+          @subject : String,
+          @target : String
         )
         end
       end
 
+      # Information about a subscription definition version.
+
+      struct SubscriptionDefinitionVersion
+        include JSON::Serializable
+
+        # A list of subscriptions.
+
+        @[JSON::Field(key: "Subscriptions")]
+        getter subscriptions : Array(Types::Subscription)?
+
+        def initialize(
+          @subscriptions : Array(Types::Subscription)? = nil
+        )
+        end
+      end
+
+
+      struct TagResourceRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "resource-arn")]
+        getter resource_arn : String
+
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @resource_arn : String,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # Configuration settings for running telemetry.
+
+      struct TelemetryConfiguration
+        include JSON::Serializable
+
+        # Configure telemetry to be on or off.
+
+        @[JSON::Field(key: "Telemetry")]
+        getter telemetry : String
+
+        # Synchronization status of the device reported configuration with the desired configuration.
+
+        @[JSON::Field(key: "ConfigurationSyncStatus")]
+        getter configuration_sync_status : String?
+
+        def initialize(
+          @telemetry : String,
+          @configuration_sync_status : String? = nil
+        )
+        end
+      end
+
+      # Configuration settings for running telemetry.
+
+      struct TelemetryConfigurationUpdate
+        include JSON::Serializable
+
+        # Configure telemetry to be on or off.
+
+        @[JSON::Field(key: "Telemetry")]
+        getter telemetry : String
+
+        def initialize(
+          @telemetry : String
+        )
+        end
+      end
+
+
       struct UntagResourceRequest
         include JSON::Serializable
 
-        # The ARN of the resource to untag.
-        @[JSON::Field(key: "resourceArn")]
+
+        @[JSON::Field(key: "resource-arn")]
         getter resource_arn : String
 
-        # A list of keys for tags to remove from the resource.
+
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -2534,39 +5273,38 @@ module AwsSdk
         end
       end
 
-      struct UntagResourceResponse
-        include JSON::Serializable
-
-        def initialize
-        end
-      end
+      # Information required to update a Greengrass core's connectivity.
 
       struct UpdateConnectivityInfoRequest
         include JSON::Serializable
 
-        # The connectivity information for the core device.
-        @[JSON::Field(key: "ConnectivityInfo")]
-        getter connectivity_info : Array(Types::ConnectivityInfo)
 
-        # The name of the core device. This is also the name of the IoT thing.
-        @[JSON::Field(key: "thingName")]
+        @[JSON::Field(key: "ThingName")]
         getter thing_name : String
 
+        # A list of connectivity info.
+
+        @[JSON::Field(key: "ConnectivityInfo")]
+        getter connectivity_info : Array(Types::ConnectivityInfo)?
+
         def initialize(
-          @connectivity_info : Array(Types::ConnectivityInfo),
-          @thing_name : String
+          @thing_name : String,
+          @connectivity_info : Array(Types::ConnectivityInfo)? = nil
         )
         end
       end
 
+
       struct UpdateConnectivityInfoResponse
         include JSON::Serializable
 
-        # A message about the connectivity information update request.
-        @[JSON::Field(key: "Message")]
+        # A message about the connectivity info update request.
+
+        @[JSON::Field(key: "message")]
         getter message : String?
 
-        # The new version of the connectivity information for the core device.
+        # The new version of the connectivity info.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -2577,45 +5315,323 @@ module AwsSdk
         end
       end
 
-      # The request isn't valid. This can occur if your request contains malformed JSON or unsupported
-      # characters.
-      struct ValidationException
+
+      struct UpdateConnectorDefinitionRequest
         include JSON::Serializable
 
-        @[JSON::Field(key: "message")]
-        getter message : String
 
-        # The list of fields that failed to validate.
-        @[JSON::Field(key: "fields")]
-        getter fields : Array(Types::ValidationExceptionField)?
+        @[JSON::Field(key: "ConnectorDefinitionId")]
+        getter connector_definition_id : String
 
-        # The reason for the validation exception.
-        @[JSON::Field(key: "reason")]
-        getter reason : String?
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
 
         def initialize(
-          @message : String,
-          @fields : Array(Types::ValidationExceptionField)? = nil,
-          @reason : String? = nil
+          @connector_definition_id : String,
+          @name : String? = nil
         )
         end
       end
 
-      # Contains information about a validation exception field.
-      struct ValidationExceptionField
+
+      struct UpdateConnectorDefinitionResponse
         include JSON::Serializable
 
-        # The message of the exception field.
-        @[JSON::Field(key: "message")]
-        getter message : String
+        def initialize
+        end
+      end
 
-        # The name of the exception field.
-        @[JSON::Field(key: "name")]
-        getter name : String
+
+      struct UpdateCoreDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CoreDefinitionId")]
+        getter core_definition_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
 
         def initialize(
-          @message : String,
-          @name : String
+          @core_definition_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateCoreDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateDeviceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "DeviceDefinitionId")]
+        getter device_definition_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @device_definition_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateDeviceDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateFunctionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "FunctionDefinitionId")]
+        getter function_definition_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @function_definition_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateFunctionDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateGroupCertificateConfigurationRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+        # The amount of time remaining before the certificate expires, in milliseconds.
+
+        @[JSON::Field(key: "CertificateExpiryInMilliseconds")]
+        getter certificate_expiry_in_milliseconds : String?
+
+        def initialize(
+          @group_id : String,
+          @certificate_expiry_in_milliseconds : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateGroupCertificateConfigurationResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "CertificateAuthorityExpiryInMilliseconds")]
+        getter certificate_authority_expiry_in_milliseconds : String?
+
+
+        @[JSON::Field(key: "CertificateExpiryInMilliseconds")]
+        getter certificate_expiry_in_milliseconds : String?
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String?
+
+        def initialize(
+          @certificate_authority_expiry_in_milliseconds : String? = nil,
+          @certificate_expiry_in_milliseconds : String? = nil,
+          @group_id : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateGroupRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "GroupId")]
+        getter group_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @group_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateGroupResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateLoggerDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "LoggerDefinitionId")]
+        getter logger_definition_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @logger_definition_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateLoggerDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateResourceDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ResourceDefinitionId")]
+        getter resource_definition_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @resource_definition_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateResourceDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateSubscriptionDefinitionRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "SubscriptionDefinitionId")]
+        getter subscription_definition_id : String
+
+
+        @[JSON::Field(key: "Name")]
+        getter name : String?
+
+        def initialize(
+          @subscription_definition_id : String,
+          @name : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateSubscriptionDefinitionResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateThingRuntimeConfigurationRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "ThingName")]
+        getter thing_name : String
+
+
+        @[JSON::Field(key: "TelemetryConfiguration")]
+        getter telemetry_configuration : Types::TelemetryConfigurationUpdate?
+
+        def initialize(
+          @thing_name : String,
+          @telemetry_configuration : Types::TelemetryConfigurationUpdate? = nil
+        )
+        end
+      end
+
+
+      struct UpdateThingRuntimeConfigurationResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # Information about a version.
+
+      struct VersionInformation
+        include JSON::Serializable
+
+        # The ARN of the version.
+
+        @[JSON::Field(key: "Arn")]
+        getter arn : String?
+
+        # The time, in milliseconds since the epoch, when the version was created.
+
+        @[JSON::Field(key: "CreationTimestamp")]
+        getter creation_timestamp : String?
+
+        # The ID of the parent definition that the version is associated with.
+
+        @[JSON::Field(key: "Id")]
+        getter id : String?
+
+        # The ID of the version.
+
+        @[JSON::Field(key: "Version")]
+        getter version : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_timestamp : String? = nil,
+          @id : String? = nil,
+          @version : String? = nil
         )
         end
       end

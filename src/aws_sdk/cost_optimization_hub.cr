@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cost_optimization_hub/client"
-require "./cost_optimization_hub/errors"
-require "./cost_optimization_hub/model"
-require "./cost_optimization_hub/types"
-require "./cost_optimization_hub/protocol/json_rpc"
-require "./customizations/cost_optimization_hub/customizations"

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./connectcampaignsv2/client"
+require "./connectcampaignsv2/errors"
+require "./connectcampaignsv2/model"
+require "./connectcampaignsv2/types"
+require "./connectcampaignsv2/protocol/rest_json"
+require "./customizations/connectcampaignsv2/customizations"

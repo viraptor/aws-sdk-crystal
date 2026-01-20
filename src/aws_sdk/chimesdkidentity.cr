@@ -1,0 +1,7 @@
+require "./runtime"
+require "./chimesdkidentity/client"
+require "./chimesdkidentity/errors"
+require "./chimesdkidentity/model"
+require "./chimesdkidentity/types"
+require "./chimesdkidentity/protocol/rest_json"
+require "./customizations/chimesdkidentity/customizations"

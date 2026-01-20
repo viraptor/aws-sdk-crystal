@@ -1,0 +1,7 @@
+require "./runtime"
+require "./servicecatalogappregistry/client"
+require "./servicecatalogappregistry/errors"
+require "./servicecatalogappregistry/model"
+require "./servicecatalogappregistry/types"
+require "./servicecatalogappregistry/protocol/rest_json"
+require "./customizations/servicecatalogappregistry/customizations"

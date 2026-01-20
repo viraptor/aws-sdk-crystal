@@ -1,7 +1,0 @@
-require "./runtime"
-require "./inspector_scan/client"
-require "./inspector_scan/errors"
-require "./inspector_scan/model"
-require "./inspector_scan/types"
-require "./inspector_scan/protocol/rest_json"
-require "./customizations/inspector_scan/customizations"

@@ -5,46 +5,57 @@ module AwsSdk
       end
 
       # Access is denied.
+
       class AccessDeniedException < ServiceError
       end
 
       # A conflict occurred.
+
       class ConflictException < ServiceError
       end
 
       # The connector failed.
+
       class ConnectorFailureException < ServiceError
       end
 
       # The connector timed out.
+
       class ConnectorTimeoutException < ServiceError
       end
 
       # An unexpected error has occurred.
+
       class InternalServerException < ServiceError
       end
 
       # The query timeout exception.
+
       class QueryTimeoutException < ServiceError
       end
 
       # The resource wasn't found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The service quota was exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The rate exceeds the limit.
+
       class ThrottlingException < ServiceError
       end
 
       # The number of tags exceeds the limit.
+
       class TooManyTagsException < ServiceError
       end
 
       # Failed
+
       class ValidationException < ServiceError
       end
 

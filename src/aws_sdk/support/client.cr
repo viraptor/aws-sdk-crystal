@@ -1,6 +1,7 @@
 module AwsSdk
   module Support
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -34,13 +35,16 @@ module AwsSdk
       # call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise
       # On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For
       # information about changing your support plan, see Amazon Web Services Support .
+
       def add_attachments_to_set(
         attachments : Array(Types::Attachment),
         attachment_set_id : String? = nil
       ) : Types::AddAttachmentsToSetResponse
+
         input = Types::AddAttachmentsToSetRequest.new(attachments: attachments, attachment_set_id: attachment_set_id)
         add_attachments_to_set(input)
       end
+
       def add_attachments_to_set(input : Types::AddAttachmentsToSetRequest) : Types::AddAttachmentsToSetResponse
         request = Protocol::JsonRpc.build_request(Model::ADD_ATTACHMENTS_TO_SET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -57,15 +61,18 @@ module AwsSdk
       # API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
       # the SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
+
       def add_communication_to_case(
         communication_body : String,
         attachment_set_id : String? = nil,
         case_id : String? = nil,
         cc_email_addresses : Array(String)? = nil
       ) : Types::AddCommunicationToCaseResponse
+
         input = Types::AddCommunicationToCaseRequest.new(communication_body: communication_body, attachment_set_id: attachment_set_id, case_id: case_id, cc_email_addresses: cc_email_addresses)
         add_communication_to_case(input)
       end
+
       def add_communication_to_case(input : Types::AddCommunicationToCaseRequest) : Types::AddCommunicationToCaseResponse
         request = Protocol::JsonRpc.build_request(Model::ADD_COMMUNICATION_TO_CASE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -88,6 +95,7 @@ module AwsSdk
       # call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise
       # On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For
       # information about changing your support plan, see Amazon Web Services Support .
+
       def create_case(
         communication_body : String,
         subject : String,
@@ -99,9 +107,11 @@ module AwsSdk
         service_code : String? = nil,
         severity_code : String? = nil
       ) : Types::CreateCaseResponse
+
         input = Types::CreateCaseRequest.new(communication_body: communication_body, subject: subject, attachment_set_id: attachment_set_id, category_code: category_code, cc_email_addresses: cc_email_addresses, issue_type: issue_type, language: language, service_code: service_code, severity_code: severity_code)
         create_case(input)
       end
+
       def create_case(input : Types::CreateCaseRequest) : Types::CreateCaseResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_CASE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -118,12 +128,15 @@ module AwsSdk
       # If you call the Amazon Web Services Support API from an account that doesn't have a Business,
       # Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message
       # appears. For information about changing your support plan, see Amazon Web Services Support .
+
       def describe_attachment(
         attachment_id : String
       ) : Types::DescribeAttachmentResponse
+
         input = Types::DescribeAttachmentRequest.new(attachment_id: attachment_id)
         describe_attachment(input)
       end
+
       def describe_attachment(input : Types::DescribeAttachmentRequest) : Types::DescribeAttachmentResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ATTACHMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -143,6 +156,7 @@ module AwsSdk
       # Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise
       # Support plan, the SubscriptionRequiredException error message appears. For information about
       # changing your support plan, see Amazon Web Services Support .
+
       def describe_cases(
         after_time : String? = nil,
         before_time : String? = nil,
@@ -154,9 +168,11 @@ module AwsSdk
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCasesResponse
+
         input = Types::DescribeCasesRequest.new(after_time: after_time, before_time: before_time, case_id_list: case_id_list, display_id: display_id, include_communications: include_communications, include_resolved_cases: include_resolved_cases, language: language, max_results: max_results, next_token: next_token)
         describe_cases(input)
       end
+
       def describe_cases(input : Types::DescribeCasesRequest) : Types::DescribeCasesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CASES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -176,6 +192,7 @@ module AwsSdk
       # have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException
       # error message appears. For information about changing your support plan, see Amazon Web Services
       # Support .
+
       def describe_communications(
         case_id : String,
         after_time : String? = nil,
@@ -183,9 +200,11 @@ module AwsSdk
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeCommunicationsResponse
+
         input = Types::DescribeCommunicationsRequest.new(case_id: case_id, after_time: after_time, before_time: before_time, max_results: max_results, next_token: next_token)
         describe_communications(input)
       end
+
       def describe_communications(input : Types::DescribeCommunicationsRequest) : Types::DescribeCommunicationsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_COMMUNICATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -201,15 +220,18 @@ module AwsSdk
       # account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
+
       def describe_create_case_options(
         category_code : String,
         issue_type : String,
         language : String,
         service_code : String
       ) : Types::DescribeCreateCaseOptionsResponse
+
         input = Types::DescribeCreateCaseOptionsRequest.new(category_code: category_code, issue_type: issue_type, language: language, service_code: service_code)
         describe_create_case_options(input)
       end
+
       def describe_create_case_options(input : Types::DescribeCreateCaseOptionsRequest) : Types::DescribeCreateCaseOptionsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CREATE_CASE_OPTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -230,13 +252,16 @@ module AwsSdk
       # that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
+
       def describe_services(
         language : String? = nil,
         service_code_list : Array(String)? = nil
       ) : Types::DescribeServicesResponse
+
         input = Types::DescribeServicesRequest.new(language: language, service_code_list: service_code_list)
         describe_services(input)
       end
+
       def describe_services(input : Types::DescribeServicesRequest) : Types::DescribeServicesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_SERVICES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -251,12 +276,15 @@ module AwsSdk
       # Support API. If you call the Amazon Web Services Support API from an account that doesn't have a
       # Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error
       # message appears. For information about changing your support plan, see Amazon Web Services Support .
+
       def describe_severity_levels(
         language : String? = nil
       ) : Types::DescribeSeverityLevelsResponse
+
         input = Types::DescribeSeverityLevelsRequest.new(language: language)
         describe_severity_levels(input)
       end
+
       def describe_severity_levels(input : Types::DescribeSeverityLevelsRequest) : Types::DescribeSeverityLevelsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_SEVERITY_LEVELS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -272,14 +300,17 @@ module AwsSdk
       # that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
+
       def describe_supported_languages(
         category_code : String,
         issue_type : String,
         service_code : String
       ) : Types::DescribeSupportedLanguagesResponse
+
         input = Types::DescribeSupportedLanguagesRequest.new(category_code: category_code, issue_type: issue_type, service_code: service_code)
         describe_supported_languages(input)
       end
+
       def describe_supported_languages(input : Types::DescribeSupportedLanguagesRequest) : Types::DescribeSupportedLanguagesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_SUPPORTED_LANGUAGES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -301,12 +332,15 @@ module AwsSdk
       # the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor operations.
       # For more information, see About the Amazon Web Services Support API in the Amazon Web Services
       # Support User Guide .
+
       def describe_trusted_advisor_check_refresh_statuses(
         check_ids : Array(String)
       ) : Types::DescribeTrustedAdvisorCheckRefreshStatusesResponse
+
         input = Types::DescribeTrustedAdvisorCheckRefreshStatusesRequest.new(check_ids: check_ids)
         describe_trusted_advisor_check_refresh_statuses(input)
       end
+
       def describe_trusted_advisor_check_refresh_statuses(input : Types::DescribeTrustedAdvisorCheckRefreshStatusesRequest) : Types::DescribeTrustedAdvisorCheckRefreshStatusesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TRUSTED_ADVISOR_CHECK_REFRESH_STATUSES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -330,13 +364,16 @@ module AwsSdk
       # Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor
       # operations. For more information, see About the Amazon Web Services Support API in the Amazon Web
       # Services Support User Guide .
+
       def describe_trusted_advisor_check_result(
         check_id : String,
         language : String? = nil
       ) : Types::DescribeTrustedAdvisorCheckResultResponse
+
         input = Types::DescribeTrustedAdvisorCheckResultRequest.new(check_id: check_id, language: language)
         describe_trusted_advisor_check_result(input)
       end
+
       def describe_trusted_advisor_check_result(input : Types::DescribeTrustedAdvisorCheckResultRequest) : Types::DescribeTrustedAdvisorCheckResultResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TRUSTED_ADVISOR_CHECK_RESULT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -356,12 +393,15 @@ module AwsSdk
       # Currently, the US West (Oregon) and Europe (Ireland) endpoints don't support the Trusted Advisor
       # operations. For more information, see About the Amazon Web Services Support API in the Amazon Web
       # Services Support User Guide .
+
       def describe_trusted_advisor_check_summaries(
         check_ids : Array(String)
       ) : Types::DescribeTrustedAdvisorCheckSummariesResponse
+
         input = Types::DescribeTrustedAdvisorCheckSummariesRequest.new(check_ids: check_ids)
         describe_trusted_advisor_check_summaries(input)
       end
+
       def describe_trusted_advisor_check_summaries(input : Types::DescribeTrustedAdvisorCheckSummariesRequest) : Types::DescribeTrustedAdvisorCheckSummariesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TRUSTED_ADVISOR_CHECK_SUMMARIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -383,12 +423,15 @@ module AwsSdk
       # the US East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints
       # don't support the Trusted Advisor operations. For more information, see About the Amazon Web
       # Services Support API in the Amazon Web Services Support User Guide .
+
       def describe_trusted_advisor_checks(
         language : String
       ) : Types::DescribeTrustedAdvisorChecksResponse
+
         input = Types::DescribeTrustedAdvisorChecksRequest.new(language: language)
         describe_trusted_advisor_checks(input)
       end
+
       def describe_trusted_advisor_checks(input : Types::DescribeTrustedAdvisorChecksRequest) : Types::DescribeTrustedAdvisorChecksResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TRUSTED_ADVISOR_CHECKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -409,12 +452,15 @@ module AwsSdk
       # East (N. Virginia) endpoint. Currently, the US West (Oregon) and Europe (Ireland) endpoints don't
       # support the Trusted Advisor operations. For more information, see About the Amazon Web Services
       # Support API in the Amazon Web Services Support User Guide .
+
       def refresh_trusted_advisor_check(
         check_id : String
       ) : Types::RefreshTrustedAdvisorCheckResponse
+
         input = Types::RefreshTrustedAdvisorCheckRequest.new(check_id: check_id)
         refresh_trusted_advisor_check(input)
       end
+
       def refresh_trusted_advisor_check(input : Types::RefreshTrustedAdvisorCheckRequest) : Types::RefreshTrustedAdvisorCheckResponse
         request = Protocol::JsonRpc.build_request(Model::REFRESH_TRUSTED_ADVISOR_CHECK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -429,12 +475,15 @@ module AwsSdk
       # doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
       # SubscriptionRequiredException error message appears. For information about changing your support
       # plan, see Amazon Web Services Support .
+
       def resolve_case(
         case_id : String? = nil
       ) : Types::ResolveCaseResponse
+
         input = Types::ResolveCaseRequest.new(case_id: case_id)
         resolve_case(input)
       end
+
       def resolve_case(input : Types::ResolveCaseRequest) : Types::ResolveCaseResponse
         request = Protocol::JsonRpc.build_request(Model::RESOLVE_CASE, input, endpoint)
         request = request.with_headers(endpoint_headers)

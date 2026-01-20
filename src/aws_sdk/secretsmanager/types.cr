@@ -7,20 +7,24 @@ module AwsSdk
 
       # The error Secrets Manager encountered while retrieving an individual secret as part of
       # BatchGetSecretValue .
+
       struct APIErrorType
         include JSON::Serializable
 
         # The error Secrets Manager encountered while retrieving an individual secret as part of
         # BatchGetSecretValue , for example ResourceNotFoundException , InvalidParameterException ,
         # InvalidRequestException , DecryptionFailure , or AccessDeniedException .
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # A message describing the error.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The ARN or name of the secret.
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String?
 
@@ -32,11 +36,13 @@ module AwsSdk
         end
       end
 
+
       struct BatchGetSecretValueRequest
         include JSON::Serializable
 
         # The filters to choose which secrets to retrieve. You must include Filters or SecretIdList , but not
         # both.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
@@ -44,16 +50,19 @@ module AwsSdk
         # response, Secrets Manager includes NextToken . To get the next results, call BatchGetSecretValue
         # again with the value from NextToken . To use this parameter, you must also use the Filters
         # parameter.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # A token that indicates where the output should continue from, if a previous call did not show all
         # results. To get the next results, call BatchGetSecretValue again with this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The ARN or names of the secrets to retrieve. You must include Filters or SecretIdList , but not
         # both.
+
         @[JSON::Field(key: "SecretIdList")]
         getter secret_id_list : Array(String)?
 
@@ -66,10 +75,12 @@ module AwsSdk
         end
       end
 
+
       struct BatchGetSecretValueResponse
         include JSON::Serializable
 
         # A list of errors Secrets Manager encountered while attempting to retrieve individual secrets.
+
         @[JSON::Field(key: "Errors")]
         getter errors : Array(Types::APIErrorType)?
 
@@ -77,10 +88,12 @@ module AwsSdk
         # current response. This can occur even when the response includes no values at all, such as when you
         # ask for a filtered view of a long list. To get the next results, call BatchGetSecretValue again with
         # this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of secret values.
+
         @[JSON::Field(key: "SecretValues")]
         getter secret_values : Array(Types::SecretValueEntry)?
 
@@ -92,11 +105,13 @@ module AwsSdk
         end
       end
 
+
       struct CancelRotateSecretRequest
         include JSON::Serializable
 
         # The ARN or name of the secret. For an ARN, we recommend that you specify a complete ARN rather than
         # a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -106,14 +121,17 @@ module AwsSdk
         end
       end
 
+
       struct CancelRotateSecretResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -121,6 +139,7 @@ module AwsSdk
         # not be complete, and should be evaluated for possible deletion. We recommend that you remove the
         # VersionStage value AWSPENDING from this version so that Secrets Manager can delete it. Failing to
         # clean up a cancelled rotation can block you from starting future rotations.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -132,6 +151,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateSecretRequest
         include JSON::Serializable
 
@@ -140,10 +160,12 @@ module AwsSdk
         # so, you risk confusion and unexpected results when searching for a secret by partial ARN. Secrets
         # Manager automatically adds a hyphen and six random characters after the secret name at the end of
         # the ARN.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A list of Regions and KMS keys to replicate secrets.
+
         @[JSON::Field(key: "AddReplicaRegions")]
         getter add_replica_regions : Array(Types::ReplicaRegionType)?
 
@@ -163,15 +185,18 @@ module AwsSdk
         # from those in the request, then the request fails because you cannot modify an existing version.
         # Instead, use PutSecretValue to create a new version. This value becomes the VersionId of the new
         # version.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The description of the secret.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Specifies whether to overwrite a secret with the same name in the destination Region. By default,
         # secrets aren't overwritten.
+
         @[JSON::Field(key: "ForceOverwriteReplicaSecret")]
         getter force_overwrite_replica_secret : Bool?
 
@@ -183,6 +208,7 @@ module AwsSdk
         # it encrypts the secret value. If the secret is in a different Amazon Web Services account from the
         # credentials calling the API, then you can't use aws/secretsmanager to encrypt the secret, and you
         # must create and use a customer managed KMS key.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -192,6 +218,7 @@ module AwsSdk
         # Secrets Manager console. Sensitive: This field contains sensitive information, so the service does
         # not include it in CloudTrail log entries. If you create your own log entries, you must also avoid
         # logging the information in this field.
+
         @[JSON::Field(key: "SecretBinary")]
         getter secret_binary : Bytes?
 
@@ -203,6 +230,7 @@ module AwsSdk
         # function can parse. Sensitive: This field contains sensitive information, so the service does not
         # include it in CloudTrail log entries. If you create your own log entries, you must also avoid
         # logging the information in this field.
+
         @[JSON::Field(key: "SecretString")]
         getter secret_string : String?
 
@@ -219,11 +247,13 @@ module AwsSdk
         # command-line tool or SDK requires quotation marks around the parameter, you should use single quotes
         # to avoid confusion with the double quotes required in the JSON text. For tag quotas and naming
         # restrictions, see Service quotas for Tagging in the Amazon Web Services General Reference guide .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The exact string that identifies the partner that holds the external secret. For more information,
         # see Using Secrets Manager managed external secrets .
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -242,6 +272,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateSecretResponse
         include JSON::Serializable
 
@@ -249,20 +280,24 @@ module AwsSdk
         # characters. This ensures that if you create a new secret with the same name as a deleted secret,
         # then users with access to the old secret don't get access to the new secret because the ARNs are
         # different.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the new secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A list of the replicas of this secret and their status: Failed , which indicates that the replica
         # was not created. InProgress , which indicates that Secrets Manager is in the process of creating the
         # replica. InSync , which indicates that the replica was created.
+
         @[JSON::Field(key: "ReplicationStatus")]
         getter replication_status : Array(Types::ReplicationStatusType)?
 
         # The unique identifier associated with the version of the new secret.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -276,8 +311,10 @@ module AwsSdk
       end
 
       # Secrets Manager can't decrypt the protected secret text using the provided KMS key.
+
       struct DecryptionFailure
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -288,12 +325,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteResourcePolicyRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to delete the attached resource-based policy for. For an ARN, we
         # recommend that you specify a complete ARN rather than a partial ARN. See Finding a secret from a
         # partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -303,14 +342,17 @@ module AwsSdk
         end
       end
 
+
       struct DeleteResourcePolicyResponse
         include JSON::Serializable
 
         # The ARN of the secret that the resource-based policy was deleted for.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret that the resource-based policy was deleted for.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -321,11 +363,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteSecretRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to delete. For an ARN, we recommend that you specify a complete ARN
         # rather than a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -340,12 +384,14 @@ module AwsSdk
         # that Secrets Manager would normally impose with the RecoveryWindowInDays parameter. If you delete a
         # secret with the ForceDeleteWithoutRecovery parameter, then you have no opportunity to recover the
         # secret. You lose the secret permanently.
+
         @[JSON::Field(key: "ForceDeleteWithoutRecovery")]
         getter force_delete_without_recovery : Bool?
 
         # The number of days from 7 to 30 that Secrets Manager waits before permanently deleting the secret.
         # You can't use both this parameter and ForceDeleteWithoutRecovery in the same call. If you don't use
         # either, then by default Secrets Manager uses a 30 day recovery window.
+
         @[JSON::Field(key: "RecoveryWindowInDays")]
         getter recovery_window_in_days : Int64?
 
@@ -357,20 +403,24 @@ module AwsSdk
         end
       end
 
+
       struct DeleteSecretResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The date and time after which this secret Secrets Manager can permanently delete this secret, and it
         # can no longer be restored. This value is the date and time of the delete request plus the number of
         # days in RecoveryWindowInDays .
+
         @[JSON::Field(key: "DeletionDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter deletion_date : Time?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -382,11 +432,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSecretRequest
         include JSON::Serializable
 
         # The ARN or name of the secret. For an ARN, we recommend that you specify a complete ARN rather than
         # a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -396,14 +448,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSecretResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The date the secret was created.
+
         @[JSON::Field(key: "CreatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time?
 
@@ -413,45 +468,54 @@ module AwsSdk
         # including all of its versions. If a secret is scheduled for deletion, then its details, including
         # the encrypted secret value, is not accessible. To cancel a scheduled deletion and restore access to
         # the secret, use RestoreSecret .
+
         @[JSON::Field(key: "DeletedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter deleted_date : Time?
 
         # The description of the secret.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The metadata needed to successfully rotate a managed external secret. A list of key value pairs in
         # JSON format specified by the partner. For more information about the required information, see
         # Managed external secrets partners .
+
         @[JSON::Field(key: "ExternalSecretRotationMetadata")]
         getter external_secret_rotation_metadata : Array(Types::ExternalSecretRotationMetadataItem)?
 
         # The Amazon Resource Name (ARN) of the role that allows Secrets Manager to rotate a secret held by a
         # third-party partner. For more information, see Security and permissions .
+
         @[JSON::Field(key: "ExternalSecretRotationRoleArn")]
         getter external_secret_rotation_role_arn : String?
 
         # The key ID or alias ARN of the KMS key that Secrets Manager uses to encrypt the secret value. If the
         # secret is encrypted with the Amazon Web Services managed key aws/secretsmanager , this field is
         # omitted. Secrets created using the console use an KMS key ID.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The date that the secret was last accessed in the Region. This field is omitted if the secret has
         # never been retrieved in the Region.
+
         @[JSON::Field(key: "LastAccessedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_accessed_date : Time?
 
         # The last date and time that this secret was modified in any way.
+
         @[JSON::Field(key: "LastChangedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_changed_date : Time?
 
         # The last date and time that Secrets Manager rotated the secret. If the secret isn't configured for
         # rotation or rotation has been disabled, Secrets Manager returns null.
+
         @[JSON::Field(key: "LastRotatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_rotated_date : Time?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -461,48 +525,57 @@ module AwsSdk
         # may be in the past. This date represents the latest date that rotation will occur, but it is not an
         # approximate rotation date. In some cases, for example if you turn off automatic rotation and then
         # turn it back on, the next rotation may occur much sooner than this date.
+
         @[JSON::Field(key: "NextRotationDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter next_rotation_date : Time?
 
         # The ID of the service that created this secret. For more information, see Secrets managed by other
         # Amazon Web Services services .
+
         @[JSON::Field(key: "OwningService")]
         getter owning_service : String?
 
         # The Region the secret is in. If a secret is replicated to other Regions, the replicas are listed in
         # ReplicationStatus .
+
         @[JSON::Field(key: "PrimaryRegion")]
         getter primary_region : String?
 
         # A list of the replicas of this secret and their status: Failed , which indicates that the replica
         # was not created. InProgress , which indicates that Secrets Manager is in the process of creating the
         # replica. InSync , which indicates that the replica was created.
+
         @[JSON::Field(key: "ReplicationStatus")]
         getter replication_status : Array(Types::ReplicationStatusType)?
 
         # Specifies whether automatic rotation is turned on for this secret. If the secret has never been
         # configured for rotation, Secrets Manager returns null. To turn on rotation, use RotateSecret . To
         # turn off rotation, use CancelRotateSecret .
+
         @[JSON::Field(key: "RotationEnabled")]
         getter rotation_enabled : Bool?
 
         # The ARN of the Lambda function that Secrets Manager invokes to rotate the secret.
+
         @[JSON::Field(key: "RotationLambdaARN")]
         getter rotation_lambda_arn : String?
 
         # The rotation schedule and Lambda function for this secret. If the secret previously had rotation
         # turned on, but it is now turned off, this field shows the previous rotation schedule and rotation
         # function. If the secret never had rotation turned on, this field is omitted.
+
         @[JSON::Field(key: "RotationRules")]
         getter rotation_rules : Types::RotationRulesType?
 
         # The list of tags attached to the secret. To add tags to a secret, use TagResource . To remove tags,
         # use UntagResource .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The exact string that identifies the partner that holds the external secret. For more information,
         # see Using Secrets Manager managed external secrets .
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -516,6 +589,7 @@ module AwsSdk
         # GetSecretValue . AWSPREVIOUS , which indicates the previous current version of the secret. You can
         # use this as the last known good version. For more information about rotation and staging labels, see
         # How rotation works .
+
         @[JSON::Field(key: "VersionIdsToStages")]
         getter version_ids_to_stages : Hash(String, Array(String))?
 
@@ -548,8 +622,10 @@ module AwsSdk
       # Secrets Manager can't encrypt the protected secret text using the provided KMS key. Check that the
       # KMS key is available, enabled, and not in an invalid state. For more information, see Key state:
       # Effect on your KMS key .
+
       struct EncryptionFailure
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -562,14 +638,17 @@ module AwsSdk
 
       # The metadata needed to successfully rotate a managed external secret. A list of key value pairs in
       # JSON format specified by the partner. For more information, see Managed external secret partners .
+
       struct ExternalSecretRotationMetadataItem
         include JSON::Serializable
 
         # The key that identifies the item.
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The value of the specified item.
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -582,6 +661,7 @@ module AwsSdk
 
       # Allows you to add filters when you use the search function in Secrets Manager. For more information,
       # see Find secrets in Secrets Manager .
+
       struct Filter
         include JSON::Serializable
 
@@ -590,11 +670,13 @@ module AwsSdk
         # case-sensitive. primary-region : Prefix match, case-sensitive. owning-service : Prefix match,
         # case-sensitive. all : Breaks the filter value string into words and then searches all attributes for
         # matches. Not case-sensitive.
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The keyword to filter for. You can prefix your search value with an exclamation mark ( ! ) in order
         # to perform negation filters.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -605,47 +687,56 @@ module AwsSdk
         end
       end
 
+
       struct GetRandomPasswordRequest
         include JSON::Serializable
 
         # A string of the characters that you don't want in the password.
+
         @[JSON::Field(key: "ExcludeCharacters")]
         getter exclude_characters : String?
 
         # Specifies whether to exclude lowercase letters from the password. If you don't include this switch,
         # the password can contain lowercase letters.
+
         @[JSON::Field(key: "ExcludeLowercase")]
         getter exclude_lowercase : Bool?
 
         # Specifies whether to exclude numbers from the password. If you don't include this switch, the
         # password can contain numbers.
+
         @[JSON::Field(key: "ExcludeNumbers")]
         getter exclude_numbers : Bool?
 
         # Specifies whether to exclude the following punctuation characters from the password: ! " # $ % &amp;
         # ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ . If you don't include this switch, the
         # password can contain punctuation.
+
         @[JSON::Field(key: "ExcludePunctuation")]
         getter exclude_punctuation : Bool?
 
         # Specifies whether to exclude uppercase letters from the password. If you don't include this switch,
         # the password can contain uppercase letters.
+
         @[JSON::Field(key: "ExcludeUppercase")]
         getter exclude_uppercase : Bool?
 
         # Specifies whether to include the space character. If you include this switch, the password can
         # contain space characters.
+
         @[JSON::Field(key: "IncludeSpace")]
         getter include_space : Bool?
 
         # The length of the password. If you don't include this parameter, the default length is 32
         # characters.
+
         @[JSON::Field(key: "PasswordLength")]
         getter password_length : Int64?
 
         # Specifies whether to include at least one upper and lowercase letter, one number, and one
         # punctuation. If you don't include this switch, the password contains at least one of every character
         # type.
+
         @[JSON::Field(key: "RequireEachIncludedType")]
         getter require_each_included_type : Bool?
 
@@ -662,10 +753,12 @@ module AwsSdk
         end
       end
 
+
       struct GetRandomPasswordResponse
         include JSON::Serializable
 
         # A string with the password.
+
         @[JSON::Field(key: "RandomPassword")]
         getter random_password : String?
 
@@ -675,12 +768,14 @@ module AwsSdk
         end
       end
 
+
       struct GetResourcePolicyRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to retrieve the attached resource-based policy for. For an ARN, we
         # recommend that you specify a complete ARN rather than a partial ARN. See Finding a secret from a
         # partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -690,19 +785,23 @@ module AwsSdk
         end
       end
 
+
       struct GetResourcePolicyResponse
         include JSON::Serializable
 
         # The ARN of the secret that the resource-based policy was retrieved for.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret that the resource-based policy was retrieved for.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A JSON-formatted string that contains the permissions policy attached to the secret. For more
         # information about permissions policies, see Authentication and access control for Secrets Manager .
+
         @[JSON::Field(key: "ResourcePolicy")]
         getter resource_policy : String?
 
@@ -714,12 +813,14 @@ module AwsSdk
         end
       end
 
+
       struct GetSecretValueRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to retrieve. To retrieve a secret from another account, you must use
         # an ARN. For an ARN, we recommend that you specify a complete ARN rather than a partial ARN. See
         # Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -727,6 +828,7 @@ module AwsSdk
         # and VersionStage , the two parameters must refer to the same secret version. If you don't specify
         # either a VersionStage or VersionId , then Secrets Manager returns the AWSCURRENT version. This value
         # is typically a UUID-type value with 32 hexadecimal digits.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -734,6 +836,7 @@ module AwsSdk
         # keep track of different versions during the rotation process. If you include both this parameter and
         # VersionId , the two parameters must refer to the same secret version. If you don't specify either a
         # VersionStage or VersionId , Secrets Manager returns the AWSCURRENT version.
+
         @[JSON::Field(key: "VersionStage")]
         getter version_stage : String?
 
@@ -745,19 +848,23 @@ module AwsSdk
         end
       end
 
+
       struct GetSecretValueResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The date and time that this version of the secret was created. If you don't specify which version in
         # VersionId or VersionStage , then Secrets Manager uses the AWSCURRENT version.
+
         @[JSON::Field(key: "CreatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time?
 
         # The friendly name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -769,6 +876,7 @@ module AwsSdk
         # This field contains sensitive information, so the service does not include it in CloudTrail log
         # entries. If you create your own log entries, you must also avoid logging the information in this
         # field.
+
         @[JSON::Field(key: "SecretBinary")]
         getter secret_binary : Bytes?
 
@@ -777,14 +885,17 @@ module AwsSdk
         # stores the information as a JSON structure of key/value pairs. Sensitive: This field contains
         # sensitive information, so the service does not include it in CloudTrail log entries. If you create
         # your own log entries, you must also avoid logging the information in this field.
+
         @[JSON::Field(key: "SecretString")]
         getter secret_string : String?
 
         # The unique identifier of this version of the secret.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
         # A list of all of the staging labels currently attached to this version of the secret.
+
         @[JSON::Field(key: "VersionStages")]
         getter version_stages : Array(String)?
 
@@ -801,8 +912,10 @@ module AwsSdk
       end
 
       # An error occurred on the server side.
+
       struct InternalServiceError
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -814,8 +927,10 @@ module AwsSdk
       end
 
       # The NextToken value is invalid.
+
       struct InvalidNextTokenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -827,8 +942,10 @@ module AwsSdk
       end
 
       # The parameter name or value is invalid.
+
       struct InvalidParameterException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -844,8 +961,10 @@ module AwsSdk
       # function ARN configured and you didn't include such an ARN as a parameter in this call. The secret
       # is managed by another service, and you must use that service to update it. For more information, see
       # Secrets managed by other Amazon Web Services services .
+
       struct InvalidRequestException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -857,8 +976,10 @@ module AwsSdk
       end
 
       # The request failed because it would exceed one of the Secrets Manager quotas.
+
       struct LimitExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -869,28 +990,33 @@ module AwsSdk
         end
       end
 
+
       struct ListSecretVersionIdsRequest
         include JSON::Serializable
 
         # The ARN or name of the secret whose versions you want to list. For an ARN, we recommend that you
         # specify a complete ARN rather than a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
         # Specifies whether to include versions of secrets that don't have any staging labels attached to
         # them. Versions without staging labels are considered deprecated and are subject to deletion by
         # Secrets Manager. By default, versions without staging labels aren't included.
+
         @[JSON::Field(key: "IncludeDeprecated")]
         getter include_deprecated : Bool?
 
         # The number of results to include in the response. If there are more results available, in the
         # response, Secrets Manager includes NextToken . To get the next results, call ListSecretVersionIds
         # again with the value from NextToken .
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # A token that indicates where the output should continue from, if a previous call did not show all
         # results. To get the next results, call ListSecretVersionIds again with this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -903,14 +1029,17 @@ module AwsSdk
         end
       end
 
+
       struct ListSecretVersionIdsResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -918,10 +1047,12 @@ module AwsSdk
         # current response. This can occur even when the response includes no values at all, such as when you
         # ask for a filtered view of a long list. To get the next results, call ListSecretVersionIds again
         # with this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of the versions of the secret.
+
         @[JSON::Field(key: "Versions")]
         getter versions : Array(Types::SecretVersionsListEntry)?
 
@@ -934,34 +1065,41 @@ module AwsSdk
         end
       end
 
+
       struct ListSecretsRequest
         include JSON::Serializable
 
         # The filters to apply to the list of secrets.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # Specifies whether to include secrets scheduled for deletion. By default, secrets scheduled for
         # deletion aren't included.
+
         @[JSON::Field(key: "IncludePlannedDeletion")]
         getter include_planned_deletion : Bool?
 
         # The number of results to include in the response. If there are more results available, in the
         # response, Secrets Manager includes NextToken . To get the next results, call ListSecrets again with
         # the value from NextToken .
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # A token that indicates where the output should continue from, if a previous call did not show all
         # results. To get the next results, call ListSecrets again with this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # If not specified, secrets are listed by CreatedDate .
+
         @[JSON::Field(key: "SortBy")]
         getter sort_by : String?
 
         # Secrets are listed by CreatedDate .
+
         @[JSON::Field(key: "SortOrder")]
         getter sort_order : String?
 
@@ -976,6 +1114,7 @@ module AwsSdk
         end
       end
 
+
       struct ListSecretsResponse
         include JSON::Serializable
 
@@ -983,10 +1122,12 @@ module AwsSdk
         # current response. This can occur even when the response includes no values at all, such as when you
         # ask for a filtered view of a long list. To get the next results, call ListSecrets again with this
         # value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of the secrets in the account.
+
         @[JSON::Field(key: "SecretList")]
         getter secret_list : Array(Types::SecretListEntry)?
 
@@ -998,8 +1139,10 @@ module AwsSdk
       end
 
       # The resource policy has syntax errors.
+
       struct MalformedPolicyDocumentException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1011,8 +1154,10 @@ module AwsSdk
       end
 
       # The request failed because you did not complete all the prerequisite steps.
+
       struct PreconditionNotMetException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1025,8 +1170,10 @@ module AwsSdk
 
       # The BlockPublicPolicy parameter is set to true, and the resource policy did not prevent broad access
       # to the secret.
+
       struct PublicPolicyException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1037,16 +1184,19 @@ module AwsSdk
         end
       end
 
+
       struct PutResourcePolicyRequest
         include JSON::Serializable
 
         # A JSON-formatted string for an Amazon Web Services resource-based policy. For example policies, see
         # Permissions policy examples .
+
         @[JSON::Field(key: "ResourcePolicy")]
         getter resource_policy : String
 
         # The ARN or name of the secret to attach the resource-based policy. For an ARN, we recommend that you
         # specify a complete ARN rather than a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1059,6 +1209,7 @@ module AwsSdk
         # Web Services principals (for example, IAM roles) Resource-based policies attached to associated
         # Amazon Web Services resources (for example, Key Management Service (KMS) keys) To review permissions
         # to your secrets, see Determine who has permissions to your secrets .
+
         @[JSON::Field(key: "BlockPublicPolicy")]
         getter block_public_policy : Bool?
 
@@ -1070,14 +1221,17 @@ module AwsSdk
         end
       end
 
+
       struct PutResourcePolicyResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1088,12 +1242,14 @@ module AwsSdk
         end
       end
 
+
       struct PutSecretValueRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to add a new version to. For an ARN, we recommend that you specify a
         # complete ARN rather than a partial ARN. See Finding a secret from a partial ARN . If the secret
         # doesn't already exist, use CreateSecret instead.
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1112,6 +1268,7 @@ module AwsSdk
         # are different from those in the request, then the request fails because you can't modify a secret
         # version. You can only create new versions to store new secret values. This value becomes the
         # VersionId of the new version.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -1122,6 +1279,7 @@ module AwsSdk
         # more information, see How rotation works and Rotation by Lambda functions . Sensitive: This field
         # contains sensitive information, so the service does not include it in CloudTrail log entries. If you
         # create your own log entries, you must also avoid logging the information in this field.
+
         @[JSON::Field(key: "RotationToken")]
         getter rotation_token : String?
 
@@ -1131,6 +1289,7 @@ module AwsSdk
         # You can't access this value from the Secrets Manager console. Sensitive: This field contains
         # sensitive information, so the service does not include it in CloudTrail log entries. If you create
         # your own log entries, you must also avoid logging the information in this field.
+
         @[JSON::Field(key: "SecretBinary")]
         getter secret_binary : Bytes?
 
@@ -1139,6 +1298,7 @@ module AwsSdk
         # shown in the example. Sensitive: This field contains sensitive information, so the service does not
         # include it in CloudTrail log entries. If you create your own log entries, you must also avoid
         # logging the information in this field.
+
         @[JSON::Field(key: "SecretString")]
         getter secret_string : String?
 
@@ -1149,6 +1309,7 @@ module AwsSdk
         # is already attached to another version, then Secrets Manager also moves the staging label
         # AWSPREVIOUS to the version that AWSCURRENT was removed from. If you don't include VersionStages ,
         # then Secrets Manager automatically moves the staging label AWSCURRENT to this version.
+
         @[JSON::Field(key: "VersionStages")]
         getter version_stages : Array(String)?
 
@@ -1163,23 +1324,28 @@ module AwsSdk
         end
       end
 
+
       struct PutSecretValueResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The unique identifier of the version of the secret.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
         # The list of staging labels that are currently attached to this version of the secret. Secrets
         # Manager uses staging labels to track a version as it progresses through the secret rotation process.
+
         @[JSON::Field(key: "VersionStages")]
         getter version_stages : Array(String)?
 
@@ -1192,14 +1358,17 @@ module AwsSdk
         end
       end
 
+
       struct RemoveRegionsFromReplicationRequest
         include JSON::Serializable
 
         # The Regions of the replicas to remove.
+
         @[JSON::Field(key: "RemoveReplicaRegions")]
         getter remove_replica_regions : Array(String)
 
         # The ARN or name of the secret.
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1210,14 +1379,17 @@ module AwsSdk
         end
       end
 
+
       struct RemoveRegionsFromReplicationResponse
         include JSON::Serializable
 
         # The ARN of the primary secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The status of replicas for this secret after you remove Regions.
+
         @[JSON::Field(key: "ReplicationStatus")]
         getter replication_status : Array(Types::ReplicationStatusType)?
 
@@ -1229,15 +1401,18 @@ module AwsSdk
       end
 
       # A custom type that specifies a Region and the KmsKeyId for a replica secret.
+
       struct ReplicaRegionType
         include JSON::Serializable
 
         # The ARN, key ID, or alias of the KMS key to encrypt the secret. If you don't include this field,
         # Secrets Manager uses aws/secretsmanager .
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # A Region code. For a list of Region codes, see Name and code of Regions .
+
         @[JSON::Field(key: "Region")]
         getter region : String?
 
@@ -1248,19 +1423,23 @@ module AwsSdk
         end
       end
 
+
       struct ReplicateSecretToRegionsRequest
         include JSON::Serializable
 
         # A list of Regions in which to replicate the secret.
+
         @[JSON::Field(key: "AddReplicaRegions")]
         getter add_replica_regions : Array(Types::ReplicaRegionType)
 
         # The ARN or name of the secret to replicate.
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
         # Specifies whether to overwrite a secret with the same name in the destination Region. By default,
         # secrets aren't overwritten.
+
         @[JSON::Field(key: "ForceOverwriteReplicaSecret")]
         getter force_overwrite_replica_secret : Bool?
 
@@ -1272,14 +1451,17 @@ module AwsSdk
         end
       end
 
+
       struct ReplicateSecretToRegionsResponse
         include JSON::Serializable
 
         # The ARN of the primary secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The status of replication.
+
         @[JSON::Field(key: "ReplicationStatus")]
         getter replication_status : Array(Types::ReplicationStatusType)?
 
@@ -1292,27 +1474,33 @@ module AwsSdk
 
       # A replication object consisting of a RegionReplicationStatus object and includes a Region, KMSKeyId,
       # status, and status message.
+
       struct ReplicationStatusType
         include JSON::Serializable
 
         # Can be an ARN , Key ID , or Alias .
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The date that the secret was last accessed in the Region. This field is omitted if the secret has
         # never been retrieved in the Region.
+
         @[JSON::Field(key: "LastAccessedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_accessed_date : Time?
 
         # The Region where replication occurs.
+
         @[JSON::Field(key: "Region")]
         getter region : String?
 
         # The status can be InProgress , Failed , or InSync .
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Status message such as " Secret with this name already exists in this region ".
+
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
@@ -1327,8 +1515,10 @@ module AwsSdk
       end
 
       # A resource with the ID you requested already exists.
+
       struct ResourceExistsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1340,8 +1530,10 @@ module AwsSdk
       end
 
       # Secrets Manager can't find the resource that you asked for.
+
       struct ResourceNotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1352,11 +1544,13 @@ module AwsSdk
         end
       end
 
+
       struct RestoreSecretRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to restore. For an ARN, we recommend that you specify a complete ARN
         # rather than a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1366,14 +1560,17 @@ module AwsSdk
         end
       end
 
+
       struct RestoreSecretResponse
         include JSON::Serializable
 
         # The ARN of the secret that was restored.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret that was restored.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1384,11 +1581,13 @@ module AwsSdk
         end
       end
 
+
       struct RotateSecretRequest
         include JSON::Serializable
 
         # The ARN or name of the secret to rotate. For an ARN, we recommend that you specify a complete ARN
         # rather than a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1402,17 +1601,20 @@ module AwsSdk
         # Manager uses this value to prevent the accidental creation of duplicate versions if there are
         # failures and retries during a rotation. We recommend that you generate a UUID-type value to ensure
         # uniqueness of your versions within the specified secret.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The metadata needed to successfully rotate a managed external secret. A list of key value pairs in
         # JSON format specified by the partner. For more information about the required information, see Using
         # Secrets Manager managed external secrets
+
         @[JSON::Field(key: "ExternalSecretRotationMetadata")]
         getter external_secret_rotation_metadata : Array(Types::ExternalSecretRotationMetadataItem)?
 
         # The Amazon Resource Name (ARN) of the role that allows Secrets Manager to rotate a secret held by a
         # third-party partner. For more information, see Security and permissions .
+
         @[JSON::Field(key: "ExternalSecretRotationRoleArn")]
         getter external_secret_rotation_role_arn : String?
 
@@ -1426,12 +1628,14 @@ module AwsSdk
         # with rate() , the previously scheduled rotation might still occur. To prevent unintended rotations,
         # use a ScheduleExpression with cron() for granular control over rotation windows. Rotation is an
         # asynchronous process. For more information, see How rotation works .
+
         @[JSON::Field(key: "RotateImmediately")]
         getter rotate_immediately : Bool?
 
         # For secrets that use a Lambda rotation function to rotate, the ARN of the Lambda rotation function.
         # For secrets that use managed rotation , omit this field. For more information, see Managed rotation
         # in the Secrets Manager User Guide .
+
         @[JSON::Field(key: "RotationLambdaARN")]
         getter rotation_lambda_arn : String?
 
@@ -1440,6 +1644,7 @@ module AwsSdk
         # ScheduleExpression with rate() , the previously scheduled rotation might still occur. To prevent
         # unintended rotations, use a ScheduleExpression with cron() for granular control over rotation
         # windows.
+
         @[JSON::Field(key: "RotationRules")]
         getter rotation_rules : Types::RotationRulesType?
 
@@ -1455,18 +1660,22 @@ module AwsSdk
         end
       end
 
+
       struct RotateSecretResponse
         include JSON::Serializable
 
         # The ARN of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The ID of the new version of the secret.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -1479,6 +1688,7 @@ module AwsSdk
       end
 
       # A structure that defines the rotation configuration for the secret.
+
       struct RotationRulesType
         include JSON::Serializable
 
@@ -1490,6 +1700,7 @@ module AwsSdk
         # schedule after every successful rotation. In RotateSecret , you can set the rotation schedule in
         # RotationRules with AutomaticallyAfterDays or ScheduleExpression , but not both. To set a rotation
         # schedule in hours, use ScheduleExpression .
+
         @[JSON::Field(key: "AutomaticallyAfterDays")]
         getter automatically_after_days : Int64?
 
@@ -1500,6 +1711,7 @@ module AwsSdk
         # one hour. For a ScheduleExpression in days, the window automatically closes at the end of the UTC
         # day. For more information, including examples, see Schedule expressions in Secrets Manager rotation
         # in the Secrets Manager Users Guide .
+
         @[JSON::Field(key: "Duration")]
         getter duration : String?
 
@@ -1518,6 +1730,7 @@ module AwsSdk
         # schedule in days, the default rotation window closes at the end of the day. You can set the Duration
         # to change the rotation window. The rotation window must not extend into the next UTC day or into the
         # next rotation window.
+
         @[JSON::Field(key: "ScheduleExpression")]
         getter schedule_expression : String?
 
@@ -1531,84 +1744,102 @@ module AwsSdk
 
       # A structure that contains the details about a secret. It does not include the encrypted SecretString
       # and SecretBinary values. To get those values, use GetSecretValue .
+
       struct SecretListEntry
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The date and time when a secret was created.
+
         @[JSON::Field(key: "CreatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time?
 
         # The date and time the deletion of the secret occurred. Not present on active secrets. The secret can
         # be recovered until the number of days in the recovery window has passed, as specified in the
         # RecoveryWindowInDays parameter of the DeleteSecret operation.
+
         @[JSON::Field(key: "DeletedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter deleted_date : Time?
 
         # The user-provided description of the secret.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The metadata needed to successfully rotate a managed external secret. A list of key value pairs in
         # JSON format specified by the partner. For more information about the required information, see
         # Managed external secrets partners .
+
         @[JSON::Field(key: "ExternalSecretRotationMetadata")]
         getter external_secret_rotation_metadata : Array(Types::ExternalSecretRotationMetadataItem)?
 
         # The role that Secrets Manager assumes to call APIs required to perform the rotation. For more
         # information about the required information, see Managed external secrets partners .
+
         @[JSON::Field(key: "ExternalSecretRotationRoleArn")]
         getter external_secret_rotation_role_arn : String?
 
         # The ARN of the KMS key that Secrets Manager uses to encrypt the secret value. If the secret is
         # encrypted with the Amazon Web Services managed key aws/secretsmanager , this field is omitted.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The date that the secret was last accessed in the Region. This field is omitted if the secret has
         # never been retrieved in the Region.
+
         @[JSON::Field(key: "LastAccessedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_accessed_date : Time?
 
         # The last date and time that this secret was modified in any way.
+
         @[JSON::Field(key: "LastChangedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_changed_date : Time?
 
         # The most recent date and time that the Secrets Manager rotation process was successfully completed.
         # This value is null if the secret hasn't ever rotated.
+
         @[JSON::Field(key: "LastRotatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_rotated_date : Time?
 
         # The friendly name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The next rotation is scheduled to occur on or before this date. If the secret isn't configured for
         # rotation or rotation has been disabled, Secrets Manager returns null.
+
         @[JSON::Field(key: "NextRotationDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter next_rotation_date : Time?
 
         # Returns the name of the service that created the secret.
+
         @[JSON::Field(key: "OwningService")]
         getter owning_service : String?
 
         # The Region where Secrets Manager originated the secret.
+
         @[JSON::Field(key: "PrimaryRegion")]
         getter primary_region : String?
 
         # Indicates whether automatic, scheduled rotation is enabled for this secret.
+
         @[JSON::Field(key: "RotationEnabled")]
         getter rotation_enabled : Bool?
 
         # The ARN of an Amazon Web Services Lambda function invoked by Secrets Manager to rotate and expire
         # the secret either automatically per the schedule or manually by a call to RotateSecret .
+
         @[JSON::Field(key: "RotationLambdaARN")]
         getter rotation_lambda_arn : String?
 
         # A structure that defines the rotation configuration for the secret.
+
         @[JSON::Field(key: "RotationRules")]
         getter rotation_rules : Types::RotationRulesType?
 
@@ -1616,16 +1847,19 @@ module AwsSdk
         # attached to each one. Staging labels are used to keep track of the different versions during the
         # rotation process. A version that does not have any SecretVersionStage is considered deprecated and
         # subject to deletion. Such versions are not included in this list.
+
         @[JSON::Field(key: "SecretVersionsToStages")]
         getter secret_versions_to_stages : Hash(String, Array(String))?
 
         # The list of user-defined tags associated with the secret. To add tags to a secret, use TagResource .
         # To remove tags, use UntagResource .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The exact string that identifies the third-party partner that holds the external secret. For more
         # information, see Managed external secret partners .
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -1655,36 +1889,44 @@ module AwsSdk
       end
 
       # A structure that contains the secret value and other details for a secret.
+
       struct SecretValueEntry
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the secret.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The date the secret was created.
+
         @[JSON::Field(key: "CreatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time?
 
         # The friendly name of the secret.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The decrypted secret value, if the secret value was originally provided as binary data in the form
         # of a byte array. The parameter represents the binary data as a base64-encoded string.
+
         @[JSON::Field(key: "SecretBinary")]
         getter secret_binary : Bytes?
 
         # The decrypted secret value, if the secret value was originally provided as a string or through the
         # Secrets Manager console.
+
         @[JSON::Field(key: "SecretString")]
         getter secret_string : String?
 
         # The unique version identifier of this version of the secret.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
         # A list of all of the staging labels currently attached to this version of the secret.
+
         @[JSON::Field(key: "VersionStages")]
         getter version_stages : Array(String)?
 
@@ -1701,27 +1943,33 @@ module AwsSdk
       end
 
       # A structure that contains information about one version of a secret.
+
       struct SecretVersionsListEntry
         include JSON::Serializable
 
         # The date and time this version of the secret was created.
+
         @[JSON::Field(key: "CreatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time?
 
         # The KMS keys used to encrypt the secret version.
+
         @[JSON::Field(key: "KmsKeyIds")]
         getter kms_key_ids : Array(String)?
 
         # The date that this version of the secret was last accessed. Note that the resolution of this field
         # is at the date level and does not include the time.
+
         @[JSON::Field(key: "LastAccessedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_accessed_date : Time?
 
         # The unique version identifier of this version of the secret.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
         # An array of staging labels that are currently associated with this version of the secret.
+
         @[JSON::Field(key: "VersionStages")]
         getter version_stages : Array(String)?
 
@@ -1735,11 +1983,13 @@ module AwsSdk
         end
       end
 
+
       struct StopReplicationToReplicaRequest
         include JSON::Serializable
 
         # The name of the secret or the replica ARN. The replica ARN is the same as the original primary
         # secret ARN expect the Region is changed to the replica Region.
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1749,11 +1999,13 @@ module AwsSdk
         end
       end
 
+
       struct StopReplicationToReplicaResponse
         include JSON::Serializable
 
         # The ARN of the promoted secret. The ARN is the same as the original primary secret except the Region
         # is changed.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
@@ -1764,14 +2016,17 @@ module AwsSdk
       end
 
       # A structure that contains information about a tag.
+
       struct Tag
         include JSON::Serializable
 
         # The key identifier, or name, of the tag.
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The string value associated with the key of the tag.
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -1782,12 +2037,14 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The identifier for the secret to attach tags to. You can specify either the Amazon Resource Name
         # (ARN) or the friendly name of the secret. For an ARN, we recommend that you specify a complete ARN
         # rather than a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1795,6 +2052,7 @@ module AwsSdk
         # of a Key and a Value . For storing multiple values, we recommend that you use a JSON text string
         # argument and specify key/value pairs. For more information, see Specifying parameter values for the
         # Amazon Web Services CLI in the Amazon Web Services CLI User Guide.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -1805,11 +2063,13 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The ARN or name of the secret. For an ARN, we recommend that you specify a complete ARN rather than
         # a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1818,6 +2078,7 @@ module AwsSdk
         # multiple values, we recommend that you use a JSON text string argument and specify key/value pairs.
         # For more information, see Specifying parameter values for the Amazon Web Services CLI in the Amazon
         # Web Services CLI User Guide.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -1828,11 +2089,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSecretRequest
         include JSON::Serializable
 
         # The ARN or name of the secret. For an ARN, we recommend that you specify a complete ARN rather than
         # a partial ARN. See Finding a secret from a partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
@@ -1845,10 +2108,12 @@ module AwsSdk
         # value helps ensure idempotency. Secrets Manager uses this value to prevent the accidental creation
         # of duplicate versions if there are failures and retries during a rotation. We recommend that you
         # generate a UUID-type value to ensure uniqueness of your versions within the specified secret.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The description of the secret.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -1867,6 +2132,7 @@ module AwsSdk
         # different account, then you must use a customer managed key and provide the ARN of that KMS key in
         # this field. The user making the call must have permissions to both the secret and the KMS key in
         # their respective accounts.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -1876,6 +2142,7 @@ module AwsSdk
         # Secrets Manager console. Sensitive: This field contains sensitive information, so the service does
         # not include it in CloudTrail log entries. If you create your own log entries, you must also avoid
         # logging the information in this field.
+
         @[JSON::Field(key: "SecretBinary")]
         getter secret_binary : Bytes?
 
@@ -1884,11 +2151,13 @@ module AwsSdk
         # value, but not both. Sensitive: This field contains sensitive information, so the service does not
         # include it in CloudTrail log entries. If you create your own log entries, you must also avoid
         # logging the information in this field.
+
         @[JSON::Field(key: "SecretString")]
         getter secret_string : String?
 
         # The exact string that identifies the third-party partner that holds the external secret. For more
         # information, see Managed external secret partners .
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -1904,19 +2173,23 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSecretResponse
         include JSON::Serializable
 
         # The ARN of the secret that was updated.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret that was updated.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # If Secrets Manager created a new version of the secret during this operation, then VersionId
         # contains the unique identifier of the new version.
+
         @[JSON::Field(key: "VersionId")]
         getter version_id : String?
 
@@ -1928,22 +2201,26 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSecretVersionStageRequest
         include JSON::Serializable
 
         # The ARN or the name of the secret with the version and staging labelsto modify. For an ARN, we
         # recommend that you specify a complete ARN rather than a partial ARN. See Finding a secret from a
         # partial ARN .
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String
 
         # The staging label to add to this version.
+
         @[JSON::Field(key: "VersionStage")]
         getter version_stage : String
 
         # The ID of the version to add the staging label to. To remove a label from a version, then do not
         # specify this parameter. If the staging label is already attached to a different version of the
         # secret, then you must also specify the RemoveFromVersionId parameter.
+
         @[JSON::Field(key: "MoveToVersionId")]
         getter move_to_version_id : String?
 
@@ -1952,6 +2229,7 @@ module AwsSdk
         # this parameter and specify the version that the label is to be removed from. If the label is
         # attached and you either do not specify this parameter, or the version ID does not match, then the
         # operation fails.
+
         @[JSON::Field(key: "RemoveFromVersionId")]
         getter remove_from_version_id : String?
 
@@ -1964,14 +2242,17 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSecretVersionStageResponse
         include JSON::Serializable
 
         # The ARN of the secret that was updated.
+
         @[JSON::Field(key: "ARN")]
         getter arn : String?
 
         # The name of the secret that was updated.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1982,16 +2263,19 @@ module AwsSdk
         end
       end
 
+
       struct ValidateResourcePolicyRequest
         include JSON::Serializable
 
         # A JSON-formatted string that contains an Amazon Web Services resource-based policy. The policy in
         # the string identifies who can access or manage this secret and its versions. For example policies,
         # see Permissions policy examples .
+
         @[JSON::Field(key: "ResourcePolicy")]
         getter resource_policy : String
 
         # The ARN or name of the secret with the resource-based policy you want to validate.
+
         @[JSON::Field(key: "SecretId")]
         getter secret_id : String?
 
@@ -2002,14 +2286,17 @@ module AwsSdk
         end
       end
 
+
       struct ValidateResourcePolicyResponse
         include JSON::Serializable
 
         # True if your policy passes validation, otherwise false.
+
         @[JSON::Field(key: "PolicyValidationPassed")]
         getter policy_validation_passed : Bool?
 
         # Validation errors if your policy didn't pass validation.
+
         @[JSON::Field(key: "ValidationErrors")]
         getter validation_errors : Array(Types::ValidationErrorsEntry)?
 
@@ -2021,14 +2308,17 @@ module AwsSdk
       end
 
       # Displays errors that occurred during validation of the resource policy.
+
       struct ValidationErrorsEntry
         include JSON::Serializable
 
         # Checks the name of the policy.
+
         @[JSON::Field(key: "CheckName")]
         getter check_name : String?
 
         # Displays error messages if validation encounters problems during validation of the resource policy.
+
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 

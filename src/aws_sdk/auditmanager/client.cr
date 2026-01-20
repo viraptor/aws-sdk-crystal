@@ -20,6 +20,7 @@ module AwsSdk
       end
 
       # Associates an evidence folder to an assessment report in an Audit Manager assessment.
+
       def associate_assessment_report_evidence_folder(
         assessment_id : String,
         evidence_folder_id : String
@@ -27,12 +28,14 @@ module AwsSdk
         input = Types::AssociateAssessmentReportEvidenceFolderRequest.new(assessment_id: assessment_id, evidence_folder_id: evidence_folder_id)
         associate_assessment_report_evidence_folder(input)
       end
+
       def associate_assessment_report_evidence_folder(input : Types::AssociateAssessmentReportEvidenceFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ASSOCIATE_ASSESSMENT_REPORT_EVIDENCE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Associates a list of evidence to an assessment report in an Audit Manager assessment.
+
       def batch_associate_assessment_report_evidence(
         assessment_id : String,
         evidence_folder_id : String,
@@ -41,12 +44,14 @@ module AwsSdk
         input = Types::BatchAssociateAssessmentReportEvidenceRequest.new(assessment_id: assessment_id, evidence_folder_id: evidence_folder_id, evidence_ids: evidence_ids)
         batch_associate_assessment_report_evidence(input)
       end
+
       def batch_associate_assessment_report_evidence(input : Types::BatchAssociateAssessmentReportEvidenceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_ASSOCIATE_ASSESSMENT_REPORT_EVIDENCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a batch of delegations for an assessment in Audit Manager.
+
       def batch_create_delegation_by_assessment(
         assessment_id : String,
         create_delegation_requests : Array(Types::CreateDelegationRequest)
@@ -54,12 +59,14 @@ module AwsSdk
         input = Types::BatchCreateDelegationByAssessmentRequest.new(assessment_id: assessment_id, create_delegation_requests: create_delegation_requests)
         batch_create_delegation_by_assessment(input)
       end
+
       def batch_create_delegation_by_assessment(input : Types::BatchCreateDelegationByAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_CREATE_DELEGATION_BY_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a batch of delegations for an assessment in Audit Manager.
+
       def batch_delete_delegation_by_assessment(
         assessment_id : String,
         delegation_ids : Array(String)
@@ -67,12 +74,14 @@ module AwsSdk
         input = Types::BatchDeleteDelegationByAssessmentRequest.new(assessment_id: assessment_id, delegation_ids: delegation_ids)
         batch_delete_delegation_by_assessment(input)
       end
+
       def batch_delete_delegation_by_assessment(input : Types::BatchDeleteDelegationByAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_DELETE_DELEGATION_BY_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Disassociates a list of evidence from an assessment report in Audit Manager.
+
       def batch_disassociate_assessment_report_evidence(
         assessment_id : String,
         evidence_folder_id : String,
@@ -81,6 +90,7 @@ module AwsSdk
         input = Types::BatchDisassociateAssessmentReportEvidenceRequest.new(assessment_id: assessment_id, evidence_folder_id: evidence_folder_id, evidence_ids: evidence_ids)
         batch_disassociate_assessment_report_evidence(input)
       end
+
       def batch_disassociate_assessment_report_evidence(input : Types::BatchDisassociateAssessmentReportEvidenceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_DISASSOCIATE_ASSESSMENT_REPORT_EVIDENCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -94,6 +104,7 @@ module AwsSdk
       # daily manual evidence uploads per control: 100 Supported file formats: See Supported file types for
       # manual evidence in the Audit Manager User Guide For more information about Audit Manager service
       # restrictions, see Quotas and restrictions for Audit Manager .
+
       def batch_import_evidence_to_assessment_control(
         assessment_id : String,
         control_id : String,
@@ -103,12 +114,14 @@ module AwsSdk
         input = Types::BatchImportEvidenceToAssessmentControlRequest.new(assessment_id: assessment_id, control_id: control_id, control_set_id: control_set_id, manual_evidence: manual_evidence)
         batch_import_evidence_to_assessment_control(input)
       end
+
       def batch_import_evidence_to_assessment_control(input : Types::BatchImportEvidenceToAssessmentControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_IMPORT_EVIDENCE_TO_ASSESSMENT_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates an assessment in Audit Manager.
+
       def create_assessment(
         assessment_reports_destination : Types::AssessmentReportsDestination,
         framework_id : String,
@@ -121,12 +134,14 @@ module AwsSdk
         input = Types::CreateAssessmentRequest.new(assessment_reports_destination: assessment_reports_destination, framework_id: framework_id, name: name, roles: roles, scope: scope, description: description, tags: tags)
         create_assessment(input)
       end
+
       def create_assessment(input : Types::CreateAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a custom framework in Audit Manager.
+
       def create_assessment_framework(
         control_sets : Array(Types::CreateAssessmentFrameworkControlSet),
         name : String,
@@ -137,12 +152,14 @@ module AwsSdk
         input = Types::CreateAssessmentFrameworkRequest.new(control_sets: control_sets, name: name, compliance_type: compliance_type, description: description, tags: tags)
         create_assessment_framework(input)
       end
+
       def create_assessment_framework(input : Types::CreateAssessmentFrameworkRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ASSESSMENT_FRAMEWORK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates an assessment report for the specified assessment.
+
       def create_assessment_report(
         assessment_id : String,
         name : String,
@@ -152,12 +169,14 @@ module AwsSdk
         input = Types::CreateAssessmentReportRequest.new(assessment_id: assessment_id, name: name, description: description, query_statement: query_statement)
         create_assessment_report(input)
       end
+
       def create_assessment_report(input : Types::CreateAssessmentReportRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_ASSESSMENT_REPORT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Creates a new custom control in Audit Manager.
+
       def create_control(
         control_mapping_sources : Array(Types::CreateControlMappingSource),
         name : String,
@@ -170,36 +189,42 @@ module AwsSdk
         input = Types::CreateControlRequest.new(control_mapping_sources: control_mapping_sources, name: name, action_plan_instructions: action_plan_instructions, action_plan_title: action_plan_title, description: description, tags: tags, testing_information: testing_information)
         create_control(input)
       end
+
       def create_control(input : Types::CreateControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes an assessment in Audit Manager.
+
       def delete_assessment(
         assessment_id : String
       ) : Protocol::Request
         input = Types::DeleteAssessmentRequest.new(assessment_id: assessment_id)
         delete_assessment(input)
       end
+
       def delete_assessment(input : Types::DeleteAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a custom framework in Audit Manager.
+
       def delete_assessment_framework(
         framework_id : String
       ) : Protocol::Request
         input = Types::DeleteAssessmentFrameworkRequest.new(framework_id: framework_id)
         delete_assessment_framework(input)
       end
+
       def delete_assessment_framework(input : Types::DeleteAssessmentFrameworkRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ASSESSMENT_FRAMEWORK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes a share request for a custom framework in Audit Manager.
+
       def delete_assessment_framework_share(
         request_id : String,
         request_type : String
@@ -207,6 +232,7 @@ module AwsSdk
         input = Types::DeleteAssessmentFrameworkShareRequest.new(request_id: request_id, request_type: request_type)
         delete_assessment_framework_share(input)
       end
+
       def delete_assessment_framework_share(input : Types::DeleteAssessmentFrameworkShareRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ASSESSMENT_FRAMEWORK_SHARE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -224,6 +250,7 @@ module AwsSdk
       # policy that you can use, see Assessment report destination permissions in the Audit Manager User
       # Guide . For information about the issues that could cause a 403 (Forbidden) or 404 (Not Found )
       # error from Amazon S3, see List of Error Codes in the Amazon Simple Storage Service API Reference .
+
       def delete_assessment_report(
         assessment_id : String,
         assessment_report_id : String
@@ -231,6 +258,7 @@ module AwsSdk
         input = Types::DeleteAssessmentReportRequest.new(assessment_id: assessment_id, assessment_report_id: assessment_report_id)
         delete_assessment_report(input)
       end
+
       def delete_assessment_report(input : Types::DeleteAssessmentReportRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ASSESSMENT_REPORT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -240,12 +268,14 @@ module AwsSdk
       # deleted from any frameworks or assessments that it’s currently part of. As a result, Audit Manager
       # will stop collecting evidence for that custom control in all of your assessments. This includes
       # assessments that you previously created before you deleted the custom control.
+
       def delete_control(
         control_id : String
       ) : Protocol::Request
         input = Types::DeleteControlRequest.new(control_id: control_id)
         delete_control(input)
       end
+
       def delete_control(input : Types::DeleteControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -256,10 +286,12 @@ module AwsSdk
       # If you want to delete your data, you can use the DeregistrationPolicy attribute to request the
       # deletion of your data. For more information about data retention, see Data Protection in the Audit
       # Manager User Guide .
+
       def deregister_account : Protocol::Request
         input = Types::DeregisterAccountRequest.new
         deregister_account(input)
       end
+
       def deregister_account(input : Types::DeregisterAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DEREGISTER_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -292,18 +324,21 @@ module AwsSdk
       # time, Audit Manager doesn't provide an option to delete evidence for a specific delegated
       # administrator. Instead, when your management account deregisters Audit Manager, we perform a cleanup
       # for the current delegated administrator account at the time of deregistration.
+
       def deregister_organization_admin_account(
         admin_account_id : String? = nil
       ) : Protocol::Request
         input = Types::DeregisterOrganizationAdminAccountRequest.new(admin_account_id: admin_account_id)
         deregister_organization_admin_account(input)
       end
+
       def deregister_organization_admin_account(input : Types::DeregisterOrganizationAdminAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DEREGISTER_ORGANIZATION_ADMIN_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Disassociates an evidence folder from the specified assessment report in Audit Manager.
+
       def disassociate_assessment_report_evidence_folder(
         assessment_id : String,
         evidence_folder_id : String
@@ -311,46 +346,54 @@ module AwsSdk
         input = Types::DisassociateAssessmentReportEvidenceFolderRequest.new(assessment_id: assessment_id, evidence_folder_id: evidence_folder_id)
         disassociate_assessment_report_evidence_folder(input)
       end
+
       def disassociate_assessment_report_evidence_folder(input : Types::DisassociateAssessmentReportEvidenceFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DISASSOCIATE_ASSESSMENT_REPORT_EVIDENCE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets the registration status of an account in Audit Manager.
+
       def get_account_status : Protocol::Request
         input = Types::GetAccountStatusRequest.new
         get_account_status(input)
       end
+
       def get_account_status(input : Types::GetAccountStatusRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ACCOUNT_STATUS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets information about a specified assessment.
+
       def get_assessment(
         assessment_id : String
       ) : Protocol::Request
         input = Types::GetAssessmentRequest.new(assessment_id: assessment_id)
         get_assessment(input)
       end
+
       def get_assessment(input : Types::GetAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets information about a specified framework.
+
       def get_assessment_framework(
         framework_id : String
       ) : Protocol::Request
         input = Types::GetAssessmentFrameworkRequest.new(framework_id: framework_id)
         get_assessment_framework(input)
       end
+
       def get_assessment_framework(input : Types::GetAssessmentFrameworkRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ASSESSMENT_FRAMEWORK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets the URL of an assessment report in Audit Manager.
+
       def get_assessment_report_url(
         assessment_id : String,
         assessment_report_id : String
@@ -358,12 +401,14 @@ module AwsSdk
         input = Types::GetAssessmentReportUrlRequest.new(assessment_id: assessment_id, assessment_report_id: assessment_report_id)
         get_assessment_report_url(input)
       end
+
       def get_assessment_report_url(input : Types::GetAssessmentReportUrlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ASSESSMENT_REPORT_URL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets a list of changelogs from Audit Manager.
+
       def get_change_logs(
         assessment_id : String,
         control_id : String? = nil,
@@ -374,24 +419,28 @@ module AwsSdk
         input = Types::GetChangeLogsRequest.new(assessment_id: assessment_id, control_id: control_id, control_set_id: control_set_id, max_results: max_results, next_token: next_token)
         get_change_logs(input)
       end
+
       def get_change_logs(input : Types::GetChangeLogsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_CHANGE_LOGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets information about a specified control.
+
       def get_control(
         control_id : String
       ) : Protocol::Request
         input = Types::GetControlRequest.new(control_id: control_id)
         get_control(input)
       end
+
       def get_control(input : Types::GetControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets a list of delegations from an audit owner to a delegate.
+
       def get_delegations(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -399,12 +448,14 @@ module AwsSdk
         input = Types::GetDelegationsRequest.new(max_results: max_results, next_token: next_token)
         get_delegations(input)
       end
+
       def get_delegations(input : Types::GetDelegationsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DELEGATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets information about a specified evidence item.
+
       def get_evidence(
         assessment_id : String,
         control_set_id : String,
@@ -414,12 +465,14 @@ module AwsSdk
         input = Types::GetEvidenceRequest.new(assessment_id: assessment_id, control_set_id: control_set_id, evidence_folder_id: evidence_folder_id, evidence_id: evidence_id)
         get_evidence(input)
       end
+
       def get_evidence(input : Types::GetEvidenceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EVIDENCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets all evidence from a specified evidence folder in Audit Manager.
+
       def get_evidence_by_evidence_folder(
         assessment_id : String,
         control_set_id : String,
@@ -430,6 +483,7 @@ module AwsSdk
         input = Types::GetEvidenceByEvidenceFolderRequest.new(assessment_id: assessment_id, control_set_id: control_set_id, evidence_folder_id: evidence_folder_id, max_results: max_results, next_token: next_token)
         get_evidence_by_evidence_folder(input)
       end
+
       def get_evidence_by_evidence_folder(input : Types::GetEvidenceByEvidenceFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EVIDENCE_BY_EVIDENCE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -442,18 +496,21 @@ module AwsSdk
       # formats: See Supported file types for manual evidence in the Audit Manager User Guide For more
       # information about Audit Manager service restrictions, see Quotas and restrictions for Audit Manager
       # .
+
       def get_evidence_file_upload_url(
         file_name : String
       ) : Protocol::Request
         input = Types::GetEvidenceFileUploadUrlRequest.new(file_name: file_name)
         get_evidence_file_upload_url(input)
       end
+
       def get_evidence_file_upload_url(input : Types::GetEvidenceFileUploadUrlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EVIDENCE_FILE_UPLOAD_URL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets an evidence folder from a specified assessment in Audit Manager.
+
       def get_evidence_folder(
         assessment_id : String,
         control_set_id : String,
@@ -462,12 +519,14 @@ module AwsSdk
         input = Types::GetEvidenceFolderRequest.new(assessment_id: assessment_id, control_set_id: control_set_id, evidence_folder_id: evidence_folder_id)
         get_evidence_folder(input)
       end
+
       def get_evidence_folder(input : Types::GetEvidenceFolderRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EVIDENCE_FOLDER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets the evidence folders from a specified assessment in Audit Manager.
+
       def get_evidence_folders_by_assessment(
         assessment_id : String,
         max_results : Int32? = nil,
@@ -476,6 +535,7 @@ module AwsSdk
         input = Types::GetEvidenceFoldersByAssessmentRequest.new(assessment_id: assessment_id, max_results: max_results, next_token: next_token)
         get_evidence_folders_by_assessment(input)
       end
+
       def get_evidence_folders_by_assessment(input : Types::GetEvidenceFoldersByAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EVIDENCE_FOLDERS_BY_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -483,6 +543,7 @@ module AwsSdk
 
       # Gets a list of evidence folders that are associated with a specified control in an Audit Manager
       # assessment.
+
       def get_evidence_folders_by_assessment_control(
         assessment_id : String,
         control_id : String,
@@ -493,28 +554,33 @@ module AwsSdk
         input = Types::GetEvidenceFoldersByAssessmentControlRequest.new(assessment_id: assessment_id, control_id: control_id, control_set_id: control_set_id, max_results: max_results, next_token: next_token)
         get_evidence_folders_by_assessment_control(input)
       end
+
       def get_evidence_folders_by_assessment_control(input : Types::GetEvidenceFoldersByAssessmentControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_EVIDENCE_FOLDERS_BY_ASSESSMENT_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets the latest analytics data for all your current active assessments.
+
       def get_insights : Protocol::Request
         input = Types::GetInsightsRequest.new
         get_insights(input)
       end
+
       def get_insights(input : Types::GetInsightsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_INSIGHTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets the latest analytics data for a specific active assessment.
+
       def get_insights_by_assessment(
         assessment_id : String
       ) : Protocol::Request
         input = Types::GetInsightsByAssessmentRequest.new(assessment_id: assessment_id)
         get_insights_by_assessment(input)
       end
+
       def get_insights_by_assessment(input : Types::GetInsightsByAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_INSIGHTS_BY_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -522,10 +588,12 @@ module AwsSdk
 
       # Gets the name of the delegated Amazon Web Services administrator account for a specified
       # organization.
+
       def get_organization_admin_account : Protocol::Request
         input = Types::GetOrganizationAdminAccountRequest.new
         get_organization_admin_account(input)
       end
+
       def get_organization_admin_account(input : Types::GetOrganizationAdminAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ORGANIZATION_ADMIN_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -538,22 +606,26 @@ module AwsSdk
       # list. For information about why it's no longer possible to specify services in scope manually, see I
       # can't edit the services in scope for my assessment in the Troubleshooting section of the Audit
       # Manager user guide.
+
       def get_services_in_scope : Protocol::Request
         input = Types::GetServicesInScopeRequest.new
         get_services_in_scope(input)
       end
+
       def get_services_in_scope(input : Types::GetServicesInScopeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SERVICES_IN_SCOPE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Gets the settings for a specified Amazon Web Services account.
+
       def get_settings(
         attribute : String
       ) : Protocol::Request
         input = Types::GetSettingsRequest.new(attribute: attribute)
         get_settings(input)
       end
+
       def get_settings(input : Types::GetSettingsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SETTINGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -564,6 +636,7 @@ module AwsSdk
       # assessment that was specified. Moreover, the control must have collected evidence on the lastUpdated
       # date of controlInsightsByAssessment . If neither of these conditions are met, no data is listed for
       # that control.
+
       def list_assessment_control_insights_by_control_domain(
         assessment_id : String,
         control_domain_id : String,
@@ -573,12 +646,14 @@ module AwsSdk
         input = Types::ListAssessmentControlInsightsByControlDomainRequest.new(assessment_id: assessment_id, control_domain_id: control_domain_id, max_results: max_results, next_token: next_token)
         list_assessment_control_insights_by_control_domain(input)
       end
+
       def list_assessment_control_insights_by_control_domain(input : Types::ListAssessmentControlInsightsByControlDomainRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSESSMENT_CONTROL_INSIGHTS_BY_CONTROL_DOMAIN, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of sent or received share requests for custom frameworks in Audit Manager.
+
       def list_assessment_framework_share_requests(
         request_type : String,
         max_results : Int32? = nil,
@@ -587,12 +662,14 @@ module AwsSdk
         input = Types::ListAssessmentFrameworkShareRequestsRequest.new(request_type: request_type, max_results: max_results, next_token: next_token)
         list_assessment_framework_share_requests(input)
       end
+
       def list_assessment_framework_share_requests(input : Types::ListAssessmentFrameworkShareRequestsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSESSMENT_FRAMEWORK_SHARE_REQUESTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of the frameworks that are available in the Audit Manager framework library.
+
       def list_assessment_frameworks(
         framework_type : String,
         max_results : Int32? = nil,
@@ -601,12 +678,14 @@ module AwsSdk
         input = Types::ListAssessmentFrameworksRequest.new(framework_type: framework_type, max_results: max_results, next_token: next_token)
         list_assessment_frameworks(input)
       end
+
       def list_assessment_frameworks(input : Types::ListAssessmentFrameworksRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSESSMENT_FRAMEWORKS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of assessment reports created in Audit Manager.
+
       def list_assessment_reports(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -614,12 +693,14 @@ module AwsSdk
         input = Types::ListAssessmentReportsRequest.new(max_results: max_results, next_token: next_token)
         list_assessment_reports(input)
       end
+
       def list_assessment_reports(input : Types::ListAssessmentReportsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSESSMENT_REPORTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of current and past assessments from Audit Manager.
+
       def list_assessments(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -628,6 +709,7 @@ module AwsSdk
         input = Types::ListAssessmentsRequest.new(max_results: max_results, next_token: next_token, status: status)
         list_assessments(input)
       end
+
       def list_assessments(input : Types::ListAssessmentsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_ASSESSMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -639,6 +721,7 @@ module AwsSdk
       # Services Control Catalog API Reference. A control domain is listed only if at least one of the
       # controls within that domain collected evidence on the lastUpdated date of controlDomainInsights . If
       # this condition isn’t met, no data is listed for that control domain.
+
       def list_control_domain_insights(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -646,6 +729,7 @@ module AwsSdk
         input = Types::ListControlDomainInsightsRequest.new(max_results: max_results, next_token: next_token)
         list_control_domain_insights(input)
       end
+
       def list_control_domain_insights(input : Types::ListControlDomainInsightsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_CONTROL_DOMAIN_INSIGHTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -657,6 +741,7 @@ module AwsSdk
       # Services Control Catalog API Reference. A control domain is listed only if at least one of the
       # controls within that domain collected evidence on the lastUpdated date of controlDomainInsights . If
       # this condition isn’t met, no data is listed for that domain.
+
       def list_control_domain_insights_by_assessment(
         assessment_id : String,
         max_results : Int32? = nil,
@@ -665,6 +750,7 @@ module AwsSdk
         input = Types::ListControlDomainInsightsByAssessmentRequest.new(assessment_id: assessment_id, max_results: max_results, next_token: next_token)
         list_control_domain_insights_by_assessment(input)
       end
+
       def list_control_domain_insights_by_assessment(input : Types::ListControlDomainInsightsByAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_CONTROL_DOMAIN_INSIGHTS_BY_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -674,6 +760,7 @@ module AwsSdk
       # assessments. Control insights are listed only if the control belongs to the control domain that was
       # specified and the control collected evidence on the lastUpdated date of controlInsightsMetadata . If
       # neither of these conditions are met, no data is listed for that control.
+
       def list_control_insights_by_control_domain(
         control_domain_id : String,
         max_results : Int32? = nil,
@@ -682,12 +769,14 @@ module AwsSdk
         input = Types::ListControlInsightsByControlDomainRequest.new(control_domain_id: control_domain_id, max_results: max_results, next_token: next_token)
         list_control_insights_by_control_domain(input)
       end
+
       def list_control_insights_by_control_domain(input : Types::ListControlInsightsByControlDomainRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_CONTROL_INSIGHTS_BY_CONTROL_DOMAIN, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of controls from Audit Manager.
+
       def list_controls(
         control_type : String,
         control_catalog_id : String? = nil,
@@ -697,12 +786,14 @@ module AwsSdk
         input = Types::ListControlsRequest.new(control_type: control_type, control_catalog_id: control_catalog_id, max_results: max_results, next_token: next_token)
         list_controls(input)
       end
+
       def list_controls(input : Types::ListControlsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_CONTROLS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of keywords that are pre-mapped to the specified control data source.
+
       def list_keywords_for_data_source(
         source : String,
         max_results : Int32? = nil,
@@ -711,12 +802,14 @@ module AwsSdk
         input = Types::ListKeywordsForDataSourceRequest.new(source: source, max_results: max_results, next_token: next_token)
         list_keywords_for_data_source(input)
       end
+
       def list_keywords_for_data_source(input : Types::ListKeywordsForDataSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_KEYWORDS_FOR_DATA_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of all Audit Manager notifications.
+
       def list_notifications(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -724,24 +817,28 @@ module AwsSdk
         input = Types::ListNotificationsRequest.new(max_results: max_results, next_token: next_token)
         list_notifications(input)
       end
+
       def list_notifications(input : Types::ListNotificationsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_NOTIFICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of tags for the specified resource in Audit Manager.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Enables Audit Manager for the specified Amazon Web Services account.
+
       def register_account(
         delegated_admin_account : String? = nil,
         kms_key : String? = nil
@@ -749,6 +846,7 @@ module AwsSdk
         input = Types::RegisterAccountRequest.new(delegated_admin_account: delegated_admin_account, kms_key: kms_key)
         register_account(input)
       end
+
       def register_account(input : Types::RegisterAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REGISTER_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -756,12 +854,14 @@ module AwsSdk
 
       # Enables an Amazon Web Services account within the organization as the delegated administrator for
       # Audit Manager.
+
       def register_organization_admin_account(
         admin_account_id : String
       ) : Protocol::Request
         input = Types::RegisterOrganizationAdminAccountRequest.new(admin_account_id: admin_account_id)
         register_organization_admin_account(input)
       end
+
       def register_organization_admin_account(input : Types::RegisterOrganizationAdminAccountRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REGISTER_ORGANIZATION_ADMIN_ACCOUNT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -785,6 +885,7 @@ module AwsSdk
       # eligible for sharing by Amazon Web Services, unless you have obtained permission to do so from the
       # owner of the standard framework. To learn more about which standard frameworks are eligible for
       # sharing, see Framework sharing eligibility in the Audit Manager User Guide .
+
       def start_assessment_framework_share(
         destination_account : String,
         destination_region : String,
@@ -794,12 +895,14 @@ module AwsSdk
         input = Types::StartAssessmentFrameworkShareRequest.new(destination_account: destination_account, destination_region: destination_region, framework_id: framework_id, comment: comment)
         start_assessment_framework_share(input)
       end
+
       def start_assessment_framework_share(input : Types::StartAssessmentFrameworkShareRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_ASSESSMENT_FRAMEWORK_SHARE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Tags the specified resource in Audit Manager.
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -807,12 +910,14 @@ module AwsSdk
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes a tag from a resource in Audit Manager.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -820,12 +925,14 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Edits an Audit Manager assessment.
+
       def update_assessment(
         assessment_id : String,
         scope : Types::Scope,
@@ -837,12 +944,14 @@ module AwsSdk
         input = Types::UpdateAssessmentRequest.new(assessment_id: assessment_id, scope: scope, assessment_description: assessment_description, assessment_name: assessment_name, assessment_reports_destination: assessment_reports_destination, roles: roles)
         update_assessment(input)
       end
+
       def update_assessment(input : Types::UpdateAssessmentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ASSESSMENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a control within an assessment in Audit Manager.
+
       def update_assessment_control(
         assessment_id : String,
         control_id : String,
@@ -853,12 +962,14 @@ module AwsSdk
         input = Types::UpdateAssessmentControlRequest.new(assessment_id: assessment_id, control_id: control_id, control_set_id: control_set_id, comment_body: comment_body, control_status: control_status)
         update_assessment_control(input)
       end
+
       def update_assessment_control(input : Types::UpdateAssessmentControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ASSESSMENT_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the status of a control set in an Audit Manager assessment.
+
       def update_assessment_control_set_status(
         assessment_id : String,
         comment : String,
@@ -868,12 +979,14 @@ module AwsSdk
         input = Types::UpdateAssessmentControlSetStatusRequest.new(assessment_id: assessment_id, comment: comment, control_set_id: control_set_id, status: status)
         update_assessment_control_set_status(input)
       end
+
       def update_assessment_control_set_status(input : Types::UpdateAssessmentControlSetStatusRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ASSESSMENT_CONTROL_SET_STATUS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a custom framework in Audit Manager.
+
       def update_assessment_framework(
         control_sets : Array(Types::UpdateAssessmentFrameworkControlSet),
         framework_id : String,
@@ -884,12 +997,14 @@ module AwsSdk
         input = Types::UpdateAssessmentFrameworkRequest.new(control_sets: control_sets, framework_id: framework_id, name: name, compliance_type: compliance_type, description: description)
         update_assessment_framework(input)
       end
+
       def update_assessment_framework(input : Types::UpdateAssessmentFrameworkRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ASSESSMENT_FRAMEWORK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a share request for a custom framework in Audit Manager.
+
       def update_assessment_framework_share(
         action : String,
         request_id : String,
@@ -898,12 +1013,14 @@ module AwsSdk
         input = Types::UpdateAssessmentFrameworkShareRequest.new(action: action, request_id: request_id, request_type: request_type)
         update_assessment_framework_share(input)
       end
+
       def update_assessment_framework_share(input : Types::UpdateAssessmentFrameworkShareRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ASSESSMENT_FRAMEWORK_SHARE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the status of an assessment in Audit Manager.
+
       def update_assessment_status(
         assessment_id : String,
         status : String
@@ -911,12 +1028,14 @@ module AwsSdk
         input = Types::UpdateAssessmentStatusRequest.new(assessment_id: assessment_id, status: status)
         update_assessment_status(input)
       end
+
       def update_assessment_status(input : Types::UpdateAssessmentStatusRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_ASSESSMENT_STATUS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates a custom control in Audit Manager.
+
       def update_control(
         control_id : String,
         control_mapping_sources : Array(Types::ControlMappingSource),
@@ -929,12 +1048,14 @@ module AwsSdk
         input = Types::UpdateControlRequest.new(control_id: control_id, control_mapping_sources: control_mapping_sources, name: name, action_plan_instructions: action_plan_instructions, action_plan_title: action_plan_title, description: description, testing_information: testing_information)
         update_control(input)
       end
+
       def update_control(input : Types::UpdateControlRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_CONTROL, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates Audit Manager settings for the current account.
+
       def update_settings(
         default_assessment_reports_destination : Types::AssessmentReportsDestination? = nil,
         default_export_destination : Types::DefaultExportDestination? = nil,
@@ -947,18 +1068,21 @@ module AwsSdk
         input = Types::UpdateSettingsRequest.new(default_assessment_reports_destination: default_assessment_reports_destination, default_export_destination: default_export_destination, default_process_owners: default_process_owners, deregistration_policy: deregistration_policy, evidence_finder_enabled: evidence_finder_enabled, kms_key: kms_key, sns_topic: sns_topic)
         update_settings(input)
       end
+
       def update_settings(input : Types::UpdateSettingsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SETTINGS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Validates the integrity of an assessment report in Audit Manager.
+
       def validate_assessment_report_integrity(
         s3_relative_path : String
       ) : Protocol::Request
         input = Types::ValidateAssessmentReportIntegrityRequest.new(s3_relative_path: s3_relative_path)
         validate_assessment_report_integrity(input)
       end
+
       def validate_assessment_report_integrity(input : Types::ValidateAssessmentReportIntegrityRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::VALIDATE_ASSESSMENT_REPORT_INTEGRITY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

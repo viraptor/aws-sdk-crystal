@@ -5,26 +5,32 @@ module AwsSdk
       end
 
       # The requestor does not have permission to access the target action or resource.
+
       class AccessDeniedException < ServiceError
       end
 
       # The target resource is in use.
+
       class ConflictException < ServiceError
       end
 
       # An internal error occurred.
+
       class InternalServerException < ServiceError
       end
 
       # The target resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause a limit to be exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request contains an invalid parameter value.
+
       class ValidationException < ServiceError
       end
 

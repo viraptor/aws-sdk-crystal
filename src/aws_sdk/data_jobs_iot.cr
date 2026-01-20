@@ -1,7 +1,0 @@
-require "./runtime"
-require "./data_jobs_iot/client"
-require "./data_jobs_iot/errors"
-require "./data_jobs_iot/model"
-require "./data_jobs_iot/types"
-require "./data_jobs_iot/protocol/rest_json"
-require "./customizations/data_jobs_iot/customizations"

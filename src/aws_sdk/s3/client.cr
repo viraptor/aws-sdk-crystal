@@ -1,6 +1,7 @@
 module AwsSdk
   module S3
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -60,6 +61,7 @@ module AwsSdk
       # CompleteMultipartUpload ListParts ListMultipartUploads You must URL encode any signed header values
       # that contain spaces. For example, if your header value is my file.txt , containing two spaces after
       # my , you must URL encode this value to my%20%20file.txt .
+
       def abort_multipart_upload(
         bucket : String,
         key : String,
@@ -68,9 +70,11 @@ module AwsSdk
         if_match_initiated_time : Time? = nil,
         request_payer : String? = nil
       ) : Types::AbortMultipartUploadOutput
+
         input = Types::AbortMultipartUploadRequest.new(bucket: bucket, key: key, upload_id: upload_id, expected_bucket_owner: expected_bucket_owner, if_match_initiated_time: if_match_initiated_time, request_payer: request_payer)
         abort_multipart_upload(input)
       end
+
       def abort_multipart_upload(input : Types::AbortMultipartUploadRequest) : Types::AbortMultipartUploadOutput
         request = Protocol::RestXml.build_request(Model::ABORT_MULTIPART_UPLOAD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -139,6 +143,7 @@ module AwsSdk
       # ListMultipartUploads You must URL encode any signed header values that contain spaces. For example,
       # if your header value is my file.txt , containing two spaces after my , you must URL encode this
       # value to my%20%20file.txt .
+
       def complete_multipart_upload(
         bucket : String,
         key : String,
@@ -159,9 +164,11 @@ module AwsSdk
         sse_customer_key : String? = nil,
         sse_customer_key_md5 : String? = nil
       ) : Types::CompleteMultipartUploadOutput
+
         input = Types::CompleteMultipartUploadRequest.new(bucket: bucket, key: key, upload_id: upload_id, checksum_crc32: checksum_crc32, checksum_crc32_c: checksum_crc32_c, checksum_crc64_nvme: checksum_crc64_nvme, checksum_sha1: checksum_sha1, checksum_sha256: checksum_sha256, checksum_type: checksum_type, expected_bucket_owner: expected_bucket_owner, if_match: if_match, if_none_match: if_none_match, mpu_object_size: mpu_object_size, multipart_upload: multipart_upload, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5)
         complete_multipart_upload(input)
       end
+
       def complete_multipart_upload(input : Types::CompleteMultipartUploadRequest) : Types::CompleteMultipartUploadOutput
         request = Protocol::RestXml.build_request(Model::COMPLETE_MULTIPART_UPLOAD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -252,6 +259,7 @@ module AwsSdk
       # PutObject GetObject You must URL encode any signed header values that contain spaces. For example,
       # if your header value is my file.txt , containing two spaces after my , you must URL encode this
       # value to my%20%20file.txt .
+
       def copy_object(
         bucket : String,
         copy_source : String,
@@ -297,9 +305,11 @@ module AwsSdk
         tagging_directive : String? = nil,
         website_redirect_location : String? = nil
       ) : Types::CopyObjectOutput
+
         input = Types::CopyObjectRequest.new(bucket: bucket, copy_source: copy_source, key: key, acl: acl, bucket_key_enabled: bucket_key_enabled, cache_control: cache_control, checksum_algorithm: checksum_algorithm, content_disposition: content_disposition, content_encoding: content_encoding, content_language: content_language, content_type: content_type, copy_source_if_match: copy_source_if_match, copy_source_if_modified_since: copy_source_if_modified_since, copy_source_if_none_match: copy_source_if_none_match, copy_source_if_unmodified_since: copy_source_if_unmodified_since, copy_source_sse_customer_algorithm: copy_source_sse_customer_algorithm, copy_source_sse_customer_key: copy_source_sse_customer_key, copy_source_sse_customer_key_md5: copy_source_sse_customer_key_md5, expected_bucket_owner: expected_bucket_owner, expected_source_bucket_owner: expected_source_bucket_owner, expires: expires, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write_acp: grant_write_acp, if_match: if_match, if_none_match: if_none_match, metadata: metadata, metadata_directive: metadata_directive, object_lock_legal_hold_status: object_lock_legal_hold_status, object_lock_mode: object_lock_mode, object_lock_retain_until_date: object_lock_retain_until_date, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, ssekms_encryption_context: ssekms_encryption_context, ssekms_key_id: ssekms_key_id, server_side_encryption: server_side_encryption, storage_class: storage_class, tagging: tagging, tagging_directive: tagging_directive, website_redirect_location: website_redirect_location)
         copy_object(input)
       end
+
       def copy_object(input : Types::CopyObjectRequest) : Types::CopyObjectOutput
         request = Protocol::RestXml.build_request(Model::COPY_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -365,6 +375,7 @@ module AwsSdk
       # .amazonaws.com . The following operations are related to CreateBucket : PutObject DeleteBucket You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def create_bucket(
         bucket : String,
         acl : String? = nil,
@@ -377,9 +388,11 @@ module AwsSdk
         object_lock_enabled_for_bucket : Bool? = nil,
         object_ownership : String? = nil
       ) : Types::CreateBucketOutput
+
         input = Types::CreateBucketRequest.new(bucket: bucket, acl: acl, create_bucket_configuration: create_bucket_configuration, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write: grant_write, grant_write_acp: grant_write_acp, object_lock_enabled_for_bucket: object_lock_enabled_for_bucket, object_ownership: object_ownership)
         create_bucket(input)
       end
+
       def create_bucket(input : Types::CreateBucketRequest) : Types::CreateBucketOutput
         request = Protocol::RestXml.build_request(Model::CREATE_BUCKET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -407,6 +420,7 @@ module AwsSdk
       # UpdateBucketMetadataInventoryTableConfiguration UpdateBucketMetadataJournalTableConfiguration You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def create_bucket_metadata_configuration(
         bucket : String,
         metadata_configuration : Types::MetadataConfiguration,
@@ -414,9 +428,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::CreateBucketMetadataConfigurationRequest.new(bucket: bucket, metadata_configuration: metadata_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         create_bucket_metadata_configuration(input)
       end
+
       def create_bucket_metadata_configuration(input : Types::CreateBucketMetadataConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::CREATE_BUCKET_METADATA_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -445,6 +461,7 @@ module AwsSdk
       # DeleteBucketMetadataTableConfiguration GetBucketMetadataTableConfiguration You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def create_bucket_metadata_table_configuration(
         bucket : String,
         metadata_table_configuration : Types::MetadataTableConfiguration,
@@ -452,9 +469,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::CreateBucketMetadataTableConfigurationRequest.new(bucket: bucket, metadata_table_configuration: metadata_table_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         create_bucket_metadata_table_configuration(input)
       end
+
       def create_bucket_metadata_table_configuration(input : Types::CreateBucketMetadataTableConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::CREATE_BUCKET_METADATA_TABLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -581,6 +600,7 @@ module AwsSdk
       # CompleteMultipartUpload AbortMultipartUpload ListParts ListMultipartUploads You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def create_multipart_upload(
         bucket : String,
         key : String,
@@ -614,9 +634,11 @@ module AwsSdk
         tagging : String? = nil,
         website_redirect_location : String? = nil
       ) : Types::CreateMultipartUploadOutput
+
         input = Types::CreateMultipartUploadRequest.new(bucket: bucket, key: key, acl: acl, bucket_key_enabled: bucket_key_enabled, cache_control: cache_control, checksum_algorithm: checksum_algorithm, checksum_type: checksum_type, content_disposition: content_disposition, content_encoding: content_encoding, content_language: content_language, content_type: content_type, expected_bucket_owner: expected_bucket_owner, expires: expires, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write_acp: grant_write_acp, metadata: metadata, object_lock_legal_hold_status: object_lock_legal_hold_status, object_lock_mode: object_lock_mode, object_lock_retain_until_date: object_lock_retain_until_date, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, ssekms_encryption_context: ssekms_encryption_context, ssekms_key_id: ssekms_key_id, server_side_encryption: server_side_encryption, storage_class: storage_class, tagging: tagging, website_redirect_location: website_redirect_location)
         create_multipart_upload(input)
       end
+
       def create_multipart_upload(input : Types::CreateMultipartUploadRequest) : Types::CreateMultipartUploadOutput
         request = Protocol::RestXml.build_request(Model::CREATE_MULTIPART_UPLOAD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -702,6 +724,7 @@ module AwsSdk
       # HTTP Host header syntax is Bucket-name .s3express- zone-id . region-code .amazonaws.com . You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def create_session(
         bucket : String,
         bucket_key_enabled : Bool? = nil,
@@ -710,9 +733,11 @@ module AwsSdk
         server_side_encryption : String? = nil,
         session_mode : String? = nil
       ) : Types::CreateSessionOutput
+
         input = Types::CreateSessionRequest.new(bucket: bucket, bucket_key_enabled: bucket_key_enabled, ssekms_encryption_context: ssekms_encryption_context, ssekms_key_id: ssekms_key_id, server_side_encryption: server_side_encryption, session_mode: session_mode)
         create_session(input)
       end
+
       def create_session(input : Types::CreateSessionRequest) : Types::CreateSessionOutput
         request = Protocol::RestXml.build_request(Model::CREATE_SESSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -741,13 +766,16 @@ module AwsSdk
       # following operations are related to DeleteBucket : CreateBucket DeleteObject You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket(input)
       end
+
       def delete_bucket(input : Types::DeleteBucketRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -767,14 +795,17 @@ module AwsSdk
       # ListBucketAnalyticsConfigurations PutBucketAnalyticsConfiguration You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_analytics_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketAnalyticsConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_analytics_configuration(input)
       end
+
       def delete_bucket_analytics_configuration(input : Types::DeleteBucketAnalyticsConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_ANALYTICS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -790,13 +821,16 @@ module AwsSdk
       # Related Resources PutBucketCors RESTOPTIONSobject You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_cors(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketCorsRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_cors(input)
       end
+
       def delete_bucket_cors(input : Types::DeleteBucketCorsRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_CORS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -826,13 +860,16 @@ module AwsSdk
       # PutBucketEncryption GetBucketEncryption You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def delete_bucket_encryption(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketEncryptionRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_encryption(input)
       end
+
       def delete_bucket_encryption(input : Types::DeleteBucketEncryptionRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_ENCRYPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -857,14 +894,17 @@ module AwsSdk
       # PutBucketIntelligentTieringConfiguration ListBucketIntelligentTieringConfigurations You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_intelligent_tiering_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketIntelligentTieringConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_intelligent_tiering_configuration(input)
       end
+
       def delete_bucket_intelligent_tiering_configuration(input : Types::DeleteBucketIntelligentTieringConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_INTELLIGENT_TIERING_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -883,14 +923,17 @@ module AwsSdk
       # PutBucketInventoryConfiguration ListBucketInventoryConfigurations You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_inventory_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketInventoryConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_inventory_configuration(input)
       end
+
       def delete_bucket_inventory_configuration(input : Types::DeleteBucketInventoryConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_INVENTORY_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -926,13 +969,16 @@ module AwsSdk
       # GetBucketLifecycleConfiguration You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def delete_bucket_lifecycle(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketLifecycleRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_lifecycle(input)
       end
+
       def delete_bucket_lifecycle(input : Types::DeleteBucketLifecycleRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_LIFECYCLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -953,13 +999,16 @@ module AwsSdk
       # UpdateBucketMetadataInventoryTableConfiguration UpdateBucketMetadataJournalTableConfiguration You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_metadata_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketMetadataConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_metadata_configuration(input)
       end
+
       def delete_bucket_metadata_configuration(input : Types::DeleteBucketMetadataConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_METADATA_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -987,13 +1036,16 @@ module AwsSdk
       # GetBucketMetadataTableConfiguration You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def delete_bucket_metadata_table_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketMetadataTableConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_metadata_table_configuration(input)
       end
+
       def delete_bucket_metadata_table_configuration(input : Types::DeleteBucketMetadataTableConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_METADATA_TABLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1014,14 +1066,17 @@ module AwsSdk
       # ListBucketMetricsConfigurations Monitoring Metrics with Amazon CloudWatch You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_metrics_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketMetricsConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_metrics_configuration(input)
       end
+
       def delete_bucket_metrics_configuration(input : Types::DeleteBucketMetricsConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_METRICS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1037,13 +1092,16 @@ module AwsSdk
       # to DeleteBucketOwnershipControls : GetBucketOwnershipControls PutBucketOwnershipControls You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_ownership_controls(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketOwnershipControlsRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_ownership_controls(input)
       end
+
       def delete_bucket_ownership_controls(input : Types::DeleteBucketOwnershipControlsRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_OWNERSHIP_CONTROLS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1082,13 +1140,16 @@ module AwsSdk
       # DeleteObject You must URL encode any signed header values that contain spaces. For example, if your
       # header value is my file.txt , containing two spaces after my , you must URL encode this value to
       # my%20%20file.txt .
+
       def delete_bucket_policy(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketPolicyRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_policy(input)
       end
+
       def delete_bucket_policy(input : Types::DeleteBucketPolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1107,13 +1168,16 @@ module AwsSdk
       # are related to DeleteBucketReplication : PutBucketReplication GetBucketReplication You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_replication(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketReplicationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_replication(input)
       end
+
       def delete_bucket_replication(input : Types::DeleteBucketReplicationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_REPLICATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1132,13 +1196,16 @@ module AwsSdk
       # following operations are related to DeleteBucketTagging : GetBucketTagging PutBucketTagging You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_tagging(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketTaggingRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_tagging(input)
       end
+
       def delete_bucket_tagging(input : Types::DeleteBucketTaggingRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_TAGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1159,13 +1226,16 @@ module AwsSdk
       # DeleteBucketWebsite : GetBucketWebsite PutBucketWebsite You must URL encode any signed header values
       # that contain spaces. For example, if your header value is my file.txt , containing two spaces after
       # my , you must URL encode this value to my%20%20file.txt .
+
       def delete_bucket_website(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeleteBucketWebsiteRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_bucket_website(input)
       end
+
       def delete_bucket_website(input : Types::DeleteBucketWebsiteRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_BUCKET_WEBSITE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1227,6 +1297,7 @@ module AwsSdk
       # URL encode this value to my%20%20file.txt . The If-Match header is supported for both general
       # purpose and directory buckets. IfMatchLastModifiedTime and IfMatchSize is only supported for
       # directory buckets.
+
       def delete_object(
         bucket : String,
         key : String,
@@ -1239,9 +1310,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::DeleteObjectOutput
+
         input = Types::DeleteObjectRequest.new(bucket: bucket, key: key, bypass_governance_retention: bypass_governance_retention, expected_bucket_owner: expected_bucket_owner, if_match: if_match, if_match_last_modified_time: if_match_last_modified_time, if_match_size: if_match_size, mfa: mfa, request_payer: request_payer, version_id: version_id)
         delete_object(input)
       end
+
       def delete_object(input : Types::DeleteObjectRequest) : Types::DeleteObjectOutput
         request = Protocol::RestXml.build_request(Model::DELETE_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1258,15 +1331,18 @@ module AwsSdk
       # PutObjectTagging GetObjectTagging You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def delete_object_tagging(
         bucket : String,
         key : String,
         expected_bucket_owner : String? = nil,
         version_id : String? = nil
       ) : Types::DeleteObjectTaggingOutput
+
         input = Types::DeleteObjectTaggingRequest.new(bucket: bucket, key: key, expected_bucket_owner: expected_bucket_owner, version_id: version_id)
         delete_object_tagging(input)
       end
+
       def delete_object_tagging(input : Types::DeleteObjectTaggingRequest) : Types::DeleteObjectTaggingOutput
         request = Protocol::RestXml.build_request(Model::DELETE_OBJECT_TAGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1325,6 +1401,7 @@ module AwsSdk
       # ListParts AbortMultipartUpload You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def delete_objects(
         bucket : String,
         delete : Types::Delete,
@@ -1334,9 +1411,11 @@ module AwsSdk
         mfa : String? = nil,
         request_payer : String? = nil
       ) : Types::DeleteObjectsOutput
+
         input = Types::DeleteObjectsRequest.new(bucket: bucket, delete: delete, bypass_governance_retention: bypass_governance_retention, checksum_algorithm: checksum_algorithm, expected_bucket_owner: expected_bucket_owner, mfa: mfa, request_payer: request_payer)
         delete_objects(input)
       end
+
       def delete_objects(input : Types::DeleteObjectsRequest) : Types::DeleteObjectsOutput
         request = Protocol::RestXml.build_request(Model::DELETE_OBJECTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1355,13 +1434,16 @@ module AwsSdk
       # PutPublicAccessBlock GetBucketPolicyStatus You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def delete_public_access_block(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::DeletePublicAccessBlockRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         delete_public_access_block(input)
       end
+
       def delete_public_access_block(input : Types::DeletePublicAccessBlockRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_PUBLIC_ACCESS_BLOCK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1373,13 +1455,16 @@ module AwsSdk
       # Returns the attribute-based access control (ABAC) property of the general purpose bucket. If ABAC is
       # enabled on your bucket, you can use tags on the bucket for access control. For more information, see
       # Enabling ABAC in general purpose buckets .
+
       def get_bucket_abac(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketAbacOutput
+
         input = Types::GetBucketAbacRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_abac(input)
       end
+
       def get_bucket_abac(input : Types::GetBucketAbacRequest) : Types::GetBucketAbacOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_ABAC, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1404,14 +1489,17 @@ module AwsSdk
       # GetBucketAccelerateConfiguration : PutBucketAccelerateConfiguration You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_accelerate_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil,
         request_payer : String? = nil
       ) : Types::GetBucketAccelerateConfigurationOutput
+
         input = Types::GetBucketAccelerateConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer)
         get_bucket_accelerate_configuration(input)
       end
+
       def get_bucket_accelerate_configuration(input : Types::GetBucketAccelerateConfigurationRequest) : Types::GetBucketAccelerateConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_ACCELERATE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1435,13 +1523,16 @@ module AwsSdk
       # in the Amazon S3 User Guide . You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt . The following operations are related to GetBucketAcl : ListObjects
+
       def get_bucket_acl(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketAclOutput
+
         input = Types::GetBucketAclRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_acl(input)
       end
+
       def get_bucket_acl(input : Types::GetBucketAclRequest) : Types::GetBucketAclOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1462,14 +1553,17 @@ module AwsSdk
       # You must URL encode any signed header values that contain spaces. For example, if your header value
       # is my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt
       # .
+
       def get_bucket_analytics_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketAnalyticsConfigurationOutput
+
         input = Types::GetBucketAnalyticsConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         get_bucket_analytics_configuration(input)
       end
+
       def get_bucket_analytics_configuration(input : Types::GetBucketAnalyticsConfigurationRequest) : Types::GetBucketAnalyticsConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_ANALYTICS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1490,13 +1584,16 @@ module AwsSdk
       # Sharing . The following operations are related to GetBucketCors : PutBucketCors DeleteBucketCors You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_cors(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketCorsOutput
+
         input = Types::GetBucketCorsRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_cors(input)
       end
+
       def get_bucket_cors(input : Types::GetBucketCorsRequest) : Types::GetBucketCorsOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_CORS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1527,13 +1624,16 @@ module AwsSdk
       # DeleteBucketEncryption You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def get_bucket_encryption(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketEncryptionOutput
+
         input = Types::GetBucketEncryptionRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_encryption(input)
       end
+
       def get_bucket_encryption(input : Types::GetBucketEncryptionRequest) : Types::GetBucketEncryptionOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_ENCRYPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1558,14 +1658,17 @@ module AwsSdk
       # PutBucketIntelligentTieringConfiguration ListBucketIntelligentTieringConfigurations You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_intelligent_tiering_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketIntelligentTieringConfigurationOutput
+
         input = Types::GetBucketIntelligentTieringConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         get_bucket_intelligent_tiering_configuration(input)
       end
+
       def get_bucket_intelligent_tiering_configuration(input : Types::GetBucketIntelligentTieringConfigurationRequest) : Types::GetBucketIntelligentTieringConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_INTELLIGENT_TIERING_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1585,14 +1688,17 @@ module AwsSdk
       # You must URL encode any signed header values that contain spaces. For example, if your header value
       # is my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt
       # .
+
       def get_bucket_inventory_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketInventoryConfigurationOutput
+
         input = Types::GetBucketInventoryConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         get_bucket_inventory_configuration(input)
       end
+
       def get_bucket_inventory_configuration(input : Types::GetBucketInventoryConfigurationRequest) : Types::GetBucketInventoryConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_INVENTORY_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1615,13 +1721,16 @@ module AwsSdk
       # GetBucketLifecycle : GetBucketLifecycleConfiguration PutBucketLifecycle DeleteBucketLifecycle You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_lifecycle(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketLifecycleOutput
+
         input = Types::GetBucketLifecycleRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_lifecycle(input)
       end
+
       def get_bucket_lifecycle(input : Types::GetBucketLifecycleRequest) : Types::GetBucketLifecycleOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_LIFECYCLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1664,13 +1773,16 @@ module AwsSdk
       # PutBucketLifecycle DeleteBucketLifecycle You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def get_bucket_lifecycle_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketLifecycleConfigurationOutput
+
         input = Types::GetBucketLifecycleConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_lifecycle_configuration(input)
       end
+
       def get_bucket_lifecycle_configuration(input : Types::GetBucketLifecycleConfigurationRequest) : Types::GetBucketLifecycleConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_LIFECYCLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1698,13 +1810,16 @@ module AwsSdk
       # GetObject CreateBucket You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def get_bucket_location(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketLocationOutput
+
         input = Types::GetBucketLocationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_location(input)
       end
+
       def get_bucket_location(input : Types::GetBucketLocationRequest) : Types::GetBucketLocationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_LOCATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1718,13 +1833,16 @@ module AwsSdk
       # GetBucketLogging : CreateBucket PutBucketLogging You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_logging(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketLoggingOutput
+
         input = Types::GetBucketLoggingRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_logging(input)
       end
+
       def get_bucket_logging(input : Types::GetBucketLoggingRequest) : Types::GetBucketLoggingOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_LOGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1745,13 +1863,16 @@ module AwsSdk
       # UpdateBucketMetadataInventoryTableConfiguration UpdateBucketMetadataJournalTableConfiguration You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_metadata_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketMetadataConfigurationOutput
+
         input = Types::GetBucketMetadataConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_metadata_configuration(input)
       end
+
       def get_bucket_metadata_configuration(input : Types::GetBucketMetadataConfigurationRequest) : Types::GetBucketMetadataConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_METADATA_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1779,13 +1900,16 @@ module AwsSdk
       # DeleteBucketMetadataTableConfiguration You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def get_bucket_metadata_table_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketMetadataTableConfigurationOutput
+
         input = Types::GetBucketMetadataTableConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_metadata_table_configuration(input)
       end
+
       def get_bucket_metadata_table_configuration(input : Types::GetBucketMetadataTableConfigurationRequest) : Types::GetBucketMetadataTableConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_METADATA_TABLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1806,14 +1930,17 @@ module AwsSdk
       # CloudWatch You must URL encode any signed header values that contain spaces. For example, if your
       # header value is my file.txt , containing two spaces after my , you must URL encode this value to
       # my%20%20file.txt .
+
       def get_bucket_metrics_configuration(
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketMetricsConfigurationOutput
+
         input = Types::GetBucketMetricsConfigurationRequest.new(bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         get_bucket_metrics_configuration(input)
       end
+
       def get_bucket_metrics_configuration(input : Types::GetBucketMetricsConfigurationRequest) : Types::GetBucketMetricsConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_METRICS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1824,13 +1951,16 @@ module AwsSdk
 
       # This operation is not supported for directory buckets. No longer used, see
       # GetBucketNotificationConfiguration .
+
       def get_bucket_notification(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::NotificationConfigurationDeprecated
+
         input = Types::GetBucketNotificationConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_notification(input)
       end
+
       def get_bucket_notification(input : Types::GetBucketNotificationConfigurationRequest) : Types::NotificationConfigurationDeprecated
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_NOTIFICATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1854,13 +1984,16 @@ module AwsSdk
       # following action is related to GetBucketNotification : PutBucketNotification You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_notification_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::NotificationConfiguration
+
         input = Types::GetBucketNotificationConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_notification_configuration(input)
       end
+
       def get_bucket_notification_configuration(input : Types::GetBucketNotificationConfigurationRequest) : Types::NotificationConfiguration
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_NOTIFICATION_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1881,13 +2014,16 @@ module AwsSdk
       # You must URL encode any signed header values that contain spaces. For example, if your header value
       # is my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt
       # .
+
       def get_bucket_ownership_controls(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketOwnershipControlsOutput
+
         input = Types::GetBucketOwnershipControlsRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_ownership_controls(input)
       end
+
       def get_bucket_ownership_controls(input : Types::GetBucketOwnershipControlsRequest) : Types::GetBucketOwnershipControlsOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_OWNERSHIP_CONTROLS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1928,13 +2064,16 @@ module AwsSdk
       # GetObject You must URL encode any signed header values that contain spaces. For example, if your
       # header value is my file.txt , containing two spaces after my , you must URL encode this value to
       # my%20%20file.txt .
+
       def get_bucket_policy(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketPolicyOutput
+
         input = Types::GetBucketPolicyRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_policy(input)
       end
+
       def get_bucket_policy(input : Types::GetBucketPolicyRequest) : Types::GetBucketPolicyOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1952,13 +2091,16 @@ module AwsSdk
       # DeletePublicAccessBlock You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def get_bucket_policy_status(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketPolicyStatusOutput
+
         input = Types::GetBucketPolicyStatusRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_policy_status(input)
       end
+
       def get_bucket_policy_status(input : Types::GetBucketPolicyStatusRequest) : Types::GetBucketPolicyStatusOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_POLICY_STATUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1979,13 +2121,16 @@ module AwsSdk
       # GetBucketReplication : PutBucketReplication DeleteBucketReplication You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_replication(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketReplicationOutput
+
         input = Types::GetBucketReplicationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_replication(input)
       end
+
       def get_bucket_replication(input : Types::GetBucketReplicationRequest) : Types::GetBucketReplicationOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_REPLICATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2000,13 +2145,16 @@ module AwsSdk
       # ListObjects You must URL encode any signed header values that contain spaces. For example, if your
       # header value is my file.txt , containing two spaces after my , you must URL encode this value to
       # my%20%20file.txt .
+
       def get_bucket_request_payment(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketRequestPaymentOutput
+
         input = Types::GetBucketRequestPaymentRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_request_payment(input)
       end
+
       def get_bucket_request_payment(input : Types::GetBucketRequestPaymentRequest) : Types::GetBucketRequestPaymentOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_REQUEST_PAYMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2025,13 +2173,16 @@ module AwsSdk
       # GetBucketTagging : PutBucketTagging DeleteBucketTagging You must URL encode any signed header values
       # that contain spaces. For example, if your header value is my file.txt , containing two spaces after
       # my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_tagging(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketTaggingOutput
+
         input = Types::GetBucketTaggingRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_tagging(input)
       end
+
       def get_bucket_tagging(input : Types::GetBucketTaggingRequest) : Types::GetBucketTaggingOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_TAGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2047,13 +2198,16 @@ module AwsSdk
       # following operations are related to GetBucketVersioning : GetObject PutObject DeleteObject You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_versioning(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketVersioningOutput
+
         input = Types::GetBucketVersioningRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_versioning(input)
       end
+
       def get_bucket_versioning(input : Types::GetBucketVersioningRequest) : Types::GetBucketVersioningOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_VERSIONING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2071,13 +2225,16 @@ module AwsSdk
       # following operations are related to GetBucketWebsite : DeleteBucketWebsite PutBucketWebsite You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_bucket_website(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetBucketWebsiteOutput
+
         input = Types::GetBucketWebsiteRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_bucket_website(input)
       end
+
       def get_bucket_website(input : Types::GetBucketWebsiteRequest) : Types::GetBucketWebsiteOutput
         request = Protocol::RestXml.build_request(Model::GET_BUCKET_WEBSITE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2160,6 +2317,7 @@ module AwsSdk
       # following operations are related to GetObject : ListBuckets GetObjectAcl You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_object(
         bucket : String,
         key : String,
@@ -2183,9 +2341,11 @@ module AwsSdk
         sse_customer_key_md5 : String? = nil,
         version_id : String? = nil
       ) : Types::GetObjectOutput
+
         input = Types::GetObjectRequest.new(bucket: bucket, key: key, checksum_mode: checksum_mode, expected_bucket_owner: expected_bucket_owner, if_match: if_match, if_modified_since: if_modified_since, if_none_match: if_none_match, if_unmodified_since: if_unmodified_since, part_number: part_number, range: range, request_payer: request_payer, response_cache_control: response_cache_control, response_content_disposition: response_content_disposition, response_content_encoding: response_content_encoding, response_content_language: response_content_language, response_content_type: response_content_type, response_expires: response_expires, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, version_id: version_id)
         get_object(input)
       end
+
       def get_object(input : Types::GetObjectRequest) : Types::GetObjectOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2207,6 +2367,7 @@ module AwsSdk
       # PutObject You must URL encode any signed header values that contain spaces. For example, if your
       # header value is my file.txt , containing two spaces after my , you must URL encode this value to
       # my%20%20file.txt .
+
       def get_object_acl(
         bucket : String,
         key : String,
@@ -2214,9 +2375,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::GetObjectAclOutput
+
         input = Types::GetObjectAclRequest.new(bucket: bucket, key: key, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, version_id: version_id)
         get_object_acl(input)
       end
+
       def get_object_acl(input : Types::GetObjectAclRequest) : Types::GetObjectAclOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2294,6 +2457,7 @@ module AwsSdk
       # GetObjectTagging HeadObject ListParts You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def get_object_attributes(
         bucket : String,
         key : String,
@@ -2307,9 +2471,11 @@ module AwsSdk
         sse_customer_key_md5 : String? = nil,
         version_id : String? = nil
       ) : Types::GetObjectAttributesOutput
+
         input = Types::GetObjectAttributesRequest.new(bucket: bucket, key: key, object_attributes: object_attributes, expected_bucket_owner: expected_bucket_owner, max_parts: max_parts, part_number_marker: part_number_marker, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, version_id: version_id)
         get_object_attributes(input)
       end
+
       def get_object_attributes(input : Types::GetObjectAttributesRequest) : Types::GetObjectAttributesOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_ATTRIBUTES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2323,6 +2489,7 @@ module AwsSdk
       # Outposts. The following action is related to GetObjectLegalHold : GetObjectAttributes You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_object_legal_hold(
         bucket : String,
         key : String,
@@ -2330,9 +2497,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::GetObjectLegalHoldOutput
+
         input = Types::GetObjectLegalHoldRequest.new(bucket: bucket, key: key, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, version_id: version_id)
         get_object_legal_hold(input)
       end
+
       def get_object_legal_hold(input : Types::GetObjectLegalHoldRequest) : Types::GetObjectLegalHoldOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_LEGAL_HOLD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2347,13 +2516,16 @@ module AwsSdk
       # action is related to GetObjectLockConfiguration : GetObjectAttributes You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_object_lock_configuration(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetObjectLockConfigurationOutput
+
         input = Types::GetObjectLockConfigurationRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_object_lock_configuration(input)
       end
+
       def get_object_lock_configuration(input : Types::GetObjectLockConfigurationRequest) : Types::GetObjectLockConfigurationOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_LOCK_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2367,6 +2539,7 @@ module AwsSdk
       # Outposts. The following action is related to GetObjectRetention : GetObjectAttributes You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_object_retention(
         bucket : String,
         key : String,
@@ -2374,9 +2547,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::GetObjectRetentionOutput
+
         input = Types::GetObjectRetentionRequest.new(bucket: bucket, key: key, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, version_id: version_id)
         get_object_retention(input)
       end
+
       def get_object_retention(input : Types::GetObjectRetentionRequest) : Types::GetObjectRetentionOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_RETENTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2396,6 +2571,7 @@ module AwsSdk
       # are related to GetObjectTagging : DeleteObjectTagging GetObjectAttributes PutObjectTagging You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def get_object_tagging(
         bucket : String,
         key : String,
@@ -2403,9 +2579,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::GetObjectTaggingOutput
+
         input = Types::GetObjectTaggingRequest.new(bucket: bucket, key: key, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, version_id: version_id)
         get_object_tagging(input)
       end
+
       def get_object_tagging(input : Types::GetObjectTaggingRequest) : Types::GetObjectTaggingOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_TAGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2422,15 +2600,18 @@ module AwsSdk
       # GetObjectTorrent : GetObject You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def get_object_torrent(
         bucket : String,
         key : String,
         expected_bucket_owner : String? = nil,
         request_payer : String? = nil
       ) : Types::GetObjectTorrentOutput
+
         input = Types::GetObjectTorrentRequest.new(bucket: bucket, key: key, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer)
         get_object_torrent(input)
       end
+
       def get_object_torrent(input : Types::GetObjectTorrentRequest) : Types::GetObjectTorrentOutput
         request = Protocol::RestXml.build_request(Model::GET_OBJECT_TORRENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2455,13 +2636,16 @@ module AwsSdk
       # GetPublicAccessBlock DeletePublicAccessBlock You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def get_public_access_block(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::GetPublicAccessBlockOutput
+
         input = Types::GetPublicAccessBlockRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         get_public_access_block(input)
       end
+
       def get_public_access_block(input : Types::GetPublicAccessBlockRequest) : Types::GetPublicAccessBlockOutput
         request = Protocol::RestXml.build_request(Model::GET_PUBLIC_ACCESS_BLOCK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2504,13 +2688,16 @@ module AwsSdk
       # Zones, see Concepts for directory buckets in Local Zones in the Amazon S3 User Guide . You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def head_bucket(
         bucket : String,
         expected_bucket_owner : String? = nil
       ) : Types::HeadBucketOutput
+
         input = Types::HeadBucketRequest.new(bucket: bucket, expected_bucket_owner: expected_bucket_owner)
         head_bucket(input)
       end
+
       def head_bucket(input : Types::HeadBucketRequest) : Types::HeadBucketOutput
         request = Protocol::RestXml.build_request(Model::HEAD_BUCKET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2580,6 +2767,7 @@ module AwsSdk
       # actions are related to HeadObject : GetObject GetObjectAttributes You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def head_object(
         bucket : String,
         key : String,
@@ -2603,9 +2791,11 @@ module AwsSdk
         sse_customer_key_md5 : String? = nil,
         version_id : String? = nil
       ) : Types::HeadObjectOutput
+
         input = Types::HeadObjectRequest.new(bucket: bucket, key: key, checksum_mode: checksum_mode, expected_bucket_owner: expected_bucket_owner, if_match: if_match, if_modified_since: if_modified_since, if_none_match: if_none_match, if_unmodified_since: if_unmodified_since, part_number: part_number, range: range, request_payer: request_payer, response_cache_control: response_cache_control, response_content_disposition: response_content_disposition, response_content_encoding: response_content_encoding, response_content_language: response_content_language, response_content_type: response_content_type, response_expires: response_expires, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, version_id: version_id)
         head_object(input)
       end
+
       def head_object(input : Types::HeadObjectRequest) : Types::HeadObjectOutput
         request = Protocol::RestXml.build_request(Model::HEAD_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2630,14 +2820,17 @@ module AwsSdk
       # DeleteBucketAnalyticsConfiguration PutBucketAnalyticsConfiguration You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_bucket_analytics_configurations(
         bucket : String,
         continuation_token : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Types::ListBucketAnalyticsConfigurationsOutput
+
         input = Types::ListBucketAnalyticsConfigurationsRequest.new(bucket: bucket, continuation_token: continuation_token, expected_bucket_owner: expected_bucket_owner)
         list_bucket_analytics_configurations(input)
       end
+
       def list_bucket_analytics_configurations(input : Types::ListBucketAnalyticsConfigurationsRequest) : Types::ListBucketAnalyticsConfigurationsOutput
         request = Protocol::RestXml.build_request(Model::LIST_BUCKET_ANALYTICS_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2662,14 +2855,17 @@ module AwsSdk
       # PutBucketIntelligentTieringConfiguration GetBucketIntelligentTieringConfiguration You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_bucket_intelligent_tiering_configurations(
         bucket : String,
         continuation_token : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Types::ListBucketIntelligentTieringConfigurationsOutput
+
         input = Types::ListBucketIntelligentTieringConfigurationsRequest.new(bucket: bucket, continuation_token: continuation_token, expected_bucket_owner: expected_bucket_owner)
         list_bucket_intelligent_tiering_configurations(input)
       end
+
       def list_bucket_intelligent_tiering_configurations(input : Types::ListBucketIntelligentTieringConfigurationsRequest) : Types::ListBucketIntelligentTieringConfigurationsOutput
         request = Protocol::RestXml.build_request(Model::LIST_BUCKET_INTELLIGENT_TIERING_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2694,14 +2890,17 @@ module AwsSdk
       # DeleteBucketInventoryConfiguration PutBucketInventoryConfiguration You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_bucket_inventory_configurations(
         bucket : String,
         continuation_token : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Types::ListBucketInventoryConfigurationsOutput
+
         input = Types::ListBucketInventoryConfigurationsRequest.new(bucket: bucket, continuation_token: continuation_token, expected_bucket_owner: expected_bucket_owner)
         list_bucket_inventory_configurations(input)
       end
+
       def list_bucket_inventory_configurations(input : Types::ListBucketInventoryConfigurationsRequest) : Types::ListBucketInventoryConfigurationsOutput
         request = Protocol::RestXml.build_request(Model::LIST_BUCKET_INVENTORY_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2727,14 +2926,17 @@ module AwsSdk
       # PutBucketMetricsConfiguration GetBucketMetricsConfiguration DeleteBucketMetricsConfiguration You
       # must URL encode any signed header values that contain spaces. For example, if your header value is
       # my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_bucket_metrics_configurations(
         bucket : String,
         continuation_token : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Types::ListBucketMetricsConfigurationsOutput
+
         input = Types::ListBucketMetricsConfigurationsRequest.new(bucket: bucket, continuation_token: continuation_token, expected_bucket_owner: expected_bucket_owner)
         list_bucket_metrics_configurations(input)
       end
+
       def list_bucket_metrics_configurations(input : Types::ListBucketMetricsConfigurationsRequest) : Types::ListBucketMetricsConfigurationsOutput
         request = Protocol::RestXml.build_request(Model::LIST_BUCKET_METRICS_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2754,15 +2956,18 @@ module AwsSdk
       # accounts with a general purpose bucket quota greater than 10,000. You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_buckets(
         bucket_region : String? = nil,
         continuation_token : String? = nil,
         max_buckets : Int32? = nil,
         prefix : String? = nil
       ) : Types::ListBucketsOutput
+
         input = Types::ListBucketsRequest.new(bucket_region: bucket_region, continuation_token: continuation_token, max_buckets: max_buckets, prefix: prefix)
         list_buckets(input)
       end
+
       def list_buckets(input : Types::ListBucketsRequest) : Types::ListBucketsOutput
         request = Protocol::RestXml.build_request(Model::LIST_BUCKETS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2789,13 +2994,16 @@ module AwsSdk
       # ListDirectoryBuckets Response Syntax. You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def list_directory_buckets(
         continuation_token : String? = nil,
         max_directory_buckets : Int32? = nil
       ) : Types::ListDirectoryBucketsOutput
+
         input = Types::ListDirectoryBucketsRequest.new(continuation_token: continuation_token, max_directory_buckets: max_directory_buckets)
         list_directory_buckets(input)
       end
+
       def list_directory_buckets(input : Types::ListDirectoryBucketsRequest) : Types::ListDirectoryBucketsOutput
         request = Protocol::RestXml.build_request(Model::LIST_DIRECTORY_BUCKETS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2852,6 +3060,7 @@ module AwsSdk
       # CreateMultipartUpload UploadPart CompleteMultipartUpload ListParts AbortMultipartUpload You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_multipart_uploads(
         bucket : String,
         delimiter : String? = nil,
@@ -2863,9 +3072,11 @@ module AwsSdk
         request_payer : String? = nil,
         upload_id_marker : String? = nil
       ) : Types::ListMultipartUploadsOutput
+
         input = Types::ListMultipartUploadsRequest.new(bucket: bucket, delimiter: delimiter, encoding_type: encoding_type, expected_bucket_owner: expected_bucket_owner, key_marker: key_marker, max_uploads: max_uploads, prefix: prefix, request_payer: request_payer, upload_id_marker: upload_id_marker)
         list_multipart_uploads(input)
       end
+
       def list_multipart_uploads(input : Types::ListMultipartUploadsRequest) : Types::ListMultipartUploadsOutput
         request = Protocol::RestXml.build_request(Model::LIST_MULTIPART_UPLOADS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2884,6 +3095,7 @@ module AwsSdk
       # PutObject DeleteObject You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def list_object_versions(
         bucket : String,
         delimiter : String? = nil,
@@ -2896,9 +3108,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id_marker : String? = nil
       ) : Types::ListObjectVersionsOutput
+
         input = Types::ListObjectVersionsRequest.new(bucket: bucket, delimiter: delimiter, encoding_type: encoding_type, expected_bucket_owner: expected_bucket_owner, key_marker: key_marker, max_keys: max_keys, optional_object_attributes: optional_object_attributes, prefix: prefix, request_payer: request_payer, version_id_marker: version_id_marker)
         list_object_versions(input)
       end
+
       def list_object_versions(input : Types::ListObjectVersionsRequest) : Types::ListObjectVersionsOutput
         request = Protocol::RestXml.build_request(Model::LIST_OBJECT_VERSIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2916,6 +3130,7 @@ module AwsSdk
       # are related to ListObjects : ListObjectsV2 GetObject PutObject CreateBucket ListBuckets You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def list_objects(
         bucket : String,
         delimiter : String? = nil,
@@ -2927,9 +3142,11 @@ module AwsSdk
         prefix : String? = nil,
         request_payer : String? = nil
       ) : Types::ListObjectsOutput
+
         input = Types::ListObjectsRequest.new(bucket: bucket, delimiter: delimiter, encoding_type: encoding_type, expected_bucket_owner: expected_bucket_owner, marker: marker, max_keys: max_keys, optional_object_attributes: optional_object_attributes, prefix: prefix, request_payer: request_payer)
         list_objects(input)
       end
+
       def list_objects(input : Types::ListObjectsRequest) : Types::ListObjectsOutput
         request = Protocol::RestXml.build_request(Model::LIST_OBJECTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2976,6 +3193,7 @@ module AwsSdk
       # PutObject CreateBucket You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def list_objects_v2(
         bucket : String,
         continuation_token : String? = nil,
@@ -2989,9 +3207,11 @@ module AwsSdk
         request_payer : String? = nil,
         start_after : String? = nil
       ) : Types::ListObjectsV2Output
+
         input = Types::ListObjectsV2Request.new(bucket: bucket, continuation_token: continuation_token, delimiter: delimiter, encoding_type: encoding_type, expected_bucket_owner: expected_bucket_owner, fetch_owner: fetch_owner, max_keys: max_keys, optional_object_attributes: optional_object_attributes, prefix: prefix, request_payer: request_payer, start_after: start_after)
         list_objects_v2(input)
       end
+
       def list_objects_v2(input : Types::ListObjectsV2Request) : Types::ListObjectsV2Output
         request = Protocol::RestXml.build_request(Model::LIST_OBJECTS_V2, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3035,6 +3255,7 @@ module AwsSdk
       # AbortMultipartUpload GetObjectAttributes ListMultipartUploads You must URL encode any signed header
       # values that contain spaces. For example, if your header value is my file.txt , containing two spaces
       # after my , you must URL encode this value to my%20%20file.txt .
+
       def list_parts(
         bucket : String,
         key : String,
@@ -3047,9 +3268,11 @@ module AwsSdk
         sse_customer_key : String? = nil,
         sse_customer_key_md5 : String? = nil
       ) : Types::ListPartsOutput
+
         input = Types::ListPartsRequest.new(bucket: bucket, key: key, upload_id: upload_id, expected_bucket_owner: expected_bucket_owner, max_parts: max_parts, part_number_marker: part_number_marker, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5)
         list_parts(input)
       end
+
       def list_parts(input : Types::ListPartsRequest) : Types::ListPartsOutput
         request = Protocol::RestXml.build_request(Model::LIST_PARTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3064,6 +3287,7 @@ module AwsSdk
       # UntagResource actions to manage tags on your buckets. You can nolonger use the PutBucketTagging and
       # DeleteBucketTagging actions to tag your bucket. For more information, see Enabling ABAC in general
       # purpose buckets .
+
       def put_bucket_abac(
         abac_status : Types::AbacStatus,
         bucket : String,
@@ -3071,9 +3295,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketAbacRequest.new(abac_status: abac_status, bucket: bucket, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_abac(input)
       end
+
       def put_bucket_abac(input : Types::PutBucketAbacRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_ABAC, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3099,15 +3325,18 @@ module AwsSdk
       # GetBucketAccelerateConfiguration CreateBucket You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_accelerate_configuration(
         accelerate_configuration : Types::AccelerateConfiguration,
         bucket : String,
         checksum_algorithm : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketAccelerateConfigurationRequest.new(accelerate_configuration: accelerate_configuration, bucket: bucket, checksum_algorithm: checksum_algorithm, expected_bucket_owner: expected_bucket_owner)
         put_bucket_accelerate_configuration(input)
       end
+
       def put_bucket_accelerate_configuration(input : Types::PutBucketAccelerateConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_ACCELERATE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3175,6 +3404,7 @@ module AwsSdk
       # CreateBucket DeleteBucket GetObjectAcl You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def put_bucket_acl(
         bucket : String,
         acl : String? = nil,
@@ -3188,9 +3418,11 @@ module AwsSdk
         grant_write : String? = nil,
         grant_write_acp : String? = nil
       ) : Nil
+
         input = Types::PutBucketAclRequest.new(bucket: bucket, acl: acl, access_control_policy: access_control_policy, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write: grant_write, grant_write_acp: grant_write_acp)
         put_bucket_acl(input)
       end
+
       def put_bucket_acl(input : Types::PutBucketAclRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3224,15 +3456,18 @@ module AwsSdk
       # ListBucketAnalyticsConfigurations You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def put_bucket_analytics_configuration(
         analytics_configuration : Types::AnalyticsConfiguration,
         bucket : String,
         id : String,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketAnalyticsConfigurationRequest.new(analytics_configuration: analytics_configuration, bucket: bucket, id: id, expected_bucket_owner: expected_bucket_owner)
         put_bucket_analytics_configuration(input)
       end
+
       def put_bucket_analytics_configuration(input : Types::PutBucketAnalyticsConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_ANALYTICS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3262,6 +3497,7 @@ module AwsSdk
       # DeleteBucketCors RESTOPTIONSobject You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def put_bucket_cors(
         bucket : String,
         cors_configuration : Types::CORSConfiguration,
@@ -3269,9 +3505,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketCorsRequest.new(bucket: bucket, cors_configuration: cors_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_cors(input)
       end
+
       def put_bucket_cors(input : Types::PutBucketCorsRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_CORS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3335,6 +3573,7 @@ module AwsSdk
       # DeleteBucketEncryption You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def put_bucket_encryption(
         bucket : String,
         server_side_encryption_configuration : Types::ServerSideEncryptionConfiguration,
@@ -3342,9 +3581,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketEncryptionRequest.new(bucket: bucket, server_side_encryption_configuration: server_side_encryption_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_encryption(input)
       end
+
       def put_bucket_encryption(input : Types::PutBucketEncryptionRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_ENCRYPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3378,15 +3619,18 @@ module AwsSdk
       # set the configuration on the bucket. You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def put_bucket_intelligent_tiering_configuration(
         bucket : String,
         id : String,
         intelligent_tiering_configuration : Types::IntelligentTieringConfiguration,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketIntelligentTieringConfigurationRequest.new(bucket: bucket, id: id, intelligent_tiering_configuration: intelligent_tiering_configuration, expected_bucket_owner: expected_bucket_owner)
         put_bucket_intelligent_tiering_configuration(input)
       end
+
       def put_bucket_intelligent_tiering_configuration(input : Types::PutBucketIntelligentTieringConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_INTELLIGENT_TIERING_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3428,15 +3672,18 @@ module AwsSdk
       # ListBucketInventoryConfigurations You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def put_bucket_inventory_configuration(
         bucket : String,
         id : String,
         inventory_configuration : Types::InventoryConfiguration,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketInventoryConfigurationRequest.new(bucket: bucket, id: id, inventory_configuration: inventory_configuration, expected_bucket_owner: expected_bucket_owner)
         put_bucket_inventory_configuration(input)
       end
+
       def put_bucket_inventory_configuration(input : Types::PutBucketInventoryConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_INVENTORY_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3469,6 +3716,7 @@ module AwsSdk
       # Specifying Permissions in a Policy Managing Access Permissions to your Amazon S3 Resources You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_lifecycle(
         bucket : String,
         checksum_algorithm : String? = nil,
@@ -3476,9 +3724,11 @@ module AwsSdk
         expected_bucket_owner : String? = nil,
         lifecycle_configuration : Types::LifecycleConfiguration? = nil
       ) : Nil
+
         input = Types::PutBucketLifecycleRequest.new(bucket: bucket, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, lifecycle_configuration: lifecycle_configuration)
         put_bucket_lifecycle(input)
       end
+
       def put_bucket_lifecycle(input : Types::PutBucketLifecycleRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_LIFECYCLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3539,6 +3789,7 @@ module AwsSdk
       # GetBucketLifecycleConfiguration DeleteBucketLifecycle You must URL encode any signed header values
       # that contain spaces. For example, if your header value is my file.txt , containing two spaces after
       # my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_lifecycle_configuration(
         bucket : String,
         checksum_algorithm : String? = nil,
@@ -3546,9 +3797,11 @@ module AwsSdk
         lifecycle_configuration : Types::BucketLifecycleConfiguration? = nil,
         transition_default_minimum_object_size : String? = nil
       ) : Types::PutBucketLifecycleConfigurationOutput
+
         input = Types::PutBucketLifecycleConfigurationRequest.new(bucket: bucket, checksum_algorithm: checksum_algorithm, expected_bucket_owner: expected_bucket_owner, lifecycle_configuration: lifecycle_configuration, transition_default_minimum_object_size: transition_default_minimum_object_size)
         put_bucket_lifecycle_configuration(input)
       end
+
       def put_bucket_lifecycle_configuration(input : Types::PutBucketLifecycleConfigurationRequest) : Types::PutBucketLifecycleConfigurationOutput
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_LIFECYCLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3592,6 +3845,7 @@ module AwsSdk
       # DeleteBucket CreateBucket GetBucketLogging You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def put_bucket_logging(
         bucket : String,
         bucket_logging_status : Types::BucketLoggingStatus,
@@ -3599,9 +3853,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketLoggingRequest.new(bucket: bucket, bucket_logging_status: bucket_logging_status, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_logging(input)
       end
+
       def put_bucket_logging(input : Types::PutBucketLoggingRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_LOGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3626,15 +3882,18 @@ module AwsSdk
       # 400 Bad Request You must URL encode any signed header values that contain spaces. For example, if
       # your header value is my file.txt , containing two spaces after my , you must URL encode this value
       # to my%20%20file.txt .
+
       def put_bucket_metrics_configuration(
         bucket : String,
         id : String,
         metrics_configuration : Types::MetricsConfiguration,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketMetricsConfigurationRequest.new(bucket: bucket, id: id, metrics_configuration: metrics_configuration, expected_bucket_owner: expected_bucket_owner)
         put_bucket_metrics_configuration(input)
       end
+
       def put_bucket_metrics_configuration(input : Types::PutBucketMetricsConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_METRICS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3645,6 +3904,7 @@ module AwsSdk
 
       # This operation is not supported for directory buckets. No longer used, see the
       # PutBucketNotificationConfiguration operation.
+
       def put_bucket_notification(
         bucket : String,
         notification_configuration : Types::NotificationConfigurationDeprecated,
@@ -3652,9 +3912,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketNotificationRequest.new(bucket: bucket, notification_configuration: notification_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_notification(input)
       end
+
       def put_bucket_notification(input : Types::PutBucketNotificationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_NOTIFICATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3693,15 +3955,18 @@ module AwsSdk
       # GetBucketNotificationConfiguration You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def put_bucket_notification_configuration(
         bucket : String,
         notification_configuration : Types::NotificationConfiguration,
         expected_bucket_owner : String? = nil,
         skip_destination_validation : Bool? = nil
       ) : Nil
+
         input = Types::PutBucketNotificationConfigurationRequest.new(bucket: bucket, notification_configuration: notification_configuration, expected_bucket_owner: expected_bucket_owner, skip_destination_validation: skip_destination_validation)
         put_bucket_notification_configuration(input)
       end
+
       def put_bucket_notification_configuration(input : Types::PutBucketNotificationConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_NOTIFICATION_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3718,6 +3983,7 @@ module AwsSdk
       # You must URL encode any signed header values that contain spaces. For example, if your header value
       # is my file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt
       # .
+
       def put_bucket_ownership_controls(
         bucket : String,
         ownership_controls : Types::OwnershipControls,
@@ -3725,9 +3991,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketOwnershipControlsRequest.new(bucket: bucket, ownership_controls: ownership_controls, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_ownership_controls(input)
       end
+
       def put_bucket_ownership_controls(input : Types::PutBucketOwnershipControlsRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_OWNERSHIP_CONTROLS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3768,6 +4036,7 @@ module AwsSdk
       # operations are related to PutBucketPolicy : CreateBucket DeleteBucket You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_policy(
         bucket : String,
         policy : String,
@@ -3776,9 +4045,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketPolicyRequest.new(bucket: bucket, policy: policy, checksum_algorithm: checksum_algorithm, confirm_remove_self_bucket_access: confirm_remove_self_bucket_access, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_policy(input)
       end
+
       def put_bucket_policy(input : Types::PutBucketPolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3818,6 +4089,7 @@ module AwsSdk
       # GetBucketReplication DeleteBucketReplication You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_replication(
         bucket : String,
         replication_configuration : Types::ReplicationConfiguration,
@@ -3826,9 +4098,11 @@ module AwsSdk
         expected_bucket_owner : String? = nil,
         token : String? = nil
       ) : Nil
+
         input = Types::PutBucketReplicationRequest.new(bucket: bucket, replication_configuration: replication_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, token: token)
         put_bucket_replication(input)
       end
+
       def put_bucket_replication(input : Types::PutBucketReplicationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_REPLICATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3844,6 +4118,7 @@ module AwsSdk
       # operations are related to PutBucketRequestPayment : CreateBucket GetBucketRequestPayment You must
       # URL encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_request_payment(
         bucket : String,
         request_payment_configuration : Types::RequestPaymentConfiguration,
@@ -3851,9 +4126,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketRequestPaymentRequest.new(bucket: bucket, request_payment_configuration: request_payment_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_request_payment(input)
       end
+
       def put_bucket_request_payment(input : Types::PutBucketRequestPaymentRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_REQUEST_PAYMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3886,6 +4163,7 @@ module AwsSdk
       # to PutBucketTagging : GetBucketTagging DeleteBucketTagging You must URL encode any signed header
       # values that contain spaces. For example, if your header value is my file.txt , containing two spaces
       # after my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_tagging(
         bucket : String,
         tagging : Types::Tagging,
@@ -3893,9 +4171,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketTaggingRequest.new(bucket: bucket, tagging: tagging, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_tagging(input)
       end
+
       def put_bucket_tagging(input : Types::PutBucketTaggingRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_TAGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3926,6 +4206,7 @@ module AwsSdk
       # to PutBucketVersioning : CreateBucket DeleteBucket GetBucketVersioning You must URL encode any
       # signed header values that contain spaces. For example, if your header value is my file.txt ,
       # containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_versioning(
         bucket : String,
         versioning_configuration : Types::VersioningConfiguration,
@@ -3934,9 +4215,11 @@ module AwsSdk
         expected_bucket_owner : String? = nil,
         mfa : String? = nil
       ) : Nil
+
         input = Types::PutBucketVersioningRequest.new(bucket: bucket, versioning_configuration: versioning_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, mfa: mfa)
         put_bucket_versioning(input)
       end
+
       def put_bucket_versioning(input : Types::PutBucketVersioningRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_VERSIONING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3966,6 +4249,7 @@ module AwsSdk
       # S3 User Guide . The maximum request length is limited to 128 KB. You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def put_bucket_website(
         bucket : String,
         website_configuration : Types::WebsiteConfiguration,
@@ -3973,9 +4257,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutBucketWebsiteRequest.new(bucket: bucket, website_configuration: website_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_bucket_website(input)
       end
+
       def put_bucket_website(input : Types::PutBucketWebsiteRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_BUCKET_WEBSITE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4044,6 +4330,7 @@ module AwsSdk
       # Amazon S3 APIs, see the following: CopyObject DeleteObject You must URL encode any signed header
       # values that contain spaces. For example, if your header value is my file.txt , containing two spaces
       # after my , you must URL encode this value to my%20%20file.txt .
+
       def put_object(
         bucket : String,
         key : String,
@@ -4087,9 +4374,11 @@ module AwsSdk
         website_redirect_location : String? = nil,
         write_offset_bytes : Int64? = nil
       ) : Types::PutObjectOutput
+
         input = Types::PutObjectRequest.new(bucket: bucket, key: key, acl: acl, body: body, bucket_key_enabled: bucket_key_enabled, cache_control: cache_control, checksum_algorithm: checksum_algorithm, checksum_crc32: checksum_crc32, checksum_crc32_c: checksum_crc32_c, checksum_crc64_nvme: checksum_crc64_nvme, checksum_sha1: checksum_sha1, checksum_sha256: checksum_sha256, content_disposition: content_disposition, content_encoding: content_encoding, content_language: content_language, content_length: content_length, content_md5: content_md5, content_type: content_type, expected_bucket_owner: expected_bucket_owner, expires: expires, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write_acp: grant_write_acp, if_match: if_match, if_none_match: if_none_match, metadata: metadata, object_lock_legal_hold_status: object_lock_legal_hold_status, object_lock_mode: object_lock_mode, object_lock_retain_until_date: object_lock_retain_until_date, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, ssekms_encryption_context: ssekms_encryption_context, ssekms_key_id: ssekms_key_id, server_side_encryption: server_side_encryption, storage_class: storage_class, tagging: tagging, website_redirect_location: website_redirect_location, write_offset_bytes: write_offset_bytes)
         put_object(input)
       end
+
       def put_object(input : Types::PutObjectRequest) : Types::PutObjectOutput
         request = Protocol::RestXml.build_request(Model::PUT_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4158,6 +4447,7 @@ module AwsSdk
       # PutObjectAcl : CopyObject GetObject You must URL encode any signed header values that contain
       # spaces. For example, if your header value is my file.txt , containing two spaces after my , you must
       # URL encode this value to my%20%20file.txt .
+
       def put_object_acl(
         bucket : String,
         key : String,
@@ -4174,9 +4464,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::PutObjectAclOutput
+
         input = Types::PutObjectAclRequest.new(bucket: bucket, key: key, acl: acl, access_control_policy: access_control_policy, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, grant_full_control: grant_full_control, grant_read: grant_read, grant_read_acp: grant_read_acp, grant_write: grant_write, grant_write_acp: grant_write_acp, request_payer: request_payer, version_id: version_id)
         put_object_acl(input)
       end
+
       def put_object_acl(input : Types::PutObjectAclRequest) : Types::PutObjectAclOutput
         request = Protocol::RestXml.build_request(Model::PUT_OBJECT_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4190,6 +4482,7 @@ module AwsSdk
       # for Amazon S3 on Outposts. You must URL encode any signed header values that contain spaces. For
       # example, if your header value is my file.txt , containing two spaces after my , you must URL encode
       # this value to my%20%20file.txt .
+
       def put_object_legal_hold(
         bucket : String,
         key : String,
@@ -4200,9 +4493,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::PutObjectLegalHoldOutput
+
         input = Types::PutObjectLegalHoldRequest.new(bucket: bucket, key: key, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, legal_hold: legal_hold, request_payer: request_payer, version_id: version_id)
         put_object_legal_hold(input)
       end
+
       def put_object_legal_hold(input : Types::PutObjectLegalHoldRequest) : Types::PutObjectLegalHoldOutput
         request = Protocol::RestXml.build_request(Model::PUT_OBJECT_LEGAL_HOLD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4220,6 +4515,7 @@ module AwsSdk
       # Lock . You must URL encode any signed header values that contain spaces. For example, if your header
       # value is my file.txt , containing two spaces after my , you must URL encode this value to
       # my%20%20file.txt .
+
       def put_object_lock_configuration(
         bucket : String,
         checksum_algorithm : String? = nil,
@@ -4229,9 +4525,11 @@ module AwsSdk
         request_payer : String? = nil,
         token : String? = nil
       ) : Types::PutObjectLockConfigurationOutput
+
         input = Types::PutObjectLockConfigurationRequest.new(bucket: bucket, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, object_lock_configuration: object_lock_configuration, request_payer: request_payer, token: token)
         put_object_lock_configuration(input)
       end
+
       def put_object_lock_configuration(input : Types::PutObjectLockConfigurationRequest) : Types::PutObjectLockConfigurationOutput
         request = Protocol::RestXml.build_request(Model::PUT_OBJECT_LOCK_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4247,6 +4545,7 @@ module AwsSdk
       # This functionality is not supported for Amazon S3 on Outposts. You must URL encode any signed header
       # values that contain spaces. For example, if your header value is my file.txt , containing two spaces
       # after my , you must URL encode this value to my%20%20file.txt .
+
       def put_object_retention(
         bucket : String,
         key : String,
@@ -4258,9 +4557,11 @@ module AwsSdk
         retention : Types::ObjectLockRetention? = nil,
         version_id : String? = nil
       ) : Types::PutObjectRetentionOutput
+
         input = Types::PutObjectRetentionRequest.new(bucket: bucket, key: key, bypass_governance_retention: bypass_governance_retention, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, retention: retention, version_id: version_id)
         put_object_retention(input)
       end
+
       def put_object_retention(input : Types::PutObjectRetentionRequest) : Types::PutObjectRetentionOutput
         request = Protocol::RestXml.build_request(Model::PUT_OBJECT_RETENTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4287,6 +4588,7 @@ module AwsSdk
       # to PutObjectTagging : GetObjectTagging DeleteObjectTagging You must URL encode any signed header
       # values that contain spaces. For example, if your header value is my file.txt , containing two spaces
       # after my , you must URL encode this value to my%20%20file.txt .
+
       def put_object_tagging(
         bucket : String,
         key : String,
@@ -4297,9 +4599,11 @@ module AwsSdk
         request_payer : String? = nil,
         version_id : String? = nil
       ) : Types::PutObjectTaggingOutput
+
         input = Types::PutObjectTaggingRequest.new(bucket: bucket, key: key, tagging: tagging, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, version_id: version_id)
         put_object_tagging(input)
       end
+
       def put_object_tagging(input : Types::PutObjectTaggingRequest) : Types::PutObjectTaggingOutput
         request = Protocol::RestXml.build_request(Model::PUT_OBJECT_TAGGING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4322,6 +4626,7 @@ module AwsSdk
       # GetBucketPolicyStatus Using Amazon S3 Block Public Access You must URL encode any signed header
       # values that contain spaces. For example, if your header value is my file.txt , containing two spaces
       # after my , you must URL encode this value to my%20%20file.txt .
+
       def put_public_access_block(
         bucket : String,
         public_access_block_configuration : Types::PublicAccessBlockConfiguration,
@@ -4329,9 +4634,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::PutPublicAccessBlockRequest.new(bucket: bucket, public_access_block_configuration: public_access_block_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         put_public_access_block(input)
       end
+
       def put_public_access_block(input : Types::PutPublicAccessBlockRequest) : Nil
         request = Protocol::RestXml.build_request(Model::PUT_PUBLIC_ACCESS_BLOCK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4365,6 +4672,7 @@ module AwsSdk
       # Host header syntax is Bucket-name .s3express- zone-id . region-code .amazonaws.com . You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def rename_object(
         bucket : String,
         key : String,
@@ -4379,9 +4687,11 @@ module AwsSdk
         source_if_none_match : String? = nil,
         source_if_unmodified_since : Time? = nil
       ) : Types::RenameObjectOutput
+
         input = Types::RenameObjectRequest.new(bucket: bucket, key: key, rename_source: rename_source, client_token: client_token, destination_if_match: destination_if_match, destination_if_modified_since: destination_if_modified_since, destination_if_none_match: destination_if_none_match, destination_if_unmodified_since: destination_if_unmodified_since, source_if_match: source_if_match, source_if_modified_since: source_if_modified_since, source_if_none_match: source_if_none_match, source_if_unmodified_since: source_if_unmodified_since)
         rename_object(input)
       end
+
       def rename_object(input : Types::RenameObjectRequest) : Types::RenameObjectOutput
         request = Protocol::RestXml.build_request(Model::RENAME_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4458,6 +4768,7 @@ module AwsSdk
       # GetBucketNotificationConfiguration You must URL encode any signed header values that contain spaces.
       # For example, if your header value is my file.txt , containing two spaces after my , you must URL
       # encode this value to my%20%20file.txt .
+
       def restore_object(
         bucket : String,
         key : String,
@@ -4467,9 +4778,11 @@ module AwsSdk
         restore_request : Types::RestoreRequest? = nil,
         version_id : String? = nil
       ) : Types::RestoreObjectOutput
+
         input = Types::RestoreObjectRequest.new(bucket: bucket, key: key, checksum_algorithm: checksum_algorithm, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, restore_request: restore_request, version_id: version_id)
         restore_object(input)
       end
+
       def restore_object(input : Types::RestoreObjectRequest) : Types::RestoreObjectOutput
         request = Protocol::RestXml.build_request(Model::RESTORE_OBJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4518,6 +4831,7 @@ module AwsSdk
       # GetBucketLifecycleConfiguration PutBucketLifecycleConfiguration You must URL encode any signed
       # header values that contain spaces. For example, if your header value is my file.txt , containing two
       # spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def select_object_content(
         bucket : String,
         expression : String,
@@ -4532,9 +4846,11 @@ module AwsSdk
         sse_customer_key_md5 : String? = nil,
         scan_range : Types::ScanRange? = nil
       ) : Types::SelectObjectContentOutput
+
         input = Types::SelectObjectContentRequest.new(bucket: bucket, expression: expression, expression_type: expression_type, input_serialization: input_serialization, key: key, output_serialization: output_serialization, expected_bucket_owner: expected_bucket_owner, request_progress: request_progress, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5, scan_range: scan_range)
         select_object_content(input)
       end
+
       def select_object_content(input : Types::SelectObjectContentRequest) : Types::SelectObjectContentOutput
         request = Protocol::RestXml.build_request(Model::SELECT_OBJECT_CONTENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4558,6 +4874,7 @@ module AwsSdk
       # UpdateBucketMetadataJournalTableConfiguration You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def update_bucket_metadata_inventory_table_configuration(
         bucket : String,
         inventory_table_configuration : Types::InventoryTableConfigurationUpdates,
@@ -4565,9 +4882,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::UpdateBucketMetadataInventoryTableConfigurationRequest.new(bucket: bucket, inventory_table_configuration: inventory_table_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         update_bucket_metadata_inventory_table_configuration(input)
       end
+
       def update_bucket_metadata_inventory_table_configuration(input : Types::UpdateBucketMetadataInventoryTableConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::UPDATE_BUCKET_METADATA_INVENTORY_TABLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4586,6 +4905,7 @@ module AwsSdk
       # UpdateBucketMetadataInventoryTableConfiguration You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def update_bucket_metadata_journal_table_configuration(
         bucket : String,
         journal_table_configuration : Types::JournalTableConfigurationUpdates,
@@ -4593,9 +4913,11 @@ module AwsSdk
         content_md5 : String? = nil,
         expected_bucket_owner : String? = nil
       ) : Nil
+
         input = Types::UpdateBucketMetadataJournalTableConfigurationRequest.new(bucket: bucket, journal_table_configuration: journal_table_configuration, checksum_algorithm: checksum_algorithm, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner)
         update_bucket_metadata_journal_table_configuration(input)
       end
+
       def update_bucket_metadata_journal_table_configuration(input : Types::UpdateBucketMetadataJournalTableConfigurationRequest) : Nil
         request = Protocol::RestXml.build_request(Model::UPDATE_BUCKET_METADATA_JOURNAL_TABLE_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4684,6 +5006,7 @@ module AwsSdk
       # AbortMultipartUpload ListParts ListMultipartUploads You must URL encode any signed header values
       # that contain spaces. For example, if your header value is my file.txt , containing two spaces after
       # my , you must URL encode this value to my%20%20file.txt .
+
       def upload_part(
         bucket : String,
         key : String,
@@ -4704,9 +5027,11 @@ module AwsSdk
         sse_customer_key : String? = nil,
         sse_customer_key_md5 : String? = nil
       ) : Types::UploadPartOutput
+
         input = Types::UploadPartRequest.new(bucket: bucket, key: key, part_number: part_number, upload_id: upload_id, body: body, checksum_algorithm: checksum_algorithm, checksum_crc32: checksum_crc32, checksum_crc32_c: checksum_crc32_c, checksum_crc64_nvme: checksum_crc64_nvme, checksum_sha1: checksum_sha1, checksum_sha256: checksum_sha256, content_length: content_length, content_md5: content_md5, expected_bucket_owner: expected_bucket_owner, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5)
         upload_part(input)
       end
+
       def upload_part(input : Types::UploadPartRequest) : Types::UploadPartOutput
         request = Protocol::RestXml.build_request(Model::UPLOAD_PART, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4790,6 +5115,7 @@ module AwsSdk
       # UploadPart CompleteMultipartUpload AbortMultipartUpload ListParts ListMultipartUploads You must URL
       # encode any signed header values that contain spaces. For example, if your header value is my
       # file.txt , containing two spaces after my , you must URL encode this value to my%20%20file.txt .
+
       def upload_part_copy(
         bucket : String,
         copy_source : String,
@@ -4811,9 +5137,11 @@ module AwsSdk
         sse_customer_key : String? = nil,
         sse_customer_key_md5 : String? = nil
       ) : Types::UploadPartCopyOutput
+
         input = Types::UploadPartCopyRequest.new(bucket: bucket, copy_source: copy_source, key: key, part_number: part_number, upload_id: upload_id, copy_source_if_match: copy_source_if_match, copy_source_if_modified_since: copy_source_if_modified_since, copy_source_if_none_match: copy_source_if_none_match, copy_source_if_unmodified_since: copy_source_if_unmodified_since, copy_source_range: copy_source_range, copy_source_sse_customer_algorithm: copy_source_sse_customer_algorithm, copy_source_sse_customer_key: copy_source_sse_customer_key, copy_source_sse_customer_key_md5: copy_source_sse_customer_key_md5, expected_bucket_owner: expected_bucket_owner, expected_source_bucket_owner: expected_source_bucket_owner, request_payer: request_payer, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key: sse_customer_key, sse_customer_key_md5: sse_customer_key_md5)
         upload_part_copy(input)
       end
+
       def upload_part_copy(input : Types::UploadPartCopyRequest) : Types::UploadPartCopyOutput
         request = Protocol::RestXml.build_request(Model::UPLOAD_PART_COPY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -4851,6 +5179,7 @@ module AwsSdk
       # Lambda functions in the Amazon S3 User Guide . You must URL encode any signed header values that
       # contain spaces. For example, if your header value is my file.txt , containing two spaces after my ,
       # you must URL encode this value to my%20%20file.txt .
+
       def write_get_object_response(
         request_route : String,
         request_token : String,
@@ -4894,9 +5223,11 @@ module AwsSdk
         tag_count : Int32? = nil,
         version_id : String? = nil
       ) : Nil
+
         input = Types::WriteGetObjectResponseRequest.new(request_route: request_route, request_token: request_token, accept_ranges: accept_ranges, body: body, bucket_key_enabled: bucket_key_enabled, cache_control: cache_control, checksum_crc32: checksum_crc32, checksum_crc32_c: checksum_crc32_c, checksum_crc64_nvme: checksum_crc64_nvme, checksum_sha1: checksum_sha1, checksum_sha256: checksum_sha256, content_disposition: content_disposition, content_encoding: content_encoding, content_language: content_language, content_length: content_length, content_range: content_range, content_type: content_type, delete_marker: delete_marker, e_tag: e_tag, error_code: error_code, error_message: error_message, expiration: expiration, expires: expires, last_modified: last_modified, metadata: metadata, missing_meta: missing_meta, object_lock_legal_hold_status: object_lock_legal_hold_status, object_lock_mode: object_lock_mode, object_lock_retain_until_date: object_lock_retain_until_date, parts_count: parts_count, replication_status: replication_status, request_charged: request_charged, restore: restore, sse_customer_algorithm: sse_customer_algorithm, sse_customer_key_md5: sse_customer_key_md5, ssekms_key_id: ssekms_key_id, server_side_encryption: server_side_encryption, status_code: status_code, storage_class: storage_class, tag_count: tag_count, version_id: version_id)
         write_get_object_response(input)
       end
+
       def write_get_object_response(input : Types::WriteGetObjectResponseRequest) : Nil
         request = Protocol::RestXml.build_request(Model::WRITE_GET_OBJECT_RESPONSE, input, endpoint)
         request = request.with_headers(endpoint_headers)

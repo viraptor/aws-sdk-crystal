@@ -1,6 +1,7 @@
 module AwsSdk
   module SQS
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -39,15 +40,18 @@ module AwsSdk
       # not support adding a non-account principal. Cross-account permissions don't apply to this action.
       # For more information, see Grant cross-account permissions to a role and a username in the Amazon SQS
       # Developer Guide .
+
       def add_permission(
         aws_account_ids : Array(String),
         actions : Array(String),
         label : String,
         queue_url : String
       ) : Nil
+
         input = Types::AddPermissionRequest.new(aws_account_ids: aws_account_ids, actions: actions, label: label, queue_url: queue_url)
         add_permission(input)
       end
+
       def add_permission(input : Types::AddPermissionRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::ADD_PERMISSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -63,12 +67,15 @@ module AwsSdk
       # source queue is the dead-letter queue (DLQ), while the destination queue can be the original source
       # queue (from which the messages were driven to the dead-letter-queue), or a custom destination queue.
       # Only one active message movement task is supported per queue at any given time.
+
       def cancel_message_move_task(
         task_handle : String
       ) : Types::CancelMessageMoveTaskResult
+
         input = Types::CancelMessageMoveTaskRequest.new(task_handle: task_handle)
         cancel_message_move_task(input)
       end
+
       def cancel_message_move_task(input : Types::CancelMessageMoveTaskRequest) : Types::CancelMessageMoveTaskResult
         request = Protocol::JsonRpc.build_request(Model::CANCEL_MESSAGE_MOVE_TASK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -105,14 +112,17 @@ module AwsSdk
       # applied immediately but isn't saved in memory for that message. If you don't delete a message after
       # it is received, the visibility timeout for the message reverts to the original timeout value (not to
       # the value you set using the ChangeMessageVisibility action) the next time the message is received.
+
       def change_message_visibility(
         queue_url : String,
         receipt_handle : String,
         visibility_timeout : Int32
       ) : Nil
+
         input = Types::ChangeMessageVisibilityRequest.new(queue_url: queue_url, receipt_handle: receipt_handle, visibility_timeout: visibility_timeout)
         change_message_visibility(input)
       end
+
       def change_message_visibility(input : Types::ChangeMessageVisibilityRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::CHANGE_MESSAGE_VISIBILITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -127,13 +137,16 @@ module AwsSdk
       # ChangeMessageVisibilityBatch action. Because the batch request can result in a combination of
       # successful and unsuccessful actions, you should check for batch errors even when the call returns an
       # HTTP status code of 200 .
+
       def change_message_visibility_batch(
         entries : Array(Types::ChangeMessageVisibilityBatchRequestEntry),
         queue_url : String
       ) : Types::ChangeMessageVisibilityBatchResult
+
         input = Types::ChangeMessageVisibilityBatchRequest.new(entries: entries, queue_url: queue_url)
         change_message_visibility_batch(input)
       end
+
       def change_message_visibility_batch(input : Types::ChangeMessageVisibilityBatchRequest) : Types::ChangeMessageVisibilityBatchResult
         request = Protocol::JsonRpc.build_request(Model::CHANGE_MESSAGE_VISIBILITY_BATCH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -161,14 +174,17 @@ module AwsSdk
       # an error. This ensures that existing queues are not inadvertently altered. Cross-account permissions
       # don't apply to this action. For more information, see Grant cross-account permissions to a role and
       # a username in the Amazon SQS Developer Guide .
+
       def create_queue(
         queue_name : String,
         attributes : Hash(String, String)? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateQueueResult
+
         input = Types::CreateQueueRequest.new(queue_name: queue_name, attributes: attributes, tags: tags)
         create_queue(input)
       end
+
       def create_queue(input : Types::CreateQueueRequest) : Types::CreateQueueResult
         request = Protocol::JsonRpc.build_request(Model::CREATE_QUEUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -191,13 +207,16 @@ module AwsSdk
       # message is unavailable when you send the request to delete the message. The copy remains on the
       # server and might be returned to you during a subsequent receive request. You should ensure that your
       # application is idempotent, so that receiving a message more than once does not cause issues.
+
       def delete_message(
         queue_url : String,
         receipt_handle : String
       ) : Nil
+
         input = Types::DeleteMessageRequest.new(queue_url: queue_url, receipt_handle: receipt_handle)
         delete_message(input)
       end
+
       def delete_message(input : Types::DeleteMessageRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_MESSAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -210,13 +229,16 @@ module AwsSdk
       # result of the action on each message is reported individually in the response. Because the batch
       # request can result in a combination of successful and unsuccessful actions, you should check for
       # batch errors even when the call returns an HTTP status code of 200 .
+
       def delete_message_batch(
         entries : Array(Types::DeleteMessageBatchRequestEntry),
         queue_url : String
       ) : Types::DeleteMessageBatchResult
+
         input = Types::DeleteMessageBatchRequest.new(entries: entries, queue_url: queue_url)
         delete_message_batch(input)
       end
+
       def delete_message_batch(input : Types::DeleteMessageBatchRequest) : Types::DeleteMessageBatchResult
         request = Protocol::JsonRpc.build_request(Model::DELETE_MESSAGE_BATCH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -234,12 +256,15 @@ module AwsSdk
       # permissions don't apply to this action. For more information, see Grant cross-account permissions to
       # a role and a username in the Amazon SQS Developer Guide . The delete operation uses the HTTP GET
       # verb.
+
       def delete_queue(
         queue_url : String
       ) : Nil
+
         input = Types::DeleteQueueRequest.new(queue_url: queue_url)
         delete_queue(input)
       end
+
       def delete_queue(input : Types::DeleteQueueRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_QUEUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -250,13 +275,16 @@ module AwsSdk
 
       # Gets attributes for the specified queue. To determine whether a queue is FIFO , you can check
       # whether QueueName ends with the .fifo suffix.
+
       def get_queue_attributes(
         queue_url : String,
         attribute_names : Array(String)? = nil
       ) : Types::GetQueueAttributesResult
+
         input = Types::GetQueueAttributesRequest.new(queue_url: queue_url, attribute_names: attribute_names)
         get_queue_attributes(input)
       end
+
       def get_queue_attributes(input : Types::GetQueueAttributesRequest) : Types::GetQueueAttributesResult
         request = Protocol::JsonRpc.build_request(Model::GET_QUEUE_ATTRIBUTES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -271,13 +299,16 @@ module AwsSdk
       # ID of the queue's owner. Note that the queue owner must grant you the necessary permissions to
       # access the queue. For more information about accessing shared queues, see the AddPermission API or
       # Allow developers to write messages to a shared queue in the Amazon SQS Developer Guide .
+
       def get_queue_url(
         queue_name : String,
         queue_owner_aws_account_id : String? = nil
       ) : Types::GetQueueUrlResult
+
         input = Types::GetQueueUrlRequest.new(queue_name: queue_name, queue_owner_aws_account_id: queue_owner_aws_account_id)
         get_queue_url(input)
       end
+
       def get_queue_url(input : Types::GetQueueUrlRequest) : Types::GetQueueUrlResult
         request = Protocol::JsonRpc.build_request(Model::GET_QUEUE_URL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -294,14 +325,17 @@ module AwsSdk
       # . Use NextToken as a parameter in your next request to ListDeadLetterSourceQueues to receive the
       # next page of results. For more information about using dead-letter queues, see Using Amazon SQS
       # Dead-Letter Queues in the Amazon SQS Developer Guide .
+
       def list_dead_letter_source_queues(
         queue_url : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDeadLetterSourceQueuesResult
+
         input = Types::ListDeadLetterSourceQueuesRequest.new(queue_url: queue_url, max_results: max_results, next_token: next_token)
         list_dead_letter_source_queues(input)
       end
+
       def list_dead_letter_source_queues(input : Types::ListDeadLetterSourceQueuesRequest) : Types::ListDeadLetterSourceQueuesResult
         request = Protocol::JsonRpc.build_request(Model::LIST_DEAD_LETTER_SOURCE_QUEUES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -315,13 +349,16 @@ module AwsSdk
       # context, the source queue is the dead-letter queue (DLQ), while the destination queue can be the
       # original source queue (from which the messages were driven to the dead-letter-queue), or a custom
       # destination queue. Only one active message movement task is supported per queue at any given time.
+
       def list_message_move_tasks(
         source_arn : String,
         max_results : Int32? = nil
       ) : Types::ListMessageMoveTasksResult
+
         input = Types::ListMessageMoveTasksRequest.new(source_arn: source_arn, max_results: max_results)
         list_message_move_tasks(input)
       end
+
       def list_message_move_tasks(input : Types::ListMessageMoveTasksRequest) : Types::ListMessageMoveTasksResult
         request = Protocol::JsonRpc.build_request(Model::LIST_MESSAGE_MOVE_TASKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -334,12 +371,15 @@ module AwsSdk
       # Your Amazon SQS Queues in the Amazon SQS Developer Guide . Cross-account permissions don't apply to
       # this action. For more information, see Grant cross-account permissions to a role and a username in
       # the Amazon SQS Developer Guide .
+
       def list_queue_tags(
         queue_url : String
       ) : Types::ListQueueTagsResult
+
         input = Types::ListQueueTagsRequest.new(queue_url: queue_url)
         list_queue_tags(input)
       end
+
       def list_queue_tags(input : Types::ListQueueTagsRequest) : Types::ListQueueTagsResult
         request = Protocol::JsonRpc.build_request(Model::LIST_QUEUE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -357,14 +397,17 @@ module AwsSdk
       # NextToken . Use NextToken as a parameter in your next request to listQueues to receive the next page
       # of results. Cross-account permissions don't apply to this action. For more information, see Grant
       # cross-account permissions to a role and a username in the Amazon SQS Developer Guide .
+
       def list_queues(
         max_results : Int32? = nil,
         next_token : String? = nil,
         queue_name_prefix : String? = nil
       ) : Types::ListQueuesResult
+
         input = Types::ListQueuesRequest.new(max_results: max_results, next_token: next_token, queue_name_prefix: queue_name_prefix)
         list_queues(input)
       end
+
       def list_queues(input : Types::ListQueuesRequest) : Types::ListQueuesResult
         request = Protocol::JsonRpc.build_request(Model::LIST_QUEUES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -379,12 +422,15 @@ module AwsSdk
       # of your queue's size. Messages sent to the queue before you call PurgeQueue might be received but
       # are deleted within the next minute. Messages sent to the queue after you call PurgeQueue might be
       # deleted while the queue is being purged.
+
       def purge_queue(
         queue_url : String
       ) : Nil
+
         input = Types::PurgeQueueRequest.new(queue_url: queue_url)
         purge_queue(input)
       end
+
       def purge_queue(input : Types::PurgeQueueRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::PURGE_QUEUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -411,6 +457,7 @@ module AwsSdk
       # default visibility timeout for a queue is 30 seconds. In the future, new attributes might be added.
       # If you write code that calls this action, we recommend that you structure your code so that it can
       # handle new attributes gracefully.
+
       def receive_message(
         queue_url : String,
         attribute_names : Array(String)? = nil,
@@ -421,9 +468,11 @@ module AwsSdk
         visibility_timeout : Int32? = nil,
         wait_time_seconds : Int32? = nil
       ) : Types::ReceiveMessageResult
+
         input = Types::ReceiveMessageRequest.new(queue_url: queue_url, attribute_names: attribute_names, max_number_of_messages: max_number_of_messages, message_attribute_names: message_attribute_names, message_system_attribute_names: message_system_attribute_names, receive_request_attempt_id: receive_request_attempt_id, visibility_timeout: visibility_timeout, wait_time_seconds: wait_time_seconds)
         receive_message(input)
       end
+
       def receive_message(input : Types::ReceiveMessageRequest) : Types::ReceiveMessageResult
         request = Protocol::JsonRpc.build_request(Model::RECEIVE_MESSAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -438,13 +487,16 @@ module AwsSdk
       # Amazon SQS Developer Guide . To remove the ability to change queue permissions, you must deny
       # permission to the AddPermission , RemovePermission , and SetQueueAttributes actions in your IAM
       # policy.
+
       def remove_permission(
         label : String,
         queue_url : String
       ) : Nil
+
         input = Types::RemovePermissionRequest.new(label: label, queue_url: queue_url)
         remove_permission(input)
       end
+
       def remove_permission(input : Types::RemovePermissionRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::REMOVE_PERMISSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -459,6 +511,7 @@ module AwsSdk
       # message contains characters outside the allowed set, Amazon SQS rejects the message and returns an
       # InvalidMessageContents error. Ensure that your message body includes only valid characters to avoid
       # this exception.
+
       def send_message(
         message_body : String,
         queue_url : String,
@@ -468,9 +521,11 @@ module AwsSdk
         message_group_id : String? = nil,
         message_system_attributes : Hash(String, Types::MessageSystemAttributeValue)? = nil
       ) : Types::SendMessageResult
+
         input = Types::SendMessageRequest.new(message_body: message_body, queue_url: queue_url, delay_seconds: delay_seconds, message_attributes: message_attributes, message_deduplication_id: message_deduplication_id, message_group_id: message_group_id, message_system_attributes: message_system_attributes)
         send_message(input)
       end
+
       def send_message(input : Types::SendMessageRequest) : Types::SendMessageResult
         request = Protocol::JsonRpc.build_request(Model::SEND_MESSAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -493,13 +548,16 @@ module AwsSdk
       # rejects the message and returns an InvalidMessageContents error. Ensure that your message body
       # includes only valid characters to avoid this exception. If you don't specify the DelaySeconds
       # parameter for an entry, Amazon SQS uses the default value for the queue.
+
       def send_message_batch(
         entries : Array(Types::SendMessageBatchRequestEntry),
         queue_url : String
       ) : Types::SendMessageBatchResult
+
         input = Types::SendMessageBatchRequest.new(entries: entries, queue_url: queue_url)
         send_message_batch(input)
       end
+
       def send_message_batch(input : Types::SendMessageBatchRequest) : Types::SendMessageBatchResult
         request = Protocol::JsonRpc.build_request(Model::SEND_MESSAGE_BATCH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -519,13 +577,16 @@ module AwsSdk
       # Amazon SQS Developer Guide . To remove the ability to change queue permissions, you must deny
       # permission to the AddPermission , RemovePermission , and SetQueueAttributes actions in your IAM
       # policy.
+
       def set_queue_attributes(
         attributes : Hash(String, String),
         queue_url : String
       ) : Nil
+
         input = Types::SetQueueAttributesRequest.new(attributes: attributes, queue_url: queue_url)
         set_queue_attributes(input)
       end
+
       def set_queue_attributes(input : Types::SetQueueAttributesRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::SET_QUEUE_ATTRIBUTES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -542,14 +603,17 @@ module AwsSdk
       # destination queue can be the original source queue (from which the messages were driven to the
       # dead-letter-queue), or a custom destination queue. Only one active message movement task is
       # supported per queue at any given time.
+
       def start_message_move_task(
         source_arn : String,
         destination_arn : String? = nil,
         max_number_of_messages_per_second : Int32? = nil
       ) : Types::StartMessageMoveTaskResult
+
         input = Types::StartMessageMoveTaskRequest.new(source_arn: source_arn, destination_arn: destination_arn, max_number_of_messages_per_second: max_number_of_messages_per_second)
         start_message_move_task(input)
       end
+
       def start_message_move_task(input : Types::StartMessageMoveTaskRequest) : Types::StartMessageMoveTaskResult
         request = Protocol::JsonRpc.build_request(Model::START_MESSAGE_MOVE_TASK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -566,13 +630,16 @@ module AwsSdk
       # tag restrictions, see Quotas related to queues in the Amazon SQS Developer Guide . Cross-account
       # permissions don't apply to this action. For more information, see Grant cross-account permissions to
       # a role and a username in the Amazon SQS Developer Guide .
+
       def tag_queue(
         queue_url : String,
         tags : Hash(String, String)
       ) : Nil
+
         input = Types::TagQueueRequest.new(queue_url: queue_url, tags: tags)
         tag_queue(input)
       end
+
       def tag_queue(input : Types::TagQueueRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::TAG_QUEUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -585,13 +652,16 @@ module AwsSdk
       # Amazon SQS Queues in the Amazon SQS Developer Guide . Cross-account permissions don't apply to this
       # action. For more information, see Grant cross-account permissions to a role and a username in the
       # Amazon SQS Developer Guide .
+
       def untag_queue(
         queue_url : String,
         tag_keys : Array(String)
       ) : Nil
+
         input = Types::UntagQueueRequest.new(queue_url: queue_url, tag_keys: tag_keys)
         untag_queue(input)
       end
+
       def untag_queue(input : Types::UntagQueueRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNTAG_QUEUE, input, endpoint)
         request = request.with_headers(endpoint_headers)

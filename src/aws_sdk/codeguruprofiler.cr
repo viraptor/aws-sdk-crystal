@@ -1,0 +1,7 @@
+require "./runtime"
+require "./codeguruprofiler/client"
+require "./codeguruprofiler/errors"
+require "./codeguruprofiler/model"
+require "./codeguruprofiler/types"
+require "./codeguruprofiler/protocol/rest_json"
+require "./customizations/codeguruprofiler/customizations"

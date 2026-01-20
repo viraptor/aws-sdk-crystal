@@ -5,35 +5,43 @@ module AwsSdk
       end
 
       # You do not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # There was a conflict processing the request. Updating or deleting the resource can cause an
       # inconsistent state.
+
       class ConflictException < ServiceError
       end
 
       # Describes a core network policy exception.
+
       class CoreNetworkPolicyException < ServiceError
       end
 
       # The request has failed due to an internal error.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource could not be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # A service limit was exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints.
+
       class ValidationException < ServiceError
       end
 

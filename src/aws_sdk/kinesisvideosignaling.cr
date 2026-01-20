@@ -1,0 +1,7 @@
+require "./runtime"
+require "./kinesisvideosignaling/client"
+require "./kinesisvideosignaling/errors"
+require "./kinesisvideosignaling/model"
+require "./kinesisvideosignaling/types"
+require "./kinesisvideosignaling/protocol/rest_json"
+require "./customizations/kinesisvideosignaling/customizations"

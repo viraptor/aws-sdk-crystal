@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudwatchlogs/client"
+require "./cloudwatchlogs/errors"
+require "./cloudwatchlogs/model"
+require "./cloudwatchlogs/types"
+require "./cloudwatchlogs/protocol/json_rpc"
+require "./customizations/cloudwatchlogs/customizations"

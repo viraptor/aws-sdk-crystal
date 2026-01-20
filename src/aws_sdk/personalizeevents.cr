@@ -1,0 +1,7 @@
+require "./runtime"
+require "./personalizeevents/client"
+require "./personalizeevents/errors"
+require "./personalizeevents/model"
+require "./personalizeevents/types"
+require "./personalizeevents/protocol/rest_json"
+require "./customizations/personalizeevents/customizations"

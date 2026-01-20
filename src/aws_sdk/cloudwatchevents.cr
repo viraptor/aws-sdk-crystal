@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cloudwatchevents/client"
+require "./cloudwatchevents/errors"
+require "./cloudwatchevents/model"
+require "./cloudwatchevents/types"
+require "./cloudwatchevents/protocol/json_rpc"
+require "./customizations/cloudwatchevents/customizations"

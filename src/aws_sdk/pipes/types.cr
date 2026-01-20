@@ -8,22 +8,26 @@ module AwsSdk
       # This structure specifies the VPC subnets and security groups for the task, and whether a public IP
       # address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network
       # mode.
+
       struct AwsVpcConfiguration
         include JSON::Serializable
 
         # Specifies the subnets associated with the task. These subnets must all be in the same VPC. You can
         # specify as many as 16 subnets.
+
         @[JSON::Field(key: "Subnets")]
         getter subnets : Array(String)
 
         # Specifies whether the task's elastic network interface receives a public IP address. You can specify
         # ENABLED only when LaunchType in EcsParameters is set to FARGATE .
+
         @[JSON::Field(key: "AssignPublicIp")]
         getter assign_public_ip : String?
 
         # Specifies the security groups associated with the task. These security groups must all be in the
         # same VPC. You can specify as many as five security groups. If you do not specify a security group,
         # the default security group for the VPC is used.
+
         @[JSON::Field(key: "SecurityGroups")]
         getter security_groups : Array(String)?
 
@@ -38,10 +42,12 @@ module AwsSdk
       # The array properties for the submitted job, such as the size of the array. The array size can be
       # between 2 and 10,000. If you specify array properties for a job, it becomes an array job. This
       # parameter is used only if the target is an Batch job.
+
       struct BatchArrayProperties
         include JSON::Serializable
 
         # The size of the array, if this is an array batch job.
+
         @[JSON::Field(key: "Size")]
         getter size : Int32?
 
@@ -52,11 +58,13 @@ module AwsSdk
       end
 
       # The overrides that are sent to a container.
+
       struct BatchContainerOverrides
         include JSON::Serializable
 
         # The command to send to the container that overrides the default command from the Docker image or the
         # task definition.
+
         @[JSON::Field(key: "Command")]
         getter command : Array(String)?
 
@@ -64,16 +72,19 @@ module AwsSdk
         # added to the container at launch, or you can override the existing environment variables from the
         # Docker image or the task definition. Environment variables cannot start with " Batch ". This naming
         # convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "Environment")]
         getter environment : Array(Types::BatchEnvironmentVariable)?
 
         # The instance type to use for a multi-node parallel job. This parameter isn't applicable to
         # single-node container jobs or jobs that run on Fargate resources, and shouldn't be provided.
+
         @[JSON::Field(key: "InstanceType")]
         getter instance_type : String?
 
         # The type and amount of resources to assign to a container. This overrides the settings in the job
         # definition. The supported resources include GPU , MEMORY , and VCPU .
+
         @[JSON::Field(key: "ResourceRequirements")]
         getter resource_requirements : Array(Types::BatchResourceRequirement)?
 
@@ -90,16 +101,19 @@ module AwsSdk
       # added to the container at launch, or you can override the existing environment variables from the
       # Docker image or the task definition. Environment variables cannot start with " Batch ". This naming
       # convention is reserved for variables that Batch sets.
+
       struct BatchEnvironmentVariable
         include JSON::Serializable
 
         # The name of the key-value pair. For environment variables, this is the name of the environment
         # variable.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The value of the key-value pair. For environment variables, this is the value of the environment
         # variable.
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -111,14 +125,17 @@ module AwsSdk
       end
 
       # An object that represents an Batch job dependency.
+
       struct BatchJobDependency
         include JSON::Serializable
 
         # The job ID of the Batch job that's associated with this dependency.
+
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
 
         # The type of the job dependency.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -131,11 +148,13 @@ module AwsSdk
 
       # The type and amount of a resource to assign to a container. The supported resources include GPU ,
       # MEMORY , and VCPU .
+
       struct BatchResourceRequirement
         include JSON::Serializable
 
         # The type of resource to assign to a container. The supported resources include GPU , MEMORY , and
         # VCPU .
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -176,6 +195,7 @@ module AwsSdk
         # 25600, 26624, 27648, 28672, 29696, or 30720 value = 8 MEMORY = 16384, 20480, 24576, 28672, 32768,
         # 36864, 40960, 45056, 49152, 53248, 57344, or 61440 value = 16 MEMORY = 32768, 40960, 49152, 57344,
         # 65536, 73728, 81920, 90112, 98304, 106496, 114688, or 122880
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -188,11 +208,13 @@ module AwsSdk
 
       # The retry strategy that's associated with a job. For more information, see Automated job retries in
       # the Batch User Guide .
+
       struct BatchRetryStrategy
         include JSON::Serializable
 
         # The number of times to move a job to the RUNNABLE status. If the value of attempts is greater than
         # one, the job is retried on failure the same number of attempts as the value.
+
         @[JSON::Field(key: "Attempts")]
         getter attempts : Int32?
 
@@ -204,22 +226,26 @@ module AwsSdk
 
       # The details of a capacity provider strategy. To learn more, see CapacityProviderStrategyItem in the
       # Amazon ECS API Reference.
+
       struct CapacityProviderStrategyItem
         include JSON::Serializable
 
         # The short name of the capacity provider.
+
         @[JSON::Field(key: "capacityProvider")]
         getter capacity_provider : String
 
         # The base value designates how many tasks, at a minimum, to run on the specified capacity provider.
         # Only one capacity provider in a capacity provider strategy can have a base defined. If no value is
         # specified, the default value of 0 is used.
+
         @[JSON::Field(key: "base")]
         getter base : Int32?
 
         # The weight value designates the relative percentage of the total number of tasks launched that
         # should use the specified capacity provider. The weight value is taken into consideration after the
         # base value, if defined, is satisfied.
+
         @[JSON::Field(key: "weight")]
         getter weight : Int32?
 
@@ -232,11 +258,13 @@ module AwsSdk
       end
 
       # The Amazon CloudWatch Logs logging configuration settings for the pipe.
+
       struct CloudwatchLogsLogDestination
         include JSON::Serializable
 
         # The Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends
         # the log records.
+
         @[JSON::Field(key: "LogGroupArn")]
         getter log_group_arn : String?
 
@@ -247,11 +275,13 @@ module AwsSdk
       end
 
       # The Amazon CloudWatch Logs logging configuration settings for the pipe.
+
       struct CloudwatchLogsLogDestinationParameters
         include JSON::Serializable
 
         # The Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends
         # the log records.
+
         @[JSON::Field(key: "LogGroupArn")]
         getter log_group_arn : String
 
@@ -262,17 +292,21 @@ module AwsSdk
       end
 
       # An action you attempted resulted in an exception.
+
       struct ConflictException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The ID of the resource that caused the exception.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String
 
         # The type of resource that caused the exception.
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
@@ -284,38 +318,47 @@ module AwsSdk
         end
       end
 
+
       struct CreatePipeRequest
         include JSON::Serializable
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The ARN of the role that allows the pipe to send data to the target.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # The ARN of the source resource.
+
         @[JSON::Field(key: "Source")]
         getter source : String
 
         # The ARN of the target resource.
+
         @[JSON::Field(key: "Target")]
         getter target : String
 
         # A description of the pipe.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # The ARN of the enrichment resource.
+
         @[JSON::Field(key: "Enrichment")]
         getter enrichment : String?
 
         # The parameters required to set up enrichment on your pipe.
+
         @[JSON::Field(key: "EnrichmentParameters")]
         getter enrichment_parameters : Types::PipeEnrichmentParameters?
 
@@ -324,24 +367,29 @@ module AwsSdk
         # KeyId, key alias, or key alias ARN. If you do not specify a customer managed key identifier,
         # EventBridge uses an Amazon Web Services owned key to encrypt pipe data. For more information, see
         # Managing keys in the Key Management Service Developer Guide .
+
         @[JSON::Field(key: "KmsKeyIdentifier")]
         getter kms_key_identifier : String?
 
         # The logging configuration settings for the pipe.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::PipeLogConfigurationParameters?
 
         # The parameters required to set up a source for your pipe.
+
         @[JSON::Field(key: "SourceParameters")]
         getter source_parameters : Types::PipeSourceParameters?
 
         # The list of key-value pairs to associate with the pipe.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # The parameters required to set up a target for your pipe. For more information about pipe target
         # parameters, including how to use dynamic path parameters, see Target parameters in the Amazon
         # EventBridge User Guide .
+
         @[JSON::Field(key: "TargetParameters")]
         getter target_parameters : Types::PipeTargetParameters?
 
@@ -363,30 +411,37 @@ module AwsSdk
         end
       end
 
+
       struct CreatePipeResponse
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -402,11 +457,13 @@ module AwsSdk
       end
 
       # A DeadLetterConfig object that contains information about a dead-letter queue configuration.
+
       struct DeadLetterConfig
         include JSON::Serializable
 
         # The ARN of the specified target for the dead-letter queue. For Amazon Kinesis stream and Amazon
         # DynamoDB stream sources, specify either an Amazon SNS topic or Amazon SQS queue ARN.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
@@ -416,10 +473,12 @@ module AwsSdk
         end
       end
 
+
       struct DeletePipeRequest
         include JSON::Serializable
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -429,30 +488,37 @@ module AwsSdk
         end
       end
 
+
       struct DeletePipeResponse
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -467,10 +533,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribePipeRequest
         include JSON::Serializable
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -480,82 +548,101 @@ module AwsSdk
         end
       end
 
+
       struct DescribePipeResponse
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # A description of the pipe.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # The ARN of the enrichment resource.
+
         @[JSON::Field(key: "Enrichment")]
         getter enrichment : String?
 
         # The parameters required to set up enrichment on your pipe.
+
         @[JSON::Field(key: "EnrichmentParameters")]
         getter enrichment_parameters : Types::PipeEnrichmentParameters?
 
         # The identifier of the KMS customer managed key for EventBridge to use to encrypt pipe data, if one
         # has been specified. For more information, see Data encryption in EventBridge in the Amazon
         # EventBridge User Guide .
+
         @[JSON::Field(key: "KmsKeyIdentifier")]
         getter kms_key_identifier : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The logging configuration settings for the pipe.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::PipeLogConfiguration?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The ARN of the role that allows the pipe to send data to the target.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
         # The ARN of the source resource.
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The parameters required to set up a source for your pipe.
+
         @[JSON::Field(key: "SourceParameters")]
         getter source_parameters : Types::PipeSourceParameters?
 
         # The reason the pipe is in its current state.
+
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
         # The list of key-value pairs to associate with the pipe.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # The ARN of the target resource.
+
         @[JSON::Field(key: "Target")]
         getter target : String?
 
         # The parameters required to set up a target for your pipe. For more information about pipe target
         # parameters, including how to use dynamic path parameters, see Target parameters in the Amazon
         # EventBridge User Guide .
+
         @[JSON::Field(key: "TargetParameters")]
         getter target_parameters : Types::PipeTargetParameters?
 
@@ -584,19 +671,23 @@ module AwsSdk
 
       # Maps source data to a dimension in the target Timestream for LiveAnalytics table. For more
       # information, see Amazon Timestream for LiveAnalytics concepts
+
       struct DimensionMapping
         include JSON::Serializable
 
         # The metadata attributes of the time series. For example, the name and Availability Zone of an Amazon
         # EC2 instance or the name of the manufacturer of a wind turbine are dimensions.
+
         @[JSON::Field(key: "DimensionName")]
         getter dimension_name : String
 
         # Dynamic path to the dimension value in the source event.
+
         @[JSON::Field(key: "DimensionValue")]
         getter dimension_value : String
 
         # The data type of the dimension for the time-series data.
+
         @[JSON::Field(key: "DimensionValueType")]
         getter dimension_value_type : String
 
@@ -611,48 +702,57 @@ module AwsSdk
       # The overrides that are sent to a container. An empty container override can be passed in. An example
       # of an empty container override is {"containerOverrides": [ ] } . If a non-empty container override
       # is specified, the name parameter must be included.
+
       struct EcsContainerOverride
         include JSON::Serializable
 
         # The command to send to the container that overrides the default command from the Docker image or the
         # task definition. You must also specify a container name.
+
         @[JSON::Field(key: "Command")]
         getter command : Array(String)?
 
         # The number of cpu units reserved for the container, instead of the default value from the task
         # definition. You must also specify a container name.
+
         @[JSON::Field(key: "Cpu")]
         getter cpu : Int32?
 
         # The environment variables to send to the container. You can add new environment variables, which are
         # added to the container at launch, or you can override the existing environment variables from the
         # Docker image or the task definition. You must also specify a container name.
+
         @[JSON::Field(key: "Environment")]
         getter environment : Array(Types::EcsEnvironmentVariable)?
 
         # A list of files containing the environment variables to pass to a container, instead of the value
         # from the container definition.
+
         @[JSON::Field(key: "EnvironmentFiles")]
         getter environment_files : Array(Types::EcsEnvironmentFile)?
 
         # The hard limit (in MiB) of memory to present to the container, instead of the default value from the
         # task definition. If your container attempts to exceed the memory specified here, the container is
         # killed. You must also specify a container name.
+
         @[JSON::Field(key: "Memory")]
         getter memory : Int32?
 
         # The soft limit (in MiB) of memory to reserve for the container, instead of the default value from
         # the task definition. You must also specify a container name.
+
         @[JSON::Field(key: "MemoryReservation")]
         getter memory_reservation : Int32?
 
         # The name of the container that receives the override. This parameter is required if any override is
         # specified.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The type and amount of a resource to assign to a container, instead of the default value from the
         # task definition. The only supported resource is a GPU.
+
         @[JSON::Field(key: "ResourceRequirements")]
         getter resource_requirements : Array(Types::EcsResourceRequirement)?
 
@@ -680,14 +780,17 @@ module AwsSdk
       # For more information, see Specifying environment variables in the Amazon Elastic Container Service
       # Developer Guide . This parameter is only supported for tasks hosted on Fargate using the following
       # platform versions: Linux platform version 1.4.0 or later. Windows platform version 1.0.0 or later.
+
       struct EcsEnvironmentFile
         include JSON::Serializable
 
         # The file type to use. The only supported value is s3 .
+
         @[JSON::Field(key: "type")]
         getter type : String
 
         # The Amazon Resource Name (ARN) of the Amazon S3 object containing the environment variable file.
+
         @[JSON::Field(key: "value")]
         getter value : String
 
@@ -701,16 +804,19 @@ module AwsSdk
       # The environment variables to send to the container. You can add new environment variables, which are
       # added to the container at launch, or you can override the existing environment variables from the
       # Docker image or the task definition. You must also specify a container name.
+
       struct EcsEnvironmentVariable
         include JSON::Serializable
 
         # The name of the key-value pair. For environment variables, this is the name of the environment
         # variable.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the key-value pair. For environment variables, this is the value of the environment
         # variable.
+
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -726,11 +832,13 @@ module AwsSdk
       # more information, see Fargate task storage in the Amazon ECS User Guide for Fargate . This parameter
       # is only supported for tasks hosted on Fargate using Linux platform version 1.4.0 or later. This
       # parameter is not supported for Windows containers on Fargate.
+
       struct EcsEphemeralStorage
         include JSON::Serializable
 
         # The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is
         # 21 GiB and the maximum supported value is 200 GiB.
+
         @[JSON::Field(key: "sizeInGiB")]
         getter size_in_gi_b : Int32
 
@@ -744,15 +852,18 @@ module AwsSdk
       # Elastic Inference accelerator specified in the task definition. For more information, see Working
       # with Amazon Elastic Inference on Amazon ECS in the Amazon Elastic Container Service Developer Guide
       # .
+
       struct EcsInferenceAcceleratorOverride
         include JSON::Serializable
 
         # The Elastic Inference accelerator device name to override for the task. This parameter must match a
         # deviceName specified in the task definition.
+
         @[JSON::Field(key: "deviceName")]
         getter device_name : String?
 
         # The Elastic Inference accelerator type to use.
+
         @[JSON::Field(key: "deviceType")]
         getter device_type : String?
 
@@ -767,11 +878,13 @@ module AwsSdk
       # and Elastic Inference accelerators. For more information, see Working with GPUs on Amazon ECS or
       # Working with Amazon Elastic Inference on Amazon ECS in the Amazon Elastic Container Service
       # Developer Guide
+
       struct EcsResourceRequirement
         include JSON::Serializable
 
         # The type of resource to assign to a container. The supported values are GPU or InferenceAccelerator
         # .
+
         @[JSON::Field(key: "type")]
         getter type : String
 
@@ -780,6 +893,7 @@ module AwsSdk
         # reserved for all containers in a task can't exceed the number of available GPUs on the container
         # instance that the task is launched on. If the InferenceAccelerator type is used, the value matches
         # the deviceName for an InferenceAccelerator specified in a task definition.
+
         @[JSON::Field(key: "value")]
         getter value : String
 
@@ -791,40 +905,48 @@ module AwsSdk
       end
 
       # The overrides that are associated with a task.
+
       struct EcsTaskOverride
         include JSON::Serializable
 
         # One or more container overrides that are sent to a task.
+
         @[JSON::Field(key: "ContainerOverrides")]
         getter container_overrides : Array(Types::EcsContainerOverride)?
 
         # The cpu override for the task.
+
         @[JSON::Field(key: "Cpu")]
         getter cpu : String?
 
         # The ephemeral storage setting override for the task. This parameter is only supported for tasks
         # hosted on Fargate that use the following platform versions: Linux platform version 1.4.0 or later.
         # Windows platform version 1.0.0 or later.
+
         @[JSON::Field(key: "EphemeralStorage")]
         getter ephemeral_storage : Types::EcsEphemeralStorage?
 
         # The Amazon Resource Name (ARN) of the task execution IAM role override for the task. For more
         # information, see Amazon ECS task execution IAM role in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "ExecutionRoleArn")]
         getter execution_role_arn : String?
 
         # The Elastic Inference accelerator override for the task.
+
         @[JSON::Field(key: "InferenceAcceleratorOverrides")]
         getter inference_accelerator_overrides : Array(Types::EcsInferenceAcceleratorOverride)?
 
         # The memory override for the task.
+
         @[JSON::Field(key: "Memory")]
         getter memory : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All
         # containers in this task are granted the permissions that are specified in this role. For more
         # information, see IAM Role for Tasks in the Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "TaskRoleArn")]
         getter task_role_arn : String?
 
@@ -842,10 +964,12 @@ module AwsSdk
 
       # Filter events using an event pattern. For more information, see Events and Event Patterns in the
       # Amazon EventBridge User Guide .
+
       struct Filter
         include JSON::Serializable
 
         # The event pattern.
+
         @[JSON::Field(key: "Pattern")]
         getter pattern : String?
 
@@ -858,10 +982,12 @@ module AwsSdk
       # The collection of event patterns used to filter events. To remove a filter, specify a FilterCriteria
       # object with an empty array of Filter objects. For more information, see Events and Event Patterns in
       # the Amazon EventBridge User Guide .
+
       struct FilterCriteria
         include JSON::Serializable
 
         # The event patterns.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
@@ -872,11 +998,13 @@ module AwsSdk
       end
 
       # The Amazon Data Firehose logging configuration settings for the pipe.
+
       struct FirehoseLogDestination
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Firehose delivery stream to which EventBridge delivers the
         # pipe log records.
+
         @[JSON::Field(key: "DeliveryStreamArn")]
         getter delivery_stream_arn : String?
 
@@ -887,11 +1015,13 @@ module AwsSdk
       end
 
       # The Amazon Data Firehose logging configuration settings for the pipe.
+
       struct FirehoseLogDestinationParameters
         include JSON::Serializable
 
         # Specifies the Amazon Resource Name (ARN) of the Firehose delivery stream to which EventBridge
         # delivers the pipe log records.
+
         @[JSON::Field(key: "DeliveryStreamArn")]
         getter delivery_stream_arn : String
 
@@ -902,13 +1032,16 @@ module AwsSdk
       end
 
       # This exception occurs due to unexpected causes.
+
       struct InternalException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The number of seconds to wait before retrying the action that caused the exception.
+
         @[JSON::Field(key: "Retry-After")]
         getter retry_after_seconds : Int32?
 
@@ -919,23 +1052,28 @@ module AwsSdk
         end
       end
 
+
       struct ListPipesRequest
         include JSON::Serializable
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # The maximum number of pipes to include in the response.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A value that will return a subset of the pipes associated with this account. For example,
         # "NamePrefix": "ABC" will return all endpoints with "ABC" in the name.
+
         @[JSON::Field(key: "NamePrefix")]
         getter name_prefix : String?
 
@@ -943,14 +1081,17 @@ module AwsSdk
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The prefix matching the pipe source.
+
         @[JSON::Field(key: "SourcePrefix")]
         getter source_prefix : String?
 
         # The prefix matching the pipe target.
+
         @[JSON::Field(key: "TargetPrefix")]
         getter target_prefix : String?
 
@@ -966,6 +1107,7 @@ module AwsSdk
         end
       end
 
+
       struct ListPipesResponse
         include JSON::Serializable
 
@@ -973,10 +1115,12 @@ module AwsSdk
         # pagination token for each page. Make the call again using the returned token to retrieve the next
         # page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an
         # expired pagination token will return an HTTP 400 InvalidToken error.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The pipes returned by the call.
+
         @[JSON::Field(key: "Pipes")]
         getter pipes : Array(Types::Pipe)?
 
@@ -987,10 +1131,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The ARN of the pipe for which you want to view tags.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
@@ -1000,10 +1146,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The list of key-value pairs to associate with the pipe.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1014,10 +1162,12 @@ module AwsSdk
       end
 
       # The Secrets Manager secret that stores your broker credentials.
+
       struct MQBrokerAccessCredentials
         include JSON::Serializable
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "BasicAuth")]
         getter basic_auth : String?
 
@@ -1028,14 +1178,17 @@ module AwsSdk
       end
 
       # The Secrets Manager secret that stores your stream credentials.
+
       struct MSKAccessCredentials
         include JSON::Serializable
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "ClientCertificateTlsAuth")]
         getter client_certificate_tls_auth : String?
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "SaslScram512Auth")]
         getter sasl_scram512_auth : String?
 
@@ -1047,18 +1200,22 @@ module AwsSdk
       end
 
       # A mapping of a source event data field to a measure in a Timestream for LiveAnalytics record.
+
       struct MultiMeasureAttributeMapping
         include JSON::Serializable
 
         # Dynamic path to the measurement attribute in the source event.
+
         @[JSON::Field(key: "MeasureValue")]
         getter measure_value : String
 
         # Data type of the measurement attribute in the source event.
+
         @[JSON::Field(key: "MeasureValueType")]
         getter measure_value_type : String
 
         # Target measure name to be used.
+
         @[JSON::Field(key: "MultiMeasureAttributeName")]
         getter multi_measure_attribute_name : String
 
@@ -1072,15 +1229,18 @@ module AwsSdk
 
       # Maps multiple measures from the source event to the same Timestream for LiveAnalytics record. For
       # more information, see Amazon Timestream for LiveAnalytics concepts
+
       struct MultiMeasureMapping
         include JSON::Serializable
 
         # Mappings that represent multiple source event fields mapped to measures in the same Timestream for
         # LiveAnalytics record.
+
         @[JSON::Field(key: "MultiMeasureAttributeMappings")]
         getter multi_measure_attribute_mappings : Array(Types::MultiMeasureAttributeMapping)
 
         # The name of the multiple measurements per record (multi-measure).
+
         @[JSON::Field(key: "MultiMeasureName")]
         getter multi_measure_name : String
 
@@ -1092,12 +1252,14 @@ module AwsSdk
       end
 
       # This structure specifies the network configuration for an Amazon ECS task.
+
       struct NetworkConfiguration
         include JSON::Serializable
 
         # Use this structure to specify the VPC subnets and security groups for the task, and whether a public
         # IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network
         # mode.
+
         @[JSON::Field(key: "awsvpcConfiguration")]
         getter awsvpc_configuration : Types::AwsVpcConfiguration?
 
@@ -1108,8 +1270,10 @@ module AwsSdk
       end
 
       # An entity that you specified does not exist.
+
       struct NotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1122,46 +1286,57 @@ module AwsSdk
 
       # An object that represents a pipe. Amazon EventBridgePipes connect event sources to targets and
       # reduces the need for specialized knowledge and integration code.
+
       struct Pipe
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # The ARN of the enrichment resource.
+
         @[JSON::Field(key: "Enrichment")]
         getter enrichment : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The ARN of the source resource.
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The reason the pipe is in its current state.
+
         @[JSON::Field(key: "StateReason")]
         getter state_reason : String?
 
         # The ARN of the target resource.
+
         @[JSON::Field(key: "Target")]
         getter target : String?
 
@@ -1183,21 +1358,25 @@ module AwsSdk
       # These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge
       # ApiDestinations. In the latter case, these are merged with any InvocationParameters specified on the
       # Connection, with any values from the Connection taking precedence.
+
       struct PipeEnrichmentHttpParameters
         include JSON::Serializable
 
         # The headers that need to be sent as part of request invoking the API Gateway REST API or EventBridge
         # ApiDestination.
+
         @[JSON::Field(key: "HeaderParameters")]
         getter header_parameters : Hash(String, String)?
 
         # The path parameter values to be used to populate API Gateway REST API or EventBridge ApiDestination
         # path wildcards ("*").
+
         @[JSON::Field(key: "PathParameterValues")]
         getter path_parameter_values : Array(String)?
 
         # The query string keys/values that need to be sent as part of request invoking the API Gateway REST
         # API or EventBridge ApiDestination.
+
         @[JSON::Field(key: "QueryStringParameters")]
         getter query_string_parameters : Hash(String, String)?
 
@@ -1210,6 +1389,7 @@ module AwsSdk
       end
 
       # The parameters required to set up enrichment on your pipe.
+
       struct PipeEnrichmentParameters
         include JSON::Serializable
 
@@ -1219,12 +1399,14 @@ module AwsSdk
         # of your target invoking request. If you're using ApiDestinations, the corresponding Connection can
         # also have these values configured. In case of any conflicting keys, values from the Connection take
         # precedence.
+
         @[JSON::Field(key: "HttpParameters")]
         getter http_parameters : Types::PipeEnrichmentHttpParameters?
 
         # Valid JSON text passed to the enrichment. In this case, nothing from the event itself is passed to
         # the enrichment. For more information, see The JavaScript Object Notation (JSON) Data Interchange
         # Format . To remove an input template, specify an empty string.
+
         @[JSON::Field(key: "InputTemplate")]
         getter input_template : String?
 
@@ -1236,28 +1418,34 @@ module AwsSdk
       end
 
       # The logging configuration settings for the pipe.
+
       struct PipeLogConfiguration
         include JSON::Serializable
 
         # The Amazon CloudWatch Logs logging configuration settings for the pipe.
+
         @[JSON::Field(key: "CloudwatchLogsLogDestination")]
         getter cloudwatch_logs_log_destination : Types::CloudwatchLogsLogDestination?
 
         # The Amazon Data Firehose logging configuration settings for the pipe.
+
         @[JSON::Field(key: "FirehoseLogDestination")]
         getter firehose_log_destination : Types::FirehoseLogDestination?
 
         # Whether the execution data (specifically, the payload , awsRequest , and awsResponse fields) is
         # included in the log messages for this pipe. This applies to all log destinations for the pipe. For
         # more information, see Including execution data in logs in the Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "IncludeExecutionData")]
         getter include_execution_data : Array(String)?
 
         # The level of logging detail to include. This applies to all log destinations for the pipe.
+
         @[JSON::Field(key: "Level")]
         getter level : String?
 
         # The Amazon S3 logging configuration settings for the pipe.
+
         @[JSON::Field(key: "S3LogDestination")]
         getter s3_log_destination : Types::S3LogDestination?
 
@@ -1282,19 +1470,23 @@ module AwsSdk
       # you must also specify the fields in the FirehoseLogDestinationParameters object in order to retain
       # the Firehose stream log destination. For more information on generating pipe log records, see Log
       # EventBridge Pipes in the Amazon EventBridge User Guide .
+
       struct PipeLogConfigurationParameters
         include JSON::Serializable
 
         # The level of logging detail to include. This applies to all log destinations for the pipe. For more
         # information, see Specifying EventBridge Pipes log level in the Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "Level")]
         getter level : String
 
         # The Amazon CloudWatch Logs logging configuration settings for the pipe.
+
         @[JSON::Field(key: "CloudwatchLogsLogDestination")]
         getter cloudwatch_logs_log_destination : Types::CloudwatchLogsLogDestinationParameters?
 
         # The Amazon Data Firehose logging configuration settings for the pipe.
+
         @[JSON::Field(key: "FirehoseLogDestination")]
         getter firehose_log_destination : Types::FirehoseLogDestinationParameters?
 
@@ -1302,10 +1494,12 @@ module AwsSdk
         # fields) in the log messages for this pipe. This applies to all log destinations for the pipe. For
         # more information, see Including execution data in logs in the Amazon EventBridge User Guide . By
         # default, execution data is not included.
+
         @[JSON::Field(key: "IncludeExecutionData")]
         getter include_execution_data : Array(String)?
 
         # The Amazon S3 logging configuration settings for the pipe.
+
         @[JSON::Field(key: "S3LogDestination")]
         getter s3_log_destination : Types::S3LogDestinationParameters?
 
@@ -1320,22 +1514,27 @@ module AwsSdk
       end
 
       # The parameters for using an Active MQ broker as a source.
+
       struct PipeSourceActiveMQBrokerParameters
         include JSON::Serializable
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::MQBrokerAccessCredentials
 
         # The name of the destination queue to consume.
+
         @[JSON::Field(key: "QueueName")]
         getter queue_name : String
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
@@ -1349,42 +1548,51 @@ module AwsSdk
       end
 
       # The parameters for using a DynamoDB stream as a source.
+
       struct PipeSourceDynamoDBStreamParameters
         include JSON::Serializable
 
         # The position in a stream from which to start reading.
+
         @[JSON::Field(key: "StartingPosition")]
         getter starting_position : String
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # Define the target queue to send dead-letter queue events to.
+
         @[JSON::Field(key: "DeadLetterConfig")]
         getter dead_letter_config : Types::DeadLetterConfig?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # Discard records older than the specified age. The default value is -1, which sets the maximum age to
         # infinite. When the value is set to infinite, EventBridge never discards old records.
+
         @[JSON::Field(key: "MaximumRecordAgeInSeconds")]
         getter maximum_record_age_in_seconds : Int32?
 
         # Discard records after the specified number of retries. The default value is -1, which sets the
         # maximum number of retries to infinite. When MaximumRetryAttempts is infinite, EventBridge retries
         # failed records until the record expires in the event source.
+
         @[JSON::Field(key: "MaximumRetryAttempts")]
         getter maximum_retry_attempts : Int32?
 
         # Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half
         # until all the records are processed or there is one failed message left in the batch.
+
         @[JSON::Field(key: "OnPartialBatchItemFailure")]
         getter on_partial_batch_item_failure : String?
 
         # The number of batches to process concurrently from each shard. The default value is 1.
+
         @[JSON::Field(key: "ParallelizationFactor")]
         getter parallelization_factor : Int32?
 
@@ -1402,47 +1610,57 @@ module AwsSdk
       end
 
       # The parameters for using a Kinesis stream as a source.
+
       struct PipeSourceKinesisStreamParameters
         include JSON::Serializable
 
         # The position in a stream from which to start reading.
+
         @[JSON::Field(key: "StartingPosition")]
         getter starting_position : String
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # Define the target queue to send dead-letter queue events to.
+
         @[JSON::Field(key: "DeadLetterConfig")]
         getter dead_letter_config : Types::DeadLetterConfig?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # Discard records older than the specified age. The default value is -1, which sets the maximum age to
         # infinite. When the value is set to infinite, EventBridge never discards old records.
+
         @[JSON::Field(key: "MaximumRecordAgeInSeconds")]
         getter maximum_record_age_in_seconds : Int32?
 
         # Discard records after the specified number of retries. The default value is -1, which sets the
         # maximum number of retries to infinite. When MaximumRetryAttempts is infinite, EventBridge retries
         # failed records until the record expires in the event source.
+
         @[JSON::Field(key: "MaximumRetryAttempts")]
         getter maximum_retry_attempts : Int32?
 
         # Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half
         # until all the records are processed or there is one failed message left in the batch.
+
         @[JSON::Field(key: "OnPartialBatchItemFailure")]
         getter on_partial_batch_item_failure : String?
 
         # The number of batches to process concurrently from each shard. The default value is 1.
+
         @[JSON::Field(key: "ParallelizationFactor")]
         getter parallelization_factor : Int32?
 
         # With StartingPosition set to AT_TIMESTAMP , the time from which to start reading, in Unix time
         # seconds.
+
         @[JSON::Field(key: "StartingPositionTimestamp")]
         getter starting_position_timestamp : Time?
 
@@ -1461,30 +1679,37 @@ module AwsSdk
       end
 
       # The parameters for using an MSK stream as a source.
+
       struct PipeSourceManagedStreamingKafkaParameters
         include JSON::Serializable
 
         # The name of the topic that the pipe will read from.
+
         @[JSON::Field(key: "TopicName")]
         getter topic_name : String
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The name of the destination queue to consume.
+
         @[JSON::Field(key: "ConsumerGroupID")]
         getter consumer_group_id : String?
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::MSKAccessCredentials?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # The position in a stream from which to start reading.
+
         @[JSON::Field(key: "StartingPosition")]
         getter starting_position : String?
 
@@ -1500,32 +1725,39 @@ module AwsSdk
       end
 
       # The parameters required to set up a source for your pipe.
+
       struct PipeSourceParameters
         include JSON::Serializable
 
         # The parameters for using an Active MQ broker as a source.
+
         @[JSON::Field(key: "ActiveMQBrokerParameters")]
         getter active_mq_broker_parameters : Types::PipeSourceActiveMQBrokerParameters?
 
         # The parameters for using a DynamoDB stream as a source.
+
         @[JSON::Field(key: "DynamoDBStreamParameters")]
         getter dynamo_db_stream_parameters : Types::PipeSourceDynamoDBStreamParameters?
 
         # The collection of event patterns used to filter events. To remove a filter, specify a FilterCriteria
         # object with an empty array of Filter objects. For more information, see Events and Event Patterns in
         # the Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "FilterCriteria")]
         getter filter_criteria : Types::FilterCriteria?
 
         # The parameters for using a Kinesis stream as a source.
+
         @[JSON::Field(key: "KinesisStreamParameters")]
         getter kinesis_stream_parameters : Types::PipeSourceKinesisStreamParameters?
 
         # The parameters for using an MSK stream as a source.
+
         @[JSON::Field(key: "ManagedStreamingKafkaParameters")]
         getter managed_streaming_kafka_parameters : Types::PipeSourceManagedStreamingKafkaParameters?
 
         # The parameters for using a Rabbit MQ broker as a source.
+
         @[JSON::Field(key: "RabbitMQBrokerParameters")]
         getter rabbit_mq_broker_parameters : Types::PipeSourceRabbitMQBrokerParameters?
 
@@ -1534,10 +1766,12 @@ module AwsSdk
         # you manage yourself, as well as those hosted by a third-party provider, such as Confluent Cloud ,
         # CloudKarafka , or Redpanda . For more information, see Apache Kafka streams as a source in the
         # Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "SelfManagedKafkaParameters")]
         getter self_managed_kafka_parameters : Types::PipeSourceSelfManagedKafkaParameters?
 
         # The parameters for using a Amazon SQS stream as a source.
+
         @[JSON::Field(key: "SqsQueueParameters")]
         getter sqs_queue_parameters : Types::PipeSourceSqsQueueParameters?
 
@@ -1555,26 +1789,32 @@ module AwsSdk
       end
 
       # The parameters for using a Rabbit MQ broker as a source.
+
       struct PipeSourceRabbitMQBrokerParameters
         include JSON::Serializable
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::MQBrokerAccessCredentials
 
         # The name of the destination queue to consume.
+
         @[JSON::Field(key: "QueueName")]
         getter queue_name : String
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # The name of the virtual host associated with the source broker.
+
         @[JSON::Field(key: "VirtualHost")]
         getter virtual_host : String?
 
@@ -1593,43 +1833,53 @@ module AwsSdk
       # you manage yourself, as well as those hosted by a third-party provider, such as Confluent Cloud ,
       # CloudKarafka , or Redpanda . For more information, see Apache Kafka streams as a source in the
       # Amazon EventBridge User Guide .
+
       struct PipeSourceSelfManagedKafkaParameters
         include JSON::Serializable
 
         # The name of the topic that the pipe will read from.
+
         @[JSON::Field(key: "TopicName")]
         getter topic_name : String
 
         # An array of server URLs.
+
         @[JSON::Field(key: "AdditionalBootstrapServers")]
         getter additional_bootstrap_servers : Array(String)?
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The name of the destination queue to consume.
+
         @[JSON::Field(key: "ConsumerGroupID")]
         getter consumer_group_id : String?
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::SelfManagedKafkaAccessConfigurationCredentials?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # The ARN of the Secrets Manager secret used for certification.
+
         @[JSON::Field(key: "ServerRootCaCertificate")]
         getter server_root_ca_certificate : String?
 
         # The position in a stream from which to start reading.
+
         @[JSON::Field(key: "StartingPosition")]
         getter starting_position : String?
 
         # This structure specifies the VPC subnets and security groups for the stream, and whether a public IP
         # address is to be used.
+
         @[JSON::Field(key: "Vpc")]
         getter vpc : Types::SelfManagedKafkaAccessConfigurationVpc?
 
@@ -1648,14 +1898,17 @@ module AwsSdk
       end
 
       # The parameters for using a Amazon SQS stream as a source.
+
       struct PipeSourceSqsQueueParameters
         include JSON::Serializable
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
@@ -1667,27 +1920,32 @@ module AwsSdk
       end
 
       # The parameters for using an Batch job as a target.
+
       struct PipeTargetBatchJobParameters
         include JSON::Serializable
 
         # The job definition used by this job. This value can be one of name , name:revision , or the Amazon
         # Resource Name (ARN) for the job definition. If name is specified without a revision then the latest
         # active revision is used.
+
         @[JSON::Field(key: "JobDefinition")]
         getter job_definition : String
 
         # The name of the job. It can be up to 128 letters long. The first character must be alphanumeric, can
         # contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "JobName")]
         getter job_name : String
 
         # The array properties for the submitted job, such as the size of the array. The array size can be
         # between 2 and 10,000. If you specify array properties for a job, it becomes an array job. This
         # parameter is used only if the target is an Batch job.
+
         @[JSON::Field(key: "ArrayProperties")]
         getter array_properties : Types::BatchArrayProperties?
 
         # The overrides that are sent to a container.
+
         @[JSON::Field(key: "ContainerOverrides")]
         getter container_overrides : Types::BatchContainerOverrides?
 
@@ -1696,17 +1954,20 @@ module AwsSdk
         # completes sequentially, starting at index 0. You can also specify an N_TO_N type dependency with a
         # job ID for array jobs. In that case, each index child of this job must wait for the corresponding
         # index child of each dependency to complete before it can begin.
+
         @[JSON::Field(key: "DependsOn")]
         getter depends_on : Array(Types::BatchJobDependency)?
 
         # Additional parameters passed to the job that replace parameter substitution placeholders that are
         # set in the job definition. Parameters are specified as a key and value pair mapping. Parameters
         # included here override any corresponding parameter defaults from the job definition.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : Hash(String, String)?
 
         # The retry strategy to use for failed jobs. When a retry strategy is specified here, it overrides the
         # retry strategy defined in the job definition.
+
         @[JSON::Field(key: "RetryStrategy")]
         getter retry_strategy : Types::BatchRetryStrategy?
 
@@ -1723,14 +1984,17 @@ module AwsSdk
       end
 
       # The parameters for using an CloudWatch Logs log stream as a target.
+
       struct PipeTargetCloudWatchLogsParameters
         include JSON::Serializable
 
         # The name of the log stream.
+
         @[JSON::Field(key: "LogStreamName")]
         getter log_stream_name : String?
 
         # The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+
         @[JSON::Field(key: "Timestamp")]
         getter timestamp : String?
 
@@ -1742,30 +2006,36 @@ module AwsSdk
       end
 
       # The parameters for using an Amazon ECS task as a target.
+
       struct PipeTargetEcsTaskParameters
         include JSON::Serializable
 
         # The ARN of the task definition to use if the event target is an Amazon ECS task.
+
         @[JSON::Field(key: "TaskDefinitionArn")]
         getter task_definition_arn : String
 
         # The capacity provider strategy to use for the task. If a capacityProviderStrategy is specified, the
         # launchType parameter must be omitted. If no capacityProviderStrategy or launchType is specified, the
         # defaultCapacityProviderStrategy for the cluster is used.
+
         @[JSON::Field(key: "CapacityProviderStrategy")]
         getter capacity_provider_strategy : Array(Types::CapacityProviderStrategyItem)?
 
         # Specifies whether to enable Amazon ECS managed tags for the task. For more information, see Tagging
         # Your Amazon ECS Resources in the Amazon Elastic Container Service Developer Guide.
+
         @[JSON::Field(key: "EnableECSManagedTags")]
         getter enable_ecs_managed_tags : Bool?
 
         # Whether or not to enable the execute command functionality for the containers in this task. If true,
         # this enables execute command functionality on all containers in the task.
+
         @[JSON::Field(key: "EnableExecuteCommand")]
         getter enable_execute_command : Bool?
 
         # Specifies an Amazon ECS task group for the task. The maximum length is 255 characters.
+
         @[JSON::Field(key: "Group")]
         getter group : String?
 
@@ -1773,6 +2043,7 @@ module AwsSdk
         # match one of the launch type (compatibilities) of the target task. The FARGATE value is supported
         # only in the Regions where Fargate with Amazon ECS is supported. For more information, see Fargate on
         # Amazon ECS in the Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "LaunchType")]
         getter launch_type : String?
 
@@ -1781,20 +2052,24 @@ module AwsSdk
         # used. This structure is required if LaunchType is FARGATE because the awsvpc mode is required for
         # Fargate tasks. If you specify NetworkConfiguration when the target ECS task does not use the awsvpc
         # network mode, the task fails.
+
         @[JSON::Field(key: "NetworkConfiguration")]
         getter network_configuration : Types::NetworkConfiguration?
 
         # The overrides that are associated with a task.
+
         @[JSON::Field(key: "Overrides")]
         getter overrides : Types::EcsTaskOverride?
 
         # An array of placement constraint objects to use for the task. You can specify up to 10 constraints
         # per task (including constraints in the task definition and those specified at runtime).
+
         @[JSON::Field(key: "PlacementConstraints")]
         getter placement_constraints : Array(Types::PlacementConstraint)?
 
         # The placement strategy objects to use for the task. You can specify a maximum of five strategy rules
         # per task.
+
         @[JSON::Field(key: "PlacementStrategy")]
         getter placement_strategy : Array(Types::PlacementStrategy)?
 
@@ -1802,26 +2077,31 @@ module AwsSdk
         # version, such as 1.1.0 . This structure is used only if LaunchType is FARGATE . For more information
         # about valid platform versions, see Fargate Platform Versions in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "PlatformVersion")]
         getter platform_version : String?
 
         # Specifies whether to propagate the tags from the task definition to the task. If no value is
         # specified, the tags are not propagated. Tags can only be propagated to the task during task
         # creation. To add tags to a task after task creation, use the TagResource API action.
+
         @[JSON::Field(key: "PropagateTags")]
         getter propagate_tags : String?
 
         # The reference ID to use for the task.
+
         @[JSON::Field(key: "ReferenceId")]
         getter reference_id : String?
 
         # The metadata that you apply to the task to help you categorize and organize them. Each tag consists
         # of a key and an optional value, both of which you define. To learn more, see RunTask in the Amazon
         # ECS API Reference.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The number of tasks to create based on TaskDefinition . The default is 1.
+
         @[JSON::Field(key: "TaskCount")]
         getter task_count : Int32?
 
@@ -1846,30 +2126,36 @@ module AwsSdk
       end
 
       # The parameters for using an EventBridge event bus as a target.
+
       struct PipeTargetEventBridgeEventBusParameters
         include JSON::Serializable
 
         # A free-form string, with a maximum of 128 characters, used to decide what fields to expect in the
         # event detail.
+
         @[JSON::Field(key: "DetailType")]
         getter detail_type : String?
 
         # The URL subdomain of the endpoint. For example, if the URL for Endpoint is
         # https://abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is abcde.veo .
+
         @[JSON::Field(key: "EndpointId")]
         getter endpoint_id : String?
 
         # Amazon Web Services resources, identified by Amazon Resource Name (ARN), which the event primarily
         # concerns. Any number, including zero, may be present.
+
         @[JSON::Field(key: "Resources")]
         getter resources : Array(String)?
 
         # The source of the event.
+
         @[JSON::Field(key: "Source")]
         getter source : String?
 
         # The time stamp of the event, per RFC3339 . If no time stamp is provided, the time stamp of the
         # PutEvents call is used.
+
         @[JSON::Field(key: "Time")]
         getter time : String?
 
@@ -1885,21 +2171,25 @@ module AwsSdk
 
       # These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge
       # ApiDestinations.
+
       struct PipeTargetHttpParameters
         include JSON::Serializable
 
         # The headers that need to be sent as part of request invoking the API Gateway REST API or EventBridge
         # ApiDestination.
+
         @[JSON::Field(key: "HeaderParameters")]
         getter header_parameters : Hash(String, String)?
 
         # The path parameter values to be used to populate API Gateway REST API or EventBridge ApiDestination
         # path wildcards ("*").
+
         @[JSON::Field(key: "PathParameterValues")]
         getter path_parameter_values : Array(String)?
 
         # The query string keys/values that need to be sent as part of request invoking the API Gateway REST
         # API or EventBridge ApiDestination.
+
         @[JSON::Field(key: "QueryStringParameters")]
         getter query_string_parameters : Hash(String, String)?
 
@@ -1912,6 +2202,7 @@ module AwsSdk
       end
 
       # The parameters for using a Kinesis stream as a target.
+
       struct PipeTargetKinesisStreamParameters
         include JSON::Serializable
 
@@ -1921,6 +2212,7 @@ module AwsSdk
         # specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer
         # values and to map associated data records to shards. As a result of this hashing mechanism, all data
         # records with the same partition key map to the same shard within the stream.
+
         @[JSON::Field(key: "PartitionKey")]
         getter partition_key : String
 
@@ -1931,6 +2223,7 @@ module AwsSdk
       end
 
       # The parameters for using a Lambda function as a target.
+
       struct PipeTargetLambdaFunctionParameters
         include JSON::Serializable
 
@@ -1939,6 +2232,7 @@ module AwsSdk
         # for the Lambda Invoke API. FIRE_AND_FORGET - Invoke asynchronously. This corresponds to the Event
         # option in the InvocationType parameter for the Lambda Invoke API. For more information, see
         # Invocation types in the Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "InvocationType")]
         getter invocation_type : String?
 
@@ -1951,62 +2245,76 @@ module AwsSdk
       # The parameters required to set up a target for your pipe. For more information about pipe target
       # parameters, including how to use dynamic path parameters, see Target parameters in the Amazon
       # EventBridge User Guide .
+
       struct PipeTargetParameters
         include JSON::Serializable
 
         # The parameters for using an Batch job as a target.
+
         @[JSON::Field(key: "BatchJobParameters")]
         getter batch_job_parameters : Types::PipeTargetBatchJobParameters?
 
         # The parameters for using an CloudWatch Logs log stream as a target.
+
         @[JSON::Field(key: "CloudWatchLogsParameters")]
         getter cloud_watch_logs_parameters : Types::PipeTargetCloudWatchLogsParameters?
 
         # The parameters for using an Amazon ECS task as a target.
+
         @[JSON::Field(key: "EcsTaskParameters")]
         getter ecs_task_parameters : Types::PipeTargetEcsTaskParameters?
 
         # The parameters for using an EventBridge event bus as a target.
+
         @[JSON::Field(key: "EventBridgeEventBusParameters")]
         getter event_bridge_event_bus_parameters : Types::PipeTargetEventBridgeEventBusParameters?
 
         # These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge
         # ApiDestinations.
+
         @[JSON::Field(key: "HttpParameters")]
         getter http_parameters : Types::PipeTargetHttpParameters?
 
         # Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the
         # target. For more information, see The JavaScript Object Notation (JSON) Data Interchange Format . To
         # remove an input template, specify an empty string.
+
         @[JSON::Field(key: "InputTemplate")]
         getter input_template : String?
 
         # The parameters for using a Kinesis stream as a target.
+
         @[JSON::Field(key: "KinesisStreamParameters")]
         getter kinesis_stream_parameters : Types::PipeTargetKinesisStreamParameters?
 
         # The parameters for using a Lambda function as a target.
+
         @[JSON::Field(key: "LambdaFunctionParameters")]
         getter lambda_function_parameters : Types::PipeTargetLambdaFunctionParameters?
 
         # These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the
         # Amazon Redshift Data API BatchExecuteStatement.
+
         @[JSON::Field(key: "RedshiftDataParameters")]
         getter redshift_data_parameters : Types::PipeTargetRedshiftDataParameters?
 
         # The parameters for using a SageMaker pipeline as a target.
+
         @[JSON::Field(key: "SageMakerPipelineParameters")]
         getter sage_maker_pipeline_parameters : Types::PipeTargetSageMakerPipelineParameters?
 
         # The parameters for using a Amazon SQS stream as a target.
+
         @[JSON::Field(key: "SqsQueueParameters")]
         getter sqs_queue_parameters : Types::PipeTargetSqsQueueParameters?
 
         # The parameters for using a Step Functions state machine as a target.
+
         @[JSON::Field(key: "StepFunctionStateMachineParameters")]
         getter step_function_state_machine_parameters : Types::PipeTargetStateMachineParameters?
 
         # The parameters for using a Timestream for LiveAnalytics table as a target.
+
         @[JSON::Field(key: "TimestreamParameters")]
         getter timestream_parameters : Types::PipeTargetTimestreamParameters?
 
@@ -2030,32 +2338,39 @@ module AwsSdk
 
       # These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the
       # Amazon Redshift Data API BatchExecuteStatement.
+
       struct PipeTargetRedshiftDataParameters
         include JSON::Serializable
 
         # The name of the database. Required when authenticating using temporary credentials.
+
         @[JSON::Field(key: "Database")]
         getter database : String
 
         # The SQL statement text to run.
+
         @[JSON::Field(key: "Sqls")]
         getter sqls : Array(String)
 
         # The database user name. Required when authenticating using temporary credentials.
+
         @[JSON::Field(key: "DbUser")]
         getter db_user : String?
 
         # The name or ARN of the secret that enables access to the database. Required when authenticating
         # using Secrets Manager.
+
         @[JSON::Field(key: "SecretManagerArn")]
         getter secret_manager_arn : String?
 
         # The name of the SQL statement. You can name the SQL statement when you create it to identify the
         # query.
+
         @[JSON::Field(key: "StatementName")]
         getter statement_name : String?
 
         # Indicates whether to send an event back to EventBridge after the SQL statement runs.
+
         @[JSON::Field(key: "WithEvent")]
         getter with_event : Bool?
 
@@ -2071,10 +2386,12 @@ module AwsSdk
       end
 
       # The parameters for using a SageMaker pipeline as a target.
+
       struct PipeTargetSageMakerPipelineParameters
         include JSON::Serializable
 
         # List of Parameter names and values for SageMaker Model Building Pipeline execution.
+
         @[JSON::Field(key: "PipelineParameterList")]
         getter pipeline_parameter_list : Array(Types::SageMakerPipelineParameter)?
 
@@ -2085,15 +2402,18 @@ module AwsSdk
       end
 
       # The parameters for using a Amazon SQS stream as a target.
+
       struct PipeTargetSqsQueueParameters
         include JSON::Serializable
 
         # This parameter applies only to FIFO (first-in-first-out) queues. The token used for deduplication of
         # sent messages.
+
         @[JSON::Field(key: "MessageDeduplicationId")]
         getter message_deduplication_id : String?
 
         # The FIFO message group ID to use as the target.
+
         @[JSON::Field(key: "MessageGroupId")]
         getter message_group_id : String?
 
@@ -2105,6 +2425,7 @@ module AwsSdk
       end
 
       # The parameters for using a Step Functions state machine as a target.
+
       struct PipeTargetStateMachineParameters
         include JSON::Serializable
 
@@ -2114,6 +2435,7 @@ module AwsSdk
         # workflows. FIRE_AND_FORGET - Invoke asynchronously. For more information, see StartExecution in the
         # Step Functions API Reference . For more information, see Invocation types in the Amazon EventBridge
         # User Guide .
+
         @[JSON::Field(key: "InvocationType")]
         getter invocation_type : String?
 
@@ -2124,15 +2446,18 @@ module AwsSdk
       end
 
       # The parameters for using a Timestream for LiveAnalytics table as a target.
+
       struct PipeTargetTimestreamParameters
         include JSON::Serializable
 
         # Map source data to dimensions in the target Timestream for LiveAnalytics table. For more
         # information, see Amazon Timestream for LiveAnalytics concepts
+
         @[JSON::Field(key: "DimensionMappings")]
         getter dimension_mappings : Array(Types::DimensionMapping)
 
         # Dynamic path to the source data field that represents the time value for your data.
+
         @[JSON::Field(key: "TimeValue")]
         getter time_value : String
 
@@ -2144,30 +2469,36 @@ module AwsSdk
         # measure value and version. In cases where the measure value is the same, Version will still be
         # updated. Default value is 1 . Version must be 1 or greater, or you will receive a
         # ValidationException error.
+
         @[JSON::Field(key: "VersionValue")]
         getter version_value : String
 
         # The granularity of the time units used. Default is MILLISECONDS . Required if TimeFieldType is
         # specified as EPOCH .
+
         @[JSON::Field(key: "EpochTimeUnit")]
         getter epoch_time_unit : String?
 
         # Maps multiple measures from the source event to the same record in the specified Timestream for
         # LiveAnalytics table.
+
         @[JSON::Field(key: "MultiMeasureMappings")]
         getter multi_measure_mappings : Array(Types::MultiMeasureMapping)?
 
         # Mappings of single source data fields to individual records in the specified Timestream for
         # LiveAnalytics table.
+
         @[JSON::Field(key: "SingleMeasureMappings")]
         getter single_measure_mappings : Array(Types::SingleMeasureMapping)?
 
         # The type of time value used. The default is EPOCH .
+
         @[JSON::Field(key: "TimeFieldType")]
         getter time_field_type : String?
 
         # How to format the timestamps. For example, yyyy-MM-dd'T'HH:mm:ss'Z' . Required if TimeFieldType is
         # specified as TIMESTAMP_FORMAT .
+
         @[JSON::Field(key: "TimestampFormat")]
         getter timestamp_format : String?
 
@@ -2186,18 +2517,21 @@ module AwsSdk
 
       # An object representing a constraint on task placement. To learn more, see Task Placement Constraints
       # in the Amazon Elastic Container Service Developer Guide.
+
       struct PlacementConstraint
         include JSON::Serializable
 
         # A cluster query language expression to apply to the constraint. You cannot specify an expression if
         # the constraint type is distinctInstance . To learn more, see Cluster Query Language in the Amazon
         # Elastic Container Service Developer Guide.
+
         @[JSON::Field(key: "expression")]
         getter expression : String?
 
         # The type of constraint. Use distinctInstance to ensure that each task in a particular group is
         # running on a different container instance. Use memberOf to restrict the selection to a group of
         # valid candidates.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -2210,6 +2544,7 @@ module AwsSdk
 
       # The task placement strategy for a task or service. To learn more, see Task Placement Strategies in
       # the Amazon Elastic Container Service Service Developer Guide.
+
       struct PlacementStrategy
         include JSON::Serializable
 
@@ -2218,6 +2553,7 @@ module AwsSdk
         # applied to a container instance, such as attribute:ecs.availability-zone. For the binpack placement
         # strategy, valid values are cpu and memory. For the random placement strategy, this field is not
         # used.
+
         @[JSON::Field(key: "field")]
         getter field : String?
 
@@ -2227,6 +2563,7 @@ module AwsSdk
         # least available amount of the resource that is specified with the field parameter. For example, if
         # you binpack on memory, a task is placed on the instance with the least amount of remaining memory
         # (but still enough to run the task).
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -2238,25 +2575,30 @@ module AwsSdk
       end
 
       # The Amazon S3 logging configuration settings for the pipe.
+
       struct S3LogDestination
         include JSON::Serializable
 
         # The name of the Amazon S3 bucket to which EventBridge delivers the log records for the pipe.
+
         @[JSON::Field(key: "BucketName")]
         getter bucket_name : String?
 
         # The Amazon Web Services account that owns the Amazon S3 bucket to which EventBridge delivers the log
         # records for the pipe.
+
         @[JSON::Field(key: "BucketOwner")]
         getter bucket_owner : String?
 
         # The format EventBridge uses for the log records. EventBridge currently only supports json
         # formatting.
+
         @[JSON::Field(key: "OutputFormat")]
         getter output_format : String?
 
         # The prefix text with which to begin Amazon S3 log object names. For more information, see Organizing
         # objects using prefixes in the Amazon Simple Storage Service User Guide .
+
         @[JSON::Field(key: "Prefix")]
         getter prefix : String?
 
@@ -2270,20 +2612,24 @@ module AwsSdk
       end
 
       # The Amazon S3 logging configuration settings for the pipe.
+
       struct S3LogDestinationParameters
         include JSON::Serializable
 
         # Specifies the name of the Amazon S3 bucket to which EventBridge delivers the log records for the
         # pipe.
+
         @[JSON::Field(key: "BucketName")]
         getter bucket_name : String
 
         # Specifies the Amazon Web Services account that owns the Amazon S3 bucket to which EventBridge
         # delivers the log records for the pipe.
+
         @[JSON::Field(key: "BucketOwner")]
         getter bucket_owner : String
 
         # How EventBridge should format the log records. EventBridge currently only supports json formatting.
+
         @[JSON::Field(key: "OutputFormat")]
         getter output_format : String?
 
@@ -2292,6 +2638,7 @@ module AwsSdk
         # beginning of the object key name. A prefix can be any length, subject to the maximum length of the
         # object key name (1,024 bytes). For more information, see Organizing objects using prefixes in the
         # Amazon Simple Storage Service User Guide .
+
         @[JSON::Field(key: "Prefix")]
         getter prefix : String?
 
@@ -2305,14 +2652,17 @@ module AwsSdk
       end
 
       # Name/Value pair of a parameter to start execution of a SageMaker Model Building Pipeline.
+
       struct SageMakerPipelineParameter
         include JSON::Serializable
 
         # Name of parameter to start execution of a SageMaker Model Building Pipeline.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Value of parameter to start execution of a SageMaker Model Building Pipeline.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -2324,22 +2674,27 @@ module AwsSdk
       end
 
       # The Secrets Manager secret that stores your stream credentials.
+
       struct SelfManagedKafkaAccessConfigurationCredentials
         include JSON::Serializable
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "BasicAuth")]
         getter basic_auth : String?
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "ClientCertificateTlsAuth")]
         getter client_certificate_tls_auth : String?
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "SaslScram256Auth")]
         getter sasl_scram256_auth : String?
 
         # The ARN of the Secrets Manager secret.
+
         @[JSON::Field(key: "SaslScram512Auth")]
         getter sasl_scram512_auth : String?
 
@@ -2354,16 +2709,19 @@ module AwsSdk
 
       # This structure specifies the VPC subnets and security groups for the stream, and whether a public IP
       # address is to be used.
+
       struct SelfManagedKafkaAccessConfigurationVpc
         include JSON::Serializable
 
         # Specifies the security groups associated with the stream. These security groups must all be in the
         # same VPC. You can specify as many as five security groups.
+
         @[JSON::Field(key: "SecurityGroup")]
         getter security_group : Array(String)?
 
         # Specifies the subnets associated with the stream. These subnets must all be in the same VPC. You can
         # specify as many as 16 subnets.
+
         @[JSON::Field(key: "Subnets")]
         getter subnets : Array(String)?
 
@@ -2375,25 +2733,31 @@ module AwsSdk
       end
 
       # A quota has been exceeded.
+
       struct ServiceQuotaExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The identifier of the quota that caused the exception.
+
         @[JSON::Field(key: "quotaCode")]
         getter quota_code : String
 
         # The ID of the resource that caused the exception.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String
 
         # The type of resource that caused the exception.
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
         # The identifier of the service that caused the exception.
+
         @[JSON::Field(key: "serviceCode")]
         getter service_code : String
 
@@ -2409,18 +2773,22 @@ module AwsSdk
 
       # Maps a single source data field to a single record in the specified Timestream for LiveAnalytics
       # table. For more information, see Amazon Timestream for LiveAnalytics concepts
+
       struct SingleMeasureMapping
         include JSON::Serializable
 
         # Target measure name for the measurement attribute in the Timestream table.
+
         @[JSON::Field(key: "MeasureName")]
         getter measure_name : String
 
         # Dynamic path of the source field to map to the measure in the record.
+
         @[JSON::Field(key: "MeasureValue")]
         getter measure_value : String
 
         # Data type of the source field.
+
         @[JSON::Field(key: "MeasureValueType")]
         getter measure_value_type : String
 
@@ -2432,10 +2800,12 @@ module AwsSdk
         end
       end
 
+
       struct StartPipeRequest
         include JSON::Serializable
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2445,30 +2815,37 @@ module AwsSdk
         end
       end
 
+
       struct StartPipeResponse
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2483,10 +2860,12 @@ module AwsSdk
         end
       end
 
+
       struct StopPipeRequest
         include JSON::Serializable
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2496,30 +2875,37 @@ module AwsSdk
         end
       end
 
+
       struct StopPipeResponse
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2536,15 +2922,18 @@ module AwsSdk
 
       # A key-value pair associated with an Amazon Web Services resource. In EventBridge, rules and event
       # buses support tagging.
+
       struct Tag
         include JSON::Serializable
 
         # A string you can use to assign a value. The combination of tag keys and values can help you organize
         # and categorize your resources.
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The value for the specified tag key.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -2555,14 +2944,17 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The list of key-value pairs associated with the pipe.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)
 
@@ -2573,6 +2965,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -2581,21 +2974,26 @@ module AwsSdk
       end
 
       # An action was throttled.
+
       struct ThrottlingException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The identifier of the quota that caused the exception.
+
         @[JSON::Field(key: "quotaCode")]
         getter quota_code : String?
 
         # The number of seconds to wait before retrying the action that caused the exception.
+
         @[JSON::Field(key: "Retry-After")]
         getter retry_after_seconds : Int32?
 
         # The identifier of the service that caused the exception.
+
         @[JSON::Field(key: "serviceCode")]
         getter service_code : String?
 
@@ -2608,14 +3006,17 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The list of tag keys to remove from the pipe.
+
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -2626,6 +3027,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -2633,30 +3035,37 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePipeRequest
         include JSON::Serializable
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The ARN of the role that allows the pipe to send data to the target.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # A description of the pipe.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # The ARN of the enrichment resource.
+
         @[JSON::Field(key: "Enrichment")]
         getter enrichment : String?
 
         # The parameters required to set up enrichment on your pipe.
+
         @[JSON::Field(key: "EnrichmentParameters")]
         getter enrichment_parameters : Types::PipeEnrichmentParameters?
 
@@ -2668,24 +3077,29 @@ module AwsSdk
         # pipe that is using a customer managed key to use the default Amazon Web Services owned key, specify
         # an empty string. For more information, see Managing keys in the Key Management Service Developer
         # Guide .
+
         @[JSON::Field(key: "KmsKeyIdentifier")]
         getter kms_key_identifier : String?
 
         # The logging configuration settings for the pipe.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::PipeLogConfigurationParameters?
 
         # The parameters required to set up a source for your pipe.
+
         @[JSON::Field(key: "SourceParameters")]
         getter source_parameters : Types::UpdatePipeSourceParameters?
 
         # The ARN of the target resource.
+
         @[JSON::Field(key: "Target")]
         getter target : String?
 
         # The parameters required to set up a target for your pipe. For more information about pipe target
         # parameters, including how to use dynamic path parameters, see Target parameters in the Amazon
         # EventBridge User Guide .
+
         @[JSON::Field(key: "TargetParameters")]
         getter target_parameters : Types::PipeTargetParameters?
 
@@ -2705,30 +3119,37 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePipeResponse
         include JSON::Serializable
 
         # The ARN of the pipe.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The time the pipe was created.
+
         @[JSON::Field(key: "CreationTime")]
         getter creation_time : Time?
 
         # The state the pipe is in.
+
         @[JSON::Field(key: "CurrentState")]
         getter current_state : String?
 
         # The state the pipe should be in.
+
         @[JSON::Field(key: "DesiredState")]
         getter desired_state : String?
 
         # When the pipe was last updated, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+
         @[JSON::Field(key: "LastModifiedTime")]
         getter last_modified_time : Time?
 
         # The name of the pipe.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2744,18 +3165,22 @@ module AwsSdk
       end
 
       # The parameters for using an Active MQ broker as a source.
+
       struct UpdatePipeSourceActiveMQBrokerParameters
         include JSON::Serializable
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::MQBrokerAccessCredentials
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
@@ -2768,38 +3193,46 @@ module AwsSdk
       end
 
       # The parameters for using a DynamoDB stream as a source.
+
       struct UpdatePipeSourceDynamoDBStreamParameters
         include JSON::Serializable
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # Define the target queue to send dead-letter queue events to.
+
         @[JSON::Field(key: "DeadLetterConfig")]
         getter dead_letter_config : Types::DeadLetterConfig?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # Discard records older than the specified age. The default value is -1, which sets the maximum age to
         # infinite. When the value is set to infinite, EventBridge never discards old records.
+
         @[JSON::Field(key: "MaximumRecordAgeInSeconds")]
         getter maximum_record_age_in_seconds : Int32?
 
         # Discard records after the specified number of retries. The default value is -1, which sets the
         # maximum number of retries to infinite. When MaximumRetryAttempts is infinite, EventBridge retries
         # failed records until the record expires in the event source.
+
         @[JSON::Field(key: "MaximumRetryAttempts")]
         getter maximum_retry_attempts : Int32?
 
         # Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half
         # until all the records are processed or there is one failed message left in the batch.
+
         @[JSON::Field(key: "OnPartialBatchItemFailure")]
         getter on_partial_batch_item_failure : String?
 
         # The number of batches to process concurrently from each shard. The default value is 1.
+
         @[JSON::Field(key: "ParallelizationFactor")]
         getter parallelization_factor : Int32?
 
@@ -2816,38 +3249,46 @@ module AwsSdk
       end
 
       # The parameters for using a Kinesis stream as a source.
+
       struct UpdatePipeSourceKinesisStreamParameters
         include JSON::Serializable
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # Define the target queue to send dead-letter queue events to.
+
         @[JSON::Field(key: "DeadLetterConfig")]
         getter dead_letter_config : Types::DeadLetterConfig?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # Discard records older than the specified age. The default value is -1, which sets the maximum age to
         # infinite. When the value is set to infinite, EventBridge never discards old records.
+
         @[JSON::Field(key: "MaximumRecordAgeInSeconds")]
         getter maximum_record_age_in_seconds : Int32?
 
         # Discard records after the specified number of retries. The default value is -1, which sets the
         # maximum number of retries to infinite. When MaximumRetryAttempts is infinite, EventBridge retries
         # failed records until the record expires in the event source.
+
         @[JSON::Field(key: "MaximumRetryAttempts")]
         getter maximum_retry_attempts : Int32?
 
         # Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half
         # until all the records are processed or there is one failed message left in the batch.
+
         @[JSON::Field(key: "OnPartialBatchItemFailure")]
         getter on_partial_batch_item_failure : String?
 
         # The number of batches to process concurrently from each shard. The default value is 1.
+
         @[JSON::Field(key: "ParallelizationFactor")]
         getter parallelization_factor : Int32?
 
@@ -2864,18 +3305,22 @@ module AwsSdk
       end
 
       # The parameters for using an MSK stream as a source.
+
       struct UpdatePipeSourceManagedStreamingKafkaParameters
         include JSON::Serializable
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::MSKAccessCredentials?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
@@ -2888,32 +3333,39 @@ module AwsSdk
       end
 
       # The parameters required to set up a source for your pipe.
+
       struct UpdatePipeSourceParameters
         include JSON::Serializable
 
         # The parameters for using an Active MQ broker as a source.
+
         @[JSON::Field(key: "ActiveMQBrokerParameters")]
         getter active_mq_broker_parameters : Types::UpdatePipeSourceActiveMQBrokerParameters?
 
         # The parameters for using a DynamoDB stream as a source.
+
         @[JSON::Field(key: "DynamoDBStreamParameters")]
         getter dynamo_db_stream_parameters : Types::UpdatePipeSourceDynamoDBStreamParameters?
 
         # The collection of event patterns used to filter events. To remove a filter, specify a FilterCriteria
         # object with an empty array of Filter objects. For more information, see Events and Event Patterns in
         # the Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "FilterCriteria")]
         getter filter_criteria : Types::FilterCriteria?
 
         # The parameters for using a Kinesis stream as a source.
+
         @[JSON::Field(key: "KinesisStreamParameters")]
         getter kinesis_stream_parameters : Types::UpdatePipeSourceKinesisStreamParameters?
 
         # The parameters for using an MSK stream as a source.
+
         @[JSON::Field(key: "ManagedStreamingKafkaParameters")]
         getter managed_streaming_kafka_parameters : Types::UpdatePipeSourceManagedStreamingKafkaParameters?
 
         # The parameters for using a Rabbit MQ broker as a source.
+
         @[JSON::Field(key: "RabbitMQBrokerParameters")]
         getter rabbit_mq_broker_parameters : Types::UpdatePipeSourceRabbitMQBrokerParameters?
 
@@ -2922,10 +3374,12 @@ module AwsSdk
         # you manage yourself, as well as those hosted by a third-party provider, such as Confluent Cloud ,
         # CloudKarafka , or Redpanda . For more information, see Apache Kafka streams as a source in the
         # Amazon EventBridge User Guide .
+
         @[JSON::Field(key: "SelfManagedKafkaParameters")]
         getter self_managed_kafka_parameters : Types::UpdatePipeSourceSelfManagedKafkaParameters?
 
         # The parameters for using a Amazon SQS stream as a source.
+
         @[JSON::Field(key: "SqsQueueParameters")]
         getter sqs_queue_parameters : Types::UpdatePipeSourceSqsQueueParameters?
 
@@ -2943,18 +3397,22 @@ module AwsSdk
       end
 
       # The parameters for using a Rabbit MQ broker as a source.
+
       struct UpdatePipeSourceRabbitMQBrokerParameters
         include JSON::Serializable
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::MQBrokerAccessCredentials
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
@@ -2971,27 +3429,33 @@ module AwsSdk
       # you manage yourself, as well as those hosted by a third-party provider, such as Confluent Cloud ,
       # CloudKarafka , or Redpanda . For more information, see Apache Kafka streams as a source in the
       # Amazon EventBridge User Guide .
+
       struct UpdatePipeSourceSelfManagedKafkaParameters
         include JSON::Serializable
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The credentials needed to access the resource.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::SelfManagedKafkaAccessConfigurationCredentials?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
         # The ARN of the Secrets Manager secret used for certification.
+
         @[JSON::Field(key: "ServerRootCaCertificate")]
         getter server_root_ca_certificate : String?
 
         # This structure specifies the VPC subnets and security groups for the stream, and whether a public IP
         # address is to be used.
+
         @[JSON::Field(key: "Vpc")]
         getter vpc : Types::SelfManagedKafkaAccessConfigurationVpc?
 
@@ -3006,14 +3470,17 @@ module AwsSdk
       end
 
       # The parameters for using a Amazon SQS stream as a source.
+
       struct UpdatePipeSourceSqsQueueParameters
         include JSON::Serializable
 
         # The maximum number of records to include in each batch.
+
         @[JSON::Field(key: "BatchSize")]
         getter batch_size : Int32?
 
         # The maximum length of a time to wait for events.
+
         @[JSON::Field(key: "MaximumBatchingWindowInSeconds")]
         getter maximum_batching_window_in_seconds : Int32?
 
@@ -3025,12 +3492,15 @@ module AwsSdk
       end
 
       # Indicates that an error has occurred while performing a validate operation.
+
       struct ValidationException
         include JSON::Serializable
 
         # The list of fields for which validation failed and the corresponding failure messages.
+
         @[JSON::Field(key: "fieldList")]
         getter field_list : Array(Types::ValidationExceptionField)?
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -3043,14 +3513,17 @@ module AwsSdk
       end
 
       # Indicates that an error has occurred while performing a validate operation.
+
       struct ValidationExceptionField
         include JSON::Serializable
 
         # The message of the exception.
+
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The name of the exception.
+
         @[JSON::Field(key: "name")]
         getter name : String
 

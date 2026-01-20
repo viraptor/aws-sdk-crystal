@@ -1,8 +1,8 @@
 module AwsSdk
-  module KinesisAnalyticsV2
+  module KinesisAnalytics
     module Model
-      API_VERSION = "2018-05-23"
-      TARGET_PREFIX = "KinesisAnalytics_20180523"
+      API_VERSION = "2015-08-14"
+      TARGET_PREFIX = "KinesisAnalytics_20150814"
       SIGNING_NAME = "kinesisanalytics"
       ENDPOINT_PREFIX = "kinesisanalytics"
       ENDPOINT_RULE_SET_JSON = <<-JSON
@@ -49,26 +49,8 @@ module AwsSdk
         request_uri: "/"
       )
 
-      ADD_APPLICATION_VPC_CONFIGURATION = OperationModel.new(
-        name: "AddApplicationVpcConfiguration",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
       CREATE_APPLICATION = OperationModel.new(
         name: "CreateApplication",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      CREATE_APPLICATION_PRESIGNED_URL = OperationModel.new(
-        name: "CreateApplicationPresignedUrl",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      CREATE_APPLICATION_SNAPSHOT = OperationModel.new(
-        name: "CreateApplicationSnapshot",
         http_method: "POST",
         request_uri: "/"
       )
@@ -103,62 +85,14 @@ module AwsSdk
         request_uri: "/"
       )
 
-      DELETE_APPLICATION_SNAPSHOT = OperationModel.new(
-        name: "DeleteApplicationSnapshot",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DELETE_APPLICATION_VPC_CONFIGURATION = OperationModel.new(
-        name: "DeleteApplicationVpcConfiguration",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
       DESCRIBE_APPLICATION = OperationModel.new(
         name: "DescribeApplication",
         http_method: "POST",
         request_uri: "/"
       )
 
-      DESCRIBE_APPLICATION_OPERATION = OperationModel.new(
-        name: "DescribeApplicationOperation",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_APPLICATION_SNAPSHOT = OperationModel.new(
-        name: "DescribeApplicationSnapshot",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_APPLICATION_VERSION = OperationModel.new(
-        name: "DescribeApplicationVersion",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
       DISCOVER_INPUT_SCHEMA = OperationModel.new(
         name: "DiscoverInputSchema",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      LIST_APPLICATION_OPERATIONS = OperationModel.new(
-        name: "ListApplicationOperations",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      LIST_APPLICATION_SNAPSHOTS = OperationModel.new(
-        name: "ListApplicationSnapshots",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      LIST_APPLICATION_VERSIONS = OperationModel.new(
-        name: "ListApplicationVersions",
         http_method: "POST",
         request_uri: "/"
       )
@@ -171,12 +105,6 @@ module AwsSdk
 
       LIST_TAGS_FOR_RESOURCE = OperationModel.new(
         name: "ListTagsForResource",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      ROLLBACK_APPLICATION = OperationModel.new(
-        name: "RollbackApplication",
         http_method: "POST",
         request_uri: "/"
       )
@@ -207,12 +135,6 @@ module AwsSdk
 
       UPDATE_APPLICATION = OperationModel.new(
         name: "UpdateApplication",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      UPDATE_APPLICATION_MAINTENANCE_CONFIGURATION = OperationModel.new(
-        name: "UpdateApplicationMaintenanceConfiguration",
         http_method: "POST",
         request_uri: "/"
       )

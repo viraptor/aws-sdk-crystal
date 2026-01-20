@@ -1,0 +1,7 @@
+require "./runtime"
+require "./marketplacereporting/client"
+require "./marketplacereporting/errors"
+require "./marketplacereporting/model"
+require "./marketplacereporting/types"
+require "./marketplacereporting/protocol/rest_json"
+require "./customizations/marketplacereporting/customizations"

@@ -6,39 +6,48 @@ module AwsSdk
     module Types
 
       # Retrieves the summary of the performance analysis report created for a time period.
+
       struct AnalysisReport
         include JSON::Serializable
 
         # The name of the analysis report.
+
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String
 
         # The time you created the analysis report.
+
         @[JSON::Field(key: "CreateTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_time : Time?
 
         # The analysis end time in the report.
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # The unique identifier of the analysis report.
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String?
 
         # The list of identified insights in the analysis report.
+
         @[JSON::Field(key: "Insights")]
         getter insights : Array(Types::Insight)?
 
         # List the tags for the Amazon Web Services service for which Performance Insights returns metrics.
         # Valid values are as follows: RDS DOCDB
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String?
 
         # The analysis start time in the report.
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
         # The status of the created analysis report.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -56,30 +65,37 @@ module AwsSdk
       end
 
       # Retrieves the details of the performance analysis report.
+
       struct AnalysisReportSummary
         include JSON::Serializable
 
         # The name of the analysis report.
+
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String?
 
         # The time you created the analysis report.
+
         @[JSON::Field(key: "CreateTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_time : Time?
 
         # The end time of the analysis in the report.
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # The start time of the analysis in the report.
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
         # The status of the analysis report.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # List of all the tags added to the analysis report.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -94,29 +110,35 @@ module AwsSdk
         end
       end
 
+
       struct CreatePerformanceAnalysisReportRequest
         include JSON::Serializable
 
         # The end time defined for the analysis report.
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
         # An immutable, Amazon Web Services Region-unique identifier for a data source. Performance Insights
         # gathers metrics from this data source. To use an Amazon RDS instance as a data source, you specify
         # its DbiResourceId value. For example, specify db-ADECBTYHKTSAUMUZQYPDS2GW4A .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The Amazon Web Services service for which Performance Insights will return metrics. Valid value is
         # RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
         # The start time defined for the analysis report.
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
         # The metadata assigned to the analysis report consisting of a key-value pair.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -130,10 +152,12 @@ module AwsSdk
         end
       end
 
+
       struct CreatePerformanceAnalysisReportResponse
         include JSON::Serializable
 
         # A unique identifier for the created analysis report.
+
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String?
 
@@ -146,11 +170,13 @@ module AwsSdk
       # List of data objects which provide details about source metrics. This field can be used to determine
       # the PI metric to render for the insight. This data type also includes static values for the metrics
       # for the Insight that were calculated and included in text and annotations on the DB load chart.
+
       struct Data
         include JSON::Serializable
 
         # This field determines the Performance Insights metric to render for the insight. The name field
         # refers to a Performance Insights metric.
+
         @[JSON::Field(key: "PerformanceInsightsMetric")]
         getter performance_insights_metric : Types::PerformanceInsightsMetric?
 
@@ -162,14 +188,17 @@ module AwsSdk
 
       # A timestamp, and a single numerical value, which together represent a measurement at a particular
       # point in time.
+
       struct DataPoint
         include JSON::Serializable
 
         # The time, in epoch format, associated with a particular Value .
+
         @[JSON::Field(key: "Timestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter timestamp : Time
 
         # The actual value associated with a particular Timestamp .
+
         @[JSON::Field(key: "Value")]
         getter value : Float64
 
@@ -180,10 +209,12 @@ module AwsSdk
         end
       end
 
+
       struct DeletePerformanceAnalysisReportRequest
         include JSON::Serializable
 
         # The unique identifier of the analysis report for deletion.
+
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String
 
@@ -192,11 +223,13 @@ module AwsSdk
         # as ResourceID . When you call DescribeDBInstances , the identifier is returned as DbiResourceId . To
         # use a DB instance as a data source, specify its DbiResourceId value. For example, specify
         # db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The Amazon Web Services service for which Performance Insights will return metrics. Valid value is
         # RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -208,6 +241,7 @@ module AwsSdk
         end
       end
 
+
       struct DeletePerformanceAnalysisReportResponse
         include JSON::Serializable
 
@@ -215,12 +249,14 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDimensionKeysRequest
         include JSON::Serializable
 
         # The date and time specifying the end of the requested time series data. The value specified is
         # exclusive , which means that data points less than (but not equal to) EndTime are returned. The
         # value for EndTime must be later than the value for StartTime .
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
@@ -228,12 +264,14 @@ module AwsSdk
         # dimension group. Performance Insights returns all dimensions within this group, unless you provide
         # the names of specific dimensions within this group. You can also request that Performance Insights
         # return a limited number of values for a dimension.
+
         @[JSON::Field(key: "GroupBy")]
         getter group_by : Types::DimensionGroup
 
         # An immutable, Amazon Web Services Region-unique identifier for a data source. Performance Insights
         # gathers metrics from this data source. To use an Amazon RDS instance as a data source, you specify
         # its DbiResourceId value. For example, specify db-FAIHNTYBKTGAUSUZQYPDS2GW4A .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -245,11 +283,13 @@ module AwsSdk
         # Insights samples the active sessions, with db.load.avg showing the scaled values, db.sampledload.avg
         # showing the raw values, and db.sampledload.avg less than db.load.avg . For most use cases, you can
         # query db.load.avg only.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String
 
         # The Amazon Web Services service for which Performance Insights will return metrics. Valid values are
         # as follows: RDS DOCDB
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -257,6 +297,7 @@ module AwsSdk
         # StartTime within the past 7 days. The value specified is inclusive , which means that data points
         # equal to or greater than StartTime are returned. The value for StartTime must be earlier than the
         # value for EndTime .
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
@@ -264,6 +305,7 @@ module AwsSdk
         # parameter is db.sql_tokenized , you can specify per-SQL metrics to get the values for the top N SQL
         # digests. The response syntax is as follows: "AdditionalMetrics" : { " string " : " string " } . The
         # only supported statistic function is .avg .
+
         @[JSON::Field(key: "AdditionalMetrics")]
         getter additional_metrics : Array(String)?
 
@@ -271,22 +313,26 @@ module AwsSdk
         # dimension, as specified in the GroupBy or Partition parameters. A single filter for any other
         # dimension in this dimension group. The db.sql.db_id filter isn't available for RDS for SQL Server DB
         # instances.
+
         @[JSON::Field(key: "Filter")]
         getter filter : Hash(String, String)?
 
         # The maximum number of items to return in the response. If more items exist than the specified
         # MaxRecords value, a pagination token is included in the response so that the remaining results can
         # be retrieved.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # For each dimension specified in GroupBy , specify a secondary dimension to further subdivide the
         # partition keys in the response.
+
         @[JSON::Field(key: "PartitionBy")]
         getter partition_by : Types::DimensionGroup?
 
@@ -295,6 +341,7 @@ module AwsSdk
         # (one minute) 300 (five minutes) 3600 (one hour) 86400 (twenty-four hours) If you don't specify
         # PeriodInSeconds , then Performance Insights chooses a value for you, with a goal of returning
         # roughly 100-200 data points in the response.
+
         @[JSON::Field(key: "PeriodInSeconds")]
         getter period_in_seconds : Int32?
 
@@ -315,33 +362,39 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDimensionKeysResponse
         include JSON::Serializable
 
         # The end time for the returned dimension keys, after alignment to a granular boundary (as specified
         # by PeriodInSeconds ). AlignedEndTime will be greater than or equal to the value of the
         # user-specified Endtime .
+
         @[JSON::Field(key: "AlignedEndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter aligned_end_time : Time?
 
         # The start time for the returned dimension keys, after alignment to a granular boundary (as specified
         # by PeriodInSeconds ). AlignedStartTime will be less than or equal to the value of the user-specified
         # StartTime .
+
         @[JSON::Field(key: "AlignedStartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter aligned_start_time : Time?
 
         # The dimension keys that were requested.
+
         @[JSON::Field(key: "Keys")]
         getter keys : Array(Types::DimensionKeyDescription)?
 
         # A pagination token that indicates the response didn’t return all available records because
         # MaxRecords was specified in the previous request. To get the remaining records, specify NextToken in
         # a separate request with this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # If PartitionBy was present in the request, PartitionKeys contains the breakdown of dimension keys by
         # the specified partitions.
+
         @[JSON::Field(key: "PartitionKeys")]
         getter partition_keys : Array(Types::ResponsePartitionKey)?
 
@@ -356,10 +409,12 @@ module AwsSdk
       end
 
       # The information about a dimension.
+
       struct DimensionDetail
         include JSON::Serializable
 
         # The identifier of a dimension.
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String?
 
@@ -377,6 +432,7 @@ module AwsSdk
       # employees . db.sql_tokenized.id - The hash of the SQL digest generated by Performance Insights. Each
       # response element returns a maximum of 500 bytes. For larger elements, such as SQL statements, only
       # the first 500 bytes are returned.
+
       struct DimensionGroup
         include JSON::Serializable
 
@@ -397,6 +453,7 @@ module AwsSdk
         # engines except Amazon DocumentDB). db.wait_event_type - The type of event for which the database
         # backend is waiting (all engines except Amazon DocumentDB). db.wait_state - The event for which the
         # database backend is waiting (only Amazon DocumentDB).
+
         @[JSON::Field(key: "Group")]
         getter group : String
 
@@ -443,10 +500,12 @@ module AwsSdk
         # (all engines except Amazon DocumentDB). db.wait_event_type.name - The name of the event type for
         # which the backend is waiting (all engines except Amazon DocumentDB). db.wait_state.name - The event
         # for which the backend is waiting (only Amazon DocumentDB).
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(String)?
 
         # The maximum number of items to fetch for this dimension group.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
@@ -459,14 +518,17 @@ module AwsSdk
       end
 
       # Information about dimensions within a dimension group.
+
       struct DimensionGroupDetail
         include JSON::Serializable
 
         # The dimensions within a dimension group.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::DimensionDetail)?
 
         # The name of the dimension group.
+
         @[JSON::Field(key: "Group")]
         getter group : String?
 
@@ -479,22 +541,27 @@ module AwsSdk
 
       # An object that includes the requested dimension key values and aggregated metric values within a
       # dimension group.
+
       struct DimensionKeyDescription
         include JSON::Serializable
 
         # A map that contains the value for each additional metric.
+
         @[JSON::Field(key: "AdditionalMetrics")]
         getter additional_metrics : Hash(String, Float64)?
 
         # A map of name-value pairs for the dimensions in the group.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Hash(String, String)?
 
         # If PartitionBy was specified, PartitionKeys contains the dimensions that were.
+
         @[JSON::Field(key: "Partitions")]
         getter partitions : Array(Float64)?
 
         # The aggregated metric value for the dimensions, over the requested time range.
+
         @[JSON::Field(key: "Total")]
         getter total : Float64?
 
@@ -508,11 +575,13 @@ module AwsSdk
       end
 
       # An object that describes the details for a specified dimension.
+
       struct DimensionKeyDetail
         include JSON::Serializable
 
         # The full name of the dimension. The full name includes the group name and key name. The following
         # values are valid: db.query.statement (Amazon DocumentDB) db.sql.statement (Amazon RDS and Aurora)
+
         @[JSON::Field(key: "Dimension")]
         getter dimension : String?
 
@@ -521,12 +590,14 @@ module AwsSdk
         # to be retrieved because more processing time is required. If the requested detail data has the
         # status PROCESSING , Performance Insights returns the truncated query. UNAVAILABLE - The dimension
         # detail data could not be collected successfully.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The value of the dimension detail data. Depending on the return status, this value is either the
         # full or truncated SQL query for the following dimensions: db.query.statement (Amazon DocumentDB)
         # db.sql.statement (Amazon RDS and Aurora)
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -540,6 +611,7 @@ module AwsSdk
 
       # The metadata for a feature. For example, the metadata might indicate that a feature is turned on or
       # off on a specific DB instance.
+
       struct FeatureMetadata
         include JSON::Serializable
 
@@ -549,6 +621,7 @@ module AwsSdk
         # the instance but requires a reboot to take effect. DISABLED_PENDING_REBOOT - The feature is disabled
         # on the instance but requires a reboot to take effect. UNKNOWN - The feature status couldn't be
         # determined.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -558,12 +631,14 @@ module AwsSdk
         end
       end
 
+
       struct GetDimensionKeyDetailsRequest
         include JSON::Serializable
 
         # The name of the dimension group. Performance Insights searches the specified group for the dimension
         # group ID. The following group name values are valid: db.execution_plan (Amazon RDS and Aurora only)
         # db.lock_snapshot (Aurora only) db.query (Amazon DocumentDB only) db.sql (Amazon RDS and Aurora only)
+
         @[JSON::Field(key: "Group")]
         getter group : String
 
@@ -574,17 +649,20 @@ module AwsSdk
         # db.lock_snapshot , the GroupIdentifier is the epoch timestamp when Performance Insights captured the
         # snapshot, in seconds. You can retrieve this value with the GetResourceMetrics operation for a 1
         # second period.
+
         @[JSON::Field(key: "GroupIdentifier")]
         getter group_identifier : String
 
         # The ID for a data source from which to gather dimension data. This ID must be immutable and unique
         # within an Amazon Web Services Region. When a DB instance is the data source, specify its
         # DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The Amazon Web Services service for which Performance Insights returns data. The only valid value is
         # RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -597,6 +675,7 @@ module AwsSdk
         # db.sql.statement or the short dimension name statement (Aurora and RDS only). db.query - Specify
         # either the full dimension name db.query.statement or the short dimension name statement (DocumentDB
         # only).
+
         @[JSON::Field(key: "RequestedDimensions")]
         getter requested_dimensions : Array(String)?
 
@@ -610,10 +689,12 @@ module AwsSdk
         end
       end
 
+
       struct GetDimensionKeyDetailsResponse
         include JSON::Serializable
 
         # The details for the requested dimensions.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Array(Types::DimensionKeyDetail)?
 
@@ -623,10 +704,12 @@ module AwsSdk
         end
       end
 
+
       struct GetPerformanceAnalysisReportRequest
         include JSON::Serializable
 
         # A unique identifier of the created analysis report. For example, report-12345678901234567
+
         @[JSON::Field(key: "AnalysisReportId")]
         getter analysis_report_id : String
 
@@ -635,20 +718,24 @@ module AwsSdk
         # as ResourceID . When you call DescribeDBInstances , the identifier is returned as DbiResourceId . To
         # use a DB instance as a data source, specify its DbiResourceId value. For example, specify
         # db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The Amazon Web Services service for which Performance Insights will return metrics. Valid value is
         # RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
         # The text language in the report. The default language is EN_US (English).
+
         @[JSON::Field(key: "AcceptLanguage")]
         getter accept_language : String?
 
         # Indicates the text format in the report. The options are PLAIN_TEXT or MARKDOWN . The default value
         # is plain text .
+
         @[JSON::Field(key: "TextFormat")]
         getter text_format : String?
 
@@ -662,10 +749,12 @@ module AwsSdk
         end
       end
 
+
       struct GetPerformanceAnalysisReportResponse
         include JSON::Serializable
 
         # The summary of the performance analysis report created for a time period.
+
         @[JSON::Field(key: "AnalysisReport")]
         getter analysis_report : Types::AnalysisReport?
 
@@ -675,16 +764,19 @@ module AwsSdk
         end
       end
 
+
       struct GetResourceMetadataRequest
         include JSON::Serializable
 
         # An immutable identifier for a data source that is unique for an Amazon Web Services Region.
         # Performance Insights gathers metrics from this data source. To use a DB instance as a data source,
         # specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The Amazon Web Services service for which Performance Insights returns metrics.
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -695,17 +787,20 @@ module AwsSdk
         end
       end
 
+
       struct GetResourceMetadataResponse
         include JSON::Serializable
 
         # The metadata for different features. For example, the metadata might indicate that a feature is
         # turned on or off on a specific DB instance.
+
         @[JSON::Field(key: "Features")]
         getter features : Hash(String, Types::FeatureMetadata)?
 
         # An immutable identifier for a data source that is unique for an Amazon Web Services Region.
         # Performance Insights gathers metrics from this data source. To use a DB instance as a data source,
         # specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String?
 
@@ -716,12 +811,14 @@ module AwsSdk
         end
       end
 
+
       struct GetResourceMetricsRequest
         include JSON::Serializable
 
         # The date and time specifying the end of the requested time series query range. The value specified
         # is exclusive . Thus, the command returns data points less than (but not equal to) EndTime . The
         # value for EndTime must be later than the value for StartTime .
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time
 
@@ -730,6 +827,7 @@ module AwsSdk
         # as ResourceID . When you call DescribeDBInstances , the identifier is returned as DbiResourceId . To
         # use a DB instance as a data source, specify its DbiResourceId value. For example, specify
         # db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -737,11 +835,13 @@ module AwsSdk
         # and specify an aggregate function, and you can provide filtering criteria. You must append the
         # aggregate function to the metric. For example, to find the average for the metric db.load you must
         # use db.load.avg . Valid values for aggregate functions include .avg , .min , .max , and .sum .
+
         @[JSON::Field(key: "MetricQueries")]
         getter metric_queries : Array(Types::MetricQuery)
 
         # The Amazon Web Services service for which Performance Insights returns metrics. Valid values are as
         # follows: RDS DOCDB
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -750,20 +850,24 @@ module AwsSdk
         # retention, but you can extend this range up to 2 years. The value specified is inclusive . Thus, the
         # command returns data points equal to or greater than StartTime . The value for StartTime must be
         # earlier than the value for EndTime .
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time
 
         # The maximum number of items to return in the response.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The returned timestamp which is the start or end time of the time periods. The default value is
         # END_TIME .
+
         @[JSON::Field(key: "PeriodAlignment")]
         getter period_alignment : String?
 
@@ -772,6 +876,7 @@ module AwsSdk
         # (one minute) 300 (five minutes) 3600 (one hour) 86400 (twenty-four hours) If you don't specify
         # PeriodInSeconds , then Performance Insights will choose a value for you, with a goal of returning
         # roughly 100-200 data points in the response.
+
         @[JSON::Field(key: "PeriodInSeconds")]
         getter period_in_seconds : Int32?
 
@@ -789,34 +894,40 @@ module AwsSdk
         end
       end
 
+
       struct GetResourceMetricsResponse
         include JSON::Serializable
 
         # The end time for the returned metrics, after alignment to a granular boundary (as specified by
         # PeriodInSeconds ). AlignedEndTime will be greater than or equal to the value of the user-specified
         # Endtime .
+
         @[JSON::Field(key: "AlignedEndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter aligned_end_time : Time?
 
         # The start time for the returned metrics, after alignment to a granular boundary (as specified by
         # PeriodInSeconds ). AlignedStartTime will be less than or equal to the value of the user-specified
         # StartTime .
+
         @[JSON::Field(key: "AlignedStartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter aligned_start_time : Time?
 
         # An immutable identifier for a data source that is unique for an Amazon Web Services Region.
         # Performance Insights gathers metrics from this data source. In the console, the identifier is shown
         # as ResourceID . When you call DescribeDBInstances , the identifier is returned as DbiResourceId .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String?
 
         # An array of metric results, where each array element contains all of the data points for a
         # particular dimension.
+
         @[JSON::Field(key: "MetricList")]
         getter metric_list : Array(Types::MetricKeyDataPoints)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -831,53 +942,65 @@ module AwsSdk
       end
 
       # Retrieves the list of performance issues which are identified.
+
       struct Insight
         include JSON::Serializable
 
         # The unique identifier for the insight. For example, insight-12345678901234567 .
+
         @[JSON::Field(key: "InsightId")]
         getter insight_id : String
 
         # Metric names and values from the timeframe used as baseline to generate the insight.
+
         @[JSON::Field(key: "BaselineData")]
         getter baseline_data : Array(Types::Data)?
 
         # Indicates if the insight is causal or correlated insight.
+
         @[JSON::Field(key: "Context")]
         getter context : String?
 
         # Description of the insight. For example: A high severity Insight found between 02:00 to 02:30, where
         # there was an unusually high DB load 600x above baseline. Likely performance impact .
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The end time of the insight. For example, 2018-10-30T00:00:00Z .
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # List of data objects containing metrics and references from the time range while generating the
         # insight.
+
         @[JSON::Field(key: "InsightData")]
         getter insight_data : Array(Types::Data)?
 
         # The type of insight. For example, HighDBLoad , HighCPU , or DominatingSQLs .
+
         @[JSON::Field(key: "InsightType")]
         getter insight_type : String?
 
         # List of recommendations for the insight. For example, Investigate the following SQLs that
         # contributed to 100% of the total DBLoad during that time period: sql-id .
+
         @[JSON::Field(key: "Recommendations")]
         getter recommendations : Array(Types::Recommendation)?
 
         # The severity of the insight. The values are: Low , Medium , or High .
+
         @[JSON::Field(key: "Severity")]
         getter severity : String?
 
         # The start time of the insight. For example, 2018-10-30T00:00:00Z .
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
         # List of supporting insights that provide additional factors for the insight.
+
         @[JSON::Field(key: "SupportingInsights")]
         getter supporting_insights : Array(Types::Insight)?
 
@@ -898,8 +1021,10 @@ module AwsSdk
       end
 
       # The request failed due to an unknown error.
+
       struct InternalServiceError
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -911,8 +1036,10 @@ module AwsSdk
       end
 
       # One of the arguments provided is invalid for this request.
+
       struct InvalidArgumentException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -923,20 +1050,24 @@ module AwsSdk
         end
       end
 
+
       struct ListAvailableResourceDimensionsRequest
         include JSON::Serializable
 
         # An immutable identifier for a data source that is unique within an Amazon Web Services Region.
         # Performance Insights gathers metrics from this data source. To use an Amazon RDS DB instance as a
         # data source, specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VWZ .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The types of metrics for which to retrieve dimensions. Valid values include db.load .
+
         @[JSON::Field(key: "Metrics")]
         getter metrics : Array(String)
 
         # The Amazon Web Services service for which Performance Insights returns metrics.
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -944,17 +1075,20 @@ module AwsSdk
         # actions, then the response will contain the dimensions common for all the actions. When you don't
         # specify this request parameter or provide an empty list, the response contains all the available
         # dimensions for the target database engine whether or not you are authorized to access them.
+
         @[JSON::Field(key: "AuthorizedActions")]
         getter authorized_actions : Array(String)?
 
         # The maximum number of items to return in the response. If more items exist than the specified
         # MaxRecords value, a pagination token is included in the response so that the remaining results can
         # be retrieved.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -969,15 +1103,18 @@ module AwsSdk
         end
       end
 
+
       struct ListAvailableResourceDimensionsResponse
         include JSON::Serializable
 
         # The dimension information returned for requested metric types.
+
         @[JSON::Field(key: "MetricDimensions")]
         getter metric_dimensions : Array(Types::MetricDimensionGroups)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -988,12 +1125,14 @@ module AwsSdk
         end
       end
 
+
       struct ListAvailableResourceMetricsRequest
         include JSON::Serializable
 
         # An immutable identifier for a data source that is unique within an Amazon Web Services Region.
         # Performance Insights gathers metrics from this data source. To use an Amazon RDS DB instance as a
         # data source, specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VWZ .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
@@ -1001,20 +1140,24 @@ module AwsSdk
         # (OS counter metrics) - All engines db (DB load metrics) - All engines except for Amazon DocumentDB
         # db.sql.stats (per-SQL metrics) - All engines except for Amazon DocumentDB db.sql_tokenized.stats
         # (per-SQL digest metrics) - All engines except for Amazon DocumentDB
+
         @[JSON::Field(key: "MetricTypes")]
         getter metric_types : Array(String)
 
         # The Amazon Web Services service for which Performance Insights returns metrics.
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
         # The maximum number of items to return. If the MaxRecords value is less than the number of existing
         # items, the response includes a pagination token.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxRecords .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1028,17 +1171,20 @@ module AwsSdk
         end
       end
 
+
       struct ListAvailableResourceMetricsResponse
         include JSON::Serializable
 
         # An array of metrics available to query. Each array element contains the full name, description, and
         # unit of the metric.
+
         @[JSON::Field(key: "Metrics")]
         getter metrics : Array(Types::ResponseResourceMetric)?
 
         # A pagination token that indicates the response didn’t return all available records because
         # MaxRecords was specified in the previous request. To get the remaining records, specify NextToken in
         # a separate request with this value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1049,6 +1195,7 @@ module AwsSdk
         end
       end
 
+
       struct ListPerformanceAnalysisReportsRequest
         include JSON::Serializable
 
@@ -1057,25 +1204,30 @@ module AwsSdk
         # as ResourceID . When you call DescribeDBInstances , the identifier is returned as DbiResourceId . To
         # use a DB instance as a data source, specify its DbiResourceId value. For example, specify
         # db-ABCDEFGHIJKLMNOPQRSTU1VW2X .
+
         @[JSON::Field(key: "Identifier")]
         getter identifier : String
 
         # The Amazon Web Services service for which Performance Insights returns metrics. Valid value is RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
         # Specifies whether or not to include the list of tags in the response.
+
         @[JSON::Field(key: "ListTags")]
         getter list_tags : Bool?
 
         # The maximum number of items to return in the response. If more items exist than the specified
         # MaxResults value, a pagination token is included in the response so that the remaining results can
         # be retrieved.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxResults .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1089,15 +1241,18 @@ module AwsSdk
         end
       end
 
+
       struct ListPerformanceAnalysisReportsResponse
         include JSON::Serializable
 
         # List of reports including the report identifier, start and end time, creation time, and status.
+
         @[JSON::Field(key: "AnalysisReports")]
         getter analysis_reports : Array(Types::AnalysisReportSummary)?
 
         # An optional pagination token provided by a previous request. If this parameter is specified, the
         # response includes only records beyond the token, up to the value specified by MaxResults .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1108,17 +1263,20 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # Lists all the tags for the Amazon RDS Performance Insights resource. This value is an Amazon
         # Resource Name (ARN). For information about creating an ARN, see Constructing an RDS Amazon Resource
         # Name (ARN) .
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # List the tags for the Amazon Web Services service for which Performance Insights returns metrics.
         # Valid value is RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
@@ -1129,10 +1287,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The metadata assigned to an Amazon RDS resource consisting of a key-value pair.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1143,14 +1303,17 @@ module AwsSdk
       end
 
       # The available dimension information for a metric type.
+
       struct MetricDimensionGroups
         include JSON::Serializable
 
         # The available dimension groups for a metric type.
+
         @[JSON::Field(key: "Groups")]
         getter groups : Array(Types::DimensionGroupDetail)?
 
         # The metric type to which the dimension information belongs.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String?
 
@@ -1162,14 +1325,17 @@ module AwsSdk
       end
 
       # A time-ordered series of data points, corresponding to a dimension of a Performance Insights metric.
+
       struct MetricKeyDataPoints
         include JSON::Serializable
 
         # An array of timestamp-value pairs, representing measurements over a period of time.
+
         @[JSON::Field(key: "DataPoints")]
         getter data_points : Array(Types::DataPoint)?
 
         # The dimensions to which the data points apply.
+
         @[JSON::Field(key: "Key")]
         getter key : Types::ResponseResourceMetricKey?
 
@@ -1186,6 +1352,7 @@ module AwsSdk
       # other parameters are specified, Performance Insights returns all data points for the specified
       # metric. Optionally, you can request that the data points be aggregated by dimension group ( GroupBy
       # ), and return only those data points that match your criteria ( Filter ).
+
       struct MetricQuery
         include JSON::Serializable
 
@@ -1199,12 +1366,14 @@ module AwsSdk
         # threshold, Performance Insights samples the active sessions, with db.load.avg showing the scaled
         # values, db.sampledload.avg showing the raw values, and db.sampledload.avg less than db.load.avg .
         # For most use cases, you can query db.load.avg only.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String
 
         # One or more filters to apply in the request. Restrictions: Any number of filters by the same
         # dimension, as specified in the GroupBy parameter. A single filter for any other dimension in this
         # dimension group. The db.sql.db_id filter isn't available for RDS for SQL Server DB instances.
+
         @[JSON::Field(key: "Filter")]
         getter filter : Hash(String, String)?
 
@@ -1212,6 +1381,7 @@ module AwsSdk
         # dimension group. Performance Insights will return all of the dimensions within that group, unless
         # you provide the names of specific dimensions within that group. You can also request that
         # Performance Insights return a limited number of values for a dimension.
+
         @[JSON::Field(key: "GroupBy")]
         getter group_by : Types::DimensionGroup?
 
@@ -1224,8 +1394,10 @@ module AwsSdk
       end
 
       # The user is not authorized to perform this request.
+
       struct NotAuthorizedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1237,26 +1409,32 @@ module AwsSdk
       end
 
       # This data type helps to determine Performance Insights metric to render for the insight.
+
       struct PerformanceInsightsMetric
         include JSON::Serializable
 
         # A dimension map that contains the dimensions for this partition.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Hash(String, String)?
 
         # The Performance Insights metric name.
+
         @[JSON::Field(key: "DisplayName")]
         getter display_name : String?
 
         # The filter for the Performance Insights metric.
+
         @[JSON::Field(key: "Filter")]
         getter filter : Hash(String, String)?
 
         # The Performance Insights metric.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String?
 
         # The value of the metric. For example, 9 for db.load.avg .
+
         @[JSON::Field(key: "Value")]
         getter value : Float64?
 
@@ -1271,15 +1449,18 @@ module AwsSdk
       end
 
       # The list of recommendations for the insight.
+
       struct Recommendation
         include JSON::Serializable
 
         # The recommendation details to help resolve the performance issue. For example, Investigate the
         # following SQLs that contributed to 100% of the total DBLoad during that time period: sql-id
+
         @[JSON::Field(key: "RecommendationDescription")]
         getter recommendation_description : String?
 
         # The unique identifier for the recommendation.
+
         @[JSON::Field(key: "RecommendationId")]
         getter recommendation_id : String?
 
@@ -1292,10 +1473,12 @@ module AwsSdk
 
       # If PartitionBy was specified in a DescribeDimensionKeys request, the dimensions are returned in an
       # array. Each element in the array specifies one dimension.
+
       struct ResponsePartitionKey
         include JSON::Serializable
 
         # A dimension map that contains the dimensions for this partition.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Hash(String, String)
 
@@ -1306,18 +1489,22 @@ module AwsSdk
       end
 
       # An object that contains the full name, description, and unit of a metric.
+
       struct ResponseResourceMetric
         include JSON::Serializable
 
         # The description of the metric.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The full name of the metric.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String?
 
         # The unit of the metric.
+
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -1330,6 +1517,7 @@ module AwsSdk
       end
 
       # An object describing a Performance Insights metric and one or more dimensions for that metric.
+
       struct ResponseResourceMetricKey
         include JSON::Serializable
 
@@ -1343,10 +1531,12 @@ module AwsSdk
         # threshold, Performance Insights samples the active sessions, with db.load.avg showing the scaled
         # values, db.sampledload.avg showing the raw values, and db.sampledload.avg less than db.load.avg .
         # For most use cases, you can query db.load.avg only.
+
         @[JSON::Field(key: "Metric")]
         getter metric : String
 
         # The valid dimensions for the metric.
+
         @[JSON::Field(key: "Dimensions")]
         getter dimensions : Hash(String, String)?
 
@@ -1358,6 +1548,7 @@ module AwsSdk
       end
 
       # Metadata assigned to an Amazon RDS resource consisting of a key-value pair.
+
       struct Tag
         include JSON::Serializable
 
@@ -1365,6 +1556,7 @@ module AwsSdk
         # length and can't be prefixed with aws: or rds: . The string can only contain only the set of Unicode
         # letters, digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java regex:
         # "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$" ).
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
@@ -1372,6 +1564,7 @@ module AwsSdk
         # in length and can't be prefixed with aws: or rds: . The string can only contain only the set of
         # Unicode letters, digits, white-space, '_', '.', ':', '/', '=', '+', '-', '@' (Java regex:
         # "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$").
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -1382,20 +1575,24 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon RDS Performance Insights resource that the tags are added to. This value is an Amazon
         # Resource Name (ARN). For information about creating an ARN, see Constructing an RDS Amazon Resource
         # Name (ARN) .
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The Amazon Web Services service for which Performance Insights returns metrics. Valid value is RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
         # The metadata assigned to an Amazon RDS resource consisting of a key-value pair.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -1407,6 +1604,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -1414,21 +1612,25 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon RDS Performance Insights resource that the tags are added to. This value is an Amazon
         # Resource Name (ARN). For information about creating an ARN, see Constructing an RDS Amazon Resource
         # Name (ARN) .
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # List the tags for the Amazon Web Services service for which Performance Insights returns metrics.
         # Valid value is RDS .
+
         @[JSON::Field(key: "ServiceType")]
         getter service_type : String
 
         # The metadata assigned to an Amazon RDS Performance Insights resource consisting of a key-value pair.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -1439,6 +1641,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct UntagResourceResponse
         include JSON::Serializable

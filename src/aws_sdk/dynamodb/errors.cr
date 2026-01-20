@@ -6,75 +6,92 @@ module AwsSdk
 
       # There is another ongoing conflicting backup control plane operation on the table. The backup is
       # either being created, deleted or restored to a table.
+
       class BackupInUseException < ServiceError
       end
 
       # Backup not found for the given BackupARN.
+
       class BackupNotFoundException < ServiceError
       end
 
       # A condition specified in the operation failed to be evaluated.
+
       class ConditionalCheckFailedException < ServiceError
       end
 
       # Backups have not yet been enabled for this table.
+
       class ContinuousBackupsUnavailableException < ServiceError
       end
 
       # There was an attempt to insert an item with the same primary key as an item that already exists in
       # the DynamoDB table.
+
       class DuplicateItemException < ServiceError
       end
 
       # There was a conflict when writing to the specified S3 bucket.
+
       class ExportConflictException < ServiceError
       end
 
       # The specified export was not found.
+
       class ExportNotFoundException < ServiceError
       end
 
       # The specified global table already exists.
+
       class GlobalTableAlreadyExistsException < ServiceError
       end
 
       # The specified global table does not exist.
+
       class GlobalTableNotFoundException < ServiceError
       end
 
       # DynamoDB rejected the request because you retried a request with a different payload but with an
       # idempotent token that was already used.
+
       class IdempotentParameterMismatchException < ServiceError
       end
 
       # There was a conflict when importing from the specified S3 source. This can occur when the current
       # import conflicts with a previous import request that had the same client token.
+
       class ImportConflictException < ServiceError
       end
 
       # The specified import was not found.
+
       class ImportNotFoundException < ServiceError
       end
 
       # The operation tried to access a nonexistent index.
+
       class IndexNotFoundException < ServiceError
       end
 
       # An error occurred on the server side.
+
       class InternalServerError < ServiceError
       end
 
       # The specified ExportTime is outside of the point in time recovery window.
+
       class InvalidExportTimeException < ServiceError
       end
 
       # An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime
       # and LatestRestorableDateTime.
+
       class InvalidRestoreTimeException < ServiceError
       end
 
       # An item collection is too large. This exception is only returned for tables that have one or more
       # local secondary indexes.
+
       class ItemCollectionSizeLimitExceededException < ServiceError
       end
 
@@ -88,16 +105,19 @@ module AwsSdk
       # There is a soft account quota of 2,500 tables. GetRecords was called with a value of more than 1000
       # for the limit request parameter. More than 2 processes are reading from the same streams shard at
       # the same time. Exceeding this limit may result in request throttling.
+
       class LimitExceededException < ServiceError
       end
 
       # Point in time recovery has not yet been enabled for this source table.
+
       class PointInTimeRecoveryUnavailableException < ServiceError
       end
 
       # The operation tried to access a nonexistent resource-based policy. If you specified an
       # ExpectedRevisionId , it's possible that a policy is present for the resource but its revision ID
       # didn't match the expected value.
+
       class PolicyNotFoundException < ServiceError
       end
 
@@ -107,25 +127,30 @@ module AwsSdk
       # exception. Your request is eventually successful, unless your retry queue is too large to finish.
       # Reduce the frequency of requests and use exponential backoff. For more information, go to Error
       # Retries and Exponential Backoff in the Amazon DynamoDB Developer Guide .
+
       class ProvisionedThroughputExceededException < ServiceError
       end
 
       # The specified replica is already part of the global table.
+
       class ReplicaAlreadyExistsException < ServiceError
       end
 
       # The specified replica is no longer part of the global table.
+
       class ReplicaNotFoundException < ServiceError
       end
 
       # The request was rejected because one or more items in the request are being modified by a request in
       # another Region.
+
       class ReplicatedWriteConflictException < ServiceError
       end
 
       # Throughput exceeds the current throughput quota for your account. For detailed information about why
       # the request was throttled and the ARN of the impacted resource, find the ThrottlingReason field in
       # the returned exception. Contact Amazon Web Services Support to request a quota increase.
+
       class RequestLimitExceeded < ServiceError
       end
 
@@ -133,30 +158,36 @@ module AwsSdk
       # existing table. You tried to delete a table currently in the CREATING state. You tried to update a
       # resource that was already being updated. When appropriate, wait for the ongoing update to complete
       # and attempt the request again.
+
       class ResourceInUseException < ServiceError
       end
 
       # The operation tried to access a nonexistent table or index. The resource might not be specified
       # correctly, or its status might not be ACTIVE .
+
       class ResourceNotFoundException < ServiceError
       end
 
       # A target table with the specified name already exists.
+
       class TableAlreadyExistsException < ServiceError
       end
 
       # A target table with the specified name is either being created or deleted.
+
       class TableInUseException < ServiceError
       end
 
       # A source table with the name TableName does not currently exist within the subscriber's account or
       # the subscriber is operating in the wrong Amazon Web Services Region.
+
       class TableNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling. For detailed information about why the request was
       # throttled and the ARN of the impacted resource, find the ThrottlingReason field in the returned
       # exception.
+
       class ThrottlingException < ServiceError
       end
 
@@ -204,10 +235,12 @@ module AwsSdk
       # mismatch for attribute to update. Nesting Levels have exceeded supported limits. The document path
       # provided in the update expression is invalid for update. The provided expression refers to an
       # attribute that does not exist in the item.
+
       class TransactionCanceledException < ServiceError
       end
 
       # Operation was rejected because there is an ongoing transaction for the item.
+
       class TransactionConflictException < ServiceError
       end
 
@@ -225,6 +258,7 @@ module AwsSdk
       # 4xx errors) 1500-2500 second attempt 2500-3500 second sleep/delay (500 * 2, exponential backoff)
       # 3500-4500 third attempt 4500-6500 third sleep/delay (500 * 2^2) 6500-7500 fourth attempt (this can
       # trigger inline recovery since 5 seconds have elapsed since the first attempt reached TC)
+
       class TransactionInProgressException < ServiceError
       end
 

@@ -1,5 +1,5 @@
 module AwsSdk
-  module Cloudfront
+  module CloudFront
     module Customizations
     end
   end

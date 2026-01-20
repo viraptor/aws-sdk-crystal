@@ -1,7 +1,7 @@
 require "json"
 
 module AwsSdk
-  module GreengrassV2
+  module Greengrass
     module Protocol
       struct Request
         getter method : String

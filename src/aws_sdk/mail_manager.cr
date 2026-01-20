@@ -1,7 +1,0 @@
-require "./runtime"
-require "./mail_manager/client"
-require "./mail_manager/errors"
-require "./mail_manager/model"
-require "./mail_manager/types"
-require "./mail_manager/protocol/json_rpc"
-require "./customizations/mail_manager/customizations"

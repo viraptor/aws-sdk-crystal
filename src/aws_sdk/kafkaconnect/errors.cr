@@ -5,38 +5,46 @@ module AwsSdk
       end
 
       # HTTP Status Code 400: Bad request due to incorrect input. Correct your request and then retry it.
+
       class BadRequestException < ServiceError
       end
 
       # HTTP Status Code 409: Conflict. A resource with this name already exists. Retry your request with
       # another name.
+
       class ConflictException < ServiceError
       end
 
       # HTTP Status Code 403: Access forbidden. Correct your credentials and then retry your request.
+
       class ForbiddenException < ServiceError
       end
 
       # HTTP Status Code 500: Unexpected internal server error. Retrying your request might resolve the
       # issue.
+
       class InternalServerErrorException < ServiceError
       end
 
       # HTTP Status Code 404: Resource not found due to incorrect input. Correct your request and then retry
       # it.
+
       class NotFoundException < ServiceError
       end
 
       # HTTP Status Code 503: Service Unavailable. Retrying your request in some time might resolve the
       # issue.
+
       class ServiceUnavailableException < ServiceError
       end
 
       # HTTP Status Code 429: Limit exceeded. Resource limit reached.
+
       class TooManyRequestsException < ServiceError
       end
 
       # HTTP Status Code 401: Unauthorized request. The provided credentials couldn't be validated.
+
       class UnauthorizedException < ServiceError
       end
 

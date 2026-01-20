@@ -20,12 +20,14 @@ module AwsSdk
       end
 
       # Retrieves the raw content of an in-transit email message, in MIME format.
+
       def get_raw_message_content(
         message_id : String
       ) : Protocol::Request
         input = Types::GetRawMessageContentRequest.new(message_id: message_id)
         get_raw_message_content(input)
       end
+
       def get_raw_message_content(input : Types::GetRawMessageContentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_RAW_MESSAGE_CONTENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -37,6 +39,7 @@ module AwsSdk
       # call PutRawMessageContent from an AWS Lambda function configured with a synchronous Run Lambda rule.
       # If you call PutRawMessageContent on a delivered or sent message, the message remains unchanged, even
       # though GetRawMessageContent returns an updated message.
+
       def put_raw_message_content(
         content : Types::RawMessageContent,
         message_id : String
@@ -44,6 +47,7 @@ module AwsSdk
         input = Types::PutRawMessageContentRequest.new(content: content, message_id: message_id)
         put_raw_message_content(input)
       end
+
       def put_raw_message_content(input : Types::PutRawMessageContentRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_RAW_MESSAGE_CONTENT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

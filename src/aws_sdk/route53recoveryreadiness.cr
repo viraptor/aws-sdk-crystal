@@ -1,0 +1,7 @@
+require "./runtime"
+require "./route53recoveryreadiness/client"
+require "./route53recoveryreadiness/errors"
+require "./route53recoveryreadiness/model"
+require "./route53recoveryreadiness/types"
+require "./route53recoveryreadiness/protocol/rest_json"
+require "./customizations/route53recoveryreadiness/customizations"

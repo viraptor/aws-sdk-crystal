@@ -1,0 +1,7 @@
+require "./runtime"
+require "./pinpointemail/client"
+require "./pinpointemail/errors"
+require "./pinpointemail/model"
+require "./pinpointemail/types"
+require "./pinpointemail/protocol/rest_json"
+require "./customizations/pinpointemail/customizations"

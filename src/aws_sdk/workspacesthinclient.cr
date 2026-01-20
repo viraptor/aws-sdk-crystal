@@ -1,0 +1,7 @@
+require "./runtime"
+require "./workspacesthinclient/client"
+require "./workspacesthinclient/errors"
+require "./workspacesthinclient/model"
+require "./workspacesthinclient/types"
+require "./workspacesthinclient/protocol/rest_json"
+require "./customizations/workspacesthinclient/customizations"

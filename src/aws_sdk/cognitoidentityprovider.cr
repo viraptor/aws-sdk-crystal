@@ -1,0 +1,7 @@
+require "./runtime"
+require "./cognitoidentityprovider/client"
+require "./cognitoidentityprovider/errors"
+require "./cognitoidentityprovider/model"
+require "./cognitoidentityprovider/types"
+require "./cognitoidentityprovider/protocol/json_rpc"
+require "./customizations/cognitoidentityprovider/customizations"

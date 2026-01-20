@@ -1,0 +1,7 @@
+require "./runtime"
+require "./kinesisanalyticsv2/client"
+require "./kinesisanalyticsv2/errors"
+require "./kinesisanalyticsv2/model"
+require "./kinesisanalyticsv2/types"
+require "./kinesisanalyticsv2/protocol/json_rpc"
+require "./customizations/kinesisanalyticsv2/customizations"

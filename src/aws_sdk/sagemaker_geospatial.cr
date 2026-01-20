@@ -1,7 +1,0 @@
-require "./runtime"
-require "./sagemaker_geospatial/client"
-require "./sagemaker_geospatial/errors"
-require "./sagemaker_geospatial/model"
-require "./sagemaker_geospatial/types"
-require "./sagemaker_geospatial/protocol/rest_json"
-require "./customizations/sagemaker_geospatial/customizations"

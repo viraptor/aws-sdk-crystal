@@ -5,20 +5,24 @@ module AwsSdk
   module GameLift
     module Types
 
+
       struct AcceptMatchInput
         include JSON::Serializable
 
         # Player response to the proposed match.
+
         @[JSON::Field(key: "AcceptanceType")]
         getter acceptance_type : String
 
         # A unique identifier for a player delivering the response. This parameter can include one or multiple
         # player IDs.
+
         @[JSON::Field(key: "PlayerIds")]
         getter player_ids : Array(String)
 
         # A unique identifier for a matchmaking ticket. The ticket must be in status REQUIRES_ACCEPTANCE ;
         # otherwise this request will fail.
+
         @[JSON::Field(key: "TicketId")]
         getter ticket_id : String
 
@@ -30,6 +34,7 @@ module AwsSdk
         end
       end
 
+
       struct AcceptMatchOutput
         include JSON::Serializable
 
@@ -38,6 +43,7 @@ module AwsSdk
       end
 
       # Properties that describe an alias resource. Related actions All APIs by task
+
       struct Alias
         include JSON::Serializable
 
@@ -45,32 +51,39 @@ module AwsSdk
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::alias/alias-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 . In a GameLift
         # alias ARN, the resource ID matches the alias ID value.
+
         @[JSON::Field(key: "AliasArn")]
         getter alias_arn : String?
 
         # A unique identifier for the alias. Alias IDs are unique within a Region.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A human-readable description of an alias.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The time that this data object was last modified. Format is a number expressed in Unix time as
         # milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "LastUpdatedTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_time : Time?
 
         # A descriptive label that is associated with an alias. Alias names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The routing configuration, including routing type and fleet target, for the alias.
+
         @[JSON::Field(key: "RoutingStrategy")]
         getter routing_strategy : Types::RoutingStrategy?
 
@@ -87,12 +100,14 @@ module AwsSdk
       end
 
       # Amazon GameLift Servers configuration options for your Anywhere fleets.
+
       struct AnywhereConfiguration
         include JSON::Serializable
 
         # The cost to run your fleet per hour. Amazon GameLift Servers uses the provided cost of your fleet to
         # balance usage in queues. For more information about queues, see Setting up queues in the Amazon
         # GameLift Servers Developer Guide .
+
         @[JSON::Field(key: "Cost")]
         getter cost : String
 
@@ -105,24 +120,29 @@ module AwsSdk
       # Values for use in player attribute key-value pairs. This object lets you specify an attribute value
       # using any of the valid data types: string, number, string array, or data map. Each AttributeValue
       # object can use only one of the available properties.
+
       struct AttributeValue
         include JSON::Serializable
 
         # For number values, expressed as double.
+
         @[JSON::Field(key: "N")]
         getter n : Float64?
 
         # For single string values. Maximum string length is 100 characters.
+
         @[JSON::Field(key: "S")]
         getter s : String?
 
         # For a map of up to 10 data type:value pairs. Maximum length for each string value is 100 characters.
+
         @[JSON::Field(key: "SDM")]
         getter sdm : Hash(String, Float64)?
 
         # For a list of up to 100 strings. Maximum length for each string is 100 characters. Duplicate values
         # are not recognized; all occurrences of the repeated value after the first of a repeated value are
         # ignored.
+
         @[JSON::Field(key: "SL")]
         getter sl : Array(String)?
 
@@ -145,18 +165,22 @@ module AwsSdk
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_RequestUploadCredentials.html . To
       # remotely connect to an active Amazon GameLift Servers fleet instances. To get remote access, call
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetComputeAccess.html .
+
       struct AwsCredentials
         include JSON::Serializable
 
         # The access key ID that identifies the temporary security credentials.
+
         @[JSON::Field(key: "AccessKeyId")]
         getter access_key_id : String?
 
         # The secret access key that can be used to sign requests.
+
         @[JSON::Field(key: "SecretAccessKey")]
         getter secret_access_key : String?
 
         # The token that users must pass to the service API to use the temporary credentials.
+
         @[JSON::Field(key: "SessionToken")]
         getter session_token : String?
 
@@ -169,6 +193,7 @@ module AwsSdk
       end
 
       # Properties describing a custom game build. All APIs by task
+
       struct Build
         include JSON::Serializable
 
@@ -176,20 +201,24 @@ module AwsSdk
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 . In a GameLift
         # build ARN, the resource ID matches the BuildId value.
+
         @[JSON::Field(key: "BuildArn")]
         getter build_arn : String?
 
         # A unique identifier for the build.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A descriptive label that is associated with a build. Build names do not need to be unique. It can be
         # set using CreateBuild or UpdateBuild .
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -198,15 +227,18 @@ module AwsSdk
         # on 6/30/2025. See more details in the Amazon Linux 2 FAQs . For game servers that are hosted on AL2
         # and use server SDK version 4.x for Amazon GameLift Servers, first update the game server build to
         # server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
         # The Amazon GameLift Servers Server SDK version used to develop your game server.
+
         @[JSON::Field(key: "ServerSdkVersion")]
         getter server_sdk_version : String?
 
         # File size of the uploaded game build, expressed in bytes. When the build status is INITIALIZED or
         # when using a custom Amazon S3 storage location, this value is 0.
+
         @[JSON::Field(key: "SizeOnDisk")]
         getter size_on_disk : Int64?
 
@@ -215,11 +247,13 @@ module AwsSdk
         # are in this status. When a build is successfully created, the build status is set to this value.
         # READY -- The game build has been successfully uploaded. You can now create new fleets for this
         # build. FAILED -- The game build upload failed. You cannot create new fleets for this build.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Version information that is associated with a build or script. Version strings do not need to be
         # unique.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -240,12 +274,14 @@ module AwsSdk
       # Determines whether a TLS/SSL certificate is generated for a fleet. This feature must be enabled when
       # creating the fleet. All instances in a fleet share the same certificate. The certificate can be
       # retrieved by calling the Amazon GameLift Servers Server SDK operation GetInstanceCertificate .
+
       struct CertificateConfiguration
         include JSON::Serializable
 
         # Indicates whether a TLS/SSL certificate is generated for a fleet. Valid values include: GENERATED -
         # Generate a TLS/SSL certificate for this fleet. DISABLED - (default) Do not generate a TLS/SSL
         # certificate for this fleet.
+
         @[JSON::Field(key: "CertificateType")]
         getter certificate_type : String
 
@@ -256,11 +292,13 @@ module AwsSdk
       end
 
       # Filters which game servers may be claimed when calling ClaimGameServer .
+
       struct ClaimFilterOption
         include JSON::Serializable
 
         # List of instance statuses that game servers may be claimed on. If provided, the list must contain
         # the ACTIVE status.
+
         @[JSON::Field(key: "InstanceStatuses")]
         getter instance_statuses : Array(String)?
 
@@ -270,27 +308,32 @@ module AwsSdk
         end
       end
 
+
       struct ClaimGameServerInput
         include JSON::Serializable
 
         # A unique identifier for the game server group where the game server is running. If you are not
         # specifying a game server to claim, this value identifies where you want Amazon GameLift Servers
         # FleetIQ to look for an available game server to claim.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # Object that restricts how a claimed game server is chosen.
+
         @[JSON::Field(key: "FilterOption")]
         getter filter_option : Types::ClaimFilterOption?
 
         # A set of custom game server properties, formatted as a single string value. This data is passed to a
         # game client or service when it requests information on game servers.
+
         @[JSON::Field(key: "GameServerData")]
         getter game_server_data : String?
 
         # A custom string that uniquely identifies the game server to claim. If this parameter is left empty,
         # Amazon GameLift Servers FleetIQ searches for an available game server in the specified game server
         # group.
+
         @[JSON::Field(key: "GameServerId")]
         getter game_server_id : String?
 
@@ -303,10 +346,12 @@ module AwsSdk
         end
       end
 
+
       struct ClaimGameServerOutput
         include JSON::Serializable
 
         # Object that describes the newly claimed game server.
+
         @[JSON::Field(key: "GameServer")]
         getter game_server : Types::GameServer?
 
@@ -320,16 +365,19 @@ module AwsSdk
       # GameLift Servers fleet differs depending on the fleet's compute type property as follows: For
       # managed EC2 fleets, a compute is an EC2 instance. For Anywhere fleets, a compute is a computing
       # resource that you provide and is registered to the fleet.
+
       struct Compute
         include JSON::Serializable
 
         # The ARN that is assigned to a compute resource and uniquely identifies it. ARNs are unique across
         # locations. Instances in managed EC2 fleets are not assigned a Compute ARN.
+
         @[JSON::Field(key: "ComputeArn")]
         getter compute_arn : String?
 
         # A descriptive label for the compute resource. For instances in a managed EC2 fleet, the compute name
         # is the same value as the InstanceId ID.
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String?
 
@@ -337,55 +385,67 @@ module AwsSdk
         # values include PENDING , ACTIVE , TERMINATING , and IMPAIRED . While the ComputeStatus enum type is
         # valid for Container based servers, the result may also include other non-enumerated string values
         # such as "Active" for fleets which are not Container-based.
+
         @[JSON::Field(key: "ComputeStatus")]
         getter compute_status : String?
 
         # A set of attributes for each container in the compute.
+
         @[JSON::Field(key: "ContainerAttributes")]
         getter container_attributes : Array(Types::ContainerAttribute)?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The DNS name of a compute resource. Amazon GameLift Servers requires a DNS name or IP address for a
         # compute.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # The Amazon Resource Name (ARN) of the fleet that the compute belongs to.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that the compute belongs to.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The endpoint of the Amazon GameLift Servers Agent.
+
         @[JSON::Field(key: "GameLiftAgentEndpoint")]
         getter game_lift_agent_endpoint : String?
 
         # The Amazon GameLift Servers SDK endpoint connection for a registered compute resource in an Anywhere
         # fleet. The game servers on the compute use this endpoint to connect to the Amazon GameLift Servers
         # service.
+
         @[JSON::Field(key: "GameLiftServiceSdkEndpoint")]
         getter game_lift_service_sdk_endpoint : String?
 
         # The game server container group definition for the compute.
+
         @[JSON::Field(key: "GameServerContainerGroupDefinitionArn")]
         getter game_server_container_group_definition_arn : String?
 
         # The InstanceID of the EC2 instance that is hosting the compute.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # The IP address of a compute resource. Amazon GameLift Servers requires a DNS name or IP address for
         # a compute.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # The name of the custom location you added to the fleet that this compute resource resides in.
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -393,11 +453,13 @@ module AwsSdk
         # on 6/30/2025. See more details in the Amazon Linux 2 FAQs . For game servers that are hosted on AL2
         # and use server SDK version 4.x for Amazon GameLift Servers, first update the game server build to
         # server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
         # The Amazon EC2 instance type that the fleet uses. For registered computes in an Amazon GameLift
         # Servers Anywhere fleet, this property is empty.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -424,8 +486,10 @@ module AwsSdk
 
       # The requested operation would cause a conflict with the current state of a service resource
       # associated with the request. Resolve the conflict before retrying this request.
+
       struct ConflictException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -438,15 +502,18 @@ module AwsSdk
 
       # The set of port numbers to open on each instance in a container fleet. Connection ports are used by
       # inbound traffic to connect with processes that are running in containers on the fleet.
+
       struct ConnectionPortRange
         include JSON::Serializable
 
         # Starting value for the port range.
+
         @[JSON::Field(key: "FromPort")]
         getter from_port : Int32
 
         # Ending value for the port. Port numbers are end-inclusive. This value must be equal to or greater
         # than FromPort .
+
         @[JSON::Field(key: "ToPort")]
         getter to_port : Int32
 
@@ -458,15 +525,18 @@ module AwsSdk
       end
 
       # A unique identifier for a container in a container fleet compute. Returned by: DescribeCompute
+
       struct ContainerAttribute
         include JSON::Serializable
 
         # The identifier for a container that's running in a compute.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String?
 
         # The runtime ID for the container that's running in a compute. This value is unique within the
         # compute.
+
         @[JSON::Field(key: "ContainerRuntimeId")]
         getter container_runtime_id : String?
 
@@ -483,6 +553,7 @@ module AwsSdk
       # ContainerB . This means that ContainerA can't start until ContainerB has started. It also means that
       # ContainerA must shut down before ContainerB . Part of: GameServerContainerDefinition ,
       # GameServerContainerDefinitionInput , SupportContainerDefinition , SupportContainerDefinitionInput
+
       struct ContainerDependency
         include JSON::Serializable
 
@@ -494,10 +565,12 @@ module AwsSdk
         # The dependency container can't be an essential container. HEALTHY - The dependency container has
         # passed its Docker health check. Use this condition with dependency containers that have health
         # checks configured. This condition is confirmed at container group startup only.
+
         @[JSON::Field(key: "Condition")]
         getter condition : String
 
         # A descriptive label for the container definition that this container depends on.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String
 
@@ -511,14 +584,17 @@ module AwsSdk
       # An environment variable to set inside a container, in the form of a key-value pair. Part of:
       # GameServerContainerDefinition , GameServerContainerDefinitionInput , SupportContainerDefinition ,
       # SupportContainerDefinitionInput
+
       struct ContainerEnvironment
         include JSON::Serializable
 
         # The environment variable name.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The environment variable value.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -530,25 +606,30 @@ module AwsSdk
       end
 
       # Describes an Amazon GameLift Servers managed container fleet.
+
       struct ContainerFleet
         include JSON::Serializable
 
         # Indicates whether the fleet uses On-Demand or Spot instances for this fleet. Learn more about when
         # to use On-Demand versus Spot Instances . You can't update this fleet property. By default, this
         # property is set to ON_DEMAND .
+
         @[JSON::Field(key: "BillingType")]
         getter billing_type : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # Information about the most recent deployment for the container fleet.
+
         @[JSON::Field(key: "DeploymentDetails")]
         getter deployment_details : Types::DeploymentDetails?
 
         # A meaningful description of the container fleet.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -556,53 +637,64 @@ module AwsSdk
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 . In a GameLift
         # fleet ARN, the resource ID matches the FleetId value.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the container fleet to retrieve.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The unique identifier for an Identity and Access Management (IAM) role with permissions to run your
         # containers on resources that are managed by Amazon GameLift Servers. See Set up an IAM service role
         # . This fleet property can't be changed.
+
         @[JSON::Field(key: "FleetRoleArn")]
         getter fleet_role_arn : String?
 
         # The Amazon Resource Name ( ARN ) that is assigned to the fleet's game server container group. The
         # ARN value also identifies the specific container group definition version in use.
+
         @[JSON::Field(key: "GameServerContainerGroupDefinitionArn")]
         getter game_server_container_group_definition_arn : String?
 
         # The name of the fleet's game server container group definition, which describes how to deploy
         # containers with your game server build and support software onto each fleet instance.
+
         @[JSON::Field(key: "GameServerContainerGroupDefinitionName")]
         getter game_server_container_group_definition_name : String?
 
         # The number of times to replicate the game server container group on each fleet instance.
+
         @[JSON::Field(key: "GameServerContainerGroupsPerInstance")]
         getter game_server_container_groups_per_instance : Int32?
 
         # A policy that limits the number of game sessions that each individual player can create on instances
         # in this fleet. The limit applies for a specified span of time.
+
         @[JSON::Field(key: "GameSessionCreationLimitPolicy")]
         getter game_session_creation_limit_policy : Types::GameSessionCreationLimitPolicy?
+
 
         @[JSON::Field(key: "InstanceConnectionPortRange")]
         getter instance_connection_port_range : Types::ConnectionPortRange?
 
         # The IP address ranges and port settings that allow inbound traffic to access game server processes
         # and other processes on this fleet.
+
         @[JSON::Field(key: "InstanceInboundPermissions")]
         getter instance_inbound_permissions : Array(Types::IpPermission)?
 
         # The Amazon EC2 instance type to use for all instances in the fleet. Instance type determines the
         # computing resources and processing power that's available to host your game servers. This includes
         # including CPU, memory, storage, and networking capacity. You can't update this fleet property.
+
         @[JSON::Field(key: "InstanceType")]
         getter instance_type : String?
 
         # Information about the container fleet's remote locations where fleet instances are deployed.
+
         @[JSON::Field(key: "LocationAttributes")]
         getter location_attributes : Array(Types::ContainerFleetLocationAttributes)?
 
@@ -611,17 +703,20 @@ module AwsSdk
         # an Amazon CloudWatch log group that you define. Each container emits a log stream, which is
         # organized in the log group. S3 -- Store logs in an Amazon S3 bucket that you define. NONE -- Don't
         # collect container logs.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
         # The calculated maximum number of game server container group that can be deployed on each fleet
         # instance. The calculation depends on the resource needs of the container group and the CPU and
         # memory resources of the fleet's instance type.
+
         @[JSON::Field(key: "MaximumGameServerContainerGroupsPerInstance")]
         getter maximum_game_server_container_groups_per_instance : Int32?
 
         # The name of an Amazon Web Services CloudWatch metric group to add this fleet to. Metric groups
         # aggregate metrics for multiple fleets.
+
         @[JSON::Field(key: "MetricGroups")]
         getter metric_groups : Array(String)?
 
@@ -631,15 +726,18 @@ module AwsSdk
         # protection for individual game sessions using UpdateGameSession . NoProtection -- Game sessions can
         # be shut down during active gameplay. FullProtection -- Game sessions in ACTIVE status can't be shut
         # down.
+
         @[JSON::Field(key: "NewGameSessionProtectionPolicy")]
         getter new_game_session_protection_policy : String?
 
         # The Amazon Resource Name ( ARN ) that is assigned to the fleet's per-instance container group. The
         # ARN value also identifies the specific container group definition version in use.
+
         @[JSON::Field(key: "PerInstanceContainerGroupDefinitionArn")]
         getter per_instance_container_group_definition_arn : String?
 
         # The name of the fleet's per-instance container group definition.
+
         @[JSON::Field(key: "PerInstanceContainerGroupDefinitionName")]
         getter per_instance_container_group_definition_name : String?
 
@@ -649,6 +747,7 @@ module AwsSdk
         # instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host
         # game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in
         # progress.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -680,10 +779,12 @@ module AwsSdk
       end
 
       # Details about a location in a multi-location container fleet.
+
       struct ContainerFleetLocationAttributes
         include JSON::Serializable
 
         # A location identifier.
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -693,6 +794,7 @@ module AwsSdk
         # instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host
         # game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in
         # progress.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -707,11 +809,13 @@ module AwsSdk
       # container group definition properties. Updates to a container group definition are saved as new
       # versions. Used with: CreateContainerGroupDefinition Returned by: DescribeContainerGroupDefinition ,
       # ListContainerGroupDefinitions , UpdateContainerGroupDefinition
+
       struct ContainerGroupDefinition
         include JSON::Serializable
 
         # A descriptive identifier for the container group definition. The name value is unique in an Amazon
         # Web Services Region.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -719,22 +823,26 @@ module AwsSdk
         # ContainerGroupDefinition resource. It uniquely identifies the resource across all Amazon Web
         # Services Regions. Format is arn:aws:gamelift:[region]::containergroupdefinition/[container group
         # definition name]:[version] .
+
         @[JSON::Field(key: "ContainerGroupDefinitionArn")]
         getter container_group_definition_arn : String?
 
         # The type of container group. Container group type determines how Amazon GameLift Servers deploys the
         # container group on each fleet instance.
+
         @[JSON::Field(key: "ContainerGroupType")]
         getter container_group_type : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The definition for the game server container in this group. This property is used only when the
         # container group type is GAME_SERVER . This container definition specifies a container image with the
         # game server build.
+
         @[JSON::Field(key: "GameServerContainerDefinition")]
         getter game_server_container_definition : Types::GameServerContainerDefinition?
 
@@ -743,6 +851,7 @@ module AwsSdk
         # that are hosted on AL2 and use server SDK version 4.x for Amazon GameLift Servers, first update the
         # game server build to server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK
         # version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
@@ -754,6 +863,7 @@ module AwsSdk
         # Amazon GameLift Servers failed to create a valid container group definition resource. For more
         # details on the cause of the failure, see StatusReason . A container group definition resource in
         # failed status will be deleted within a few minutes.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -768,11 +878,13 @@ module AwsSdk
         # Amazon GameLift Servers endpoints and quotas . At least one of the container images referenced in
         # the container group definition uses a different operating system than the one defined for the
         # container group.
+
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # The set of definitions for support containers in this group. A container group definition might have
         # zero support container definitions. Support container can be used in any type of container group.
+
         @[JSON::Field(key: "SupportContainerDefinitions")]
         getter support_container_definitions : Array(Types::SupportContainerDefinition)?
 
@@ -780,6 +892,7 @@ module AwsSdk
         # containers in the group share these resources. You can set a limit for each container definition in
         # the group. If individual containers have limits, this total value must be greater than any
         # individual container's memory limit.
+
         @[JSON::Field(key: "TotalMemoryLimitMebibytes")]
         getter total_memory_limit_mebibytes : Int32?
 
@@ -787,17 +900,20 @@ module AwsSdk
         # 1024 CPU units). All containers in the group share these resources. You can set a limit for each
         # container definition in the group. If individual containers have limits, this total value must be
         # equal to or greater than the sum of the limits for each container in the group.
+
         @[JSON::Field(key: "TotalVcpuLimit")]
         getter total_vcpu_limit : Float64?
 
         # An optional description that was provided for a container group definition update. Each version can
         # have a unique description.
+
         @[JSON::Field(key: "VersionDescription")]
         getter version_description : String?
 
         # Indicates the version of a particular container group definition. This number is incremented
         # automatically when you update a container group definition. You can view, update, or delete
         # individual versions or the entire container group definition.
+
         @[JSON::Field(key: "VersionNumber")]
         getter version_number : Int32?
 
@@ -829,29 +945,35 @@ module AwsSdk
       # container to wait 100 seconds after launch before counting failed health checks. {"Command": [
       # "CMD-SHELL", "ps cax | grep "processmanager" || exit 1" ], "Interval": 60, "Timeout": 10, "Retries":
       # 3, "StartPeriod": 100 } Part of: SupportContainerDefinition , SupportContainerDefinitionInput
+
       struct ContainerHealthCheck
         include JSON::Serializable
 
         # A string array that specifies the command that the container runs to determine if it's healthy.
+
         @[JSON::Field(key: "Command")]
         getter command : Array(String)
 
         # The time period (in seconds) between each health check.
+
         @[JSON::Field(key: "Interval")]
         getter interval : Int32?
 
         # The number of times to retry a failed health check before flagging the container unhealthy. The
         # first run of the command does not count as a retry.
+
         @[JSON::Field(key: "Retries")]
         getter retries : Int32?
 
         # The optional grace period (in seconds) to give a container time to bootstrap before the first failed
         # health check counts toward the number of retries.
+
         @[JSON::Field(key: "StartPeriod")]
         getter start_period : Int32?
 
         # The time period (in seconds) to wait for a health check to succeed before counting a failed health
         # check.
+
         @[JSON::Field(key: "Timeout")]
         getter timeout : Int32?
 
@@ -868,15 +990,18 @@ module AwsSdk
       # A unique identifier for a container in a compute on a managed container fleet instance. This
       # information makes it possible to remotely connect to a specific container on a fleet instance.
       # Related to: ContainerAttribute Use with: GetComputeAccess
+
       struct ContainerIdentifier
         include JSON::Serializable
 
         # The identifier for a container that's running in a compute.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String?
 
         # The runtime ID for the container that's running in a compute. This value is unique within the
         # compute. It is returned as a ContainerAttribute value in a Compute object.
+
         @[JSON::Field(key: "ContainerRuntimeId")]
         getter container_runtime_id : String?
 
@@ -892,18 +1017,22 @@ module AwsSdk
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameServerContainerDefinitionInput.html
       # , SupportContainerDefinition ,
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_SupportContainerDefinitionInput.html
+
       struct ContainerMountPoint
         include JSON::Serializable
 
         # The path to the source file or directory.
+
         @[JSON::Field(key: "InstancePath")]
         getter instance_path : String
 
         # The type of access for the container.
+
         @[JSON::Field(key: "AccessLevel")]
         getter access_level : String?
 
         # The mount path on the container. If this property isn't set, the instance path is used.
+
         @[JSON::Field(key: "ContainerPath")]
         getter container_path : String?
 
@@ -925,11 +1054,13 @@ module AwsSdk
       # connection port 2001 container port 1935 (udp) =&gt; connection port 2002 Part of:
       # GameServerContainerDefinition , GameServerContainerDefinitionInput , SupportContainerDefinition ,
       # SupportContainerDefinitionInput
+
       struct ContainerPortConfiguration
         include JSON::Serializable
 
         # A set of one or more container port number ranges. The ranges can't overlap if the ranges' network
         # protocols are the same. Overlapping ranges with different protocols is allowed but not recommended.
+
         @[JSON::Field(key: "ContainerPortRanges")]
         getter container_port_ranges : Array(Types::ContainerPortRange)
 
@@ -941,19 +1072,23 @@ module AwsSdk
 
       # A set of one or more port numbers that can be opened on the container, and the supported network
       # protocol. Part of: ContainerPortConfiguration
+
       struct ContainerPortRange
         include JSON::Serializable
 
         # A starting value for the range of allowed port numbers.
+
         @[JSON::Field(key: "FromPort")]
         getter from_port : Int32
 
         # The network protocol that these ports support.
+
         @[JSON::Field(key: "Protocol")]
         getter protocol : String
 
         # An ending value for the range of allowed port numbers. Port numbers are end-inclusive. This value
         # must be equal to or greater than FromPort .
+
         @[JSON::Field(key: "ToPort")]
         getter to_port : Int32
 
@@ -965,18 +1100,22 @@ module AwsSdk
         end
       end
 
+
       struct CreateAliasInput
         include JSON::Serializable
 
         # A descriptive label that is associated with an alias. Alias names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The routing configuration, including routing type and fleet target, for the alias.
+
         @[JSON::Field(key: "RoutingStrategy")]
         getter routing_strategy : Types::RoutingStrategy
 
         # A human-readable description of the alias.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -984,6 +1123,7 @@ module AwsSdk
         # Tagging Amazon Web Services resources are useful for resource management, access management and cost
         # allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web
         # Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -996,10 +1136,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateAliasOutput
         include JSON::Serializable
 
         # The newly created alias resource.
+
         @[JSON::Field(key: "Alias")]
         getter alias : Types::Alias?
 
@@ -1009,11 +1151,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateBuildInput
         include JSON::Serializable
 
         # A descriptive label that is associated with a build. Build names do not need to be unique. You can
         # change this value later.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1025,12 +1169,14 @@ module AwsSdk
         # servers that are hosted on AL2 and use server SDK version 4.x for Amazon GameLift Servers, first
         # update the game server build to server SDK 5.x, and then deploy to AL2023 instances. See Migrate to
         # server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
         # A server SDK version you used when integrating your game server build with Amazon GameLift Servers.
         # For more information see Integrate games with custom game servers . By default Amazon GameLift
         # Servers sets this value to 4.0.2 .
+
         @[JSON::Field(key: "ServerSdkVersion")]
         getter server_sdk_version : String?
 
@@ -1040,6 +1186,7 @@ module AwsSdk
         # Amazon GameLift Servers to access your Amazon S3 bucket. The S3 bucket and your new build must be in
         # the same Region. If a StorageLocation is specified, the size of your file can be found in your
         # Amazon S3 bucket. Amazon GameLift Servers will report a SizeOnDisk of 0.
+
         @[JSON::Field(key: "StorageLocation")]
         getter storage_location : Types::S3Location?
 
@@ -1049,11 +1196,13 @@ module AwsSdk
         # Services General Reference . Once the resource is created, you can use TagResource , UntagResource ,
         # and ListTagsForResource to add, remove, and view tags. The maximum tag limit may be lower than
         # stated. See the Amazon Web Services General Reference for actual tagging limits.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Version information that is associated with a build or script. Version strings do not need to be
         # unique. You can change this value later.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -1068,14 +1217,17 @@ module AwsSdk
         end
       end
 
+
       struct CreateBuildOutput
         include JSON::Serializable
 
         # The newly created build resource, including a unique build IDs and status.
+
         @[JSON::Field(key: "Build")]
         getter build : Types::Build?
 
         # Amazon S3 location for your game build file, including bucket name and key.
+
         @[JSON::Field(key: "StorageLocation")]
         getter storage_location : Types::S3Location?
 
@@ -1083,6 +1235,7 @@ module AwsSdk
         # credentials to use when you are uploading a build file to an Amazon S3 bucket that is owned by
         # Amazon GameLift Servers. Credentials have a limited life span. To refresh these credentials, call
         # RequestUploadCredentials .
+
         @[JSON::Field(key: "UploadCredentials")]
         getter upload_credentials : Types::AwsCredentials?
 
@@ -1094,6 +1247,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateContainerFleetInput
         include JSON::Serializable
 
@@ -1102,16 +1256,19 @@ module AwsSdk
         # the GameLiftContainerFleetPolicy managed policy attached. For more information, see Set up an IAM
         # service role . You can't change this fleet property after the fleet is created. IAM role ARN values
         # use the following pattern: arn:aws:iam::[Amazon Web Services account]:role/[role name] .
+
         @[JSON::Field(key: "FleetRoleArn")]
         getter fleet_role_arn : String
 
         # Indicates whether to use On-Demand or Spot instances for this fleet. Learn more about when to use
         # On-Demand versus Spot Instances . This fleet property can't be changed after the fleet is created.
         # By default, this property is set to ON_DEMAND . You can't update this fleet property later.
+
         @[JSON::Field(key: "BillingType")]
         getter billing_type : String?
 
         # A meaningful description of the container fleet.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -1120,6 +1277,7 @@ module AwsSdk
         # definition's name to use the latest version. Alternatively, provide an ARN value with a specific
         # version number. Create a container group definition by calling CreateContainerGroupDefinition . This
         # operation creates a ContainerGroupDefinition resource.
+
         @[JSON::Field(key: "GameServerContainerGroupDefinitionName")]
         getter game_server_container_group_definition_name : String?
 
@@ -1128,11 +1286,13 @@ module AwsSdk
         # on each instance. This calculation is based on the CPU and memory resources of the fleet's instance
         # type). To use the calculated maximum, don't set this parameter. If you set this number manually,
         # Amazon GameLift Servers uses your value as long as it's less than the calculated maximum.
+
         @[JSON::Field(key: "GameServerContainerGroupsPerInstance")]
         getter game_server_container_groups_per_instance : Int32?
 
         # A policy that limits the number of game sessions that each individual player can create on instances
         # in this fleet. The limit applies for a specified span of time.
+
         @[JSON::Field(key: "GameSessionCreationLimitPolicy")]
         getter game_session_creation_limit_policy : Types::GameSessionCreationLimitPolicy?
 
@@ -1147,6 +1307,7 @@ module AwsSdk
         # numbers that match the fleet's inbound permissions port range. If you set values manually, Amazon
         # GameLift Servers no longer calculates a port range for you, even if you later remove the manual
         # settings.
+
         @[JSON::Field(key: "InstanceConnectionPortRange")]
         getter instance_connection_port_range : Types::ConnectionPortRange?
 
@@ -1162,6 +1323,7 @@ module AwsSdk
         # parameter, you must use port numbers that match the fleet's connection port range. If you set values
         # manually, Amazon GameLift Servers no longer calculates a port range for you, even if you later
         # remove the manual settings.
+
         @[JSON::Field(key: "InstanceInboundPermissions")]
         getter instance_inbound_permissions : Array(Types::IpPermission)?
 
@@ -1173,6 +1335,7 @@ module AwsSdk
         # all selected fleet locations. You can also choose to manually set this parameter. See Amazon Elastic
         # Compute Cloud Instance Types for detailed descriptions of Amazon EC2 instance types. You can't
         # update this fleet property later.
+
         @[JSON::Field(key: "InstanceType")]
         getter instance_type : String?
 
@@ -1182,6 +1345,7 @@ module AwsSdk
         # home Region, which is the Amazon Web Services Region where the fleet is created. For a list of
         # supported Regions and Local Zones, see Amazon GameLift Servers service locations for managed
         # hosting.
+
         @[JSON::Field(key: "Locations")]
         getter locations : Array(Types::LocationConfiguration)?
 
@@ -1193,6 +1357,7 @@ module AwsSdk
         # CLOUDWATCH . Amazon GameLift Servers requires permissions to send logs other Amazon Web Services
         # services in your account. These permissions are included in the IAM fleet role for this container
         # fleet (see FleetRoleArn) .
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
@@ -1200,6 +1365,7 @@ module AwsSdk
         # metric group to aggregate metrics for multiple fleets. You can specify an existing metric group name
         # or use a new name to create a new metric group. Each fleet can have only one metric group, but you
         # can change this value at any time.
+
         @[JSON::Field(key: "MetricGroups")]
         getter metric_groups : Array(String)?
 
@@ -1209,6 +1375,7 @@ module AwsSdk
         # protection for individual game sessions using UpdateGameSession . NoProtection -- Game sessions can
         # be shut down during active gameplay. FullProtection -- Game sessions in ACTIVE status can't be shut
         # down. By default, this property is set to NoProtection .
+
         @[JSON::Field(key: "NewGameSessionProtectionPolicy")]
         getter new_game_session_protection_policy : String?
 
@@ -1220,6 +1387,7 @@ module AwsSdk
         # https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateContainerGroupDefinition.html .
         # This operation creates a
         # https://docs.aws.amazon.com/gamelift/latest/apireference/API_ContainerGroupDefinition.html resource.
+
         @[JSON::Field(key: "PerInstanceContainerGroupDefinitionName")]
         getter per_instance_container_group_definition_name : String?
 
@@ -1227,6 +1395,7 @@ module AwsSdk
         # Tagging Amazon Web Services resources are useful for resource management, access management and cost
         # allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web
         # Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1250,11 +1419,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateContainerFleetOutput
         include JSON::Serializable
 
         # The properties for the new container fleet, including current status. All fleets are initially
         # placed in PENDING status.
+
         @[JSON::Field(key: "ContainerFleet")]
         getter container_fleet : Types::ContainerFleet?
 
@@ -1264,11 +1435,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateContainerGroupDefinitionInput
         include JSON::Serializable
 
         # A descriptive identifier for the container group definition. The name value must be unique in an
         # Amazon Web Services Region.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1277,12 +1450,14 @@ module AwsSdk
         # 6/30/2025. See more details in the Amazon Linux 2 FAQs . For game servers that are hosted on AL2 and
         # use server SDK version 4.x for Amazon GameLift Servers, first update the game server build to server
         # SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String
 
         # The maximum amount of memory (in MiB) to allocate to the container group. All containers in the
         # group share this memory. If you specify memory limits for an individual container, the total value
         # must be greater than any individual container's memory limit. Default value: 1024
+
         @[JSON::Field(key: "TotalMemoryLimitMebibytes")]
         getter total_memory_limit_mebibytes : Int32
 
@@ -1290,22 +1465,26 @@ module AwsSdk
         # units). All containers in the group share this memory. If you specify vCPU limits for individual
         # containers, the total value must be equal to or greater than the sum of the CPU limits for all
         # containers in the group. Default value: 1
+
         @[JSON::Field(key: "TotalVcpuLimit")]
         getter total_vcpu_limit : Float64
 
         # The type of container group being defined. Container group type determines how Amazon GameLift
         # Servers deploys the container group on each fleet instance. Default value: GAME_SERVER
+
         @[JSON::Field(key: "ContainerGroupType")]
         getter container_group_type : String?
 
         # The definition for the game server container in this group. Define a game server container only when
         # the container group type is GAME_SERVER . Game server containers specify a container image with your
         # game server build. You can pass in your container definitions as a JSON file.
+
         @[JSON::Field(key: "GameServerContainerDefinition")]
         getter game_server_container_definition : Types::GameServerContainerDefinitionInput?
 
         # One or more definition for support containers in this group. You can define a support container in
         # any type of container group. You can pass in your container definitions as a JSON file.
+
         @[JSON::Field(key: "SupportContainerDefinitions")]
         getter support_container_definitions : Array(Types::SupportContainerDefinitionInput)?
 
@@ -1313,10 +1492,12 @@ module AwsSdk
         # key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access
         # management and cost allocation. For more information, see Tagging Amazon Web Services Resources in
         # the Amazon Web Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # A description for the initial version of this container group definition.
+
         @[JSON::Field(key: "VersionDescription")]
         getter version_description : String?
 
@@ -1334,11 +1515,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateContainerGroupDefinitionOutput
         include JSON::Serializable
 
         # The properties of the new container group definition resource. You can use this resource to create a
         # container fleet.
+
         @[JSON::Field(key: "ContainerGroupDefinition")]
         getter container_group_definition : Types::ContainerGroupDefinition?
 
@@ -1348,20 +1531,24 @@ module AwsSdk
         end
       end
 
+
       struct CreateFleetInput
         include JSON::Serializable
 
         # A descriptive label that is associated with a fleet. Fleet names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Amazon GameLift Servers Anywhere configuration options.
+
         @[JSON::Field(key: "AnywhereConfiguration")]
         getter anywhere_configuration : Types::AnywhereConfiguration?
 
         # The unique identifier for a custom game server build to be deployed to a fleet with compute type EC2
         # . You can use either the build ID or ARN. The build must be uploaded to Amazon GameLift Servers and
         # in READY status. This fleet property can't be changed after the fleet is created.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String?
 
@@ -1375,6 +1562,7 @@ module AwsSdk
         # creation request with certificate generation enabled in an unsupported Region, fails with a 4xx
         # error. For more information about the supported Regions, see Supported Regions in the Certificate
         # Manager User Guide .
+
         @[JSON::Field(key: "CertificateConfiguration")]
         getter certificate_configuration : Types::CertificateConfiguration?
 
@@ -1382,10 +1570,12 @@ module AwsSdk
         # to Amazon EC2 instances for cloud hosting. This is the default setting. ANYWHERE – Game servers and
         # supporting software are deployed to compute resources that you provide and manage. With this compute
         # type, you can also set the AnywhereConfiguration parameter.
+
         @[JSON::Field(key: "ComputeType")]
         getter compute_type : String?
 
         # A description for the fleet.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -1396,6 +1586,7 @@ module AwsSdk
         # before players can connect to game sessions. As a best practice, we recommend opening ports for
         # remote access only when you need them and closing them when you're finished. For Amazon GameLift
         # Servers Realtime fleets, Amazon GameLift Servers automatically sets TCP and UDP ranges.
+
         @[JSON::Field(key: "EC2InboundPermissions")]
         getter ec2_inbound_permissions : Array(Types::IpPermission)?
 
@@ -1403,12 +1594,14 @@ module AwsSdk
         # Instance type determines the computing resources that will be used to host your game servers,
         # including CPU, memory, storage, and networking capacity. See Amazon Elastic Compute Cloud Instance
         # Types for detailed descriptions of Amazon EC2 instance types.
+
         @[JSON::Field(key: "EC2InstanceType")]
         getter ec2_instance_type : String?
 
         # Indicates whether to use On-Demand or Spot instances for this fleet. By default, this property is
         # set to ON_DEMAND . Learn more about when to use On-Demand versus Spot Instances . This fleet
         # property can't be changed after the fleet is created.
+
         @[JSON::Field(key: "FleetType")]
         getter fleet_type : String?
 
@@ -1418,6 +1611,7 @@ module AwsSdk
         # or look up a role's ARN by using the IAM dashboard in the Amazon Web Services Management Console.
         # Learn more about using on-box credentials for your game servers at Access external resources from a
         # game server . This fleet property can't be changed after the fleet is created.
+
         @[JSON::Field(key: "InstanceRoleArn")]
         getter instance_role_arn : String?
 
@@ -1427,6 +1621,7 @@ module AwsSdk
         # server executable, if the game server is integrated with server SDK version 5.x. For more
         # information about using shared credentials, see Communicate with other Amazon Web Services resources
         # from your fleets .
+
         @[JSON::Field(key: "InstanceRoleCredentialsProvider")]
         getter instance_role_credentials_provider : String?
 
@@ -1437,6 +1632,7 @@ module AwsSdk
         # , or Local Zone names. When using this parameter, Amazon GameLift Servers requires you to include
         # your home location in the request. For a list of supported Regions and Local Zones, see Amazon
         # GameLift Servers service locations for managed hosting.
+
         @[JSON::Field(key: "Locations")]
         getter locations : Array(Types::LocationConfiguration)?
 
@@ -1444,6 +1640,7 @@ module AwsSdk
         # once a server process shuts down, use the Amazon GameLift Servers server API ProcessReady() and
         # specify one or more directory paths in logParameters . For more information, see Initialize the
         # server process in the Amazon GameLift Servers Developer Guide .
+
         @[JSON::Field(key: "LogPaths")]
         getter log_paths : Array(String)?
 
@@ -1451,6 +1648,7 @@ module AwsSdk
         # used to aggregate the metrics for multiple fleets. You can specify an existing metric group name or
         # set a new name to create a new metric group. A fleet can be included in only one metric group at a
         # time.
+
         @[JSON::Field(key: "MetricGroups")]
         getter metric_groups : Array(String)?
 
@@ -1459,12 +1657,14 @@ module AwsSdk
         # session by calling UpdateGameSession . NoProtection - Game sessions can be terminated during active
         # gameplay as a result of a scale-down event. FullProtection - Game sessions in ACTIVE status cannot
         # be terminated during a scale-down event.
+
         @[JSON::Field(key: "NewGameSessionProtectionPolicy")]
         getter new_game_session_protection_policy : String?
 
         # Used when peering your Amazon GameLift Servers fleet with a VPC, the unique identifier for the
         # Amazon Web Services account that owns the VPC. You can find your account ID in the Amazon Web
         # Services Management Console under account settings.
+
         @[JSON::Field(key: "PeerVpcAwsAccountId")]
         getter peer_vpc_aws_account_id : String?
 
@@ -1472,11 +1672,13 @@ module AwsSdk
         # The VPC must be in the same Region as your fleet. To look up a VPC ID, use the VPC Dashboard in the
         # Amazon Web Services Management Console. Learn more about VPC peering in VPC Peering with Amazon
         # GameLift Servers Fleets .
+
         @[JSON::Field(key: "PeerVpcId")]
         getter peer_vpc_id : String?
 
         # A policy that limits the number of game sessions that an individual player can create on instances
         # in this fleet within a specified span of time.
+
         @[JSON::Field(key: "ResourceCreationLimitPolicy")]
         getter resource_creation_limit_policy : Types::ResourceCreationLimitPolicy?
 
@@ -1486,6 +1688,7 @@ module AwsSdk
         # configurations. Each server process identifies a game executable or Realtime script file and the
         # number of processes to run concurrently. This parameter replaces the parameters ServerLaunchPath and
         # ServerLaunchParameters , which are still supported for backward compatibility.
+
         @[JSON::Field(key: "RuntimeConfiguration")]
         getter runtime_configuration : Types::RuntimeConfiguration?
 
@@ -1493,16 +1696,19 @@ module AwsSdk
         # type EC2 . You can use either the script ID or ARN. Scripts must be uploaded to Amazon GameLift
         # Servers prior to creating the fleet. This fleet property can't be changed after the fleet is
         # created.
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String?
 
         # This parameter is no longer used. Specify server launch parameters using the RuntimeConfiguration
         # parameter. Requests that use this parameter instead continue to be valid.
+
         @[JSON::Field(key: "ServerLaunchParameters")]
         getter server_launch_parameters : String?
 
         # This parameter is no longer used. Specify a server launch path using the RuntimeConfiguration
         # parameter. Requests that use this parameter instead continue to be valid.
+
         @[JSON::Field(key: "ServerLaunchPath")]
         getter server_launch_path : String?
 
@@ -1510,6 +1716,7 @@ module AwsSdk
         # Tagging Amazon Web Services resources are useful for resource management, access management and cost
         # allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web
         # Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1541,16 +1748,19 @@ module AwsSdk
         end
       end
 
+
       struct CreateFleetLocationsInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to add locations to. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A list of locations to deploy additional instances to and manage as part of the fleet. You can add
         # any Amazon GameLift Servers-supported Amazon Web Services Region as a remote location, in the form
         # of an Amazon Web Services Region code such as us-west-2 .
+
         @[JSON::Field(key: "Locations")]
         getter locations : Array(Types::LocationConfiguration)
 
@@ -1561,16 +1771,19 @@ module AwsSdk
         end
       end
 
+
       struct CreateFleetLocationsOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that was updated with new locations.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -1579,6 +1792,7 @@ module AwsSdk
         # updates each location's status as instances are deployed there and prepared for game hosting. This
         # list does not include the fleet home Region or any remote locations that were already added to the
         # fleet.
+
         @[JSON::Field(key: "LocationStates")]
         getter location_states : Array(Types::LocationState)?
 
@@ -1590,11 +1804,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateFleetOutput
         include JSON::Serializable
 
         # The properties for the new fleet, including the current status. All fleets are placed in NEW status
         # on creation.
+
         @[JSON::Field(key: "FleetAttributes")]
         getter fleet_attributes : Types::FleetAttributes?
 
@@ -1603,6 +1819,7 @@ module AwsSdk
         # status as instances are deployed there and prepared for game hosting. This list includes an entry
         # for the fleet's home Region. For fleets with no remote locations, only one entry, representing the
         # home Region, is returned.
+
         @[JSON::Field(key: "LocationStates")]
         getter location_states : Array(Types::LocationState)?
 
@@ -1613,12 +1830,14 @@ module AwsSdk
         end
       end
 
+
       struct CreateGameServerGroupInput
         include JSON::Serializable
 
         # An identifier for the new game server group. This value is used to generate unique ARN identifiers
         # for the Amazon EC2 Auto Scaling group and the Amazon GameLift Servers FleetIQ game server group. The
         # name must be unique per Region per Amazon Web Services account.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
@@ -1629,6 +1848,7 @@ module AwsSdk
         # no weight value is specified for an instance type, it is set to the default value "1". For more
         # information about capacity weighting, see Instance Weighting for Amazon EC2 Auto Scaling in the
         # Amazon EC2 Auto Scaling User Guide.
+
         @[JSON::Field(key: "InstanceDefinitions")]
         getter instance_definitions : Array(Types::InstanceDefinition)
 
@@ -1640,6 +1860,7 @@ module AwsSdk
         # Services console or APIs. If you specify network interfaces in your launch template, you must
         # explicitly set the property AssociatePublicIpAddress to "true". If no network interface is specified
         # in the launch template, Amazon GameLift Servers FleetIQ uses your account's default VPC.
+
         @[JSON::Field(key: "LaunchTemplate")]
         getter launch_template : Types::LaunchTemplateSpecification
 
@@ -1647,6 +1868,7 @@ module AwsSdk
         # scaling events, Amazon GameLift Servers FleetIQ and EC2 do not scale up the group above this
         # maximum. After the Auto Scaling group is created, update this value directly in the Auto Scaling
         # group using the Amazon Web Services console or APIs.
+
         @[JSON::Field(key: "MaxSize")]
         getter max_size : Int32
 
@@ -1655,11 +1877,13 @@ module AwsSdk
         # this minimum. In production, this value should be set to at least 1. After the Auto Scaling group is
         # created, update this value directly in the Auto Scaling group using the Amazon Web Services console
         # or APIs.
+
         @[JSON::Field(key: "MinSize")]
         getter min_size : Int32
 
         # The Amazon Resource Name ( ARN ) for an IAM role that allows Amazon GameLift Servers to access your
         # Amazon EC2 Auto Scaling groups.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -1668,6 +1892,7 @@ module AwsSdk
         # of idle game servers that can immediately accommodate new games and players. After the Auto Scaling
         # group is created, update this value directly in the Auto Scaling group using the Amazon Web Services
         # console or APIs.
+
         @[JSON::Field(key: "AutoScalingPolicy")]
         getter auto_scaling_policy : Types::GameServerGroupAutoScalingPolicy?
 
@@ -1682,6 +1907,7 @@ module AwsSdk
         # Existing nonviable Spot Instances are terminated (after current gameplay ends) and are replaced with
         # new On-Demand Instances. ON_DEMAND_ONLY - Only On-Demand Instances are used in the game server
         # group. No Spot Instances are used, even when available, while this balancing strategy is in force.
+
         @[JSON::Field(key: "BalancingStrategy")]
         getter balancing_strategy : String?
 
@@ -1692,6 +1918,7 @@ module AwsSdk
         # group deletion (see ). An exception to this is with Spot Instances, which can be terminated by
         # Amazon Web Services regardless of protection status. This property is set to NO_PROTECTION by
         # default.
+
         @[JSON::Field(key: "GameServerProtectionPolicy")]
         getter game_server_protection_policy : String?
 
@@ -1699,6 +1926,7 @@ module AwsSdk
         # key-value pairs. Tagging Amazon Web Services resources is useful for resource management, access
         # management, and cost allocation. For more information, see Tagging Amazon Web Services Resources in
         # the Amazon Web Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1707,6 +1935,7 @@ module AwsSdk
         # parameter to specify VPCs that you've set up. This property cannot be updated after the game server
         # group is created, and the corresponding Auto Scaling group will always use the property value that
         # is set with this request, even if the Auto Scaling group is updated directly.
+
         @[JSON::Field(key: "VpcSubnets")]
         getter vpc_subnets : Array(String)?
 
@@ -1726,6 +1955,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateGameServerGroupOutput
         include JSON::Serializable
 
@@ -1733,6 +1963,7 @@ module AwsSdk
         # Servers FleetIQ game server group and the object's status. The Amazon EC2 Auto Scaling group ARN is
         # initially null, since the group has not yet been created. This value is added once the game server
         # group status reaches ACTIVE .
+
         @[JSON::Field(key: "GameServerGroup")]
         getter game_server_group : Types::GameServerGroup?
 
@@ -1742,16 +1973,19 @@ module AwsSdk
         end
       end
 
+
       struct CreateGameSessionInput
         include JSON::Serializable
 
         # The maximum number of players that can be connected simultaneously to the game session.
+
         @[JSON::Field(key: "MaximumPlayerSessionCount")]
         getter maximum_player_session_count : Int32
 
         # A unique identifier for the alias associated with the fleet to create a game session in. You can use
         # either the alias ID or ARN value. Each request must reference either a fleet ID or alias ID, but not
         # both.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String?
 
@@ -1762,29 +1996,34 @@ module AwsSdk
         # CreatorId in your CreateGameSession requests, Amazon GameLift Servers limits requests to one request
         # per CreatorId per second. To not limit CreateGameSession requests with the same CreatorId , don't
         # provide a CreatorId in your CreateGameSession request.
+
         @[JSON::Field(key: "CreatorId")]
         getter creator_id : String?
 
         # A unique identifier for the fleet to create a game session in. You can use either the fleet ID or
         # ARN value. Each request must reference either a fleet ID or alias ID, but not both.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} . For an example, see Create a game session with custom properties
         # .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
         # A set of custom game session properties, formatted as a single string value. This data is passed to
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
         # This parameter is deprecated. Use IdempotencyToken instead. Custom string that uniquely identifies a
         # request for a new game session. Maximum token length is 48 characters. If provided, this string is
         # included in the new game session's ID.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
@@ -1796,6 +2035,7 @@ module AwsSdk
         # arn:aws:gamelift:&lt;location&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency
         # token&gt; . Idempotency tokens remain in use for 30 days after a game session has ended; game
         # session objects are retained for this time period and then deleted.
+
         @[JSON::Field(key: "IdempotencyToken")]
         getter idempotency_token : String?
 
@@ -1803,10 +2043,12 @@ module AwsSdk
         # game session is placed in the fleet's home Region. Specify a remote location with an Amazon Web
         # Services Region code such as us-west-2 . When using an Anywhere fleet, this parameter is required
         # and must be set to the Anywhere fleet's custom location.
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A descriptive label that is associated with a game session. Session names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -1825,10 +2067,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateGameSessionOutput
         include JSON::Serializable
 
         # Object that describes the newly created game session record.
+
         @[JSON::Field(key: "GameSession")]
         getter game_session : Types::GameSession?
 
@@ -1838,32 +2082,38 @@ module AwsSdk
         end
       end
 
+
       struct CreateGameSessionQueueInput
         include JSON::Serializable
 
         # A descriptive label that is associated with game session queue. Queue names must be unique within
         # each Region.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Information to be added to all events that are related to this game session queue.
+
         @[JSON::Field(key: "CustomEventData")]
         getter custom_event_data : String?
 
         # A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in
         # the queue. Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in
         # order of placement preference.
+
         @[JSON::Field(key: "Destinations")]
         getter destinations : Array(Types::GameSessionQueueDestination)?
 
         # A list of locations where a queue is allowed to place new game sessions. Locations are specified in
         # the form of Amazon Web Services Region codes, such as us-west-2 . If this parameter is not set, game
         # sessions can be placed in any queue location.
+
         @[JSON::Field(key: "FilterConfiguration")]
         getter filter_configuration : Types::FilterConfiguration?
 
         # An SNS topic ARN that is set up to receive game session placement notifications. See Setting up
         # notifications for game session placement .
+
         @[JSON::Field(key: "NotificationTarget")]
         getter notification_target : String?
 
@@ -1871,12 +2121,14 @@ module AwsSdk
         # placement requests. Use multiple policies to gradually relax the cap over time if Amazon GameLift
         # Servers can't make a placement. Policies are evaluated in order starting with the lowest maximum
         # latency value.
+
         @[JSON::Field(key: "PlayerLatencyPolicies")]
         getter player_latency_policies : Array(Types::PlayerLatencyPolicy)?
 
         # Custom settings to use when prioritizing destinations and locations for game session placements.
         # This configuration replaces the FleetIQ default prioritization process. Priority types that are not
         # explicitly named will be automatically applied at the end of the prioritization process.
+
         @[JSON::Field(key: "PriorityConfiguration")]
         getter priority_configuration : Types::PriorityConfiguration?
 
@@ -1884,12 +2136,14 @@ module AwsSdk
         # key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access
         # management and cost allocation. For more information, see Tagging Amazon Web Services Resources in
         # the Amazon Web Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The maximum time, in seconds, that a new game session placement request remains in the queue. When a
         # request exceeds this time, the game session placement changes to a TIMED_OUT status. If you don't
         # specify a request timeout, the queue uses a default value.
+
         @[JSON::Field(key: "TimeoutInSeconds")]
         getter timeout_in_seconds : Int32?
 
@@ -1907,10 +2161,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateGameSessionQueueOutput
         include JSON::Serializable
 
         # An object that describes the newly created game session queue.
+
         @[JSON::Field(key: "GameSessionQueue")]
         getter game_session_queue : Types::GameSessionQueue?
 
@@ -1920,10 +2176,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateLocationInput
         include JSON::Serializable
 
         # A descriptive name for the custom location.
+
         @[JSON::Field(key: "LocationName")]
         getter location_name : String
 
@@ -1931,6 +2189,7 @@ module AwsSdk
         # Amazon Web Services resources are useful for resource management, access management, and cost
         # allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web
         # Services General Rareference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1941,10 +2200,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateLocationOutput
         include JSON::Serializable
 
         # The details of the custom location you created.
+
         @[JSON::Field(key: "Location")]
         getter location : Types::LocationModel?
 
@@ -1954,6 +2215,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateMatchmakingConfigurationInput
         include JSON::Serializable
 
@@ -1961,27 +2223,32 @@ module AwsSdk
         # the matched players. To require acceptance, set to TRUE . With this option enabled, matchmaking
         # tickets use the status REQUIRES_ACCEPTANCE to indicate when a completed potential match is waiting
         # for player acceptance.
+
         @[JSON::Field(key: "AcceptanceRequired")]
         getter acceptance_required : Bool
 
         # A unique identifier for the matchmaking configuration. This name is used to identify the
         # configuration associated with a matchmaking request or ticket.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out.
         # Requests that fail due to timing out can be resubmitted as needed.
+
         @[JSON::Field(key: "RequestTimeoutSeconds")]
         getter request_timeout_seconds : Int32
 
         # A unique identifier for the matchmaking rule set to use with this configuration. You can use either
         # the rule set name or ARN value. A matchmaking configuration can only use rule sets that are defined
         # in the same Region.
+
         @[JSON::Field(key: "RuleSetName")]
         getter rule_set_name : String
 
         # The length of time (in seconds) to wait for players to accept a proposed match, if acceptance is
         # required.
+
         @[JSON::Field(key: "AcceptanceTimeoutSeconds")]
         getter acceptance_timeout_seconds : Int32?
 
@@ -1989,6 +2256,7 @@ module AwsSdk
         # configuration's rule set specifies a match for a single 12-person team, and the additional player
         # count is set to 2, only 10 players are selected for the match. This parameter is not used if
         # FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "AdditionalPlayerCount")]
         getter additional_player_count : Int32?
 
@@ -1998,14 +2266,17 @@ module AwsSdk
         # session has one or more open slots. Learn more about manual and automatic backfill in Backfill
         # Existing Games with FlexMatch . Automatic backfill is not available when FlexMatchMode is set to
         # STANDALONE .
+
         @[JSON::Field(key: "BackfillMode")]
         getter backfill_mode : String?
 
         # Information to be added to all events related to this matchmaking configuration.
+
         @[JSON::Field(key: "CustomEventData")]
         getter custom_event_data : String?
 
         # A human-readable description of the matchmaking configuration.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -2014,12 +2285,14 @@ module AwsSdk
         # information, including players and team assignments, in a MatchmakingSucceeded event. WITH_QUEUE -
         # FlexMatch forms matches and uses the specified Amazon GameLift Servers queue to start a game session
         # for the match.
+
         @[JSON::Field(key: "FlexMatchMode")]
         getter flex_match_mode : String?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} . This information is added to the new GameSession object that is
         # created for a successful match. This parameter is not used if FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
@@ -2027,6 +2300,7 @@ module AwsSdk
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session . This information is added to the new GameSession object that is created for a
         # successful match. This parameter is not used if FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
@@ -2036,11 +2310,13 @@ module AwsSdk
         # Region. Queues are used to start new Amazon GameLift Servers-hosted game sessions for matches that
         # are created with this matchmaking configuration. If FlexMatchMode is set to STANDALONE , do not set
         # this parameter.
+
         @[JSON::Field(key: "GameSessionQueueArns")]
         getter game_session_queue_arns : Array(String)?
 
         # An SNS topic ARN that is set up to receive matchmaking notifications. See Setting up notifications
         # for matchmaking for more information.
+
         @[JSON::Field(key: "NotificationTarget")]
         getter notification_target : String?
 
@@ -2048,6 +2324,7 @@ module AwsSdk
         # key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access
         # management and cost allocation. For more information, see Tagging Amazon Web Services Resources in
         # the Amazon Web Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -2071,10 +2348,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateMatchmakingConfigurationOutput
         include JSON::Serializable
 
         # Object that describes the newly created matchmaking configuration.
+
         @[JSON::Field(key: "Configuration")]
         getter configuration : Types::MatchmakingConfiguration?
 
@@ -2084,17 +2363,20 @@ module AwsSdk
         end
       end
 
+
       struct CreateMatchmakingRuleSetInput
         include JSON::Serializable
 
         # A unique identifier for the matchmaking rule set. A matchmaking configuration identifies the rule
         # set it uses by this name value. Note that the rule set name is different from the optional name
         # field in the rule set body.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A collection of matchmaking rules, formatted as a JSON string. Comments are not allowed in JSON, but
         # most elements support a description field.
+
         @[JSON::Field(key: "RuleSetBody")]
         getter rule_set_body : String
 
@@ -2102,6 +2384,7 @@ module AwsSdk
         # key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access
         # management and cost allocation. For more information, see Tagging Amazon Web Services Resources in
         # the Amazon Web Services General Reference .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -2113,10 +2396,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateMatchmakingRuleSetOutput
         include JSON::Serializable
 
         # The newly created matchmaking rule set.
+
         @[JSON::Field(key: "RuleSet")]
         getter rule_set : Types::MatchmakingRuleSet
 
@@ -2126,19 +2411,23 @@ module AwsSdk
         end
       end
 
+
       struct CreatePlayerSessionInput
         include JSON::Serializable
 
         # A unique identifier for the game session to add a player to.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String
 
         # A unique identifier for a player. Player IDs are developer-defined.
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String
 
         # Developer-defined information related to a player. Amazon GameLift Servers does not use this data,
         # so it can be formatted as needed for use in the game.
+
         @[JSON::Field(key: "PlayerData")]
         getter player_data : String?
 
@@ -2150,10 +2439,12 @@ module AwsSdk
         end
       end
 
+
       struct CreatePlayerSessionOutput
         include JSON::Serializable
 
         # Object that describes the newly created player session record.
+
         @[JSON::Field(key: "PlayerSession")]
         getter player_session : Types::PlayerSession?
 
@@ -2163,14 +2454,17 @@ module AwsSdk
         end
       end
 
+
       struct CreatePlayerSessionsInput
         include JSON::Serializable
 
         # A unique identifier for the game session to add players to.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String
 
         # List of unique identifiers for the players to be added.
+
         @[JSON::Field(key: "PlayerIds")]
         getter player_ids : Array(String)
 
@@ -2178,6 +2472,7 @@ module AwsSdk
         # to the player. Amazon GameLift Servers does not use this data, so it can be formatted as needed for
         # use in the game. Any player data strings for player IDs that are not included in the PlayerIds
         # parameter are ignored.
+
         @[JSON::Field(key: "PlayerDataMap")]
         getter player_data_map : Hash(String, String)?
 
@@ -2189,10 +2484,12 @@ module AwsSdk
         end
       end
 
+
       struct CreatePlayerSessionsOutput
         include JSON::Serializable
 
         # A collection of player session objects created for the added players.
+
         @[JSON::Field(key: "PlayerSessions")]
         getter player_sessions : Array(Types::PlayerSession)?
 
@@ -2202,11 +2499,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateScriptInput
         include JSON::Serializable
 
         # A descriptive label that is associated with a script. Script names do not need to be unique. You can
         # use UpdateScript to change this value later.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2216,6 +2515,7 @@ module AwsSdk
         # must be in the same Region where you want to create a new script. By default, Amazon GameLift
         # Servers uploads the latest version of the zip file; if you have S3 object versioning turned on, you
         # can use the ObjectVersion parameter to specify an earlier version.
+
         @[JSON::Field(key: "StorageLocation")]
         getter storage_location : Types::S3Location?
 
@@ -2225,11 +2525,13 @@ module AwsSdk
         # Services General Reference . Once the resource is created, you can use TagResource , UntagResource ,
         # and ListTagsForResource to add, remove, and view tags. The maximum tag limit may be lower than
         # stated. See the Amazon Web Services General Reference for actual tagging limits.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # Version information that is associated with a build or script. Version strings do not need to be
         # unique. You can use UpdateScript to change this value later.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -2238,6 +2540,7 @@ module AwsSdk
         # tool to create a script, this parameter is set to the zip file name. It must be prepended with the
         # string "fileb://" to indicate that the file data is a binary object. For example: --zip-file
         # fileb://myRealtimeScript.zip .
+
         @[JSON::Field(key: "ZipFile")]
         getter zip_file : Bytes?
 
@@ -2251,6 +2554,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateScriptOutput
         include JSON::Serializable
 
@@ -2259,6 +2563,7 @@ module AwsSdk
         # the storage location reflects the information that was provided in the CreateScript request; (2) If
         # the script file was uploaded from a local zip file, the storage location reflects an S3 location
         # controls by the Amazon GameLift Servers service.
+
         @[JSON::Field(key: "Script")]
         getter script : Types::Script?
 
@@ -2268,12 +2573,14 @@ module AwsSdk
         end
       end
 
+
       struct CreateVpcPeeringAuthorizationInput
         include JSON::Serializable
 
         # A unique identifier for the Amazon Web Services account that you use to manage your Amazon GameLift
         # Servers fleet. You can find your Account ID in the Amazon Web Services Management Console under
         # account settings.
+
         @[JSON::Field(key: "GameLiftAwsAccountId")]
         getter game_lift_aws_account_id : String
 
@@ -2281,6 +2588,7 @@ module AwsSdk
         # The VPC must be in the same Region as your fleet. To look up a VPC ID, use the VPC Dashboard in the
         # Amazon Web Services Management Console. Learn more about VPC peering in VPC Peering with Amazon
         # GameLift Servers Fleets .
+
         @[JSON::Field(key: "PeerVpcId")]
         getter peer_vpc_id : String
 
@@ -2291,10 +2599,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateVpcPeeringAuthorizationOutput
         include JSON::Serializable
 
         # Details on the requested VPC peering authorization, including expiration.
+
         @[JSON::Field(key: "VpcPeeringAuthorization")]
         getter vpc_peering_authorization : Types::VpcPeeringAuthorization?
 
@@ -2304,17 +2614,20 @@ module AwsSdk
         end
       end
 
+
       struct CreateVpcPeeringConnectionInput
         include JSON::Serializable
 
         # A unique identifier for the fleet. You can use either the fleet ID or ARN value. This tells Amazon
         # GameLift Servers which GameLift VPC to peer with.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A unique identifier for the Amazon Web Services account with the VPC that you want to peer your
         # Amazon GameLift Servers fleet with. You can find your Account ID in the Amazon Web Services
         # Management Console under account settings.
+
         @[JSON::Field(key: "PeerVpcAwsAccountId")]
         getter peer_vpc_aws_account_id : String
 
@@ -2322,6 +2635,7 @@ module AwsSdk
         # The VPC must be in the same Region as your fleet. To look up a VPC ID, use the VPC Dashboard in the
         # Amazon Web Services Management Console. Learn more about VPC peering in VPC Peering with Amazon
         # GameLift Servers Fleets .
+
         @[JSON::Field(key: "PeerVpcId")]
         getter peer_vpc_id : String
 
@@ -2333,6 +2647,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateVpcPeeringConnectionOutput
         include JSON::Serializable
 
@@ -2340,11 +2655,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteAliasInput
         include JSON::Serializable
 
         # A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN
         # value.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String
 
@@ -2354,10 +2671,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteBuildInput
         include JSON::Serializable
 
         # A unique identifier for the build to delete. You can use either the build ID or ARN value.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String
 
@@ -2367,10 +2686,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteContainerFleetInput
         include JSON::Serializable
 
         # A unique identifier for the container fleet to delete. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -2380,6 +2701,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteContainerFleetOutput
         include JSON::Serializable
 
@@ -2387,19 +2709,23 @@ module AwsSdk
         end
       end
 
+
       struct DeleteContainerGroupDefinitionInput
         include JSON::Serializable
 
         # The unique identifier for the container group definition to delete. You can use either the Name or
         # ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The number of most recent versions to keep while deleting all older versions.
+
         @[JSON::Field(key: "VersionCountToRetain")]
         getter version_count_to_retain : Int32?
 
         # The specific version to delete.
+
         @[JSON::Field(key: "VersionNumber")]
         getter version_number : Int32?
 
@@ -2411,6 +2737,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteContainerGroupDefinitionOutput
         include JSON::Serializable
 
@@ -2418,10 +2745,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteFleetInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to be deleted. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -2431,16 +2760,19 @@ module AwsSdk
         end
       end
 
+
       struct DeleteFleetLocationsInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to delete locations for. You can use either the fleet ID or ARN
         # value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The list of fleet locations to delete. Specify locations in the form of an Amazon Web Services
         # Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Locations")]
         getter locations : Array(String)
 
@@ -2451,20 +2783,24 @@ module AwsSdk
         end
       end
 
+
       struct DeleteFleetLocationsOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that location attributes are being deleted for.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The remote locations that are being deleted, with each location status set to DELETING .
+
         @[JSON::Field(key: "LocationStates")]
         getter location_states : Array(Types::LocationState)?
 
@@ -2476,10 +2812,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteGameServerGroupInput
         include JSON::Serializable
 
         # A unique identifier for the game server group. Use either the name or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
@@ -2488,6 +2826,7 @@ module AwsSdk
         # UTILIZED status. FORCE_DELETE – Terminates the game server group, including all active game servers
         # regardless of their utilization status, and the Amazon EC2 Auto Scaling group. RETAIN – Does a safe
         # delete of the game server group but retains the Amazon EC2 Auto Scaling group as is.
+
         @[JSON::Field(key: "DeleteOption")]
         getter delete_option : String?
 
@@ -2498,11 +2837,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteGameServerGroupOutput
         include JSON::Serializable
 
         # An object that describes the deleted game server group resource, with status updated to
         # DELETE_SCHEDULED .
+
         @[JSON::Field(key: "GameServerGroup")]
         getter game_server_group : Types::GameServerGroup?
 
@@ -2512,11 +2853,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteGameSessionQueueInput
         include JSON::Serializable
 
         # A descriptive label that is associated with game session queue. Queue names must be unique within
         # each Region. You can use either the queue ID or ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2526,6 +2869,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteGameSessionQueueOutput
         include JSON::Serializable
 
@@ -2533,10 +2877,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteLocationInput
         include JSON::Serializable
 
         # The location name of the custom location to be deleted.
+
         @[JSON::Field(key: "LocationName")]
         getter location_name : String
 
@@ -2546,6 +2892,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteLocationOutput
         include JSON::Serializable
 
@@ -2553,11 +2900,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteMatchmakingConfigurationInput
         include JSON::Serializable
 
         # A unique identifier for the matchmaking configuration. You can use either the configuration name or
         # ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2566,6 +2915,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct DeleteMatchmakingConfigurationOutput
         include JSON::Serializable
@@ -2574,12 +2924,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteMatchmakingRuleSetInput
         include JSON::Serializable
 
         # A unique identifier for the matchmaking rule set to be deleted. (Note: The rule set name is
         # different from the optional "name" field in the rule set body.) You can use either the rule set name
         # or ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2589,6 +2941,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteMatchmakingRuleSetOutput
         include JSON::Serializable
 
@@ -2596,15 +2949,18 @@ module AwsSdk
         end
       end
 
+
       struct DeleteScalingPolicyInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to be deleted. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A descriptive label that is associated with a fleet's scaling policy. Policy names do not need to be
         # unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2615,11 +2971,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteScriptInput
         include JSON::Serializable
 
         # A unique identifier for the Realtime script to delete. You can use either the script ID or ARN
         # value.
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String
 
@@ -2629,12 +2987,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteVpcPeeringAuthorizationInput
         include JSON::Serializable
 
         # A unique identifier for the Amazon Web Services account that you use to manage your Amazon GameLift
         # Servers fleet. You can find your Account ID in the Amazon Web Services Management Console under
         # account settings.
+
         @[JSON::Field(key: "GameLiftAwsAccountId")]
         getter game_lift_aws_account_id : String
 
@@ -2642,6 +3002,7 @@ module AwsSdk
         # The VPC must be in the same Region as your fleet. To look up a VPC ID, use the VPC Dashboard in the
         # Amazon Web Services Management Console. Learn more about VPC peering in VPC Peering with Amazon
         # GameLift Servers Fleets .
+
         @[JSON::Field(key: "PeerVpcId")]
         getter peer_vpc_id : String
 
@@ -2652,6 +3013,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteVpcPeeringAuthorizationOutput
         include JSON::Serializable
 
@@ -2659,15 +3021,18 @@ module AwsSdk
         end
       end
 
+
       struct DeleteVpcPeeringConnectionInput
         include JSON::Serializable
 
         # A unique identifier for the fleet. This fleet specified must match the fleet referenced in the VPC
         # peering connection record. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A unique identifier for a VPC peering connection.
+
         @[JSON::Field(key: "VpcPeeringConnectionId")]
         getter vpc_peering_connection_id : String
 
@@ -2678,6 +3043,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteVpcPeeringConnectionOutput
         include JSON::Serializable
 
@@ -2686,6 +3052,7 @@ module AwsSdk
       end
 
       # Set of rules for processing a deployment for a container fleet update.
+
       struct DeploymentConfiguration
         include JSON::Serializable
 
@@ -2693,10 +3060,12 @@ module AwsSdk
         # applies across all fleet locations. With a rollback strategy, updated fleet instances are rolled
         # back to the last successful deployment. Alternatively, you can maintain a few impaired containers
         # for the purpose of debugging, while all other tasks return to the last successful deployment.
+
         @[JSON::Field(key: "ImpairmentStrategy")]
         getter impairment_strategy : String?
 
         # Sets a minimum level of healthy tasks to maintain during deployment activity.
+
         @[JSON::Field(key: "MinimumHealthyPercentage")]
         getter minimum_healthy_percentage : Int32?
 
@@ -2704,6 +3073,7 @@ module AwsSdk
         # a deployment honors game session protection, and delays actions that would interrupt a protected
         # active game session until the game session ends. Without protection, deployment activity can shut
         # down all running tasks, including active game sessions, regardless of game session protection.
+
         @[JSON::Field(key: "ProtectionStrategy")]
         getter protection_strategy : String?
 
@@ -2716,10 +3086,12 @@ module AwsSdk
       end
 
       # Information about the most recent deployment for the container fleet.
+
       struct DeploymentDetails
         include JSON::Serializable
 
         # A unique identifier for a fleet deployment.
+
         @[JSON::Field(key: "LatestDeploymentId")]
         getter latest_deployment_id : String?
 
@@ -2729,15 +3101,18 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterComputeInput
         include JSON::Serializable
 
         # The unique identifier of the compute resource to deregister. For an Anywhere fleet compute, use the
         # registered compute name.
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String
 
         # A unique identifier for the fleet the compute resource is currently registered to.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -2748,6 +3123,7 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterComputeOutput
         include JSON::Serializable
 
@@ -2755,14 +3131,17 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterGameServerInput
         include JSON::Serializable
 
         # A unique identifier for the game server group where the game server is running.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # A custom string that uniquely identifies the game server to deregister.
+
         @[JSON::Field(key: "GameServerId")]
         getter game_server_id : String
 
@@ -2773,11 +3152,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeAliasInput
         include JSON::Serializable
 
         # The unique identifier for the fleet alias that you want to retrieve. You can use either the alias ID
         # or ARN value.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String
 
@@ -2787,10 +3168,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeAliasOutput
         include JSON::Serializable
 
         # The requested alias resource.
+
         @[JSON::Field(key: "Alias")]
         getter alias : Types::Alias?
 
@@ -2800,11 +3183,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeBuildInput
         include JSON::Serializable
 
         # A unique identifier for the build to retrieve properties for. You can use either the build ID or ARN
         # value.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String
 
@@ -2814,10 +3199,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeBuildOutput
         include JSON::Serializable
 
         # Set of properties describing the requested build.
+
         @[JSON::Field(key: "Build")]
         getter build : Types::Build?
 
@@ -2827,17 +3214,20 @@ module AwsSdk
         end
       end
 
+
       struct DescribeComputeInput
         include JSON::Serializable
 
         # The unique identifier of the compute resource to retrieve properties for. For a managed container
         # fleet or Anywhere fleet, use a compute name. For an EC2 fleet, use an instance ID. To retrieve a
         # fleet's compute identifiers, call ListCompute .
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String
 
         # A unique identifier for the fleet that the compute belongs to. You can use either the fleet ID or
         # ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -2848,10 +3238,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeComputeOutput
         include JSON::Serializable
 
         # The set of properties for the requested compute resource.
+
         @[JSON::Field(key: "Compute")]
         getter compute : Types::Compute?
 
@@ -2861,11 +3253,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeContainerFleetInput
         include JSON::Serializable
 
         # A unique identifier for the container fleet to retrieve. You can use either the fleet ID or ARN
         # value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -2875,10 +3269,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeContainerFleetOutput
         include JSON::Serializable
 
         # The properties for the requested container fleet, including current status.
+
         @[JSON::Field(key: "ContainerFleet")]
         getter container_fleet : Types::ContainerFleet?
 
@@ -2888,15 +3284,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeContainerGroupDefinitionInput
         include JSON::Serializable
 
         # The unique identifier for the container group definition to retrieve properties for. You can use
         # either the Name or ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The specific version to retrieve.
+
         @[JSON::Field(key: "VersionNumber")]
         getter version_number : Int32?
 
@@ -2907,10 +3306,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeContainerGroupDefinitionOutput
         include JSON::Serializable
 
         # The properties of the requested container group definition resource.
+
         @[JSON::Field(key: "ContainerGroupDefinition")]
         getter container_group_definition : Types::ContainerGroupDefinition?
 
@@ -2920,6 +3321,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEC2InstanceLimitsInput
         include JSON::Serializable
 
@@ -2927,11 +3329,13 @@ module AwsSdk
         # type determines the computing resources of each instance in the fleet, including CPU, memory,
         # storage, and networking capacity. Do not specify a value for this parameter to retrieve limits for
         # all instance types.
+
         @[JSON::Field(key: "EC2InstanceType")]
         getter ec2_instance_type : String?
 
         # The name of a remote location to request instance limits for, in the form of an Amazon Web Services
         # Region code such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -2942,10 +3346,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeEC2InstanceLimitsOutput
         include JSON::Serializable
 
         # The maximum number of instances for the specified instance type.
+
         @[JSON::Field(key: "EC2InstanceLimits")]
         getter ec2_instance_limits : Array(Types::EC2InstanceLimit)?
 
@@ -2955,23 +3361,27 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetAttributesInput
         include JSON::Serializable
 
         # A list of unique fleet identifiers to retrieve attributes for. You can use either the fleet ID or
         # ARN value. To retrieve attributes for all current fleets, do not include this parameter.
+
         @[JSON::Field(key: "FleetIds")]
         getter fleet_ids : Array(String)?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. This parameter is ignored when the request specifies one or a list of fleet
         # IDs.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -2983,16 +3393,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetAttributesOutput
         include JSON::Serializable
 
         # A collection of objects containing attribute metadata for each requested fleet ID. Attribute objects
         # are returned only for fleets that currently exist.
+
         @[JSON::Field(key: "FleetAttributes")]
         getter fleet_attributes : Array(Types::FleetAttributes)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3003,23 +3416,27 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetCapacityInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to retrieve capacity information for. You can use either the fleet
         # ID or ARN value. Leave this parameter empty to retrieve capacity information for all fleets.
+
         @[JSON::Field(key: "FleetIds")]
         getter fleet_ids : Array(String)?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. This parameter is ignored when the request specifies one or a list of fleet
         # IDs.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3031,17 +3448,20 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetCapacityOutput
         include JSON::Serializable
 
         # A collection of objects that contains capacity information for each requested fleet ID. Capacity
         # objects are returned only for fleets that currently exist. Changes in desired instance value can
         # take up to 1 minute to be reflected.
+
         @[JSON::Field(key: "FleetCapacity")]
         getter fleet_capacity : Array(Types::FleetCapacity)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3052,14 +3472,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetDeploymentInput
         include JSON::Serializable
 
         # A unique identifier for the container fleet. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A unique identifier for the deployment to return information for.
+
         @[JSON::Field(key: "DeploymentId")]
         getter deployment_id : String?
 
@@ -3070,15 +3493,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetDeploymentOutput
         include JSON::Serializable
 
         # The requested deployment information.
+
         @[JSON::Field(key: "FleetDeployment")]
         getter fleet_deployment : Types::FleetDeployment?
 
         # If the deployment is for a multi-location fleet, the requests returns the deployment status in each
         # fleet location.
+
         @[JSON::Field(key: "LocationalDeployments")]
         getter locational_deployments : Hash(String, Types::LocationalDeployment)?
 
@@ -3089,34 +3515,40 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetEventsInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to get event logs for. You can use either the fleet ID or ARN
         # value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The most recent date to retrieve event logs for. If no end time is specified, this call returns
         # entries from the specified start time up to the present. Format is a number expressed in Unix time
         # as milliseconds (ex: "1469498468.057").
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The earliest date to retrieve event logs for. If no start time is specified, this call returns
         # entries starting from when the fleet was created to the specified end time. Format is a number
         # expressed in Unix time as milliseconds (ex: "1469498468.057").
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
@@ -3130,15 +3562,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetEventsOutput
         include JSON::Serializable
 
         # A collection of objects containing event log entries for the specified fleet.
+
         @[JSON::Field(key: "Events")]
         getter events : Array(Types::Event)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3149,27 +3584,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetLocationAttributesInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to retrieve remote locations for. You can use either the fleet ID
         # or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. This limit is not currently enforced.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A list of fleet locations to retrieve information for. Specify locations in the form of an Amazon
         # Web Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Locations")]
         getter locations : Array(String)?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3182,25 +3622,30 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetLocationAttributesOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that location attributes were requested for.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # Location-specific information on the requested fleet's remote locations.
+
         @[JSON::Field(key: "LocationAttributes")]
         getter location_attributes : Array(Types::LocationAttributes)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3213,16 +3658,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetLocationCapacityInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to request location capacity for. You can use either the fleet ID
         # or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The fleet location to retrieve capacity information for. Specify a location in the form of an Amazon
         # Web Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String
 
@@ -3233,12 +3681,14 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetLocationCapacityOutput
         include JSON::Serializable
 
         # Resource capacity information for the requested fleet location. Capacity objects are returned only
         # for fleets and locations that currently exist. Changes in desired instance value can take up to 1
         # minute to be reflected.
+
         @[JSON::Field(key: "FleetCapacity")]
         getter fleet_capacity : Types::FleetCapacity?
 
@@ -3248,16 +3698,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetLocationUtilizationInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to request location utilization for. You can use either the fleet
         # ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The fleet location to retrieve utilization information for. Specify a location in the form of an
         # Amazon Web Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String
 
@@ -3268,11 +3721,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetLocationUtilizationOutput
         include JSON::Serializable
 
         # Utilization information for the requested fleet location. Utilization objects are returned only for
         # fleets and locations that currently exist.
+
         @[JSON::Field(key: "FleetUtilization")]
         getter fleet_utilization : Types::FleetUtilization?
 
@@ -3282,16 +3737,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetPortSettingsInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to retrieve port settings for. You can use either the fleet ID or
         # ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A remote location to check for status of port setting updates. Use the Amazon Web Services Region
         # code format, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -3302,30 +3760,36 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetPortSettingsOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that was requested.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The port settings for the requested fleet ID.
+
         @[JSON::Field(key: "InboundPermissions")]
         getter inbound_permissions : Array(Types::IpPermission)?
 
         # The requested fleet location, expressed as an Amazon Web Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # The current status of updates to the fleet's port settings in the requested fleet location. A status
         # of PENDING_UPDATE indicates that an update was requested for the fleet but has not yet been
         # completed for the location.
+
         @[JSON::Field(key: "UpdateStatus")]
         getter update_status : String?
 
@@ -3339,23 +3803,27 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetUtilizationInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to retrieve utilization data for. You can use either the fleet ID
         # or ARN value. To retrieve attributes for all current fleets, do not include this parameter.
+
         @[JSON::Field(key: "FleetIds")]
         getter fleet_ids : Array(String)?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. This parameter is ignored when the request specifies one or a list of fleet
         # IDs.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3367,16 +3835,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFleetUtilizationOutput
         include JSON::Serializable
 
         # A collection of objects containing utilization information for each requested fleet ID. Utilization
         # objects are returned only for fleets that currently exist.
+
         @[JSON::Field(key: "FleetUtilization")]
         getter fleet_utilization : Array(Types::FleetUtilization)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3387,10 +3858,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameServerGroupInput
         include JSON::Serializable
 
         # A unique identifier for the game server group. Use either the name or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
@@ -3400,10 +3873,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameServerGroupOutput
         include JSON::Serializable
 
         # An object with the property settings for the requested game server group resource.
+
         @[JSON::Field(key: "GameServerGroup")]
         getter game_server_group : Types::GameServerGroup?
 
@@ -3413,14 +3888,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameServerInput
         include JSON::Serializable
 
         # A unique identifier for the game server group where the game server is running.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # A custom string that uniquely identifies the game server information to be retrieved.
+
         @[JSON::Field(key: "GameServerId")]
         getter game_server_id : String
 
@@ -3431,27 +3909,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameServerInstancesInput
         include JSON::Serializable
 
         # A unique identifier for the game server group. Use either the name or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # The Amazon EC2 instance IDs that you want to retrieve status on. Amazon EC2 instance IDs use a
         # 17-character format, for example: i-1234567890abcdef0 . To retrieve all instances in the game server
         # group, leave this parameter empty.
+
         @[JSON::Field(key: "InstanceIds")]
         getter instance_ids : Array(String)?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3464,15 +3947,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameServerInstancesOutput
         include JSON::Serializable
 
         # The collection of requested game server instances.
+
         @[JSON::Field(key: "GameServerInstances")]
         getter game_server_instances : Array(Types::GameServerInstance)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3483,10 +3969,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameServerOutput
         include JSON::Serializable
 
         # Object that describes the requested game server.
+
         @[JSON::Field(key: "GameServer")]
         getter game_server : Types::GameServer?
 
@@ -3496,41 +3984,49 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionDetailsInput
         include JSON::Serializable
 
         # A unique identifier for the alias associated with the fleet to retrieve all game sessions for. You
         # can use either the alias ID or ARN value.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String?
 
         # A unique identifier for the fleet to retrieve all game sessions active on the fleet. You can use
         # either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A unique identifier for the game session to retrieve.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A fleet location to get game session details for. You can specify a fleet's home Region or a remote
         # location. Use the Amazon Web Services Region code format, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Game session status to filter results on. Possible game session statuses include ACTIVE , TERMINATED
         # , ACTIVATING and TERMINATING (the last two are transitory).
+
         @[JSON::Field(key: "StatusFilter")]
         getter status_filter : String?
 
@@ -3546,15 +4042,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionDetailsOutput
         include JSON::Serializable
 
         # A collection of properties for each game session that matches the request.
+
         @[JSON::Field(key: "GameSessionDetails")]
         getter game_session_details : Array(Types::GameSessionDetail)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3565,10 +4064,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionPlacementInput
         include JSON::Serializable
 
         # A unique identifier for a game session placement to retrieve.
+
         @[JSON::Field(key: "PlacementId")]
         getter placement_id : String
 
@@ -3578,10 +4079,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionPlacementOutput
         include JSON::Serializable
 
         # Object that describes the requested game session placement.
+
         @[JSON::Field(key: "GameSessionPlacement")]
         getter game_session_placement : Types::GameSessionPlacement?
 
@@ -3591,22 +4094,26 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionQueuesInput
         include JSON::Serializable
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. You can request up to 50 results.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A list of queue names to retrieve information for. You can use either the queue ID or ARN value. To
         # request settings for all queues, leave this parameter empty.
+
         @[JSON::Field(key: "Names")]
         getter names : Array(String)?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3618,15 +4125,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionQueuesOutput
         include JSON::Serializable
 
         # A collection of objects that describe the requested game session queues.
+
         @[JSON::Field(key: "GameSessionQueues")]
         getter game_session_queues : Array(Types::GameSessionQueue)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3637,42 +4147,50 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionsInput
         include JSON::Serializable
 
         # A unique identifier for the alias associated with the fleet to retrieve game sessions for. You can
         # use either the alias ID or ARN value.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String?
 
         # A unique identifier for the fleet to retrieve game sessions for. You can use either the fleet ID or
         # ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A unique identifier for the game session to retrieve.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A fleet location to get game sessions for. You can specify a fleet's home Region or a remote
         # location. Use the Amazon Web Services Region code format, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Game session status to filter results on. You can filter on the following states: ACTIVE ,
         # TERMINATED , ACTIVATING , and TERMINATING . The last two are transitory and used for only very brief
         # periods of time.
+
         @[JSON::Field(key: "StatusFilter")]
         getter status_filter : String?
 
@@ -3688,15 +4206,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeGameSessionsOutput
         include JSON::Serializable
 
         # A collection of properties for each game session that matches the request.
+
         @[JSON::Field(key: "GameSessions")]
         getter game_sessions : Array(Types::GameSession)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3707,32 +4228,38 @@ module AwsSdk
         end
       end
 
+
       struct DescribeInstancesInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to retrieve instance information for. You can use either the fleet
         # ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve
         # all instances in the fleet.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The name of a location to retrieve instance information for, in the form of an Amazon Web Services
         # Region code such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3746,15 +4273,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeInstancesOutput
         include JSON::Serializable
 
         # A collection of objects containing properties for each instance returned.
+
         @[JSON::Field(key: "Instances")]
         getter instances : Array(Types::Instance)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3765,27 +4295,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeMatchmakingConfigurationsInput
         include JSON::Serializable
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. This parameter is limited to 10.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A unique identifier for the matchmaking configuration(s) to retrieve. You can use either the
         # configuration name or ARN value. To request all existing configurations, leave this parameter empty.
+
         @[JSON::Field(key: "Names")]
         getter names : Array(String)?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A unique identifier for the matchmaking rule set. You can use either the rule set name or ARN value.
         # Use this parameter to retrieve all matchmaking configurations that use this rule set.
+
         @[JSON::Field(key: "RuleSetName")]
         getter rule_set_name : String?
 
@@ -3798,15 +4333,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeMatchmakingConfigurationsOutput
         include JSON::Serializable
 
         # A collection of requested matchmaking configurations.
+
         @[JSON::Field(key: "Configurations")]
         getter configurations : Array(Types::MatchmakingConfiguration)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3817,10 +4355,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeMatchmakingInput
         include JSON::Serializable
 
         # A unique identifier for a matchmaking ticket. You can include up to 10 ID values.
+
         @[JSON::Field(key: "TicketIds")]
         getter ticket_ids : Array(String)
 
@@ -3830,10 +4370,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeMatchmakingOutput
         include JSON::Serializable
 
         # A collection of existing matchmaking ticket objects matching the request.
+
         @[JSON::Field(key: "TicketList")]
         getter ticket_list : Array(Types::MatchmakingTicket)?
 
@@ -3843,23 +4385,27 @@ module AwsSdk
         end
       end
 
+
       struct DescribeMatchmakingRuleSetsInput
         include JSON::Serializable
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A list of one or more matchmaking rule set names to retrieve details for. (Note: The rule set name
         # is different from the optional "name" field in the rule set body.) You can use either the rule set
         # name or ARN value.
+
         @[JSON::Field(key: "Names")]
         getter names : Array(String)?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3871,15 +4417,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeMatchmakingRuleSetsOutput
         include JSON::Serializable
 
         # A collection of requested matchmaking rule set objects.
+
         @[JSON::Field(key: "RuleSets")]
         getter rule_sets : Array(Types::MatchmakingRuleSet)
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3890,29 +4439,35 @@ module AwsSdk
         end
       end
 
+
       struct DescribePlayerSessionsInput
         include JSON::Serializable
 
         # A unique identifier for the game session to retrieve player sessions for.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. If a player session ID is specified, this parameter is ignored.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value. If a player session ID is specified, this parameter is ignored.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A unique identifier for a player to retrieve player sessions for.
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
         # A unique identifier for a player session to retrieve.
+
         @[JSON::Field(key: "PlayerSessionId")]
         getter player_session_id : String?
 
@@ -3924,6 +4479,7 @@ module AwsSdk
         # COMPLETED -- The player connection has been dropped. TIMEDOUT -- A player session request was
         # received, but the player did not connect and/or was not validated within the timeout limit (60
         # seconds).
+
         @[JSON::Field(key: "PlayerSessionStatusFilter")]
         getter player_session_status_filter : String?
 
@@ -3938,15 +4494,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribePlayerSessionsOutput
         include JSON::Serializable
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A collection of objects containing properties for each player session that matches the request.
+
         @[JSON::Field(key: "PlayerSessions")]
         getter player_sessions : Array(Types::PlayerSession)?
 
@@ -3957,11 +4516,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeRuntimeConfigurationInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to get the runtime configuration for. You can use either the fleet
         # ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -3971,11 +4532,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeRuntimeConfigurationOutput
         include JSON::Serializable
 
         # Instructions that describe how server processes are launched and maintained on computes in the
         # fleet.
+
         @[JSON::Field(key: "RuntimeConfiguration")]
         getter runtime_configuration : Types::RuntimeConfiguration?
 
@@ -3985,27 +4548,32 @@ module AwsSdk
         end
       end
 
+
       struct DescribeScalingPoliciesInput
         include JSON::Serializable
 
         # A unique identifier for the fleet for which to retrieve scaling policies. You can use either the
         # fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The fleet location. If you don't specify this value, the response contains the scaling policies of
         # every location in the fleet.
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4015,6 +4583,7 @@ module AwsSdk
         # DELETEREQUESTED -- A request to delete the scaling policy has been received. DELETING -- The scaling
         # policy is being deleted. DELETED -- The scaling policy has been deleted. ERROR -- An error occurred
         # in creating the policy. It should be removed and recreated.
+
         @[JSON::Field(key: "StatusFilter")]
         getter status_filter : String?
 
@@ -4028,15 +4597,18 @@ module AwsSdk
         end
       end
 
+
       struct DescribeScalingPoliciesOutput
         include JSON::Serializable
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A collection of objects containing the scaling policies matching the request.
+
         @[JSON::Field(key: "ScalingPolicies")]
         getter scaling_policies : Array(Types::ScalingPolicy)?
 
@@ -4047,11 +4619,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeScriptInput
         include JSON::Serializable
 
         # A unique identifier for the Realtime script to retrieve properties for. You can use either the
         # script ID or ARN value.
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String
 
@@ -4061,10 +4635,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeScriptOutput
         include JSON::Serializable
 
         # A set of properties describing the requested script.
+
         @[JSON::Field(key: "Script")]
         getter script : Types::Script?
 
@@ -4074,6 +4650,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeVpcPeeringAuthorizationsInput
         include JSON::Serializable
 
@@ -4081,11 +4658,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeVpcPeeringAuthorizationsOutput
         include JSON::Serializable
 
         # A collection of objects that describe all valid VPC peering operations for the current Amazon Web
         # Services account.
+
         @[JSON::Field(key: "VpcPeeringAuthorizations")]
         getter vpc_peering_authorizations : Array(Types::VpcPeeringAuthorization)?
 
@@ -4095,10 +4674,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeVpcPeeringConnectionsInput
         include JSON::Serializable
 
         # A unique identifier for the fleet. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -4108,10 +4689,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeVpcPeeringConnectionsOutput
         include JSON::Serializable
 
         # A collection of VPC peering connection records that match the request.
+
         @[JSON::Field(key: "VpcPeeringConnections")]
         getter vpc_peering_connections : Array(Types::VpcPeeringConnection)?
 
@@ -4122,15 +4705,18 @@ module AwsSdk
       end
 
       # Player information for use when creating player sessions using a game session placement request.
+
       struct DesiredPlayerSession
         include JSON::Serializable
 
         # Developer-defined information related to a player. Amazon GameLift Servers does not use this data,
         # so it can be formatted as needed for use in the game.
+
         @[JSON::Field(key: "PlayerData")]
         getter player_data : String?
 
         # A unique identifier for a player to associate with the player session.
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
@@ -4144,10 +4730,12 @@ module AwsSdk
       # Resource capacity settings. Fleet capacity is measured in Amazon EC2 instances. Pending and
       # terminating counts are non-zero when the fleet capacity is adjusting to a scaling event or if access
       # to resources is temporarily affected.
+
       struct EC2InstanceCounts
         include JSON::Serializable
 
         # Actual number of instances that are ready to host game sessions.
+
         @[JSON::Field(key: "ACTIVE")]
         getter active : Int32?
 
@@ -4155,26 +4743,32 @@ module AwsSdk
         # desired number of instances. Capacity is scaled up or down by changing the desired instances. A
         # change in the desired instances value can take up to 1 minute to be reflected when viewing a fleet's
         # capacity settings.
+
         @[JSON::Field(key: "DESIRED")]
         getter desired : Int32?
 
         # Number of active instances that are not currently hosting a game session.
+
         @[JSON::Field(key: "IDLE")]
         getter idle : Int32?
 
         # The maximum instance count value allowed.
+
         @[JSON::Field(key: "MAXIMUM")]
         getter maximum : Int32?
 
         # The minimum instance count value allowed.
+
         @[JSON::Field(key: "MINIMUM")]
         getter minimum : Int32?
 
         # Number of instances that are starting but not yet active.
+
         @[JSON::Field(key: "PENDING")]
         getter pending : Int32?
 
         # Number of instances that are no longer active but haven't yet been terminated.
+
         @[JSON::Field(key: "TERMINATING")]
         getter terminating : Int32?
 
@@ -4195,24 +4789,29 @@ module AwsSdk
       # instance type, per Amazon Web Services Region or location, for use with Amazon GameLift Servers. You
       # can request an limit increase for your account by using the Service limits page in the Amazon
       # GameLift Servers console.
+
       struct EC2InstanceLimit
         include JSON::Serializable
 
         # The number of instances for the specified type and location that are currently being used by the
         # Amazon Web Services account.
+
         @[JSON::Field(key: "CurrentInstances")]
         getter current_instances : Int32?
 
         # The name of an Amazon EC2 instance type. See Amazon Elastic Compute Cloud Instance Types for
         # detailed descriptions.
+
         @[JSON::Field(key: "EC2InstanceType")]
         getter ec2_instance_type : String?
 
         # The number of instances that is allowed for the specified instance type and location.
+
         @[JSON::Field(key: "InstanceLimit")]
         getter instance_limit : Int32?
 
         # An Amazon Web Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -4228,10 +4827,12 @@ module AwsSdk
       # Log entry describing an event that involves Amazon GameLift Servers resources (such as a fleet). In
       # addition to tracking activity, event codes and messages can provide additional information for
       # troubleshooting and debugging problems.
+
       struct Event
         include JSON::Serializable
 
         # The number of times that this event occurred.
+
         @[JSON::Field(key: "Count")]
         getter count : Int64?
 
@@ -4315,29 +4916,35 @@ module AwsSdk
         # protection policy setting. Event messaging includes both the old and new policy setting.
         # FLEET_DELETED -- A request to delete a fleet was initiated. GENERIC_EVENT -- An unspecified event
         # has occurred.
+
         @[JSON::Field(key: "EventCode")]
         getter event_code : String?
 
         # A unique identifier for a fleet event.
+
         @[JSON::Field(key: "EventId")]
         getter event_id : String?
 
         # Time stamp indicating when this event occurred. Format is a number expressed in Unix time as
         # milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "EventTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter event_time : Time?
 
         # Additional information related to the event.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # Location of stored logs with additional detail that is related to the event. This is useful for
         # debugging issues. The URL is valid for 15 minutes. You can also access fleet creation logs through
         # the Amazon GameLift Servers console.
+
         @[JSON::Field(key: "PreSignedLogUrl")]
         getter pre_signed_log_url : String?
 
         # A unique identifier for an event resource, such as a fleet ID.
+
         @[JSON::Field(key: "ResourceId")]
         getter resource_id : String?
 
@@ -4357,11 +4964,13 @@ module AwsSdk
       # filter to temporarily exclude specific locations from receiving placements. For queues that have
       # multi-location fleets, you can use a filter configuration allow placement with some, but not all, of
       # a fleet's locations.
+
       struct FilterConfiguration
         include JSON::Serializable
 
         # A list of locations to allow game session placement in, in the form of Amazon Web Services Region
         # codes such as us-west-2 .
+
         @[JSON::Field(key: "AllowedLocations")]
         getter allowed_locations : Array(String)?
 
@@ -4378,41 +4987,49 @@ module AwsSdk
       # configurations are set directly on the fleet's computes. Attributes include fleet identifiers and
       # descriptive properties, creation/termination time, and fleet status. Returned by:
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetAttributes
+
       struct FleetAttributes
         include JSON::Serializable
 
         # A set of attributes that are specific to an Anywhere fleet.
+
         @[JSON::Field(key: "AnywhereConfiguration")]
         getter anywhere_configuration : Types::AnywhereConfiguration?
 
         # The Amazon Resource Name ( ARN ) associated with the Amazon GameLift Servers build resource that is
         # deployed on instances in this fleet. In a GameLift build ARN, the resource ID matches the BuildId
         # value. This attribute is used with fleets where ComputeType is "EC2".
+
         @[JSON::Field(key: "BuildArn")]
         getter build_arn : String?
 
         # A unique identifier for the build resource that is deployed on instances in this fleet. This
         # attribute is used with fleets where ComputeType is "EC2".
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String?
 
         # Determines whether a TLS/SSL certificate is generated for a fleet. This feature must be enabled when
         # creating the fleet. All instances in a fleet share the same certificate.
+
         @[JSON::Field(key: "CertificateConfiguration")]
         getter certificate_configuration : Types::CertificateConfiguration?
 
         # The type of compute resource used to host your game servers. You can use your own compute resources
         # with Amazon GameLift Servers Anywhere or use Amazon EC2 instances with managed Amazon GameLift
         # Servers.
+
         @[JSON::Field(key: "ComputeType")]
         getter compute_type : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A human-readable description of the fleet.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -4420,15 +5037,18 @@ module AwsSdk
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 . In a GameLift
         # fleet ARN, the resource ID matches the FleetId value.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # Indicates whether the fleet uses On-Demand or Spot instances. For more information, see On-Demand
         # versus Spot Instances . This fleet property can't be changed after the fleet is created.
+
         @[JSON::Field(key: "FleetType")]
         getter fleet_type : String?
 
@@ -4438,6 +5058,7 @@ module AwsSdk
         # or look up a role's ARN by using the IAM dashboard in the Amazon Web Services Management Console.
         # Learn more about using on-box credentials for your game servers at Access external resources from a
         # game server . This attribute is used with fleets where ComputeType is EC2 .
+
         @[JSON::Field(key: "InstanceRoleArn")]
         getter instance_role_arn : String?
 
@@ -4447,6 +5068,7 @@ module AwsSdk
         # the game server is integrated with the server SDK version 5.x. For more information about using
         # shared credentials, see Communicate with other Amazon Web Services resources from your fleets . This
         # attribute is used with fleets where ComputeType is EC2 .
+
         @[JSON::Field(key: "InstanceRoleCredentialsProvider")]
         getter instance_role_credentials_provider : String?
 
@@ -4454,21 +5076,25 @@ module AwsSdk
         # of each instance in the fleet, including CPU, memory, storage, and networking capacity. See Amazon
         # Elastic Compute Cloud Instance Types for detailed descriptions. This attribute is used with fleets
         # where ComputeType is EC2 .
+
         @[JSON::Field(key: "InstanceType")]
         getter instance_type : String?
 
         # This parameter is no longer used. Game session log paths are now defined using the Amazon GameLift
         # Servers server API ProcessReady() logParameters . See more information in the Server API Reference .
+
         @[JSON::Field(key: "LogPaths")]
         getter log_paths : Array(String)?
 
         # Name of a metric group that metrics for this fleet are added to. In Amazon CloudWatch, you can view
         # aggregated metrics for fleets that are in a metric group. A fleet can be included in only one metric
         # group at a time. This attribute is used with fleets where ComputeType is EC2 .
+
         @[JSON::Field(key: "MetricGroups")]
         getter metric_groups : Array(String)?
 
         # A descriptive label that is associated with a fleet. Fleet names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -4476,6 +5102,7 @@ module AwsSdk
         # attribute is used with fleets where ComputeType is EC2 . NoProtection -- The game session can be
         # terminated during a scale-down event. FullProtection -- If the game session is in an ACTIVE status,
         # it cannot be terminated during a scale-down event.
+
         @[JSON::Field(key: "NewGameSessionProtectionPolicy")]
         getter new_game_session_protection_policy : String?
 
@@ -4485,29 +5112,35 @@ module AwsSdk
         # details in the Amazon Linux 2 FAQs . For game servers that are hosted on AL2 and use server SDK
         # version 4.x for Amazon GameLift Servers, first update the game server build to server SDK 5.x, and
         # then deploy to AL2023 instances. See Migrate to server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
+
 
         @[JSON::Field(key: "ResourceCreationLimitPolicy")]
         getter resource_creation_limit_policy : Types::ResourceCreationLimitPolicy?
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift script resource that is deployed on
         # instances in this fleet. In a GameLift script ARN, the resource ID matches the ScriptId value.
+
         @[JSON::Field(key: "ScriptArn")]
         getter script_arn : String?
 
         # A unique identifier for the Realtime script resource that is deployed on instances in this fleet.
         # This attribute is used with fleets where ComputeType is "EC2".
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String?
 
         # This parameter is no longer used. Server launch parameters are now defined using the fleet's runtime
         # configuration. Requests that use this parameter continue to be valid.
+
         @[JSON::Field(key: "ServerLaunchParameters")]
         getter server_launch_parameters : String?
 
         # This parameter is no longer used. Server launch paths are now defined using the fleet's
         # RuntimeConfiguration . Requests that use this parameter continue to be valid.
+
         @[JSON::Field(key: "ServerLaunchPath")]
         getter server_launch_path : String?
 
@@ -4520,16 +5153,19 @@ module AwsSdk
         # service. ACTIVE -- The fleet is now ready to host game sessions. ERROR -- An error occurred when
         # downloading, validating, building, or activating the fleet. DELETING -- Hosts are responding to a
         # delete fleet request. TERMINATED -- The fleet no longer exists.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A list of fleet activity that has been suspended using StopFleetActions . This includes fleet
         # auto-scaling. This attribute is used with fleets where ComputeType is EC2 .
+
         @[JSON::Field(key: "StoppedActions")]
         getter stopped_actions : Array(String)?
 
         # A time stamp indicating when this data object was terminated. Format is a number expressed in Unix
         # time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "TerminationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter termination_time : Time?
 
@@ -4567,37 +5203,44 @@ module AwsSdk
       # Current resource capacity settings for managed EC2 fleets and managed container fleets. For
       # multi-location fleets, location values might refer to a fleet's remote location or its home Region.
       # Returned by: DescribeFleetCapacity , DescribeFleetLocationCapacity , UpdateFleetCapacity
+
       struct FleetCapacity
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet associated with the location.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The number and status of game server container groups deployed in a container fleet.
+
         @[JSON::Field(key: "GameServerContainerGroupCounts")]
         getter game_server_container_group_counts : Types::GameServerContainerGroupCounts?
 
         # The current number of instances in the fleet, listed by instance status. Counts for pending and
         # terminating instances might be non-zero if the fleet is adjusting to a scaling event or if access to
         # resources is temporarily affected.
+
         @[JSON::Field(key: "InstanceCounts")]
         getter instance_counts : Types::EC2InstanceCounts?
 
         # The Amazon EC2 instance type that is used for instances in a fleet. Instance type determines the
         # computing resources in use, including CPU, memory, storage, and networking capacity. See Amazon
         # Elastic Compute Cloud Instance Types for detailed descriptions.
+
         @[JSON::Field(key: "InstanceType")]
         getter instance_type : String?
 
         # The fleet location for the instance count information, expressed as an Amazon Web Services Region
         # code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -4614,8 +5257,10 @@ module AwsSdk
 
       # The specified fleet has no available instances to fulfill a CreateGameSession request. Clients can
       # retry such requests immediately or after a waiting period.
+
       struct FleetCapacityExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4627,20 +5272,24 @@ module AwsSdk
       end
 
       # Describes a container fleet deployment with updates to the fleet.
+
       struct FleetDeployment
         include JSON::Serializable
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # Instructions for how to deploy updates to a container fleet and what actions to take if the
         # deployment fails.
+
         @[JSON::Field(key: "DeploymentConfiguration")]
         getter deployment_configuration : Types::DeploymentConfiguration?
 
         # A unique identifier for the deployment.
+
         @[JSON::Field(key: "DeploymentId")]
         getter deployment_id : String?
 
@@ -4649,32 +5298,38 @@ module AwsSdk
         # The deployment has completed successfully. ROLLBACK_IN_PROGRESS -- The deployment failed and
         # rollback has been initiated. ROLLBACK_IN_COMPLETE -- The deployment failed and rollback has been
         # completed. CANCELLED -- The deployment was cancelled.
+
         @[JSON::Field(key: "DeploymentStatus")]
         getter deployment_status : String?
 
         # A unique identifier for the container fleet.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The unique identifier for the version of the game server container group definition that is being
         # deployed.
+
         @[JSON::Field(key: "GameServerBinaryArn")]
         getter game_server_binary_arn : String?
 
         # The unique identifier for the version of the per-instance container group definition that is being
         # deployed.
+
         @[JSON::Field(key: "PerInstanceBinaryArn")]
         getter per_instance_binary_arn : String?
 
         # The unique identifier for the version of the game server container group definition to roll back to
         # if deployment fails. Amazon GameLift Servers sets this property to the container group definition
         # version that the fleet used when it was last active.
+
         @[JSON::Field(key: "RollbackGameServerBinaryArn")]
         getter rollback_game_server_binary_arn : String?
 
         # The unique identifier for the version of the per-instance container group definition to roll back to
         # if deployment fails. Amazon GameLift Servers sets this property to the container group definition
         # version that the fleet used when it was last active.
+
         @[JSON::Field(key: "RollbackPerInstanceBinaryArn")]
         getter rollback_per_instance_binary_arn : String?
 
@@ -4694,41 +5349,49 @@ module AwsSdk
 
       # Current resource utilization statistics in a specified fleet or location. The location value might
       # refer to a fleet's remote location or its home region.
+
       struct FleetUtilization
         include JSON::Serializable
 
         # The number of active game sessions that are currently being hosted across all instances in the fleet
         # location.
+
         @[JSON::Field(key: "ActiveGameSessionCount")]
         getter active_game_session_count : Int32?
 
         # The number of server processes in ACTIVE status that are currently running across all instances in
         # the fleet location.
+
         @[JSON::Field(key: "ActiveServerProcessCount")]
         getter active_server_process_count : Int32?
 
         # The number of active player sessions that are currently being hosted across all instances in the
         # fleet location.
+
         @[JSON::Field(key: "CurrentPlayerSessionCount")]
         getter current_player_session_count : Int32?
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet associated with the location.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The fleet location for the fleet utilization information, expressed as an Amazon Web Services Region
         # code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # The maximum number of players allowed across all game sessions that are currently being hosted
         # across all instances in the fleet location.
+
         @[JSON::Field(key: "MaximumPlayerSessionCount")]
         getter maximum_player_session_count : Int32?
 
@@ -4751,14 +5414,17 @@ module AwsSdk
       # session. When searching for game sessions, you can filter on game property keys and values. You
       # can't delete game properties from a game session. For examples of working with game properties, see
       # Create a game session with properties .
+
       struct GameProperty
         include JSON::Serializable
 
         # The game property identifier.
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The game property value.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -4772,6 +5438,7 @@ module AwsSdk
       # Properties describing a game server that is running on an instance in a game server group. A game
       # server is created by a successful call to RegisterGameServer and deleted by calling
       # DeregisterGameServer . A game server is claimed to host a game session by calling ClaimGameServer .
+
       struct GameServer
         include JSON::Serializable
 
@@ -4780,39 +5447,47 @@ module AwsSdk
         # minute. During this time, game clients connect to the game server to start the game and trigger the
         # game server to update its utilization status. After one minute, the game server claim status reverts
         # to null.
+
         @[JSON::Field(key: "ClaimStatus")]
         getter claim_status : String?
 
         # The port and IP address that must be used to establish a client connection to the game server.
+
         @[JSON::Field(key: "ConnectionInfo")]
         getter connection_info : String?
 
         # A set of custom game server properties, formatted as a single string value. This data is passed to a
         # game client or service when it requests information on game servers.
+
         @[JSON::Field(key: "GameServerData")]
         getter game_server_data : String?
 
         # The ARN identifier for the game server group where the game server is located.
+
         @[JSON::Field(key: "GameServerGroupArn")]
         getter game_server_group_arn : String?
 
         # A unique identifier for the game server group where the game server is running.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String?
 
         # A custom string that uniquely identifies the game server. Game server IDs are developer-defined and
         # are unique across all game server groups in an Amazon Web Services account.
+
         @[JSON::Field(key: "GameServerId")]
         getter game_server_id : String?
 
         # The unique identifier for the instance where the game server is running. This ID is available in the
         # instance metadata. EC2 instance IDs use a 17-character format, for example: i-1234567890abcdef0 .
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # Timestamp that indicates the last time the game server was claimed. The format is a number expressed
         # in Unix time as milliseconds (for example "1469498468.057" ). This value is used to calculate when a
         # claimed game server's status should revert to null.
+
         @[JSON::Field(key: "LastClaimTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_claim_time : Time?
 
@@ -4820,11 +5495,13 @@ module AwsSdk
         # a number expressed in Unix time as milliseconds (for example "1469498468.057" ). After game server
         # registration, this property is only changed when a game server update specifies a health check
         # value.
+
         @[JSON::Field(key: "LastHealthCheckTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_health_check_time : Time?
 
         # Timestamp that indicates when the game server registered. The format is a number expressed in Unix
         # time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "RegistrationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter registration_time : Time?
 
@@ -4832,6 +5509,7 @@ module AwsSdk
         # include: AVAILABLE - The game server is available to be claimed. A game server that has been claimed
         # remains in this status until it reports game hosting activity. UTILIZED - The game server is
         # currently hosting a game session with players.
+
         @[JSON::Field(key: "UtilizationStatus")]
         getter utilization_status : String?
 
@@ -4859,30 +5537,36 @@ module AwsSdk
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameServerContainerDefinitionInput .
       # Part of: ContainerGroupDefinition Returned by: DescribeContainerGroupDefinition ,
       # ListContainerGroupDefinitions , UpdateContainerGroupDefinition
+
       struct GameServerContainerDefinition
         include JSON::Serializable
 
         # The container definition identifier. Container names are unique within a container group definition.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String?
 
         # Indicates that the container relies on the status of other containers in the same container group
         # during startup and shutdown sequences. A container might have dependencies on multiple containers.
+
         @[JSON::Field(key: "DependsOn")]
         getter depends_on : Array(Types::ContainerDependency)?
 
         # A set of environment variables that's passed to the container on startup. See the
         # ContainerDefinition::environment parameter in the Amazon Elastic Container Service API Reference .
+
         @[JSON::Field(key: "EnvironmentOverride")]
         getter environment_override : Array(Types::ContainerEnvironment)?
 
         # The URI to the image that Amazon GameLift Servers uses when deploying this container to a container
         # fleet. For a more specific identifier, see ResolvedImageDigest .
+
         @[JSON::Field(key: "ImageUri")]
         getter image_uri : String?
 
         # A mount point that binds a path inside the container to a file or directory on the host system and
         # lets it access the file or directory.
+
         @[JSON::Field(key: "MountPoints")]
         getter mount_points : Array(Types::ContainerMountPoint)?
 
@@ -4891,16 +5575,19 @@ module AwsSdk
         # aren't directly accessed by inbound traffic. Amazon GameLift Servers maps these container ports to
         # externally accessible connection ports, which are assigned as needed from the container fleet's
         # ConnectionPortRange .
+
         @[JSON::Field(key: "PortConfiguration")]
         getter port_configuration : Types::ContainerPortConfiguration?
 
         # A unique and immutable identifier for the container image. The digest is a SHA 256 hash of the
         # container image manifest.
+
         @[JSON::Field(key: "ResolvedImageDigest")]
         getter resolved_image_digest : String?
 
         # The Amazon GameLift Servers server SDK version that the game server is integrated with. Only game
         # servers using 5.2.0 or higher are compatible with container fleets.
+
         @[JSON::Field(key: "ServerSdkVersion")]
         getter server_sdk_version : String?
 
@@ -4923,10 +5610,12 @@ module AwsSdk
       # container, see GameServerContainerDefinition . A game server container is automatically considered
       # essential; if an essential container fails, the entire container group restarts. Use with:
       # CreateContainerGroupDefinition , UpdateContainerGroupDefinition
+
       struct GameServerContainerDefinitionInput
         include JSON::Serializable
 
         # A string that uniquely identifies the container definition within a container group.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String
 
@@ -4938,6 +5627,7 @@ module AwsSdk
         # region].amazonaws.com/[repository ID] Image ID and digest: [AWS account].dkr.ecr.[AWS
         # region].amazonaws.com/[repository ID]@[digest] Image ID and tag: [AWS account].dkr.ecr.[AWS
         # region].amazonaws.com/[repository ID]:[tag]
+
         @[JSON::Field(key: "ImageUri")]
         getter image_uri : String
 
@@ -4948,11 +5638,13 @@ module AwsSdk
         # Each range specifies starting and ending values as well as the supported network protocol. Container
         # ports aren't directly accessed by inbound traffic. Amazon GameLift Servers maps each container port
         # to an externally accessible connection port (see the container fleet property ConnectionPortRange ).
+
         @[JSON::Field(key: "PortConfiguration")]
         getter port_configuration : Types::ContainerPortConfiguration
 
         # The Amazon GameLift Servers server SDK version that the game server is integrated with. Only game
         # servers using 5.2.0 or higher are compatible with container fleets.
+
         @[JSON::Field(key: "ServerSdkVersion")]
         getter server_sdk_version : String
 
@@ -4962,16 +5654,19 @@ module AwsSdk
         # might specify that ContainerB has a START dependency on ContainerA . This dependency means that
         # ContainerB can't start until after ContainerA has started. This dependency is reversed on shutdown,
         # which means that ContainerB must shut down before ContainerA can shut down.
+
         @[JSON::Field(key: "DependsOn")]
         getter depends_on : Array(Types::ContainerDependency)?
 
         # A set of environment variables to pass to the container on startup. See the
         # ContainerDefinition::environment parameter in the Amazon Elastic Container Service API Reference .
+
         @[JSON::Field(key: "EnvironmentOverride")]
         getter environment_override : Array(Types::ContainerEnvironment)?
 
         # A mount point that binds a path inside the container to a file or directory on the host system and
         # lets it access the file or directory.
+
         @[JSON::Field(key: "MountPoints")]
         getter mount_points : Array(Types::ContainerMountPoint)?
 
@@ -4994,22 +5689,27 @@ module AwsSdk
       # process, then the fleet has the capacity to run host 50 game sessions at a time. Returned by:
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetCapacity.html ,
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeFleetLocationCapacity.html
+
       struct GameServerContainerGroupCounts
         include JSON::Serializable
 
         # The number of container groups that have active game sessions.
+
         @[JSON::Field(key: "ACTIVE")]
         getter active : Int32?
 
         # The number of container groups that have no active game sessions.
+
         @[JSON::Field(key: "IDLE")]
         getter idle : Int32?
 
         # The number of container groups that are starting up but haven't yet registered.
+
         @[JSON::Field(key: "PENDING")]
         getter pending : Int32?
 
         # The number of container groups that are in the process of shutting down.
+
         @[JSON::Field(key: "TERMINATING")]
         getter terminating : Int32?
 
@@ -5027,11 +5727,13 @@ module AwsSdk
       # by a successful call to CreateGameServerGroup and deleted by calling DeleteGameServerGroup . Game
       # server group activity can be temporarily suspended and resumed by calling SuspendGameServerGroup and
       # ResumeGameServerGroup , respectively.
+
       struct GameServerGroup
         include JSON::Serializable
 
         # A generated unique ID for the Amazon EC2 Auto Scaling group that is associated with this game server
         # group.
+
         @[JSON::Field(key: "AutoScalingGroupArn")]
         getter auto_scaling_group_arn : String?
 
@@ -5046,20 +5748,24 @@ module AwsSdk
         # Existing nonviable Spot Instances are terminated (after current gameplay ends) and are replaced with
         # new On-Demand Instances. ON_DEMAND_ONLY - Only On-Demand Instances are used in the game server
         # group. No Spot Instances are used, even when available, while this balancing strategy is in force.
+
         @[JSON::Field(key: "BalancingStrategy")]
         getter balancing_strategy : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A generated unique ID for the game server group.
+
         @[JSON::Field(key: "GameServerGroupArn")]
         getter game_server_group_arn : String?
 
         # A developer-defined identifier for the game server group. The name is unique for each Region in each
         # Amazon Web Services account.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String?
 
@@ -5069,20 +5775,24 @@ module AwsSdk
         # terminated while there are active game servers running except in the event of a forced game server
         # group deletion (see ). An exception to this is with Spot Instances, which can be terminated by
         # Amazon Web Services regardless of protection status.
+
         @[JSON::Field(key: "GameServerProtectionPolicy")]
         getter game_server_protection_policy : String?
 
         # The set of Amazon EC2 instance types that Amazon GameLift Servers FleetIQ can use when balancing and
         # automatically scaling instances in the corresponding Auto Scaling group.
+
         @[JSON::Field(key: "InstanceDefinitions")]
         getter instance_definitions : Array(Types::InstanceDefinition)?
 
         # A timestamp that indicates when this game server group was last updated.
+
         @[JSON::Field(key: "LastUpdatedTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_time : Time?
 
         # The Amazon Resource Name ( ARN ) for an IAM role that allows Amazon GameLift Servers to access your
         # Amazon EC2 Auto Scaling groups.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -5096,16 +5806,19 @@ module AwsSdk
         # Scaling group and the game server group. DELETED - The game server group has been successfully
         # deleted. ERROR - The asynchronous processes of activating or deleting a game server group has
         # failed, resulting in an error state.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Additional information about the current game server group status. This information might provide
         # additional insight on groups that are in ERROR status.
+
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # A list of activities that are currently suspended for this game server group. If this property is
         # empty, all activities are occurring.
+
         @[JSON::Field(key: "SuspendedActions")]
         getter suspended_actions : Array(String)?
 
@@ -5130,6 +5843,7 @@ module AwsSdk
       # are used to add an Auto Scaling policy when creating the corresponding Auto Scaling group. After the
       # Auto Scaling group is created, all updates to Auto Scaling policies, including changing this policy
       # and adding or removing other policies, is done directly on the Auto Scaling group.
+
       struct GameServerGroupAutoScalingPolicy
         include JSON::Serializable
 
@@ -5138,6 +5852,7 @@ module AwsSdk
         # "PercentUtilizedGameServers" and specifies a target value for the metric. As player usage changes,
         # the policy triggers to adjust the game server group capacity so that the metric returns to the
         # target value.
+
         @[JSON::Field(key: "TargetTrackingConfiguration")]
         getter target_tracking_configuration : Types::TargetTrackingConfiguration
 
@@ -5145,6 +5860,7 @@ module AwsSdk
         # register with Amazon GameLift Servers FleetIQ. Specifying a warm-up time can be useful, particularly
         # with game servers that take a long time to start up, because it avoids prematurely starting new
         # instances.
+
         @[JSON::Field(key: "EstimatedInstanceWarmup")]
         getter estimated_instance_warmup : Int32?
 
@@ -5159,24 +5875,29 @@ module AwsSdk
       # Instance configurations are set with game server group properties (see DescribeGameServerGroup and
       # with the EC2 launch template that was used when creating the game server group. Retrieve game server
       # instances for a game server group by calling DescribeGameServerInstances .
+
       struct GameServerInstance
         include JSON::Serializable
 
         # A generated unique identifier for the game server group that includes the game server instance.
+
         @[JSON::Field(key: "GameServerGroupArn")]
         getter game_server_group_arn : String?
 
         # A developer-defined identifier for the game server group that includes the game server instance. The
         # name is unique for each Region in each Amazon Web Services account.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String?
 
         # The unique identifier for the instance where the game server is running. This ID is available in the
         # instance metadata. EC2 instance IDs use a 17-character format, for example: i-1234567890abcdef0 .
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # Current status of the game server instance
+
         @[JSON::Field(key: "InstanceStatus")]
         getter instance_status : String?
 
@@ -5193,20 +5914,24 @@ module AwsSdk
       # session ends, its status is set to TERMINATED . Amazon GameLift Servers retains a game session
       # resource for 30 days after the game session ends. You can reuse idempotency token values after this
       # time. Game session logs are retained for 14 days. All APIs by task
+
       struct GameSession
         include JSON::Serializable
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A unique identifier for a player. This ID is used to enforce a resource protection policy (if one
         # exists), that limits the number of game sessions a player can create.
+
         @[JSON::Field(key: "CreatorId")]
         getter creator_id : String?
 
         # Number of players currently in the game session.
+
         @[JSON::Field(key: "CurrentPlayerSessionCount")]
         getter current_player_session_count : Int32?
 
@@ -5216,43 +5941,51 @@ module AwsSdk
         # identifier&gt;.compute.amazonaws.com . (See Amazon EC2 Instance IP Addressing .) When connecting to
         # a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP
         # address.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift fleet that this game session is
         # running on.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that the game session is running on.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
         # A set of custom game session properties, formatted as a single string value. This data is passed to
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
         # A unique identifier for the game session. A game session ARN has the following format:
         # arn:aws:gamelift:&lt;location&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency
         # token&gt; .
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
         # The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # The fleet location where the game session is running. This value might specify the fleet's home
         # Region or a remote location. Location is expressed as an Amazon Web Services Region code such as
         # us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -5261,28 +5994,34 @@ module AwsSdk
         # as player attributes and team assignments. For more details on matchmaker data, see Match Data .
         # Matchmaker data is updated whenever new players are added during a successful backfill (see
         # StartMatchBackfill ).
+
         @[JSON::Field(key: "MatchmakerData")]
         getter matchmaker_data : String?
 
         # The maximum number of players that can be connected simultaneously to the game session.
+
         @[JSON::Field(key: "MaximumPlayerSessionCount")]
         getter maximum_player_session_count : Int32?
 
         # A descriptive label that is associated with a game session. Session names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Indicates whether the game session is accepting new players.
+
         @[JSON::Field(key: "PlayerSessionCreationPolicy")]
         getter player_session_creation_policy : String?
 
         # The port number for the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
         # Current status of the game session. A game session must have an ACTIVE status to have player
         # sessions.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5291,11 +6030,13 @@ module AwsSdk
         # TRIGGERED_ON_PROCESS_TERMINATE – The game session was stopped by calling TerminateGameSession with
         # the termination mode TRIGGER_ON_PROCESS_TERMINATE . FORCE_TERMINATED – The game session was stopped
         # by calling TerminateGameSession with the termination mode FORCE_TERMINATE .
+
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # A time stamp indicating when this data object was terminated. Format is a number expressed in Unix
         # time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "TerminationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter termination_time : Time?
 
@@ -5327,6 +6068,7 @@ module AwsSdk
       # request. Once a match is made, the FlexMatch engine creates a new game session for it. This
       # information, including the game session endpoint and player sessions for each player in the original
       # matchmaking request, is added to the matchmaking ticket.
+
       struct GameSessionConnectionInfo
         include JSON::Serializable
 
@@ -5336,25 +6078,30 @@ module AwsSdk
         # identifier&gt;.compute.amazonaws.com . (See Amazon EC2 Instance IP Addressing .) When connecting to
         # a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP
         # address.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # A unique identifier for the game session. Use the game session ID.
+
         @[JSON::Field(key: "GameSessionArn")]
         getter game_session_arn : String?
 
         # The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # A collection of player session IDs, one for each player ID that was included in the original
         # matchmaking request.
+
         @[JSON::Field(key: "MatchedPlayerSessions")]
         getter matched_player_sessions : Array(Types::MatchedPlayerSession)?
 
         # The port number for the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -5373,6 +6120,7 @@ module AwsSdk
       # policy is evaluated when a player tries to create a new game session. On receiving a
       # CreateGameSession request, Amazon GameLift Servers checks that the player (identified by CreatorId )
       # has created fewer than game session limit in the specified time period.
+
       struct GameSessionCreationLimitPolicy
         include JSON::Serializable
 
@@ -5381,10 +6129,12 @@ module AwsSdk
         # policy evaluates when a player tries to create a new game session. On receiving a CreateGameSession
         # request, Amazon GameLift Servers checks that the player (identified by CreatorId ) has created fewer
         # than game session limit in the specified time period.
+
         @[JSON::Field(key: "NewGameSessionsPerCreator")]
         getter new_game_sessions_per_creator : Int32?
 
         # The time span used in evaluating the resource creation limit policy.
+
         @[JSON::Field(key: "PolicyPeriodInMinutes")]
         getter policy_period_in_minutes : Int32?
 
@@ -5396,16 +6146,19 @@ module AwsSdk
       end
 
       # A game session's properties plus the protection policy currently in force.
+
       struct GameSessionDetail
         include JSON::Serializable
 
         # Object that describes a game session.
+
         @[JSON::Field(key: "GameSession")]
         getter game_session : Types::GameSession?
 
         # Current status of protection for the game session. NoProtection -- The game session can be
         # terminated during a scale-down event. FullProtection -- If the game session is in an ACTIVE status,
         # it cannot be terminated during a scale-down event.
+
         @[JSON::Field(key: "ProtectionPolicy")]
         getter protection_policy : String?
 
@@ -5418,8 +6171,10 @@ module AwsSdk
 
       # The game instance is currently full and cannot allow the requested player(s) to join. Clients can
       # retry such requests immediately or after a waiting period.
+
       struct GameSessionFullException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5438,6 +6193,7 @@ module AwsSdk
       # succeeding. With each attempt it creates a
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSession object and updates this
       # placement object with the new game session properties.
+
       struct GameSessionPlacement
         include JSON::Serializable
 
@@ -5447,51 +6203,61 @@ module AwsSdk
         # identifier&gt;.compute.amazonaws.com . (See Amazon EC2 Instance IP Addressing .) When connecting to
         # a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP
         # address.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # Time stamp indicating when this request was completed, canceled, or timed out.
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
         # Identifier for the game session created by this placement request. This identifier is unique across
         # all Regions. This value isn't final until placement status is FULFILLED .
+
         @[JSON::Field(key: "GameSessionArn")]
         getter game_session_arn : String?
 
         # A set of custom game session properties, formatted as a single string value. This data is passed to
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
         # A unique identifier for the game session. This value isn't final until placement status is FULFILLED
         # .
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
         # A descriptive label that is associated with a game session. Session names do not need to be unique.
+
         @[JSON::Field(key: "GameSessionName")]
         getter game_session_name : String?
 
         # A descriptive label that is associated with game session queue. Queue names must be unique within
         # each Region.
+
         @[JSON::Field(key: "GameSessionQueueName")]
         getter game_session_queue_name : String?
 
         # Name of the Region where the game session created by this placement request is running. This value
         # isn't final until placement status is FULFILLED .
+
         @[JSON::Field(key: "GameSessionRegion")]
         getter game_session_region : String?
 
         # The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number. This value isn't final until placement status is
         # FULFILLED .
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
@@ -5499,10 +6265,12 @@ module AwsSdk
         # It identifies the matchmaking configuration used to create the match, and contains data on all
         # players assigned to the match, including player attributes and team assignments. For more details on
         # matchmaker data, see Match Data .
+
         @[JSON::Field(key: "MatchmakerData")]
         getter matchmaker_data : String?
 
         # The maximum number of players that can be connected simultaneously to the game session.
+
         @[JSON::Field(key: "MaximumPlayerSessionCount")]
         getter maximum_player_session_count : Int32?
 
@@ -5510,21 +6278,25 @@ module AwsSdk
         # request. These player sessions are created only after a new game session is successfully placed
         # (placement status is FULFILLED ). This information includes the player ID, provided in the placement
         # request, and a corresponding player session ID.
+
         @[JSON::Field(key: "PlacedPlayerSessions")]
         getter placed_player_sessions : Array(Types::PlacedPlayerSession)?
 
         # A unique identifier for a game session placement.
+
         @[JSON::Field(key: "PlacementId")]
         getter placement_id : String?
 
         # A set of values, expressed in milliseconds, that indicates the amount of latency that a player
         # experiences when connected to Amazon Web Services Regions.
+
         @[JSON::Field(key: "PlayerLatencies")]
         getter player_latencies : Array(Types::PlayerLatency)?
 
         # The port number for the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number. This value isn't final until placement status is
         # FULFILLED .
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -5533,11 +6305,13 @@ module AwsSdk
         # request only. The list might include Amazon Web Services Regions, local zones, and custom locations
         # (for Anywhere fleets). The fallback strategy tells Amazon GameLift Servers what action to take (if
         # any) in the event that it failed to place a new game session.
+
         @[JSON::Field(key: "PriorityConfigurationOverride")]
         getter priority_configuration_override : Types::PriorityConfigurationOverride?
 
         # Time stamp indicating when this request was placed in the queue. Format is a number expressed in
         # Unix time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
@@ -5548,6 +6322,7 @@ module AwsSdk
         # the time limit expired. You can resubmit the placement request as needed. FAILED -- Amazon GameLift
         # Servers is not able to complete the process of placing the game session. Common reasons are the game
         # session terminated before the placement process was completed, or an unexpected internal error.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -5577,22 +6352,26 @@ module AwsSdk
 
       # Configuration for a game session placement mechanism that processes requests for new game sessions.
       # A queue can be used on its own or as part of a matchmaking solution.
+
       struct GameSessionQueue
         include JSON::Serializable
 
         # Information that is added to all events that are related to this game session queue.
+
         @[JSON::Field(key: "CustomEventData")]
         getter custom_event_data : String?
 
         # A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in
         # the queue. Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in
         # order of placement preference.
+
         @[JSON::Field(key: "Destinations")]
         getter destinations : Array(Types::GameSessionQueueDestination)?
 
         # A list of locations where a queue is allowed to place new game sessions. Locations are specified in
         # the form of Amazon Web Services Region codes, such as us-west-2 . If this parameter is not set, game
         # sessions can be placed in any queue location.
+
         @[JSON::Field(key: "FilterConfiguration")]
         getter filter_configuration : Types::FilterConfiguration?
 
@@ -5600,16 +6379,19 @@ module AwsSdk
         # resource and uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::gamesessionqueue/&lt;queue name&gt; . In a Amazon GameLift Servers
         # game session queue ARN, the resource ID matches the Name value.
+
         @[JSON::Field(key: "GameSessionQueueArn")]
         getter game_session_queue_arn : String?
 
         # A descriptive label that is associated with game session queue. Queue names must be unique within
         # each Region.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # An SNS topic ARN that is set up to receive game session placement notifications. See Setting up
         # notifications for game session placement .
+
         @[JSON::Field(key: "NotificationTarget")]
         getter notification_target : String?
 
@@ -5617,17 +6399,20 @@ module AwsSdk
         # placement requests. Use multiple policies to gradually relax the cap over time if Amazon GameLift
         # Servers can't make a placement. Policies are evaluated in order starting with the lowest maximum
         # latency value.
+
         @[JSON::Field(key: "PlayerLatencyPolicies")]
         getter player_latency_policies : Array(Types::PlayerLatencyPolicy)?
 
         # Custom settings to use when prioritizing destinations and locations for game session placements.
         # This configuration replaces the FleetIQ default prioritization process. Priority types that are not
         # explicitly named will be automatically applied at the end of the prioritization process.
+
         @[JSON::Field(key: "PriorityConfiguration")]
         getter priority_configuration : Types::PriorityConfiguration?
 
         # The maximum time, in seconds, that a new game session placement request remains in the queue. When a
         # request exceeds this time, the game session placement changes to a TIMED_OUT status.
+
         @[JSON::Field(key: "TimeoutInSeconds")]
         getter timeout_in_seconds : Int32?
 
@@ -5647,11 +6432,13 @@ module AwsSdk
 
       # A fleet or alias designated in a game session queue. Queues fulfill requests for new game sessions
       # by placing a new game session on any of the queue's destinations.
+
       struct GameSessionQueueDestination
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet
         # ID or alias ID and a Region name, provide a unique identifier across all Regions.
+
         @[JSON::Field(key: "DestinationArn")]
         getter destination_arn : String?
 
@@ -5661,17 +6448,20 @@ module AwsSdk
         end
       end
 
+
       struct GetComputeAccessInput
         include JSON::Serializable
 
         # A unique identifier for the compute resource that you want to connect to. For an EC2 fleet, use an
         # instance ID. For a managed container fleet, use a compute name. You can retrieve a fleet's compute
         # names by calling ListCompute .
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String
 
         # A unique identifier for the fleet that holds the compute resource that you want to connect to. You
         # can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -5682,41 +6472,49 @@ module AwsSdk
         end
       end
 
+
       struct GetComputeAccessOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to an Amazon GameLift Servers compute resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::compute/compute-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "ComputeArn")]
         getter compute_arn : String?
 
         # The identifier of the compute resource to be accessed. This value might be either a compute name or
         # an instance ID.
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String?
 
         # For a managed container fleet, a list of containers on the compute. Use the container runtime ID
         # with Docker commands to connect to a specific container.
+
         @[JSON::Field(key: "ContainerIdentifiers")]
         getter container_identifiers : Array(Types::ContainerIdentifier)?
 
         # A set of temporary Amazon Web Services credentials for use when connecting to the compute resource
         # with Amazon EC2 Systems Manager (SSM).
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::AwsCredentials?
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # The ID of the fleet that holds the compute resource to be accessed.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The instance ID where the compute resource is running.
+
         @[JSON::Field(key: "Target")]
         getter target : String?
 
@@ -5732,15 +6530,18 @@ module AwsSdk
         end
       end
 
+
       struct GetComputeAuthTokenInput
         include JSON::Serializable
 
         # The name of the compute resource you are requesting the authentication token for. For an Anywhere
         # fleet compute, use the registered compute name. For an EC2 fleet instance, use the instance ID.
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String
 
         # A unique identifier for the fleet that the compute is registered to.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -5751,34 +6552,41 @@ module AwsSdk
         end
       end
 
+
       struct GetComputeAuthTokenOutput
         include JSON::Serializable
 
         # A valid temporary authentication token.
+
         @[JSON::Field(key: "AuthToken")]
         getter auth_token : String?
 
         # The Amazon Resource Name ( ARN ) that is assigned to an Amazon GameLift Servers compute resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::compute/compute-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "ComputeArn")]
         getter compute_arn : String?
 
         # The name of the compute resource that the authentication token is issued to.
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String?
 
         # The amount of time until the authentication token is no longer valid.
+
         @[JSON::Field(key: "ExpirationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter expiration_timestamp : Time?
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that the compute is registered to.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -5793,10 +6601,12 @@ module AwsSdk
         end
       end
 
+
       struct GetGameSessionLogUrlInput
         include JSON::Serializable
 
         # A unique identifier for the game session to get logs for.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String
 
@@ -5806,12 +6616,14 @@ module AwsSdk
         end
       end
 
+
       struct GetGameSessionLogUrlOutput
         include JSON::Serializable
 
         # Location of the requested game session logs, available for download. This URL is valid for 15
         # minutes, after which S3 will reject any download request using this URL. You can request a new URL
         # any time within the 14-day period that the logs are retained.
+
         @[JSON::Field(key: "PreSignedUrl")]
         getter pre_signed_url : String?
 
@@ -5821,6 +6633,7 @@ module AwsSdk
         end
       end
 
+
       struct GetInstanceAccessInput
         include JSON::Serializable
 
@@ -5828,10 +6641,12 @@ module AwsSdk
         # access to instances in EC2 fleets with the following statuses: ACTIVATING , ACTIVE , or ERROR . Use
         # either a fleet ID or an ARN value. You can access fleets in ERROR status for a short period of time
         # before Amazon GameLift Servers deletes them.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A unique identifier for the instance you want to access. You can access an instance in any status.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String
 
@@ -5842,10 +6657,12 @@ module AwsSdk
         end
       end
 
+
       struct GetInstanceAccessOutput
         include JSON::Serializable
 
         # The connection information for a fleet instance, including IP address and access credentials.
+
         @[JSON::Field(key: "InstanceAccess")]
         getter instance_access : Types::InstanceAccess?
 
@@ -5857,8 +6674,10 @@ module AwsSdk
 
       # A game session with this custom ID string already exists in this fleet. Resolve this conflict before
       # retrying this request.
+
       struct IdempotentParameterMismatchException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5871,11 +6690,13 @@ module AwsSdk
 
       # Represents a virtual computing instance that runs game server processes and hosts game sessions. In
       # Amazon GameLift Servers, one or more instances make up a managed EC2 fleet.
+
       struct Instance
         include JSON::Serializable
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
@@ -5885,29 +6706,35 @@ module AwsSdk
         # identifier&gt;.compute.amazonaws.com . (See Amazon EC2 Instance IP Addressing .) When connecting to
         # a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP
         # address.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that the instance belongs to.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A unique identifier for the instance.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # IP address that is assigned to the instance.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # The fleet location of the instance, expressed as an Amazon Web Services Region code, such as
         # us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -5915,6 +6742,7 @@ module AwsSdk
         # support on 6/30/2025. See more details in the Amazon Linux 2 FAQs . For game servers that are hosted
         # on AL2 and use server SDK version 4.x for Amazon GameLift Servers, first update the game server
         # build to server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
@@ -5925,10 +6753,12 @@ module AwsSdk
         # game session. The instance is now considered ready to host game sessions. TERMINATING -- The
         # instance is in the process of shutting down. This may happen to reduce capacity during a scaling
         # down event or to recycle resources in the event of a problem.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # EC2 instance type that defines the computing resources of this instance.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -5950,26 +6780,32 @@ module AwsSdk
       # Information and credentials that you can use to remotely connect to an instance in an EC2 managed
       # fleet. This data type is returned in response to a call to
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetInstanceAccess .
+
       struct InstanceAccess
         include JSON::Serializable
 
         # Security credentials that are required to access the instance.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::InstanceCredentials?
 
         # A unique identifier for the fleet containing the instance to be accessed.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A unique identifier for the instance to be accessed.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # IP address assigned to the instance.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # Operating system that is running on the instance.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
@@ -5988,15 +6824,18 @@ module AwsSdk
       # https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetInstanceAccess , which requests
       # access for instances that are running game servers with the Amazon GameLift Servers server SDK
       # version 4.x or earlier.
+
       struct InstanceCredentials
         include JSON::Serializable
 
         # Secret string. For Windows instances, the secret is a password for use with Windows Remote Desktop.
         # For Linux instances, it's a private key for use with SSH.
+
         @[JSON::Field(key: "Secret")]
         getter secret : String?
 
         # A user name for logging in.
+
         @[JSON::Field(key: "UserName")]
         getter user_name : String?
 
@@ -6011,10 +6850,12 @@ module AwsSdk
       # instance types defined for it. Amazon GameLift Servers FleetIQ periodically evaluates each defined
       # instance type for viability. It then updates the Auto Scaling group with the list of viable instance
       # types.
+
       struct InstanceDefinition
         include JSON::Serializable
 
         # An Amazon EC2 instance type designation.
+
         @[JSON::Field(key: "InstanceType")]
         getter instance_type : String
 
@@ -6023,6 +6864,7 @@ module AwsSdk
         # instance type's cost per unit hour and better identify the most cost-effective options. For detailed
         # information on weighting instance capacity, see Instance Weighting in the Amazon Elastic Compute
         # Cloud Auto Scaling User Guide . Default value is "1".
+
         @[JSON::Field(key: "WeightedCapacity")]
         getter weighted_capacity : String?
 
@@ -6035,8 +6877,10 @@ module AwsSdk
 
       # The service encountered an unrecoverable internal failure while processing the request. Clients can
       # retry such requests immediately or after a waiting period.
+
       struct InternalServiceException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6049,8 +6893,10 @@ module AwsSdk
 
       # The requested operation would cause a conflict with the current state of a resource associated with
       # the request and/or the fleet. Resolve the conflict before retrying.
+
       struct InvalidFleetStatusException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6063,8 +6909,10 @@ module AwsSdk
 
       # The requested operation would cause a conflict with the current state of a resource associated with
       # the request and/or the game instance. Resolve the conflict before retrying.
+
       struct InvalidGameSessionStatusException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6077,8 +6925,10 @@ module AwsSdk
 
       # One or more parameter values in the request are invalid. Correct the invalid parameter values before
       # retrying.
+
       struct InvalidRequestException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6093,26 +6943,31 @@ module AwsSdk
       # instance in a fleet. Processes are assigned an IP address/port number combination, which must fall
       # into the fleet's allowed ranges. For Amazon GameLift Servers Realtime fleets, Amazon GameLift
       # Servers automatically opens two port ranges, one for TCP messaging and one for UDP.
+
       struct IpPermission
         include JSON::Serializable
 
         # A starting value for a range of allowed port numbers. For fleets using Linux builds, only ports 22
         # and 1026-60000 are valid. For fleets using Windows builds, only ports 1026-60000 are valid.
+
         @[JSON::Field(key: "FromPort")]
         getter from_port : Int32
 
         # A range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "
         # 000.000.000.000/[subnet mask] " or optionally the shortened version " 0.0.0.0/[subnet mask] ".
+
         @[JSON::Field(key: "IpRange")]
         getter ip_range : String
 
         # The network communication protocol used by the fleet.
+
         @[JSON::Field(key: "Protocol")]
         getter protocol : String
 
         # An ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must
         # be equal to or greater than FromPort . For fleets using Linux builds, only ports 22 and 1026-60000
         # are valid. For fleets using Windows builds, only ports 1026-60000 are valid.
+
         @[JSON::Field(key: "ToPort")]
         getter to_port : Int32
 
@@ -6128,20 +6983,24 @@ module AwsSdk
       # An Amazon Elastic Compute Cloud launch template that contains configuration settings and game server
       # code to be deployed to all instances in a game server group. The launch template is specified when
       # creating a new game server group.
+
       struct LaunchTemplateSpecification
         include JSON::Serializable
 
         # A unique identifier for an existing Amazon EC2 launch template.
+
         @[JSON::Field(key: "LaunchTemplateId")]
         getter launch_template_id : String?
 
         # A readable identifier for an existing Amazon EC2 launch template.
+
         @[JSON::Field(key: "LaunchTemplateName")]
         getter launch_template_name : String?
 
         # The version of the Amazon EC2 launch template to use. If no version is specified, the default
         # version will be used. With Amazon EC2, you can specify a default version for a launch template. If
         # none is set, the default is the first version created.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -6155,8 +7014,10 @@ module AwsSdk
 
       # The requested operation would cause the resource to exceed the allowed service limit. Resolve the
       # issue before retrying.
+
       struct LimitExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6167,21 +7028,25 @@ module AwsSdk
         end
       end
 
+
       struct ListAliasesInput
         include JSON::Serializable
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A descriptive label that is associated with an alias. Alias names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6191,6 +7056,7 @@ module AwsSdk
         # active fleets. TERMINAL -- The alias does not resolve to a fleet but instead can be used to display
         # a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the
         # RoutingStrategy message embedded.
+
         @[JSON::Field(key: "RoutingStrategyType")]
         getter routing_strategy_type : String?
 
@@ -6203,15 +7069,18 @@ module AwsSdk
         end
       end
 
+
       struct ListAliasesOutput
         include JSON::Serializable
 
         # A collection of alias resources that match the request parameters.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(Types::Alias)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6222,17 +7091,20 @@ module AwsSdk
         end
       end
 
+
       struct ListBuildsInput
         include JSON::Serializable
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6242,6 +7114,7 @@ module AwsSdk
         # successfully created, the build status is set to this value. READY -- The game build has been
         # successfully uploaded. You can now create new fleets for this build. FAILED -- The game build upload
         # failed. You cannot create new fleets for this build.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -6253,15 +7126,18 @@ module AwsSdk
         end
       end
 
+
       struct ListBuildsOutput
         include JSON::Serializable
 
         # A collection of build resources that match the request.
+
         @[JSON::Field(key: "Builds")]
         getter builds : Array(Types::Build)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6272,10 +7148,12 @@ module AwsSdk
         end
       end
 
+
       struct ListComputeInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to retrieve compute resources for.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -6283,27 +7161,32 @@ module AwsSdk
         # deployment. ACTIVE -- The compute is deployed with the correct container definitions. It is ready to
         # process game servers and host game sessions. IMPAIRED -- An update deployment to the compute failed,
         # and the compute is deployed with incorrect container definitions.
+
         @[JSON::Field(key: "ComputeStatus")]
         getter compute_status : String?
 
         # For computes in a managed container fleet, the name of the deployed container group definition.
+
         @[JSON::Field(key: "ContainerGroupDefinitionName")]
         getter container_group_definition_name : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The name of a location to retrieve compute resources for. For an Amazon GameLift Servers Anywhere
         # fleet, use a custom location. For a managed fleet, provide a Amazon Web Services Region or Local
         # Zone code (for example: us-west-2 or us-west-2-lax-1 ).
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6318,15 +7201,18 @@ module AwsSdk
         end
       end
 
+
       struct ListComputeOutput
         include JSON::Serializable
 
         # A list of compute resources in the specified fleet.
+
         @[JSON::Field(key: "ComputeList")]
         getter compute_list : Array(Types::Compute)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6337,6 +7223,7 @@ module AwsSdk
         end
       end
 
+
       struct ListContainerFleetsInput
         include JSON::Serializable
 
@@ -6344,17 +7231,20 @@ module AwsSdk
         # fleets that use the specified container group definition. You can specify the container group
         # definition's name to get fleets with the latest versions. Alternatively, provide an ARN value to get
         # fleets with a specific version number.
+
         @[JSON::Field(key: "ContainerGroupDefinitionName")]
         getter container_group_definition_name : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6366,15 +7256,18 @@ module AwsSdk
         end
       end
 
+
       struct ListContainerFleetsOutput
         include JSON::Serializable
 
         # A collection of container fleet objects for all fleets that match the request criteria.
+
         @[JSON::Field(key: "ContainerFleets")]
         getter container_fleets : Array(Types::ContainerFleet)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6385,22 +7278,26 @@ module AwsSdk
         end
       end
 
+
       struct ListContainerGroupDefinitionVersionsInput
         include JSON::Serializable
 
         # The unique identifier for the container group definition to retrieve properties for. You can use
         # either the Name or ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6412,15 +7309,18 @@ module AwsSdk
         end
       end
 
+
       struct ListContainerGroupDefinitionVersionsOutput
         include JSON::Serializable
 
         # A result set of container group definitions that match the request.
+
         @[JSON::Field(key: "ContainerGroupDefinitions")]
         getter container_group_definitions : Array(Types::ContainerGroupDefinition)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6431,22 +7331,26 @@ module AwsSdk
         end
       end
 
+
       struct ListContainerGroupDefinitionsInput
         include JSON::Serializable
 
         # The type of container group to retrieve. Container group type determines how Amazon GameLift Servers
         # deploys the container group on each fleet instance.
+
         @[JSON::Field(key: "ContainerGroupType")]
         getter container_group_type : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6458,15 +7362,18 @@ module AwsSdk
         end
       end
 
+
       struct ListContainerGroupDefinitionsOutput
         include JSON::Serializable
 
         # A result set of container group definitions that match the request.
+
         @[JSON::Field(key: "ContainerGroupDefinitions")]
         getter container_group_definitions : Array(Types::ContainerGroupDefinition)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6477,21 +7384,25 @@ module AwsSdk
         end
       end
 
+
       struct ListFleetDeploymentsInput
         include JSON::Serializable
 
         # A unique identifier for the container fleet. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6503,15 +7414,18 @@ module AwsSdk
         end
       end
 
+
       struct ListFleetDeploymentsOutput
         include JSON::Serializable
 
         # The requested deployment information.
+
         @[JSON::Field(key: "FleetDeployments")]
         getter fleet_deployments : Array(Types::FleetDeployment)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6522,27 +7436,32 @@ module AwsSdk
         end
       end
 
+
       struct ListFleetsInput
         include JSON::Serializable
 
         # A unique identifier for the build to request fleets for. Use this parameter to return only fleets
         # using a specified build. Use either the build ID or ARN value.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A unique identifier for the Realtime script to request fleets for. Use this parameter to return only
         # fleets using a specified script. Use either the script ID or ARN value.
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String?
 
@@ -6555,15 +7474,18 @@ module AwsSdk
         end
       end
 
+
       struct ListFleetsOutput
         include JSON::Serializable
 
         # A set of fleet IDs that match the list request.
+
         @[JSON::Field(key: "FleetIds")]
         getter fleet_ids : Array(String)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6574,14 +7496,17 @@ module AwsSdk
         end
       end
 
+
       struct ListGameServerGroupsInput
         include JSON::Serializable
 
         # The game server groups' limit.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # Specify the pagination token from a previous request to retrieve the next page of results.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6592,14 +7517,17 @@ module AwsSdk
         end
       end
 
+
       struct ListGameServerGroupsOutput
         include JSON::Serializable
 
         # The game server groups' game server groups.
+
         @[JSON::Field(key: "GameServerGroups")]
         getter game_server_groups : Array(Types::GameServerGroup)?
 
         # Specify the pagination token from a previous request to retrieve the next page of results.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6610,28 +7538,33 @@ module AwsSdk
         end
       end
 
+
       struct ListGameServersInput
         include JSON::Serializable
 
         # An identifier for the game server group to retrieve a list of game servers from. Use either the name
         # or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Indicates how to sort the returned data based on game server registration timestamp. Use ASCENDING
         # to retrieve oldest game servers first, or use DESCENDING to retrieve newest game servers first. If
         # this parameter is left empty, game servers are returned in no particular order.
+
         @[JSON::Field(key: "SortOrder")]
         getter sort_order : String?
 
@@ -6644,15 +7577,18 @@ module AwsSdk
         end
       end
 
+
       struct ListGameServersOutput
         include JSON::Serializable
 
         # A collection of game server objects that match the request.
+
         @[JSON::Field(key: "GameServers")]
         getter game_servers : Array(Types::GameServer)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6663,23 +7599,27 @@ module AwsSdk
         end
       end
 
+
       struct ListLocationsInput
         include JSON::Serializable
 
         # Filters the list for AWS or CUSTOM locations. Use this parameter to narrow down results to only
         # Amazon Web Services-managed locations (Amazon EC2 or container) or only your custom locations (such
         # as an Amazon GameLift Servers Anywhere fleet).
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(String)?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6691,17 +7631,20 @@ module AwsSdk
         end
       end
 
+
       struct ListLocationsOutput
         include JSON::Serializable
 
         # A collection of locations, including both Amazon Web Services and custom locations. Each location
         # includes a name and ping beacon information that can be used to measure network latency between
         # player devices and the location.
+
         @[JSON::Field(key: "Locations")]
         getter locations : Array(Types::LocationModel)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6712,17 +7655,20 @@ module AwsSdk
         end
       end
 
+
       struct ListScriptsInput
         include JSON::Serializable
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -6733,15 +7679,18 @@ module AwsSdk
         end
       end
 
+
       struct ListScriptsOutput
         include JSON::Serializable
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A set of properties describing the requested script.
+
         @[JSON::Field(key: "Scripts")]
         getter scripts : Array(Types::Script)?
 
@@ -6752,6 +7701,7 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
@@ -6759,6 +7709,7 @@ module AwsSdk
         # you want to retrieve tags for. Amazon GameLift Servers includes resource ARNs in the data object for
         # the resource. You can retrieve the ARN by calling a List or Describe operation for the resource
         # type.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -6768,10 +7719,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The collection of tags assigned to the resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -6782,20 +7735,24 @@ module AwsSdk
       end
 
       # Details about a location in a multi-location fleet.
+
       struct LocationAttributes
         include JSON::Serializable
 
         # A fleet location and its current life-cycle state.
+
         @[JSON::Field(key: "LocationState")]
         getter location_state : Types::LocationState?
 
         # A list of fleet actions that have been suspended in the fleet location.
+
         @[JSON::Field(key: "StoppedActions")]
         getter stopped_actions : Array(String)?
 
         # The status of fleet activity updates to the location. The status PENDING_UPDATE indicates that
         # StopFleetActions or StartFleetActions has been requested but the update has not yet been completed
         # for the location.
+
         @[JSON::Field(key: "UpdateStatus")]
         getter update_status : String?
 
@@ -6808,11 +7765,13 @@ module AwsSdk
       end
 
       # A remote location where a multi-location fleet can deploy game servers for game hosting.
+
       struct LocationConfiguration
         include JSON::Serializable
 
         # An Amazon Web Services Region code, such as us-west-2 . For a list of supported Regions and Local
         # Zones, see Amazon GameLift Servers service locations for managed hosting.
+
         @[JSON::Field(key: "Location")]
         getter location : String
 
@@ -6824,20 +7783,24 @@ module AwsSdk
 
       # Properties of a location, which can include its name, ARN (for custom locations), and ping beacon
       # information.
+
       struct LocationModel
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a custom location resource and uniquely
         # identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::location/location-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "LocationArn")]
         getter location_arn : String?
 
         # The location's name.
+
         @[JSON::Field(key: "LocationName")]
         getter location_name : String?
 
         # Information about the UDP ping beacon for this location.
+
         @[JSON::Field(key: "PingBeacon")]
         getter ping_beacon : Types::PingBeacon?
 
@@ -6860,14 +7823,17 @@ module AwsSdk
       # responding to a delete fleet location request. TERMINATED -- The fleet location no longer exists.
       # NOT_FOUND -- The fleet location was not found. This could be because the custom location was removed
       # or not created.
+
       struct LocationState
         include JSON::Serializable
 
         # The fleet location, expressed as an Amazon Web Services Region code such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # The life-cycle status of a fleet location.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -6880,6 +7846,7 @@ module AwsSdk
 
       # For a multi-location container fleet, describes the progress of a deployment across all fleet
       # locations.
+
       struct LocationalDeployment
         include JSON::Serializable
 
@@ -6888,6 +7855,7 @@ module AwsSdk
         # The deployment has completed successfully. ROLLBACK_IN_PROGRESS -- The deployment failed and
         # rollback has been initiated. ROLLBACK_IN_COMPLETE -- The deployment failed and rollback has been
         # completed. CANCELLED -- The deployment was cancelled.
+
         @[JSON::Field(key: "DeploymentStatus")]
         getter deployment_status : String?
 
@@ -6900,6 +7868,7 @@ module AwsSdk
       # A method for collecting container logs for the fleet. Amazon GameLift Servers saves all standard
       # output for each container in logs, including game session logs. You can select from the following
       # methods:
+
       struct LogConfiguration
         include JSON::Serializable
 
@@ -6907,14 +7876,17 @@ module AwsSdk
         # CloudWatch log group that you define. Each container emits a log stream, which is organized in the
         # log group. S3 -- Store logs in an Amazon S3 bucket that you define. This bucket must reside in the
         # fleet's home Amazon Web Services Region. NONE -- Don't collect container logs.
+
         @[JSON::Field(key: "LogDestination")]
         getter log_destination : String?
 
         # If log destination is CLOUDWATCH , logs are sent to the specified log group in Amazon CloudWatch.
+
         @[JSON::Field(key: "LogGroupArn")]
         getter log_group_arn : String?
 
         # If log destination is S3 , logs are sent to the specified Amazon S3 bucket name.
+
         @[JSON::Field(key: "S3BucketName")]
         getter s3_bucket_name : String?
 
@@ -6930,14 +7902,17 @@ module AwsSdk
       # successful match automatically creates new player sessions for every player ID in the original
       # matchmaking request. When players connect to the match's game session, they must include both player
       # ID and player session ID in order to claim their assigned player slot.
+
       struct MatchedPlayerSession
         include JSON::Serializable
 
         # A unique identifier for a player
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
         # A unique identifier for a player session
+
         @[JSON::Field(key: "PlayerSessionId")]
         getter player_session_id : String?
 
@@ -6950,6 +7925,7 @@ module AwsSdk
 
       # Guidelines for use with FlexMatch to match players into games. All matchmaking requests must specify
       # a matchmaking configuration.
+
       struct MatchmakingConfiguration
         include JSON::Serializable
 
@@ -6957,12 +7933,14 @@ module AwsSdk
         # the matched players. To require acceptance, set to TRUE. When this option is enabled, matchmaking
         # tickets use the status REQUIRES_ACCEPTANCE to indicate when a completed potential match is waiting
         # for player acceptance.
+
         @[JSON::Field(key: "AcceptanceRequired")]
         getter acceptance_required : Bool?
 
         # The length of time (in seconds) to wait for players to accept a proposed match, if acceptance is
         # required. If any player rejects the match or fails to accept before the timeout, the ticket
         # continues to look for an acceptable match.
+
         @[JSON::Field(key: "AcceptanceTimeoutSeconds")]
         getter acceptance_timeout_seconds : Int32?
 
@@ -6970,6 +7948,7 @@ module AwsSdk
         # configuration's rule set specifies a match for a single 12-person team, and the additional player
         # count is set to 2, only 10 players are selected for the match. This parameter is not used when
         # FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "AdditionalPlayerCount")]
         getter additional_player_count : Int32?
 
@@ -6978,6 +7957,7 @@ module AwsSdk
         # AUTOMATIC indicates that GameLift creates backfill requests whenever a game session has one or more
         # open slots. Learn more about manual and automatic backfill in Backfill existing games with FlexMatch
         # . Automatic backfill is not available when FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "BackfillMode")]
         getter backfill_mode : String?
 
@@ -6985,19 +7965,23 @@ module AwsSdk
         # configuration resource and uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::matchmakingconfiguration/&lt;matchmaking configuration name&gt; .
         # In a Amazon GameLift Servers configuration ARN, the resource ID matches the Name value.
+
         @[JSON::Field(key: "ConfigurationArn")]
         getter configuration_arn : String?
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # Information to attach to all events related to the matchmaking configuration.
+
         @[JSON::Field(key: "CustomEventData")]
         getter custom_event_data : String?
 
         # A descriptive label that is associated with matchmaking configuration.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -7006,12 +7990,14 @@ module AwsSdk
         # information, including players and team assignments, in a MatchmakingSucceeded event. WITH_QUEUE -
         # FlexMatch forms matches and uses the specified Amazon GameLift Servers queue to start a game session
         # for the match.
+
         @[JSON::Field(key: "FlexMatchMode")]
         getter flex_match_mode : String?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} . This information is added to the new GameSession object that is
         # created for a successful match. This parameter is not used when FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
@@ -7019,6 +8005,7 @@ module AwsSdk
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session . This information is added to the new GameSession object that is created for a
         # successful match. This parameter is not used when FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
@@ -7028,30 +8015,36 @@ module AwsSdk
         # Region. Queues are used to start new Amazon GameLift Servers-hosted game sessions for matches that
         # are created with this matchmaking configuration. This property is not set when FlexMatchMode is set
         # to STANDALONE .
+
         @[JSON::Field(key: "GameSessionQueueArns")]
         getter game_session_queue_arns : Array(String)?
 
         # A unique identifier for the matchmaking configuration. This name is used to identify the
         # configuration associated with a matchmaking request or ticket.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # An SNS topic ARN that is set up to receive matchmaking notifications.
+
         @[JSON::Field(key: "NotificationTarget")]
         getter notification_target : String?
 
         # The maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out.
         # Requests that fail due to timing out can be resubmitted as needed.
+
         @[JSON::Field(key: "RequestTimeoutSeconds")]
         getter request_timeout_seconds : Int32?
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift matchmaking rule set resource that
         # this configuration uses.
+
         @[JSON::Field(key: "RuleSetArn")]
         getter rule_set_arn : String?
 
         # A unique identifier for the matchmaking rule set to use with this configuration. A matchmaking
         # configuration can only use rule sets that are defined in the same Region.
+
         @[JSON::Field(key: "RuleSetName")]
         getter rule_set_name : String?
 
@@ -7096,16 +8089,19 @@ module AwsSdk
       # in a reasonable amount of time instead of making them wait indefinitely for the best possible match.
       # For example, you might use an expansion to increase the maximum skill variance between players after
       # 30 seconds.
+
       struct MatchmakingRuleSet
         include JSON::Serializable
 
         # A collection of matchmaking rules, formatted as a JSON string. Comments are not allowed in JSON, but
         # most elements support a description field.
+
         @[JSON::Field(key: "RuleSetBody")]
         getter rule_set_body : String
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
@@ -7113,10 +8109,12 @@ module AwsSdk
         # resource and uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::matchmakingruleset/&lt;ruleset name&gt; . In a GameLift rule set
         # ARN, the resource ID matches the RuleSetName value.
+
         @[JSON::Field(key: "RuleSetArn")]
         getter rule_set_arn : String?
 
         # A unique identifier for the matchmaking rule set
+
         @[JSON::Field(key: "RuleSetName")]
         getter rule_set_name : String?
 
@@ -7131,44 +8129,52 @@ module AwsSdk
 
       # Ticket generated to track the progress of a matchmaking request. Each ticket is uniquely identified
       # by a ticket ID, supplied by the requester, when creating a matchmaking request.
+
       struct MatchmakingTicket
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift matchmaking configuration resource
         # that is used with this ticket.
+
         @[JSON::Field(key: "ConfigurationArn")]
         getter configuration_arn : String?
 
         # Name of the matchmaking configuration that is used with this ticket. Matchmaking configurations
         # determine how players are grouped into a match and how a new game session is created for the match.
+
         @[JSON::Field(key: "ConfigurationName")]
         getter configuration_name : String?
 
         # Time stamp indicating when the matchmaking request stopped being processed due to successful
         # completion, timeout, or cancellation. Format is a number expressed in Unix time as milliseconds (for
         # example "1469498468.057" ).
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # Average amount of time (in seconds) that players are currently waiting for a match. If there is not
         # enough recent data, this property may be empty.
+
         @[JSON::Field(key: "EstimatedWaitTime")]
         getter estimated_wait_time : Int32?
 
         # Connection information for a new game session. Once a match is made, the FlexMatch engine creates a
         # new game session for it. This information is added to the matchmaking ticket, which you can be
         # retrieve by calling DescribeMatchmaking .
+
         @[JSON::Field(key: "GameSessionConnectionInfo")]
         getter game_session_connection_info : Types::GameSessionConnectionInfo?
 
         # A set of Player objects, each representing a player to find matches for. Players are identified by a
         # unique player ID and may include latency data for use during matchmaking. If the ticket is in status
         # COMPLETED , the Player objects include the team the players were assigned to in the resulting match.
+
         @[JSON::Field(key: "Players")]
         getter players : Array(Types::Player)?
 
         # Time stamp indicating when this matchmaking request was received. Format is a number expressed in
         # Unix time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
@@ -7185,19 +8191,23 @@ module AwsSdk
         # duration specified in the matchmaking configuration. Matchmaking requests that fail to successfully
         # complete (statuses FAILED, CANCELLED, TIMED_OUT) can be resubmitted as new requests with new ticket
         # IDs.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # Additional information about the current status.
+
         @[JSON::Field(key: "StatusMessage")]
         getter status_message : String?
 
         # Code to explain the current status. For example, a status reason may indicate when a ticket has
         # returned to SEARCHING status after a proposed match fails to receive player acceptances.
+
         @[JSON::Field(key: "StatusReason")]
         getter status_reason : String?
 
         # A unique identifier for a matchmaking ticket.
+
         @[JSON::Field(key: "TicketId")]
         getter ticket_id : String?
 
@@ -7218,8 +8228,10 @@ module AwsSdk
       end
 
       # The requested resources was not found. The resource was either not created yet or deleted.
+
       struct NotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7232,8 +8244,10 @@ module AwsSdk
 
       # The operation failed because Amazon GameLift Servers has not yet finished validating this compute.
       # We recommend attempting 8 to 10 retries over 3 to 5 minutes with exponential backoffs and jitter .
+
       struct NotReadyException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7246,8 +8260,10 @@ module AwsSdk
 
       # The specified game server group has no available game servers to fulfill a ClaimGameServer request.
       # Clients can retry such requests immediately or after a waiting period.
+
       struct OutOfCapacityException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7260,10 +8276,12 @@ module AwsSdk
 
       # Information about a UDP ping beacon that can be used to measure network latency between a player
       # device and an Amazon GameLift Servers hosting location.
+
       struct PingBeacon
         include JSON::Serializable
 
         # The domain name and port of the UDP ping beacon.
+
         @[JSON::Field(key: "UDPEndpoint")]
         getter udp_endpoint : Types::UDPEndpoint?
 
@@ -7276,14 +8294,17 @@ module AwsSdk
       # Information about a player session. This object contains only the player ID and player session ID.
       # To retrieve full details on a player session, call DescribePlayerSessions with the player session
       # ID.
+
       struct PlacedPlayerSession
         include JSON::Serializable
 
         # A unique identifier for a player that is associated with this player session.
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
         # A unique identifier for a player session.
+
         @[JSON::Field(key: "PlayerSessionId")]
         getter player_session_id : String?
 
@@ -7297,6 +8318,7 @@ module AwsSdk
       # Represents a player in matchmaking. When starting a matchmaking request, a player has a player ID,
       # attributes, and may have latency data. Team information is added after a match has been successfully
       # completed.
+
       struct Player
         include JSON::Serializable
 
@@ -7306,6 +8328,7 @@ module AwsSdk
         # rule that evaluates player latency, players must report latency in order to be matched. If no
         # latency is reported in this scenario, FlexMatch assumes that no Regions are available to the player
         # and the ticket is not matchable.
+
         @[JSON::Field(key: "LatencyInMs")]
         getter latency_in_ms : Hash(String, Int32)?
 
@@ -7313,15 +8336,18 @@ module AwsSdk
         # attribute keys must match the playerAttributes used in a matchmaking rule set. Example:
         # "PlayerAttributes": {"skill": {"N": "23"}, "gameMode": {"S": "deathmatch"}} . You can provide up to
         # 10 PlayerAttributes .
+
         @[JSON::Field(key: "PlayerAttributes")]
         getter player_attributes : Hash(String, Types::AttributeValue)?
 
         # A unique identifier for a player
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
         # Name of the team that the player is assigned to in a match. Team names are defined in a matchmaking
         # rule set.
+
         @[JSON::Field(key: "Team")]
         getter team : String?
 
@@ -7338,19 +8364,23 @@ module AwsSdk
       # indicates the amount of time lag that exists when the player is connected to a fleet in the
       # specified Region. The relative difference between a player's latency values for multiple Regions are
       # used to determine which fleets are best suited to place a new game session for the player.
+
       struct PlayerLatency
         include JSON::Serializable
 
         # Amount of time that represents the time lag experienced by the player when connected to the
         # specified Region.
+
         @[JSON::Field(key: "LatencyInMilliseconds")]
         getter latency_in_milliseconds : Float64?
 
         # A unique identifier for a player associated with the latency data.
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
         # Name of the Region that is associated with the latency value.
+
         @[JSON::Field(key: "RegionIdentifier")]
         getter region_identifier : String?
 
@@ -7367,16 +8397,19 @@ module AwsSdk
       # than the cap. Latency policies are used only with placement request that provide player latency
       # information. Player latency policies can be stacked to gradually relax latency requirements over
       # time.
+
       struct PlayerLatencyPolicy
         include JSON::Serializable
 
         # The maximum latency value that is allowed for any player, in milliseconds. All policies must have a
         # value set for this property.
+
         @[JSON::Field(key: "MaximumIndividualPlayerLatencyMilliseconds")]
         getter maximum_individual_player_latency_milliseconds : Int32?
 
         # The length of time, in seconds, that the policy is enforced while placing a new game session. A null
         # value for this property means that the policy is enforced until the queue times out.
+
         @[JSON::Field(key: "PolicyDurationSeconds")]
         getter policy_duration_seconds : Int32?
 
@@ -7394,11 +8427,13 @@ module AwsSdk
       # a game session when the player connects to the game session and is validated. After the game session
       # ends, player sessions information is retained for 30 days and then removed. Related actions All APIs
       # by task
+
       struct PlayerSession
         include JSON::Serializable
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
@@ -7408,42 +8443,51 @@ module AwsSdk
         # identifier&gt;.compute.amazonaws.com . (See Amazon EC2 Instance IP Addressing .) When connecting to
         # a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP
         # address.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift fleet that the player's game session
         # is running on.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that the player's game session is running on.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A unique identifier for the game session that the player session is connected to.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String?
 
         # The IP address of the game session. To connect to a Amazon GameLift Servers game server, an app
         # needs both the IP address and port number.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # Developer-defined information related to a player. Amazon GameLift Servers does not use this data,
         # so it can be formatted as needed for use in the game.
+
         @[JSON::Field(key: "PlayerData")]
         getter player_data : String?
 
         # A unique identifier for a player that is associated with this player session.
+
         @[JSON::Field(key: "PlayerId")]
         getter player_id : String?
 
         # A unique identifier for a player session.
+
         @[JSON::Field(key: "PlayerSessionId")]
         getter player_session_id : String?
 
         # Port number for the game session. To connect to a Amazon GameLift Servers server process, an app
         # needs both the IP address and port number.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -7453,11 +8497,13 @@ module AwsSdk
         # process and is currently connected. COMPLETED -- The player connection has been dropped. TIMEDOUT --
         # A player session request was received, but the player did not connect and/or was not validated
         # within the timeout limit (60 seconds).
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # A time stamp indicating when this data object was terminated. Format is a number expressed in Unix
         # time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "TerminationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter termination_time : Time?
 
@@ -7489,6 +8535,7 @@ module AwsSdk
       # reorders based the following priorities: (1) the lowest average latency across all players, (2) the
       # lowest hosting cost, (3) the queue's default destination order, and (4) for multi-location fleets,
       # an alphabetic list of locations.
+
       struct PriorityConfiguration
         include JSON::Serializable
 
@@ -7496,6 +8543,7 @@ module AwsSdk
         # LOCATION . Locations can include Amazon Web Services Region codes (such as us-west-2 ), local zones,
         # and custom locations (for Anywhere fleets). Each location must be listed only once. For details, see
         # Amazon GameLift Servers service locations.
+
         @[JSON::Field(key: "LocationOrder")]
         getter location_order : Array(String)?
 
@@ -7507,6 +8555,7 @@ module AwsSdk
         # DESTINATION -- Amazon GameLift Servers prioritizes based on the list order of destinations in the
         # queue configuration. LOCATION -- Amazon GameLift Servers prioritizes based on the provided order of
         # locations, as defined in LocationOrder .
+
         @[JSON::Field(key: "PriorityOrder")]
         getter priority_order : Array(String)?
 
@@ -7526,12 +8575,14 @@ module AwsSdk
       # configurations are used to limit placements to a subset of the locations in a queue's destinations.
       # If the override list includes a location that's not on in the FilterConfiguration allowed list,
       # Amazon GameLift Servers won't attempt to place a game session there.
+
       struct PriorityConfigurationOverride
         include JSON::Serializable
 
         # A prioritized list of hosting locations. The list can include Amazon Web Services Regions (such as
         # us-west-2 ), local zones, and custom locations (for Anywhere fleets). Each location must be listed
         # only once. For details, see Amazon GameLift Servers service locations.
+
         @[JSON::Field(key: "LocationOrder")]
         getter location_order : Array(String)
 
@@ -7540,6 +8591,7 @@ module AwsSdk
         # in every location on the priority override list, try to place a game session in queue's other
         # locations. This is the default behavior. NONE -- Limit placements to locations on the priority
         # override list only.
+
         @[JSON::Field(key: "PlacementFallbackStrategy")]
         getter placement_fallback_strategy : String?
 
@@ -7550,11 +8602,13 @@ module AwsSdk
         end
       end
 
+
       struct PutScalingPolicyInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to apply this policy to. You can use either the fleet ID or ARN
         # value. The fleet cannot be in any of the following statuses: ERROR or DELETING.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -7574,20 +8628,24 @@ module AwsSdk
         # requests, in any queue, where the current fleet is the top-priority destination. WaitTime -- Current
         # wait time for pending game session placement requests, in any queue, where the current fleet is the
         # top-priority destination.
+
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String
 
         # A descriptive label that is associated with a fleet's scaling policy. Policy names do not need to be
         # unique. A fleet can have only one scaling policy with the same name.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Comparison operator to use when measuring the metric against the threshold value.
+
         @[JSON::Field(key: "ComparisonOperator")]
         getter comparison_operator : String?
 
         # Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is
         # triggered.
+
         @[JSON::Field(key: "EvaluationPeriods")]
         getter evaluation_periods : Int32?
 
@@ -7595,10 +8653,12 @@ module AwsSdk
         # 'PercentAvailableGameSessions' and specify a TargetConfiguration . For a rule-based policy set the
         # following parameters: MetricName , ComparisonOperator , Threshold , EvaluationPeriods ,
         # ScalingAdjustmentType , and ScalingAdjustment .
+
         @[JSON::Field(key: "PolicyType")]
         getter policy_type : String?
 
         # Amount of adjustment to make, based on the scaling adjustment type.
+
         @[JSON::Field(key: "ScalingAdjustment")]
         getter scaling_adjustment : Int32?
 
@@ -7608,14 +8668,17 @@ module AwsSdk
         # PercentChangeInCapacity -- increase or reduce the current instance count by the scaling adjustment,
         # read as a percentage. Positive values scale up while negative values scale down; for example, a
         # value of "-10" scales the fleet down by 10%.
+
         @[JSON::Field(key: "ScalingAdjustmentType")]
         getter scaling_adjustment_type : String?
 
         # An object that contains settings for a target-based scaling policy.
+
         @[JSON::Field(key: "TargetConfiguration")]
         getter target_configuration : Types::TargetConfiguration?
 
         # Metric value used to trigger a scaling event.
+
         @[JSON::Field(key: "Threshold")]
         getter threshold : Float64?
 
@@ -7634,11 +8697,13 @@ module AwsSdk
         end
       end
 
+
       struct PutScalingPolicyOutput
         include JSON::Serializable
 
         # A descriptive label that is associated with a fleet's scaling policy. Policy names do not need to be
         # unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -7648,35 +8713,42 @@ module AwsSdk
         end
       end
 
+
       struct RegisterComputeInput
         include JSON::Serializable
 
         # A descriptive label for the compute resource.
+
         @[JSON::Field(key: "ComputeName")]
         getter compute_name : String
 
         # A unique identifier for the fleet to register the compute to. You can use either the fleet ID or ARN
         # value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The path to a TLS certificate on your compute resource. Amazon GameLift Servers doesn't validate the
         # path and certificate.
+
         @[JSON::Field(key: "CertificatePath")]
         getter certificate_path : String?
 
         # The DNS name of the compute resource. Amazon GameLift Servers requires either a DNS name or IP
         # address.
+
         @[JSON::Field(key: "DnsName")]
         getter dns_name : String?
 
         # The IP address of the compute resource. Amazon GameLift Servers requires either a DNS name or IP
         # address. When registering an Anywhere fleet, an IP address is required.
+
         @[JSON::Field(key: "IpAddress")]
         getter ip_address : String?
 
         # The name of a custom location to associate with the compute resource being registered. This
         # parameter is required when registering a compute for an Anywhere fleet.
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -7691,10 +8763,12 @@ module AwsSdk
         end
       end
 
+
       struct RegisterComputeOutput
         include JSON::Serializable
 
         # The details of the compute resource you registered.
+
         @[JSON::Field(key: "Compute")]
         getter compute : Types::Compute?
 
@@ -7704,31 +8778,37 @@ module AwsSdk
         end
       end
 
+
       struct RegisterGameServerInput
         include JSON::Serializable
 
         # A unique identifier for the game server group where the game server is running.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # A custom string that uniquely identifies the game server to register. Game server IDs are
         # developer-defined and must be unique across all game server groups in your Amazon Web Services
         # account.
+
         @[JSON::Field(key: "GameServerId")]
         getter game_server_id : String
 
         # The unique identifier for the instance where the game server is running. This ID is available in the
         # instance metadata. EC2 instance IDs use a 17-character format, for example: i-1234567890abcdef0 .
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String
 
         # Information that is needed to make inbound client connections to the game server. This might include
         # the IP address and port, DNS name, and other information.
+
         @[JSON::Field(key: "ConnectionInfo")]
         getter connection_info : String?
 
         # A set of custom game server properties, formatted as a single string value. This data is passed to a
         # game client or service when it requests information on game servers.
+
         @[JSON::Field(key: "GameServerData")]
         getter game_server_data : String?
 
@@ -7742,10 +8822,12 @@ module AwsSdk
         end
       end
 
+
       struct RegisterGameServerOutput
         include JSON::Serializable
 
         # Object that describes the newly registered game server.
+
         @[JSON::Field(key: "GameServer")]
         getter game_server : Types::GameServer?
 
@@ -7755,11 +8837,13 @@ module AwsSdk
         end
       end
 
+
       struct RequestUploadCredentialsInput
         include JSON::Serializable
 
         # A unique identifier for the build to get credentials for. You can use either the build ID or ARN
         # value.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String
 
@@ -7769,15 +8853,18 @@ module AwsSdk
         end
       end
 
+
       struct RequestUploadCredentialsOutput
         include JSON::Serializable
 
         # Amazon S3 path and key, identifying where the game build files are stored.
+
         @[JSON::Field(key: "StorageLocation")]
         getter storage_location : Types::S3Location?
 
         # Amazon Web Services credentials required when uploading a game build to the storage location. These
         # credentials have a limited lifespan and are valid only for the build they were issued for.
+
         @[JSON::Field(key: "UploadCredentials")]
         getter upload_credentials : Types::AwsCredentials?
 
@@ -7788,11 +8875,13 @@ module AwsSdk
         end
       end
 
+
       struct ResolveAliasInput
         include JSON::Serializable
 
         # The unique identifier of the alias that you want to retrieve a fleet ID for. You can use either the
         # alias ID or ARN value.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String
 
@@ -7802,15 +8891,18 @@ module AwsSdk
         end
       end
 
+
       struct ResolveAliasOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift fleet resource that this alias points
         # to.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # The fleet identifier that the alias is pointing to.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -7826,6 +8918,7 @@ module AwsSdk
       # policy is evaluated when a player tries to create a new game session. On receiving a
       # CreateGameSession request, Amazon GameLift Servers checks that the player (identified by CreatorId )
       # has created fewer than game session limit in the specified time period.
+
       struct ResourceCreationLimitPolicy
         include JSON::Serializable
 
@@ -7834,10 +8927,12 @@ module AwsSdk
         # policy is evaluated when a player tries to create a new game session. On receiving a
         # CreateGameSession request, Amazon GameLift Servers checks that the player (identified by CreatorId )
         # has created fewer than game session limit in the specified time period.
+
         @[JSON::Field(key: "NewGameSessionsPerCreator")]
         getter new_game_sessions_per_creator : Int32?
 
         # The time span used in evaluating the resource creation limit policy.
+
         @[JSON::Field(key: "PolicyPeriodInMinutes")]
         getter policy_period_in_minutes : Int32?
 
@@ -7848,14 +8943,17 @@ module AwsSdk
         end
       end
 
+
       struct ResumeGameServerGroupInput
         include JSON::Serializable
 
         # A unique identifier for the game server group. Use either the name or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # The activity to resume for this game server group.
+
         @[JSON::Field(key: "ResumeActions")]
         getter resume_actions : Array(String)
 
@@ -7866,11 +8964,13 @@ module AwsSdk
         end
       end
 
+
       struct ResumeGameServerGroupOutput
         include JSON::Serializable
 
         # An object that describes the game server group resource, with the SuspendedActions property updated
         # to reflect the resumed activity.
+
         @[JSON::Field(key: "GameServerGroup")]
         getter game_server_group : Types::GameServerGroup?
 
@@ -7881,15 +8981,18 @@ module AwsSdk
       end
 
       # The routing configuration for a fleet alias. Related actions All APIs by task
+
       struct RoutingStrategy
         include JSON::Serializable
 
         # A unique identifier for the fleet that the alias points to. This value is the fleet ID, not the
         # fleet ARN.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The message text to be used with a terminal routing strategy.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -7897,6 +9000,7 @@ module AwsSdk
         # The alias resolves to one specific fleet. Use this type when routing to active fleets. TERMINAL -
         # The alias does not resolve to a fleet but instead can be used to display a message to the user. A
         # terminal alias throws a TerminalRoutingStrategyException with the message embedded.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -7915,6 +9019,7 @@ module AwsSdk
       # instance is limited to 50 processes running concurrently. To calculate the total number of processes
       # defined in a runtime configuration, add the values of the ConcurrentExecutions parameter for each
       # server process. Learn more about Running Multiple Processes on a Fleet .
+
       struct RuntimeConfiguration
         include JSON::Serializable
 
@@ -7922,16 +9027,19 @@ module AwsSdk
         # ready to host players. During this time, the game session is in status ACTIVATING . If the game
         # session does not become active before the timeout, it is ended and the game session status is
         # changed to TERMINATED .
+
         @[JSON::Field(key: "GameSessionActivationTimeoutSeconds")]
         getter game_session_activation_timeout_seconds : Int32?
 
         # The number of game sessions in status ACTIVATING to allow on an instance or compute. This setting
         # limits the instance resources that can be used for new game activations at any one time.
+
         @[JSON::Field(key: "MaxConcurrentGameSessionActivations")]
         getter max_concurrent_game_session_activations : Int32?
 
         # A collection of server process configurations that identify what server processes to run on fleet
         # computes.
+
         @[JSON::Field(key: "ServerProcesses")]
         getter server_processes : Array(Types::ServerProcess)?
 
@@ -7945,26 +9053,31 @@ module AwsSdk
 
       # The location in Amazon S3 where build or script files are stored for access by Amazon GameLift
       # Servers.
+
       struct S3Location
         include JSON::Serializable
 
         # An Amazon S3 bucket identifier. Thename of the S3 bucket. Amazon GameLift Servers doesn't support
         # uploading from Amazon S3 buckets with names that contain a dot (.).
+
         @[JSON::Field(key: "Bucket")]
         getter bucket : String?
 
         # The name of the zip file that contains the build files or script files.
+
         @[JSON::Field(key: "Key")]
         getter key : String?
 
         # The version of the file, if object versioning is turned on for the bucket. Amazon GameLift Servers
         # uses this information when retrieving files from an S3 bucket that you own. Use this parameter to
         # specify a specific version of the file. If not set, the latest version of the file is retrieved.
+
         @[JSON::Field(key: "ObjectVersion")]
         getter object_version : String?
 
         # The Amazon Resource Name ( ARN ) for an IAM role that allows Amazon GameLift Servers to access the
         # S3 bucket.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -7979,29 +9092,35 @@ module AwsSdk
 
       # Rule that controls how a fleet is scaled. Scaling policies are uniquely identified by the
       # combination of name and fleet ID.
+
       struct ScalingPolicy
         include JSON::Serializable
 
         # Comparison operator to use when measuring a metric against the threshold value.
+
         @[JSON::Field(key: "ComparisonOperator")]
         getter comparison_operator : String?
 
         # Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is
         # triggered.
+
         @[JSON::Field(key: "EvaluationPeriods")]
         getter evaluation_periods : Int32?
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that is associated with this scaling policy.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The fleet location.
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -8021,11 +9140,13 @@ module AwsSdk
         # requests, in any queue, where the current fleet is the top-priority destination. WaitTime -- Current
         # wait time for pending game session placement requests, in any queue, where the current fleet is the
         # top-priority destination.
+
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # A descriptive label that is associated with a fleet's scaling policy. Policy names do not need to be
         # unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -8033,10 +9154,12 @@ module AwsSdk
         # 'PercentAvailableGameSessions' and specify a TargetConfiguration . For a rule-based policy set the
         # following parameters: MetricName , ComparisonOperator , Threshold , EvaluationPeriods ,
         # ScalingAdjustmentType , and ScalingAdjustment .
+
         @[JSON::Field(key: "PolicyType")]
         getter policy_type : String?
 
         # Amount of adjustment to make, based on the scaling adjustment type.
+
         @[JSON::Field(key: "ScalingAdjustment")]
         getter scaling_adjustment : Int32?
 
@@ -8045,6 +9168,7 @@ module AwsSdk
         # negative values scale down. ExactCapacity -- set the instance count to the scaling adjustment value.
         # PercentChangeInCapacity -- increase or reduce the current instance count by the scaling adjustment,
         # read as a percentage. Positive values scale up while negative values scale down.
+
         @[JSON::Field(key: "ScalingAdjustmentType")]
         getter scaling_adjustment_type : String?
 
@@ -8056,20 +9180,24 @@ module AwsSdk
         # policy has been received. DELETING -- The scaling policy is being deleted. DELETED -- The scaling
         # policy has been deleted. ERROR -- An error occurred in creating the policy. It should be removed and
         # recreated.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # An object that contains settings for a target-based scaling policy.
+
         @[JSON::Field(key: "TargetConfiguration")]
         getter target_configuration : Types::TargetConfiguration?
 
         # Metric value used to trigger a scaling event.
+
         @[JSON::Field(key: "Threshold")]
         getter threshold : Float64?
 
         # The current status of the fleet's scaling policies in a requested fleet location. The status
         # PENDING_UPDATE indicates that an update was requested for the fleet but has not yet been completed
         # for the location.
+
         @[JSON::Field(key: "UpdateStatus")]
         getter update_status : String?
 
@@ -8093,30 +9221,36 @@ module AwsSdk
       end
 
       # Properties describing a Realtime script. Related actions All APIs by task
+
       struct Script
         include JSON::Serializable
 
         # A time stamp indicating when this data object was created. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # A descriptive label that is associated with a script. Script names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers script resource and
         # uniquely identifies it. ARNs are unique across all Regions. In a GameLift script ARN, the resource
         # ID matches the ScriptId value.
+
         @[JSON::Field(key: "ScriptArn")]
         getter script_arn : String?
 
         # A unique identifier for the Realtime script
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String?
 
         # The file size of the uploaded Realtime script, expressed in bytes. When files are uploaded from an
         # S3 location, this value remains at "0".
+
         @[JSON::Field(key: "SizeOnDisk")]
         getter size_on_disk : Int64?
 
@@ -8126,11 +9260,13 @@ module AwsSdk
         # must be in the same Region where you want to create a new script. By default, Amazon GameLift
         # Servers uploads the latest version of the zip file; if you have S3 object versioning turned on, you
         # can use the ObjectVersion parameter to specify an earlier version.
+
         @[JSON::Field(key: "StorageLocation")]
         getter storage_location : Types::S3Location?
 
         # Version information that is associated with a build or script. Version strings do not need to be
         # unique.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -8146,12 +9282,14 @@ module AwsSdk
         end
       end
 
+
       struct SearchGameSessionsInput
         include JSON::Serializable
 
         # A unique identifier for the alias associated with the fleet to search for active game sessions. You
         # can use either the alias ID or ARN value. Each request must reference either a fleet ID or alias ID,
         # but not both.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String?
 
@@ -8172,28 +9310,33 @@ module AwsSdk
         # &lt;= , &gt;= Parentheses NOT AND OR For example, this filter expression retrieves game sessions
         # hosting at least ten players that have an open player slot: "maximumSessions&gt;=10 AND
         # hasAvailablePlayerSessions=true" .
+
         @[JSON::Field(key: "FilterExpression")]
         getter filter_expression : String?
 
         # A unique identifier for the fleet to search for active game sessions. You can use either the fleet
         # ID or ARN value. Each request must reference either a fleet ID or alias ID, but not both.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The maximum number of results to return. Use this parameter with NextToken to get results as a set
         # of sequential pages. The maximum number of results returned is 20, even if this value is not set or
         # is set higher than 20.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # A fleet location to search for game sessions. You can specify a fleet's home Region or a remote
         # location. Use the Amazon Web Services Region code format, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # A token that indicates the start of the next sequential page of results. Use the token that is
         # returned with a previous call to this operation. To start at the beginning of the result set, do not
         # specify a value.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -8205,6 +9348,7 @@ module AwsSdk
         # For example, this sort expression returns the oldest active sessions first: "SortExpression":
         # "creationTimeMillis ASC" . Results with a null value for the sort operand are returned at the end of
         # the list.
+
         @[JSON::Field(key: "SortExpression")]
         getter sort_expression : String?
 
@@ -8220,16 +9364,19 @@ module AwsSdk
         end
       end
 
+
       struct SearchGameSessionsOutput
         include JSON::Serializable
 
         # A collection of objects containing game session properties for each session that matches the
         # request.
+
         @[JSON::Field(key: "GameSessions")]
         getter game_sessions : Array(Types::GameSession)?
 
         # A token that indicates where to resume retrieving results on the next call to this operation. If no
         # token is returned, these results represent the end of the list.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -8243,11 +9390,13 @@ module AwsSdk
       # A set of instructions for launching server processes on fleet computes. Server processes run either
       # an executable in a custom game build or a Amazon GameLift Servers Realtime script. Server process
       # configurations are part of a fleet's runtime configuration.
+
       struct ServerProcess
         include JSON::Serializable
 
         # The number of server processes using this configuration that run concurrently on each instance or
         # compute.
+
         @[JSON::Field(key: "ConcurrentExecutions")]
         getter concurrent_executions : Int32
 
@@ -8257,10 +9406,12 @@ module AwsSdk
         # /local/game/MyRealtimeScript.js " Amazon GameLift Servers doesn't support the use of setup scripts
         # that launch the game executable. For custom game builds, this parameter must indicate the executable
         # that calls the server SDK operations initSDK() and ProcessReady() .
+
         @[JSON::Field(key: "LaunchPath")]
         getter launch_path : String
 
         # An optional list of parameters to pass to the server executable or Realtime script on launch.
+
         @[JSON::Field(key: "Parameters")]
         getter parameters : String?
 
@@ -8272,20 +9423,24 @@ module AwsSdk
         end
       end
 
+
       struct StartFleetActionsInput
         include JSON::Serializable
 
         # List of actions to restart on the fleet.
+
         @[JSON::Field(key: "Actions")]
         getter actions : Array(String)
 
         # A unique identifier for the fleet to restart actions on. You can use either the fleet ID or ARN
         # value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The fleet location to restart fleet actions for. Specify a location in the form of an Amazon Web
         # Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -8297,16 +9452,19 @@ module AwsSdk
         end
       end
 
+
       struct StartFleetActionsOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet to restart actions on.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -8317,45 +9475,54 @@ module AwsSdk
         end
       end
 
+
       struct StartGameSessionPlacementInput
         include JSON::Serializable
 
         # Name of the queue to use to place the new game session. You can use either the queue name or ARN
         # value.
+
         @[JSON::Field(key: "GameSessionQueueName")]
         getter game_session_queue_name : String
 
         # The maximum number of players that can be connected simultaneously to the game session.
+
         @[JSON::Field(key: "MaximumPlayerSessionCount")]
         getter maximum_player_session_count : Int32
 
         # A unique identifier to assign to the new game session placement. This value is developer-defined.
         # The value must be unique across all Regions and cannot be reused.
+
         @[JSON::Field(key: "PlacementId")]
         getter placement_id : String
 
         # Set of information on each player to create a player session for.
+
         @[JSON::Field(key: "DesiredPlayerSessions")]
         getter desired_player_sessions : Array(Types::DesiredPlayerSession)?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
         # A set of custom game session properties, formatted as a single string value. This data is passed to
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
         # A descriptive label that is associated with a game session. Session names do not need to be unique.
+
         @[JSON::Field(key: "GameSessionName")]
         getter game_session_name : String?
 
         # A set of values, expressed in milliseconds, that indicates the amount of latency that a player
         # experiences when connected to Amazon Web Services Regions. This information is used to try to place
         # the new game session where it can offer the best possible gameplay experience for the players.
+
         @[JSON::Field(key: "PlayerLatencies")]
         getter player_latencies : Array(Types::PlayerLatency)?
 
@@ -8366,6 +9533,7 @@ module AwsSdk
         # prioritize locations on the override list first and then fall back to the queue's other locations if
         # needed. Choose a fallback strategy to use in the event that Amazon GameLift Servers fails to place a
         # game session in any of the locations on the priority override list.
+
         @[JSON::Field(key: "PriorityConfigurationOverride")]
         getter priority_configuration_override : Types::PriorityConfigurationOverride?
 
@@ -8383,11 +9551,13 @@ module AwsSdk
         end
       end
 
+
       struct StartGameSessionPlacementOutput
         include JSON::Serializable
 
         # Object that describes the newly created game session placement. This object includes all the
         # information provided in the request, as well as start/end time stamps and placement status.
+
         @[JSON::Field(key: "GameSessionPlacement")]
         getter game_session_placement : Types::GameSessionPlacement?
 
@@ -8397,12 +9567,14 @@ module AwsSdk
         end
       end
 
+
       struct StartMatchBackfillInput
         include JSON::Serializable
 
         # Name of the matchmaker to use for this request. You can use either the configuration name or ARN
         # value. The ARN of the matchmaker that was used with the original game session is listed in the
         # GameSession object, MatchmakerData property.
+
         @[JSON::Field(key: "ConfigurationName")]
         getter configuration_name : String
 
@@ -8415,17 +9587,20 @@ module AwsSdk
         # not specify team if you are not using backfill. LatencyInMs -- If the matchmaker uses player
         # latency, include a latency value, in milliseconds, for the Region that the game session is currently
         # in. Do not include latency values for any other Region.
+
         @[JSON::Field(key: "Players")]
         getter players : Array(Types::Player)
 
         # A unique identifier for the game session. Use the game session ID. When using FlexMatch as a
         # standalone matchmaking solution, this parameter is not needed.
+
         @[JSON::Field(key: "GameSessionArn")]
         getter game_session_arn : String?
 
         # A unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift
         # Servers will generate one in the form of a UUID. Use this identifier to track the match backfill
         # ticket status and retrieve match results.
+
         @[JSON::Field(key: "TicketId")]
         getter ticket_id : String?
 
@@ -8438,11 +9613,13 @@ module AwsSdk
         end
       end
 
+
       struct StartMatchBackfillOutput
         include JSON::Serializable
 
         # Ticket representing the backfill matchmaking request. This object includes the information in the
         # request, ticket status, and match results as generated during the matchmaking process.
+
         @[JSON::Field(key: "MatchmakingTicket")]
         getter matchmaking_ticket : Types::MatchmakingTicket?
 
@@ -8452,11 +9629,13 @@ module AwsSdk
         end
       end
 
+
       struct StartMatchmakingInput
         include JSON::Serializable
 
         # Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist
         # in the same Region as this request. You can use either the configuration name or ARN value.
+
         @[JSON::Field(key: "ConfigurationName")]
         getter configuration_name : String
 
@@ -8464,12 +9643,14 @@ module AwsSdk
         # player attributes and latency data to be used in the matchmaking process. After a successful match,
         # Player objects contain the name of the team the player is assigned to. You can include up to 10
         # Players in a StartMatchmaking request.
+
         @[JSON::Field(key: "Players")]
         getter players : Array(Types::Player)
 
         # A unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift
         # Servers will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket
         # status and retrieve match results.
+
         @[JSON::Field(key: "TicketId")]
         getter ticket_id : String?
 
@@ -8481,11 +9662,13 @@ module AwsSdk
         end
       end
 
+
       struct StartMatchmakingOutput
         include JSON::Serializable
 
         # Ticket representing the matchmaking request. This object include the information included in the
         # request, ticket status, and match results as generated during the matchmaking process.
+
         @[JSON::Field(key: "MatchmakingTicket")]
         getter matchmaking_ticket : Types::MatchmakingTicket?
 
@@ -8495,19 +9678,23 @@ module AwsSdk
         end
       end
 
+
       struct StopFleetActionsInput
         include JSON::Serializable
 
         # List of actions to suspend on the fleet.
+
         @[JSON::Field(key: "Actions")]
         getter actions : Array(String)
 
         # A unique identifier for the fleet to stop actions on. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The fleet location to stop fleet actions for. Specify a location in the form of an Amazon Web
         # Services Region code, such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -8519,16 +9706,19 @@ module AwsSdk
         end
       end
 
+
       struct StopFleetActionsOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet to stop actions on.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -8539,10 +9729,12 @@ module AwsSdk
         end
       end
 
+
       struct StopGameSessionPlacementInput
         include JSON::Serializable
 
         # A unique identifier for a game session placement to stop.
+
         @[JSON::Field(key: "PlacementId")]
         getter placement_id : String
 
@@ -8552,11 +9744,13 @@ module AwsSdk
         end
       end
 
+
       struct StopGameSessionPlacementOutput
         include JSON::Serializable
 
         # Object that describes the canceled game session placement, with CANCELLED status and an end time
         # stamp.
+
         @[JSON::Field(key: "GameSessionPlacement")]
         getter game_session_placement : Types::GameSessionPlacement?
 
@@ -8566,10 +9760,12 @@ module AwsSdk
         end
       end
 
+
       struct StopMatchmakingInput
         include JSON::Serializable
 
         # A unique identifier for a matchmaking ticket.
+
         @[JSON::Field(key: "TicketId")]
         getter ticket_id : String
 
@@ -8578,6 +9774,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct StopMatchmakingOutput
         include JSON::Serializable
@@ -8592,47 +9789,56 @@ module AwsSdk
       # fleet. When creating or updating a game server container group definition, use the property
       # GameServerContainerDefinitionInput . Part of: ContainerGroupDefinition Returned by:
       # DescribeContainerGroupDefinition , ListContainerGroupDefinitions , UpdateContainerGroupDefinition
+
       struct SupportContainerDefinition
         include JSON::Serializable
 
         # The container definition identifier. Container names are unique within a container group definition.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String?
 
         # Indicates that the container relies on the status of other containers in the same container group
         # during its startup and shutdown sequences. A container might have dependencies on multiple
         # containers.
+
         @[JSON::Field(key: "DependsOn")]
         getter depends_on : Array(Types::ContainerDependency)?
 
         # A set of environment variables that's passed to the container on startup. See the
         # ContainerDefinition::environment parameter in the Amazon Elastic Container Service API Reference .
+
         @[JSON::Field(key: "EnvironmentOverride")]
         getter environment_override : Array(Types::ContainerEnvironment)?
 
         # Indicates whether the container is vital to the container group. If an essential container fails,
         # the entire container group restarts.
+
         @[JSON::Field(key: "Essential")]
         getter essential : Bool?
 
         # A configuration for a non-terminal health check. A support container automatically restarts if it
         # stops functioning or if it fails this health check.
+
         @[JSON::Field(key: "HealthCheck")]
         getter health_check : Types::ContainerHealthCheck?
 
         # The URI to the image that Amazon GameLift Servers deploys to a container fleet. For a more specific
         # identifier, see ResolvedImageDigest .
+
         @[JSON::Field(key: "ImageUri")]
         getter image_uri : String?
 
         # The amount of memory that Amazon GameLift Servers makes available to the container. If memory limits
         # aren't set for an individual container, the container shares the container group's total memory
         # allocation. Related data type: ContainerGroupDefinition TotalMemoryLimitMebibytes
+
         @[JSON::Field(key: "MemoryHardLimitMebibytes")]
         getter memory_hard_limit_mebibytes : Int32?
 
         # A mount point that binds a path inside the container to a file or directory on the host system and
         # lets it access the file or directory.
+
         @[JSON::Field(key: "MountPoints")]
         getter mount_points : Array(Types::ContainerMountPoint)?
 
@@ -8640,17 +9846,20 @@ module AwsSdk
         # container can bind to a one of these ports. Container ports aren't directly accessed by inbound
         # traffic. Amazon GameLift Servers maps these container ports to externally accessible connection
         # ports, which are assigned as needed from the container fleet's ConnectionPortRange .
+
         @[JSON::Field(key: "PortConfiguration")]
         getter port_configuration : Types::ContainerPortConfiguration?
 
         # A unique and immutable identifier for the container image. The digest is a SHA 256 hash of the
         # container image manifest.
+
         @[JSON::Field(key: "ResolvedImageDigest")]
         getter resolved_image_digest : String?
 
         # The number of vCPU units that are reserved for the container. If no resources are reserved, the
         # container shares the total vCPU limit for the container group. Related data type:
         # ContainerGroupDefinition TotalVcpuLimit
+
         @[JSON::Field(key: "Vcpu")]
         getter vcpu : Float64?
 
@@ -8676,10 +9885,12 @@ module AwsSdk
       # instructions. Use this data type when creating or updating a container group definition. For
       # properties of a deployed support container, see SupportContainerDefinition . Use with:
       # CreateContainerGroupDefinition , UpdateContainerGroupDefinition
+
       struct SupportContainerDefinitionInput
         include JSON::Serializable
 
         # A string that uniquely identifies the container definition within a container group.
+
         @[JSON::Field(key: "ContainerName")]
         getter container_name : String
 
@@ -8691,6 +9902,7 @@ module AwsSdk
         # region].amazonaws.com/[repository ID] Image ID and digest: [AWS account].dkr.ecr.[AWS
         # region].amazonaws.com/[repository ID]@[digest] Image ID and tag: [AWS account].dkr.ecr.[AWS
         # region].amazonaws.com/[repository ID]:[tag]
+
         @[JSON::Field(key: "ImageUri")]
         getter image_uri : String
 
@@ -8700,11 +9912,13 @@ module AwsSdk
         # might specify that ContainerB has a START dependency on ContainerA . This dependency means that
         # ContainerB can't start until after ContainerA has started. This dependency is reversed on shutdown,
         # which means that ContainerB must shut down before ContainerA can shut down.
+
         @[JSON::Field(key: "DependsOn")]
         getter depends_on : Array(Types::ContainerDependency)?
 
         # A set of environment variables to pass to the container on startup. See the
         # ContainerDefinition::environment parameter in the Amazon Elastic Container Service API Reference .
+
         @[JSON::Field(key: "EnvironmentOverride")]
         getter environment_override : Array(Types::ContainerEnvironment)?
 
@@ -8712,23 +9926,27 @@ module AwsSdk
         # fails, the entire container group restarts. At least one support container in a per-instance
         # container group must be essential. When flagging a container as essential, also configure a health
         # check so that the container can signal that it's healthy.
+
         @[JSON::Field(key: "Essential")]
         getter essential : Bool?
 
         # Configuration for a non-terminal health check. A container automatically restarts if it stops
         # functioning. With a health check, you can define additional reasons to flag a container as unhealthy
         # and restart it. If an essential container fails a health check, the entire container group restarts.
+
         @[JSON::Field(key: "HealthCheck")]
         getter health_check : Types::ContainerHealthCheck?
 
         # A specified amount of memory (in MiB) to reserve for this container. If you don't specify a
         # container-specific memory limit, the container shares the container group's total memory allocation.
         # Related data type: ContainerGroupDefinition TotalMemoryLimitMebibytes
+
         @[JSON::Field(key: "MemoryHardLimitMebibytes")]
         getter memory_hard_limit_mebibytes : Int32?
 
         # A mount point that binds a path inside the container to a file or directory on the host system and
         # lets it access the file or directory.
+
         @[JSON::Field(key: "MountPoints")]
         getter mount_points : Array(Types::ContainerMountPoint)?
 
@@ -8738,12 +9956,14 @@ module AwsSdk
         # Each range specifies starting and ending values as well as the supported network protocol. Container
         # ports aren't directly accessed by inbound traffic. Amazon GameLift Servers maps each container port
         # to an externally accessible connection port (see the container fleet property ConnectionPortRange ).
+
         @[JSON::Field(key: "PortConfiguration")]
         getter port_configuration : Types::ContainerPortConfiguration?
 
         # The number of vCPU units to reserve for this container. The container can use more resources when
         # needed, if available. If you don't reserve CPU units for this container, it shares the container
         # group's total vCPU limit. Related data type: ContainerGroupDefinition TotalCpuLimit
+
         @[JSON::Field(key: "Vcpu")]
         getter vcpu : Float64?
 
@@ -8762,14 +9982,17 @@ module AwsSdk
         end
       end
 
+
       struct SuspendGameServerGroupInput
         include JSON::Serializable
 
         # A unique identifier for the game server group. Use either the name or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # The activity to suspend for this game server group.
+
         @[JSON::Field(key: "SuspendActions")]
         getter suspend_actions : Array(String)
 
@@ -8780,11 +10003,13 @@ module AwsSdk
         end
       end
 
+
       struct SuspendGameServerGroupOutput
         include JSON::Serializable
 
         # An object that describes the game server group resource, with the SuspendedActions property updated
         # to reflect the suspended activity.
+
         @[JSON::Field(key: "GameServerGroup")]
         getter game_server_group : Types::GameServerGroup?
 
@@ -8797,14 +10022,17 @@ module AwsSdk
       # A label that you can assign to a Amazon GameLift Servers resource. Learn more Tagging Amazon Web
       # Services Resources in the Amazon Web Services General Reference Amazon Web Services Tagging
       # Strategies Related actions All APIs by task
+
       struct Tag
         include JSON::Serializable
 
         # The key for a developer-defined key value pair for tagging an Amazon Web Services resource.
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The value for a developer-defined key value pair for tagging an Amazon Web Services resource.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -8815,6 +10043,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceRequest
         include JSON::Serializable
 
@@ -8822,12 +10051,14 @@ module AwsSdk
         # you want to assign tags to. Amazon GameLift Servers includes resource ARNs in the data object for
         # the resource. You can retrieve the ARN by calling a List or Describe operation for the resource
         # type.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # A list of one or more tags to assign to the specified Amazon GameLift Servers resource. Tags are
         # developer-defined and structured as key-value pairs. The maximum tag limit may be lower than stated.
         # See Tagging Amazon Web Services Resources for tagging limits.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -8838,6 +10069,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -8847,8 +10079,10 @@ module AwsSdk
 
       # The requested tagging operation did not succeed. This may be due to invalid tag format or the
       # maximum tag limit may have been exceeded. Resolve the issue before retrying.
+
       struct TaggingFailedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -8863,6 +10097,7 @@ module AwsSdk
       # specifies a target value for the metric. As player usage changes, the policy triggers Amazon
       # GameLift Servers to adjust capacity so that the metric returns to the target value. The target
       # configuration specifies settings as needed for the target based policy, including the target value.
+
       struct TargetConfiguration
         include JSON::Serializable
 
@@ -8870,6 +10105,7 @@ module AwsSdk
         # metric the scaling policy is using. For example, in a policy using the metric
         # PercentAvailableGameSessions, the target value should be the preferred size of the fleet's buffer
         # (the percent of capacity that should be idle and ready for new game sessions).
+
         @[JSON::Field(key: "TargetValue")]
         getter target_value : Float64
 
@@ -8884,10 +10120,12 @@ module AwsSdk
       # metric "PercentUtilizedGameServers" and specifies a target value for the metric. As player usage
       # changes, the policy triggers to adjust the game server group capacity so that the metric returns to
       # the target value.
+
       struct TargetTrackingConfiguration
         include JSON::Serializable
 
         # Desired value to use with a game server group target-based scaling policy.
+
         @[JSON::Field(key: "TargetValue")]
         getter target_value : Float64
 
@@ -8901,8 +10139,10 @@ module AwsSdk
       # RoutingStrategy associated with it. The message returned in this exception is the message defined in
       # the routing strategy itself. Such requests should only be retried if the routing strategy for the
       # specified alias is modified.
+
       struct TerminalRoutingStrategyException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -8913,12 +10153,14 @@ module AwsSdk
         end
       end
 
+
       struct TerminateGameSessionInput
         include JSON::Serializable
 
         # A unique identifier for the game session to be terminated. A game session ARN has the following
         # format: arn:aws:gamelift:&lt;location&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or
         # idempotency token&gt; .
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String
 
@@ -8934,6 +10176,7 @@ module AwsSdk
         # session shutdown sequence. This method is not available for game sessions that are running on
         # Anywhere fleets unless the fleet is deployed with the Amazon GameLift Servers Agent. In this
         # scenario, a force terminate request results in an invalid or bad request exception.
+
         @[JSON::Field(key: "TerminationMode")]
         getter termination_mode : String
 
@@ -8944,8 +10187,10 @@ module AwsSdk
         end
       end
 
+
       struct TerminateGameSessionOutput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "GameSession")]
         getter game_session : Types::GameSession?
@@ -8957,14 +10202,17 @@ module AwsSdk
       end
 
       # The domain name and port information for a UDP endpoint.
+
       struct UDPEndpoint
         include JSON::Serializable
 
         # The domain name of the UDP endpoint.
+
         @[JSON::Field(key: "Domain")]
         getter domain : String?
 
         # The port number of the UDP endpoint.
+
         @[JSON::Field(key: "Port")]
         getter port : Int32?
 
@@ -8976,8 +10224,10 @@ module AwsSdk
       end
 
       # The client failed authentication. Clients should not retry such requests.
+
       struct UnauthorizedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -8989,8 +10239,10 @@ module AwsSdk
       end
 
       # The requested operation is not supported in the Region specified.
+
       struct UnsupportedRegionException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -9001,6 +10253,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceRequest
         include JSON::Serializable
 
@@ -9008,10 +10261,12 @@ module AwsSdk
         # you want to remove tags from. Amazon GameLift Servers includes resource ARNs in the data object for
         # the resource. You can retrieve the ARN by calling a List or Describe operation for the resource
         # type.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # A list of one or more tag keys to remove from the specified Amazon GameLift Servers resource.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -9022,6 +10277,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -9029,23 +10285,28 @@ module AwsSdk
         end
       end
 
+
       struct UpdateAliasInput
         include JSON::Serializable
 
         # A unique identifier for the alias that you want to update. You can use either the alias ID or ARN
         # value.
+
         @[JSON::Field(key: "AliasId")]
         getter alias_id : String
 
         # A human-readable description of the alias.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A descriptive label that is associated with an alias. Alias names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The routing configuration, including routing type and fleet target, for the alias.
+
         @[JSON::Field(key: "RoutingStrategy")]
         getter routing_strategy : Types::RoutingStrategy?
 
@@ -9058,10 +10319,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateAliasOutput
         include JSON::Serializable
 
         # The updated alias resource.
+
         @[JSON::Field(key: "Alias")]
         getter alias : Types::Alias?
 
@@ -9071,19 +10334,23 @@ module AwsSdk
         end
       end
 
+
       struct UpdateBuildInput
         include JSON::Serializable
 
         # A unique identifier for the build to update. You can use either the build ID or ARN value.
+
         @[JSON::Field(key: "BuildId")]
         getter build_id : String
 
         # A descriptive label that is associated with a build. Build names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Version information that is associated with a build or script. Version strings do not need to be
         # unique.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -9095,10 +10362,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateBuildOutput
         include JSON::Serializable
 
         # The updated build resource.
+
         @[JSON::Field(key: "Build")]
         getter build : Types::Build?
 
@@ -9108,20 +10377,24 @@ module AwsSdk
         end
       end
 
+
       struct UpdateContainerFleetInput
         include JSON::Serializable
 
         # A unique identifier for the container fleet to update. You can use either the fleet ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # Instructions for how to deploy updates to a container fleet, if the fleet update initiates a
         # deployment. The deployment configuration lets you determine how to replace fleet instances and what
         # actions to take if the deployment fails.
+
         @[JSON::Field(key: "DeploymentConfiguration")]
         getter deployment_configuration : Types::DeploymentConfiguration?
 
         # A meaningful description of the container fleet.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -9132,6 +10405,7 @@ module AwsSdk
         # definition, you can only update or replace it with another definition. Update a container group
         # definition by calling UpdateContainerGroupDefinition . This operation creates a
         # ContainerGroupDefinition resource with an incremented version.
+
         @[JSON::Field(key: "GameServerContainerGroupDefinitionName")]
         getter game_server_container_group_definition_name : String?
 
@@ -9140,38 +10414,46 @@ module AwsSdk
         # on each instance. You can remove this property value to use the calculated value, or set it
         # manually. If you set this number manually, Amazon GameLift Servers uses your value as long as it's
         # less than the calculated maximum.
+
         @[JSON::Field(key: "GameServerContainerGroupsPerInstance")]
         getter game_server_container_groups_per_instance : Int32?
 
         # A policy that limits the number of game sessions that each individual player can create on instances
         # in this fleet. The limit applies for a specified span of time.
+
         @[JSON::Field(key: "GameSessionCreationLimitPolicy")]
         getter game_session_creation_limit_policy : Types::GameSessionCreationLimitPolicy?
 
         # A revised set of port numbers to open on each fleet instance. By default, Amazon GameLift Servers
         # calculates an optimal port range based on your fleet configuration. If you previously set this
         # parameter manually, you can't reset this to use the calculated settings.
+
         @[JSON::Field(key: "InstanceConnectionPortRange")]
         getter instance_connection_port_range : Types::ConnectionPortRange?
 
         # A set of ports to add to the container fleet's inbound permissions.
+
         @[JSON::Field(key: "InstanceInboundPermissionAuthorizations")]
         getter instance_inbound_permission_authorizations : Array(Types::IpPermission)?
 
         # A set of ports to remove from the container fleet's inbound permissions.
+
         @[JSON::Field(key: "InstanceInboundPermissionRevocations")]
         getter instance_inbound_permission_revocations : Array(Types::IpPermission)?
 
         # The method for collecting container logs for the fleet.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
         # The name of an Amazon Web Services CloudWatch metric group to add this fleet to.
+
         @[JSON::Field(key: "MetricGroups")]
         getter metric_groups : Array(String)?
 
         # The game session protection policy to apply to all new game sessions that are started in this fleet.
         # Game sessions that already exist are not affected.
+
         @[JSON::Field(key: "NewGameSessionProtectionPolicy")]
         getter new_game_session_protection_policy : String?
 
@@ -9182,11 +10464,13 @@ module AwsSdk
         # UpdateContainerGroupDefinition . This operation creates a ContainerGroupDefinition resource with an
         # incremented version. To remove a fleet's per-instance container group definition, leave this
         # parameter empty and use the parameter RemoveAttributes .
+
         @[JSON::Field(key: "PerInstanceContainerGroupDefinitionName")]
         getter per_instance_container_group_definition_name : String?
 
         # If set, this update removes a fleet's per-instance container group definition. You can't remove a
         # fleet's game server container group definition.
+
         @[JSON::Field(key: "RemoveAttributes")]
         getter remove_attributes : Array(String)?
 
@@ -9209,10 +10493,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateContainerFleetOutput
         include JSON::Serializable
 
         # A collection of container fleet objects for all fleets that match the request criteria.
+
         @[JSON::Field(key: "ContainerFleet")]
         getter container_fleet : Types::ContainerFleet?
 
@@ -9222,17 +10508,20 @@ module AwsSdk
         end
       end
 
+
       struct UpdateContainerGroupDefinitionInput
         include JSON::Serializable
 
         # A descriptive identifier for the container group definition. The name value must be unique in an
         # Amazon Web Services Region.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # An updated definition for the game server container in this group. Define a game server container
         # only when the container group type is GAME_SERVER . You can pass in your container definitions as a
         # JSON file.
+
         @[JSON::Field(key: "GameServerContainerDefinition")]
         getter game_server_container_definition : Types::GameServerContainerDefinitionInput?
 
@@ -9241,22 +10530,26 @@ module AwsSdk
         # the Amazon Linux 2 FAQs . For game servers that are hosted on AL2 and use server SDK version 4.x for
         # Amazon GameLift Servers, first update the game server build to server SDK 5.x, and then deploy to
         # AL2023 instances. See Migrate to server SDK version 5.
+
         @[JSON::Field(key: "OperatingSystem")]
         getter operating_system : String?
 
         # The container group definition version to update. The new version starts with values from the source
         # version, and then updates values included in this request.
+
         @[JSON::Field(key: "SourceVersionNumber")]
         getter source_version_number : Int32?
 
         # One or more definitions for support containers in this group. You can define a support container in
         # any type of container group. You can pass in your container definitions as a JSON file.
+
         @[JSON::Field(key: "SupportContainerDefinitions")]
         getter support_container_definitions : Array(Types::SupportContainerDefinitionInput)?
 
         # The maximum amount of memory (in MiB) to allocate to the container group. All containers in the
         # group share this memory. If you specify memory limits for an individual container, the total value
         # must be greater than any individual container's memory limit.
+
         @[JSON::Field(key: "TotalMemoryLimitMebibytes")]
         getter total_memory_limit_mebibytes : Int32?
 
@@ -9264,10 +10557,12 @@ module AwsSdk
         # units). All containers in the group share this memory. If you specify vCPU limits for individual
         # containers, the total value must be equal to or greater than the sum of the CPU limits for all
         # containers in the group.
+
         @[JSON::Field(key: "TotalVcpuLimit")]
         getter total_vcpu_limit : Float64?
 
         # A description for this update to the container group definition.
+
         @[JSON::Field(key: "VersionDescription")]
         getter version_description : String?
 
@@ -9284,10 +10579,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateContainerGroupDefinitionOutput
         include JSON::Serializable
 
         # The properties of the updated container group definition version.
+
         @[JSON::Field(key: "ContainerGroupDefinition")]
         getter container_group_definition : Types::ContainerGroupDefinition?
 
@@ -9297,29 +10594,35 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFleetAttributesInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to update attribute metadata for. You can use either the fleet ID
         # or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # Amazon GameLift Servers Anywhere configuration options.
+
         @[JSON::Field(key: "AnywhereConfiguration")]
         getter anywhere_configuration : Types::AnywhereConfiguration?
 
         # A human-readable description of a fleet.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The name of a metric group to add this fleet to. Use a metric group in Amazon CloudWatch to
         # aggregate the metrics from multiple fleets. Provide an existing metric group name, or create a new
         # metric group by providing a new name. A fleet can only be in one metric group at a time.
+
         @[JSON::Field(key: "MetricGroups")]
         getter metric_groups : Array(String)?
 
         # A descriptive label that is associated with a fleet. Fleet names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -9328,11 +10631,13 @@ module AwsSdk
         # using UpdateGameSession . NoProtection -- The game session can be terminated during a scale-down
         # event. FullProtection -- If the game session is in an ACTIVE status, it cannot be terminated during
         # a scale-down event.
+
         @[JSON::Field(key: "NewGameSessionProtectionPolicy")]
         getter new_game_session_protection_policy : String?
 
         # Policy settings that limit the number of game sessions an individual player can create over a span
         # of time.
+
         @[JSON::Field(key: "ResourceCreationLimitPolicy")]
         getter resource_creation_limit_policy : Types::ResourceCreationLimitPolicy?
 
@@ -9348,16 +10653,19 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFleetAttributesOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that was updated.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -9368,32 +10676,38 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFleetCapacityInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to update capacity settings for. You can use either the fleet ID
         # or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # The number of Amazon EC2 instances you want to maintain in the specified fleet location. This value
         # must fall between the minimum and maximum size limits. Changes in desired instance value can take up
         # to 1 minute to be reflected when viewing the fleet's capacity settings.
+
         @[JSON::Field(key: "DesiredInstances")]
         getter desired_instances : Int32?
 
         # The name of a remote location to update fleet capacity settings for, in the form of an Amazon Web
         # Services Region code such as us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
         # The maximum number of instances that are allowed in the specified fleet location. If this parameter
         # is not set, the default is 1.
+
         @[JSON::Field(key: "MaxSize")]
         getter max_size : Int32?
 
         # The minimum number of instances that are allowed in the specified fleet location. If this parameter
         # is not set, the default is 0.
+
         @[JSON::Field(key: "MinSize")]
         getter min_size : Int32?
 
@@ -9407,21 +10721,25 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFleetCapacityOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that was updated.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # The remote location being updated, expressed as an Amazon Web Services Region code, such as
         # us-west-2 .
+
         @[JSON::Field(key: "Location")]
         getter location : String?
 
@@ -9433,19 +10751,23 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFleetPortSettingsInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to update port settings for. You can use either the fleet ID or
         # ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
         # A collection of port settings to be added to the fleet resource.
+
         @[JSON::Field(key: "InboundPermissionAuthorizations")]
         getter inbound_permission_authorizations : Array(Types::IpPermission)?
 
         # A collection of port settings to be removed from the fleet resource.
+
         @[JSON::Field(key: "InboundPermissionRevocations")]
         getter inbound_permission_revocations : Array(Types::IpPermission)?
 
@@ -9457,16 +10779,19 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFleetPortSettingsOutput
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) that is assigned to a Amazon GameLift Servers fleet resource and
         # uniquely identifies it. ARNs are unique across all Regions. Format is
         # arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912 .
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet that was updated.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
@@ -9477,10 +10802,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameServerGroupInput
         include JSON::Serializable
 
         # A unique identifier for the game server group. Use either the name or ARN value.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
@@ -9495,6 +10822,7 @@ module AwsSdk
         # Existing nonviable Spot Instances are terminated (after current gameplay ends) and are replaced with
         # new On-Demand Instances. ON_DEMAND_ONLY - Only On-Demand Instances are used in the game server
         # group. No Spot Instances are used, even when available, while this balancing strategy is in force.
+
         @[JSON::Field(key: "BalancingStrategy")]
         getter balancing_strategy : String?
 
@@ -9505,6 +10833,7 @@ module AwsSdk
         # group deletion (see ). An exception to this is with Spot Instances, which can be terminated by
         # Amazon Web Services regardless of protection status. This property is set to NO_PROTECTION by
         # default.
+
         @[JSON::Field(key: "GameServerProtectionPolicy")]
         getter game_server_protection_policy : String?
 
@@ -9516,11 +10845,13 @@ module AwsSdk
         # value is specified for an instance type, it is set to the default value "1". For more information
         # about capacity weighting, see Instance Weighting for Amazon EC2 Auto Scaling in the Amazon EC2 Auto
         # Scaling User Guide.
+
         @[JSON::Field(key: "InstanceDefinitions")]
         getter instance_definitions : Array(Types::InstanceDefinition)?
 
         # The Amazon Resource Name ( ARN ) for an IAM role that allows Amazon GameLift Servers to access your
         # Amazon EC2 Auto Scaling groups.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String?
 
@@ -9534,10 +10865,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameServerGroupOutput
         include JSON::Serializable
 
         # An object that describes the game server group resource with updated properties.
+
         @[JSON::Field(key: "GameServerGroup")]
         getter game_server_group : Types::GameServerGroup?
 
@@ -9547,30 +10880,36 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameServerInput
         include JSON::Serializable
 
         # A unique identifier for the game server group where the game server is running.
+
         @[JSON::Field(key: "GameServerGroupName")]
         getter game_server_group_name : String
 
         # A custom string that uniquely identifies the game server to update.
+
         @[JSON::Field(key: "GameServerId")]
         getter game_server_id : String
 
         # A set of custom game server properties, formatted as a single string value. This data is passed to a
         # game client or service when it requests information on game servers.
+
         @[JSON::Field(key: "GameServerData")]
         getter game_server_data : String?
 
         # Indicates health status of the game server. A request that includes this parameter updates the game
         # server's LastHealthCheckTime timestamp.
+
         @[JSON::Field(key: "HealthCheck")]
         getter health_check : String?
 
         # Indicates if the game server is available or is currently hosting gameplay. You can update a game
         # server status from AVAILABLE to UTILIZED , but you can't change a the status from UTILIZED to
         # AVAILABLE .
+
         @[JSON::Field(key: "UtilizationStatus")]
         getter utilization_status : String?
 
@@ -9584,10 +10923,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameServerOutput
         include JSON::Serializable
 
         # Object that describes the newly updated game server.
+
         @[JSON::Field(key: "GameServer")]
         getter game_server : Types::GameServer?
 
@@ -9597,10 +10938,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameSessionInput
         include JSON::Serializable
 
         # A unique identifier for the game session to update.
+
         @[JSON::Field(key: "GameSessionId")]
         getter game_session_id : String
 
@@ -9608,24 +10951,29 @@ module AwsSdk
         # "difficulty", "Value": "novice"} . You can use this parameter to modify game properties in an active
         # game session. This action adds new properties and modifies existing properties. There is no way to
         # delete properties. For an example, see Update the value of a game property .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
         # The maximum number of players that can be connected simultaneously to the game session.
+
         @[JSON::Field(key: "MaximumPlayerSessionCount")]
         getter maximum_player_session_count : Int32?
 
         # A descriptive label that is associated with a game session. Session names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A policy that determines whether the game session is accepting new players.
+
         @[JSON::Field(key: "PlayerSessionCreationPolicy")]
         getter player_session_creation_policy : String?
 
         # Game session protection policy to apply to this game session only. NoProtection -- The game session
         # can be terminated during a scale-down event. FullProtection -- If the game session is in an ACTIVE
         # status, it cannot be terminated during a scale-down event.
+
         @[JSON::Field(key: "ProtectionPolicy")]
         getter protection_policy : String?
 
@@ -9640,10 +10988,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameSessionOutput
         include JSON::Serializable
 
         # The updated game session properties.
+
         @[JSON::Field(key: "GameSession")]
         getter game_session : Types::GameSession?
 
@@ -9653,21 +11003,25 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameSessionQueueInput
         include JSON::Serializable
 
         # A descriptive label that is associated with game session queue. Queue names must be unique within
         # each Region. You can use either the queue ID or ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Information to be added to all events that are related to this game session queue.
+
         @[JSON::Field(key: "CustomEventData")]
         getter custom_event_data : String?
 
         # A list of fleets and/or fleet aliases that can be used to fulfill game session placement requests in
         # the queue. Destinations are identified by either a fleet ARN or a fleet alias ARN, and are listed in
         # order of placement preference. When updating this list, provide a complete list of destinations.
+
         @[JSON::Field(key: "Destinations")]
         getter destinations : Array(Types::GameSessionQueueDestination)?
 
@@ -9675,11 +11029,13 @@ module AwsSdk
         # the form of Amazon Web Services Region codes, such as us-west-2 . If this parameter is not set, game
         # sessions can be placed in any queue location. To remove an existing filter configuration, pass in an
         # empty set.
+
         @[JSON::Field(key: "FilterConfiguration")]
         getter filter_configuration : Types::FilterConfiguration?
 
         # An SNS topic ARN that is set up to receive game session placement notifications. See Setting up
         # notifications for game session placement .
+
         @[JSON::Field(key: "NotificationTarget")]
         getter notification_target : String?
 
@@ -9687,6 +11043,7 @@ module AwsSdk
         # placement requests. Use multiple policies to gradually relax the cap over time if Amazon GameLift
         # Servers can't make a placement. Policies are evaluated in order starting with the lowest maximum
         # latency value. When updating policies, provide a complete collection of policies.
+
         @[JSON::Field(key: "PlayerLatencyPolicies")]
         getter player_latency_policies : Array(Types::PlayerLatencyPolicy)?
 
@@ -9694,11 +11051,13 @@ module AwsSdk
         # This configuration replaces the FleetIQ default prioritization process. Priority types that are not
         # explicitly named will be automatically applied at the end of the prioritization process. To remove
         # an existing priority configuration, pass in an empty set.
+
         @[JSON::Field(key: "PriorityConfiguration")]
         getter priority_configuration : Types::PriorityConfiguration?
 
         # The maximum time, in seconds, that a new game session placement request remains in the queue. When a
         # request exceeds this time, the game session placement changes to a TIMED_OUT status.
+
         @[JSON::Field(key: "TimeoutInSeconds")]
         getter timeout_in_seconds : Int32?
 
@@ -9715,10 +11074,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateGameSessionQueueOutput
         include JSON::Serializable
 
         # An object that describes the newly updated game session queue.
+
         @[JSON::Field(key: "GameSessionQueue")]
         getter game_session_queue : Types::GameSessionQueue?
 
@@ -9728,11 +11089,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateMatchmakingConfigurationInput
         include JSON::Serializable
 
         # A unique identifier for the matchmaking configuration to update. You can use either the
         # configuration name or ARN value.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -9740,11 +11103,13 @@ module AwsSdk
         # the matched players. To require acceptance, set to TRUE. With this option enabled, matchmaking
         # tickets use the status REQUIRES_ACCEPTANCE to indicate when a completed potential match is waiting
         # for player acceptance.
+
         @[JSON::Field(key: "AcceptanceRequired")]
         getter acceptance_required : Bool?
 
         # The length of time (in seconds) to wait for players to accept a proposed match, if acceptance is
         # required.
+
         @[JSON::Field(key: "AcceptanceTimeoutSeconds")]
         getter acceptance_timeout_seconds : Int32?
 
@@ -9752,6 +11117,7 @@ module AwsSdk
         # configuration's rule set specifies a match for a single 12-person team, and the additional player
         # count is set to 2, only 10 players are selected for the match. This parameter is not used if
         # FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "AdditionalPlayerCount")]
         getter additional_player_count : Int32?
 
@@ -9760,14 +11126,17 @@ module AwsSdk
         # feature. Specify AUTOMATIC to have GameLift create a match backfill request whenever a game session
         # has one or more open slots. Learn more about manual and automatic backfill in Backfill Existing
         # Games with FlexMatch . Automatic backfill is not available when FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "BackfillMode")]
         getter backfill_mode : String?
 
         # Information to add to all events related to the matchmaking configuration.
+
         @[JSON::Field(key: "CustomEventData")]
         getter custom_event_data : String?
 
         # A description for the matchmaking configuration.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
@@ -9776,12 +11145,14 @@ module AwsSdk
         # information, including players and team assignments, in a MatchmakingSucceeded event. WITH_QUEUE -
         # FlexMatch forms matches and uses the specified Amazon GameLift Servers queue to start a game session
         # for the match.
+
         @[JSON::Field(key: "FlexMatchMode")]
         getter flex_match_mode : String?
 
         # A set of key-value pairs that can store custom data in a game session. For example: {"Key":
         # "difficulty", "Value": "novice"} . This information is added to the new GameSession object that is
         # created for a successful match. This parameter is not used if FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "GameProperties")]
         getter game_properties : Array(Types::GameProperty)?
 
@@ -9789,6 +11160,7 @@ module AwsSdk
         # a game server process with a request to start a new game session. For more information, see Start a
         # game session . This information is added to the game session that is created for a successful match.
         # This parameter is not used if FlexMatchMode is set to STANDALONE .
+
         @[JSON::Field(key: "GameSessionData")]
         getter game_session_data : String?
 
@@ -9798,22 +11170,26 @@ module AwsSdk
         # Region. Queues are used to start new Amazon GameLift Servers-hosted game sessions for matches that
         # are created with this matchmaking configuration. If FlexMatchMode is set to STANDALONE , do not set
         # this parameter.
+
         @[JSON::Field(key: "GameSessionQueueArns")]
         getter game_session_queue_arns : Array(String)?
 
         # An SNS topic ARN that is set up to receive matchmaking notifications. See Setting up notifications
         # for matchmaking for more information.
+
         @[JSON::Field(key: "NotificationTarget")]
         getter notification_target : String?
 
         # The maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out.
         # Requests that fail due to timing out can be resubmitted as needed.
+
         @[JSON::Field(key: "RequestTimeoutSeconds")]
         getter request_timeout_seconds : Int32?
 
         # A unique identifier for the matchmaking rule set to use with this configuration. You can use either
         # the rule set name or ARN value. A matchmaking configuration can only use rule sets that are defined
         # in the same Region.
+
         @[JSON::Field(key: "RuleSetName")]
         getter rule_set_name : String?
 
@@ -9836,10 +11212,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateMatchmakingConfigurationOutput
         include JSON::Serializable
 
         # The updated matchmaking configuration.
+
         @[JSON::Field(key: "Configuration")]
         getter configuration : Types::MatchmakingConfiguration?
 
@@ -9849,11 +11227,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateRuntimeConfigurationInput
         include JSON::Serializable
 
         # A unique identifier for the fleet to update runtime configuration for. You can use either the fleet
         # ID or ARN value.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String
 
@@ -9861,6 +11241,7 @@ module AwsSdk
         # game build executable or a Amazon GameLift Servers Realtime script. The runtime configuration lists
         # the types of server processes to run, how to launch them, and the number of processes to run
         # concurrently.
+
         @[JSON::Field(key: "RuntimeConfiguration")]
         getter runtime_configuration : Types::RuntimeConfiguration
 
@@ -9871,11 +11252,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateRuntimeConfigurationOutput
         include JSON::Serializable
 
         # The runtime configuration currently in use by computes in the fleet. If the update is successful,
         # all property changes are shown.
+
         @[JSON::Field(key: "RuntimeConfiguration")]
         getter runtime_configuration : Types::RuntimeConfiguration?
 
@@ -9885,15 +11268,18 @@ module AwsSdk
         end
       end
 
+
       struct UpdateScriptInput
         include JSON::Serializable
 
         # A unique identifier for the Realtime script to update. You can use either the script ID or ARN
         # value.
+
         @[JSON::Field(key: "ScriptId")]
         getter script_id : String
 
         # A descriptive label that is associated with a script. Script names do not need to be unique.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -9903,11 +11289,13 @@ module AwsSdk
         # must be in the same Region where you want to create a new script. By default, Amazon GameLift
         # Servers uploads the latest version of the zip file; if you have S3 object versioning turned on, you
         # can use the ObjectVersion parameter to specify an earlier version.
+
         @[JSON::Field(key: "StorageLocation")]
         getter storage_location : Types::S3Location?
 
         # Version information that is associated with a build or script. Version strings do not need to be
         # unique.
+
         @[JSON::Field(key: "Version")]
         getter version : String?
 
@@ -9916,6 +11304,7 @@ module AwsSdk
         # tool to create a script, this parameter is set to the zip file name. It must be prepended with the
         # string "fileb://" to indicate that the file data is a binary object. For example: --zip-file
         # fileb://myRealtimeScript.zip .
+
         @[JSON::Field(key: "ZipFile")]
         getter zip_file : Bytes?
 
@@ -9929,6 +11318,7 @@ module AwsSdk
         end
       end
 
+
       struct UpdateScriptOutput
         include JSON::Serializable
 
@@ -9937,6 +11327,7 @@ module AwsSdk
         # storage location reflects the information that was provided in the CreateScript request; (2) If the
         # script file was uploaded from a local zip file, the storage location reflects an S3 location
         # controls by the Amazon GameLift Servers service.
+
         @[JSON::Field(key: "Script")]
         getter script : Types::Script?
 
@@ -9946,10 +11337,12 @@ module AwsSdk
         end
       end
 
+
       struct ValidateMatchmakingRuleSetInput
         include JSON::Serializable
 
         # A collection of matchmaking rules to validate, formatted as a JSON string.
+
         @[JSON::Field(key: "RuleSetBody")]
         getter rule_set_body : String
 
@@ -9959,10 +11352,12 @@ module AwsSdk
         end
       end
 
+
       struct ValidateMatchmakingRuleSetOutput
         include JSON::Serializable
 
         # A response indicating whether the rule set is valid.
+
         @[JSON::Field(key: "Valid")]
         getter valid : Bool?
 
@@ -9976,26 +11371,31 @@ module AwsSdk
       # Servers fleet and another VPC on an account you have access to. This authorization must exist and be
       # valid for the peering connection to be established. Authorizations are valid for 24 hours after they
       # are issued. Related actions All APIs by task
+
       struct VpcPeeringAuthorization
         include JSON::Serializable
 
         # Time stamp indicating when this authorization was issued. Format is a number expressed in Unix time
         # as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # Time stamp indicating when this authorization expires (24 hours after issuance). Format is a number
         # expressed in Unix time as milliseconds (for example "1469498468.057" ).
+
         @[JSON::Field(key: "ExpirationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter expiration_time : Time?
 
         # A unique identifier for the Amazon Web Services account that you use to manage your Amazon GameLift
         # Servers fleet. You can find your Account ID in the Amazon Web Services Management Console under
         # account settings.
+
         @[JSON::Field(key: "GameLiftAwsAccountId")]
         getter game_lift_aws_account_id : String?
 
         # The authorization's peer VPC Amazon Web Services account ID.
+
         @[JSON::Field(key: "PeerVpcAwsAccountId")]
         getter peer_vpc_aws_account_id : String?
 
@@ -10003,6 +11403,7 @@ module AwsSdk
         # The VPC must be in the same Region as your fleet. To look up a VPC ID, use the VPC Dashboard in the
         # Amazon Web Services Management Console. Learn more about VPC peering in VPC Peering with Amazon
         # GameLift Servers Fleets .
+
         @[JSON::Field(key: "PeerVpcId")]
         getter peer_vpc_id : String?
 
@@ -10019,27 +11420,32 @@ module AwsSdk
       # Represents a peering connection between a VPC on one of your Amazon Web Services accounts and the
       # VPC for your Amazon GameLift Servers fleets. This record may be for an active peering connection or
       # a pending connection that has not yet been established. Related actions All APIs by task
+
       struct VpcPeeringConnection
         include JSON::Serializable
 
         # The Amazon Resource Name ( ARN ) associated with the GameLift fleet resource for this connection.
+
         @[JSON::Field(key: "FleetArn")]
         getter fleet_arn : String?
 
         # A unique identifier for the fleet. This ID determines the ID of the Amazon GameLift Servers VPC for
         # your fleet.
+
         @[JSON::Field(key: "FleetId")]
         getter fleet_id : String?
 
         # A unique identifier for the VPC that contains the Amazon GameLift Servers fleet for this connection.
         # This VPC is managed by Amazon GameLift Servers and does not appear in your Amazon Web Services
         # account.
+
         @[JSON::Field(key: "GameLiftVpcId")]
         getter game_lift_vpc_id : String?
 
         # CIDR block of IPv4 addresses assigned to the VPC peering connection for the GameLift VPC. The peered
         # VPC also has an IPv4 CIDR block associated with it; these blocks cannot overlap or the peering
         # connection cannot be created.
+
         @[JSON::Field(key: "IpV4CidrBlock")]
         getter ip_v4_cidr_block : String?
 
@@ -10047,16 +11453,19 @@ module AwsSdk
         # The VPC must be in the same Region as your fleet. To look up a VPC ID, use the VPC Dashboard in the
         # Amazon Web Services Management Console. Learn more about VPC peering in VPC Peering with Amazon
         # GameLift Servers Fleets .
+
         @[JSON::Field(key: "PeerVpcId")]
         getter peer_vpc_id : String?
 
         # The status information about the connection. Status indicates if a connection is pending,
         # successful, or failed.
+
         @[JSON::Field(key: "Status")]
         getter status : Types::VpcPeeringConnectionStatus?
 
         # A unique identifier that is automatically assigned to the connection record. This ID is referenced
         # in VPC peering connection events, and is used when deleting a connection.
+
         @[JSON::Field(key: "VpcPeeringConnectionId")]
         getter vpc_peering_connection_id : String?
 
@@ -10075,14 +11484,17 @@ module AwsSdk
       # Represents status information for a VPC peering connection. Status codes and messages are provided
       # from EC2 (see VpcPeeringConnectionStateReason ). Connection status information is also communicated
       # as a fleet event.
+
       struct VpcPeeringConnectionStatus
         include JSON::Serializable
 
         # Code indicating the status of a VPC peering connection.
+
         @[JSON::Field(key: "Code")]
         getter code : String?
 
         # Additional messaging associated with the connection status.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 

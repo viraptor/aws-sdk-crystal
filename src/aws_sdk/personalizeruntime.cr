@@ -1,0 +1,7 @@
+require "./runtime"
+require "./personalizeruntime/client"
+require "./personalizeruntime/errors"
+require "./personalizeruntime/model"
+require "./personalizeruntime/types"
+require "./personalizeruntime/protocol/rest_json"
+require "./customizations/personalizeruntime/customizations"

@@ -1,6 +1,7 @@
 module AwsSdk
   module KMS
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -36,12 +37,15 @@ module AwsSdk
       # permissions : kms:CancelKeyDeletion (key policy) Related operations : ScheduleKeyDeletion Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def cancel_key_deletion(
         key_id : String
       ) : Types::CancelKeyDeletionResponse
+
         input = Types::CancelKeyDeletionRequest.new(key_id: key_id)
         cancel_key_deletion(input)
       end
+
       def cancel_key_deletion(input : Types::CancelKeyDeletionRequest) : Types::CancelKeyDeletionResponse
         request = Protocol::JsonRpc.build_request(Model::CANCEL_KEY_DELETION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -91,12 +95,15 @@ module AwsSdk
       # CreateCustomKeyStore DeleteCustomKeyStore DescribeCustomKeyStores DisconnectCustomKeyStore
       # UpdateCustomKeyStore Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
+
       def connect_custom_key_store(
         custom_key_store_id : String
       ) : Types::ConnectCustomKeyStoreResponse
+
         input = Types::ConnectCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id)
         connect_custom_key_store(input)
       end
+
       def connect_custom_key_store(input : Types::ConnectCustomKeyStoreRequest) : Types::ConnectCustomKeyStoreResponse
         request = Protocol::JsonRpc.build_request(Model::CONNECT_CUSTOM_KEY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -124,13 +131,16 @@ module AwsSdk
       # to aliases in the Key Management Service Developer Guide . Related operations: DeleteAlias
       # ListAliases UpdateAlias Eventual consistency : The KMS API follows an eventual consistency model.
       # For more information, see KMS eventual consistency .
+
       def create_alias(
         alias_name : String,
         target_key_id : String
       ) : Nil
+
         input = Types::CreateAliasRequest.new(alias_name: alias_name, target_key_id: target_key_id)
         create_alias(input)
       end
+
       def create_alias(input : Types::CreateAliasRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::CREATE_ALIAS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -175,6 +185,7 @@ module AwsSdk
       # policy). Related operations: ConnectCustomKeyStore DeleteCustomKeyStore DescribeCustomKeyStores
       # DisconnectCustomKeyStore UpdateCustomKeyStore Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
+
       def create_custom_key_store(
         custom_key_store_name : String,
         cloud_hsm_cluster_id : String? = nil,
@@ -188,9 +199,11 @@ module AwsSdk
         xks_proxy_vpc_endpoint_service_name : String? = nil,
         xks_proxy_vpc_endpoint_service_owner : String? = nil
       ) : Types::CreateCustomKeyStoreResponse
+
         input = Types::CreateCustomKeyStoreRequest.new(custom_key_store_name: custom_key_store_name, cloud_hsm_cluster_id: cloud_hsm_cluster_id, custom_key_store_type: custom_key_store_type, key_store_password: key_store_password, trust_anchor_certificate: trust_anchor_certificate, xks_proxy_authentication_credential: xks_proxy_authentication_credential, xks_proxy_connectivity: xks_proxy_connectivity, xks_proxy_uri_endpoint: xks_proxy_uri_endpoint, xks_proxy_uri_path: xks_proxy_uri_path, xks_proxy_vpc_endpoint_service_name: xks_proxy_vpc_endpoint_service_name, xks_proxy_vpc_endpoint_service_owner: xks_proxy_vpc_endpoint_service_owner)
         create_custom_key_store(input)
       end
+
       def create_custom_key_store(input : Types::CreateCustomKeyStoreRequest) : Types::CreateCustomKeyStoreResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_CUSTOM_KEY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -222,6 +235,7 @@ module AwsSdk
       # kms:CreateGrant (key policy) Related operations: ListGrants ListRetirableGrants RetireGrant
       # RevokeGrant Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def create_grant(
         grantee_principal : String,
         key_id : String,
@@ -232,9 +246,11 @@ module AwsSdk
         name : String? = nil,
         retiring_principal : String? = nil
       ) : Types::CreateGrantResponse
+
         input = Types::CreateGrantRequest.new(grantee_principal: grantee_principal, key_id: key_id, operations: operations, constraints: constraints, dry_run: dry_run, grant_tokens: grant_tokens, name: name, retiring_principal: retiring_principal)
         create_grant(input)
       end
+
       def create_grant(input : Types::CreateGrantRequest) : Types::CreateGrantResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_GRANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -336,6 +352,7 @@ module AwsSdk
       # permissions, see Allow a user to create KMS keys in the Key Management Service Developer Guide .
       # Related operations: DescribeKey ListKeys ScheduleKeyDeletion Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def create_key(
         bypass_policy_lockout_safety_check : Bool? = nil,
         custom_key_store_id : String? = nil,
@@ -349,9 +366,11 @@ module AwsSdk
         tags : Array(Types::Tag)? = nil,
         xks_key_id : String? = nil
       ) : Types::CreateKeyResponse
+
         input = Types::CreateKeyRequest.new(bypass_policy_lockout_safety_check: bypass_policy_lockout_safety_check, custom_key_store_id: custom_key_store_id, customer_master_key_spec: customer_master_key_spec, description: description, key_spec: key_spec, key_usage: key_usage, multi_region: multi_region, origin: origin, policy: policy, tags: tags, xks_key_id: xks_key_id)
         create_key(input)
       end
+
       def create_key(input : Types::CreateKeyRequest) : Types::CreateKeyResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -397,6 +416,7 @@ module AwsSdk
       # ARN or the alias ARN of the KMS key. Required permissions : kms:Decrypt (key policy) Related
       # operations: Encrypt GenerateDataKey GenerateDataKeyPair ReEncrypt Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def decrypt(
         ciphertext_blob : Bytes,
         dry_run : Bool? = nil,
@@ -406,9 +426,11 @@ module AwsSdk
         key_id : String? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::DecryptResponse
+
         input = Types::DecryptRequest.new(ciphertext_blob: ciphertext_blob, dry_run: dry_run, encryption_algorithm: encryption_algorithm, encryption_context: encryption_context, grant_tokens: grant_tokens, key_id: key_id, recipient: recipient)
         decrypt(input)
       end
+
       def decrypt(input : Types::DecryptRequest) : Types::DecryptResponse
         request = Protocol::JsonRpc.build_request(Model::DECRYPT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -430,12 +452,15 @@ module AwsSdk
       # Key Management Service Developer Guide . Related operations: CreateAlias ListAliases UpdateAlias
       # Eventual consistency : The KMS API follows an eventual consistency model. For more information, see
       # KMS eventual consistency .
+
       def delete_alias(
         alias_name : String
       ) : Nil
+
         input = Types::DeleteAliasRequest.new(alias_name: alias_name)
         delete_alias(input)
       end
+
       def delete_alias(input : Types::DeleteAliasRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_ALIAS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -469,12 +494,15 @@ module AwsSdk
       # ConnectCustomKeyStore CreateCustomKeyStore DescribeCustomKeyStores DisconnectCustomKeyStore
       # UpdateCustomKeyStore Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
+
       def delete_custom_key_store(
         custom_key_store_id : String
       ) : Types::DeleteCustomKeyStoreResponse
+
         input = Types::DeleteCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id)
         delete_custom_key_store(input)
       end
+
       def delete_custom_key_store(input : Types::DeleteCustomKeyStoreRequest) : Types::DeleteCustomKeyStoreResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_CUSTOM_KEY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -499,13 +527,16 @@ module AwsSdk
       # policy) Related operations: GetParametersForImport ListKeyRotations ImportKeyMaterial Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def delete_imported_key_material(
         key_id : String,
         key_material_id : String? = nil
       ) : Types::DeleteImportedKeyMaterialResponse
+
         input = Types::DeleteImportedKeyMaterialRequest.new(key_id: key_id, key_material_id: key_material_id)
         delete_imported_key_material(input)
       end
+
       def delete_imported_key_material(input : Types::DeleteImportedKeyMaterialRequest) : Types::DeleteImportedKeyMaterialResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_IMPORTED_KEY_MATERIAL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -547,6 +578,7 @@ module AwsSdk
       # ARN in the value of the KeyId parameter. Required permissions : kms:DeriveSharedSecret (key policy)
       # Related operations: CreateKey GetPublicKey DescribeKey Eventual consistency : The KMS API follows an
       # eventual consistency model. For more information, see KMS eventual consistency .
+
       def derive_shared_secret(
         key_agreement_algorithm : String,
         key_id : String,
@@ -555,9 +587,11 @@ module AwsSdk
         grant_tokens : Array(String)? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::DeriveSharedSecretResponse
+
         input = Types::DeriveSharedSecretRequest.new(key_agreement_algorithm: key_agreement_algorithm, key_id: key_id, public_key: public_key, dry_run: dry_run, grant_tokens: grant_tokens, recipient: recipient)
         derive_shared_secret(input)
       end
+
       def derive_shared_secret(input : Types::DeriveSharedSecretRequest) : Types::DeriveSharedSecretResponse
         request = Protocol::JsonRpc.build_request(Model::DERIVE_SHARED_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -590,15 +624,18 @@ module AwsSdk
       # CreateCustomKeyStore DeleteCustomKeyStore DisconnectCustomKeyStore UpdateCustomKeyStore Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def describe_custom_key_stores(
         custom_key_store_id : String? = nil,
         custom_key_store_name : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::DescribeCustomKeyStoresResponse
+
         input = Types::DescribeCustomKeyStoresRequest.new(custom_key_store_id: custom_key_store_id, custom_key_store_name: custom_key_store_name, limit: limit, marker: marker)
         describe_custom_key_stores(input)
       end
+
       def describe_custom_key_stores(input : Types::DescribeCustomKeyStoresRequest) : Types::DescribeCustomKeyStoresResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CUSTOM_KEY_STORES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -630,13 +667,16 @@ module AwsSdk
       # GetKeyRotationStatus ListAliases ListGrants ListKeys ListResourceTags ListRetirableGrants Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def describe_key(
         key_id : String,
         grant_tokens : Array(String)? = nil
       ) : Types::DescribeKeyResponse
+
         input = Types::DescribeKeyRequest.new(key_id: key_id, grant_tokens: grant_tokens)
         describe_key(input)
       end
+
       def describe_key(input : Types::DescribeKeyRequest) : Types::DescribeKeyResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -652,12 +692,15 @@ module AwsSdk
       # operation on a KMS key in a different Amazon Web Services account. Required permissions :
       # kms:DisableKey (key policy) Related operations : EnableKey Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def disable_key(
         key_id : String
       ) : Nil
+
         input = Types::DisableKeyRequest.new(key_id: key_id)
         disable_key(input)
       end
+
       def disable_key(input : Types::DisableKeyRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DISABLE_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -681,12 +724,15 @@ module AwsSdk
       # Services account. Required permissions : kms:DisableKeyRotation (key policy) Related operations:
       # EnableKeyRotation GetKeyRotationStatus ListKeyRotations RotateKeyOnDemand Eventual consistency : The
       # KMS API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def disable_key_rotation(
         key_id : String
       ) : Nil
+
         input = Types::DisableKeyRotationRequest.new(key_id: key_id)
         disable_key_rotation(input)
       end
+
       def disable_key_rotation(input : Types::DisableKeyRotationRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DISABLE_KEY_ROTATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -713,12 +759,15 @@ module AwsSdk
       # CreateCustomKeyStore DeleteCustomKeyStore DescribeCustomKeyStores UpdateCustomKeyStore Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def disconnect_custom_key_store(
         custom_key_store_id : String
       ) : Types::DisconnectCustomKeyStoreResponse
+
         input = Types::DisconnectCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id)
         disconnect_custom_key_store(input)
       end
+
       def disconnect_custom_key_store(input : Types::DisconnectCustomKeyStoreRequest) : Types::DisconnectCustomKeyStoreResponse
         request = Protocol::JsonRpc.build_request(Model::DISCONNECT_CUSTOM_KEY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -734,12 +783,15 @@ module AwsSdk
       # Required permissions : kms:EnableKey (key policy) Related operations : DisableKey Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def enable_key(
         key_id : String
       ) : Nil
+
         input = Types::EnableKeyRequest.new(key_id: key_id)
         enable_key(input)
       end
+
       def enable_key(input : Types::EnableKeyRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::ENABLE_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -777,13 +829,16 @@ module AwsSdk
       # customer managed KMS keys, regardless of whether or not automatic key rotation is enabled. Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def enable_key_rotation(
         key_id : String,
         rotation_period_in_days : Int32? = nil
       ) : Nil
+
         input = Types::EnableKeyRotationRequest.new(key_id: key_id, rotation_period_in_days: rotation_period_in_days)
         enable_key_rotation(input)
       end
+
       def enable_key_rotation(input : Types::EnableKeyRotationRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::ENABLE_KEY_ROTATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -821,6 +876,7 @@ module AwsSdk
       # Required permissions : kms:Encrypt (key policy) Related operations: Decrypt GenerateDataKey
       # GenerateDataKeyPair Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
+
       def encrypt(
         key_id : String,
         plaintext : Bytes,
@@ -829,9 +885,11 @@ module AwsSdk
         encryption_context : Hash(String, String)? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::EncryptResponse
+
         input = Types::EncryptRequest.new(key_id: key_id, plaintext: plaintext, dry_run: dry_run, encryption_algorithm: encryption_algorithm, encryption_context: encryption_context, grant_tokens: grant_tokens)
         encrypt(input)
       end
+
       def encrypt(input : Types::EncryptRequest) : Types::EncryptResponse
         request = Protocol::JsonRpc.build_request(Model::ENCRYPT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -883,6 +941,7 @@ module AwsSdk
       # kms:GenerateDataKey (key policy) Related operations: Decrypt Encrypt GenerateDataKeyPair
       # GenerateDataKeyPairWithoutPlaintext GenerateDataKeyWithoutPlaintext Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def generate_data_key(
         key_id : String,
         dry_run : Bool? = nil,
@@ -892,9 +951,11 @@ module AwsSdk
         number_of_bytes : Int32? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::GenerateDataKeyResponse
+
         input = Types::GenerateDataKeyRequest.new(key_id: key_id, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens, key_spec: key_spec, number_of_bytes: number_of_bytes, recipient: recipient)
         generate_data_key(input)
       end
+
       def generate_data_key(input : Types::GenerateDataKeyRequest) : Types::GenerateDataKeyResponse
         request = Protocol::JsonRpc.build_request(Model::GENERATE_DATA_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -948,6 +1009,7 @@ module AwsSdk
       # Related operations: Decrypt Encrypt GenerateDataKey GenerateDataKeyPairWithoutPlaintext
       # GenerateDataKeyWithoutPlaintext Eventual consistency : The KMS API follows an eventual consistency
       # model. For more information, see KMS eventual consistency .
+
       def generate_data_key_pair(
         key_id : String,
         key_pair_spec : String,
@@ -956,9 +1018,11 @@ module AwsSdk
         grant_tokens : Array(String)? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::GenerateDataKeyPairResponse
+
         input = Types::GenerateDataKeyPairRequest.new(key_id: key_id, key_pair_spec: key_pair_spec, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens, recipient: recipient)
         generate_data_key_pair(input)
       end
+
       def generate_data_key_pair(input : Types::GenerateDataKeyPairRequest) : Types::GenerateDataKeyPairResponse
         request = Protocol::JsonRpc.build_request(Model::GENERATE_DATA_KEY_PAIR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -995,6 +1059,7 @@ module AwsSdk
       # : kms:GenerateDataKeyPairWithoutPlaintext (key policy) Related operations: Decrypt Encrypt
       # GenerateDataKey GenerateDataKeyPair GenerateDataKeyWithoutPlaintext Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def generate_data_key_pair_without_plaintext(
         key_id : String,
         key_pair_spec : String,
@@ -1002,9 +1067,11 @@ module AwsSdk
         encryption_context : Hash(String, String)? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::GenerateDataKeyPairWithoutPlaintextResponse
+
         input = Types::GenerateDataKeyPairWithoutPlaintextRequest.new(key_id: key_id, key_pair_spec: key_pair_spec, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens)
         generate_data_key_pair_without_plaintext(input)
       end
+
       def generate_data_key_pair_without_plaintext(input : Types::GenerateDataKeyPairWithoutPlaintextRequest) : Types::GenerateDataKeyPairWithoutPlaintextResponse
         request = Protocol::JsonRpc.build_request(Model::GENERATE_DATA_KEY_PAIR_WITHOUT_PLAINTEXT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1046,6 +1113,7 @@ module AwsSdk
       # Encrypt GenerateDataKey GenerateDataKeyPair GenerateDataKeyPairWithoutPlaintext Eventual consistency
       # : The KMS API follows an eventual consistency model. For more information, see KMS eventual
       # consistency .
+
       def generate_data_key_without_plaintext(
         key_id : String,
         dry_run : Bool? = nil,
@@ -1054,9 +1122,11 @@ module AwsSdk
         key_spec : String? = nil,
         number_of_bytes : Int32? = nil
       ) : Types::GenerateDataKeyWithoutPlaintextResponse
+
         input = Types::GenerateDataKeyWithoutPlaintextRequest.new(key_id: key_id, dry_run: dry_run, encryption_context: encryption_context, grant_tokens: grant_tokens, key_spec: key_spec, number_of_bytes: number_of_bytes)
         generate_data_key_without_plaintext(input)
       end
+
       def generate_data_key_without_plaintext(input : Types::GenerateDataKeyWithoutPlaintextRequest) : Types::GenerateDataKeyWithoutPlaintextResponse
         request = Protocol::JsonRpc.build_request(Model::GENERATE_DATA_KEY_WITHOUT_PLAINTEXT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1083,6 +1153,7 @@ module AwsSdk
       # KeyId parameter. Required permissions : kms:GenerateMac (key policy) Related operations : VerifyMac
       # Eventual consistency : The KMS API follows an eventual consistency model. For more information, see
       # KMS eventual consistency .
+
       def generate_mac(
         key_id : String,
         mac_algorithm : String,
@@ -1090,9 +1161,11 @@ module AwsSdk
         dry_run : Bool? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::GenerateMacResponse
+
         input = Types::GenerateMacRequest.new(key_id: key_id, mac_algorithm: mac_algorithm, message: message, dry_run: dry_run, grant_tokens: grant_tokens)
         generate_mac(input)
       end
+
       def generate_mac(input : Types::GenerateMacRequest) : Types::GenerateMacResponse
         request = Protocol::JsonRpc.build_request(Model::GENERATE_MAC, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1117,14 +1190,17 @@ module AwsSdk
       # Cross-account use : Not applicable. GenerateRandom does not use any account-specific resources, such
       # as KMS keys. Required permissions : kms:GenerateRandom (IAM policy) Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def generate_random(
         custom_key_store_id : String? = nil,
         number_of_bytes : Int32? = nil,
         recipient : Types::RecipientInfo? = nil
       ) : Types::GenerateRandomResponse
+
         input = Types::GenerateRandomRequest.new(custom_key_store_id: custom_key_store_id, number_of_bytes: number_of_bytes, recipient: recipient)
         generate_random(input)
       end
+
       def generate_random(input : Types::GenerateRandomRequest) : Types::GenerateRandomResponse
         request = Protocol::JsonRpc.build_request(Model::GENERATE_RANDOM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1137,13 +1213,16 @@ module AwsSdk
       # operation on a KMS key in a different Amazon Web Services account. Required permissions :
       # kms:GetKeyPolicy (key policy) Related operations : PutKeyPolicy Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def get_key_policy(
         key_id : String,
         policy_name : String? = nil
       ) : Types::GetKeyPolicyResponse
+
         input = Types::GetKeyPolicyRequest.new(key_id: key_id, policy_name: policy_name)
         get_key_policy(input)
       end
+
       def get_key_policy(input : Types::GetKeyPolicyRequest) : Types::GetKeyPolicyResponse
         request = Protocol::JsonRpc.build_request(Model::GET_KEY_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1181,12 +1260,15 @@ module AwsSdk
       # kms:GetKeyRotationStatus (key policy) Related operations: DisableKeyRotation EnableKeyRotation
       # ListKeyRotations RotateKeyOnDemand Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
+
       def get_key_rotation_status(
         key_id : String
       ) : Types::GetKeyRotationStatusResponse
+
         input = Types::GetKeyRotationStatusRequest.new(key_id: key_id)
         get_key_rotation_status(input)
       end
+
       def get_key_rotation_status(input : Types::GetKeyRotationStatusRequest) : Types::GetKeyRotationStatusResponse
         request = Protocol::JsonRpc.build_request(Model::GET_KEY_ROTATION_STATUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1223,14 +1305,17 @@ module AwsSdk
       # Services account. Required permissions : kms:GetParametersForImport (key policy) Related operations:
       # ImportKeyMaterial DeleteImportedKeyMaterial Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
+
       def get_parameters_for_import(
         key_id : String,
         wrapping_algorithm : String,
         wrapping_key_spec : String
       ) : Types::GetParametersForImportResponse
+
         input = Types::GetParametersForImportRequest.new(key_id: key_id, wrapping_algorithm: wrapping_algorithm, wrapping_key_spec: wrapping_key_spec)
         get_parameters_for_import(input)
       end
+
       def get_parameters_for_import(input : Types::GetParametersForImportRequest) : Types::GetParametersForImportResponse
         request = Protocol::JsonRpc.build_request(Model::GET_PARAMETERS_FOR_IMPORT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1267,13 +1352,16 @@ module AwsSdk
       # Required permissions : kms:GetPublicKey (key policy) Related operations : CreateKey Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def get_public_key(
         key_id : String,
         grant_tokens : Array(String)? = nil
       ) : Types::GetPublicKeyResponse
+
         input = Types::GetPublicKeyRequest.new(key_id: key_id, grant_tokens: grant_tokens)
         get_public_key(input)
       end
+
       def get_public_key(input : Types::GetPublicKeyRequest) : Types::GetPublicKeyResponse
         request = Protocol::JsonRpc.build_request(Model::GET_PUBLIC_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1341,6 +1429,7 @@ module AwsSdk
       # Related operations: DeleteImportedKeyMaterial GetParametersForImport ListKeyRotations
       # RotateKeyOnDemand Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def import_key_material(
         encrypted_key_material : Bytes,
         import_token : Bytes,
@@ -1351,9 +1440,11 @@ module AwsSdk
         key_material_id : String? = nil,
         valid_to : Time? = nil
       ) : Types::ImportKeyMaterialResponse
+
         input = Types::ImportKeyMaterialRequest.new(encrypted_key_material: encrypted_key_material, import_token: import_token, key_id: key_id, expiration_model: expiration_model, import_type: import_type, key_material_description: key_material_description, key_material_id: key_material_id, valid_to: valid_to)
         import_key_material(input)
       end
+
       def import_key_material(input : Types::ImportKeyMaterialRequest) : Types::ImportKeyMaterialResponse
         request = Protocol::JsonRpc.build_request(Model::IMPORT_KEY_MATERIAL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1377,14 +1468,17 @@ module AwsSdk
       # in the Key Management Service Developer Guide . Related operations: CreateAlias DeleteAlias
       # UpdateAlias Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def list_aliases(
         key_id : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListAliasesResponse
+
         input = Types::ListAliasesRequest.new(key_id: key_id, limit: limit, marker: marker)
         list_aliases(input)
       end
+
       def list_aliases(input : Types::ListAliasesRequest) : Types::ListAliasesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ALIASES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1406,6 +1500,7 @@ module AwsSdk
       # kms:ListGrants (key policy) Related operations: CreateGrant ListRetirableGrants RetireGrant
       # RevokeGrant Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def list_grants(
         key_id : String,
         grant_id : String? = nil,
@@ -1413,9 +1508,11 @@ module AwsSdk
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListGrantsResponse
+
         input = Types::ListGrantsRequest.new(key_id: key_id, grant_id: grant_id, grantee_principal: grantee_principal, limit: limit, marker: marker)
         list_grants(input)
       end
+
       def list_grants(input : Types::ListGrantsRequest) : Types::ListGrantsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_GRANTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1430,14 +1527,17 @@ module AwsSdk
       # Amazon Web Services account. Required permissions : kms:ListKeyPolicies (key policy) Related
       # operations: GetKeyPolicy PutKeyPolicy Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
+
       def list_key_policies(
         key_id : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListKeyPoliciesResponse
+
         input = Types::ListKeyPoliciesRequest.new(key_id: key_id, limit: limit, marker: marker)
         list_key_policies(input)
       end
+
       def list_key_policies(input : Types::ListKeyPoliciesRequest) : Types::ListKeyPoliciesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_KEY_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1456,15 +1556,18 @@ module AwsSdk
       # DeleteImportedKeyMaterial DisableKeyRotation GetKeyRotationStatus ImportKeyMaterial
       # RotateKeyOnDemand Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def list_key_rotations(
         key_id : String,
         include_key_material : String? = nil,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListKeyRotationsResponse
+
         input = Types::ListKeyRotationsRequest.new(key_id: key_id, include_key_material: include_key_material, limit: limit, marker: marker)
         list_key_rotations(input)
       end
+
       def list_key_rotations(input : Types::ListKeyRotationsRequest) : Types::ListKeyRotationsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_KEY_ROTATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1478,13 +1581,16 @@ module AwsSdk
       # Required permissions : kms:ListKeys (IAM policy) Related operations: CreateKey DescribeKey
       # ListAliases ListResourceTags Eventual consistency : The KMS API follows an eventual consistency
       # model. For more information, see KMS eventual consistency .
+
       def list_keys(
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListKeysResponse
+
         input = Types::ListKeysRequest.new(limit: limit, marker: marker)
         list_keys(input)
       end
+
       def list_keys(input : Types::ListKeysRequest) : Types::ListKeysResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_KEYS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1500,14 +1606,17 @@ module AwsSdk
       # : kms:ListResourceTags (key policy) Related operations: CreateKey ReplicateKey TagResource
       # UntagResource Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def list_resource_tags(
         key_id : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListResourceTagsResponse
+
         input = Types::ListResourceTagsRequest.new(key_id: key_id, limit: limit, marker: marker)
         list_resource_tags(input)
       end
+
       def list_resource_tags(input : Types::ListResourceTagsRequest) : Types::ListResourceTagsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_RESOURCE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1535,14 +1644,17 @@ module AwsSdk
       # verify their access to any KMS keys or grants that might be returned by the ListRetirableGrants
       # call. Related operations: CreateGrant ListGrants RetireGrant RevokeGrant Eventual consistency : The
       # KMS API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def list_retirable_grants(
         retiring_principal : String,
         limit : Int32? = nil,
         marker : String? = nil
       ) : Types::ListGrantsResponse
+
         input = Types::ListRetirableGrantsRequest.new(retiring_principal: retiring_principal, limit: limit, marker: marker)
         list_retirable_grants(input)
       end
+
       def list_retirable_grants(input : Types::ListRetirableGrantsRequest) : Types::ListGrantsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_RETIRABLE_GRANTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1560,15 +1672,18 @@ module AwsSdk
       # Required permissions : kms:PutKeyPolicy (key policy) Related operations : GetKeyPolicy Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def put_key_policy(
         key_id : String,
         policy : String,
         bypass_policy_lockout_safety_check : Bool? = nil,
         policy_name : String? = nil
       ) : Nil
+
         input = Types::PutKeyPolicyRequest.new(key_id: key_id, policy: policy, bypass_policy_lockout_safety_check: bypass_policy_lockout_safety_check, policy_name: policy_name)
         put_key_policy(input)
       end
+
       def put_key_policy(input : Types::PutKeyPolicyRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::PUT_KEY_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1620,6 +1735,7 @@ module AwsSdk
       # operation to set a key policy. Related operations: Decrypt Encrypt GenerateDataKey
       # GenerateDataKeyPair Eventual consistency : The KMS API follows an eventual consistency model. For
       # more information, see KMS eventual consistency .
+
       def re_encrypt(
         ciphertext_blob : Bytes,
         destination_key_id : String,
@@ -1631,9 +1747,11 @@ module AwsSdk
         source_encryption_context : Hash(String, String)? = nil,
         source_key_id : String? = nil
       ) : Types::ReEncryptResponse
+
         input = Types::ReEncryptRequest.new(ciphertext_blob: ciphertext_blob, destination_key_id: destination_key_id, destination_encryption_algorithm: destination_encryption_algorithm, destination_encryption_context: destination_encryption_context, dry_run: dry_run, grant_tokens: grant_tokens, source_encryption_algorithm: source_encryption_algorithm, source_encryption_context: source_encryption_context, source_key_id: source_key_id)
         re_encrypt(input)
       end
+
       def re_encrypt(input : Types::ReEncryptRequest) : Types::ReEncryptResponse
         request = Protocol::JsonRpc.build_request(Model::RE_ENCRYPT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1682,6 +1800,7 @@ module AwsSdk
       # an IAM policy in the replica Region. Related operations CreateKey UpdatePrimaryRegion Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def replicate_key(
         key_id : String,
         replica_region : String,
@@ -1690,9 +1809,11 @@ module AwsSdk
         policy : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::ReplicateKeyResponse
+
         input = Types::ReplicateKeyRequest.new(key_id: key_id, replica_region: replica_region, bypass_policy_lockout_safety_check: bypass_policy_lockout_safety_check, description: description, policy: policy, tags: tags)
         replicate_key(input)
       end
+
       def replicate_key(input : Types::ReplicateKeyRequest) : Types::ReplicateKeyResponse
         request = Protocol::JsonRpc.build_request(Model::REPLICATE_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1715,15 +1836,18 @@ module AwsSdk
       # Management Service Developer Guide . Related operations: CreateGrant ListGrants ListRetirableGrants
       # RevokeGrant Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def retire_grant(
         dry_run : Bool? = nil,
         grant_id : String? = nil,
         grant_token : String? = nil,
         key_id : String? = nil
       ) : Nil
+
         input = Types::RetireGrantRequest.new(dry_run: dry_run, grant_id: grant_id, grant_token: grant_token, key_id: key_id)
         retire_grant(input)
       end
+
       def retire_grant(input : Types::RetireGrantRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::RETIRE_GRANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1744,14 +1868,17 @@ module AwsSdk
       # of the KeyId parameter. Required permissions : kms:RevokeGrant (key policy). Related operations:
       # CreateGrant ListGrants ListRetirableGrants RetireGrant Eventual consistency : The KMS API follows an
       # eventual consistency model. For more information, see KMS eventual consistency .
+
       def revoke_grant(
         grant_id : String,
         key_id : String,
         dry_run : Bool? = nil
       ) : Nil
+
         input = Types::RevokeGrantRequest.new(grant_id: grant_id, key_id: key_id, dry_run: dry_run)
         revoke_grant(input)
       end
+
       def revoke_grant(input : Types::RevokeGrantRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::REVOKE_GRANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1788,12 +1915,15 @@ module AwsSdk
       # kms:RotateKeyOnDemand (key policy) Related operations: EnableKeyRotation DisableKeyRotation
       # GetKeyRotationStatus ImportKeyMaterial ListKeyRotations Eventual consistency : The KMS API follows
       # an eventual consistency model. For more information, see KMS eventual consistency .
+
       def rotate_key_on_demand(
         key_id : String
       ) : Types::RotateKeyOnDemandResponse
+
         input = Types::RotateKeyOnDemandRequest.new(key_id: key_id)
         rotate_key_on_demand(input)
       end
+
       def rotate_key_on_demand(input : Types::RotateKeyOnDemandRequest) : Types::RotateKeyOnDemandResponse
         request = Protocol::JsonRpc.build_request(Model::ROTATE_KEY_ON_DEMAND, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1833,13 +1963,16 @@ module AwsSdk
       # permissions : kms:ScheduleKeyDeletion (key policy) Related operations CancelKeyDeletion DisableKey
       # Eventual consistency : The KMS API follows an eventual consistency model. For more information, see
       # KMS eventual consistency .
+
       def schedule_key_deletion(
         key_id : String,
         pending_window_in_days : Int32? = nil
       ) : Types::ScheduleKeyDeletionResponse
+
         input = Types::ScheduleKeyDeletionRequest.new(key_id: key_id, pending_window_in_days: pending_window_in_days)
         schedule_key_deletion(input)
       end
+
       def schedule_key_deletion(input : Types::ScheduleKeyDeletionRequest) : Types::ScheduleKeyDeletionResponse
         request = Protocol::JsonRpc.build_request(Model::SCHEDULE_KEY_DELETION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1876,6 +2009,7 @@ module AwsSdk
       # Amazon Web Services account, specify the key ARN or alias ARN in the value of the KeyId parameter.
       # Required permissions : kms:Sign (key policy) Related operations : Verify Eventual consistency : The
       # KMS API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def sign(
         key_id : String,
         message : Bytes,
@@ -1884,9 +2018,11 @@ module AwsSdk
         grant_tokens : Array(String)? = nil,
         message_type : String? = nil
       ) : Types::SignResponse
+
         input = Types::SignRequest.new(key_id: key_id, message: message, signing_algorithm: signing_algorithm, dry_run: dry_run, grant_tokens: grant_tokens, message_type: message_type)
         sign(input)
       end
+
       def sign(input : Types::SignRequest) : Types::SignResponse
         request = Protocol::JsonRpc.build_request(Model::SIGN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1911,13 +2047,16 @@ module AwsSdk
       # kms:TagResource (key policy) Related operations CreateKey ListResourceTags ReplicateKey
       # UntagResource Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def tag_resource(
         key_id : String,
         tags : Array(Types::Tag)
       ) : Nil
+
         input = Types::TagResourceRequest.new(key_id: key_id, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1939,13 +2078,16 @@ module AwsSdk
       # different Amazon Web Services account. Required permissions : kms:UntagResource (key policy) Related
       # operations CreateKey ListResourceTags ReplicateKey TagResource Eventual consistency : The KMS API
       # follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def untag_resource(
         key_id : String,
         tag_keys : Array(String)
       ) : Nil
+
         input = Types::UntagResourceRequest.new(key_id: key_id, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1974,13 +2116,16 @@ module AwsSdk
       # Controlling access to aliases in the Key Management Service Developer Guide . Related operations:
       # CreateAlias DeleteAlias ListAliases Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
+
       def update_alias(
         alias_name : String,
         target_key_id : String
       ) : Nil
+
         input = Types::UpdateAliasRequest.new(alias_name: alias_name, target_key_id: target_key_id)
         update_alias(input)
       end
+
       def update_alias(input : Types::UpdateAliasRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_ALIAS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2032,6 +2177,7 @@ module AwsSdk
       # kms:UpdateCustomKeyStore (IAM policy) Related operations: ConnectCustomKeyStore CreateCustomKeyStore
       # DeleteCustomKeyStore DescribeCustomKeyStores DisconnectCustomKeyStore Eventual consistency : The KMS
       # API follows an eventual consistency model. For more information, see KMS eventual consistency .
+
       def update_custom_key_store(
         custom_key_store_id : String,
         cloud_hsm_cluster_id : String? = nil,
@@ -2044,9 +2190,11 @@ module AwsSdk
         xks_proxy_vpc_endpoint_service_name : String? = nil,
         xks_proxy_vpc_endpoint_service_owner : String? = nil
       ) : Types::UpdateCustomKeyStoreResponse
+
         input = Types::UpdateCustomKeyStoreRequest.new(custom_key_store_id: custom_key_store_id, cloud_hsm_cluster_id: cloud_hsm_cluster_id, key_store_password: key_store_password, new_custom_key_store_name: new_custom_key_store_name, xks_proxy_authentication_credential: xks_proxy_authentication_credential, xks_proxy_connectivity: xks_proxy_connectivity, xks_proxy_uri_endpoint: xks_proxy_uri_endpoint, xks_proxy_uri_path: xks_proxy_uri_path, xks_proxy_vpc_endpoint_service_name: xks_proxy_vpc_endpoint_service_name, xks_proxy_vpc_endpoint_service_owner: xks_proxy_vpc_endpoint_service_owner)
         update_custom_key_store(input)
       end
+
       def update_custom_key_store(input : Types::UpdateCustomKeyStoreRequest) : Types::UpdateCustomKeyStoreResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_CUSTOM_KEY_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2062,13 +2210,16 @@ module AwsSdk
       # : kms:UpdateKeyDescription (key policy) Related operations CreateKey DescribeKey Eventual
       # consistency : The KMS API follows an eventual consistency model. For more information, see KMS
       # eventual consistency .
+
       def update_key_description(
         description : String,
         key_id : String
       ) : Nil
+
         input = Types::UpdateKeyDescriptionRequest.new(description: description, key_id: key_id)
         update_key_description(input)
       end
+
       def update_key_description(input : Types::UpdateKeyDescriptionRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_KEY_DESCRIPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2112,13 +2263,16 @@ module AwsSdk
       # replica key (in the replica key's Region). Include this permission in the replica key's key policy.
       # Related operations CreateKey ReplicateKey Eventual consistency : The KMS API follows an eventual
       # consistency model. For more information, see KMS eventual consistency .
+
       def update_primary_region(
         key_id : String,
         primary_region : String
       ) : Nil
+
         input = Types::UpdatePrimaryRegionRequest.new(key_id: key_id, primary_region: primary_region)
         update_primary_region(input)
       end
+
       def update_primary_region(input : Types::UpdatePrimaryRegionRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_PRIMARY_REGION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2152,6 +2306,7 @@ module AwsSdk
       # ARN or alias ARN in the value of the KeyId parameter. Required permissions : kms:Verify (key policy)
       # Related operations : Sign Eventual consistency : The KMS API follows an eventual consistency model.
       # For more information, see KMS eventual consistency .
+
       def verify(
         key_id : String,
         message : Bytes,
@@ -2161,9 +2316,11 @@ module AwsSdk
         grant_tokens : Array(String)? = nil,
         message_type : String? = nil
       ) : Types::VerifyResponse
+
         input = Types::VerifyRequest.new(key_id: key_id, message: message, signature: signature, signing_algorithm: signing_algorithm, dry_run: dry_run, grant_tokens: grant_tokens, message_type: message_type)
         verify(input)
       end
+
       def verify(input : Types::VerifyRequest) : Types::VerifyResponse
         request = Protocol::JsonRpc.build_request(Model::VERIFY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2186,6 +2343,7 @@ module AwsSdk
       # of the KeyId parameter. Required permissions : kms:VerifyMac (key policy) Related operations :
       # GenerateMac Eventual consistency : The KMS API follows an eventual consistency model. For more
       # information, see KMS eventual consistency .
+
       def verify_mac(
         key_id : String,
         mac : Bytes,
@@ -2194,9 +2352,11 @@ module AwsSdk
         dry_run : Bool? = nil,
         grant_tokens : Array(String)? = nil
       ) : Types::VerifyMacResponse
+
         input = Types::VerifyMacRequest.new(key_id: key_id, mac: mac, mac_algorithm: mac_algorithm, message: message, dry_run: dry_run, grant_tokens: grant_tokens)
         verify_mac(input)
       end
+
       def verify_mac(input : Types::VerifyMacRequest) : Types::VerifyMacResponse
         request = Protocol::JsonRpc.build_request(Model::VERIFY_MAC, input, endpoint)
         request = request.with_headers(endpoint_headers)

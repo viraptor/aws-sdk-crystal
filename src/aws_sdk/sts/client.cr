@@ -1,6 +1,7 @@
 module AwsSdk
   module STS
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -76,6 +77,7 @@ module AwsSdk
       # in the IAM User Guide guide. To use MFA with AssumeRole , you pass values for the SerialNumber and
       # TokenCode parameters. The SerialNumber value identifies the user's hardware or virtual MFA device.
       # The TokenCode is the time-based one-time password (TOTP) that the MFA device produces.
+
       def assume_role(
         role_arn : String,
         role_session_name : String,
@@ -90,9 +92,11 @@ module AwsSdk
         token_code : String? = nil,
         transitive_tag_keys : Array(String)? = nil
       ) : Types::AssumeRoleResponse
+
         input = Types::AssumeRoleRequest.new(role_arn: role_arn, role_session_name: role_session_name, duration_seconds: duration_seconds, external_id: external_id, policy: policy, policy_arns: policy_arns, provided_contexts: provided_contexts, serial_number: serial_number, source_identity: source_identity, tags: tags, token_code: token_code, transitive_tag_keys: transitive_tag_keys)
         assume_role(input)
       end
+
       def assume_role(input : Types::AssumeRoleRequest) : Types::AssumeRoleResponse
         request = Protocol::Query.build_request(Model::ASSUME_ROLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -167,6 +171,7 @@ module AwsSdk
       # About SAML 2.0-based Federation in the IAM User Guide . Creating SAML Identity Providers in the IAM
       # User Guide . Configuring a Relying Party and Claims in the IAM User Guide . Creating a Role for SAML
       # 2.0 Federation in the IAM User Guide .
+
       def assume_role_with_saml(
         principal_arn : String,
         role_arn : String,
@@ -175,9 +180,11 @@ module AwsSdk
         policy : String? = nil,
         policy_arns : Array(Types::PolicyDescriptorType)? = nil
       ) : Types::AssumeRoleWithSAMLResponse
+
         input = Types::AssumeRoleWithSAMLRequest.new(principal_arn: principal_arn, role_arn: role_arn, saml_assertion: saml_assertion, duration_seconds: duration_seconds, policy: policy, policy_arns: policy_arns)
         assume_role_with_saml(input)
       end
+
       def assume_role_with_saml(input : Types::AssumeRoleWithSAMLRequest) : Types::AssumeRoleWithSAMLResponse
         request = Protocol::Query.build_request(Model::ASSUME_ROLE_WITH_SAML, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -253,6 +260,7 @@ module AwsSdk
       # Services SDK for iOS Developer Guide and Amazon Web Services SDK for Android Developer Guide . These
       # toolkits contain sample apps that show how to invoke the identity providers. The toolkits then show
       # how to use the information from these providers to get and use temporary security credentials.
+
       def assume_role_with_web_identity(
         role_arn : String,
         role_session_name : String,
@@ -262,9 +270,11 @@ module AwsSdk
         policy_arns : Array(Types::PolicyDescriptorType)? = nil,
         provider_id : String? = nil
       ) : Types::AssumeRoleWithWebIdentityResponse
+
         input = Types::AssumeRoleWithWebIdentityRequest.new(role_arn: role_arn, role_session_name: role_session_name, web_identity_token: web_identity_token, duration_seconds: duration_seconds, policy: policy, policy_arns: policy_arns, provider_id: provider_id)
         assume_role_with_web_identity(input)
       end
+
       def assume_role_with_web_identity(input : Types::AssumeRoleWithWebIdentityRequest) : Types::AssumeRoleWithWebIdentityResponse
         request = Protocol::Query.build_request(Model::ASSUME_ROLE_WITH_WEB_IDENTITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -286,14 +296,17 @@ module AwsSdk
       # information, see Security best practices in IAM . In addition, you can use service control policies
       # (SCPs) to manage and limit permissions in your organization. See General examples in the
       # Organizations User Guide for more information on SCPs.
+
       def assume_root(
         target_principal : String,
         task_policy_arn : Types::PolicyDescriptorType,
         duration_seconds : Int32? = nil
       ) : Types::AssumeRootResponse
+
         input = Types::AssumeRootRequest.new(target_principal: target_principal, task_policy_arn: task_policy_arn, duration_seconds: duration_seconds)
         assume_root(input)
       end
+
       def assume_root(input : Types::AssumeRootRequest) : Types::AssumeRootResponse
         request = Protocol::Query.build_request(Model::ASSUME_ROOT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -318,12 +331,15 @@ module AwsSdk
       # Determining Whether a Request is Allowed or Denied in the IAM User Guide . The principal who made
       # the request. The requested action. The requested resource. The values of condition keys in the
       # context of the user's request.
+
       def decode_authorization_message(
         encoded_message : String
       ) : Types::DecodeAuthorizationMessageResponse
+
         input = Types::DecodeAuthorizationMessageRequest.new(encoded_message: encoded_message)
         decode_authorization_message(input)
       end
+
       def decode_authorization_message(input : Types::DecodeAuthorizationMessageRequest) : Types::DecodeAuthorizationMessageResponse
         request = Protocol::Query.build_request(Model::DECODE_AUTHORIZATION_MESSAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -346,12 +362,15 @@ module AwsSdk
       # the access key. The key might be active, inactive, or deleted. Active keys might not have
       # permissions to perform an operation. Providing a deleted access key might return an error that the
       # key doesn't exist.
+
       def get_access_key_info(
         access_key_id : String
       ) : Types::GetAccessKeyInfoResponse
+
         input = Types::GetAccessKeyInfoRequest.new(access_key_id: access_key_id)
         get_access_key_info(input)
       end
+
       def get_access_key_info(input : Types::GetAccessKeyInfoRequest) : Types::GetAccessKeyInfoResponse
         request = Protocol::Query.build_request(Model::GET_ACCESS_KEY_INFO, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -366,10 +385,12 @@ module AwsSdk
       # this operation. Permissions are not required because the same information is returned when access is
       # denied. To view an example response, see I Am Not Authorized to Perform: iam:DeleteVirtualMFADevice
       # in the IAM User Guide .
+
       def get_caller_identity : Types::GetCallerIdentityResponse
         input = Types::GetCallerIdentityRequest.new
         get_caller_identity(input)
       end
+
       def get_caller_identity(input : Types::GetCallerIdentityRequest) : Types::GetCallerIdentityResponse
         request = Protocol::Query.build_request(Model::GET_CALLER_IDENTITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -382,12 +403,15 @@ module AwsSdk
       # associated with the assumed principal. This operation allows you to obtain credentials for a
       # specific principal based on a trade-in token, enabling delegation of access to Amazon Web Services
       # resources.
+
       def get_delegated_access_token(
         trade_in_token : String
       ) : Types::GetDelegatedAccessTokenResponse
+
         input = Types::GetDelegatedAccessTokenRequest.new(trade_in_token: trade_in_token)
         get_delegated_access_token(input)
       end
+
       def get_delegated_access_token(input : Types::GetDelegatedAccessTokenRequest) : Types::GetDelegatedAccessTokenResponse
         request = Protocol::Query.build_request(Model::GET_DELEGATED_ACCESS_TOKEN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -447,6 +471,7 @@ module AwsSdk
       # that you are federating has the Department = Marketing tag and you pass the department = engineering
       # session tag. Department and department are not saved as separate tags, and the session tag passed in
       # the request takes precedence over the user tag.
+
       def get_federation_token(
         name : String,
         duration_seconds : Int32? = nil,
@@ -454,9 +479,11 @@ module AwsSdk
         policy_arns : Array(Types::PolicyDescriptorType)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::GetFederationTokenResponse
+
         input = Types::GetFederationTokenRequest.new(name: name, duration_seconds: duration_seconds, policy: policy, policy_arns: policy_arns, tags: tags)
         get_federation_token(input)
       end
+
       def get_federation_token(input : Types::GetFederationTokenRequest) : Types::GetFederationTokenResponse
         request = Protocol::Query.build_request(Model::GET_FEDERATION_TOKEN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -494,14 +521,17 @@ module AwsSdk
       # more information, see Safeguard your root user credentials and don't use them for everyday tasks in
       # the IAM User Guide For more information about using GetSessionToken to create temporary credentials,
       # see Temporary Credentials for Users in Untrusted Environments in the IAM User Guide .
+
       def get_session_token(
         duration_seconds : Int32? = nil,
         serial_number : String? = nil,
         token_code : String? = nil
       ) : Types::GetSessionTokenResponse
+
         input = Types::GetSessionTokenRequest.new(duration_seconds: duration_seconds, serial_number: serial_number, token_code: token_code)
         get_session_token(input)
       end
+
       def get_session_token(input : Types::GetSessionTokenRequest) : Types::GetSessionTokenResponse
         request = Protocol::Query.build_request(Model::GET_SESSION_TOKEN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -514,15 +544,18 @@ module AwsSdk
       # returned JWT can be used to authenticate with external services that support OIDC discovery. The
       # token is signed by Amazon Web Services STS and can be publicly verified using the verification keys
       # published at the issuer's JWKS endpoint.
+
       def get_web_identity_token(
         audience : Array(String),
         signing_algorithm : String,
         duration_seconds : Int32? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::GetWebIdentityTokenResponse
+
         input = Types::GetWebIdentityTokenRequest.new(audience: audience, signing_algorithm: signing_algorithm, duration_seconds: duration_seconds, tags: tags)
         get_web_identity_token(input)
       end
+
       def get_web_identity_token(input : Types::GetWebIdentityTokenRequest) : Types::GetWebIdentityTokenResponse
         request = Protocol::Query.build_request(Model::GET_WEB_IDENTITY_TOKEN, input, endpoint)
         request = request.with_headers(endpoint_headers)

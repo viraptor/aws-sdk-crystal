@@ -1,6 +1,7 @@
 module AwsSdk
   module SecretsManager
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -40,15 +41,18 @@ module AwsSdk
       # Amazon Web Services managed key aws/secretsmanager , then you also need kms:Decrypt permissions for
       # the keys. For more information, see IAM policy actions for Secrets Manager and Authentication and
       # access control in Secrets Manager .
+
       def batch_get_secret_value(
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         secret_id_list : Array(String)? = nil
       ) : Types::BatchGetSecretValueResponse
+
         input = Types::BatchGetSecretValueRequest.new(filters: filters, max_results: max_results, next_token: next_token, secret_id_list: secret_id_list)
         batch_get_secret_value(input)
       end
+
       def batch_get_secret_value(input : Types::BatchGetSecretValueRequest) : Types::BatchGetSecretValueResponse
         request = Protocol::JsonRpc.build_request(Model::BATCH_GET_SECRET_VALUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -69,12 +73,15 @@ module AwsSdk
       # Secrets Manager events with CloudTrail . Required permissions: secretsmanager:CancelRotateSecret .
       # For more information, see IAM policy actions for Secrets Manager and Authentication and access
       # control in Secrets Manager .
+
       def cancel_rotate_secret(
         secret_id : String
       ) : Types::CancelRotateSecretResponse
+
         input = Types::CancelRotateSecretRequest.new(secret_id: secret_id)
         cancel_rotate_secret(input)
       end
+
       def cancel_rotate_secret(input : Types::CancelRotateSecretRequest) : Types::CancelRotateSecretResponse
         request = Protocol::JsonRpc.build_request(Model::CANCEL_ROTATE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -114,6 +121,7 @@ module AwsSdk
       # history being accessed or utilities having access to your command parameters. This is a concern if
       # the command includes the value of a secret. Learn how to Mitigate the risks of using command-line
       # tools to store Secrets Manager secrets .
+
       def create_secret(
         name : String,
         add_replica_regions : Array(Types::ReplicaRegionType)? = nil,
@@ -126,9 +134,11 @@ module AwsSdk
         tags : Array(Types::Tag)? = nil,
         type : String? = nil
       ) : Types::CreateSecretResponse
+
         input = Types::CreateSecretRequest.new(name: name, add_replica_regions: add_replica_regions, client_request_token: client_request_token, description: description, force_overwrite_replica_secret: force_overwrite_replica_secret, kms_key_id: kms_key_id, secret_binary: secret_binary, secret_string: secret_string, tags: tags, type: type)
         create_secret(input)
       end
+
       def create_secret(input : Types::CreateSecretRequest) : Types::CreateSecretResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -143,12 +153,15 @@ module AwsSdk
       # information, see Logging Secrets Manager events with CloudTrail . Required permissions:
       # secretsmanager:DeleteResourcePolicy . For more information, see IAM policy actions for Secrets
       # Manager and Authentication and access control in Secrets Manager .
+
       def delete_resource_policy(
         secret_id : String
       ) : Types::DeleteResourcePolicyResponse
+
         input = Types::DeleteResourcePolicyRequest.new(secret_id: secret_id)
         delete_resource_policy(input)
       end
+
       def delete_resource_policy(input : Types::DeleteResourcePolicyRequest) : Types::DeleteResourcePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -179,14 +192,17 @@ module AwsSdk
       # Secrets Manager events with CloudTrail . Required permissions: secretsmanager:DeleteSecret . For
       # more information, see IAM policy actions for Secrets Manager and Authentication and access control
       # in Secrets Manager .
+
       def delete_secret(
         secret_id : String,
         force_delete_without_recovery : Bool? = nil,
         recovery_window_in_days : Int64? = nil
       ) : Types::DeleteSecretResponse
+
         input = Types::DeleteSecretRequest.new(secret_id: secret_id, force_delete_without_recovery: force_delete_without_recovery, recovery_window_in_days: recovery_window_in_days)
         delete_secret(input)
       end
+
       def delete_secret(input : Types::DeleteSecretRequest) : Types::DeleteSecretResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -201,12 +217,15 @@ module AwsSdk
       # it might be logged. For more information, see Logging Secrets Manager events with CloudTrail .
       # Required permissions: secretsmanager:DescribeSecret . For more information, see IAM policy actions
       # for Secrets Manager and Authentication and access control in Secrets Manager .
+
       def describe_secret(
         secret_id : String
       ) : Types::DescribeSecretResponse
+
         input = Types::DescribeSecretRequest.new(secret_id: secret_id)
         describe_secret(input)
       end
+
       def describe_secret(input : Types::DescribeSecretRequest) : Types::DescribeSecretResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -222,6 +241,7 @@ module AwsSdk
       # you call this action. Required permissions: secretsmanager:GetRandomPassword . For more information,
       # see IAM policy actions for Secrets Manager and Authentication and access control in Secrets Manager
       # .
+
       def get_random_password(
         exclude_characters : String? = nil,
         exclude_lowercase : Bool? = nil,
@@ -232,9 +252,11 @@ module AwsSdk
         password_length : Int64? = nil,
         require_each_included_type : Bool? = nil
       ) : Types::GetRandomPasswordResponse
+
         input = Types::GetRandomPasswordRequest.new(exclude_characters: exclude_characters, exclude_lowercase: exclude_lowercase, exclude_numbers: exclude_numbers, exclude_punctuation: exclude_punctuation, exclude_uppercase: exclude_uppercase, include_space: include_space, password_length: password_length, require_each_included_type: require_each_included_type)
         get_random_password(input)
       end
+
       def get_random_password(input : Types::GetRandomPasswordRequest) : Types::GetRandomPasswordResponse
         request = Protocol::JsonRpc.build_request(Model::GET_RANDOM_PASSWORD, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -250,12 +272,15 @@ module AwsSdk
       # Logging Secrets Manager events with CloudTrail . Required permissions:
       # secretsmanager:GetResourcePolicy . For more information, see IAM policy actions for Secrets Manager
       # and Authentication and access control in Secrets Manager .
+
       def get_resource_policy(
         secret_id : String
       ) : Types::GetResourcePolicyResponse
+
         input = Types::GetResourcePolicyRequest.new(secret_id: secret_id)
         get_resource_policy(input)
       end
+
       def get_resource_policy(input : Types::GetResourcePolicyRequest) : Types::GetResourcePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::GET_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -277,14 +302,17 @@ module AwsSdk
       # aws/secretsmanager , then you also need kms:Decrypt permissions for that key. For more information,
       # see IAM policy actions for Secrets Manager and Authentication and access control in Secrets Manager
       # .
+
       def get_secret_value(
         secret_id : String,
         version_id : String? = nil,
         version_stage : String? = nil
       ) : Types::GetSecretValueResponse
+
         input = Types::GetSecretValueRequest.new(secret_id: secret_id, version_id: version_id, version_stage: version_stage)
         get_secret_value(input)
       end
+
       def get_secret_value(input : Types::GetSecretValueRequest) : Types::GetSecretValueResponse
         request = Protocol::JsonRpc.build_request(Model::GET_SECRET_VALUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -300,15 +328,18 @@ module AwsSdk
       # logged. For more information, see Logging Secrets Manager events with CloudTrail . Required
       # permissions: secretsmanager:ListSecretVersionIds . For more information, see IAM policy actions for
       # Secrets Manager and Authentication and access control in Secrets Manager .
+
       def list_secret_version_ids(
         secret_id : String,
         include_deprecated : Bool? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListSecretVersionIdsResponse
+
         input = Types::ListSecretVersionIdsRequest.new(secret_id: secret_id, include_deprecated: include_deprecated, max_results: max_results, next_token: next_token)
         list_secret_version_ids(input)
       end
+
       def list_secret_version_ids(input : Types::ListSecretVersionIdsRequest) : Types::ListSecretVersionIdsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_SECRET_VERSION_IDS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -329,6 +360,7 @@ module AwsSdk
       # events with CloudTrail . Required permissions: secretsmanager:ListSecrets . For more information,
       # see IAM policy actions for Secrets Manager and Authentication and access control in Secrets Manager
       # .
+
       def list_secrets(
         filters : Array(Types::Filter)? = nil,
         include_planned_deletion : Bool? = nil,
@@ -337,9 +369,11 @@ module AwsSdk
         sort_by : String? = nil,
         sort_order : String? = nil
       ) : Types::ListSecretsResponse
+
         input = Types::ListSecretsRequest.new(filters: filters, include_planned_deletion: include_planned_deletion, max_results: max_results, next_token: next_token, sort_by: sort_by, sort_order: sort_order)
         list_secrets(input)
       end
+
       def list_secrets(input : Types::ListSecretsRequest) : Types::ListSecretsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_SECRETS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -356,14 +390,17 @@ module AwsSdk
       # events with CloudTrail . Required permissions: secretsmanager:PutResourcePolicy . For more
       # information, see IAM policy actions for Secrets Manager and Authentication and access control in
       # Secrets Manager .
+
       def put_resource_policy(
         resource_policy : String,
         secret_id : String,
         block_public_policy : Bool? = nil
       ) : Types::PutResourcePolicyResponse
+
         input = Types::PutResourcePolicyRequest.new(resource_policy: resource_policy, secret_id: secret_id, block_public_policy: block_public_policy)
         put_resource_policy(input)
       end
+
       def put_resource_policy(input : Types::PutResourcePolicyRequest) : Types::PutResourcePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::PUT_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -396,6 +433,7 @@ module AwsSdk
       # in a command shell, there is a risk of the command history being accessed or utilities having access
       # to your command parameters. This is a concern if the command includes the value of a secret. Learn
       # how to Mitigate the risks of using command-line tools to store Secrets Manager secrets .
+
       def put_secret_value(
         secret_id : String,
         client_request_token : String? = nil,
@@ -404,9 +442,11 @@ module AwsSdk
         secret_string : String? = nil,
         version_stages : Array(String)? = nil
       ) : Types::PutSecretValueResponse
+
         input = Types::PutSecretValueRequest.new(secret_id: secret_id, client_request_token: client_request_token, rotation_token: rotation_token, secret_binary: secret_binary, secret_string: secret_string, version_stages: version_stages)
         put_secret_value(input)
       end
+
       def put_secret_value(input : Types::PutSecretValueRequest) : Types::PutSecretValueResponse
         request = Protocol::JsonRpc.build_request(Model::PUT_SECRET_VALUE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -421,13 +461,16 @@ module AwsSdk
       # Logging Secrets Manager events with CloudTrail . Required permissions:
       # secretsmanager:RemoveRegionsFromReplication . For more information, see IAM policy actions for
       # Secrets Manager and Authentication and access control in Secrets Manager .
+
       def remove_regions_from_replication(
         remove_replica_regions : Array(String),
         secret_id : String
       ) : Types::RemoveRegionsFromReplicationResponse
+
         input = Types::RemoveRegionsFromReplicationRequest.new(remove_replica_regions: remove_replica_regions, secret_id: secret_id)
         remove_regions_from_replication(input)
       end
+
       def remove_regions_from_replication(input : Types::RemoveRegionsFromReplicationRequest) : Types::RemoveRegionsFromReplicationResponse
         request = Protocol::JsonRpc.build_request(Model::REMOVE_REGIONS_FROM_REPLICATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -444,14 +487,17 @@ module AwsSdk
       # the key. To encrypt the replicated secret with a KMS key other than aws/secretsmanager , you need
       # kms:GenerateDataKey and kms:Encrypt to the key. For more information, see IAM policy actions for
       # Secrets Manager and Authentication and access control in Secrets Manager .
+
       def replicate_secret_to_regions(
         add_replica_regions : Array(Types::ReplicaRegionType),
         secret_id : String,
         force_overwrite_replica_secret : Bool? = nil
       ) : Types::ReplicateSecretToRegionsResponse
+
         input = Types::ReplicateSecretToRegionsRequest.new(add_replica_regions: add_replica_regions, secret_id: secret_id, force_overwrite_replica_secret: force_overwrite_replica_secret)
         replicate_secret_to_regions(input)
       end
+
       def replicate_secret_to_regions(input : Types::ReplicateSecretToRegionsRequest) : Types::ReplicateSecretToRegionsResponse
         request = Protocol::JsonRpc.build_request(Model::REPLICATE_SECRET_TO_REGIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -466,12 +512,15 @@ module AwsSdk
       # logged. For more information, see Logging Secrets Manager events with CloudTrail . Required
       # permissions: secretsmanager:RestoreSecret . For more information, see IAM policy actions for Secrets
       # Manager and Authentication and access control in Secrets Manager .
+
       def restore_secret(
         secret_id : String
       ) : Types::RestoreSecretResponse
+
         input = Types::RestoreSecretRequest.new(secret_id: secret_id)
         restore_secret(input)
       end
+
       def restore_secret(input : Types::RestoreSecretRequest) : Types::RestoreSecretResponse
         request = Protocol::JsonRpc.build_request(Model::RESTORE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -496,6 +545,7 @@ module AwsSdk
       # secretsmanager:RotateSecret . For more information, see IAM policy actions for Secrets Manager and
       # Authentication and access control in Secrets Manager . You also need lambda:InvokeFunction
       # permissions on the rotation function. For more information, see Permissions for rotation .
+
       def rotate_secret(
         secret_id : String,
         client_request_token : String? = nil,
@@ -505,9 +555,11 @@ module AwsSdk
         rotation_lambda_arn : String? = nil,
         rotation_rules : Types::RotationRulesType? = nil
       ) : Types::RotateSecretResponse
+
         input = Types::RotateSecretRequest.new(secret_id: secret_id, client_request_token: client_request_token, external_secret_rotation_metadata: external_secret_rotation_metadata, external_secret_rotation_role_arn: external_secret_rotation_role_arn, rotate_immediately: rotate_immediately, rotation_lambda_arn: rotation_lambda_arn, rotation_rules: rotation_rules)
         rotate_secret(input)
       end
+
       def rotate_secret(input : Types::RotateSecretRequest) : Types::RotateSecretResponse
         request = Protocol::JsonRpc.build_request(Model::ROTATE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -523,12 +575,15 @@ module AwsSdk
       # logged. For more information, see Logging Secrets Manager events with CloudTrail . Required
       # permissions: secretsmanager:StopReplicationToReplica . For more information, see IAM policy actions
       # for Secrets Manager and Authentication and access control in Secrets Manager .
+
       def stop_replication_to_replica(
         secret_id : String
       ) : Types::StopReplicationToReplicaResponse
+
         input = Types::StopReplicationToReplicaRequest.new(secret_id: secret_id)
         stop_replication_to_replica(input)
       end
+
       def stop_replication_to_replica(input : Types::StopReplicationToReplicaRequest) : Types::StopReplicationToReplicaResponse
         request = Protocol::JsonRpc.build_request(Model::STOP_REPLICATION_TO_REPLICA, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -548,13 +603,16 @@ module AwsSdk
       # For more information, see Logging Secrets Manager events with CloudTrail . Required permissions:
       # secretsmanager:TagResource . For more information, see IAM policy actions for Secrets Manager and
       # Authentication and access control in Secrets Manager .
+
       def tag_resource(
         secret_id : String,
         tags : Array(Types::Tag)
       ) : Nil
+
         input = Types::TagResourceRequest.new(secret_id: secret_id, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -572,13 +630,16 @@ module AwsSdk
       # it might be logged. For more information, see Logging Secrets Manager events with CloudTrail .
       # Required permissions: secretsmanager:UntagResource . For more information, see IAM policy actions
       # for Secrets Manager and Authentication and access control in Secrets Manager .
+
       def untag_resource(
         secret_id : String,
         tag_keys : Array(String)
       ) : Nil
+
         input = Types::UntagResourceRequest.new(secret_id: secret_id, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -614,6 +675,7 @@ module AwsSdk
       # being accessed or utilities having access to your command parameters. This is a concern if the
       # command includes the value of a secret. Learn how to Mitigate the risks of using command-line tools
       # to store Secrets Manager secrets .
+
       def update_secret(
         secret_id : String,
         client_request_token : String? = nil,
@@ -623,9 +685,11 @@ module AwsSdk
         secret_string : String? = nil,
         type : String? = nil
       ) : Types::UpdateSecretResponse
+
         input = Types::UpdateSecretRequest.new(secret_id: secret_id, client_request_token: client_request_token, description: description, kms_key_id: kms_key_id, secret_binary: secret_binary, secret_string: secret_string, type: type)
         update_secret(input)
       end
+
       def update_secret(input : Types::UpdateSecretRequest) : Types::UpdateSecretResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_SECRET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -649,15 +713,18 @@ module AwsSdk
       # logged. For more information, see Logging Secrets Manager events with CloudTrail . Required
       # permissions: secretsmanager:UpdateSecretVersionStage . For more information, see IAM policy actions
       # for Secrets Manager and Authentication and access control in Secrets Manager .
+
       def update_secret_version_stage(
         secret_id : String,
         version_stage : String,
         move_to_version_id : String? = nil,
         remove_from_version_id : String? = nil
       ) : Types::UpdateSecretVersionStageResponse
+
         input = Types::UpdateSecretVersionStageRequest.new(secret_id: secret_id, version_stage: version_stage, move_to_version_id: move_to_version_id, remove_from_version_id: remove_from_version_id)
         update_secret_version_stage(input)
       end
+
       def update_secret_version_stage(input : Types::UpdateSecretVersionStageRequest) : Types::UpdateSecretVersionStageResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_SECRET_VERSION_STAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -676,13 +743,16 @@ module AwsSdk
       # Secrets Manager events with CloudTrail . Required permissions: secretsmanager:ValidateResourcePolicy
       # and secretsmanager:PutResourcePolicy . For more information, see IAM policy actions for Secrets
       # Manager and Authentication and access control in Secrets Manager .
+
       def validate_resource_policy(
         resource_policy : String,
         secret_id : String? = nil
       ) : Types::ValidateResourcePolicyResponse
+
         input = Types::ValidateResourcePolicyRequest.new(resource_policy: resource_policy, secret_id: secret_id)
         validate_resource_policy(input)
       end
+
       def validate_resource_policy(input : Types::ValidateResourcePolicyRequest) : Types::ValidateResourcePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::VALIDATE_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)

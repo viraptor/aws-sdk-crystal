@@ -5,22 +5,27 @@ module AwsSdk
       end
 
       # The input fails to satisfy the constraints specified by an Amazon Web Services service.
+
       class BadRequestException < ServiceError
       end
 
       # The request could not be processed because of conflict in the current state of the resource.
+
       class ConflictException < ServiceError
       end
 
       # There was an internal failure in the AppConfig service.
+
       class InternalServerException < ServiceError
       end
 
       # The configuration size is too large.
+
       class PayloadTooLargeException < ServiceError
       end
 
       # The requested resource could not be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
@@ -30,6 +35,7 @@ module AwsSdk
       # issue, you can delete one or more resources and try again. Or, you can request a quota increase. For
       # more information about quotas and to request an increase, see Service quotas for AppConfig in the
       # Amazon Web Services General Reference.
+
       class ServiceQuotaExceededException < ServiceError
       end
 

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./ssmquicksetup/client"
+require "./ssmquicksetup/errors"
+require "./ssmquicksetup/model"
+require "./ssmquicksetup/types"
+require "./ssmquicksetup/protocol/rest_json"
+require "./customizations/ssmquicksetup/customizations"

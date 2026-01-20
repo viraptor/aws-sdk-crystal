@@ -23,12 +23,14 @@ module AwsSdk
       # status of the streaming session, check the StreamStatus field in the response. To get the details of
       # post-stream analytics, including its status, check the PostStreamAnalyticsResult field in the
       # response.
+
       def get_medical_scribe_stream(
         session_id : String
       ) : Protocol::Request
         input = Types::GetMedicalScribeStreamRequest.new(session_id: session_id)
         get_medical_scribe_stream(input)
       end
+
       def get_medical_scribe_stream(input : Types::GetMedicalScribeStreamRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_MEDICAL_SCRIBE_STREAM, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -39,6 +41,7 @@ module AwsSdk
       # transcriptions. The following parameters are required: language-code or identify-language
       # media-encoding sample-rate For more information on streaming with Amazon Transcribe, see
       # Transcribing streaming audio .
+
       def start_call_analytics_stream_transcription(
         audio_stream : Types::AudioStream,
         media_encoding : String,
@@ -63,6 +66,7 @@ module AwsSdk
         input = Types::StartCallAnalyticsStreamTranscriptionRequest.new(audio_stream: audio_stream, media_encoding: media_encoding, media_sample_rate_hertz: media_sample_rate_hertz, content_identification_type: content_identification_type, content_redaction_type: content_redaction_type, enable_partial_results_stabilization: enable_partial_results_stabilization, identify_language: identify_language, language_code: language_code, language_model_name: language_model_name, language_options: language_options, partial_results_stability: partial_results_stability, pii_entity_types: pii_entity_types, preferred_language: preferred_language, session_id: session_id, vocabulary_filter_method: vocabulary_filter_method, vocabulary_filter_name: vocabulary_filter_name, vocabulary_filter_names: vocabulary_filter_names, vocabulary_name: vocabulary_name, vocabulary_names: vocabulary_names)
         start_call_analytics_stream_transcription(input)
       end
+
       def start_call_analytics_stream_transcription(input : Types::StartCallAnalyticsStreamTranscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_CALL_ANALYTICS_STREAM_TRANSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -85,6 +89,7 @@ module AwsSdk
       # following parameters are required: language-code media-encoding media-sample-rate-hertz For more
       # information on streaming with Amazon Web Services HealthScribe, see Amazon Web Services HealthScribe
       # .
+
       def start_medical_scribe_stream(
         input_stream : Types::MedicalScribeInputStream,
         language_code : String,
@@ -95,6 +100,7 @@ module AwsSdk
         input = Types::StartMedicalScribeStreamRequest.new(input_stream: input_stream, language_code: language_code, media_encoding: media_encoding, media_sample_rate_hertz: media_sample_rate_hertz, session_id: session_id)
         start_medical_scribe_stream(input)
       end
+
       def start_medical_scribe_stream(input : Types::StartMedicalScribeStreamRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_MEDICAL_SCRIBE_STREAM, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -104,6 +110,7 @@ module AwsSdk
       # Medical and the transcription results are streamed to your application. The following parameters are
       # required: language-code media-encoding sample-rate For more information on streaming with Amazon
       # Transcribe Medical, see Transcribing streaming audio .
+
       def start_medical_stream_transcription(
         audio_stream : Types::AudioStream,
         language_code : String,
@@ -121,6 +128,7 @@ module AwsSdk
         input = Types::StartMedicalStreamTranscriptionRequest.new(audio_stream: audio_stream, language_code: language_code, media_encoding: media_encoding, media_sample_rate_hertz: media_sample_rate_hertz, specialty: specialty, type: type, content_identification_type: content_identification_type, enable_channel_identification: enable_channel_identification, number_of_channels: number_of_channels, session_id: session_id, show_speaker_label: show_speaker_label, vocabulary_name: vocabulary_name)
         start_medical_stream_transcription(input)
       end
+
       def start_medical_stream_transcription(input : Types::StartMedicalStreamTranscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_MEDICAL_STREAM_TRANSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -130,6 +138,7 @@ module AwsSdk
       # the transcription results are streamed to your application. The following parameters are required:
       # language-code or identify-language or identify-multiple-language media-encoding sample-rate For more
       # information on streaming with Amazon Transcribe, see Transcribing streaming audio .
+
       def start_stream_transcription(
         audio_stream : Types::AudioStream,
         media_encoding : String,
@@ -158,6 +167,7 @@ module AwsSdk
         input = Types::StartStreamTranscriptionRequest.new(audio_stream: audio_stream, media_encoding: media_encoding, media_sample_rate_hertz: media_sample_rate_hertz, content_identification_type: content_identification_type, content_redaction_type: content_redaction_type, enable_channel_identification: enable_channel_identification, enable_partial_results_stabilization: enable_partial_results_stabilization, identify_language: identify_language, identify_multiple_languages: identify_multiple_languages, language_code: language_code, language_model_name: language_model_name, language_options: language_options, number_of_channels: number_of_channels, partial_results_stability: partial_results_stability, pii_entity_types: pii_entity_types, preferred_language: preferred_language, session_id: session_id, show_speaker_label: show_speaker_label, vocabulary_filter_method: vocabulary_filter_method, vocabulary_filter_name: vocabulary_filter_name, vocabulary_filter_names: vocabulary_filter_names, vocabulary_name: vocabulary_name, vocabulary_names: vocabulary_names)
         start_stream_transcription(input)
       end
+
       def start_stream_transcription(input : Types::StartStreamTranscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_STREAM_TRANSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

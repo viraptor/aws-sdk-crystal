@@ -5,30 +5,37 @@ module AwsSdk
       end
 
       # Access to the resource is denied.
+
       class AccessDeniedException < ServiceError
       end
 
       # The request couldn't be completed because it conflicted with the current state of the resource.
+
       class ConflictException < ServiceError
       end
 
       # An exception occurred with the service.
+
       class InternalServerException < ServiceError
       end
 
       # The resource couldn't be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request has exceeded the quotas imposed by the service.
+
       class ServiceLimitExceededException < ServiceError
       end
 
       # The limit on the number of requests per second was exceeded.
+
       class ThrottlingException < ServiceError
       end
 
       # The request was invalid.
+
       class ValidationException < ServiceError
       end
 

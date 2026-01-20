@@ -1,7 +1,0 @@
-require "./runtime"
-require "./refactor_spaces/client"
-require "./refactor_spaces/errors"
-require "./refactor_spaces/model"
-require "./refactor_spaces/types"
-require "./refactor_spaces/protocol/rest_json"
-require "./customizations/refactor_spaces/customizations"

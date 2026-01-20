@@ -2,15 +2,18 @@ require "json"
 require "time"
 
 module AwsSdk
-  module Importexport
+  module ImportExport
     module Types
 
       # A discrete item that contains the description and URL of an artifact (such as a PDF).
+
       struct Artifact
         include JSON::Serializable
 
+
         @[JSON::Field(key: "Description")]
         getter description : String?
+
 
         @[JSON::Field(key: "URL")]
         getter url : String?
@@ -23,8 +26,10 @@ module AwsSdk
       end
 
       # The account specified does not have the appropriate bucket permissions.
+
       struct BucketPermissionException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -36,11 +41,14 @@ module AwsSdk
       end
 
       # Input structure for the CancelJob operation.
+
       struct CancelJobInput
         include JSON::Serializable
 
+
         @[JSON::Field(key: "JobId")]
         getter job_id : String
+
 
         @[JSON::Field(key: "APIVersion")]
         getter api_version : String?
@@ -53,8 +61,10 @@ module AwsSdk
       end
 
       # Output structure for the CancelJob operation.
+
       struct CancelJobOutput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Success")]
         getter success : Bool?
@@ -66,8 +76,10 @@ module AwsSdk
       end
 
       # The specified job ID has been canceled and is no longer valid.
+
       struct CanceledJobIdException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -79,20 +91,26 @@ module AwsSdk
       end
 
       # Input structure for the CreateJob operation.
+
       struct CreateJobInput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "JobType")]
         getter job_type : String
 
+
         @[JSON::Field(key: "Manifest")]
         getter manifest : String
+
 
         @[JSON::Field(key: "ValidateOnly")]
         getter validate_only : Bool
 
+
         @[JSON::Field(key: "APIVersion")]
         getter api_version : String?
+
 
         @[JSON::Field(key: "ManifestAddendum")]
         getter manifest_addendum : String?
@@ -108,23 +126,30 @@ module AwsSdk
       end
 
       # Output structure for the CreateJob operation.
+
       struct CreateJobOutput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ArtifactList")]
         getter artifact_list : Array(Types::Artifact)?
 
+
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
+
 
         @[JSON::Field(key: "JobType")]
         getter job_type : String?
 
+
         @[JSON::Field(key: "Signature")]
         getter signature : String?
 
+
         @[JSON::Field(key: "SignatureFileContents")]
         getter signature_file_contents : String?
+
 
         @[JSON::Field(key: "WarningMessage")]
         getter warning_message : String?
@@ -142,8 +167,10 @@ module AwsSdk
 
       # Each account can create only a certain number of jobs per day. If you need to create more than this,
       # please contact awsimportexport@amazon.com to explain your particular use case.
+
       struct CreateJobQuotaExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -155,8 +182,10 @@ module AwsSdk
       end
 
       # Indicates that the specified job has expired out of the system.
+
       struct ExpiredJobIdException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -167,41 +196,54 @@ module AwsSdk
         end
       end
 
+
       struct GetShippingLabelInput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "jobIds")]
         getter job_ids : Array(String)
 
+
         @[JSON::Field(key: "APIVersion")]
         getter api_version : String?
+
 
         @[JSON::Field(key: "city")]
         getter city : String?
 
+
         @[JSON::Field(key: "company")]
         getter company : String?
+
 
         @[JSON::Field(key: "country")]
         getter country : String?
 
+
         @[JSON::Field(key: "name")]
         getter name : String?
+
 
         @[JSON::Field(key: "phoneNumber")]
         getter phone_number : String?
 
+
         @[JSON::Field(key: "postalCode")]
         getter postal_code : String?
+
 
         @[JSON::Field(key: "stateOrProvince")]
         getter state_or_province : String?
 
+
         @[JSON::Field(key: "street1")]
         getter street1 : String?
 
+
         @[JSON::Field(key: "street2")]
         getter street2 : String?
+
 
         @[JSON::Field(key: "street3")]
         getter street3 : String?
@@ -223,11 +265,14 @@ module AwsSdk
         end
       end
 
+
       struct GetShippingLabelOutput
         include JSON::Serializable
 
+
         @[JSON::Field(key: "ShippingLabelURL")]
         getter shipping_label_url : String?
+
 
         @[JSON::Field(key: "Warning")]
         getter warning : String?
@@ -240,11 +285,14 @@ module AwsSdk
       end
 
       # Input structure for the GetStatus operation.
+
       struct GetStatusInput
         include JSON::Serializable
 
+
         @[JSON::Field(key: "JobId")]
         getter job_id : String
+
 
         @[JSON::Field(key: "APIVersion")]
         getter api_version : String?
@@ -257,53 +305,70 @@ module AwsSdk
       end
 
       # Output structure for the GetStatus operation.
+
       struct GetStatusOutput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ArtifactList")]
         getter artifact_list : Array(Types::Artifact)?
 
+
         @[JSON::Field(key: "Carrier")]
         getter carrier : String?
+
 
         @[JSON::Field(key: "CreationDate")]
         getter creation_date : Time?
 
+
         @[JSON::Field(key: "CurrentManifest")]
         getter current_manifest : String?
+
 
         @[JSON::Field(key: "ErrorCount")]
         getter error_count : Int32?
 
+
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
+
 
         @[JSON::Field(key: "JobType")]
         getter job_type : String?
 
+
         @[JSON::Field(key: "LocationCode")]
         getter location_code : String?
+
 
         @[JSON::Field(key: "LocationMessage")]
         getter location_message : String?
 
+
         @[JSON::Field(key: "LogBucket")]
         getter log_bucket : String?
+
 
         @[JSON::Field(key: "LogKey")]
         getter log_key : String?
 
+
         @[JSON::Field(key: "ProgressCode")]
         getter progress_code : String?
+
 
         @[JSON::Field(key: "ProgressMessage")]
         getter progress_message : String?
 
+
         @[JSON::Field(key: "Signature")]
         getter signature : String?
 
+
         @[JSON::Field(key: "SignatureFileContents")]
         getter signature_file_contents : String?
+
 
         @[JSON::Field(key: "TrackingNumber")]
         getter tracking_number : String?
@@ -331,8 +396,10 @@ module AwsSdk
 
       # The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The
       # manifest and the request authentication must use the same AWS Access Key ID.
+
       struct InvalidAccessKeyIdException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -344,8 +411,10 @@ module AwsSdk
       end
 
       # The address specified in the manifest is invalid.
+
       struct InvalidAddressException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -357,8 +426,10 @@ module AwsSdk
       end
 
       # One or more customs parameters was invalid. Please correct and resubmit.
+
       struct InvalidCustomsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -370,8 +441,10 @@ module AwsSdk
       end
 
       # File system specified in export manifest is invalid.
+
       struct InvalidFileSystemException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -383,8 +456,10 @@ module AwsSdk
       end
 
       # The JOBID was missing, not found, or not associated with the AWS account.
+
       struct InvalidJobIdException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -396,8 +471,10 @@ module AwsSdk
       end
 
       # One or more manifest fields was invalid. Please correct and resubmit.
+
       struct InvalidManifestFieldException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -409,8 +486,10 @@ module AwsSdk
       end
 
       # One or more parameters had an invalid value.
+
       struct InvalidParameterException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -422,8 +501,10 @@ module AwsSdk
       end
 
       # The client tool version is invalid.
+
       struct InvalidVersionException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -435,17 +516,22 @@ module AwsSdk
       end
 
       # Representation of a job returned by the ListJobs operation.
+
       struct Job
         include JSON::Serializable
+
 
         @[JSON::Field(key: "CreationDate")]
         getter creation_date : Time?
 
+
         @[JSON::Field(key: "IsCanceled")]
         getter is_canceled : Bool?
 
+
         @[JSON::Field(key: "JobId")]
         getter job_id : String?
+
 
         @[JSON::Field(key: "JobType")]
         getter job_type : String?
@@ -460,14 +546,18 @@ module AwsSdk
       end
 
       # Input structure for the ListJobs operation.
+
       struct ListJobsInput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "APIVersion")]
         getter api_version : String?
 
+
         @[JSON::Field(key: "Marker")]
         getter marker : String?
+
 
         @[JSON::Field(key: "MaxJobs")]
         getter max_jobs : Int32?
@@ -481,11 +571,14 @@ module AwsSdk
       end
 
       # Output structure for the ListJobs operation.
+
       struct ListJobsOutput
         include JSON::Serializable
 
+
         @[JSON::Field(key: "IsTruncated")]
         getter is_truncated : Bool?
+
 
         @[JSON::Field(key: "Jobs")]
         getter jobs : Array(Types::Job)?
@@ -498,8 +591,10 @@ module AwsSdk
       end
 
       # Your manifest is not well-formed.
+
       struct MalformedManifestException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -511,8 +606,10 @@ module AwsSdk
       end
 
       # One or more required customs parameters was missing from the manifest.
+
       struct MissingCustomsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -524,8 +621,10 @@ module AwsSdk
       end
 
       # One or more required fields were missing from the manifest file. Please correct and resubmit.
+
       struct MissingManifestFieldException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -537,8 +636,10 @@ module AwsSdk
       end
 
       # One or more required parameters was missing from the request.
+
       struct MissingParameterException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -551,8 +652,10 @@ module AwsSdk
 
       # Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one
       # region. Please correct and resubmit.
+
       struct MultipleRegionsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -566,8 +669,10 @@ module AwsSdk
       # The specified bucket does not exist. Create the specified bucket or change the manifest's bucket,
       # exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access
       # Key ID, has write permissions to.
+
       struct NoSuchBucketException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -579,8 +684,10 @@ module AwsSdk
       end
 
       # AWS Import/Export cannot cancel the job
+
       struct UnableToCancelJobIdException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -592,8 +699,10 @@ module AwsSdk
       end
 
       # AWS Import/Export cannot update the job
+
       struct UnableToUpdateJobIdException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -605,20 +714,26 @@ module AwsSdk
       end
 
       # Input structure for the UpateJob operation.
+
       struct UpdateJobInput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "JobId")]
         getter job_id : String
 
+
         @[JSON::Field(key: "JobType")]
         getter job_type : String
+
 
         @[JSON::Field(key: "Manifest")]
         getter manifest : String
 
+
         @[JSON::Field(key: "ValidateOnly")]
         getter validate_only : Bool
+
 
         @[JSON::Field(key: "APIVersion")]
         getter api_version : String?
@@ -634,14 +749,18 @@ module AwsSdk
       end
 
       # Output structure for the UpateJob operation.
+
       struct UpdateJobOutput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ArtifactList")]
         getter artifact_list : Array(Types::Artifact)?
 
+
         @[JSON::Field(key: "Success")]
         getter success : Bool?
+
 
         @[JSON::Field(key: "WarningMessage")]
         getter warning_message : String?

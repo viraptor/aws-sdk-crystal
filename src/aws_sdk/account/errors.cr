@@ -5,6 +5,7 @@ module AwsSdk
       end
 
       # The operation failed because the calling identity doesn't have the minimum required permissions.
+
       class AccessDeniedException < ServiceError
       end
 
@@ -12,27 +13,33 @@ module AwsSdk
       # example, this happens if you try to enable a Region that is currently being disabled (in a status of
       # DISABLING) or if you try to change an account’s root user email to an email address which is already
       # in use.
+
       class ConflictException < ServiceError
       end
 
       # The operation failed because of an error internal to Amazon Web Services. Try your operation again
       # later.
+
       class InternalServerException < ServiceError
       end
 
       # The operation failed because it specified a resource that can't be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The operation failed because it specified a resource that is not currently available.
+
       class ResourceUnavailableException < ServiceError
       end
 
       # The operation failed because it was called too frequently and exceeded a throttle limit.
+
       class TooManyRequestsException < ServiceError
       end
 
       # The operation failed because one of the input parameters was invalid.
+
       class ValidationException < ServiceError
       end
 

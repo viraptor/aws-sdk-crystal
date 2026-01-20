@@ -5,24 +5,29 @@ module AwsSdk
       end
 
       # Secrets Manager can't decrypt the protected secret text using the provided KMS key.
+
       class DecryptionFailure < ServiceError
       end
 
       # Secrets Manager can't encrypt the protected secret text using the provided KMS key. Check that the
       # KMS key is available, enabled, and not in an invalid state. For more information, see Key state:
       # Effect on your KMS key .
+
       class EncryptionFailure < ServiceError
       end
 
       # An error occurred on the server side.
+
       class InternalServiceError < ServiceError
       end
 
       # The NextToken value is invalid.
+
       class InvalidNextTokenException < ServiceError
       end
 
       # The parameter name or value is invalid.
+
       class InvalidParameterException < ServiceError
       end
 
@@ -31,31 +36,38 @@ module AwsSdk
       # function ARN configured and you didn't include such an ARN as a parameter in this call. The secret
       # is managed by another service, and you must use that service to update it. For more information, see
       # Secrets managed by other Amazon Web Services services .
+
       class InvalidRequestException < ServiceError
       end
 
       # The request failed because it would exceed one of the Secrets Manager quotas.
+
       class LimitExceededException < ServiceError
       end
 
       # The resource policy has syntax errors.
+
       class MalformedPolicyDocumentException < ServiceError
       end
 
       # The request failed because you did not complete all the prerequisite steps.
+
       class PreconditionNotMetException < ServiceError
       end
 
       # The BlockPublicPolicy parameter is set to true, and the resource policy did not prevent broad access
       # to the secret.
+
       class PublicPolicyException < ServiceError
       end
 
       # A resource with the ID you requested already exists.
+
       class ResourceExistsException < ServiceError
       end
 
       # Secrets Manager can't find the resource that you asked for.
+
       class ResourceNotFoundException < ServiceError
       end
 

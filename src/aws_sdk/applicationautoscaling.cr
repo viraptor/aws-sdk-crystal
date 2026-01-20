@@ -1,0 +1,7 @@
+require "./runtime"
+require "./applicationautoscaling/client"
+require "./applicationautoscaling/errors"
+require "./applicationautoscaling/model"
+require "./applicationautoscaling/types"
+require "./applicationautoscaling/protocol/json_rpc"
+require "./customizations/applicationautoscaling/customizations"

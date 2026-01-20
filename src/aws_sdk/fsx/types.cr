@@ -7,13 +7,16 @@ module AwsSdk
 
       # An access point with that name already exists in the Amazon Web Services Region in your Amazon Web
       # Services account.
+
       struct AccessPointAlreadyOwnedByYou
         include JSON::Serializable
 
         # An error code indicating that an access point with that name already exists in the Amazon Web
         # Services Region in your Amazon Web Services account.
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -26,17 +29,21 @@ module AwsSdk
       end
 
       # The Microsoft Active Directory attributes of the Amazon FSx for Windows File Server file system.
+
       struct ActiveDirectoryBackupAttributes
         include JSON::Serializable
 
         # The ID of the Amazon Web Services Managed Microsoft Active Directory instance to which the file
         # system is joined.
+
         @[JSON::Field(key: "ActiveDirectoryId")]
         getter active_directory_id : String?
 
         # The fully qualified domain name of the self-managed Active Directory directory.
+
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
@@ -50,17 +57,21 @@ module AwsSdk
       end
 
       # An Active Directory error.
+
       struct ActiveDirectoryError
         include JSON::Serializable
 
         # The directory ID of the directory that an error pertains to.
+
         @[JSON::Field(key: "ActiveDirectoryId")]
         getter active_directory_id : String
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The type of Active Directory error.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -74,28 +85,35 @@ module AwsSdk
 
       # Describes a specific Amazon FSx administrative action for the current Windows, Lustre, OpenZFS, or
       # ONTAP file system or volume.
+
       struct AdministrativeAction
         include JSON::Serializable
+
 
         @[JSON::Field(key: "AdministrativeActionType")]
         getter administrative_action_type : String?
 
+
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::AdministrativeActionFailureDetails?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The percentage-complete status of a STORAGE_OPTIMIZATION or DOWNLOAD_DATA_FROM_BACKUP administrative
         # action. Does not apply to any other administrative action type.
+
         @[JSON::Field(key: "ProgressPercent")]
         getter progress_percent : Int32?
 
         # The remaining bytes to transfer for the FSx for OpenZFS snapshot that you're copying.
+
         @[JSON::Field(key: "RemainingTransferBytes")]
         getter remaining_transfer_bytes : Int64?
 
         # The time that the administrative action request was received.
+
         @[JSON::Field(key: "RequestTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter request_time : Time?
 
@@ -112,21 +130,26 @@ module AwsSdk
         # file system, indicates that all metadata has been downloaded to the new volume and client can access
         # data with read-only access while Amazon FSx downloads the file data to the volume. Track the
         # progress of this process with the ProgressPercent element.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The target value for the administration action, provided in the UpdateFileSystem operation. Returned
         # for FILE_SYSTEM_UPDATE administrative actions.
+
         @[JSON::Field(key: "TargetFileSystemValues")]
         getter target_file_system_values : Types::FileSystem?
 
+
         @[JSON::Field(key: "TargetSnapshotValues")]
         getter target_snapshot_values : Types::Snapshot?
+
 
         @[JSON::Field(key: "TargetVolumeValues")]
         getter target_volume_values : Types::Volume?
 
         # The number of bytes that have transferred for the FSx for OpenZFS snapshot that you're copying.
+
         @[JSON::Field(key: "TotalTransferBytes")]
         getter total_transfer_bytes : Int64?
 
@@ -147,10 +170,12 @@ module AwsSdk
       end
 
       # Provides information about a failed administrative action.
+
       struct AdministrativeActionFailureDetails
         include JSON::Serializable
 
         # Error message providing details about the failed administrative action.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -161,6 +186,7 @@ module AwsSdk
       end
 
       # Used to specify configuration options for a volume’s storage aggregate or aggregates.
+
       struct AggregateConfiguration
         include JSON::Serializable
 
@@ -172,10 +198,12 @@ module AwsSdk
         # , where X is a number between 1 and 12. The value of Aggregates contains aggregates that are not
         # present. One or more of the aggregates supplied are too close to the volume limit to support adding
         # more volumes.
+
         @[JSON::Field(key: "Aggregates")]
         getter aggregates : Array(String)?
 
         # The total number of constituents this FlexGroup volume has. Not applicable for FlexVols.
+
         @[JSON::Field(key: "TotalConstituents")]
         getter total_constituents : Int32?
 
@@ -189,6 +217,7 @@ module AwsSdk
       # A DNS alias that is associated with the file system. You can use a DNS alias to access a file system
       # using user-defined DNS names, in addition to the default DNS name that Amazon FSx assigns to the
       # file system. For more information, see DNS aliases in the FSx for Windows File Server User Guide .
+
       struct Alias
         include JSON::Serializable
 
@@ -197,6 +226,7 @@ module AwsSdk
         # system. CREATE_FAILED - Amazon FSx was unable to associate the DNS alias with the file system.
         # DELETING - Amazon FSx is disassociating the DNS alias from the file system and deleting it.
         # DELETE_FAILED - Amazon FSx was unable to disassociate the DNS alias from the file system.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
@@ -206,6 +236,7 @@ module AwsSdk
         # hyphen. Can start with a numeric. For DNS names, Amazon FSx stores alphabetic characters as
         # lowercase letters (a-z), regardless of how you specify them: as uppercase letters, lowercase
         # letters, or the corresponding letters in escape codes.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -218,6 +249,7 @@ module AwsSdk
 
       # The request object specifying one or more DNS alias names to associate with an Amazon FSx for
       # Windows File Server file system.
+
       struct AssociateFileSystemAliasesRequest
         include JSON::Serializable
 
@@ -228,12 +260,15 @@ module AwsSdk
         # alias names, Amazon FSx stores alphabetic characters as lowercase letters (a-z), regardless of how
         # you specify them: as uppercase letters, lowercase letters, or the corresponding letters in escape
         # codes.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(String)
 
         # Specifies the file system with which you want to associate one or more DNS aliases.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -250,10 +285,12 @@ module AwsSdk
       # with the file system. Use the API operation to monitor the status of the aliases Amazon FSx is
       # associating with the file system. It can take up to 2.5 minutes for the alias status to change from
       # CREATING to AVAILABLE .
+
       struct AssociateFileSystemAliasesResponse
         include JSON::Serializable
 
         # An array of the DNS aliases that Amazon FSx is associating with the file system.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(Types::Alias)?
 
@@ -269,6 +306,7 @@ module AwsSdk
       # defined changes asynchronously once your application finishes modifying the file. The
       # AutoExportPolicy is only supported on Amazon FSx for Lustre file systems with a data repository
       # association.
+
       struct AutoExportPolicy
         include JSON::Serializable
 
@@ -278,6 +316,7 @@ module AwsSdk
         # repository. DELETED - Files and directories are automatically deleted on the data repository when
         # they are deleted on the file system. You can define any combination of event types for your
         # AutoExportPolicy .
+
         @[JSON::Field(key: "Events")]
         getter events : Array(String)?
 
@@ -292,6 +331,7 @@ module AwsSdk
       # your Amazon FSx for Lustre file system as you modify objects in a linked S3 bucket. The
       # AutoImportPolicy is only supported on Amazon FSx for Lustre file systems with a data repository
       # association.
+
       struct AutoImportPolicy
         include JSON::Serializable
 
@@ -301,6 +341,7 @@ module AwsSdk
         # the file system as files change in the data repository. DELETED - Amazon FSx automatically deletes
         # files on the file system as corresponding files are deleted in the data repository. You can define
         # any combination of event types for your AutoImportPolicy .
+
         @[JSON::Field(key: "Events")]
         getter events : Array(String)?
 
@@ -313,17 +354,20 @@ module AwsSdk
       # Sets the autocommit period of files in an FSx for ONTAP SnapLock volume, which determines how long
       # the files must remain unmodified before they're automatically transitioned to the write once, read
       # many (WORM) state. For more information, see Autocommit .
+
       struct AutocommitPeriod
         include JSON::Serializable
 
         # Defines the type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
         # Setting this value to NONE disables autocommit. The default value is NONE .
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Defines the amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
         # The following ranges are valid: Minutes : 5 - 65,535 Hours : 1 - 65,535 Days : 1 - 3,650 Months : 1
         # - 120 Years : 1 - 10
+
         @[JSON::Field(key: "Value")]
         getter value : Int32?
 
@@ -336,19 +380,23 @@ module AwsSdk
 
       # A backup of an Amazon FSx for Windows File Server, Amazon FSx for Lustre file system, Amazon FSx for
       # NetApp ONTAP volume, or Amazon FSx for OpenZFS file system.
+
       struct Backup
         include JSON::Serializable
 
         # The ID of the backup.
+
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String
 
         # The time when a particular backup was created.
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time
 
         # The metadata of the file system associated with the backup. This metadata is persisted even if the
         # file system is deleted.
+
         @[JSON::Field(key: "FileSystem")]
         getter file_system : Types::FileSystem
 
@@ -358,56 +406,70 @@ module AwsSdk
         # file systems only; Amazon FSx is transferring the backup to Amazon S3. COPYING - Amazon FSx is
         # copying the backup. DELETED - Amazon FSx deleted the backup and it's no longer available. FAILED -
         # Amazon FSx couldn't finish the backup.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String
 
         # The type of the file-system backup.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The configuration of the self-managed Microsoft Active Directory directory to which the Windows File
         # Server instance is joined.
+
         @[JSON::Field(key: "DirectoryInformation")]
         getter directory_information : Types::ActiveDirectoryBackupAttributes?
 
         # Details explaining any failures that occurred when creating a backup.
+
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::BackupFailureDetails?
 
         # The ID of the Key Management Service (KMS) key used to encrypt the backup of the Amazon FSx file
         # system's data at rest.
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
+
         @[JSON::Field(key: "OwnerId")]
         getter owner_id : String?
+
 
         @[JSON::Field(key: "ProgressPercent")]
         getter progress_percent : Int32?
 
         # The Amazon Resource Name (ARN) for the backup resource.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # Specifies the resource type that's backed up.
+
         @[JSON::Field(key: "ResourceType")]
         getter resource_type : String?
 
         # The size of the backup in bytes. This represents the amount of data that the file system would
         # contain if you restore this backup.
+
         @[JSON::Field(key: "SizeInBytes")]
         getter size_in_bytes : Int64?
+
 
         @[JSON::Field(key: "SourceBackupId")]
         getter source_backup_id : String?
 
         # The source Region of the backup. Specifies the Region from where this backup is copied.
+
         @[JSON::Field(key: "SourceBackupRegion")]
         getter source_backup_region : String?
 
         # The tags associated with a particular file system.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
+
 
         @[JSON::Field(key: "Volume")]
         getter volume : Types::Volume?
@@ -435,11 +497,14 @@ module AwsSdk
       end
 
       # You can't delete a backup while it's being copied.
+
       struct BackupBeingCopied
         include JSON::Serializable
 
+
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -452,10 +517,12 @@ module AwsSdk
       end
 
       # If backup creation fails, this structure contains the details of that failure.
+
       struct BackupFailureDetails
         include JSON::Serializable
 
         # A message describing the backup-creation failure.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -467,8 +534,10 @@ module AwsSdk
 
       # Another backup is already under way. Wait for completion before initiating additional backups of
       # this file system.
+
       struct BackupInProgress
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -480,8 +549,10 @@ module AwsSdk
       end
 
       # No Amazon FSx backups were found based upon the supplied parameters.
+
       struct BackupNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -493,12 +564,15 @@ module AwsSdk
       end
 
       # You can't delete a backup while it's being used to restore a file system.
+
       struct BackupRestoring
         include JSON::Serializable
 
         # The ID of a file system being restored from the backup.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -511,8 +585,10 @@ module AwsSdk
       end
 
       # A generic error indicating a failure with a client request.
+
       struct BadRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -524,10 +600,12 @@ module AwsSdk
       end
 
       # Cancels a data repository task.
+
       struct CancelDataRepositoryTaskRequest
         include JSON::Serializable
 
         # Specifies the data repository task to cancel.
+
         @[JSON::Field(key: "TaskId")]
         getter task_id : String
 
@@ -536,6 +614,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct CancelDataRepositoryTaskResponse
         include JSON::Serializable
@@ -546,10 +625,12 @@ module AwsSdk
         # DataRepositoryTaskFailureDetails property provides more information about task failures. SUCCEEDED -
         # FSx completed the task successfully. CANCELED - Amazon FSx canceled the task and it did not
         # complete. CANCELING - FSx is in process of canceling the task.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The ID of the task being canceled.
+
         @[JSON::Field(key: "TaskId")]
         getter task_id : String?
 
@@ -564,12 +645,14 @@ module AwsSdk
       # criteria specified in the report Scope parameter. FSx delivers the report to the file system's
       # linked data repository in Amazon S3, using the path specified in the report Path parameter. You can
       # specify whether or not a report gets generated for a task using the Enabled parameter.
+
       struct CompletionReport
         include JSON::Serializable
 
         # Set Enabled to True to generate a CompletionReport when the task completes. If set to true , then
         # you need to provide a report Scope , Path , and Format . Set Enabled to False if you do not want a
         # CompletionReport generated when the task completes.
+
         @[JSON::Field(key: "Enabled")]
         getter enabled : Bool
 
@@ -577,6 +660,7 @@ module AwsSdk
         # REPORT_CSV_20191124 is the only format currently supported. When Format is set to
         # REPORT_CSV_20191124 , the CompletionReport is provided in CSV format, and is delivered to
         # {path}/task-{id}/failures.csv .
+
         @[JSON::Field(key: "Format")]
         getter format : String?
 
@@ -586,12 +670,14 @@ module AwsSdk
         # ExportPath. An example Path value is "s3://amzn-s3-demo-bucket/myExportPath/optionalPrefix". The
         # report provides the following information for each file in the report: FilePath, FileStatus, and
         # ErrorCode.
+
         @[JSON::Field(key: "Path")]
         getter path : String?
 
         # Required if Enabled is set to true . Specifies the scope of the CompletionReport ; FAILED_FILES_ONLY
         # is the only scope currently supported. When Scope is set to FAILED_FILES_ONLY , the CompletionReport
         # only contains information about files that the data repository task failed to process.
+
         @[JSON::Field(key: "Scope")]
         getter scope : String?
 
@@ -604,12 +690,15 @@ module AwsSdk
         end
       end
 
+
       struct CopyBackupRequest
         include JSON::Serializable
 
         # The ID of the source backup. Specifies the ID of the backup that's being copied.
+
         @[JSON::Field(key: "SourceBackupId")]
         getter source_backup_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -620,8 +709,10 @@ module AwsSdk
         # and the new tags doesn't exceed 50. Both sets of tags are merged. If there are tag conflicts (for
         # example, two tags with the same key but different values), the tags created with the Tags parameter
         # take precedence.
+
         @[JSON::Field(key: "CopyTags")]
         getter copy_tags : Bool?
+
 
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
@@ -630,8 +721,10 @@ module AwsSdk
         # which the backup is being copied. The source and destination Regions must be in the same Amazon Web
         # Services partition. If you don't specify a Region, SourceRegion defaults to the Region where the
         # request is sent from (in-Region copy).
+
         @[JSON::Field(key: "SourceRegion")]
         getter source_region : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -647,8 +740,10 @@ module AwsSdk
         end
       end
 
+
       struct CopyBackupResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Backup")]
         getter backup : Types::Backup?
@@ -659,15 +754,19 @@ module AwsSdk
         end
       end
 
+
       struct CopySnapshotAndUpdateVolumeRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "SourceSnapshotARN")]
         getter source_snapshot_arn : String
 
         # Specifies the ID of the volume that you are copying the snapshot to.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -676,6 +775,7 @@ module AwsSdk
         # all data from the snapshot to the volume. INCREMENTAL_COPY - Copies only the snapshot data that's
         # changed since the previous replication. CLONE isn't a valid copy strategy option for the
         # CopySnapshotAndUpdateVolume operation.
+
         @[JSON::Field(key: "CopyStrategy")]
         getter copy_strategy : String?
 
@@ -687,6 +787,7 @@ module AwsSdk
         # aren’t on the source volume. DELETE_CLONED_VOLUMES - Deletes snapshot clones on the destination
         # volume that aren't on the source volume. DELETE_INTERMEDIATE_DATA - Overwrites snapshots on the
         # destination volume that don’t match the source snapshot that you’re copying.
+
         @[JSON::Field(key: "Options")]
         getter options : Array(String)?
 
@@ -700,19 +801,23 @@ module AwsSdk
         end
       end
 
+
       struct CopySnapshotAndUpdateVolumeResponse
         include JSON::Serializable
 
         # A list of administrative actions for the file system that are in process or waiting to be processed.
         # Administrative actions describe changes to the Amazon FSx system.
+
         @[JSON::Field(key: "AdministrativeActions")]
         getter administrative_actions : Array(Types::AdministrativeAction)?
 
         # The lifecycle state of the destination volume.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The ID of the volume that you copied the snapshot to.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -726,16 +831,19 @@ module AwsSdk
 
       # Used to specify the configuration options for an FSx for ONTAP volume's storage aggregate or
       # aggregates.
+
       struct CreateAggregateConfiguration
         include JSON::Serializable
 
         # Used to specify the names of aggregates on which the volume will be created.
+
         @[JSON::Field(key: "Aggregates")]
         getter aggregates : Array(String)?
 
         # Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. This
         # field is optional when creating a FlexGroup volume. If unspecified, the default value will be 8.
         # This field cannot be provided when creating a FlexVol volume.
+
         @[JSON::Field(key: "ConstituentsPerAggregate")]
         getter constituents_per_aggregate : Int32?
 
@@ -748,15 +856,18 @@ module AwsSdk
 
       # Specifies the FSx for ONTAP volume that the S3 access point will be attached to, and the file system
       # user identity.
+
       struct CreateAndAttachS3AccessPointOntapConfiguration
         include JSON::Serializable
 
         # Specifies the file system user identity to use for authorizing file read and write requests that are
         # made using this S3 access point.
+
         @[JSON::Field(key: "FileSystemIdentity")]
         getter file_system_identity : Types::OntapFileSystemIdentity
 
         # The ID of the FSx for ONTAP volume to which you want the S3 access point attached.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
 
@@ -769,15 +880,18 @@ module AwsSdk
 
       # Specifies the FSx for OpenZFS volume that the S3 access point will be attached to, and the file
       # system user identity.
+
       struct CreateAndAttachS3AccessPointOpenZFSConfiguration
         include JSON::Serializable
 
         # Specifies the file system user identity to use for authorizing file read and write requests that are
         # made using this S3 access point.
+
         @[JSON::Field(key: "FileSystemIdentity")]
         getter file_system_identity : Types::OpenZFSFileSystemIdentity
 
         # The ID of the FSx for OpenZFS volume to which you want the S3 access point attached.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
 
@@ -788,31 +902,38 @@ module AwsSdk
         end
       end
 
+
       struct CreateAndAttachS3AccessPointRequest
         include JSON::Serializable
 
         # The name you want to assign to this S3 access point.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The type of S3 access point you want to create. Only OpenZFS is supported.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
+
 
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::CreateAndAttachS3AccessPointOntapConfiguration?
 
         # Specifies the configuration to use when creating and attaching an S3 access point to an FSx for
         # OpenZFS volume.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::CreateAndAttachS3AccessPointOpenZFSConfiguration?
 
         # Specifies the virtual private cloud (VPC) configuration if you're creating an access point that is
         # restricted to a VPC. For more information, see Creating access points restricted to a virtual
         # private cloud .
+
         @[JSON::Field(key: "S3AccessPoint")]
         getter s3_access_point : Types::CreateAndAttachS3AccessPointS3Configuration?
 
@@ -827,10 +948,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateAndAttachS3AccessPointResponse
         include JSON::Serializable
 
         # Describes the configuration of the S3 access point created.
+
         @[JSON::Field(key: "S3AccessPointAttachment")]
         getter s3_access_point_attachment : Types::S3AccessPointAttachment?
 
@@ -842,17 +965,20 @@ module AwsSdk
 
       # Used to create an S3 access point that accepts requests only from a virtual private cloud (VPC) to
       # restrict data access to a private network.
+
       struct CreateAndAttachS3AccessPointS3Configuration
         include JSON::Serializable
 
         # Specifies an access policy to associate with the S3 access point configuration. For more
         # information, see Configuring IAM policies for using access points in the Amazon Simple Storage
         # Service User Guide.
+
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
         # If included, Amazon S3 restricts access to this S3 access point to requests made from the specified
         # virtual private cloud (VPC).
+
         @[JSON::Field(key: "VpcConfiguration")]
         getter vpc_configuration : Types::S3AccessPointVpcConfiguration?
 
@@ -864,16 +990,19 @@ module AwsSdk
       end
 
       # The request object for the CreateBackup operation.
+
       struct CreateBackupRequest
         include JSON::Serializable
 
         # (Optional) A string of up to 63 ASCII characters that Amazon FSx uses to ensure idempotent creation.
         # This string is automatically filled on your behalf when you use the Command Line Interface (CLI) or
         # an Amazon Web Services SDK.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The ID of the file system to back up.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
 
@@ -881,10 +1010,12 @@ module AwsSdk
         # in the console as the backup name. If you have set CopyTagsToBackups to true , and you specify one
         # or more tags using the CreateBackup operation, no existing file system tags are copied from the file
         # system to the backup.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # (Optional) The ID of the FSx for ONTAP volume to back up.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -898,10 +1029,12 @@ module AwsSdk
       end
 
       # The response object for the CreateBackup operation.
+
       struct CreateBackupResponse
         include JSON::Serializable
 
         # A description of the backup.
+
         @[JSON::Field(key: "Backup")]
         getter backup : Types::Backup?
 
@@ -911,22 +1044,27 @@ module AwsSdk
         end
       end
 
+
       struct CreateDataRepositoryAssociationRequest
         include JSON::Serializable
 
         # The path to the Amazon S3 data repository that will be linked to the file system. The path can be an
         # S3 bucket or prefix in the format s3://bucket-name/prefix/ (where prefix is optional). This path
         # specifies where in the S3 data repository files will be imported from or exported to.
+
         @[JSON::Field(key: "DataRepositoryPath")]
         getter data_repository_path : String
+
 
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
 
         # Set to true to run an import data repository task to import metadata from the data repository to the
         # file system after the data repository association is created. Default is false .
+
         @[JSON::Field(key: "BatchImportMetaDataOnCreate")]
         getter batch_import_meta_data_on_create : Bool?
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -941,6 +1079,7 @@ module AwsSdk
         # forward slash ( / ) as the file system path, you can link only one data repository to the file
         # system. You can only specify "/" as the file system path for the first data repository associated
         # with a file system.
+
         @[JSON::Field(key: "FileSystemPath")]
         getter file_system_path : String?
 
@@ -949,6 +1088,7 @@ module AwsSdk
         # single file can be striped across is limited by the total number of disks that make up the file
         # system. The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500 GiB).
         # Amazon S3 objects have a maximum size of 5 TB.
+
         @[JSON::Field(key: "ImportedFileChunkSize")]
         getter imported_file_chunk_size : Int32?
 
@@ -956,8 +1096,10 @@ module AwsSdk
         # data repository association. The configuration defines which file events (new, changed, or deleted
         # files or directories) are automatically imported from the linked data repository to the file system
         # or automatically exported from the file system to the data repository.
+
         @[JSON::Field(key: "S3")]
         getter s3 : Types::S3DataRepositoryConfiguration?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -975,10 +1117,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateDataRepositoryAssociationResponse
         include JSON::Serializable
 
         # The response object returned after the data repository association is created.
+
         @[JSON::Field(key: "Association")]
         getter association : Types::DataRepositoryAssociation?
 
@@ -988,8 +1132,10 @@ module AwsSdk
         end
       end
 
+
       struct CreateDataRepositoryTaskRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
@@ -998,6 +1144,7 @@ module AwsSdk
         # CompletionReport provides a detailed report on the files that Amazon FSx processed that meet the
         # criteria specified by the Scope parameter. For more information, see Working with Task Completion
         # Reports .
+
         @[JSON::Field(key: "Report")]
         getter report : Types::CompletionReport
 
@@ -1007,13 +1154,16 @@ module AwsSdk
         # RELEASE_DATA_FROM_FILESYSTEM tasks release files in your Amazon FSx for Lustre file system that have
         # been exported to a linked S3 bucket and that meet your specified release criteria. AUTO_RELEASE_DATA
         # tasks automatically release files from an Amazon File Cache resource.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Specifies the amount of data to release, in GiB, by an Amazon File Cache AUTO_RELEASE_DATA task that
         # automatically releases files from the cache.
+
         @[JSON::Field(key: "CapacityToRelease")]
         getter capacity_to_release : Int64?
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -1034,13 +1184,16 @@ module AwsSdk
         # is released. To release all exported files in the file system, specify a forward slash (/) as the
         # path. A file must also meet the last accessed time criteria specified in for the file to be
         # released.
+
         @[JSON::Field(key: "Paths")]
         getter paths : Array(String)?
 
         # The configuration that specifies the last accessed time criteria for files that will be released
         # from an Amazon FSx for Lustre file system.
+
         @[JSON::Field(key: "ReleaseConfiguration")]
         getter release_configuration : Types::ReleaseConfiguration?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -1058,10 +1211,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateDataRepositoryTaskResponse
         include JSON::Serializable
 
         # The description of the data repository task that you just created.
+
         @[JSON::Field(key: "DataRepositoryTask")]
         getter data_repository_task : Types::DataRepositoryTask?
 
@@ -1072,21 +1227,26 @@ module AwsSdk
       end
 
       # The Amazon File Cache configuration for the cache that you are creating.
+
       struct CreateFileCacheLustreConfiguration
         include JSON::Serializable
 
         # Specifies the cache deployment type, which must be CACHE_1 .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String
 
         # The configuration for a Lustre MDT (Metadata Target) storage volume.
+
         @[JSON::Field(key: "MetadataConfiguration")]
         getter metadata_configuration : Types::FileCacheLustreMetadataConfiguration
 
         # Provisions the amount of read and write throughput for each 1 tebibyte (TiB) of cache storage
         # capacity, in MB/s/TiB. The only supported value is 1000 .
+
         @[JSON::Field(key: "PerUnitStorageThroughput")]
         getter per_unit_storage_throughput : Int32
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -1100,21 +1260,26 @@ module AwsSdk
         end
       end
 
+
       struct CreateFileCacheRequest
         include JSON::Serializable
 
         # The type of cache that you're creating, which must be LUSTRE .
+
         @[JSON::Field(key: "FileCacheType")]
         getter file_cache_type : String
 
         # Sets the Lustre version for the cache that you're creating, which must be 2.12 .
+
         @[JSON::Field(key: "FileCacheTypeVersion")]
         getter file_cache_type_version : String
 
         # The storage capacity of the cache in gibibytes (GiB). Valid values are 1200 GiB, 2400 GiB, and
         # increments of 2400 GiB.
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32
+
 
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)
@@ -1126,11 +1291,13 @@ module AwsSdk
         # that makes it unclear whether a cache was created. Examples are if a transport level timeout
         # occurred, or your connection was reset. If you use the same client request token and the initial
         # call created a cache, the client receives success as long as the parameters are the same.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # A boolean flag indicating whether tags for the cache should be copied to data repository
         # associations. This value defaults to false.
+
         @[JSON::Field(key: "CopyTagsToDataRepositoryAssociations")]
         getter copy_tags_to_data_repository_associations : Bool?
 
@@ -1141,23 +1308,28 @@ module AwsSdk
         # either all S3 or all NFS. A cache can't link to different data repository types at the same time. An
         # NFS DRA must link to an NFS file system that supports the NFSv3 protocol. DRA automatic import and
         # automatic export is not supported.
+
         @[JSON::Field(key: "DataRepositoryAssociations")]
         getter data_repository_associations : Array(Types::FileCacheDataRepositoryAssociation)?
 
         # Specifies the ID of the Key Management Service (KMS) key to use for encrypting data on an Amazon
         # File Cache. If a KmsKeyId isn't specified, the Amazon FSx-managed KMS key for your account is used.
         # For more information, see Encrypt in the Key Management Service API Reference .
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
         # The configuration for the Amazon File Cache resource being created.
+
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::CreateFileCacheLustreConfiguration?
 
         # A list of IDs specifying the security groups to apply to all network interfaces created for Amazon
         # File Cache access. This list isn't returned in later requests to describe the cache.
+
         @[JSON::Field(key: "SecurityGroupIds")]
         getter security_group_ids : Array(String)?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -1178,10 +1350,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateFileCacheResponse
         include JSON::Serializable
 
         # A description of the cache that was created.
+
         @[JSON::Field(key: "FileCache")]
         getter file_cache : Types::FileCacheCreating?
 
@@ -1192,8 +1366,10 @@ module AwsSdk
       end
 
       # The request object for the CreateFileSystemFromBackup operation.
+
       struct CreateFileSystemFromBackupRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String
@@ -1204,12 +1380,14 @@ module AwsSdk
         # using the WindowsConfiguration &gt; PreferredSubnetID property. Windows SINGLE_AZ_1 and SINGLE_AZ_2
         # file system deployment types, Lustre file systems, and OpenZFS file systems provide exactly one
         # subnet ID. The file server is launched in that subnet's Availability Zone.
+
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)
 
         # A string of up to 63 ASCII characters that Amazon FSx uses to ensure idempotent creation. This
         # string is automatically filled on your behalf when you use the Command Line Interface (CLI) or an
         # Amazon Web Services SDK.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -1217,26 +1395,32 @@ module AwsSdk
         # values are 2.10 , 2.12 , and 2.15 . You can enter a Lustre version that is newer than the backup's
         # FileSystemTypeVersion setting. If you don't enter a newer Lustre version, it defaults to the
         # backup's setting.
+
         @[JSON::Field(key: "FileSystemTypeVersion")]
         getter file_system_type_version : String?
 
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
+
 
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::CreateFileSystemLustreConfiguration?
 
         # Sets the network type for the Amazon FSx for OpenZFS file system that you're creating from a backup.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The OpenZFS configuration for the file system that's being created.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::CreateFileSystemOpenZFSConfiguration?
 
         # A list of IDs for the security groups that apply to the specified network interfaces created for
         # file system access. These security groups apply to all network interfaces. This value isn't returned
         # in later DescribeFileSystem requests.
+
         @[JSON::Field(key: "SecurityGroupIds")]
         getter security_group_ids : Array(String)?
 
@@ -1246,6 +1430,7 @@ module AwsSdk
         # the StorageCapacity parameter, the default is the backup's StorageCapacity value. If used to create
         # a file system other than OpenZFS, you must provide a value that matches the backup's StorageCapacity
         # value. If you provide any other value, Amazon FSx responds with an HTTP status code 400 Bad Request.
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32?
 
@@ -1260,15 +1445,18 @@ module AwsSdk
         # system's storage capacity is tied to the file system that was backed up. You can create a file
         # system that uses HDD storage from a backup of a file system that used SSD storage if the original
         # SSD file system had a storage capacity of at least 2000 GiB.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # The tags to be applied to the file system at file system creation. The key value of the Name tag
         # appears in the console as the file system name.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The configuration for this Microsoft Windows file system.
+
         @[JSON::Field(key: "WindowsConfiguration")]
         getter windows_configuration : Types::CreateFileSystemWindowsConfiguration?
 
@@ -1291,10 +1479,12 @@ module AwsSdk
       end
 
       # The response object for the CreateFileSystemFromBackup operation.
+
       struct CreateFileSystemFromBackupResponse
         include JSON::Serializable
 
         # A description of the file system.
+
         @[JSON::Field(key: "FileSystem")]
         getter file_system : Types::FileSystem?
 
@@ -1307,6 +1497,7 @@ module AwsSdk
       # The Lustre configuration for the file system being created. The following parameters are not
       # supported for file systems with a data repository association created with . AutoImportPolicy
       # ExportPath ImportedFileChunkSize ImportPath
+
       struct CreateFileSystemLustreConfiguration
         include JSON::Serializable
 
@@ -1324,11 +1515,13 @@ module AwsSdk
         # added to the S3 bucket, any existing objects that are changed in the S3 bucket, and any objects that
         # were deleted in the S3 bucket. For more information, see Automatically import updates from your S3
         # bucket . This parameter is not supported for file systems with a data repository association.
+
         @[JSON::Field(key: "AutoImportPolicy")]
         getter auto_import_policy : String?
 
         # The number of days to retain automatic backups. Setting this property to 0 disables automatic
         # backups. You can retain automatic backups for a maximum of 90 days. The default is 0 .
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
 
@@ -1340,8 +1533,10 @@ module AwsSdk
         # backups. If you specify one or more tags when creating a user-initiated backup, no tags are copied
         # from the file system, regardless of this value. (Default = false ) For more information, see Working
         # with backups in the Amazon FSx for Lustre User Guide .
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
@@ -1350,11 +1545,13 @@ module AwsSdk
         # following values: NONE - (Default) Data compression is turned off when the file system is created.
         # LZ4 - Data compression is turned on with the LZ4 algorithm. For more information, see Lustre data
         # compression in the Amazon FSx for Lustre User Guide .
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # Specifies the optional provisioned SSD read cache on FSx for Lustre file systems that use the
         # Intelligent-Tiering storage class. Required when StorageType is set to INTELLIGENT_TIERING .
+
         @[JSON::Field(key: "DataReadCacheConfiguration")]
         getter data_read_cache_configuration : Types::LustreReadCacheConfiguration?
 
@@ -1376,6 +1573,7 @@ module AwsSdk
         # Regions where they are available. For more information about encryption in transit for FSx for
         # Lustre file systems, see Encrypting data in transit in the Amazon FSx for Lustre User Guide .
         # (Default = SCRATCH_1 )
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
 
@@ -1383,11 +1581,13 @@ module AwsSdk
         # devices. This parameter is required when storage type is HDD. Set this property to READ to improve
         # the performance for frequently accessed files by caching up to 20% of the total storage capacity of
         # the file system. This parameter is required when StorageType is set to HDD .
+
         @[JSON::Field(key: "DriveCacheType")]
         getter drive_cache_type : String?
 
         # (Optional) Specifies whether Elastic Fabric Adapter (EFA) and GPUDirect Storage (GDS) support is
         # enabled for the Amazon FSx for Lustre file system. (Default = false )
+
         @[JSON::Field(key: "EfaEnabled")]
         getter efa_enabled : Bool?
 
@@ -1403,6 +1603,7 @@ module AwsSdk
         # export path, such as s3://import-bucket/[custom-optional-prefix] , Amazon FSx exports the contents
         # of your file system to that export prefix in the Amazon S3 bucket. This parameter is not supported
         # for file systems with a data repository association.
+
         @[JSON::Field(key: "ExportPath")]
         getter export_path : String?
 
@@ -1412,6 +1613,7 @@ module AwsSdk
         # s3://import-bucket/optional-prefix . If you specify a prefix after the Amazon S3 bucket name, only
         # object keys with that prefix are loaded into the file system. This parameter is not supported for
         # file systems with a data repository association.
+
         @[JSON::Field(key: "ImportPath")]
         getter import_path : String?
 
@@ -1421,17 +1623,20 @@ module AwsSdk
         # the file system. The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500
         # GiB). Amazon S3 objects have a maximum size of 5 TB. This parameter is not supported for file
         # systems with a data repository association.
+
         @[JSON::Field(key: "ImportedFileChunkSize")]
         getter imported_file_chunk_size : Int32?
 
         # The Lustre logging configuration used when creating an Amazon FSx for Lustre file system. When
         # logging is enabled, Lustre logs error and warning events for data repositories associated with your
         # file system to Amazon CloudWatch Logs.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LustreLogCreateConfiguration?
 
         # The Lustre metadata performance configuration for the creation of an FSx for Lustre file system
         # using a PERSISTENT_2 deployment type.
+
         @[JSON::Field(key: "MetadataConfiguration")]
         getter metadata_configuration : Types::CreateFileSystemLustreMetadataConfiguration?
 
@@ -1443,23 +1648,27 @@ module AwsSdk
         # pay for the amount of throughput that you provision. Valid values: For PERSISTENT_1 SSD storage: 50,
         # 100, 200 MB/s/TiB. For PERSISTENT_1 HDD storage: 12, 40 MB/s/TiB. For PERSISTENT_2 SSD storage: 125,
         # 250, 500, 1000 MB/s/TiB.
+
         @[JSON::Field(key: "PerUnitStorageThroughput")]
         getter per_unit_storage_throughput : Int32?
 
         # The Lustre root squash configuration used when creating an Amazon FSx for Lustre file system. When
         # enabled, root squash restricts root-level access from clients that try to access your file system as
         # a root user.
+
         @[JSON::Field(key: "RootSquashConfiguration")]
         getter root_squash_configuration : Types::LustreRootSquashConfiguration?
 
         # Specifies the throughput of an FSx for Lustre file system using the Intelligent-Tiering storage
         # class, measured in megabytes per second (MBps). Valid values are 4000 MBps or multiples of 4000
         # MBps. You pay for the amount of throughput that you provision.
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
         # (Optional) The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time
         # zone, where d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.
+
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
 
@@ -1491,6 +1700,7 @@ module AwsSdk
       # maximum rate of metadata disk IOPS supported by the file system. After creation, the file system
       # supports increasing metadata performance. For more information on Metadata IOPS, see Lustre metadata
       # performance configuration in the Amazon FSx for Lustre User Guide .
+
       struct CreateFileSystemLustreMetadataConfiguration
         include JSON::Serializable
 
@@ -1499,6 +1709,7 @@ module AwsSdk
         # for Lustre automatically provisions and scales the number of Metadata IOPS for your file system
         # based on your file system storage capacity. In USER_PROVISIONED mode, you specify the number of
         # Metadata IOPS to provision for your file system.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String
 
@@ -1509,6 +1720,7 @@ module AwsSdk
         # have a default value. If you're using USER_PROVISIONED mode, you can choose to specify a valid
         # value. If you're using AUTOMATIC mode, you cannot specify a value because FSx for Lustre
         # automatically sets the value based on your file system storage capacity.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -1520,6 +1732,7 @@ module AwsSdk
       end
 
       # The ONTAP configuration properties of the FSx for ONTAP file system that you are creating.
+
       struct CreateFileSystemOntapConfiguration
         include JSON::Serializable
 
@@ -1533,16 +1746,20 @@ module AwsSdk
         # Single-AZ redundancy. This is a second-generation FSx for ONTAP file system. For information about
         # the use cases for Multi-AZ and Single-AZ deployments, refer to Choosing a file system deployment
         # type .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String
 
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
 
         # The SSD IOPS configuration for the FSx for ONTAP file system.
+
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
@@ -1552,6 +1769,7 @@ module AwsSdk
         # addresses from the VPC’s primary CIDR range to use as the endpoint IP address range for the file
         # system. You can have overlapping endpoint IP addresses for file systems deployed in the same
         # VPC/route tables, as long as they don't overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpAddressRange")]
         getter endpoint_ip_address_range : String?
 
@@ -1560,11 +1778,13 @@ module AwsSdk
         # available /118 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpv6AddressRange")]
         getter endpoint_ipv6_address_range : String?
 
         # The ONTAP administrative password for the fsxadmin user with which you administer your file system
         # using the NetApp ONTAP CLI and REST API.
+
         @[JSON::Field(key: "FsxAdminPassword")]
         getter fsx_admin_password : String?
 
@@ -1578,11 +1798,13 @@ module AwsSdk
         # responds with an HTTP status code 400 (Bad Request) for the following conditions: The value of
         # HAPairs is less than 1 or greater than 12. The value of HAPairs is greater than 1 and the value of
         # DeploymentType is SINGLE_AZ_1 , MULTI_AZ_1 , or MULTI_AZ_2 .
+
         @[JSON::Field(key: "HAPairs")]
         getter ha_pairs : Int32?
 
         # Required when DeploymentType is set to MULTI_AZ_1 or MULTI_AZ_2 . This specifies the subnet in which
         # you want the preferred file server to be located.
+
         @[JSON::Field(key: "PreferredSubnetId")]
         getter preferred_subnet_id : String?
 
@@ -1593,6 +1815,7 @@ module AwsSdk
         # tag-based authentication. These route tables are tagged with Key: AmazonFSx; Value:
         # ManagedByAmazonFSx . When creating FSx for ONTAP Multi-AZ file systems using CloudFormation we
         # recommend that you add the Key: AmazonFSx; Value: ManagedByAmazonFSx tag manually.
+
         @[JSON::Field(key: "RouteTableIds")]
         getter route_table_ids : Array(String)?
 
@@ -1602,6 +1825,7 @@ module AwsSdk
         # value of ThroughputCapacity and ThroughputCapacityPerHAPair are not the same value. The value of
         # ThroughputCapacity when divided by the value of HAPairs is outside of the valid range for
         # ThroughputCapacity .
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
@@ -1615,8 +1839,10 @@ module AwsSdk
         # ThroughputCapacityPerHAPair are not the same value for file systems with one HA pair. The value of
         # deployment type is SINGLE_AZ_2 and ThroughputCapacity / ThroughputCapacityPerHAPair is not a valid
         # HA pair (a value between 1 and 12). The value of ThroughputCapacityPerHAPair is not a valid value.
+
         @[JSON::Field(key: "ThroughputCapacityPerHAPair")]
         getter throughput_capacity_per_ha_pair : Int32?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -1640,6 +1866,7 @@ module AwsSdk
       end
 
       # The Amazon FSx for OpenZFS configuration properties for the file system that you are creating.
+
       struct CreateFileSystemOpenZFSConfiguration
         include JSON::Serializable
 
@@ -1656,6 +1883,7 @@ module AwsSdk
         # Zone. For a list of which Amazon Web Services Regions each deployment type is available in, see
         # Deployment type availability . For more information on the differences in performance between
         # deployment types, see File system performance in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String
 
@@ -1664,8 +1892,10 @@ module AwsSdk
         # SINGLE_AZ_2 , valid values are 160, 320, 640, 1280, 2560, 3840, 5120, 7680, or 10240 MBps. For
         # SINGLE_AZ_1 , valid values are 64, 128, 256, 512, 1024, 2048, 3072, or 4096 MBps. You pay for
         # additional throughput capacity that you provision.
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32
+
 
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
@@ -1676,6 +1906,7 @@ module AwsSdk
         # specify one or more tags, only the specified tags are copied to backups. If you specify one or more
         # tags when creating a user-initiated backup, no tags are copied from the file system, regardless of
         # this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
@@ -1684,11 +1915,14 @@ module AwsSdk
         # the user doesn't specify tags. If this value is true , and you specify one or more tags, only the
         # specified tags are copied to volumes. If you specify one or more tags when creating the volume, no
         # tags are copied from the file system, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToVolumes")]
         getter copy_tags_to_volumes : Bool?
 
+
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
+
 
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
@@ -1698,6 +1932,7 @@ module AwsSdk
         # available /28 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpAddressRange")]
         getter endpoint_ip_address_range : String?
 
@@ -1706,21 +1941,25 @@ module AwsSdk
         # available /118 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpv6AddressRange")]
         getter endpoint_ipv6_address_range : String?
 
         # Required when DeploymentType is set to MULTI_AZ_1 . This specifies the subnet in which you want the
         # preferred file server to be located.
+
         @[JSON::Field(key: "PreferredSubnetId")]
         getter preferred_subnet_id : String?
 
         # Specifies the optional provisioned SSD read cache on file systems that use the Intelligent-Tiering
         # storage class.
+
         @[JSON::Field(key: "ReadCacheConfiguration")]
         getter read_cache_configuration : Types::OpenZFSReadCacheConfiguration?
 
         # The configuration Amazon FSx uses when creating the root value of the Amazon FSx for OpenZFS file
         # system. All volumes are children of the root volume.
+
         @[JSON::Field(key: "RootVolumeConfiguration")]
         getter root_volume_configuration : Types::OpenZFSCreateRootVolumeConfiguration?
 
@@ -1728,8 +1967,10 @@ module AwsSdk
         # to the correct file server. You should specify all virtual private cloud (VPC) route tables
         # associated with the subnets in which your clients are located. By default, Amazon FSx selects your
         # VPC's default route table.
+
         @[JSON::Field(key: "RouteTableIds")]
         getter route_table_ids : Array(String)?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -1754,11 +1995,13 @@ module AwsSdk
       end
 
       # The request object used to create a new Amazon FSx file system.
+
       struct CreateFileSystemRequest
         include JSON::Serializable
 
         # The type of Amazon FSx file system to create. Valid values are WINDOWS , LUSTRE , ONTAP , and
         # OPENZFS .
+
         @[JSON::Field(key: "FileSystemType")]
         getter file_system_type : String
 
@@ -1771,12 +2014,14 @@ module AwsSdk
         # durability in the Amazon FSx for ONTAP User Guide . For Windows SINGLE_AZ_1 and SINGLE_AZ_2 and all
         # Lustre deployment types, provide exactly one subnet ID. The file server is launched in that subnet's
         # Availability Zone.
+
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)
 
         # A string of up to 63 ASCII characters that Amazon FSx uses to ensure idempotent creation. This
         # string is automatically filled on your behalf when you use the Command Line Interface (CLI) or an
         # Amazon Web Services SDK.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -1787,11 +2032,14 @@ module AwsSdk
         # all new file systems. Default value is 2.10 , except for the following deployments: Default value is
         # 2.12 when DeploymentType is set to PERSISTENT_2 without a metadata configuration mode. Default value
         # is 2.15 when DeploymentType is set to PERSISTENT_2 with a metadata configuration mode.
+
         @[JSON::Field(key: "FileSystemTypeVersion")]
         getter file_system_type_version : String?
 
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
+
 
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::CreateFileSystemLustreConfiguration?
@@ -1800,13 +2048,16 @@ module AwsSdk
         # supports IPv4 only) and DUAL (for dual-stack mode, which supports both IPv4 and IPv6). The default
         # is IPV4 . Supported for FSx for OpenZFS, FSx for ONTAP, and FSx for Windows File Server file
         # systems.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
+
 
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::CreateFileSystemOntapConfiguration?
 
         # The OpenZFS configuration for the file system that's being created.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::CreateFileSystemOpenZFSConfiguration?
 
@@ -1814,6 +2065,7 @@ module AwsSdk
         # system access. This list isn't returned in later requests to describe the file system. You must
         # specify a security group if you are creating a Multi-AZ FSx for ONTAP file system in a VPC subnet
         # that has been shared with you.
+
         @[JSON::Field(key: "SecurityGroupIds")]
         getter security_group_ids : Array(String)?
 
@@ -1831,6 +2083,7 @@ module AwsSdk
         # Server file systems - The amount of storage capacity that you can configure depends on the value
         # that you set for StorageType as follows: For SSD storage, valid values are 32 GiB-65,536 GiB (64
         # TiB). For HDD storage, valid values are 2000 GiB-65,536 GiB (64 TiB).
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32?
 
@@ -1844,15 +2097,18 @@ module AwsSdk
         # Default value is SSD . For more information, see Storage type options in the FSx for Windows File
         # Server User Guide , FSx for Lustre storage classes in the FSx for Lustre User Guide , and Working
         # with Intelligent-Tiering in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # The tags to apply to the file system that's being created. The key value of the Name tag appears in
         # the console as the file system name.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The Microsoft Windows configuration for the file system that's being created.
+
         @[JSON::Field(key: "WindowsConfiguration")]
         getter windows_configuration : Types::CreateFileSystemWindowsConfiguration?
 
@@ -1876,10 +2132,12 @@ module AwsSdk
       end
 
       # The response object returned after the file system is created.
+
       struct CreateFileSystemResponse
         include JSON::Serializable
 
         # The configuration of the file system that was created.
+
         @[JSON::Field(key: "FileSystem")]
         getter file_system : Types::FileSystem?
 
@@ -1891,16 +2149,19 @@ module AwsSdk
 
       # The configuration object for the Microsoft Windows file system used in CreateFileSystem and
       # CreateFileSystemFromBackup operations.
+
       struct CreateFileSystemWindowsConfiguration
         include JSON::Serializable
 
         # Sets the throughput capacity of an Amazon FSx file system, measured in megabytes per second (MB/s),
         # in 2 to the n th increments, between 2^3 (8) and 2^11 (2048).
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32
 
         # The ID for an existing Amazon Web Services Managed Microsoft Active Directory (AD) instance that the
         # file system should join when it's created.
+
         @[JSON::Field(key: "ActiveDirectoryId")]
         getter active_directory_id : String?
 
@@ -1916,16 +2177,19 @@ module AwsSdk
         # (-). Cannot start or end with a hyphen. Can start with a numeric. For DNS alias names, Amazon FSx
         # stores alphabetic characters as lowercase letters (a-z), regardless of how you specify them: as
         # uppercase letters, lowercase letters, or the corresponding letters in escape codes.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(String)?
 
         # The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of
         # files, folders, and file shares on the Amazon FSx for Windows File Server file system.
+
         @[JSON::Field(key: "AuditLogConfiguration")]
         getter audit_log_configuration : Types::WindowsAuditLogCreateConfiguration?
 
         # The number of days to retain automatic backups. Setting this property to 0 disables automatic
         # backups. You can retain automatic backups for a maximum of 90 days. The default is 30 .
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
 
@@ -1935,10 +2199,12 @@ module AwsSdk
         # one or more tags, only the specified tags are copied to backups. If you specify one or more tags
         # when creating a user-initiated backup, no tags are copied from the file system, regardless of this
         # value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
         # The preferred time to take daily automatic backups, formatted HH:MM in the UTC time zone.
+
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
 
@@ -1950,6 +2216,7 @@ module AwsSdk
         # SINGLE_AZ_2 - The latest generation Single AZ file system. Specifies a file system that is
         # configured for single AZ redundancy and supports HDD storage type. For more information, see
         # Availability and Durability: Single-AZ and Multi-AZ File Systems .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
 
@@ -1957,11 +2224,13 @@ module AwsSdk
         # system. By default, Amazon FSx automatically provisions 3 IOPS per GiB of storage capacity. You can
         # provision additional IOPS per GiB of storage, up to the maximum limit associated with your chosen
         # throughput capacity.
+
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
         # The File Server Resource Manager (FSRM) configuration that Amazon FSx for Windows File Server uses
         # for the file system. FSRM is disabled by default.
+
         @[JSON::Field(key: "FsrmConfiguration")]
         getter fsrm_configuration : Types::WindowsFsrmConfiguration?
 
@@ -1969,14 +2238,17 @@ module AwsSdk
         # preferred file server to be located. For in-Amazon Web Services applications, we recommend that you
         # launch your clients in the same Availability Zone (AZ) as your preferred file server to reduce
         # cross-AZ data transfer costs and minimize latency.
+
         @[JSON::Field(key: "PreferredSubnetId")]
         getter preferred_subnet_id : String?
+
 
         @[JSON::Field(key: "SelfManagedActiveDirectoryConfiguration")]
         getter self_managed_active_directory_configuration : Types::SelfManagedActiveDirectoryConfiguration?
 
         # The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone,
         # where d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.
+
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
 
@@ -1999,14 +2271,17 @@ module AwsSdk
       end
 
       # Specifies the configuration of the ONTAP volume that you are creating.
+
       struct CreateOntapVolumeConfiguration
         include JSON::Serializable
 
         # Specifies the ONTAP SVM in which to create the volume.
+
         @[JSON::Field(key: "StorageVirtualMachineId")]
         getter storage_virtual_machine_id : String
 
         # Use to specify configuration options for a volume’s storage aggregate or aggregates.
+
         @[JSON::Field(key: "AggregateConfiguration")]
         getter aggregate_configuration : Types::CreateAggregateConfiguration?
 
@@ -2015,11 +2290,13 @@ module AwsSdk
         # user-initiated backups where the user doesn't specify tags. If this value is true, and you specify
         # one or more tags, only the specified tags are copied to backups. If you specify one or more tags
         # when creating a user-initiated backup, no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
         # Specifies the location in the SVM's namespace where the volume is mounted. This parameter is
         # required. The JunctionPath must have a leading forward slash, such as /vol3 .
+
         @[JSON::Field(key: "JunctionPath")]
         getter junction_path : String?
 
@@ -2027,6 +2304,7 @@ module AwsSdk
         # read/write volume. RW is the default. DP specifies a data-protection volume. A DP volume is
         # read-only and can be used as the destination of a NetApp SnapMirror relationship. For more
         # information, see Volume types in the Amazon FSx for NetApp ONTAP User Guide.
+
         @[JSON::Field(key: "OntapVolumeType")]
         getter ontap_volume_type : String?
 
@@ -2040,18 +2318,22 @@ module AwsSdk
         # setting. For more information, see the topic What the security styles and their effects are in the
         # NetApp Documentation Center. For more information, see Volume security style in the FSx for ONTAP
         # User Guide.
+
         @[JSON::Field(key: "SecurityStyle")]
         getter security_style : String?
 
         # Specifies the configured size of the volume, in bytes.
+
         @[JSON::Field(key: "SizeInBytes")]
         getter size_in_bytes : Int64?
 
         # Use SizeInBytes instead. Specifies the size of the volume, in megabytes (MB), that you are creating.
+
         @[JSON::Field(key: "SizeInMegabytes")]
         getter size_in_megabytes : Int32?
 
         # Specifies the SnapLock configuration for an FSx for ONTAP volume.
+
         @[JSON::Field(key: "SnaplockConfiguration")]
         getter snaplock_configuration : Types::CreateSnaplockConfiguration?
 
@@ -2064,14 +2346,17 @@ module AwsSdk
         # prevent automatic snapshots from being taken. You can also provide the name of a custom policy that
         # you created with the ONTAP CLI or REST API. For more information, see Snapshot policies in the
         # Amazon FSx for NetApp ONTAP User Guide.
+
         @[JSON::Field(key: "SnapshotPolicy")]
         getter snapshot_policy : String?
 
         # Set to true to enable deduplication, compression, and compaction storage efficiency features on the
         # volume, or set to false to disable them. StorageEfficiencyEnabled is required when creating a RW
         # volume ( OntapVolumeType set to RW ).
+
         @[JSON::Field(key: "StorageEfficiencyEnabled")]
         getter storage_efficiency_enabled : Bool?
+
 
         @[JSON::Field(key: "TieringPolicy")]
         getter tiering_policy : Types::TieringPolicy?
@@ -2079,6 +2364,7 @@ module AwsSdk
         # Use to specify the style of an ONTAP volume. FSx for ONTAP offers two styles of volumes that you can
         # use for different purposes, FlexVol and FlexGroup volumes. For more information, see Volume styles
         # in the Amazon FSx for NetApp ONTAP User Guide.
+
         @[JSON::Field(key: "VolumeStyle")]
         getter volume_style : String?
 
@@ -2101,6 +2387,7 @@ module AwsSdk
       end
 
       # The snapshot configuration to use when creating an Amazon FSx for OpenZFS volume from a snapshot.
+
       struct CreateOpenZFSOriginSnapshotConfiguration
         include JSON::Serializable
 
@@ -2112,8 +2399,10 @@ module AwsSdk
         # for OpenZFS file system. The INCREMENTAL_COPY option is only for updating an existing volume by
         # using a snapshot from another FSx for OpenZFS file system. For more information, see
         # CopySnapshotAndUpdateVolume .
+
         @[JSON::Field(key: "CopyStrategy")]
         getter copy_strategy : String
+
 
         @[JSON::Field(key: "SnapshotARN")]
         getter snapshot_arn : String
@@ -2126,10 +2415,12 @@ module AwsSdk
       end
 
       # Specifies the configuration of the Amazon FSx for OpenZFS volume that you are creating.
+
       struct CreateOpenZFSVolumeConfiguration
         include JSON::Serializable
 
         # The ID of the volume to use as the parent volume of the volume that you are creating.
+
         @[JSON::Field(key: "ParentVolumeId")]
         getter parent_volume_id : String
 
@@ -2139,6 +2430,7 @@ module AwsSdk
         # or more tags, only the specified tags for the original volume are copied over to snapshots. If you
         # specify one or more tags when creating a new snapshot, no tags are copied over from the original
         # volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToSnapshots")]
         getter copy_tags_to_snapshots : Bool?
 
@@ -2151,19 +2443,23 @@ module AwsSdk
         # information about volume compression types and the performance of your Amazon FSx for OpenZFS file
         # system, see Tips for maximizing performance File system and volume settings in the Amazon FSx for
         # OpenZFS User Guide .
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # The configuration object for mounting a Network File System (NFS) file system.
+
         @[JSON::Field(key: "NfsExports")]
         getter nfs_exports : Array(Types::OpenZFSNfsExport)?
 
         # The configuration object that specifies the snapshot to use as the origin of the data for the
         # volume.
+
         @[JSON::Field(key: "OriginSnapshot")]
         getter origin_snapshot : Types::CreateOpenZFSOriginSnapshotConfiguration?
 
         # A Boolean value indicating whether the volume is read-only.
+
         @[JSON::Field(key: "ReadOnly")]
         getter read_only : Bool?
 
@@ -2175,6 +2471,7 @@ module AwsSdk
         # benefit from setting a custom record size, like database workloads (small record size) or media
         # streaming workloads (large record size). For additional guidance on when to set a custom record
         # size, see ZFS Record size in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "RecordSizeKiB")]
         getter record_size_ki_b : Int32?
 
@@ -2184,6 +2481,7 @@ module AwsSdk
         # the parent volume. To guarantee quota space, you must also set StorageCapacityReservationGiB . To
         # not specify a storage capacity quota, set this to -1 . For more information, see Volume properties
         # in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "StorageCapacityQuotaGiB")]
         getter storage_capacity_quota_gi_b : Int32?
 
@@ -2192,10 +2490,12 @@ module AwsSdk
         # volume will always be available for the volume. You can't reserve more storage than the parent
         # volume has. To not specify a storage capacity reservation, set this to 0 or -1 . For more
         # information, see Volume properties in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "StorageCapacityReservationGiB")]
         getter storage_capacity_reservation_gi_b : Int32?
 
         # Configures how much storage users and groups can use on the volume.
+
         @[JSON::Field(key: "UserAndGroupQuotas")]
         getter user_and_group_quotas : Array(Types::OpenZFSUserOrGroupQuota)?
 
@@ -2215,6 +2515,7 @@ module AwsSdk
       end
 
       # Defines the SnapLock configuration when creating an FSx for ONTAP SnapLock volume.
+
       struct CreateSnaplockConfiguration
         include JSON::Serializable
 
@@ -2227,6 +2528,7 @@ module AwsSdk
         # retention periods expire using privileged delete. This retention mode is used to advance an
         # organization's data integrity and internal compliance or to test retention settings before using
         # SnapLock Compliance. For more information, see SnapLock Enterprise .
+
         @[JSON::Field(key: "SnaplockType")]
         getter snaplock_type : String
 
@@ -2234,11 +2536,13 @@ module AwsSdk
         # false . If you set AuditLogVolume to true , the SnapLock volume is created as an audit log volume.
         # The minimum retention period for an audit log volume is six months. For more information, see
         # SnapLock audit log volumes .
+
         @[JSON::Field(key: "AuditLogVolume")]
         getter audit_log_volume : Bool?
 
         # The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock
         # volume.
+
         @[JSON::Field(key: "AutocommitPeriod")]
         getter autocommit_period : Types::AutocommitPeriod?
 
@@ -2247,16 +2551,19 @@ module AwsSdk
         # have active retention periods. PERMANENTLY_DISABLED is a terminal state. If privileged delete is
         # permanently disabled on a SnapLock volume, you can't re-enable it. The default value is DISABLED .
         # For more information, see Privileged delete .
+
         @[JSON::Field(key: "PrivilegedDelete")]
         getter privileged_delete : String?
 
         # Specifies the retention period of an FSx for ONTAP SnapLock volume.
+
         @[JSON::Field(key: "RetentionPeriod")]
         getter retention_period : Types::SnaplockRetentionPeriod?
 
         # Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. Volume-append mode
         # allows you to create WORM-appendable files and write data to them incrementally. The default value
         # is false . For more information, see Volume-append mode .
+
         @[JSON::Field(key: "VolumeAppendModeEnabled")]
         getter volume_append_mode_enabled : Bool?
 
@@ -2271,19 +2578,24 @@ module AwsSdk
         end
       end
 
+
       struct CreateSnapshotRequest
         include JSON::Serializable
 
         # The name of the snapshot.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The ID of the volume that you are taking a snapshot of.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
 
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -2297,10 +2609,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateSnapshotResponse
         include JSON::Serializable
 
         # A description of the snapshot.
+
         @[JSON::Field(key: "Snapshot")]
         getter snapshot : Types::Snapshot?
 
@@ -2310,21 +2624,26 @@ module AwsSdk
         end
       end
 
+
       struct CreateStorageVirtualMachineRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
 
         # The name of the SVM.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Describes the self-managed Microsoft Active Directory to which you want to join the SVM. Joining an
         # Active Directory provides user authentication and access control for SMB clients, including
         # Microsoft Windows and macOS clients accessing the file system.
+
         @[JSON::Field(key: "ActiveDirectoryConfiguration")]
         getter active_directory_configuration : Types::CreateSvmActiveDirectoryConfiguration?
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -2336,13 +2655,16 @@ module AwsSdk
         # application accessing the data uses a Microsoft Windows user as the service account. MIXED This is
         # an advanced setting. For more information, see Volume security style in the Amazon FSx for NetApp
         # ONTAP User Guide.
+
         @[JSON::Field(key: "RootVolumeSecurityStyle")]
         getter root_volume_security_style : String?
 
         # The password to use when managing the SVM using the NetApp ONTAP CLI or REST API. If you do not
         # specify a password, you can still use the file system's fsxadmin user to manage the SVM.
+
         @[JSON::Field(key: "SvmAdminPassword")]
         getter svm_admin_password : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -2359,10 +2681,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateStorageVirtualMachineResponse
         include JSON::Serializable
 
         # Returned after a successful CreateStorageVirtualMachine operation; describes the SVM just created.
+
         @[JSON::Field(key: "StorageVirtualMachine")]
         getter storage_virtual_machine : Types::StorageVirtualMachine?
 
@@ -2374,12 +2698,15 @@ module AwsSdk
 
       # The configuration that Amazon FSx uses to join the ONTAP storage virtual machine (SVM) to your
       # self-managed (including on-premises) Microsoft Active Directory directory.
+
       struct CreateSvmActiveDirectoryConfiguration
         include JSON::Serializable
 
         # The NetBIOS name of the Active Directory computer object that will be created for your SVM.
+
         @[JSON::Field(key: "NetBiosName")]
         getter net_bios_name : String
+
 
         @[JSON::Field(key: "SelfManagedActiveDirectoryConfiguration")]
         getter self_managed_active_directory_configuration : Types::SelfManagedActiveDirectoryConfiguration?
@@ -2391,22 +2718,28 @@ module AwsSdk
         end
       end
 
+
       struct CreateVolumeFromBackupRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String
 
         # The name of the new volume you're creating.
+
         @[JSON::Field(key: "Name")]
         getter name : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Specifies the configuration of the ONTAP volume that you are creating.
+
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::CreateOntapVolumeConfiguration?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -2421,11 +2754,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateVolumeFromBackupResponse
         include JSON::Serializable
 
         # Returned after a successful CreateVolumeFromBackup API operation, describing the volume just
         # created.
+
         @[JSON::Field(key: "Volume")]
         getter volume : Types::Volume?
 
@@ -2435,27 +2770,34 @@ module AwsSdk
         end
       end
 
+
       struct CreateVolumeRequest
         include JSON::Serializable
 
         # Specifies the name of the volume that you're creating.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # Specifies the type of volume to create; ONTAP and OPENZFS are the only valid volume types.
+
         @[JSON::Field(key: "VolumeType")]
         getter volume_type : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Specifies the configuration to use when creating the ONTAP volume.
+
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::CreateOntapVolumeConfiguration?
 
         # Specifies the configuration to use when creating the OpenZFS volume.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::CreateOpenZFSVolumeConfiguration?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -2471,10 +2813,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateVolumeResponse
         include JSON::Serializable
 
         # Returned after a successful CreateVolume API operation, describing the volume just created.
+
         @[JSON::Field(key: "Volume")]
         getter volume : Types::Volume?
 
@@ -2491,10 +2835,12 @@ module AwsSdk
       # DescribeDataRepositoryAssociations Data repository associations are supported on Amazon File Cache
       # resources and all FSx for Lustre 2.12 and 2.15 file systems, excluding Intelligent-Tiering and
       # scratch_1 file systems.
+
       struct DataRepositoryAssociation
         include JSON::Serializable
 
         # The system-generated, unique ID of the data repository association.
+
         @[JSON::Field(key: "AssociationId")]
         getter association_id : String?
 
@@ -2502,8 +2848,10 @@ module AwsSdk
         # the data repository association is created. The task runs if this flag is set to true .
         # BatchImportMetaDataOnCreate is not supported for data repositories linked to an Amazon File Cache
         # resource.
+
         @[JSON::Field(key: "BatchImportMetaDataOnCreate")]
         getter batch_import_meta_data_on_create : Bool?
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
@@ -2519,6 +2867,7 @@ module AwsSdk
         # Cache, the path can be an S3 bucket or prefix in the format s3://bucket-name/prefix/ (where prefix
         # is optional). For Amazon FSx for Lustre, the path can be an S3 bucket or prefix in the format
         # s3://bucket-name/prefix/ (where prefix is optional).
+
         @[JSON::Field(key: "DataRepositoryPath")]
         getter data_repository_path : String?
 
@@ -2527,13 +2876,16 @@ module AwsSdk
         # format /exportpath1 . To use this parameter, you must configure DataRepositoryPath as the domain
         # name of the NFS file system. The NFS file system domain name in effect is the root of the
         # subdirectories. Note that DataRepositorySubdirectories is not supported for S3 data repositories.
+
         @[JSON::Field(key: "DataRepositorySubdirectories")]
         getter data_repository_subdirectories : Array(String)?
+
 
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::DataRepositoryFailureDetails?
 
         # The globally unique ID of the Amazon File Cache resource.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String?
 
@@ -2547,8 +2899,10 @@ module AwsSdk
         # can only be set to root (/) on an NFS DRA when DataRepositorySubdirectories is specified. If you
         # specify root (/) as the cache path, you can create only one DRA on the cache. The cache path cannot
         # be set to root (/) for an S3 DRA.
+
         @[JSON::Field(key: "FileCachePath")]
         getter file_cache_path : String?
+
 
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
@@ -2563,6 +2917,7 @@ module AwsSdk
         # directory. If you specify only a forward slash ( / ) as the file system path, you can link only one
         # data repository to the file system. You can only specify "/" as the file system path for the first
         # data repository associated with a file system.
+
         @[JSON::Field(key: "FileSystemPath")]
         getter file_system_path : String?
 
@@ -2571,6 +2926,7 @@ module AwsSdk
         # single file can be striped across is limited by the total number of disks that make up the file
         # system or cache. The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500
         # GiB). Amazon S3 objects have a maximum size of 5 TB.
+
         @[JSON::Field(key: "ImportedFileChunkSize")]
         getter imported_file_chunk_size : Int32?
 
@@ -2583,21 +2939,26 @@ module AwsSdk
         # that might affect its availability. DELETING - The data repository association is undergoing a
         # customer initiated deletion. FAILED - The data repository association is in a terminal state that
         # cannot be recovered.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The configuration for an NFS data repository linked to an Amazon File Cache resource with a data
         # repository association.
+
         @[JSON::Field(key: "NFS")]
         getter nfs : Types::NFSDataRepositoryConfiguration?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The configuration for an Amazon S3 data repository linked to an Amazon FSx for Lustre file system
         # with a data repository association.
+
         @[JSON::Field(key: "S3")]
         getter s3 : Types::S3DataRepositoryConfiguration?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -2624,8 +2985,10 @@ module AwsSdk
       end
 
       # No data repository associations were found based upon the supplied parameters.
+
       struct DataRepositoryAssociationNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2639,6 +3002,7 @@ module AwsSdk
       # The data repository configuration object for Lustre file systems returned in the response of the
       # CreateFileSystem operation. This data type is not supported on file systems with a data repository
       # association. For file systems with a data repository association, see .
+
       struct DataRepositoryConfiguration
         include JSON::Serializable
 
@@ -2655,13 +3019,16 @@ module AwsSdk
         # Amazon FSx automatically imports file and directory listings of any new objects added to the S3
         # bucket, any existing objects that are changed in the S3 bucket, and any objects that were deleted in
         # the S3 bucket.
+
         @[JSON::Field(key: "AutoImportPolicy")]
         getter auto_import_policy : String?
 
         # The export path to the Amazon S3 bucket (and prefix) that you are using to store new and changed
         # Lustre file system files in S3.
+
         @[JSON::Field(key: "ExportPath")]
         getter export_path : String?
+
 
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::DataRepositoryFailureDetails?
@@ -2670,6 +3037,7 @@ module AwsSdk
         # repository for your FSx for Lustre file system, for example s3://import-bucket/optional-prefix . If
         # a prefix is specified after the Amazon S3 bucket name, only object keys with that prefix are loaded
         # into the file system.
+
         @[JSON::Field(key: "ImportPath")]
         getter import_path : String?
 
@@ -2678,6 +3046,7 @@ module AwsSdk
         # single file can be striped across is limited by the total number of disks that make up the file
         # system. The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500 GiB).
         # Amazon S3 objects have a maximum size of 5 TB.
+
         @[JSON::Field(key: "ImportedFileChunkSize")]
         getter imported_file_chunk_size : Int32?
 
@@ -2689,6 +3058,7 @@ module AwsSdk
         # configuration is corrected. For more information, see Troubleshooting a Misconfigured linked S3
         # bucket . UPDATING - The data repository is undergoing a customer initiated update and availability
         # may be impacted. FAILED - The data repository is in a terminal state that cannot be recovered.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
@@ -2705,8 +3075,10 @@ module AwsSdk
 
       # Provides detailed information about the data repository if its Lifecycle is set to MISCONFIGURED or
       # FAILED .
+
       struct DataRepositoryFailureDetails
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2723,8 +3095,10 @@ module AwsSdk
       # linked S3 bucket from your Amazon FSx for Lustre file system. An Amazon File Cache resource uses a
       # task to automatically release files from the cache. To learn more about data repository tasks, see
       # Data Repository Tasks .
+
       struct DataRepositoryTask
         include JSON::Serializable
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time
@@ -2739,10 +3113,12 @@ module AwsSdk
         # is finished (with a status of CANCELED , SUCCEEDED , or FAILED ). You can use the
         # DescribeDataRepositoryTask action to monitor the task status. Contact the FSx team if you need to
         # delete your file system immediately.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String
 
         # The system-generated, unique 17-digit ID of the data repository task.
+
         @[JSON::Field(key: "TaskId")]
         getter task_id : String
 
@@ -2752,56 +3128,69 @@ module AwsSdk
         # RELEASE_DATA_FROM_FILESYSTEM tasks release files in your Amazon FSx for Lustre file system that have
         # been exported to a linked S3 bucket and that meet your specified release criteria. AUTO_RELEASE_DATA
         # tasks automatically release files from an Amazon File Cache resource.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Specifies the amount of data to release, in GiB, by an Amazon File Cache AUTO_RELEASE_DATA task that
         # automatically releases files from the cache.
+
         @[JSON::Field(key: "CapacityToRelease")]
         getter capacity_to_release : Int64?
 
         # The time the system completed processing the task, populated after the task is complete.
+
         @[JSON::Field(key: "EndTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter end_time : Time?
 
         # Failure message describing why the task failed, it is populated only when Lifecycle is set to FAILED
         # .
+
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::DataRepositoryTaskFailureDetails?
 
         # The system-generated, unique ID of the cache.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String?
 
         # The globally unique ID of the file system.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
 
         # An array of paths that specify the data for the data repository task to process. For example, in an
         # EXPORT_TO_REPOSITORY task, the paths specify which data to export to the linked data repository.
         # (Default) If Paths is not specified, Amazon FSx uses the file system root directory.
+
         @[JSON::Field(key: "Paths")]
         getter paths : Array(String)?
 
         # The configuration that specifies the last accessed time criteria for files that will be released
         # from an Amazon FSx for Lustre file system.
+
         @[JSON::Field(key: "ReleaseConfiguration")]
         getter release_configuration : Types::ReleaseConfiguration?
 
+
         @[JSON::Field(key: "Report")]
         getter report : Types::CompletionReport?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The time the system began processing the task.
+
         @[JSON::Field(key: "StartTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter start_time : Time?
 
         # Provides the status of the number of files that the task has processed successfully and failed to
         # process.
+
         @[JSON::Field(key: "Status")]
         getter status : Types::DataRepositoryTaskStatus?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
@@ -2828,8 +3217,10 @@ module AwsSdk
       end
 
       # The data repository task could not be canceled because the task has already ended.
+
       struct DataRepositoryTaskEnded
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2842,8 +3233,10 @@ module AwsSdk
 
       # An existing data repository task is currently executing on the file system. Wait until the existing
       # task has completed, then create the new task.
+
       struct DataRepositoryTaskExecuting
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2856,8 +3249,10 @@ module AwsSdk
 
       # Provides information about why a data repository task failed. Only populated when the task Lifecycle
       # is set to FAILED .
+
       struct DataRepositoryTaskFailureDetails
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2872,6 +3267,7 @@ module AwsSdk
       # you will see in the response. You can filter the tasks returned in the response by one or more file
       # system IDs, task lifecycles, and by task type. A filter object consists of a filter Name , and one
       # or more Values for the filter.
+
       struct DataRepositoryTaskFilter
         include JSON::Serializable
 
@@ -2879,11 +3275,13 @@ module AwsSdk
         # to retrieve data repository tasks for specific file systems. Use task-lifecycle to retrieve data
         # repository tasks with one or more specific lifecycle states, as follows: CANCELED, EXECUTING,
         # FAILED, PENDING, and SUCCEEDED.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # Use Values to include the specific file system IDs and task lifecycle states for the filters you are
         # using.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -2895,8 +3293,10 @@ module AwsSdk
       end
 
       # The data repository task or tasks you specified could not be found.
+
       struct DataRepositoryTaskNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2909,29 +3309,35 @@ module AwsSdk
 
       # Provides the task status showing a running total of the total number of files to be processed, the
       # number successfully processed, and the number of files the task failed to process.
+
       struct DataRepositoryTaskStatus
         include JSON::Serializable
 
         # A running total of the number of files that the task failed to process.
+
         @[JSON::Field(key: "FailedCount")]
         getter failed_count : Int64?
 
         # The time at which the task status was last updated.
+
         @[JSON::Field(key: "LastUpdatedTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_time : Time?
 
         # The total amount of data, in GiB, released by an Amazon File Cache AUTO_RELEASE_DATA task that
         # automatically releases files from the cache.
+
         @[JSON::Field(key: "ReleasedCapacity")]
         getter released_capacity : Int64?
 
         # A running total of the number of files that the task has successfully processed.
+
         @[JSON::Field(key: "SucceededCount")]
         getter succeeded_count : Int64?
 
         # The total number of files that the task will process. While a task is executing, the sum of
         # SucceededCount plus FailedCount may not equal TotalCount . When the task is complete, TotalCount
         # equals the sum of SucceededCount plus FailedCount .
+
         @[JSON::Field(key: "TotalCount")]
         getter total_count : Int64?
 
@@ -2946,15 +3352,18 @@ module AwsSdk
       end
 
       # The request object for the DeleteBackup operation.
+
       struct DeleteBackupRequest
         include JSON::Serializable
 
         # The ID of the backup that you want to delete.
+
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String
 
         # A string of up to 63 ASCII characters that Amazon FSx uses to ensure idempotent deletion. This
         # parameter is automatically filled on your behalf when using the CLI or SDK.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
@@ -2966,15 +3375,18 @@ module AwsSdk
       end
 
       # The response object for the DeleteBackup operation.
+
       struct DeleteBackupResponse
         include JSON::Serializable
 
         # The ID of the backup that was deleted.
+
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String?
 
         # The lifecycle status of the backup. If the DeleteBackup operation is successful, the status is
         # DELETED .
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
@@ -2985,18 +3397,22 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDataRepositoryAssociationRequest
         include JSON::Serializable
 
         # The ID of the data repository association that you want to delete.
+
         @[JSON::Field(key: "AssociationId")]
         getter association_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Set to true to delete the data in the file system that corresponds to the data repository
         # association.
+
         @[JSON::Field(key: "DeleteDataInFileSystem")]
         getter delete_data_in_file_system : Bool?
 
@@ -3008,19 +3424,23 @@ module AwsSdk
         end
       end
 
+
       struct DeleteDataRepositoryAssociationResponse
         include JSON::Serializable
 
         # The ID of the data repository association being deleted.
+
         @[JSON::Field(key: "AssociationId")]
         getter association_id : String?
 
         # Indicates whether data in the file system that corresponds to the data repository association is
         # being deleted. Default is false .
+
         @[JSON::Field(key: "DeleteDataInFileSystem")]
         getter delete_data_in_file_system : Bool?
 
         # Describes the lifecycle state of the data repository association being deleted.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
@@ -3032,12 +3452,15 @@ module AwsSdk
         end
       end
 
+
       struct DeleteFileCacheRequest
         include JSON::Serializable
 
         # The ID of the cache that's being deleted.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -3049,15 +3472,18 @@ module AwsSdk
         end
       end
 
+
       struct DeleteFileCacheResponse
         include JSON::Serializable
 
         # The ID of the cache that's being deleted.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String?
 
         # The cache lifecycle for the deletion request. If the DeleteFileCache operation is successful, this
         # status is DELETING .
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
@@ -3070,6 +3496,7 @@ module AwsSdk
 
       # The configuration object for the Amazon FSx for Lustre file system being deleted in the
       # DeleteFileSystem operation.
+
       struct DeleteFileSystemLustreConfiguration
         include JSON::Serializable
 
@@ -3077,6 +3504,7 @@ module AwsSdk
         # If you have set the file system property CopyTagsToBackups to true, and you specify one or more
         # FinalBackupTags when deleting a file system, Amazon FSx will not copy any existing file system tags
         # to the backup.
+
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
 
@@ -3084,6 +3512,7 @@ module AwsSdk
         # By default, Amazon FSx will not take a final backup on your behalf when the DeleteFileSystem
         # operation is invoked. (Default = true) The fsx:CreateBackup permission is required if you set
         # SkipFinalBackup to false in order to delete the file system and take a final backup.
+
         @[JSON::Field(key: "SkipFinalBackup")]
         getter skip_final_backup : Bool?
 
@@ -3096,14 +3525,17 @@ module AwsSdk
 
       # The response object for the Amazon FSx for Lustre file system being deleted in the DeleteFileSystem
       # operation.
+
       struct DeleteFileSystemLustreResponse
         include JSON::Serializable
 
         # The ID of the final backup for this file system.
+
         @[JSON::Field(key: "FinalBackupId")]
         getter final_backup_id : String?
 
         # The set of tags applied to the final backup.
+
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
 
@@ -3116,22 +3548,26 @@ module AwsSdk
 
       # The configuration object for the Amazon FSx for OpenZFS file system used in the DeleteFileSystem
       # operation.
+
       struct DeleteFileSystemOpenZFSConfiguration
         include JSON::Serializable
 
         # A list of tags to apply to the file system's final backup.
+
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
 
         # To delete a file system if there are child volumes present below the root volume, use the string
         # DELETE_CHILD_VOLUMES_AND_SNAPSHOTS . If your file system has child volumes and you don't use this
         # option, the delete request will fail.
+
         @[JSON::Field(key: "Options")]
         getter options : Array(String)?
 
         # By default, Amazon FSx for OpenZFS takes a final backup on your behalf when the DeleteFileSystem
         # operation is invoked. Doing this helps protect you from data loss, and we highly recommend taking
         # the final backup. If you want to skip taking a final backup, set this value to true .
+
         @[JSON::Field(key: "SkipFinalBackup")]
         getter skip_final_backup : Bool?
 
@@ -3145,11 +3581,14 @@ module AwsSdk
 
       # The response object for the Amazon FSx for OpenZFS file system that's being deleted in the
       # DeleteFileSystem operation.
+
       struct DeleteFileSystemOpenZFSResponse
         include JSON::Serializable
 
+
         @[JSON::Field(key: "FinalBackupId")]
         getter final_backup_id : String?
+
 
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
@@ -3162,25 +3601,31 @@ module AwsSdk
       end
 
       # The request object for DeleteFileSystem operation.
+
       struct DeleteFileSystemRequest
         include JSON::Serializable
 
         # The ID of the file system that you want to delete.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
 
         # A string of up to 63 ASCII characters that Amazon FSx uses to ensure idempotent deletion. This token
         # is automatically filled on your behalf when using the Command Line Interface (CLI) or an Amazon Web
         # Services SDK.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
+
 
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::DeleteFileSystemLustreConfiguration?
 
         # The configuration object for the OpenZFS file system used in the DeleteFileSystem operation.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::DeleteFileSystemOpenZFSConfiguration?
+
 
         @[JSON::Field(key: "WindowsConfiguration")]
         getter windows_configuration : Types::DeleteFileSystemWindowsConfiguration?
@@ -3196,25 +3641,31 @@ module AwsSdk
       end
 
       # The response object for the DeleteFileSystem operation.
+
       struct DeleteFileSystemResponse
         include JSON::Serializable
 
         # The ID of the file system that's being deleted.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
 
         # The file system lifecycle for the deletion request. If the DeleteFileSystem operation is successful,
         # this status is DELETING .
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
+
 
         @[JSON::Field(key: "LustreResponse")]
         getter lustre_response : Types::DeleteFileSystemLustreResponse?
 
         # The response object for the OpenZFS file system that's being deleted in the DeleteFileSystem
         # operation.
+
         @[JSON::Field(key: "OpenZFSResponse")]
         getter open_zfs_response : Types::DeleteFileSystemOpenZFSResponse?
+
 
         @[JSON::Field(key: "WindowsResponse")]
         getter windows_response : Types::DeleteFileSystemWindowsResponse?
@@ -3231,16 +3682,19 @@ module AwsSdk
 
       # The configuration object for the Microsoft Windows file system used in the DeleteFileSystem
       # operation.
+
       struct DeleteFileSystemWindowsConfiguration
         include JSON::Serializable
 
         # A set of tags for your final backup.
+
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
 
         # By default, Amazon FSx for Windows takes a final backup on your behalf when the DeleteFileSystem
         # operation is invoked. Doing this helps protect you from data loss, and we highly recommend taking
         # the final backup. If you want to skip this backup, use this flag to do so.
+
         @[JSON::Field(key: "SkipFinalBackup")]
         getter skip_final_backup : Bool?
 
@@ -3252,14 +3706,17 @@ module AwsSdk
       end
 
       # The response object for the Microsoft Windows file system used in the DeleteFileSystem operation.
+
       struct DeleteFileSystemWindowsResponse
         include JSON::Serializable
 
         # The ID of the final backup for this file system.
+
         @[JSON::Field(key: "FinalBackupId")]
         getter final_backup_id : String?
 
         # The set of tags applied to the final backup.
+
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
 
@@ -3270,12 +3727,15 @@ module AwsSdk
         end
       end
 
+
       struct DeleteSnapshotRequest
         include JSON::Serializable
 
         # The ID of the snapshot that you want to delete.
+
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -3287,15 +3747,18 @@ module AwsSdk
         end
       end
 
+
       struct DeleteSnapshotResponse
         include JSON::Serializable
 
         # The lifecycle status of the snapshot. If the DeleteSnapshot operation is successful, this status is
         # DELETING .
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The ID of the deleted snapshot.
+
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String?
 
@@ -3306,12 +3769,15 @@ module AwsSdk
         end
       end
 
+
       struct DeleteStorageVirtualMachineRequest
         include JSON::Serializable
 
         # The ID of the SVM that you want to delete.
+
         @[JSON::Field(key: "StorageVirtualMachineId")]
         getter storage_virtual_machine_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -3323,14 +3789,17 @@ module AwsSdk
         end
       end
 
+
       struct DeleteStorageVirtualMachineResponse
         include JSON::Serializable
 
         # Describes the lifecycle state of the SVM being deleted.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The ID of the SVM Amazon FSx is deleting.
+
         @[JSON::Field(key: "StorageVirtualMachineId")]
         getter storage_virtual_machine_id : String?
 
@@ -3343,6 +3812,7 @@ module AwsSdk
 
       # Use to specify skipping a final backup, adding tags to a final backup, or bypassing the retention
       # period of an FSx for ONTAP SnapLock Enterprise volume when deleting an FSx for ONTAP volume.
+
       struct DeleteVolumeOntapConfiguration
         include JSON::Serializable
 
@@ -3351,13 +3821,16 @@ module AwsSdk
         # fsx:BypassSnaplockEnterpriseRetention is also required to delete SnapLock Enterprise volumes with
         # unexpired WORM files. The default value is false . For more information, see Deleting a SnapLock
         # volume .
+
         @[JSON::Field(key: "BypassSnaplockEnterpriseRetention")]
         getter bypass_snaplock_enterprise_retention : Bool?
+
 
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
 
         # Set to true if you want to skip taking a final backup of the volume you are deleting.
+
         @[JSON::Field(key: "SkipFinalBackup")]
         getter skip_final_backup : Bool?
 
@@ -3371,11 +3844,14 @@ module AwsSdk
 
       # The response object for the Amazon FSx for NetApp ONTAP volume being deleted in the DeleteVolume
       # operation.
+
       struct DeleteVolumeOntapResponse
         include JSON::Serializable
 
+
         @[JSON::Field(key: "FinalBackupId")]
         getter final_backup_id : String?
+
 
         @[JSON::Field(key: "FinalBackupTags")]
         getter final_backup_tags : Array(Types::Tag)?
@@ -3388,11 +3864,13 @@ module AwsSdk
       end
 
       # A value that specifies whether to delete all child volumes and snapshots.
+
       struct DeleteVolumeOpenZFSConfiguration
         include JSON::Serializable
 
         # To delete the volume's child volumes, snapshots, and clones, use the string
         # DELETE_CHILD_VOLUMES_AND_SNAPSHOTS .
+
         @[JSON::Field(key: "Options")]
         getter options : Array(String)?
 
@@ -3402,22 +3880,27 @@ module AwsSdk
         end
       end
 
+
       struct DeleteVolumeRequest
         include JSON::Serializable
 
         # The ID of the volume that you are deleting.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # For Amazon FSx for ONTAP volumes, specify whether to take a final backup of the volume and apply
         # tags to the backup. To apply tags to the backup, you must have the fsx:TagResource permission.
+
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::DeleteVolumeOntapConfiguration?
 
         # For Amazon FSx for OpenZFS volumes, specify whether to delete all child volumes and snapshots.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::DeleteVolumeOpenZFSConfiguration?
 
@@ -3430,19 +3913,23 @@ module AwsSdk
         end
       end
 
+
       struct DeleteVolumeResponse
         include JSON::Serializable
 
         # The lifecycle state of the volume being deleted. If the DeleteVolume operation is successful, this
         # value is DELETING .
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # Returned after a DeleteVolume request, showing the status of the delete request.
+
         @[JSON::Field(key: "OntapResponse")]
         getter ontap_response : Types::DeleteVolumeOntapResponse?
 
         # The ID of the volume that's being deleted.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -3455,27 +3942,32 @@ module AwsSdk
       end
 
       # The request object for the DescribeBackups operation.
+
       struct DescribeBackupsRequest
         include JSON::Serializable
 
         # The IDs of the backups that you want to retrieve. This parameter value overrides any filters. If any
         # IDs aren't found, a BackupNotFound error occurs.
+
         @[JSON::Field(key: "BackupIds")]
         getter backup_ids : Array(String)?
 
         # The filters structure. The supported names are file-system-id , backup-type , file-system-type , and
         # volume-id .
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # Maximum number of backups to return in the response. This parameter value must be greater than 0.
         # The number of items that Amazon FSx returns is the minimum of the MaxResults parameter specified in
         # the request and the service's internal maximum number of items per page.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # An opaque pagination token returned from a previous DescribeBackups operation. If a token is
         # present, the operation continues the list from where the returning call left off.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3489,15 +3981,18 @@ module AwsSdk
       end
 
       # Response object for the DescribeBackups operation.
+
       struct DescribeBackupsResponse
         include JSON::Serializable
 
         # An array of backups.
+
         @[JSON::Field(key: "Backups")]
         getter backups : Array(Types::Backup)?
 
         # A NextToken value is present if there are more backups than returned in the response. You can use
         # the NextToken value in the subsequent request to fetch the backups.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3508,20 +4003,25 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDataRepositoryAssociationsRequest
         include JSON::Serializable
 
         # IDs of the data repository associations whose descriptions you want to retrieve (String).
+
         @[JSON::Field(key: "AssociationIds")]
         getter association_ids : Array(String)?
+
 
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::Filter)?
 
         # The maximum number of resources to return in the response. This value must be an integer greater
         # than zero.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3535,12 +4035,15 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDataRepositoryAssociationsResponse
         include JSON::Serializable
 
         # An array of one or more data repository association descriptions.
+
         @[JSON::Field(key: "Associations")]
         getter associations : Array(Types::DataRepositoryAssociation)?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3552,21 +4055,26 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDataRepositoryTasksRequest
         include JSON::Serializable
 
         # (Optional) You can use filters to narrow the DescribeDataRepositoryTasks response to include just
         # tasks for specific file systems, or tasks in a specific lifecycle state.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::DataRepositoryTaskFilter)?
 
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # (Optional) IDs of the tasks whose descriptions you want to retrieve (String).
+
         @[JSON::Field(key: "TaskIds")]
         getter task_ids : Array(String)?
 
@@ -3579,12 +4087,15 @@ module AwsSdk
         end
       end
 
+
       struct DescribeDataRepositoryTasksResponse
         include JSON::Serializable
 
         # The collection of data repository task descriptions returned.
+
         @[JSON::Field(key: "DataRepositoryTasks")]
         getter data_repository_tasks : Array(Types::DataRepositoryTask)?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3596,15 +4107,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFileCachesRequest
         include JSON::Serializable
 
         # IDs of the caches whose descriptions you want to retrieve (String).
+
         @[JSON::Field(key: "FileCacheIds")]
         getter file_cache_ids : Array(String)?
 
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3617,12 +4132,15 @@ module AwsSdk
         end
       end
 
+
       struct DescribeFileCachesResponse
         include JSON::Serializable
 
         # The response object for the DescribeFileCaches operation.
+
         @[JSON::Field(key: "FileCaches")]
         getter file_caches : Array(Types::FileCache)?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3635,12 +4153,15 @@ module AwsSdk
       end
 
       # The request object for DescribeFileSystemAliases operation.
+
       struct DescribeFileSystemAliasesRequest
         include JSON::Serializable
 
         # The ID of the file system to return the associated DNS aliases for (String).
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -3648,12 +4169,14 @@ module AwsSdk
         # Maximum number of DNS aliases to return in the response (integer). This parameter value must be
         # greater than 0. The number of items that Amazon FSx returns is the minimum of the MaxResults
         # parameter specified in the request and the service's internal maximum number of items per page.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Opaque pagination token returned from a previous DescribeFileSystemAliases operation (String). If a
         # token is included in the request, the action continues the list from where the previous returning
         # call left off.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3667,15 +4190,18 @@ module AwsSdk
       end
 
       # The response object for DescribeFileSystemAliases operation.
+
       struct DescribeFileSystemAliasesResponse
         include JSON::Serializable
 
         # An array of one or more DNS aliases currently associated with the specified file system.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(Types::Alias)?
 
         # Present if there are more DNS aliases than returned in the response (String). You can use the
         # NextToken value in a later request to fetch additional descriptions.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3687,21 +4213,25 @@ module AwsSdk
       end
 
       # The request object for DescribeFileSystems operation.
+
       struct DescribeFileSystemsRequest
         include JSON::Serializable
 
         # IDs of the file systems whose descriptions you want to retrieve (String).
+
         @[JSON::Field(key: "FileSystemIds")]
         getter file_system_ids : Array(String)?
 
         # Maximum number of file systems to return in the response (integer). This parameter value must be
         # greater than 0. The number of items that Amazon FSx returns is the minimum of the MaxResults
         # parameter specified in the request and the service's internal maximum number of items per page.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Opaque pagination token returned from a previous DescribeFileSystems operation (String). If a token
         # present, the operation continues the list from where the returning call left off.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3714,15 +4244,18 @@ module AwsSdk
       end
 
       # The response object for DescribeFileSystems operation.
+
       struct DescribeFileSystemsResponse
         include JSON::Serializable
 
         # An array of file system descriptions.
+
         @[JSON::Field(key: "FileSystems")]
         getter file_systems : Array(Types::FileSystem)?
 
         # Present if there are more file systems than returned in the response (String). You can use the
         # NextToken value in the later request to fetch the descriptions.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -3733,19 +4266,24 @@ module AwsSdk
         end
       end
 
+
       struct DescribeS3AccessPointAttachmentsRequest
         include JSON::Serializable
 
         # Enter a filter Name and Values pair to view a select set of S3 access point attachments.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::S3AccessPointAttachmentsFilter)?
+
 
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # The names of the S3 access point attachments whose descriptions you want to retrieve.
+
         @[JSON::Field(key: "Names")]
         getter names : Array(String)?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -3759,14 +4297,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeS3AccessPointAttachmentsResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Array of S3 access point attachments returned after a successful DescribeS3AccessPointAttachments
         # operation.
+
         @[JSON::Field(key: "S3AccessPointAttachments")]
         getter s3_access_point_attachments : Array(Types::S3AccessPointAttachment)?
 
@@ -3777,6 +4318,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSharedVpcConfigurationRequest
         include JSON::Serializable
 
@@ -3784,11 +4326,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSharedVpcConfigurationResponse
         include JSON::Serializable
 
         # Indicates whether participant accounts can create FSx for ONTAP Multi-AZ file systems in shared
         # subnets.
+
         @[JSON::Field(key: "EnableFsxRouteTableUpdatesFromParticipantAccounts")]
         getter enable_fsx_route_table_updates_from_participant_accounts : String?
 
@@ -3798,27 +4342,33 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSnapshotsRequest
         include JSON::Serializable
 
         # The filters structure. The supported names are file-system-id or volume-id .
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::SnapshotFilter)?
 
         # Set to false (default) if you want to only see the snapshots owned by your Amazon Web Services
         # account. Set to true if you want to see the snapshots in your account and the ones shared with you
         # from another account.
+
         @[JSON::Field(key: "IncludeShared")]
         getter include_shared : Bool?
 
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The IDs of the snapshots that you want to retrieve. This parameter value overrides any filters. If
         # any IDs aren't found, a SnapshotNotFound error occurs.
+
         @[JSON::Field(key: "SnapshotIds")]
         getter snapshot_ids : Array(String)?
 
@@ -3832,13 +4382,16 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSnapshotsResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of snapshots.
+
         @[JSON::Field(key: "Snapshots")]
         getter snapshots : Array(Types::Snapshot)?
 
@@ -3849,20 +4402,25 @@ module AwsSdk
         end
       end
 
+
       struct DescribeStorageVirtualMachinesRequest
         include JSON::Serializable
 
         # Enter a filter name:value pair to view a select set of SVMs.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::StorageVirtualMachineFilter)?
 
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Enter the ID of one or more SVMs that you want to view.
+
         @[JSON::Field(key: "StorageVirtualMachineIds")]
         getter storage_virtual_machine_ids : Array(String)?
 
@@ -3875,13 +4433,16 @@ module AwsSdk
         end
       end
 
+
       struct DescribeStorageVirtualMachinesResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Returned after a successful DescribeStorageVirtualMachines operation, describing each SVM.
+
         @[JSON::Field(key: "StorageVirtualMachines")]
         getter storage_virtual_machines : Array(Types::StorageVirtualMachine)?
 
@@ -3892,20 +4453,25 @@ module AwsSdk
         end
       end
 
+
       struct DescribeVolumesRequest
         include JSON::Serializable
 
         # Enter a filter Name and Values pair to view a select set of volumes.
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::VolumeFilter)?
 
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The IDs of the volumes whose descriptions you want to retrieve.
+
         @[JSON::Field(key: "VolumeIds")]
         getter volume_ids : Array(String)?
 
@@ -3918,13 +4484,16 @@ module AwsSdk
         end
       end
 
+
       struct DescribeVolumesResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Returned after a successful DescribeVolumes operation, describing each volume.
+
         @[JSON::Field(key: "Volumes")]
         getter volumes : Array(Types::Volume)?
 
@@ -3935,12 +4504,15 @@ module AwsSdk
         end
       end
 
+
       struct DetachAndDeleteS3AccessPointRequest
         include JSON::Serializable
 
         # The name of the S3 access point attachment that you want to delete.
+
         @[JSON::Field(key: "Name")]
         getter name : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -3952,14 +4524,17 @@ module AwsSdk
         end
       end
 
+
       struct DetachAndDeleteS3AccessPointResponse
         include JSON::Serializable
 
         # The lifecycle status of the S3 access point attachment.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The name of the S3 access point attachment being deleted.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -3972,16 +4547,20 @@ module AwsSdk
 
       # The request object of DNS aliases to disassociate from an Amazon FSx for Windows File Server file
       # system.
+
       struct DisassociateFileSystemAliasesRequest
         include JSON::Serializable
 
         # An array of one or more DNS alias names to disassociate, or remove, from the file system.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(String)
 
         # Specifies the file system from which to disassociate the DNS aliases.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -3997,11 +4576,13 @@ module AwsSdk
       # The system generated response showing the DNS aliases that Amazon FSx is attempting to disassociate
       # from the file system. Use the API operation to monitor the status of the aliases Amazon FSx is
       # removing from the file system.
+
       struct DisassociateFileSystemAliasesResponse
         include JSON::Serializable
 
         # An array of one or more DNS aliases that Amazon FSx is attempting to disassociate from the file
         # system.
+
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(Types::Alias)?
 
@@ -4016,6 +4597,7 @@ module AwsSdk
       # automatically provisions 3 IOPS per GB of storage capacity. You can provision additional IOPS per GB
       # of storage. The configuration consists of the total number of provisioned SSD IOPS and how it is was
       # provisioned, or the mode (by the customer or by Amazon FSx).
+
       struct DiskIopsConfiguration
         include JSON::Serializable
 
@@ -4024,11 +4606,13 @@ module AwsSdk
         # as StorageCapacity * 3 * HAPairs (3 IOPS per GB of StorageCapacity ). The maximum value is
         # calculated as 200,000 * HAPairs . Amazon FSx responds with an HTTP status code 400 (Bad Request) if
         # the value of Iops is outside of the minimum or maximum values.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int64?
 
         # Specifies whether the file system is using the AUTOMATIC setting of SSD IOPS of 3 IOPS per GB of
         # storage capacity, or if it using a USER_PROVISIONED value.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String?
 
@@ -4042,11 +4626,13 @@ module AwsSdk
       # Defines the minimum amount of time since last access for a file to be eligible for release. Only
       # files that have been exported to S3 and that were last accessed or modified before this
       # point-in-time are eligible to be released from the Amazon FSx for Lustre file system.
+
       struct DurationSinceLastAccess
         include JSON::Serializable
 
         # The unit of time used by the Value parameter to determine if a file can be released, based on when
         # it was last accessed. DAYS is the only supported value. This is a required parameter.
+
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -4056,6 +4642,7 @@ module AwsSdk
         # Value is 0 . This is a required parameter. If an exported file meets the last accessed time
         # criteria, its file or directory path must also be specified in the Paths parameter of the operation
         # in order for the file to be released.
+
         @[JSON::Field(key: "Value")]
         getter value : Int64?
 
@@ -4068,39 +4655,48 @@ module AwsSdk
 
       # A description of a specific Amazon File Cache resource, which is a response object from the
       # DescribeFileCaches operation.
+
       struct FileCache
         include JSON::Serializable
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Domain Name System (DNS) name for the cache.
+
         @[JSON::Field(key: "DNSName")]
         getter dns_name : String?
 
         # A list of IDs of data repository associations that are associated with this cache.
+
         @[JSON::Field(key: "DataRepositoryAssociationIds")]
         getter data_repository_association_ids : Array(String)?
 
         # A structure providing details of any failures that occurred.
+
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::FileCacheFailureDetails?
 
         # The system-generated, unique ID of the cache.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String?
 
         # The type of cache, which must be LUSTRE .
+
         @[JSON::Field(key: "FileCacheType")]
         getter file_cache_type : String?
 
         # The Lustre version of the cache, which must be 2.12 .
+
         @[JSON::Field(key: "FileCacheTypeVersion")]
         getter file_cache_type_version : String?
 
         # Specifies the ID of the Key Management Service (KMS) key to use for encrypting data on an Amazon
         # File Cache. If a KmsKeyId isn't specified, the Amazon FSx-managed KMS key for your account is used.
         # For more information, see Encrypt in the Key Management Service API Reference .
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -4109,28 +4705,36 @@ module AwsSdk
         # new cache is being created. DELETING - An existing cache is being deleted. UPDATING - The cache is
         # undergoing a customer-initiated update. FAILED - An existing cache has experienced an unrecoverable
         # failure. When creating a new cache, the cache was unable to be created.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The configuration for the Amazon File Cache resource.
+
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::FileCacheLustreConfiguration?
+
 
         @[JSON::Field(key: "NetworkInterfaceIds")]
         getter network_interface_ids : Array(String)?
 
+
         @[JSON::Field(key: "OwnerId")]
         getter owner_id : String?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The storage capacity of the cache in gibibytes (GiB).
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32?
 
+
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)?
+
 
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
@@ -4158,44 +4762,54 @@ module AwsSdk
 
       # The response object for the Amazon File Cache resource being created in the CreateFileCache
       # operation.
+
       struct FileCacheCreating
         include JSON::Serializable
 
         # A boolean flag indicating whether tags for the cache should be copied to data repository
         # associations.
+
         @[JSON::Field(key: "CopyTagsToDataRepositoryAssociations")]
         getter copy_tags_to_data_repository_associations : Bool?
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Domain Name System (DNS) name for the cache.
+
         @[JSON::Field(key: "DNSName")]
         getter dns_name : String?
 
         # A list of IDs of data repository associations that are associated with this cache.
+
         @[JSON::Field(key: "DataRepositoryAssociationIds")]
         getter data_repository_association_ids : Array(String)?
 
         # A structure providing details of any failures that occurred in creating a cache.
+
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::FileCacheFailureDetails?
 
         # The system-generated, unique ID of the cache.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String?
 
         # The type of cache, which must be LUSTRE .
+
         @[JSON::Field(key: "FileCacheType")]
         getter file_cache_type : String?
 
         # The Lustre version of the cache, which must be 2.12 .
+
         @[JSON::Field(key: "FileCacheTypeVersion")]
         getter file_cache_type_version : String?
 
         # Specifies the ID of the Key Management Service (KMS) key to use for encrypting data on an Amazon
         # File Cache. If a KmsKeyId isn't specified, the Amazon FSx-managed KMS key for your account is used.
         # For more information, see Encrypt in the Key Management Service API Reference .
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -4204,31 +4818,40 @@ module AwsSdk
         # new cache is being created. DELETING - An existing cache is being deleted. UPDATING - The cache is
         # undergoing a customer-initiated update. FAILED - An existing cache has experienced an unrecoverable
         # failure. When creating a new cache, the cache was unable to be created.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The configuration for the Amazon File Cache resource.
+
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::FileCacheLustreConfiguration?
+
 
         @[JSON::Field(key: "NetworkInterfaceIds")]
         getter network_interface_ids : Array(String)?
 
+
         @[JSON::Field(key: "OwnerId")]
         getter owner_id : String?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The storage capacity of the cache in gibibytes (GiB).
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32?
+
 
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)?
 
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
+
 
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
@@ -4260,6 +4883,7 @@ module AwsSdk
       # resource creation. The DRA links the cache to either an Amazon S3 bucket or prefix, or a Network
       # File System (NFS) data repository that supports the NFSv3 protocol. The DRA does not support
       # automatic import or automatic export.
+
       struct FileCacheDataRepositoryAssociation
         include JSON::Serializable
 
@@ -4272,6 +4896,7 @@ module AwsSdk
         # domain name of the NFS file system in the format nfs://filer-domain-name , which indicates the root
         # of the subdirectories specified with the DataRepositorySubdirectories parameter. The path can be an
         # S3 bucket or prefix in the format s3://bucket-name/prefix/ (where prefix is optional).
+
         @[JSON::Field(key: "DataRepositoryPath")]
         getter data_repository_path : String
 
@@ -4284,6 +4909,7 @@ module AwsSdk
         # can be linked to the directory. The cache path can only be set to root (/) on an NFS DRA when
         # DataRepositorySubdirectories is specified. If you specify root (/) as the cache path, you can create
         # only one DRA on the cache. The cache path cannot be set to root (/) for an S3 DRA.
+
         @[JSON::Field(key: "FileCachePath")]
         getter file_cache_path : String
 
@@ -4291,11 +4917,13 @@ module AwsSdk
         # are in the format /exportpath1 . To use this parameter, you must configure DataRepositoryPath as the
         # domain name of the NFS file system. The NFS file system domain name in effect is the root of the
         # subdirectories. Note that DataRepositorySubdirectories is not supported for S3 data repositories.
+
         @[JSON::Field(key: "DataRepositorySubdirectories")]
         getter data_repository_subdirectories : Array(String)?
 
         # The configuration for a data repository association that links an Amazon File Cache resource to an
         # NFS data repository.
+
         @[JSON::Field(key: "NFS")]
         getter nfs : Types::FileCacheNFSConfiguration?
 
@@ -4309,10 +4937,12 @@ module AwsSdk
       end
 
       # A structure providing details of any failures that occurred.
+
       struct FileCacheFailureDetails
         include JSON::Serializable
 
         # A message describing any failures that occurred.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -4323,32 +4953,39 @@ module AwsSdk
       end
 
       # The configuration for the Amazon File Cache resource.
+
       struct FileCacheLustreConfiguration
         include JSON::Serializable
 
         # The deployment type of the Amazon File Cache resource, which must be CACHE_1 .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
 
         # The configuration for Lustre logging used to write the enabled logging events for your Amazon File
         # Cache resource to Amazon CloudWatch Logs.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LustreLogConfiguration?
 
         # The configuration for a Lustre MDT (Metadata Target) storage volume.
+
         @[JSON::Field(key: "MetadataConfiguration")]
         getter metadata_configuration : Types::FileCacheLustreMetadataConfiguration?
 
         # You use the MountName value when mounting the cache. If you pass a cache ID to the
         # DescribeFileCaches operation, it returns the the MountName value as part of the cache's description.
+
         @[JSON::Field(key: "MountName")]
         getter mount_name : String?
 
         # Per unit storage throughput represents the megabytes per second of read or write throughput per 1
         # tebibyte of storage provisioned. Cache throughput capacity is equal to Storage capacity (TiB) *
         # PerUnitStorageThroughput (MB/s/TiB). The only supported value is 1000 .
+
         @[JSON::Field(key: "PerUnitStorageThroughput")]
         getter per_unit_storage_throughput : Int32?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -4366,11 +5003,13 @@ module AwsSdk
 
       # The configuration for a Lustre MDT (Metadata Target) storage volume. The metadata on Amazon File
       # Cache is managed by a Lustre Metadata Server (MDS) while the actual metadata is persisted on an MDT.
+
       struct FileCacheLustreMetadataConfiguration
         include JSON::Serializable
 
         # The storage capacity of the Lustre MDT (Metadata Target) storage volume in gibibytes (GiB). The only
         # supported value is 2400 GiB.
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32
 
@@ -4382,11 +5021,13 @@ module AwsSdk
 
       # The configuration for an NFS data repository association (DRA) created during the creation of the
       # Amazon File Cache resource.
+
       struct FileCacheNFSConfiguration
         include JSON::Serializable
 
         # The version of the NFS (Network File System) protocol of the NFS data repository. The only supported
         # value is NFS3 , which indicates that the data repository must support the NFSv3 protocol.
+
         @[JSON::Field(key: "Version")]
         getter version : String
 
@@ -4394,6 +5035,7 @@ module AwsSdk
         # provided IP addresses can either be the IP addresses of a DNS forwarder or resolver that the
         # customer manages and runs inside the customer VPC, or the IP addresses of the on-premises DNS
         # servers.
+
         @[JSON::Field(key: "DnsIps")]
         getter dns_ips : Array(String)?
 
@@ -4405,8 +5047,10 @@ module AwsSdk
       end
 
       # No caches were found based upon supplied parameters.
+
       struct FileCacheNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4418,36 +5062,44 @@ module AwsSdk
       end
 
       # A description of a specific Amazon FSx file system.
+
       struct FileSystem
         include JSON::Serializable
 
         # A list of administrative actions for the file system that are in process or waiting to be processed.
         # Administrative actions describe changes to the Amazon FSx system that you have initiated using the
         # UpdateFileSystem operation.
+
         @[JSON::Field(key: "AdministrativeActions")]
         getter administrative_actions : Array(Types::AdministrativeAction)?
 
         # The time that the file system was created, in seconds (since 1970-01-01T00:00:00Z), also known as
         # Unix time.
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The Domain Name System (DNS) name for the file system.
+
         @[JSON::Field(key: "DNSName")]
         getter dns_name : String?
+
 
         @[JSON::Field(key: "FailureDetails")]
         getter failure_details : Types::FileSystemFailureDetails?
 
         # The system-generated, unique 17-digit ID of the file system.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
 
         # The type of Amazon FSx file system, which can be LUSTRE , WINDOWS , ONTAP , or OPENZFS .
+
         @[JSON::Field(key: "FileSystemType")]
         getter file_system_type : String?
 
         # The Lustre version of the Amazon FSx for Lustre file system, which can be 2.10 , 2.12 , or 2.15 .
+
         @[JSON::Field(key: "FileSystemTypeVersion")]
         getter file_system_type_version : String?
 
@@ -4456,6 +5108,7 @@ module AwsSdk
         # deployment types only. SCRATCH_1 and SCRATCH_2 types are encrypted using the Amazon FSx service KMS
         # key for your account. Amazon FSx for NetApp ONTAP Amazon FSx for OpenZFS Amazon FSx for Windows File
         # Server
+
         @[JSON::Field(key: "KmsKeyId")]
         getter kms_key_id : String?
 
@@ -4467,8 +5120,10 @@ module AwsSdk
         # in a failed but recoverable state. MISCONFIGURED_UNAVAILABLE - (Amazon FSx for Windows File Server
         # only) The file system is currently unavailable due to a change in your Active Directory
         # configuration. UPDATING - The file system is undergoing a customer-initiated update.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
+
 
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::LustreFileSystemConfiguration?
@@ -4478,39 +5133,47 @@ module AwsSdk
         # Amazon FSx file system was created in. For more information, see Elastic Network Interfaces in the
         # Amazon EC2 User Guide. For an Amazon FSx for Windows File Server file system, you can have one
         # network interface ID. For an Amazon FSx for Lustre file system, you can have more than one.
+
         @[JSON::Field(key: "NetworkInterfaceIds")]
         getter network_interface_ids : Array(String)?
 
         # The network type of the file system.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
 
         # The configuration for this Amazon FSx for NetApp ONTAP file system.
+
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::OntapFileSystemConfiguration?
 
         # The configuration for this Amazon FSx for OpenZFS file system.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::OpenZFSFileSystemConfiguration?
 
         # The Amazon Web Services account that created the file system. If the file system was created by a
         # user in IAM Identity Center, the Amazon Web Services account to which the IAM user belongs is the
         # owner.
+
         @[JSON::Field(key: "OwnerId")]
         getter owner_id : String?
 
         # The Amazon Resource Name (ARN) of the file system resource.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The storage capacity of the file system in gibibytes (GiB). Amazon FSx responds with an HTTP status
         # code 400 (Bad Request) if the value of StorageCapacity is outside of the minimum or maximum values.
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32?
 
         # The type of storage the file system is using. If set to SSD , the file system uses solid state drive
         # storage. If set to HDD , the file system uses hard disk drive storage. If set to INTELLIGENT_TIERING
         # , the file system uses fully elastic, intelligently-tiered storage.
+
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
@@ -4521,19 +5184,23 @@ module AwsSdk
         # systems, and Single-AZ Windows file systems, this is the ID of the subnet that contains the file
         # system's endpoint. For MULTI_AZ_1 Windows and ONTAP file systems, the file system endpoint is
         # available in the PreferredSubnetID .
+
         @[JSON::Field(key: "SubnetIds")]
         getter subnet_ids : Array(String)?
 
         # The tags to associate with the file system. For more information, see Tagging your Amazon FSx
         # resources in the Amazon FSx for Lustre User Guide .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The ID of the primary virtual private cloud (VPC) for the file system.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
         # The configuration for this Amazon FSx for Windows File Server file system.
+
         @[JSON::Field(key: "WindowsConfiguration")]
         getter windows_configuration : Types::WindowsFileSystemConfiguration?
 
@@ -4567,17 +5234,21 @@ module AwsSdk
       # An Amazon FSx for NetApp ONTAP file system has two endpoints that are used to access data or to
       # manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. They are the
       # Management and Intercluster endpoints.
+
       struct FileSystemEndpoint
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DNSName")]
         getter dns_name : String?
 
         # The IPv4 addresses of the file system endpoint.
+
         @[JSON::Field(key: "IpAddresses")]
         getter ip_addresses : Array(String)?
 
         # The IPv6 addresses of the file system endpoint.
+
         @[JSON::Field(key: "Ipv6Addresses")]
         getter ipv6_addresses : Array(String)?
 
@@ -4591,14 +5262,17 @@ module AwsSdk
 
       # An Amazon FSx for NetApp ONTAP file system has the following endpoints that are used to access data
       # or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror.
+
       struct FileSystemEndpoints
         include JSON::Serializable
 
         # An endpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems.
+
         @[JSON::Field(key: "Intercluster")]
         getter intercluster : Types::FileSystemEndpoint?
 
         # An endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API.
+
         @[JSON::Field(key: "Management")]
         getter management : Types::FileSystemEndpoint?
 
@@ -4610,10 +5284,12 @@ module AwsSdk
       end
 
       # A structure providing details of any failures that occurred.
+
       struct FileSystemFailureDetails
         include JSON::Serializable
 
         # A message describing any failures that occurred.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -4626,6 +5302,7 @@ module AwsSdk
       # The Lustre metadata performance configuration of an Amazon FSx for Lustre file system using a
       # PERSISTENT_2 deployment type. The configuration enables the file system to support increasing
       # metadata performance.
+
       struct FileSystemLustreMetadataConfiguration
         include JSON::Serializable
 
@@ -4634,12 +5311,14 @@ module AwsSdk
         # number of Metadata IOPS on your file system based on your file system storage capacity. In
         # USER_PROVISIONED mode, you can choose to specify the number of Metadata IOPS to provision for your
         # file system.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String
 
         # The number of Metadata IOPS provisioned for the file system. For SSD file systems, valid values are
         # 1500 , 3000 , 6000 , 12000 , and multiples of 12000 up to a maximum of 192000 . For
         # Intelligent-Tiering file systems, valid values are 6000 and 12000 .
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -4651,8 +5330,10 @@ module AwsSdk
       end
 
       # No Amazon FSx file systems were found based upon supplied parameters.
+
       struct FileSystemNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4665,14 +5346,17 @@ module AwsSdk
 
       # A filter used to restrict the results of describe calls. You can use multiple filters to return
       # results that meet all applied filter requirements.
+
       struct Filter
         include JSON::Serializable
 
         # The name for this filter.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The values of the filter. These are all the values for any of the applied filters.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -4686,12 +5370,15 @@ module AwsSdk
       # The error returned when a second request is received with the same client request token but
       # different parameters settings. A client request token should always uniquely identify a single
       # request.
+
       struct IncompatibleParameterError
         include JSON::Serializable
 
         # A parameter that is incompatible with the earlier request.
+
         @[JSON::Field(key: "Parameter")]
         getter parameter : String
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4705,8 +5392,10 @@ module AwsSdk
 
       # Amazon FSx doesn't support Multi-AZ Windows File Server copy backup in the destination Region, so
       # the copied backup can't be restored.
+
       struct IncompatibleRegionForMultiAZ
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4718,8 +5407,10 @@ module AwsSdk
       end
 
       # A generic error indicating a server-side failure.
+
       struct InternalServerError
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4731,12 +5422,15 @@ module AwsSdk
       end
 
       # The access point specified doesn't exist.
+
       struct InvalidAccessPoint
         include JSON::Serializable
 
         # An error code indicating that the access point specified doesn't exist.
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4749,8 +5443,10 @@ module AwsSdk
       end
 
       # You have filtered the response to a data repository type that is not supported.
+
       struct InvalidDataRepositoryType
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4762,8 +5458,10 @@ module AwsSdk
       end
 
       # The Key Management Service (KMS) key of the destination backup is not valid.
+
       struct InvalidDestinationKmsKey
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4775,8 +5473,10 @@ module AwsSdk
       end
 
       # The path provided for data repository export isn't valid.
+
       struct InvalidExportPath
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4788,8 +5488,10 @@ module AwsSdk
       end
 
       # The path provided for data repository import isn't valid.
+
       struct InvalidImportPath
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4801,22 +5503,27 @@ module AwsSdk
       end
 
       # One or more network settings specified in the request are invalid.
+
       struct InvalidNetworkSettings
         include JSON::Serializable
 
         # The route table ID is either invalid or not part of the VPC specified.
+
         @[JSON::Field(key: "InvalidRouteTableId")]
         getter invalid_route_table_id : String?
 
         # The security group ID is either invalid or not part of the VPC specified.
+
         @[JSON::Field(key: "InvalidSecurityGroupId")]
         getter invalid_security_group_id : String?
 
         # The subnet ID that is either invalid or not part of the VPC specified.
+
         @[JSON::Field(key: "InvalidSubnetId")]
         getter invalid_subnet_id : String?
 
         # Error message explaining what's wrong with network settings.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -4831,8 +5538,10 @@ module AwsSdk
 
       # An invalid value for PerUnitStorageThroughput was provided. Please create your file system again,
       # using a valid value.
+
       struct InvalidPerUnitStorageThroughput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4845,8 +5554,10 @@ module AwsSdk
 
       # The Region provided for SourceRegion is not valid or is in a different Amazon Web Services
       # partition.
+
       struct InvalidRegion
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4858,12 +5569,15 @@ module AwsSdk
       end
 
       # The action or operation requested is invalid. Verify that the action is typed correctly.
+
       struct InvalidRequest
         include JSON::Serializable
 
         # An error code indicating that the action or operation requested is invalid.
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4876,8 +5590,10 @@ module AwsSdk
       end
 
       # The Key Management Service (KMS) key of the source backup is not valid.
+
       struct InvalidSourceKmsKey
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4889,8 +5605,10 @@ module AwsSdk
       end
 
       # Describes why a resource lifecycle state changed.
+
       struct LifecycleTransitionReason
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -4902,21 +5620,25 @@ module AwsSdk
       end
 
       # The request object for ListTagsForResource operation.
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The ARN of the Amazon FSx resource that will have its tags listed.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # Maximum number of tags to return in the response (integer). This parameter value must be greater
         # than 0. The number of items that Amazon FSx returns is the minimum of the MaxResults parameter
         # specified in the request and the service's internal maximum number of items per page.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Opaque pagination token returned from a previous ListTagsForResource operation (String). If a token
         # present, the action continues the list from where the returning call left off.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -4929,15 +5651,18 @@ module AwsSdk
       end
 
       # The response object for ListTagsForResource operation.
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # This is present if there are more tags than returned in the response (String). You can use the
         # NextToken value in the later request to fetch the tags.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of tags on the resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -4949,8 +5674,10 @@ module AwsSdk
       end
 
       # The configuration for the Amazon FSx for Lustre file system.
+
       struct LustreFileSystemConfiguration
         include JSON::Serializable
+
 
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
@@ -4961,8 +5688,10 @@ module AwsSdk
         # only the specified tags are copied to backups. If you specify one or more tags when creating a
         # user-initiated backup, no tags are copied from the file system, regardless of this value. (Default =
         # false)
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
@@ -4970,13 +5699,16 @@ module AwsSdk
         # The data compression configuration for the file system. DataCompressionType can have the following
         # values: NONE - Data compression is turned off for the file system. LZ4 - Data compression is turned
         # on with the LZ4 algorithm. For more information, see Lustre data compression .
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # Required when StorageType is set to INTELLIGENT_TIERING . Specifies the optional provisioned SSD
         # read cache.
+
         @[JSON::Field(key: "DataReadCacheConfiguration")]
         getter data_read_cache_configuration : Types::LustreReadCacheConfiguration?
+
 
         @[JSON::Field(key: "DataRepositoryConfiguration")]
         getter data_repository_configuration : Types::DataRepositoryConfiguration?
@@ -4990,6 +5722,7 @@ module AwsSdk
         # to 1000 MB/s/TiB) along with a lower minimum storage capacity requirement (600 GiB). To learn more
         # about FSx for Lustre deployment types, see Deployment and storage class options for FSx for Lustre
         # file systems . The default is SCRATCH_1 .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
 
@@ -4998,27 +5731,32 @@ module AwsSdk
         # SSD storage cache that is sized to 20% of the file system's storage capacity. This improves the
         # performance for frequently accessed files by caching up to 20% of the total storage capacity. This
         # parameter is required when StorageType is set to HDD.
+
         @[JSON::Field(key: "DriveCacheType")]
         getter drive_cache_type : String?
 
         # Specifies whether Elastic Fabric Adapter (EFA) and GPUDirect Storage (GDS) support is enabled for
         # the Amazon FSx for Lustre file system.
+
         @[JSON::Field(key: "EfaEnabled")]
         getter efa_enabled : Bool?
 
         # The Lustre logging configuration. Lustre logging writes the enabled log events for your file system
         # to Amazon CloudWatch Logs.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LustreLogConfiguration?
 
         # The Lustre metadata performance configuration for an Amazon FSx for Lustre file system using a
         # PERSISTENT_2 deployment type.
+
         @[JSON::Field(key: "MetadataConfiguration")]
         getter metadata_configuration : Types::FileSystemLustreMetadataConfiguration?
 
         # You use the MountName value when mounting the file system. For the SCRATCH_1 deployment type, this
         # value is always " fsx ". For SCRATCH_2 , PERSISTENT_1 , and PERSISTENT_2 deployment types, this
         # value is a string that is unique within an Amazon Web Services Region.
+
         @[JSON::Field(key: "MountName")]
         getter mount_name : String?
 
@@ -5027,21 +5765,25 @@ module AwsSdk
         # * PerUnitStorageThroughput (MB/s/TiB). This option is only valid for PERSISTENT_1 and PERSISTENT_2
         # deployment types. Valid values: For PERSISTENT_1 SSD storage: 50, 100, 200. For PERSISTENT_1 HDD
         # storage: 12, 40. For PERSISTENT_2 SSD storage: 125, 250, 500, 1000.
+
         @[JSON::Field(key: "PerUnitStorageThroughput")]
         getter per_unit_storage_throughput : Int32?
 
         # The Lustre root squash configuration for an Amazon FSx for Lustre file system. When enabled, root
         # squash restricts root-level access from clients that try to access your file system as a root user.
+
         @[JSON::Field(key: "RootSquashConfiguration")]
         getter root_squash_configuration : Types::LustreRootSquashConfiguration?
 
         # The throughput of an Amazon FSx for Lustre file system using the Intelligent-Tiering storage class,
         # measured in megabytes per second (MBps).
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
         # The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone.
         # Here, d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.
+
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
 
@@ -5068,6 +5810,7 @@ module AwsSdk
 
       # The configuration for Lustre logging used to write the enabled logging events for your Amazon FSx
       # for Lustre file system or Amazon File Cache resource to Amazon CloudWatch Logs.
+
       struct LustreLogConfiguration
         include JSON::Serializable
 
@@ -5075,6 +5818,7 @@ module AwsSdk
         # logged. ERROR_ONLY - only error events are logged. WARN_ERROR - both warning events and error events
         # are logged. DISABLED - logging of data repository events is turned off. Note that Amazon File Cache
         # uses a default setting of WARN_ERROR , which can't be changed.
+
         @[JSON::Field(key: "Level")]
         getter level : String
 
@@ -5082,6 +5826,7 @@ module AwsSdk
         # any Amazon CloudWatch Logs log group ARN. The destination ARN must be in the same Amazon Web
         # Services partition, Amazon Web Services Region, and Amazon Web Services account as your Amazon FSx
         # file system.
+
         @[JSON::Field(key: "Destination")]
         getter destination : String?
 
@@ -5096,12 +5841,14 @@ module AwsSdk
       # system. An Amazon File Cache is created with Lustre logging enabled by default, with a setting of
       # WARN_ERROR for the logging events. which can't be changed. Lustre logging writes the enabled logging
       # events for your file system or cache to Amazon CloudWatch Logs.
+
       struct LustreLogCreateConfiguration
         include JSON::Serializable
 
         # Sets which data repository events are logged by Amazon FSx. WARN_ONLY - only warning events are
         # logged. ERROR_ONLY - only error events are logged. WARN_ERROR - both warning events and error events
         # are logged. DISABLED - logging of data repository events is turned off.
+
         @[JSON::Field(key: "Level")]
         getter level : String
 
@@ -5114,6 +5861,7 @@ module AwsSdk
         # Lustre) or /aws/fsx/filecache (for Amazon File Cache). If Destination is provided and the resource
         # does not exist, the request will fail with a BadRequest error. If Level is set to DISABLED , you
         # cannot specify a destination in Destination .
+
         @[JSON::Field(key: "Destination")]
         getter destination : String?
 
@@ -5126,6 +5874,7 @@ module AwsSdk
 
       # The configuration for the optional provisioned SSD read cache on Amazon FSx for Lustre file systems
       # that use the Intelligent-Tiering storage class.
+
       struct LustreReadCacheConfiguration
         include JSON::Serializable
 
@@ -5133,6 +5882,7 @@ module AwsSdk
         # cache, in gibibytes (GiB). The SSD read cache size is distributed across provisioned file servers in
         # your file system. Intelligent-Tiering file systems support a minimum of 32 GiB and maximum of 131072
         # GiB for SSD read cache size for every 4,000 MB/s of throughput capacity provisioned.
+
         @[JSON::Field(key: "SizeGiB")]
         getter size_gi_b : Int32?
 
@@ -5140,6 +5890,7 @@ module AwsSdk
         # want to use an SSD read cache with your Intelligent-Tiering file system. Set to USER_PROVISIONED to
         # specify the exact size of your SSD read cache. Set to PROPORTIONAL_TO_THROUGHPUT_CAPACITY to have
         # your SSD read cache automatically sized based on your throughput capacity.
+
         @[JSON::Field(key: "SizingMode")]
         getter sizing_mode : String?
 
@@ -5155,6 +5906,7 @@ module AwsSdk
       # To learn more about Lustre root squash, see Lustre root squash . You can also use the NoSquashNids
       # parameter to provide an array of clients who are not affected by the root squash setting. These
       # clients will access the file system as root, with unrestricted privileges.
+
       struct LustreRootSquashConfiguration
         include JSON::Serializable
 
@@ -5164,6 +5916,7 @@ module AwsSdk
         # is described in standard Lustre NID format by specifying the client’s IP address followed by the
         # Lustre network ID (for example, 10.0.1.6@tcp ). An address range is described using a dash to
         # separate the range (for example, 10.0.[2-10].[1-255]@tcp ).
+
         @[JSON::Field(key: "NoSquashNids")]
         getter no_squash_nids : Array(String)?
 
@@ -5173,6 +5926,7 @@ module AwsSdk
         # each must be a non-zero value. A value of 0 (zero) for UID and GID indicates root, and therefore
         # disables root squash. When root squash is enabled, the user ID and group ID of a root user accessing
         # the file system are re-mapped to the UID and GID you provide.
+
         @[JSON::Field(key: "RootSquash")]
         getter root_squash : String?
 
@@ -5184,8 +5938,10 @@ module AwsSdk
       end
 
       # A cache configuration is required for this operation.
+
       struct MissingFileCacheConfiguration
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5197,8 +5953,10 @@ module AwsSdk
       end
 
       # A file system configuration is required for this operation.
+
       struct MissingFileSystemConfiguration
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5210,8 +5968,10 @@ module AwsSdk
       end
 
       # A volume configuration is required for this operation.
+
       struct MissingVolumeConfiguration
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5224,16 +5984,19 @@ module AwsSdk
 
       # The configuration for a data repository association that links an Amazon File Cache resource to an
       # NFS data repository.
+
       struct NFSDataRepositoryConfiguration
         include JSON::Serializable
 
         # The version of the NFS (Network File System) protocol of the NFS data repository. Currently, the
         # only supported value is NFS3 , which indicates that the data repository must support the NFSv3
         # protocol.
+
         @[JSON::Field(key: "Version")]
         getter version : String
 
         # This parameter is not supported for Amazon File Cache.
+
         @[JSON::Field(key: "AutoExportPolicy")]
         getter auto_export_policy : Types::AutoExportPolicy?
 
@@ -5241,6 +6004,7 @@ module AwsSdk
         # provided IP addresses can either be the IP addresses of a DNS forwarder or resolver that the
         # customer manages and runs inside the customer VPC, or the IP addresses of the on-premises DNS
         # servers.
+
         @[JSON::Field(key: "DnsIps")]
         getter dns_ips : Array(String)?
 
@@ -5254,12 +6018,15 @@ module AwsSdk
 
       # The resource specified for the tagging operation is not a resource type owned by Amazon FSx. Use the
       # API of the relevant service to perform the operation.
+
       struct NotServiceResourceError
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the non-Amazon FSx resource.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -5272,11 +6039,14 @@ module AwsSdk
       end
 
       # Configuration for the FSx for NetApp ONTAP file system.
+
       struct OntapFileSystemConfiguration
         include JSON::Serializable
 
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
@@ -5290,11 +6060,13 @@ module AwsSdk
         # system configured with multiple high-availability (HA) pairs for Single-AZ redundancy. This is a
         # second-generation FSx for ONTAP file system. For information about the use cases for Multi-AZ and
         # Single-AZ deployments, refer to Choosing Multi-AZ or Single-AZ file system deployment .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
 
         # The SSD IOPS configuration for the ONTAP file system, specifying the number of provisioned IOPS and
         # the provision mode.
+
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
@@ -5304,6 +6076,7 @@ module AwsSdk
         # addresses from the VPC’s primary CIDR range to use as the endpoint IP address range for the file
         # system. You can have overlapping endpoint IP addresses for file systems deployed in the same
         # VPC/route tables.
+
         @[JSON::Field(key: "EndpointIpAddressRange")]
         getter endpoint_ip_address_range : String?
 
@@ -5312,16 +6085,19 @@ module AwsSdk
         # available /118 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpv6AddressRange")]
         getter endpoint_ipv6_address_range : String?
 
         # The Management and Intercluster endpoints that are used to access data or to manage the file system
         # using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror.
+
         @[JSON::Field(key: "Endpoints")]
         getter endpoints : Types::FileSystemEndpoints?
 
         # You can use the fsxadmin user account to access the NetApp ONTAP CLI and REST API. The password
         # value is always redacted in the response.
+
         @[JSON::Field(key: "FsxAdminPassword")]
         getter fsx_admin_password : String?
 
@@ -5331,15 +6107,19 @@ module AwsSdk
         # user guide. Amazon FSx responds with an HTTP status code 400 (Bad Request) for the following
         # conditions: The value of HAPairs is less than 1 or greater than 12. The value of HAPairs is greater
         # than 1 and the value of DeploymentType is SINGLE_AZ_1 , MULTI_AZ_1 , or MULTI_AZ_2 .
+
         @[JSON::Field(key: "HAPairs")]
         getter ha_pairs : Int32?
+
 
         @[JSON::Field(key: "PreferredSubnetId")]
         getter preferred_subnet_id : String?
 
         # (Multi-AZ only) The VPC route tables in which your file system's endpoints are created.
+
         @[JSON::Field(key: "RouteTableIds")]
         getter route_table_ids : Array(String)?
+
 
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
@@ -5354,8 +6134,10 @@ module AwsSdk
         # The value of ThroughputCapacity and ThroughputCapacityPerHAPair are not the same value. The value of
         # deployment type is SINGLE_AZ_2 and ThroughputCapacity / ThroughputCapacityPerHAPair is not a valid
         # HA pair (a value between 1 and 12). The value of ThroughputCapacityPerHAPair is not a valid value.
+
         @[JSON::Field(key: "ThroughputCapacityPerHAPair")]
         getter throughput_capacity_per_ha_pair : Int32?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -5381,18 +6163,22 @@ module AwsSdk
 
       # Specifies the file system user identity that will be used for authorizing all file access requests
       # that are made using the S3 access point. The identity can be either a UNIX user or a Windows user.
+
       struct OntapFileSystemIdentity
         include JSON::Serializable
 
         # Specifies the FSx for ONTAP user identity type. Valid values are UNIX and WINDOWS .
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Specifies the UNIX user identity for file system operations.
+
         @[JSON::Field(key: "UnixUser")]
         getter unix_user : Types::OntapUnixFileSystemUser?
 
         # Specifies the Windows user identity for file system operations.
+
         @[JSON::Field(key: "WindowsUser")]
         getter windows_user : Types::OntapWindowsFileSystemUser?
 
@@ -5406,10 +6192,12 @@ module AwsSdk
 
       # The FSx for ONTAP UNIX file system user that is used for authorizing all file access requests that
       # are made using the S3 access point.
+
       struct OntapUnixFileSystemUser
         include JSON::Serializable
 
         # The name of the UNIX user. The name can be up to 256 characters long.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -5420,10 +6208,12 @@ module AwsSdk
       end
 
       # The configuration of an Amazon FSx for NetApp ONTAP volume.
+
       struct OntapVolumeConfiguration
         include JSON::Serializable
 
         # This structure specifies configuration options for a volume’s storage aggregate or aggregates.
+
         @[JSON::Field(key: "AggregateConfiguration")]
         getter aggregate_configuration : Types::AggregateConfiguration?
 
@@ -5432,6 +6222,7 @@ module AwsSdk
         # user-initiated backups where the user doesn't specify tags. If this value is true, and you specify
         # one or more tags, only the specified tags are copied to backups. If you specify one or more tags
         # when creating a user-initiated backup, no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
@@ -5439,6 +6230,7 @@ module AwsSdk
         # that the volume doesn't have a FlexCache configuration. NONE is the default. ORIGIN specifies that
         # the volume is the origin volume for a FlexCache volume. CACHE specifies that the volume is a
         # FlexCache volume.
+
         @[JSON::Field(key: "FlexCacheEndpointType")]
         getter flex_cache_endpoint_type : String?
 
@@ -5447,6 +6239,7 @@ module AwsSdk
         # JunctionPath directly below a parent volume junction or on a directory within a volume. A
         # JunctionPath for a volume named vol3 might be /vol1/vol2/vol3 , or /vol1/dir2/vol3 , or even
         # /dir1/dir2/vol3 .
+
         @[JSON::Field(key: "JunctionPath")]
         getter junction_path : String?
 
@@ -5455,22 +6248,27 @@ module AwsSdk
         # data-protection mirror copies. If a disaster occurs, you can use these data-protection mirror copies
         # to recover data. LS specifies a load-sharing mirror volume. A load-sharing mirror reduces the
         # network traffic to a FlexVol volume by providing additional read-only access to clients.
+
         @[JSON::Field(key: "OntapVolumeType")]
         getter ontap_volume_type : String?
 
         # The security style for the volume, which can be UNIX , NTFS , or MIXED .
+
         @[JSON::Field(key: "SecurityStyle")]
         getter security_style : String?
 
         # The configured size of the volume, in bytes.
+
         @[JSON::Field(key: "SizeInBytes")]
         getter size_in_bytes : Int64?
 
         # The configured size of the volume, in megabytes (MBs).
+
         @[JSON::Field(key: "SizeInMegabytes")]
         getter size_in_megabytes : Int32?
 
         # The SnapLock configuration object for an FSx for ONTAP SnapLock volume.
+
         @[JSON::Field(key: "SnaplockConfiguration")]
         getter snaplock_configuration : Types::SnaplockConfiguration?
 
@@ -5483,14 +6281,17 @@ module AwsSdk
         # prevent automatic snapshots from being taken. You can also provide the name of a custom policy that
         # you created with the ONTAP CLI or REST API. For more information, see Snapshot policies in the
         # Amazon FSx for NetApp ONTAP User Guide.
+
         @[JSON::Field(key: "SnapshotPolicy")]
         getter snapshot_policy : String?
 
         # The volume's storage efficiency setting.
+
         @[JSON::Field(key: "StorageEfficiencyEnabled")]
         getter storage_efficiency_enabled : Bool?
 
         # The ID of the volume's storage virtual machine.
+
         @[JSON::Field(key: "StorageVirtualMachineId")]
         getter storage_virtual_machine_id : String?
 
@@ -5499,19 +6300,23 @@ module AwsSdk
         # value is true , then this is the SVM root volume. This flag is useful when you're deleting an SVM,
         # because you must first delete all non-root volumes. This flag, when set to false , helps you
         # identify which volumes to delete before you can delete the SVM.
+
         @[JSON::Field(key: "StorageVirtualMachineRoot")]
         getter storage_virtual_machine_root : Bool?
 
         # The volume's TieringPolicy setting.
+
         @[JSON::Field(key: "TieringPolicy")]
         getter tiering_policy : Types::TieringPolicy?
 
         # The volume's universally unique identifier (UUID).
+
         @[JSON::Field(key: "UUID")]
         getter uuid : String?
 
         # Use to specify the style of an ONTAP volume. For more information about FlexVols and FlexGroups, see
         # Volume types in Amazon FSx for NetApp ONTAP User Guide.
+
         @[JSON::Field(key: "VolumeStyle")]
         getter volume_style : String?
 
@@ -5538,11 +6343,13 @@ module AwsSdk
 
       # The FSx for ONTAP Windows file system user that is used for authorizing all file access requests
       # that are made using the S3 access point.
+
       struct OntapWindowsFileSystemUser
         include JSON::Serializable
 
         # The name of the Windows user. The name can be up to 256 characters long and supports Active
         # Directory users.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -5554,12 +6361,14 @@ module AwsSdk
 
       # Specifies who can mount an OpenZFS file system and the options available while mounting the file
       # system.
+
       struct OpenZFSClientConfiguration
         include JSON::Serializable
 
         # A value that specifies who can mount the file system. You can provide a wildcard character ( * ), an
         # IP address ( 0.0.0.0 ), or a CIDR address ( 192.0.2.0/24 ). By default, Amazon FSx uses the wildcard
         # character when specifying the client.
+
         @[JSON::Field(key: "Clients")]
         getter clients : String
 
@@ -5570,6 +6379,7 @@ module AwsSdk
         # directory. sync is used by default. If you instead specify async , the system acknowledges writes
         # before writing to disk. If the system crashes before the writes are finished, you lose the unwritten
         # data.
+
         @[JSON::Field(key: "Options")]
         getter options : Array(String)
 
@@ -5581,6 +6391,7 @@ module AwsSdk
       end
 
       # The configuration of an Amazon FSx for OpenZFS root volume.
+
       struct OpenZFSCreateRootVolumeConfiguration
         include JSON::Serializable
 
@@ -5589,6 +6400,7 @@ module AwsSdk
         # where the user doesn't specify tags. If this value is true and you specify one or more tags, only
         # the specified tags are copied to snapshots. If you specify one or more tags when creating the
         # snapshot, no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToSnapshots")]
         getter copy_tags_to_snapshots : Bool?
 
@@ -5598,15 +6410,18 @@ module AwsSdk
         # provides a better compression ratio to minimize on-disk storage utilization. LZ4 - Compresses the
         # data in the volume using the LZ4 compression algorithm. Compared to Z-Standard, LZ4 is less
         # compute-intensive and delivers higher write throughput speeds.
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # The configuration object for mounting a file system.
+
         @[JSON::Field(key: "NfsExports")]
         getter nfs_exports : Array(Types::OpenZFSNfsExport)?
 
         # A Boolean value indicating whether the volume is read-only. Setting this value to true can be useful
         # after you have completed changes to a volume and no longer want changes to occur.
+
         @[JSON::Field(key: "ReadOnly")]
         getter read_only : Bool?
 
@@ -5615,10 +6430,12 @@ module AwsSdk
         # record size. Database workflows can benefit from a smaller record size, while streaming workflows
         # can benefit from a larger record size. For additional guidance on setting a custom record size, see
         # Tips for maximizing performance in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "RecordSizeKiB")]
         getter record_size_ki_b : Int32?
 
         # An object specifying how much storage users or groups can use on the volume.
+
         @[JSON::Field(key: "UserAndGroupQuotas")]
         getter user_and_group_quotas : Array(Types::OpenZFSUserOrGroupQuota)?
 
@@ -5634,8 +6451,10 @@ module AwsSdk
       end
 
       # The configuration for the Amazon FSx for OpenZFS file system.
+
       struct OpenZFSFileSystemConfiguration
         include JSON::Serializable
+
 
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
@@ -5645,6 +6464,7 @@ module AwsSdk
         # backups where the user doesn't specify any tags. If this value is true and you specify one or more
         # tags, only the specified tags are copied to backups. If you specify one or more tags when creating a
         # user-initiated backup, no tags are copied from the file system, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
@@ -5653,21 +6473,26 @@ module AwsSdk
         # user doesn't specify tags. If this value is true and you specify one or more tags, only the
         # specified tags are copied to snapshots. If you specify one or more tags when creating the snapshot,
         # no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToVolumes")]
         getter copy_tags_to_volumes : Bool?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
 
         # Specifies the file-system deployment type. Amazon FSx for OpenZFS supports&#x2028; MULTI_AZ_1 ,
         # SINGLE_AZ_HA_2 , SINGLE_AZ_HA_1 , SINGLE_AZ_2 , and SINGLE_AZ_1 .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
+
 
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
         # The IPv4 address of the endpoint that is used to access data or to manage the file system.
+
         @[JSON::Field(key: "EndpointIpAddress")]
         getter endpoint_ip_address : String?
 
@@ -5675,10 +6500,12 @@ module AwsSdk
         # will be created. By default in the Amazon FSx API and Amazon FSx console, Amazon FSx selects an
         # available /28 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables.
+
         @[JSON::Field(key: "EndpointIpAddressRange")]
         getter endpoint_ip_address_range : String?
 
         # The IPv6 address of the endpoint that is used to access data or to manage the file system.
+
         @[JSON::Field(key: "EndpointIpv6Address")]
         getter endpoint_ipv6_address : String?
 
@@ -5687,30 +6514,37 @@ module AwsSdk
         # available /118 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpv6AddressRange")]
         getter endpoint_ipv6_address_range : String?
 
         # Required when DeploymentType is set to MULTI_AZ_1 . This specifies the subnet in which you want the
         # preferred file server to be located.
+
         @[JSON::Field(key: "PreferredSubnetId")]
         getter preferred_subnet_id : String?
 
         # Required when StorageType is set to INTELLIGENT_TIERING . Specifies the optional provisioned SSD
         # read cache.
+
         @[JSON::Field(key: "ReadCacheConfiguration")]
         getter read_cache_configuration : Types::OpenZFSReadCacheConfiguration?
 
         # The ID of the root volume of the OpenZFS file system.
+
         @[JSON::Field(key: "RootVolumeId")]
         getter root_volume_id : String?
 
         # (Multi-AZ only) The VPC route tables in which your file system's endpoints are created.
+
         @[JSON::Field(key: "RouteTableIds")]
         getter route_table_ids : Array(String)?
 
         # The throughput of an Amazon FSx file system, measured in megabytes per second (MBps).
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -5738,14 +6572,17 @@ module AwsSdk
 
       # Specifies the file system user identity that will be used for authorizing all file access requests
       # that are made using the S3 access point.
+
       struct OpenZFSFileSystemIdentity
         include JSON::Serializable
 
         # Specifies the FSx for OpenZFS user identity type, accepts only POSIX .
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # Specifies the UID and GIDs of the file system POSIX user.
+
         @[JSON::Field(key: "PosixUser")]
         getter posix_user : Types::OpenZFSPosixFileSystemUser?
 
@@ -5757,11 +6594,13 @@ module AwsSdk
       end
 
       # The Network File System (NFS) configurations for mounting an Amazon FSx for OpenZFS file system.
+
       struct OpenZFSNfsExport
         include JSON::Serializable
 
         # A list of configuration objects that contain the client and options for mounting the OpenZFS file
         # system.
+
         @[JSON::Field(key: "ClientConfigurations")]
         getter client_configurations : Array(Types::OpenZFSClientConfiguration)
 
@@ -5772,6 +6611,7 @@ module AwsSdk
       end
 
       # The snapshot configuration used when creating an Amazon FSx for OpenZFS volume from a snapshot.
+
       struct OpenZFSOriginSnapshotConfiguration
         include JSON::Serializable
 
@@ -5782,8 +6622,10 @@ module AwsSdk
         # to the new volume. The INCREMENTAL_COPY option is only for updating an existing volume by using a
         # snapshot from another FSx for OpenZFS file system. For more information, see
         # CopySnapshotAndUpdateVolume .
+
         @[JSON::Field(key: "CopyStrategy")]
         getter copy_strategy : String?
+
 
         @[JSON::Field(key: "SnapshotARN")]
         getter snapshot_arn : String?
@@ -5797,18 +6639,22 @@ module AwsSdk
 
       # The FSx for OpenZFS file system user that is used for authorizing all file access requests that are
       # made using the S3 access point.
+
       struct OpenZFSPosixFileSystemUser
         include JSON::Serializable
 
         # The GID of the file system user.
+
         @[JSON::Field(key: "Gid")]
         getter gid : Int64
 
         # The UID of the file system user.
+
         @[JSON::Field(key: "Uid")]
         getter uid : Int64
 
         # The list of secondary GIDs for the file system user.
+
         @[JSON::Field(key: "SecondaryGids")]
         getter secondary_gids : Array(Int64)?
 
@@ -5822,11 +6668,13 @@ module AwsSdk
 
       # The configuration for the optional provisioned SSD read cache on Amazon FSx for OpenZFS file systems
       # that use the Intelligent-Tiering storage class.
+
       struct OpenZFSReadCacheConfiguration
         include JSON::Serializable
 
         # Required if SizingMode is set to USER_PROVISIONED . Specifies the size of the file system's SSD read
         # cache, in gibibytes (GiB).
+
         @[JSON::Field(key: "SizeGiB")]
         getter size_gi_b : Int32?
 
@@ -5834,6 +6682,7 @@ module AwsSdk
         # want to use an SSD read cache with your Intelligent-Tiering file system. Set to USER_PROVISIONED to
         # specify the exact size of your SSD read cache. Set to PROPORTIONAL_TO_THROUGHPUT_CAPACITY to have
         # your SSD read cache automatically sized based on your throughput capacity.
+
         @[JSON::Field(key: "SizingMode")]
         getter sizing_mode : String?
 
@@ -5846,18 +6695,22 @@ module AwsSdk
 
       # Used to configure quotas that define how much storage a user or group can use on an FSx for OpenZFS
       # volume. For more information, see Volume properties in the FSx for OpenZFS User Guide.
+
       struct OpenZFSUserOrGroupQuota
         include JSON::Serializable
 
         # The ID of the user or group that the quota applies to.
+
         @[JSON::Field(key: "Id")]
         getter id : Int32
 
         # The user or group's storage quota, in gibibytes (GiB).
+
         @[JSON::Field(key: "StorageCapacityQuotaGiB")]
         getter storage_capacity_quota_gi_b : Int32
 
         # Specifies whether the quota applies to a user or group.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -5870,6 +6723,7 @@ module AwsSdk
       end
 
       # The configuration of an Amazon FSx for OpenZFS volume.
+
       struct OpenZFSVolumeConfiguration
         include JSON::Serializable
 
@@ -5881,6 +6735,7 @@ module AwsSdk
         # for OpenZFS file system. The INCREMENTAL_COPY option is only for updating an existing volume by
         # using a snapshot from another FSx for OpenZFS file system. For more information, see
         # CopySnapshotAndUpdateVolume .
+
         @[JSON::Field(key: "CopyStrategy")]
         getter copy_strategy : String?
 
@@ -5889,6 +6744,7 @@ module AwsSdk
         # user doesn't specify tags. If this value is true and you specify one or more tags, only the
         # specified tags are copied to snapshots. If you specify one or more tags when creating the snapshot,
         # no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToSnapshots")]
         getter copy_tags_to_snapshots : Bool?
 
@@ -5898,73 +6754,89 @@ module AwsSdk
         # provides a better compression ratio to minimize on-disk storage utilization. LZ4 - Compresses the
         # data in the volume using the LZ4 compression algorithm. Compared to Z-Standard, LZ4 is less
         # compute-intensive and delivers higher write throughput speeds.
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # A Boolean value indicating whether dependent clone volumes created from intermediate snapshots
         # should be deleted when a volume is restored from snapshot.
+
         @[JSON::Field(key: "DeleteClonedVolumes")]
         getter delete_cloned_volumes : Bool?
 
         # A Boolean value indicating whether snapshot data that differs between the current state and the
         # specified snapshot should be overwritten when a volume is restored from a snapshot.
+
         @[JSON::Field(key: "DeleteIntermediateData")]
         getter delete_intermediate_data : Bool?
 
         # A Boolean value indicating whether snapshots between the current state and the specified snapshot
         # should be deleted when a volume is restored from snapshot.
+
         @[JSON::Field(key: "DeleteIntermediateSnaphots")]
         getter delete_intermediate_snaphots : Bool?
 
         # The ID of the snapshot that's being copied or was most recently copied to the destination volume.
+
         @[JSON::Field(key: "DestinationSnapshot")]
         getter destination_snapshot : String?
 
         # The configuration object for mounting a Network File System (NFS) file system.
+
         @[JSON::Field(key: "NfsExports")]
         getter nfs_exports : Array(Types::OpenZFSNfsExport)?
 
         # The configuration object that specifies the snapshot to use as the origin of the data for the
         # volume.
+
         @[JSON::Field(key: "OriginSnapshot")]
         getter origin_snapshot : Types::OpenZFSOriginSnapshotConfiguration?
 
         # The ID of the parent volume.
+
         @[JSON::Field(key: "ParentVolumeId")]
         getter parent_volume_id : String?
 
         # A Boolean value indicating whether the volume is read-only.
+
         @[JSON::Field(key: "ReadOnly")]
         getter read_only : Bool?
 
         # The record size of an OpenZFS volume, in kibibytes (KiB). Valid values are 4, 8, 16, 32, 64, 128,
         # 256, 512, or 1024 KiB. The default is 128 KiB. Most workloads should use the default record size.
         # For guidance on when to set a custom record size, see the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "RecordSizeKiB")]
         getter record_size_ki_b : Int32?
 
         # Specifies the ID of the snapshot to which the volume was restored.
+
         @[JSON::Field(key: "RestoreToSnapshot")]
         getter restore_to_snapshot : String?
+
 
         @[JSON::Field(key: "SourceSnapshotARN")]
         getter source_snapshot_arn : String?
 
         # The maximum amount of storage in gibibytes (GiB) that the volume can use from its parent. You can
         # specify a quota larger than the storage on the parent volume.
+
         @[JSON::Field(key: "StorageCapacityQuotaGiB")]
         getter storage_capacity_quota_gi_b : Int32?
 
         # The amount of storage in gibibytes (GiB) to reserve from the parent volume. You can't reserve more
         # storage than the parent volume has reserved.
+
         @[JSON::Field(key: "StorageCapacityReservationGiB")]
         getter storage_capacity_reservation_gi_b : Int32?
 
         # An object specifying how much storage users or groups can use on the volume.
+
         @[JSON::Field(key: "UserAndGroupQuotas")]
         getter user_and_group_quotas : Array(Types::OpenZFSUserOrGroupQuota)?
 
         # The path to the volume from the root volume. For example, fsx/parentVolume/volume1 .
+
         @[JSON::Field(key: "VolumePath")]
         getter volume_path : String?
 
@@ -6002,12 +6874,14 @@ module AwsSdk
       # from Amazon S3 to the FSx for Lustre file system. If a file meets the last accessed time criteria,
       # its file or directory path must also be specified with the Paths parameter of the operation in order
       # for the file to be released.
+
       struct ReleaseConfiguration
         include JSON::Serializable
 
         # Defines the point-in-time since an exported file was last accessed, in order for that file to be
         # eligible for release. Only files that were last accessed before this point-in-time are eligible to
         # be released from the file system.
+
         @[JSON::Field(key: "DurationSinceLastAccess")]
         getter duration_since_last_access : Types::DurationSinceLastAccess?
 
@@ -6017,11 +6891,14 @@ module AwsSdk
         end
       end
 
+
       struct ReleaseFileSystemNfsV3LocksRequest
         include JSON::Serializable
 
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -6033,8 +6910,10 @@ module AwsSdk
         end
       end
 
+
       struct ReleaseFileSystemNfsV3LocksResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "FileSystem")]
         getter file_system : Types::FileSystem?
@@ -6046,12 +6925,15 @@ module AwsSdk
       end
 
       # The resource specified does not support tagging.
+
       struct ResourceDoesNotSupportTagging
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that doesn't support tagging.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6064,12 +6946,15 @@ module AwsSdk
       end
 
       # The resource specified by the Amazon Resource Name (ARN) can't be found.
+
       struct ResourceNotFound
         include JSON::Serializable
 
         # The resource ARN of the resource that can't be found.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6081,16 +6966,20 @@ module AwsSdk
         end
       end
 
+
       struct RestoreVolumeFromSnapshotRequest
         include JSON::Serializable
 
         # The ID of the source snapshot. Specifies the snapshot that you are restoring from.
+
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String
 
         # The ID of the volume that you are restoring.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -6100,6 +6989,7 @@ module AwsSdk
         # snapshots and this option isn't used, RestoreVolumeFromSnapshot fails. DELETE_CLONED_VOLUMES -
         # Deletes any dependent clone volumes created from intermediate snapshots. If there are any dependent
         # clone volumes and this option isn't used, RestoreVolumeFromSnapshot fails.
+
         @[JSON::Field(key: "Options")]
         getter options : Array(String)?
 
@@ -6112,19 +7002,23 @@ module AwsSdk
         end
       end
 
+
       struct RestoreVolumeFromSnapshotResponse
         include JSON::Serializable
 
         # A list of administrative actions for the file system that are in process or waiting to be processed.
         # Administrative actions describe changes to the Amazon FSx system.
+
         @[JSON::Field(key: "AdministrativeActions")]
         getter administrative_actions : Array(Types::AdministrativeAction)?
 
         # The lifecycle state of the volume being restored.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The ID of the volume that you restored.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -6139,12 +7033,14 @@ module AwsSdk
       # Specifies the retention period of an FSx for ONTAP SnapLock volume. After it is set, it can't be
       # changed. Files can't be deleted or modified during the retention period. For more information, see
       # Working with the retention period in SnapLock .
+
       struct RetentionPeriod
         include JSON::Serializable
 
         # Defines the type of time for the retention period of an FSx for ONTAP SnapLock volume. Set it to one
         # of the valid types. If you set it to INFINITE , the files are retained forever. If you set it to
         # UNSPECIFIED , the files are retained until you set an explicit retention period.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -6152,6 +7048,7 @@ module AwsSdk
         # set a value for INFINITE or UNSPECIFIED . For all other options, the following ranges are valid:
         # Seconds : 0 - 65,535 Minutes : 0 - 65,535 Hours : 0 - 24 Days : 0 - 365 Months : 0 - 12 Years : 0 -
         # 100
+
         @[JSON::Field(key: "Value")]
         getter value : Int32?
 
@@ -6163,18 +7060,22 @@ module AwsSdk
       end
 
       # Describes the S3 access point configuration of the S3 access point attachment.
+
       struct S3AccessPoint
         include JSON::Serializable
 
         # The S3 access point's alias.
+
         @[JSON::Field(key: "Alias")]
         getter alias : String?
 
         # he S3 access point's ARN.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The S3 access point's virtual private cloud (VPC) configuration.
+
         @[JSON::Field(key: "VpcConfiguration")]
         getter vpc_configuration : Types::S3AccessPointVpcConfiguration?
 
@@ -6187,8 +7088,10 @@ module AwsSdk
       end
 
       # An S3 access point attached to an Amazon FSx volume.
+
       struct S3AccessPointAttachment
         include JSON::Serializable
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
@@ -6199,29 +7102,36 @@ module AwsSdk
         # attachment FAILED - The S3 access point attachment is in a failed state. Delete and detach the S3
         # access point attachment, and create a new one. UPDATING - Amazon FSx is updating the S3 access point
         # attachment
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
+
 
         @[JSON::Field(key: "LifecycleTransitionReason")]
         getter lifecycle_transition_reason : Types::LifecycleTransitionReason?
 
         # The name of the S3 access point attachment; also used for the name of the S3 access point.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The ONTAP configuration of the S3 access point attachment.
+
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::S3AccessPointOntapConfiguration?
 
         # The OpenZFSConfiguration of the S3 access point attachment.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::S3AccessPointOpenZFSConfiguration?
 
         # The S3 access point configuration of the S3 access point attachment.
+
         @[JSON::Field(key: "S3AccessPoint")]
         getter s3_access_point : Types::S3AccessPoint?
 
         # The type of Amazon FSx volume that the S3 access point is attached to.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -6239,8 +7149,10 @@ module AwsSdk
       end
 
       # The access point specified was not found.
+
       struct S3AccessPointAttachmentNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6252,14 +7164,17 @@ module AwsSdk
       end
 
       # A set of Name and Values pairs used to view a select set of S3 access point attachments.
+
       struct S3AccessPointAttachmentsFilter
         include JSON::Serializable
 
         # The name of the filter.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The values of the filter.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -6271,14 +7186,17 @@ module AwsSdk
       end
 
       # Describes the FSx for ONTAP attachment configuration of an S3 access point attachment.
+
       struct S3AccessPointOntapConfiguration
         include JSON::Serializable
 
         # The file system identity used to authorize file access requests made using the S3 access point.
+
         @[JSON::Field(key: "FileSystemIdentity")]
         getter file_system_identity : Types::OntapFileSystemIdentity?
 
         # The ID of the FSx for ONTAP volume that the S3 access point is attached to.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -6290,14 +7208,17 @@ module AwsSdk
       end
 
       # Describes the FSx for OpenZFS attachment configuration of an S3 access point attachment.
+
       struct S3AccessPointOpenZFSConfiguration
         include JSON::Serializable
 
         # The file system identity used to authorize file access requests made using the S3 access point.
+
         @[JSON::Field(key: "FileSystemIdentity")]
         getter file_system_identity : Types::OpenZFSFileSystemIdentity?
 
         # The ID of the FSx for OpenZFS volume that the S3 access point is attached to.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -6310,10 +7231,12 @@ module AwsSdk
 
       # If included, Amazon S3 restricts access to this access point to requests from the specified virtual
       # private cloud (VPC).
+
       struct S3AccessPointVpcConfiguration
         include JSON::Serializable
 
         # Specifies the virtual private cloud (VPC) for the S3 access point VPC configuration, if one exists.
+
         @[JSON::Field(key: "VpcId")]
         getter vpc_id : String?
 
@@ -6330,16 +7253,19 @@ module AwsSdk
       # data repository. File events are when files or directories are added, changed, or deleted on the
       # file system or the data repository. Data repository associations on Amazon File Cache don't use
       # S3DataRepositoryConfiguration because they don't support automatic import or automatic export.
+
       struct S3DataRepositoryConfiguration
         include JSON::Serializable
 
         # Specifies the type of updated objects (new, changed, deleted) that will be automatically exported
         # from your file system to the linked S3 bucket.
+
         @[JSON::Field(key: "AutoExportPolicy")]
         getter auto_export_policy : Types::AutoExportPolicy?
 
         # Specifies the type of updated objects (new, changed, deleted) that will be automatically imported
         # from the linked S3 bucket to your file system.
+
         @[JSON::Field(key: "AutoImportPolicy")]
         getter auto_import_policy : Types::AutoImportPolicy?
 
@@ -6352,36 +7278,43 @@ module AwsSdk
 
       # The configuration of the self-managed Microsoft Active Directory (AD) directory to which the Windows
       # File Server or ONTAP storage virtual machine (SVM) instance is joined.
+
       struct SelfManagedActiveDirectoryAttributes
         include JSON::Serializable
 
         # A list of up to three IP addresses of DNS servers or domain controllers in the self-managed AD
         # directory.
+
         @[JSON::Field(key: "DnsIps")]
         getter dns_ips : Array(String)?
 
         # The Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret containing the
         # service account credentials used to join the file system to your self-managed Active Directory
         # domain.
+
         @[JSON::Field(key: "DomainJoinServiceAccountSecret")]
         getter domain_join_service_account_secret : String?
 
         # The fully qualified domain name of the self-managed AD directory.
+
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # The name of the domain group whose members have administrative privileges for the FSx file system.
+
         @[JSON::Field(key: "FileSystemAdministratorsGroup")]
         getter file_system_administrators_group : String?
 
         # The fully qualified distinguished name of the organizational unit within the self-managed AD
         # directory to which the Windows File Server or ONTAP storage virtual machine (SVM) instance is
         # joined.
+
         @[JSON::Field(key: "OrganizationalUnitDistinguishedName")]
         getter organizational_unit_distinguished_name : String?
 
         # The user name for the service account on your self-managed AD domain that FSx uses to join to your
         # AD domain.
+
         @[JSON::Field(key: "UserName")]
         getter user_name : String?
 
@@ -6400,15 +7333,18 @@ module AwsSdk
       # for ONTAP storage virtual machine (SVM) to a self-managed (including on-premises) Microsoft Active
       # Directory (AD) directory. For more information, see Using Amazon FSx for Windows with your
       # self-managed Microsoft Active Directory or Managing FSx for ONTAP SVMs .
+
       struct SelfManagedActiveDirectoryConfiguration
         include JSON::Serializable
 
         # A list of up to three IP addresses of DNS servers or domain controllers in the self-managed AD
         # directory.
+
         @[JSON::Field(key: "DnsIps")]
         getter dns_ips : Array(String)
 
         # The fully qualified domain name of the self-managed AD directory, such as corp.example.com .
+
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String
 
@@ -6420,6 +7356,7 @@ module AwsSdk
         # CUSTOMER_MANAGED_ACTIVE_DIRECTORY_PASSWORD - The password for the service account For more
         # information, see Using Amazon FSx for Windows with your self-managed Microsoft Active Directory or
         # Using Amazon FSx for ONTAP with your self-managed Microsoft Active Directory .
+
         @[JSON::Field(key: "DomainJoinServiceAccountSecret")]
         getter domain_join_service_account_secret : String?
 
@@ -6428,6 +7365,7 @@ module AwsSdk
         # controls (audit ACLs) on files and folders, and administering the file system remotely by using the
         # FSx Remote PowerShell. The group that you specify must already exist in your domain. If you don't
         # provide one, your AD domain's Domain Admins group is used.
+
         @[JSON::Field(key: "FileSystemAdministratorsGroup")]
         getter file_system_administrators_group : String?
 
@@ -6436,11 +7374,13 @@ module AwsSdk
         # example is OU=FSx,DC=yourdomain,DC=corp,DC=com . To learn more, see RFC 2253 . If none is provided,
         # the FSx file system is created in the default location of your self-managed AD directory. Only
         # Organizational Unit (OU) objects can be the direct parent of the file system that you're creating.
+
         @[JSON::Field(key: "OrganizationalUnitDistinguishedName")]
         getter organizational_unit_distinguished_name : String?
 
         # The password for the service account on your self-managed AD domain that Amazon FSx will use to join
         # to your AD domain.
+
         @[JSON::Field(key: "Password")]
         getter password : String?
 
@@ -6448,6 +7388,7 @@ module AwsSdk
         # join to your AD domain. This account must have the permission to join computers to the domain in the
         # organizational unit provided in OrganizationalUnitDistinguishedName , or in the default location of
         # your AD domain.
+
         @[JSON::Field(key: "UserName")]
         getter user_name : String?
 
@@ -6465,38 +7406,45 @@ module AwsSdk
 
       # Specifies changes you are making to the self-managed Microsoft Active Directory configuration to
       # which an FSx for Windows File Server file system or an FSx for ONTAP SVM is joined.
+
       struct SelfManagedActiveDirectoryConfigurationUpdates
         include JSON::Serializable
 
         # A list of up to three DNS server or domain controller IP addresses in your self-managed Active
         # Directory domain.
+
         @[JSON::Field(key: "DnsIps")]
         getter dns_ips : Array(String)?
 
         # Specifies the updated Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret
         # containing the self-managed Active Directory domain join service account credentials. Amazon FSx
         # uses this account to join to your self-managed Active Directory domain.
+
         @[JSON::Field(key: "DomainJoinServiceAccountSecret")]
         getter domain_join_service_account_secret : String?
 
         # Specifies an updated fully qualified domain name of your self-managed Active Directory
         # configuration.
+
         @[JSON::Field(key: "DomainName")]
         getter domain_name : String?
 
         # For FSx for ONTAP file systems only - Specifies the updated name of the self-managed Active
         # Directory domain group whose members are granted administrative privileges for the Amazon FSx
         # resource.
+
         @[JSON::Field(key: "FileSystemAdministratorsGroup")]
         getter file_system_administrators_group : String?
 
         # Specifies an updated fully qualified distinguished name of the organization unit within your
         # self-managed Active Directory.
+
         @[JSON::Field(key: "OrganizationalUnitDistinguishedName")]
         getter organizational_unit_distinguished_name : String?
 
         # Specifies the updated password for the service account on your self-managed Active Directory domain.
         # Amazon FSx uses this account to join to your self-managed Active Directory domain.
+
         @[JSON::Field(key: "Password")]
         getter password : String?
 
@@ -6504,6 +7452,7 @@ module AwsSdk
         # domain. Amazon FSx uses this account to join to your self-managed Active Directory domain. This
         # account must have the permissions required to join computers to the domain in the organizational
         # unit provided in OrganizationalUnitDistinguishedName .
+
         @[JSON::Field(key: "UserName")]
         getter user_name : String?
 
@@ -6521,12 +7470,15 @@ module AwsSdk
 
       # An error indicating that a particular service limit was exceeded. You can increase some service
       # limits by contacting Amazon Web Services Support.
+
       struct ServiceLimitExceeded
         include JSON::Serializable
 
         # Enumeration of the service limit that was exceeded.
+
         @[JSON::Field(key: "Limit")]
         getter limit : String
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6539,6 +7491,7 @@ module AwsSdk
       end
 
       # Specifies the SnapLock configuration for an FSx for ONTAP SnapLock volume.
+
       struct SnaplockConfiguration
         include JSON::Serializable
 
@@ -6546,11 +7499,13 @@ module AwsSdk
         # false . If you set AuditLogVolume to true , the SnapLock volume is created as an audit log volume.
         # The minimum retention period for an audit log volume is six months. For more information, see
         # SnapLock audit log volumes .
+
         @[JSON::Field(key: "AuditLogVolume")]
         getter audit_log_volume : Bool?
 
         # The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock
         # volume.
+
         @[JSON::Field(key: "AutocommitPeriod")]
         getter autocommit_period : Types::AutocommitPeriod?
 
@@ -6559,10 +7514,12 @@ module AwsSdk
         # (WORM) files even if they have active retention periods. PERMANENTLY_DISABLED is a terminal state.
         # If privileged delete is permanently disabled on a SnapLock volume, you can't re-enable it. The
         # default value is DISABLED . For more information, see Privileged delete .
+
         @[JSON::Field(key: "PrivilegedDelete")]
         getter privileged_delete : String?
 
         # Specifies the retention period of an FSx for ONTAP SnapLock volume.
+
         @[JSON::Field(key: "RetentionPeriod")]
         getter retention_period : Types::SnaplockRetentionPeriod?
 
@@ -6575,12 +7532,14 @@ module AwsSdk
         # retention periods expire using privileged delete. This retention mode is used to advance an
         # organization's data integrity and internal compliance or to test retention settings before using
         # SnapLock Compliance. For more information, see SnapLock Enterprise .
+
         @[JSON::Field(key: "SnaplockType")]
         getter snaplock_type : String?
 
         # Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. Volume-append mode
         # allows you to create WORM-appendable files and write data to them incrementally. The default value
         # is false . For more information, see Volume-append mode .
+
         @[JSON::Field(key: "VolumeAppendModeEnabled")]
         getter volume_append_mode_enabled : Bool?
 
@@ -6598,6 +7557,7 @@ module AwsSdk
       # The configuration to set the retention period of an FSx for ONTAP SnapLock volume. The retention
       # period includes default, maximum, and minimum settings. For more information, see Working with the
       # retention period in SnapLock .
+
       struct SnaplockRetentionPeriod
         include JSON::Serializable
 
@@ -6605,16 +7565,19 @@ module AwsSdk
         # retention period is not set for an FSx for ONTAP SnapLock volume. The default retention period must
         # be greater than or equal to the minimum retention period and less than or equal to the maximum
         # retention period.
+
         @[JSON::Field(key: "DefaultRetention")]
         getter default_retention : Types::RetentionPeriod
 
         # The longest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock
         # volume.
+
         @[JSON::Field(key: "MaximumRetention")]
         getter maximum_retention : Types::RetentionPeriod
 
         # The shortest retention period that can be assigned to a WORM file on an FSx for ONTAP SnapLock
         # volume.
+
         @[JSON::Field(key: "MinimumRetention")]
         getter minimum_retention : Types::RetentionPeriod
 
@@ -6627,13 +7590,16 @@ module AwsSdk
       end
 
       # A snapshot of an Amazon FSx for OpenZFS volume.
+
       struct Snapshot
         include JSON::Serializable
 
         # A list of administrative actions for the file system that are in process or waiting to be processed.
         # Administrative actions describe changes to the Amazon FSx system.
+
         @[JSON::Field(key: "AdministrativeActions")]
         getter administrative_actions : Array(Types::AdministrativeAction)?
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
@@ -6641,27 +7607,34 @@ module AwsSdk
         # The lifecycle status of the snapshot. PENDING - Amazon FSx hasn't started creating the snapshot.
         # CREATING - Amazon FSx is creating the snapshot. DELETING - Amazon FSx is deleting the snapshot.
         # AVAILABLE - The snapshot is fully available.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
+
 
         @[JSON::Field(key: "LifecycleTransitionReason")]
         getter lifecycle_transition_reason : Types::LifecycleTransitionReason?
 
         # The name of the snapshot.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The ID of the snapshot.
+
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The ID of the volume that the snapshot is of.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
@@ -6681,14 +7654,17 @@ module AwsSdk
 
       # A filter used to restrict the results of DescribeSnapshots calls. You can use multiple filters to
       # return results that meet all applied filter requirements.
+
       struct SnapshotFilter
         include JSON::Serializable
 
         # The name of the filter to use. You can filter by the file-system-id or by volume-id .
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The file-system-id or volume-id that you are filtering for.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -6700,8 +7676,10 @@ module AwsSdk
       end
 
       # No Amazon FSx snapshots were found based on the supplied parameters.
+
       struct SnapshotNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6713,11 +7691,14 @@ module AwsSdk
       end
 
       # The request was rejected because the lifecycle status of the source backup isn't AVAILABLE .
+
       struct SourceBackupUnavailable
         include JSON::Serializable
 
+
         @[JSON::Field(key: "BackupId")]
         getter backup_id : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6729,11 +7710,14 @@ module AwsSdk
         end
       end
 
+
       struct StartMisconfiguredStateRecoveryRequest
         include JSON::Serializable
 
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -6745,8 +7729,10 @@ module AwsSdk
         end
       end
 
+
       struct StartMisconfiguredStateRecoveryResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "FileSystem")]
         getter file_system : Types::FileSystem?
@@ -6758,20 +7744,25 @@ module AwsSdk
       end
 
       # Describes the Amazon FSx for NetApp ONTAP storage virtual machine (SVM) configuration.
+
       struct StorageVirtualMachine
         include JSON::Serializable
 
         # Describes the Microsoft Active Directory configuration to which the SVM is joined, if applicable.
+
         @[JSON::Field(key: "ActiveDirectoryConfiguration")]
         getter active_directory_configuration : Types::SvmActiveDirectoryConfiguration?
+
 
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
 
         # The endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST
         # API, or NetApp CloudManager. They are the Iscsi , Management , Nfs , and Smb endpoints.
+
         @[JSON::Field(key: "Endpoints")]
         getter endpoints : Types::SvmEndpoints?
+
 
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
@@ -6780,36 +7771,45 @@ module AwsSdk
         # Amazon FSx is creating the new SVM. DELETING - Amazon FSx is deleting an existing SVM. FAILED -
         # Amazon FSx was unable to create the SVM. MISCONFIGURED - The SVM is in a failed but recoverable
         # state. PENDING - Amazon FSx has not started creating the SVM.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # Describes why the SVM lifecycle state changed.
+
         @[JSON::Field(key: "LifecycleTransitionReason")]
         getter lifecycle_transition_reason : Types::LifecycleTransitionReason?
 
         # The name of the SVM, if provisioned.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
+
 
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
 
         # The security style of the root volume of the SVM.
+
         @[JSON::Field(key: "RootVolumeSecurityStyle")]
         getter root_volume_security_style : String?
 
         # The SVM's system generated unique ID.
+
         @[JSON::Field(key: "StorageVirtualMachineId")]
         getter storage_virtual_machine_id : String?
 
         # Describes the SVM's subtype.
+
         @[JSON::Field(key: "Subtype")]
         getter subtype : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The SVM's UUID (universally unique identifier).
+
         @[JSON::Field(key: "UUID")]
         getter uuid : String?
 
@@ -6834,14 +7834,17 @@ module AwsSdk
       # A filter used to restrict the results of describe calls for Amazon FSx for NetApp ONTAP storage
       # virtual machines (SVMs). You can use multiple filters to return results that meet all applied filter
       # requirements.
+
       struct StorageVirtualMachineFilter
         include JSON::Serializable
 
         # The name for this filter.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The values of the filter. These are all the values for any of the applied filters.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -6853,8 +7856,10 @@ module AwsSdk
       end
 
       # No FSx for ONTAP SVMs were found based upon the supplied parameters.
+
       struct StorageVirtualMachineNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -6868,12 +7873,15 @@ module AwsSdk
       # Describes the Microsoft Active Directory (AD) directory configuration to which the FSx for ONTAP
       # storage virtual machine (SVM) is joined. Note that account credentials are not returned in the
       # response payload.
+
       struct SvmActiveDirectoryConfiguration
         include JSON::Serializable
 
         # The NetBIOS name of the AD computer object to which the SVM is joined.
+
         @[JSON::Field(key: "NetBiosName")]
         getter net_bios_name : String?
+
 
         @[JSON::Field(key: "SelfManagedActiveDirectoryConfiguration")]
         getter self_managed_active_directory_configuration : Types::SelfManagedActiveDirectoryAttributes?
@@ -6888,17 +7896,21 @@ module AwsSdk
       # An Amazon FSx for NetApp ONTAP storage virtual machine (SVM) has four endpoints that are used to
       # access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They
       # are the Iscsi , Management , Nfs , and Smb endpoints.
+
       struct SvmEndpoint
         include JSON::Serializable
+
 
         @[JSON::Field(key: "DNSName")]
         getter dns_name : String?
 
         # The SVM endpoint's IPv4 addresses.
+
         @[JSON::Field(key: "IpAddresses")]
         getter ip_addresses : Array(String)?
 
         # The SVM endpoint's IPv6 addresses.
+
         @[JSON::Field(key: "Ipv6Addresses")]
         getter ipv6_addresses : Array(String)?
 
@@ -6913,22 +7925,27 @@ module AwsSdk
       # An Amazon FSx for NetApp ONTAP storage virtual machine (SVM) has the following endpoints that are
       # used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp
       # CloudManager.
+
       struct SvmEndpoints
         include JSON::Serializable
 
         # An endpoint for connecting using the Internet Small Computer Systems Interface (iSCSI) protocol.
+
         @[JSON::Field(key: "Iscsi")]
         getter iscsi : Types::SvmEndpoint?
 
         # An endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager.
+
         @[JSON::Field(key: "Management")]
         getter management : Types::SvmEndpoint?
 
         # An endpoint for connecting using the Network File System (NFS) protocol.
+
         @[JSON::Field(key: "Nfs")]
         getter nfs : Types::SvmEndpoint?
 
         # An endpoint for connecting using the Server Message Block (SMB) protocol.
+
         @[JSON::Field(key: "Smb")]
         getter smb : Types::SvmEndpoint?
 
@@ -6942,17 +7959,20 @@ module AwsSdk
       end
 
       # Specifies a key-value pair for a resource tag.
+
       struct Tag
         include JSON::Serializable
 
         # A value that specifies the TagKey , the name of the tag. Tag keys must be unique for the resource to
         # which they are attached.
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # A value that specifies the TagValue , the value assigned to the corresponding tag key. Tag values
         # can be null and don't have to be unique in a tag set. For example, you can have a key-value pair in
         # a tag set of finances : April and also of payroll : April .
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -6964,15 +7984,18 @@ module AwsSdk
       end
 
       # The request object for the TagResource operation.
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon FSx resource that you want to tag.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # A list of tags for the resource. If a tag with a given key already exists, the value is replaced by
         # the one specified in this parameter.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -6984,6 +8007,7 @@ module AwsSdk
       end
 
       # The response object for the TagResource operation.
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -6999,12 +8023,14 @@ module AwsSdk
       # patterns. ALL - moves all user data blocks in both the active file system and Snapshot copies to the
       # storage pool tier. NONE - keeps a volume's data in the primary storage tier, preventing it from
       # being moved to the capacity pool tier.
+
       struct TieringPolicy
         include JSON::Serializable
 
         # Specifies the number of days that user data in a volume must remain inactive before it is considered
         # "cold" and moved to the capacity pool. Used with the AUTO and SNAPSHOT_ONLY tiering policies. Enter
         # a whole number between 2 and 183. Default values are 31 days for AUTO and 2 days for SNAPSHOT_ONLY .
+
         @[JSON::Field(key: "CoolingPeriod")]
         getter cooling_period : Int32?
 
@@ -7013,6 +8039,7 @@ module AwsSdk
         # to the capacity pool storage tier based on your access patterns. ALL - moves all user data blocks in
         # both the active file system and Snapshot copies to the storage pool tier. NONE - keeps a volume's
         # data in the primary storage tier, preventing it from being moved to the capacity pool tier.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -7026,13 +8053,16 @@ module AwsSdk
       # You have reached the maximum number of S3 access points attachments allowed for your account in this
       # Amazon Web Services Region, or for the file system. For more information, or to request an increase,
       # see Service quotas on FSx resources in the FSx for OpenZFS User Guide.
+
       struct TooManyAccessPoints
         include JSON::Serializable
 
         # An error code indicating that you have reached the maximum number of S3 access points attachments
         # allowed for your account in this Amazon Web Services Region, or for the file system.
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7045,8 +8075,10 @@ module AwsSdk
       end
 
       # The requested operation is not supported for this resource or API.
+
       struct UnsupportedOperation
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -7058,15 +8090,18 @@ module AwsSdk
       end
 
       # The request object for UntagResource action.
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The ARN of the Amazon FSx resource to untag.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # A list of keys of tags on the resource to untag. In case the tag key doesn't exist, the call will
         # still succeed to be idempotent.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -7078,6 +8113,7 @@ module AwsSdk
       end
 
       # The response object for UntagResource action.
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -7085,12 +8121,15 @@ module AwsSdk
         end
       end
 
+
       struct UpdateDataRepositoryAssociationRequest
         include JSON::Serializable
 
         # The ID of the data repository association that you are updating.
+
         @[JSON::Field(key: "AssociationId")]
         getter association_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -7100,6 +8139,7 @@ module AwsSdk
         # single file can be striped across is limited by the total number of disks that make up the file
         # system. The default chunk size is 1,024 MiB (1 GiB) and can go as high as 512,000 MiB (500 GiB).
         # Amazon S3 objects have a maximum size of 5 TB.
+
         @[JSON::Field(key: "ImportedFileChunkSize")]
         getter imported_file_chunk_size : Int32?
 
@@ -7107,6 +8147,7 @@ module AwsSdk
         # data repository association. The configuration defines which file events (new, changed, or deleted
         # files or directories) are automatically imported from the linked data repository to the file system
         # or automatically exported from the file system to the data repository.
+
         @[JSON::Field(key: "S3")]
         getter s3 : Types::S3DataRepositoryConfiguration?
 
@@ -7119,10 +8160,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateDataRepositoryAssociationResponse
         include JSON::Serializable
 
         # The response object returned after the data repository association is updated.
+
         @[JSON::Field(key: "Association")]
         getter association : Types::DataRepositoryAssociation?
 
@@ -7133,8 +8176,10 @@ module AwsSdk
       end
 
       # The configuration update for an Amazon File Cache resource.
+
       struct UpdateFileCacheLustreConfiguration
         include JSON::Serializable
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -7145,17 +8190,21 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFileCacheRequest
         include JSON::Serializable
 
         # The ID of the cache that you are updating.
+
         @[JSON::Field(key: "FileCacheId")]
         getter file_cache_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The configuration updates for an Amazon File Cache resource.
+
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::UpdateFileCacheLustreConfiguration?
 
@@ -7167,10 +8216,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateFileCacheResponse
         include JSON::Serializable
 
         # A description of the cache that was updated.
+
         @[JSON::Field(key: "FileCache")]
         getter file_cache : Types::FileCache?
 
@@ -7182,6 +8233,7 @@ module AwsSdk
 
       # The configuration object for Amazon FSx for Lustre file systems used in the UpdateFileSystem
       # operation.
+
       struct UpdateFileSystemLustreConfiguration
         include JSON::Serializable
 
@@ -7199,13 +8251,16 @@ module AwsSdk
         # added to the S3 bucket, any existing objects that are changed in the S3 bucket, and any objects that
         # were deleted in the S3 bucket. This parameter is not supported for file systems with a data
         # repository association.
+
         @[JSON::Field(key: "AutoImportPolicy")]
         getter auto_import_policy : String?
 
         # The number of days to retain automatic backups. Setting this property to 0 disables automatic
         # backups. You can retain automatic backups for a maximum of 90 days. The default is 0 .
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
@@ -7214,23 +8269,27 @@ module AwsSdk
         # following values: NONE - Data compression is turned off for the file system. LZ4 - Data compression
         # is turned on with the LZ4 algorithm. If you don't use DataCompressionType , the file system retains
         # its current data compression configuration. For more information, see Lustre data compression .
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # Specifies the optional provisioned SSD read cache on Amazon FSx for Lustre file systems that use the
         # Intelligent-Tiering storage class.
+
         @[JSON::Field(key: "DataReadCacheConfiguration")]
         getter data_read_cache_configuration : Types::LustreReadCacheConfiguration?
 
         # The Lustre logging configuration used when updating an Amazon FSx for Lustre file system. When
         # logging is enabled, Lustre logs error and warning events for data repositories associated with your
         # file system to Amazon CloudWatch Logs.
+
         @[JSON::Field(key: "LogConfiguration")]
         getter log_configuration : Types::LustreLogCreateConfiguration?
 
         # The Lustre metadata performance configuration for an Amazon FSx for Lustre file system using a
         # PERSISTENT_2 deployment type. When this configuration is enabled, the file system supports
         # increasing metadata performance.
+
         @[JSON::Field(key: "MetadataConfiguration")]
         getter metadata_configuration : Types::UpdateFileSystemLustreMetadataConfiguration?
 
@@ -7240,23 +8299,27 @@ module AwsSdk
         # SSD-based deployment types, valid values are 50, 100, and 200 MB/s/TiB. For PERSISTENT_2 SSD-based
         # deployment types, valid values are 125, 250, 500, and 1000 MB/s/TiB. For more information, see
         # Managing throughput capacity .
+
         @[JSON::Field(key: "PerUnitStorageThroughput")]
         getter per_unit_storage_throughput : Int32?
 
         # The Lustre root squash configuration used when updating an Amazon FSx for Lustre file system. When
         # enabled, root squash restricts root-level access from clients that try to access your file system as
         # a root user.
+
         @[JSON::Field(key: "RootSquashConfiguration")]
         getter root_squash_configuration : Types::LustreRootSquashConfiguration?
 
         # The throughput of an Amazon FSx for Lustre file system using an Intelligent-Tiering storage class,
         # measured in megabytes per second (MBps). You can only increase your file system's throughput. Valid
         # values are 4000 MBps or multiples of 4000 MBps.
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
         # (Optional) The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time
         # zone. d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.
+
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
 
@@ -7280,6 +8343,7 @@ module AwsSdk
       # a PERSISTENT_2 deployment type. You can request an increase in your file system's Metadata IOPS
       # and/or switch your file system's metadata configuration mode. For more information, see Managing
       # metadata performance in the Amazon FSx for Lustre User Guide .
+
       struct UpdateFileSystemLustreMetadataConfiguration
         include JSON::Serializable
 
@@ -7288,6 +8352,7 @@ module AwsSdk
         # up to a maximum of 192000 . For Intelligent-Tiering file systems, valid values are 6000 and 12000 .
         # The value you provide must be greater than or equal to the current number of Metadata IOPS
         # provisioned for the file system.
+
         @[JSON::Field(key: "Iops")]
         getter iops : Int32?
 
@@ -7301,6 +8366,7 @@ module AwsSdk
         # greater than the automated default, FSx for Lustre rejects the request because downscaling Metadata
         # IOPS is not supported. AUTOMATIC mode is not supported on Intelligent-Tiering file systems. For
         # Intelligent-Tiering file systems, use USER_PROVISIONED mode.
+
         @[JSON::Field(key: "Mode")]
         getter mode : String?
 
@@ -7312,16 +8378,20 @@ module AwsSdk
       end
 
       # The configuration updates for an Amazon FSx for NetApp ONTAP file system.
+
       struct UpdateFileSystemOntapConfiguration
         include JSON::Serializable
 
         # (Multi-AZ only) A list of IDs of new virtual private cloud (VPC) route tables to associate (add)
         # with your Amazon FSx for NetApp ONTAP file system.
+
         @[JSON::Field(key: "AddRouteTableIds")]
         getter add_route_table_ids : Array(String)?
 
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
+
 
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
@@ -7331,6 +8401,7 @@ module AwsSdk
         # per GB of storage. The configuration consists of an IOPS mode ( AUTOMATIC or USER_PROVISIONED ), and
         # in the case of USER_PROVISIONED IOPS, the total number of SSD IOPS provisioned. For more
         # information, see File system storage capacity and IOPS .
+
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
@@ -7339,12 +8410,14 @@ module AwsSdk
         # available /118 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpv6AddressRange")]
         getter endpoint_ipv6_address_range : String?
 
         # Update the password for the fsxadmin user by entering a new password. You use the fsxadmin user to
         # access the NetApp ONTAP CLI and REST API to manage your file system resources. For more information,
         # see Managing resources using NetApp Application .
+
         @[JSON::Field(key: "FsxAdminPassword")]
         getter fsx_admin_password : String?
 
@@ -7354,12 +8427,14 @@ module AwsSdk
         # High-availability (HA) pairs in the FSx for ONTAP user guide. Block storage protocol support (iSCSI
         # and NVMe over TCP) is disabled on file systems with more than 6 HA pairs. For more information, see
         # Using block storage protocols .
+
         @[JSON::Field(key: "HAPairs")]
         getter ha_pairs : Int32?
 
         # (Multi-AZ only) A list of IDs of existing virtual private cloud (VPC) route tables to disassociate
         # (remove) from your Amazon FSx for NetApp ONTAP file system. You can use the API operation to
         # retrieve the list of VPC route table IDs for a file system.
+
         @[JSON::Field(key: "RemoveRouteTableIds")]
         getter remove_route_table_ids : Array(String)?
 
@@ -7369,6 +8444,7 @@ module AwsSdk
         # The value of ThroughputCapacity and ThroughputCapacityPerHAPair are not the same value. The value of
         # ThroughputCapacity when divided by the value of HAPairs is outside of the valid range for
         # ThroughputCapacity .
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
@@ -7382,8 +8458,10 @@ module AwsSdk
         # the same value for file systems with one HA pair. The value of deployment type is SINGLE_AZ_2 and
         # ThroughputCapacity / ThroughputCapacityPerHAPair is not a valid HA pair (a value between 1 and 12).
         # The value of ThroughputCapacityPerHAPair is not a valid value.
+
         @[JSON::Field(key: "ThroughputCapacityPerHAPair")]
         getter throughput_capacity_per_ha_pair : Int32?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -7405,13 +8483,16 @@ module AwsSdk
       end
 
       # The configuration updates for an Amazon FSx for OpenZFS file system.
+
       struct UpdateFileSystemOpenZFSConfiguration
         include JSON::Serializable
 
         # (Multi-AZ only) A list of IDs of new virtual private cloud (VPC) route tables to associate (add)
         # with your Amazon FSx for OpenZFS file system.
+
         @[JSON::Field(key: "AddRouteTableIds")]
         getter add_route_table_ids : Array(String)?
+
 
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
@@ -7422,6 +8503,7 @@ module AwsSdk
         # specify one or more tags, only the specified tags are copied to backups. If you specify one or more
         # tags when creating a user-initiated backup, no tags are copied from the file system, regardless of
         # this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
@@ -7430,11 +8512,14 @@ module AwsSdk
         # user doesn't specify tags. If this value is true and you specify one or more tags, only the
         # specified tags are copied to snapshots. If you specify one or more tags when creating the snapshot,
         # no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToVolumes")]
         getter copy_tags_to_volumes : Bool?
 
+
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
+
 
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
@@ -7444,17 +8529,20 @@ module AwsSdk
         # available /118 IP address range for you from one of the VPC's CIDR ranges. You can have overlapping
         # endpoint IP addresses for file systems deployed in the same VPC/route tables, as long as they don't
         # overlap with any subnet.
+
         @[JSON::Field(key: "EndpointIpv6AddressRange")]
         getter endpoint_ipv6_address_range : String?
 
         # The configuration for the optional provisioned SSD read cache on file systems that use the
         # Intelligent-Tiering storage class.
+
         @[JSON::Field(key: "ReadCacheConfiguration")]
         getter read_cache_configuration : Types::OpenZFSReadCacheConfiguration?
 
         # (Multi-AZ only) A list of IDs of existing virtual private cloud (VPC) route tables to disassociate
         # (remove) from your Amazon FSx for OpenZFS file system. You can use the API operation to retrieve the
         # list of VPC route table IDs for a file system.
+
         @[JSON::Field(key: "RemoveRouteTableIds")]
         getter remove_route_table_ids : Array(String)?
 
@@ -7462,8 +8550,10 @@ module AwsSdk
         # (MB/s). Valid values depend on the DeploymentType you choose, as follows: For MULTI_AZ_1 and
         # SINGLE_AZ_2 , valid values are 160, 320, 640, 1280, 2560, 3840, 5120, 7680, or 10240 MB/s. For
         # SINGLE_AZ_1 , valid values are 64, 128, 256, 512, 1024, 2048, 3072, or 4096 MB/s.
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
+
 
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
@@ -7485,35 +8575,43 @@ module AwsSdk
       end
 
       # The request object for the UpdateFileSystem operation.
+
       struct UpdateFileSystemRequest
         include JSON::Serializable
 
         # The ID of the file system that you are updating.
+
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String
 
         # A string of up to 63 ASCII characters that Amazon FSx uses to ensure idempotent updates. This string
         # is automatically filled on your behalf when you use the Command Line Interface (CLI) or an Amazon
         # Web Services SDK.
+
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # The Lustre version you are updating an FSx for Lustre file system to. Valid values are 2.12 and 2.15
         # . The value you choose must be newer than the file system's current Lustre version.
+
         @[JSON::Field(key: "FileSystemTypeVersion")]
         getter file_system_type_version : String?
+
 
         @[JSON::Field(key: "LustreConfiguration")]
         getter lustre_configuration : Types::UpdateFileSystemLustreConfiguration?
 
         # Changes the network type of an FSx for OpenZFS file system.
+
         @[JSON::Field(key: "NetworkType")]
         getter network_type : String?
+
 
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::UpdateFileSystemOntapConfiguration?
 
         # The configuration updates for an FSx for OpenZFS file system.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::UpdateFileSystemOpenZFSConfiguration?
 
@@ -7539,13 +8637,16 @@ module AwsSdk
         # value. When decreasing storage capacity on second-generation file systems, the target value must be
         # at least 9 percent smaller than the current SSD storage capacity. For more information, see File
         # system storage capacity and IOPS in the Amazon FSx for NetApp ONTAP User Guide.
+
         @[JSON::Field(key: "StorageCapacity")]
         getter storage_capacity : Int32?
+
 
         @[JSON::Field(key: "StorageType")]
         getter storage_type : String?
 
         # The configuration updates for an Amazon FSx for Windows File Server file system.
+
         @[JSON::Field(key: "WindowsConfiguration")]
         getter windows_configuration : Types::UpdateFileSystemWindowsConfiguration?
 
@@ -7565,10 +8666,12 @@ module AwsSdk
       end
 
       # The response object for the UpdateFileSystem operation.
+
       struct UpdateFileSystemResponse
         include JSON::Serializable
 
         # A description of the file system that was updated.
+
         @[JSON::Field(key: "FileSystem")]
         getter file_system : Types::FileSystem?
 
@@ -7580,21 +8683,25 @@ module AwsSdk
 
       # Updates the configuration for an existing Amazon FSx for Windows File Server file system. Amazon FSx
       # only overwrites existing properties with non-null values provided in the request.
+
       struct UpdateFileSystemWindowsConfiguration
         include JSON::Serializable
 
         # The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of
         # files, folders, and file shares on the Amazon FSx for Windows File Server file system..
+
         @[JSON::Field(key: "AuditLogConfiguration")]
         getter audit_log_configuration : Types::WindowsAuditLogCreateConfiguration?
 
         # The number of days to retain automatic backups. Setting this property to 0 disables automatic
         # backups. You can retain automatic backups for a maximum of 90 days. The default is 30 . For more
         # information, see Working with Automatic Daily Backups .
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
 
         # The preferred time to start the daily automatic backup, in the UTC time zone, for example, 02:00
+
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
 
@@ -7602,17 +8709,20 @@ module AwsSdk
         # system. By default, Amazon FSx automatically provisions 3 IOPS per GiB of storage capacity. You can
         # provision additional IOPS per GiB of storage, up to the maximum limit associated with your chosen
         # throughput capacity.
+
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
         # The File Server Resource Manager (FSRM) configuration that Amazon FSx for Windows File Server uses
         # for the file system. FSRM is disabled by default.
+
         @[JSON::Field(key: "FsrmConfiguration")]
         getter fsrm_configuration : Types::WindowsFsrmConfiguration?
 
         # The configuration Amazon FSx uses to join the Windows File Server instance to the self-managed
         # Microsoft AD directory. You cannot make a self-managed Microsoft AD update request if there is an
         # existing self-managed Microsoft AD update request in progress.
+
         @[JSON::Field(key: "SelfManagedActiveDirectoryConfiguration")]
         getter self_managed_active_directory_configuration : Types::SelfManagedActiveDirectoryConfigurationUpdates?
 
@@ -7620,11 +8730,13 @@ module AwsSdk
         # file system to. Valid values are 8, 16, 32, 64, 128, 256, 512, 1024, 2048. You cannot make a
         # throughput capacity update request if there is an existing throughput capacity update request in
         # progress. For more information, see Managing Throughput Capacity .
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
         # The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone.
         # Where d is the weekday number, from 1 through 7, with 1 = Monday and 7 = Sunday.
+
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
 
@@ -7642,6 +8754,7 @@ module AwsSdk
       end
 
       # Used to specify changes to the ONTAP configuration for the volume you are updating.
+
       struct UpdateOntapVolumeConfiguration
         include JSON::Serializable
 
@@ -7650,28 +8763,34 @@ module AwsSdk
         # user-initiated backups where the user doesn't specify tags. If this value is true, and you specify
         # one or more tags, only the specified tags are copied to backups. If you specify one or more tags
         # when creating a user-initiated backup, no tags are copied from the volume, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
         # Specifies the location in the SVM's namespace where the volume is mounted. The JunctionPath must
         # have a leading forward slash, such as /vol3 .
+
         @[JSON::Field(key: "JunctionPath")]
         getter junction_path : String?
 
         # The security style for the volume, which can be UNIX , NTFS , or MIXED .
+
         @[JSON::Field(key: "SecurityStyle")]
         getter security_style : String?
 
         # The configured size of the volume, in bytes.
+
         @[JSON::Field(key: "SizeInBytes")]
         getter size_in_bytes : Int64?
 
         # Specifies the size of the volume in megabytes.
+
         @[JSON::Field(key: "SizeInMegabytes")]
         getter size_in_megabytes : Int32?
 
         # The configuration object for updating the SnapLock configuration of an FSx for ONTAP SnapLock
         # volume.
+
         @[JSON::Field(key: "SnaplockConfiguration")]
         getter snaplock_configuration : Types::UpdateSnaplockConfiguration?
 
@@ -7684,15 +8803,18 @@ module AwsSdk
         # prevent automatic snapshots from being taken. You can also provide the name of a custom policy that
         # you created with the ONTAP CLI or REST API. For more information, see Snapshot policies in the
         # Amazon FSx for NetApp ONTAP User Guide .
+
         @[JSON::Field(key: "SnapshotPolicy")]
         getter snapshot_policy : String?
 
         # Default is false . Set to true to enable the deduplication, compression, and compaction storage
         # efficiency features on the volume.
+
         @[JSON::Field(key: "StorageEfficiencyEnabled")]
         getter storage_efficiency_enabled : Bool?
 
         # Update the volume's data tiering policy.
+
         @[JSON::Field(key: "TieringPolicy")]
         getter tiering_policy : Types::TieringPolicy?
 
@@ -7711,6 +8833,7 @@ module AwsSdk
       end
 
       # Used to specify changes to the OpenZFS configuration for the volume that you are updating.
+
       struct UpdateOpenZFSVolumeConfiguration
         include JSON::Serializable
 
@@ -7720,14 +8843,17 @@ module AwsSdk
         # provides a better compression ratio to minimize on-disk storage utilization. LZ4 - Compresses the
         # data in the volume using the LZ4 compression algorithm. Compared to Z-Standard, LZ4 is less
         # compute-intensive and delivers higher write throughput speeds.
+
         @[JSON::Field(key: "DataCompressionType")]
         getter data_compression_type : String?
 
         # The configuration object for mounting a Network File System (NFS) file system.
+
         @[JSON::Field(key: "NfsExports")]
         getter nfs_exports : Array(Types::OpenZFSNfsExport)?
 
         # A Boolean value indicating whether the volume is read-only.
+
         @[JSON::Field(key: "ReadOnly")]
         getter read_only : Bool?
 
@@ -7736,22 +8862,26 @@ module AwsSdk
         # size. Database workflows can benefit from a smaller record size, while streaming workflows can
         # benefit from a larger record size. For additional guidance on when to set a custom record size, see
         # Tips for maximizing performance in the Amazon FSx for OpenZFS User Guide .
+
         @[JSON::Field(key: "RecordSizeKiB")]
         getter record_size_ki_b : Int32?
 
         # The maximum amount of storage in gibibytes (GiB) that the volume can use from its parent. You can
         # specify a quota larger than the storage on the parent volume. You can specify a value of -1 to unset
         # a volume's storage capacity quota.
+
         @[JSON::Field(key: "StorageCapacityQuotaGiB")]
         getter storage_capacity_quota_gi_b : Int32?
 
         # The amount of storage in gibibytes (GiB) to reserve from the parent volume. You can't reserve more
         # storage than the parent volume has reserved. You can specify a value of -1 to unset a volume's
         # storage capacity reservation.
+
         @[JSON::Field(key: "StorageCapacityReservationGiB")]
         getter storage_capacity_reservation_gi_b : Int32?
 
         # An object specifying how much storage users or groups can use on the volume.
+
         @[JSON::Field(key: "UserAndGroupQuotas")]
         getter user_and_group_quotas : Array(Types::OpenZFSUserOrGroupQuota)?
 
@@ -7767,14 +8897,17 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSharedVpcConfigurationRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Specifies whether participant accounts can create FSx for ONTAP Multi-AZ file systems in shared
         # subnets. Set to true to enable or false to disable.
+
         @[JSON::Field(key: "EnableFsxRouteTableUpdatesFromParticipantAccounts")]
         getter enable_fsx_route_table_updates_from_participant_accounts : String?
 
@@ -7785,11 +8918,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSharedVpcConfigurationResponse
         include JSON::Serializable
 
         # Indicates whether participant accounts can create FSx for ONTAP Multi-AZ file systems in shared
         # subnets.
+
         @[JSON::Field(key: "EnableFsxRouteTableUpdatesFromParticipantAccounts")]
         getter enable_fsx_route_table_updates_from_participant_accounts : String?
 
@@ -7800,6 +8935,7 @@ module AwsSdk
       end
 
       # Updates the SnapLock configuration for an existing FSx for ONTAP volume.
+
       struct UpdateSnaplockConfiguration
         include JSON::Serializable
 
@@ -7807,11 +8943,13 @@ module AwsSdk
         # false . If you set AuditLogVolume to true , the SnapLock volume is created as an audit log volume.
         # The minimum retention period for an audit log volume is six months. For more information, see
         # SnapLock audit log volumes .
+
         @[JSON::Field(key: "AuditLogVolume")]
         getter audit_log_volume : Bool?
 
         # The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock
         # volume.
+
         @[JSON::Field(key: "AutocommitPeriod")]
         getter autocommit_period : Types::AutocommitPeriod?
 
@@ -7820,16 +8958,19 @@ module AwsSdk
         # (WORM) files even if they have active retention periods. PERMANENTLY_DISABLED is a terminal state.
         # If privileged delete is permanently disabled on a SnapLock volume, you can't re-enable it. The
         # default value is DISABLED . For more information, see Privileged delete .
+
         @[JSON::Field(key: "PrivilegedDelete")]
         getter privileged_delete : String?
 
         # Specifies the retention period of an FSx for ONTAP SnapLock volume.
+
         @[JSON::Field(key: "RetentionPeriod")]
         getter retention_period : Types::SnaplockRetentionPeriod?
 
         # Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. Volume-append mode
         # allows you to create WORM-appendable files and write data to them incrementally. The default value
         # is false . For more information, see Volume-append mode .
+
         @[JSON::Field(key: "VolumeAppendModeEnabled")]
         getter volume_append_mode_enabled : Bool?
 
@@ -7843,16 +8984,20 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSnapshotRequest
         include JSON::Serializable
 
         # The name of the snapshot to update.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The ID of the snapshot that you want to update, in the format fsvolsnap-0123456789abcdef0 .
+
         @[JSON::Field(key: "SnapshotId")]
         getter snapshot_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -7865,10 +9010,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSnapshotResponse
         include JSON::Serializable
 
         # Returned after a successful UpdateSnapshot operation, describing the snapshot that you updated.
+
         @[JSON::Field(key: "Snapshot")]
         getter snapshot : Types::Snapshot?
 
@@ -7878,21 +9025,26 @@ module AwsSdk
         end
       end
 
+
       struct UpdateStorageVirtualMachineRequest
         include JSON::Serializable
 
         # The ID of the SVM that you want to update, in the format svm-0123456789abcdef0 .
+
         @[JSON::Field(key: "StorageVirtualMachineId")]
         getter storage_virtual_machine_id : String
 
         # Specifies updates to an SVM's Microsoft Active Directory (AD) configuration.
+
         @[JSON::Field(key: "ActiveDirectoryConfiguration")]
         getter active_directory_configuration : Types::UpdateSvmActiveDirectoryConfiguration?
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
 
         # Specifies a new SvmAdminPassword.
+
         @[JSON::Field(key: "SvmAdminPassword")]
         getter svm_admin_password : String?
 
@@ -7905,8 +9057,10 @@ module AwsSdk
         end
       end
 
+
       struct UpdateStorageVirtualMachineResponse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "StorageVirtualMachine")]
         getter storage_virtual_machine : Types::StorageVirtualMachine?
@@ -7919,12 +9073,15 @@ module AwsSdk
 
       # Specifies updates to an FSx for ONTAP storage virtual machine's (SVM) Microsoft Active Directory
       # (AD) configuration. Note that account credentials are not returned in the response payload.
+
       struct UpdateSvmActiveDirectoryConfiguration
         include JSON::Serializable
 
         # Specifies an updated NetBIOS name of the AD computer object NetBiosName to which an SVM is joined.
+
         @[JSON::Field(key: "NetBiosName")]
         getter net_bios_name : String?
+
 
         @[JSON::Field(key: "SelfManagedActiveDirectoryConfiguration")]
         getter self_managed_active_directory_configuration : Types::SelfManagedActiveDirectoryConfigurationUpdates?
@@ -7936,12 +9093,15 @@ module AwsSdk
         end
       end
 
+
       struct UpdateVolumeRequest
         include JSON::Serializable
 
         # The ID of the volume that you want to update, in the format fsvol-0123456789abcdef0 .
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String
+
 
         @[JSON::Field(key: "ClientRequestToken")]
         getter client_request_token : String?
@@ -7949,14 +9109,17 @@ module AwsSdk
         # The name of the OpenZFS volume. OpenZFS root volumes are automatically named FSX . Child volume
         # names must be unique among their parent volume's children. The name of the volume is part of the
         # mount string for the OpenZFS volume.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The configuration of the ONTAP volume that you are updating.
+
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::UpdateOntapVolumeConfiguration?
 
         # The configuration of the OpenZFS volume that you are updating.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::UpdateOpenZFSVolumeConfiguration?
 
@@ -7970,10 +9133,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateVolumeResponse
         include JSON::Serializable
 
         # A description of the volume just updated. Returned after a successful UpdateVolume API operation.
+
         @[JSON::Field(key: "Volume")]
         getter volume : Types::Volume?
 
@@ -7984,17 +9149,21 @@ module AwsSdk
       end
 
       # Describes an Amazon FSx volume.
+
       struct Volume
         include JSON::Serializable
 
         # A list of administrative actions for the volume that are in process or waiting to be processed.
         # Administrative actions describe changes to the volume that you have initiated using the UpdateVolume
         # action.
+
         @[JSON::Field(key: "AdministrativeActions")]
         getter administrative_actions : Array(Types::AdministrativeAction)?
 
+
         @[JSON::Field(key: "CreationTime", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter creation_time : Time?
+
 
         @[JSON::Field(key: "FileSystemId")]
         getter file_system_id : String?
@@ -8004,35 +9173,44 @@ module AwsSdk
         # deleting an existing volume. FAILED - Amazon FSx was unable to create the volume. MISCONFIGURED -
         # The volume is in a failed but recoverable state. PENDING - Amazon FSx hasn't started creating the
         # volume.
+
         @[JSON::Field(key: "Lifecycle")]
         getter lifecycle : String?
 
         # The reason why the volume lifecycle status changed.
+
         @[JSON::Field(key: "LifecycleTransitionReason")]
         getter lifecycle_transition_reason : Types::LifecycleTransitionReason?
 
         # The name of the volume.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
+
 
         @[JSON::Field(key: "OntapConfiguration")]
         getter ontap_configuration : Types::OntapVolumeConfiguration?
 
         # The configuration of an Amazon FSx for OpenZFS volume.
+
         @[JSON::Field(key: "OpenZFSConfiguration")]
         getter open_zfs_configuration : Types::OpenZFSVolumeConfiguration?
 
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String?
+
 
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # The system-generated, unique ID of the volume.
+
         @[JSON::Field(key: "VolumeId")]
         getter volume_id : String?
 
         # The type of the volume.
+
         @[JSON::Field(key: "VolumeType")]
         getter volume_type : String?
 
@@ -8056,14 +9234,17 @@ module AwsSdk
       # A filter used to restrict the results of describe calls for Amazon FSx for NetApp ONTAP or Amazon
       # FSx for OpenZFS volumes. You can use multiple filters to return results that meet all applied filter
       # requirements.
+
       struct VolumeFilter
         include JSON::Serializable
 
         # The name for this filter.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The values of the filter. These are all the values for any of the applied filters.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)?
 
@@ -8075,8 +9256,10 @@ module AwsSdk
       end
 
       # No Amazon FSx volumes were found based upon the supplied parameters.
+
       struct VolumeNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -8090,6 +9273,7 @@ module AwsSdk
       # The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of
       # files, folders, and file shares on the Amazon FSx for Windows File Server file system. For more
       # information, see File access auditing .
+
       struct WindowsAuditLogConfiguration
         include JSON::Serializable
 
@@ -8098,6 +9282,7 @@ module AwsSdk
         # access files or folders are logged. SUCCESS_AND_FAILURE - both successful attempts and failed
         # attempts to access files or folders are logged. DISABLED - access auditing of files and folders is
         # turned off.
+
         @[JSON::Field(key: "FileAccessAuditLogLevel")]
         getter file_access_audit_log_level : String
 
@@ -8105,6 +9290,7 @@ module AwsSdk
         # successful attempts to access file shares are logged. FAILURE_ONLY - only failed attempts to access
         # file shares are logged. SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access
         # file shares are logged. DISABLED - access auditing of file shares is turned off.
+
         @[JSON::Field(key: "FileShareAccessAuditLogLevel")]
         getter file_share_access_audit_log_level : String
 
@@ -8115,6 +9301,7 @@ module AwsSdk
         # (either CloudWatch Logs log group or Kinesis Data Firehose delivery stream) must be in the same
         # Amazon Web Services partition, Amazon Web Services Region, and Amazon Web Services account as your
         # Amazon FSx file system.
+
         @[JSON::Field(key: "AuditLogDestination")]
         getter audit_log_destination : String?
 
@@ -8128,6 +9315,7 @@ module AwsSdk
 
       # The Windows file access auditing configuration used when creating or updating an Amazon FSx for
       # Windows File Server file system.
+
       struct WindowsAuditLogCreateConfiguration
         include JSON::Serializable
 
@@ -8136,6 +9324,7 @@ module AwsSdk
         # access files or folders are logged. SUCCESS_AND_FAILURE - both successful attempts and failed
         # attempts to access files or folders are logged. DISABLED - access auditing of files and folders is
         # turned off.
+
         @[JSON::Field(key: "FileAccessAuditLogLevel")]
         getter file_access_audit_log_level : String
 
@@ -8143,6 +9332,7 @@ module AwsSdk
         # successful attempts to access file shares are logged. FAILURE_ONLY - only failed attempts to access
         # file shares are logged. SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access
         # file shares are logged. DISABLED - access auditing of file shares is turned off.
+
         @[JSON::Field(key: "FileShareAccessAuditLogLevel")]
         getter file_share_access_audit_log_level : String
 
@@ -8158,6 +9348,7 @@ module AwsSdk
         # the request will fail with a BadRequest error. If FileAccessAuditLogLevel and
         # FileShareAccessAuditLogLevel are both set to DISABLED , you cannot specify a destination in
         # AuditLogDestination .
+
         @[JSON::Field(key: "AuditLogDestination")]
         getter audit_log_destination : String?
 
@@ -8170,24 +9361,29 @@ module AwsSdk
       end
 
       # The configuration for this Microsoft Windows file system.
+
       struct WindowsFileSystemConfiguration
         include JSON::Serializable
 
         # The ID for an existing Amazon Web Services Managed Microsoft Active Directory instance that the file
         # system is joined to.
+
         @[JSON::Field(key: "ActiveDirectoryId")]
         getter active_directory_id : String?
+
 
         @[JSON::Field(key: "Aliases")]
         getter aliases : Array(Types::Alias)?
 
         # The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of
         # files, folders, and file shares on the Amazon FSx for Windows File Server file system.
+
         @[JSON::Field(key: "AuditLogConfiguration")]
         getter audit_log_configuration : Types::WindowsAuditLogConfiguration?
 
         # The number of days to retain automatic backups. Setting this to 0 disables automatic backups. You
         # can retain automatic backups for a maximum of 90 days.
+
         @[JSON::Field(key: "AutomaticBackupRetentionDays")]
         getter automatic_backup_retention_days : Int32?
 
@@ -8197,10 +9393,12 @@ module AwsSdk
         # true, and you specify one or more tags, only the specified tags are copied to backups. If you
         # specify one or more tags when creating a user-initiated backup, no tags are copied from the file
         # system, regardless of this value.
+
         @[JSON::Field(key: "CopyTagsToBackups")]
         getter copy_tags_to_backups : Bool?
 
         # The preferred time to take daily automatic backups, in the UTC time zone.
+
         @[JSON::Field(key: "DailyAutomaticBackupStartTime")]
         getter daily_automatic_backup_start_time : String?
 
@@ -8211,6 +9409,7 @@ module AwsSdk
         # SINGLE_AZ_2 - Latest generation Single AZ file system. Specifies a file system that is configured
         # for single AZ redundancy and supports SSD and HDD storage. For more information, see Single-AZ and
         # Multi-AZ File Systems .
+
         @[JSON::Field(key: "DeploymentType")]
         getter deployment_type : String?
 
@@ -8218,15 +9417,18 @@ module AwsSdk
         # system. By default, Amazon FSx automatically provisions 3 IOPS per GiB of storage capacity. You can
         # provision additional IOPS per GiB of storage, up to the maximum limit associated with your chosen
         # throughput capacity.
+
         @[JSON::Field(key: "DiskIopsConfiguration")]
         getter disk_iops_configuration : Types::DiskIopsConfiguration?
 
         # The File Server Resource Manager (FSRM) configuration that Amazon FSx for Windows File Server uses
         # for the file system. FSRM is disabled by default.
+
         @[JSON::Field(key: "FsrmConfiguration")]
         getter fsrm_configuration : Types::WindowsFsrmConfiguration?
 
         # The list of maintenance operations in progress for this file system.
+
         @[JSON::Field(key: "MaintenanceOperationsInProgress")]
         getter maintenance_operations_in_progress : Array(String)?
 
@@ -8237,6 +9439,7 @@ module AwsSdk
         # Linux and Windows SMB clients that are joined to an Active Directory, use the file system's DNSName
         # instead. For more information on mapping and mounting file shares, see Accessing data using file
         # shares .
+
         @[JSON::Field(key: "PreferredFileServerIp")]
         getter preferred_file_server_ip : String?
 
@@ -8246,6 +9449,7 @@ module AwsSdk
         # This IPv6 address is temporarily unavailable when the file system is undergoing maintenance. For
         # Linux and Windows SMB clients that are joined to an Active Directory, use the file system's DNSName
         # instead.
+
         @[JSON::Field(key: "PreferredFileServerIpv6")]
         getter preferred_file_server_ipv6 : String?
 
@@ -8254,6 +9458,7 @@ module AwsSdk
         # traffic from this subnet except in the event of a failover to the secondary file server. For
         # SINGLE_AZ_1 and SINGLE_AZ_2 deployment types, this value is the same as that for SubnetIDs . For
         # more information, see Availability and durability: Single-AZ and Multi-AZ file systems .
+
         @[JSON::Field(key: "PreferredSubnetId")]
         getter preferred_subnet_id : String?
 
@@ -8261,18 +9466,22 @@ module AwsSdk
         # system using Amazon FSx Remote PowerShell. For SINGLE_AZ_1 and SINGLE_AZ_2 deployment types, this is
         # the DNS name of the file system. This endpoint is temporarily unavailable when the file system is
         # undergoing maintenance.
+
         @[JSON::Field(key: "RemoteAdministrationEndpoint")]
         getter remote_administration_endpoint : String?
+
 
         @[JSON::Field(key: "SelfManagedActiveDirectoryConfiguration")]
         getter self_managed_active_directory_configuration : Types::SelfManagedActiveDirectoryAttributes?
 
         # The throughput of the Amazon FSx file system, measured in megabytes per second.
+
         @[JSON::Field(key: "ThroughputCapacity")]
         getter throughput_capacity : Int32?
 
         # The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone. d is
         # the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.
+
         @[JSON::Field(key: "WeeklyMaintenanceStartTime")]
         getter weekly_maintenance_start_time : String?
 
@@ -8301,12 +9510,14 @@ module AwsSdk
       # The File Server Resource Manager (FSRM) configuration that Amazon FSx for Windows File Server uses
       # for the file system. When FSRM is enabled, you can manage and monitor storage quotas, file
       # screening, storage reports, and file classification.
+
       struct WindowsFsrmConfiguration
         include JSON::Serializable
 
         # Specifies whether FSRM is enabled or disabled on the file system. When TRUE , the FSRM service is
         # enabled and monitor file operations according to configured policies. When FALSE or omitted, FSRM is
         # disabled. The default value is FALSE .
+
         @[JSON::Field(key: "FsrmServiceEnabled")]
         getter fsrm_service_enabled : Bool
 
@@ -8317,6 +9528,7 @@ module AwsSdk
         # (either CloudWatch Logs log group or Kinesis Data Firehose delivery stream) must be in the same
         # Amazon Web Services partition, Amazon Web Services Region, and Amazon Web Services account as your
         # Amazon FSx file system.
+
         @[JSON::Field(key: "EventLogDestination")]
         getter event_log_destination : String?
 

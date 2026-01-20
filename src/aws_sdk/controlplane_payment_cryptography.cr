@@ -1,7 +1,0 @@
-require "./runtime"
-require "./controlplane_payment_cryptography/client"
-require "./controlplane_payment_cryptography/errors"
-require "./controlplane_payment_cryptography/model"
-require "./controlplane_payment_cryptography/types"
-require "./controlplane_payment_cryptography/protocol/json_rpc"
-require "./customizations/controlplane_payment_cryptography/customizations"

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./aps/client"
-require "./aps/errors"
-require "./aps/model"
-require "./aps/types"
-require "./aps/protocol/rest_json"
-require "./customizations/aps/customizations"

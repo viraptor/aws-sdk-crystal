@@ -1,0 +1,7 @@
+require "./runtime"
+require "./resourcegroupstaggingapi/client"
+require "./resourcegroupstaggingapi/errors"
+require "./resourcegroupstaggingapi/model"
+require "./resourcegroupstaggingapi/types"
+require "./resourcegroupstaggingapi/protocol/json_rpc"
+require "./customizations/resourcegroupstaggingapi/customizations"

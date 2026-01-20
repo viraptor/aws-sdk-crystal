@@ -1,0 +1,7 @@
+require "./runtime"
+require "./paymentcryptographydata/client"
+require "./paymentcryptographydata/errors"
+require "./paymentcryptographydata/model"
+require "./paymentcryptographydata/types"
+require "./paymentcryptographydata/protocol/rest_json"
+require "./customizations/paymentcryptographydata/customizations"

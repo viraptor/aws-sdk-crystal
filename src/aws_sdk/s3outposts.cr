@@ -1,0 +1,7 @@
+require "./runtime"
+require "./s3outposts/client"
+require "./s3outposts/errors"
+require "./s3outposts/model"
+require "./s3outposts/types"
+require "./s3outposts/protocol/rest_json"
+require "./customizations/s3outposts/customizations"

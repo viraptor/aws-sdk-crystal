@@ -1,7 +1,0 @@
-require "./runtime"
-require "./discovery/client"
-require "./discovery/errors"
-require "./discovery/model"
-require "./discovery/types"
-require "./discovery/protocol/json_rpc"
-require "./customizations/discovery/customizations"

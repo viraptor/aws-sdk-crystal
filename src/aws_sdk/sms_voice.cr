@@ -1,7 +1,0 @@
-require "./runtime"
-require "./sms_voice/client"
-require "./sms_voice/errors"
-require "./sms_voice/model"
-require "./sms_voice/types"
-require "./sms_voice/protocol/json_rpc"
-require "./customizations/sms_voice/customizations"

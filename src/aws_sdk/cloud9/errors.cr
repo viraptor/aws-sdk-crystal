@@ -5,34 +5,42 @@ module AwsSdk
       end
 
       # The target request is invalid.
+
       class BadRequestException < ServiceError
       end
 
       # A concurrent access issue occurred.
+
       class ConcurrentAccessException < ServiceError
       end
 
       # A conflict occurred.
+
       class ConflictException < ServiceError
       end
 
       # An access permissions issue occurred.
+
       class ForbiddenException < ServiceError
       end
 
       # An internal server error occurred.
+
       class InternalServerErrorException < ServiceError
       end
 
       # A service limit was exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # The target resource cannot be found.
+
       class NotFoundException < ServiceError
       end
 
       # Too many service requests were made over the given time period.
+
       class TooManyRequestsException < ServiceError
       end
 

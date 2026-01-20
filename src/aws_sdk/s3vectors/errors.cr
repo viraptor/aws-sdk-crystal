@@ -5,6 +5,7 @@ module AwsSdk
       end
 
       # Access denied.
+
       class AccessDeniedException < ServiceError
       end
 
@@ -12,14 +13,17 @@ module AwsSdk
       # names must be unique within your Amazon Web Services account for each Amazon Web Services Region.
       # Vector index names must be unique within your vector bucket. Choose a different vector bucket name
       # or vector index name, and try again.
+
       class ConflictException < ServiceError
       end
 
       # The request failed due to an internal server error.
+
       class InternalServerException < ServiceError
       end
 
       # The specified Amazon Web Services KMS key isn't enabled.
+
       class KmsDisabledException < ServiceError
       end
 
@@ -28,40 +32,49 @@ module AwsSdk
       # operation is incompatible with the type of key material in the KMS key ( KeySpec ). For more
       # information, see InvalidKeyUsageException in the Amazon Web Services Key Management Service API
       # Reference .
+
       class KmsInvalidKeyUsageException < ServiceError
       end
 
       # The key state of the KMS key isn't compatible with the operation. For more information, see
       # KMSInvalidStateException in the Amazon Web Services Key Management Service API Reference .
+
       class KmsInvalidStateException < ServiceError
       end
 
       # The KMS key can't be found.
+
       class KmsNotFoundException < ServiceError
       end
 
       # The request was rejected because the specified resource can't be found.
+
       class NotFoundException < ServiceError
       end
 
       # The request timed out. Retry your request.
+
       class RequestTimeoutException < ServiceError
       end
 
       # Your request exceeds a service quota.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The service is unavailable. Wait briefly and retry your request. If it continues to fail, increase
       # your waiting time between retries.
+
       class ServiceUnavailableException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class TooManyRequestsException < ServiceError
       end
 
       # The requested action isn't valid.
+
       class ValidationException < ServiceError
       end
 

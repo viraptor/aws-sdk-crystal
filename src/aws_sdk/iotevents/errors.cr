@@ -5,38 +5,47 @@ module AwsSdk
       end
 
       # An internal failure occurred.
+
       class InternalFailureException < ServiceError
       end
 
       # The request was invalid.
+
       class InvalidRequestException < ServiceError
       end
 
       # A limit was exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # The resource already exists.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # The resource is in use.
+
       class ResourceInUseException < ServiceError
       end
 
       # The resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The service is currently unavailable.
+
       class ServiceUnavailableException < ServiceError
       end
 
       # The request could not be completed due to throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The requested operation is not supported.
+
       class UnsupportedOperationException < ServiceError
       end
 

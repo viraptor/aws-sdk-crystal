@@ -1,0 +1,7 @@
+require "./runtime"
+require "./medicalimaging/client"
+require "./medicalimaging/errors"
+require "./medicalimaging/model"
+require "./medicalimaging/types"
+require "./medicalimaging/protocol/rest_json"
+require "./customizations/medicalimaging/customizations"

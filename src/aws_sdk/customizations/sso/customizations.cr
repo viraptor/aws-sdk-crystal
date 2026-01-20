@@ -1,5 +1,5 @@
 module AwsSdk
-  module SSOAdmin
+  module SSO
     module Customizations
     end
   end

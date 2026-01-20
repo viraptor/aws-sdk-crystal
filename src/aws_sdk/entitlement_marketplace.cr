@@ -1,7 +1,0 @@
-require "./runtime"
-require "./entitlement_marketplace/client"
-require "./entitlement_marketplace/errors"
-require "./entitlement_marketplace/model"
-require "./entitlement_marketplace/types"
-require "./entitlement_marketplace/protocol/json_rpc"
-require "./customizations/entitlement_marketplace/customizations"

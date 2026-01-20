@@ -6,28 +6,34 @@ module AwsSdk
 
       # Your account isn't registered with Audit Manager. Check the delegated administrator setup on the
       # Audit Manager settings page, and try again.
+
       class AccessDeniedException < ServiceError
       end
 
       # An internal service error occurred during the processing of your request. Try again later.
+
       class InternalServerException < ServiceError
       end
 
       # The resource that's specified in the request can't be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # You've reached your account quota for this resource type. To perform the requested action, delete
       # some existing resources or request a quota increase from the Service Quotas console. For a list of
       # Audit Manager service quotas, see Quotas and restrictions for Audit Manager .
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The request has invalid or missing parameters.
+
       class ValidationException < ServiceError
       end
 

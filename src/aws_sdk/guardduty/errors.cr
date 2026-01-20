@@ -5,22 +5,27 @@ module AwsSdk
       end
 
       # An access denied exception object.
+
       class AccessDeniedException < ServiceError
       end
 
       # A bad request exception object.
+
       class BadRequestException < ServiceError
       end
 
       # A request conflict exception object.
+
       class ConflictException < ServiceError
       end
 
       # An internal server error exception object.
+
       class InternalServerErrorException < ServiceError
       end
 
       # The requested resource can't be found.
+
       class ResourceNotFoundException < ServiceError
       end
 

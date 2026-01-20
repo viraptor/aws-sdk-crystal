@@ -1,7 +1,0 @@
-require "./runtime"
-require "./runtime_v2_lex/client"
-require "./runtime_v2_lex/errors"
-require "./runtime_v2_lex/model"
-require "./runtime_v2_lex/types"
-require "./runtime_v2_lex/protocol/rest_json"
-require "./customizations/runtime_v2_lex/customizations"

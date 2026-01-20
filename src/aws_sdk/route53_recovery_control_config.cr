@@ -1,7 +1,0 @@
-require "./runtime"
-require "./route53_recovery_control_config/client"
-require "./route53_recovery_control_config/errors"
-require "./route53_recovery_control_config/model"
-require "./route53_recovery_control_config/types"
-require "./route53_recovery_control_config/protocol/rest_json"
-require "./customizations/route53_recovery_control_config/customizations"

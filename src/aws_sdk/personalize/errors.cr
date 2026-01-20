@@ -5,35 +5,43 @@ module AwsSdk
       end
 
       # Provide a valid value for the field or parameter.
+
       class InvalidInputException < ServiceError
       end
 
       # The token is not valid.
+
       class InvalidNextTokenException < ServiceError
       end
 
       # The limit on the number of requests per second has been exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # The specified resource already exists.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # The specified resource is in use.
+
       class ResourceInUseException < ServiceError
       end
 
       # Could not find the specified resource.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request contains more tag keys than can be associated with a resource (50 tag keys per
       # resource).
+
       class TooManyTagKeysException < ServiceError
       end
 
       # You have exceeded the maximum number of tags you can apply to this resource.
+
       class TooManyTagsException < ServiceError
       end
 

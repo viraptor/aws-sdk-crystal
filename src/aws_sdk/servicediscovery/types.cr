@@ -5,26 +5,31 @@ module AwsSdk
   module ServiceDiscovery
     module Types
 
+
       struct CreateHttpNamespaceRequest
         include JSON::Serializable
 
         # The name that you want to assign to this namespace.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A unique string that identifies the request and that allows failed CreateHttpNamespace requests to
         # be retried without the risk of running the operation twice. CreatorRequestId can be any unique
         # string (for example, a date/time stamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
         # A description for the namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The tags to add to the namespace. Each tag consists of a key and an optional value that you define.
         # Tags keys can be up to 128 characters in length, and tag values can be up to 256 characters in
         # length.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -37,11 +42,13 @@ module AwsSdk
         end
       end
 
+
       struct CreateHttpNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -51,36 +58,43 @@ module AwsSdk
         end
       end
 
+
       struct CreatePrivateDnsNamespaceRequest
         include JSON::Serializable
 
         # The name that you want to assign to this namespace. When you create a private DNS namespace, Cloud
         # Map automatically creates an Amazon Route 53 private hosted zone that has the same name as the
         # namespace.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # The ID of the Amazon VPC that you want to associate the namespace with.
+
         @[JSON::Field(key: "Vpc")]
         getter vpc : String
 
         # A unique string that identifies the request and that allows failed CreatePrivateDnsNamespace
         # requests to be retried without the risk of running the operation twice. CreatorRequestId can be any
         # unique string (for example, a date/timestamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
         # A description for the namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Properties for the private DNS namespace.
+
         @[JSON::Field(key: "Properties")]
         getter properties : Types::PrivateDnsNamespaceProperties?
 
         # The tags to add to the namespace. Each tag consists of a key and an optional value that you define.
         # Tags keys can be up to 128 characters in length, and tag values can be up to 256 characters in
         # length.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -95,11 +109,13 @@ module AwsSdk
         end
       end
 
+
       struct CreatePrivateDnsNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -109,31 +125,37 @@ module AwsSdk
         end
       end
 
+
       struct CreatePublicDnsNamespaceRequest
         include JSON::Serializable
 
         # The name that you want to assign to this namespace. Do not include sensitive information in the
         # name. The name is publicly available using DNS queries.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A unique string that identifies the request and that allows failed CreatePublicDnsNamespace requests
         # to be retried without the risk of running the operation twice. CreatorRequestId can be any unique
         # string (for example, a date/timestamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
         # A description for the namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Properties for the public DNS namespace.
+
         @[JSON::Field(key: "Properties")]
         getter properties : Types::PublicDnsNamespaceProperties?
 
         # The tags to add to the namespace. Each tag consists of a key and an optional value that you define.
         # Tags keys can be up to 128 characters in length, and tag values can be up to 256 characters in
         # length.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -147,11 +169,13 @@ module AwsSdk
         end
       end
 
+
       struct CreatePublicDnsNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -160,6 +184,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct CreateServiceRequest
         include JSON::Serializable
@@ -175,21 +200,25 @@ module AwsSdk
         # (such as EXAMPLE and example). Otherwise, these services have the same DNS name and can't be
         # distinguished. However, if you use a namespace that's only accessible by API calls, then you can
         # create services that with names that differ only by case.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
         # A unique string that identifies the request and that allows failed CreateService requests to be
         # retried without the risk of running the operation twice. CreatorRequestId can be any unique string
         # (for example, a date/timestamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
         # A description for the service.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A complex type that contains information about the Amazon Route 53 records that you want Cloud Map
         # to create when you register an instance.
+
         @[JSON::Field(key: "DnsConfig")]
         getter dns_config : Types::DnsConfig?
 
@@ -198,6 +227,7 @@ module AwsSdk
         # all the Route 53 DNS records that you specify in DnsConfig . If you specify a health check
         # configuration, you can specify either HealthCheckCustomConfig or HealthCheckConfig but not both. For
         # information about the charges for health checks, see Cloud Map Pricing .
+
         @[JSON::Field(key: "HealthCheckConfig")]
         getter health_check_config : Types::HealthCheckConfig?
 
@@ -205,6 +235,7 @@ module AwsSdk
         # health check configuration, you can specify either HealthCheckCustomConfig or HealthCheckConfig but
         # not both. You can't add, update, or delete a HealthCheckCustomConfig configuration from an existing
         # service.
+
         @[JSON::Field(key: "HealthCheckCustomConfig")]
         getter health_check_custom_config : Types::HealthCheckCustomConfig?
 
@@ -212,18 +243,21 @@ module AwsSdk
         # For namespaces shared with your Amazon Web Services account, specify the namespace ARN. For more
         # information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map
         # Developer Guide .
+
         @[JSON::Field(key: "NamespaceId")]
         getter namespace_id : String?
 
         # The tags to add to the service. Each tag consists of a key and an optional value that you define.
         # Tags keys can be up to 128 characters in length, and tag values can be up to 256 characters in
         # length.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
         # If present, specifies that the service instances are only discoverable using the DiscoverInstances
         # API operation. No DNS records is registered for the service instances. The only valid value is HTTP
         # .
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -241,10 +275,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateServiceResponse
         include JSON::Serializable
 
         # A complex type that contains information about the new service.
+
         @[JSON::Field(key: "Service")]
         getter service : Types::Service?
 
@@ -256,8 +292,10 @@ module AwsSdk
 
       # The health check for the instance that's specified by ServiceId and InstanceId isn't a custom health
       # check.
+
       struct CustomHealthNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -268,10 +306,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteNamespaceRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the namespace that you want to delete.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -281,11 +321,13 @@ module AwsSdk
         end
       end
 
+
       struct DeleteNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -295,10 +337,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceAttributesRequest
         include JSON::Serializable
 
         # A list of keys corresponding to each attribute that you want to delete.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Array(String)
 
@@ -306,6 +350,7 @@ module AwsSdk
         # services created in a namespace shared with your Amazon Web Services account, specify the service
         # ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in
         # the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -316,6 +361,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceAttributesResponse
         include JSON::Serializable
 
@@ -323,12 +369,14 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the service that you want to delete. If the namespace
         # associated with the service is shared with your Amazon Web Services account, specify the service
         # ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing .
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -338,6 +386,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceResponse
         include JSON::Serializable
 
@@ -345,10 +394,12 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterInstanceRequest
         include JSON::Serializable
 
         # The value that you specified for Id in the RegisterInstance request.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String
 
@@ -356,6 +407,7 @@ module AwsSdk
         # namespace associated with the service is shared with your account, specify the service ARN. For more
         # information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map
         # Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -366,11 +418,13 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterInstanceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -380,16 +434,19 @@ module AwsSdk
         end
       end
 
+
       struct DiscoverInstancesRequest
         include JSON::Serializable
 
         # The HttpName name of the namespace. The HttpName is found in the HttpProperties member of the
         # Properties member of the namespace. In most cases, Name and HttpName match. However, if you reuse
         # Name for namespace creation, a generated hash is added to HttpName to distinguish the two.
+
         @[JSON::Field(key: "NamespaceName")]
         getter namespace_name : String
 
         # The name of the service that you specified when you registered the instance.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String
 
@@ -398,12 +455,14 @@ module AwsSdk
         # instances. UNHEALTHY Returns unhealthy instances. ALL Returns all instances. HEALTHY_OR_ELSE_ALL
         # Returns healthy instances, unless none are reporting a healthy state. In that case, return all
         # instances. This is also called failing open.
+
         @[JSON::Field(key: "HealthStatus")]
         getter health_status : String?
 
         # The maximum number of instances that you want Cloud Map to return in the response to a
         # DiscoverInstances request. If you don't specify a value for MaxResults , Cloud Map returns up to 100
         # instances.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -411,17 +470,20 @@ module AwsSdk
         # match both the filters specified in both the QueryParameters parameter and this parameter, all of
         # these instances are returned. Otherwise, the filters are ignored, and only instances that match the
         # filters that are specified in the QueryParameters parameter are returned.
+
         @[JSON::Field(key: "OptionalParameters")]
         getter optional_parameters : Hash(String, String)?
 
         # The ID of the Amazon Web Services account that owns the namespace associated with the instance, as
         # specified in the namespace ResourceOwner field. For instances associated with namespaces that are
         # shared with your account, you must specify an OwnerAccount .
+
         @[JSON::Field(key: "OwnerAccount")]
         getter owner_account : String?
 
         # Filters to scope the results based on custom attributes for the instance (for example, {version=v1,
         # az=1a} ). Only instances that match all the specified key-value pairs are returned.
+
         @[JSON::Field(key: "QueryParameters")]
         getter query_parameters : Hash(String, String)?
 
@@ -437,16 +499,19 @@ module AwsSdk
         end
       end
 
+
       struct DiscoverInstancesResponse
         include JSON::Serializable
 
         # A complex type that contains one HttpInstanceSummary for each registered instance.
+
         @[JSON::Field(key: "Instances")]
         getter instances : Array(Types::HttpInstanceSummary)?
 
         # The increasing revision associated to the response Instances list. If a new instance is registered
         # or deregistered, the InstancesRevision updates. The health status updates don't update
         # InstancesRevision .
+
         @[JSON::Field(key: "InstancesRevision")]
         getter instances_revision : Int64?
 
@@ -457,15 +522,18 @@ module AwsSdk
         end
       end
 
+
       struct DiscoverInstancesRevisionRequest
         include JSON::Serializable
 
         # The HttpName name of the namespace. The HttpName is found in the HttpProperties member of the
         # Properties member of the namespace.
+
         @[JSON::Field(key: "NamespaceName")]
         getter namespace_name : String
 
         # The name of the service that you specified when you registered the instance.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String
 
@@ -473,6 +541,7 @@ module AwsSdk
         # specified in the namespace ResourceOwner field. For instances associated with namespaces that are
         # shared with your account, you must specify an OwnerAccount . For more information about shared
         # namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "OwnerAccount")]
         getter owner_account : String?
 
@@ -484,12 +553,14 @@ module AwsSdk
         end
       end
 
+
       struct DiscoverInstancesRevisionResponse
         include JSON::Serializable
 
         # The increasing revision associated to the response Instances list. If a new instance is registered
         # or deregistered, the InstancesRevision updates. The health status updates don't update
         # InstancesRevision .
+
         @[JSON::Field(key: "InstancesRevision")]
         getter instances_revision : Int64?
 
@@ -501,6 +572,7 @@ module AwsSdk
 
       # A complex type that contains information about the Amazon Route 53 DNS records that you want Cloud
       # Map to create when you register an instance.
+
       struct DnsConfig
         include JSON::Serializable
 
@@ -508,10 +580,12 @@ module AwsSdk
         # create when you register an instance. The record type of a service specified in a DnsRecord object
         # can't be updated. To change a record type, you need to delete the service and recreate it with a new
         # DnsConfig .
+
         @[JSON::Field(key: "DnsRecords")]
         getter dns_records : Array(Types::DnsRecord)
 
         # Use NamespaceId in Service instead. The ID of the namespace to use for DNS configuration.
+
         @[JSON::Field(key: "NamespaceId")]
         getter namespace_id : String?
 
@@ -536,6 +610,7 @@ module AwsSdk
         # service, Route 53 assumes that all instances are healthy and returns the applicable value for one
         # randomly selected instance. For more information about the weighted routing policy, see Weighted
         # Routing in the Route 53 Developer Guide .
+
         @[JSON::Field(key: "RoutingPolicy")]
         getter routing_policy : String?
 
@@ -549,11 +624,13 @@ module AwsSdk
 
       # A complex type that contains information about changes to the Route 53 DNS records that Cloud Map
       # creates when you register an instance.
+
       struct DnsConfigChange
         include JSON::Serializable
 
         # An array that contains one DnsRecord object for each Route 53 record that you want Cloud Map to
         # create when you register an instance.
+
         @[JSON::Field(key: "DnsRecords")]
         getter dns_records : Array(Types::DnsRecord)
 
@@ -565,14 +642,17 @@ module AwsSdk
 
       # A complex type that contains the ID for the Route 53 hosted zone that Cloud Map creates when you
       # create a namespace.
+
       struct DnsProperties
         include JSON::Serializable
 
         # The ID for the Route 53 hosted zone that Cloud Map creates when you create a namespace.
+
         @[JSON::Field(key: "HostedZoneId")]
         getter hosted_zone_id : String?
 
         # Start of Authority (SOA) record for the hosted zone.
+
         @[JSON::Field(key: "SOA")]
         getter soa : Types::SOA?
 
@@ -585,6 +665,7 @@ module AwsSdk
 
       # A complex type that contains information about the Route 53 DNS records that you want Cloud Map to
       # create when you register an instance.
+
       struct DnsRecord
         include JSON::Serializable
 
@@ -593,6 +674,7 @@ module AwsSdk
         # that an alias record routes traffic to. If you include the AWS_ALIAS_DNS_NAME attribute when you
         # submit a RegisterInstance request, the TTL value is ignored. Always specify a TTL for the service;
         # you can use a service to register instances that create either alias or non-alias records.
+
         @[JSON::Field(key: "TTL")]
         getter ttl : Int64
 
@@ -622,6 +704,7 @@ module AwsSdk
         # of service-hostname in the SRV record. You can ignore these records. If you're using a system that
         # requires a specific SRV format, such as HAProxy, see the Name element in the documentation about
         # CreateService for information about how to specify the correct name format.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -633,12 +716,15 @@ module AwsSdk
       end
 
       # The operation is already in progress.
+
       struct DuplicateRequest
         include JSON::Serializable
 
         # The ID of the operation that's already in progress.
+
         @[JSON::Field(key: "DuplicateOperationId")]
         getter duplicate_operation_id : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -650,16 +736,19 @@ module AwsSdk
         end
       end
 
+
       struct GetInstanceRequest
         include JSON::Serializable
 
         # The ID of the instance that you want to get information about.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String
 
         # The ID or Amazon Resource Name (ARN) of the service that the instance is associated with. For
         # services created in a shared namespace, specify the service ARN. For more information about shared
         # namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -670,16 +759,19 @@ module AwsSdk
         end
       end
 
+
       struct GetInstanceResponse
         include JSON::Serializable
 
         # A complex type that contains information about a specified instance.
+
         @[JSON::Field(key: "Instance")]
         getter instance : Types::Instance?
 
         # The ID of the Amazon Web Services account that created the namespace that contains the service that
         # the instance is associated with. If this isn't your account ID, it's the ID of the account that
         # shared the namespace with your account.
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
@@ -690,12 +782,14 @@ module AwsSdk
         end
       end
 
+
       struct GetInstancesHealthStatusRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the service that the instance is associated with. For
         # services created in a shared namespace, specify the service ARN. For more information about shared
         # namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -703,12 +797,14 @@ module AwsSdk
         # you omit Instances , Cloud Map returns the health status for all the instances that are associated
         # with the specified service. To get the IDs for the instances that you've registered by using a
         # specified service, submit a ListInstances request.
+
         @[JSON::Field(key: "Instances")]
         getter instances : Array(String)?
 
         # The maximum number of instances that you want Cloud Map to return in the response to a
         # GetInstancesHealthStatus request. If you don't specify a value for MaxResults , Cloud Map returns up
         # to 100 instances.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -716,6 +812,7 @@ module AwsSdk
         # match the specified criteria, you can submit another GetInstancesHealthStatus request to get the
         # next group of results. Specify the value of NextToken from the previous response in the next
         # request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -728,17 +825,20 @@ module AwsSdk
         end
       end
 
+
       struct GetInstancesHealthStatusResponse
         include JSON::Serializable
 
         # If more than MaxResults instances match the specified criteria, you can submit another
         # GetInstancesHealthStatus request to get the next group of results. Specify the value of NextToken
         # from the previous response in the next request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A complex type that contains the IDs and the health status of the instances that you specified in
         # the GetInstancesHealthStatus request.
+
         @[JSON::Field(key: "Status")]
         getter status : Hash(String, String)?
 
@@ -749,6 +849,7 @@ module AwsSdk
         end
       end
 
+
       struct GetNamespaceRequest
         include JSON::Serializable
 
@@ -756,6 +857,7 @@ module AwsSdk
         # namespaces shared with your Amazon Web Services account, specify the namespace ARN. For more
         # information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map
         # Developer Guide
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -765,10 +867,12 @@ module AwsSdk
         end
       end
 
+
       struct GetNamespaceResponse
         include JSON::Serializable
 
         # A complex type that contains information about the specified namespace.
+
         @[JSON::Field(key: "Namespace")]
         getter namespace : Types::Namespace?
 
@@ -778,16 +882,19 @@ module AwsSdk
         end
       end
 
+
       struct GetOperationRequest
         include JSON::Serializable
 
         # The ID of the operation that you want to get more information about.
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String
 
         # The ID of the Amazon Web Services account that owns the namespace associated with the operation, as
         # specified in the namespace ResourceOwner field. For operations associated with namespaces that are
         # shared with your account, you must specify an OwnerAccount .
+
         @[JSON::Field(key: "OwnerAccount")]
         getter owner_account : String?
 
@@ -798,10 +905,12 @@ module AwsSdk
         end
       end
 
+
       struct GetOperationResponse
         include JSON::Serializable
 
         # A complex type that contains information about the operation.
+
         @[JSON::Field(key: "Operation")]
         getter operation : Types::Operation?
 
@@ -811,6 +920,7 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceAttributesRequest
         include JSON::Serializable
 
@@ -818,6 +928,7 @@ module AwsSdk
         # services created in a namespace shared with your Amazon Web Services account, specify the service
         # ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in
         # the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -827,11 +938,13 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceAttributesResponse
         include JSON::Serializable
 
         # A complex type that contains the service ARN and a list of attribute key-value pairs associated with
         # the service.
+
         @[JSON::Field(key: "ServiceAttributes")]
         getter service_attributes : Types::ServiceAttributes?
 
@@ -841,12 +954,14 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the service that you want to get settings for. For services
         # created by consumers in a shared namespace, specify the service ARN. For more information about
         # shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -856,10 +971,12 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceResponse
         include JSON::Serializable
 
         # A complex type that contains information about the service.
+
         @[JSON::Field(key: "Service")]
         getter service : Types::Service?
 
@@ -895,6 +1012,7 @@ module AwsSdk
       # Route 53 doesn't create the health check. Charges for health checks Health checks are basic Route 53
       # health checks that monitor an Amazon Web Services endpoint. For information about pricing for health
       # checks, see Amazon Route 53 Pricing .
+
       struct HealthCheckConfig
         include JSON::Serializable
 
@@ -908,6 +1026,7 @@ module AwsSdk
         # tries to establish a TCP connection. If you specify TCP for Type , don't specify a value for
         # ResourcePath . For more information, see How Route 53 Determines Whether an Endpoint Is Healthy in
         # the Route 53 Developer Guide .
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
@@ -915,6 +1034,7 @@ module AwsSdk
         # the current status of the endpoint from unhealthy to healthy or the other way around. For more
         # information, see How Route 53 Determines Whether an Endpoint Is Healthy in the Route 53 Developer
         # Guide .
+
         @[JSON::Field(key: "FailureThreshold")]
         getter failure_threshold : Int32?
 
@@ -923,6 +1043,7 @@ module AwsSdk
         # healthy. An example file is /docs/route53-health-check.html . Route 53 automatically adds the DNS
         # name for the service. If you don't specify a value for ResourcePath , the default value is / . If
         # you specify TCP for Type , you must not specify a value for ResourcePath .
+
         @[JSON::Field(key: "ResourcePath")]
         getter resource_path : String?
 
@@ -951,6 +1072,7 @@ module AwsSdk
       # application. Your application submits an UpdateInstanceCustomHealthStatus request. Cloud Map waits
       # for 30 seconds. If another UpdateInstanceCustomHealthStatus request doesn't arrive during that time
       # to change the status back to healthy, Cloud Map stops routing traffic to the resource.
+
       struct HealthCheckCustomConfig
         include JSON::Serializable
 
@@ -961,6 +1083,7 @@ module AwsSdk
         # service instance. Sending a second or subsequent UpdateInstanceCustomHealthStatus request with the
         # same value before 30 seconds has passed doesn't accelerate the change. Cloud Map still waits 30
         # seconds after the first request to make the change.
+
         @[JSON::Field(key: "FailureThreshold")]
         getter failure_threshold : Int32?
 
@@ -972,27 +1095,33 @@ module AwsSdk
 
       # In a response to a DiscoverInstances request, HttpInstanceSummary contains information about one
       # instance that matches the values that you specified in the request.
+
       struct HttpInstanceSummary
         include JSON::Serializable
 
         # If you included any attributes when you registered the instance, the values of those attributes.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # If you configured health checking in the service, the current health status of the service instance.
+
         @[JSON::Field(key: "HealthStatus")]
         getter health_status : String?
 
         # The ID of an instance that matches the values that you specified in the request.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String?
 
         # The HttpName name of the namespace. It's found in the HttpProperties member of the Properties member
         # of the namespace.
+
         @[JSON::Field(key: "NamespaceName")]
         getter namespace_name : String?
 
         # The name of the service that you specified when you registered the instance.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
@@ -1007,10 +1136,12 @@ module AwsSdk
       end
 
       # Updated properties for the HTTP namespace.
+
       struct HttpNamespaceChange
         include JSON::Serializable
 
         # An updated description for the HTTP namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String
 
@@ -1021,10 +1152,12 @@ module AwsSdk
       end
 
       # A complex type that contains the name of an HTTP namespace.
+
       struct HttpProperties
         include JSON::Serializable
 
         # The name of an HTTP namespace.
+
         @[JSON::Field(key: "HttpName")]
         getter http_name : String?
 
@@ -1036,6 +1169,7 @@ module AwsSdk
 
       # A complex type that contains information about an instance that Cloud Map creates when you submit a
       # RegisterInstance request.
+
       struct Instance
         include JSON::Serializable
 
@@ -1048,6 +1182,7 @@ module AwsSdk
         # there's also an existing health check, Cloud Map deletes the old health check and creates a new one.
         # The health check isn't deleted immediately, so it will still appear for a while if you submit a
         # ListHealthChecks request, for example.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -1086,6 +1221,7 @@ module AwsSdk
         # service includes HealthCheckConfig , the port on the endpoint that you want Route 53 to send
         # requests to. This value is required if you specified settings for an SRV record or a Route 53 health
         # check when you created the service.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -1093,6 +1229,7 @@ module AwsSdk
         # ID, it's the ID of the account that shared the namespace with your account or the ID of another
         # account with which the namespace has been shared. For more information about shared namespaces, see
         # Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "CreatedByAccount")]
         getter created_by_account : String?
 
@@ -1101,6 +1238,7 @@ module AwsSdk
         # string every time you submit a RegisterInstance request if you're registering additional instances
         # for the same namespace and service. CreatorRequestId can be any unique string (for example, a
         # date/time stamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
@@ -1115,8 +1253,10 @@ module AwsSdk
 
       # No instance exists with the specified ID, or the instance was recently registered, and information
       # about the instance hasn't propagated yet.
+
       struct InstanceNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1129,6 +1269,7 @@ module AwsSdk
 
       # A complex type that contains information about the instances that you registered by using a
       # specified service.
+
       struct InstanceSummary
         include JSON::Serializable
 
@@ -1148,6 +1289,7 @@ module AwsSdk
         # queries (for example, 2001:0db8:85a3:0000:0000:abcd:0001:2345 ). AWS_INSTANCE_PORT For an SRV
         # record, the value that Route 53 returns for the port. In addition, if the service includes
         # HealthCheckConfig , the port on the endpoint that Route 53 sends requests to.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -1155,10 +1297,12 @@ module AwsSdk
         # ID, it's the ID of the account that shared the namespace with your account or the ID of another
         # account with which the namespace has been shared. For more information about shared namespaces, see
         # Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "CreatedByAccount")]
         getter created_by_account : String?
 
         # The ID for an instance that you created by using a specified service.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
@@ -1172,8 +1316,10 @@ module AwsSdk
 
       # One or more specified values aren't valid. For example, a required value might be missing, a numeric
       # value might be outside the allowed range, or a string value might exceed length constraints.
+
       struct InvalidInput
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1184,23 +1330,27 @@ module AwsSdk
         end
       end
 
+
       struct ListInstancesRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the service that you want to list instances for. For
         # services created in a shared namespace, specify the service ARN. For more information about shared
         # namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
         # The maximum number of instances that you want Cloud Map to return in the response to a ListInstances
         # request. If you don't specify a value for MaxResults , Cloud Map returns up to 100 instances.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # For the first ListInstances request, omit this value. If more than MaxResults instances match the
         # specified criteria, you can submit another ListInstances request to get the next group of results.
         # Specify the value of NextToken from the previous response in the next request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1212,22 +1362,26 @@ module AwsSdk
         end
       end
 
+
       struct ListInstancesResponse
         include JSON::Serializable
 
         # Summary information about the instances that are associated with the specified service.
+
         @[JSON::Field(key: "Instances")]
         getter instances : Array(Types::InstanceSummary)?
 
         # If more than MaxResults instances match the specified criteria, you can submit another ListInstances
         # request to get the next group of results. Specify the value of NextToken from the previous response
         # in the next request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The ID of the Amazon Web Services account that created the namespace that contains the specified
         # service. If this isn't your account ID, it's the ID of the account that shared the namespace with
         # your account.
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
@@ -1239,17 +1393,20 @@ module AwsSdk
         end
       end
 
+
       struct ListNamespacesRequest
         include JSON::Serializable
 
         # A complex type that contains specifications for the namespaces that you want to list. If you specify
         # more than one filter, a namespace must match all filters to be returned by ListNamespaces .
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::NamespaceFilter)?
 
         # The maximum number of namespaces that you want Cloud Map to return in the response to a
         # ListNamespaces request. If you don't specify a value for MaxResults , Cloud Map returns up to 100
         # namespaces.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1259,6 +1416,7 @@ module AwsSdk
         # them based on the specified criteria. It's possible that no namespaces in the first MaxResults
         # namespaces matched the specified criteria but that subsequent groups of MaxResults namespaces do
         # contain namespaces that match the criteria.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1270,11 +1428,13 @@ module AwsSdk
         end
       end
 
+
       struct ListNamespacesResponse
         include JSON::Serializable
 
         # An array that contains one NamespaceSummary object for each namespace that matches the specified
         # filter criteria.
+
         @[JSON::Field(key: "Namespaces")]
         getter namespaces : Array(Types::NamespaceSummary)?
 
@@ -1283,6 +1443,7 @@ module AwsSdk
         # gets MaxResults namespaces and then filters them based on the specified criteria. It's possible that
         # no namespaces in the first MaxResults namespaces matched the specified criteria but that subsequent
         # groups of MaxResults namespaces do contain namespaces that match the criteria.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1293,17 +1454,20 @@ module AwsSdk
         end
       end
 
+
       struct ListOperationsRequest
         include JSON::Serializable
 
         # A complex type that contains specifications for the operations that you want to list, for example,
         # operations that you started between a specified start date and end date. If you specify more than
         # one filter, an operation must match all filters to be returned by ListOperations .
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::OperationFilter)?
 
         # The maximum number of items that you want Cloud Map to return in the response to a ListOperations
         # request. If you don't specify a value for MaxResults , Cloud Map returns up to 100 operations.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1313,6 +1477,7 @@ module AwsSdk
         # them based on the specified criteria. It's possible that no operations in the first MaxResults
         # operations matched the specified criteria but that subsequent groups of MaxResults operations do
         # contain operations that match the criteria.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1324,6 +1489,7 @@ module AwsSdk
         end
       end
 
+
       struct ListOperationsResponse
         include JSON::Serializable
 
@@ -1332,10 +1498,12 @@ module AwsSdk
         # gets MaxResults operations and then filters them based on the specified criteria. It's possible that
         # no operations in the first MaxResults operations matched the specified criteria but that subsequent
         # groups of MaxResults operations do contain operations that match the criteria.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Summary information about the operations that match the specified criteria.
+
         @[JSON::Field(key: "Operations")]
         getter operations : Array(Types::OperationSummary)?
 
@@ -1346,17 +1514,20 @@ module AwsSdk
         end
       end
 
+
       struct ListServicesRequest
         include JSON::Serializable
 
         # A complex type that contains specifications for the namespaces that you want to list services for.
         # If you specify more than one filter, an operation must match all filters to be returned by
         # ListServices .
+
         @[JSON::Field(key: "Filters")]
         getter filters : Array(Types::ServiceFilter)?
 
         # The maximum number of services that you want Cloud Map to return in the response to a ListServices
         # request. If you don't specify a value for MaxResults , Cloud Map returns up to 100 services.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1366,6 +1537,7 @@ module AwsSdk
         # based on the specified criteria. It's possible that no services in the first MaxResults services
         # matched the specified criteria but that subsequent groups of MaxResults services do contain services
         # that match the criteria.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1377,6 +1549,7 @@ module AwsSdk
         end
       end
 
+
       struct ListServicesResponse
         include JSON::Serializable
 
@@ -1385,11 +1558,13 @@ module AwsSdk
         # gets MaxResults services and then filters them based on the specified criteria. It's possible that
         # no services in the first MaxResults services matched the specified criteria but that subsequent
         # groups of MaxResults services do contain services that match the criteria.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array that contains one ServiceSummary object for each service that matches the specified filter
         # criteria.
+
         @[JSON::Field(key: "Services")]
         getter services : Array(Types::ServiceSummary)?
 
@@ -1400,10 +1575,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to retrieve tags for.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -1413,10 +1590,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The tags that are assigned to the resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1427,47 +1606,57 @@ module AwsSdk
       end
 
       # A complex type that contains information about a specified namespace.
+
       struct Namespace
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that Cloud Map assigns to the namespace when you create it.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The date that the namespace was created, in Unix date/time format and Coordinated Universal Time
         # (UTC). The value of CreateDate is accurate to milliseconds. For example, the value 1516925490.087
         # represents Friday, January 26, 2018 12:11:30.087 AM.
+
         @[JSON::Field(key: "CreateDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_date : Time?
 
         # A unique string that identifies the request and that allows failed requests to be retried without
         # the risk of running an operation twice.
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
         # The description that you specify for the namespace when you create it.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The ID of a namespace.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The name of the namespace, such as example.com .
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # A complex type that contains information that's specific to the type of the namespace.
+
         @[JSON::Field(key: "Properties")]
         getter properties : Types::NamespaceProperties?
 
         # The ID of the Amazon Web Services account that created the namespace. If this isn't your account ID,
         # it's the ID of the account that shared the namespace with your account. For more information about
         # shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
         # The number of services that are associated with the namespace.
+
         @[JSON::Field(key: "ServiceCount")]
         getter service_count : Int32?
 
@@ -1476,6 +1665,7 @@ module AwsSdk
         # DiscoverInstances API. DNS_PUBLIC Instances can be discovered using public DNS queries and using the
         # DiscoverInstances API. DNS_PRIVATE Instances can be discovered using DNS queries in VPCs and using
         # the DiscoverInstances API.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -1495,17 +1685,21 @@ module AwsSdk
       end
 
       # The namespace that you're trying to create already exists.
+
       struct NamespaceAlreadyExists
         include JSON::Serializable
 
         # The CreatorRequestId that was used to create the namespace.
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The ID of the existing namespace.
+
         @[JSON::Field(key: "NamespaceId")]
         getter namespace_id : String?
 
@@ -1519,6 +1713,7 @@ module AwsSdk
 
       # A complex type that identifies the namespaces that you want to list. You can choose to list public
       # or private namespaces.
+
       struct NamespaceFilter
         include JSON::Serializable
 
@@ -1528,6 +1723,7 @@ module AwsSdk
         # Web Services account or by other accounts. This can be used to filter for shared namespaces. For
         # more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud
         # Map Developer Guide .
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1537,6 +1733,7 @@ module AwsSdk
         # Namespace.Properties.HttpProperties.HttpName . RESOURCE_OWNER : Specify one of SELF or
         # OTHER_ACCOUNTS . SELF can be used to filter namespaces created by you and OTHER_ACCOUNTS can be used
         # to filter namespaces shared with you that were created by other accounts.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -1546,6 +1743,7 @@ module AwsSdk
         # is the default condition and can be omitted. BEGINS_WITH : When you specify BEGINS_WITH for
         # Condition , you can specify only one value. BEGINS_WITH is supported for TYPE , NAME , and HTTP_NAME
         # .
+
         @[JSON::Field(key: "Condition")]
         getter condition : String?
 
@@ -1558,8 +1756,10 @@ module AwsSdk
       end
 
       # No namespace exists with the specified ID.
+
       struct NamespaceNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1571,15 +1771,18 @@ module AwsSdk
       end
 
       # A complex type that contains information that's specific to the namespace type.
+
       struct NamespaceProperties
         include JSON::Serializable
 
         # A complex type that contains the ID for the Route 53 hosted zone that Cloud Map creates when you
         # create a namespace.
+
         @[JSON::Field(key: "DnsProperties")]
         getter dns_properties : Types::DnsProperties?
 
         # A complex type that contains the name of an HTTP namespace.
+
         @[JSON::Field(key: "HttpProperties")]
         getter http_properties : Types::HttpProperties?
 
@@ -1591,45 +1794,55 @@ module AwsSdk
       end
 
       # A complex type that contains information about a namespace.
+
       struct NamespaceSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that Cloud Map assigns to the namespace when you create it.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The date and time that the namespace was created.
+
         @[JSON::Field(key: "CreateDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_date : Time?
 
         # A description for the namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The ID of the namespace.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The name of the namespace. When you create a namespace, Cloud Map automatically creates a Route 53
         # hosted zone that has the same name as the namespace.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The properties of the namespace.
+
         @[JSON::Field(key: "Properties")]
         getter properties : Types::NamespaceProperties?
 
         # The ID of the Amazon Web Services account that created the namespace. If this isn't your account ID,
         # it's the ID of the account that shared the namespace with your account. For more information about
         # shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
         # The number of services that were created using the namespace.
+
         @[JSON::Field(key: "ServiceCount")]
         getter service_count : Int32?
 
         # The type of the namespace, either public or private.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -1648,30 +1861,36 @@ module AwsSdk
       end
 
       # A complex type that contains information about a specified operation.
+
       struct Operation
         include JSON::Serializable
 
         # The date and time that the request was submitted, in Unix date/time format and Coordinated Universal
         # Time (UTC). The value of CreateDate is accurate to milliseconds. For example, the value
         # 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.
+
         @[JSON::Field(key: "CreateDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_date : Time?
 
         # The code associated with ErrorMessage . Values for ErrorCode include the following: ACCESS_DENIED
         # CANNOT_CREATE_HOSTED_ZONE EXPIRED_TOKEN HOSTED_ZONE_NOT_FOUND INTERNAL_FAILURE INVALID_CHANGE_BATCH
         # THROTTLED_REQUEST
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # If the value of Status is FAIL , the reason that the operation failed.
+
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The ID of the operation that you want to get information about.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The ID of the Amazon Web Services account that owns the namespace associated with the operation.
+
         @[JSON::Field(key: "OwnerAccount")]
         getter owner_account : String?
 
@@ -1679,22 +1898,26 @@ module AwsSdk
         # occurs immediately after you submit a request. PENDING Cloud Map is performing the operation.
         # SUCCESS The operation succeeded. FAIL The operation failed. For the failure reason, see ErrorMessage
         # .
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The name of the target entity that's associated with the operation: NAMESPACE The namespace ID is
         # returned in the ResourceId property. SERVICE The service ID is returned in the ResourceId property.
         # INSTANCE The instance ID is returned in the ResourceId property.
+
         @[JSON::Field(key: "Targets")]
         getter targets : Hash(String, String)?
 
         # The name of the operation that's associated with the specified ID.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
         # The date and time that the value of Status changed to the current value, in Unix date/time format
         # and Coordinated Universal Time (UTC). The value of UpdateDate is accurate to milliseconds. For
         # example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.
+
         @[JSON::Field(key: "UpdateDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter update_date : Time?
 
@@ -1713,6 +1936,7 @@ module AwsSdk
       end
 
       # A complex type that lets you select the operations that you want to list.
+
       struct OperationFilter
         include JSON::Serializable
 
@@ -1721,6 +1945,7 @@ module AwsSdk
         # based on the status of the operations: SUBMITTED , PENDING , SUCCEED , or FAIL . TYPE : Gets
         # specified types of operation. UPDATE_DATE : Gets operations that changed status during a specified
         # date/time range.
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -1730,6 +1955,7 @@ module AwsSdk
         # CREATE_NAMESPACE , DELETE_NAMESPACE , UPDATE_SERVICE , REGISTER_INSTANCE , or DEREGISTER_INSTANCE .
         # UPDATE_DATE : Specify a start date and an end date in Unix date/time format and Coordinated
         # Universal Time (UTC). The start date must be the first value.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
@@ -1741,6 +1967,7 @@ module AwsSdk
         # specified values to be returned in the response. BETWEEN : Specify a start date and an end date in
         # Unix date/time format and Coordinated Universal Time (UTC). The start date must be the first value.
         # BETWEEN is supported for UPDATE_DATE .
+
         @[JSON::Field(key: "Condition")]
         getter condition : String?
 
@@ -1753,8 +1980,10 @@ module AwsSdk
       end
 
       # No operation exists with the specified ID.
+
       struct OperationNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1767,16 +1996,19 @@ module AwsSdk
 
       # A complex type that contains information about an operation that matches the criteria that you
       # specified in a ListOperations request.
+
       struct OperationSummary
         include JSON::Serializable
 
         # The ID for an operation.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The status of the operation. Values include the following: SUBMITTED : This is the initial state
         # immediately after you submit a request. PENDING : Cloud Map is performing the operation. SUCCESS :
         # The operation succeeded. FAIL : The operation failed. For the failure reason, see ErrorMessage .
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1788,14 +2020,17 @@ module AwsSdk
       end
 
       # Updated properties for the private DNS namespace.
+
       struct PrivateDnsNamespaceChange
         include JSON::Serializable
 
         # An updated description for the private DNS namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Properties to be updated in the private DNS namespace.
+
         @[JSON::Field(key: "Properties")]
         getter properties : Types::PrivateDnsNamespacePropertiesChange?
 
@@ -1807,10 +2042,12 @@ module AwsSdk
       end
 
       # DNS properties for the private DNS namespace.
+
       struct PrivateDnsNamespaceProperties
         include JSON::Serializable
 
         # DNS properties for the private DNS namespace.
+
         @[JSON::Field(key: "DnsProperties")]
         getter dns_properties : Types::PrivateDnsPropertiesMutable
 
@@ -1821,10 +2058,12 @@ module AwsSdk
       end
 
       # Updated properties for the private DNS namespace.
+
       struct PrivateDnsNamespacePropertiesChange
         include JSON::Serializable
 
         # Updated DNS properties for the private DNS namespace.
+
         @[JSON::Field(key: "DnsProperties")]
         getter dns_properties : Types::PrivateDnsPropertiesMutableChange
 
@@ -1835,10 +2074,12 @@ module AwsSdk
       end
 
       # DNS properties for the private DNS namespace.
+
       struct PrivateDnsPropertiesMutable
         include JSON::Serializable
 
         # Fields for the Start of Authority (SOA) record for the hosted zone for the private DNS namespace.
+
         @[JSON::Field(key: "SOA")]
         getter soa : Types::SOA
 
@@ -1849,11 +2090,13 @@ module AwsSdk
       end
 
       # Updated DNS properties for the private DNS namespace.
+
       struct PrivateDnsPropertiesMutableChange
         include JSON::Serializable
 
         # Updated fields for the Start of Authority (SOA) record for the hosted zone for the private DNS
         # namespace.
+
         @[JSON::Field(key: "SOA")]
         getter soa : Types::SOAChange
 
@@ -1864,14 +2107,17 @@ module AwsSdk
       end
 
       # Updated properties for the public DNS namespace.
+
       struct PublicDnsNamespaceChange
         include JSON::Serializable
 
         # An updated description for the public DNS namespace.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Properties to be updated in the public DNS namespace.
+
         @[JSON::Field(key: "Properties")]
         getter properties : Types::PublicDnsNamespacePropertiesChange?
 
@@ -1883,10 +2129,12 @@ module AwsSdk
       end
 
       # DNS properties for the public DNS namespace.
+
       struct PublicDnsNamespaceProperties
         include JSON::Serializable
 
         # DNS properties for the public DNS namespace.
+
         @[JSON::Field(key: "DnsProperties")]
         getter dns_properties : Types::PublicDnsPropertiesMutable
 
@@ -1897,10 +2145,12 @@ module AwsSdk
       end
 
       # Updated properties for the public DNS namespace.
+
       struct PublicDnsNamespacePropertiesChange
         include JSON::Serializable
 
         # Updated DNS properties for the hosted zone for the public DNS namespace.
+
         @[JSON::Field(key: "DnsProperties")]
         getter dns_properties : Types::PublicDnsPropertiesMutableChange
 
@@ -1911,10 +2161,12 @@ module AwsSdk
       end
 
       # DNS properties for the public DNS namespace.
+
       struct PublicDnsPropertiesMutable
         include JSON::Serializable
 
         # Start of Authority (SOA) record for the hosted zone for the public DNS namespace.
+
         @[JSON::Field(key: "SOA")]
         getter soa : Types::SOA
 
@@ -1925,11 +2177,13 @@ module AwsSdk
       end
 
       # Updated DNS properties for the public DNS namespace.
+
       struct PublicDnsPropertiesMutableChange
         include JSON::Serializable
 
         # Updated fields for the Start of Authority (SOA) record for the hosted zone for the public DNS
         # namespace.
+
         @[JSON::Field(key: "SOA")]
         getter soa : Types::SOAChange
 
@@ -1938,6 +2192,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct RegisterInstanceRequest
         include JSON::Serializable
@@ -1983,6 +2238,7 @@ module AwsSdk
         # each key-value pair, the maximum length of the attribute name is 255 characters, and the maximum
         # length of the attribute value is 1,024 characters. The total size of all provided attributes (sum of
         # all keys and values) must not exceed 5,000 characters.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)
 
@@ -1997,6 +2253,7 @@ module AwsSdk
         # submit a ListHealthChecks request, for example. Do not include sensitive information in InstanceId
         # if the namespace is discoverable by public DNS queries and any Type member of DnsRecord for the
         # service contains SRV because the InstanceId is discoverable by public DNS queries.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String
 
@@ -2004,6 +2261,7 @@ module AwsSdk
         # instance. For services created in a shared namespace, specify the service ARN. For more information
         # about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer
         # Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -2012,6 +2270,7 @@ module AwsSdk
         # string every time you submit a RegisterInstance request if you're registering additional instances
         # for the same namespace and service. CreatorRequestId can be any unique string (for example, a
         # date/time stamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
@@ -2024,11 +2283,13 @@ module AwsSdk
         end
       end
 
+
       struct RegisterInstanceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -2040,8 +2301,10 @@ module AwsSdk
 
       # The operation can't be completed because you've reached the quota for the number of requests. For
       # more information, see Cloud Map API request throttling quota in the Cloud Map Developer Guide .
+
       struct RequestLimitExceeded
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2054,8 +2317,10 @@ module AwsSdk
 
       # The specified resource can't be deleted because it contains other resources. For example, you can't
       # delete a service that contains any instances.
+
       struct ResourceInUse
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2067,8 +2332,10 @@ module AwsSdk
       end
 
       # The resource can't be created because you've reached the quota on the number of resources.
+
       struct ResourceLimitExceeded
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2080,8 +2347,10 @@ module AwsSdk
       end
 
       # The operation can't be completed because the resource was not found.
+
       struct ResourceNotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2093,10 +2362,12 @@ module AwsSdk
       end
 
       # Start of Authority (SOA) properties for a public or private DNS namespace.
+
       struct SOA
         include JSON::Serializable
 
         # The time to live (TTL) for purposes of negative caching.
+
         @[JSON::Field(key: "TTL")]
         getter ttl : Int64
 
@@ -2107,10 +2378,12 @@ module AwsSdk
       end
 
       # Updated Start of Authority (SOA) properties for a public or private DNS namespace.
+
       struct SOAChange
         include JSON::Serializable
 
         # The updated time to live (TTL) for purposes of negative caching.
+
         @[JSON::Field(key: "TTL")]
         getter ttl : Int64
 
@@ -2121,16 +2394,19 @@ module AwsSdk
       end
 
       # A complex type that contains information about the specified service.
+
       struct Service
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that Cloud Map assigns to the service when you create it.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The date and time that the service was created, in Unix format and Coordinated Universal Time (UTC).
         # The value of CreateDate is accurate to milliseconds. For example, the value 1516925490.087
         # represents Friday, January 26, 2018 12:11:30.087 AM.
+
         @[JSON::Field(key: "CreateDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_date : Time?
 
@@ -2138,22 +2414,26 @@ module AwsSdk
         # it is the ID of account of the namespace owner or of another account with which the namespace has
         # been shared. For more information about shared namespaces, see Cross-account Cloud Map namespace
         # sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "CreatedByAccount")]
         getter created_by_account : String?
 
         # A unique string that identifies the request and that allows failed requests to be retried without
         # the risk of running the operation twice. CreatorRequestId can be any unique string (for example, a
         # date/timestamp).
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
 
         # The description of the service.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # A complex type that contains information about the Route 53 DNS records that you want Cloud Map to
         # create when you register an instance. The record types of a service can only be changed by deleting
         # the service and recreating it with a new Dnsconfig .
+
         @[JSON::Field(key: "DnsConfig")]
         getter dns_config : Types::DnsConfig?
 
@@ -2161,30 +2441,36 @@ module AwsSdk
         # check. If you specify settings for a health check, Cloud Map associates the health check with the
         # records that you specify in DnsConfig . For information about the charges for health checks, see
         # Amazon Route 53 Pricing .
+
         @[JSON::Field(key: "HealthCheckConfig")]
         getter health_check_config : Types::HealthCheckConfig?
 
         # A complex type that contains information about an optional custom health check. If you specify a
         # health check configuration, you can specify either HealthCheckCustomConfig or HealthCheckConfig but
         # not both.
+
         @[JSON::Field(key: "HealthCheckCustomConfig")]
         getter health_check_custom_config : Types::HealthCheckCustomConfig?
 
         # The ID that Cloud Map assigned to the service when you created it.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The number of instances that are currently associated with the service. Instances that were
         # previously associated with the service but that are deleted aren't included in the count. The count
         # might not reflect pending registrations and deregistrations.
+
         @[JSON::Field(key: "InstanceCount")]
         getter instance_count : Int32?
 
         # The name of the service.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
         # The ID of the namespace that was used to create the service.
+
         @[JSON::Field(key: "NamespaceId")]
         getter namespace_id : String?
 
@@ -2192,6 +2478,7 @@ module AwsSdk
         # associated. If this isn't your account ID, it is the ID of the account that shared the namespace
         # with your account. For more information about shared namespaces, see Cross-account Cloud Map
         # namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
@@ -2199,6 +2486,7 @@ module AwsSdk
         # instances can be discovered using either DNS queries or the DiscoverInstances API operation. HTTP
         # The service instances can only be discovered using the DiscoverInstances API operation. DNS
         # Reserved.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -2222,21 +2510,26 @@ module AwsSdk
       end
 
       # The service can't be created because a service with the same name already exists.
+
       struct ServiceAlreadyExists
         include JSON::Serializable
 
         # The CreatorRequestId that was used to create the service.
+
         @[JSON::Field(key: "CreatorRequestId")]
         getter creator_request_id : String?
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The ARN of the existing service.
+
         @[JSON::Field(key: "ServiceArn")]
         getter service_arn : String?
 
         # The ID of the existing service.
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String?
 
@@ -2250,12 +2543,14 @@ module AwsSdk
       end
 
       # A complex type that contains information about attributes associated with a specific service.
+
       struct ServiceAttributes
         include JSON::Serializable
 
         # A string map that contains the following information for the service that you specify in ServiceArn
         # : The attributes that apply to the service. For each attribute, the applicable value. You can
         # specify a total of 30 attributes.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -2263,10 +2558,12 @@ module AwsSdk
         # associated. If this isn't your account ID, it is the ID of the account that shared the namespace
         # with your account. For more information about shared namespaces, see Cross-account Cloud Map
         # namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
         # The ARN of the service that the attributes are associated with.
+
         @[JSON::Field(key: "ServiceArn")]
         getter service_arn : String?
 
@@ -2280,8 +2577,10 @@ module AwsSdk
 
       # The attribute can't be added to the service because you've exceeded the quota for the number of
       # attributes you can add to a service.
+
       struct ServiceAttributesLimitExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2293,21 +2592,25 @@ module AwsSdk
       end
 
       # A complex type that contains changes to an existing service.
+
       struct ServiceChange
         include JSON::Serializable
 
         # A description for the service.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Information about the Route 53 DNS records that you want Cloud Map to create when you register an
         # instance.
+
         @[JSON::Field(key: "DnsConfig")]
         getter dns_config : Types::DnsConfigChange?
 
         # Public DNS and HTTP namespaces only. Settings for an optional health check. If you specify settings
         # for a health check, Cloud Map associates the health check with the records that you specify in
         # DnsConfig .
+
         @[JSON::Field(key: "HealthCheckConfig")]
         getter health_check_config : Types::HealthCheckConfig?
 
@@ -2320,6 +2623,7 @@ module AwsSdk
       end
 
       # A complex type that lets you specify the namespaces that you want to list services for.
+
       struct ServiceFilter
         include JSON::Serializable
 
@@ -2328,6 +2632,7 @@ module AwsSdk
         # the namespaces created by your Amazon Web Services account or by other accounts. This can be used to
         # filter for services created in a shared namespace. For more information about shared namespaces, see
         # Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -2336,12 +2641,14 @@ module AwsSdk
         # that are shared with your Amazon Web Services account. RESOURCE_OWNER : Specify one of SELF or
         # OTHER_ACCOUNTS . SELF can be used to filter services associated with namespaces created by you and
         # OTHER_ACCOUNTS can be used to filter services associated with namespaces that were shared with you.
+
         @[JSON::Field(key: "Values")]
         getter values : Array(String)
 
         # The operator that you want to use to determine whether a service is returned by ListServices . Valid
         # values for Condition include the following: EQ : When you specify EQ , specify one value. EQ is the
         # default condition and can be omitted.
+
         @[JSON::Field(key: "Condition")]
         getter condition : String?
 
@@ -2354,8 +2661,10 @@ module AwsSdk
       end
 
       # No service exists with the specified ID.
+
       struct ServiceNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -2367,14 +2676,17 @@ module AwsSdk
       end
 
       # A complex type that contains information about a specified service.
+
       struct ServiceSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) that Cloud Map assigns to the service when you create it.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The date and time that the service was created.
+
         @[JSON::Field(key: "CreateDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter create_date : Time?
 
@@ -2382,21 +2694,25 @@ module AwsSdk
         # it is the account ID of the namespace owner or of another account with which the namespace has been
         # shared. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing
         # in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "CreatedByAccount")]
         getter created_by_account : String?
 
         # The description that you specify when you create the service.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # Information about the Route 53 DNS records that you want Cloud Map to create when you register an
         # instance.
+
         @[JSON::Field(key: "DnsConfig")]
         getter dns_config : Types::DnsConfig?
 
         # Public DNS and HTTP namespaces only. Settings for an optional health check. If you specify settings
         # for a health check, Cloud Map associates the health check with the records that you specify in
         # DnsConfig .
+
         @[JSON::Field(key: "HealthCheckConfig")]
         getter health_check_config : Types::HealthCheckConfig?
 
@@ -2408,20 +2724,24 @@ module AwsSdk
         # must also be in the VPC.) You want to use a third-party health checker regardless of where your
         # resources are located. If you specify a health check configuration, you can specify either
         # HealthCheckCustomConfig or HealthCheckConfig but not both.
+
         @[JSON::Field(key: "HealthCheckCustomConfig")]
         getter health_check_custom_config : Types::HealthCheckCustomConfig?
 
         # The ID that Cloud Map assigned to the service when you created it.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The number of instances that are currently associated with the service. Instances that were
         # previously associated with the service but that are deleted aren't included in the count. The count
         # might not reflect pending registrations and deregistrations.
+
         @[JSON::Field(key: "InstanceCount")]
         getter instance_count : Int32?
 
         # The name of the service.
+
         @[JSON::Field(key: "Name")]
         getter name : String?
 
@@ -2429,6 +2749,7 @@ module AwsSdk
         # associated. If this isn't your account ID, it is the ID of the account that shared the namespace
         # with your account. For more information about shared namespaces, see Cross-account Cloud Map
         # namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ResourceOwner")]
         getter resource_owner : String?
 
@@ -2436,6 +2757,7 @@ module AwsSdk
         # instances can be discovered using either DNS queries or the DiscoverInstances API operation. HTTP
         # The service instances can only be discovered using the DiscoverInstances API operation. DNS
         # Reserved.
+
         @[JSON::Field(key: "Type")]
         getter type : String?
 
@@ -2457,15 +2779,18 @@ module AwsSdk
       end
 
       # A custom key-value pair that's associated with a resource.
+
       struct Tag
         include JSON::Serializable
 
         # The key identifier, or name, of the tag.
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The string value that's associated with the key of the tag. You can set the value of a tag to an
         # empty string, but you can't set the value of a tag to null.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -2476,15 +2801,18 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to retrieve tags for.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The tags to add to the specified resource. Specifying the tag key is required. You can set the value
         # of a tag to an empty string, but you can't set the value of a tag to null.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -2495,6 +2823,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -2504,13 +2833,16 @@ module AwsSdk
 
       # The list of tags on the resource is over the quota. The maximum number of tags that can be applied
       # to a resource is 50.
+
       struct TooManyTagsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # The name of the resource.
+
         @[JSON::Field(key: "ResourceName")]
         getter resource_name : String?
 
@@ -2521,14 +2853,17 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that you want to retrieve tags for.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The tag keys to remove from the specified resource.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -2539,6 +2874,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -2546,20 +2882,24 @@ module AwsSdk
         end
       end
 
+
       struct UpdateHttpNamespaceRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the namespace that you want to update.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Updated properties for the the HTTP namespace.
+
         @[JSON::Field(key: "Namespace")]
         getter namespace : Types::HttpNamespaceChange
 
         # A unique string that identifies the request and that allows failed UpdateHttpNamespace requests to
         # be retried without the risk of running the operation twice. UpdaterRequestId can be any unique
         # string (for example, a date/timestamp).
+
         @[JSON::Field(key: "UpdaterRequestId")]
         getter updater_request_id : String?
 
@@ -2571,11 +2911,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateHttpNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -2585,10 +2927,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateInstanceCustomHealthStatusRequest
         include JSON::Serializable
 
         # The ID of the instance that you want to change the health status for.
+
         @[JSON::Field(key: "InstanceId")]
         getter instance_id : String
 
@@ -2596,10 +2940,12 @@ module AwsSdk
         # health check that you want to change the status for. For services created in a shared namespace,
         # specify the service ARN. For more information about shared namespaces, see Cross-account Cloud Map
         # namespace sharing in the Cloud Map Developer Guide .
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
         # The new status of the instance, HEALTHY or UNHEALTHY .
+
         @[JSON::Field(key: "Status")]
         getter status : String
 
@@ -2611,20 +2957,24 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePrivateDnsNamespaceRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the namespace that you want to update.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Updated properties for the private DNS namespace.
+
         @[JSON::Field(key: "Namespace")]
         getter namespace : Types::PrivateDnsNamespaceChange
 
         # A unique string that identifies the request and that allows failed UpdatePrivateDnsNamespace
         # requests to be retried without the risk of running the operation twice. UpdaterRequestId can be any
         # unique string (for example, a date/timestamp).
+
         @[JSON::Field(key: "UpdaterRequestId")]
         getter updater_request_id : String?
 
@@ -2636,11 +2986,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePrivateDnsNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -2650,20 +3002,24 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePublicDnsNamespaceRequest
         include JSON::Serializable
 
         # The ID or Amazon Resource Name (ARN) of the namespace being updated.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Updated properties for the public DNS namespace.
+
         @[JSON::Field(key: "Namespace")]
         getter namespace : Types::PublicDnsNamespaceChange
 
         # A unique string that identifies the request and that allows failed UpdatePublicDnsNamespace requests
         # to be retried without the risk of running the operation twice. UpdaterRequestId can be any unique
         # string (for example, a date/timestamp).
+
         @[JSON::Field(key: "UpdaterRequestId")]
         getter updater_request_id : String?
 
@@ -2675,11 +3031,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePublicDnsNamespaceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 
@@ -2689,15 +3047,18 @@ module AwsSdk
         end
       end
 
+
       struct UpdateServiceAttributesRequest
         include JSON::Serializable
 
         # A string map that contains attribute key-value pairs.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)
 
         # The ID or Amazon Resource Name (ARN) of the service that you want to update. For services created in
         # a namespace shared with your Amazon Web Services account, specify the service ARN.
+
         @[JSON::Field(key: "ServiceId")]
         getter service_id : String
 
@@ -2708,12 +3069,14 @@ module AwsSdk
         end
       end
 
+
       struct UpdateServiceAttributesResponse
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct UpdateServiceRequest
         include JSON::Serializable
@@ -2722,11 +3085,13 @@ module AwsSdk
         # associated with the service is shared with your Amazon Web Services account, specify the service
         # ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in
         # the Cloud Map Developer Guide
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # A complex type that contains the new settings for the service. You can specify a maximum of 30
         # attributes (key-value pairs).
+
         @[JSON::Field(key: "Service")]
         getter service : Types::ServiceChange
 
@@ -2737,11 +3102,13 @@ module AwsSdk
         end
       end
 
+
       struct UpdateServiceResponse
         include JSON::Serializable
 
         # A value that you can use to determine whether the request completed successfully. To get the status
         # of the operation, see GetOperation .
+
         @[JSON::Field(key: "OperationId")]
         getter operation_id : String?
 

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./oidc/client"
-require "./oidc/errors"
-require "./oidc/model"
-require "./oidc/types"
-require "./oidc/protocol/rest_json"
-require "./customizations/oidc/customizations"

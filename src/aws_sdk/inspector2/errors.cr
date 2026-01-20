@@ -6,36 +6,44 @@ module AwsSdk
 
       # You do not have sufficient access to perform this action. For Enable , you receive this error if you
       # attempt to use a feature in an unsupported Amazon Web Services Region.
+
       class AccessDeniedException < ServiceError
       end
 
       # One or more tags submitted as part of the request is not valid.
+
       class BadRequestException < ServiceError
       end
 
       # A conflict occurred. This exception occurs when the same resource is being modified by concurrent
       # requests.
+
       class ConflictException < ServiceError
       end
 
       # The request has failed due to an internal failure of the Amazon Inspector service.
+
       class InternalServerException < ServiceError
       end
 
       # The operation tried to access an invalid resource. Make sure the resource is specified correctly.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # You have exceeded your service quota. To perform the requested action, remove some of the relevant
       # resources, or use Service Quotas to request a service quota increase.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The limit on the number of requests per second was exceeded.
+
       class ThrottlingException < ServiceError
       end
 
       # The request has failed validation due to missing required fields or having invalid inputs.
+
       class ValidationException < ServiceError
       end
 

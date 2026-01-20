@@ -1,0 +1,7 @@
+require "./runtime"
+require "./ses/client"
+require "./ses/errors"
+require "./ses/model"
+require "./ses/types"
+require "./ses/protocol/query"
+require "./customizations/ses/customizations"

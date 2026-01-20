@@ -5,18 +5,22 @@ module AwsSdk
       end
 
       # An unexpected error occurred.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # A service quota has been exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # One of the input parameters is not valid.
+
       class ValidationException < ServiceError
       end
 

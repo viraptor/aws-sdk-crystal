@@ -7,8 +7,10 @@ module AwsSdk
 
       # The action you attempted is not allowed unless Service Access with Service Quotas is enabled in your
       # organization.
+
       struct AWSServiceAccessNotEnabledException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -20,8 +22,10 @@ module AwsSdk
       end
 
       # You do not have sufficient permission to perform this action.
+
       struct AccessDeniedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -32,12 +36,14 @@ module AwsSdk
         end
       end
 
+
       struct AssociateServiceQuotaTemplateRequest
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct AssociateServiceQuotaTemplateResponse
         include JSON::Serializable
@@ -46,10 +52,12 @@ module AwsSdk
         end
       end
 
+
       struct CreateSupportCaseRequest
         include JSON::Serializable
 
         # The ID of the pending quota increase request for which you want to open a Support case.
+
         @[JSON::Field(key: "RequestId")]
         getter request_id : String
 
@@ -59,6 +67,7 @@ module AwsSdk
         end
       end
 
+
       struct CreateSupportCaseResponse
         include JSON::Serializable
 
@@ -66,21 +75,25 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceQuotaIncreaseRequestFromTemplateRequest
         include JSON::Serializable
 
         # Specifies the Amazon Web Services Region for which the request was made.
+
         @[JSON::Field(key: "AwsRegion")]
         getter aws_region : String
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -92,6 +105,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceQuotaIncreaseRequestFromTemplateResponse
         include JSON::Serializable
 
@@ -100,8 +114,10 @@ module AwsSdk
       end
 
       # You can't perform this action because a dependency does not have access.
+
       struct DependencyAccessDeniedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -112,12 +128,14 @@ module AwsSdk
         end
       end
 
+
       struct DisassociateServiceQuotaTemplateRequest
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct DisassociateServiceQuotaTemplateResponse
         include JSON::Serializable
@@ -127,6 +145,7 @@ module AwsSdk
       end
 
       # An error that explains why an action did not succeed.
+
       struct ErrorReason
         include JSON::Serializable
 
@@ -136,10 +155,12 @@ module AwsSdk
         # Amazon Web Services service is throttling Service Quotas. DEPENDENCY_SERVICE_ERROR - The Amazon Web
         # Services service is not available. SERVICE_QUOTA_NOT_AVAILABLE_ERROR - There was an error in Service
         # Quotas.
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # The error message.
+
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
@@ -150,17 +171,20 @@ module AwsSdk
         end
       end
 
+
       struct GetAWSDefaultServiceQuotaRequest
         include JSON::Serializable
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -171,10 +195,12 @@ module AwsSdk
         end
       end
 
+
       struct GetAWSDefaultServiceQuotaResponse
         include JSON::Serializable
 
         # Information about the quota.
+
         @[JSON::Field(key: "Quota")]
         getter quota : Types::ServiceQuota?
 
@@ -184,6 +210,7 @@ module AwsSdk
         end
       end
 
+
       struct GetAssociationForServiceQuotaTemplateRequest
         include JSON::Serializable
 
@@ -191,11 +218,13 @@ module AwsSdk
         end
       end
 
+
       struct GetAssociationForServiceQuotaTemplateResponse
         include JSON::Serializable
 
         # The association status. If the status is ASSOCIATED , the quota increase requests in the template
         # are automatically applied to new Amazon Web Services accounts in your organization.
+
         @[JSON::Field(key: "ServiceQuotaTemplateAssociationStatus")]
         getter service_quota_template_association_status : String?
 
@@ -205,6 +234,7 @@ module AwsSdk
         end
       end
 
+
       struct GetAutoManagementConfigurationRequest
         include JSON::Serializable
 
@@ -212,30 +242,36 @@ module AwsSdk
         end
       end
 
+
       struct GetAutoManagementConfigurationResponse
         include JSON::Serializable
 
         # List of Amazon Web Services services excluded from Automatic Management. You won't be notified of
         # Service Quotas utilization for Amazon Web Services services added to the Automatic Management
         # exclusion list.
+
         @[JSON::Field(key: "ExclusionList")]
         getter exclusion_list : Hash(String, Array(Types::QuotaInfo))?
 
         # The User Notifications Amazon Resource Name (ARN) for Automatic Management notifications.
+
         @[JSON::Field(key: "NotificationArn")]
         getter notification_arn : String?
 
         # Information on the opt-in level for Automatic Management. Only Amazon Web Services account level is
         # supported.
+
         @[JSON::Field(key: "OptInLevel")]
         getter opt_in_level : String?
 
         # Status on whether Automatic Management is started or stopped.
+
         @[JSON::Field(key: "OptInStatus")]
         getter opt_in_status : String?
 
         # Information on the opt-in type for Automatic Management. There are two modes: Notify only and Notify
         # and Auto-Adjust. Currently, only NotifyOnly is available.
+
         @[JSON::Field(key: "OptInType")]
         getter opt_in_type : String?
 
@@ -249,21 +285,25 @@ module AwsSdk
         end
       end
 
+
       struct GetQuotaUtilizationReportRequest
         include JSON::Serializable
 
         # The unique identifier for the quota utilization report. This identifier is returned by the
         # StartQuotaUtilizationReport operation.
+
         @[JSON::Field(key: "ReportId")]
         getter report_id : String
 
         # The maximum number of results to return per page. The default value is 1,000 and the maximum allowed
         # value is 1,000.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # A token that indicates the next page of results to retrieve. This token is returned in the response
         # when there are more results available. Omit this parameter for the first request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -275,26 +315,31 @@ module AwsSdk
         end
       end
 
+
       struct GetQuotaUtilizationReportResponse
         include JSON::Serializable
 
         # An error code indicating the reason for failure when the report status is FAILED . This field is
         # only present when the status is FAILED .
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
         # A detailed error message describing the failure when the report status is FAILED . This field is
         # only present when the status is FAILED .
+
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The timestamp when the report was generated, in ISO 8601 format.
+
         @[JSON::Field(key: "GeneratedAt", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter generated_at : Time?
 
         # A token that indicates more results are available. Include this token in the next request to
         # retrieve the next page of results. If this field is not present, you have retrieved all available
         # results.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -302,10 +347,12 @@ module AwsSdk
         # record includes the quota code, service code, service name, quota name, namespace, utilization
         # percentage, default value, applied value, and whether the quota is adjustable. Up to 1,000 records
         # are returned per page.
+
         @[JSON::Field(key: "Quotas")]
         getter quotas : Array(Types::QuotaUtilizationInfo)?
 
         # The unique identifier for the quota utilization report.
+
         @[JSON::Field(key: "ReportId")]
         getter report_id : String?
 
@@ -314,10 +361,12 @@ module AwsSdk
         # Continue polling until the status changes to COMPLETED . COMPLETED - The report is ready and quota
         # utilization data is available in the response. FAILED - The report generation failed. Check the
         # ErrorCode and ErrorMessage fields for details.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The total number of quotas included in the report across all pages.
+
         @[JSON::Field(key: "TotalCount")]
         getter total_count : Int32?
 
@@ -334,10 +383,12 @@ module AwsSdk
         end
       end
 
+
       struct GetRequestedServiceQuotaChangeRequest
         include JSON::Serializable
 
         # Specifies the ID of the quota increase request.
+
         @[JSON::Field(key: "RequestId")]
         getter request_id : String
 
@@ -347,10 +398,12 @@ module AwsSdk
         end
       end
 
+
       struct GetRequestedServiceQuotaChangeResponse
         include JSON::Serializable
 
         # Information about the quota increase request.
+
         @[JSON::Field(key: "RequestedQuota")]
         getter requested_quota : Types::RequestedServiceQuotaChange?
 
@@ -360,21 +413,25 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceQuotaIncreaseRequestFromTemplateRequest
         include JSON::Serializable
 
         # Specifies the Amazon Web Services Region for which you made the request.
+
         @[JSON::Field(key: "AwsRegion")]
         getter aws_region : String
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -386,10 +443,12 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceQuotaIncreaseRequestFromTemplateResponse
         include JSON::Serializable
 
         # Information about the quota increase request.
+
         @[JSON::Field(key: "ServiceQuotaIncreaseRequestInTemplate")]
         getter service_quota_increase_request_in_template : Types::ServiceQuotaIncreaseRequestInTemplate?
 
@@ -399,21 +458,25 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceQuotaRequest
         include JSON::Serializable
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
         # Specifies the resource with an Amazon Resource Name (ARN).
+
         @[JSON::Field(key: "ContextId")]
         getter context_id : String?
 
@@ -425,10 +488,12 @@ module AwsSdk
         end
       end
 
+
       struct GetServiceQuotaResponse
         include JSON::Serializable
 
         # Information about the quota.
+
         @[JSON::Field(key: "Quota")]
         getter quota : Types::ServiceQuota?
 
@@ -439,8 +504,10 @@ module AwsSdk
       end
 
       # Invalid input was provided.
+
       struct IllegalArgumentException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -452,8 +519,10 @@ module AwsSdk
       end
 
       # Invalid input was provided.
+
       struct InvalidPaginationTokenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -465,8 +534,10 @@ module AwsSdk
       end
 
       # The resource is in an invalid state.
+
       struct InvalidResourceStateException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -477,11 +548,13 @@ module AwsSdk
         end
       end
 
+
       struct ListAWSDefaultServiceQuotasRequest
         include JSON::Serializable
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -492,6 +565,7 @@ module AwsSdk
         # call to the operation to get the next part of the results. An API operation can return fewer results
         # than the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -499,6 +573,7 @@ module AwsSdk
         # previous request. A NextToken response indicates that more output is available. Set this parameter
         # to the value of the previous call's NextToken response to indicate where the output should continue
         # from.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -510,16 +585,19 @@ module AwsSdk
         end
       end
 
+
       struct ListAWSDefaultServiceQuotasResponse
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the quotas.
+
         @[JSON::Field(key: "Quotas")]
         getter quotas : Array(Types::ServiceQuota)?
 
@@ -530,17 +608,20 @@ module AwsSdk
         end
       end
 
+
       struct ListRequestedServiceQuotaChangeHistoryByQuotaRequest
         include JSON::Serializable
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -551,6 +632,7 @@ module AwsSdk
         # call to the operation to get the next part of the results. An API operation can return fewer results
         # than the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -558,15 +640,18 @@ module AwsSdk
         # previous request. A NextToken response indicates that more output is available. Set this parameter
         # to the value of the previous call's NextToken response to indicate where the output should continue
         # from.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Filters the response to return quota requests for the ACCOUNT , RESOURCE , or ALL levels. ACCOUNT is
         # the default.
+
         @[JSON::Field(key: "QuotaRequestedAtLevel")]
         getter quota_requested_at_level : String?
 
         # Specifies that you want to filter the results to only the requests with the matching status.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -581,16 +666,19 @@ module AwsSdk
         end
       end
 
+
       struct ListRequestedServiceQuotaChangeHistoryByQuotaResponse
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the quota increase requests.
+
         @[JSON::Field(key: "RequestedQuotas")]
         getter requested_quotas : Array(Types::RequestedServiceQuotaChange)?
 
@@ -600,6 +688,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct ListRequestedServiceQuotaChangeHistoryRequest
         include JSON::Serializable
@@ -611,6 +700,7 @@ module AwsSdk
         # call to the operation to get the next part of the results. An API operation can return fewer results
         # than the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -618,20 +708,24 @@ module AwsSdk
         # previous request. A NextToken response indicates that more output is available. Set this parameter
         # to the value of the previous call's NextToken response to indicate where the output should continue
         # from.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Filters the response to return quota requests for the ACCOUNT , RESOURCE , or ALL levels. ACCOUNT is
         # the default.
+
         @[JSON::Field(key: "QuotaRequestedAtLevel")]
         getter quota_requested_at_level : String?
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
         # Specifies that you want to filter the results to only the requests with the matching status.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -645,16 +739,19 @@ module AwsSdk
         end
       end
 
+
       struct ListRequestedServiceQuotaChangeHistoryResponse
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the quota increase requests.
+
         @[JSON::Field(key: "RequestedQuotas")]
         getter requested_quotas : Array(Types::RequestedServiceQuotaChange)?
 
@@ -665,10 +762,12 @@ module AwsSdk
         end
       end
 
+
       struct ListServiceQuotaIncreaseRequestsInTemplateRequest
         include JSON::Serializable
 
         # Specifies the Amazon Web Services Region for which you made the request.
+
         @[JSON::Field(key: "AwsRegion")]
         getter aws_region : String?
 
@@ -679,6 +778,7 @@ module AwsSdk
         # call to the operation to get the next part of the results. An API operation can return fewer results
         # than the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -686,11 +786,13 @@ module AwsSdk
         # previous request. A NextToken response indicates that more output is available. Set this parameter
         # to the value of the previous call's NextToken response to indicate where the output should continue
         # from.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
@@ -703,16 +805,19 @@ module AwsSdk
         end
       end
 
+
       struct ListServiceQuotaIncreaseRequestsInTemplateResponse
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the quota increase requests.
+
         @[JSON::Field(key: "ServiceQuotaIncreaseRequestInTemplateList")]
         getter service_quota_increase_request_in_template_list : Array(Types::ServiceQuotaIncreaseRequestInTemplate)?
 
@@ -723,11 +828,13 @@ module AwsSdk
         end
       end
 
+
       struct ListServiceQuotasRequest
         include JSON::Serializable
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -738,6 +845,7 @@ module AwsSdk
         # call to the operation to get the next part of the results. An API operation can return fewer results
         # than the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -745,17 +853,20 @@ module AwsSdk
         # previous request. A NextToken response indicates that more output is available. Set this parameter
         # to the value of the previous call's NextToken response to indicate where the output should continue
         # from.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Filters the response to return applied quota values for the ACCOUNT , RESOURCE , or ALL levels.
         # ACCOUNT is the default.
+
         @[JSON::Field(key: "QuotaAppliedAtLevel")]
         getter quota_applied_at_level : String?
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
@@ -769,16 +880,19 @@ module AwsSdk
         end
       end
 
+
       struct ListServiceQuotasResponse
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # Information about the quotas.
+
         @[JSON::Field(key: "Quotas")]
         getter quotas : Array(Types::ServiceQuota)?
 
@@ -788,6 +902,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct ListServicesRequest
         include JSON::Serializable
@@ -799,6 +914,7 @@ module AwsSdk
         # call to the operation to get the next part of the results. An API operation can return fewer results
         # than the maximum even when there are more results available. You should check NextToken after every
         # operation to ensure that you receive all of the results.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -806,6 +922,7 @@ module AwsSdk
         # previous request. A NextToken response indicates that more output is available. Set this parameter
         # to the value of the previous call's NextToken response to indicate where the output should continue
         # from.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -816,16 +933,19 @@ module AwsSdk
         end
       end
 
+
       struct ListServicesResponse
         include JSON::Serializable
 
         # If present, indicates that more output is available than is included in the current response. Use
         # this value in the NextToken request parameter in a subsequent call to the operation to get the next
         # part of the output. You should repeat this until the NextToken response element comes back as null .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # The list of the Amazon Web Services service names and service codes.
+
         @[JSON::Field(key: "Services")]
         getter services : Array(Types::ServiceInfo)?
 
@@ -836,12 +956,14 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the applied quota for which you want to list tags. You can get
         # this information by using the Service Quotas console, or by listing the quotas using the
         # list-service-quotas CLI command or the ListServiceQuotas Amazon Web Services API operation.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -851,10 +973,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # A complex data type that contains zero or more tag elements.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -865,22 +989,27 @@ module AwsSdk
       end
 
       # Information about the CloudWatch metric that reflects quota usage.
+
       struct MetricInfo
         include JSON::Serializable
 
         # The metric dimension. This is a name/value pair that is part of the identity of a metric.
+
         @[JSON::Field(key: "MetricDimensions")]
         getter metric_dimensions : Hash(String, String)?
 
         # The name of the metric.
+
         @[JSON::Field(key: "MetricName")]
         getter metric_name : String?
 
         # The namespace of the metric.
+
         @[JSON::Field(key: "MetricNamespace")]
         getter metric_namespace : String?
 
         # The metric statistic that we recommend you use when determining quota usage.
+
         @[JSON::Field(key: "MetricStatisticRecommendation")]
         getter metric_statistic_recommendation : String?
 
@@ -894,8 +1023,10 @@ module AwsSdk
       end
 
       # The Amazon Web Services account making this call is not a member of an organization.
+
       struct NoAvailableOrganizationException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -907,8 +1038,10 @@ module AwsSdk
       end
 
       # The specified resource does not exist.
+
       struct NoSuchResourceException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -920,8 +1053,10 @@ module AwsSdk
       end
 
       # The organization that your Amazon Web Services account belongs to is not in All Features mode.
+
       struct OrganizationNotInAllFeaturesModeException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -932,25 +1067,30 @@ module AwsSdk
         end
       end
 
+
       struct PutServiceQuotaIncreaseRequestIntoTemplateRequest
         include JSON::Serializable
 
         # Specifies the Amazon Web Services Region to which the template applies.
+
         @[JSON::Field(key: "AwsRegion")]
         getter aws_region : String
 
         # Specifies the new, increased value for the quota.
+
         @[JSON::Field(key: "DesiredValue")]
         getter desired_value : Float64
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
@@ -963,10 +1103,12 @@ module AwsSdk
         end
       end
 
+
       struct PutServiceQuotaIncreaseRequestIntoTemplateResponse
         include JSON::Serializable
 
         # Information about the quota increase request.
+
         @[JSON::Field(key: "ServiceQuotaIncreaseRequestInTemplate")]
         getter service_quota_increase_request_in_template : Types::ServiceQuotaIncreaseRequestInTemplate?
 
@@ -983,6 +1125,7 @@ module AwsSdk
       # manage it. For quotas such as Amazon OpenSearch Service Domains which can be managed at the
       # account-level for each Amazon Web Services Region, the QuotaContext field is absent. See the
       # attribute descriptions below to further understand how to use them.
+
       struct QuotaContextInfo
         include JSON::Serializable
 
@@ -991,16 +1134,19 @@ module AwsSdk
         # resource. If the value is *, then the quota value applies to all resources listed in the
         # ContextScopeType field. The quota value applies to all resources for which you haven’t previously
         # applied a quota value, and any new resources you create in your Amazon Web Services account.
+
         @[JSON::Field(key: "ContextId")]
         getter context_id : String?
 
         # Specifies the scope to which the quota value is applied. If the scope is RESOURCE , the quota value
         # is applied to each resource in the Amazon Web Services account. If the scope is ACCOUNT , the quota
         # value is applied to the Amazon Web Services account.
+
         @[JSON::Field(key: "ContextScope")]
         getter context_scope : String?
 
         # Specifies the resource type to which the quota can be applied.
+
         @[JSON::Field(key: "ContextScopeType")]
         getter context_scope_type : String?
 
@@ -1014,8 +1160,10 @@ module AwsSdk
 
       # You have exceeded your service quota. To perform the requested action, remove some of the relevant
       # resources, or use Service Quotas to request a service quota increase.
+
       struct QuotaExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1029,14 +1177,17 @@ module AwsSdk
       # Information on your Service Quotas for Service Quotas Automatic Management . Automatic Management
       # monitors your Service Quotas utilization and notifies you before you run out of your allocated
       # quotas.
+
       struct QuotaInfo
         include JSON::Serializable
 
         # The Service Quotas code for the Amazon Web Services service monitored with Automatic Management.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
         # The Service Quotas name for the Amazon Web Services service monitored with Automatic Management.
+
         @[JSON::Field(key: "QuotaName")]
         getter quota_name : String?
 
@@ -1048,14 +1199,17 @@ module AwsSdk
       end
 
       # Information about the quota period.
+
       struct QuotaPeriod
         include JSON::Serializable
 
         # The time unit.
+
         @[JSON::Field(key: "PeriodUnit")]
         getter period_unit : String?
 
         # The value associated with the reported PeriodUnit .
+
         @[JSON::Field(key: "PeriodValue")]
         getter period_value : Int32?
 
@@ -1068,44 +1222,54 @@ module AwsSdk
 
       # Information about a quota's utilization, including the quota code, service information, current
       # usage, and applied limits.
+
       struct QuotaUtilizationInfo
         include JSON::Serializable
 
         # Indicates whether the quota value can be increased.
+
         @[JSON::Field(key: "Adjustable")]
         getter adjustable : Bool?
 
         # The applied value of the quota, which may be higher than the default value if a quota increase has
         # been requested and approved.
+
         @[JSON::Field(key: "AppliedValue")]
         getter applied_value : Float64?
 
         # The default value of the quota.
+
         @[JSON::Field(key: "DefaultValue")]
         getter default_value : Float64?
 
         # The namespace of the metric used to track quota usage.
+
         @[JSON::Field(key: "Namespace")]
         getter namespace : String?
 
         # The quota identifier.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
         # The quota name.
+
         @[JSON::Field(key: "QuotaName")]
         getter quota_name : String?
 
         # The service identifier.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
         # The service name.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
         # The utilization percentage of the quota, calculated as (current usage / applied value) × 100. Values
         # range from 0.0 to 100.0 or higher if usage exceeds the quota limit.
+
         @[JSON::Field(key: "Utilization")]
         getter utilization : Float64?
 
@@ -1123,25 +1287,30 @@ module AwsSdk
         end
       end
 
+
       struct RequestServiceQuotaIncreaseRequest
         include JSON::Serializable
 
         # Specifies the new, increased value for the quota.
+
         @[JSON::Field(key: "DesiredValue")]
         getter desired_value : Float64
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String
 
         # Specifies the resource with an Amazon Resource Name (ARN).
+
         @[JSON::Field(key: "ContextId")]
         getter context_id : String?
 
@@ -1150,6 +1319,7 @@ module AwsSdk
         # support case for some quota increase requests. You can set this flag to False if you do not want a
         # support case created when you request a quota increase. If you set the flag to False , Amazon Web
         # Services does not open a support case and updates the request status to Not approved .
+
         @[JSON::Field(key: "SupportCaseAllowed")]
         getter support_case_allowed : Bool?
 
@@ -1163,10 +1333,12 @@ module AwsSdk
         end
       end
 
+
       struct RequestServiceQuotaIncreaseResponse
         include JSON::Serializable
 
         # Information about the quota increase request.
+
         @[JSON::Field(key: "RequestedQuota")]
         getter requested_quota : Types::RequestedServiceQuotaChange?
 
@@ -1177,72 +1349,88 @@ module AwsSdk
       end
 
       # Information about a quota increase request.
+
       struct RequestedServiceQuotaChange
         include JSON::Serializable
 
         # The case ID.
+
         @[JSON::Field(key: "CaseId")]
         getter case_id : String?
 
         # The date and time when the quota increase request was received and the case ID was created.
+
         @[JSON::Field(key: "Created", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created : Time?
 
         # The new, increased value for the quota.
+
         @[JSON::Field(key: "DesiredValue")]
         getter desired_value : Float64?
 
         # Indicates whether the quota is global.
+
         @[JSON::Field(key: "GlobalQuota")]
         getter global_quota : Bool?
 
         # The unique identifier.
+
         @[JSON::Field(key: "Id")]
         getter id : String?
 
         # The date and time of the most recent change.
+
         @[JSON::Field(key: "LastUpdated", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated : Time?
 
         # The Amazon Resource Name (ARN) of the quota.
+
         @[JSON::Field(key: "QuotaArn")]
         getter quota_arn : String?
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
         # The context for this service quota.
+
         @[JSON::Field(key: "QuotaContext")]
         getter quota_context : Types::QuotaContextInfo?
 
         # Specifies the quota name.
+
         @[JSON::Field(key: "QuotaName")]
         getter quota_name : String?
 
         # Filters the response to return quota requests for the ACCOUNT , RESOURCE , or ALL levels. ACCOUNT is
         # the default.
+
         @[JSON::Field(key: "QuotaRequestedAtLevel")]
         getter quota_requested_at_level : String?
 
         # The type of quota increase request. Possible values include: AutomaticManagement - The request was
         # automatically created by Service Quotas Automatic Management when quota utilization approached the
         # limit. If this field is not present, the request was manually created by a user.
+
         @[JSON::Field(key: "RequestType")]
         getter request_type : String?
 
         # The IAM identity of the requester.
+
         @[JSON::Field(key: "Requester")]
         getter requester : String?
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
         # Specifies the service name.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
@@ -1256,10 +1444,12 @@ module AwsSdk
         # support case correspondence for the outcome of your quota request. INVALID_REQUEST : Service Quotas
         # couldn't process your resource-level quota increase request because the Amazon Resource Name (ARN)
         # specified as part of the ContextId is invalid.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # The unit of measurement.
+
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -1286,8 +1476,10 @@ module AwsSdk
       end
 
       # The specified resource already exists.
+
       struct ResourceAlreadyExistsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1299,8 +1491,10 @@ module AwsSdk
       end
 
       # Something went wrong.
+
       struct ServiceException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1312,15 +1506,18 @@ module AwsSdk
       end
 
       # Information about an Amazon Web Services service.
+
       struct ServiceInfo
         include JSON::Serializable
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
         # Specifies the service name.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
@@ -1332,70 +1529,86 @@ module AwsSdk
       end
 
       # Information about a quota.
+
       struct ServiceQuota
         include JSON::Serializable
 
         # Indicates whether the quota value can be increased.
+
         @[JSON::Field(key: "Adjustable")]
         getter adjustable : Bool?
 
         # The quota description.
+
         @[JSON::Field(key: "Description")]
         getter description : String?
 
         # The error code and error reason.
+
         @[JSON::Field(key: "ErrorReason")]
         getter error_reason : Types::ErrorReason?
 
         # Indicates whether the quota is global.
+
         @[JSON::Field(key: "GlobalQuota")]
         getter global_quota : Bool?
 
         # The period of time.
+
         @[JSON::Field(key: "Period")]
         getter period : Types::QuotaPeriod?
 
         # Filters the response to return applied quota values for the ACCOUNT , RESOURCE , or ALL levels.
         # ACCOUNT is the default.
+
         @[JSON::Field(key: "QuotaAppliedAtLevel")]
         getter quota_applied_at_level : String?
 
         # The Amazon Resource Name (ARN) of the quota.
+
         @[JSON::Field(key: "QuotaArn")]
         getter quota_arn : String?
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
         # The context for this service quota.
+
         @[JSON::Field(key: "QuotaContext")]
         getter quota_context : Types::QuotaContextInfo?
 
         # Specifies the quota name.
+
         @[JSON::Field(key: "QuotaName")]
         getter quota_name : String?
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
         # Specifies the service name.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
         # The unit of measurement.
+
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
         # Information about the measurement.
+
         @[JSON::Field(key: "UsageMetric")]
         getter usage_metric : Types::MetricInfo?
 
         # The quota value.
+
         @[JSON::Field(key: "Value")]
         getter value : Float64?
 
@@ -1420,41 +1633,50 @@ module AwsSdk
       end
 
       # Information about a quota increase request.
+
       struct ServiceQuotaIncreaseRequestInTemplate
         include JSON::Serializable
 
         # The Amazon Web Services Region.
+
         @[JSON::Field(key: "AwsRegion")]
         getter aws_region : String?
 
         # The new, increased value of the quota.
+
         @[JSON::Field(key: "DesiredValue")]
         getter desired_value : Float64?
 
         # Indicates whether the quota is global.
+
         @[JSON::Field(key: "GlobalQuota")]
         getter global_quota : Bool?
 
         # Specifies the quota identifier. To find the quota code for a specific quota, use the
         # ListServiceQuotas operation, and look for the QuotaCode response in the output for the quota you
         # want.
+
         @[JSON::Field(key: "QuotaCode")]
         getter quota_code : String?
 
         # Specifies the quota name.
+
         @[JSON::Field(key: "QuotaName")]
         getter quota_name : String?
 
         # Specifies the service identifier. To find the service code value for an Amazon Web Services service,
         # use the ListServices operation.
+
         @[JSON::Field(key: "ServiceCode")]
         getter service_code : String?
 
         # Specifies the service name.
+
         @[JSON::Field(key: "ServiceName")]
         getter service_name : String?
 
         # The unit of measurement.
+
         @[JSON::Field(key: "Unit")]
         getter unit : String?
 
@@ -1472,8 +1694,10 @@ module AwsSdk
       end
 
       # The quota request template is not associated with your organization.
+
       struct ServiceQuotaTemplateNotInUseException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1484,25 +1708,30 @@ module AwsSdk
         end
       end
 
+
       struct StartAutoManagementRequest
         include JSON::Serializable
 
         # Sets the opt-in level for Automatic Management. Only Amazon Web Services account level is supported.
+
         @[JSON::Field(key: "OptInLevel")]
         getter opt_in_level : String
 
         # Sets the opt-in type for Automatic Management. There are two modes: Notify only and Notify and
         # Auto-Adjust. Currently, only NotifyOnly is available.
+
         @[JSON::Field(key: "OptInType")]
         getter opt_in_type : String
 
         # List of Amazon Web Services services excluded from Automatic Management. You won't be notified of
         # Service Quotas utilization for Amazon Web Services services added to the Automatic Management
         # exclusion list.
+
         @[JSON::Field(key: "ExclusionList")]
         getter exclusion_list : Hash(String, Array(String))?
 
         # The User Notifications Amazon Resource Name (ARN) for Automatic Management notifications.
+
         @[JSON::Field(key: "NotificationArn")]
         getter notification_arn : String?
 
@@ -1515,12 +1744,14 @@ module AwsSdk
         end
       end
 
+
       struct StartAutoManagementResponse
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct StartQuotaUtilizationReportRequest
         include JSON::Serializable
@@ -1529,22 +1760,26 @@ module AwsSdk
         end
       end
 
+
       struct StartQuotaUtilizationReportResponse
         include JSON::Serializable
 
         # An optional message providing additional information about the report generation status. This field
         # may contain details about the report initiation or indicate if an existing recent report is being
         # reused.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
         # A unique identifier for the quota utilization report. Use this identifier with the
         # GetQuotaUtilizationReport operation to retrieve the report results.
+
         @[JSON::Field(key: "ReportId")]
         getter report_id : String?
 
         # The current status of the report generation. The status will be PENDING when the report is first
         # initiated.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
@@ -1556,12 +1791,14 @@ module AwsSdk
         end
       end
 
+
       struct StopAutoManagementRequest
         include JSON::Serializable
 
         def initialize
         end
       end
+
 
       struct StopAutoManagementResponse
         include JSON::Serializable
@@ -1571,17 +1808,20 @@ module AwsSdk
       end
 
       # A complex data type that contains a tag key and tag value.
+
       struct Tag
         include JSON::Serializable
 
         # A string that contains a tag key. The string length should be between 1 and 128 characters. Valid
         # characters include a-z, A-Z, 0-9, space, and the special characters _ - . : / = + @.
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # A string that contains an optional tag value. The string length should be between 0 and 256
         # characters. Valid characters include a-z, A-Z, 0-9, space, and the special characters _ - . : / = +
         # @.
+
         @[JSON::Field(key: "Value")]
         getter value : String
 
@@ -1593,8 +1833,10 @@ module AwsSdk
       end
 
       # The specified tag is a reserved word and cannot be used.
+
       struct TagPolicyViolationException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1605,16 +1847,19 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the applied quota. You can get this information by using the
         # Service Quotas console, or by listing the quotas using the list-service-quotas CLI command or the
         # ListServiceQuotas Amazon Web Services API operation.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The tags that you want to add to the resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -1625,6 +1870,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -1633,8 +1879,10 @@ module AwsSdk
       end
 
       # The Service Quotas template is not available in this Amazon Web Services Region.
+
       struct TemplatesNotAvailableInRegionException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1647,8 +1895,10 @@ module AwsSdk
 
       # Due to throttling, the request was denied. Slow down the rate of request calls, or request an
       # increase for this quota.
+
       struct TooManyRequestsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1661,8 +1911,10 @@ module AwsSdk
 
       # You've exceeded the number of tags allowed for a resource. For more information, see Tag
       # restrictions in the Service Quotas User Guide .
+
       struct TooManyTagsException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "Message")]
         getter message : String?
@@ -1673,16 +1925,19 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the applied quota that you want to untag. You can get this
         # information by using the Service Quotas console, or by listing the quotas using the
         # list-service-quotas CLI command or the ListServiceQuotas Amazon Web Services API operation.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # The keys of the tags that you want to remove from the resource.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -1693,6 +1948,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -1700,22 +1956,26 @@ module AwsSdk
         end
       end
 
+
       struct UpdateAutoManagementRequest
         include JSON::Serializable
 
         # List of Amazon Web Services services you want to exclude from Automatic Management. You won't be
         # notified of Service Quotas utilization for Amazon Web Services services added to the Automatic
         # Management exclusion list.
+
         @[JSON::Field(key: "ExclusionList")]
         getter exclusion_list : Hash(String, Array(String))?
 
         # The User Notifications Amazon Resource Name (ARN) for Automatic Management notifications you want to
         # update.
+
         @[JSON::Field(key: "NotificationArn")]
         getter notification_arn : String?
 
         # Information on the opt-in type for your Automatic Management configuration. There are two modes:
         # Notify only and Notify and Auto-Adjust. Currently, only NotifyOnly is available.
+
         @[JSON::Field(key: "OptInType")]
         getter opt_in_type : String?
 
@@ -1726,6 +1986,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct UpdateAutoManagementResponse
         include JSON::Serializable

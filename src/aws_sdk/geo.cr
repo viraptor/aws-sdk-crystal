@@ -1,7 +1,0 @@
-require "./runtime"
-require "./geo/client"
-require "./geo/errors"
-require "./geo/model"
-require "./geo/types"
-require "./geo/protocol/rest_json"
-require "./customizations/geo/customizations"

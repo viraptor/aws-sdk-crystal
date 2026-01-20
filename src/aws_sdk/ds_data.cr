@@ -1,7 +1,0 @@
-require "./runtime"
-require "./ds_data/client"
-require "./ds_data/errors"
-require "./ds_data/model"
-require "./ds_data/types"
-require "./ds_data/protocol/rest_json"
-require "./customizations/ds_data/customizations"

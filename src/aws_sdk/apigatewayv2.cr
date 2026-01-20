@@ -1,0 +1,7 @@
+require "./runtime"
+require "./apigatewayv2/client"
+require "./apigatewayv2/errors"
+require "./apigatewayv2/model"
+require "./apigatewayv2/types"
+require "./apigatewayv2/protocol/rest_json"
+require "./customizations/apigatewayv2/customizations"

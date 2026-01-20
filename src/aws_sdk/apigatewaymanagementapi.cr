@@ -1,0 +1,7 @@
+require "./runtime"
+require "./apigatewaymanagementapi/client"
+require "./apigatewaymanagementapi/errors"
+require "./apigatewaymanagementapi/model"
+require "./apigatewaymanagementapi/types"
+require "./apigatewaymanagementapi/protocol/rest_json"
+require "./customizations/apigatewaymanagementapi/customizations"

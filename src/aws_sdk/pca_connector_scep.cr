@@ -1,7 +1,0 @@
-require "./runtime"
-require "./pca_connector_scep/client"
-require "./pca_connector_scep/errors"
-require "./pca_connector_scep/model"
-require "./pca_connector_scep/types"
-require "./pca_connector_scep/protocol/rest_json"
-require "./customizations/pca_connector_scep/customizations"

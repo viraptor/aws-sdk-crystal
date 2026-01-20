@@ -1,7 +1,0 @@
-require "./runtime"
-require "./migrationhub_config/client"
-require "./migrationhub_config/errors"
-require "./migrationhub_config/model"
-require "./migrationhub_config/types"
-require "./migrationhub_config/protocol/json_rpc"
-require "./customizations/migrationhub_config/customizations"

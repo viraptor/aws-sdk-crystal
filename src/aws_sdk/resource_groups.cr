@@ -1,7 +1,0 @@
-require "./runtime"
-require "./resource_groups/client"
-require "./resource_groups/errors"
-require "./resource_groups/model"
-require "./resource_groups/types"
-require "./resource_groups/protocol/rest_json"
-require "./customizations/resource_groups/customizations"

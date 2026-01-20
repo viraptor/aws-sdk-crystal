@@ -1,7 +1,0 @@
-require "./runtime"
-require "./s3_control/client"
-require "./s3_control/errors"
-require "./s3_control/model"
-require "./s3_control/types"
-require "./s3_control/protocol/rest_xml"
-require "./customizations/s3_control/customizations"

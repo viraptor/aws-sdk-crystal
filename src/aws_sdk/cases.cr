@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cases/client"
-require "./cases/errors"
-require "./cases/model"
-require "./cases/types"
-require "./cases/protocol/rest_json"
-require "./customizations/cases/customizations"

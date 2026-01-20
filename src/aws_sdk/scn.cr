@@ -1,7 +1,0 @@
-require "./runtime"
-require "./scn/client"
-require "./scn/errors"
-require "./scn/model"
-require "./scn/types"
-require "./scn/protocol/rest_json"
-require "./customizations/scn/customizations"

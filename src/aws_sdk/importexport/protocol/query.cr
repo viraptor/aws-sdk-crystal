@@ -4,7 +4,7 @@ require "xml"
 require "../../runtime"
 
 module AwsSdk
-  module Importexport
+  module ImportExport
     module Protocol
       module Query
         CONTENT_TYPE = "application/x-www-form-urlencoded; charset=utf-8"

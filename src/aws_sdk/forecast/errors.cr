@@ -6,26 +6,32 @@ module AwsSdk
 
       # We can't process the request because it includes an invalid value or a value that exceeds the valid
       # range.
+
       class InvalidInputException < ServiceError
       end
 
       # The token is not valid. Tokens expire after 24 hours.
+
       class InvalidNextTokenException < ServiceError
       end
 
       # The limit on the number of resources per account has been exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # There is already a resource with this name. Try again with a different name.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # The specified resource is in use.
+
       class ResourceInUseException < ServiceError
       end
 
       # We can't find a resource with that Amazon Resource Name (ARN). Check the ARN and try again.
+
       class ResourceNotFoundException < ServiceError
       end
 

@@ -6,10 +6,12 @@ module AwsSdk
 
       # The operation failed because of a system problem, even though the request was valid. Retry your
       # request.
+
       class InternalErrorException < ServiceError
       end
 
       # The parameters of the request were invalid.
+
       class InvalidInputException < ServiceError
       end
 
@@ -18,20 +20,24 @@ module AwsSdk
       # the Firewall Manager administrator. Or you might have tried to access a Region that's disabled by
       # default, and that you need to enable for the Firewall Manager administrator account and for
       # Organizations before you can access it.
+
       class InvalidOperationException < ServiceError
       end
 
       # The value of the Type parameter is invalid.
+
       class InvalidTypeException < ServiceError
       end
 
       # The operation exceeds a resource limit, for example, the maximum number of policy objects that you
       # can create for an Amazon Web Services account. For more information, see Firewall Manager Limits in
       # the WAF Developer Guide .
+
       class LimitExceededException < ServiceError
       end
 
       # The specified resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 

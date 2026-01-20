@@ -1,6 +1,7 @@
 module AwsSdk
   module AutoScaling
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,13 +36,16 @@ module AwsSdk
       # target groups attached to your Auto Scaling group, the instances are also registered with the target
       # groups. For more information, see Detach or attach instances in the Amazon EC2 Auto Scaling User
       # Guide .
+
       def attach_instances(
         auto_scaling_group_name : String,
         instance_ids : Array(String)? = nil
       ) : Nil
+
         input = Types::AttachInstancesQuery.new(auto_scaling_group_name: auto_scaling_group_name, instance_ids: instance_ids)
         attach_instances(input)
       end
+
       def attach_instances(input : Types::AttachInstancesQuery) : Nil
         request = Protocol::Query.build_request(Model::ATTACH_INSTANCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -64,13 +68,16 @@ module AwsSdk
       # target groups or Classic Load Balancers from the Auto Scaling group. For more information, see Use
       # Elastic Load Balancing to distribute traffic across the instances in your Auto Scaling group in the
       # Amazon EC2 Auto Scaling User Guide .
+
       def attach_load_balancer_target_groups(
         auto_scaling_group_name : String,
         target_group_ar_ns : Array(String)
       ) : Types::AttachLoadBalancerTargetGroupsResultType
+
         input = Types::AttachLoadBalancerTargetGroupsType.new(auto_scaling_group_name: auto_scaling_group_name, target_group_ar_ns: target_group_ar_ns)
         attach_load_balancer_target_groups(input)
       end
+
       def attach_load_balancer_target_groups(input : Types::AttachLoadBalancerTargetGroupsType) : Types::AttachLoadBalancerTargetGroupsResultType
         request = Protocol::Query.build_request(Model::ATTACH_LOAD_BALANCER_TARGET_GROUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -91,13 +98,16 @@ module AwsSdk
       # not detach existing Classic Load Balancers or target groups from the Auto Scaling group. For more
       # information, see Use Elastic Load Balancing to distribute traffic across the instances in your Auto
       # Scaling group in the Amazon EC2 Auto Scaling User Guide .
+
       def attach_load_balancers(
         auto_scaling_group_name : String,
         load_balancer_names : Array(String)
       ) : Types::AttachLoadBalancersResultType
+
         input = Types::AttachLoadBalancersType.new(auto_scaling_group_name: auto_scaling_group_name, load_balancer_names: load_balancer_names)
         attach_load_balancers(input)
       end
+
       def attach_load_balancers(input : Types::AttachLoadBalancersType) : Types::AttachLoadBalancersResultType
         request = Protocol::Query.build_request(Model::ATTACH_LOAD_BALANCERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -113,14 +123,17 @@ module AwsSdk
       # the DescribeTrafficSources API to return details about the state of the attachments between traffic
       # sources and your Auto Scaling group. To detach a traffic source from the Auto Scaling group, call
       # the DetachTrafficSources API.
+
       def attach_traffic_sources(
         auto_scaling_group_name : String,
         traffic_sources : Array(Types::TrafficSourceIdentifier),
         skip_zonal_shift_validation : Bool? = nil
       ) : Types::AttachTrafficSourcesResultType
+
         input = Types::AttachTrafficSourcesType.new(auto_scaling_group_name: auto_scaling_group_name, traffic_sources: traffic_sources, skip_zonal_shift_validation: skip_zonal_shift_validation)
         attach_traffic_sources(input)
       end
+
       def attach_traffic_sources(input : Types::AttachTrafficSourcesType) : Types::AttachTrafficSourcesResultType
         request = Protocol::Query.build_request(Model::ATTACH_TRAFFIC_SOURCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -130,13 +143,16 @@ module AwsSdk
       end
 
       # Deletes one or more scheduled actions for the specified Auto Scaling group.
+
       def batch_delete_scheduled_action(
         auto_scaling_group_name : String,
         scheduled_action_names : Array(String)
       ) : Types::BatchDeleteScheduledActionAnswer
+
         input = Types::BatchDeleteScheduledActionType.new(auto_scaling_group_name: auto_scaling_group_name, scheduled_action_names: scheduled_action_names)
         batch_delete_scheduled_action(input)
       end
+
       def batch_delete_scheduled_action(input : Types::BatchDeleteScheduledActionType) : Types::BatchDeleteScheduledActionAnswer
         request = Protocol::Query.build_request(Model::BATCH_DELETE_SCHEDULED_ACTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -146,13 +162,16 @@ module AwsSdk
       end
 
       # Creates or updates one or more scheduled scaling actions for an Auto Scaling group.
+
       def batch_put_scheduled_update_group_action(
         auto_scaling_group_name : String,
         scheduled_update_group_actions : Array(Types::ScheduledUpdateGroupActionRequest)
       ) : Types::BatchPutScheduledUpdateGroupActionAnswer
+
         input = Types::BatchPutScheduledUpdateGroupActionType.new(auto_scaling_group_name: auto_scaling_group_name, scheduled_update_group_actions: scheduled_update_group_actions)
         batch_put_scheduled_update_group_action(input)
       end
+
       def batch_put_scheduled_update_group_action(input : Types::BatchPutScheduledUpdateGroupActionType) : Types::BatchPutScheduledUpdateGroupActionAnswer
         request = Protocol::Query.build_request(Model::BATCH_PUT_SCHEDULED_UPDATE_GROUP_ACTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -166,13 +185,16 @@ module AwsSdk
       # instance refresh feature in Amazon EC2 Auto Scaling, which helps you update instances in your Auto
       # Scaling group after you make configuration changes. When you cancel an instance refresh, this does
       # not roll back any changes that it made. Use the RollbackInstanceRefresh API to roll back instead.
+
       def cancel_instance_refresh(
         auto_scaling_group_name : String,
         wait_for_transitioning_instances : Bool? = nil
       ) : Types::CancelInstanceRefreshAnswer
+
         input = Types::CancelInstanceRefreshType.new(auto_scaling_group_name: auto_scaling_group_name, wait_for_transitioning_instances: wait_for_transitioning_instances)
         cancel_instance_refresh(input)
       end
+
       def cancel_instance_refresh(input : Types::CancelInstanceRefreshType) : Types::CancelInstanceRefreshAnswer
         request = Protocol::Query.build_request(Model::CANCEL_INSTANCE_REFRESH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -193,6 +215,7 @@ module AwsSdk
       # heartbeat to keep the instance in a wait state. If you finish before the timeout period ends, send a
       # callback by using the CompleteLifecycleAction API call. For more information, see Complete a
       # lifecycle action in the Amazon EC2 Auto Scaling User Guide .
+
       def complete_lifecycle_action(
         auto_scaling_group_name : String,
         lifecycle_action_result : String,
@@ -200,9 +223,11 @@ module AwsSdk
         instance_id : String? = nil,
         lifecycle_action_token : String? = nil
       ) : Types::CompleteLifecycleActionAnswer
+
         input = Types::CompleteLifecycleActionType.new(auto_scaling_group_name: auto_scaling_group_name, lifecycle_action_result: lifecycle_action_result, lifecycle_hook_name: lifecycle_hook_name, instance_id: instance_id, lifecycle_action_token: lifecycle_action_token)
         complete_lifecycle_action(input)
       end
+
       def complete_lifecycle_action(input : Types::CompleteLifecycleActionType) : Types::CompleteLifecycleActionAnswer
         request = Protocol::Query.build_request(Model::COMPLETE_LIFECYCLE_ACTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -222,6 +247,7 @@ module AwsSdk
       # specific number of instances. However, if you configure a mixed instances policy that defines
       # weights for the instance types, you must specify these sizes with the same units that you use for
       # weighting instances.
+
       def create_auto_scaling_group(
         auto_scaling_group_name : String,
         max_size : Int32,
@@ -257,9 +283,11 @@ module AwsSdk
         traffic_sources : Array(Types::TrafficSourceIdentifier)? = nil,
         vpc_zone_identifier : String? = nil
       ) : Nil
+
         input = Types::CreateAutoScalingGroupType.new(auto_scaling_group_name: auto_scaling_group_name, max_size: max_size, min_size: min_size, availability_zone_distribution: availability_zone_distribution, availability_zone_impairment_policy: availability_zone_impairment_policy, availability_zones: availability_zones, capacity_rebalance: capacity_rebalance, capacity_reservation_specification: capacity_reservation_specification, context: context, default_cooldown: default_cooldown, default_instance_warmup: default_instance_warmup, desired_capacity: desired_capacity, desired_capacity_type: desired_capacity_type, health_check_grace_period: health_check_grace_period, health_check_type: health_check_type, instance_id: instance_id, instance_lifecycle_policy: instance_lifecycle_policy, instance_maintenance_policy: instance_maintenance_policy, launch_configuration_name: launch_configuration_name, launch_template: launch_template, lifecycle_hook_specification_list: lifecycle_hook_specification_list, load_balancer_names: load_balancer_names, max_instance_lifetime: max_instance_lifetime, mixed_instances_policy: mixed_instances_policy, new_instances_protected_from_scale_in: new_instances_protected_from_scale_in, placement_group: placement_group, service_linked_role_arn: service_linked_role_arn, skip_zonal_shift_validation: skip_zonal_shift_validation, tags: tags, target_group_ar_ns: target_group_ar_ns, termination_policies: termination_policies, traffic_sources: traffic_sources, vpc_zone_identifier: vpc_zone_identifier)
         create_auto_scaling_group(input)
       end
+
       def create_auto_scaling_group(input : Types::CreateAutoScalingGroupType) : Nil
         request = Protocol::Query.build_request(Model::CREATE_AUTO_SCALING_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -276,6 +304,7 @@ module AwsSdk
       # template or a launch configuration. We strongly recommend that you do not use launch configurations.
       # They do not provide full functionality for Amazon EC2 Auto Scaling or Amazon EC2. For information
       # about using launch templates, see Launch templates in the Amazon EC2 Auto Scaling User Guide .
+
       def create_launch_configuration(
         launch_configuration_name : String,
         associate_public_ip_address : Bool? = nil,
@@ -297,9 +326,11 @@ module AwsSdk
         spot_price : String? = nil,
         user_data : String? = nil
       ) : Nil
+
         input = Types::CreateLaunchConfigurationType.new(launch_configuration_name: launch_configuration_name, associate_public_ip_address: associate_public_ip_address, block_device_mappings: block_device_mappings, classic_link_vpc_id: classic_link_vpc_id, classic_link_vpc_security_groups: classic_link_vpc_security_groups, ebs_optimized: ebs_optimized, iam_instance_profile: iam_instance_profile, image_id: image_id, instance_id: instance_id, instance_monitoring: instance_monitoring, instance_type: instance_type, kernel_id: kernel_id, key_name: key_name, metadata_options: metadata_options, placement_tenancy: placement_tenancy, ramdisk_id: ramdisk_id, security_groups: security_groups, spot_price: spot_price, user_data: user_data)
         create_launch_configuration(input)
       end
+
       def create_launch_configuration(input : Types::CreateLaunchConfigurationType) : Nil
         request = Protocol::Query.build_request(Model::CREATE_LAUNCH_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -312,12 +343,15 @@ module AwsSdk
       # already exists, the operation overwrites the previous tag definition, and you do not get an error
       # message. For more information, see Tag Auto Scaling groups and instances in the Amazon EC2 Auto
       # Scaling User Guide .
+
       def create_or_update_tags(
         tags : Array(Types::Tag)
       ) : Nil
+
         input = Types::CreateOrUpdateTagsType.new(tags: tags)
         create_or_update_tags(input)
       end
+
       def create_or_update_tags(input : Types::CreateOrUpdateTagsType) : Nil
         request = Protocol::Query.build_request(Model::CREATE_OR_UPDATE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -337,13 +371,16 @@ module AwsSdk
       # has scaling policies, deleting the group deletes the policies, the underlying alarm actions, and any
       # alarm that no longer has an associated action. For more information, see Delete your Auto Scaling
       # infrastructure in the Amazon EC2 Auto Scaling User Guide .
+
       def delete_auto_scaling_group(
         auto_scaling_group_name : String,
         force_delete : Bool? = nil
       ) : Nil
+
         input = Types::DeleteAutoScalingGroupType.new(auto_scaling_group_name: auto_scaling_group_name, force_delete: force_delete)
         delete_auto_scaling_group(input)
       end
+
       def delete_auto_scaling_group(input : Types::DeleteAutoScalingGroupType) : Nil
         request = Protocol::Query.build_request(Model::DELETE_AUTO_SCALING_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -354,12 +391,15 @@ module AwsSdk
 
       # Deletes the specified launch configuration. The launch configuration must not be attached to an Auto
       # Scaling group. When this call completes, the launch configuration is no longer available for use.
+
       def delete_launch_configuration(
         launch_configuration_name : String
       ) : Nil
+
         input = Types::LaunchConfigurationNameType.new(launch_configuration_name: launch_configuration_name)
         delete_launch_configuration(input)
       end
+
       def delete_launch_configuration(input : Types::LaunchConfigurationNameType) : Nil
         request = Protocol::Query.build_request(Model::DELETE_LAUNCH_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -370,13 +410,16 @@ module AwsSdk
 
       # Deletes the specified lifecycle hook. If there are any outstanding lifecycle actions, they are
       # completed first ( ABANDON for launching instances, CONTINUE for terminating instances).
+
       def delete_lifecycle_hook(
         auto_scaling_group_name : String,
         lifecycle_hook_name : String
       ) : Types::DeleteLifecycleHookAnswer
+
         input = Types::DeleteLifecycleHookType.new(auto_scaling_group_name: auto_scaling_group_name, lifecycle_hook_name: lifecycle_hook_name)
         delete_lifecycle_hook(input)
       end
+
       def delete_lifecycle_hook(input : Types::DeleteLifecycleHookType) : Types::DeleteLifecycleHookAnswer
         request = Protocol::Query.build_request(Model::DELETE_LIFECYCLE_HOOK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -386,13 +429,16 @@ module AwsSdk
       end
 
       # Deletes the specified notification.
+
       def delete_notification_configuration(
         auto_scaling_group_name : String,
         topic_arn : String
       ) : Nil
+
         input = Types::DeleteNotificationConfigurationType.new(auto_scaling_group_name: auto_scaling_group_name, topic_arn: topic_arn)
         delete_notification_configuration(input)
       end
+
       def delete_notification_configuration(input : Types::DeleteNotificationConfigurationType) : Nil
         request = Protocol::Query.build_request(Model::DELETE_NOTIFICATION_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -405,13 +451,16 @@ module AwsSdk
       # policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has
       # an associated action. For more information, see Delete a scaling policy in the Amazon EC2 Auto
       # Scaling User Guide .
+
       def delete_policy(
         policy_name : String,
         auto_scaling_group_name : String? = nil
       ) : Nil
+
         input = Types::DeletePolicyType.new(policy_name: policy_name, auto_scaling_group_name: auto_scaling_group_name)
         delete_policy(input)
       end
+
       def delete_policy(input : Types::DeletePolicyType) : Nil
         request = Protocol::Query.build_request(Model::DELETE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -421,13 +470,16 @@ module AwsSdk
       end
 
       # Deletes the specified scheduled action.
+
       def delete_scheduled_action(
         auto_scaling_group_name : String,
         scheduled_action_name : String
       ) : Nil
+
         input = Types::DeleteScheduledActionType.new(auto_scaling_group_name: auto_scaling_group_name, scheduled_action_name: scheduled_action_name)
         delete_scheduled_action(input)
       end
+
       def delete_scheduled_action(input : Types::DeleteScheduledActionType) : Nil
         request = Protocol::Query.build_request(Model::DELETE_SCHEDULED_ACTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -437,12 +489,15 @@ module AwsSdk
       end
 
       # Deletes the specified tags.
+
       def delete_tags(
         tags : Array(Types::Tag)
       ) : Nil
+
         input = Types::DeleteTagsType.new(tags: tags)
         delete_tags(input)
       end
+
       def delete_tags(input : Types::DeleteTagsType) : Nil
         request = Protocol::Query.build_request(Model::DELETE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -453,13 +508,16 @@ module AwsSdk
 
       # Deletes the warm pool for the specified Auto Scaling group. For more information, see Warm pools for
       # Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide .
+
       def delete_warm_pool(
         auto_scaling_group_name : String,
         force_delete : Bool? = nil
       ) : Types::DeleteWarmPoolAnswer
+
         input = Types::DeleteWarmPoolType.new(auto_scaling_group_name: auto_scaling_group_name, force_delete: force_delete)
         delete_warm_pool(input)
       end
+
       def delete_warm_pool(input : Types::DeleteWarmPoolType) : Types::DeleteWarmPoolAnswer
         request = Protocol::Query.build_request(Model::DELETE_WARM_POOL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -472,6 +530,8 @@ module AwsSdk
       # an Amazon Web Services account, the account has initial quotas on the maximum number of Auto Scaling
       # groups and launch configurations that you can create in a given Region. For more information, see
       # Quotas for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide .
+
+
       def describe_account_limits : Types::DescribeAccountLimitsAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_ACCOUNT_LIMITS, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -482,6 +542,8 @@ module AwsSdk
 
       # Describes the available adjustment types for step scaling and simple scaling policies. The following
       # adjustment types are supported: ChangeInCapacity ExactCapacity PercentChangeInCapacity
+
+
       def describe_adjustment_types : Types::DescribeAdjustmentTypesAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_ADJUSTMENT_TYPES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -497,6 +559,7 @@ module AwsSdk
       # for all Auto Scaling groups. This operation also returns information about instances in Auto Scaling
       # groups. To retrieve information about the instances in a warm pool, you must call the
       # DescribeWarmPool API.
+
       def describe_auto_scaling_groups(
         auto_scaling_group_names : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil,
@@ -504,9 +567,11 @@ module AwsSdk
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::AutoScalingGroupsType
+
         input = Types::AutoScalingGroupNamesType.new(auto_scaling_group_names: auto_scaling_group_names, filters: filters, include_instances: include_instances, max_records: max_records, next_token: next_token)
         describe_auto_scaling_groups(input)
       end
+
       def describe_auto_scaling_groups(input : Types::AutoScalingGroupNamesType) : Types::AutoScalingGroupsType
         request = Protocol::Query.build_request(Model::DESCRIBE_AUTO_SCALING_GROUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -516,14 +581,17 @@ module AwsSdk
       end
 
       # Gets information about the Auto Scaling instances in the account and Region.
+
       def describe_auto_scaling_instances(
         instance_ids : Array(String)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::AutoScalingInstancesType
+
         input = Types::DescribeAutoScalingInstancesType.new(instance_ids: instance_ids, max_records: max_records, next_token: next_token)
         describe_auto_scaling_instances(input)
       end
+
       def describe_auto_scaling_instances(input : Types::DescribeAutoScalingInstancesType) : Types::AutoScalingInstancesType
         request = Protocol::Query.build_request(Model::DESCRIBE_AUTO_SCALING_INSTANCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -533,6 +601,8 @@ module AwsSdk
       end
 
       # Describes the notification types that are supported by Amazon EC2 Auto Scaling.
+
+
       def describe_auto_scaling_notification_types : Types::DescribeAutoScalingNotificationTypesAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_AUTO_SCALING_NOTIFICATION_TYPES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -550,15 +620,18 @@ module AwsSdk
       # before the instance refresh is complete. If a rollback is initiated while an instance refresh is in
       # progress, Amazon EC2 Auto Scaling also returns information about the rollback of the instance
       # refresh.
+
       def describe_instance_refreshes(
         auto_scaling_group_name : String,
         instance_refresh_ids : Array(String)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeInstanceRefreshesAnswer
+
         input = Types::DescribeInstanceRefreshesType.new(auto_scaling_group_name: auto_scaling_group_name, instance_refresh_ids: instance_refresh_ids, max_records: max_records, next_token: next_token)
         describe_instance_refreshes(input)
       end
+
       def describe_instance_refreshes(input : Types::DescribeInstanceRefreshesType) : Types::DescribeInstanceRefreshesAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_INSTANCE_REFRESHES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -568,14 +641,17 @@ module AwsSdk
       end
 
       # Gets information about the launch configurations in the account and Region.
+
       def describe_launch_configurations(
         launch_configuration_names : Array(String)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::LaunchConfigurationsType
+
         input = Types::LaunchConfigurationNamesType.new(launch_configuration_names: launch_configuration_names, max_records: max_records, next_token: next_token)
         describe_launch_configurations(input)
       end
+
       def describe_launch_configurations(input : Types::LaunchConfigurationNamesType) : Types::LaunchConfigurationsType
         request = Protocol::Query.build_request(Model::DESCRIBE_LAUNCH_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -586,6 +662,8 @@ module AwsSdk
 
       # Describes the available types of lifecycle hooks. The following hook types are supported:
       # autoscaling:EC2_INSTANCE_LAUNCHING autoscaling:EC2_INSTANCE_TERMINATING
+
+
       def describe_lifecycle_hook_types : Types::DescribeLifecycleHookTypesAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_LIFECYCLE_HOOK_TYPES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -595,13 +673,16 @@ module AwsSdk
       end
 
       # Gets information about the lifecycle hooks for the specified Auto Scaling group.
+
       def describe_lifecycle_hooks(
         auto_scaling_group_name : String,
         lifecycle_hook_names : Array(String)? = nil
       ) : Types::DescribeLifecycleHooksAnswer
+
         input = Types::DescribeLifecycleHooksType.new(auto_scaling_group_name: auto_scaling_group_name, lifecycle_hook_names: lifecycle_hook_names)
         describe_lifecycle_hooks(input)
       end
+
       def describe_lifecycle_hooks(input : Types::DescribeLifecycleHooksType) : Types::DescribeLifecycleHooksAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_LIFECYCLE_HOOKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -631,14 +712,17 @@ module AwsSdk
       # the Amazon EC2 Auto Scaling User Guide . You can use this operation to describe target groups that
       # were attached by using AttachLoadBalancerTargetGroups , but not for target groups that were attached
       # by using AttachTrafficSources .
+
       def describe_load_balancer_target_groups(
         auto_scaling_group_name : String,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLoadBalancerTargetGroupsResponse
+
         input = Types::DescribeLoadBalancerTargetGroupsRequest.new(auto_scaling_group_name: auto_scaling_group_name, max_records: max_records, next_token: next_token)
         describe_load_balancer_target_groups(input)
       end
+
       def describe_load_balancer_target_groups(input : Types::DescribeLoadBalancerTargetGroupsRequest) : Types::DescribeLoadBalancerTargetGroupsResponse
         request = Protocol::Query.build_request(Model::DESCRIBE_LOAD_BALANCER_TARGET_GROUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -668,14 +752,17 @@ module AwsSdk
       # Health checks in the Amazon EC2 Auto Scaling User Guide . For more information, see Use Elastic Load
       # Balancing to distribute traffic across the instances in your Auto Scaling group in the Amazon EC2
       # Auto Scaling User Guide .
+
       def describe_load_balancers(
         auto_scaling_group_name : String,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeLoadBalancersResponse
+
         input = Types::DescribeLoadBalancersRequest.new(auto_scaling_group_name: auto_scaling_group_name, max_records: max_records, next_token: next_token)
         describe_load_balancers(input)
       end
+
       def describe_load_balancers(input : Types::DescribeLoadBalancersRequest) : Types::DescribeLoadBalancersResponse
         request = Protocol::Query.build_request(Model::DESCRIBE_LOAD_BALANCERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -685,6 +772,8 @@ module AwsSdk
       end
 
       # Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
+
+
       def describe_metric_collection_types : Types::DescribeMetricCollectionTypesAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_METRIC_COLLECTION_TYPES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -695,14 +784,17 @@ module AwsSdk
 
       # Gets information about the Amazon SNS notifications that are configured for one or more Auto Scaling
       # groups.
+
       def describe_notification_configurations(
         auto_scaling_group_names : Array(String)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeNotificationConfigurationsAnswer
+
         input = Types::DescribeNotificationConfigurationsType.new(auto_scaling_group_names: auto_scaling_group_names, max_records: max_records, next_token: next_token)
         describe_notification_configurations(input)
       end
+
       def describe_notification_configurations(input : Types::DescribeNotificationConfigurationsType) : Types::DescribeNotificationConfigurationsAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_NOTIFICATION_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -712,6 +804,7 @@ module AwsSdk
       end
 
       # Gets information about the scaling policies in the account and Region.
+
       def describe_policies(
         auto_scaling_group_name : String? = nil,
         max_records : Int32? = nil,
@@ -719,9 +812,11 @@ module AwsSdk
         policy_names : Array(String)? = nil,
         policy_types : Array(String)? = nil
       ) : Types::PoliciesType
+
         input = Types::DescribePoliciesType.new(auto_scaling_group_name: auto_scaling_group_name, max_records: max_records, next_token: next_token, policy_names: policy_names, policy_types: policy_types)
         describe_policies(input)
       end
+
       def describe_policies(input : Types::DescribePoliciesType) : Types::PoliciesType
         request = Protocol::Query.build_request(Model::DESCRIBE_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -738,6 +833,7 @@ module AwsSdk
       # StatusMessage element in the response indicates the cause of the failure. For help interpreting the
       # StatusMessage , see Troubleshooting Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User
       # Guide .
+
       def describe_scaling_activities(
         activity_ids : Array(String)? = nil,
         auto_scaling_group_name : String? = nil,
@@ -745,9 +841,11 @@ module AwsSdk
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::ActivitiesType
+
         input = Types::DescribeScalingActivitiesType.new(activity_ids: activity_ids, auto_scaling_group_name: auto_scaling_group_name, include_deleted_groups: include_deleted_groups, max_records: max_records, next_token: next_token)
         describe_scaling_activities(input)
       end
+
       def describe_scaling_activities(input : Types::DescribeScalingActivitiesType) : Types::ActivitiesType
         request = Protocol::Query.build_request(Model::DESCRIBE_SCALING_ACTIVITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -757,6 +855,8 @@ module AwsSdk
       end
 
       # Describes the scaling process types for use with the ResumeProcesses and SuspendProcesses APIs.
+
+
       def describe_scaling_process_types : Types::ProcessesType
         request = Protocol::Query.build_request(Model::DESCRIBE_SCALING_PROCESS_TYPES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -768,6 +868,7 @@ module AwsSdk
       # Gets information about the scheduled actions that haven't run or that have not reached their end
       # time. To describe the scaling activities for scheduled actions that have already run, call the
       # DescribeScalingActivities API.
+
       def describe_scheduled_actions(
         auto_scaling_group_name : String? = nil,
         end_time : Time? = nil,
@@ -776,9 +877,11 @@ module AwsSdk
         scheduled_action_names : Array(String)? = nil,
         start_time : Time? = nil
       ) : Types::ScheduledActionsType
+
         input = Types::DescribeScheduledActionsType.new(auto_scaling_group_name: auto_scaling_group_name, end_time: end_time, max_records: max_records, next_token: next_token, scheduled_action_names: scheduled_action_names, start_time: start_time)
         describe_scheduled_actions(input)
       end
+
       def describe_scheduled_actions(input : Types::DescribeScheduledActionsType) : Types::ScheduledActionsType
         request = Protocol::Query.build_request(Model::DESCRIBE_SCHEDULED_ACTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -793,14 +896,17 @@ module AwsSdk
       # specify multiple filters. The result includes information for a particular tag only if it matches
       # all the filters. If there's no match, no special message is returned. For more information, see Tag
       # Auto Scaling groups and instances in the Amazon EC2 Auto Scaling User Guide .
+
       def describe_tags(
         filters : Array(Types::Filter)? = nil,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::TagsType
+
         input = Types::DescribeTagsType.new(filters: filters, max_records: max_records, next_token: next_token)
         describe_tags(input)
       end
+
       def describe_tags(input : Types::DescribeTagsType) : Types::TagsType
         request = Protocol::Query.build_request(Model::DESCRIBE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -812,6 +918,8 @@ module AwsSdk
       # Describes the termination policies supported by Amazon EC2 Auto Scaling. For more information, see
       # Configure termination policies for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide
       # .
+
+
       def describe_termination_policy_types : Types::DescribeTerminationPolicyTypesAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_TERMINATION_POLICY_TYPES, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -824,15 +932,18 @@ module AwsSdk
       # provide a traffic source type. If you provide a traffic source type, then the results only include
       # that traffic source type. If you do not provide a traffic source type, then the results include all
       # the traffic sources for the specified Auto Scaling group.
+
       def describe_traffic_sources(
         auto_scaling_group_name : String,
         max_records : Int32? = nil,
         next_token : String? = nil,
         traffic_source_type : String? = nil
       ) : Types::DescribeTrafficSourcesResponse
+
         input = Types::DescribeTrafficSourcesRequest.new(auto_scaling_group_name: auto_scaling_group_name, max_records: max_records, next_token: next_token, traffic_source_type: traffic_source_type)
         describe_traffic_sources(input)
       end
+
       def describe_traffic_sources(input : Types::DescribeTrafficSourcesRequest) : Types::DescribeTrafficSourcesResponse
         request = Protocol::Query.build_request(Model::DESCRIBE_TRAFFIC_SOURCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -843,14 +954,17 @@ module AwsSdk
 
       # Gets information about a warm pool and its instances. For more information, see Warm pools for
       # Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide .
+
       def describe_warm_pool(
         auto_scaling_group_name : String,
         max_records : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeWarmPoolAnswer
+
         input = Types::DescribeWarmPoolType.new(auto_scaling_group_name: auto_scaling_group_name, max_records: max_records, next_token: next_token)
         describe_warm_pool(input)
       end
+
       def describe_warm_pool(input : Types::DescribeWarmPoolType) : Types::DescribeWarmPoolAnswer
         request = Protocol::Query.build_request(Model::DESCRIBE_WARM_POOL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -866,14 +980,17 @@ module AwsSdk
       # instances are deregistered from the load balancer. If there are target groups attached to the Auto
       # Scaling group, the instances are deregistered from the target groups. For more information, see
       # Detach or attach instances in the Amazon EC2 Auto Scaling User Guide .
+
       def detach_instances(
         auto_scaling_group_name : String,
         should_decrement_desired_capacity : Bool,
         instance_ids : Array(String)? = nil
       ) : Types::DetachInstancesAnswer
+
         input = Types::DetachInstancesQuery.new(auto_scaling_group_name: auto_scaling_group_name, should_decrement_desired_capacity: should_decrement_desired_capacity, instance_ids: instance_ids)
         detach_instances(input)
       end
+
       def detach_instances(input : Types::DetachInstancesQuery) : Types::DetachInstancesAnswer
         request = Protocol::Query.build_request(Model::DETACH_INSTANCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -892,13 +1009,16 @@ module AwsSdk
       # DescribeLoadBalancerTargetGroups API call. The instances remain running. You can use this operation
       # to detach target groups that were attached by using AttachLoadBalancerTargetGroups , but not for
       # target groups that were attached by using AttachTrafficSources .
+
       def detach_load_balancer_target_groups(
         auto_scaling_group_name : String,
         target_group_ar_ns : Array(String)
       ) : Types::DetachLoadBalancerTargetGroupsResultType
+
         input = Types::DetachLoadBalancerTargetGroupsType.new(auto_scaling_group_name: auto_scaling_group_name, target_group_ar_ns: target_group_ar_ns)
         detach_load_balancer_target_groups(input)
       end
+
       def detach_load_balancer_target_groups(input : Types::DetachLoadBalancerTargetGroupsType) : Types::DetachLoadBalancerTargetGroupsResultType
         request = Protocol::Query.build_request(Model::DETACH_LOAD_BALANCER_TARGET_GROUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -917,13 +1037,16 @@ module AwsSdk
       # enters the Removing state while deregistering the instances in the group. When all instances are
       # deregistered, then you can no longer describe the load balancer using the DescribeLoadBalancers API
       # call. The instances remain running.
+
       def detach_load_balancers(
         auto_scaling_group_name : String,
         load_balancer_names : Array(String)
       ) : Types::DetachLoadBalancersResultType
+
         input = Types::DetachLoadBalancersType.new(auto_scaling_group_name: auto_scaling_group_name, load_balancer_names: load_balancer_names)
         detach_load_balancers(input)
       end
+
       def detach_load_balancers(input : Types::DetachLoadBalancersType) : Types::DetachLoadBalancersResultType
         request = Protocol::Query.build_request(Model::DETACH_LOAD_BALANCERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -936,13 +1059,16 @@ module AwsSdk
       # traffic source, it enters the Removing state while deregistering the instances in the group. When
       # all instances are deregistered, then you can no longer describe the traffic source using the
       # DescribeTrafficSources API call. The instances continue to run.
+
       def detach_traffic_sources(
         auto_scaling_group_name : String,
         traffic_sources : Array(Types::TrafficSourceIdentifier)
       ) : Types::DetachTrafficSourcesResultType
+
         input = Types::DetachTrafficSourcesType.new(auto_scaling_group_name: auto_scaling_group_name, traffic_sources: traffic_sources)
         detach_traffic_sources(input)
       end
+
       def detach_traffic_sources(input : Types::DetachTrafficSourcesType) : Types::DetachTrafficSourcesResultType
         request = Protocol::Query.build_request(Model::DETACH_TRAFFIC_SOURCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -952,13 +1078,16 @@ module AwsSdk
       end
 
       # Disables group metrics collection for the specified Auto Scaling group.
+
       def disable_metrics_collection(
         auto_scaling_group_name : String,
         metrics : Array(String)? = nil
       ) : Nil
+
         input = Types::DisableMetricsCollectionQuery.new(auto_scaling_group_name: auto_scaling_group_name, metrics: metrics)
         disable_metrics_collection(input)
       end
+
       def disable_metrics_collection(input : Types::DisableMetricsCollectionQuery) : Nil
         request = Protocol::Query.build_request(Model::DISABLE_METRICS_COLLECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -972,14 +1101,17 @@ module AwsSdk
       # metrics using the Amazon EC2 Auto Scaling console or the CloudWatch console. For more information,
       # see Monitor CloudWatch metrics for your Auto Scaling groups and instances in the Amazon EC2 Auto
       # Scaling User Guide .
+
       def enable_metrics_collection(
         auto_scaling_group_name : String,
         granularity : String,
         metrics : Array(String)? = nil
       ) : Nil
+
         input = Types::EnableMetricsCollectionQuery.new(auto_scaling_group_name: auto_scaling_group_name, granularity: granularity, metrics: metrics)
         enable_metrics_collection(input)
       end
+
       def enable_metrics_collection(input : Types::EnableMetricsCollectionQuery) : Nil
         request = Protocol::Query.build_request(Model::ENABLE_METRICS_COLLECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -995,14 +1127,17 @@ module AwsSdk
       # Scaling group, the Auto Scaling group launches new instances to replace the instances on standby.
       # For more information, see Temporarily removing instances from your Auto Scaling group in the Amazon
       # EC2 Auto Scaling User Guide .
+
       def enter_standby(
         auto_scaling_group_name : String,
         should_decrement_desired_capacity : Bool,
         instance_ids : Array(String)? = nil
       ) : Types::EnterStandbyAnswer
+
         input = Types::EnterStandbyQuery.new(auto_scaling_group_name: auto_scaling_group_name, should_decrement_desired_capacity: should_decrement_desired_capacity, instance_ids: instance_ids)
         enter_standby(input)
       end
+
       def enter_standby(input : Types::EnterStandbyQuery) : Types::EnterStandbyAnswer
         request = Protocol::Query.build_request(Model::ENTER_STANDBY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1012,6 +1147,7 @@ module AwsSdk
       end
 
       # Executes the specified policy. This can be useful for testing the design of your scaling policy.
+
       def execute_policy(
         policy_name : String,
         auto_scaling_group_name : String? = nil,
@@ -1019,9 +1155,11 @@ module AwsSdk
         honor_cooldown : Bool? = nil,
         metric_value : Float64? = nil
       ) : Nil
+
         input = Types::ExecutePolicyType.new(policy_name: policy_name, auto_scaling_group_name: auto_scaling_group_name, breach_threshold: breach_threshold, honor_cooldown: honor_cooldown, metric_value: metric_value)
         execute_policy(input)
       end
+
       def execute_policy(input : Types::ExecutePolicyType) : Nil
         request = Protocol::Query.build_request(Model::EXECUTE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1033,13 +1171,16 @@ module AwsSdk
       # Moves the specified instances out of the standby state. After you put the instances back in service,
       # the desired capacity is incremented. For more information, see Temporarily removing instances from
       # your Auto Scaling group in the Amazon EC2 Auto Scaling User Guide .
+
       def exit_standby(
         auto_scaling_group_name : String,
         instance_ids : Array(String)? = nil
       ) : Types::ExitStandbyAnswer
+
         input = Types::ExitStandbyQuery.new(auto_scaling_group_name: auto_scaling_group_name, instance_ids: instance_ids)
         exit_standby(input)
       end
+
       def exit_standby(input : Types::ExitStandbyQuery) : Types::ExitStandbyAnswer
         request = Protocol::Query.build_request(Model::EXIT_STANDBY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1055,15 +1196,18 @@ module AwsSdk
       # the initial forecasts. However, having a full 14 days of historical data results in more accurate
       # forecasts. For more information, see Predictive scaling for Amazon EC2 Auto Scaling in the Amazon
       # EC2 Auto Scaling User Guide .
+
       def get_predictive_scaling_forecast(
         auto_scaling_group_name : String,
         end_time : Time,
         policy_name : String,
         start_time : Time
       ) : Types::GetPredictiveScalingForecastAnswer
+
         input = Types::GetPredictiveScalingForecastType.new(auto_scaling_group_name: auto_scaling_group_name, end_time: end_time, policy_name: policy_name, start_time: start_time)
         get_predictive_scaling_forecast(input)
       end
+
       def get_predictive_scaling_forecast(input : Types::GetPredictiveScalingForecastType) : Types::GetPredictiveScalingForecastAnswer
         request = Protocol::Query.build_request(Model::GET_PREDICTIVE_SCALING_FORECAST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1074,6 +1218,7 @@ module AwsSdk
 
       # Launches a specified number of instances in an Auto Scaling group. Returns instance IDs and other
       # details if launch is successful or error details if launch is unsuccessful.
+
       def launch_instances(
         auto_scaling_group_name : String,
         client_token : String,
@@ -1083,9 +1228,11 @@ module AwsSdk
         retry_strategy : String? = nil,
         subnet_ids : Array(String)? = nil
       ) : Types::LaunchInstancesResult
+
         input = Types::LaunchInstancesRequest.new(auto_scaling_group_name: auto_scaling_group_name, client_token: client_token, requested_capacity: requested_capacity, availability_zone_ids: availability_zone_ids, availability_zones: availability_zones, retry_strategy: retry_strategy, subnet_ids: subnet_ids)
         launch_instances(input)
       end
+
       def launch_instances(input : Types::LaunchInstancesRequest) : Types::LaunchInstancesResult
         request = Protocol::Query.build_request(Model::LAUNCH_INSTANCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1112,6 +1259,7 @@ module AwsSdk
       # the call fails. You can view the lifecycle hooks for an Auto Scaling group using the
       # DescribeLifecycleHooks API call. If you are no longer using a lifecycle hook, you can delete it by
       # calling the DeleteLifecycleHook API.
+
       def put_lifecycle_hook(
         auto_scaling_group_name : String,
         lifecycle_hook_name : String,
@@ -1122,9 +1270,11 @@ module AwsSdk
         notification_target_arn : String? = nil,
         role_arn : String? = nil
       ) : Types::PutLifecycleHookAnswer
+
         input = Types::PutLifecycleHookType.new(auto_scaling_group_name: auto_scaling_group_name, lifecycle_hook_name: lifecycle_hook_name, default_result: default_result, heartbeat_timeout: heartbeat_timeout, lifecycle_transition: lifecycle_transition, notification_metadata: notification_metadata, notification_target_arn: notification_target_arn, role_arn: role_arn)
         put_lifecycle_hook(input)
       end
+
       def put_lifecycle_hook(input : Types::PutLifecycleHookType) : Types::PutLifecycleHookAnswer
         request = Protocol::Query.build_request(Model::PUT_LIFECYCLE_HOOK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1138,14 +1288,17 @@ module AwsSdk
       # address. This configuration overwrites any existing configuration. For more information, see Amazon
       # SNS notification options for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide . If
       # you exceed your maximum limit of SNS topics, which is 10 per Auto Scaling group, the call fails.
+
       def put_notification_configuration(
         auto_scaling_group_name : String,
         notification_types : Array(String),
         topic_arn : String
       ) : Nil
+
         input = Types::PutNotificationConfigurationType.new(auto_scaling_group_name: auto_scaling_group_name, notification_types: notification_types, topic_arn: topic_arn)
         put_notification_configuration(input)
       end
+
       def put_notification_configuration(input : Types::PutNotificationConfigurationType) : Nil
         request = Protocol::Query.build_request(Model::PUT_NOTIFICATION_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1162,6 +1315,7 @@ module AwsSdk
       # EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide . You can view the scaling policies for
       # an Auto Scaling group using the DescribePolicies API call. If you are no longer using a scaling
       # policy, you can delete it by calling the DeletePolicy API.
+
       def put_scaling_policy(
         auto_scaling_group_name : String,
         policy_name : String,
@@ -1178,9 +1332,11 @@ module AwsSdk
         step_adjustments : Array(Types::StepAdjustment)? = nil,
         target_tracking_configuration : Types::TargetTrackingConfiguration? = nil
       ) : Types::PolicyARNType
+
         input = Types::PutScalingPolicyType.new(auto_scaling_group_name: auto_scaling_group_name, policy_name: policy_name, adjustment_type: adjustment_type, cooldown: cooldown, enabled: enabled, estimated_instance_warmup: estimated_instance_warmup, metric_aggregation_type: metric_aggregation_type, min_adjustment_magnitude: min_adjustment_magnitude, min_adjustment_step: min_adjustment_step, policy_type: policy_type, predictive_scaling_configuration: predictive_scaling_configuration, scaling_adjustment: scaling_adjustment, step_adjustments: step_adjustments, target_tracking_configuration: target_tracking_configuration)
         put_scaling_policy(input)
       end
+
       def put_scaling_policy(input : Types::PutScalingPolicyType) : Types::PolicyARNType
         request = Protocol::Query.build_request(Model::PUT_SCALING_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1194,6 +1350,7 @@ module AwsSdk
       # an Auto Scaling group using the DescribeScheduledActions API call. If you are no longer using a
       # scheduled action, you can delete it by calling the DeleteScheduledAction API. If you try to schedule
       # your action in the past, Amazon EC2 Auto Scaling returns an error message.
+
       def put_scheduled_update_group_action(
         auto_scaling_group_name : String,
         scheduled_action_name : String,
@@ -1206,9 +1363,11 @@ module AwsSdk
         time : Time? = nil,
         time_zone : String? = nil
       ) : Nil
+
         input = Types::PutScheduledUpdateGroupActionType.new(auto_scaling_group_name: auto_scaling_group_name, scheduled_action_name: scheduled_action_name, desired_capacity: desired_capacity, end_time: end_time, max_size: max_size, min_size: min_size, recurrence: recurrence, start_time: start_time, time: time, time_zone: time_zone)
         put_scheduled_update_group_action(input)
       end
+
       def put_scheduled_update_group_action(input : Types::PutScheduledUpdateGroupActionType) : Nil
         request = Protocol::Query.build_request(Model::PUT_SCHEDULED_UPDATE_GROUP_ACTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1224,6 +1383,7 @@ module AwsSdk
       # You can view the instances in the warm pool using the DescribeWarmPool API call. If you are no
       # longer using a warm pool, you can delete it by calling the DeleteWarmPool API. For more information,
       # see Warm pools for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide .
+
       def put_warm_pool(
         auto_scaling_group_name : String,
         instance_reuse_policy : Types::InstanceReusePolicy? = nil,
@@ -1231,9 +1391,11 @@ module AwsSdk
         min_size : Int32? = nil,
         pool_state : String? = nil
       ) : Types::PutWarmPoolAnswer
+
         input = Types::PutWarmPoolType.new(auto_scaling_group_name: auto_scaling_group_name, instance_reuse_policy: instance_reuse_policy, max_group_prepared_capacity: max_group_prepared_capacity, min_size: min_size, pool_state: pool_state)
         put_warm_pool(input)
       end
+
       def put_warm_pool(input : Types::PutWarmPoolType) : Types::PutWarmPoolAnswer
         request = Protocol::Query.build_request(Model::PUT_WARM_POOL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1255,15 +1417,18 @@ module AwsSdk
       # to keep the instance in a wait state. If you finish before the timeout period ends, send a callback
       # by using the CompleteLifecycleAction API call. For more information, see Amazon EC2 Auto Scaling
       # lifecycle hooks in the Amazon EC2 Auto Scaling User Guide .
+
       def record_lifecycle_action_heartbeat(
         auto_scaling_group_name : String,
         lifecycle_hook_name : String,
         instance_id : String? = nil,
         lifecycle_action_token : String? = nil
       ) : Types::RecordLifecycleActionHeartbeatAnswer
+
         input = Types::RecordLifecycleActionHeartbeatType.new(auto_scaling_group_name: auto_scaling_group_name, lifecycle_hook_name: lifecycle_hook_name, instance_id: instance_id, lifecycle_action_token: lifecycle_action_token)
         record_lifecycle_action_heartbeat(input)
       end
+
       def record_lifecycle_action_heartbeat(input : Types::RecordLifecycleActionHeartbeatType) : Types::RecordLifecycleActionHeartbeatAnswer
         request = Protocol::Query.build_request(Model::RECORD_LIFECYCLE_ACTION_HEARTBEAT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1275,13 +1440,16 @@ module AwsSdk
       # Resumes the specified suspended auto scaling processes, or all suspended process, for the specified
       # Auto Scaling group. For more information, see Suspend and resume Amazon EC2 Auto Scaling processes
       # in the Amazon EC2 Auto Scaling User Guide .
+
       def resume_processes(
         auto_scaling_group_name : String,
         scaling_processes : Array(String)? = nil
       ) : Nil
+
         input = Types::ScalingProcessQuery.new(auto_scaling_group_name: auto_scaling_group_name, scaling_processes: scaling_processes)
         resume_processes(input)
       end
+
       def resume_processes(input : Types::ScalingProcessQuery) : Nil
         request = Protocol::Query.build_request(Model::RESUME_PROCESSES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1301,12 +1469,15 @@ module AwsSdk
       # group uses the launch template's $Latest or $Default version. When you receive a successful response
       # from this operation, Amazon EC2 Auto Scaling immediately begins replacing instances. You can check
       # the status of this operation through the DescribeInstanceRefreshes API operation.
+
       def rollback_instance_refresh(
         auto_scaling_group_name : String
       ) : Types::RollbackInstanceRefreshAnswer
+
         input = Types::RollbackInstanceRefreshType.new(auto_scaling_group_name: auto_scaling_group_name)
         rollback_instance_refresh(input)
       end
+
       def rollback_instance_refresh(input : Types::RollbackInstanceRefreshType) : Types::RollbackInstanceRefreshAnswer
         request = Protocol::Query.build_request(Model::ROLLBACK_INSTANCE_REFRESH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1319,14 +1490,17 @@ module AwsSdk
       # new DesiredCapacity value that is lower than the current size of the group, the Auto Scaling group
       # uses its termination policy to determine which instances to terminate. For more information, see
       # Manual scaling in the Amazon EC2 Auto Scaling User Guide .
+
       def set_desired_capacity(
         auto_scaling_group_name : String,
         desired_capacity : Int32,
         honor_cooldown : Bool? = nil
       ) : Nil
+
         input = Types::SetDesiredCapacityType.new(auto_scaling_group_name: auto_scaling_group_name, desired_capacity: desired_capacity, honor_cooldown: honor_cooldown)
         set_desired_capacity(input)
       end
+
       def set_desired_capacity(input : Types::SetDesiredCapacityType) : Nil
         request = Protocol::Query.build_request(Model::SET_DESIRED_CAPACITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1337,14 +1511,17 @@ module AwsSdk
 
       # Sets the health status of the specified instance. For more information, see Set up a custom health
       # check for your Auto Scaling group in the Amazon EC2 Auto Scaling User Guide .
+
       def set_instance_health(
         health_status : String,
         instance_id : String,
         should_respect_grace_period : Bool? = nil
       ) : Nil
+
         input = Types::SetInstanceHealthQuery.new(health_status: health_status, instance_id: instance_id, should_respect_grace_period: should_respect_grace_period)
         set_instance_health(input)
       end
+
       def set_instance_health(input : Types::SetInstanceHealthQuery) : Nil
         request = Protocol::Query.build_request(Model::SET_INSTANCE_HEALTH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1357,14 +1534,17 @@ module AwsSdk
       # on instances in a warm pool. For more information, see Use instance scale-in protection in the
       # Amazon EC2 Auto Scaling User Guide . If you exceed your maximum limit of instance IDs, which is 50
       # per Auto Scaling group, the call fails.
+
       def set_instance_protection(
         auto_scaling_group_name : String,
         instance_ids : Array(String),
         protected_from_scale_in : Bool
       ) : Types::SetInstanceProtectionAnswer
+
         input = Types::SetInstanceProtectionQuery.new(auto_scaling_group_name: auto_scaling_group_name, instance_ids: instance_ids, protected_from_scale_in: protected_from_scale_in)
         set_instance_protection(input)
       end
+
       def set_instance_protection(input : Types::SetInstanceProtectionQuery) : Types::SetInstanceProtectionAnswer
         request = Protocol::Query.build_request(Model::SET_INSTANCE_PROTECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1389,15 +1569,18 @@ module AwsSdk
       # back automatically when the instance refresh fails. You can enable this feature before starting an
       # instance refresh by specifying the AutoRollback property in the instance refresh preferences.
       # Otherwise, to roll back an instance refresh before it finishes, use the RollbackInstanceRefresh API.
+
       def start_instance_refresh(
         auto_scaling_group_name : String,
         desired_configuration : Types::DesiredConfiguration? = nil,
         preferences : Types::RefreshPreferences? = nil,
         strategy : String? = nil
       ) : Types::StartInstanceRefreshAnswer
+
         input = Types::StartInstanceRefreshType.new(auto_scaling_group_name: auto_scaling_group_name, desired_configuration: desired_configuration, preferences: preferences, strategy: strategy)
         start_instance_refresh(input)
       end
+
       def start_instance_refresh(input : Types::StartInstanceRefreshType) : Types::StartInstanceRefreshAnswer
         request = Protocol::Query.build_request(Model::START_INSTANCE_REFRESH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1411,13 +1594,16 @@ module AwsSdk
       # types from functioning properly. For more information, see Suspend and resume Amazon EC2 Auto
       # Scaling processes in the Amazon EC2 Auto Scaling User Guide . To resume processes that have been
       # suspended, call the ResumeProcesses API.
+
       def suspend_processes(
         auto_scaling_group_name : String,
         scaling_processes : Array(String)? = nil
       ) : Nil
+
         input = Types::ScalingProcessQuery.new(auto_scaling_group_name: auto_scaling_group_name, scaling_processes: scaling_processes)
         suspend_processes(input)
       end
+
       def suspend_processes(input : Types::ScalingProcessQuery) : Nil
         request = Protocol::Query.build_request(Model::SUSPEND_PROCESSES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1436,13 +1622,16 @@ module AwsSdk
       # unbalanced between Availability Zones. Amazon EC2 Auto Scaling tries to rebalance the group, and
       # rebalancing might terminate instances in other zones. For more information, see Manual scaling in
       # the Amazon EC2 Auto Scaling User Guide .
+
       def terminate_instance_in_auto_scaling_group(
         instance_id : String,
         should_decrement_desired_capacity : Bool
       ) : Types::ActivityType
+
         input = Types::TerminateInstanceInAutoScalingGroupType.new(instance_id: instance_id, should_decrement_desired_capacity: should_decrement_desired_capacity)
         terminate_instance_in_auto_scaling_group(input)
       end
+
       def terminate_instance_in_auto_scaling_group(input : Types::TerminateInstanceInAutoScalingGroupType) : Types::ActivityType
         request = Protocol::Query.build_request(Model::TERMINATE_INSTANCE_IN_AUTO_SCALING_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1475,6 +1664,7 @@ module AwsSdk
       # MaxSize value. To see which properties have been set, call the DescribeAutoScalingGroups API. To
       # view the scaling policies for an Auto Scaling group, call the DescribePolicies API. If the group has
       # scaling policies, you can update them by calling the PutScalingPolicy API.
+
       def update_auto_scaling_group(
         auto_scaling_group_name : String,
         availability_zone_distribution : Types::AvailabilityZoneDistribution? = nil,
@@ -1504,9 +1694,11 @@ module AwsSdk
         termination_policies : Array(String)? = nil,
         vpc_zone_identifier : String? = nil
       ) : Nil
+
         input = Types::UpdateAutoScalingGroupType.new(auto_scaling_group_name: auto_scaling_group_name, availability_zone_distribution: availability_zone_distribution, availability_zone_impairment_policy: availability_zone_impairment_policy, availability_zones: availability_zones, capacity_rebalance: capacity_rebalance, capacity_reservation_specification: capacity_reservation_specification, context: context, default_cooldown: default_cooldown, default_instance_warmup: default_instance_warmup, desired_capacity: desired_capacity, desired_capacity_type: desired_capacity_type, health_check_grace_period: health_check_grace_period, health_check_type: health_check_type, instance_lifecycle_policy: instance_lifecycle_policy, instance_maintenance_policy: instance_maintenance_policy, launch_configuration_name: launch_configuration_name, launch_template: launch_template, max_instance_lifetime: max_instance_lifetime, max_size: max_size, min_size: min_size, mixed_instances_policy: mixed_instances_policy, new_instances_protected_from_scale_in: new_instances_protected_from_scale_in, placement_group: placement_group, service_linked_role_arn: service_linked_role_arn, skip_zonal_shift_validation: skip_zonal_shift_validation, termination_policies: termination_policies, vpc_zone_identifier: vpc_zone_identifier)
         update_auto_scaling_group(input)
       end
+
       def update_auto_scaling_group(input : Types::UpdateAutoScalingGroupType) : Nil
         request = Protocol::Query.build_request(Model::UPDATE_AUTO_SCALING_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)

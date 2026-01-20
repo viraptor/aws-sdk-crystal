@@ -1,7 +1,0 @@
-require "./runtime"
-require "./arc_zonal_shift/client"
-require "./arc_zonal_shift/errors"
-require "./arc_zonal_shift/model"
-require "./arc_zonal_shift/types"
-require "./arc_zonal_shift/protocol/rest_json"
-require "./customizations/arc_zonal_shift/customizations"

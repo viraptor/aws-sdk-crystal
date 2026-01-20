@@ -5,26 +5,32 @@ module AwsSdk
       end
 
       # You do not have permission to perform this operation.
+
       class AccessDeniedException < ServiceError
       end
 
       # Updating or deleting this resource can cause an inconsistent state.
+
       class ConflictException < ServiceError
       end
 
       # An internal error has occurred.
+
       class InternalServerException < ServiceError
       end
 
       # The specified request is not valid.
+
       class NotFoundException < ServiceError
       end
 
       # You have exceeded a service quota.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # A parameter is not valid.
+
       class ValidationException < ServiceError
       end
 

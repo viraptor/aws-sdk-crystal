@@ -5,38 +5,47 @@ module AwsSdk
       end
 
       # The account or role doesn't have the right permissions to make the request.
+
       class AccessDeniedException < ServiceError
       end
 
       # The parameters provided in the request conflict with existing resources.
+
       class ConflictException < ServiceError
       end
 
       # Failed to connect to server, or didn’t receive response within expected time period.
+
       class ExecutionTimeoutException < ServiceError
       end
 
       # An unexpected error occurred during the processing of the request.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # One or more quotas for Amazon Web Services Mainframe Modernization exceeds the limit.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Server cannot process the request at the moment.
+
       class ServiceUnavailableException < ServiceError
       end
 
       # The number of requests made exceeds the limit.
+
       class ThrottlingException < ServiceError
       end
 
       # One or more parameters provided in the request is not valid.
+
       class ValidationException < ServiceError
       end
 

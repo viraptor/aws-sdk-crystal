@@ -1,7 +1,0 @@
-require "./runtime"
-require "./query_timestream/client"
-require "./query_timestream/errors"
-require "./query_timestream/model"
-require "./query_timestream/types"
-require "./query_timestream/protocol/json_rpc"
-require "./customizations/query_timestream/customizations"

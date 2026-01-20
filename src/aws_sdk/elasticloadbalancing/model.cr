@@ -1,7 +1,7 @@
 module AwsSdk
-  module ElasticLoadBalancingV2
+  module ElasticLoadBalancing
     module Model
-      API_VERSION = "2015-12-01"
+      API_VERSION = "2012-06-01"
       TARGET_PREFIX = ""
       SIGNING_NAME = "elasticloadbalancing"
       ENDPOINT_PREFIX = "elasticloadbalancing"
@@ -19,26 +19,38 @@ module AwsSdk
         end
       end
 
-      ADD_LISTENER_CERTIFICATES = OperationModel.new(
-        name: "AddListenerCertificates",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
       ADD_TAGS = OperationModel.new(
         name: "AddTags",
         http_method: "POST",
         request_uri: "/"
       )
 
-      ADD_TRUST_STORE_REVOCATIONS = OperationModel.new(
-        name: "AddTrustStoreRevocations",
+      APPLY_SECURITY_GROUPS_TO_LOAD_BALANCER = OperationModel.new(
+        name: "ApplySecurityGroupsToLoadBalancer",
         http_method: "POST",
         request_uri: "/"
       )
 
-      CREATE_LISTENER = OperationModel.new(
-        name: "CreateListener",
+      ATTACH_LOAD_BALANCER_TO_SUBNETS = OperationModel.new(
+        name: "AttachLoadBalancerToSubnets",
+        http_method: "POST",
+        request_uri: "/"
+      )
+
+      CONFIGURE_HEALTH_CHECK = OperationModel.new(
+        name: "ConfigureHealthCheck",
+        http_method: "POST",
+        request_uri: "/"
+      )
+
+      CREATE_APP_COOKIE_STICKINESS_POLICY = OperationModel.new(
+        name: "CreateAppCookieStickinessPolicy",
+        http_method: "POST",
+        request_uri: "/"
+      )
+
+      CREATE_LB_COOKIE_STICKINESS_POLICY = OperationModel.new(
+        name: "CreateLBCookieStickinessPolicy",
         http_method: "POST",
         request_uri: "/"
       )
@@ -49,26 +61,14 @@ module AwsSdk
         request_uri: "/"
       )
 
-      CREATE_RULE = OperationModel.new(
-        name: "CreateRule",
+      CREATE_LOAD_BALANCER_LISTENERS = OperationModel.new(
+        name: "CreateLoadBalancerListeners",
         http_method: "POST",
         request_uri: "/"
       )
 
-      CREATE_TARGET_GROUP = OperationModel.new(
-        name: "CreateTargetGroup",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      CREATE_TRUST_STORE = OperationModel.new(
-        name: "CreateTrustStore",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DELETE_LISTENER = OperationModel.new(
-        name: "DeleteListener",
+      CREATE_LOAD_BALANCER_POLICY = OperationModel.new(
+        name: "CreateLoadBalancerPolicy",
         http_method: "POST",
         request_uri: "/"
       )
@@ -79,32 +79,20 @@ module AwsSdk
         request_uri: "/"
       )
 
-      DELETE_RULE = OperationModel.new(
-        name: "DeleteRule",
+      DELETE_LOAD_BALANCER_LISTENERS = OperationModel.new(
+        name: "DeleteLoadBalancerListeners",
         http_method: "POST",
         request_uri: "/"
       )
 
-      DELETE_SHARED_TRUST_STORE_ASSOCIATION = OperationModel.new(
-        name: "DeleteSharedTrustStoreAssociation",
+      DELETE_LOAD_BALANCER_POLICY = OperationModel.new(
+        name: "DeleteLoadBalancerPolicy",
         http_method: "POST",
         request_uri: "/"
       )
 
-      DELETE_TARGET_GROUP = OperationModel.new(
-        name: "DeleteTargetGroup",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DELETE_TRUST_STORE = OperationModel.new(
-        name: "DeleteTrustStore",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DEREGISTER_TARGETS = OperationModel.new(
-        name: "DeregisterTargets",
+      DEREGISTER_INSTANCES_FROM_LOAD_BALANCER = OperationModel.new(
+        name: "DeregisterInstancesFromLoadBalancer",
         http_method: "POST",
         request_uri: "/"
       )
@@ -115,26 +103,8 @@ module AwsSdk
         request_uri: "/"
       )
 
-      DESCRIBE_CAPACITY_RESERVATION = OperationModel.new(
-        name: "DescribeCapacityReservation",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_LISTENER_ATTRIBUTES = OperationModel.new(
-        name: "DescribeListenerAttributes",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_LISTENER_CERTIFICATES = OperationModel.new(
-        name: "DescribeListenerCertificates",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_LISTENERS = OperationModel.new(
-        name: "DescribeListeners",
+      DESCRIBE_INSTANCE_HEALTH = OperationModel.new(
+        name: "DescribeInstanceHealth",
         http_method: "POST",
         request_uri: "/"
       )
@@ -145,20 +115,20 @@ module AwsSdk
         request_uri: "/"
       )
 
+      DESCRIBE_LOAD_BALANCER_POLICIES = OperationModel.new(
+        name: "DescribeLoadBalancerPolicies",
+        http_method: "POST",
+        request_uri: "/"
+      )
+
+      DESCRIBE_LOAD_BALANCER_POLICY_TYPES = OperationModel.new(
+        name: "DescribeLoadBalancerPolicyTypes",
+        http_method: "POST",
+        request_uri: "/"
+      )
+
       DESCRIBE_LOAD_BALANCERS = OperationModel.new(
         name: "DescribeLoadBalancers",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_RULES = OperationModel.new(
-        name: "DescribeRules",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_SSL_POLICIES = OperationModel.new(
-        name: "DescribeSSLPolicies",
         http_method: "POST",
         request_uri: "/"
       )
@@ -169,80 +139,20 @@ module AwsSdk
         request_uri: "/"
       )
 
-      DESCRIBE_TARGET_GROUP_ATTRIBUTES = OperationModel.new(
-        name: "DescribeTargetGroupAttributes",
+      DETACH_LOAD_BALANCER_FROM_SUBNETS = OperationModel.new(
+        name: "DetachLoadBalancerFromSubnets",
         http_method: "POST",
         request_uri: "/"
       )
 
-      DESCRIBE_TARGET_GROUPS = OperationModel.new(
-        name: "DescribeTargetGroups",
+      DISABLE_AVAILABILITY_ZONES_FOR_LOAD_BALANCER = OperationModel.new(
+        name: "DisableAvailabilityZonesForLoadBalancer",
         http_method: "POST",
         request_uri: "/"
       )
 
-      DESCRIBE_TARGET_HEALTH = OperationModel.new(
-        name: "DescribeTargetHealth",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_TRUST_STORE_ASSOCIATIONS = OperationModel.new(
-        name: "DescribeTrustStoreAssociations",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_TRUST_STORE_REVOCATIONS = OperationModel.new(
-        name: "DescribeTrustStoreRevocations",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      DESCRIBE_TRUST_STORES = OperationModel.new(
-        name: "DescribeTrustStores",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      GET_RESOURCE_POLICY = OperationModel.new(
-        name: "GetResourcePolicy",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      GET_TRUST_STORE_CA_CERTIFICATES_BUNDLE = OperationModel.new(
-        name: "GetTrustStoreCaCertificatesBundle",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      GET_TRUST_STORE_REVOCATION_CONTENT = OperationModel.new(
-        name: "GetTrustStoreRevocationContent",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_CAPACITY_RESERVATION = OperationModel.new(
-        name: "ModifyCapacityReservation",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_IP_POOLS = OperationModel.new(
-        name: "ModifyIpPools",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_LISTENER = OperationModel.new(
-        name: "ModifyListener",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_LISTENER_ATTRIBUTES = OperationModel.new(
-        name: "ModifyListenerAttributes",
+      ENABLE_AVAILABILITY_ZONES_FOR_LOAD_BALANCER = OperationModel.new(
+        name: "EnableAvailabilityZonesForLoadBalancer",
         http_method: "POST",
         request_uri: "/"
       )
@@ -253,38 +163,8 @@ module AwsSdk
         request_uri: "/"
       )
 
-      MODIFY_RULE = OperationModel.new(
-        name: "ModifyRule",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_TARGET_GROUP = OperationModel.new(
-        name: "ModifyTargetGroup",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_TARGET_GROUP_ATTRIBUTES = OperationModel.new(
-        name: "ModifyTargetGroupAttributes",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      MODIFY_TRUST_STORE = OperationModel.new(
-        name: "ModifyTrustStore",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      REGISTER_TARGETS = OperationModel.new(
-        name: "RegisterTargets",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      REMOVE_LISTENER_CERTIFICATES = OperationModel.new(
-        name: "RemoveListenerCertificates",
+      REGISTER_INSTANCES_WITH_LOAD_BALANCER = OperationModel.new(
+        name: "RegisterInstancesWithLoadBalancer",
         http_method: "POST",
         request_uri: "/"
       )
@@ -295,32 +175,20 @@ module AwsSdk
         request_uri: "/"
       )
 
-      REMOVE_TRUST_STORE_REVOCATIONS = OperationModel.new(
-        name: "RemoveTrustStoreRevocations",
+      SET_LOAD_BALANCER_LISTENER_SSL_CERTIFICATE = OperationModel.new(
+        name: "SetLoadBalancerListenerSSLCertificate",
         http_method: "POST",
         request_uri: "/"
       )
 
-      SET_IP_ADDRESS_TYPE = OperationModel.new(
-        name: "SetIpAddressType",
+      SET_LOAD_BALANCER_POLICIES_FOR_BACKEND_SERVER = OperationModel.new(
+        name: "SetLoadBalancerPoliciesForBackendServer",
         http_method: "POST",
         request_uri: "/"
       )
 
-      SET_RULE_PRIORITIES = OperationModel.new(
-        name: "SetRulePriorities",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      SET_SECURITY_GROUPS = OperationModel.new(
-        name: "SetSecurityGroups",
-        http_method: "POST",
-        request_uri: "/"
-      )
-
-      SET_SUBNETS = OperationModel.new(
-        name: "SetSubnets",
+      SET_LOAD_BALANCER_POLICIES_OF_LISTENER = OperationModel.new(
+        name: "SetLoadBalancerPoliciesOfListener",
         http_method: "POST",
         request_uri: "/"
       )

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./bcm_recommended_actions/client"
-require "./bcm_recommended_actions/errors"
-require "./bcm_recommended_actions/model"
-require "./bcm_recommended_actions/types"
-require "./bcm_recommended_actions/protocol/json_rpc"
-require "./customizations/bcm_recommended_actions/customizations"

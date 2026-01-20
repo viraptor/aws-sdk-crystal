@@ -31,6 +31,7 @@ module AwsSdk
       # requests to a domain's search endpoint. To get the search endpoint for your domain, use the Amazon
       # CloudSearch configuration service DescribeDomains action. A domain's endpoints are also displayed on
       # the domain dashboard in the Amazon CloudSearch console.
+
       def search(
         query : String,
         cursor : String? = nil,
@@ -50,6 +51,7 @@ module AwsSdk
         input = Types::SearchRequest.new(query: query, cursor: cursor, expr: expr, facet: facet, filter_query: filter_query, highlight: highlight, partial: partial, query_options: query_options, query_parser: query_parser, return: return, size: size, sort: sort, start: start, stats: stats)
         search(input)
       end
+
       def search(input : Types::SearchRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SEARCH, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -65,6 +67,7 @@ module AwsSdk
       # submit suggest requests to a domain's search endpoint. To get the search endpoint for your domain,
       # use the Amazon CloudSearch configuration service DescribeDomains action. A domain's endpoints are
       # also displayed on the domain dashboard in the Amazon CloudSearch console.
+
       def suggest(
         query : String,
         suggester : String,
@@ -73,6 +76,7 @@ module AwsSdk
         input = Types::SuggestRequest.new(query: query, suggester: suggester, size: size)
         suggest(input)
       end
+
       def suggest(input : Types::SuggestRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SUGGEST, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -92,6 +96,7 @@ module AwsSdk
       # Amazon CloudSearch console. For more information about formatting your data for Amazon CloudSearch,
       # see Preparing Your Data in the Amazon CloudSearch Developer Guide . For more information about
       # uploading data for indexing, see Uploading Data in the Amazon CloudSearch Developer Guide .
+
       def upload_documents(
         content_type : String,
         documents : Bytes
@@ -99,6 +104,7 @@ module AwsSdk
         input = Types::UploadDocumentsRequest.new(content_type: content_type, documents: documents)
         upload_documents(input)
       end
+
       def upload_documents(input : Types::UploadDocumentsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPLOAD_DOCUMENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

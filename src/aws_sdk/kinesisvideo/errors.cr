@@ -5,44 +5,54 @@ module AwsSdk
       end
 
       # You do not have required permissions to perform this operation.
+
       class AccessDeniedException < ServiceError
       end
 
       # You have reached the maximum limit of active signaling channels for this Amazon Web Services account
       # in this region.
+
       class AccountChannelLimitExceededException < ServiceError
       end
 
       # The number of streams created for the account is too high.
+
       class AccountStreamLimitExceededException < ServiceError
       end
 
       # Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed
       # client calls. Try making the call later.
+
       class ClientLimitExceededException < ServiceError
       end
 
       # Not implemented.
+
       class DeviceStreamLimitExceededException < ServiceError
       end
 
       # The value for this input parameter is invalid.
+
       class InvalidArgumentException < ServiceError
       end
 
       # Not implemented.
+
       class InvalidDeviceException < ServiceError
       end
 
       # The format of the StreamARN is invalid.
+
       class InvalidResourceFormatException < ServiceError
       end
 
       # The Stream data retention in hours is equal to zero.
+
       class NoDataRetentionException < ServiceError
       end
 
       # The caller is not authorized to perform this operation.
+
       class NotAuthorizedException < ServiceError
       end
 
@@ -52,25 +62,30 @@ module AwsSdk
       # stream given channel is mapped to. The DescribeMappedResourceConfiguration API to determine the
       # channel that the given stream is mapped to. The DescribeStream or DescribeSignalingChannel API to
       # determine the status of the resource.
+
       class ResourceInUseException < ServiceError
       end
 
       # Amazon Kinesis Video Streams can't find the stream that you specified.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The Exception rendered when the Amazon Kinesis Video Stream can't find a stream's edge configuration
       # that you specified.
+
       class StreamEdgeConfigurationNotFoundException < ServiceError
       end
 
       # You have exceeded the limit of tags that you can associate with the resource. A Kinesis video stream
       # can support up to 50 tags.
+
       class TagsPerResourceExceededLimitException < ServiceError
       end
 
       # The stream version that you specified is not the latest version. To get the latest version, use the
       # DescribeStream API.
+
       class VersionMismatchException < ServiceError
       end
 

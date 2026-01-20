@@ -1,7 +1,0 @@
-require "./runtime"
-require "./emr_serverless/client"
-require "./emr_serverless/errors"
-require "./emr_serverless/model"
-require "./emr_serverless/types"
-require "./emr_serverless/protocol/rest_json"
-require "./customizations/emr_serverless/customizations"

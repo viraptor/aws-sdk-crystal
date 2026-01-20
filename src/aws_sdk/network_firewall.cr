@@ -1,7 +1,0 @@
-require "./runtime"
-require "./network_firewall/client"
-require "./network_firewall/errors"
-require "./network_firewall/model"
-require "./network_firewall/types"
-require "./network_firewall/protocol/json_rpc"
-require "./customizations/network_firewall/customizations"

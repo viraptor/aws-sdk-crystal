@@ -6,59 +6,71 @@ module AwsSdk
 
       # Your account isn't a member of an organization. To make this request, you must use the credentials
       # of an account that belongs to an organization.
+
       class AWSOrganizationsNotInUseException < ServiceError
       end
 
       # You don't have permissions to perform the requested operation. The user or role that is making the
       # request must have at least one IAM permissions policy attached that grants the required permissions.
       # For more information, see Access Management in the IAM User Guide .
+
       class AccessDeniedException < ServiceError
       end
 
       # The operation that you attempted requires you to have the iam:CreateServiceLinkedRole for
       # organizations.amazonaws.com permission so that Organizations can create the required service-linked
       # role. You don't have that permission.
+
       class AccessDeniedForDependencyException < ServiceError
       end
 
       # You attempted to close an account that is already closed.
+
       class AccountAlreadyClosedException < ServiceError
       end
 
       # The specified account is already a delegated administrator for this Amazon Web Services service.
+
       class AccountAlreadyRegisteredException < ServiceError
       end
 
       # We can't find an Amazon Web Services account with the AccountId that you specified, or the account
       # whose credentials you used to make this request isn't a member of an organization.
+
       class AccountNotFoundException < ServiceError
       end
 
       # The specified account is not a delegated administrator for this Amazon Web Services service.
+
       class AccountNotRegisteredException < ServiceError
       end
 
       # You can't invite an existing account to your organization until you verify that you own the email
       # address associated with the management account. For more information, see Email address verification
       # in the Organizations User Guide .
+
       class AccountOwnerNotVerifiedException < ServiceError
       end
 
       # This account is already a member of an organization. An account can belong to only one organization
       # at a time.
+
       class AlreadyInOrganizationException < ServiceError
       end
 
       # We can't find an organizational unit (OU) or Amazon Web Services account with the ChildId that you
       # specified.
+
       class ChildNotFoundException < ServiceError
       end
 
       # The target of the operation is currently being modified by a different request. Try again later.
+
       class ConcurrentModificationException < ServiceError
       end
 
       # The request failed because it conflicts with the current state of the specified resource.
+
       class ConflictException < ServiceError
       end
 
@@ -163,18 +175,22 @@ module AwsSdk
       # organization has a pricing contract that is unsupported. WAIT_PERIOD_ACTIVE: After you create an
       # Amazon Web Services account, you must wait until at least four days after the account was created.
       # Invited accounts aren't subject to this waiting period.
+
       class ConstraintViolationException < ServiceError
       end
 
       # We can't find an create account request with the CreateAccountRequestId that you specified.
+
       class CreateAccountStatusNotFoundException < ServiceError
       end
 
       # We can't find the destination container (a root or OU) with the ParentId that you specified.
+
       class DestinationParentNotFoundException < ServiceError
       end
 
       # That account is already present in the specified destination.
+
       class DuplicateAccountException < ServiceError
       end
 
@@ -182,35 +198,42 @@ module AwsSdk
       # to join your organization, the invited account might already have a pending invitation from this
       # organization. If you intend to resend an invitation to an account, ensure that existing handshakes
       # that might be considered duplicates are canceled or declined.
+
       class DuplicateHandshakeException < ServiceError
       end
 
       # An OU with the same name already exists.
+
       class DuplicateOrganizationalUnitException < ServiceError
       end
 
       # The selected policy is already attached to the specified target.
+
       class DuplicatePolicyAttachmentException < ServiceError
       end
 
       # A policy with the same name already exists.
+
       class DuplicatePolicyException < ServiceError
       end
 
       # If you ran this action on the management account, this policy type is not enabled. If you ran the
       # action on a member account, the account doesn't have an effective policy of this type. Contact the
       # administrator of your organization about attaching a policy of this type to the account.
+
       class EffectivePolicyNotFoundException < ServiceError
       end
 
       # Organizations couldn't perform the operation because your organization hasn't finished initializing.
       # This can take up to an hour. Try again later. If after one hour you continue to receive this error,
       # contact Amazon Web Services Support .
+
       class FinalizingOrganizationException < ServiceError
       end
 
       # The specified handshake is already in the requested state. For example, you can't accept a handshake
       # that was already accepted.
+
       class HandshakeAlreadyInStateException < ServiceError
       end
 
@@ -239,15 +262,18 @@ module AwsSdk
       # transfer. SOURCE_AND_TARGET_CANNOT_MATCH: An account can't accept a transfer invitation if it is
       # both the sender and recipient of the invitation. UNUSED_PREPAYMENT_BALANCE: Your organization has an
       # outstanding pre-payment balance.
+
       class HandshakeConstraintViolationException < ServiceError
       end
 
       # We can't find a handshake with the HandshakeId that you specified.
+
       class HandshakeNotFoundException < ServiceError
       end
 
       # You can't perform the operation on the handshake in its current state. For example, you can't cancel
       # a handshake that was already accepted or accept a handshake that was already declined.
+
       class InvalidHandshakeTransitionException < ServiceError
       end
 
@@ -293,63 +319,76 @@ module AwsSdk
       # that target entity. UNRECOGNIZED_SERVICE_PRINCIPAL: You specified a service principal that isn't
       # recognized. UNSUPPORTED_ACTION_IN_RESPONSIBILITY_TRANSFER: You provided a value that is not
       # supported by this operation.
+
       class InvalidInputException < ServiceError
       end
 
       # The responsibility transfer can't transition to the requested state because it's not in a valid
       # state for this operation.
+
       class InvalidResponsibilityTransferTransitionException < ServiceError
       end
 
       # The provided policy document doesn't meet the requirements of the specified policy type. For
       # example, the syntax might be incorrect. For details about service control policy syntax, see SCP
       # syntax in the Organizations User Guide .
+
       class MalformedPolicyDocumentException < ServiceError
       end
 
       # You can't remove a management account from an organization. If you want the management account to
       # become a member account in another organization, you must first delete the current organization of
       # the management account.
+
       class MasterCannotLeaveOrganizationException < ServiceError
       end
 
       # The organization isn't empty. To delete an organization, you must first remove all accounts except
       # the management account.
+
       class OrganizationNotEmptyException < ServiceError
       end
 
       # The specified OU is not empty. Move all accounts to another root or to other OUs, remove all child
       # OUs, and try the operation again.
+
       class OrganizationalUnitNotEmptyException < ServiceError
       end
 
       # We can't find an OU with the OrganizationalUnitId that you specified.
+
       class OrganizationalUnitNotFoundException < ServiceError
       end
 
       # We can't find a root or OU with the ParentId that you specified.
+
       class ParentNotFoundException < ServiceError
       end
 
       # Changes to the effective policy are in progress, and its contents can't be returned. Try the
       # operation again later.
+
       class PolicyChangesInProgressException < ServiceError
       end
 
       # The policy is attached to one or more entities. You must detach it from all roots, OUs, and accounts
       # before performing this operation.
+
       class PolicyInUseException < ServiceError
       end
 
       # The policy isn't attached to the specified target in the specified root.
+
       class PolicyNotAttachedException < ServiceError
       end
 
       # We can't find a policy with the PolicyId that you specified.
+
       class PolicyNotFoundException < ServiceError
       end
 
       # The specified policy type is already enabled in the specified root.
+
       class PolicyTypeAlreadyEnabledException < ServiceError
       end
 
@@ -357,50 +396,61 @@ module AwsSdk
       # organization. For example, you can enable SCPs only after you enable all features in the
       # organization. For more information, see Managing Organizations policies in the Organizations User
       # Guide .
+
       class PolicyTypeNotAvailableForOrganizationException < ServiceError
       end
 
       # The specified policy type isn't currently enabled in this root. You can't attach policies of the
       # specified type to entities in a root until you enable that type in the root. For more information,
       # see Enabling all features in your organization in the Organizations User Guide .
+
       class PolicyTypeNotEnabledException < ServiceError
       end
 
       # We can't find a resource policy request with the parameter that you specified.
+
       class ResourcePolicyNotFoundException < ServiceError
       end
 
       # The responsibility transfer is already in the status that you specified.
+
       class ResponsibilityTransferAlreadyInStatusException < ServiceError
       end
 
       # We can't find a transfer that you specified.
+
       class ResponsibilityTransferNotFoundException < ServiceError
       end
 
       # We can't find a root with the RootId that you specified.
+
       class RootNotFoundException < ServiceError
       end
 
       # Organizations can't complete your request because of an internal service error. Try again later.
+
       class ServiceException < ServiceError
       end
 
       # We can't find a source root or OU with the ParentId that you specified.
+
       class SourceParentNotFoundException < ServiceError
       end
 
       # We can't find a root, OU, account, or policy with the TargetId that you specified.
+
       class TargetNotFoundException < ServiceError
       end
 
       # You have sent too many requests in too short a period of time. The quota helps protect against
       # denial-of-service attacks. Try again later. For information about quotas that affect Organizations,
       # see Quotas for Organizations in the Organizations User Guide .
+
       class TooManyRequestsException < ServiceError
       end
 
       # This action isn't available in the current Amazon Web Services Region.
+
       class UnsupportedAPIEndpointException < ServiceError
       end
 

@@ -1,6 +1,7 @@
 module AwsSdk
   module FSx
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -36,14 +37,17 @@ module AwsSdk
       # response shows the DNS aliases that Amazon FSx is attempting to associate with the file system. Use
       # the API operation to monitor the status of the aliases Amazon FSx is associating with the file
       # system.
+
       def associate_file_system_aliases(
         aliases : Array(String),
         file_system_id : String,
         client_request_token : String? = nil
       ) : Types::AssociateFileSystemAliasesResponse
+
         input = Types::AssociateFileSystemAliasesRequest.new(aliases: aliases, file_system_id: file_system_id, client_request_token: client_request_token)
         associate_file_system_aliases(input)
       end
+
       def associate_file_system_aliases(input : Types::AssociateFileSystemAliasesRequest) : Types::AssociateFileSystemAliasesResponse
         request = Protocol::JsonRpc.build_request(Model::ASSOCIATE_FILE_SYSTEM_ALIASES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -58,12 +62,15 @@ module AwsSdk
       # the cancel operation is received. FSx does not export any files that have not yet been exported. For
       # a release task, Amazon FSx will stop releasing files upon cancellation. Any files that have already
       # been released will remain in the released state.
+
       def cancel_data_repository_task(
         task_id : String
       ) : Types::CancelDataRepositoryTaskResponse
+
         input = Types::CancelDataRepositoryTaskRequest.new(task_id: task_id)
         cancel_data_repository_task(input)
       end
+
       def cancel_data_repository_task(input : Types::CancelDataRepositoryTaskRequest) : Types::CancelDataRepositoryTaskResponse
         request = Protocol::JsonRpc.build_request(Model::CANCEL_DATA_REPOSITORY_TASK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -89,6 +96,7 @@ module AwsSdk
       # copy). For more information about creating backup copies, see Copying backups in the Amazon FSx for
       # Windows User Guide , Copying backups in the Amazon FSx for Lustre User Guide , and Copying backups
       # in the Amazon FSx for OpenZFS User Guide .
+
       def copy_backup(
         source_backup_id : String,
         client_request_token : String? = nil,
@@ -97,9 +105,11 @@ module AwsSdk
         source_region : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CopyBackupResponse
+
         input = Types::CopyBackupRequest.new(source_backup_id: source_backup_id, client_request_token: client_request_token, copy_tags: copy_tags, kms_key_id: kms_key_id, source_region: source_region, tags: tags)
         copy_backup(input)
       end
+
       def copy_backup(input : Types::CopyBackupRequest) : Types::CopyBackupResponse
         request = Protocol::JsonRpc.build_request(Model::COPY_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -110,6 +120,7 @@ module AwsSdk
 
       # Updates an existing volume by using a snapshot from another Amazon FSx for OpenZFS file system. For
       # more information, see on-demand data replication in the Amazon FSx for OpenZFS User Guide.
+
       def copy_snapshot_and_update_volume(
         source_snapshot_arn : String,
         volume_id : String,
@@ -117,9 +128,11 @@ module AwsSdk
         copy_strategy : String? = nil,
         options : Array(String)? = nil
       ) : Types::CopySnapshotAndUpdateVolumeResponse
+
         input = Types::CopySnapshotAndUpdateVolumeRequest.new(source_snapshot_arn: source_snapshot_arn, volume_id: volume_id, client_request_token: client_request_token, copy_strategy: copy_strategy, options: options)
         copy_snapshot_and_update_volume(input)
       end
+
       def copy_snapshot_and_update_volume(input : Types::CopySnapshotAndUpdateVolumeRequest) : Types::CopySnapshotAndUpdateVolumeResponse
         request = Protocol::JsonRpc.build_request(Model::COPY_SNAPSHOT_AND_UPDATE_VOLUME, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -135,6 +148,7 @@ module AwsSdk
       # fsx:CreateAndAttachS3AccessPoint s3:CreateAccessPoint s3:GetAccessPoint s3:PutAccessPointPolicy
       # s3:DeleteAccessPoint The following actions are related to CreateAndAttachS3AccessPoint :
       # DescribeS3AccessPointAttachments DetachAndDeleteS3AccessPoint
+
       def create_and_attach_s3_access_point(
         name : String,
         type : String,
@@ -143,9 +157,11 @@ module AwsSdk
         open_zfs_configuration : Types::CreateAndAttachS3AccessPointOpenZFSConfiguration? = nil,
         s3_access_point : Types::CreateAndAttachS3AccessPointS3Configuration? = nil
       ) : Types::CreateAndAttachS3AccessPointResponse
+
         input = Types::CreateAndAttachS3AccessPointRequest.new(name: name, type: type, client_request_token: client_request_token, ontap_configuration: ontap_configuration, open_zfs_configuration: open_zfs_configuration, s3_access_point: s3_access_point)
         create_and_attach_s3_access_point(input)
       end
+
       def create_and_attach_s3_access_point(input : Types::CreateAndAttachS3AccessPointRequest) : Types::CreateAndAttachS3AccessPointResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_AND_ATTACH_S3_ACCESS_POINT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -176,15 +192,18 @@ module AwsSdk
       # operation returns while the backup's lifecycle state is still CREATING . You can check the backup
       # creation status by calling the DescribeBackups operation, which returns the backup state along with
       # other information.
+
       def create_backup(
         client_request_token : String? = nil,
         file_system_id : String? = nil,
         tags : Array(Types::Tag)? = nil,
         volume_id : String? = nil
       ) : Types::CreateBackupResponse
+
         input = Types::CreateBackupRequest.new(client_request_token: client_request_token, file_system_id: file_system_id, tags: tags, volume_id: volume_id)
         create_backup(input)
       end
+
       def create_backup(input : Types::CreateBackupRequest) : Types::CreateBackupResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -203,6 +222,7 @@ module AwsSdk
       # to your file system, see Linking your file system to an S3 bucket . CreateDataRepositoryAssociation
       # isn't supported on Amazon File Cache resources. To create a DRA on Amazon File Cache, use the
       # CreateFileCache operation.
+
       def create_data_repository_association(
         data_repository_path : String,
         file_system_id : String,
@@ -213,9 +233,11 @@ module AwsSdk
         s3 : Types::S3DataRepositoryConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDataRepositoryAssociationResponse
+
         input = Types::CreateDataRepositoryAssociationRequest.new(data_repository_path: data_repository_path, file_system_id: file_system_id, batch_import_meta_data_on_create: batch_import_meta_data_on_create, client_request_token: client_request_token, file_system_path: file_system_path, imported_file_chunk_size: imported_file_chunk_size, s3: s3, tags: tags)
         create_data_repository_association(input)
       end
+
       def create_data_repository_association(input : Types::CreateDataRepositoryAssociationRequest) : Types::CreateDataRepositoryAssociationResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_DATA_REPOSITORY_ASSOCIATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -235,6 +257,7 @@ module AwsSdk
       # will restore data from Amazon S3 to the FSx for Lustre file system. To learn more about data
       # repository tasks, see Data Repository Tasks . To learn more about linking a data repository to your
       # file system, see Linking your file system to an S3 bucket .
+
       def create_data_repository_task(
         file_system_id : String,
         report : Types::CompletionReport,
@@ -245,9 +268,11 @@ module AwsSdk
         release_configuration : Types::ReleaseConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateDataRepositoryTaskResponse
+
         input = Types::CreateDataRepositoryTaskRequest.new(file_system_id: file_system_id, report: report, type: type, capacity_to_release: capacity_to_release, client_request_token: client_request_token, paths: paths, release_configuration: release_configuration, tags: tags)
         create_data_repository_task(input)
       end
+
       def create_data_repository_task(input : Types::CreateDataRepositoryTaskRequest) : Types::CreateDataRepositoryTaskResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_DATA_REPOSITORY_TASK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -266,6 +291,7 @@ module AwsSdk
       # description of the cache in JSON format. The CreateFileCache call returns while the cache's
       # lifecycle state is still CREATING . You can check the cache creation status by calling the
       # DescribeFileCaches operation, which returns the cache state along with other information.
+
       def create_file_cache(
         file_cache_type : String,
         file_cache_type_version : String,
@@ -279,9 +305,11 @@ module AwsSdk
         security_group_ids : Array(String)? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFileCacheResponse
+
         input = Types::CreateFileCacheRequest.new(file_cache_type: file_cache_type, file_cache_type_version: file_cache_type_version, storage_capacity: storage_capacity, subnet_ids: subnet_ids, client_request_token: client_request_token, copy_tags_to_data_repository_associations: copy_tags_to_data_repository_associations, data_repository_associations: data_repository_associations, kms_key_id: kms_key_id, lustre_configuration: lustre_configuration, security_group_ids: security_group_ids, tags: tags)
         create_file_cache(input)
       end
+
       def create_file_cache(input : Types::CreateFileCacheRequest) : Types::CreateFileCacheResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_FILE_CACHE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -309,6 +337,7 @@ module AwsSdk
       # returns while the file system's lifecycle state is still CREATING . You can check the file-system
       # creation status by calling the DescribeFileSystems operation, which returns the file system state
       # along with other information.
+
       def create_file_system(
         file_system_type : String,
         subnet_ids : Array(String),
@@ -325,9 +354,11 @@ module AwsSdk
         tags : Array(Types::Tag)? = nil,
         windows_configuration : Types::CreateFileSystemWindowsConfiguration? = nil
       ) : Types::CreateFileSystemResponse
+
         input = Types::CreateFileSystemRequest.new(file_system_type: file_system_type, subnet_ids: subnet_ids, client_request_token: client_request_token, file_system_type_version: file_system_type_version, kms_key_id: kms_key_id, lustre_configuration: lustre_configuration, network_type: network_type, ontap_configuration: ontap_configuration, open_zfs_configuration: open_zfs_configuration, security_group_ids: security_group_ids, storage_capacity: storage_capacity, storage_type: storage_type, tags: tags, windows_configuration: windows_configuration)
         create_file_system(input)
       end
+
       def create_file_system(input : Types::CreateFileSystemRequest) : Types::CreateFileSystemResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_FILE_SYSTEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -354,6 +385,7 @@ module AwsSdk
       # while the file system's lifecycle state is still CREATING . You can check the file-system creation
       # status by calling the DescribeFileSystems operation, which returns the file system state along with
       # other information.
+
       def create_file_system_from_backup(
         backup_id : String,
         subnet_ids : Array(String),
@@ -369,9 +401,11 @@ module AwsSdk
         tags : Array(Types::Tag)? = nil,
         windows_configuration : Types::CreateFileSystemWindowsConfiguration? = nil
       ) : Types::CreateFileSystemFromBackupResponse
+
         input = Types::CreateFileSystemFromBackupRequest.new(backup_id: backup_id, subnet_ids: subnet_ids, client_request_token: client_request_token, file_system_type_version: file_system_type_version, kms_key_id: kms_key_id, lustre_configuration: lustre_configuration, network_type: network_type, open_zfs_configuration: open_zfs_configuration, security_group_ids: security_group_ids, storage_capacity: storage_capacity, storage_type: storage_type, tags: tags, windows_configuration: windows_configuration)
         create_file_system_from_backup(input)
       end
+
       def create_file_system_from_backup(input : Types::CreateFileSystemFromBackupRequest) : Types::CreateFileSystemFromBackupResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_FILE_SYSTEM_FROM_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -395,15 +429,18 @@ module AwsSdk
       # while the snapshot's lifecycle state is still CREATING . You can check the snapshot creation status
       # by calling the DescribeSnapshots operation, which returns the snapshot state along with other
       # information.
+
       def create_snapshot(
         name : String,
         volume_id : String,
         client_request_token : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateSnapshotResponse
+
         input = Types::CreateSnapshotRequest.new(name: name, volume_id: volume_id, client_request_token: client_request_token, tags: tags)
         create_snapshot(input)
       end
+
       def create_snapshot(input : Types::CreateSnapshotRequest) : Types::CreateSnapshotResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_SNAPSHOT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -413,6 +450,7 @@ module AwsSdk
       end
 
       # Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file system.
+
       def create_storage_virtual_machine(
         file_system_id : String,
         name : String,
@@ -422,9 +460,11 @@ module AwsSdk
         svm_admin_password : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateStorageVirtualMachineResponse
+
         input = Types::CreateStorageVirtualMachineRequest.new(file_system_id: file_system_id, name: name, active_directory_configuration: active_directory_configuration, client_request_token: client_request_token, root_volume_security_style: root_volume_security_style, svm_admin_password: svm_admin_password, tags: tags)
         create_storage_virtual_machine(input)
       end
+
       def create_storage_virtual_machine(input : Types::CreateStorageVirtualMachineRequest) : Types::CreateStorageVirtualMachineResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_STORAGE_VIRTUAL_MACHINE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -434,6 +474,7 @@ module AwsSdk
       end
 
       # Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
+
       def create_volume(
         name : String,
         volume_type : String,
@@ -442,9 +483,11 @@ module AwsSdk
         open_zfs_configuration : Types::CreateOpenZFSVolumeConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateVolumeResponse
+
         input = Types::CreateVolumeRequest.new(name: name, volume_type: volume_type, client_request_token: client_request_token, ontap_configuration: ontap_configuration, open_zfs_configuration: open_zfs_configuration, tags: tags)
         create_volume(input)
       end
+
       def create_volume(input : Types::CreateVolumeRequest) : Types::CreateVolumeResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_VOLUME, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -454,6 +497,7 @@ module AwsSdk
       end
 
       # Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon FSx volume backup.
+
       def create_volume_from_backup(
         backup_id : String,
         name : String,
@@ -461,9 +505,11 @@ module AwsSdk
         ontap_configuration : Types::CreateOntapVolumeConfiguration? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateVolumeFromBackupResponse
+
         input = Types::CreateVolumeFromBackupRequest.new(backup_id: backup_id, name: name, client_request_token: client_request_token, ontap_configuration: ontap_configuration, tags: tags)
         create_volume_from_backup(input)
       end
+
       def create_volume_from_backup(input : Types::CreateVolumeFromBackupRequest) : Types::CreateVolumeFromBackupResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_VOLUME_FROM_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -475,13 +521,16 @@ module AwsSdk
       # Deletes an Amazon FSx backup. After deletion, the backup no longer exists, and its data is gone. The
       # DeleteBackup call returns instantly. The backup won't show up in later DescribeBackups calls. The
       # data in a deleted backup is also deleted and can't be recovered by any means.
+
       def delete_backup(
         backup_id : String,
         client_request_token : String? = nil
       ) : Types::DeleteBackupResponse
+
         input = Types::DeleteBackupRequest.new(backup_id: backup_id, client_request_token: client_request_token)
         delete_backup(input)
       end
+
       def delete_backup(input : Types::DeleteBackupRequest) : Types::DeleteBackupResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -495,14 +544,17 @@ module AwsSdk
       # repository association, you have the option of deleting the data in the file system that corresponds
       # to the data repository association. Data repository associations are supported on all FSx for Lustre
       # 2.12 and 2.15 file systems, excluding scratch_1 deployment type.
+
       def delete_data_repository_association(
         association_id : String,
         client_request_token : String? = nil,
         delete_data_in_file_system : Bool? = nil
       ) : Types::DeleteDataRepositoryAssociationResponse
+
         input = Types::DeleteDataRepositoryAssociationRequest.new(association_id: association_id, client_request_token: client_request_token, delete_data_in_file_system: delete_data_in_file_system)
         delete_data_repository_association(input)
       end
+
       def delete_data_repository_association(input : Types::DeleteDataRepositoryAssociationRequest) : Types::DeleteDataRepositoryAssociationResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_DATA_REPOSITORY_ASSOCIATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -517,13 +569,16 @@ module AwsSdk
       # caches in your account. If you pass the cache ID for a deleted cache, the DescribeFileCaches
       # operation returns a FileCacheNotFound error. The data in a deleted cache is also deleted and can't
       # be recovered by any means.
+
       def delete_file_cache(
         file_cache_id : String,
         client_request_token : String? = nil
       ) : Types::DeleteFileCacheResponse
+
         input = Types::DeleteFileCacheRequest.new(file_cache_id: file_cache_id, client_request_token: client_request_token)
         delete_file_cache(input)
       end
+
       def delete_file_cache(input : Types::DeleteFileCacheRequest) : Types::DeleteFileCacheResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_FILE_CACHE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -557,6 +612,7 @@ module AwsSdk
       # FileSystemNotFound error. If a data repository task is in a PENDING or EXECUTING state, deleting an
       # Amazon FSx for Lustre file system will fail with an HTTP status code 400 (Bad Request). The data in
       # a deleted file system is also deleted and can't be recovered by any means.
+
       def delete_file_system(
         file_system_id : String,
         client_request_token : String? = nil,
@@ -564,9 +620,11 @@ module AwsSdk
         open_zfs_configuration : Types::DeleteFileSystemOpenZFSConfiguration? = nil,
         windows_configuration : Types::DeleteFileSystemWindowsConfiguration? = nil
       ) : Types::DeleteFileSystemResponse
+
         input = Types::DeleteFileSystemRequest.new(file_system_id: file_system_id, client_request_token: client_request_token, lustre_configuration: lustre_configuration, open_zfs_configuration: open_zfs_configuration, windows_configuration: windows_configuration)
         delete_file_system(input)
       end
+
       def delete_file_system(input : Types::DeleteFileSystemRequest) : Types::DeleteFileSystemResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_FILE_SYSTEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -579,13 +637,16 @@ module AwsSdk
       # data is gone. Deleting a snapshot doesn't affect snapshots stored in a file system backup. The
       # DeleteSnapshot operation returns instantly. The snapshot appears with the lifecycle status of
       # DELETING until the deletion is complete.
+
       def delete_snapshot(
         snapshot_id : String,
         client_request_token : String? = nil
       ) : Types::DeleteSnapshotResponse
+
         input = Types::DeleteSnapshotRequest.new(snapshot_id: snapshot_id, client_request_token: client_request_token)
         delete_snapshot(input)
       end
+
       def delete_snapshot(input : Types::DeleteSnapshotRequest) : Types::DeleteSnapshotResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_SNAPSHOT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -596,13 +657,16 @@ module AwsSdk
 
       # Deletes an existing Amazon FSx for ONTAP storage virtual machine (SVM). Prior to deleting an SVM,
       # you must delete all non-root volumes in the SVM, otherwise the operation will fail.
+
       def delete_storage_virtual_machine(
         storage_virtual_machine_id : String,
         client_request_token : String? = nil
       ) : Types::DeleteStorageVirtualMachineResponse
+
         input = Types::DeleteStorageVirtualMachineRequest.new(storage_virtual_machine_id: storage_virtual_machine_id, client_request_token: client_request_token)
         delete_storage_virtual_machine(input)
       end
+
       def delete_storage_virtual_machine(input : Types::DeleteStorageVirtualMachineRequest) : Types::DeleteStorageVirtualMachineResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_STORAGE_VIRTUAL_MACHINE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -612,15 +676,18 @@ module AwsSdk
       end
 
       # Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
+
       def delete_volume(
         volume_id : String,
         client_request_token : String? = nil,
         ontap_configuration : Types::DeleteVolumeOntapConfiguration? = nil,
         open_zfs_configuration : Types::DeleteVolumeOpenZFSConfiguration? = nil
       ) : Types::DeleteVolumeResponse
+
         input = Types::DeleteVolumeRequest.new(volume_id: volume_id, client_request_token: client_request_token, ontap_configuration: ontap_configuration, open_zfs_configuration: open_zfs_configuration)
         delete_volume(input)
       end
+
       def delete_volume(input : Types::DeleteVolumeRequest) : Types::DeleteVolumeResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_VOLUME, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -642,15 +709,18 @@ module AwsSdk
       # fewer than the MaxResults value of backup descriptions while still including a NextToken value. The
       # order of the backups returned in the response of one DescribeBackups call and the order of the
       # backups returned across the responses of a multi-call iteration is unspecified.
+
       def describe_backups(
         backup_ids : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeBackupsResponse
+
         input = Types::DescribeBackupsRequest.new(backup_ids: backup_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_backups(input)
       end
+
       def describe_backups(input : Types::DescribeBackupsRequest) : Types::DescribeBackupsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_BACKUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -674,15 +744,18 @@ module AwsSdk
       # repository associations remain, a NextToken value is returned in the response. In this case, send a
       # later request with the NextToken request parameter set to the value of NextToken from the last
       # response.
+
       def describe_data_repository_associations(
         association_ids : Array(String)? = nil,
         filters : Array(Types::Filter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeDataRepositoryAssociationsResponse
+
         input = Types::DescribeDataRepositoryAssociationsRequest.new(association_ids: association_ids, filters: filters, max_results: max_results, next_token: next_token)
         describe_data_repository_associations(input)
       end
+
       def describe_data_repository_associations(input : Types::DescribeDataRepositoryAssociationsRequest) : Types::DescribeDataRepositoryAssociationsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_DATA_REPOSITORY_ASSOCIATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -700,15 +773,18 @@ module AwsSdk
       # MaxResults parameter to limit the number of tasks returned in a response. If more tasks remain, a
       # NextToken value is returned in the response. In this case, send a later request with the NextToken
       # request parameter set to the value of NextToken from the last response.
+
       def describe_data_repository_tasks(
         filters : Array(Types::DataRepositoryTaskFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         task_ids : Array(String)? = nil
       ) : Types::DescribeDataRepositoryTasksResponse
+
         input = Types::DescribeDataRepositoryTasksRequest.new(filters: filters, max_results: max_results, next_token: next_token, task_ids: task_ids)
         describe_data_repository_tasks(input)
       end
+
       def describe_data_repository_tasks(input : Types::DescribeDataRepositoryTasksRequest) : Types::DescribeDataRepositoryTasksResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_DATA_REPOSITORY_TASKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -731,14 +807,17 @@ module AwsSdk
       # descriptions while still including a NextToken value. The order of caches returned in the response
       # of one DescribeFileCaches call and the order of caches returned across the responses of a multicall
       # iteration is unspecified.
+
       def describe_file_caches(
         file_cache_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFileCachesResponse
+
         input = Types::DescribeFileCachesRequest.new(file_cache_ids: file_cache_ids, max_results: max_results, next_token: next_token)
         describe_file_caches(input)
       end
+
       def describe_file_caches(input : Types::DescribeFileCachesRequest) : Types::DescribeFileCachesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_FILE_CACHES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -751,15 +830,18 @@ module AwsSdk
       # file system. A history of all DNS aliases that have been associated with and disassociated from the
       # file system is available in the list of AdministrativeAction provided in the DescribeFileSystems
       # operation response.
+
       def describe_file_system_aliases(
         file_system_id : String,
         client_request_token : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFileSystemAliasesResponse
+
         input = Types::DescribeFileSystemAliasesRequest.new(file_system_id: file_system_id, client_request_token: client_request_token, max_results: max_results, next_token: next_token)
         describe_file_system_aliases(input)
       end
+
       def describe_file_system_aliases(input : Types::DescribeFileSystemAliasesRequest) : Types::DescribeFileSystemAliasesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_FILE_SYSTEM_ALIASES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -782,14 +864,17 @@ module AwsSdk
       # MaxResults file system descriptions while still including a NextToken value. The order of file
       # systems returned in the response of one DescribeFileSystems call and the order of file systems
       # returned across the responses of a multicall iteration is unspecified.
+
       def describe_file_systems(
         file_system_ids : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeFileSystemsResponse
+
         input = Types::DescribeFileSystemsRequest.new(file_system_ids: file_system_ids, max_results: max_results, next_token: next_token)
         describe_file_systems(input)
       end
+
       def describe_file_systems(input : Types::DescribeFileSystemsRequest) : Types::DescribeFileSystemsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_FILE_SYSTEMS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -800,15 +885,18 @@ module AwsSdk
 
       # Describes one or more S3 access points attached to Amazon FSx volumes. The requester requires the
       # following permission to perform this action: fsx:DescribeS3AccessPointAttachments
+
       def describe_s3_access_point_attachments(
         filters : Array(Types::S3AccessPointAttachmentsFilter)? = nil,
         max_results : Int32? = nil,
         names : Array(String)? = nil,
         next_token : String? = nil
       ) : Types::DescribeS3AccessPointAttachmentsResponse
+
         input = Types::DescribeS3AccessPointAttachmentsRequest.new(filters: filters, max_results: max_results, names: names, next_token: next_token)
         describe_s3_access_point_attachments(input)
       end
+
       def describe_s3_access_point_attachments(input : Types::DescribeS3AccessPointAttachmentsRequest) : Types::DescribeS3AccessPointAttachmentsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_S3_ACCESS_POINT_ATTACHMENTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -820,10 +908,12 @@ module AwsSdk
       # Indicates whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP
       # Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner. For more
       # information, see Creating FSx for ONTAP file systems in shared subnets .
+
       def describe_shared_vpc_configuration : Types::DescribeSharedVpcConfigurationResponse
         input = Types::DescribeSharedVpcConfigurationRequest.new
         describe_shared_vpc_configuration(input)
       end
+
       def describe_shared_vpc_configuration(input : Types::DescribeSharedVpcConfigurationRequest) : Types::DescribeSharedVpcConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_SHARED_VPC_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -845,6 +935,7 @@ module AwsSdk
       # return fewer than the MaxResults value of snapshot descriptions while still including a NextToken
       # value. The order of snapshots returned in the response of one DescribeSnapshots call and the order
       # of backups returned across the responses of a multi-call iteration is unspecified.
+
       def describe_snapshots(
         filters : Array(Types::SnapshotFilter)? = nil,
         include_shared : Bool? = nil,
@@ -852,9 +943,11 @@ module AwsSdk
         next_token : String? = nil,
         snapshot_ids : Array(String)? = nil
       ) : Types::DescribeSnapshotsResponse
+
         input = Types::DescribeSnapshotsRequest.new(filters: filters, include_shared: include_shared, max_results: max_results, next_token: next_token, snapshot_ids: snapshot_ids)
         describe_snapshots(input)
       end
+
       def describe_snapshots(input : Types::DescribeSnapshotsRequest) : Types::DescribeSnapshotsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_SNAPSHOTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -864,15 +957,18 @@ module AwsSdk
       end
 
       # Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs).
+
       def describe_storage_virtual_machines(
         filters : Array(Types::StorageVirtualMachineFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         storage_virtual_machine_ids : Array(String)? = nil
       ) : Types::DescribeStorageVirtualMachinesResponse
+
         input = Types::DescribeStorageVirtualMachinesRequest.new(filters: filters, max_results: max_results, next_token: next_token, storage_virtual_machine_ids: storage_virtual_machine_ids)
         describe_storage_virtual_machines(input)
       end
+
       def describe_storage_virtual_machines(input : Types::DescribeStorageVirtualMachinesRequest) : Types::DescribeStorageVirtualMachinesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_STORAGE_VIRTUAL_MACHINES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -882,15 +978,18 @@ module AwsSdk
       end
 
       # Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volumes.
+
       def describe_volumes(
         filters : Array(Types::VolumeFilter)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         volume_ids : Array(String)? = nil
       ) : Types::DescribeVolumesResponse
+
         input = Types::DescribeVolumesRequest.new(filters: filters, max_results: max_results, next_token: next_token, volume_ids: volume_ids)
         describe_volumes(input)
       end
+
       def describe_volumes(input : Types::DescribeVolumesRequest) : Types::DescribeVolumesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_VOLUMES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -902,13 +1001,16 @@ module AwsSdk
       # Detaches an S3 access point from an Amazon FSx volume and deletes the S3 access point. The requester
       # requires the following permission to perform this action: fsx:DetachAndDeleteS3AccessPoint
       # s3:DeleteAccessPoint
+
       def detach_and_delete_s3_access_point(
         name : String,
         client_request_token : String? = nil
       ) : Types::DetachAndDeleteS3AccessPointResponse
+
         input = Types::DetachAndDeleteS3AccessPointRequest.new(name: name, client_request_token: client_request_token)
         detach_and_delete_s3_access_point(input)
       end
+
       def detach_and_delete_s3_access_point(input : Types::DetachAndDeleteS3AccessPointRequest) : Types::DetachAndDeleteS3AccessPointResponse
         request = Protocol::JsonRpc.build_request(Model::DETACH_AND_DELETE_S3_ACCESS_POINT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -923,14 +1025,17 @@ module AwsSdk
       # For more information, see Working with DNS Aliases . The system generated response showing the DNS
       # aliases that Amazon FSx is attempting to disassociate from the file system. Use the API operation to
       # monitor the status of the aliases Amazon FSx is disassociating with the file system.
+
       def disassociate_file_system_aliases(
         aliases : Array(String),
         file_system_id : String,
         client_request_token : String? = nil
       ) : Types::DisassociateFileSystemAliasesResponse
+
         input = Types::DisassociateFileSystemAliasesRequest.new(aliases: aliases, file_system_id: file_system_id, client_request_token: client_request_token)
         disassociate_file_system_aliases(input)
       end
+
       def disassociate_file_system_aliases(input : Types::DisassociateFileSystemAliasesRequest) : Types::DisassociateFileSystemAliasesResponse
         request = Protocol::JsonRpc.build_request(Model::DISASSOCIATE_FILE_SYSTEM_ALIASES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -950,14 +1055,17 @@ module AwsSdk
       # descriptions while still including a NextToken value. The order of tags returned in the response of
       # one ListTagsForResource call and the order of tags returned across the responses of a multi-call
       # iteration is unspecified.
+
       def list_tags_for_resource(
         resource_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
+
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn, max_results: max_results, next_token: next_token)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Types::ListTagsForResourceResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -967,13 +1075,16 @@ module AwsSdk
       end
 
       # Releases the file system lock from an Amazon FSx for OpenZFS file system.
+
       def release_file_system_nfs_v3_locks(
         file_system_id : String,
         client_request_token : String? = nil
       ) : Types::ReleaseFileSystemNfsV3LocksResponse
+
         input = Types::ReleaseFileSystemNfsV3LocksRequest.new(file_system_id: file_system_id, client_request_token: client_request_token)
         release_file_system_nfs_v3_locks(input)
       end
+
       def release_file_system_nfs_v3_locks(input : Types::ReleaseFileSystemNfsV3LocksRequest) : Types::ReleaseFileSystemNfsV3LocksResponse
         request = Protocol::JsonRpc.build_request(Model::RELEASE_FILE_SYSTEM_NFS_V3_LOCKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -983,15 +1094,18 @@ module AwsSdk
       end
 
       # Returns an Amazon FSx for OpenZFS volume to the state saved by the specified snapshot.
+
       def restore_volume_from_snapshot(
         snapshot_id : String,
         volume_id : String,
         client_request_token : String? = nil,
         options : Array(String)? = nil
       ) : Types::RestoreVolumeFromSnapshotResponse
+
         input = Types::RestoreVolumeFromSnapshotRequest.new(snapshot_id: snapshot_id, volume_id: volume_id, client_request_token: client_request_token, options: options)
         restore_volume_from_snapshot(input)
       end
+
       def restore_volume_from_snapshot(input : Types::RestoreVolumeFromSnapshotRequest) : Types::RestoreVolumeFromSnapshotResponse
         request = Protocol::JsonRpc.build_request(Model::RESTORE_VOLUME_FROM_SNAPSHOT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1003,13 +1117,16 @@ module AwsSdk
       # After performing steps to repair the Active Directory configuration of an FSx for Windows File
       # Server file system, use this action to initiate the process of Amazon FSx attempting to reconnect to
       # the file system.
+
       def start_misconfigured_state_recovery(
         file_system_id : String,
         client_request_token : String? = nil
       ) : Types::StartMisconfiguredStateRecoveryResponse
+
         input = Types::StartMisconfiguredStateRecoveryRequest.new(file_system_id: file_system_id, client_request_token: client_request_token)
         start_misconfigured_state_recovery(input)
       end
+
       def start_misconfigured_state_recovery(input : Types::StartMisconfiguredStateRecoveryRequest) : Types::StartMisconfiguredStateRecoveryResponse
         request = Protocol::JsonRpc.build_request(Model::START_MISCONFIGURED_STATE_RECOVERY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1019,13 +1136,16 @@ module AwsSdk
       end
 
       # Tags an Amazon FSx resource.
+
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
+
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Types::TagResourceResponse
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1035,13 +1155,16 @@ module AwsSdk
       end
 
       # This action removes a tag from an Amazon FSx resource.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
+
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Types::UntagResourceResponse
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1053,15 +1176,18 @@ module AwsSdk
       # Updates the configuration of an existing data repository association on an Amazon FSx for Lustre
       # file system. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file
       # systems, excluding scratch_1 deployment type.
+
       def update_data_repository_association(
         association_id : String,
         client_request_token : String? = nil,
         imported_file_chunk_size : Int32? = nil,
         s3 : Types::S3DataRepositoryConfiguration? = nil
       ) : Types::UpdateDataRepositoryAssociationResponse
+
         input = Types::UpdateDataRepositoryAssociationRequest.new(association_id: association_id, client_request_token: client_request_token, imported_file_chunk_size: imported_file_chunk_size, s3: s3)
         update_data_repository_association(input)
       end
+
       def update_data_repository_association(input : Types::UpdateDataRepositoryAssociationRequest) : Types::UpdateDataRepositoryAssociationResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DATA_REPOSITORY_ASSOCIATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1072,14 +1198,17 @@ module AwsSdk
 
       # Updates the configuration of an existing Amazon File Cache resource. You can update multiple
       # properties in a single request.
+
       def update_file_cache(
         file_cache_id : String,
         client_request_token : String? = nil,
         lustre_configuration : Types::UpdateFileCacheLustreConfiguration? = nil
       ) : Types::UpdateFileCacheResponse
+
         input = Types::UpdateFileCacheRequest.new(file_cache_id: file_cache_id, client_request_token: client_request_token, lustre_configuration: lustre_configuration)
         update_file_cache(input)
       end
+
       def update_file_cache(input : Types::UpdateFileCacheRequest) : Types::UpdateFileCacheResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_FILE_CACHE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1105,6 +1234,7 @@ module AwsSdk
       # CopyTagsToBackups CopyTagsToVolumes DailyAutomaticBackupStartTime DiskIopsConfiguration
       # EndpointIpv6AddressRange ReadCacheConfiguration RemoveRouteTableIds StorageCapacity
       # ThroughputCapacity WeeklyMaintenanceStartTime
+
       def update_file_system(
         file_system_id : String,
         client_request_token : String? = nil,
@@ -1117,9 +1247,11 @@ module AwsSdk
         storage_type : String? = nil,
         windows_configuration : Types::UpdateFileSystemWindowsConfiguration? = nil
       ) : Types::UpdateFileSystemResponse
+
         input = Types::UpdateFileSystemRequest.new(file_system_id: file_system_id, client_request_token: client_request_token, file_system_type_version: file_system_type_version, lustre_configuration: lustre_configuration, network_type: network_type, ontap_configuration: ontap_configuration, open_zfs_configuration: open_zfs_configuration, storage_capacity: storage_capacity, storage_type: storage_type, windows_configuration: windows_configuration)
         update_file_system(input)
       end
+
       def update_file_system(input : Types::UpdateFileSystemRequest) : Types::UpdateFileSystemResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_FILE_SYSTEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1135,13 +1267,16 @@ module AwsSdk
       # feature. Once the feature is disabled, these file systems will enter a MISCONFIGURED state and
       # behave like Single-AZ file systems. For more information, see Important considerations before
       # disabling shared VPC support for Multi-AZ file systems .
+
       def update_shared_vpc_configuration(
         client_request_token : String? = nil,
         enable_fsx_route_table_updates_from_participant_accounts : String? = nil
       ) : Types::UpdateSharedVpcConfigurationResponse
+
         input = Types::UpdateSharedVpcConfigurationRequest.new(client_request_token: client_request_token, enable_fsx_route_table_updates_from_participant_accounts: enable_fsx_route_table_updates_from_participant_accounts)
         update_shared_vpc_configuration(input)
       end
+
       def update_shared_vpc_configuration(input : Types::UpdateSharedVpcConfigurationRequest) : Types::UpdateSharedVpcConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_SHARED_VPC_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1151,14 +1286,17 @@ module AwsSdk
       end
 
       # Updates the name of an Amazon FSx for OpenZFS snapshot.
+
       def update_snapshot(
         name : String,
         snapshot_id : String,
         client_request_token : String? = nil
       ) : Types::UpdateSnapshotResponse
+
         input = Types::UpdateSnapshotRequest.new(name: name, snapshot_id: snapshot_id, client_request_token: client_request_token)
         update_snapshot(input)
       end
+
       def update_snapshot(input : Types::UpdateSnapshotRequest) : Types::UpdateSnapshotResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_SNAPSHOT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1168,15 +1306,18 @@ module AwsSdk
       end
 
       # Updates an FSx for ONTAP storage virtual machine (SVM).
+
       def update_storage_virtual_machine(
         storage_virtual_machine_id : String,
         active_directory_configuration : Types::UpdateSvmActiveDirectoryConfiguration? = nil,
         client_request_token : String? = nil,
         svm_admin_password : String? = nil
       ) : Types::UpdateStorageVirtualMachineResponse
+
         input = Types::UpdateStorageVirtualMachineRequest.new(storage_virtual_machine_id: storage_virtual_machine_id, active_directory_configuration: active_directory_configuration, client_request_token: client_request_token, svm_admin_password: svm_admin_password)
         update_storage_virtual_machine(input)
       end
+
       def update_storage_virtual_machine(input : Types::UpdateStorageVirtualMachineRequest) : Types::UpdateStorageVirtualMachineResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_STORAGE_VIRTUAL_MACHINE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1186,6 +1327,7 @@ module AwsSdk
       end
 
       # Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
+
       def update_volume(
         volume_id : String,
         client_request_token : String? = nil,
@@ -1193,9 +1335,11 @@ module AwsSdk
         ontap_configuration : Types::UpdateOntapVolumeConfiguration? = nil,
         open_zfs_configuration : Types::UpdateOpenZFSVolumeConfiguration? = nil
       ) : Types::UpdateVolumeResponse
+
         input = Types::UpdateVolumeRequest.new(volume_id: volume_id, client_request_token: client_request_token, name: name, ontap_configuration: ontap_configuration, open_zfs_configuration: open_zfs_configuration)
         update_volume(input)
       end
+
       def update_volume(input : Types::UpdateVolumeRequest) : Types::UpdateVolumeResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_VOLUME, input, endpoint)
         request = request.with_headers(endpoint_headers)

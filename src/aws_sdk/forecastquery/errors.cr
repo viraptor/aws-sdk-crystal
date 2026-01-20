@@ -5,22 +5,27 @@ module AwsSdk
       end
 
       # The value is invalid or is too long.
+
       class InvalidInputException < ServiceError
       end
 
       # The token is not valid. Tokens expire after 24 hours.
+
       class InvalidNextTokenException < ServiceError
       end
 
       # The limit on the number of requests per second has been exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # The specified resource is in use.
+
       class ResourceInUseException < ServiceError
       end
 
       # We can't find that resource. Check the information that you've provided and try again.
+
       class ResourceNotFoundException < ServiceError
       end
 

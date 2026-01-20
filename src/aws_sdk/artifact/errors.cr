@@ -5,30 +5,37 @@ module AwsSdk
       end
 
       # User does not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # Request to create/modify content would result in a conflict.
+
       class ConflictException < ServiceError
       end
 
       # An unknown server exception has occurred.
+
       class InternalServerException < ServiceError
       end
 
       # Request references a resource which does not exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # Request would cause a service quota to be exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # Request fails to satisfy the constraints specified by an AWS service.
+
       class ValidationException < ServiceError
       end
 

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./rds_data/client"
-require "./rds_data/errors"
-require "./rds_data/model"
-require "./rds_data/types"
-require "./rds_data/protocol/rest_json"
-require "./customizations/rds_data/customizations"

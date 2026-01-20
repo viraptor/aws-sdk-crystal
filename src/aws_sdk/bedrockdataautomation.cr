@@ -1,0 +1,7 @@
+require "./runtime"
+require "./bedrockdataautomation/client"
+require "./bedrockdataautomation/errors"
+require "./bedrockdataautomation/model"
+require "./bedrockdataautomation/types"
+require "./bedrockdataautomation/protocol/rest_json"
+require "./customizations/bedrockdataautomation/customizations"

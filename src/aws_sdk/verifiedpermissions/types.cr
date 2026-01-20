@@ -6,8 +6,10 @@ module AwsSdk
     module Types
 
       # You don't have sufficient access to perform this action.
+
       struct AccessDeniedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -22,14 +24,17 @@ module AwsSdk
       # data type is used as a request parameter to the IsAuthorized , BatchIsAuthorized , and
       # IsAuthorizedWithToken operations. Example: { "actionId": "&lt;action name&gt;", "actionType":
       # "Action" }
+
       struct ActionIdentifier
         include JSON::Serializable
 
         # The ID of an action.
+
         @[JSON::Field(key: "actionId")]
         getter action_id : String
 
         # The type of an action.
+
         @[JSON::Field(key: "actionType")]
         getter action_type : String
 
@@ -44,47 +49,58 @@ module AwsSdk
       # authorization decision is made. This data type is used as a member of the ContextDefinition
       # structure which is used as a request parameter for the IsAuthorized , BatchIsAuthorized , and
       # IsAuthorizedWithToken operations.
+
       struct AttributeValue
         include JSON::Serializable
 
         # An attribute value of Boolean type. Example: {"boolean": true}
+
         @[JSON::Field(key: "boolean")]
         getter boolean : Bool?
 
         # An attribute value of datetime type. Example: {"datetime": "2024-10-15T11:35:00Z"}
+
         @[JSON::Field(key: "datetime")]
         getter datetime : String?
 
         # An attribute value of decimal type. Example: {"decimal": "1.1"}
+
         @[JSON::Field(key: "decimal")]
         getter decimal : String?
 
         # An attribute value of duration type. Example: {"duration": "1h30m"}
+
         @[JSON::Field(key: "duration")]
         getter duration : String?
 
         # An attribute value of type EntityIdentifier . Example: {"entityIdentifier": { "entityId": "alice",
         # "entityType": "User"} }
+
         @[JSON::Field(key: "entityIdentifier")]
         getter entity_identifier : Types::EntityIdentifier?
 
         # An attribute value of ipaddr type. Example: {"ip": "192.168.1.100"}
+
         @[JSON::Field(key: "ipaddr")]
         getter ipaddr : String?
 
         # An attribute value of Long type. Example: {"long": 0}
+
         @[JSON::Field(key: "long")]
         getter long : Int64?
 
         # An attribute value of Record type. Example: {"record": { "keyName": {} } }
+
         @[JSON::Field(key: "record")]
         getter record : Hash(String, Types::AttributeValue)?
 
         # An attribute value of Set type. Example: {"set": [ {} ] }
+
         @[JSON::Field(key: "set")]
         getter set : Array(Types::AttributeValue)?
 
         # An attribute value of String type. Example: {"string": "abc"}
+
         @[JSON::Field(key: "string")]
         getter string : String?
 
@@ -104,22 +120,27 @@ module AwsSdk
       end
 
       # Contains the information about an error resulting from a BatchGetPolicy API call.
+
       struct BatchGetPolicyErrorItem
         include JSON::Serializable
 
         # The error code that was returned.
+
         @[JSON::Field(key: "code")]
         getter code : String
 
         # A detailed error message.
+
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The identifier of the policy associated with the failed request.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The identifier of the policy store associated with the failed request.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -132,10 +153,12 @@ module AwsSdk
         end
       end
 
+
       struct BatchGetPolicyInput
         include JSON::Serializable
 
         # An array of up to 100 policies you want information about.
+
         @[JSON::Field(key: "requests")]
         getter requests : Array(Types::BatchGetPolicyInputItem)
 
@@ -146,14 +169,17 @@ module AwsSdk
       end
 
       # Information about a policy that you include in a BatchGetPolicy API request.
+
       struct BatchGetPolicyInputItem
         include JSON::Serializable
 
         # The identifier of the policy you want information about.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The identifier of the policy store where the policy you want information about is stored.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -164,16 +190,19 @@ module AwsSdk
         end
       end
 
+
       struct BatchGetPolicyOutput
         include JSON::Serializable
 
         # Information about the policies from the request that resulted in an error. These results are
         # returned in the order they were requested.
+
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::BatchGetPolicyErrorItem)
 
         # Information about the policies listed in the request that were successfully returned. These results
         # are returned in the order they were requested.
+
         @[JSON::Field(key: "results")]
         getter results : Array(Types::BatchGetPolicyOutputItem)
 
@@ -185,30 +214,37 @@ module AwsSdk
       end
 
       # Contains information about a policy returned from a BatchGetPolicy API request.
+
       struct BatchGetPolicyOutputItem
         include JSON::Serializable
 
         # The date and time the policy was created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The policy definition of an item in the list of policies returned.
+
         @[JSON::Field(key: "definition")]
         getter definition : Types::PolicyDefinitionDetail
 
         # The date and time the policy was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The identifier of the policy you want information about.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The identifier of the policy store where the policy you want information about is stored.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The type of the policy. This is one of the following values: STATIC TEMPLATE_LINKED
+
         @[JSON::Field(key: "policyType")]
         getter policy_type : String
 
@@ -223,15 +259,18 @@ module AwsSdk
         end
       end
 
+
       struct BatchIsAuthorizedInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store. Policies in this policy store will be used to make the
         # authorization decisions for the input.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # An array of up to 30 requests that you want Verified Permissions to evaluate.
+
         @[JSON::Field(key: "requests")]
         getter requests : Array(Types::BatchIsAuthorizedInputItem)
 
@@ -240,6 +279,7 @@ module AwsSdk
         # attributes can be referenced and checked by conditional elements in the policies in the specified
         # policy store. You can include only principal and resource entities in this parameter; you can't
         # include actions. You must specify actions in the schema.
+
         @[JSON::Field(key: "entities")]
         getter entities : Types::EntitiesDefinition?
 
@@ -252,22 +292,27 @@ module AwsSdk
       end
 
       # An authorization request that you include in a BatchIsAuthorized API request.
+
       struct BatchIsAuthorizedInputItem
         include JSON::Serializable
 
         # Specifies the requested action to be authorized. For example, PhotoFlash::ReadPhoto .
+
         @[JSON::Field(key: "action")]
         getter action : Types::ActionIdentifier?
 
         # Specifies additional context that can be used to make more granular authorization decisions.
+
         @[JSON::Field(key: "context")]
         getter context : Types::ContextDefinition?
 
         # Specifies the principal for which the authorization decision is to be made.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # Specifies the resource that you want an authorization decision for. For example, PhotoFlash::Photo .
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -280,11 +325,13 @@ module AwsSdk
         end
       end
 
+
       struct BatchIsAuthorizedOutput
         include JSON::Serializable
 
         # A series of Allow or Deny decisions for each request, and the policies that produced them. These
         # results are returned in the order they were requested.
+
         @[JSON::Field(key: "results")]
         getter results : Array(Types::BatchIsAuthorizedOutputItem)
 
@@ -296,10 +343,12 @@ module AwsSdk
 
       # The decision, based on policy evaluation, from an individual authorization request in a
       # BatchIsAuthorized API request.
+
       struct BatchIsAuthorizedOutputItem
         include JSON::Serializable
 
         # An authorization decision that indicates if the authorization request should be allowed or denied.
+
         @[JSON::Field(key: "decision")]
         getter decision : String
 
@@ -308,15 +357,18 @@ module AwsSdk
         # be the determining policy. In the case of multiple matching permit policies then there would be
         # multiple determining policies. In the case that no policies match, and hence the response is DENY,
         # there would be no determining policies.
+
         @[JSON::Field(key: "determiningPolicies")]
         getter determining_policies : Array(Types::DeterminingPolicyItem)
 
         # Errors that occurred while making an authorization decision. For example, a policy might reference
         # an entity or attribute that doesn't exist in the request.
+
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::EvaluationErrorItem)
 
         # The authorization request that initiated the decision.
+
         @[JSON::Field(key: "request")]
         getter request : Types::BatchIsAuthorizedInputItem
 
@@ -329,15 +381,18 @@ module AwsSdk
         end
       end
 
+
       struct BatchIsAuthorizedWithTokenInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store. Policies in this policy store will be used to make an
         # authorization decision for the input.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # An array of up to 30 requests that you want Verified Permissions to evaluate.
+
         @[JSON::Field(key: "requests")]
         getter requests : Array(Types::BatchIsAuthorizedWithTokenInputItem)
 
@@ -345,6 +400,7 @@ module AwsSdk
         # is provided to you by the identity provider (IdP) associated with the specified identity source. You
         # must specify either an accessToken , an identityToken , or both. Must be an access token. Verified
         # Permissions returns an error if the token_use claim in the submitted token isn't access .
+
         @[JSON::Field(key: "accessToken")]
         getter access_token : String?
 
@@ -356,6 +412,7 @@ module AwsSdk
         # identity source. The BatchIsAuthorizedWithToken operation takes principal attributes from only the
         # identityToken or accessToken passed to the operation. For action entities, you can include only
         # their Identifier and EntityType .
+
         @[JSON::Field(key: "entities")]
         getter entities : Types::EntitiesDefinition?
 
@@ -363,6 +420,7 @@ module AwsSdk
         # token is provided to you by the identity provider (IdP) associated with the specified identity
         # source. You must specify either an accessToken , an identityToken , or both. Must be an ID token.
         # Verified Permissions returns an error if the token_use claim in the submitted token isn't id .
+
         @[JSON::Field(key: "identityToken")]
         getter identity_token : String?
 
@@ -377,18 +435,22 @@ module AwsSdk
       end
 
       # An authorization request that you include in a BatchIsAuthorizedWithToken API request.
+
       struct BatchIsAuthorizedWithTokenInputItem
         include JSON::Serializable
 
         # Specifies the requested action to be authorized. For example, PhotoFlash::ReadPhoto .
+
         @[JSON::Field(key: "action")]
         getter action : Types::ActionIdentifier?
 
         # Specifies additional context that can be used to make more granular authorization decisions.
+
         @[JSON::Field(key: "context")]
         getter context : Types::ContextDefinition?
 
         # Specifies the resource that you want an authorization decision for. For example, PhotoFlash::Photo .
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -400,15 +462,18 @@ module AwsSdk
         end
       end
 
+
       struct BatchIsAuthorizedWithTokenOutput
         include JSON::Serializable
 
         # A series of Allow or Deny decisions for each request, and the policies that produced them. These
         # results are returned in the order they were requested.
+
         @[JSON::Field(key: "results")]
         getter results : Array(Types::BatchIsAuthorizedWithTokenOutputItem)
 
         # The identifier of the principal in the ID or access token.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
@@ -421,10 +486,12 @@ module AwsSdk
 
       # The decision, based on policy evaluation, from an individual authorization request in a
       # BatchIsAuthorizedWithToken API request.
+
       struct BatchIsAuthorizedWithTokenOutputItem
         include JSON::Serializable
 
         # An authorization decision that indicates if the authorization request should be allowed or denied.
+
         @[JSON::Field(key: "decision")]
         getter decision : String
 
@@ -433,15 +500,18 @@ module AwsSdk
         # be the determining policy. In the case of multiple matching permit policies then there would be
         # multiple determining policies. In the case that no policies match, and hence the response is DENY,
         # there would be no determining policies.
+
         @[JSON::Field(key: "determiningPolicies")]
         getter determining_policies : Array(Types::DeterminingPolicyItem)
 
         # Errors that occurred while making an authorization decision. For example, a policy might reference
         # an entity or attribute that doesn't exist in the request.
+
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::EvaluationErrorItem)
 
         # The authorization request that initiated the decision.
+
         @[JSON::Field(key: "request")]
         getter request : Types::BatchIsAuthorizedWithTokenInputItem
 
@@ -457,47 +527,58 @@ module AwsSdk
       # The value of an entity's Cedar tag. This data type is used as a member of the EntityItem structure
       # that forms the body of the Entities request parameter for the IsAuthorized , BatchIsAuthorized ,
       # IsAuthorizedWithToken , and BatchIsAuthorizedWithToken operations.
+
       struct CedarTagValue
         include JSON::Serializable
 
         # A Cedar tag value of Boolean type. Example: {"boolean": false}
+
         @[JSON::Field(key: "boolean")]
         getter boolean : Bool?
 
         # A Cedar tag value of datetime type. Example: {"datetime": "2025-11-04T11:35:00.000+0100"}
+
         @[JSON::Field(key: "datetime")]
         getter datetime : String?
 
         # A Cedar tag value of decimal type. Example: {"decimal": "-2.0"}
+
         @[JSON::Field(key: "decimal")]
         getter decimal : String?
 
         # A Cedar tag value of duration type. Example: {"duration": "-1d12h"}
+
         @[JSON::Field(key: "duration")]
         getter duration : String?
 
         # A Cedar tag value of type EntityIdentifier . Example: {"entityIdentifier": { "entityId": "alice",
         # "entityType": "User"} }
+
         @[JSON::Field(key: "entityIdentifier")]
         getter entity_identifier : Types::EntityIdentifier?
 
         # A Cedar tag value of ipaddr type. Example: {"ip": "10.50.0.0/24"}
+
         @[JSON::Field(key: "ipaddr")]
         getter ipaddr : String?
 
         # A Cedar tag value of Long type. Example: {"long": 0}
+
         @[JSON::Field(key: "long")]
         getter long : Int64?
 
         # A Cedar tag value of Record type. Example: {"record": { "keyName": {} } }
+
         @[JSON::Field(key: "record")]
         getter record : Hash(String, Types::CedarTagValue)?
 
         # A Cedar tag value of Set type. Example: {"set": [ { "string": "abc" } ] }
+
         @[JSON::Field(key: "set")]
         getter set : Array(Types::CedarTagValue)?
 
         # A Cedar tag value of String type. Example: {"string": "abc"}
+
         @[JSON::Field(key: "string")]
         getter string : String?
 
@@ -519,11 +600,13 @@ module AwsSdk
       # The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity
       # source. This data type is part of a CognitoUserPoolConfiguration structure and is a request
       # parameter in CreateIdentitySource .
+
       struct CognitoGroupConfiguration
         include JSON::Serializable
 
         # The name of the schema entity type that's mapped to the user pool group. Defaults to
         # AWS::CognitoGroup .
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String
 
@@ -536,11 +619,13 @@ module AwsSdk
       # The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity
       # source. This data type is part of an CognitoUserPoolConfigurationDetail structure and is a response
       # parameter to GetIdentitySource .
+
       struct CognitoGroupConfigurationDetail
         include JSON::Serializable
 
         # The name of the schema entity type that's mapped to the user pool group. Defaults to
         # AWS::CognitoGroup .
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String?
 
@@ -553,11 +638,13 @@ module AwsSdk
       # The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity
       # source. This data type is part of an CognitoUserPoolConfigurationItem structure and is a response
       # parameter to ListIdentitySources .
+
       struct CognitoGroupConfigurationItem
         include JSON::Serializable
 
         # The name of the schema entity type that's mapped to the user pool group. Defaults to
         # AWS::CognitoGroup .
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String?
 
@@ -572,22 +659,26 @@ module AwsSdk
       # structure that is used as a parameter to CreateIdentitySource . Example:
       # "CognitoUserPoolConfiguration":{"UserPoolArn":"arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5","ClientIds":
       # ["a1b2c3d4e5f6g7h8i9j0kalbmc"],"groupConfiguration": {"groupEntityType": "MyCorp::Group"}}
+
       struct CognitoUserPoolConfiguration
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Cognito user pool that contains the identities to be
         # authorized. Example: "UserPoolArn":
         # "arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5"
+
         @[JSON::Field(key: "userPoolArn")]
         getter user_pool_arn : String
 
         # The unique application client IDs that are associated with the specified Amazon Cognito user pool.
         # Example: "ClientIds": ["&amp;ExampleCogClientId;"]
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
         # The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity
         # source.
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::CognitoGroupConfiguration?
 
@@ -605,27 +696,32 @@ module AwsSdk
       # Example:
       # "CognitoUserPoolConfiguration":{"UserPoolArn":"arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5","ClientIds":
       # ["a1b2c3d4e5f6g7h8i9j0kalbmc"],"groupConfiguration": {"groupEntityType": "MyCorp::Group"}}
+
       struct CognitoUserPoolConfigurationDetail
         include JSON::Serializable
 
         # The unique application client IDs that are associated with the specified Amazon Cognito user pool.
         # Example: "clientIds": ["&amp;ExampleCogClientId;"]
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)
 
         # The OpenID Connect (OIDC) issuer ID of the Amazon Cognito user pool that contains the identities to
         # be authorized. Example: "issuer": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_1a2b3c4d5"
+
         @[JSON::Field(key: "issuer")]
         getter issuer : String
 
         # The Amazon Resource Name (ARN) of the Amazon Cognito user pool that contains the identities to be
         # authorized. Example: "userPoolArn":
         # "arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5"
+
         @[JSON::Field(key: "userPoolArn")]
         getter user_pool_arn : String
 
         # The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity
         # source.
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::CognitoGroupConfigurationDetail?
 
@@ -644,27 +740,32 @@ module AwsSdk
       # Example:
       # "CognitoUserPoolConfiguration":{"UserPoolArn":"arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5","ClientIds":
       # ["a1b2c3d4e5f6g7h8i9j0kalbmc"],"groupConfiguration": {"groupEntityType": "MyCorp::Group"}}
+
       struct CognitoUserPoolConfigurationItem
         include JSON::Serializable
 
         # The unique application client IDs that are associated with the specified Amazon Cognito user pool.
         # Example: "clientIds": ["&amp;ExampleCogClientId;"]
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)
 
         # The OpenID Connect (OIDC) issuer ID of the Amazon Cognito user pool that contains the identities to
         # be authorized. Example: "issuer": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_1a2b3c4d5"
+
         @[JSON::Field(key: "issuer")]
         getter issuer : String
 
         # The Amazon Resource Name (ARN) of the Amazon Cognito user pool that contains the identities to be
         # authorized. Example: "userPoolArn":
         # "arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5"
+
         @[JSON::Field(key: "userPoolArn")]
         getter user_pool_arn : String
 
         # The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity
         # source.
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::CognitoGroupConfigurationItem?
 
@@ -679,6 +780,7 @@ module AwsSdk
 
       # Contains configuration information used when creating a new identity source. This data type is used
       # as a request parameter for the CreateIdentitySource operation.
+
       struct Configuration
         include JSON::Serializable
 
@@ -687,6 +789,7 @@ module AwsSdk
         # Amazon Cognito user pool and one or more application client IDs. Example:
         # "configuration":{"cognitoUserPoolConfiguration":{"userPoolArn":"arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5","clientIds":
         # ["a1b2c3d4e5f6g7h8i9j0kalbmc"],"groupConfiguration": {"groupEntityType": "MyCorp::Group"}}}
+
         @[JSON::Field(key: "cognitoUserPoolConfiguration")]
         getter cognito_user_pool_configuration : Types::CognitoUserPoolConfiguration?
 
@@ -694,6 +797,7 @@ module AwsSdk
         # that Verified Permissions can use to generate entities from authenticated identities. It specifies
         # the issuer URL, token type that you want to use, and policy store entity details. Example:
         # "configuration":{"openIdConnectConfiguration":{"issuer":"https://auth.example.com","tokenSelection":{"accessTokenOnly":{"audiences":["https://myapp.example.com","https://myapp2.example.com"],"principalIdClaim":"sub"}},"entityIdPrefix":"MyOIDCProvider","groupConfiguration":{"groupClaim":"groups","groupEntityType":"MyCorp::UserGroup"}}}
+
         @[JSON::Field(key: "openIdConnectConfiguration")]
         getter open_id_connect_configuration : Types::OpenIdConnectConfiguration?
 
@@ -706,6 +810,7 @@ module AwsSdk
 
       # Contains configuration information about an identity source. This data type is a response parameter
       # to the GetIdentitySource operation.
+
       struct ConfigurationDetail
         include JSON::Serializable
 
@@ -715,6 +820,7 @@ module AwsSdk
         # more application client IDs. Example:
         # "configuration":{"cognitoUserPoolConfiguration":{"userPoolArn":"arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5","clientIds":
         # ["a1b2c3d4e5f6g7h8i9j0kalbmc"],"groupConfiguration": {"groupEntityType": "MyCorp::Group"}}}
+
         @[JSON::Field(key: "cognitoUserPoolConfiguration")]
         getter cognito_user_pool_configuration : Types::CognitoUserPoolConfigurationDetail?
 
@@ -722,6 +828,7 @@ module AwsSdk
         # that Verified Permissions can use to generate entities from authenticated identities. It specifies
         # the issuer URL, token type that you want to use, and policy store entity details. Example:
         # "configuration":{"openIdConnectConfiguration":{"issuer":"https://auth.example.com","tokenSelection":{"accessTokenOnly":{"audiences":["https://myapp.example.com","https://myapp2.example.com"],"principalIdClaim":"sub"}},"entityIdPrefix":"MyOIDCProvider","groupConfiguration":{"groupClaim":"groups","groupEntityType":"MyCorp::UserGroup"}}}
+
         @[JSON::Field(key: "openIdConnectConfiguration")]
         getter open_id_connect_configuration : Types::OpenIdConnectConfigurationDetail?
 
@@ -734,6 +841,7 @@ module AwsSdk
 
       # Contains configuration information about an identity source. This data type is a response parameter
       # to the ListIdentitySources operation.
+
       struct ConfigurationItem
         include JSON::Serializable
 
@@ -743,6 +851,7 @@ module AwsSdk
         # more application client IDs. Example:
         # "configuration":{"cognitoUserPoolConfiguration":{"userPoolArn":"arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_1a2b3c4d5","clientIds":
         # ["a1b2c3d4e5f6g7h8i9j0kalbmc"],"groupConfiguration": {"groupEntityType": "MyCorp::Group"}}}
+
         @[JSON::Field(key: "cognitoUserPoolConfiguration")]
         getter cognito_user_pool_configuration : Types::CognitoUserPoolConfigurationItem?
 
@@ -750,6 +859,7 @@ module AwsSdk
         # that Verified Permissions can use to generate entities from authenticated identities. It specifies
         # the issuer URL, token type that you want to use, and policy store entity details. Example:
         # "configuration":{"openIdConnectConfiguration":{"issuer":"https://auth.example.com","tokenSelection":{"accessTokenOnly":{"audiences":["https://myapp.example.com","https://myapp2.example.com"],"principalIdClaim":"sub"}},"entityIdPrefix":"MyOIDCProvider","groupConfiguration":{"groupClaim":"groups","groupEntityType":"MyCorp::UserGroup"}}}
+
         @[JSON::Field(key: "openIdConnectConfiguration")]
         getter open_id_connect_configuration : Types::OpenIdConnectConfigurationItem?
 
@@ -761,13 +871,16 @@ module AwsSdk
       end
 
       # The request failed because another request to modify a resource occurred at the same.
+
       struct ConflictException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The list of resources referenced with this failed request.
+
         @[JSON::Field(key: "resources")]
         getter resources : Array(Types::ResourceConflict)
 
@@ -785,17 +898,20 @@ module AwsSdk
       # instance of context must be passed. If you don't want to pass context, omit the context parameter
       # from your request rather than sending context {} . Example:
       # "context":{"contextMap":{"&lt;KeyName1&gt;":{"boolean":true},"&lt;KeyName2&gt;":{"long":1234}}}
+
       struct ContextDefinition
         include JSON::Serializable
 
         # A Cedar JSON string representation of the context needed to successfully evaluate an authorization
         # request. Example: {"cedarJson":"{\"&lt;KeyName1&gt;\": true, \"&lt;KeyName2&gt;\": 1234}" }
+
         @[JSON::Field(key: "cedarJson")]
         getter cedar_json : String?
 
         # An list of attributes that are needed to successfully evaluate an authorization request. Each
         # attribute in this array must include a map of a data type and its value. Example:
         # "contextMap":{"&lt;KeyName1&gt;":{"boolean":true},"&lt;KeyName2&gt;":{"long":1234}}
+
         @[JSON::Field(key: "contextMap")]
         getter context_map : Hash(String, Types::AttributeValue)?
 
@@ -806,17 +922,20 @@ module AwsSdk
         end
       end
 
+
       struct CreateIdentitySourceInput
         include JSON::Serializable
 
         # Specifies the details required to communicate with the identity provider (IdP) associated with this
         # identity source.
+
         @[JSON::Field(key: "configuration")]
         getter configuration : Types::Configuration
 
         # Specifies the ID of the policy store in which you want to store this identity source. Only policies
         # and requests made using this policy store can reference identities from the identity provider
         # configured in the new identity source.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -829,11 +948,13 @@ module AwsSdk
         # ConflictException error. Verified Permissions recognizes a ClientToken for eight hours. After eight
         # hours, the next request with the same parameters performs the operation again regardless of the
         # value of ClientToken .
+
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
         # Specifies the namespace and data type of the principals generated for identities authenticated by
         # the new identity source.
+
         @[JSON::Field(key: "principalEntityType")]
         getter principal_entity_type : String?
 
@@ -846,22 +967,27 @@ module AwsSdk
         end
       end
 
+
       struct CreateIdentitySourceOutput
         include JSON::Serializable
 
         # The date and time the identity source was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The unique ID of the new identity source.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # The date and time the identity source was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the identity source.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -874,16 +1000,19 @@ module AwsSdk
         end
       end
 
+
       struct CreatePolicyInput
         include JSON::Serializable
 
         # A structure that specifies the policy type and content to use for the new policy. You must include
         # either a static or a templateLinked element. The policy content must be written in the Cedar policy
         # language.
+
         @[JSON::Field(key: "definition")]
         getter definition : Types::PolicyDefinition
 
         # Specifies the PolicyStoreId of the policy store you want to store the policy in.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -896,6 +1025,7 @@ module AwsSdk
         # ConflictException error. Verified Permissions recognizes a ClientToken for eight hours. After eight
         # hours, the next request with the same parameters performs the operation again regardless of the
         # value of ClientToken .
+
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
@@ -907,47 +1037,57 @@ module AwsSdk
         end
       end
 
+
       struct CreatePolicyOutput
         include JSON::Serializable
 
         # The date and time the policy was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time the policy was last updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The unique ID of the new policy.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The ID of the policy store that contains the new policy.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The policy type of the new policy.
+
         @[JSON::Field(key: "policyType")]
         getter policy_type : String
 
         # The action that a policy permits or forbids. For example, {"actions": [{"actionId": "ViewPhoto",
         # "actionType": "PhotoFlash::Action"}, {"entityID": "SharePhoto", "entityType":
         # "PhotoFlash::Action"}]} .
+
         @[JSON::Field(key: "actions")]
         getter actions : Array(Types::ActionIdentifier)?
 
         # The effect of the decision that a policy returns to an authorization request. For example, "effect":
         # "Permit" .
+
         @[JSON::Field(key: "effect")]
         getter effect : String?
 
         # The principal specified in the new policy's scope. This response element isn't present when
         # principal isn't specified in the policy content.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource specified in the new policy's scope. This response element isn't present when the
         # resource isn't specified in the policy content.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -965,6 +1105,7 @@ module AwsSdk
         end
       end
 
+
       struct CreatePolicyStoreInput
         include JSON::Serializable
 
@@ -973,6 +1114,7 @@ module AwsSdk
         # doesn't exist, then STRICT mode causes any policy to fail validation, and Verified Permissions
         # rejects the policy. You can turn off validation by using the UpdatePolicyStore . Then, when you have
         # a schema defined, use UpdatePolicyStore again to turn validation back on.
+
         @[JSON::Field(key: "validationSettings")]
         getter validation_settings : Types::ValidationSettings
 
@@ -985,19 +1127,23 @@ module AwsSdk
         # ConflictException error. Verified Permissions recognizes a ClientToken for eight hours. After eight
         # hours, the next request with the same parameters performs the operation again regardless of the
         # value of ClientToken .
+
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
         # Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted.
         # The default state is DISABLED .
+
         @[JSON::Field(key: "deletionProtection")]
         getter deletion_protection : String?
 
         # Descriptive text that you can provide to help with identification of the current policy store.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The list of key-value pairs to associate with the policy store.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1011,22 +1157,27 @@ module AwsSdk
         end
       end
 
+
       struct CreatePolicyStoreOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the new policy store.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The date and time the policy store was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time the policy store was last updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The unique ID of the new policy store.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1039,15 +1190,18 @@ module AwsSdk
         end
       end
 
+
       struct CreatePolicyTemplateInput
         include JSON::Serializable
 
         # The ID of the policy store in which to create the policy template.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies the content that you want to use for the new policy template, written in the Cedar policy
         # language.
+
         @[JSON::Field(key: "statement")]
         getter statement : String
 
@@ -1060,10 +1214,12 @@ module AwsSdk
         # ConflictException error. Verified Permissions recognizes a ClientToken for eight hours. After eight
         # hours, the next request with the same parameters performs the operation again regardless of the
         # value of ClientToken .
+
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
         # Specifies a description for the policy template.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -1076,22 +1232,27 @@ module AwsSdk
         end
       end
 
+
       struct CreatePolicyTemplateOutput
         include JSON::Serializable
 
         # The date and time the policy template was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time the policy template was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the policy template.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The unique ID of the new policy template.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
@@ -1104,14 +1265,17 @@ module AwsSdk
         end
       end
 
+
       struct DeleteIdentitySourceInput
         include JSON::Serializable
 
         # Specifies the ID of the identity source that you want to delete.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # Specifies the ID of the policy store that contains the identity source that you want to delete.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1122,6 +1286,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteIdentitySourceOutput
         include JSON::Serializable
 
@@ -1129,14 +1294,17 @@ module AwsSdk
         end
       end
 
+
       struct DeletePolicyInput
         include JSON::Serializable
 
         # Specifies the ID of the policy that you want to delete.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # Specifies the ID of the policy store that contains the policy that you want to delete.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1147,6 +1315,7 @@ module AwsSdk
         end
       end
 
+
       struct DeletePolicyOutput
         include JSON::Serializable
 
@@ -1154,10 +1323,12 @@ module AwsSdk
         end
       end
 
+
       struct DeletePolicyStoreInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that you want to delete.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1167,6 +1338,7 @@ module AwsSdk
         end
       end
 
+
       struct DeletePolicyStoreOutput
         include JSON::Serializable
 
@@ -1174,14 +1346,17 @@ module AwsSdk
         end
       end
 
+
       struct DeletePolicyTemplateInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that contains the policy template that you want to delete.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies the ID of the policy template that you want to delete.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
@@ -1191,6 +1366,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct DeletePolicyTemplateOutput
         include JSON::Serializable
@@ -1203,11 +1379,13 @@ module AwsSdk
       # type is used as an element in a response parameter for the IsAuthorized , BatchIsAuthorized , and
       # IsAuthorizedWithToken operations. Example:
       # "determiningPolicies":[{"policyId":"SPEXAMPLEabcdefg111111"}]
+
       struct DeterminingPolicyItem
         include JSON::Serializable
 
         # The Id of a policy that determined to an authorization decision. Example:
         # "policyId":"SPEXAMPLEabcdefg111111"
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
@@ -1220,12 +1398,14 @@ module AwsSdk
       # Contains the list of entities to be considered during an authorization request. This includes all
       # principals, resources, and actions required to successfully evaluate the request. This data type is
       # used as a field in the response parameter for the IsAuthorized and IsAuthorizedWithToken operations.
+
       struct EntitiesDefinition
         include JSON::Serializable
 
         # A Cedar JSON string representation of the entities needed to successfully evaluate an authorization
         # request. Example: {"cedarJson":
         # "[{\"uid\":{\"type\":\"Photo\",\"id\":\"VacationPhoto94.jpg\"},\"attrs\":{\"accessLevel\":\"public\"},\"parents\":[]}]"}
+
         @[JSON::Field(key: "cedarJson")]
         getter cedar_json : String?
 
@@ -1233,6 +1413,7 @@ module AwsSdk
         # in this array must include an identifier for the entity, the attributes of the entity, and a list of
         # any parent entities. If you include multiple entities with the same identifier , only the last one
         # is processed in the request.
+
         @[JSON::Field(key: "entityList")]
         getter entity_list : Array(Types::EntityItem)?
 
@@ -1246,14 +1427,17 @@ module AwsSdk
       # Contains the identifier of an entity, including its ID and type. This data type is used as a request
       # parameter for IsAuthorized operation, and as a response parameter for the CreatePolicy , GetPolicy ,
       # and UpdatePolicy operations. Example: {"entityId":" string ","entityType":" string "}
+
       struct EntityIdentifier
         include JSON::Serializable
 
         # The identifier of an entity. "entityId":" identifier "
+
         @[JSON::Field(key: "entityId")]
         getter entity_id : String
 
         # The type of an entity. Example: "entityType":" typeName "
+
         @[JSON::Field(key: "entityType")]
         getter entity_type : String
 
@@ -1268,14 +1452,17 @@ module AwsSdk
       # used as one of the fields in the EntitiesDefinition structure. { "identifier": { "entityType":
       # "Photo", "entityId": "VacationPhoto94.jpg" }, "attributes": {}, "parents": [ { "entityType":
       # "Album", "entityId": "alice_folder" } ] }
+
       struct EntityItem
         include JSON::Serializable
 
         # The identifier of the entity.
+
         @[JSON::Field(key: "identifier")]
         getter identifier : Types::EntityIdentifier
 
         # A list of attributes for the entity.
+
         @[JSON::Field(key: "attributes")]
         getter attributes : Hash(String, Types::AttributeValue)?
 
@@ -1284,10 +1471,12 @@ module AwsSdk
         # entity in the hierarchy of entities including all direct parents, and parents of parents. For
         # example, a user can be a member of 91 groups if one of those groups is a member of eight groups, for
         # a total of 100: one entity, 91 entity parents, and eight parents of parents.
+
         @[JSON::Field(key: "parents")]
         getter parents : Array(Types::EntityIdentifier)?
 
         # A list of cedar tags for the entity.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, Types::CedarTagValue)?
 
@@ -1303,16 +1492,19 @@ module AwsSdk
       # Contains information about a principal or resource that can be referenced in a Cedar policy. This
       # data type is used as part of the PolicyFilter structure that is used as a request parameter for the
       # ListPolicies operation..
+
       struct EntityReference
         include JSON::Serializable
 
         # The identifier of the entity. It can consist of either an EntityType and EntityId, a principal, or a
         # resource.
+
         @[JSON::Field(key: "identifier")]
         getter identifier : Types::EntityIdentifier?
 
         # Used to indicate that a principal or resource is not specified. This can be used to search for
         # policies that are not associated with a specific principal or resource.
+
         @[JSON::Field(key: "unspecified")]
         getter unspecified : Bool?
 
@@ -1325,10 +1517,12 @@ module AwsSdk
 
       # Contains a description of an evaluation error. This data type is a response parameter of the
       # IsAuthorized , BatchIsAuthorized , and IsAuthorizedWithToken operations.
+
       struct EvaluationErrorItem
         include JSON::Serializable
 
         # The error description.
+
         @[JSON::Field(key: "errorDescription")]
         getter error_description : String
 
@@ -1338,14 +1532,17 @@ module AwsSdk
         end
       end
 
+
       struct GetIdentitySourceInput
         include JSON::Serializable
 
         # Specifies the ID of the identity source you want information about.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # Specifies the ID of the policy store that contains the identity source you want information about.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1356,34 +1553,42 @@ module AwsSdk
         end
       end
 
+
       struct GetIdentitySourceOutput
         include JSON::Serializable
 
         # The date and time that the identity source was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The ID of the identity source.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # The date and time that the identity source was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the identity source.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The data type of principals generated for identities authenticated by this identity source.
+
         @[JSON::Field(key: "principalEntityType")]
         getter principal_entity_type : String
 
         # Contains configuration information about an identity source.
+
         @[JSON::Field(key: "configuration")]
         getter configuration : Types::ConfigurationDetail?
 
         # A structure that describes the configuration of the identity source.
+
         @[JSON::Field(key: "details")]
         getter details : Types::IdentitySourceDetails?
 
@@ -1399,14 +1604,17 @@ module AwsSdk
         end
       end
 
+
       struct GetPolicyInput
         include JSON::Serializable
 
         # Specifies the ID of the policy you want information about.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # Specifies the ID of the policy store that contains the policy that you want information about.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1417,51 +1625,62 @@ module AwsSdk
         end
       end
 
+
       struct GetPolicyOutput
         include JSON::Serializable
 
         # The date and time that the policy was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The definition of the requested policy.
+
         @[JSON::Field(key: "definition")]
         getter definition : Types::PolicyDefinitionDetail
 
         # The date and time that the policy was last updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The unique ID of the policy that you want information about.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The ID of the policy store that contains the policy that you want information about.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The type of the policy.
+
         @[JSON::Field(key: "policyType")]
         getter policy_type : String
 
         # The action that a policy permits or forbids. For example, {"actions": [{"actionId": "ViewPhoto",
         # "actionType": "PhotoFlash::Action"}, {"entityID": "SharePhoto", "entityType":
         # "PhotoFlash::Action"}]} .
+
         @[JSON::Field(key: "actions")]
         getter actions : Array(Types::ActionIdentifier)?
 
         # The effect of the decision that a policy returns to an authorization request. For example, "effect":
         # "Permit" .
+
         @[JSON::Field(key: "effect")]
         getter effect : String?
 
         # The principal specified in the policy's scope. This element isn't included in the response when
         # Principal isn't present in the policy content.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource specified in the policy's scope. This element isn't included in the response when
         # Resource isn't present in the policy content.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -1480,10 +1699,12 @@ module AwsSdk
         end
       end
 
+
       struct GetPolicyStoreInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that you want information about.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1491,6 +1712,7 @@ module AwsSdk
         # included in the API call, the tags are returned, otherwise they are not returned. If this parameter
         # is included in the API call but there are no tags attached to the policy store, the tags response
         # parameter is omitted from the response.
+
         @[JSON::Field(key: "tags")]
         getter tags : Bool?
 
@@ -1501,44 +1723,54 @@ module AwsSdk
         end
       end
 
+
       struct GetPolicyStoreOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the policy store.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The date and time that the policy store was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the policy store was last updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store;
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The current validation settings for the policy store.
+
         @[JSON::Field(key: "validationSettings")]
         getter validation_settings : Types::ValidationSettings
 
         # The version of the Cedar language used with policies, policy templates, and schemas in this policy
         # store. For more information, see Amazon Verified Permissions upgrade to Cedar v4 FAQ .
+
         @[JSON::Field(key: "cedarVersion")]
         getter cedar_version : String?
 
         # Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted.
         # The default state is DISABLED .
+
         @[JSON::Field(key: "deletionProtection")]
         getter deletion_protection : String?
 
         # Descriptive text that you can provide to help with identification of the current policy store.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The list of tags associated with the policy store.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1556,15 +1788,18 @@ module AwsSdk
         end
       end
 
+
       struct GetPolicyTemplateInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that contains the policy template that you want information
         # about.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies the ID of the policy template that you want information about.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
@@ -1575,30 +1810,37 @@ module AwsSdk
         end
       end
 
+
       struct GetPolicyTemplateOutput
         include JSON::Serializable
 
         # The date and time that the policy template was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the policy template was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the policy template.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The ID of the policy template.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
         # The content of the body of the policy template written in the Cedar policy language.
+
         @[JSON::Field(key: "statement")]
         getter statement : String
 
         # The description of the policy template.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -1613,10 +1855,12 @@ module AwsSdk
         end
       end
 
+
       struct GetSchemaInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that contains the schema.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1626,26 +1870,32 @@ module AwsSdk
         end
       end
 
+
       struct GetSchemaOutput
         include JSON::Serializable
 
         # The date and time that the schema was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the schema was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the schema.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The body of the schema, written in Cedar schema JSON.
+
         @[JSON::Field(key: "schema")]
         getter schema : String
 
         # The namespaces of the entities referenced by this schema.
+
         @[JSON::Field(key: "namespaces")]
         getter namespaces : Array(String)?
 
@@ -1661,11 +1911,13 @@ module AwsSdk
 
       # A structure that contains configuration of the identity source. This data type was a response
       # parameter for the GetIdentitySource operation. Replaced by ConfigurationDetail .
+
       struct IdentitySourceDetails
         include JSON::Serializable
 
         # The application client IDs associated with the specified Amazon Cognito user pool that are enabled
         # for this identity source.
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
@@ -1673,16 +1925,19 @@ module AwsSdk
         # the following format. This URL replaces the placeholders for both the Amazon Web Services Region and
         # the user pool identifier with those appropriate for this user pool. https://cognito-idp.
         # &lt;region&gt; .amazonaws.com/ &lt;user-pool-id&gt; /.well-known/openid-configuration
+
         @[JSON::Field(key: "discoveryUrl")]
         getter discovery_url : String?
 
         # A string that identifies the type of OIDC service represented by this identity source. At this time,
         # the only valid value is cognito .
+
         @[JSON::Field(key: "openIdIssuer")]
         getter open_id_issuer : String?
 
         # The Amazon Resource Name (ARN) of the Amazon Cognito user pool whose identities are accessible to
         # this Verified Permissions policy store.
+
         @[JSON::Field(key: "userPoolArn")]
         getter user_pool_arn : String?
 
@@ -1697,11 +1952,13 @@ module AwsSdk
 
       # A structure that defines characteristics of an identity source that you can use to filter. This data
       # type is a request parameter for the ListIdentityStores operation.
+
       struct IdentitySourceFilter
         include JSON::Serializable
 
         # The Cedar entity type of the principals returned by the identity provider (IdP) associated with this
         # identity source.
+
         @[JSON::Field(key: "principalEntityType")]
         getter principal_entity_type : String?
 
@@ -1713,34 +1970,42 @@ module AwsSdk
 
       # A structure that defines an identity source. This data type is a response parameter to the
       # ListIdentitySources operation.
+
       struct IdentitySourceItem
         include JSON::Serializable
 
         # The date and time the identity source was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The unique identifier of the identity source.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # The date and time the identity source was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The identifier of the policy store that contains the identity source.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The Cedar entity type of the principals returned from the IdP associated with this identity source.
+
         @[JSON::Field(key: "principalEntityType")]
         getter principal_entity_type : String
 
         # Contains configuration information about an identity source.
+
         @[JSON::Field(key: "configuration")]
         getter configuration : Types::ConfigurationItem?
 
         # A structure that contains the details of the associated identity provider (IdP).
+
         @[JSON::Field(key: "details")]
         getter details : Types::IdentitySourceItemDetails?
 
@@ -1758,11 +2023,13 @@ module AwsSdk
 
       # A structure that contains configuration of the identity source. This data type was a response
       # parameter for the ListIdentitySources operation. Replaced by ConfigurationItem .
+
       struct IdentitySourceItemDetails
         include JSON::Serializable
 
         # The application client IDs associated with the specified Amazon Cognito user pool that are enabled
         # for this identity source.
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
@@ -1770,16 +2037,19 @@ module AwsSdk
         # the following format. This URL replaces the placeholders for both the Amazon Web Services Region and
         # the user pool identifier with those appropriate for this user pool. https://cognito-idp.
         # &lt;region&gt; .amazonaws.com/ &lt;user-pool-id&gt; /.well-known/openid-configuration
+
         @[JSON::Field(key: "discoveryUrl")]
         getter discovery_url : String?
 
         # A string that identifies the type of OIDC service represented by this identity source. At this time,
         # the only valid value is cognito .
+
         @[JSON::Field(key: "openIdIssuer")]
         getter open_id_issuer : String?
 
         # The Amazon Cognito user pool whose identities are accessible to this Verified Permissions policy
         # store.
+
         @[JSON::Field(key: "userPoolArn")]
         getter user_pool_arn : String?
 
@@ -1793,8 +2063,10 @@ module AwsSdk
       end
 
       # The request failed because of an internal error. Try your request again later
+
       struct InternalServerException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -1807,8 +2079,10 @@ module AwsSdk
 
       # The policy store can't be deleted because deletion protection is enabled. To delete this policy
       # store, disable deletion protection.
+
       struct InvalidStateException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
@@ -1819,20 +2093,24 @@ module AwsSdk
         end
       end
 
+
       struct IsAuthorizedInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store. Policies in this policy store will be used to make an
         # authorization decision for the input.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies the requested action to be authorized. For example, is the principal authorized to perform
         # this action on the resource?
+
         @[JSON::Field(key: "action")]
         getter action : Types::ActionIdentifier?
 
         # Specifies additional context that can be used to make more granular authorization decisions.
+
         @[JSON::Field(key: "context")]
         getter context : Types::ContextDefinition?
 
@@ -1841,14 +2119,17 @@ module AwsSdk
         # attributes can be referenced and checked by conditional elements in the policies in the specified
         # policy store. You can include only principal and resource entities in this parameter; you can't
         # include actions. You must specify actions in the schema.
+
         @[JSON::Field(key: "entities")]
         getter entities : Types::EntitiesDefinition?
 
         # Specifies the principal for which the authorization decision is to be made.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # Specifies the resource for which the authorization decision is to be made.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -1863,10 +2144,12 @@ module AwsSdk
         end
       end
 
+
       struct IsAuthorizedOutput
         include JSON::Serializable
 
         # An authorization decision that indicates if the authorization request should be allowed or denied.
+
         @[JSON::Field(key: "decision")]
         getter decision : String
 
@@ -1875,11 +2158,13 @@ module AwsSdk
         # be the determining policy. In the case of multiple matching permit policies then there would be
         # multiple determining policies. In the case that no policies match, and hence the response is DENY,
         # there would be no determining policies.
+
         @[JSON::Field(key: "determiningPolicies")]
         getter determining_policies : Array(Types::DeterminingPolicyItem)
 
         # Errors that occurred while making an authorization decision, for example, a policy references an
         # Entity or entity Attribute that does not exist in the slice.
+
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::EvaluationErrorItem)
 
@@ -1891,11 +2176,13 @@ module AwsSdk
         end
       end
 
+
       struct IsAuthorizedWithTokenInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store. Policies in this policy store will be used to make an
         # authorization decision for the input.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -1903,15 +2190,18 @@ module AwsSdk
         # identity provider (IdP) associated with the specified identity source. You must specify either an
         # accessToken , an identityToken , or both. Must be an access token. Verified Permissions returns an
         # error if the token_use claim in the submitted token isn't access .
+
         @[JSON::Field(key: "accessToken")]
         getter access_token : String?
 
         # Specifies the requested action to be authorized. Is the specified principal authorized to perform
         # this action on the specified resource.
+
         @[JSON::Field(key: "action")]
         getter action : Types::ActionIdentifier?
 
         # Specifies additional context that can be used to make more granular authorization decisions.
+
         @[JSON::Field(key: "context")]
         getter context : Types::ContextDefinition?
 
@@ -1923,6 +2213,7 @@ module AwsSdk
         # identity source. The IsAuthorizedWithToken operation takes principal attributes from only the
         # identityToken or accessToken passed to the operation. For action entities, you can include only
         # their Identifier and EntityType .
+
         @[JSON::Field(key: "entities")]
         getter entities : Types::EntitiesDefinition?
 
@@ -1930,11 +2221,13 @@ module AwsSdk
         # identity provider (IdP) associated with the specified identity source. You must specify either an
         # accessToken , an identityToken , or both. Must be an ID token. Verified Permissions returns an error
         # if the token_use claim in the submitted token isn't id .
+
         @[JSON::Field(key: "identityToken")]
         getter identity_token : String?
 
         # Specifies the resource for which the authorization decision is made. For example, is the principal
         # allowed to perform the action on the resource?
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -1950,10 +2243,12 @@ module AwsSdk
         end
       end
 
+
       struct IsAuthorizedWithTokenOutput
         include JSON::Serializable
 
         # An authorization decision that indicates if the authorization request should be allowed or denied.
+
         @[JSON::Field(key: "decision")]
         getter decision : String
 
@@ -1962,15 +2257,18 @@ module AwsSdk
         # overrides permit the forbid policies are the determining policies. If all matching policies are
         # permit policies, then those policies are the determining policies. When no policies match and the
         # response is the default DENY, there are no determining policies.
+
         @[JSON::Field(key: "determiningPolicies")]
         getter determining_policies : Array(Types::DeterminingPolicyItem)
 
         # Errors that occurred while making an authorization decision. For example, a policy references an
         # entity or entity attribute that does not exist in the slice.
+
         @[JSON::Field(key: "errors")]
         getter errors : Array(Types::EvaluationErrorItem)
 
         # The identifier of the principal in the ID or access token.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
@@ -1983,15 +2281,18 @@ module AwsSdk
         end
       end
 
+
       struct ListIdentitySourcesInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that contains the identity sources that you want to list.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies characteristics of an identity source that you can use to limit the output to matching
         # identity sources.
+
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::IdentitySourceFilter)?
 
@@ -2003,6 +2304,7 @@ module AwsSdk
         # to ensure that you receive all of the results. If you do not specify this parameter, the operation
         # defaults to 10 identity sources per response. You can specify a maximum of 50 identity sources per
         # response.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2010,6 +2312,7 @@ module AwsSdk
         # response in the previous request. If you did, it indicates that more output is available. Set this
         # parameter to the value provided by the previous call's NextToken response to request the next page
         # of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2022,10 +2325,12 @@ module AwsSdk
         end
       end
 
+
       struct ListIdentitySourcesOutput
         include JSON::Serializable
 
         # The list of identity sources stored in the specified policy store.
+
         @[JSON::Field(key: "identitySources")]
         getter identity_sources : Array(Types::IdentitySourceItem)
 
@@ -2033,6 +2338,7 @@ module AwsSdk
         # response. Use this value in the NextToken request parameter in a subsequent call to the operation to
         # get the next part of the output. You should repeat this until the NextToken response element comes
         # back as null . This indicates that this is the last page of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2043,15 +2349,18 @@ module AwsSdk
         end
       end
 
+
       struct ListPoliciesInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store you want to list policies from.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies a filter that limits the response to only policies that match the specified criteria. For
         # example, you list only the policies that reference a specified principal.
+
         @[JSON::Field(key: "filter")]
         getter filter : Types::PolicyFilter?
 
@@ -2062,6 +2371,7 @@ module AwsSdk
         # maximum even when there are more results available. You should check NextToken after every operation
         # to ensure that you receive all of the results. If you do not specify this parameter, the operation
         # defaults to 10 policies per response. You can specify a maximum of 50 policies per response.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2069,6 +2379,7 @@ module AwsSdk
         # response in the previous request. If you did, it indicates that more output is available. Set this
         # parameter to the value provided by the previous call's NextToken response to request the next page
         # of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2081,10 +2392,12 @@ module AwsSdk
         end
       end
 
+
       struct ListPoliciesOutput
         include JSON::Serializable
 
         # Lists all policies that are available in the specified policy store.
+
         @[JSON::Field(key: "policies")]
         getter policies : Array(Types::PolicyItem)
 
@@ -2092,6 +2405,7 @@ module AwsSdk
         # response. Use this value in the NextToken request parameter in a subsequent call to the operation to
         # get the next part of the output. You should repeat this until the NextToken response element comes
         # back as null . This indicates that this is the last page of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2101,6 +2415,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct ListPolicyStoresInput
         include JSON::Serializable
@@ -2113,6 +2428,7 @@ module AwsSdk
         # to ensure that you receive all of the results. If you do not specify this parameter, the operation
         # defaults to 10 policy stores per response. You can specify a maximum of 50 policy stores per
         # response.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2120,6 +2436,7 @@ module AwsSdk
         # response in the previous request. If you did, it indicates that more output is available. Set this
         # parameter to the value provided by the previous call's NextToken response to request the next page
         # of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2130,10 +2447,12 @@ module AwsSdk
         end
       end
 
+
       struct ListPolicyStoresOutput
         include JSON::Serializable
 
         # The list of policy stores in the account.
+
         @[JSON::Field(key: "policyStores")]
         getter policy_stores : Array(Types::PolicyStoreItem)
 
@@ -2141,6 +2460,7 @@ module AwsSdk
         # response. Use this value in the NextToken request parameter in a subsequent call to the operation to
         # get the next part of the output. You should repeat this until the NextToken response element comes
         # back as null . This indicates that this is the last page of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2151,10 +2471,12 @@ module AwsSdk
         end
       end
 
+
       struct ListPolicyTemplatesInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that contains the policy templates you want to list.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -2166,6 +2488,7 @@ module AwsSdk
         # to ensure that you receive all of the results. If you do not specify this parameter, the operation
         # defaults to 10 policy templates per response. You can specify a maximum of 50 policy templates per
         # response.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2173,6 +2496,7 @@ module AwsSdk
         # response in the previous request. If you did, it indicates that more output is available. Set this
         # parameter to the value provided by the previous call's NextToken response to request the next page
         # of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2184,10 +2508,12 @@ module AwsSdk
         end
       end
 
+
       struct ListPolicyTemplatesOutput
         include JSON::Serializable
 
         # The list of the policy templates in the specified policy store.
+
         @[JSON::Field(key: "policyTemplates")]
         getter policy_templates : Array(Types::PolicyTemplateItem)
 
@@ -2195,6 +2521,7 @@ module AwsSdk
         # response. Use this value in the NextToken request parameter in a subsequent call to the operation to
         # get the next part of the output. You should repeat this until the NextToken response element comes
         # back as null . This indicates that this is the last page of results.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2205,10 +2532,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceInput
         include JSON::Serializable
 
         # The ARN of the resource for which you want to view tags.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
@@ -2218,10 +2547,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceOutput
         include JSON::Serializable
 
         # The list of tags associated with the resource.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -2235,15 +2566,18 @@ module AwsSdk
       # Contains the claim that you want to identify as the principal in an authorization request, and the
       # values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # OpenIdConnectTokenSelection structure, which is a parameter of CreateIdentitySource .
+
       struct OpenIdConnectAccessTokenConfiguration
         include JSON::Serializable
 
         # The access token aud claim values that you want to accept in your policy store. For example,
         # https://myapp.example.com, https://myapp2.example.com .
+
         @[JSON::Field(key: "audiences")]
         getter audiences : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -2258,15 +2592,18 @@ module AwsSdk
       # Contains the claim that you want to identify as the principal in an authorization request, and the
       # values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # OpenIdConnectTokenSelectionDetail structure, which is a parameter of GetIdentitySource .
+
       struct OpenIdConnectAccessTokenConfigurationDetail
         include JSON::Serializable
 
         # The access token aud claim values that you want to accept in your policy store. For example,
         # https://myapp.example.com, https://myapp2.example.com .
+
         @[JSON::Field(key: "audiences")]
         getter audiences : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -2281,15 +2618,18 @@ module AwsSdk
       # Contains the claim that you want to identify as the principal in an authorization request, and the
       # values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # OpenIdConnectTokenSelectionItem structure, which is a parameter of ListIdentitySources .
+
       struct OpenIdConnectAccessTokenConfigurationItem
         include JSON::Serializable
 
         # The access token aud claim values that you want to accept in your policy store. For example,
         # https://myapp.example.com, https://myapp2.example.com .
+
         @[JSON::Field(key: "audiences")]
         getter audiences : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -2304,28 +2644,33 @@ module AwsSdk
       # that Verified Permissions can use to generate entities from authenticated identities. It specifies
       # the issuer URL, token type that you want to use, and policy store entity details. This data type is
       # part of a Configuration structure, which is a parameter to CreateIdentitySource .
+
       struct OpenIdConnectConfiguration
         include JSON::Serializable
 
         # The issuer URL of an OIDC identity provider. This URL must have an OIDC discovery endpoint at the
         # path .well-known/openid-configuration .
+
         @[JSON::Field(key: "issuer")]
         getter issuer : String
 
         # The token type that you want to process from your OIDC identity provider. Your policy store can
         # process either identity (ID) or access tokens from a given OIDC identity source.
+
         @[JSON::Field(key: "tokenSelection")]
         getter token_selection : Types::OpenIdConnectTokenSelection
 
         # A descriptive string that you want to prefix to user entities from your OIDC identity provider. For
         # example, if you set an entityIdPrefix of MyOIDCProvider , you can reference principals in your
         # policies in the format MyCorp::User::MyOIDCProvider|Carlos .
+
         @[JSON::Field(key: "entityIdPrefix")]
         getter entity_id_prefix : String?
 
         # The claim in OIDC identity provider tokens that indicates a user's group membership, and the entity
         # type that you want to map it to. For example, this object can map the contents of a groups claim to
         # MyCorp::UserGroup .
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::OpenIdConnectGroupConfiguration?
 
@@ -2342,28 +2687,33 @@ module AwsSdk
       # that Verified Permissions can use to generate entities from authenticated identities. It specifies
       # the issuer URL, token type that you want to use, and policy store entity details. This data type is
       # part of a ConfigurationDetail structure, which is a parameter to GetIdentitySource .
+
       struct OpenIdConnectConfigurationDetail
         include JSON::Serializable
 
         # The issuer URL of an OIDC identity provider. This URL must have an OIDC discovery endpoint at the
         # path .well-known/openid-configuration .
+
         @[JSON::Field(key: "issuer")]
         getter issuer : String
 
         # The token type that you want to process from your OIDC identity provider. Your policy store can
         # process either identity (ID) or access tokens from a given OIDC identity source.
+
         @[JSON::Field(key: "tokenSelection")]
         getter token_selection : Types::OpenIdConnectTokenSelectionDetail
 
         # A descriptive string that you want to prefix to user entities from your OIDC identity provider. For
         # example, if you set an entityIdPrefix of MyOIDCProvider , you can reference principals in your
         # policies in the format MyCorp::User::MyOIDCProvider|Carlos .
+
         @[JSON::Field(key: "entityIdPrefix")]
         getter entity_id_prefix : String?
 
         # The claim in OIDC identity provider tokens that indicates a user's group membership, and the entity
         # type that you want to map it to. For example, this object can map the contents of a groups claim to
         # MyCorp::UserGroup .
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::OpenIdConnectGroupConfigurationDetail?
 
@@ -2380,28 +2730,33 @@ module AwsSdk
       # that Verified Permissions can use to generate entities from authenticated identities. It specifies
       # the issuer URL, token type that you want to use, and policy store entity details. This data type is
       # part of a ConfigurationItem structure, which is a parameter to ListIdentitySources .
+
       struct OpenIdConnectConfigurationItem
         include JSON::Serializable
 
         # The issuer URL of an OIDC identity provider. This URL must have an OIDC discovery endpoint at the
         # path .well-known/openid-configuration .
+
         @[JSON::Field(key: "issuer")]
         getter issuer : String
 
         # The token type that you want to process from your OIDC identity provider. Your policy store can
         # process either identity (ID) or access tokens from a given OIDC identity source.
+
         @[JSON::Field(key: "tokenSelection")]
         getter token_selection : Types::OpenIdConnectTokenSelectionItem
 
         # A descriptive string that you want to prefix to user entities from your OIDC identity provider. For
         # example, if you set an entityIdPrefix of MyOIDCProvider , you can reference principals in your
         # policies in the format MyCorp::User::MyOIDCProvider|Carlos .
+
         @[JSON::Field(key: "entityIdPrefix")]
         getter entity_id_prefix : String?
 
         # The claim in OIDC identity provider tokens that indicates a user's group membership, and the entity
         # type that you want to map it to. For example, this object can map the contents of a groups claim to
         # MyCorp::UserGroup .
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::OpenIdConnectGroupConfigurationItem?
 
@@ -2418,16 +2773,19 @@ module AwsSdk
       # type that you want to map it to. For example, this object can map the contents of a groups claim to
       # MyCorp::UserGroup . This data type is part of a OpenIdConnectConfiguration structure, which is a
       # parameter of CreateIdentitySource .
+
       struct OpenIdConnectGroupConfiguration
         include JSON::Serializable
 
         # The token claim that you want Verified Permissions to interpret as group membership. For example,
         # groups .
+
         @[JSON::Field(key: "groupClaim")]
         getter group_claim : String
 
         # The policy store entity type that you want to map your users' group claim to. For example,
         # MyCorp::UserGroup . A group entity type is an entity that can have a user entity type as a member.
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String
 
@@ -2442,16 +2800,19 @@ module AwsSdk
       # type that you want to map it to. For example, this object can map the contents of a groups claim to
       # MyCorp::UserGroup . This data type is part of a OpenIdConnectConfigurationDetail structure, which is
       # a parameter of GetIdentitySource .
+
       struct OpenIdConnectGroupConfigurationDetail
         include JSON::Serializable
 
         # The token claim that you want Verified Permissions to interpret as group membership. For example,
         # groups .
+
         @[JSON::Field(key: "groupClaim")]
         getter group_claim : String
 
         # The policy store entity type that you want to map your users' group claim to. For example,
         # MyCorp::UserGroup . A group entity type is an entity that can have a user entity type as a member.
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String
 
@@ -2466,16 +2827,19 @@ module AwsSdk
       # type that you want to map it to. For example, this object can map the contents of a groups claim to
       # MyCorp::UserGroup . This data type is part of a OpenIdConnectConfigurationItem structure, which is a
       # parameter of ListIdentitySourcea .
+
       struct OpenIdConnectGroupConfigurationItem
         include JSON::Serializable
 
         # The token claim that you want Verified Permissions to interpret as group membership. For example,
         # groups .
+
         @[JSON::Field(key: "groupClaim")]
         getter group_claim : String
 
         # The policy store entity type that you want to map your users' group claim to. For example,
         # MyCorp::UserGroup . A group entity type is an entity that can have a user entity type as a member.
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String
 
@@ -2490,15 +2854,18 @@ module AwsSdk
       # claims. Contains the claim that you want to identify as the principal in an authorization request,
       # and the values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # OpenIdConnectTokenSelection structure, which is a parameter of CreateIdentitySource .
+
       struct OpenIdConnectIdentityTokenConfiguration
         include JSON::Serializable
 
         # The ID token audience, or client ID, claim values that you want to accept in your policy store from
         # an OIDC identity provider. For example, 1example23456789, 2example10111213 .
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -2513,15 +2880,18 @@ module AwsSdk
       # claims. Contains the claim that you want to identify as the principal in an authorization request,
       # and the values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # OpenIdConnectTokenSelectionDetail structure, which is a parameter of GetIdentitySource .
+
       struct OpenIdConnectIdentityTokenConfigurationDetail
         include JSON::Serializable
 
         # The ID token audience, or client ID, claim values that you want to accept in your policy store from
         # an OIDC identity provider. For example, 1example23456789, 2example10111213 .
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -2536,15 +2906,18 @@ module AwsSdk
       # claims. Contains the claim that you want to identify as the principal in an authorization request,
       # and the values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # OpenIdConnectTokenSelectionItem structure, which is a parameter of ListIdentitySources .
+
       struct OpenIdConnectIdentityTokenConfigurationItem
         include JSON::Serializable
 
         # The ID token audience, or client ID, claim values that you want to accept in your policy store from
         # an OIDC identity provider. For example, 1example23456789, 2example10111213 .
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -2558,16 +2931,19 @@ module AwsSdk
       # The token type that you want to process from your OIDC identity provider. Your policy store can
       # process either identity (ID) or access tokens from a given OIDC identity source. This data type is
       # part of a OpenIdConnectConfiguration structure, which is a parameter of CreateIdentitySource .
+
       struct OpenIdConnectTokenSelection
         include JSON::Serializable
 
         # The OIDC configuration for processing access tokens. Contains allowed audience claims, for example
         # https://auth.example.com , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "accessTokenOnly")]
         getter access_token_only : Types::OpenIdConnectAccessTokenConfiguration?
 
         # The OIDC configuration for processing identity (ID) tokens. Contains allowed client ID claims, for
         # example 1example23456789 , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "identityTokenOnly")]
         getter identity_token_only : Types::OpenIdConnectIdentityTokenConfiguration?
 
@@ -2581,16 +2957,19 @@ module AwsSdk
       # The token type that you want to process from your OIDC identity provider. Your policy store can
       # process either identity (ID) or access tokens from a given OIDC identity source. This data type is
       # part of a OpenIdConnectConfigurationDetail structure, which is a parameter of GetIdentitySource .
+
       struct OpenIdConnectTokenSelectionDetail
         include JSON::Serializable
 
         # The OIDC configuration for processing access tokens. Contains allowed audience claims, for example
         # https://auth.example.com , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "accessTokenOnly")]
         getter access_token_only : Types::OpenIdConnectAccessTokenConfigurationDetail?
 
         # The OIDC configuration for processing identity (ID) tokens. Contains allowed client ID claims, for
         # example 1example23456789 , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "identityTokenOnly")]
         getter identity_token_only : Types::OpenIdConnectIdentityTokenConfigurationDetail?
 
@@ -2604,16 +2983,19 @@ module AwsSdk
       # The token type that you want to process from your OIDC identity provider. Your policy store can
       # process either identity (ID) or access tokens from a given OIDC identity source. This data type is
       # part of a OpenIdConnectConfigurationItem structure, which is a parameter of ListIdentitySources .
+
       struct OpenIdConnectTokenSelectionItem
         include JSON::Serializable
 
         # The OIDC configuration for processing access tokens. Contains allowed audience claims, for example
         # https://auth.example.com , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "accessTokenOnly")]
         getter access_token_only : Types::OpenIdConnectAccessTokenConfigurationItem?
 
         # The OIDC configuration for processing identity (ID) tokens. Contains allowed client ID claims, for
         # example 1example23456789 , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "identityTokenOnly")]
         getter identity_token_only : Types::OpenIdConnectIdentityTokenConfigurationItem?
 
@@ -2628,17 +3010,20 @@ module AwsSdk
       # description, and a policy body. This is a top level data type used to create a policy. This data
       # type is used as a request parameter for the CreatePolicy operation. This structure must always have
       # either an static or a templateLinked element.
+
       struct PolicyDefinition
         include JSON::Serializable
 
         # A structure that describes a static policy. An static policy doesn't use a template or allow
         # placeholders for entities.
+
         @[JSON::Field(key: "static")]
         getter static : Types::StaticPolicyDefinition?
 
         # A structure that describes a policy that was instantiated from a template. The template can specify
         # placeholders for principal and resource . When you use CreatePolicy to create a policy from a
         # template, you specify the exact principal and resource to use for the instantiated policy.
+
         @[JSON::Field(key: "templateLinked")]
         getter template_linked : Types::TemplateLinkedPolicyDefinition?
 
@@ -2651,14 +3036,17 @@ module AwsSdk
 
       # A structure that describes a policy definition. It must always have either an static or a
       # templateLinked element. This data type is used as a response parameter for the GetPolicy operation.
+
       struct PolicyDefinitionDetail
         include JSON::Serializable
 
         # Information about a static policy that wasn't created with a policy template.
+
         @[JSON::Field(key: "static")]
         getter static : Types::StaticPolicyDefinitionDetail?
 
         # Information about a template-linked policy that was created by instantiating a policy template.
+
         @[JSON::Field(key: "templateLinked")]
         getter template_linked : Types::TemplateLinkedPolicyDefinitionDetail?
 
@@ -2672,14 +3060,17 @@ module AwsSdk
       # A structure that describes a PolicyDefinintion . It will always have either an StaticPolicy or a
       # TemplateLinkedPolicy element. This data type is used as a response parameter for the CreatePolicy
       # and ListPolicies operations.
+
       struct PolicyDefinitionItem
         include JSON::Serializable
 
         # Information about a static policy that wasn't created with a policy template.
+
         @[JSON::Field(key: "static")]
         getter static : Types::StaticPolicyDefinitionItem?
 
         # Information about a template-linked policy that was created by instantiating a policy template.
+
         @[JSON::Field(key: "templateLinked")]
         getter template_linked : Types::TemplateLinkedPolicyDefinitionItem?
 
@@ -2692,23 +3083,28 @@ module AwsSdk
 
       # Contains information about a filter to refine policies returned in a query. This data type is used
       # as a response parameter for the ListPolicies operation.
+
       struct PolicyFilter
         include JSON::Serializable
 
         # Filters the output to only template-linked policies that were instantiated from the specified policy
         # template.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String?
 
         # Filters the output to only policies of the specified type.
+
         @[JSON::Field(key: "policyType")]
         getter policy_type : String?
 
         # Filters the output to only policies that reference the specified principal.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityReference?
 
         # Filters the output to only policies that reference the specified resource.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityReference?
 
@@ -2723,49 +3119,60 @@ module AwsSdk
 
       # Contains information about a policy. This data type is used as a response parameter for the
       # ListPolicies operation.
+
       struct PolicyItem
         include JSON::Serializable
 
         # The date and time the policy was created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The policy definition of an item in the list of policies returned.
+
         @[JSON::Field(key: "definition")]
         getter definition : Types::PolicyDefinitionItem
 
         # The date and time the policy was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The identifier of the policy you want information about.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The identifier of the policy store where the policy you want information about is stored.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The type of the policy. This is one of the following values: STATIC TEMPLATE_LINKED
+
         @[JSON::Field(key: "policyType")]
         getter policy_type : String
 
         # The action that a policy permits or forbids. For example, {"actions": [{"actionId": "ViewPhoto",
         # "actionType": "PhotoFlash::Action"}, {"entityID": "SharePhoto", "entityType":
         # "PhotoFlash::Action"}]} .
+
         @[JSON::Field(key: "actions")]
         getter actions : Array(Types::ActionIdentifier)?
 
         # The effect of the decision that a policy returns to an authorization request. For example, "effect":
         # "Permit" .
+
         @[JSON::Field(key: "effect")]
         getter effect : String?
 
         # The principal associated with the policy.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource associated with the policy.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -2786,26 +3193,32 @@ module AwsSdk
 
       # Contains information about a policy store. This data type is used as a response parameter for the
       # ListPolicyStores operation.
+
       struct PolicyStoreItem
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the policy store.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The date and time the policy was created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The unique identifier of the policy store.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Descriptive text that you can provide to help with identification of the current policy store.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
         # The date and time the policy store was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time?
 
@@ -2821,26 +3234,32 @@ module AwsSdk
 
       # Contains details about a policy template This data type is used as a response parameter for the
       # ListPolicyTemplates operation.
+
       struct PolicyTemplateItem
         include JSON::Serializable
 
         # The date and time that the policy template was created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the policy template was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The unique identifier of the policy store that contains the template.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The unique identifier of the policy template.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
         # The description attached to the policy template.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -2854,15 +3273,18 @@ module AwsSdk
         end
       end
 
+
       struct PutSchemaInput
         include JSON::Serializable
 
         # Specifies the definition of the schema to be stored. The schema definition must be written in Cedar
         # schema JSON.
+
         @[JSON::Field(key: "definition")]
         getter definition : Types::SchemaDefinition
 
         # Specifies the ID of the policy store in which to place the schema.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -2873,22 +3295,27 @@ module AwsSdk
         end
       end
 
+
       struct PutSchemaOutput
         include JSON::Serializable
 
         # The date and time that the schema was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the schema was last updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # Identifies the namespaces of the entities referenced by this schema.
+
         @[JSON::Field(key: "namespaces")]
         getter namespaces : Array(String)
 
         # The unique ID of the policy store that contains the schema.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -2902,14 +3329,17 @@ module AwsSdk
       end
 
       # Contains information about a resource conflict.
+
       struct ResourceConflict
         include JSON::Serializable
 
         # The unique identifier of the resource involved in a conflict.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String
 
         # The type of the resource involved in a conflict.
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
@@ -2921,17 +3351,21 @@ module AwsSdk
       end
 
       # The request failed because it references a resource that doesn't exist.
+
       struct ResourceNotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The unique ID of the resource referenced in the failed request.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String
 
         # The resource type of the resource referenced in the failed request.
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
@@ -2947,12 +3381,14 @@ module AwsSdk
       # stored in the same policy store. If the validation mode for the policy store is set to STRICT , then
       # policies that can't be validated by this schema are rejected by Verified Permissions and can't be
       # stored in the policy store.
+
       struct SchemaDefinition
         include JSON::Serializable
 
         # A JSON string representation of the schema supported by applications that use this policy store. To
         # delete the schema, run PutSchema with {} for this parameter. For more information, see Policy store
         # schema in the Amazon Verified Permissions User Guide .
+
         @[JSON::Field(key: "cedarJson")]
         getter cedar_json : String?
 
@@ -2963,25 +3399,31 @@ module AwsSdk
       end
 
       # The request failed because it would cause a service quota to be exceeded.
+
       struct ServiceQuotaExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The resource type of the resource referenced in the failed request.
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String
 
         # The quota code recognized by the Amazon Web Services Service Quotas service.
+
         @[JSON::Field(key: "quotaCode")]
         getter quota_code : String?
 
         # The unique ID of the resource referenced in the failed request.
+
         @[JSON::Field(key: "resourceId")]
         getter resource_id : String?
 
         # The code for the Amazon Web Services service that owns the quota.
+
         @[JSON::Field(key: "serviceCode")]
         getter service_code : String?
 
@@ -2997,14 +3439,17 @@ module AwsSdk
 
       # Contains information about a static policy. This data type is used as a field that is part of the
       # PolicyDefinitionDetail type.
+
       struct StaticPolicyDefinition
         include JSON::Serializable
 
         # The policy content of the static policy, written in the Cedar policy language.
+
         @[JSON::Field(key: "statement")]
         getter statement : String
 
         # The description of the static policy.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3018,14 +3463,17 @@ module AwsSdk
       # A structure that contains details about a static policy. It includes the description and policy
       # body. This data type is used within a PolicyDefinition structure as part of a request parameter for
       # the CreatePolicy operation.
+
       struct StaticPolicyDefinitionDetail
         include JSON::Serializable
 
         # The content of the static policy written in the Cedar policy language.
+
         @[JSON::Field(key: "statement")]
         getter statement : String
 
         # A description of the static policy.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3039,10 +3487,12 @@ module AwsSdk
       # A structure that contains details about a static policy. It includes the description and policy
       # statement. This data type is used within a PolicyDefinition structure as part of a request parameter
       # for the CreatePolicy operation.
+
       struct StaticPolicyDefinitionItem
         include JSON::Serializable
 
         # A description of the static policy.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3052,14 +3502,17 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceInput
         include JSON::Serializable
 
         # The ARN of the resource that you're adding tags to.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The list of key-value pairs to associate with the resource.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)
 
@@ -3070,6 +3523,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceOutput
         include JSON::Serializable
 
@@ -3078,22 +3532,26 @@ module AwsSdk
       end
 
       # Contains information about a policy created by instantiating a policy template.
+
       struct TemplateLinkedPolicyDefinition
         include JSON::Serializable
 
         # The unique identifier of the policy template used to create this policy.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
         # The principal associated with this template-linked policy. Verified Permissions substitutes this
         # principal for the ?principal placeholder in the policy template when it evaluates an authorization
         # request.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource associated with this template-linked policy. Verified Permissions substitutes this
         # resource for the ?resource placeholder in the policy template when it evaluates an authorization
         # request.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -3106,22 +3564,26 @@ module AwsSdk
       end
 
       # Contains information about a policy that was created by instantiating a policy template.
+
       struct TemplateLinkedPolicyDefinitionDetail
         include JSON::Serializable
 
         # The unique identifier of the policy template used to create this policy.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
         # The principal associated with this template-linked policy. Verified Permissions substitutes this
         # principal for the ?principal placeholder in the policy template when it evaluates an authorization
         # request.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource associated with this template-linked policy. Verified Permissions substitutes this
         # resource for the ?resource placeholder in the policy template when it evaluates an authorization
         # request.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -3134,22 +3596,26 @@ module AwsSdk
       end
 
       # Contains information about a policy created by instantiating a policy template.
+
       struct TemplateLinkedPolicyDefinitionItem
         include JSON::Serializable
 
         # The unique identifier of the policy template used to create this policy.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
         # The principal associated with this template-linked policy. Verified Permissions substitutes this
         # principal for the ?principal placeholder in the policy template when it evaluates an authorization
         # request.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource associated with this template-linked policy. Verified Permissions substitutes this
         # resource for the ?resource placeholder in the policy template when it evaluates an authorization
         # request.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -3162,17 +3628,21 @@ module AwsSdk
       end
 
       # The request failed because it exceeded a throttling quota.
+
       struct ThrottlingException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The quota code recognized by the Amazon Web Services Service Quotas service.
+
         @[JSON::Field(key: "quotaCode")]
         getter quota_code : String?
 
         # The code for the Amazon Web Services service that owns the quota.
+
         @[JSON::Field(key: "serviceCode")]
         getter service_code : String?
 
@@ -3186,11 +3656,14 @@ module AwsSdk
 
       # No more tags be added because the limit (50) has been reached. To add new tags, use UntagResource to
       # remove existing tags.
+
       struct TooManyTagsException
         include JSON::Serializable
 
+
         @[JSON::Field(key: "message")]
         getter message : String?
+
 
         @[JSON::Field(key: "resourceName")]
         getter resource_name : String?
@@ -3202,14 +3675,17 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceInput
         include JSON::Serializable
 
         # The ARN of the resource from which you are removing tags.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The list of tag keys to remove from the resource.
+
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -3220,6 +3696,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceOutput
         include JSON::Serializable
 
@@ -3228,11 +3705,13 @@ module AwsSdk
       end
 
       # The user group entities from an Amazon Cognito user pool identity source.
+
       struct UpdateCognitoGroupConfiguration
         include JSON::Serializable
 
         # The name of the schema entity type that's mapped to the user pool group. Defaults to
         # AWS::CognitoGroup .
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String
 
@@ -3243,18 +3722,22 @@ module AwsSdk
       end
 
       # Contains configuration details of a Amazon Cognito user pool for use with an identity source.
+
       struct UpdateCognitoUserPoolConfiguration
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon Cognito user pool associated with this identity source.
+
         @[JSON::Field(key: "userPoolArn")]
         getter user_pool_arn : String
 
         # The client ID of an app client that is configured for the specified Amazon Cognito user pool.
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
         # The configuration of the user groups from an Amazon Cognito user pool identity source.
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::UpdateCognitoGroupConfiguration?
 
@@ -3267,16 +3750,19 @@ module AwsSdk
       end
 
       # Contains an update to replace the configuration in an existing identity source.
+
       struct UpdateConfiguration
         include JSON::Serializable
 
         # Contains configuration details of a Amazon Cognito user pool.
+
         @[JSON::Field(key: "cognitoUserPoolConfiguration")]
         getter cognito_user_pool_configuration : Types::UpdateCognitoUserPoolConfiguration?
 
         # Contains configuration details of an OpenID Connect (OIDC) identity provider, or identity source,
         # that Verified Permissions can use to generate entities from authenticated identities. It specifies
         # the issuer URL, token type that you want to use, and policy store entity details.
+
         @[JSON::Field(key: "openIdConnectConfiguration")]
         getter open_id_connect_configuration : Types::UpdateOpenIdConnectConfiguration?
 
@@ -3287,23 +3773,28 @@ module AwsSdk
         end
       end
 
+
       struct UpdateIdentitySourceInput
         include JSON::Serializable
 
         # Specifies the ID of the identity source that you want to update.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # Specifies the ID of the policy store that contains the identity source that you want to update.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies the details required to communicate with the identity provider (IdP) associated with this
         # identity source.
+
         @[JSON::Field(key: "updateConfiguration")]
         getter update_configuration : Types::UpdateConfiguration
 
         # Specifies the data type of principals generated for identities authenticated by the identity source.
+
         @[JSON::Field(key: "principalEntityType")]
         getter principal_entity_type : String?
 
@@ -3316,22 +3807,27 @@ module AwsSdk
         end
       end
 
+
       struct UpdateIdentitySourceOutput
         include JSON::Serializable
 
         # The date and time that the updated identity source was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The ID of the updated identity source.
+
         @[JSON::Field(key: "identitySourceId")]
         getter identity_source_id : String
 
         # The date and time that the identity source was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the updated identity source.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -3348,15 +3844,18 @@ module AwsSdk
       # Contains the claim that you want to identify as the principal in an authorization request, and the
       # values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # UpdateOpenIdConnectTokenSelection structure, which is a parameter to UpdateIdentitySource .
+
       struct UpdateOpenIdConnectAccessTokenConfiguration
         include JSON::Serializable
 
         # The access token aud claim values that you want to accept in your policy store. For example,
         # https://myapp.example.com, https://myapp2.example.com .
+
         @[JSON::Field(key: "audiences")]
         getter audiences : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -3371,28 +3870,33 @@ module AwsSdk
       # that Verified Permissions can use to generate entities from authenticated identities. It specifies
       # the issuer URL, token type that you want to use, and policy store entity details. This data type is
       # part of a UpdateConfiguration structure, which is a parameter to UpdateIdentitySource .
+
       struct UpdateOpenIdConnectConfiguration
         include JSON::Serializable
 
         # The issuer URL of an OIDC identity provider. This URL must have an OIDC discovery endpoint at the
         # path .well-known/openid-configuration .
+
         @[JSON::Field(key: "issuer")]
         getter issuer : String
 
         # The token type that you want to process from your OIDC identity provider. Your policy store can
         # process either identity (ID) or access tokens from a given OIDC identity source.
+
         @[JSON::Field(key: "tokenSelection")]
         getter token_selection : Types::UpdateOpenIdConnectTokenSelection
 
         # A descriptive string that you want to prefix to user entities from your OIDC identity provider. For
         # example, if you set an entityIdPrefix of MyOIDCProvider , you can reference principals in your
         # policies in the format MyCorp::User::MyOIDCProvider|Carlos .
+
         @[JSON::Field(key: "entityIdPrefix")]
         getter entity_id_prefix : String?
 
         # The claim in OIDC identity provider tokens that indicates a user's group membership, and the entity
         # type that you want to map it to. For example, this object can map the contents of a groups claim to
         # MyCorp::UserGroup .
+
         @[JSON::Field(key: "groupConfiguration")]
         getter group_configuration : Types::UpdateOpenIdConnectGroupConfiguration?
 
@@ -3409,16 +3913,19 @@ module AwsSdk
       # type that you want to map it to. For example, this object can map the contents of a groups claim to
       # MyCorp::UserGroup . This data type is part of a UpdateOpenIdConnectConfiguration structure, which is
       # a parameter to UpdateIdentitySource .
+
       struct UpdateOpenIdConnectGroupConfiguration
         include JSON::Serializable
 
         # The token claim that you want Verified Permissions to interpret as group membership. For example,
         # groups .
+
         @[JSON::Field(key: "groupClaim")]
         getter group_claim : String
 
         # The policy store entity type that you want to map your users' group claim to. For example,
         # MyCorp::UserGroup . A group entity type is an entity that can have a user entity type as a member.
+
         @[JSON::Field(key: "groupEntityType")]
         getter group_entity_type : String
 
@@ -3433,15 +3940,18 @@ module AwsSdk
       # claims. Contains the claim that you want to identify as the principal in an authorization request,
       # and the values of the aud claim, or audiences, that you want to accept. This data type is part of a
       # UpdateOpenIdConnectTokenSelection structure, which is a parameter to UpdateIdentitySource .
+
       struct UpdateOpenIdConnectIdentityTokenConfiguration
         include JSON::Serializable
 
         # The ID token audience, or client ID, claim values that you want to accept in your policy store from
         # an OIDC identity provider. For example, 1example23456789, 2example10111213 .
+
         @[JSON::Field(key: "clientIds")]
         getter client_ids : Array(String)?
 
         # The claim that determines the principal in OIDC access tokens. For example, sub .
+
         @[JSON::Field(key: "principalIdClaim")]
         getter principal_id_claim : String?
 
@@ -3455,16 +3965,19 @@ module AwsSdk
       # The token type that you want to process from your OIDC identity provider. Your policy store can
       # process either identity (ID) or access tokens from a given OIDC identity source. This data type is
       # part of a UpdateOpenIdConnectConfiguration structure, which is a parameter to UpdateIdentitySource .
+
       struct UpdateOpenIdConnectTokenSelection
         include JSON::Serializable
 
         # The OIDC configuration for processing access tokens. Contains allowed audience claims, for example
         # https://auth.example.com , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "accessTokenOnly")]
         getter access_token_only : Types::UpdateOpenIdConnectAccessTokenConfiguration?
 
         # The OIDC configuration for processing identity (ID) tokens. Contains allowed client ID claims, for
         # example 1example23456789 , and the claim that you want to map to the principal, for example sub .
+
         @[JSON::Field(key: "identityTokenOnly")]
         getter identity_token_only : Types::UpdateOpenIdConnectIdentityTokenConfiguration?
 
@@ -3477,10 +3990,12 @@ module AwsSdk
 
       # Contains information about updates to be applied to a policy. This data type is used as a request
       # parameter in the UpdatePolicy operation.
+
       struct UpdatePolicyDefinition
         include JSON::Serializable
 
         # Contains details about the updates to be applied to a static policy.
+
         @[JSON::Field(key: "static")]
         getter static : Types::UpdateStaticPolicyDefinition?
 
@@ -3489,6 +4004,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct UpdatePolicyInput
         include JSON::Serializable
@@ -3499,15 +4015,18 @@ module AwsSdk
         # clauses. You can't change the following elements: Changing from static to templateLinked . Changing
         # the effect of the policy from permit or forbid . The principal referenced by the policy. The
         # resource referenced by the policy.
+
         @[JSON::Field(key: "definition")]
         getter definition : Types::UpdatePolicyDefinition
 
         # Specifies the ID of the policy that you want to update. To find this value, you can use ListPolicies
         # .
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # Specifies the ID of the policy store that contains the policy that you want to update.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -3519,47 +4038,57 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePolicyOutput
         include JSON::Serializable
 
         # The date and time that the policy was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the policy was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy that was updated.
+
         @[JSON::Field(key: "policyId")]
         getter policy_id : String
 
         # The ID of the policy store that contains the policy that was updated.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The type of the policy that was updated.
+
         @[JSON::Field(key: "policyType")]
         getter policy_type : String
 
         # The action that a policy permits or forbids. For example, {"actions": [{"actionId": "ViewPhoto",
         # "actionType": "PhotoFlash::Action"}, {"entityID": "SharePhoto", "entityType":
         # "PhotoFlash::Action"}]} .
+
         @[JSON::Field(key: "actions")]
         getter actions : Array(Types::ActionIdentifier)?
 
         # The effect of the decision that a policy returns to an authorization request. For example, "effect":
         # "Permit" .
+
         @[JSON::Field(key: "effect")]
         getter effect : String?
 
         # The principal specified in the policy's scope. This element isn't included in the response when
         # Principal isn't present in the policy content.
+
         @[JSON::Field(key: "principal")]
         getter principal : Types::EntityIdentifier?
 
         # The resource specified in the policy's scope. This element isn't included in the response when
         # Resource isn't present in the policy content.
+
         @[JSON::Field(key: "resource")]
         getter resource : Types::EntityIdentifier?
 
@@ -3577,24 +4106,29 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePolicyStoreInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that you want to update
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # A structure that defines the validation settings that want to enable for the policy store.
+
         @[JSON::Field(key: "validationSettings")]
         getter validation_settings : Types::ValidationSettings
 
         # Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted.
         # When you call UpdatePolicyStore , this parameter is unchanged unless explicitly included in the
         # call.
+
         @[JSON::Field(key: "deletionProtection")]
         getter deletion_protection : String?
 
         # Descriptive text that you can provide to help with identification of the current policy store.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3607,22 +4141,27 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePolicyStoreOutput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the updated policy store.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The date and time that the policy store was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the policy store was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the updated policy store.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
@@ -3635,14 +4174,17 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePolicyTemplateInput
         include JSON::Serializable
 
         # Specifies the ID of the policy store that contains the policy template that you want to update.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # Specifies the ID of the policy template that you want to update.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
@@ -3651,10 +4193,12 @@ module AwsSdk
         # referenced by the policy template. Any conditional clauses, such as when or unless clauses. You
         # can't change the following elements: The effect ( permit or forbid ) of the policy template. The
         # principal referenced by the policy template. The resource referenced by the policy template.
+
         @[JSON::Field(key: "statement")]
         getter statement : String
 
         # Specifies a new description to apply to the policy template.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3667,22 +4211,27 @@ module AwsSdk
         end
       end
 
+
       struct UpdatePolicyTemplateOutput
         include JSON::Serializable
 
         # The date and time that the policy template was originally created.
+
         @[JSON::Field(key: "createdDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter created_date : Time
 
         # The date and time that the policy template was most recently updated.
+
         @[JSON::Field(key: "lastUpdatedDate", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter last_updated_date : Time
 
         # The ID of the policy store that contains the updated policy template.
+
         @[JSON::Field(key: "policyStoreId")]
         getter policy_store_id : String
 
         # The ID of the updated policy template.
+
         @[JSON::Field(key: "policyTemplateId")]
         getter policy_template_id : String
 
@@ -3696,6 +4245,7 @@ module AwsSdk
       end
 
       # Contains information about an update to a static policy.
+
       struct UpdateStaticPolicyDefinition
         include JSON::Serializable
 
@@ -3704,10 +4254,12 @@ module AwsSdk
         # Any conditional clauses, such as when or unless clauses. You can't change the following elements:
         # Changing from StaticPolicy to TemplateLinkedPolicy . The effect ( permit or forbid ) of the policy.
         # The principal referenced by the policy. The resource referenced by the policy.
+
         @[JSON::Field(key: "statement")]
         getter statement : String
 
         # Specifies the description to be added to or replaced on the static policy.
+
         @[JSON::Field(key: "description")]
         getter description : String?
 
@@ -3739,13 +4291,16 @@ module AwsSdk
       # FunctionArgumentValidationError Cedar couldn't parse the argument passed to an extension type. For
       # example, a string that is to be parsed as an IPv4 address can contain only digits and the period
       # character.
+
       struct ValidationException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The list of fields that aren't valid.
+
         @[JSON::Field(key: "fieldList")]
         getter field_list : Array(Types::ValidationExceptionField)?
 
@@ -3757,14 +4312,17 @@ module AwsSdk
       end
 
       # Details about a field that failed policy validation.
+
       struct ValidationExceptionField
         include JSON::Serializable
 
         # Describes the policy validation error.
+
         @[JSON::Field(key: "message")]
         getter message : String
 
         # The path to the specific element that Verified Permissions found to be not valid.
+
         @[JSON::Field(key: "path")]
         getter path : String
 
@@ -3779,6 +4337,7 @@ module AwsSdk
       # determines which validation failures that Cedar considers serious enough to block acceptance of a
       # new or edited static policy or policy template. This data type is used as a request parameter in the
       # CreatePolicyStore and UpdatePolicyStore operations.
+
       struct ValidationSettings
         include JSON::Serializable
 
@@ -3790,6 +4349,7 @@ module AwsSdk
         # policy store doesn't contain a schema, Verified Permissions rejects all static policies and policy
         # templates because there is no schema to validate against. To submit a static policy or policy
         # template without a schema, you must turn off validation.
+
         @[JSON::Field(key: "mode")]
         getter mode : String
 

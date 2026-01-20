@@ -30,6 +30,7 @@ module AwsSdk
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Working with Archives in Amazon Glacier and Abort Multipart Upload in the Amazon Glacier Developer
       # Guide .
+
       def abort_multipart_upload(
         account_id : String,
         upload_id : String,
@@ -38,6 +39,7 @@ module AwsSdk
         input = Types::AbortMultipartUploadInput.new(account_id: account_id, upload_id: upload_id, vault_name: vault_name)
         abort_multipart_upload(input)
       end
+
       def abort_multipart_upload(input : Types::AbortMultipartUploadInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ABORT_MULTIPART_UPLOAD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -53,6 +55,7 @@ module AwsSdk
       # Access Control with Vault Lock Policies . This operation is idempotent. You can successfully invoke
       # this operation multiple times, if the vault lock is in the InProgress state or if there is no policy
       # associated with the vault.
+
       def abort_vault_lock(
         account_id : String,
         vault_name : String
@@ -60,6 +63,7 @@ module AwsSdk
         input = Types::AbortVaultLockInput.new(account_id: account_id, vault_name: vault_name)
         abort_vault_lock(input)
       end
+
       def abort_vault_lock(input : Types::AbortVaultLockInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ABORT_VAULT_LOCK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -70,6 +74,7 @@ module AwsSdk
       # exceeded, the operation throws the LimitExceededException error. If a tag already exists on the
       # vault under a specified key, the existing key value will be overwritten. For more information about
       # tags, see Tagging Amazon Glacier Resources .
+
       def add_tags_to_vault(
         account_id : String,
         vault_name : String,
@@ -78,6 +83,7 @@ module AwsSdk
         input = Types::AddTagsToVaultInput.new(account_id: account_id, vault_name: vault_name, tags: tags)
         add_tags_to_vault(input)
       end
+
       def add_tags_to_vault(input : Types::AddTagsToVaultInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::ADD_TAGS_TO_VAULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -110,6 +116,7 @@ module AwsSdk
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Uploading
       # Large Archives in Parts (Multipart Upload) and Complete Multipart Upload in the Amazon Glacier
       # Developer Guide .
+
       def complete_multipart_upload(
         account_id : String,
         upload_id : String,
@@ -120,6 +127,7 @@ module AwsSdk
         input = Types::CompleteMultipartUploadInput.new(account_id: account_id, upload_id: upload_id, vault_name: vault_name, archive_size: archive_size, checksum: checksum)
         complete_multipart_upload(input)
       end
+
       def complete_multipart_upload(input : Types::CompleteMultipartUploadInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::COMPLETE_MULTIPART_UPLOAD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -135,6 +143,7 @@ module AwsSdk
       # state, the operation returns an AccessDeniedException error. If an invalid lock ID is passed in the
       # request when the vault lock is in the InProgress state, the operation throws an InvalidParameter
       # error.
+
       def complete_vault_lock(
         account_id : String,
         lock_id : String,
@@ -143,6 +152,7 @@ module AwsSdk
         input = Types::CompleteVaultLockInput.new(account_id: account_id, lock_id: lock_id, vault_name: vault_name)
         complete_vault_lock(input)
       end
+
       def complete_vault_lock(input : Types::CompleteVaultLockInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::COMPLETE_VAULT_LOCK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -158,6 +168,7 @@ module AwsSdk
       # specific actions. For more information, see Access Control Using AWS Identity and Access Management
       # (IAM) . For conceptual information and underlying REST API, see Creating a Vault in Amazon Glacier
       # and Create Vault in the Amazon Glacier Developer Guide .
+
       def create_vault(
         account_id : String,
         vault_name : String
@@ -165,6 +176,7 @@ module AwsSdk
         input = Types::CreateVaultInput.new(account_id: account_id, vault_name: vault_name)
         create_vault(input)
       end
+
       def create_vault(input : Types::CreateVaultInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_VAULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -182,6 +194,7 @@ module AwsSdk
       # them explicit permission to perform specific actions. For more information, see Access Control Using
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Deleting an Archive in Amazon Glacier and Delete Archive in the Amazon Glacier Developer Guide .
+
       def delete_archive(
         account_id : String,
         archive_id : String,
@@ -190,6 +203,7 @@ module AwsSdk
         input = Types::DeleteArchiveInput.new(account_id: account_id, archive_id: archive_id, vault_name: vault_name)
         delete_archive(input)
       end
+
       def delete_archive(input : Types::DeleteArchiveInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ARCHIVE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -207,6 +221,7 @@ module AwsSdk
       # specific actions. For more information, see Access Control Using AWS Identity and Access Management
       # (IAM) . For conceptual information and underlying REST API, see Deleting a Vault in Amazon Glacier
       # and Delete Vault in the Amazon Glacier Developer Guide .
+
       def delete_vault(
         account_id : String,
         vault_name : String
@@ -214,6 +229,7 @@ module AwsSdk
         input = Types::DeleteVaultInput.new(account_id: account_id, vault_name: vault_name)
         delete_vault(input)
       end
+
       def delete_vault(input : Types::DeleteVaultInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VAULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -225,6 +241,7 @@ module AwsSdk
       # delete request. This operation is idempotent. You can invoke delete multiple times, even if there is
       # no policy associated with the vault. For more information about vault access policies, see Amazon
       # Glacier Access Control with Vault Access Policies .
+
       def delete_vault_access_policy(
         account_id : String,
         vault_name : String
@@ -232,6 +249,7 @@ module AwsSdk
         input = Types::DeleteVaultAccessPolicyInput.new(account_id: account_id, vault_name: vault_name)
         delete_vault_access_policy(input)
       end
+
       def delete_vault_access_policy(input : Types::DeleteVaultAccessPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VAULT_ACCESS_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -246,6 +264,7 @@ module AwsSdk
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Configuring Vault Notifications in Amazon Glacier and Delete Vault Notification Configuration in the
       # Amazon Glacier Developer Guide.
+
       def delete_vault_notifications(
         account_id : String,
         vault_name : String
@@ -253,6 +272,7 @@ module AwsSdk
         input = Types::DeleteVaultNotificationsInput.new(account_id: account_id, vault_name: vault_name)
         delete_vault_notifications(input)
       end
+
       def delete_vault_notifications(input : Types::DeleteVaultNotificationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VAULT_NOTIFICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -270,6 +290,7 @@ module AwsSdk
       # actions. For more information, see Access Control Using AWS Identity and Access Management (IAM) .
       # For more information about using this operation, see the documentation for the underlying REST API
       # Describe Job in the Amazon Glacier Developer Guide .
+
       def describe_job(
         account_id : String,
         job_id : String,
@@ -278,6 +299,7 @@ module AwsSdk
         input = Types::DescribeJobInput.new(account_id: account_id, job_id: job_id, vault_name: vault_name)
         describe_job(input)
       end
+
       def describe_job(input : Types::DescribeJobInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -295,6 +317,7 @@ module AwsSdk
       # permission to perform specific actions. For more information, see Access Control Using AWS Identity
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Retrieving
       # Vault Metadata in Amazon Glacier and Describe Vault in the Amazon Glacier Developer Guide .
+
       def describe_vault(
         account_id : String,
         vault_name : String
@@ -302,6 +325,7 @@ module AwsSdk
         input = Types::DescribeVaultInput.new(account_id: account_id, vault_name: vault_name)
         describe_vault(input)
       end
+
       def describe_vault(input : Types::DescribeVaultInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DESCRIBE_VAULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -310,12 +334,14 @@ module AwsSdk
       # This operation returns the current data retrieval policy for the account and region specified in the
       # GET request. For more information about data retrieval policies, see Amazon Glacier Data Retrieval
       # Policies .
+
       def get_data_retrieval_policy(
         account_id : String
       ) : Protocol::Request
         input = Types::GetDataRetrievalPolicyInput.new(account_id: account_id)
         get_data_retrieval_policy(input)
       end
+
       def get_data_retrieval_policy(input : Types::GetDataRetrievalPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DATA_RETRIEVAL_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -346,6 +372,7 @@ module AwsSdk
       # see Access Control Using AWS Identity and Access Management (IAM) . For conceptual information and
       # the underlying REST API, see Downloading a Vault Inventory , Downloading an Archive , and Get Job
       # Output
+
       def get_job_output(
         account_id : String,
         job_id : String,
@@ -355,6 +382,7 @@ module AwsSdk
         input = Types::GetJobOutputInput.new(account_id: account_id, job_id: job_id, vault_name: vault_name, range: range)
         get_job_output(input)
       end
+
       def get_job_output(input : Types::GetJobOutputInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_JOB_OUTPUT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -364,6 +392,7 @@ module AwsSdk
       # setting this subresource, see Set Vault Access Policy (PUT access-policy) . If there is no access
       # policy set on the vault, the operation returns a 404 Not found error. For more information about
       # vault access policies, see Amazon Glacier Access Control with Vault Access Policies .
+
       def get_vault_access_policy(
         account_id : String,
         vault_name : String
@@ -371,6 +400,7 @@ module AwsSdk
         input = Types::GetVaultAccessPolicyInput.new(account_id: account_id, vault_name: vault_name)
         get_vault_access_policy(input)
       end
+
       def get_vault_access_policy(input : Types::GetVaultAccessPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_VAULT_ACCESS_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -385,6 +415,7 @@ module AwsSdk
       # AbortVaultLock . For more information about the vault locking process, Amazon Glacier Vault Lock .
       # If there is no vault lock policy set on the vault, the operation returns a 404 Not found error. For
       # more information about vault lock policies, Amazon Glacier Access Control with Vault Lock Policies .
+
       def get_vault_lock(
         account_id : String,
         vault_name : String
@@ -392,6 +423,7 @@ module AwsSdk
         input = Types::GetVaultLockInput.new(account_id: account_id, vault_name: vault_name)
         get_vault_lock(input)
       end
+
       def get_vault_lock(input : Types::GetVaultLockInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_VAULT_LOCK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -407,6 +439,7 @@ module AwsSdk
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Configuring
       # Vault Notifications in Amazon Glacier and Get Vault Notification Configuration in the Amazon Glacier
       # Developer Guide .
+
       def get_vault_notifications(
         account_id : String,
         vault_name : String
@@ -414,6 +447,7 @@ module AwsSdk
         input = Types::GetVaultNotificationsInput.new(account_id: account_id, vault_name: vault_name)
         get_vault_notifications(input)
       end
+
       def get_vault_notifications(input : Types::GetVaultNotificationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_VAULT_NOTIFICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -422,6 +456,7 @@ module AwsSdk
       # This operation initiates a job of the specified type, which can be a select, an archival retrieval,
       # or a vault retrieval. For more information about using this operation, see the documentation for the
       # underlying REST API Initiate a Job .
+
       def initiate_job(
         account_id : String,
         vault_name : String,
@@ -430,6 +465,7 @@ module AwsSdk
         input = Types::InitiateJobInput.new(account_id: account_id, vault_name: vault_name, job_parameters: job_parameters)
         initiate_job(input)
       end
+
       def initiate_job(input : Types::InitiateJobInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::INITIATE_JOB, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -454,6 +490,7 @@ module AwsSdk
       # more information, see Access Control Using AWS Identity and Access Management (IAM) . For conceptual
       # information and underlying REST API, see Uploading Large Archives in Parts (Multipart Upload) and
       # Initiate Multipart Upload in the Amazon Glacier Developer Guide .
+
       def initiate_multipart_upload(
         account_id : String,
         vault_name : String,
@@ -463,6 +500,7 @@ module AwsSdk
         input = Types::InitiateMultipartUploadInput.new(account_id: account_id, vault_name: vault_name, archive_description: archive_description, part_size: part_size)
         initiate_multipart_upload(input)
       end
+
       def initiate_multipart_upload(input : Types::InitiateMultipartUploadInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::INITIATE_MULTIPART_UPLOAD, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -483,6 +521,7 @@ module AwsSdk
       # when the vault lock is in the InProgress state, the operation returns an AccessDeniedException
       # error. When the vault lock is in the InProgress state you must call AbortVaultLock before you can
       # initiate a new vault lock policy.
+
       def initiate_vault_lock(
         account_id : String,
         vault_name : String,
@@ -491,6 +530,7 @@ module AwsSdk
         input = Types::InitiateVaultLockInput.new(account_id: account_id, vault_name: vault_name, policy: policy)
         initiate_vault_lock(input)
       end
+
       def initiate_vault_lock(input : Types::InitiateVaultLockInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::INITIATE_VAULT_LOCK, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -518,6 +558,7 @@ module AwsSdk
       # can specify to return only jobs that were completed ( true ) or jobs that were not completed ( false
       # ). For more information about using this operation, see the documentation for the underlying REST
       # API List Jobs .
+
       def list_jobs(
         account_id : String,
         vault_name : String,
@@ -529,6 +570,7 @@ module AwsSdk
         input = Types::ListJobsInput.new(account_id: account_id, vault_name: vault_name, completed: completed, limit: limit, marker: marker, statuscode: statuscode)
         list_jobs(input)
       end
+
       def list_jobs(input : Types::ListJobsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_JOBS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -552,6 +594,7 @@ module AwsSdk
       # AWS Identity and Access Management (IAM) . For conceptual information and the underlying REST API,
       # see Working with Archives in Amazon Glacier and List Multipart Uploads in the Amazon Glacier
       # Developer Guide .
+
       def list_multipart_uploads(
         account_id : String,
         vault_name : String,
@@ -561,6 +604,7 @@ module AwsSdk
         input = Types::ListMultipartUploadsInput.new(account_id: account_id, vault_name: vault_name, limit: limit, marker: marker)
         list_multipart_uploads(input)
       end
+
       def list_multipart_uploads(input : Types::ListMultipartUploadsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_MULTIPART_UPLOADS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -580,6 +624,7 @@ module AwsSdk
       # permission to perform specific actions. For more information, see Access Control Using AWS Identity
       # and Access Management (IAM) . For conceptual information and the underlying REST API, see Working
       # with Archives in Amazon Glacier and List Parts in the Amazon Glacier Developer Guide .
+
       def list_parts(
         account_id : String,
         upload_id : String,
@@ -590,18 +635,21 @@ module AwsSdk
         input = Types::ListPartsInput.new(account_id: account_id, upload_id: upload_id, vault_name: vault_name, limit: limit, marker: marker)
         list_parts(input)
       end
+
       def list_parts(input : Types::ListPartsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_PARTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # This operation lists the provisioned capacity units for the specified AWS account.
+
       def list_provisioned_capacity(
         account_id : String
       ) : Protocol::Request
         input = Types::ListProvisionedCapacityInput.new(account_id: account_id)
         list_provisioned_capacity(input)
       end
+
       def list_provisioned_capacity(input : Types::ListProvisionedCapacityInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_PROVISIONED_CAPACITY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -609,6 +657,7 @@ module AwsSdk
 
       # This operation lists all the tags attached to a vault. The operation returns an empty map if there
       # are no tags. For more information about tags, see Tagging Amazon Glacier Resources .
+
       def list_tags_for_vault(
         account_id : String,
         vault_name : String
@@ -616,6 +665,7 @@ module AwsSdk
         input = Types::ListTagsForVaultInput.new(account_id: account_id, vault_name: vault_name)
         list_tags_for_vault(input)
       end
+
       def list_tags_for_vault(input : Types::ListTagsForVaultInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_VAULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -633,6 +683,7 @@ module AwsSdk
       # specific actions. For more information, see Access Control Using AWS Identity and Access Management
       # (IAM) . For conceptual information and underlying REST API, see Retrieving Vault Metadata in Amazon
       # Glacier and List Vaults in the Amazon Glacier Developer Guide .
+
       def list_vaults(
         account_id : String,
         limit : String? = nil,
@@ -641,18 +692,21 @@ module AwsSdk
         input = Types::ListVaultsInput.new(account_id: account_id, limit: limit, marker: marker)
         list_vaults(input)
       end
+
       def list_vaults(input : Types::ListVaultsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_VAULTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # This operation purchases a provisioned capacity unit for an AWS account.
+
       def purchase_provisioned_capacity(
         account_id : String
       ) : Protocol::Request
         input = Types::PurchaseProvisionedCapacityInput.new(account_id: account_id)
         purchase_provisioned_capacity(input)
       end
+
       def purchase_provisioned_capacity(input : Types::PurchaseProvisionedCapacityInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PURCHASE_PROVISIONED_CAPACITY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -661,6 +715,7 @@ module AwsSdk
       # This operation removes one or more tags from the set of tags attached to a vault. For more
       # information about tags, see Tagging Amazon Glacier Resources . This operation is idempotent. The
       # operation will be successful, even if there are no tags attached to the vault.
+
       def remove_tags_from_vault(
         account_id : String,
         vault_name : String,
@@ -669,6 +724,7 @@ module AwsSdk
         input = Types::RemoveTagsFromVaultInput.new(account_id: account_id, vault_name: vault_name, tag_keys: tag_keys)
         remove_tags_from_vault(input)
       end
+
       def remove_tags_from_vault(input : Types::RemoveTagsFromVaultInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REMOVE_TAGS_FROM_VAULT, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -679,6 +735,7 @@ module AwsSdk
       # minutes of a successful PUT operation. The set policy operation does not affect retrieval jobs that
       # were in progress before the policy was enacted. For more information about data retrieval policies,
       # see Amazon Glacier Data Retrieval Policies .
+
       def set_data_retrieval_policy(
         account_id : String,
         policy : Types::DataRetrievalPolicy? = nil
@@ -686,6 +743,7 @@ module AwsSdk
         input = Types::SetDataRetrievalPolicyInput.new(account_id: account_id, policy: policy)
         set_data_retrieval_policy(input)
       end
+
       def set_data_retrieval_policy(input : Types::SetDataRetrievalPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SET_DATA_RETRIEVAL_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -696,6 +754,7 @@ module AwsSdk
       # An access policy is specific to a vault and is also called a vault subresource. You can set one
       # access policy per vault and the policy can be up to 20 KB in size. For more information about vault
       # access policies, see Amazon Glacier Access Control with Vault Access Policies .
+
       def set_vault_access_policy(
         account_id : String,
         vault_name : String,
@@ -704,6 +763,7 @@ module AwsSdk
         input = Types::SetVaultAccessPolicyInput.new(account_id: account_id, vault_name: vault_name, policy: policy)
         set_vault_access_policy(input)
       end
+
       def set_vault_access_policy(input : Types::SetVaultAccessPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SET_VAULT_ACCESS_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -727,6 +787,7 @@ module AwsSdk
       # and Access Management (IAM) . For conceptual information and underlying REST API, see Configuring
       # Vault Notifications in Amazon Glacier and Set Vault Notification Configuration in the Amazon Glacier
       # Developer Guide .
+
       def set_vault_notifications(
         account_id : String,
         vault_name : String,
@@ -735,6 +796,7 @@ module AwsSdk
         input = Types::SetVaultNotificationsInput.new(account_id: account_id, vault_name: vault_name, vault_notification_config: vault_notification_config)
         set_vault_notifications(input)
       end
+
       def set_vault_notifications(input : Types::SetVaultNotificationsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::SET_VAULT_NOTIFICATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -760,6 +822,7 @@ module AwsSdk
       # them explicit permission to perform specific actions. For more information, see Access Control Using
       # AWS Identity and Access Management (IAM) . For conceptual information and underlying REST API, see
       # Uploading an Archive in Amazon Glacier and Upload Archive in the Amazon Glacier Developer Guide .
+
       def upload_archive(
         account_id : String,
         vault_name : String,
@@ -770,6 +833,7 @@ module AwsSdk
         input = Types::UploadArchiveInput.new(account_id: account_id, vault_name: vault_name, archive_description: archive_description, body: body, checksum: checksum)
         upload_archive(input)
       end
+
       def upload_archive(input : Types::UploadArchiveInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPLOAD_ARCHIVE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -798,6 +862,7 @@ module AwsSdk
       # more information, see Access Control Using AWS Identity and Access Management (IAM) . For conceptual
       # information and underlying REST API, see Uploading Large Archives in Parts (Multipart Upload) and
       # Upload Part in the Amazon Glacier Developer Guide .
+
       def upload_multipart_part(
         account_id : String,
         upload_id : String,
@@ -809,6 +874,7 @@ module AwsSdk
         input = Types::UploadMultipartPartInput.new(account_id: account_id, upload_id: upload_id, vault_name: vault_name, body: body, checksum: checksum, range: range)
         upload_multipart_part(input)
       end
+
       def upload_multipart_part(input : Types::UploadMultipartPartInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPLOAD_MULTIPART_PART, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

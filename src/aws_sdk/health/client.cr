@@ -1,6 +1,7 @@
 module AwsSdk
   module Health
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -33,14 +34,17 @@ module AwsSdk
       # EnableHealthServiceAccessForOrganization operation from your organization's management account. This
       # API operation uses pagination. Specify the nextToken parameter in the next request to return more
       # results.
+
       def describe_affected_accounts_for_organization(
         event_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAffectedAccountsForOrganizationResponse
+
         input = Types::DescribeAffectedAccountsForOrganizationRequest.new(event_arn: event_arn, max_results: max_results, next_token: next_token)
         describe_affected_accounts_for_organization(input)
       end
+
       def describe_affected_accounts_for_organization(input : Types::DescribeAffectedAccountsForOrganizationRequest) : Types::DescribeAffectedAccountsForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_AFFECTED_ACCOUNTS_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -57,15 +61,18 @@ module AwsSdk
       # nextToken parameter in the next request to return more results. This operation supports
       # resource-level permissions. You can use this operation to allow or deny access to specific Health
       # events. For more information, see Resource- and action-based conditions in the Health User Guide .
+
       def describe_affected_entities(
         filter : Types::EntityFilter,
         locale : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeAffectedEntitiesResponse
+
         input = Types::DescribeAffectedEntitiesRequest.new(filter: filter, locale: locale, max_results: max_results, next_token: next_token)
         describe_affected_entities(input)
       end
+
       def describe_affected_entities(input : Types::DescribeAffectedEntitiesRequest) : Types::DescribeAffectedEntitiesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_AFFECTED_ENTITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -84,6 +91,7 @@ module AwsSdk
       # request to return more results. This operation doesn't support resource-level permissions. You can't
       # use this operation to allow or deny access to specific Health events. For more information, see
       # Resource- and action-based conditions in the Health User Guide .
+
       def describe_affected_entities_for_organization(
         locale : String? = nil,
         max_results : Int32? = nil,
@@ -91,9 +99,11 @@ module AwsSdk
         organization_entity_account_filters : Array(Types::EntityAccountFilter)? = nil,
         organization_entity_filters : Array(Types::EventAccountFilter)? = nil
       ) : Types::DescribeAffectedEntitiesForOrganizationResponse
+
         input = Types::DescribeAffectedEntitiesForOrganizationRequest.new(locale: locale, max_results: max_results, next_token: next_token, organization_entity_account_filters: organization_entity_account_filters, organization_entity_filters: organization_entity_filters)
         describe_affected_entities_for_organization(input)
       end
+
       def describe_affected_entities_for_organization(input : Types::DescribeAffectedEntitiesForOrganizationRequest) : Types::DescribeAffectedEntitiesForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_AFFECTED_ENTITIES_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -103,12 +113,15 @@ module AwsSdk
       end
 
       # Returns the number of entities that are affected by each of the specified events.
+
       def describe_entity_aggregates(
         event_arns : Array(String)? = nil
       ) : Types::DescribeEntityAggregatesResponse
+
         input = Types::DescribeEntityAggregatesRequest.new(event_arns: event_arns)
         describe_entity_aggregates(input)
       end
+
       def describe_entity_aggregates(input : Types::DescribeEntityAggregatesRequest) : Types::DescribeEntityAggregatesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ENTITY_AGGREGATES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -119,13 +132,16 @@ module AwsSdk
 
       # Returns a list of entity aggregates for your Organizations that are affected by each of the
       # specified events.
+
       def describe_entity_aggregates_for_organization(
         event_arns : Array(String),
         aws_account_ids : Array(String)? = nil
       ) : Types::DescribeEntityAggregatesForOrganizationResponse
+
         input = Types::DescribeEntityAggregatesForOrganizationRequest.new(event_arns: event_arns, aws_account_ids: aws_account_ids)
         describe_entity_aggregates_for_organization(input)
       end
+
       def describe_entity_aggregates_for_organization(input : Types::DescribeEntityAggregatesForOrganizationRequest) : Types::DescribeEntityAggregatesForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ENTITY_AGGREGATES_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -138,15 +154,18 @@ module AwsSdk
       # If no filter is specified, the counts of all events in each category are returned. This API
       # operation uses pagination. Specify the nextToken parameter in the next request to return more
       # results.
+
       def describe_event_aggregates(
         aggregate_field : String,
         filter : Types::EventFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeEventAggregatesResponse
+
         input = Types::DescribeEventAggregatesRequest.new(aggregate_field: aggregate_field, filter: filter, max_results: max_results, next_token: next_token)
         describe_event_aggregates(input)
       end
+
       def describe_event_aggregates(input : Types::DescribeEventAggregatesRequest) : Types::DescribeEventAggregatesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EVENT_AGGREGATES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -163,13 +182,16 @@ module AwsSdk
       # This operation supports resource-level permissions. You can use this operation to allow or deny
       # access to specific Health events. For more information, see Resource- and action-based conditions in
       # the Health User Guide .
+
       def describe_event_details(
         event_arns : Array(String),
         locale : String? = nil
       ) : Types::DescribeEventDetailsResponse
+
         input = Types::DescribeEventDetailsRequest.new(event_arns: event_arns, locale: locale)
         describe_event_details(input)
       end
+
       def describe_event_details(input : Types::DescribeEventDetailsRequest) : Types::DescribeEventDetailsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EVENT_DETAILS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -196,13 +218,16 @@ module AwsSdk
       # doesn't support resource-level permissions. You can't use this operation to allow or deny access to
       # specific Health events. For more information, see Resource- and action-based conditions in the
       # Health User Guide .
+
       def describe_event_details_for_organization(
         organization_event_detail_filters : Array(Types::EventAccountFilter),
         locale : String? = nil
       ) : Types::DescribeEventDetailsForOrganizationResponse
+
         input = Types::DescribeEventDetailsForOrganizationRequest.new(organization_event_detail_filters: organization_event_detail_filters, locale: locale)
         describe_event_details_for_organization(input)
       end
+
       def describe_event_details_for_organization(input : Types::DescribeEventDetailsForOrganizationRequest) : Types::DescribeEventDetailsForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EVENT_DETAILS_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -217,15 +242,18 @@ module AwsSdk
       # filter criteria, the API operation returns all event types, in no particular order. This API
       # operation uses pagination. Specify the nextToken parameter in the next request to return more
       # results.
+
       def describe_event_types(
         filter : Types::EventTypeFilter? = nil,
         locale : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeEventTypesResponse
+
         input = Types::DescribeEventTypesRequest.new(filter: filter, locale: locale, max_results: max_results, next_token: next_token)
         describe_event_types(input)
       end
+
       def describe_event_types(input : Types::DescribeEventTypesRequest) : Types::DescribeEventTypesResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EVENT_TYPES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -246,15 +274,18 @@ module AwsSdk
       # specific to a service, use the services parameter in the filter object. For more information, see
       # Event . This API operation uses pagination. Specify the nextToken parameter in the next request to
       # return more results.
+
       def describe_events(
         filter : Types::EventFilter? = nil,
         locale : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeEventsResponse
+
         input = Types::DescribeEventsRequest.new(filter: filter, locale: locale, max_results: max_results, next_token: next_token)
         describe_events(input)
       end
+
       def describe_events(input : Types::DescribeEventsRequest) : Types::DescribeEventsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EVENTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -275,15 +306,18 @@ module AwsSdk
       # to work with Organizations. To do this, call the EnableHealthServiceAccessForOrganization operation
       # from your organization's management account. This API operation uses pagination. Specify the
       # nextToken parameter in the next request to return more results.
+
       def describe_events_for_organization(
         filter : Types::OrganizationEventFilter? = nil,
         locale : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::DescribeEventsForOrganizationResponse
+
         input = Types::DescribeEventsForOrganizationRequest.new(filter: filter, locale: locale, max_results: max_results, next_token: next_token)
         describe_events_for_organization(input)
       end
+
       def describe_events_for_organization(input : Types::DescribeEventsForOrganizationRequest) : Types::DescribeEventsForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EVENTS_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -294,6 +328,8 @@ module AwsSdk
 
       # This operation provides status information on enabling or disabling Health to work with your
       # organization. To call this operation, you must use the organization's management account.
+
+
       def describe_health_service_status_for_organization : Types::DescribeHealthServiceStatusForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_HEALTH_SERVICE_STATUS_FOR_ORGANIZATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -312,6 +348,8 @@ module AwsSdk
       # Web Services accounts in your organization. If you call the Health API operations for organizational
       # view, Health returns an error. Health continues to aggregate health events for your Amazon Web
       # Services account.
+
+
       def disable_health_service_access_for_organization : Nil
         request = Protocol::JsonRpc.build_request(Model::DISABLE_HEALTH_SERVICE_ACCESS_FOR_ORGANIZATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -331,6 +369,8 @@ module AwsSdk
       # policies, see Health identity-based policy examples . If you don't have the required support plan,
       # you can instead use the Health console to enable the organizational view feature. For more
       # information, see Aggregating Health events in the Health User Guide .
+
+
       def enable_health_service_access_for_organization : Nil
         request = Protocol::JsonRpc.build_request(Model::ENABLE_HEALTH_SERVICE_ACCESS_FOR_ORGANIZATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)

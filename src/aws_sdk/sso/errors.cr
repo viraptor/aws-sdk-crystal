@@ -1,56 +1,41 @@
 module AwsSdk
-  module SSOAdmin
+  module SSO
     module Errors
       class ServiceError < Exception
       end
 
-      # You do not have sufficient access to perform this action.
-      class AccessDeniedException < ServiceError
+      # Indicates that a problem occurred with the input to the request. For example, a required parameter
+      # might be missing or out of range.
+
+      class InvalidRequestException < ServiceError
       end
 
-      # Occurs when a conflict with a previous successful write is detected. This generally occurs when the
-      # previous write did not have time to propagate to the host serving the current request. A retry (with
-      # appropriate backoff logic) is the recommended response to this exception.
-      class ConflictException < ServiceError
-      end
+      # The specified resource doesn't exist.
 
-      # The request processing has failed because of an unknown error, exception, or failure with an
-      # internal server.
-      class InternalServerException < ServiceError
-      end
-
-      # Indicates that a requested resource is not found.
       class ResourceNotFoundException < ServiceError
       end
 
-      # Indicates that the principal has crossed the permitted number of resources that can be created.
-      class ServiceQuotaExceededException < ServiceError
+      # Indicates that the request is being made too frequently and is more than what the server can handle.
+
+      class TooManyRequestsException < ServiceError
       end
 
-      # Indicates that the principal has crossed the throttling limits of the API operations.
-      class ThrottlingException < ServiceError
-      end
+      # Indicates that the request is not authorized. This can happen due to an invalid access token in the
+      # request.
 
-      # The request failed because it contains a syntax error.
-      class ValidationException < ServiceError
+      class UnauthorizedException < ServiceError
       end
 
       def self.build(error_type : String?, message : String?) : Exception
         case error_type
-        when "AccessDeniedException"
-          AccessDeniedException.new(message)
-        when "ConflictException"
-          ConflictException.new(message)
-        when "InternalServerException"
-          InternalServerException.new(message)
+        when "InvalidRequestException"
+          InvalidRequestException.new(message)
         when "ResourceNotFoundException"
           ResourceNotFoundException.new(message)
-        when "ServiceQuotaExceededException"
-          ServiceQuotaExceededException.new(message)
-        when "ThrottlingException"
-          ThrottlingException.new(message)
-        when "ValidationException"
-          ValidationException.new(message)
+        when "TooManyRequestsException"
+          TooManyRequestsException.new(message)
+        when "UnauthorizedException"
+          UnauthorizedException.new(message)
         else
           ServiceError.new(message || "Unknown error")
         end

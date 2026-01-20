@@ -1,0 +1,7 @@
+require "./runtime"
+require "./applicationdiscoveryservice/client"
+require "./applicationdiscoveryservice/errors"
+require "./applicationdiscoveryservice/model"
+require "./applicationdiscoveryservice/types"
+require "./applicationdiscoveryservice/protocol/json_rpc"
+require "./customizations/applicationdiscoveryservice/customizations"

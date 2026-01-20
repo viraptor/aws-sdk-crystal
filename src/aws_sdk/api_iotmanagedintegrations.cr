@@ -1,7 +1,0 @@
-require "./runtime"
-require "./api_iotmanagedintegrations/client"
-require "./api_iotmanagedintegrations/errors"
-require "./api_iotmanagedintegrations/model"
-require "./api_iotmanagedintegrations/types"
-require "./api_iotmanagedintegrations/protocol/rest_json"
-require "./customizations/api_iotmanagedintegrations/customizations"

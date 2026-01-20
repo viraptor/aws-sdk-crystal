@@ -1,0 +1,7 @@
+require "./runtime"
+require "./migrationhubrefactorspaces/client"
+require "./migrationhubrefactorspaces/errors"
+require "./migrationhubrefactorspaces/model"
+require "./migrationhubrefactorspaces/types"
+require "./migrationhubrefactorspaces/protocol/rest_json"
+require "./customizations/migrationhubrefactorspaces/customizations"

@@ -5,38 +5,47 @@ module AwsSdk
       end
 
       # You do not have sufficient permissions to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # An error occurred due to a conflict.
+
       class ConflictException < ServiceError
       end
 
       # The specified device is currently offline.
+
       class DeviceOfflineException < ServiceError
       end
 
       # The specified device has been retired.
+
       class DeviceRetiredException < ServiceError
       end
 
       # The request failed because of an unknown error.
+
       class InternalServiceException < ServiceError
       end
 
       # The specified resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request failed because a service quota is exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The API throttling rate limit is exceeded.
+
       class ThrottlingException < ServiceError
       end
 
       # The input request failed to satisfy constraints expected by Amazon Braket.
+
       class ValidationException < ServiceError
       end
 

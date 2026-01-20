@@ -1,7 +1,0 @@
-require "./runtime"
-require "./personalize_runtime/client"
-require "./personalize_runtime/errors"
-require "./personalize_runtime/model"
-require "./personalize_runtime/types"
-require "./personalize_runtime/protocol/rest_json"
-require "./customizations/personalize_runtime/customizations"

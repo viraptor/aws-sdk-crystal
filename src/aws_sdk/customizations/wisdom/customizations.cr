@@ -1,5 +1,5 @@
 module AwsSdk
-  module QConnect
+  module Wisdom
     module Customizations
     end
   end

@@ -23,6 +23,7 @@ module AwsSdk
       # vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:CreateIndex permission to use this operation. You must have the s3vectors:TagResource
       # permission in addition to s3vectors:CreateIndex permission to create a vector index with tags.
+
       def create_index(
         data_type : String,
         dimension : Int32,
@@ -37,6 +38,7 @@ module AwsSdk
         input = Types::CreateIndexInput.new(data_type: data_type, dimension: dimension, distance_metric: distance_metric, index_name: index_name, encryption_configuration: encryption_configuration, metadata_configuration: metadata_configuration, tags: tags, vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         create_index(input)
       end
+
       def create_index(input : Types::CreateIndexInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_INDEX, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -46,6 +48,7 @@ module AwsSdk
       # Permissions You must have the s3vectors:CreateVectorBucket permission to use this operation. You
       # must have the s3vectors:TagResource permission in addition to s3vectors:CreateVectorBucket
       # permission to create a vector bucket with tags.
+
       def create_vector_bucket(
         vector_bucket_name : String,
         encryption_configuration : Types::EncryptionConfiguration? = nil,
@@ -54,6 +57,7 @@ module AwsSdk
         input = Types::CreateVectorBucketInput.new(vector_bucket_name: vector_bucket_name, encryption_configuration: encryption_configuration, tags: tags)
         create_vector_bucket(input)
       end
+
       def create_vector_bucket(input : Types::CreateVectorBucketInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_VECTOR_BUCKET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -62,6 +66,7 @@ module AwsSdk
       # Deletes a vector index. To specify the vector index, you can either use both the vector bucket name
       # and vector index name, or use the vector index Amazon Resource Name (ARN). Permissions You must have
       # the s3vectors:DeleteIndex permission to use this operation.
+
       def delete_index(
         index_arn : String? = nil,
         index_name : String? = nil,
@@ -70,6 +75,7 @@ module AwsSdk
         input = Types::DeleteIndexInput.new(index_arn: index_arn, index_name: index_name, vector_bucket_name: vector_bucket_name)
         delete_index(input)
       end
+
       def delete_index(input : Types::DeleteIndexInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_INDEX, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -79,6 +85,7 @@ module AwsSdk
       # bucket can be deleted. To perform this operation, you must use either the vector bucket name or the
       # vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:DeleteVectorBucket
       # permission to use this operation.
+
       def delete_vector_bucket(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -86,6 +93,7 @@ module AwsSdk
         input = Types::DeleteVectorBucketInput.new(vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         delete_vector_bucket(input)
       end
+
       def delete_vector_bucket(input : Types::DeleteVectorBucketInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VECTOR_BUCKET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -94,6 +102,7 @@ module AwsSdk
       # Deletes a vector bucket policy. To specify the bucket, you must use either the vector bucket name or
       # the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:DeleteVectorBucketPolicy permission to use this operation.
+
       def delete_vector_bucket_policy(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -101,6 +110,7 @@ module AwsSdk
         input = Types::DeleteVectorBucketPolicyInput.new(vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         delete_vector_bucket_policy(input)
       end
+
       def delete_vector_bucket_policy(input : Types::DeleteVectorBucketPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VECTOR_BUCKET_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -109,6 +119,7 @@ module AwsSdk
       # Deletes one or more vectors in a vector index. To specify the vector index, you can either use both
       # the vector bucket name and vector index name, or use the vector index Amazon Resource Name (ARN).
       # Permissions You must have the s3vectors:DeleteVectors permission to use this operation.
+
       def delete_vectors(
         keys : Array(String),
         index_arn : String? = nil,
@@ -118,6 +129,7 @@ module AwsSdk
         input = Types::DeleteVectorsInput.new(keys: keys, index_arn: index_arn, index_name: index_name, vector_bucket_name: vector_bucket_name)
         delete_vectors(input)
       end
+
       def delete_vectors(input : Types::DeleteVectorsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_VECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -126,6 +138,7 @@ module AwsSdk
       # Returns vector index attributes. To specify the vector index, you can either use both the vector
       # bucket name and the vector index name, or use the vector index Amazon Resource Name (ARN).
       # Permissions You must have the s3vectors:GetIndex permission to use this operation.
+
       def get_index(
         index_arn : String? = nil,
         index_name : String? = nil,
@@ -134,6 +147,7 @@ module AwsSdk
         input = Types::GetIndexInput.new(index_arn: index_arn, index_name: index_name, vector_bucket_name: vector_bucket_name)
         get_index(input)
       end
+
       def get_index(input : Types::GetIndexInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_INDEX, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -142,6 +156,7 @@ module AwsSdk
       # Returns vector bucket attributes. To specify the bucket, you must use either the vector bucket name
       # or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:GetVectorBucket permission to use this operation.
+
       def get_vector_bucket(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -149,6 +164,7 @@ module AwsSdk
         input = Types::GetVectorBucketInput.new(vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         get_vector_bucket(input)
       end
+
       def get_vector_bucket(input : Types::GetVectorBucketInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_VECTOR_BUCKET, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -157,6 +173,7 @@ module AwsSdk
       # Gets details about a vector bucket policy. To specify the bucket, you must use either the vector
       # bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:GetVectorBucketPolicy permission to use this operation.
+
       def get_vector_bucket_policy(
         vector_bucket_arn : String? = nil,
         vector_bucket_name : String? = nil
@@ -164,6 +181,7 @@ module AwsSdk
         input = Types::GetVectorBucketPolicyInput.new(vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         get_vector_bucket_policy(input)
       end
+
       def get_vector_bucket_policy(input : Types::GetVectorBucketPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_VECTOR_BUCKET_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -172,6 +190,7 @@ module AwsSdk
       # Returns vector attributes. To specify the vector index, you can either use both the vector bucket
       # name and the vector index name, or use the vector index Amazon Resource Name (ARN). Permissions You
       # must have the s3vectors:GetVectors permission to use this operation.
+
       def get_vectors(
         keys : Array(String),
         index_arn : String? = nil,
@@ -183,6 +202,7 @@ module AwsSdk
         input = Types::GetVectorsInput.new(keys: keys, index_arn: index_arn, index_name: index_name, return_data: return_data, return_metadata: return_metadata, vector_bucket_name: vector_bucket_name)
         get_vectors(input)
       end
+
       def get_vectors(input : Types::GetVectorsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_VECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -191,6 +211,7 @@ module AwsSdk
       # Returns a list of all the vector indexes within the specified vector bucket. To specify the bucket,
       # you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN).
       # Permissions You must have the s3vectors:ListIndexes permission to use this operation.
+
       def list_indexes(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -201,6 +222,7 @@ module AwsSdk
         input = Types::ListIndexesInput.new(max_results: max_results, next_token: next_token, prefix: prefix, vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         list_indexes(input)
       end
+
       def list_indexes(input : Types::ListIndexesInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_INDEXES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -211,12 +233,14 @@ module AwsSdk
       # to resources. For a list of S3 resources that support tagging, see Managing tags for Amazon S3
       # resources . Permissions For vector buckets and vector indexes, you must have the
       # s3vectors:ListTagsForResource permission to use this operation.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -224,6 +248,7 @@ module AwsSdk
 
       # Returns a list of all the vector buckets that are owned by the authenticated sender of the request.
       # Permissions You must have the s3vectors:ListVectorBuckets permission to use this operation.
+
       def list_vector_buckets(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -232,6 +257,7 @@ module AwsSdk
         input = Types::ListVectorBucketsInput.new(max_results: max_results, next_token: next_token, prefix: prefix)
         list_vector_buckets(input)
       end
+
       def list_vector_buckets(input : Types::ListVectorBucketsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_VECTOR_BUCKETS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -248,6 +274,7 @@ module AwsSdk
       # returnMetadata to true, you must have both s3vectors:ListVectors and s3vectors:GetVectors
       # permissions. The request fails with a 403 Forbidden error if you request vector data or metadata
       # without the s3vectors:GetVectors permission.
+
       def list_vectors(
         index_arn : String? = nil,
         index_name : String? = nil,
@@ -262,6 +289,7 @@ module AwsSdk
         input = Types::ListVectorsInput.new(index_arn: index_arn, index_name: index_name, max_results: max_results, next_token: next_token, return_data: return_data, return_metadata: return_metadata, segment_count: segment_count, segment_index: segment_index, vector_bucket_name: vector_bucket_name)
         list_vectors(input)
       end
+
       def list_vectors(input : Types::ListVectorsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_VECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -270,6 +298,7 @@ module AwsSdk
       # Creates a bucket policy for a vector bucket. To specify the bucket, you must use either the vector
       # bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the
       # s3vectors:PutVectorBucketPolicy permission to use this operation.
+
       def put_vector_bucket_policy(
         policy : String,
         vector_bucket_arn : String? = nil,
@@ -278,6 +307,7 @@ module AwsSdk
         input = Types::PutVectorBucketPolicyInput.new(policy: policy, vector_bucket_arn: vector_bucket_arn, vector_bucket_name: vector_bucket_name)
         put_vector_bucket_policy(input)
       end
+
       def put_vector_bucket_policy(input : Types::PutVectorBucketPolicyInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_VECTOR_BUCKET_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -294,6 +324,7 @@ module AwsSdk
       # float32 values regardless of which SDK you're using. For example, in Python, use numpy.float32 or
       # explicitly cast your values. Permissions You must have the s3vectors:PutVectors permission to use
       # this operation.
+
       def put_vectors(
         vectors : Array(Types::PutInputVector),
         index_arn : String? = nil,
@@ -303,6 +334,7 @@ module AwsSdk
         input = Types::PutVectorsInput.new(vectors: vectors, index_arn: index_arn, index_name: index_name, vector_bucket_name: vector_bucket_name)
         put_vectors(input)
       end
+
       def put_vectors(input : Types::PutVectorsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_VECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -322,6 +354,7 @@ module AwsSdk
       # must have both s3vectors:QueryVectors and s3vectors:GetVectors permissions. The request fails with a
       # 403 Forbidden error if you request metadata filtering, vector data, or metadata without the
       # s3vectors:GetVectors permission.
+
       def query_vectors(
         query_vector : Types::VectorData,
         top_k : Int32,
@@ -335,6 +368,7 @@ module AwsSdk
         input = Types::QueryVectorsInput.new(query_vector: query_vector, top_k: top_k, filter: filter, index_arn: index_arn, index_name: index_name, return_distance: return_distance, return_metadata: return_metadata, vector_bucket_name: vector_bucket_name)
         query_vectors(input)
       end
+
       def query_vectors(input : Types::QueryVectorsInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::QUERY_VECTORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -346,6 +380,7 @@ module AwsSdk
       # resources that support tagging, see Managing tags for Amazon S3 resources . Permissions For vector
       # buckets and vector indexes, you must have the s3vectors:TagResource permission to use this
       # operation.
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -353,6 +388,7 @@ module AwsSdk
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -362,6 +398,7 @@ module AwsSdk
       # tag keys. For a list of S3 resources that support tagging, see Managing tags for Amazon S3 resources
       # . Permissions For vector buckets and vector indexes, you must have the s3vectors:UntagResource
       # permission to use this operation.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -369,6 +406,7 @@ module AwsSdk
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceInput) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

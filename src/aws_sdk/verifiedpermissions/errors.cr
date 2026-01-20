@@ -5,36 +5,44 @@ module AwsSdk
       end
 
       # You don't have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # The request failed because another request to modify a resource occurred at the same.
+
       class ConflictException < ServiceError
       end
 
       # The request failed because of an internal error. Try your request again later
+
       class InternalServerException < ServiceError
       end
 
       # The policy store can't be deleted because deletion protection is enabled. To delete this policy
       # store, disable deletion protection.
+
       class InvalidStateException < ServiceError
       end
 
       # The request failed because it references a resource that doesn't exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request failed because it would cause a service quota to be exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request failed because it exceeded a throttling quota.
+
       class ThrottlingException < ServiceError
       end
 
       # No more tags be added because the limit (50) has been reached. To add new tags, use UntagResource to
       # remove existing tags.
+
       class TooManyTagsException < ServiceError
       end
 
@@ -59,6 +67,7 @@ module AwsSdk
       # FunctionArgumentValidationError Cedar couldn't parse the argument passed to an extension type. For
       # example, a string that is to be parsed as an IPv4 address can contain only digits and the period
       # character.
+
       class ValidationException < ServiceError
       end
 

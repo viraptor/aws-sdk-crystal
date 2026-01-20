@@ -5,31 +5,38 @@ module AwsSdk
       end
 
       # An internal error has occurred. Please retry your request.
+
       class InternalServerException < ServiceError
       end
 
       # An invalid or out-of-range value was supplied for the input parameter.
+
       class InvalidParameterException < ServiceError
       end
 
       # The resource specified in the request conflicts with an existing resource.
+
       class ResourceConflictException < ServiceError
       end
 
       # The requested resource does not exist, or access was denied.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # You exceeded your service quota. Service quotas, also referred to as limits, are the maximum number
       # of service resources or operations for your Amazon Web Services account.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # You don't have permission to perform this operation.
+
       class UnauthorizedException < ServiceError
       end
 

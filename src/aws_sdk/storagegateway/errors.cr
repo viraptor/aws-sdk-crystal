@@ -6,16 +6,19 @@ module AwsSdk
 
       # An internal server error has occurred during the request. For more information, see the error and
       # message fields.
+
       class InternalServerError < ServiceError
       end
 
       # An exception occurred because an invalid gateway request was issued to the service. For more
       # information, see the error and message fields.
+
       class InvalidGatewayRequestException < ServiceError
       end
 
       # An internal server error has occurred because the service is unavailable. For more information, see
       # the error and message fields.
+
       class ServiceUnavailableError < ServiceError
       end
 

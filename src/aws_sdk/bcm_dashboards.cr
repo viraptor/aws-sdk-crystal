@@ -1,7 +1,0 @@
-require "./runtime"
-require "./bcm_dashboards/client"
-require "./bcm_dashboards/errors"
-require "./bcm_dashboards/model"
-require "./bcm_dashboards/types"
-require "./bcm_dashboards/protocol/json_rpc"
-require "./customizations/bcm_dashboards/customizations"

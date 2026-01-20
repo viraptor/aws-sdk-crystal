@@ -1,7 +1,0 @@
-require "./runtime"
-require "./admin_wickr/client"
-require "./admin_wickr/errors"
-require "./admin_wickr/model"
-require "./admin_wickr/types"
-require "./admin_wickr/protocol/rest_json"
-require "./customizations/admin_wickr/customizations"

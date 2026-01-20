@@ -1,7 +1,0 @@
-require "./runtime"
-require "./workspaces_web/client"
-require "./workspaces_web/errors"
-require "./workspaces_web/model"
-require "./workspaces_web/types"
-require "./workspaces_web/protocol/rest_json"
-require "./customizations/workspaces_web/customizations"

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./config/client"
-require "./config/errors"
-require "./config/model"
-require "./config/types"
-require "./config/protocol/json_rpc"
-require "./customizations/config/customizations"

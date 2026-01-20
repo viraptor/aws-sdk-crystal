@@ -43,6 +43,7 @@ module AwsSdk
       # them. For more information, see PutRumMetricsDestination . If some metric definitions specified in a
       # BatchCreateRumMetricDefinitions operations are not valid, those metric definitions fail and return
       # errors, but all valid metric definitions in the same operation still succeed.
+
       def batch_create_rum_metric_definitions(
         app_monitor_name : String,
         destination : String,
@@ -52,6 +53,7 @@ module AwsSdk
         input = Types::BatchCreateRumMetricDefinitionsRequest.new(app_monitor_name: app_monitor_name, destination: destination, metric_definitions: metric_definitions, destination_arn: destination_arn)
         batch_create_rum_metric_definitions(input)
       end
+
       def batch_create_rum_metric_definitions(input : Types::BatchCreateRumMetricDefinitionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_CREATE_RUM_METRIC_DEFINITIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -62,6 +64,7 @@ module AwsSdk
       # definitions fail and return errors, but all valid metric definition IDs in the same operation are
       # still deleted. The maximum number of metric definitions that you can specify in one
       # BatchDeleteRumMetricDefinitions operation is 200.
+
       def batch_delete_rum_metric_definitions(
         app_monitor_name : String,
         destination : String,
@@ -71,6 +74,7 @@ module AwsSdk
         input = Types::BatchDeleteRumMetricDefinitionsRequest.new(app_monitor_name: app_monitor_name, destination: destination, metric_definition_ids: metric_definition_ids, destination_arn: destination_arn)
         batch_delete_rum_metric_definitions(input)
       end
+
       def batch_delete_rum_metric_definitions(input : Types::BatchDeleteRumMetricDefinitionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_DELETE_RUM_METRIC_DEFINITIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -78,6 +82,7 @@ module AwsSdk
 
       # Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single
       # destination.
+
       def batch_get_rum_metric_definitions(
         app_monitor_name : String,
         destination : String,
@@ -88,6 +93,7 @@ module AwsSdk
         input = Types::BatchGetRumMetricDefinitionsRequest.new(app_monitor_name: app_monitor_name, destination: destination, destination_arn: destination_arn, max_results: max_results, next_token: next_token)
         batch_get_rum_metric_definitions(input)
       end
+
       def batch_get_rum_metric_definitions(input : Types::BatchGetRumMetricDefinitionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::BATCH_GET_RUM_METRIC_DEFINITIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -99,6 +105,7 @@ module AwsSdk
       # monitor. To update an existing app monitor, use UpdateAppMonitor instead. After you create an app
       # monitor, sign in to the CloudWatch RUM console to get the JavaScript code snippet to add to your web
       # application. For more information, see How do I find a code snippet that I've already generated?
+
       def create_app_monitor(
         name : String,
         app_monitor_configuration : Types::AppMonitorConfiguration? = nil,
@@ -113,24 +120,28 @@ module AwsSdk
         input = Types::CreateAppMonitorRequest.new(name: name, app_monitor_configuration: app_monitor_configuration, custom_events: custom_events, cw_log_enabled: cw_log_enabled, deobfuscation_configuration: deobfuscation_configuration, domain: domain, domain_list: domain_list, platform: platform, tags: tags)
         create_app_monitor(input)
       end
+
       def create_app_monitor(input : Types::CreateAppMonitorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_APP_MONITOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Deletes an existing app monitor. This immediately stops the collection of data.
+
       def delete_app_monitor(
         name : String
       ) : Protocol::Request
         input = Types::DeleteAppMonitorRequest.new(name: name)
         delete_app_monitor(input)
       end
+
       def delete_app_monitor(input : Types::DeleteAppMonitorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_APP_MONITOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes the association of a resource-based policy from an app monitor.
+
       def delete_resource_policy(
         name : String,
         policy_revision_id : String? = nil
@@ -138,6 +149,7 @@ module AwsSdk
         input = Types::DeleteResourcePolicyRequest.new(name: name, policy_revision_id: policy_revision_id)
         delete_resource_policy(input)
       end
+
       def delete_resource_policy(input : Types::DeleteResourcePolicyRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_RESOURCE_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -145,6 +157,7 @@ module AwsSdk
 
       # Deletes a destination for CloudWatch RUM extended metrics, so that the specified app monitor stops
       # sending extended metrics to that destination.
+
       def delete_rum_metrics_destination(
         app_monitor_name : String,
         destination : String,
@@ -153,18 +166,21 @@ module AwsSdk
         input = Types::DeleteRumMetricsDestinationRequest.new(app_monitor_name: app_monitor_name, destination: destination, destination_arn: destination_arn)
         delete_rum_metrics_destination(input)
       end
+
       def delete_rum_metrics_destination(input : Types::DeleteRumMetricsDestinationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_RUM_METRICS_DESTINATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves the complete configuration information for one app monitor.
+
       def get_app_monitor(
         name : String
       ) : Protocol::Request
         input = Types::GetAppMonitorRequest.new(name: name)
         get_app_monitor(input)
       end
+
       def get_app_monitor(input : Types::GetAppMonitorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_APP_MONITOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -172,6 +188,7 @@ module AwsSdk
 
       # Retrieves the raw performance events that RUM has collected from your web application, so that you
       # can do your own processing or analysis of this data.
+
       def get_app_monitor_data(
         name : String,
         time_range : Types::TimeRange,
@@ -182,6 +199,7 @@ module AwsSdk
         input = Types::GetAppMonitorDataRequest.new(name: name, time_range: time_range, filters: filters, max_results: max_results, next_token: next_token)
         get_app_monitor_data(input)
       end
+
       def get_app_monitor_data(input : Types::GetAppMonitorDataRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_APP_MONITOR_DATA, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -189,18 +207,21 @@ module AwsSdk
 
       # Use this operation to retrieve information about a resource-based policy that is attached to an app
       # monitor.
+
       def get_resource_policy(
         name : String
       ) : Protocol::Request
         input = Types::GetResourcePolicyRequest.new(name: name)
         get_resource_policy(input)
       end
+
       def get_resource_policy(input : Types::GetResourcePolicyRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_RESOURCE_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Returns a list of the Amazon CloudWatch RUM app monitors in the account.
+
       def list_app_monitors(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -208,6 +229,7 @@ module AwsSdk
         input = Types::ListAppMonitorsRequest.new(max_results: max_results, next_token: next_token)
         list_app_monitors(input)
       end
+
       def list_app_monitors(input : Types::ListAppMonitorsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_APP_MONITORS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -215,6 +237,7 @@ module AwsSdk
 
       # Returns a list of destinations that you have created to receive RUM extended metrics, for the
       # specified app monitor. For more information about extended metrics, see AddRumMetrics .
+
       def list_rum_metrics_destinations(
         app_monitor_name : String,
         max_results : Int32? = nil,
@@ -223,18 +246,21 @@ module AwsSdk
         input = Types::ListRumMetricsDestinationsRequest.new(app_monitor_name: app_monitor_name, max_results: max_results, next_token: next_token)
         list_rum_metrics_destinations(input)
       end
+
       def list_rum_metrics_destinations(input : Types::ListRumMetricsDestinationsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_RUM_METRICS_DESTINATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Displays the tags associated with a CloudWatch RUM resource.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -244,6 +270,7 @@ module AwsSdk
       # access to it. Each app monitor can have one resource-based policy. The maximum size of the policy is
       # 4 KB. To learn more about using resource policies with RUM, see Using resource-based policies with
       # CloudWatch RUM .
+
       def put_resource_policy(
         name : String,
         policy_document : String,
@@ -252,6 +279,7 @@ module AwsSdk
         input = Types::PutResourcePolicyRequest.new(name: name, policy_document: policy_document, policy_revision_id: policy_revision_id)
         put_resource_policy(input)
       end
+
       def put_resource_policy(input : Types::PutResourcePolicyRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_RESOURCE_POLICY, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -261,17 +289,19 @@ module AwsSdk
       # code snippet that RUM generates for you to add to your application includes PutRumEvents operations
       # to send this data to RUM. Each PutRumEvents operation can send a batch of events from one user
       # session.
+
       def put_rum_events(
         app_monitor_details : Types::AppMonitorDetails,
         batch_id : String,
         id : String,
         rum_events : Array(Types::RumEvent),
         user_details : Types::UserDetails,
-        alias : String? = nil
+        alias_ : String? = nil
       ) : Protocol::Request
-        input = Types::PutRumEventsRequest.new(app_monitor_details: app_monitor_details, batch_id: batch_id, id: id, rum_events: rum_events, user_details: user_details, alias: alias)
+        input = Types::PutRumEventsRequest.new(app_monitor_details: app_monitor_details, batch_id: batch_id, id: id, rum_events: rum_events, user_details: user_details, alias_: alias_)
         put_rum_events(input)
       end
+
       def put_rum_events(input : Types::PutRumEventsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_RUM_EVENTS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -280,6 +310,7 @@ module AwsSdk
       # Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send
       # extended metrics to CloudWatch or to a CloudWatch Evidently experiment. For more information about
       # extended metrics, see BatchCreateRumMetricDefinitions .
+
       def put_rum_metrics_destination(
         app_monitor_name : String,
         destination : String,
@@ -289,6 +320,7 @@ module AwsSdk
         input = Types::PutRumMetricsDestinationRequest.new(app_monitor_name: app_monitor_name, destination: destination, destination_arn: destination_arn, iam_role_arn: iam_role_arn)
         put_rum_metrics_destination(input)
       end
+
       def put_rum_metrics_destination(input : Types::PutRumMetricsDestinationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_RUM_METRICS_DESTINATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -304,6 +336,7 @@ module AwsSdk
       # associated with the resource, the new tag value that you specify replaces the previous value for
       # that tag. You can associate as many as 50 tags with a resource. For more information, see Tagging
       # Amazon Web Services resources .
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
@@ -311,12 +344,14 @@ module AwsSdk
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Removes one or more tags from the specified resource.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -324,6 +359,7 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -336,6 +372,7 @@ module AwsSdk
       # new app monitor, use CreateAppMonitor . After you update an app monitor, sign in to the CloudWatch
       # RUM console to get the updated JavaScript code snippet to add to your web application. For more
       # information, see How do I find a code snippet that I've already generated?
+
       def update_app_monitor(
         name : String,
         app_monitor_configuration : Types::AppMonitorConfiguration? = nil,
@@ -348,6 +385,7 @@ module AwsSdk
         input = Types::UpdateAppMonitorRequest.new(name: name, app_monitor_configuration: app_monitor_configuration, custom_events: custom_events, cw_log_enabled: cw_log_enabled, deobfuscation_configuration: deobfuscation_configuration, domain: domain, domain_list: domain_list)
         update_app_monitor(input)
       end
+
       def update_app_monitor(input : Types::UpdateAppMonitorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_APP_MONITOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -355,6 +393,7 @@ module AwsSdk
 
       # Modifies one existing metric definition for CloudWatch RUM extended metrics. For more information
       # about extended metrics, see BatchCreateRumMetricsDefinitions .
+
       def update_rum_metric_definition(
         app_monitor_name : String,
         destination : String,
@@ -365,6 +404,7 @@ module AwsSdk
         input = Types::UpdateRumMetricDefinitionRequest.new(app_monitor_name: app_monitor_name, destination: destination, metric_definition: metric_definition, metric_definition_id: metric_definition_id, destination_arn: destination_arn)
         update_rum_metric_definition(input)
       end
+
       def update_rum_metric_definition(input : Types::UpdateRumMetricDefinitionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_RUM_METRIC_DEFINITION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

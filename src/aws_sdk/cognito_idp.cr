@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cognito_idp/client"
-require "./cognito_idp/errors"
-require "./cognito_idp/model"
-require "./cognito_idp/types"
-require "./cognito_idp/protocol/json_rpc"
-require "./customizations/cognito_idp/customizations"

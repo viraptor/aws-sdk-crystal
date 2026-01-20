@@ -1,7 +1,0 @@
-require "./runtime"
-require "./emr_containers/client"
-require "./emr_containers/errors"
-require "./emr_containers/model"
-require "./emr_containers/types"
-require "./emr_containers/protocol/rest_json"
-require "./customizations/emr_containers/customizations"

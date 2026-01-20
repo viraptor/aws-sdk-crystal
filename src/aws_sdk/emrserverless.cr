@@ -1,0 +1,7 @@
+require "./runtime"
+require "./emrserverless/client"
+require "./emrserverless/errors"
+require "./emrserverless/model"
+require "./emrserverless/types"
+require "./emrserverless/protocol/rest_json"
+require "./customizations/emrserverless/customizations"

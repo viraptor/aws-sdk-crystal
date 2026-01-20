@@ -1,7 +1,0 @@
-require "./runtime"
-require "./aco_automation/client"
-require "./aco_automation/errors"
-require "./aco_automation/model"
-require "./aco_automation/types"
-require "./aco_automation/protocol/json_rpc"
-require "./customizations/aco_automation/customizations"

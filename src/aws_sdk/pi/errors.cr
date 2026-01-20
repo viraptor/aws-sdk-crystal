@@ -5,14 +5,17 @@ module AwsSdk
       end
 
       # The request failed due to an unknown error.
+
       class InternalServiceError < ServiceError
       end
 
       # One of the arguments provided is invalid for this request.
+
       class InvalidArgumentException < ServiceError
       end
 
       # The user is not authorized to perform this request.
+
       class NotAuthorizedException < ServiceError
       end
 

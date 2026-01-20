@@ -1,7 +1,0 @@
-require "./runtime"
-require "./thinclient/client"
-require "./thinclient/errors"
-require "./thinclient/model"
-require "./thinclient/types"
-require "./thinclient/protocol/rest_json"
-require "./customizations/thinclient/customizations"

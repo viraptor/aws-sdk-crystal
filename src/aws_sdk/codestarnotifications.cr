@@ -1,0 +1,7 @@
+require "./runtime"
+require "./codestarnotifications/client"
+require "./codestarnotifications/errors"
+require "./codestarnotifications/model"
+require "./codestarnotifications/types"
+require "./codestarnotifications/protocol/rest_json"
+require "./customizations/codestarnotifications/customizations"

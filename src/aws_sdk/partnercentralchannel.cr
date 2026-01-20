@@ -1,0 +1,7 @@
+require "./runtime"
+require "./partnercentralchannel/client"
+require "./partnercentralchannel/errors"
+require "./partnercentralchannel/model"
+require "./partnercentralchannel/types"
+require "./partnercentralchannel/protocol/json_rpc"
+require "./customizations/partnercentralchannel/customizations"

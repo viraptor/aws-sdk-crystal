@@ -5,18 +5,22 @@ module AwsSdk
       end
 
       # An error returned if a request is not formed properly.
+
       class BadRequestException < ServiceError
       end
 
       # An error returned if there's a temporary issue with the service.
+
       class GatewayTimeoutException < ServiceError
       end
 
       # An error returned when a specific resource type is not found.
+
       class NotFoundException < ServiceError
       end
 
       # An error that is returned when a limit of a specific type has been exceeded.
+
       class TooManyRequestsException < ServiceError
       end
 

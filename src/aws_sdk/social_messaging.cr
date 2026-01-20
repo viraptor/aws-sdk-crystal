@@ -1,7 +1,0 @@
-require "./runtime"
-require "./social_messaging/client"
-require "./social_messaging/errors"
-require "./social_messaging/model"
-require "./social_messaging/types"
-require "./social_messaging/protocol/rest_json"
-require "./customizations/social_messaging/customizations"

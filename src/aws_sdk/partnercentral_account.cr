@@ -1,7 +1,0 @@
-require "./runtime"
-require "./partnercentral_account/client"
-require "./partnercentral_account/errors"
-require "./partnercentral_account/model"
-require "./partnercentral_account/types"
-require "./partnercentral_account/protocol/json_rpc"
-require "./customizations/partnercentral_account/customizations"

@@ -5,30 +5,37 @@ module AwsSdk
       end
 
       # You do not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # The submitted action has conflicts.
+
       class ConflictException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
+
       class InternalServerException < ServiceError
       end
 
       # The resource could not be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The service limit was exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The input failed to satisfy the constraints specified by an Amazon Web Services service.
+
       class ValidationException < ServiceError
       end
 

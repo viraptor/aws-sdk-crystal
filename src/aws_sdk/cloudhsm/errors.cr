@@ -5,14 +5,17 @@ module AwsSdk
       end
 
       # Indicates that an internal error occurred.
+
       class CloudHsmInternalException < ServiceError
       end
 
       # Indicates that an exception occurred in the AWS CloudHSM service.
+
       class CloudHsmServiceException < ServiceError
       end
 
       # Indicates that one or more of the request parameters are not valid.
+
       class InvalidRequestException < ServiceError
       end
 

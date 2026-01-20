@@ -7,6 +7,7 @@ module AwsSdk
       # You don't have permission to perform the action. Examples The launch template instance profile
       # doesn't pass iam:PassRole verification. There is a mismatch between the account ID and cluster ID.
       # The cluster ID doesn't exist. The EC2 instance isn't present.
+
       class AccessDeniedException < ServiceError
       end
 
@@ -14,15 +15,18 @@ module AwsSdk
       # operation on the same resource at the same time. Examples A cluster with the same name already
       # exists. A cluster isn't in ACTIVE status. A cluster to delete is in an unstable state. For example,
       # because it still has ACTIVE node groups or queues. A queue already exists in a cluster.
+
       class ConflictException < ServiceError
       end
 
       # PCS can't process your request right now. Try again later.
+
       class InternalServerException < ServiceError
       end
 
       # The requested resource can't be found. The cluster, node group, or queue you're attempting to get,
       # update, list, or delete doesn't exist. Examples
+
       class ResourceNotFoundException < ServiceError
       end
 
@@ -32,10 +36,12 @@ module AwsSdk
       # max number of clusters or queues has been reached for the account. The max number of compute node
       # groups has been reached for the associated cluster. The total of maxInstances across all compute
       # node groups has been reached for associated cluster.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Your request exceeded a request rate quota. Check the resource's request rate quota and try again.
+
       class ThrottlingException < ServiceError
       end
 
@@ -43,6 +49,7 @@ module AwsSdk
       # The scheduler version isn't supported. There are networking related errors, such as network
       # validation failure. AMI type is CUSTOM and the launch template doesn't define the AMI ID, or the AMI
       # type is AL2 and the launch template defines the AMI.
+
       class ValidationException < ServiceError
       end
 

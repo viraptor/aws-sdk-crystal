@@ -34,12 +34,14 @@ module AwsSdk
       # CLI clients (public): authn/authz skipped based on client_id &amp; grant_type Note: This operation
       # cannot be marked as @idempotent because it handles both idempotent (token refresh) and
       # non-idempotent (auth code redemption) flows in a single endpoint.
+
       def create_o_auth2_token(
         token_input : Types::CreateOAuth2TokenRequestBody
       ) : Protocol::Request
         input = Types::CreateOAuth2TokenRequest.new(token_input: token_input)
         create_o_auth2_token(input)
       end
+
       def create_o_auth2_token(input : Types::CreateOAuth2TokenRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_O_AUTH2_TOKEN, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

@@ -1,0 +1,7 @@
+require "./runtime"
+require "./customerprofiles/client"
+require "./customerprofiles/errors"
+require "./customerprofiles/model"
+require "./customerprofiles/types"
+require "./customerprofiles/protocol/rest_json"
+require "./customizations/customerprofiles/customizations"

@@ -5,6 +5,7 @@ module AwsSdk
       end
 
       # You do not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
@@ -12,28 +13,34 @@ module AwsSdk
       # operation would violate an existing uniqueness claim in the identity store. Resolve the conflict
       # before retrying this request. The requested resource was being concurrently modified by another
       # request.
+
       class ConflictException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure with an internal
       # server.
+
       class InternalServerException < ServiceError
       end
 
       # Indicates that a requested resource is not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause the number of users or groups in the identity store to exceed the maximum
       # allowed.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Indicates that the principal has crossed the throttling limits of the API operations.
+
       class ThrottlingException < ServiceError
       end
 
       # The request failed because it contains a syntax error.
+
       class ValidationException < ServiceError
       end
 

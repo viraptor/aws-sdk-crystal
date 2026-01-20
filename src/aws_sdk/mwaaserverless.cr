@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mwaaserverless/client"
+require "./mwaaserverless/errors"
+require "./mwaaserverless/model"
+require "./mwaaserverless/types"
+require "./mwaaserverless/protocol/json_rpc"
+require "./customizations/mwaaserverless/customizations"

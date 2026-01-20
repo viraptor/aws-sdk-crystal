@@ -1,7 +1,0 @@
-require "./runtime"
-require "./bcm_pricing_calculator/client"
-require "./bcm_pricing_calculator/errors"
-require "./bcm_pricing_calculator/model"
-require "./bcm_pricing_calculator/types"
-require "./bcm_pricing_calculator/protocol/json_rpc"
-require "./customizations/bcm_pricing_calculator/customizations"

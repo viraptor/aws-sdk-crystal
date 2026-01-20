@@ -1,5 +1,5 @@
 module AwsSdk
-  module DocDB
+  module RDS
     module Customizations
     end
   end

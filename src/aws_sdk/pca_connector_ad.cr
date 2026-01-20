@@ -1,7 +1,0 @@
-require "./runtime"
-require "./pca_connector_ad/client"
-require "./pca_connector_ad/errors"
-require "./pca_connector_ad/model"
-require "./pca_connector_ad/types"
-require "./pca_connector_ad/protocol/rest_json"
-require "./customizations/pca_connector_ad/customizations"

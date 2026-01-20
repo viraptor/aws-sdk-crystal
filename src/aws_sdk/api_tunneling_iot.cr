@@ -1,7 +1,0 @@
-require "./runtime"
-require "./api_tunneling_iot/client"
-require "./api_tunneling_iot/errors"
-require "./api_tunneling_iot/model"
-require "./api_tunneling_iot/types"
-require "./api_tunneling_iot/protocol/json_rpc"
-require "./customizations/api_tunneling_iot/customizations"

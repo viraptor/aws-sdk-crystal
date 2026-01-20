@@ -28,6 +28,7 @@ module AwsSdk
       # a private Slack channel so that only members in that channel have read and write access to your
       # support cases. Anyone in your Slack channel can create, update, or resolve support cases for your
       # account. Users require an invitation to join private channels.
+
       def create_slack_channel_configuration(
         channel_id : String,
         channel_role_arn : String,
@@ -41,6 +42,7 @@ module AwsSdk
         input = Types::CreateSlackChannelConfigurationRequest.new(channel_id: channel_id, channel_role_arn: channel_role_arn, notify_on_case_severity: notify_on_case_severity, team_id: team_id, channel_name: channel_name, notify_on_add_correspondence_to_case: notify_on_add_correspondence_to_case, notify_on_create_or_reopen_case: notify_on_create_or_reopen_case, notify_on_resolve_case: notify_on_resolve_case)
         create_slack_channel_configuration(input)
       end
+
       def create_slack_channel_configuration(input : Types::CreateSlackChannelConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_SLACK_CHANNEL_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -49,10 +51,12 @@ module AwsSdk
       # Deletes an alias for an Amazon Web Services account ID. The alias appears in the Amazon Web Services
       # Support App page of the Amazon Web Services Support Center. The alias also appears in Slack messages
       # from the Amazon Web Services Support App.
+
       def delete_account_alias : Protocol::Request
         input = Types::DeleteAccountAliasRequest.new
         delete_account_alias(input)
       end
+
       def delete_account_alias(input : Types::DeleteAccountAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_ACCOUNT_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -60,6 +64,7 @@ module AwsSdk
 
       # Deletes a Slack channel configuration from your Amazon Web Services account. This operation doesn't
       # delete your Slack channel.
+
       def delete_slack_channel_configuration(
         channel_id : String,
         team_id : String
@@ -67,6 +72,7 @@ module AwsSdk
         input = Types::DeleteSlackChannelConfigurationRequest.new(channel_id: channel_id, team_id: team_id)
         delete_slack_channel_configuration(input)
       end
+
       def delete_slack_channel_configuration(input : Types::DeleteSlackChannelConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_SLACK_CHANNEL_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -74,12 +80,14 @@ module AwsSdk
 
       # Deletes a Slack workspace configuration from your Amazon Web Services account. This operation
       # doesn't delete your Slack workspace.
+
       def delete_slack_workspace_configuration(
         team_id : String
       ) : Protocol::Request
         input = Types::DeleteSlackWorkspaceConfigurationRequest.new(team_id: team_id)
         delete_slack_workspace_configuration(input)
       end
+
       def delete_slack_workspace_configuration(input : Types::DeleteSlackWorkspaceConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_SLACK_WORKSPACE_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -88,34 +96,40 @@ module AwsSdk
       # Retrieves the alias from an Amazon Web Services account ID. The alias appears in the Amazon Web
       # Services Support App page of the Amazon Web Services Support Center. The alias also appears in Slack
       # messages from the Amazon Web Services Support App.
+
       def get_account_alias : Protocol::Request
         input = Types::GetAccountAliasRequest.new
         get_account_alias(input)
       end
+
       def get_account_alias(input : Types::GetAccountAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_ACCOUNT_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the Slack channel configurations for an Amazon Web Services account.
+
       def list_slack_channel_configurations(
         next_token : String? = nil
       ) : Protocol::Request
         input = Types::ListSlackChannelConfigurationsRequest.new(next_token: next_token)
         list_slack_channel_configurations(input)
       end
+
       def list_slack_channel_configurations(input : Types::ListSlackChannelConfigurationsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_SLACK_CHANNEL_CONFIGURATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Lists the Slack workspace configurations for an Amazon Web Services account.
+
       def list_slack_workspace_configurations(
         next_token : String? = nil
       ) : Protocol::Request
         input = Types::ListSlackWorkspaceConfigurationsRequest.new(next_token: next_token)
         list_slack_workspace_configurations(input)
       end
+
       def list_slack_workspace_configurations(input : Types::ListSlackWorkspaceConfigurationsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_SLACK_WORKSPACE_CONFIGURATIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -124,12 +138,14 @@ module AwsSdk
       # Creates or updates an individual alias for each Amazon Web Services account ID. The alias appears in
       # the Amazon Web Services Support App page of the Amazon Web Services Support Center. The alias also
       # appears in Slack messages from the Amazon Web Services Support App.
+
       def put_account_alias(
         account_alias : String
       ) : Protocol::Request
         input = Types::PutAccountAliasRequest.new(account_alias: account_alias)
         put_account_alias(input)
       end
+
       def put_account_alias(input : Types::PutAccountAliasRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::PUT_ACCOUNT_ALIAS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -149,18 +165,21 @@ module AwsSdk
       # For more information, see Managing access to the Amazon Web Services Support App . Configure a Slack
       # channel to use the Amazon Web Services Support App for support cases for that account. For more
       # information, see Configuring a Slack channel .
+
       def register_slack_workspace_for_organization(
         team_id : String
       ) : Protocol::Request
         input = Types::RegisterSlackWorkspaceForOrganizationRequest.new(team_id: team_id)
         register_slack_workspace_for_organization(input)
       end
+
       def register_slack_workspace_for_organization(input : Types::RegisterSlackWorkspaceForOrganizationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REGISTER_SLACK_WORKSPACE_FOR_ORGANIZATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Updates the configuration for a Slack channel, such as case update notifications.
+
       def update_slack_channel_configuration(
         channel_id : String,
         team_id : String,
@@ -174,6 +193,7 @@ module AwsSdk
         input = Types::UpdateSlackChannelConfigurationRequest.new(channel_id: channel_id, team_id: team_id, channel_name: channel_name, channel_role_arn: channel_role_arn, notify_on_add_correspondence_to_case: notify_on_add_correspondence_to_case, notify_on_case_severity: notify_on_case_severity, notify_on_create_or_reopen_case: notify_on_create_or_reopen_case, notify_on_resolve_case: notify_on_resolve_case)
         update_slack_channel_configuration(input)
       end
+
       def update_slack_channel_configuration(input : Types::UpdateSlackChannelConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SLACK_CHANNEL_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

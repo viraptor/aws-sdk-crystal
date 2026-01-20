@@ -1,7 +1,0 @@
-require "./runtime"
-require "./neptune_db/client"
-require "./neptune_db/errors"
-require "./neptune_db/model"
-require "./neptune_db/types"
-require "./neptune_db/protocol/rest_json"
-require "./customizations/neptune_db/customizations"

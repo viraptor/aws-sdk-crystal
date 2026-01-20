@@ -5,26 +5,32 @@ module AwsSdk
       end
 
       # Access is denied. Your account is not authorized to perform this operation.
+
       class AccessDeniedException < ServiceError
       end
 
       # The data store is in a transition state and the user requested action cannot be performed.
+
       class ConflictException < ServiceError
       end
 
       # An unknown internal error occurred in the service.
+
       class InternalServerException < ServiceError
       end
 
       # The requested data store was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The user has exceeded their maximum number of allowed calls to the given API.
+
       class ThrottlingException < ServiceError
       end
 
       # The user input parameter was invalid.
+
       class ValidationException < ServiceError
       end
 

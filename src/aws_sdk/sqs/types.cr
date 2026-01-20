@@ -4,12 +4,14 @@ module AwsSdk
   module SQS
     module Types
 
+
       struct AddPermissionRequest
         include JSON::Serializable
 
         # The Amazon Web Services account numbers of the principals who are to receive permission. For
         # information about locating the Amazon Web Services account identification, see Your Amazon Web
         # Services Identifiers in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "AWSAccountIds")]
         getter aws_account_ids : Array(String)
 
@@ -19,17 +21,20 @@ module AwsSdk
         # SendMessage , DeleteMessage , or ChangeMessageVisibility for ActionName.n also grants permissions
         # for the corresponding batch versions of those actions: SendMessageBatch , DeleteMessageBatch , and
         # ChangeMessageVisibilityBatch .
+
         @[JSON::Field(key: "Actions")]
         getter actions : Array(String)
 
         # The unique identification of the permission you're setting (for example, AliceSendMessage ). Maximum
         # 80 characters. Allowed characters include alphanumeric characters, hyphens ( - ), and underscores (
         # _ ).
+
         @[JSON::Field(key: "Label")]
         getter label : String
 
         # The URL of the Amazon SQS queue to which permissions are added. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -43,8 +48,10 @@ module AwsSdk
       end
 
       # Two or more batch entries in the request have the same Id .
+
       struct BatchEntryIdsNotDistinct
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -56,8 +63,10 @@ module AwsSdk
       end
 
       # The length of all the messages put together is more than the limit.
+
       struct BatchRequestTooLong
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -69,22 +78,27 @@ module AwsSdk
       end
 
       # Gives a detailed description of the result of an action on each entry in the request.
+
       struct BatchResultErrorEntry
         include JSON::Serializable
 
         # An error code representing why the action failed on this entry.
+
         @[JSON::Field(key: "Code")]
         getter code : String
 
         # The Id of an entry in a batch request.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # Specifies whether the error happened due to the caller of the batch API action.
+
         @[JSON::Field(key: "SenderFault")]
         getter sender_fault : Bool
 
         # A message explaining why the action failed on this entry.
+
         @[JSON::Field(key: "Message")]
         getter message : String?
 
@@ -97,10 +111,12 @@ module AwsSdk
         end
       end
 
+
       struct CancelMessageMoveTaskRequest
         include JSON::Serializable
 
         # An identifier associated with a message movement task.
+
         @[JSON::Field(key: "TaskHandle")]
         getter task_handle : String
 
@@ -110,10 +126,12 @@ module AwsSdk
         end
       end
 
+
       struct CancelMessageMoveTaskResult
         include JSON::Serializable
 
         # The approximate number of messages already moved to the destination queue.
+
         @[JSON::Field(key: "ApproximateNumberOfMessagesMoved")]
         getter approximate_number_of_messages_moved : Int64?
 
@@ -123,15 +141,18 @@ module AwsSdk
         end
       end
 
+
       struct ChangeMessageVisibilityBatchRequest
         include JSON::Serializable
 
         # Lists the receipt handles of the messages for which the visibility timeout must be changed.
+
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::ChangeMessageVisibilityBatchRequestEntry)
 
         # The URL of the Amazon SQS queue whose messages' visibility is changed. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -143,20 +164,24 @@ module AwsSdk
       end
 
       # Encloses a receipt handle and an entry ID for each message in ChangeMessageVisibilityBatch .
+
       struct ChangeMessageVisibilityBatchRequestEntry
         include JSON::Serializable
 
         # An identifier for this particular receipt handle used to communicate the result. The Id s of a batch
         # request need to be unique within a request. This identifier can have up to 80 characters. The
         # following characters are accepted: alphanumeric characters, hyphens(-), and underscores (_).
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # A receipt handle.
+
         @[JSON::Field(key: "ReceiptHandle")]
         getter receipt_handle : String
 
         # The new value (in seconds) for the message's visibility timeout.
+
         @[JSON::Field(key: "VisibilityTimeout")]
         getter visibility_timeout : Int32?
 
@@ -170,14 +195,17 @@ module AwsSdk
 
       # For each message in the batch, the response contains a ChangeMessageVisibilityBatchResultEntry tag
       # if the message succeeds or a BatchResultErrorEntry tag if the message fails.
+
       struct ChangeMessageVisibilityBatchResult
         include JSON::Serializable
 
         # A list of BatchResultErrorEntry items.
+
         @[JSON::Field(key: "Failed")]
         getter failed : Array(Types::BatchResultErrorEntry)
 
         # A list of ChangeMessageVisibilityBatchResultEntry items.
+
         @[JSON::Field(key: "Successful")]
         getter successful : Array(Types::ChangeMessageVisibilityBatchResultEntry)
 
@@ -189,10 +217,12 @@ module AwsSdk
       end
 
       # Encloses the Id of an entry in ChangeMessageVisibilityBatch .
+
       struct ChangeMessageVisibilityBatchResultEntry
         include JSON::Serializable
 
         # Represents a message whose visibility timeout has been changed successfully.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -202,21 +232,25 @@ module AwsSdk
         end
       end
 
+
       struct ChangeMessageVisibilityRequest
         include JSON::Serializable
 
         # The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
         # The receipt handle associated with the message, whose visibility timeout is changed. This parameter
         # is returned by the ReceiveMessage action.
+
         @[JSON::Field(key: "ReceiptHandle")]
         getter receipt_handle : String
 
         # The new value for the message's visibility timeout (in seconds). Values range: 0 to 43200 . Maximum:
         # 12 hours.
+
         @[JSON::Field(key: "VisibilityTimeout")]
         getter visibility_timeout : Int32
 
@@ -228,12 +262,14 @@ module AwsSdk
         end
       end
 
+
       struct CreateQueueRequest
         include JSON::Serializable
 
         # The name of the new queue. The following limits apply to this name: A queue name can have up to 80
         # characters. Valid values: alphanumeric characters, hyphens ( - ), and underscores ( _ ). A FIFO
         # queue name must end with the .fifo suffix. Queue URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueName")]
         getter queue_name : String
 
@@ -316,6 +352,7 @@ module AwsSdk
         # the values shown for enabling high throughput, normal throughput is in effect and deduplication
         # occurs as specified. For information on throughput quotas, see Quotas related to messages in the
         # Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -328,6 +365,7 @@ module AwsSdk
         # a queue on creation, you must have the sqs:CreateQueue and sqs:TagQueue permissions. Cross-account
         # permissions don't apply to this action. For more information, see Grant cross-account permissions to
         # a role and a username in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -340,10 +378,12 @@ module AwsSdk
       end
 
       # Returns the QueueUrl attribute of the created queue.
+
       struct CreateQueueResult
         include JSON::Serializable
 
         # The URL of the created Amazon SQS queue.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String?
 
@@ -353,15 +393,18 @@ module AwsSdk
         end
       end
 
+
       struct DeleteMessageBatchRequest
         include JSON::Serializable
 
         # Lists the receipt handles for the messages to be deleted.
+
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::DeleteMessageBatchRequestEntry)
 
         # The URL of the Amazon SQS queue from which messages are deleted. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -373,16 +416,19 @@ module AwsSdk
       end
 
       # Encloses a receipt handle and an identifier for it.
+
       struct DeleteMessageBatchRequestEntry
         include JSON::Serializable
 
         # The identifier for this particular receipt handle. This is used to communicate the result. The Id s
         # of a batch request need to be unique within a request. This identifier can have up to 80 characters.
         # The following characters are accepted: alphanumeric characters, hyphens(-), and underscores (_).
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # A receipt handle.
+
         @[JSON::Field(key: "ReceiptHandle")]
         getter receipt_handle : String
 
@@ -395,14 +441,17 @@ module AwsSdk
 
       # For each message in the batch, the response contains a DeleteMessageBatchResultEntry tag if the
       # message is deleted or a BatchResultErrorEntry tag if the message can't be deleted.
+
       struct DeleteMessageBatchResult
         include JSON::Serializable
 
         # A list of BatchResultErrorEntry items.
+
         @[JSON::Field(key: "Failed")]
         getter failed : Array(Types::BatchResultErrorEntry)
 
         # A list of DeleteMessageBatchResultEntry items.
+
         @[JSON::Field(key: "Successful")]
         getter successful : Array(Types::DeleteMessageBatchResultEntry)
 
@@ -414,10 +463,12 @@ module AwsSdk
       end
 
       # Encloses the Id of an entry in DeleteMessageBatch .
+
       struct DeleteMessageBatchResultEntry
         include JSON::Serializable
 
         # Represents a successfully deleted message.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
@@ -427,15 +478,18 @@ module AwsSdk
         end
       end
 
+
       struct DeleteMessageRequest
         include JSON::Serializable
 
         # The URL of the Amazon SQS queue from which messages are deleted. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
         # The receipt handle associated with the message to delete.
+
         @[JSON::Field(key: "ReceiptHandle")]
         getter receipt_handle : String
 
@@ -446,10 +500,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteQueueRequest
         include JSON::Serializable
 
         # The URL of the Amazon SQS queue to delete. Queue URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -460,8 +516,10 @@ module AwsSdk
       end
 
       # The batch request doesn't contain any entries.
+
       struct EmptyBatchRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -472,11 +530,13 @@ module AwsSdk
         end
       end
 
+
       struct GetQueueAttributesRequest
         include JSON::Serializable
 
         # The URL of the Amazon SQS queue whose attribute information is retrieved. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -549,6 +609,7 @@ module AwsSdk
         # the values shown for enabling high throughput, normal throughput is in effect and deduplication
         # occurs as specified. For information on throughput quotas, see Quotas related to messages in the
         # Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "AttributeNames")]
         getter attribute_names : Array(String)?
 
@@ -560,10 +621,12 @@ module AwsSdk
       end
 
       # A list of returned queue attributes.
+
       struct GetQueueAttributesResult
         include JSON::Serializable
 
         # A map of attributes to their respective values.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
@@ -575,17 +638,20 @@ module AwsSdk
 
       # Retrieves the URL of an existing queue based on its name and, optionally, the Amazon Web Services
       # account ID.
+
       struct GetQueueUrlRequest
         include JSON::Serializable
 
         # (Required) The name of the queue for which you want to fetch the URL. The name can be up to 80
         # characters long and can include alphanumeric characters, hyphens (-), and underscores (_). Queue
         # URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueName")]
         getter queue_name : String
 
         # (Optional) The Amazon Web Services account ID of the account that created the queue. This is only
         # required when you are attempting to access a queue owned by another Amazon Web Services account.
+
         @[JSON::Field(key: "QueueOwnerAWSAccountId")]
         getter queue_owner_aws_account_id : String?
 
@@ -597,10 +663,12 @@ module AwsSdk
       end
 
       # For more information, see Interpreting Responses in the Amazon SQS Developer Guide .
+
       struct GetQueueUrlResult
         include JSON::Serializable
 
         # The URL of the queue.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String?
 
@@ -611,8 +679,10 @@ module AwsSdk
       end
 
       # The specified ID is invalid.
+
       struct InvalidAddress
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -624,8 +694,10 @@ module AwsSdk
       end
 
       # The specified attribute doesn't exist.
+
       struct InvalidAttributeName
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -637,8 +709,10 @@ module AwsSdk
       end
 
       # A queue attribute value is invalid.
+
       struct InvalidAttributeValue
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -650,8 +724,10 @@ module AwsSdk
       end
 
       # The Id of a batch entry in a batch request doesn't abide by the specification.
+
       struct InvalidBatchEntryId
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -663,6 +739,7 @@ module AwsSdk
       end
 
       # The specified receipt handle isn't valid for the current version.
+
       struct InvalidIdFormat
         include JSON::Serializable
 
@@ -671,8 +748,10 @@ module AwsSdk
       end
 
       # The message contains characters outside the allowed set.
+
       struct InvalidMessageContents
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -684,8 +763,10 @@ module AwsSdk
       end
 
       # The request was not made over HTTPS or did not use SigV4 for signing.
+
       struct InvalidSecurity
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -697,8 +778,10 @@ module AwsSdk
       end
 
       # The caller doesn't have the required KMS access.
+
       struct KmsAccessDenied
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -710,8 +793,10 @@ module AwsSdk
       end
 
       # The request was denied due to request throttling.
+
       struct KmsDisabled
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -725,8 +810,10 @@ module AwsSdk
       # The request was rejected for one of the following reasons: The KeyUsage value of the KMS key is
       # incompatible with the API operation. The encryption algorithm or signing algorithm specified for the
       # operation is incompatible with the type of key material in the KMS key (KeySpec).
+
       struct KmsInvalidKeyUsage
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -738,8 +825,10 @@ module AwsSdk
       end
 
       # The request was rejected because the state of the specified resource is not valid for this request.
+
       struct KmsInvalidState
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -751,8 +840,10 @@ module AwsSdk
       end
 
       # The request was rejected because the specified entity or resource could not be found.
+
       struct KmsNotFound
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -765,8 +856,10 @@ module AwsSdk
 
       # The request was rejected because the specified key policy isn't syntactically or semantically
       # correct.
+
       struct KmsOptInRequired
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -778,8 +871,10 @@ module AwsSdk
       end
 
       # Amazon Web Services KMS throttles requests for the following conditions.
+
       struct KmsThrottled
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -790,19 +885,23 @@ module AwsSdk
         end
       end
 
+
       struct ListDeadLetterSourceQueuesRequest
         include JSON::Serializable
 
         # The URL of a dead-letter queue. Queue URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
         # Maximum number of results to include in the response. Value range is 1 to 1000. You must set
         # MaxResults to receive a value for NextToken in the response.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Pagination token to request the next set of results.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -815,16 +914,19 @@ module AwsSdk
       end
 
       # A list of your dead letter source queues.
+
       struct ListDeadLetterSourceQueuesResult
         include JSON::Serializable
 
         # A list of source queue URLs that have the RedrivePolicy queue attribute configured with a
         # dead-letter queue.
+
         @[JSON::Field(key: "queueUrls")]
         getter queue_urls : Array(String)
 
         # Pagination token to include in the next request. Token value is null if there are no additional
         # results to request, or if you did not set MaxResults in the request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -835,15 +937,18 @@ module AwsSdk
         end
       end
 
+
       struct ListMessageMoveTasksRequest
         include JSON::Serializable
 
         # The ARN of the queue whose message movement tasks are to be listed.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String
 
         # The maximum number of results to include in the response. The default is 1, which provides the most
         # recent message movement task. The upper limit is 10.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -854,10 +959,12 @@ module AwsSdk
         end
       end
 
+
       struct ListMessageMoveTasksResult
         include JSON::Serializable
 
         # A list of message movement tasks and their attributes.
+
         @[JSON::Field(key: "Results")]
         getter results : Array(Types::ListMessageMoveTasksResultEntry)?
 
@@ -868,50 +975,60 @@ module AwsSdk
       end
 
       # Contains the details of a message movement task.
+
       struct ListMessageMoveTasksResultEntry
         include JSON::Serializable
 
         # The approximate number of messages already moved to the destination queue.
+
         @[JSON::Field(key: "ApproximateNumberOfMessagesMoved")]
         getter approximate_number_of_messages_moved : Int64?
 
         # The number of messages to be moved from the source queue. This number is obtained at the time of
         # starting the message movement task and is only included after the message movement task is selected
         # to start.
+
         @[JSON::Field(key: "ApproximateNumberOfMessagesToMove")]
         getter approximate_number_of_messages_to_move : Int64?
 
         # The ARN of the destination queue if it has been specified in the StartMessageMoveTask request. If a
         # DestinationArn has not been specified in the StartMessageMoveTask request, this field value will be
         # NULL.
+
         @[JSON::Field(key: "DestinationArn")]
         getter destination_arn : String?
 
         # The task failure reason (only included if the task status is FAILED).
+
         @[JSON::Field(key: "FailureReason")]
         getter failure_reason : String?
 
         # The number of messages to be moved per second (the message movement rate), if it has been specified
         # in the StartMessageMoveTask request. If a MaxNumberOfMessagesPerSecond has not been specified in the
         # StartMessageMoveTask request, this field value will be NULL.
+
         @[JSON::Field(key: "MaxNumberOfMessagesPerSecond")]
         getter max_number_of_messages_per_second : Int32?
 
         # The ARN of the queue that contains the messages to be moved to another queue.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String?
 
         # The timestamp of starting the message movement task.
+
         @[JSON::Field(key: "StartedTimestamp")]
         getter started_timestamp : Int64?
 
         # The status of the message movement task. Possible values are: RUNNING, COMPLETED, CANCELLING,
         # CANCELLED, and FAILED.
+
         @[JSON::Field(key: "Status")]
         getter status : String?
 
         # An identifier associated with a message movement task. When this field is returned in the response
         # of the ListMessageMoveTasks action, it is only populated for tasks that are in RUNNING status.
+
         @[JSON::Field(key: "TaskHandle")]
         getter task_handle : String?
 
@@ -929,10 +1046,12 @@ module AwsSdk
         end
       end
 
+
       struct ListQueueTagsRequest
         include JSON::Serializable
 
         # The URL of the queue.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -942,10 +1061,12 @@ module AwsSdk
         end
       end
 
+
       struct ListQueueTagsResult
         include JSON::Serializable
 
         # The list of all tags added to the specified queue.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -955,20 +1076,24 @@ module AwsSdk
         end
       end
 
+
       struct ListQueuesRequest
         include JSON::Serializable
 
         # Maximum number of results to include in the response. Value range is 1 to 1000. You must set
         # MaxResults to receive a value for NextToken in the response.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
         # Pagination token to request the next set of results.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A string to use for filtering the list results. Only those queues whose name begins with the
         # specified string are returned. Queue URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueNamePrefix")]
         getter queue_name_prefix : String?
 
@@ -981,15 +1106,18 @@ module AwsSdk
       end
 
       # A list of your queues.
+
       struct ListQueuesResult
         include JSON::Serializable
 
         # Pagination token to include in the next request. Token value is null if there are no additional
         # results to request, or if you did not set MaxResults in the request.
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # A list of queue URLs, up to 1,000 entries, or the value of MaxResults that you sent in the request.
+
         @[JSON::Field(key: "QueueUrls")]
         getter queue_urls : Array(String)?
 
@@ -1001,6 +1129,7 @@ module AwsSdk
       end
 
       # An Amazon SQS message.
+
       struct Message
         include JSON::Serializable
 
@@ -1008,36 +1137,43 @@ module AwsSdk
         # attributes: ApproximateReceiveCount ApproximateFirstReceiveTimestamp MessageDeduplicationId
         # MessageGroupId SenderId SentTimestamp SequenceNumber ApproximateFirstReceiveTimestamp and
         # SentTimestamp are each returned as an integer representing the epoch time in milliseconds.
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)?
 
         # The message's contents (not URL-encoded).
+
         @[JSON::Field(key: "Body")]
         getter body : String?
 
         # An MD5 digest of the non-URL-encoded message body string.
+
         @[JSON::Field(key: "MD5OfBody")]
         getter md5_of_body : String?
 
         # An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify
         # that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating
         # the MD5 digest. For information about MD5, see RFC1321 .
+
         @[JSON::Field(key: "MD5OfMessageAttributes")]
         getter md5_of_message_attributes : String?
 
         # Each message attribute consists of a Name , Type , and Value . For more information, see Amazon SQS
         # message attributes in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageAttributes")]
         getter message_attributes : Hash(String, Types::MessageAttributeValue)?
 
         # A unique identifier for the message. A MessageId is considered unique across all Amazon Web Services
         # accounts for an extended period of time.
+
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
         # An identifier associated with the act of receiving the message. A new receipt handle is returned
         # every time you receive a message. When deleting a message, you provide the last received receipt
         # handle to delete the message.
+
         @[JSON::Field(key: "ReceiptHandle")]
         getter receipt_handle : String?
 
@@ -1058,30 +1194,36 @@ module AwsSdk
       # , value and the message body must not be empty or null. All parts of the message attribute,
       # including Name , Type , and Value , are part of the message size restriction (1 MiB or 1,048,576
       # bytes).
+
       struct MessageAttributeValue
         include JSON::Serializable
 
         # Amazon SQS supports the following logical data types: String , Number , and Binary . For the Number
         # data type, you must use StringValue . You can also append custom labels. For more information, see
         # Amazon SQS Message Attributes in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "DataType")]
         getter data_type : String
 
         # Not implemented. Reserved for future use.
+
         @[JSON::Field(key: "BinaryListValues")]
         getter binary_list_values : Array(Bytes)?
 
         # Binary type attributes can store any binary data, such as compressed data, encrypted data, or
         # images.
+
         @[JSON::Field(key: "BinaryValue")]
         getter binary_value : Bytes?
 
         # Not implemented. Reserved for future use.
+
         @[JSON::Field(key: "StringListValues")]
         getter string_list_values : Array(String)?
 
         # Strings are Unicode with UTF-8 binary encoding. For a list of code values, see ASCII Printable
         # Characters .
+
         @[JSON::Field(key: "StringValue")]
         getter string_value : String?
 
@@ -1096,6 +1238,7 @@ module AwsSdk
       end
 
       # The specified message isn't in flight.
+
       struct MessageNotInflight
         include JSON::Serializable
 
@@ -1106,30 +1249,36 @@ module AwsSdk
       # The user-specified message system attribute value. For string data types, the Value attribute has
       # the same restrictions on the content as the message body. For more information, see SendMessage .
       # Name , type , value and the message body must not be empty or null.
+
       struct MessageSystemAttributeValue
         include JSON::Serializable
 
         # Amazon SQS supports the following logical data types: String , Number , and Binary . For the Number
         # data type, you must use StringValue . You can also append custom labels. For more information, see
         # Amazon SQS Message Attributes in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "DataType")]
         getter data_type : String
 
         # Not implemented. Reserved for future use.
+
         @[JSON::Field(key: "BinaryListValues")]
         getter binary_list_values : Array(Bytes)?
 
         # Binary type attributes can store any binary data, such as compressed data, encrypted data, or
         # images.
+
         @[JSON::Field(key: "BinaryValue")]
         getter binary_value : Bytes?
 
         # Not implemented. Reserved for future use.
+
         @[JSON::Field(key: "StringListValues")]
         getter string_list_values : Array(String)?
 
         # Strings are Unicode with UTF-8 binary encoding. For a list of code values, see ASCII Printable
         # Characters .
+
         @[JSON::Field(key: "StringValue")]
         getter string_value : String?
 
@@ -1146,8 +1295,10 @@ module AwsSdk
       # The specified action violates a limit. For example, ReceiveMessage returns this error if the maximum
       # number of in flight messages is reached and AddPermission returns this error if the maximum number
       # of permissions for the queue is reached.
+
       struct OverLimit
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1160,8 +1311,10 @@ module AwsSdk
 
       # Indicates that the specified queue previously received a PurgeQueue request within the last 60
       # seconds (the time it can take to delete the messages in the queue).
+
       struct PurgeQueueInProgress
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1172,11 +1325,13 @@ module AwsSdk
         end
       end
 
+
       struct PurgeQueueRequest
         include JSON::Serializable
 
         # The URL of the queue from which the PurgeQueue action deletes messages. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -1188,8 +1343,10 @@ module AwsSdk
 
       # You must wait 60 seconds after deleting a queue before you can create another queue with the same
       # name.
+
       struct QueueDeletedRecently
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1201,8 +1358,10 @@ module AwsSdk
       end
 
       # Ensure that the QueueUrl is correct and that the queue has not been deleted.
+
       struct QueueDoesNotExist
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1215,8 +1374,10 @@ module AwsSdk
 
       # A queue with this name already exists. Amazon SQS returns this error only if the request includes
       # attributes whose values differ from those of the existing queue.
+
       struct QueueNameExists
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1228,8 +1389,10 @@ module AwsSdk
       end
 
       # The specified receipt handle isn't valid.
+
       struct ReceiptHandleIsInvalid
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1241,11 +1404,13 @@ module AwsSdk
       end
 
       # Retrieves one or more messages from a specified queue.
+
       struct ReceiveMessageRequest
         include JSON::Serializable
 
         # The URL of the Amazon SQS queue from which messages are received. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -1263,11 +1428,13 @@ module AwsSdk
         # MessageDeduplicationId – Returns the value provided by the producer that calls the SendMessage
         # action. MessageGroupId – Returns the value provided by the producer that calls the SendMessage
         # action. SequenceNumber – Returns the value provided by Amazon SQS.
+
         @[JSON::Field(key: "AttributeNames")]
         getter attribute_names : Array(String)?
 
         # The maximum number of messages to return. Amazon SQS never returns more messages than this value
         # (however, fewer messages might be returned). Valid values: 1 to 10. Default: 1.
+
         @[JSON::Field(key: "MaxNumberOfMessages")]
         getter max_number_of_messages : Int32?
 
@@ -1279,6 +1446,7 @@ module AwsSdk
         # characters long. When using ReceiveMessage , you can send a list of attribute names to receive, or
         # you can return all of the attributes by specifying All or .* in your request. You can also use all
         # message attributes starting with a prefix, for example bar.* .
+
         @[JSON::Field(key: "MessageAttributeNames")]
         getter message_attribute_names : Array(String)?
 
@@ -1294,6 +1462,7 @@ module AwsSdk
         # example, SSE-KMS or SSE-SQS ). MessageDeduplicationId – Returns the value provided by the producer
         # that calls the SendMessage action. MessageGroupId – Returns the value provided by the producer that
         # calls the SendMessage action. SequenceNumber – Returns the value provided by Amazon SQS.
+
         @[JSON::Field(key: "MessageSystemAttributeNames")]
         getter message_system_attribute_names : Array(String)?
 
@@ -1323,6 +1492,7 @@ module AwsSdk
         # ReceiveRequestAttemptId can contain alphanumeric characters ( a-z , A-Z , 0-9 ) and punctuation (
         # !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~ ). For best practices of using ReceiveRequestAttemptId ,
         # see Using the ReceiveRequestAttemptId Request Parameter in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "ReceiveRequestAttemptId")]
         getter receive_request_attempt_id : String?
 
@@ -1341,6 +1511,7 @@ module AwsSdk
         # extended before the visibility timeout expires counts as a failed receive. Depending on the
         # configuration of the queue, the message might be sent to the dead-letter queue. For more
         # information, see Visibility Timeout in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "VisibilityTimeout")]
         getter visibility_timeout : Int32?
 
@@ -1352,6 +1523,7 @@ module AwsSdk
         # longer than the WaitTimeSeconds parameter. For example, with the Java SDK, you can set HTTP
         # transport settings using the NettyNioAsyncHttpClient for asynchronous clients, or the
         # ApacheHttpClient for synchronous clients.
+
         @[JSON::Field(key: "WaitTimeSeconds")]
         getter wait_time_seconds : Int32?
 
@@ -1369,10 +1541,12 @@ module AwsSdk
       end
 
       # A list of received messages.
+
       struct ReceiveMessageResult
         include JSON::Serializable
 
         # A list of messages.
+
         @[JSON::Field(key: "Messages")]
         getter messages : Array(Types::Message)?
 
@@ -1382,16 +1556,19 @@ module AwsSdk
         end
       end
 
+
       struct RemovePermissionRequest
         include JSON::Serializable
 
         # The identification of the permission to remove. This is the label added using the AddPermission
         # action.
+
         @[JSON::Field(key: "Label")]
         getter label : String
 
         # The URL of the Amazon SQS queue from which permissions are removed. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -1406,8 +1583,10 @@ module AwsSdk
       # or for the recipient of the request. Ensure that the request rate is within the Amazon SQS limits
       # for sending messages. For more information, see Amazon SQS quotas in the Amazon SQS Developer Guide
       # .
+
       struct RequestThrottled
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1419,8 +1598,10 @@ module AwsSdk
       end
 
       # One or more specified resources don't exist.
+
       struct ResourceNotFoundException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1431,15 +1612,18 @@ module AwsSdk
         end
       end
 
+
       struct SendMessageBatchRequest
         include JSON::Serializable
 
         # A list of SendMessageBatchRequestEntry items.
+
         @[JSON::Field(key: "Entries")]
         getter entries : Array(Types::SendMessageBatchRequestEntry)
 
         # The URL of the Amazon SQS queue to which batched messages are sent. Queue URLs and names are
         # case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -1451,16 +1635,19 @@ module AwsSdk
       end
 
       # Contains the details of a single Amazon SQS message along with an Id .
+
       struct SendMessageBatchRequestEntry
         include JSON::Serializable
 
         # An identifier for a message in this batch used to communicate the result. The Id s of a batch
         # request need to be unique within a request. This identifier can have up to 80 characters. The
         # following characters are accepted: alphanumeric characters, hyphens(-), and underscores (_).
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # The body of the message.
+
         @[JSON::Field(key: "MessageBody")]
         getter message_body : String
 
@@ -1469,11 +1656,13 @@ module AwsSdk
         # after the delay period is finished. If you don't specify a value, the default value for the queue is
         # applied. When you set FifoQueue , you can't set DelaySeconds per message. You can set this parameter
         # only on a queue level.
+
         @[JSON::Field(key: "DelaySeconds")]
         getter delay_seconds : Int32?
 
         # Each message attribute consists of a Name , Type , and Value . For more information, see Amazon SQS
         # message attributes in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageAttributes")]
         getter message_attributes : Hash(String, Types::MessageAttributeValue)?
 
@@ -1502,6 +1691,7 @@ module AwsSdk
         # ( a-z , A-Z , 0-9 ) and punctuation ( !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~ ). For best
         # practices of using MessageDeduplicationId , see Using the MessageDeduplicationId Property in the
         # Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageDeduplicationId")]
         getter message_deduplication_id : String?
 
@@ -1530,6 +1720,7 @@ module AwsSdk
         # MessageGroupId is 128 characters. Valid values: alphanumeric characters and punctuation
         # (!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~) . For best practices of using MessageGroupId , see
         # Using the MessageGroupId Property in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageGroupId")]
         getter message_group_id : String?
 
@@ -1537,6 +1728,7 @@ module AwsSdk
         # Value . Currently, the only supported message system attribute is AWSTraceHeader . Its type must be
         # String and its value must be a correctly formatted X-Ray trace header string. The size of a message
         # system attribute doesn't count towards the total size of a message.
+
         @[JSON::Field(key: "MessageSystemAttributes")]
         getter message_system_attributes : Hash(String, Types::MessageSystemAttributeValue)?
 
@@ -1554,14 +1746,17 @@ module AwsSdk
 
       # For each message in the batch, the response contains a SendMessageBatchResultEntry tag if the
       # message succeeds or a BatchResultErrorEntry tag if the message fails.
+
       struct SendMessageBatchResult
         include JSON::Serializable
 
         # A list of BatchResultErrorEntry items with error details about each message that can't be enqueued.
+
         @[JSON::Field(key: "Failed")]
         getter failed : Array(Types::BatchResultErrorEntry)
 
         # A list of SendMessageBatchResultEntry items.
+
         @[JSON::Field(key: "Successful")]
         getter successful : Array(Types::SendMessageBatchResultEntry)
 
@@ -1573,38 +1768,45 @@ module AwsSdk
       end
 
       # Encloses a MessageId for a successfully-enqueued message in a SendMessageBatch .
+
       struct SendMessageBatchResultEntry
         include JSON::Serializable
 
         # An identifier for the message in this batch.
+
         @[JSON::Field(key: "Id")]
         getter id : String
 
         # An MD5 digest of the non-URL-encoded message body string. You can use this attribute to verify that
         # Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the
         # MD5 digest. For information about MD5, see RFC1321 .
+
         @[JSON::Field(key: "MD5OfMessageBody")]
         getter md5_of_message_body : String
 
         # An identifier for the message.
+
         @[JSON::Field(key: "MessageId")]
         getter message_id : String
 
         # An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify
         # that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating
         # the MD5 digest. For information about MD5, see RFC1321 .
+
         @[JSON::Field(key: "MD5OfMessageAttributes")]
         getter md5_of_message_attributes : String?
 
         # An MD5 digest of the non-URL-encoded message system attribute string. You can use this attribute to
         # verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before
         # creating the MD5 digest. For information about MD5, see RFC1321 .
+
         @[JSON::Field(key: "MD5OfMessageSystemAttributes")]
         getter md5_of_message_system_attributes : String?
 
         # This parameter applies only to FIFO (first-in-first-out) queues. The large, non-consecutive number
         # that Amazon SQS assigns to each message. The length of SequenceNumber is 128 bits. As SequenceNumber
         # continues to increase for a particular MessageGroupId .
+
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String?
 
@@ -1619,6 +1821,7 @@ module AwsSdk
         end
       end
 
+
       struct SendMessageRequest
         include JSON::Serializable
 
@@ -1628,10 +1831,12 @@ module AwsSdk
         # #xD7FF | #xE000 to #xFFFD | #x10000 to #x10FFFF If a message contains characters outside the allowed
         # set, Amazon SQS rejects the message and returns an InvalidMessageContents error. Ensure that your
         # message body includes only valid characters to avoid this exception.
+
         @[JSON::Field(key: "MessageBody")]
         getter message_body : String
 
         # The URL of the Amazon SQS queue to which a message is sent. Queue URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -1640,11 +1845,13 @@ module AwsSdk
         # after the delay period is finished. If you don't specify a value, the default value for the queue
         # applies. When you set FifoQueue , you can't set DelaySeconds per message. You can set this parameter
         # only on a queue level.
+
         @[JSON::Field(key: "DelaySeconds")]
         getter delay_seconds : Int32?
 
         # Each message attribute consists of a Name , Type , and Value . For more information, see Amazon SQS
         # message attributes in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageAttributes")]
         getter message_attributes : Hash(String, Types::MessageAttributeValue)?
 
@@ -1672,6 +1879,7 @@ module AwsSdk
         # characters ( a-z , A-Z , 0-9 ) and punctuation ( !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~ ). For
         # best practices of using MessageDeduplicationId , see Using the MessageDeduplicationId Property in
         # the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageDeduplicationId")]
         getter message_deduplication_id : String?
 
@@ -1700,6 +1908,7 @@ module AwsSdk
         # MessageGroupId is 128 characters. Valid values: alphanumeric characters and punctuation
         # (!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~) . For best practices of using MessageGroupId , see
         # Using the MessageGroupId Property in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageGroupId")]
         getter message_group_id : String?
 
@@ -1707,6 +1916,7 @@ module AwsSdk
         # Value . Currently, the only supported message system attribute is AWSTraceHeader . Its type must be
         # String and its value must be a correctly formatted X-Ray trace header string. The size of a message
         # system attribute doesn't count towards the total size of a message.
+
         @[JSON::Field(key: "MessageSystemAttributes")]
         getter message_system_attributes : Hash(String, Types::MessageSystemAttributeValue)?
 
@@ -1723,35 +1933,41 @@ module AwsSdk
       end
 
       # The MD5OfMessageBody and MessageId elements.
+
       struct SendMessageResult
         include JSON::Serializable
 
         # An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify
         # that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating
         # the MD5 digest. For information about MD5, see RFC1321 .
+
         @[JSON::Field(key: "MD5OfMessageAttributes")]
         getter md5_of_message_attributes : String?
 
         # An MD5 digest of the non-URL-encoded message body string. You can use this attribute to verify that
         # Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the
         # MD5 digest. For information about MD5, see RFC1321 .
+
         @[JSON::Field(key: "MD5OfMessageBody")]
         getter md5_of_message_body : String?
 
         # An MD5 digest of the non-URL-encoded message system attribute string. You can use this attribute to
         # verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before
         # creating the MD5 digest.
+
         @[JSON::Field(key: "MD5OfMessageSystemAttributes")]
         getter md5_of_message_system_attributes : String?
 
         # An attribute containing the MessageId of the message sent to the queue. For more information, see
         # Queue and Message Identifiers in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "MessageId")]
         getter message_id : String?
 
         # This parameter applies only to FIFO (first-in-first-out) queues. The large, non-consecutive number
         # that Amazon SQS assigns to each message. The length of SequenceNumber is 128 bits. SequenceNumber
         # continues to increase for a particular MessageGroupId .
+
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String?
 
@@ -1764,6 +1980,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct SetQueueAttributesRequest
         include JSON::Serializable
@@ -1841,10 +2058,12 @@ module AwsSdk
         # these attributes to anything other than the values shown for enabling high throughput, normal
         # throughput is in effect and deduplication occurs as specified. For information on throughput quotas,
         # see Quotas related to messages in the Amazon SQS Developer Guide .
+
         @[JSON::Field(key: "Attributes")]
         getter attributes : Hash(String, String)
 
         # The URL of the Amazon SQS queue whose attributes are set. Queue URLs and names are case-sensitive.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
@@ -1855,18 +2074,21 @@ module AwsSdk
         end
       end
 
+
       struct StartMessageMoveTaskRequest
         include JSON::Serializable
 
         # The ARN of the queue that contains the messages to be moved to another queue. Currently, only ARNs
         # of dead-letter queues (DLQs) whose sources are other Amazon SQS queues are accepted. DLQs whose
         # sources are non-SQS queues, such as Lambda or Amazon SNS topics, are not currently supported.
+
         @[JSON::Field(key: "SourceArn")]
         getter source_arn : String
 
         # The ARN of the queue that receives the moved messages. You can use this field to specify the
         # destination queue where you would like to redrive messages. If this field is left blank, the
         # messages will be redriven back to their respective original source queues.
+
         @[JSON::Field(key: "DestinationArn")]
         getter destination_arn : String?
 
@@ -1874,6 +2096,7 @@ module AwsSdk
         # define a fixed message movement rate. The maximum value for messages per second is 500. If this
         # field is left blank, the system will optimize the rate based on the queue message backlog size,
         # which may vary throughout the duration of the message movement task.
+
         @[JSON::Field(key: "MaxNumberOfMessagesPerSecond")]
         getter max_number_of_messages_per_second : Int32?
 
@@ -1885,11 +2108,13 @@ module AwsSdk
         end
       end
 
+
       struct StartMessageMoveTaskResult
         include JSON::Serializable
 
         # An identifier associated with a message movement task. You can use this identifier to cancel a
         # specified message movement task using the CancelMessageMoveTask action.
+
         @[JSON::Field(key: "TaskHandle")]
         getter task_handle : String?
 
@@ -1899,14 +2124,17 @@ module AwsSdk
         end
       end
 
+
       struct TagQueueRequest
         include JSON::Serializable
 
         # The URL of the queue.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
         # The list of tags to be added to the specified queue.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -1920,8 +2148,10 @@ module AwsSdk
       # The batch request contains more entries than permissible. For Amazon SQS, the maximum number of
       # entries you can include in a single SendMessageBatch , DeleteMessageBatch , or
       # ChangeMessageVisibilityBatch request is 10.
+
       struct TooManyEntriesInBatchRequest
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1933,8 +2163,10 @@ module AwsSdk
       end
 
       # Error code 400. Unsupported operation.
+
       struct UnsupportedOperation
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1945,14 +2177,17 @@ module AwsSdk
         end
       end
 
+
       struct UntagQueueRequest
         include JSON::Serializable
 
         # The URL of the queue.
+
         @[JSON::Field(key: "QueueUrl")]
         getter queue_url : String
 
         # The list of tags to be removed from the specified queue.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 

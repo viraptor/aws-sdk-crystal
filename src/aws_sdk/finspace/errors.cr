@@ -5,43 +5,53 @@ module AwsSdk
       end
 
       # You do not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # There was a conflict with this action, and it could not be completed.
+
       class ConflictException < ServiceError
       end
 
       # The request processing has failed because of an unknown error, exception or failure.
+
       class InternalServerException < ServiceError
       end
 
       # The request is invalid. Something is wrong with the input to the request.
+
       class InvalidRequestException < ServiceError
       end
 
       # A service limit or quota is exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # The specified resource group already exists.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # One or more resources can't be found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # You have exceeded your service quota. To perform the requested action, remove some of the relevant
       # resources, or use Service Quotas to request a service quota increase.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The input fails to satisfy the constraints specified by an AWS service.
+
       class ValidationException < ServiceError
       end
 

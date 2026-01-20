@@ -1,0 +1,7 @@
+require "./runtime"
+require "./bedrockagentcore/client"
+require "./bedrockagentcore/errors"
+require "./bedrockagentcore/model"
+require "./bedrockagentcore/types"
+require "./bedrockagentcore/protocol/rest_json"
+require "./customizations/bedrockagentcore/customizations"

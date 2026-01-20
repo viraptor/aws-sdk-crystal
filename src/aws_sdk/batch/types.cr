@@ -5,10 +5,12 @@ module AwsSdk
     module Types
 
       # An object that represents an Batch array job.
+
       struct ArrayProperties
         include JSON::Serializable
 
         # The size of the array job.
+
         @[JSON::Field(key: "size")]
         getter size : Int32?
 
@@ -19,20 +21,24 @@ module AwsSdk
       end
 
       # An object that represents the array properties of a job.
+
       struct ArrayPropertiesDetail
         include JSON::Serializable
 
         # The job index within the array that's associated with this job. This parameter is returned for array
         # job children.
+
         @[JSON::Field(key: "index")]
         getter index : Int32?
 
         # The size of the array job. This parameter is returned for parent array jobs.
+
         @[JSON::Field(key: "size")]
         getter size : Int32?
 
         # A summary of the number of array job children in each available job status. This parameter is
         # returned for parent array jobs.
+
         @[JSON::Field(key: "statusSummary")]
         getter status_summary : Hash(String, Int32)?
 
@@ -45,15 +51,18 @@ module AwsSdk
       end
 
       # An object that represents the array properties of a job.
+
       struct ArrayPropertiesSummary
         include JSON::Serializable
 
         # The job index within the array that's associated with this job. This parameter is returned for
         # children of array jobs.
+
         @[JSON::Field(key: "index")]
         getter index : Int32?
 
         # The size of the array job. This parameter is returned for parent array jobs.
+
         @[JSON::Field(key: "size")]
         getter size : Int32?
 
@@ -65,34 +74,41 @@ module AwsSdk
       end
 
       # An object that represents the details of a container that's part of a job attempt.
+
       struct AttemptContainerDetail
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon ECS container instance that hosts the job attempt.
+
         @[JSON::Field(key: "containerInstanceArn")]
         getter container_instance_arn : String?
 
         # The exit code for the job attempt. A non-zero exit code is considered failed.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # The name of the CloudWatch Logs log stream that's associated with the container. The log group for
         # Batch jobs is /aws/batch/job . Each container attempt receives a log stream name when they reach the
         # RUNNING status.
+
         @[JSON::Field(key: "logStreamName")]
         getter log_stream_name : String?
 
         # The network interfaces that are associated with the job attempt.
+
         @[JSON::Field(key: "networkInterfaces")]
         getter network_interfaces : Array(Types::NetworkInterface)?
 
         # A short (255 max characters) human-readable string to provide additional details for a running or
         # stopped container.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
         # The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with the job attempt. Each
         # container attempt receives a task ARN when they reach the STARTING status.
+
         @[JSON::Field(key: "taskArn")]
         getter task_arn : String?
 
@@ -108,30 +124,36 @@ module AwsSdk
       end
 
       # An object that represents a job attempt.
+
       struct AttemptDetail
         include JSON::Serializable
 
         # The details for the container in this job attempt.
+
         @[JSON::Field(key: "container")]
         getter container : Types::AttemptContainerDetail?
 
         # The Unix timestamp (in milliseconds) for when the attempt was started (when the attempt transitioned
         # from the STARTING state to the RUNNING state).
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64?
 
         # A short, human-readable string to provide additional details for the current status of the job
         # attempt.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp (in milliseconds) for when the attempt was stopped (when the attempt transitioned
         # from the RUNNING state to a terminal state, such as SUCCEEDED or FAILED ).
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
         # The properties for a task definition that describes the container and volume definitions of an
         # Amazon ECS task.
+
         @[JSON::Field(key: "taskProperties")]
         getter task_properties : Array(Types::AttemptEcsTaskDetails)?
 
@@ -146,18 +168,22 @@ module AwsSdk
       end
 
       # An object that represents the details of a task.
+
       struct AttemptEcsTaskDetails
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the container instance that hosts the task.
+
         @[JSON::Field(key: "containerInstanceArn")]
         getter container_instance_arn : String?
 
         # A list of containers that are included in the taskProperties list.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::AttemptTaskContainerDetails)?
 
         # The ARN of the Amazon ECS task.
+
         @[JSON::Field(key: "taskArn")]
         getter task_arn : String?
 
@@ -170,29 +196,35 @@ module AwsSdk
       end
 
       # An object that represents the details of a container that's part of a job attempt.
+
       struct AttemptTaskContainerDetails
         include JSON::Serializable
 
         # The exit code for the container’s attempt. A non-zero exit code is considered failed.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # The name of the Amazon CloudWatch Logs log stream that's associated with the container. The log
         # group for Batch jobs is /aws/batch/job . Each container attempt receives a log stream name when they
         # reach the RUNNING status.
+
         @[JSON::Field(key: "logStreamName")]
         getter log_stream_name : String?
 
         # The name of a container.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The network interfaces that are associated with the job attempt.
+
         @[JSON::Field(key: "networkInterfaces")]
         getter network_interfaces : Array(Types::NetworkInterface)?
 
         # A short (255 max characters) string that's easy to understand and provides additional details for a
         # running or stopped container.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
@@ -207,16 +239,19 @@ module AwsSdk
       end
 
       # Contains the parameters for CancelJob .
+
       struct CancelJobRequest
         include JSON::Serializable
 
         # The Batch job ID of the job to cancel.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # A message to attach to the job that explains the reason for canceling it. This message is returned
         # by future DescribeJobs operations on the job. It is also recorded in the Batch activity logs. This
         # parameter has as limit of 1024 characters.
+
         @[JSON::Field(key: "reason")]
         getter reason : String
 
@@ -227,6 +262,7 @@ module AwsSdk
         end
       end
 
+
       struct CancelJobResponse
         include JSON::Serializable
 
@@ -236,11 +272,13 @@ module AwsSdk
 
       # Defines the capacity limit for a service environment. This structure specifies the maximum amount of
       # resources that can be used by service jobs in the environment.
+
       struct CapacityLimit
         include JSON::Serializable
 
         # The unit of measure for the capacity limit. This defines how the maxCapacity value should be
         # interpreted. For SAGEMAKER_TRAINING jobs, use NUM_INSTANCES .
+
         @[JSON::Field(key: "capacityUnit")]
         getter capacity_unit : String?
 
@@ -249,6 +287,7 @@ module AwsSdk
         # capacityUnit=NUM_INSTANCES . This indicates that the maximum number of instances that can be run on
         # this service environment is 50. You could then run 5 SageMaker Training jobs that each use 10
         # instances. However, if you submit another job that requires 10 instances, it will wait in the queue.
+
         @[JSON::Field(key: "maxCapacity")]
         getter max_capacity : Int32?
 
@@ -262,8 +301,10 @@ module AwsSdk
       # These errors are usually caused by a client action. One example cause is using an action or resource
       # on behalf of a user that doesn't have permissions to use the action or resource. Another cause is
       # specifying an identifier that's not valid.
+
       struct ClientException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -275,44 +316,53 @@ module AwsSdk
       end
 
       # An object that represents an Batch compute environment.
+
       struct ComputeEnvironmentDetail
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the compute environment.
+
         @[JSON::Field(key: "computeEnvironmentArn")]
         getter compute_environment_arn : String
 
         # The name of the compute environment. It can be up to 128 characters long. It can contain uppercase
         # and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "computeEnvironmentName")]
         getter compute_environment_name : String
 
         # The compute resources defined for the compute environment. For more information, see Compute
         # environments in the Batch User Guide .
+
         @[JSON::Field(key: "computeResources")]
         getter compute_resources : Types::ComputeResource?
 
         # The orchestration type of the compute environment. The valid values are ECS (default) or EKS .
+
         @[JSON::Field(key: "containerOrchestrationType")]
         getter container_orchestration_type : String?
 
         # Reserved.
+
         @[JSON::Field(key: "context")]
         getter context : String?
 
         # The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster that the compute environment
         # uses.
+
         @[JSON::Field(key: "ecsClusterArn")]
         getter ecs_cluster_arn : String?
 
         # The configuration for the Amazon EKS cluster that supports the Batch compute environment. Only
         # specify this parameter if the containerOrchestrationType is EKS .
+
         @[JSON::Field(key: "eksConfiguration")]
         getter eks_configuration : Types::EksConfiguration?
 
         # The service role that's associated with the compute environment that allows Batch to make calls to
         # Amazon Web Services API operations on your behalf. For more information, see Batch service IAM role
         # in the Batch User Guide .
+
         @[JSON::Field(key: "serviceRole")]
         getter service_role : String?
 
@@ -328,37 +378,45 @@ module AwsSdk
         # minvCpus value. However, the instance size doesn't change. For example, consider a c5.8xlarge
         # instance with a minvCpus value of 4 and a desiredvCpus value of 36 . This instance doesn't scale
         # down to a c5.large instance.
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
         # The current status of the compute environment (for example, CREATING or VALID ).
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # A short, human-readable string to provide additional details for the current status of the compute
         # environment.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The tags applied to the compute environment.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The type of the compute environment: MANAGED or UNMANAGED . For more information, see Compute
         # environments in the Batch User Guide .
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
         # The maximum number of VCPUs expected to be used for an unmanaged compute environment.
+
         @[JSON::Field(key: "unmanagedvCpus")]
         getter unmanagedv_cpus : Int32?
 
         # Specifies the infrastructure update policy for the compute environment. For more information about
         # infrastructure updates, see Updating compute environments in the Batch User Guide .
+
         @[JSON::Field(key: "updatePolicy")]
         getter update_policy : Types::UpdatePolicy?
 
         # Unique identifier for the compute environment.
+
         @[JSON::Field(key: "uuid")]
         getter uuid : String?
 
@@ -391,16 +449,19 @@ module AwsSdk
       # or FARGATE_SPOT ); Amazon EC2 and Fargate compute environments can't be mixed. All compute
       # environments that are associated with a job queue must share the same architecture. Batch doesn't
       # support mixing compute environment architecture types in a single job queue.
+
       struct ComputeEnvironmentOrder
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the compute environment.
+
         @[JSON::Field(key: "computeEnvironment")]
         getter compute_environment : String
 
         # The order of the compute environment. Compute environments are tried in ascending order. For
         # example, if two compute environments are associated with a job queue, the compute environment with a
         # lower order integer value is tried for job placement first.
+
         @[JSON::Field(key: "order")]
         getter order : Int32
 
@@ -413,6 +474,7 @@ module AwsSdk
 
       # An object that represents an Batch compute resource. For more information, see Compute environments
       # in the Batch User Guide .
+
       struct ComputeResource
         include JSON::Serializable
 
@@ -421,6 +483,7 @@ module AwsSdk
         # or Spot Instances, and the BEST_FIT strategy using Spot Instances, Batch might need to exceed
         # maxvCpus to meet your capacity requirements. In this event, Batch never exceeds maxvCpus by more
         # than a single instance.
+
         @[JSON::Field(key: "maxvCpus")]
         getter maxv_cpus : Int32
 
@@ -431,6 +494,7 @@ module AwsSdk
         # Amazon Web Services Local Zones in the Amazon EKS User Guide and Amazon ECS clusters in Local Zones,
         # Wavelength Zones, and Amazon Web Services Outposts in the Amazon ECS Developer Guide . Batch on
         # Fargate doesn't currently support Local Zones.
+
         @[JSON::Field(key: "subnets")]
         getter subnets : Array(String)
 
@@ -438,6 +502,7 @@ module AwsSdk
         # Compute environments in the Batch User Guide . If you choose SPOT , you must also specify an Amazon
         # EC2 Spot Fleet role with the spotIamFleetRole parameter. For more information, see Amazon EC2 spot
         # fleet role in the Batch User Guide . Multi-node parallel jobs aren't supported on Spot Instances.
+
         @[JSON::Field(key: "type")]
         getter type : String
 
@@ -467,6 +532,7 @@ module AwsSdk
         # or Spot Instances, and the BEST_FIT strategy using Spot Instances, Batch might need to exceed
         # maxvCpus to meet your capacity requirements. In this event, Batch never exceeds maxvCpus by more
         # than a single instance.
+
         @[JSON::Field(key: "allocationStrategy")]
         getter allocation_strategy : String?
 
@@ -477,12 +543,14 @@ module AwsSdk
         # you leave this field empty, the default value is 100% of the On-Demand price. For most use cases, we
         # recommend leaving this field empty. This parameter isn't applicable to jobs that are running on
         # Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "bidPercentage")]
         getter bid_percentage : Int32?
 
         # The desired number of vCPUS in the compute environment. Batch modifies this value between the
         # minimum and maximum values based on job queue demand. This parameter isn't applicable to jobs that
         # are running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "desiredvCpus")]
         getter desiredv_cpus : Int32?
 
@@ -490,12 +558,14 @@ module AwsSdk
         # the compute environment. If Ec2Configuration isn't specified, the default is ECS_AL2 . One or two
         # values can be provided. This parameter isn't applicable to jobs that are running on Fargate
         # resources. Don't specify it.
+
         @[JSON::Field(key: "ec2Configuration")]
         getter ec2_configuration : Array(Types::Ec2Configuration)?
 
         # The Amazon EC2 key pair that's used for instances launched in the compute environment. You can use
         # this key pair to log in to your instances with SSH. This parameter isn't applicable to jobs that are
         # running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "ec2KeyPair")]
         getter ec2_key_pair : String?
 
@@ -508,6 +578,7 @@ module AwsSdk
         # vends both x86 and ARM versions of the Amazon ECS-optimized Amazon Linux 2 AMI. For more
         # information, see Amazon ECS-optimized Amazon Linux 2 AMI in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "imageId")]
         getter image_id : String?
 
@@ -517,6 +588,7 @@ module AwsSdk
         # &lt;aws_account_id&gt; :instance-profile/ ecsInstanceRole . For more information, see Amazon ECS
         # instance role in the Batch User Guide . This parameter isn't applicable to jobs that are running on
         # Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "instanceRole")]
         getter instance_role : String?
 
@@ -547,6 +619,7 @@ module AwsSdk
         # jobs that are running on Fargate resources. Don't specify it. When you create a compute environment,
         # the instance types that you select for the compute environment must share the same architecture. For
         # example, you can't mix x86 and ARM instances in the same compute environment.
+
         @[JSON::Field(key: "instanceTypes")]
         getter instance_types : Array(String)?
 
@@ -555,12 +628,14 @@ module AwsSdk
         # template. You must specify either the launch template ID or launch template name in the request, but
         # not both. For more information, see Launch template support in the Batch User Guide . This parameter
         # isn't applicable to jobs that are running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "launchTemplate")]
         getter launch_template : Types::LaunchTemplateSpecification?
 
         # The minimum number of vCPUs that a compute environment should maintain (even if the compute
         # environment is DISABLED ). This parameter isn't applicable to jobs that are running on Fargate
         # resources. Don't specify it.
+
         @[JSON::Field(key: "minvCpus")]
         getter minv_cpus : Int32?
 
@@ -571,6 +646,7 @@ module AwsSdk
         # potential. For more information, see Placement groups in the Amazon EC2 User Guide for Linux
         # Instances . This parameter isn't applicable to jobs that are running on Fargate resources. Don't
         # specify it.
+
         @[JSON::Field(key: "placementGroup")]
         getter placement_group : String?
 
@@ -580,6 +656,7 @@ module AwsSdk
         # on Fargate resources and must contain at least one security group. Fargate doesn't support launch
         # templates. If security groups are specified using both securityGroupIds and launchTemplate , the
         # values in securityGroupIds are used.
+
         @[JSON::Field(key: "securityGroupIds")]
         getter security_group_ids : Array(String)?
 
@@ -591,6 +668,7 @@ module AwsSdk
         # newer AmazonEC2SpotFleetTaggingRole managed policy. The previously recommended
         # AmazonEC2SpotFleetRole managed policy doesn't have the required permissions to tag Spot Instances.
         # For more information, see Spot instances not tagged on creation in the Batch User Guide .
+
         @[JSON::Field(key: "spotIamFleetRole")]
         getter spot_iam_fleet_role : String?
 
@@ -602,6 +680,7 @@ module AwsSdk
         # environments in the Batch User Guide . These tags aren't seen when using the Batch
         # ListTagsForResource API operation. This parameter isn't applicable to jobs that are running on
         # Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -629,6 +708,7 @@ module AwsSdk
 
       # An object that represents the attributes of a compute environment that can be updated. For more
       # information, see Updating compute environments in the Batch User Guide .
+
       struct ComputeResourceUpdate
         include JSON::Serializable
 
@@ -652,6 +732,7 @@ module AwsSdk
         # and SPOT_PRICE_CAPACITY_OPTIMIZED (recommended) strategies using On-Demand or Spot Instances, and
         # the BEST_FIT strategy using Spot Instances, Batch might need to exceed maxvCpus to meet your
         # capacity requirements. In this event, Batch never exceeds maxvCpus by more than a single instance.
+
         @[JSON::Field(key: "allocationStrategy")]
         getter allocation_strategy : String?
 
@@ -663,6 +744,7 @@ module AwsSdk
         # percentage requires an infrastructure update of the compute environment. For more information, see
         # Updating compute environments in the Batch User Guide . This parameter isn't applicable to jobs that
         # are running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "bidPercentage")]
         getter bid_percentage : Int32?
 
@@ -674,6 +756,7 @@ module AwsSdk
         # between the minvCpus and maxvCpus values. Additionally, the updated desiredvCpus value must be
         # greater than or equal to the current desiredvCpus value. For more information, see Troubleshooting
         # Batch in the Batch User Guide .
+
         @[JSON::Field(key: "desiredvCpus")]
         getter desiredv_cpus : Int32?
 
@@ -684,6 +767,7 @@ module AwsSdk
         # remove the Amazon EC2 configuration and any custom AMI ID specified in imageIdOverride , set this
         # value to an empty string. One or two values can be provided. This parameter isn't applicable to jobs
         # that are running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "ec2Configuration")]
         getter ec2_configuration : Array(Types::Ec2Configuration)?
 
@@ -693,6 +777,7 @@ module AwsSdk
         # requires an infrastructure update of the compute environment. For more information, see Updating
         # compute environments in the Batch User Guide . This parameter isn't applicable to jobs that are
         # running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "ec2KeyPair")]
         getter ec2_key_pair : String?
 
@@ -708,6 +793,7 @@ module AwsSdk
         # vends both x86 and ARM versions of the Amazon ECS-optimized Amazon Linux 2 AMI. For more
         # information, see Amazon ECS-optimized Amazon Linux 2 AMI in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "imageId")]
         getter image_id : String?
 
@@ -719,6 +805,7 @@ module AwsSdk
         # update of the compute environment. For more information, see Updating compute environments in the
         # Batch User Guide . This parameter isn't applicable to jobs that are running on Fargate resources.
         # Don't specify it.
+
         @[JSON::Field(key: "instanceRole")]
         getter instance_role : String?
 
@@ -749,6 +836,7 @@ module AwsSdk
         # jobs that are running on Fargate resources. Don't specify it. When you create a compute environment,
         # the instance types that you select for the compute environment must share the same architecture. For
         # example, you can't mix x86 and ARM instances in the same compute environment.
+
         @[JSON::Field(key: "instanceTypes")]
         getter instance_types : Array(String)?
 
@@ -762,6 +850,7 @@ module AwsSdk
         # environment, changing the launch template requires an infrastructure update of the compute
         # environment. For more information, see Updating compute environments in the Batch User Guide . This
         # parameter isn't applicable to jobs that are running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "launchTemplate")]
         getter launch_template : Types::LaunchTemplateSpecification?
 
@@ -770,12 +859,14 @@ module AwsSdk
         # or Spot Instances, and the BEST_FIT strategy using Spot Instances, Batch might need to exceed
         # maxvCpus to meet your capacity requirements. In this event, Batch never exceeds maxvCpus by more
         # than a single instance.
+
         @[JSON::Field(key: "maxvCpus")]
         getter maxv_cpus : Int32?
 
         # The minimum number of vCPUs that an environment should maintain (even if the compute environment is
         # DISABLED ). This parameter isn't applicable to jobs that are running on Fargate resources. Don't
         # specify it.
+
         @[JSON::Field(key: "minvCpus")]
         getter minv_cpus : Int32?
 
@@ -788,6 +879,7 @@ module AwsSdk
         # infrastructure update of the compute environment. For more information, see Updating compute
         # environments in the Batch User Guide . This parameter isn't applicable to jobs that are running on
         # Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "placementGroup")]
         getter placement_group : String?
 
@@ -799,6 +891,7 @@ module AwsSdk
         # environment, changing the Amazon EC2 security groups requires an infrastructure update of the
         # compute environment. For more information, see Updating compute environments in the Batch User Guide
         # .
+
         @[JSON::Field(key: "securityGroupIds")]
         getter security_group_ids : Array(String)?
 
@@ -813,6 +906,7 @@ module AwsSdk
         # , Amazon EKS and Amazon Web Services Local Zones in the Amazon EKS User Guide and Amazon ECS
         # clusters in Local Zones, Wavelength Zones, and Amazon Web Services Outposts in the Amazon ECS
         # Developer Guide . Batch on Fargate doesn't currently support Local Zones.
+
         @[JSON::Field(key: "subnets")]
         getter subnets : Array(String)?
 
@@ -824,6 +918,7 @@ module AwsSdk
         # this setting requires an infrastructure update of the compute environment. For more information, see
         # Updating compute environments in the Batch User Guide . This parameter isn't applicable to jobs that
         # are running on Fargate resources. Don't specify it.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -833,6 +928,7 @@ module AwsSdk
         # fleet role in the Batch User Guide . When updating a compute environment, changing the type of a
         # compute environment requires an infrastructure update of the compute environment. For more
         # information, see Updating compute environments in the Batch User Guide .
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -844,6 +940,7 @@ module AwsSdk
         # see Updating the AMI ID in the Batch User Guide . When updating a compute environment, changing this
         # setting requires an infrastructure update of the compute environment. For more information, see
         # Updating compute environments in the Batch User Guide .
+
         @[JSON::Field(key: "updateToLatestImageVersion")]
         getter update_to_latest_image_version : Bool?
 
@@ -870,10 +967,12 @@ module AwsSdk
       end
 
       # Contains a list of consumable resources required by a job.
+
       struct ConsumableResourceProperties
         include JSON::Serializable
 
         # The list of consumable resources required by a job.
+
         @[JSON::Field(key: "consumableResourceList")]
         getter consumable_resource_list : Array(Types::ConsumableResourceRequirement)?
 
@@ -884,14 +983,17 @@ module AwsSdk
       end
 
       # Information about a consumable resource required to run a job.
+
       struct ConsumableResourceRequirement
         include JSON::Serializable
 
         # The name or ARN of the consumable resource.
+
         @[JSON::Field(key: "consumableResource")]
         getter consumable_resource : String?
 
         # The quantity of the consumable resource that is needed.
+
         @[JSON::Field(key: "quantity")]
         getter quantity : Int64?
 
@@ -903,27 +1005,33 @@ module AwsSdk
       end
 
       # Current information about a consumable resource.
+
       struct ConsumableResourceSummary
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceArn")]
         getter consumable_resource_arn : String
 
         # The name of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceName")]
         getter consumable_resource_name : String
 
         # The amount of the consumable resource that is currently in use.
+
         @[JSON::Field(key: "inUseQuantity")]
         getter in_use_quantity : Int64?
 
         # Indicates whether the resource is available to be re-used after a job completes. Can be one of:
         # REPLENISHABLE NON_REPLENISHABLE
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # The total amount of the consumable resource that is available.
+
         @[JSON::Field(key: "totalQuantity")]
         getter total_quantity : Int64?
 
@@ -938,60 +1046,73 @@ module AwsSdk
       end
 
       # An object that represents the details of a container that's part of a job.
+
       struct ContainerDetail
         include JSON::Serializable
 
         # The command that's passed to the container.
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
         # The Amazon Resource Name (ARN) of the container instance that the container is running on.
+
         @[JSON::Field(key: "containerInstanceArn")]
         getter container_instance_arn : String?
 
         # Determines whether execute command functionality is turned on for this task. If true , execute
         # command functionality is turned on all the containers in the task.
+
         @[JSON::Field(key: "enableExecuteCommand")]
         getter enable_execute_command : Bool?
 
         # The environment variables to pass to a container. Environment variables cannot start with "
         # AWS_BATCH ". This naming convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "environment")]
         getter environment : Array(Types::KeyValuePair)?
 
         # The amount of ephemeral storage allocated for the task. This parameter is used to expand the total
         # amount of ephemeral storage available, beyond the default amount, for tasks hosted on Fargate.
+
         @[JSON::Field(key: "ephemeralStorage")]
         getter ephemeral_storage : Types::EphemeralStorage?
 
         # The Amazon Resource Name (ARN) of the execution role that Batch can assume. For more information,
         # see Batch execution IAM role in the Batch User Guide .
+
         @[JSON::Field(key: "executionRoleArn")]
         getter execution_role_arn : String?
 
         # The exit code returned upon completion.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # The platform configuration for jobs that are running on Fargate resources. Jobs that are running on
         # Amazon EC2 resources must not specify this parameter.
+
         @[JSON::Field(key: "fargatePlatformConfiguration")]
         getter fargate_platform_configuration : Types::FargatePlatformConfiguration?
 
         # The image used to start the container.
+
         @[JSON::Field(key: "image")]
         getter image : String?
 
         # The instance type of the underlying host infrastructure of a multi-node parallel job. This parameter
         # isn't applicable to jobs that are running on Fargate resources.
+
         @[JSON::Field(key: "instanceType")]
         getter instance_type : String?
 
         # The Amazon Resource Name (ARN) that's associated with the job when run.
+
         @[JSON::Field(key: "jobRoleArn")]
         getter job_role_arn : String?
 
         # Linux-specific modifications that are applied to the container, such as details for device mappings.
+
         @[JSON::Field(key: "linuxParameters")]
         getter linux_parameters : Types::LinuxParameters?
 
@@ -1013,82 +1134,98 @@ module AwsSdk
         # before containers placed on that instance can use these log configuration options. For more
         # information, see Amazon ECS container agent configuration in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "logConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
         # The name of the Amazon CloudWatch Logs log stream that's associated with the container. The log
         # group for Batch jobs is /aws/batch/job . Each container attempt receives a log stream name when they
         # reach the RUNNING status.
+
         @[JSON::Field(key: "logStreamName")]
         getter log_stream_name : String?
 
         # For jobs running on Amazon EC2 resources that didn't specify memory requirements using
         # resourceRequirements , the number of MiB of memory reserved for the job. For other jobs, including
         # all run on Fargate resources, see resourceRequirements .
+
         @[JSON::Field(key: "memory")]
         getter memory : Int32?
 
         # The mount points for data volumes in your container.
+
         @[JSON::Field(key: "mountPoints")]
         getter mount_points : Array(Types::MountPoint)?
 
         # The network configuration for jobs that are running on Fargate resources. Jobs that are running on
         # Amazon EC2 resources must not specify this parameter.
+
         @[JSON::Field(key: "networkConfiguration")]
         getter network_configuration : Types::NetworkConfiguration?
 
         # The network interfaces that are associated with the job.
+
         @[JSON::Field(key: "networkInterfaces")]
         getter network_interfaces : Array(Types::NetworkInterface)?
 
         # When this parameter is true, the container is given elevated permissions on the host container
         # instance (similar to the root user). The default value is false . This parameter isn't applicable to
         # jobs that are running on Fargate resources and shouldn't be provided, or specified as false .
+
         @[JSON::Field(key: "privileged")]
         getter privileged : Bool?
 
         # When this parameter is true, the container is given read-only access to its root file system. This
         # parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the
         # --read-only option to docker run .
+
         @[JSON::Field(key: "readonlyRootFilesystem")]
         getter readonly_root_filesystem : Bool?
 
         # A short (255 max characters) human-readable string to provide additional details for a running or
         # stopped container.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
         # The private repository authentication credentials to use.
+
         @[JSON::Field(key: "repositoryCredentials")]
         getter repository_credentials : Types::RepositoryCredentials?
 
         # The type and amount of resources to assign to a container. The supported resources include GPU ,
         # MEMORY , and VCPU .
+
         @[JSON::Field(key: "resourceRequirements")]
         getter resource_requirements : Array(Types::ResourceRequirement)?
 
         # An object that represents the compute environment architecture for Batch jobs on Fargate.
+
         @[JSON::Field(key: "runtimePlatform")]
         getter runtime_platform : Types::RuntimePlatform?
 
         # The secrets to pass to the container. For more information, see Specifying sensitive data in the
         # Batch User Guide .
+
         @[JSON::Field(key: "secrets")]
         getter secrets : Array(Types::Secret)?
 
         # The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with the container job. Each
         # container attempt receives a task ARN when they reach the STARTING status.
+
         @[JSON::Field(key: "taskArn")]
         getter task_arn : String?
 
         # A list of ulimit values to set in the container. This parameter maps to Ulimits in the Create a
         # container section of the Docker Remote API and the --ulimit option to docker run . This parameter
         # isn't applicable to jobs that are running on Fargate resources.
+
         @[JSON::Field(key: "ulimits")]
         getter ulimits : Array(Types::Ulimit)?
 
         # The user name to use inside the container. This parameter maps to User in the Create a container
         # section of the Docker Remote API and the --user option to docker run .
+
         @[JSON::Field(key: "user")]
         getter user : String?
 
@@ -1100,10 +1237,12 @@ module AwsSdk
         # but can be specified in several places. It must be specified for each node at least once. This
         # parameter isn't applicable to jobs that run on Fargate resources. For jobs that run on Fargate
         # resources, you must specify the vCPU requirement for the job using resourceRequirements .
+
         @[JSON::Field(key: "vcpus")]
         getter vcpus : Int32?
 
         # A list of volumes that are associated with the job.
+
         @[JSON::Field(key: "volumes")]
         getter volumes : Array(Types::Volume)?
 
@@ -1144,11 +1283,13 @@ module AwsSdk
 
       # The overrides that should be sent to a container. For information about using Batch overrides when
       # you connect event sources to targets, see BatchContainerOverrides .
+
       struct ContainerOverrides
         include JSON::Serializable
 
         # The command to send to the container that overrides the default command from the Docker image or the
         # job definition. This parameter can't contain an empty string.
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
@@ -1156,11 +1297,13 @@ module AwsSdk
         # added to the container at launch, or you can override the existing environment variables from the
         # Docker image or the job definition. Environment variables cannot start with " AWS_BATCH ". This
         # naming convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "environment")]
         getter environment : Array(Types::KeyValuePair)?
 
         # The instance type to use for a multi-node parallel job. This parameter isn't applicable to
         # single-node container jobs or jobs that run on Fargate resources, and shouldn't be provided.
+
         @[JSON::Field(key: "instanceType")]
         getter instance_type : String?
 
@@ -1172,11 +1315,13 @@ module AwsSdk
         # in the job definition, resourceRequirements must be specified in the SubmitJob request, with type
         # set to MEMORY and value set to the new value. For more information, see Can't override job
         # definition resource requirements in the Batch User Guide .
+
         @[JSON::Field(key: "memory")]
         getter memory : Int32?
 
         # The type and amount of resources to assign to a container. This overrides the settings in the job
         # definition. The supported resources include GPU , MEMORY , and VCPU .
+
         @[JSON::Field(key: "resourceRequirements")]
         getter resource_requirements : Array(Types::ResourceRequirement)?
 
@@ -1188,6 +1333,7 @@ module AwsSdk
         # definition, resourceRequirements must be specified in the SubmitJob request, with type set to VCPU
         # and value set to the new value. For more information, see Can't override job definition resource
         # requirements in the Batch User Guide .
+
         @[JSON::Field(key: "vcpus")]
         getter vcpus : Int32?
 
@@ -1204,17 +1350,20 @@ module AwsSdk
 
       # Container properties are used for Amazon ECS based job definitions. These properties to describe the
       # container that's launched as part of a job.
+
       struct ContainerProperties
         include JSON::Serializable
 
         # The command that's passed to the container. This parameter maps to Cmd in the Create a container
         # section of the Docker Remote API and the COMMAND parameter to docker run . For more information, see
         # https://docs.docker.com/engine/reference/builder/#cmd .
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
         # Determines whether execute command functionality is turned on for this task. If true , execute
         # command functionality is turned on all the containers in the task.
+
         @[JSON::Field(key: "enableExecuteCommand")]
         getter enable_execute_command : Bool?
 
@@ -1223,22 +1372,26 @@ module AwsSdk
         # using plaintext environment variables for sensitive information, such as credential data.
         # Environment variables cannot start with " AWS_BATCH ". This naming convention is reserved for
         # variables that Batch sets.
+
         @[JSON::Field(key: "environment")]
         getter environment : Array(Types::KeyValuePair)?
 
         # The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total
         # amount of ephemeral storage available, beyond the default amount, for tasks hosted on Fargate.
+
         @[JSON::Field(key: "ephemeralStorage")]
         getter ephemeral_storage : Types::EphemeralStorage?
 
         # The Amazon Resource Name (ARN) of the execution role that Batch can assume. For jobs that run on
         # Fargate resources, you must provide an execution role. For more information, see Batch execution IAM
         # role in the Batch User Guide .
+
         @[JSON::Field(key: "executionRoleArn")]
         getter execution_role_arn : String?
 
         # The platform configuration for jobs that are running on Fargate resources. Jobs that are running on
         # Amazon EC2 resources must not specify this parameter.
+
         @[JSON::Field(key: "fargatePlatformConfiguration")]
         getter fargate_platform_configuration : Types::FargatePlatformConfiguration?
 
@@ -1258,22 +1411,26 @@ module AwsSdk
         # repositories on Docker Hub are qualified with an organization name (for example,
         # amazon/amazon-ecs-agent ). Images in other online repositories are qualified further by a domain
         # name (for example, quay.io/assemblyline/ubuntu ).
+
         @[JSON::Field(key: "image")]
         getter image : String?
 
         # The instance type to use for a multi-node parallel job. All node groups in a multi-node parallel job
         # must use the same instance type. This parameter isn't applicable to single-node container jobs or
         # jobs that run on Fargate resources, and shouldn't be provided.
+
         @[JSON::Field(key: "instanceType")]
         getter instance_type : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that the container can assume for Amazon Web Services
         # permissions. For more information, see IAM roles for tasks in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "jobRoleArn")]
         getter job_role_arn : String?
 
         # Linux-specific modifications that are applied to the container, such as details for device mappings.
+
         @[JSON::Field(key: "linuxParameters")]
         getter linux_parameters : Types::LinuxParameters?
 
@@ -1293,6 +1450,7 @@ module AwsSdk
         # instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on
         # that instance can use these log configuration options. For more information, see Amazon ECS
         # container agent configuration in the Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "logConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
@@ -1302,16 +1460,19 @@ module AwsSdk
         # attempts to exceed the specified number, it's terminated. You must specify at least 4 MiB of memory
         # for a job using this parameter. The memory hard limit can be specified in several places. It must be
         # specified for each node at least once.
+
         @[JSON::Field(key: "memory")]
         getter memory : Int32?
 
         # The mount points for data volumes in your container. This parameter maps to Volumes in the Create a
         # container section of the Docker Remote API and the --volume option to docker run .
+
         @[JSON::Field(key: "mountPoints")]
         getter mount_points : Array(Types::MountPoint)?
 
         # The network configuration for jobs that are running on Fargate resources. Jobs that are running on
         # Amazon EC2 resources must not specify this parameter.
+
         @[JSON::Field(key: "networkConfiguration")]
         getter network_configuration : Types::NetworkConfiguration?
 
@@ -1320,41 +1481,49 @@ module AwsSdk
         # section of the Docker Remote API and the --privileged option to docker run . The default value is
         # false. This parameter isn't applicable to jobs that are running on Fargate resources and shouldn't
         # be provided, or specified as false.
+
         @[JSON::Field(key: "privileged")]
         getter privileged : Bool?
 
         # When this parameter is true, the container is given read-only access to its root file system. This
         # parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the
         # --read-only option to docker run .
+
         @[JSON::Field(key: "readonlyRootFilesystem")]
         getter readonly_root_filesystem : Bool?
 
         # The private repository authentication credentials to use.
+
         @[JSON::Field(key: "repositoryCredentials")]
         getter repository_credentials : Types::RepositoryCredentials?
 
         # The type and amount of resources to assign to a container. The supported resources include GPU ,
         # MEMORY , and VCPU .
+
         @[JSON::Field(key: "resourceRequirements")]
         getter resource_requirements : Array(Types::ResourceRequirement)?
 
         # An object that represents the compute environment architecture for Batch jobs on Fargate.
+
         @[JSON::Field(key: "runtimePlatform")]
         getter runtime_platform : Types::RuntimePlatform?
 
         # The secrets for the container. For more information, see Specifying sensitive data in the Batch User
         # Guide .
+
         @[JSON::Field(key: "secrets")]
         getter secrets : Array(Types::Secret)?
 
         # A list of ulimits to set in the container. This parameter maps to Ulimits in the Create a container
         # section of the Docker Remote API and the --ulimit option to docker run . This parameter isn't
         # applicable to jobs that are running on Fargate resources and shouldn't be provided.
+
         @[JSON::Field(key: "ulimits")]
         getter ulimits : Array(Types::Ulimit)?
 
         # The user name to use inside the container. This parameter maps to User in the Create a container
         # section of the Docker Remote API and the --user option to docker run .
+
         @[JSON::Field(key: "user")]
         getter user : String?
 
@@ -1364,10 +1533,12 @@ module AwsSdk
         # CPU shares. This parameter maps to CpuShares in the Create a container section of the Docker Remote
         # API and the --cpu-shares option to docker run . The number of vCPUs must be specified but can be
         # specified in several places. You must specify it at least once for each node.
+
         @[JSON::Field(key: "vcpus")]
         getter vcpus : Int32?
 
         # A list of data volumes used in a job.
+
         @[JSON::Field(key: "volumes")]
         getter volumes : Array(Types::Volume)?
 
@@ -1401,15 +1572,18 @@ module AwsSdk
       end
 
       # An object that represents summary details of a container within a job.
+
       struct ContainerSummary
         include JSON::Serializable
 
         # The exit code to return upon completion.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # A short (255 max characters) human-readable string to provide additional details for a running or
         # stopped container.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
@@ -1421,31 +1595,37 @@ module AwsSdk
       end
 
       # Contains the parameters for CreateComputeEnvironment .
+
       struct CreateComputeEnvironmentRequest
         include JSON::Serializable
 
         # The name for your compute environment. It can be up to 128 characters long. It can contain uppercase
         # and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "computeEnvironmentName")]
         getter compute_environment_name : String
 
         # The type of the compute environment: MANAGED or UNMANAGED . For more information, see Compute
         # Environments in the Batch User Guide .
+
         @[JSON::Field(key: "type")]
         getter type : String
 
         # Details about the compute resources managed by the compute environment. This parameter is required
         # for managed compute environments. For more information, see Compute Environments in the Batch User
         # Guide .
+
         @[JSON::Field(key: "computeResources")]
         getter compute_resources : Types::ComputeResource?
 
         # Reserved.
+
         @[JSON::Field(key: "context")]
         getter context : String?
 
         # The details for the Amazon EKS cluster that supports the compute environment. To create a compute
         # environment that uses EKS resources, the caller must have permissions to call eks:DescribeCluster .
+
         @[JSON::Field(key: "eksConfiguration")]
         getter eks_configuration : Types::EksConfiguration?
 
@@ -1462,6 +1642,7 @@ module AwsSdk
         # you only specify the name of the service role, Batch assumes that your ARN doesn't use the
         # service-role path prefix. Because of this, we recommend that you specify the full ARN of your
         # service role when you create compute environments.
+
         @[JSON::Field(key: "serviceRole")]
         getter service_role : String?
 
@@ -1478,6 +1659,7 @@ module AwsSdk
         # value. However, the instance size doesn't change. For example, consider a c5.8xlarge instance with a
         # minvCpus value of 4 and a desiredvCpus value of 36 . This instance doesn't scale down to a c5.large
         # instance.
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
@@ -1486,6 +1668,7 @@ module AwsSdk
         # Amazon Web Services Resources in Amazon Web Services General Reference . These tags can be updated
         # or removed using the TagResource and UntagResource API operations. These tags don't propagate to the
         # underlying compute resources.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1493,6 +1676,7 @@ module AwsSdk
         # fair-share scheduling to reserve vCPU capacity for new share identifiers. If this parameter isn't
         # provided for a fair-share job queue, no vCPU capacity is reserved. This parameter is only supported
         # when the type parameter is set to UNMANAGED .
+
         @[JSON::Field(key: "unmanagedvCpus")]
         getter unmanagedv_cpus : Int32?
 
@@ -1510,15 +1694,18 @@ module AwsSdk
         end
       end
 
+
       struct CreateComputeEnvironmentResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the compute environment.
+
         @[JSON::Field(key: "computeEnvironmentArn")]
         getter compute_environment_arn : String?
 
         # The name of the compute environment. It can be up to 128 characters long. It can contain uppercase
         # and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "computeEnvironmentName")]
         getter compute_environment_name : String?
 
@@ -1529,25 +1716,30 @@ module AwsSdk
         end
       end
 
+
       struct CreateConsumableResourceRequest
         include JSON::Serializable
 
         # The name of the consumable resource. Must be unique.
+
         @[JSON::Field(key: "consumableResourceName")]
         getter consumable_resource_name : String
 
         # Indicates whether the resource is available to be re-used after a job completes. Can be one of:
         # REPLENISHABLE (default) NON_REPLENISHABLE
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # The tags that you apply to the consumable resource to help you categorize and organize your
         # resources. Each tag consists of a key and an optional value. For more information, see Tagging your
         # Batch resources .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The total amount of the consumable resource that is available. Must be non-negative.
+
         @[JSON::Field(key: "totalQuantity")]
         getter total_quantity : Int64?
 
@@ -1560,14 +1752,17 @@ module AwsSdk
         end
       end
 
+
       struct CreateConsumableResourceResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceArn")]
         getter consumable_resource_arn : String
 
         # The name of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceName")]
         getter consumable_resource_name : String
 
@@ -1579,11 +1774,13 @@ module AwsSdk
       end
 
       # Contains the parameters for CreateJobQueue .
+
       struct CreateJobQueueRequest
         include JSON::Serializable
 
         # The name of the job queue. It can be up to 128 letters long. It can contain uppercase and lowercase
         # letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "jobQueueName")]
         getter job_queue_name : String
 
@@ -1593,6 +1790,7 @@ module AwsSdk
         # scheduling preference over a job queue with a priority value of 1 . All of the compute environments
         # must be either EC2 ( EC2 or SPOT ) or Fargate ( FARGATE or FARGATE_SPOT ); EC2 and Fargate compute
         # environments can't be mixed.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32
 
@@ -1604,12 +1802,14 @@ module AwsSdk
         # environments can't be mixed. All compute environments that are associated with a job queue must
         # share the same architecture. Batch doesn't support mixing compute environment architecture types in
         # a single job queue.
+
         @[JSON::Field(key: "computeEnvironmentOrder")]
         getter compute_environment_order : Array(Types::ComputeEnvironmentOrder)?
 
         # The type of job queue. For service jobs that run on SageMaker Training, this value is
         # SAGEMAKER_TRAINING . For regular container jobs, this value is EKS , ECS , or ECS_FARGATE depending
         # on the compute environment.
+
         @[JSON::Field(key: "jobQueueType")]
         getter job_queue_type : String?
 
@@ -1617,6 +1817,7 @@ module AwsSdk
         # specified state longer than specified times. Batch will perform each action after maxTimeSeconds has
         # passed. ( Note : The minimum value for maxTimeSeconds is 600 (10 minutes) and its maximum value is
         # 86,400 (24 hours).)
+
         @[JSON::Field(key: "jobStateTimeLimitActions")]
         getter job_state_time_limit_actions : Array(Types::JobStateTimeLimitAction)?
 
@@ -1629,24 +1830,28 @@ module AwsSdk
         # policy added. Jobs queues with a fair-share scheduling policy can have a maximum of 500 active share
         # identifiers. When the limit has been reached, submissions of any jobs that add a new share
         # identifier fail.
+
         @[JSON::Field(key: "schedulingPolicyArn")]
         getter scheduling_policy_arn : String?
 
         # A list of service environments that this job queue can use to allocate jobs. All serviceEnvironments
         # must have the same type. A job queue can't have both a serviceEnvironmentOrder and a
         # computeEnvironmentOrder field.
+
         @[JSON::Field(key: "serviceEnvironmentOrder")]
         getter service_environment_order : Array(Types::ServiceEnvironmentOrder)?
 
         # The state of the job queue. If the job queue state is ENABLED , it is able to accept jobs. If the
         # job queue state is DISABLED , new jobs can't be added to the queue, but jobs already in the queue
         # can finish.
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
         # The tags that you apply to the job queue to help you categorize and organize your resources. Each
         # tag consists of a key and an optional value. For more information, see Tagging your Batch resources
         # in Batch User Guide .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1664,14 +1869,17 @@ module AwsSdk
         end
       end
 
+
       struct CreateJobQueueResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the job queue.
+
         @[JSON::Field(key: "jobQueueArn")]
         getter job_queue_arn : String
 
         # The name of the job queue.
+
         @[JSON::Field(key: "jobQueueName")]
         getter job_queue_name : String
 
@@ -1683,15 +1891,18 @@ module AwsSdk
       end
 
       # Contains the parameters for CreateSchedulingPolicy .
+
       struct CreateSchedulingPolicyRequest
         include JSON::Serializable
 
         # The name of the fair-share scheduling policy. It can be up to 128 letters long. It can contain
         # uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # The fair-share scheduling policy details.
+
         @[JSON::Field(key: "fairsharePolicy")]
         getter fairshare_policy : Types::FairsharePolicy?
 
@@ -1699,6 +1910,7 @@ module AwsSdk
         # Each tag consists of a key and an optional value. For more information, see Tagging Amazon Web
         # Services Resources in Amazon Web Services General Reference . These tags can be updated or removed
         # using the TagResource and UntagResource API operations.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1710,16 +1922,19 @@ module AwsSdk
         end
       end
 
+
       struct CreateSchedulingPolicyResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the scheduling policy. The format is aws: Partition :batch: Region
         # : Account :scheduling-policy/ Name . For example,
         # aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy .
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The name of the scheduling policy.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -1730,31 +1945,37 @@ module AwsSdk
         end
       end
 
+
       struct CreateServiceEnvironmentRequest
         include JSON::Serializable
 
         # The capacity limits for the service environment. The number of instances a job consumes is the total
         # number of instances requested in the submit training job request resource configuration.
+
         @[JSON::Field(key: "capacityLimits")]
         getter capacity_limits : Array(Types::CapacityLimit)
 
         # The name for the service environment. It can be up to 128 characters long and can contain letters,
         # numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "serviceEnvironmentName")]
         getter service_environment_name : String
 
         # The type of service environment. For SageMaker Training jobs, specify SAGEMAKER_TRAINING .
+
         @[JSON::Field(key: "serviceEnvironmentType")]
         getter service_environment_type : String
 
         # The state of the service environment. Valid values are ENABLED and DISABLED . The default value is
         # ENABLED .
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
         # The tags that you apply to the service environment to help you categorize and organize your
         # resources. Each tag consists of a key and an optional value. For more information, see Tagging your
         # Batch resources .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -1768,14 +1989,17 @@ module AwsSdk
         end
       end
 
+
       struct CreateServiceEnvironmentResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the service environment.
+
         @[JSON::Field(key: "serviceEnvironmentArn")]
         getter service_environment_arn : String
 
         # The name of the service environment.
+
         @[JSON::Field(key: "serviceEnvironmentName")]
         getter service_environment_name : String
 
@@ -1787,10 +2011,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DeleteComputeEnvironment .
+
       struct DeleteComputeEnvironmentRequest
         include JSON::Serializable
 
         # The name or Amazon Resource Name (ARN) of the compute environment to delete.
+
         @[JSON::Field(key: "computeEnvironment")]
         getter compute_environment : String
 
@@ -1800,6 +2026,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteComputeEnvironmentResponse
         include JSON::Serializable
 
@@ -1807,10 +2034,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteConsumableResourceRequest
         include JSON::Serializable
 
         # The name or ARN of the consumable resource that will be deleted.
+
         @[JSON::Field(key: "consumableResource")]
         getter consumable_resource : String
 
@@ -1820,6 +2049,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteConsumableResourceResponse
         include JSON::Serializable
 
@@ -1828,10 +2058,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DeleteJobQueue .
+
       struct DeleteJobQueueRequest
         include JSON::Serializable
 
         # The short name or full Amazon Resource Name (ARN) of the queue to delete.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
@@ -1841,6 +2073,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteJobQueueResponse
         include JSON::Serializable
 
@@ -1849,10 +2082,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DeleteSchedulingPolicy .
+
       struct DeleteSchedulingPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the scheduling policy to delete.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
@@ -1862,6 +2097,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteSchedulingPolicyResponse
         include JSON::Serializable
 
@@ -1869,10 +2105,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceEnvironmentRequest
         include JSON::Serializable
 
         # The name or ARN of the service environment to delete.
+
         @[JSON::Field(key: "serviceEnvironment")]
         getter service_environment : String
 
@@ -1882,6 +2120,7 @@ module AwsSdk
         end
       end
 
+
       struct DeleteServiceEnvironmentResponse
         include JSON::Serializable
 
@@ -1889,11 +2128,13 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterJobDefinitionRequest
         include JSON::Serializable
 
         # The name and revision ( name:revision ) or full Amazon Resource Name (ARN) of the job definition to
         # deregister.
+
         @[JSON::Field(key: "jobDefinition")]
         getter job_definition : String
 
@@ -1903,6 +2144,7 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterJobDefinitionResponse
         include JSON::Serializable
 
@@ -1911,10 +2153,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DescribeComputeEnvironments .
+
       struct DescribeComputeEnvironmentsRequest
         include JSON::Serializable
 
         # A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries.
+
         @[JSON::Field(key: "computeEnvironments")]
         getter compute_environments : Array(String)?
 
@@ -1924,6 +2168,7 @@ module AwsSdk
         # seen by sending another DescribeComputeEnvironments request with the returned nextToken value. This
         # value can be between 1 and 100. If this parameter isn't used, then DescribeComputeEnvironments
         # returns up to 100 results and a nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -1932,6 +2177,7 @@ module AwsSdk
         # the end of the previous results that returned the nextToken value. This value is null when there are
         # no more results to return. Treat this token as an opaque identifier that's only used to retrieve the
         # next items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -1943,16 +2189,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeComputeEnvironmentsResponse
         include JSON::Serializable
 
         # The list of compute environments.
+
         @[JSON::Field(key: "computeEnvironments")]
         getter compute_environments : Array(Types::ComputeEnvironmentDetail)?
 
         # The nextToken value to include in a future DescribeComputeEnvironments request. When the results of
         # a DescribeComputeEnvironments request exceed maxResults , this value can be used to retrieve the
         # next page of results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -1963,10 +2212,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeConsumableResourceRequest
         include JSON::Serializable
 
         # The name or ARN of the consumable resource whose description will be returned.
+
         @[JSON::Field(key: "consumableResource")]
         getter consumable_resource : String
 
@@ -1976,41 +2227,50 @@ module AwsSdk
         end
       end
 
+
       struct DescribeConsumableResourceResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceArn")]
         getter consumable_resource_arn : String
 
         # The name of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceName")]
         getter consumable_resource_name : String
 
         # The amount of the consumable resource that is currently available to use.
+
         @[JSON::Field(key: "availableQuantity")]
         getter available_quantity : Int64?
 
         # The Unix timestamp (in milliseconds) for when the consumable resource was created.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Int64?
 
         # The amount of the consumable resource that is currently in use.
+
         @[JSON::Field(key: "inUseQuantity")]
         getter in_use_quantity : Int64?
 
         # Indicates whether the resource is available to be re-used after a job completes. Can be one of:
         # REPLENISHABLE NON_REPLENISHABLE
+
         @[JSON::Field(key: "resourceType")]
         getter resource_type : String?
 
         # The tags that you apply to the consumable resource to help you categorize and organize your
         # resources. Each tag consists of a key and an optional value. For more information, see Tagging your
         # Batch resources .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The total amount of the consumable resource that is available.
+
         @[JSON::Field(key: "totalQuantity")]
         getter total_quantity : Int64?
 
@@ -2028,10 +2288,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DescribeJobDefinitions .
+
       struct DescribeJobDefinitionsRequest
         include JSON::Serializable
 
         # The name of the job definition to describe.
+
         @[JSON::Field(key: "jobDefinitionName")]
         getter job_definition_name : String?
 
@@ -2039,6 +2301,7 @@ module AwsSdk
         # arn:aws:batch:${Region}:${Account}:job-definition/${JobDefinitionName}:${Revision} or a short
         # version using the form ${JobDefinitionName}:${Revision} . This parameter can't be used with other
         # parameters.
+
         @[JSON::Field(key: "jobDefinitions")]
         getter job_definitions : Array(String)?
 
@@ -2048,6 +2311,7 @@ module AwsSdk
         # another DescribeJobDefinitions request with the returned nextToken value. This value can be between
         # 1 and 100. If this parameter isn't used, then DescribeJobDefinitions returns up to 100 results and a
         # nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2056,10 +2320,12 @@ module AwsSdk
         # the end of the previous results that returned the nextToken value. This value is null when there are
         # no more results to return. Treat this token as an opaque identifier that's only used to retrieve the
         # next items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The status used to filter job definitions.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
@@ -2073,16 +2339,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeJobDefinitionsResponse
         include JSON::Serializable
 
         # The list of job definitions.
+
         @[JSON::Field(key: "jobDefinitions")]
         getter job_definitions : Array(Types::JobDefinition)?
 
         # The nextToken value to include in a future DescribeJobDefinitions request. When the results of a
         # DescribeJobDefinitions request exceed maxResults , this value can be used to retrieve the next page
         # of results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2094,10 +2363,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DescribeJobQueues .
+
       struct DescribeJobQueuesRequest
         include JSON::Serializable
 
         # A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.
+
         @[JSON::Field(key: "jobQueues")]
         getter job_queues : Array(String)?
 
@@ -2107,6 +2378,7 @@ module AwsSdk
         # DescribeJobQueues request with the returned nextToken value. This value can be between 1 and 100. If
         # this parameter isn't used, then DescribeJobQueues returns up to 100 results and a nextToken value if
         # applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2115,6 +2387,7 @@ module AwsSdk
         # the previous results that returned the nextToken value. This value is null when there are no more
         # results to return. Treat this token as an opaque identifier that's only used to retrieve the next
         # items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2126,16 +2399,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeJobQueuesResponse
         include JSON::Serializable
 
         # The list of job queues.
+
         @[JSON::Field(key: "jobQueues")]
         getter job_queues : Array(Types::JobQueueDetail)?
 
         # The nextToken value to include in a future DescribeJobQueues request. When the results of a
         # DescribeJobQueues request exceed maxResults , this value can be used to retrieve the next page of
         # results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -2147,10 +2423,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DescribeJobs .
+
       struct DescribeJobsRequest
         include JSON::Serializable
 
         # A list of up to 100 job IDs.
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(String)
 
@@ -2160,10 +2438,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeJobsResponse
         include JSON::Serializable
 
         # The list of jobs.
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(Types::JobDetail)?
 
@@ -2174,10 +2454,12 @@ module AwsSdk
       end
 
       # Contains the parameters for DescribeSchedulingPolicies .
+
       struct DescribeSchedulingPoliciesRequest
         include JSON::Serializable
 
         # A list of up to 100 scheduling policy Amazon Resource Name (ARN) entries.
+
         @[JSON::Field(key: "arns")]
         getter arns : Array(String)
 
@@ -2187,10 +2469,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeSchedulingPoliciesResponse
         include JSON::Serializable
 
         # The list of scheduling policies.
+
         @[JSON::Field(key: "schedulingPolicies")]
         getter scheduling_policies : Array(Types::SchedulingPolicyDetail)?
 
@@ -2199,6 +2483,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct DescribeServiceEnvironmentsRequest
         include JSON::Serializable
@@ -2209,6 +2494,7 @@ module AwsSdk
         # another DescribeServiceEnvironments request with the returned nextToken value. This value can be
         # between 1 and 100. If this parameter isn't used, then DescribeServiceEnvironments returns up to 100
         # results and a nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -2217,10 +2503,12 @@ module AwsSdk
         # the end of the previous results that returned the nextToken value. This value is null when there are
         # no more results to return. Treat this token as an opaque identifier that's only used to retrieve the
         # next items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # An array of service environment names or ARN entries.
+
         @[JSON::Field(key: "serviceEnvironments")]
         getter service_environments : Array(String)?
 
@@ -2232,16 +2520,19 @@ module AwsSdk
         end
       end
 
+
       struct DescribeServiceEnvironmentsResponse
         include JSON::Serializable
 
         # The nextToken value to include in a future DescribeServiceEnvironments request. When the results of
         # a DescribeServiceEnvironments request exceed maxResults , this value can be used to retrieve the
         # next page of results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # The list of service environments that match the request.
+
         @[JSON::Field(key: "serviceEnvironments")]
         getter service_environments : Array(Types::ServiceEnvironmentDetail)?
 
@@ -2252,10 +2543,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeServiceJobRequest
         include JSON::Serializable
 
         # The job ID for the service job to describe.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
@@ -2265,83 +2558,103 @@ module AwsSdk
         end
       end
 
+
       struct DescribeServiceJobResponse
         include JSON::Serializable
 
         # The job ID for the service job.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # The name of the service job.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The ARN of the job queue that the service job is associated with.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
         # The type of service job. For SageMaker Training jobs, this value is SAGEMAKER_TRAINING .
+
         @[JSON::Field(key: "serviceJobType")]
         getter service_job_type : String
 
         # The Unix timestamp (in milliseconds) for when the service job was started.
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64
 
         # The current status of the service job.
+
         @[JSON::Field(key: "status")]
         getter status : String
 
         # A list of job attempts associated with the service job.
+
         @[JSON::Field(key: "attempts")]
         getter attempts : Array(Types::ServiceJobAttemptDetail)?
 
         # The Unix timestamp (in milliseconds) for when the service job was created.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Int64?
 
         # Indicates whether the service job has been terminated.
+
         @[JSON::Field(key: "isTerminated")]
         getter is_terminated : Bool?
 
         # The Amazon Resource Name (ARN) of the service job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
         # The latest attempt associated with the service job.
+
         @[JSON::Field(key: "latestAttempt")]
         getter latest_attempt : Types::LatestServiceJobAttempt?
 
         # The retry strategy to use for failed service jobs that are submitted with this service job.
+
         @[JSON::Field(key: "retryStrategy")]
         getter retry_strategy : Types::ServiceJobRetryStrategy?
 
         # The scheduling priority of the service job.
+
         @[JSON::Field(key: "schedulingPriority")]
         getter scheduling_priority : Int32?
 
         # The request, in JSON, for the service that the SubmitServiceJob operation is queueing.
+
         @[JSON::Field(key: "serviceRequestPayload")]
         getter service_request_payload : String?
 
         # The share identifier for the service job. This is used for fair-share scheduling.
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String?
 
         # A short, human-readable string to provide more details for the current status of the service job.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp (in milliseconds) for when the service job stopped running.
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
         # The tags that are associated with the service job. Each tag consists of a key and an optional value.
         # For more information, see Tagging your Batch resources .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The timeout configuration for the service job.
+
         @[JSON::Field(key: "timeoutConfig")]
         getter timeout_config : Types::ServiceJobTimeout?
 
@@ -2371,20 +2684,24 @@ module AwsSdk
 
       # An object that represents a container instance host device. This object isn't applicable to jobs
       # that are running on Fargate resources and shouldn't be provided.
+
       struct Device
         include JSON::Serializable
 
         # The path for the device on the host container instance.
+
         @[JSON::Field(key: "hostPath")]
         getter host_path : String
 
         # The path inside the container that's used to expose the host device. By default, the hostPath value
         # is used.
+
         @[JSON::Field(key: "containerPath")]
         getter container_path : String?
 
         # The explicit permissions to provide to the container for the device. By default, the container has
         # permissions for read , write , and mknod for the device.
+
         @[JSON::Field(key: "permissions")]
         getter permissions : Array(String)?
 
@@ -2397,6 +2714,7 @@ module AwsSdk
       end
 
       # The authorization configuration details for the Amazon EFS file system.
+
       struct EFSAuthorizationConfig
         include JSON::Serializable
 
@@ -2405,6 +2723,7 @@ module AwsSdk
         # set on the EFS access point. If an access point is used, transit encryption must be enabled in the
         # EFSVolumeConfiguration . For more information, see Working with Amazon EFS access points in the
         # Amazon Elastic File System User Guide .
+
         @[JSON::Field(key: "accessPointId")]
         getter access_point_id : String?
 
@@ -2413,6 +2732,7 @@ module AwsSdk
         # this parameter is omitted, the default value of DISABLED is used. For more information, see Using
         # Amazon EFS access points in the Batch User Guide . EFS IAM authorization requires that
         # TransitEncryption be ENABLED and that a JobRoleArn is specified.
+
         @[JSON::Field(key: "iam")]
         getter iam : String?
 
@@ -2425,14 +2745,17 @@ module AwsSdk
 
       # This is used when you're using an Amazon Elastic File System file system for job storage. For more
       # information, see Amazon EFS Volumes in the Batch User Guide .
+
       struct EFSVolumeConfiguration
         include JSON::Serializable
 
         # The Amazon EFS file system ID to use.
+
         @[JSON::Field(key: "fileSystemId")]
         getter file_system_id : String
 
         # The authorization configuration details for the Amazon EFS file system.
+
         @[JSON::Field(key: "authorizationConfig")]
         getter authorization_config : Types::EFSAuthorizationConfig?
 
@@ -2441,6 +2764,7 @@ module AwsSdk
         # same effect as omitting this parameter. The maximum length is 4,096 characters. If an EFS access
         # point is specified in the authorizationConfig , the root directory parameter must either be omitted
         # or set to / , which enforces the path set on the Amazon EFS access point.
+
         @[JSON::Field(key: "rootDirectory")]
         getter root_directory : String?
 
@@ -2448,6 +2772,7 @@ module AwsSdk
         # and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is
         # used. If this parameter is omitted, the default value of DISABLED is used. For more information, see
         # Encrypting data in transit in the Amazon Elastic File System User Guide .
+
         @[JSON::Field(key: "transitEncryption")]
         getter transit_encryption : String?
 
@@ -2455,6 +2780,7 @@ module AwsSdk
         # If you don't specify a transit encryption port, it uses the port selection strategy that the Amazon
         # EFS mount helper uses. The value must be between 0 and 65,535. For more information, see EFS mount
         # helper in the Amazon Elastic File System User Guide .
+
         @[JSON::Field(key: "transitEncryptionPort")]
         getter transit_encryption_port : Int32?
 
@@ -2471,6 +2797,7 @@ module AwsSdk
       # Provides information used to select Amazon Machine Images (AMIs) for instances in the compute
       # environment. If Ec2Configuration isn't specified, the default is ECS_AL2 ( Amazon Linux 2 ). This
       # object isn't applicable to jobs that are running on Fargate resources.
+
       struct Ec2Configuration
         include JSON::Serializable
 
@@ -2505,6 +2832,7 @@ module AwsSdk
         # Default for non-GPU instance families. Amazon Linux 2023 does not support A1 instances.
         # EKS_AL2023_NVIDIA Amazon Linux 2023 (accelerated) : Default for GPU instance families and can be
         # used for all non Amazon Web Services Graviton-based instance types.
+
         @[JSON::Field(key: "imageType")]
         getter image_type : String
 
@@ -2515,11 +2843,13 @@ module AwsSdk
         # compute resource AMI that you choose must support ARM instances. Amazon ECS vends both x86 and ARM
         # versions of the Amazon ECS-optimized Amazon Linux 2 AMI. For more information, see Amazon
         # ECS-optimized Amazon Linux 2 AMI in the Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "imageIdOverride")]
         getter image_id_override : String?
 
         # The Kubernetes version for the compute environment. If you don't specify a value, the latest version
         # that Batch supports is used.
+
         @[JSON::Field(key: "imageKubernetesVersion")]
         getter image_kubernetes_version : String?
 
@@ -2532,11 +2862,13 @@ module AwsSdk
       end
 
       # An object that contains the properties for the Amazon ECS resources of a job.
+
       struct EcsProperties
         include JSON::Serializable
 
         # An object that contains the properties for the Amazon ECS task definition of a job. This object is
         # currently limited to one task element. However, the task element can run up to 10 containers.
+
         @[JSON::Field(key: "taskProperties")]
         getter task_properties : Array(Types::EcsTaskProperties)
 
@@ -2547,10 +2879,12 @@ module AwsSdk
       end
 
       # An object that contains the details for the Amazon ECS resources of a job.
+
       struct EcsPropertiesDetail
         include JSON::Serializable
 
         # The properties for the Amazon ECS task definition of a job.
+
         @[JSON::Field(key: "taskProperties")]
         getter task_properties : Array(Types::EcsTaskDetails)?
 
@@ -2561,11 +2895,13 @@ module AwsSdk
       end
 
       # An object that contains overrides for the Amazon ECS task definition of a job.
+
       struct EcsPropertiesOverride
         include JSON::Serializable
 
         # The overrides for the Amazon ECS task definition of a job. This object is currently limited to one
         # element.
+
         @[JSON::Field(key: "taskProperties")]
         getter task_properties : Array(Types::TaskPropertiesOverride)?
 
@@ -2577,65 +2913,79 @@ module AwsSdk
 
       # The details of a task definition that describes the container and volume definitions of an Amazon
       # ECS task.
+
       struct EcsTaskDetails
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the container instance that hosts the task.
+
         @[JSON::Field(key: "containerInstanceArn")]
         getter container_instance_arn : String?
 
         # A list of containers that are included in the taskProperties list.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::TaskContainerDetails)?
 
         # Determines whether execute command functionality is turned on for this task. If true , execute
         # command functionality is turned on all the containers in the task.
+
         @[JSON::Field(key: "enableExecuteCommand")]
         getter enable_execute_command : Bool?
 
         # The amount of ephemeral storage allocated for the task.
+
         @[JSON::Field(key: "ephemeralStorage")]
         getter ephemeral_storage : Types::EphemeralStorage?
 
         # The Amazon Resource Name (ARN) of the execution role that Batch can assume. For more information,
         # see Batch execution IAM role in the Batch User Guide .
+
         @[JSON::Field(key: "executionRoleArn")]
         getter execution_role_arn : String?
 
         # The IPC resource namespace to use for the containers in the task. The valid values are host , task ,
         # or none . For more information see ipcMode in EcsTaskProperties .
+
         @[JSON::Field(key: "ipcMode")]
         getter ipc_mode : String?
 
         # The network configuration for jobs that are running on Fargate resources. Jobs that are running on
         # Amazon EC2 resources must not specify this parameter.
+
         @[JSON::Field(key: "networkConfiguration")]
         getter network_configuration : Types::NetworkConfiguration?
 
         # The process namespace to use for the containers in the task. The valid values are host , or task .
         # For more information see pidMode in EcsTaskProperties .
+
         @[JSON::Field(key: "pidMode")]
         getter pid_mode : String?
 
         # The Fargate platform version where the jobs are running.
+
         @[JSON::Field(key: "platformVersion")]
         getter platform_version : String?
 
         # An object that represents the compute environment architecture for Batch jobs on Fargate.
+
         @[JSON::Field(key: "runtimePlatform")]
         getter runtime_platform : Types::RuntimePlatform?
 
         # The ARN of the Amazon ECS task.
+
         @[JSON::Field(key: "taskArn")]
         getter task_arn : String?
 
         # The Amazon Resource Name (ARN) of the IAM role that the container can assume for Amazon Web Services
         # permissions. For more information, see IAM roles for tasks in the Amazon Elastic Container Service
         # Developer Guide . This is object is comparable to ContainerProperties:jobRoleArn .
+
         @[JSON::Field(key: "taskRoleArn")]
         getter task_role_arn : String?
 
         # A list of data volumes used in a job.
+
         @[JSON::Field(key: "volumes")]
         getter volumes : Array(Types::Volume)?
 
@@ -2660,26 +3010,31 @@ module AwsSdk
       # The properties for a task definition that describes the container and volume definitions of an
       # Amazon ECS task. You can specify which Docker images to use, the required resources, and other
       # configurations related to launching the task definition through an Amazon ECS service or task.
+
       struct EcsTaskProperties
         include JSON::Serializable
 
         # This object is a list of containers.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::TaskContainerProperties)
 
         # Determines whether execute command functionality is turned on for this task. If true , execute
         # command functionality is turned on all the containers in the task.
+
         @[JSON::Field(key: "enableExecuteCommand")]
         getter enable_execute_command : Bool?
 
         # The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total
         # amount of ephemeral storage available, beyond the default amount, for tasks hosted on Fargate.
+
         @[JSON::Field(key: "ephemeralStorage")]
         getter ephemeral_storage : Types::EphemeralStorage?
 
         # The Amazon Resource Name (ARN) of the execution role that Batch can assume. For jobs that run on
         # Fargate resources, you must provide an execution role. For more information, see Batch execution IAM
         # role in the Batch User Guide .
+
         @[JSON::Field(key: "executionRoleArn")]
         getter execution_role_arn : String?
 
@@ -2691,11 +3046,13 @@ module AwsSdk
         # other containers in a task or on the container instance. If no value is specified, then the IPC
         # resource namespace sharing depends on the Docker daemon setting on the container instance. For more
         # information, see IPC settings in the Docker run reference.
+
         @[JSON::Field(key: "ipcMode")]
         getter ipc_mode : String?
 
         # The network configuration for jobs that are running on Fargate resources. Jobs that are running on
         # Amazon EC2 resources must not specify this parameter.
+
         @[JSON::Field(key: "networkConfiguration")]
         getter network_configuration : Types::NetworkConfiguration?
 
@@ -2706,6 +3063,7 @@ module AwsSdk
         # If task is specified, all containers within the specified task share the same process namespace. If
         # no value is specified, the default is a private namespace for each container. For more information,
         # see PID settings in the Docker run reference.
+
         @[JSON::Field(key: "pidMode")]
         getter pid_mode : String?
 
@@ -2714,19 +3072,23 @@ module AwsSdk
         # used by default. This uses a recent, approved version of the Fargate platform for compute resources.
         # For more information, see Fargate platform versions in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "platformVersion")]
         getter platform_version : String?
 
         # An object that represents the compute environment architecture for Batch jobs on Fargate.
+
         @[JSON::Field(key: "runtimePlatform")]
         getter runtime_platform : Types::RuntimePlatform?
 
         # The Amazon Resource Name (ARN) that's associated with the Amazon ECS task. This is object is
         # comparable to ContainerProperties:jobRoleArn .
+
         @[JSON::Field(key: "taskRoleArn")]
         getter task_role_arn : String?
 
         # A list of volumes that are associated with the job.
+
         @[JSON::Field(key: "volumes")]
         getter volumes : Array(Types::Volume)?
 
@@ -2748,23 +3110,28 @@ module AwsSdk
 
       # An object that represents the details for an attempt for a job attempt that an Amazon EKS container
       # runs.
+
       struct EksAttemptContainerDetail
         include JSON::Serializable
 
         # The ID for the container.
+
         @[JSON::Field(key: "containerID")]
         getter container_id : String?
 
         # The exit code returned for the job attempt. A non-zero exit code is considered failed.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # The name of a container.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # A short (255 max characters) human-readable string to provide additional details for a running or
         # stopped container.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
@@ -2778,45 +3145,55 @@ module AwsSdk
       end
 
       # An object that represents the details of a job attempt for a job attempt by an Amazon EKS container.
+
       struct EksAttemptDetail
         include JSON::Serializable
 
         # The details for the final status of the containers for this job attempt.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::EksAttemptContainerDetail)?
 
         # The Amazon Resource Name (ARN) of the Amazon EKS cluster.
+
         @[JSON::Field(key: "eksClusterArn")]
         getter eks_cluster_arn : String?
 
         # The details for the init containers.
+
         @[JSON::Field(key: "initContainers")]
         getter init_containers : Array(Types::EksAttemptContainerDetail)?
 
         # The name of the node for this job attempt.
+
         @[JSON::Field(key: "nodeName")]
         getter node_name : String?
 
         # The name of the pod for this job attempt.
+
         @[JSON::Field(key: "podName")]
         getter pod_name : String?
 
         # The namespace of the Amazon EKS cluster that the pod exists in.
+
         @[JSON::Field(key: "podNamespace")]
         getter pod_namespace : String?
 
         # The Unix timestamp (in milliseconds) for when the attempt was started (when the attempt transitioned
         # from the STARTING state to the RUNNING state).
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64?
 
         # A short, human-readable string to provide additional details for the current status of the job
         # attempt.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp (in milliseconds) for when the attempt was stopped. This happens when the attempt
         # transitioned from the RUNNING state to a terminal state, such as SUCCEEDED or FAILED .
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
@@ -2836,11 +3213,13 @@ module AwsSdk
 
       # Configuration for the Amazon EKS cluster that supports the Batch compute environment. The cluster
       # must exist before the compute environment can be created.
+
       struct EksConfiguration
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Amazon EKS cluster. An example is arn: aws :eks: us-east-1 :
         # 123456789012 :cluster/ ClusterForBatch .
+
         @[JSON::Field(key: "eksClusterArn")]
         getter eks_cluster_arn : String
 
@@ -2848,6 +3227,7 @@ module AwsSdk
         # empty or null. It must be fewer than 64 characters long, can't be set to default , can't start with
         # " kube- ," and must match this regular expression: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$ . For more
         # information, see Namespaces in the Kubernetes documentation.
+
         @[JSON::Field(key: "kubernetesNamespace")]
         getter kubernetes_namespace : String
 
@@ -2861,10 +3241,12 @@ module AwsSdk
       # EKS container properties are used in job definitions for Amazon EKS based job definitions to
       # describe the properties for a container node in the pod that's launched as part of a job. This can't
       # be specified for Amazon ECS based job definitions.
+
       struct EksContainer
         include JSON::Serializable
 
         # The Docker image used to start the container.
+
         @[JSON::Field(key: "image")]
         getter image : String
 
@@ -2877,6 +3259,7 @@ module AwsSdk
         # example, $$(VAR_NAME) is passed as $(VAR_NAME) whether or not the VAR_NAME environment variable
         # exists. For more information, see Dockerfile reference: CMD and Define a command and arguments for a
         # pod in the Kubernetes documentation .
+
         @[JSON::Field(key: "args")]
         getter args : Array(String)?
 
@@ -2889,39 +3272,46 @@ module AwsSdk
         # not the VAR_NAME environment variable exists. The entrypoint can't be updated. For more information,
         # see ENTRYPOINT in the Dockerfile reference and Define a command and arguments for a container and
         # Entrypoint in the Kubernetes documentation .
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
         # The environment variables to pass to a container. Environment variables cannot start with "
         # AWS_BATCH ". This naming convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "env")]
         getter env : Array(Types::EksContainerEnvironmentVariable)?
 
         # The image pull policy for the container. Supported values are Always , IfNotPresent , and Never .
         # This parameter defaults to IfNotPresent . However, if the :latest tag is specified, it defaults to
         # Always . For more information, see Updating images in the Kubernetes documentation .
+
         @[JSON::Field(key: "imagePullPolicy")]
         getter image_pull_policy : String?
 
         # The name of the container. If the name isn't specified, the default name " Default " is used. Each
         # container in a pod must have a unique name.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The type and amount of resources to assign to a container. The supported resources include memory ,
         # cpu , and nvidia.com/gpu . For more information, see Resource management for pods and containers in
         # the Kubernetes documentation .
+
         @[JSON::Field(key: "resources")]
         getter resources : Types::EksContainerResourceRequirements?
 
         # The security context for a job. For more information, see Configure a security context for a pod or
         # container in the Kubernetes documentation .
+
         @[JSON::Field(key: "securityContext")]
         getter security_context : Types::EksContainerSecurityContext?
 
         # The volume mounts for the container. Batch supports emptyDir , hostPath , and secret volume types.
         # For more information about volumes and volume mounts in Kubernetes, see Volumes in the Kubernetes
         # documentation .
+
         @[JSON::Field(key: "volumeMounts")]
         getter volume_mounts : Array(Types::EksContainerVolumeMount)?
 
@@ -2940,6 +3330,7 @@ module AwsSdk
       end
 
       # The details for container properties that are returned by DescribeJobs for jobs that use Amazon EKS.
+
       struct EksContainerDetail
         include JSON::Serializable
 
@@ -2952,57 +3343,68 @@ module AwsSdk
         # example, $$(VAR_NAME) is passed as $(VAR_NAME) whether or not the VAR_NAME environment variable
         # exists. For more information, see Dockerfile reference: CMD and Define a command and arguments for a
         # pod in the Kubernetes documentation .
+
         @[JSON::Field(key: "args")]
         getter args : Array(String)?
 
         # The entrypoint for the container. For more information, see Entrypoint in the Kubernetes
         # documentation .
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
         # The environment variables to pass to a container. Environment variables cannot start with "
         # AWS_BATCH ". This naming convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "env")]
         getter env : Array(Types::EksContainerEnvironmentVariable)?
 
         # The exit code returned for the job attempt. A non-zero exit code is considered failed.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # The Docker image used to start the container.
+
         @[JSON::Field(key: "image")]
         getter image : String?
 
         # The image pull policy for the container. Supported values are Always , IfNotPresent , and Never .
         # This parameter defaults to Always if the :latest tag is specified, IfNotPresent otherwise. For more
         # information, see Updating images in the Kubernetes documentation .
+
         @[JSON::Field(key: "imagePullPolicy")]
         getter image_pull_policy : String?
 
         # The name of the container. If the name isn't specified, the default name " Default " is used. Each
         # container in a pod must have a unique name.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # A short human-readable string to provide additional details for a running or stopped container. It
         # can be up to 255 characters long.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
         # The type and amount of resources to assign to a container. The supported resources include memory ,
         # cpu , and nvidia.com/gpu . For more information, see Resource management for pods and containers in
         # the Kubernetes documentation .
+
         @[JSON::Field(key: "resources")]
         getter resources : Types::EksContainerResourceRequirements?
 
         # The security context for a job. For more information, see Configure a security context for a pod or
         # container in the Kubernetes documentation .
+
         @[JSON::Field(key: "securityContext")]
         getter security_context : Types::EksContainerSecurityContext?
 
         # The volume mounts for the container. Batch supports emptyDir , hostPath , and secret volume types.
         # For more information about volumes and volume mounts in Kubernetes, see Volumes in the Kubernetes
         # documentation .
+
         @[JSON::Field(key: "volumeMounts")]
         getter volume_mounts : Array(Types::EksContainerVolumeMount)?
 
@@ -3023,14 +3425,17 @@ module AwsSdk
       end
 
       # An environment variable.
+
       struct EksContainerEnvironmentVariable
         include JSON::Serializable
 
         # The name of the environment variable.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # The value of the environment variable.
+
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -3043,17 +3448,20 @@ module AwsSdk
 
       # Object representing any Kubernetes overrides to a job definition that's used in a SubmitJob API
       # operation.
+
       struct EksContainerOverride
         include JSON::Serializable
 
         # The arguments to the entrypoint to send to the container that overrides the default arguments from
         # the Docker image or the job definition. For more information, see Dockerfile reference: CMD and
         # Define a command an arguments for a pod in the Kubernetes documentation .
+
         @[JSON::Field(key: "args")]
         getter args : Array(String)?
 
         # The command to send to the container that overrides the default command from the Docker image or the
         # job definition.
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
@@ -3061,21 +3469,25 @@ module AwsSdk
         # added to the container at launch. Or, you can override the existing environment variables from the
         # Docker image or the job definition. Environment variables cannot start with " AWS_BATCH ". This
         # naming convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "env")]
         getter env : Array(Types::EksContainerEnvironmentVariable)?
 
         # The override of the Docker image that's used to start the container.
+
         @[JSON::Field(key: "image")]
         getter image : String?
 
         # A pointer to the container that you want to override. The name must match a unique container name
         # that you wish to override.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The type and amount of resources to assign to a container. These override the settings in the job
         # definition. The supported resources include memory , cpu , and nvidia.com/gpu . For more
         # information, see Resource management for pods and containers in the Kubernetes documentation .
+
         @[JSON::Field(key: "resources")]
         getter resources : Types::EksContainerResourceRequirements?
 
@@ -3093,6 +3505,7 @@ module AwsSdk
       # The type and amount of resources to assign to a container. The supported resources include memory ,
       # cpu , and nvidia.com/gpu . For more information, see Resource management for pods and containers in
       # the Kubernetes documentation .
+
       struct EksContainerResourceRequirements
         include JSON::Serializable
 
@@ -3111,6 +3524,7 @@ module AwsSdk
         # reserved for the container. Values must be a whole integer. memory can be specified in limits ,
         # requests , or both. If memory is specified in both places, then the value that's specified in limits
         # must be equal to the value that's specified in requests .
+
         @[JSON::Field(key: "limits")]
         getter limits : Hash(String, String)?
 
@@ -3129,6 +3543,7 @@ module AwsSdk
         # Values must be a whole integer. nvidia.com/gpu can be specified in limits , requests , or both. If
         # nvidia.com/gpu is specified in both, then the value that's specified in limits must be equal to the
         # value that's specified in requests .
+
         @[JSON::Field(key: "requests")]
         getter requests : Hash(String, String)?
 
@@ -3141,11 +3556,13 @@ module AwsSdk
 
       # The security context for a job. For more information, see Configure a security context for a pod or
       # container in the Kubernetes documentation .
+
       struct EksContainerSecurityContext
         include JSON::Serializable
 
         # Whether or not a container or a Kubernetes pod is allowed to gain more privileges than its parent
         # process. The default value is false .
+
         @[JSON::Field(key: "allowPrivilegeEscalation")]
         getter allow_privilege_escalation : Bool?
 
@@ -3153,12 +3570,14 @@ module AwsSdk
         # instance. The level of permissions are similar to the root user permissions. The default value is
         # false . This parameter maps to privileged policy in the Privileged pod security policies in the
         # Kubernetes documentation .
+
         @[JSON::Field(key: "privileged")]
         getter privileged : Bool?
 
         # When this parameter is true , the container is given read-only access to its root file system. The
         # default value is false . This parameter maps to ReadOnlyRootFilesystem policy in the Volumes and
         # file systems pod security policies in the Kubernetes documentation .
+
         @[JSON::Field(key: "readOnlyRootFilesystem")]
         getter read_only_root_filesystem : Bool?
 
@@ -3166,6 +3585,7 @@ module AwsSdk
         # parameter isn't specified, the default is the group that's specified in the image metadata. This
         # parameter maps to RunAsGroup and MustRunAs policy in the Users and groups pod security policies in
         # the Kubernetes documentation .
+
         @[JSON::Field(key: "runAsGroup")]
         getter run_as_group : Int64?
 
@@ -3173,6 +3593,7 @@ module AwsSdk
         # parameter isn't specified, so such rule is enforced. This parameter maps to RunAsUser and
         # MustRunAsNonRoot policy in the Users and groups pod security policies in the Kubernetes
         # documentation .
+
         @[JSON::Field(key: "runAsNonRoot")]
         getter run_as_non_root : Bool?
 
@@ -3180,6 +3601,7 @@ module AwsSdk
         # parameter isn't specified, the default is the user that's specified in the image metadata. This
         # parameter maps to RunAsUser and MustRanAs policy in the Users and groups pod security policies in
         # the Kubernetes documentation .
+
         @[JSON::Field(key: "runAsUser")]
         getter run_as_user : Int64?
 
@@ -3196,23 +3618,28 @@ module AwsSdk
 
       # The volume mounts for a container for an Amazon EKS job. For more information about volumes and
       # volume mounts in Kubernetes, see Volumes in the Kubernetes documentation .
+
       struct EksContainerVolumeMount
         include JSON::Serializable
 
         # The path on the container where the volume is mounted.
+
         @[JSON::Field(key: "mountPath")]
         getter mount_path : String?
 
         # The name the volume mount. This must match the name of one of the volumes in the pod.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # If this value is true , the container has read-only access to the volume. Otherwise, the container
         # can write to the volume. The default value is false .
+
         @[JSON::Field(key: "readOnly")]
         getter read_only : Bool?
 
         # A sub-path inside the referenced volume instead of its root.
+
         @[JSON::Field(key: "subPath")]
         getter sub_path : String?
 
@@ -3231,6 +3658,7 @@ module AwsSdk
       # emptyDir volume. However, the emptyDir volume can be mounted at the same or different paths in each
       # container. When a pod is removed from a node for any reason, the data in the emptyDir is deleted
       # permanently. For more information, see emptyDir in the Kubernetes documentation .
+
       struct EksEmptyDir
         include JSON::Serializable
 
@@ -3238,10 +3666,12 @@ module AwsSdk
         # node. "" (Default) Use the disk storage of the node. "Memory" Use the tmpfs volume that's backed by
         # the RAM of the node. Contents of the volume are lost when the node reboots, and any storage on the
         # volume counts against the container's memory limit.
+
         @[JSON::Field(key: "medium")]
         getter medium : String?
 
         # The maximum size of the volume. By default, there's no maximum size defined.
+
         @[JSON::Field(key: "sizeLimit")]
         getter size_limit : String?
 
@@ -3255,10 +3685,12 @@ module AwsSdk
       # Specifies the configuration of a Kubernetes hostPath volume. A hostPath volume mounts an existing
       # file or directory from the host node's filesystem into your pod. For more information, see hostPath
       # in the Kubernetes documentation .
+
       struct EksHostPath
         include JSON::Serializable
 
         # The path of the file or directory on the host to mount into containers on the pod.
+
         @[JSON::Field(key: "path")]
         getter path : String?
 
@@ -3271,6 +3703,7 @@ module AwsSdk
       # Describes and uniquely identifies Kubernetes resources. For example, the compute environment that a
       # pod runs in or the jobID for a job running in the pod. For more information, see Understanding
       # Kubernetes Objects in the Kubernetes documentation .
+
       struct EksMetadata
         include JSON::Serializable
 
@@ -3282,6 +3715,7 @@ module AwsSdk
         # ([a-z0-9A-Z]), dashes (-), underscores (_), and dots (.), but must begin and end with an
         # alphanumeric character. Annotation values must be 255 characters or less. Annotations can be added
         # or modified at any time. Each resource can have multiple annotations.
+
         @[JSON::Field(key: "annotations")]
         getter annotations : Hash(String, String)?
 
@@ -3289,6 +3723,7 @@ module AwsSdk
         # letters, lowercase letters, numbers, hyphens (-), and underscores (_). Labels can be added or
         # modified at any time. Each resource can have multiple labels, but each key must be unique for a
         # given object.
+
         @[JSON::Field(key: "labels")]
         getter labels : Hash(String, String)?
 
@@ -3302,6 +3737,7 @@ module AwsSdk
         # environment's EksConfiguration , but must have identical role-based access control (RBAC) roles as
         # the compute environment's kubernetesNamespace . For multi-node parallel jobs, the same value must be
         # provided across all the node ranges.
+
         @[JSON::Field(key: "namespace")]
         getter namespace : String?
 
@@ -3317,16 +3753,19 @@ module AwsSdk
       # PersistentVolumeClaims are a way for users to "claim" durable storage without knowing the details of
       # the particular cloud environment. See the information about PersistentVolumes in the Kubernetes
       # documentation .
+
       struct EksPersistentVolumeClaim
         include JSON::Serializable
 
         # The name of the persistentVolumeClaim bounded to a persistentVolume . For more information, see
         # Persistent Volume Claims in the Kubernetes documentation .
+
         @[JSON::Field(key: "claimName")]
         getter claim_name : String
 
         # An optional boolean value indicating if the mount is read only. Default is false. For more
         # information, see Read Only Mounts in the Kubernetes documentation .
+
         @[JSON::Field(key: "readOnly")]
         getter read_only : Bool?
 
@@ -3338,11 +3777,13 @@ module AwsSdk
       end
 
       # The properties for the pod.
+
       struct EksPodProperties
         include JSON::Serializable
 
         # The properties of the container that's used on the Amazon EKS pod. This object is limited to 10
         # elements.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::EksContainer)?
 
@@ -3351,6 +3792,7 @@ module AwsSdk
         # does not match the configured cluster domain suffix is forwarded to the upstream nameserver
         # inherited from the node. For more information, see Pod's DNS policy in the Kubernetes documentation
         # . Valid values: Default | ClusterFirst | ClusterFirstWithHostNet
+
         @[JSON::Field(key: "dnsPolicy")]
         getter dns_policy : String?
 
@@ -3358,12 +3800,14 @@ module AwsSdk
         # false enables the Kubernetes pod networking model. Most Batch workloads are egress-only and don't
         # require the overhead of IP allocation for each pod for incoming connections. For more information,
         # see Host namespaces and Pod networking in the Kubernetes documentation .
+
         @[JSON::Field(key: "hostNetwork")]
         getter host_network : Bool?
 
         # References a Kubernetes secret resource. It holds a list of secrets. These secrets help to gain
         # access to pull an images from a private registry. ImagePullSecret$name is required when this object
         # is used.
+
         @[JSON::Field(key: "imagePullSecrets")]
         getter image_pull_secrets : Array(Types::ImagePullSecret)?
 
@@ -3372,26 +3816,31 @@ module AwsSdk
         # Connector agent and persists the registration information in the Kubernetes backend data store. For
         # more information, see Init Containers in the Kubernetes documentation . This object is limited to 10
         # elements.
+
         @[JSON::Field(key: "initContainers")]
         getter init_containers : Array(Types::EksContainer)?
 
         # Metadata about the Kubernetes pod. For more information, see Understanding Kubernetes Objects in the
         # Kubernetes documentation .
+
         @[JSON::Field(key: "metadata")]
         getter metadata : Types::EksMetadata?
 
         # The name of the service account that's used to run the pod. For more information, see Kubernetes
         # service accounts and Configure a Kubernetes service account to assume an IAM role in the Amazon EKS
         # User Guide and Configure service accounts for pods in the Kubernetes documentation .
+
         @[JSON::Field(key: "serviceAccountName")]
         getter service_account_name : String?
 
         # Indicates if the processes in a container are shared, or visible, to other containers in the same
         # pod. For more information, see Share Process Namespace between Containers in a Pod .
+
         @[JSON::Field(key: "shareProcessNamespace")]
         getter share_process_namespace : Bool?
 
         # Specifies the volumes for a job definition that uses Amazon EKS resources.
+
         @[JSON::Field(key: "volumes")]
         getter volumes : Array(Types::EksVolume)?
 
@@ -3410,10 +3859,12 @@ module AwsSdk
       end
 
       # The details for the pod.
+
       struct EksPodPropertiesDetail
         include JSON::Serializable
 
         # The properties of the container that's used on the Amazon EKS pod.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::EksContainerDetail)?
 
@@ -3426,6 +3877,7 @@ module AwsSdk
         # ClusterFirstWithHostNet , depending on the value of the hostNetwork parameter. For more information,
         # see Pod's DNS policy in the Kubernetes documentation . Valid values: Default | ClusterFirst |
         # ClusterFirstWithHostNet
+
         @[JSON::Field(key: "dnsPolicy")]
         getter dns_policy : String?
 
@@ -3433,45 +3885,54 @@ module AwsSdk
         # false enables the Kubernetes pod networking model. Most Batch workloads are egress-only and don't
         # require the overhead of IP allocation for each pod for incoming connections. For more information,
         # see Host namespaces and Pod networking in the Kubernetes documentation .
+
         @[JSON::Field(key: "hostNetwork")]
         getter host_network : Bool?
 
         # Displays the reference pointer to the Kubernetes secret resource. These secrets help to gain access
         # to pull an images from a private registry.
+
         @[JSON::Field(key: "imagePullSecrets")]
         getter image_pull_secrets : Array(Types::ImagePullSecret)?
 
         # The container registered with the Amazon EKS Connector agent and persists the registration
         # information in the Kubernetes backend data store.
+
         @[JSON::Field(key: "initContainers")]
         getter init_containers : Array(Types::EksContainerDetail)?
 
         # Describes and uniquely identifies Kubernetes resources. For example, the compute environment that a
         # pod runs in or the jobID for a job running in the pod. For more information, see Understanding
         # Kubernetes Objects in the Kubernetes documentation .
+
         @[JSON::Field(key: "metadata")]
         getter metadata : Types::EksMetadata?
 
         # The name of the node for this job.
+
         @[JSON::Field(key: "nodeName")]
         getter node_name : String?
 
         # The name of the pod for this job.
+
         @[JSON::Field(key: "podName")]
         getter pod_name : String?
 
         # The name of the service account that's used to run the pod. For more information, see Kubernetes
         # service accounts and Configure a Kubernetes service account to assume an IAM role in the Amazon EKS
         # User Guide and Configure service accounts for pods in the Kubernetes documentation .
+
         @[JSON::Field(key: "serviceAccountName")]
         getter service_account_name : String?
 
         # Indicates if the processes in a container are shared, or visible, to other containers in the same
         # pod. For more information, see Share Process Namespace between Containers in a Pod .
+
         @[JSON::Field(key: "shareProcessNamespace")]
         getter share_process_namespace : Bool?
 
         # Specifies the volumes for a job definition using Amazon EKS resources.
+
         @[JSON::Field(key: "volumes")]
         getter volumes : Array(Types::EksVolume)?
 
@@ -3492,10 +3953,12 @@ module AwsSdk
       end
 
       # An object that contains overrides for the Kubernetes pod properties of a job.
+
       struct EksPodPropertiesOverride
         include JSON::Serializable
 
         # The overrides for the container that's used on the Amazon EKS pod.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::EksContainerOverride)?
 
@@ -3504,10 +3967,12 @@ module AwsSdk
         # container starts. These containers are registered with the Amazon EKS Connector agent and persists
         # the registration information in the Kubernetes backend data store. For more information, see Init
         # Containers in the Kubernetes documentation .
+
         @[JSON::Field(key: "initContainers")]
         getter init_containers : Array(Types::EksContainerOverride)?
 
         # Metadata about the overrides for the container that's used on the Amazon EKS pod.
+
         @[JSON::Field(key: "metadata")]
         getter metadata : Types::EksMetadata?
 
@@ -3520,10 +3985,12 @@ module AwsSdk
       end
 
       # An object that contains the properties for the Kubernetes resources of a job.
+
       struct EksProperties
         include JSON::Serializable
 
         # The properties for the Kubernetes pod resources of a job.
+
         @[JSON::Field(key: "podProperties")]
         getter pod_properties : Types::EksPodProperties?
 
@@ -3534,10 +4001,12 @@ module AwsSdk
       end
 
       # An object that contains the details for the Kubernetes resources of a job.
+
       struct EksPropertiesDetail
         include JSON::Serializable
 
         # The properties for the Kubernetes pod resources of a job.
+
         @[JSON::Field(key: "podProperties")]
         getter pod_properties : Types::EksPodPropertiesDetail?
 
@@ -3548,10 +4017,12 @@ module AwsSdk
       end
 
       # An object that contains overrides for the Kubernetes resources of a job.
+
       struct EksPropertiesOverride
         include JSON::Serializable
 
         # The overrides for the Kubernetes pod resources of a job.
+
         @[JSON::Field(key: "podProperties")]
         getter pod_properties : Types::EksPodPropertiesOverride?
 
@@ -3563,15 +4034,18 @@ module AwsSdk
 
       # Specifies the configuration of a Kubernetes secret volume. For more information, see secret in the
       # Kubernetes documentation .
+
       struct EksSecret
         include JSON::Serializable
 
         # The name of the secret. The name must be allowed as a DNS subdomain name. For more information, see
         # DNS subdomain names in the Kubernetes documentation .
+
         @[JSON::Field(key: "secretName")]
         getter secret_name : String
 
         # Specifies whether the secret or the secret's keys must be defined.
+
         @[JSON::Field(key: "optional")]
         getter optional : Bool?
 
@@ -3583,31 +4057,37 @@ module AwsSdk
       end
 
       # Specifies an Amazon EKS volume for a job definition.
+
       struct EksVolume
         include JSON::Serializable
 
         # The name of the volume. The name must be allowed as a DNS subdomain name. For more information, see
         # DNS subdomain names in the Kubernetes documentation .
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # Specifies the configuration of a Kubernetes emptyDir volume. For more information, see emptyDir in
         # the Kubernetes documentation .
+
         @[JSON::Field(key: "emptyDir")]
         getter empty_dir : Types::EksEmptyDir?
 
         # Specifies the configuration of a Kubernetes hostPath volume. For more information, see hostPath in
         # the Kubernetes documentation .
+
         @[JSON::Field(key: "hostPath")]
         getter host_path : Types::EksHostPath?
 
         # Specifies the configuration of a Kubernetes persistentVolumeClaim bounded to a persistentVolume .
         # For more information, see Persistent Volume Claims in the Kubernetes documentation .
+
         @[JSON::Field(key: "persistentVolumeClaim")]
         getter persistent_volume_claim : Types::EksPersistentVolumeClaim?
 
         # Specifies the configuration of a Kubernetes secret volume. For more information, see secret in the
         # Kubernetes documentation .
+
         @[JSON::Field(key: "secret")]
         getter secret : Types::EksSecret?
 
@@ -3623,11 +4103,13 @@ module AwsSdk
 
       # The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total
       # amount of ephemeral storage available, beyond the default amount, for tasks hosted on Fargate.
+
       struct EphemeralStorage
         include JSON::Serializable
 
         # The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is
         # 21 GiB and the maximum supported value is 200 GiB.
+
         @[JSON::Field(key: "sizeInGiB")]
         getter size_in_gi_b : Int32
 
@@ -3640,11 +4122,13 @@ module AwsSdk
       # Specifies an array of up to 5 conditions to be met, and an action to take ( RETRY or EXIT ) if all
       # conditions are met. If none of the EvaluateOnExit conditions in a RetryStrategy match, then the job
       # is retried.
+
       struct EvaluateOnExit
         include JSON::Serializable
 
         # Specifies the action to take if all of the specified conditions ( onStatusReason , onReason , and
         # onExitCode ) are met. The values aren't case sensitive.
+
         @[JSON::Field(key: "action")]
         getter action : String
 
@@ -3652,6 +4136,7 @@ module AwsSdk
         # job. The pattern can be up to 512 characters long. It can contain only numbers, and can end with an
         # asterisk (*) so that only the start of the string needs to be an exact match. The string can contain
         # up to 512 characters.
+
         @[JSON::Field(key: "onExitCode")]
         getter on_exit_code : String?
 
@@ -3659,6 +4144,7 @@ module AwsSdk
         # to 512 characters. It can contain letters, numbers, periods (.), colons (:), and white space
         # (including spaces and tabs). It can optionally end with an asterisk (*) so that only the start of
         # the string needs to be an exact match.
+
         @[JSON::Field(key: "onReason")]
         getter on_reason : String?
 
@@ -3666,6 +4152,7 @@ module AwsSdk
         # contain up to 512 characters. It can contain letters, numbers, periods (.), colons (:), and white
         # spaces (including spaces or tabs). It can optionally end with an asterisk (*) so that only the start
         # of the string needs to be an exact match.
+
         @[JSON::Field(key: "onStatusReason")]
         getter on_status_reason : String?
 
@@ -3679,6 +4166,7 @@ module AwsSdk
       end
 
       # The fair-share scheduling policy details.
+
       struct FairsharePolicy
         include JSON::Serializable
 
@@ -3690,6 +4178,7 @@ module AwsSdk
         # computeReservation value of 25 indicates that Batch should reserve 25% of the maximum available vCPU
         # if there's only one share identifier, 6.25% if there are two fair share identifiers, and 1.56% if
         # there are three share identifiers. The minimum value is 0 and the maximum value is 99.
+
         @[JSON::Field(key: "computeReservation")]
         getter compute_reservation : Int32?
 
@@ -3699,11 +4188,13 @@ module AwsSdk
         # weight than jobs that ran earlier. Consider adjusting this number if you have jobs that (on average)
         # run longer than ten minutes, or a large difference in job count or job run times between share
         # identifiers, and the allocation of resources doesn't meet your needs.
+
         @[JSON::Field(key: "shareDecaySeconds")]
         getter share_decay_seconds : Int32?
 
         # An array of SharedIdentifier objects that contain the weights for the share identifiers for the
         # fair-share policy. Share identifiers that aren't included have a default weight of 1.0 .
+
         @[JSON::Field(key: "shareDistribution")]
         getter share_distribution : Array(Types::ShareAttributes)?
 
@@ -3717,6 +4208,7 @@ module AwsSdk
 
       # The platform configuration for jobs that are running on Fargate resources. Jobs that run on Amazon
       # EC2 resources must not specify this parameter.
+
       struct FargatePlatformConfiguration
         include JSON::Serializable
 
@@ -3725,6 +4217,7 @@ module AwsSdk
         # used by default. This uses a recent, approved version of the Fargate platform for compute resources.
         # For more information, see Fargate platform versions in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "platformVersion")]
         getter platform_version : String?
 
@@ -3737,10 +4230,12 @@ module AwsSdk
       # The FireLens configuration for the container. This is used to specify and configure a log router for
       # container logs. For more information, see Custom log routing in the Amazon Elastic Container Service
       # Developer Guide .
+
       struct FirelensConfiguration
         include JSON::Serializable
 
         # The log router to use. The valid values are fluentd or fluentbit .
+
         @[JSON::Field(key: "type")]
         getter type : String
 
@@ -3751,6 +4246,7 @@ module AwsSdk
         # "options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}
         # . For more information, see Creating a task definition that uses a FireLens configuration in the
         # Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "options")]
         getter options : Hash(String, String)?
 
@@ -3762,6 +4258,7 @@ module AwsSdk
       end
 
       # Contains a list of the first 100 RUNNABLE jobs associated to a single job queue.
+
       struct FrontOfQueueDetail
         include JSON::Serializable
 
@@ -3769,10 +4266,12 @@ module AwsSdk
         # first-in-first-out (FIFO) job queues, jobs are ordered based on their submission time. For
         # fair-share scheduling (FSS) job queues, jobs are ordered based on their job priority and share
         # usage.
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(Types::FrontOfQueueJobSummary)?
 
         # The Unix timestamp (in milliseconds) for when each of the first 100 RUNNABLE jobs were last updated.
+
         @[JSON::Field(key: "lastUpdatedAt")]
         getter last_updated_at : Int64?
 
@@ -3784,15 +4283,18 @@ module AwsSdk
       end
 
       # An object that represents summary details for the first 100 RUNNABLE jobs in a job queue.
+
       struct FrontOfQueueJobSummary
         include JSON::Serializable
 
         # The Unix timestamp (in milliseconds) for when the job transitioned to its current position in the
         # job queue.
+
         @[JSON::Field(key: "earliestTimeAtPosition")]
         getter earliest_time_at_position : Int64?
 
         # The ARN for a job in a named job queue.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
@@ -3803,10 +4305,12 @@ module AwsSdk
         end
       end
 
+
       struct GetJobQueueSnapshotRequest
         include JSON::Serializable
 
         # The job queue’s name or full queue Amazon Resource Name (ARN).
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
@@ -3816,12 +4320,14 @@ module AwsSdk
         end
       end
 
+
       struct GetJobQueueSnapshotResponse
         include JSON::Serializable
 
         # The list of the first 100 RUNNABLE jobs in each job queue. For first-in-first-out (FIFO) job queues,
         # jobs are ordered based on their submission time. For fair-share scheduling (FSS) job queues, jobs
         # are ordered based on their job priority and share usage.
+
         @[JSON::Field(key: "frontOfQueue")]
         getter front_of_queue : Types::FrontOfQueueDetail?
 
@@ -3834,6 +4340,7 @@ module AwsSdk
       # Determine whether your data volume persists on the host container instance and where it's stored. If
       # this parameter is empty, then the Docker daemon assigns a host path for your data volume. However,
       # the data isn't guaranteed to persist after the containers that are associated with it stop running.
+
       struct Host
         include JSON::Serializable
 
@@ -3844,6 +4351,7 @@ module AwsSdk
         # instance, the Docker daemon creates it. If the location does exist, the contents of the source path
         # folder are exported. This parameter isn't applicable to jobs that run on Fargate resources. Don't
         # provide this for these jobs.
+
         @[JSON::Field(key: "sourcePath")]
         getter source_path : String?
 
@@ -3856,11 +4364,13 @@ module AwsSdk
       # References a Kubernetes secret resource. This name of the secret must start and end with an
       # alphanumeric character, is required to be lowercase, can include periods (.) and hyphens (-), and
       # can't contain more than 253 characters.
+
       struct ImagePullSecret
         include JSON::Serializable
 
         # Provides a unique identifier for the ImagePullSecret . This object is required when
         # EksPodProperties$imagePullSecrets is used.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -3871,49 +4381,59 @@ module AwsSdk
       end
 
       # An object that represents an Batch job definition.
+
       struct JobDefinition
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) for the job definition.
+
         @[JSON::Field(key: "jobDefinitionArn")]
         getter job_definition_arn : String
 
         # The name of the job definition.
+
         @[JSON::Field(key: "jobDefinitionName")]
         getter job_definition_name : String
 
         # The revision of the job definition.
+
         @[JSON::Field(key: "revision")]
         getter revision : Int32
 
         # The type of job definition. It's either container or multinode . If the job is run on Fargate
         # resources, then multinode isn't supported. For more information about multi-node parallel jobs, see
         # Creating a multi-node parallel job definition in the Batch User Guide .
+
         @[JSON::Field(key: "type")]
         getter type : String
 
         # Contains a list of consumable resources required by the job.
+
         @[JSON::Field(key: "consumableResourceProperties")]
         getter consumable_resource_properties : Types::ConsumableResourceProperties?
 
         # The orchestration type of the compute environment. The valid values are ECS (default) or EKS .
+
         @[JSON::Field(key: "containerOrchestrationType")]
         getter container_orchestration_type : String?
 
         # An object with properties specific to Amazon ECS-based jobs. When containerProperties is used in the
         # job definition, it can't be used in addition to eksProperties , ecsProperties , or nodeProperties .
+
         @[JSON::Field(key: "containerProperties")]
         getter container_properties : Types::ContainerProperties?
 
         # An object that contains the properties for the Amazon ECS resources of a job.When ecsProperties is
         # used in the job definition, it can't be used in addition to containerProperties , eksProperties , or
         # nodeProperties .
+
         @[JSON::Field(key: "ecsProperties")]
         getter ecs_properties : Types::EcsProperties?
 
         # An object with properties that are specific to Amazon EKS-based jobs. When eksProperties is used in
         # the job definition, it can't be used in addition to containerProperties , ecsProperties , or
         # nodeProperties .
+
         @[JSON::Field(key: "eksProperties")]
         getter eks_properties : Types::EksProperties?
 
@@ -3921,6 +4441,7 @@ module AwsSdk
         # in the job definition, it can't be used in addition to containerProperties , ecsProperties , or
         # eksProperties . If the job runs on Fargate resources, don't specify nodeProperties . Use
         # containerProperties instead.
+
         @[JSON::Field(key: "nodeProperties")]
         getter node_properties : Types::NodeProperties?
 
@@ -3928,11 +4449,13 @@ module AwsSdk
         # Parameters are specified as a key-value pair mapping. Parameters in a SubmitJob request override any
         # corresponding parameter defaults from the job definition. For more information about specifying
         # parameters, see Job definition parameters in the Batch User Guide .
+
         @[JSON::Field(key: "parameters")]
         getter parameters : Hash(String, String)?
 
         # The platform capabilities required by the job definition. If no value is specified, it defaults to
         # EC2 . Jobs run on Fargate resources specify FARGATE .
+
         @[JSON::Field(key: "platformCapabilities")]
         getter platform_capabilities : Array(String)?
 
@@ -3941,29 +4464,35 @@ module AwsSdk
         # tasks when the tasks are created. For tags with the same name, job tags are given priority over job
         # definitions tags. If the total number of combined tags from the job and job definition is over 50,
         # the job is moved to the FAILED state.
+
         @[JSON::Field(key: "propagateTags")]
         getter propagate_tags : Bool?
 
         # The retry strategy to use for failed jobs that are submitted with this job definition.
+
         @[JSON::Field(key: "retryStrategy")]
         getter retry_strategy : Types::RetryStrategy?
 
         # The scheduling priority of the job definition. This only affects jobs in job queues with a
         # fair-share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower
         # scheduling priority.
+
         @[JSON::Field(key: "schedulingPriority")]
         getter scheduling_priority : Int32?
 
         # The status of the job definition.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The tags that are applied to the job definition.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The timeout time for jobs that are submitted with this job definition. After the amount of time you
         # specify passes, Batch terminates your jobs if they aren't finished.
+
         @[JSON::Field(key: "timeout")]
         getter timeout : Types::JobTimeout?
 
@@ -3991,14 +4520,17 @@ module AwsSdk
       end
 
       # An object that represents an Batch job dependency.
+
       struct JobDependency
         include JSON::Serializable
 
         # The job ID of the Batch job that's associated with this dependency.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String?
 
         # The type of the job dependency.
+
         @[JSON::Field(key: "type")]
         getter type : String?
 
@@ -4010,49 +4542,60 @@ module AwsSdk
       end
 
       # An object that represents an Batch job.
+
       struct JobDetail
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the job definition that this job uses.
+
         @[JSON::Field(key: "jobDefinition")]
         getter job_definition : String
 
         # The job ID.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # The job name.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The Amazon Resource Name (ARN) of the job queue that the job is associated with.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
         # The Unix timestamp (in milliseconds) for when the job was started. More specifically, it's when the
         # job transitioned from the STARTING state to the RUNNING state.
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64
 
         # The current status for the job. If your jobs don't progress to STARTING , see Jobs stuck in RUNNABLE
         # status in the troubleshooting section of the Batch User Guide .
+
         @[JSON::Field(key: "status")]
         getter status : String
 
         # The array properties of the job, if it's an array job.
+
         @[JSON::Field(key: "arrayProperties")]
         getter array_properties : Types::ArrayPropertiesDetail?
 
         # A list of job attempts that are associated with this job.
+
         @[JSON::Field(key: "attempts")]
         getter attempts : Array(Types::AttemptDetail)?
 
         # Contains a list of consumable resources required by the job.
+
         @[JSON::Field(key: "consumableResourceProperties")]
         getter consumable_resource_properties : Types::ConsumableResourceProperties?
 
         # An object that represents the details for the container that's associated with the job. If the
         # details are for a multiple-container job, this object will be empty.
+
         @[JSON::Field(key: "container")]
         getter container : Types::ContainerDetail?
 
@@ -4060,53 +4603,65 @@ module AwsSdk
         # array jobs, this is when the job entered the SUBMITTED state. This is specifically at the time
         # SubmitJob was called. For array child jobs, this is when the child job was spawned by its parent and
         # entered the PENDING state.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Int64?
 
         # A list of job IDs that this job depends on.
+
         @[JSON::Field(key: "dependsOn")]
         getter depends_on : Array(Types::JobDependency)?
 
         # An object with properties that are specific to Amazon ECS-based jobs.
+
         @[JSON::Field(key: "ecsProperties")]
         getter ecs_properties : Types::EcsPropertiesDetail?
 
         # A list of job attempts that are associated with this job.
+
         @[JSON::Field(key: "eksAttempts")]
         getter eks_attempts : Array(Types::EksAttemptDetail)?
 
         # An object with various properties that are specific to Amazon EKS based jobs.
+
         @[JSON::Field(key: "eksProperties")]
         getter eks_properties : Types::EksPropertiesDetail?
 
         # Indicates whether the job is canceled.
+
         @[JSON::Field(key: "isCancelled")]
         getter is_cancelled : Bool?
 
         # Indicates whether the job is terminated.
+
         @[JSON::Field(key: "isTerminated")]
         getter is_terminated : Bool?
 
         # The Amazon Resource Name (ARN) of the job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
         # An object that represents the details of a node that's associated with a multi-node parallel job.
+
         @[JSON::Field(key: "nodeDetails")]
         getter node_details : Types::NodeDetails?
 
         # An object that represents the node properties of a multi-node parallel job. This isn't applicable to
         # jobs that are running on Fargate resources.
+
         @[JSON::Field(key: "nodeProperties")]
         getter node_properties : Types::NodeProperties?
 
         # Additional parameters that are passed to the job that replace parameter substitution placeholders or
         # override any corresponding parameter defaults from the job definition.
+
         @[JSON::Field(key: "parameters")]
         getter parameters : Hash(String, String)?
 
         # The platform capabilities required by the job definition. If no value is specified, it defaults to
         # EC2 . Jobs run on Fargate resources specify FARGATE .
+
         @[JSON::Field(key: "platformCapabilities")]
         getter platform_capabilities : Array(String)?
 
@@ -4115,20 +4670,24 @@ module AwsSdk
         # tasks when the tasks are created. For tags with the same name, job tags are given priority over job
         # definitions tags. If the total number of combined tags from the job and job definition is over 50,
         # the job is moved to the FAILED state.
+
         @[JSON::Field(key: "propagateTags")]
         getter propagate_tags : Bool?
 
         # The retry strategy to use for this job if an attempt fails.
+
         @[JSON::Field(key: "retryStrategy")]
         getter retry_strategy : Types::RetryStrategy?
 
         # The scheduling policy of the job definition. This only affects jobs in job queues with a fair-share
         # policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling
         # priority.
+
         @[JSON::Field(key: "schedulingPriority")]
         getter scheduling_priority : Int32?
 
         # The share identifier for the job.
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String?
 
@@ -4139,19 +4698,23 @@ module AwsSdk
         # - All compute environments have no connected instances that meet the job requirements.
         # MISCONFIGURATION:SERVICE_ROLE_PERMISSIONS - All compute environments have problems with the service
         # role permissions.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp (in milliseconds) for when the job was stopped. More specifically, it's when the
         # job transitioned from the RUNNING state to a terminal state, such as SUCCEEDED or FAILED .
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
         # The tags that are applied to the job.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The timeout configuration for the job.
+
         @[JSON::Field(key: "timeout")]
         getter timeout : Types::JobTimeout?
 
@@ -4191,19 +4754,23 @@ module AwsSdk
       end
 
       # An object that represents the details for an Batch job queue.
+
       struct JobQueueDetail
         include JSON::Serializable
 
         # The compute environments that are attached to the job queue and the order that job placement is
         # preferred. Compute environments are selected for job placement in ascending order.
+
         @[JSON::Field(key: "computeEnvironmentOrder")]
         getter compute_environment_order : Array(Types::ComputeEnvironmentOrder)
 
         # The Amazon Resource Name (ARN) of the job queue.
+
         @[JSON::Field(key: "jobQueueArn")]
         getter job_queue_arn : String
 
         # The job queue name.
+
         @[JSON::Field(key: "jobQueueName")]
         getter job_queue_name : String
 
@@ -4221,49 +4788,58 @@ module AwsSdk
         # multiple lower priority queues to complete before they are dispatched. You can use job dependencies
         # to control the order for jobs from queues with different priorities. For more information, see Job
         # Dependencies in the Batch User Guide .
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32
 
         # Describes the ability of the queue to accept new jobs. If the job queue state is ENABLED , it can
         # accept jobs. If the job queue state is DISABLED , new jobs can't be added to the queue, but jobs
         # already in the queue can finish.
+
         @[JSON::Field(key: "state")]
         getter state : String
 
         # The type of job queue. For service jobs that run on SageMaker Training, this value is
         # SAGEMAKER_TRAINING . For regular container jobs, this value is EKS , ECS , or ECS_FARGATE depending
         # on the compute environment.
+
         @[JSON::Field(key: "jobQueueType")]
         getter job_queue_type : String?
 
         # The set of actions that Batch perform on jobs that remain at the head of the job queue in the
         # specified state longer than specified times. Batch will perform each action after maxTimeSeconds has
         # passed.
+
         @[JSON::Field(key: "jobStateTimeLimitActions")]
         getter job_state_time_limit_actions : Array(Types::JobStateTimeLimitAction)?
 
         # The Amazon Resource Name (ARN) of the scheduling policy. The format is aws: Partition :batch: Region
         # : Account :scheduling-policy/ Name . For example,
         # aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy .
+
         @[JSON::Field(key: "schedulingPolicyArn")]
         getter scheduling_policy_arn : String?
 
         # The order of the service environment associated with the job queue. Job queues with a higher
         # priority are evaluated first when associated with the same service environment.
+
         @[JSON::Field(key: "serviceEnvironmentOrder")]
         getter service_environment_order : Array(Types::ServiceEnvironmentOrder)?
 
         # The status of the job queue (for example, CREATING or VALID ).
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # A short, human-readable string to provide additional details for the current status of the job
         # queue.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The tags that are applied to the job queue. For more information, see Tagging your Batch resources
         # in Batch User Guide .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -4286,25 +4862,30 @@ module AwsSdk
 
       # Specifies an action that Batch will take after the job has remained at the head of the queue in the
       # specified state for longer than the specified time.
+
       struct JobStateTimeLimitAction
         include JSON::Serializable
 
         # The action to take when a job is at the head of the job queue in the specified state for the
         # specified period of time. The only supported value is CANCEL , which will cancel the job.
+
         @[JSON::Field(key: "action")]
         getter action : String
 
         # The approximate amount of time, in seconds, that must pass with the job in the specified state
         # before the action is taken. The minimum value is 600 (10 minutes) and the maximum value is 86,400
         # (24 hours).
+
         @[JSON::Field(key: "maxTimeSeconds")]
         getter max_time_seconds : Int32
 
         # The reason to log for the action being taken.
+
         @[JSON::Field(key: "reason")]
         getter reason : String
 
         # The state of the job needed to trigger the action. The only supported value is RUNNABLE .
+
         @[JSON::Field(key: "state")]
         getter state : String
 
@@ -4318,22 +4899,27 @@ module AwsSdk
       end
 
       # An object that represents summary details of a job.
+
       struct JobSummary
         include JSON::Serializable
 
         # The job ID.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # The job name.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The array properties of the job, if it's an array job.
+
         @[JSON::Field(key: "arrayProperties")]
         getter array_properties : Types::ArrayPropertiesSummary?
 
         # An object that represents the details of the container that's associated with the job.
+
         @[JSON::Field(key: "container")]
         getter container : Types::ContainerSummary?
 
@@ -4341,37 +4927,45 @@ module AwsSdk
         # array jobs, this is when the job entered the SUBMITTED state (at the time SubmitJob was called). For
         # array child jobs, this is when the child job was spawned by its parent and entered the PENDING
         # state.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Int64?
 
         # The Amazon Resource Name (ARN) of the job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
         # The Amazon Resource Name (ARN) of the job definition.
+
         @[JSON::Field(key: "jobDefinition")]
         getter job_definition : String?
 
         # The node properties for a single node in a job summary list. This isn't applicable to jobs that are
         # running on Fargate resources.
+
         @[JSON::Field(key: "nodeProperties")]
         getter node_properties : Types::NodePropertiesSummary?
 
         # The Unix timestamp for when the job was started. More specifically, it's when the job transitioned
         # from the STARTING state to the RUNNING state.
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64?
 
         # The current status for the job.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # A short, human-readable string to provide more details for the current status of the job.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp for when the job was stopped. More specifically, it's when the job transitioned
         # from the RUNNING state to a terminal state, such as SUCCEEDED or FAILED .
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
@@ -4393,6 +4987,7 @@ module AwsSdk
       end
 
       # An object that represents a job timeout configuration.
+
       struct JobTimeout
         include JSON::Serializable
 
@@ -4401,6 +4996,7 @@ module AwsSdk
         # timeout is 60 seconds. For array jobs, the timeout applies to the child jobs, not to the parent
         # array job. For multi-node parallel (MNP) jobs, the timeout applies to the whole job, not to the
         # individual nodes.
+
         @[JSON::Field(key: "attemptDurationSeconds")]
         getter attempt_duration_seconds : Int32?
 
@@ -4411,16 +5007,19 @@ module AwsSdk
       end
 
       # A key-value pair object.
+
       struct KeyValuePair
         include JSON::Serializable
 
         # The name of the key-value pair. For environment variables, this is the name of the environment
         # variable.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The value of the key-value pair. For environment variables, this is the value of the environment
         # variable.
+
         @[JSON::Field(key: "value")]
         getter value : String?
 
@@ -4433,14 +5032,17 @@ module AwsSdk
 
       # A filter name and value pair that's used to return a more specific list of results from a ListJobs
       # or ListJobsByConsumableResource API operation.
+
       struct KeyValuesPair
         include JSON::Serializable
 
         # The name of the filter. Filter names are case sensitive.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The filter values.
+
         @[JSON::Field(key: "values")]
         getter values : Array(String)?
 
@@ -4453,10 +5055,12 @@ module AwsSdk
 
       # Information about the latest attempt of a service job. A Service job can transition from SCHEDULED
       # back to RUNNABLE state when they encounter capacity constraints.
+
       struct LatestServiceJobAttempt
         include JSON::Serializable
 
         # The service resource identifier associated with the service job attempt.
+
         @[JSON::Field(key: "serviceResourceId")]
         getter service_resource_id : Types::ServiceResourceId?
 
@@ -4471,14 +5075,17 @@ module AwsSdk
       # security groups are specified using both the securityGroupIds parameter of CreateComputeEnvironment
       # and the launch template, the values in the securityGroupIds parameter of CreateComputeEnvironment
       # will be used. This object isn't applicable to jobs that are running on Fargate resources.
+
       struct LaunchTemplateSpecification
         include JSON::Serializable
 
         # The ID of the launch template.
+
         @[JSON::Field(key: "launchTemplateId")]
         getter launch_template_id : String?
 
         # The name of the launch template.
+
         @[JSON::Field(key: "launchTemplateName")]
         getter launch_template_name : String?
 
@@ -4488,12 +5095,14 @@ module AwsSdk
         # environment. To unset all override templates for a compute environment, you can pass an empty array
         # to the UpdateComputeEnvironment.overrides parameter, or not include the overrides parameter when
         # submitting the UpdateComputeEnvironment API operation.
+
         @[JSON::Field(key: "overrides")]
         getter overrides : Array(Types::LaunchTemplateSpecificationOverride)?
 
         # The EKS node initialization process to use. You only need to specify this value if you are using a
         # custom AMI. The default value is EKS_BOOTSTRAP_SH . If imageType is a custom AMI based on EKS_AL2023
         # or EKS_AL2023_NVIDIA then you must choose EKS_NODEADM .
+
         @[JSON::Field(key: "userdataType")]
         getter userdata_type : String?
 
@@ -4508,6 +5117,7 @@ module AwsSdk
         # the launch template requires an infrastructure update of the compute environment. For more
         # information, see Updating compute environments in the Batch User Guide . Default: $Default Latest:
         # $Latest
+
         @[JSON::Field(key: "version")]
         getter version : String?
 
@@ -4530,16 +5140,19 @@ module AwsSdk
       # a compute environment, you can pass an empty array to the UpdateComputeEnvironment.overrides
       # parameter, or not include the overrides parameter when submitting the UpdateComputeEnvironment API
       # operation.
+
       struct LaunchTemplateSpecificationOverride
         include JSON::Serializable
 
         # The ID of the launch template. Note: If you specify the launchTemplateId you can't specify the
         # launchTemplateName as well.
+
         @[JSON::Field(key: "launchTemplateId")]
         getter launch_template_id : String?
 
         # The name of the launch template. Note: If you specify the launchTemplateName you can't specify the
         # launchTemplateId as well.
+
         @[JSON::Field(key: "launchTemplateName")]
         getter launch_template_name : String?
 
@@ -4555,12 +5168,14 @@ module AwsSdk
         # overrides can't overlap for the same compute environment. For example, you can't define one launch
         # template override to target an instance family and another define an instance type within this same
         # family.
+
         @[JSON::Field(key: "targetInstanceTypes")]
         getter target_instance_types : Array(String)?
 
         # The EKS node initialization process to use. You only need to specify this value if you are using a
         # custom AMI. The default value is EKS_BOOTSTRAP_SH . If imageType is a custom AMI based on EKS_AL2023
         # or EKS_AL2023_NVIDIA then you must choose EKS_NODEADM .
+
         @[JSON::Field(key: "userdataType")]
         getter userdata_type : String?
 
@@ -4575,6 +5190,7 @@ module AwsSdk
         # the launch template requires an infrastructure update of the compute environment. For more
         # information, see Updating compute environments in the Batch User Guide . Default: $Default Latest:
         # $Latest
+
         @[JSON::Field(key: "version")]
         getter version : String?
 
@@ -4589,12 +5205,14 @@ module AwsSdk
       end
 
       # Linux-specific modifications that are applied to the container, such as details for device mappings.
+
       struct LinuxParameters
         include JSON::Serializable
 
         # Any of the host devices to expose to the container. This parameter maps to Devices in the Create a
         # container section of the Docker Remote API and the --device option to docker run . This parameter
         # isn't applicable to jobs that are running on Fargate resources. Don't provide it for these jobs.
+
         @[JSON::Field(key: "devices")]
         getter devices : Array(Types::Device)?
 
@@ -4603,6 +5221,7 @@ module AwsSdk
         # Docker Remote API or greater on your container instance. To check the Docker Remote API version on
         # your container instance, log in to your container instance and run the following command: sudo
         # docker version | grep "Server API version"
+
         @[JSON::Field(key: "initProcessEnabled")]
         getter init_process_enabled : Bool?
 
@@ -4614,12 +5233,14 @@ module AwsSdk
         # configuration for the container instance on which it runs. A maxSwap value must be set for the
         # swappiness parameter to be used. This parameter isn't applicable to jobs that are running on Fargate
         # resources. Don't provide it for these jobs.
+
         @[JSON::Field(key: "maxSwap")]
         getter max_swap : Int32?
 
         # The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option
         # to docker run . This parameter isn't applicable to jobs that are running on Fargate resources. Don't
         # provide it for these jobs.
+
         @[JSON::Field(key: "sharedMemorySize")]
         getter shared_memory_size : Int32?
 
@@ -4639,12 +5260,14 @@ module AwsSdk
         # Moreover, the total swap usage is limited to two times the memory reservation of the container. This
         # parameter isn't applicable to jobs that are running on Fargate resources. Don't provide it for these
         # jobs.
+
         @[JSON::Field(key: "swappiness")]
         getter swappiness : Int32?
 
         # The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the
         # --tmpfs option to docker run . This parameter isn't applicable to jobs that are running on Fargate
         # resources. Don't provide this parameter for this resource type.
+
         @[JSON::Field(key: "tmpfs")]
         getter tmpfs : Array(Types::Tmpfs)?
 
@@ -4659,6 +5282,7 @@ module AwsSdk
         end
       end
 
+
       struct ListConsumableResourcesRequest
         include JSON::Serializable
 
@@ -4666,6 +5290,7 @@ module AwsSdk
         # that match the filter are listed. Filter names and values can be: name: CONSUMABLE_RESOURCE_NAME
         # values: case-insensitive matches for the consumable resource name. If a filter value ends with an
         # asterisk (*), it matches any consumable resource name that begins with the string before the '*'.
+
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::KeyValuesPair)?
 
@@ -4675,6 +5300,7 @@ module AwsSdk
         # another ListConsumableResources request with the returned nextToken value. This value can be between
         # 1 and 100. If this parameter isn't used, then ListConsumableResources returns up to 100 results and
         # a nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -4683,6 +5309,7 @@ module AwsSdk
         # the end of the previous results that returned the nextToken value. This value is null when there are
         # no more results to return. Treat this token as an opaque identifier that's only used to retrieve the
         # next items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4694,16 +5321,19 @@ module AwsSdk
         end
       end
 
+
       struct ListConsumableResourcesResponse
         include JSON::Serializable
 
         # A list of consumable resources that match the request.
+
         @[JSON::Field(key: "consumableResources")]
         getter consumable_resources : Array(Types::ConsumableResourceSummary)
 
         # The nextToken value to include in a future ListConsumableResources request. When the results of a
         # ListConsumableResources request exceed maxResults , this value can be used to retrieve the next page
         # of results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4714,10 +5344,12 @@ module AwsSdk
         end
       end
 
+
       struct ListJobsByConsumableResourceRequest
         include JSON::Serializable
 
         # The name or ARN of the consumable resource.
+
         @[JSON::Field(key: "consumableResource")]
         getter consumable_resource : String
 
@@ -4727,6 +5359,7 @@ module AwsSdk
         # RUNNING | SUCCEEDED | FAILED name: JOB_NAME The values are case-insensitive matches for the job
         # name. If a filter value ends with an asterisk (*), it matches any job name that begins with the
         # string before the '*'.
+
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::KeyValuesPair)?
 
@@ -4736,6 +5369,7 @@ module AwsSdk
         # sending another ListJobsByConsumableResource request with the returned nextToken value. This value
         # can be between 1 and 100. If this parameter isn't used, then ListJobsByConsumableResource returns up
         # to 100 results and a nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -4744,6 +5378,7 @@ module AwsSdk
         # the end of the previous results that returned the nextToken value. This value is null when there are
         # no more results to return. Treat this token as an opaque identifier that's only used to retrieve the
         # next items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4756,16 +5391,19 @@ module AwsSdk
         end
       end
 
+
       struct ListJobsByConsumableResourceResponse
         include JSON::Serializable
 
         # The list of jobs that require the specified consumable resources.
+
         @[JSON::Field(key: "jobs")]
         getter jobs : Array(Types::ListJobsByConsumableResourceSummary)
 
         # The nextToken value to include in a future ListJobsByConsumableResource request. When the results of
         # a ListJobsByConsumableResource request exceed maxResults , this value can be used to retrieve the
         # next page of results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4777,51 +5415,63 @@ module AwsSdk
       end
 
       # Current information about a consumable resource required by a job.
+
       struct ListJobsByConsumableResourceSummary
         include JSON::Serializable
 
         # Contains a list of consumable resources required by the job.
+
         @[JSON::Field(key: "consumableResourceProperties")]
         getter consumable_resource_properties : Types::ConsumableResourceProperties
 
         # The Unix timestamp (in milliseconds) for when the consumable resource was created.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Int64
 
         # The Amazon Resource Name (ARN) of the job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String
 
         # The name of the job.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The Amazon Resource Name (ARN) of the job queue.
+
         @[JSON::Field(key: "jobQueueArn")]
         getter job_queue_arn : String
 
         # The status of the job. Can be one of: SUBMITTED PENDING RUNNABLE STARTING RUNNING SUCCEEDED FAILED
+
         @[JSON::Field(key: "jobStatus")]
         getter job_status : String
 
         # The total amount of the consumable resource that is available.
+
         @[JSON::Field(key: "quantity")]
         getter quantity : Int64
 
         # The Amazon Resource Name (ARN) of the job definition.
+
         @[JSON::Field(key: "jobDefinitionArn")]
         getter job_definition_arn : String?
 
         # The fair-share scheduling policy identifier for the job.
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String?
 
         # The Unix timestamp for when the job was started. More specifically, it's when the job transitioned
         # from the STARTING state to the RUNNING state.
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64?
 
         # A short, human-readable string to provide more details for the current status of the job.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
@@ -4842,11 +5492,13 @@ module AwsSdk
       end
 
       # Contains the parameters for ListJobs .
+
       struct ListJobsRequest
         include JSON::Serializable
 
         # The job ID for an array job. Specifying an array job ID with this parameter lists all child jobs
         # from within the specified array.
+
         @[JSON::Field(key: "arrayJobId")]
         getter array_job_id : String?
 
@@ -4872,16 +5524,19 @@ module AwsSdk
         # value for the filter is the time that's after the job was created. This corresponds to the createdAt
         # value. The value is a string representation of the number of milliseconds since 00:00:00 UTC
         # (midnight) on January 1, 1970.
+
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::KeyValuesPair)?
 
         # The name or full Amazon Resource Name (ARN) of the job queue used to list jobs.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String?
 
         # The job status used to filter jobs in the specified queue. If the filters parameter is specified,
         # the jobStatus parameter is ignored and jobs with any status are returned. If you don't specify a
         # status, only RUNNING jobs are returned.
+
         @[JSON::Field(key: "jobStatus")]
         getter job_status : String?
 
@@ -4892,11 +5547,13 @@ module AwsSdk
         # The minimum value is 1. When --job-status is used, Batch returns up to 1000 values. When --filters
         # is used, Batch returns up to 100 values. If neither parameter is used, then ListJobs returns up to
         # 1000 results (jobs that are in the RUNNING status) and a nextToken value, if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
         # The job ID for a multi-node parallel job. Specifying a multi-node parallel job ID with this
         # parameter lists all nodes that are associated with the specified job.
+
         @[JSON::Field(key: "multiNodeJobId")]
         getter multi_node_job_id : String?
 
@@ -4905,6 +5562,7 @@ module AwsSdk
         # previous results that returned the nextToken value. This value is null when there are no more
         # results to return. Treat this token as an opaque identifier that's only used to retrieve the next
         # items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4920,16 +5578,19 @@ module AwsSdk
         end
       end
 
+
       struct ListJobsResponse
         include JSON::Serializable
 
         # A list of job summaries that match the request.
+
         @[JSON::Field(key: "jobSummaryList")]
         getter job_summary_list : Array(Types::JobSummary)
 
         # The nextToken value to include in a future ListJobs request. When the results of a ListJobs request
         # exceed maxResults , this value can be used to retrieve the next page of results. This value is null
         # when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4941,6 +5602,7 @@ module AwsSdk
       end
 
       # Contains the parameters for ListSchedulingPolicies .
+
       struct ListSchedulingPoliciesRequest
         include JSON::Serializable
 
@@ -4950,6 +5612,7 @@ module AwsSdk
         # another ListSchedulingPolicies request with the returned nextToken value. This value can be between
         # 1 and 100. If this parameter isn't used, ListSchedulingPolicies returns up to 100 results and a
         # nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -4958,6 +5621,7 @@ module AwsSdk
         # the end of the previous results that returned the nextToken value. This value is null when there are
         # no more results to return. Treat this token as an opaque identifier that's only used to retrieve the
         # next items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -4968,16 +5632,19 @@ module AwsSdk
         end
       end
 
+
       struct ListSchedulingPoliciesResponse
         include JSON::Serializable
 
         # The nextToken value to include in a future ListSchedulingPolicies request. When the results of a
         # ListSchedulingPolicies request exceed maxResults , this value can be used to retrieve the next page
         # of results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
         # A list of scheduling policies that match the request.
+
         @[JSON::Field(key: "schedulingPolicies")]
         getter scheduling_policies : Array(Types::SchedulingPolicyListingDetail)?
 
@@ -4987,6 +5654,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct ListServiceJobsRequest
         include JSON::Serializable
@@ -5003,14 +5671,17 @@ module AwsSdk
         # value for the filter is the time that's after the job was created. This corresponds to the createdAt
         # value. The value is a string representation of the number of milliseconds since 00:00:00 UTC
         # (midnight) on January 1, 1970.
+
         @[JSON::Field(key: "filters")]
         getter filters : Array(Types::KeyValuesPair)?
 
         # The name or ARN of the job queue with which to list service jobs.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String?
 
         # The job status with which to filter service jobs.
+
         @[JSON::Field(key: "jobStatus")]
         getter job_status : String?
 
@@ -5019,6 +5690,7 @@ module AwsSdk
         # element. The remaining results of the initial request can be seen by sending another ListServiceJobs
         # request with the returned nextToken value. This value can be between 1 and 100. If this parameter
         # isn't used, then ListServiceJobs returns up to 100 results and a nextToken value if applicable.
+
         @[JSON::Field(key: "maxResults")]
         getter max_results : Int32?
 
@@ -5027,6 +5699,7 @@ module AwsSdk
         # previous results that returned the nextToken value. This value is null when there are no more
         # results to return. Treat this token as an opaque identifier that's only used to retrieve the next
         # items in a list and not for other programmatic purposes.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -5040,16 +5713,19 @@ module AwsSdk
         end
       end
 
+
       struct ListServiceJobsResponse
         include JSON::Serializable
 
         # A list of service job summaries.
+
         @[JSON::Field(key: "jobSummaryList")]
         getter job_summary_list : Array(Types::ServiceJobSummary)
 
         # The nextToken value to include in a future ListServiceJobs request. When the results of a
         # ListServiceJobs request exceed maxResults , this value can be used to retrieve the next page of
         # results. This value is null when there are no more results to return.
+
         @[JSON::Field(key: "nextToken")]
         getter next_token : String?
 
@@ -5061,6 +5737,7 @@ module AwsSdk
       end
 
       # Contains the parameters for ListTagsForResource .
+
       struct ListTagsForResourceRequest
         include JSON::Serializable
 
@@ -5068,6 +5745,7 @@ module AwsSdk
         # resources that support tags are compute environments, jobs, job definitions, job queues, and
         # scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't
         # supported.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
@@ -5077,10 +5755,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceResponse
         include JSON::Serializable
 
         # The tags for the resource.
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -5091,6 +5771,7 @@ module AwsSdk
       end
 
       # Log configuration options to send to a custom log driver for the container.
+
       struct LogConfiguration
         include JSON::Serializable
 
@@ -5120,6 +5801,7 @@ module AwsSdk
         # 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API
         # version on your container instance, log in to your container instance and run the following command:
         # sudo docker version | grep "Server API version"
+
         @[JSON::Field(key: "logDriver")]
         getter log_driver : String
 
@@ -5127,11 +5809,13 @@ module AwsSdk
         # Docker Remote API or greater on your container instance. To check the Docker Remote API version on
         # your container instance, log in to your container instance and run the following command: sudo
         # docker version | grep "Server API version"
+
         @[JSON::Field(key: "options")]
         getter options : Hash(String, String)?
 
         # The secrets to pass to the log configuration. For more information, see Specifying sensitive data in
         # the Batch User Guide .
+
         @[JSON::Field(key: "secretOptions")]
         getter secret_options : Array(Types::Secret)?
 
@@ -5146,19 +5830,23 @@ module AwsSdk
       # Details for a Docker volume mount point that's used in a job's container properties. This parameter
       # maps to Volumes in the Create a container section of the Docker Remote API and the --volume option
       # to docker run.
+
       struct MountPoint
         include JSON::Serializable
 
         # The path on the container where the host volume is mounted.
+
         @[JSON::Field(key: "containerPath")]
         getter container_path : String?
 
         # If this value is true , the container has read-only access to the volume. Otherwise, the container
         # can write to the volume. The default value is false .
+
         @[JSON::Field(key: "readOnly")]
         getter read_only : Bool?
 
         # The name of the volume to mount.
+
         @[JSON::Field(key: "sourceVolume")]
         getter source_volume : String?
 
@@ -5172,6 +5860,7 @@ module AwsSdk
 
       # The network configuration for jobs that are running on Fargate resources. Jobs that are running on
       # Amazon EC2 resources must not specify this parameter.
+
       struct NetworkConfiguration
         include JSON::Serializable
 
@@ -5180,6 +5869,7 @@ module AwsSdk
         # the private subnet requires a NAT gateway be attached to route requests to the internet. For more
         # information, see Amazon ECS task networking in the Amazon Elastic Container Service Developer Guide
         # . The default value is " DISABLED ".
+
         @[JSON::Field(key: "assignPublicIp")]
         getter assign_public_ip : String?
 
@@ -5190,18 +5880,22 @@ module AwsSdk
       end
 
       # An object that represents the elastic network interface for a multi-node parallel job node.
+
       struct NetworkInterface
         include JSON::Serializable
 
         # The attachment ID for the network interface.
+
         @[JSON::Field(key: "attachmentId")]
         getter attachment_id : String?
 
         # The private IPv6 address for the network interface.
+
         @[JSON::Field(key: "ipv6Address")]
         getter ipv6_address : String?
 
         # The private IPv4 address for the network interface.
+
         @[JSON::Field(key: "privateIpv4Address")]
         getter private_ipv4_address : String?
 
@@ -5214,15 +5908,18 @@ module AwsSdk
       end
 
       # An object that represents the details of a multi-node parallel job node.
+
       struct NodeDetails
         include JSON::Serializable
 
         # Specifies whether the current node is the main node for a multi-node parallel job.
+
         @[JSON::Field(key: "isMainNode")]
         getter is_main_node : Bool?
 
         # The node index for the node. Node index numbering starts at zero. This index is also available on
         # the node with the AWS_BATCH_JOB_NODE_INDEX environment variable.
+
         @[JSON::Field(key: "nodeIndex")]
         getter node_index : Int32?
 
@@ -5236,10 +5933,12 @@ module AwsSdk
       # An object that represents any node overrides to a job definition that's used in a SubmitJob API
       # operation. This parameter isn't applicable to jobs that are running on Fargate resources. Don't
       # provide it for these jobs. Rather, use containerOverrides instead.
+
       struct NodeOverrides
         include JSON::Serializable
 
         # The node property overrides for the job.
+
         @[JSON::Field(key: "nodePropertyOverrides")]
         getter node_property_overrides : Array(Types::NodePropertyOverride)?
 
@@ -5250,6 +5949,7 @@ module AwsSdk
         # definition must be fewer than the number of nodes specified in the override. The main node index
         # that's specified in the job definition must be fewer than the number of nodes specified in the
         # override.
+
         @[JSON::Field(key: "numNodes")]
         getter num_nodes : Int32?
 
@@ -5262,19 +5962,23 @@ module AwsSdk
 
       # An object that represents the node properties of a multi-node parallel job. Node properties can't be
       # specified for Amazon EKS based job definitions.
+
       struct NodeProperties
         include JSON::Serializable
 
         # Specifies the node index for the main node of a multi-node parallel job. This node index value must
         # be fewer than the number of nodes.
+
         @[JSON::Field(key: "mainNode")]
         getter main_node : Int32
 
         # A list of node ranges and their properties that are associated with a multi-node parallel job.
+
         @[JSON::Field(key: "nodeRangeProperties")]
         getter node_range_properties : Array(Types::NodeRangeProperty)
 
         # The number of nodes that are associated with a multi-node parallel job.
+
         @[JSON::Field(key: "numNodes")]
         getter num_nodes : Int32
 
@@ -5287,19 +5991,23 @@ module AwsSdk
       end
 
       # An object that represents the properties of a node that's associated with a multi-node parallel job.
+
       struct NodePropertiesSummary
         include JSON::Serializable
 
         # Specifies whether the current node is the main node for a multi-node parallel job.
+
         @[JSON::Field(key: "isMainNode")]
         getter is_main_node : Bool?
 
         # The node index for the node. Node index numbering begins at zero. This index is also available on
         # the node with the AWS_BATCH_JOB_NODE_INDEX environment variable.
+
         @[JSON::Field(key: "nodeIndex")]
         getter node_index : Int32?
 
         # The number of nodes that are associated with a multi-node parallel job.
+
         @[JSON::Field(key: "numNodes")]
         getter num_nodes : Int32?
 
@@ -5313,6 +6021,7 @@ module AwsSdk
 
       # The object that represents any node overrides to a job definition that's used in a SubmitJob API
       # operation.
+
       struct NodePropertyOverride
         include JSON::Serializable
 
@@ -5320,29 +6029,35 @@ module AwsSdk
         # with index values of 0 through 3 . If the starting range value is omitted ( :n ), then 0 is used to
         # start the range. If the ending range value is omitted ( n: ), then the highest possible node index
         # is used to end the range.
+
         @[JSON::Field(key: "targetNodes")]
         getter target_nodes : String
 
         # An object that contains overrides for the consumable resources of a job.
+
         @[JSON::Field(key: "consumableResourcePropertiesOverride")]
         getter consumable_resource_properties_override : Types::ConsumableResourceProperties?
 
         # The overrides that are sent to a node range.
+
         @[JSON::Field(key: "containerOverrides")]
         getter container_overrides : Types::ContainerOverrides?
 
         # An object that contains the properties that you want to replace for the existing Amazon ECS
         # resources of a job.
+
         @[JSON::Field(key: "ecsPropertiesOverride")]
         getter ecs_properties_override : Types::EcsPropertiesOverride?
 
         # An object that contains the properties that you want to replace for the existing Amazon EKS
         # resources of a job.
+
         @[JSON::Field(key: "eksPropertiesOverride")]
         getter eks_properties_override : Types::EksPropertiesOverride?
 
         # An object that contains the instance types that you want to replace for the existing resources of a
         # job.
+
         @[JSON::Field(key: "instanceTypes")]
         getter instance_types : Array(String)?
 
@@ -5358,6 +6073,7 @@ module AwsSdk
       end
 
       # This is an object that represents the properties of the node range for a multi-node parallel job.
+
       struct NodeRangeProperty
         include JSON::Serializable
 
@@ -5366,28 +6082,34 @@ module AwsSdk
         # ending range value is omitted ( n: ), then the highest possible node index is used to end the range.
         # Your accumulative node ranges must account for all nodes ( 0:n ). You can nest node ranges (for
         # example, 0:10 and 4:5 ). In this case, the 4:5 range properties override the 0:10 properties.
+
         @[JSON::Field(key: "targetNodes")]
         getter target_nodes : String
 
         # Contains a list of consumable resources required by a job.
+
         @[JSON::Field(key: "consumableResourceProperties")]
         getter consumable_resource_properties : Types::ConsumableResourceProperties?
 
         # The container details for the node range.
+
         @[JSON::Field(key: "container")]
         getter container : Types::ContainerProperties?
 
         # This is an object that represents the properties of the node range for a multi-node parallel job.
+
         @[JSON::Field(key: "ecsProperties")]
         getter ecs_properties : Types::EcsProperties?
 
         # This is an object that represents the properties of the node range for a multi-node parallel job.
+
         @[JSON::Field(key: "eksProperties")]
         getter eks_properties : Types::EksProperties?
 
         # The instance types of the underlying host infrastructure of a multi-node parallel job. This
         # parameter isn't applicable to jobs that are running on Fargate resources. In addition, this list
         # object is currently limited to one element.
+
         @[JSON::Field(key: "instanceTypes")]
         getter instance_types : Array(String)?
 
@@ -5403,11 +6125,13 @@ module AwsSdk
       end
 
       # Contains the parameters for RegisterJobDefinition .
+
       struct RegisterJobDefinitionRequest
         include JSON::Serializable
 
         # The name of the job definition to register. It can be up to 128 letters long. It can contain
         # uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "jobDefinitionName")]
         getter job_definition_name : String
 
@@ -5416,10 +6140,12 @@ module AwsSdk
         # the following is required: containerProperties , ecsProperties , or eksProperties . If the value is
         # multinode , then nodeProperties is required. If the job is run on Fargate resources, then multinode
         # isn't supported.
+
         @[JSON::Field(key: "type")]
         getter type : String
 
         # Contains a list of consumable resources required by the job.
+
         @[JSON::Field(key: "consumableResourceProperties")]
         getter consumable_resource_properties : Types::ConsumableResourceProperties?
 
@@ -5427,16 +6153,19 @@ module AwsSdk
         # definition's type parameter is container , then you must specify either containerProperties or
         # nodeProperties . This must not be specified for Amazon EKS-based job definitions. If the job runs on
         # Fargate resources, then you must not specify nodeProperties ; use only containerProperties .
+
         @[JSON::Field(key: "containerProperties")]
         getter container_properties : Types::ContainerProperties?
 
         # An object with properties that are specific to Amazon ECS-based jobs. This must not be specified for
         # Amazon EKS-based job definitions.
+
         @[JSON::Field(key: "ecsProperties")]
         getter ecs_properties : Types::EcsProperties?
 
         # An object with properties that are specific to Amazon EKS-based jobs. This must not be specified for
         # Amazon ECS based job definitions.
+
         @[JSON::Field(key: "eksProperties")]
         getter eks_properties : Types::EksProperties?
 
@@ -5445,18 +6174,21 @@ module AwsSdk
         # Batch User Guide . If the job runs on Fargate resources, then you must not specify nodeProperties ;
         # use containerProperties instead. If the job runs on Amazon EKS resources, then you must not specify
         # nodeProperties .
+
         @[JSON::Field(key: "nodeProperties")]
         getter node_properties : Types::NodeProperties?
 
         # Default parameter substitution placeholders to set in the job definition. Parameters are specified
         # as a key-value pair mapping. Parameters in a SubmitJob request override any corresponding parameter
         # defaults from the job definition.
+
         @[JSON::Field(key: "parameters")]
         getter parameters : Hash(String, String)?
 
         # The platform capabilities required by the job definition. If no value is specified, it defaults to
         # EC2 . To run the job on Fargate resources, specify FARGATE . If the job runs on Amazon EKS
         # resources, then you must not specify platformCapabilities .
+
         @[JSON::Field(key: "platformCapabilities")]
         getter platform_capabilities : Array(String)?
 
@@ -5466,12 +6198,14 @@ module AwsSdk
         # definitions tags. If the total number of combined tags from the job and job definition is over 50,
         # the job is moved to the FAILED state. If the job runs on Amazon EKS resources, then you must not
         # specify propagateTags .
+
         @[JSON::Field(key: "propagateTags")]
         getter propagate_tags : Bool?
 
         # The retry strategy to use for failed jobs that are submitted with this job definition. Any retry
         # strategy that's specified during a SubmitJob operation overrides the retry strategy defined here. If
         # a job is terminated due to a timeout, it isn't retried.
+
         @[JSON::Field(key: "retryStrategy")]
         getter retry_strategy : Types::RetryStrategy?
 
@@ -5479,12 +6213,14 @@ module AwsSdk
         # in job queues with a fair-share policy. Jobs with a higher scheduling priority are scheduled before
         # jobs with a lower scheduling priority. The minimum supported value is 0 and the maximum supported
         # value is 9999.
+
         @[JSON::Field(key: "schedulingPriority")]
         getter scheduling_priority : Int32?
 
         # The tags that you apply to the job definition to help you categorize and organize your resources.
         # Each tag consists of a key and an optional value. For more information, see Tagging Amazon Web
         # Services Resources in Batch User Guide .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -5493,6 +6229,7 @@ module AwsSdk
         # retried. The minimum value for the timeout is 60 seconds. Any timeout configuration that's specified
         # during a SubmitJob operation overrides the timeout configuration defined here. For more information,
         # see Job Timeouts in the Batch User Guide .
+
         @[JSON::Field(key: "timeout")]
         getter timeout : Types::JobTimeout?
 
@@ -5515,18 +6252,22 @@ module AwsSdk
         end
       end
 
+
       struct RegisterJobDefinitionResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the job definition.
+
         @[JSON::Field(key: "jobDefinitionArn")]
         getter job_definition_arn : String
 
         # The name of the job definition.
+
         @[JSON::Field(key: "jobDefinitionName")]
         getter job_definition_name : String
 
         # The revision of the job definition.
+
         @[JSON::Field(key: "revision")]
         getter revision : Int32
 
@@ -5539,10 +6280,12 @@ module AwsSdk
       end
 
       # The repository credentials for private registry authentication.
+
       struct RepositoryCredentials
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the secret containing the private repository credentials.
+
         @[JSON::Field(key: "credentialsParameter")]
         getter credentials_parameter : String
 
@@ -5554,11 +6297,13 @@ module AwsSdk
 
       # The type and amount of a resource to assign to a container. The supported resources include GPU ,
       # MEMORY , and VCPU .
+
       struct ResourceRequirement
         include JSON::Serializable
 
         # The type of resource to assign to a container. The supported resources include GPU , MEMORY , and
         # VCPU .
+
         @[JSON::Field(key: "type")]
         getter type : String
 
@@ -5599,6 +6344,7 @@ module AwsSdk
         # 25600, 26624, 27648, 28672, 29696, or 30720 value = 8 MEMORY = 16384, 20480, 24576, 28672, 32768,
         # 36864, 40960, 45056, 49152, 53248, 57344, or 61440 value = 16 MEMORY = 32768, 40960, 49152, 57344,
         # 65536, 73728, 81920, 90112, 98304, 106496, 114688, or 122880
+
         @[JSON::Field(key: "value")]
         getter value : String
 
@@ -5611,18 +6357,21 @@ module AwsSdk
 
       # The retry strategy that's associated with a job. For more information, see Automated job retries in
       # the Batch User Guide .
+
       struct RetryStrategy
         include JSON::Serializable
 
         # The number of times to move a job to the RUNNABLE status. You can specify between 1 and 10 attempts.
         # If the value of attempts is greater than one, the job is retried on failure the same number of
         # attempts as the value.
+
         @[JSON::Field(key: "attempts")]
         getter attempts : Int32?
 
         # Array of up to 5 objects that specify the conditions where jobs are retried or failed. If this
         # parameter is specified, then the attempts parameter must also be specified. If none of the listed
         # conditions match, then the job is retried.
+
         @[JSON::Field(key: "evaluateOnExit")]
         getter evaluate_on_exit : Array(Types::EvaluateOnExit)?
 
@@ -5634,6 +6383,7 @@ module AwsSdk
       end
 
       # An object that represents the compute environment architecture for Batch jobs on Fargate.
+
       struct RuntimePlatform
         include JSON::Serializable
 
@@ -5642,6 +6392,7 @@ module AwsSdk
         # Windows-based containers on Fargate. A job queue will be blocked if a Windows job is submitted to a
         # job queue with only Fargate Spot compute environments. However, you can attach both FARGATE and
         # FARGATE_SPOT compute environments to the same job queue.
+
         @[JSON::Field(key: "cpuArchitecture")]
         getter cpu_architecture : String?
 
@@ -5657,6 +6408,7 @@ module AwsSdk
         # A job queue will be blocked if a Windows job is submitted to a job queue with only Fargate Spot
         # compute environments. However, you can attach both FARGATE and FARGATE_SPOT compute environments to
         # the same job queue.
+
         @[JSON::Field(key: "operatingSystemFamily")]
         getter operating_system_family : String?
 
@@ -5668,25 +6420,30 @@ module AwsSdk
       end
 
       # An object that represents a scheduling policy.
+
       struct SchedulingPolicyDetail
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the scheduling policy. An example is arn: aws :batch: us-east-1 :
         # 123456789012 :scheduling-policy/ HighPriority .
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The name of the fair-share scheduling policy.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # The fair-share scheduling policy details.
+
         @[JSON::Field(key: "fairsharePolicy")]
         getter fairshare_policy : Types::FairsharePolicy?
 
         # The tags that you apply to the fair-share scheduling policy to categorize and organize your
         # resources. Each tag consists of a key and an optional value. For more information, see Tagging
         # Amazon Web Services resources in Amazon Web Services General Reference .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -5701,10 +6458,12 @@ module AwsSdk
 
       # An object that contains the details of a scheduling policy that's returned in a ListSchedulingPolicy
       # action.
+
       struct SchedulingPolicyListingDetail
         include JSON::Serializable
 
         # Amazon Resource Name (ARN) of the scheduling policy.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
@@ -5719,10 +6478,12 @@ module AwsSdk
       # variables, use the secrets container definition parameter. To reference sensitive information in the
       # log configuration of a container, use the secretOptions container definition parameter. For more
       # information, see Specifying sensitive data in the Batch User Guide .
+
       struct Secret
         include JSON::Serializable
 
         # The name of the secret.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
@@ -5732,6 +6493,7 @@ module AwsSdk
         # parameter exists in the same Region as the job you're launching, then you can use either the full
         # Amazon Resource Name (ARN) or name of the parameter. If the parameter exists in a different Region,
         # then the full ARN must be specified.
+
         @[JSON::Field(key: "valueFrom")]
         getter value_from : String
 
@@ -5743,8 +6505,10 @@ module AwsSdk
       end
 
       # These errors are usually caused by a server issue.
+
       struct ServerException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -5757,36 +6521,44 @@ module AwsSdk
 
       # Detailed information about a service environment, including its configuration, state, and capacity
       # limits.
+
       struct ServiceEnvironmentDetail
         include JSON::Serializable
 
         # The capacity limits for the service environment. This defines the maximum resources that can be used
         # by service jobs in this environment.
+
         @[JSON::Field(key: "capacityLimits")]
         getter capacity_limits : Array(Types::CapacityLimit)
 
         # The Amazon Resource Name (ARN) of the service environment.
+
         @[JSON::Field(key: "serviceEnvironmentArn")]
         getter service_environment_arn : String
 
         # The name of the service environment.
+
         @[JSON::Field(key: "serviceEnvironmentName")]
         getter service_environment_name : String
 
         # The type of service environment. For SageMaker Training jobs, this value is SAGEMAKER_TRAINING .
+
         @[JSON::Field(key: "serviceEnvironmentType")]
         getter service_environment_type : String
 
         # The state of the service environment. Valid values are ENABLED and DISABLED .
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
         # The current status of the service environment.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # The tags associated with the service environment. Each tag consists of a key and an optional value.
         # For more information, see Tagging your Batch resources .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -5804,15 +6576,18 @@ module AwsSdk
 
       # Specifies the order of a service environment for a job queue. This determines the priority order
       # when multiple service environments are associated with the same job queue.
+
       struct ServiceEnvironmentOrder
         include JSON::Serializable
 
         # The order of the service environment. Job queues with a higher priority are evaluated first when
         # associated with the same service environment.
+
         @[JSON::Field(key: "order")]
         getter order : Int32
 
         # The name or ARN of the service environment.
+
         @[JSON::Field(key: "serviceEnvironment")]
         getter service_environment : String
 
@@ -5824,22 +6599,27 @@ module AwsSdk
       end
 
       # Detailed information about an attempt to run a service job.
+
       struct ServiceJobAttemptDetail
         include JSON::Serializable
 
         # The service resource identifier associated with the service job attempt.
+
         @[JSON::Field(key: "serviceResourceId")]
         getter service_resource_id : Types::ServiceResourceId?
 
         # The Unix timestamp (in milliseconds) for when the service job attempt was started.
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64?
 
         # A string that provides additional details for the current status of the service job attempt.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp (in milliseconds) for when the service job attempt stopped running.
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
@@ -5854,17 +6634,20 @@ module AwsSdk
 
       # Specifies conditions for when to exit or retry a service job based on the exit status or status
       # reason.
+
       struct ServiceJobEvaluateOnExit
         include JSON::Serializable
 
         # The action to take if the service job exits with the specified condition. Valid values are RETRY and
         # EXIT .
+
         @[JSON::Field(key: "action")]
         getter action : String?
 
         # Contains a glob pattern to match against the StatusReason returned for a job. The pattern can
         # contain up to 512 characters and can contain all printable characters. It can optionally end with an
         # asterisk (*) so that only the start of the string needs to be an exact match.
+
         @[JSON::Field(key: "onStatusReason")]
         getter on_status_reason : String?
 
@@ -5878,16 +6661,19 @@ module AwsSdk
       # The retry strategy for service jobs. This defines how many times to retry a failed service job and
       # under what conditions. For more information, see Service job retry strategies in the Batch User
       # Guide .
+
       struct ServiceJobRetryStrategy
         include JSON::Serializable
 
         # The number of times to move a service job to RUNNABLE status. You can specify between 1 and 10
         # attempts.
+
         @[JSON::Field(key: "attempts")]
         getter attempts : Int32
 
         # Array of ServiceJobEvaluateOnExit objects that specify conditions under which the service job should
         # be retried or failed.
+
         @[JSON::Field(key: "evaluateOnExit")]
         getter evaluate_on_exit : Array(Types::ServiceJobEvaluateOnExit)?
 
@@ -5899,50 +6685,62 @@ module AwsSdk
       end
 
       # Summary information about a service job.
+
       struct ServiceJobSummary
         include JSON::Serializable
 
         # The job ID for the service job.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # The name of the service job.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The type of service job. For SageMaker Training jobs, this value is SAGEMAKER_TRAINING .
+
         @[JSON::Field(key: "serviceJobType")]
         getter service_job_type : String
 
         # The Unix timestamp (in milliseconds) for when the service job was created.
+
         @[JSON::Field(key: "createdAt")]
         getter created_at : Int64?
 
         # The Amazon Resource Name (ARN) of the service job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
         # Information about the latest attempt for the service job.
+
         @[JSON::Field(key: "latestAttempt")]
         getter latest_attempt : Types::LatestServiceJobAttempt?
 
         # The share identifier for the job.
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String?
 
         # The Unix timestamp (in milliseconds) for when the service job was started.
+
         @[JSON::Field(key: "startedAt")]
         getter started_at : Int64?
 
         # The current status of the service job.
+
         @[JSON::Field(key: "status")]
         getter status : String?
 
         # A short string to provide more details on the current status of the service job.
+
         @[JSON::Field(key: "statusReason")]
         getter status_reason : String?
 
         # The Unix timestamp (in milliseconds) for when the service job stopped running.
+
         @[JSON::Field(key: "stoppedAt")]
         getter stopped_at : Int64?
 
@@ -5963,11 +6761,13 @@ module AwsSdk
       end
 
       # The timeout configuration for service jobs.
+
       struct ServiceJobTimeout
         include JSON::Serializable
 
         # The maximum duration in seconds that a service job attempt can run. After this time is reached,
         # Batch terminates the service job attempt.
+
         @[JSON::Field(key: "attemptDurationSeconds")]
         getter attempt_duration_seconds : Int32?
 
@@ -5978,14 +6778,17 @@ module AwsSdk
       end
 
       # The Batch unique identifier.
+
       struct ServiceResourceId
         include JSON::Serializable
 
         # The name of the resource identifier.
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # The value of the resource identifier.
+
         @[JSON::Field(key: "value")]
         getter value : String
 
@@ -5998,6 +6801,7 @@ module AwsSdk
 
       # Specifies the weights for the share identifiers for the fair-share policy. Share identifiers that
       # aren't included have a default weight of 1.0 .
+
       struct ShareAttributes
         include JSON::Serializable
 
@@ -6007,6 +6811,7 @@ module AwsSdk
         # specifies a shareIdentifier of UserA* and another that specifies a shareIdentifier of UserA1 . There
         # can be no more than 500 share identifiers active in a job queue. The string is limited to 255
         # alphanumeric characters, and can be followed by an asterisk (*).
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String
 
@@ -6014,6 +6819,7 @@ module AwsSdk
         # priority for compute resources. For example, jobs that use a share identifier with a weight factor
         # of 0.125 (1/8) get 8 times the compute resources of jobs that use a share identifier with a weight
         # factor of 1. The smallest supported value is 0.0001, and the largest supported value is 999.9999.
+
         @[JSON::Field(key: "weightFactor")]
         getter weight_factor : Float64?
 
@@ -6025,6 +6831,7 @@ module AwsSdk
       end
 
       # Contains the parameters for SubmitJob .
+
       struct SubmitJobRequest
         include JSON::Serializable
 
@@ -6033,26 +6840,31 @@ module AwsSdk
         # the revision ( arn:aws:batch: region : account :job-definition/ definition-name : revision , or
         # arn:aws:batch: region : account :job-definition/ definition-name ). If the revision is not
         # specified, then the latest active revision is used.
+
         @[JSON::Field(key: "jobDefinition")]
         getter job_definition : String
 
         # The name of the job. It can be up to 128 letters long. The first character must be alphanumeric, can
         # contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The job queue where the job is submitted. You can specify either the name or the Amazon Resource
         # Name (ARN) of the queue.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
         # The array properties for the submitted job, such as the size of the array. The array size can be
         # between 2 and 10,000. If you specify array properties for a job, it becomes an array job. For more
         # information, see Array Jobs in the Batch User Guide .
+
         @[JSON::Field(key: "arrayProperties")]
         getter array_properties : Types::ArrayProperties?
 
         # An object that contains overrides for the consumable resources of a job.
+
         @[JSON::Field(key: "consumableResourcePropertiesOverride")]
         getter consumable_resource_properties_override : Types::ConsumableResourceProperties?
 
@@ -6061,6 +6873,7 @@ module AwsSdk
         # the default command for a container, which is specified in the job definition or the Docker image,
         # with a command override. You can also override existing environment variables on a container or add
         # new environment variables to it with an environment override.
+
         @[JSON::Field(key: "containerOverrides")]
         getter container_overrides : Types::ContainerOverrides?
 
@@ -6069,28 +6882,33 @@ module AwsSdk
         # completes sequentially, starting at index 0. You can also specify an N_TO_N type dependency with a
         # job ID for array jobs. In that case, each index child of this job must wait for the corresponding
         # index child of each dependency to complete before it can begin.
+
         @[JSON::Field(key: "dependsOn")]
         getter depends_on : Array(Types::JobDependency)?
 
         # An object, with properties that override defaults for the job definition, can only be specified for
         # jobs that are run on Amazon ECS resources.
+
         @[JSON::Field(key: "ecsPropertiesOverride")]
         getter ecs_properties_override : Types::EcsPropertiesOverride?
 
         # An object, with properties that override defaults for the job definition, can only be specified for
         # jobs that are run on Amazon EKS resources.
+
         @[JSON::Field(key: "eksPropertiesOverride")]
         getter eks_properties_override : Types::EksPropertiesOverride?
 
         # A list of node overrides in JSON format that specify the node range to target and the container
         # overrides for that node range. This parameter isn't applicable to jobs that are running on Fargate
         # resources; use containerOverrides instead.
+
         @[JSON::Field(key: "nodeOverrides")]
         getter node_overrides : Types::NodeOverrides?
 
         # Additional parameters passed to the job that replace parameter substitution placeholders that are
         # set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a
         # SubmitJob request override any corresponding parameter defaults from the job definition.
+
         @[JSON::Field(key: "parameters")]
         getter parameters : Hash(String, String)?
 
@@ -6100,11 +6918,13 @@ module AwsSdk
         # definitions tags. If the total number of combined tags from the job and job definition is over 50,
         # the job is moved to the FAILED state. When specified, this overrides the tag propagation setting in
         # the job definition.
+
         @[JSON::Field(key: "propagateTags")]
         getter propagate_tags : Bool?
 
         # The retry strategy to use for failed jobs from this SubmitJob operation. When a retry strategy is
         # specified here, it overrides the retry strategy defined in the job definition.
+
         @[JSON::Field(key: "retryStrategy")]
         getter retry_strategy : Types::RetryStrategy?
 
@@ -6112,6 +6932,7 @@ module AwsSdk
         # Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.
         # This overrides any scheduling priority in the job definition and works only within a single share
         # identifier. The minimum supported value is 0 and the maximum supported value is 9999.
+
         @[JSON::Field(key: "schedulingPriorityOverride")]
         getter scheduling_priority_override : Int32?
 
@@ -6119,12 +6940,14 @@ module AwsSdk
         # fair-share scheduling policy. If the job queue has a fair-share scheduling policy, then this
         # parameter must be specified. This string is limited to 255 alphanumeric characters, and can be
         # followed by an asterisk (*).
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String?
 
         # The tags that you apply to the job request to help you categorize and organize your resources. Each
         # tag consists of a key and an optional value. For more information, see Tagging Amazon Web Services
         # Resources in Amazon Web Services General Reference .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
@@ -6134,6 +6957,7 @@ module AwsSdk
         # timeout configuration specified in the job definition. For array jobs, child jobs have the same
         # timeout configuration as the parent job. For more information, see Job Timeouts in the Amazon
         # Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "timeout")]
         getter timeout : Types::JobTimeout?
 
@@ -6159,18 +6983,22 @@ module AwsSdk
         end
       end
 
+
       struct SubmitJobResponse
         include JSON::Serializable
 
         # The unique identifier for the job.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # The name of the job.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The Amazon Resource Name (ARN) for the job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
@@ -6182,54 +7010,65 @@ module AwsSdk
         end
       end
 
+
       struct SubmitServiceJobRequest
         include JSON::Serializable
 
         # The name of the service job. It can be up to 128 characters long. It can contain uppercase and
         # lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The job queue into which the service job is submitted. You can specify either the name or the ARN of
         # the queue. The job queue must have the type SAGEMAKER_TRAINING .
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
         # The type of service job. For SageMaker Training jobs, specify SAGEMAKER_TRAINING .
+
         @[JSON::Field(key: "serviceJobType")]
         getter service_job_type : String
 
         # The request, in JSON, for the service that the SubmitServiceJob operation is queueing.
+
         @[JSON::Field(key: "serviceRequestPayload")]
         getter service_request_payload : String
 
         # A unique identifier for the request. This token is used to ensure idempotency of requests. If this
         # parameter is specified and two submit requests with identical payloads and clientToken s are
         # received, these requests are considered the same request and the second request is rejected.
+
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
         # The retry strategy to use for failed service jobs that are submitted with this service job request.
+
         @[JSON::Field(key: "retryStrategy")]
         getter retry_strategy : Types::ServiceJobRetryStrategy?
 
         # The scheduling priority of the service job. Valid values are integers between 0 and 9999.
+
         @[JSON::Field(key: "schedulingPriority")]
         getter scheduling_priority : Int32?
 
         # The share identifier for the service job. Don't specify this parameter if the job queue doesn't have
         # a fair-share scheduling policy. If the job queue has a fair-share scheduling policy, then this
         # parameter must be specified.
+
         @[JSON::Field(key: "shareIdentifier")]
         getter share_identifier : String?
 
         # The tags that you apply to the service job request. Each tag consists of a key and an optional
         # value. For more information, see Tagging your Batch resources .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)?
 
         # The timeout configuration for the service job. If none is specified, Batch defers to the default
         # timeout of the underlying service handling the job.
+
         @[JSON::Field(key: "timeoutConfig")]
         getter timeout_config : Types::ServiceJobTimeout?
 
@@ -6248,18 +7087,22 @@ module AwsSdk
         end
       end
 
+
       struct SubmitServiceJobResponse
         include JSON::Serializable
 
         # The unique identifier for the service job.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # The name of the service job.
+
         @[JSON::Field(key: "jobName")]
         getter job_name : String
 
         # The Amazon Resource Name (ARN) for the service job.
+
         @[JSON::Field(key: "jobArn")]
         getter job_arn : String?
 
@@ -6272,18 +7115,21 @@ module AwsSdk
       end
 
       # Contains the parameters for TagResource .
+
       struct TagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource that tags are added to. Batch resources that support
         # tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for
         # child jobs of array and multi-node parallel (MNP) jobs aren't supported.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The tags that you apply to the resource to help you categorize and organize your resources. Each tag
         # consists of a key and an optional value. For more information, see Tagging Amazon Web Services
         # Resources in Amazon Web Services General Reference .
+
         @[JSON::Field(key: "tags")]
         getter tags : Hash(String, String)
 
@@ -6294,6 +7140,7 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceResponse
         include JSON::Serializable
 
@@ -6302,6 +7149,7 @@ module AwsSdk
       end
 
       # A list of containers that this task depends on.
+
       struct TaskContainerDependency
         include JSON::Serializable
 
@@ -6313,10 +7161,12 @@ module AwsSdk
         # This condition can't be set on an essential container. SUCCESS - This condition is the same as
         # COMPLETE , but it also requires that the container exits with a zero status. This condition can't be
         # set on an essential container.
+
         @[JSON::Field(key: "condition")]
         getter condition : String?
 
         # A unique identifier for the container.
+
         @[JSON::Field(key: "containerName")]
         getter container_name : String?
 
@@ -6328,22 +7178,26 @@ module AwsSdk
       end
 
       # The details for the container in this task attempt.
+
       struct TaskContainerDetails
         include JSON::Serializable
 
         # The command that's passed to the container. This parameter maps to Cmd in the Create a container
         # section of the Docker Remote API and the COMMAND parameter to docker run . For more information, see
         # https://docs.docker.com/engine/reference/builder/#cmd .
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
         # A list of containers that this container depends on.
+
         @[JSON::Field(key: "dependsOn")]
         getter depends_on : Array(Types::TaskContainerDependency)?
 
         # The environment variables to pass to a container. This parameter maps to Env in the Create a
         # container section of the Docker Remote API and the --env option to docker run . We don't recommend
         # using plaintext environment variables for sensitive information, such as credential data.
+
         @[JSON::Field(key: "environment")]
         getter environment : Array(Types::KeyValuePair)?
 
@@ -6355,16 +7209,19 @@ module AwsSdk
         # containers that are used for a common purpose into components, and separate the different components
         # into multiple task definitions. For more information, see Application Architecture in the Amazon
         # Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "essential")]
         getter essential : Bool?
 
         # The exit code returned upon completion.
+
         @[JSON::Field(key: "exitCode")]
         getter exit_code : Int32?
 
         # The FireLens configuration for the container. This is used to specify and configure a log router for
         # container logs. For more information, see Custom log routing in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "firelensConfiguration")]
         getter firelens_configuration : Types::FirelensConfiguration?
 
@@ -6374,12 +7231,14 @@ module AwsSdk
         # lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are
         # allowed. This parameter maps to Image in the Create a container section of the Docker Remote API and
         # the IMAGE parameter of the docker run .
+
         @[JSON::Field(key: "image")]
         getter image : String?
 
         # Linux-specific modifications that are applied to the container, such as Linux kernel capabilities.
         # For more information, see KernelCapabilities . This parameter is not supported for Windows
         # containers.
+
         @[JSON::Field(key: "linuxParameters")]
         getter linux_parameters : Types::LinuxParameters?
 
@@ -6400,12 +7259,14 @@ module AwsSdk
         # instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on
         # that instance can use these log configuration options. For more information, see Amazon ECS
         # container agent configuration in the Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "logConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
         # The name of the CloudWatch Logs log stream that's associated with the container. The log group for
         # Batch jobs is /aws/batch/job. Each container attempt receives a log stream name when they reach the
         # RUNNING status.
+
         @[JSON::Field(key: "logStreamName")]
         getter log_stream_name : String?
 
@@ -6413,14 +7274,17 @@ module AwsSdk
         # container section of the Docker Remote API and the --volume option to docker run . Windows
         # containers can mount whole directories on the same drive as $env:ProgramData . Windows containers
         # can't mount directories on a different drive, and mount point can't be across drives.
+
         @[JSON::Field(key: "mountPoints")]
         getter mount_points : Array(Types::MountPoint)?
 
         # The name of a container.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The network interfaces that are associated with the job.
+
         @[JSON::Field(key: "networkInterfaces")]
         getter network_interfaces : Array(Types::NetworkInterface)?
 
@@ -6428,30 +7292,36 @@ module AwsSdk
         # instance (similar to the root user). This parameter maps to Privileged in the Create a container
         # section of the Docker Remote API and the --privileged option to docker run . This parameter is not
         # supported for Windows containers or tasks run on Fargate.
+
         @[JSON::Field(key: "privileged")]
         getter privileged : Bool?
 
         # When this parameter is true, the container is given read-only access to its root file system. This
         # parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the
         # --read-only option to docker run . This parameter is not supported for Windows containers.
+
         @[JSON::Field(key: "readonlyRootFilesystem")]
         getter readonly_root_filesystem : Bool?
 
         # A short (255 max characters) human-readable string to provide additional details for a running or
         # stopped container.
+
         @[JSON::Field(key: "reason")]
         getter reason : String?
 
         # The private repository authentication credentials to use.
+
         @[JSON::Field(key: "repositoryCredentials")]
         getter repository_credentials : Types::RepositoryCredentials?
 
         # The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+
         @[JSON::Field(key: "resourceRequirements")]
         getter resource_requirements : Array(Types::ResourceRequirement)?
 
         # The secrets to pass to the container. For more information, see Specifying Sensitive Data in the
         # Amazon Elastic Container Service Developer Guide.
+
         @[JSON::Field(key: "secrets")]
         getter secrets : Array(Types::Secret)?
 
@@ -6465,6 +7335,7 @@ module AwsSdk
         # API or greater on your container instance. To check the Docker Remote API version on your container
         # instance, log in to your container instance and run the following command: sudo docker version
         # --format '{{.Server.APIVersion}}' This parameter is not supported for Windows containers.
+
         @[JSON::Field(key: "ulimits")]
         getter ulimits : Array(Types::Ulimit)?
 
@@ -6474,6 +7345,7 @@ module AwsSdk
         # for better security. You can specify the user using the following formats. If specifying a UID or
         # GID, you must specify it as a positive integer. user user:group uid uid:gid user:gi uid:group This
         # parameter is not supported for Windows containers.
+
         @[JSON::Field(key: "user")]
         getter user : String?
 
@@ -6505,11 +7377,13 @@ module AwsSdk
 
       # The overrides that should be sent to a container. For information about using Batch overrides when
       # you connect event sources to targets, see BatchContainerOverrides .
+
       struct TaskContainerOverrides
         include JSON::Serializable
 
         # The command to send to the container that overrides the default command from the Docker image or the
         # job definition. This parameter can't contain an empty string.
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
@@ -6517,16 +7391,19 @@ module AwsSdk
         # added to the container at launch, or you can override the existing environment variables from the
         # Docker image or the job definition. Environment variables cannot start with AWS_BATCH . This naming
         # convention is reserved for variables that Batch sets.
+
         @[JSON::Field(key: "environment")]
         getter environment : Array(Types::KeyValuePair)?
 
         # A pointer to the container that you want to override. The container's name provides a unique
         # identifier for the container being used.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
         # The type and amount of resources to assign to a container. This overrides the settings in the job
         # definition. The supported resources include GPU , MEMORY , and VCPU .
+
         @[JSON::Field(key: "resourceRequirements")]
         getter resource_requirements : Array(Types::ResourceRequirement)?
 
@@ -6541,6 +7418,7 @@ module AwsSdk
 
       # Container properties are used for Amazon ECS-based job definitions. These properties to describe the
       # container that's launched as part of a job.
+
       struct TaskContainerProperties
         include JSON::Serializable
 
@@ -6550,16 +7428,19 @@ module AwsSdk
         # lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are
         # allowed. This parameter maps to Image in the Create a container section of the Docker Remote API and
         # the IMAGE parameter of the docker run .
+
         @[JSON::Field(key: "image")]
         getter image : String
 
         # The command that's passed to the container. This parameter maps to Cmd in the Create a container
         # section of the Docker Remote API and the COMMAND parameter to docker run . For more information, see
         # Dockerfile reference: CMD .
+
         @[JSON::Field(key: "command")]
         getter command : Array(String)?
 
         # A list of containers that this container depends on.
+
         @[JSON::Field(key: "dependsOn")]
         getter depends_on : Array(Types::TaskContainerDependency)?
 
@@ -6568,6 +7449,7 @@ module AwsSdk
         # recommend using plaintext environment variables for sensitive information, such as credential data.
         # Environment variables cannot start with AWS_BATCH . This naming convention is reserved for variables
         # that Batch sets.
+
         @[JSON::Field(key: "environment")]
         getter environment : Array(Types::KeyValuePair)?
 
@@ -6579,17 +7461,20 @@ module AwsSdk
         # containers that are used for a common purpose into components, and separate the different components
         # into multiple task definitions. For more information, see Application Architecture in the Amazon
         # Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "essential")]
         getter essential : Bool?
 
         # The FireLens configuration for the container. This is used to specify and configure a log router for
         # container logs. For more information, see Custom log routing in the Amazon Elastic Container Service
         # Developer Guide .
+
         @[JSON::Field(key: "firelensConfiguration")]
         getter firelens_configuration : Types::FirelensConfiguration?
 
         # Linux-specific modifications that are applied to the container, such as Linux kernel capabilities.
         # For more information, see KernelCapabilities .
+
         @[JSON::Field(key: "linuxParameters")]
         getter linux_parameters : Types::LinuxParameters?
 
@@ -6610,6 +7495,7 @@ module AwsSdk
         # instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on
         # that instance can use these log configuration options. For more information, see Amazon ECS
         # container agent configuration in the Amazon Elastic Container Service Developer Guide .
+
         @[JSON::Field(key: "logConfiguration")]
         getter log_configuration : Types::LogConfiguration?
 
@@ -6617,11 +7503,13 @@ module AwsSdk
         # container section of the Docker Remote API and the --volume option to docker run . Windows
         # containers can mount whole directories on the same drive as $env:ProgramData . Windows containers
         # can't mount directories on a different drive, and mount point can't be across drives.
+
         @[JSON::Field(key: "mountPoints")]
         getter mount_points : Array(Types::MountPoint)?
 
         # The name of a container. The name can be used as a unique identifier to target your dependsOn and
         # Overrides objects.
+
         @[JSON::Field(key: "name")]
         getter name : String?
 
@@ -6629,25 +7517,30 @@ module AwsSdk
         # instance (similar to the root user). This parameter maps to Privileged in the Create a container
         # section of the Docker Remote API and the --privileged option to docker run . This parameter is not
         # supported for Windows containers or tasks run on Fargate.
+
         @[JSON::Field(key: "privileged")]
         getter privileged : Bool?
 
         # When this parameter is true, the container is given read-only access to its root file system. This
         # parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the
         # --read-only option to docker run . This parameter is not supported for Windows containers.
+
         @[JSON::Field(key: "readonlyRootFilesystem")]
         getter readonly_root_filesystem : Bool?
 
         # The private repository authentication credentials to use.
+
         @[JSON::Field(key: "repositoryCredentials")]
         getter repository_credentials : Types::RepositoryCredentials?
 
         # The type and amount of a resource to assign to a container. The only supported resource is a GPU.
+
         @[JSON::Field(key: "resourceRequirements")]
         getter resource_requirements : Array(Types::ResourceRequirement)?
 
         # The secrets to pass to the container. For more information, see Specifying Sensitive Data in the
         # Amazon Elastic Container Service Developer Guide.
+
         @[JSON::Field(key: "secrets")]
         getter secrets : Array(Types::Secret)?
 
@@ -6661,6 +7554,7 @@ module AwsSdk
         # API or greater on your container instance. To check the Docker Remote API version on your container
         # instance, log in to your container instance and run the following command: sudo docker version
         # --format '{{.Server.APIVersion}}' This parameter is not supported for Windows containers.
+
         @[JSON::Field(key: "ulimits")]
         getter ulimits : Array(Types::Ulimit)?
 
@@ -6670,6 +7564,7 @@ module AwsSdk
         # for better security. You can specify the user using the following formats. If specifying a UID or
         # GID, you must specify it as a positive integer. user user:group uid uid:gid user:gi uid:group This
         # parameter is not supported for Windows containers.
+
         @[JSON::Field(key: "user")]
         getter user : String?
 
@@ -6696,10 +7591,12 @@ module AwsSdk
       end
 
       # An object that contains overrides for the task definition of a job.
+
       struct TaskPropertiesOverride
         include JSON::Serializable
 
         # The overrides for the container definition of a job.
+
         @[JSON::Field(key: "containers")]
         getter containers : Array(Types::TaskContainerOverrides)?
 
@@ -6710,16 +7607,19 @@ module AwsSdk
       end
 
       # Contains the parameters for TerminateJob .
+
       struct TerminateJobRequest
         include JSON::Serializable
 
         # The Batch job ID of the job to terminate.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # A message to attach to the job that explains the reason for canceling it. This message is returned
         # by future DescribeJobs operations on the job. It is also recorded in the Batch activity logs. This
         # parameter has as limit of 1024 characters.
+
         @[JSON::Field(key: "reason")]
         getter reason : String
 
@@ -6729,6 +7629,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct TerminateJobResponse
         include JSON::Serializable
@@ -6737,15 +7638,18 @@ module AwsSdk
         end
       end
 
+
       struct TerminateServiceJobRequest
         include JSON::Serializable
 
         # The service job ID of the service job to terminate.
+
         @[JSON::Field(key: "jobId")]
         getter job_id : String
 
         # A message to attach to the service job that explains the reason for canceling it. This message is
         # returned by DescribeServiceJob operations on the service job.
+
         @[JSON::Field(key: "reason")]
         getter reason : String
 
@@ -6755,6 +7659,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct TerminateServiceJobResponse
         include JSON::Serializable
@@ -6765,14 +7670,17 @@ module AwsSdk
 
       # The container path, mount options, and size of the tmpfs mount. This object isn't applicable to jobs
       # that are running on Fargate resources.
+
       struct Tmpfs
         include JSON::Serializable
 
         # The absolute file path in the container where the tmpfs volume is mounted.
+
         @[JSON::Field(key: "containerPath")]
         getter container_path : String
 
         # The size (in MiB) of the tmpfs volume.
+
         @[JSON::Field(key: "size")]
         getter size : Int32
 
@@ -6782,6 +7690,7 @@ module AwsSdk
         # " | " rbind" | "unbindable" | "runbindable" | "private" | "rprivate" | "shared" | "rshared" |
         # "slave" | "rslave" | "relatime " | " norelatime " | " strictatime " | " nostrictatime " | " mode " |
         # " uid " | " gid " | " nr_inodes " | " nr_blocks " | " mpol "
+
         @[JSON::Field(key: "mountOptions")]
         getter mount_options : Array(String)?
 
@@ -6795,19 +7704,23 @@ module AwsSdk
 
       # The ulimit settings to pass to the container. For more information, see Ulimit . This object isn't
       # applicable to jobs that are running on Fargate resources.
+
       struct Ulimit
         include JSON::Serializable
 
         # The hard limit for the ulimit type.
+
         @[JSON::Field(key: "hardLimit")]
         getter hard_limit : Int32
 
         # The type of the ulimit . Valid values are: core | cpu | data | fsize | locks | memlock | msgqueue |
         # nice | nofile | nproc | rss | rtprio | rttime | sigpending | stack .
+
         @[JSON::Field(key: "name")]
         getter name : String
 
         # The soft limit for the ulimit type.
+
         @[JSON::Field(key: "softLimit")]
         getter soft_limit : Int32
 
@@ -6820,16 +7733,19 @@ module AwsSdk
       end
 
       # Contains the parameters for UntagResource .
+
       struct UntagResourceRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the resource from which to delete tags. Batch resources that
         # support tags are compute environments, jobs, job definitions, job queues, and scheduling policies.
         # ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
+
         @[JSON::Field(key: "resourceArn")]
         getter resource_arn : String
 
         # The keys of the tags to be removed.
+
         @[JSON::Field(key: "tagKeys")]
         getter tag_keys : Array(String)
 
@@ -6840,6 +7756,7 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceResponse
         include JSON::Serializable
 
@@ -6848,19 +7765,23 @@ module AwsSdk
       end
 
       # Contains the parameters for UpdateComputeEnvironment .
+
       struct UpdateComputeEnvironmentRequest
         include JSON::Serializable
 
         # The name or full Amazon Resource Name (ARN) of the compute environment to update.
+
         @[JSON::Field(key: "computeEnvironment")]
         getter compute_environment : String
 
         # Details of the compute resources managed by the compute environment. Required for a managed compute
         # environment. For more information, see Compute Environments in the Batch User Guide .
+
         @[JSON::Field(key: "computeResources")]
         getter compute_resources : Types::ComputeResourceUpdate?
 
         # Reserved.
+
         @[JSON::Field(key: "context")]
         getter context : String?
 
@@ -6876,6 +7797,7 @@ module AwsSdk
         # the service-role path prefix. When you only specify the name of the service role, Batch assumes that
         # your ARN doesn't use the service-role path prefix. Because of this, we recommend that you specify
         # the full ARN of your service role when you create compute environments.
+
         @[JSON::Field(key: "serviceRole")]
         getter service_role : String?
 
@@ -6892,6 +7814,7 @@ module AwsSdk
         # scales down to the minvCpus value. However, the instance size doesn't change. For example, consider
         # a c5.8xlarge instance with a minvCpus value of 4 and a desiredvCpus value of 36 . This instance
         # doesn't scale down to a c5.large instance.
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
@@ -6899,11 +7822,13 @@ module AwsSdk
         # this parameter for a managed compute environment. This parameter is only used for fair-share
         # scheduling to reserve vCPU capacity for new share identifiers. If this parameter isn't provided for
         # a fair-share job queue, no vCPU capacity is reserved.
+
         @[JSON::Field(key: "unmanagedvCpus")]
         getter unmanagedv_cpus : Int32?
 
         # Specifies the updated infrastructure update policy for the compute environment. For more information
         # about infrastructure updates, see Updating compute environments in the Batch User Guide .
+
         @[JSON::Field(key: "updatePolicy")]
         getter update_policy : Types::UpdatePolicy?
 
@@ -6919,15 +7844,18 @@ module AwsSdk
         end
       end
 
+
       struct UpdateComputeEnvironmentResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the compute environment.
+
         @[JSON::Field(key: "computeEnvironmentArn")]
         getter compute_environment_arn : String?
 
         # The name of the compute environment. It can be up to 128 characters long. It can contain uppercase
         # and lowercase letters, numbers, hyphens (-), and underscores (_).
+
         @[JSON::Field(key: "computeEnvironmentName")]
         getter compute_environment_name : String?
 
@@ -6938,16 +7866,19 @@ module AwsSdk
         end
       end
 
+
       struct UpdateConsumableResourceRequest
         include JSON::Serializable
 
         # The name or ARN of the consumable resource to be updated.
+
         @[JSON::Field(key: "consumableResource")]
         getter consumable_resource : String
 
         # If this parameter is specified and two update requests with identical payloads and clientToken s are
         # received, these requests are considered the same request. Both requests will succeed, but the update
         # will only happen once. A clientToken is valid for 8 hours.
+
         @[JSON::Field(key: "clientToken")]
         getter client_token : String?
 
@@ -6955,12 +7886,14 @@ module AwsSdk
         # quantity of the resource to the value specified by the quantity parameter. ADD Increases the
         # quantity of the resource by the value specified by the quantity parameter. REMOVE Reduces the
         # quantity of the resource by the value specified by the quantity parameter.
+
         @[JSON::Field(key: "operation")]
         getter operation : String?
 
         # The change in the total quantity of the consumable resource. The operation parameter determines
         # whether the value specified here will be the new total quantity, or the amount by which the total
         # quantity will be increased or reduced. Must be a non-negative value.
+
         @[JSON::Field(key: "quantity")]
         getter quantity : Int64?
 
@@ -6973,18 +7906,22 @@ module AwsSdk
         end
       end
 
+
       struct UpdateConsumableResourceResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the consumable resource.
+
         @[JSON::Field(key: "consumableResourceArn")]
         getter consumable_resource_arn : String
 
         # The name of the consumable resource to be updated.
+
         @[JSON::Field(key: "consumableResourceName")]
         getter consumable_resource_name : String
 
         # The total amount of the consumable resource that is available.
+
         @[JSON::Field(key: "totalQuantity")]
         getter total_quantity : Int64?
 
@@ -6997,10 +7934,12 @@ module AwsSdk
       end
 
       # Contains the parameters for UpdateJobQueue .
+
       struct UpdateJobQueueRequest
         include JSON::Serializable
 
         # The name or the Amazon Resource Name (ARN) of the job queue.
+
         @[JSON::Field(key: "jobQueue")]
         getter job_queue : String
 
@@ -7011,6 +7950,7 @@ module AwsSdk
         # or Fargate ( FARGATE or FARGATE_SPOT ). EC2 and Fargate compute environments can't be mixed. All
         # compute environments that are associated with a job queue must share the same architecture. Batch
         # doesn't support mixing compute environment architecture types in a single job queue.
+
         @[JSON::Field(key: "computeEnvironmentOrder")]
         getter compute_environment_order : Array(Types::ComputeEnvironmentOrder)?
 
@@ -7018,6 +7958,7 @@ module AwsSdk
         # specified state longer than specified times. Batch will perform each action after maxTimeSeconds has
         # passed. ( Note : The minimum value for maxTimeSeconds is 600 (10 minutes) and its maximum value is
         # 86,400 (24 hours).)
+
         @[JSON::Field(key: "jobStateTimeLimitActions")]
         getter job_state_time_limit_actions : Array(Types::JobStateTimeLimitAction)?
 
@@ -7027,6 +7968,7 @@ module AwsSdk
         # scheduling preference over a job queue with a priority value of 1 . All of the compute environments
         # must be either EC2 ( EC2 or SPOT ) or Fargate ( FARGATE or FARGATE_SPOT ). EC2 and Fargate compute
         # environments can't be mixed.
+
         @[JSON::Field(key: "priority")]
         getter priority : Int32?
 
@@ -7034,17 +7976,20 @@ module AwsSdk
         # fair-share scheduling policy can be replaced but not removed. The format is aws: Partition :batch:
         # Region : Account :scheduling-policy/ Name . For example,
         # aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy .
+
         @[JSON::Field(key: "schedulingPolicyArn")]
         getter scheduling_policy_arn : String?
 
         # The order of the service environment associated with the job queue. Job queues with a higher
         # priority are evaluated first when associated with the same service environment.
+
         @[JSON::Field(key: "serviceEnvironmentOrder")]
         getter service_environment_order : Array(Types::ServiceEnvironmentOrder)?
 
         # Describes the queue's ability to accept new jobs. If the job queue state is ENABLED , it can accept
         # jobs. If the job queue state is DISABLED , new jobs can't be added to the queue, but jobs already in
         # the queue can finish.
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
@@ -7060,14 +8005,17 @@ module AwsSdk
         end
       end
 
+
       struct UpdateJobQueueResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the job queue.
+
         @[JSON::Field(key: "jobQueueArn")]
         getter job_queue_arn : String?
 
         # The name of the job queue.
+
         @[JSON::Field(key: "jobQueueName")]
         getter job_queue_name : String?
 
@@ -7081,16 +8029,19 @@ module AwsSdk
       # Specifies the infrastructure update policy for the Amazon EC2 compute environment. For more
       # information about infrastructure updates, see Updating compute environments in the Batch User Guide
       # .
+
       struct UpdatePolicy
         include JSON::Serializable
 
         # Specifies the job timeout (in minutes) when the compute environment infrastructure is updated. The
         # default value is 30.
+
         @[JSON::Field(key: "jobExecutionTimeoutMinutes")]
         getter job_execution_timeout_minutes : Int64?
 
         # Specifies whether jobs are automatically terminated when the compute environment infrastructure is
         # updated. The default value is false .
+
         @[JSON::Field(key: "terminateJobsOnUpdate")]
         getter terminate_jobs_on_update : Bool?
 
@@ -7102,14 +8053,17 @@ module AwsSdk
       end
 
       # Contains the parameters for UpdateSchedulingPolicy .
+
       struct UpdateSchedulingPolicyRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the scheduling policy to update.
+
         @[JSON::Field(key: "arn")]
         getter arn : String
 
         # The fair-share policy scheduling details.
+
         @[JSON::Field(key: "fairsharePolicy")]
         getter fairshare_policy : Types::FairsharePolicy?
 
@@ -7120,6 +8074,7 @@ module AwsSdk
         end
       end
 
+
       struct UpdateSchedulingPolicyResponse
         include JSON::Serializable
 
@@ -7127,19 +8082,23 @@ module AwsSdk
         end
       end
 
+
       struct UpdateServiceEnvironmentRequest
         include JSON::Serializable
 
         # The name or ARN of the service environment to update.
+
         @[JSON::Field(key: "serviceEnvironment")]
         getter service_environment : String
 
         # The capacity limits for the service environment. This defines the maximum resources that can be used
         # by service jobs in this environment.
+
         @[JSON::Field(key: "capacityLimits")]
         getter capacity_limits : Array(Types::CapacityLimit)?
 
         # The state of the service environment.
+
         @[JSON::Field(key: "state")]
         getter state : String?
 
@@ -7151,14 +8110,17 @@ module AwsSdk
         end
       end
 
+
       struct UpdateServiceEnvironmentResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the service environment that was updated.
+
         @[JSON::Field(key: "serviceEnvironmentArn")]
         getter service_environment_arn : String
 
         # The name of the service environment that was updated.
+
         @[JSON::Field(key: "serviceEnvironmentName")]
         getter service_environment_name : String
 
@@ -7170,12 +8132,14 @@ module AwsSdk
       end
 
       # A data volume that's used in a job's container properties.
+
       struct Volume
         include JSON::Serializable
 
         # This parameter is specified when you're using an Amazon Elastic File System file system for job
         # storage. Jobs that are running on Fargate resources must specify a platformVersion of at least 1.4.0
         # .
+
         @[JSON::Field(key: "efsVolumeConfiguration")]
         getter efs_volume_configuration : Types::EFSVolumeConfiguration?
 
@@ -7184,12 +8148,14 @@ module AwsSdk
         # host path for your data volume. However, the data isn't guaranteed to persist after the containers
         # that are associated with it stop running. This parameter isn't applicable to jobs that are running
         # on Fargate resources and shouldn't be provided.
+
         @[JSON::Field(key: "host")]
         getter host : Types::Host?
 
         # The name of the volume. It can be up to 255 characters long. It can contain uppercase and lowercase
         # letters, numbers, hyphens (-), and underscores (_). This name is referenced in the sourceVolume
         # parameter of container definition mountPoints .
+
         @[JSON::Field(key: "name")]
         getter name : String?
 

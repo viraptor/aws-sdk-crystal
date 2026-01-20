@@ -1,7 +1,0 @@
-require "./runtime"
-require "./participant_connect/client"
-require "./participant_connect/errors"
-require "./participant_connect/model"
-require "./participant_connect/types"
-require "./participant_connect/protocol/rest_json"
-require "./customizations/participant_connect/customizations"

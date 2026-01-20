@@ -5,30 +5,37 @@ module AwsSdk
       end
 
       # You do not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # Updating or deleting the resource can cause an inconsistent state.
+
       class ConflictException < ServiceError
       end
 
       # An unexpected error occurred during processing of a request.
+
       class InternalServerException < ServiceError
       end
 
       # The request references a resource that does not exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause a service quota to be exceeded. See Service quotas .
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The input does not satisfy the constraints specified by an Amazon Web Services service.
+
       class ValidationException < ServiceError
       end
 

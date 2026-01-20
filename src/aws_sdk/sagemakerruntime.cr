@@ -1,0 +1,7 @@
+require "./runtime"
+require "./sagemakerruntime/client"
+require "./sagemakerruntime/errors"
+require "./sagemakerruntime/model"
+require "./sagemakerruntime/types"
+require "./sagemakerruntime/protocol/rest_json"
+require "./customizations/sagemakerruntime/customizations"

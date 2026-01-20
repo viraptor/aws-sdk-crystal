@@ -5,27 +5,33 @@ module AwsSdk
       end
 
       # Insufficient permissions to make request.
+
       class AccessDeniedException < ServiceError
       end
 
       # Unexpected error occurred. Problem on the server.
+
       class InternalServerException < ServiceError
       end
 
       # Request references a resource that doesn't exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # Service quotas have been exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # Exception caused by throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # Unable to process the request because the client provided input failed to satisfy request
       # constraints.
+
       class ValidationException < ServiceError
       end
 

@@ -1,6 +1,7 @@
 module AwsSdk
   module Route53Domains
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,13 +36,16 @@ module AwsSdk
       # ListOperations or GetOperationDetail to determine whether the operation succeeded.
       # GetOperationDetail provides additional information, for example, Domain Transfer from Aws Account
       # 111122223333 has been cancelled .
+
       def accept_domain_transfer_from_another_aws_account(
         domain_name : String,
         password : String
       ) : Types::AcceptDomainTransferFromAnotherAwsAccountResponse
+
         input = Types::AcceptDomainTransferFromAnotherAwsAccountRequest.new(domain_name: domain_name, password: password)
         accept_domain_transfer_from_another_aws_account(input)
       end
+
       def accept_domain_transfer_from_another_aws_account(input : Types::AcceptDomainTransferFromAnotherAwsAccountRequest) : Types::AcceptDomainTransferFromAnotherAwsAccountResponse
         request = Protocol::JsonRpc.build_request(Model::ACCEPT_DOMAIN_TRANSFER_FROM_ANOTHER_AWS_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -55,13 +59,16 @@ module AwsSdk
       # render your domain name unavailable on the internet if the steps are completed in the wrong order,
       # or with incorrect timing. For more information about DNSSEC signing, see Configuring DNSSEC signing
       # in the Route 53 developer guide .
+
       def associate_delegation_signer_to_domain(
         domain_name : String,
         signing_attributes : Types::DnssecSigningAttributes
       ) : Types::AssociateDelegationSignerToDomainResponse
+
         input = Types::AssociateDelegationSignerToDomainRequest.new(domain_name: domain_name, signing_attributes: signing_attributes)
         associate_delegation_signer_to_domain(input)
       end
+
       def associate_delegation_signer_to_domain(input : Types::AssociateDelegationSignerToDomainRequest) : Types::AssociateDelegationSignerToDomainResponse
         request = Protocol::JsonRpc.build_request(Model::ASSOCIATE_DELEGATION_SIGNER_TO_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -77,12 +84,15 @@ module AwsSdk
       # ListOperations or GetOperationDetail to determine whether the operation succeeded.
       # GetOperationDetail provides additional information, for example, Domain Transfer from Aws Account
       # 111122223333 has been cancelled .
+
       def cancel_domain_transfer_to_another_aws_account(
         domain_name : String
       ) : Types::CancelDomainTransferToAnotherAwsAccountResponse
+
         input = Types::CancelDomainTransferToAnotherAwsAccountRequest.new(domain_name: domain_name)
         cancel_domain_transfer_to_another_aws_account(input)
       end
+
       def cancel_domain_transfer_to_another_aws_account(input : Types::CancelDomainTransferToAnotherAwsAccountRequest) : Types::CancelDomainTransferToAnotherAwsAccountResponse
         request = Protocol::JsonRpc.build_request(Model::CANCEL_DOMAIN_TRANSFER_TO_ANOTHER_AWS_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -93,13 +103,16 @@ module AwsSdk
 
       # This operation checks the availability of one domain name. Note that if the availability status of a
       # domain is pending, you must submit another request to determine the availability of the domain name.
+
       def check_domain_availability(
         domain_name : String,
         idn_lang_code : String? = nil
       ) : Types::CheckDomainAvailabilityResponse
+
         input = Types::CheckDomainAvailabilityRequest.new(domain_name: domain_name, idn_lang_code: idn_lang_code)
         check_domain_availability(input)
       end
+
       def check_domain_availability(input : Types::CheckDomainAvailabilityRequest) : Types::CheckDomainAvailabilityResponse
         request = Protocol::JsonRpc.build_request(Model::CHECK_DOMAIN_AVAILABILITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -109,13 +122,16 @@ module AwsSdk
       end
 
       # Checks whether a domain name can be transferred to Amazon Route 53.
+
       def check_domain_transferability(
         domain_name : String,
         auth_code : String? = nil
       ) : Types::CheckDomainTransferabilityResponse
+
         input = Types::CheckDomainTransferabilityRequest.new(domain_name: domain_name, auth_code: auth_code)
         check_domain_transferability(input)
       end
+
       def check_domain_transferability(input : Types::CheckDomainTransferabilityRequest) : Types::CheckDomainTransferabilityResponse
         request = Protocol::JsonRpc.build_request(Model::CHECK_DOMAIN_TRANSFERABILITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -132,12 +148,15 @@ module AwsSdk
       # time before releasing it for other users to register (varies by registry). When the registration has
       # been deleted, we'll send you a confirmation to the registrant contact. The email will come from
       # noreply@domainnameverification.net or noreply@registrar.amazon.com .
+
       def delete_domain(
         domain_name : String
       ) : Types::DeleteDomainResponse
+
         input = Types::DeleteDomainRequest.new(domain_name: domain_name)
         delete_domain(input)
       end
+
       def delete_domain(input : Types::DeleteDomainRequest) : Types::DeleteDomainResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -148,13 +167,16 @@ module AwsSdk
 
       # This operation deletes the specified tags for a domain. All tag operations are eventually
       # consistent; subsequent operations might not immediately represent all issued operations.
+
       def delete_tags_for_domain(
         domain_name : String,
         tags_to_delete : Array(String)
       ) : Types::DeleteTagsForDomainResponse
+
         input = Types::DeleteTagsForDomainRequest.new(domain_name: domain_name, tags_to_delete: tags_to_delete)
         delete_tags_for_domain(input)
       end
+
       def delete_tags_for_domain(input : Types::DeleteTagsForDomainRequest) : Types::DeleteTagsForDomainResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_TAGS_FOR_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -164,12 +186,15 @@ module AwsSdk
       end
 
       # This operation disables automatic renewal of domain registration for the specified domain.
+
       def disable_domain_auto_renew(
         domain_name : String
       ) : Types::DisableDomainAutoRenewResponse
+
         input = Types::DisableDomainAutoRenewRequest.new(domain_name: domain_name)
         disable_domain_auto_renew(input)
       end
+
       def disable_domain_auto_renew(input : Types::DisableDomainAutoRenewRequest) : Types::DisableDomainAutoRenewResponse
         request = Protocol::JsonRpc.build_request(Model::DISABLE_DOMAIN_AUTO_RENEW, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -183,12 +208,15 @@ module AwsSdk
       # intend to transfer the domain to a different registrar. Successful submission returns an operation
       # ID that you can use to track the progress and completion of the action. If the request is not
       # completed successfully, the domain registrant will be notified by email.
+
       def disable_domain_transfer_lock(
         domain_name : String
       ) : Types::DisableDomainTransferLockResponse
+
         input = Types::DisableDomainTransferLockRequest.new(domain_name: domain_name)
         disable_domain_transfer_lock(input)
       end
+
       def disable_domain_transfer_lock(input : Types::DisableDomainTransferLockRequest) : Types::DisableDomainTransferLockResponse
         request = Protocol::JsonRpc.build_request(Model::DISABLE_DOMAIN_TRANSFER_LOCK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -198,13 +226,16 @@ module AwsSdk
       end
 
       # Deletes a delegation signer (DS) record in the registry zone for this domain name.
+
       def disassociate_delegation_signer_from_domain(
         domain_name : String,
         id : String
       ) : Types::DisassociateDelegationSignerFromDomainResponse
+
         input = Types::DisassociateDelegationSignerFromDomainRequest.new(domain_name: domain_name, id: id)
         disassociate_delegation_signer_from_domain(input)
       end
+
       def disassociate_delegation_signer_from_domain(input : Types::DisassociateDelegationSignerFromDomainRequest) : Types::DisassociateDelegationSignerFromDomainResponse
         request = Protocol::JsonRpc.build_request(Model::DISASSOCIATE_DELEGATION_SIGNER_FROM_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -219,12 +250,15 @@ module AwsSdk
       # of TLDs and their renewal policies, see Domains That You Can Register with Amazon Route 53 in the
       # Amazon Route 53 Developer Guide . Route 53 requires that you renew before the end of the renewal
       # period so we can complete processing before the deadline.
+
       def enable_domain_auto_renew(
         domain_name : String
       ) : Types::EnableDomainAutoRenewResponse
+
         input = Types::EnableDomainAutoRenewRequest.new(domain_name: domain_name)
         enable_domain_auto_renew(input)
       end
+
       def enable_domain_auto_renew(input : Types::EnableDomainAutoRenewRequest) : Types::EnableDomainAutoRenewResponse
         request = Protocol::JsonRpc.build_request(Model::ENABLE_DOMAIN_AUTO_RENEW, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -237,12 +271,15 @@ module AwsSdk
       # status) to prevent domain transfers. Successful submission returns an operation ID that you can use
       # to track the progress and completion of the action. If the request is not completed successfully,
       # the domain registrant will be notified by email.
+
       def enable_domain_transfer_lock(
         domain_name : String
       ) : Types::EnableDomainTransferLockResponse
+
         input = Types::EnableDomainTransferLockRequest.new(domain_name: domain_name)
         enable_domain_transfer_lock(input)
       end
+
       def enable_domain_transfer_lock(input : Types::EnableDomainTransferLockRequest) : Types::EnableDomainTransferLockResponse
         request = Protocol::JsonRpc.build_request(Model::ENABLE_DOMAIN_TRANSFER_LOCK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -255,12 +292,15 @@ module AwsSdk
       # such as registering a new domain, this operation returns information about whether the registrant
       # contact has responded. If you want us to resend the email, use the ResendContactReachabilityEmail
       # operation.
+
       def get_contact_reachability_status(
         domain_name : String? = nil
       ) : Types::GetContactReachabilityStatusResponse
+
         input = Types::GetContactReachabilityStatusRequest.new(domain_name: domain_name)
         get_contact_reachability_status(input)
       end
+
       def get_contact_reachability_status(input : Types::GetContactReachabilityStatusRequest) : Types::GetContactReachabilityStatusResponse
         request = Protocol::JsonRpc.build_request(Model::GET_CONTACT_REACHABILITY_STATUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -272,12 +312,15 @@ module AwsSdk
       # This operation returns detailed information about a specified domain that is associated with the
       # current Amazon Web Services account. Contact information for the domain is also returned as part of
       # the output.
+
       def get_domain_detail(
         domain_name : String
       ) : Types::GetDomainDetailResponse
+
         input = Types::GetDomainDetailRequest.new(domain_name: domain_name)
         get_domain_detail(input)
       end
+
       def get_domain_detail(input : Types::GetDomainDetailRequest) : Types::GetDomainDetailResponse
         request = Protocol::JsonRpc.build_request(Model::GET_DOMAIN_DETAIL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -287,14 +330,17 @@ module AwsSdk
       end
 
       # The GetDomainSuggestions operation returns a list of suggested domain names.
+
       def get_domain_suggestions(
         domain_name : String,
         only_available : Bool,
         suggestion_count : Int32
       ) : Types::GetDomainSuggestionsResponse
+
         input = Types::GetDomainSuggestionsRequest.new(domain_name: domain_name, only_available: only_available, suggestion_count: suggestion_count)
         get_domain_suggestions(input)
       end
+
       def get_domain_suggestions(input : Types::GetDomainSuggestionsRequest) : Types::GetDomainSuggestionsResponse
         request = Protocol::JsonRpc.build_request(Model::GET_DOMAIN_SUGGESTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -304,12 +350,15 @@ module AwsSdk
       end
 
       # This operation returns the current status of an operation that is not completed.
+
       def get_operation_detail(
         operation_id : String
       ) : Types::GetOperationDetailResponse
+
         input = Types::GetOperationDetailRequest.new(operation_id: operation_id)
         get_operation_detail(input)
       end
+
       def get_operation_detail(input : Types::GetOperationDetailRequest) : Types::GetOperationDetailResponse
         request = Protocol::JsonRpc.build_request(Model::GET_OPERATION_DETAIL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -320,15 +369,18 @@ module AwsSdk
 
       # This operation returns all the domain names registered with Amazon Route 53 for the current Amazon
       # Web Services account if no filtering conditions are used.
+
       def list_domains(
         filter_conditions : Array(Types::FilterCondition)? = nil,
         marker : String? = nil,
         max_items : Int32? = nil,
         sort_condition : Types::SortCondition? = nil
       ) : Types::ListDomainsResponse
+
         input = Types::ListDomainsRequest.new(filter_conditions: filter_conditions, marker: marker, max_items: max_items, sort_condition: sort_condition)
         list_domains(input)
       end
+
       def list_domains(input : Types::ListDomainsRequest) : Types::ListDomainsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DOMAINS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -340,6 +392,7 @@ module AwsSdk
       # Returns information about all of the operations that return an operation ID and that have ever been
       # performed on domains that were registered by the current account. This command runs only in the
       # us-east-1 Region.
+
       def list_operations(
         marker : String? = nil,
         max_items : Int32? = nil,
@@ -349,9 +402,11 @@ module AwsSdk
         submitted_since : Time? = nil,
         type : Array(String)? = nil
       ) : Types::ListOperationsResponse
+
         input = Types::ListOperationsRequest.new(marker: marker, max_items: max_items, sort_by: sort_by, sort_order: sort_order, status: status, submitted_since: submitted_since, type: type)
         list_operations(input)
       end
+
       def list_operations(input : Types::ListOperationsRequest) : Types::ListOperationsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_OPERATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -362,14 +417,17 @@ module AwsSdk
 
       # Lists the following prices for either all the TLDs supported by Route 53, or the specified TLD:
       # Registration Transfer Owner change Domain renewal Domain restoration
+
       def list_prices(
         marker : String? = nil,
         max_items : Int32? = nil,
         tld : String? = nil
       ) : Types::ListPricesResponse
+
         input = Types::ListPricesRequest.new(marker: marker, max_items: max_items, tld: tld)
         list_prices(input)
       end
+
       def list_prices(input : Types::ListPricesRequest) : Types::ListPricesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_PRICES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -381,12 +439,15 @@ module AwsSdk
       # This operation returns all of the tags that are associated with the specified domain. All tag
       # operations are eventually consistent; subsequent operations might not immediately represent all
       # issued operations.
+
       def list_tags_for_domain(
         domain_name : String
       ) : Types::ListTagsForDomainResponse
+
         input = Types::ListTagsForDomainRequest.new(domain_name: domain_name)
         list_tags_for_domain(input)
       end
+
       def list_tags_for_domain(input : Types::ListTagsForDomainRequest) : Types::ListTagsForDomainResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -398,13 +459,16 @@ module AwsSdk
       # Moves a domain from Amazon Web Services to another registrar. Supported actions: Changes the IPS
       # tags of a .uk domain, and pushes it to transit. Transit means that the domain is ready to be
       # transferred to another registrar.
+
       def push_domain(
         domain_name : String,
         target : String
       ) : Nil
+
         input = Types::PushDomainRequest.new(domain_name: domain_name, target: target)
         push_domain(input)
       end
+
       def push_domain(input : Types::PushDomainRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::PUSH_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -428,6 +492,7 @@ module AwsSdk
       # action. If the request is not completed successfully, the domain registrant is notified by email.
       # Charges your Amazon Web Services account an amount based on the top-level domain. For more
       # information, see Amazon Route 53 Pricing .
+
       def register_domain(
         admin_contact : Types::ContactDetail,
         domain_name : String,
@@ -442,9 +507,11 @@ module AwsSdk
         privacy_protect_registrant_contact : Bool? = nil,
         privacy_protect_tech_contact : Bool? = nil
       ) : Types::RegisterDomainResponse
+
         input = Types::RegisterDomainRequest.new(admin_contact: admin_contact, domain_name: domain_name, duration_in_years: duration_in_years, registrant_contact: registrant_contact, tech_contact: tech_contact, auto_renew: auto_renew, billing_contact: billing_contact, idn_lang_code: idn_lang_code, privacy_protect_admin_contact: privacy_protect_admin_contact, privacy_protect_billing_contact: privacy_protect_billing_contact, privacy_protect_registrant_contact: privacy_protect_registrant_contact, privacy_protect_tech_contact: privacy_protect_tech_contact)
         register_domain(input)
       end
+
       def register_domain(input : Types::RegisterDomainRequest) : Types::RegisterDomainResponse
         request = Protocol::JsonRpc.build_request(Model::REGISTER_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -458,12 +525,15 @@ module AwsSdk
       # TransferDomainToAnotherAwsAccount . Use either ListOperations or GetOperationDetail to determine
       # whether the operation succeeded. GetOperationDetail provides additional information, for example,
       # Domain Transfer from Aws Account 111122223333 has been cancelled .
+
       def reject_domain_transfer_from_another_aws_account(
         domain_name : String
       ) : Types::RejectDomainTransferFromAnotherAwsAccountResponse
+
         input = Types::RejectDomainTransferFromAnotherAwsAccountRequest.new(domain_name: domain_name)
         reject_domain_transfer_from_another_aws_account(input)
       end
+
       def reject_domain_transfer_from_another_aws_account(input : Types::RejectDomainTransferFromAnotherAwsAccountRequest) : Types::RejectDomainTransferFromAnotherAwsAccountResponse
         request = Protocol::JsonRpc.build_request(Model::REJECT_DOMAIN_TRANSFER_FROM_ANOTHER_AWS_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -477,14 +547,17 @@ module AwsSdk
       # before the expiration date. Some TLD registries delete domains before the expiration date if you
       # haven't renewed far enough in advance. For more information about renewing domain registration, see
       # Renewing Registration for a Domain in the Amazon Route 53 Developer Guide .
+
       def renew_domain(
         current_expiry_year : Int32,
         domain_name : String,
         duration_in_years : Int32? = nil
       ) : Types::RenewDomainResponse
+
         input = Types::RenewDomainRequest.new(current_expiry_year: current_expiry_year, domain_name: domain_name, duration_in_years: duration_in_years)
         renew_domain(input)
       end
+
       def renew_domain(input : Types::RenewDomainRequest) : Types::RenewDomainResponse
         request = Protocol::JsonRpc.build_request(Model::RENEW_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -496,12 +569,15 @@ module AwsSdk
       # For operations that require confirmation that the email address for the registrant contact is valid,
       # such as registering a new domain, this operation resends the confirmation email to the current email
       # address for the registrant contact.
+
       def resend_contact_reachability_email(
         domain_name : String? = nil
       ) : Types::ResendContactReachabilityEmailResponse
+
         input = Types::ResendContactReachabilityEmailRequest.new(domain_name: domain_name)
         resend_contact_reachability_email(input)
       end
+
       def resend_contact_reachability_email(input : Types::ResendContactReachabilityEmailRequest) : Types::ResendContactReachabilityEmailResponse
         request = Protocol::JsonRpc.build_request(Model::RESEND_CONTACT_REACHABILITY_EMAIL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -511,12 +587,15 @@ module AwsSdk
       end
 
       # Resend the form of authorization email for this operation.
+
       def resend_operation_authorization(
         operation_id : String
       ) : Nil
+
         input = Types::ResendOperationAuthorizationRequest.new(operation_id: operation_id)
         resend_operation_authorization(input)
       end
+
       def resend_operation_authorization(input : Types::ResendOperationAuthorizationRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::RESEND_OPERATION_AUTHORIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -527,12 +606,15 @@ module AwsSdk
 
       # This operation returns the authorization code for the domain. To transfer a domain to another
       # registrar, you provide this value to the new registrar.
+
       def retrieve_domain_auth_code(
         domain_name : String
       ) : Types::RetrieveDomainAuthCodeResponse
+
         input = Types::RetrieveDomainAuthCodeRequest.new(domain_name: domain_name)
         retrieve_domain_auth_code(input)
       end
+
       def retrieve_domain_auth_code(input : Types::RetrieveDomainAuthCodeRequest) : Types::RetrieveDomainAuthCodeResponse
         request = Protocol::JsonRpc.build_request(Model::RETRIEVE_DOMAIN_AUTH_CODE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -561,6 +643,7 @@ module AwsSdk
       # domain might become unavailable. If the transfer is successful, this method returns an operation ID
       # that you can use to track the progress and completion of the action. If the transfer doesn't
       # complete successfully, the domain registrant will be notified by email.
+
       def transfer_domain(
         admin_contact : Types::ContactDetail,
         domain_name : String,
@@ -577,9 +660,11 @@ module AwsSdk
         privacy_protect_registrant_contact : Bool? = nil,
         privacy_protect_tech_contact : Bool? = nil
       ) : Types::TransferDomainResponse
+
         input = Types::TransferDomainRequest.new(admin_contact: admin_contact, domain_name: domain_name, duration_in_years: duration_in_years, registrant_contact: registrant_contact, tech_contact: tech_contact, auth_code: auth_code, auto_renew: auto_renew, billing_contact: billing_contact, idn_lang_code: idn_lang_code, nameservers: nameservers, privacy_protect_admin_contact: privacy_protect_admin_contact, privacy_protect_billing_contact: privacy_protect_billing_contact, privacy_protect_registrant_contact: privacy_protect_registrant_contact, privacy_protect_tech_contact: privacy_protect_tech_contact)
         transfer_domain(input)
       end
+
       def transfer_domain(input : Types::TransferDomainRequest) : Types::TransferDomainResponse
         request = Protocol::JsonRpc.build_request(Model::TRANSFER_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -602,13 +687,16 @@ module AwsSdk
       # GetOperationDetail to determine whether the operation succeeded. GetOperationDetail provides
       # additional information, for example, Domain Transfer from Aws Account 111122223333 has been
       # cancelled .
+
       def transfer_domain_to_another_aws_account(
         account_id : String,
         domain_name : String
       ) : Types::TransferDomainToAnotherAwsAccountResponse
+
         input = Types::TransferDomainToAnotherAwsAccountRequest.new(account_id: account_id, domain_name: domain_name)
         transfer_domain_to_another_aws_account(input)
       end
+
       def transfer_domain_to_another_aws_account(input : Types::TransferDomainToAnotherAwsAccountRequest) : Types::TransferDomainToAnotherAwsAccountResponse
         request = Protocol::JsonRpc.build_request(Model::TRANSFER_DOMAIN_TO_ANOTHER_AWS_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -622,6 +710,7 @@ module AwsSdk
       # method returns an operation ID that you can use to track the progress and completion of the
       # operation. If the request is not completed successfully, the domain registrant will be notified by
       # email.
+
       def update_domain_contact(
         domain_name : String,
         admin_contact : Types::ContactDetail? = nil,
@@ -630,9 +719,11 @@ module AwsSdk
         registrant_contact : Types::ContactDetail? = nil,
         tech_contact : Types::ContactDetail? = nil
       ) : Types::UpdateDomainContactResponse
+
         input = Types::UpdateDomainContactRequest.new(domain_name: domain_name, admin_contact: admin_contact, billing_contact: billing_contact, consent: consent, registrant_contact: registrant_contact, tech_contact: tech_contact)
         update_domain_contact(input)
       end
+
       def update_domain_contact(input : Types::UpdateDomainContactRequest) : Types::UpdateDomainContactResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DOMAIN_CONTACT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -656,6 +747,7 @@ module AwsSdk
       # Route 53 console. Enabling privacy protection removes the contact information provided for this
       # domain from the WHOIS database. For more information on our privacy practices, see
       # https://aws.amazon.com/privacy/ .
+
       def update_domain_contact_privacy(
         domain_name : String,
         admin_privacy : Bool? = nil,
@@ -663,9 +755,11 @@ module AwsSdk
         registrant_privacy : Bool? = nil,
         tech_privacy : Bool? = nil
       ) : Types::UpdateDomainContactPrivacyResponse
+
         input = Types::UpdateDomainContactPrivacyRequest.new(domain_name: domain_name, admin_privacy: admin_privacy, billing_privacy: billing_privacy, registrant_privacy: registrant_privacy, tech_privacy: tech_privacy)
         update_domain_contact_privacy(input)
       end
+
       def update_domain_contact_privacy(input : Types::UpdateDomainContactPrivacyRequest) : Types::UpdateDomainContactPrivacyResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DOMAIN_CONTACT_PRIVACY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -679,14 +773,17 @@ module AwsSdk
       # delegation set for the hosted zone for the domain. If successful, this operation returns an
       # operation ID that you can use to track the progress and completion of the action. If the request is
       # not completed successfully, the domain registrant will be notified by email.
+
       def update_domain_nameservers(
         domain_name : String,
         nameservers : Array(Types::Nameserver),
         fi_auth_key : String? = nil
       ) : Types::UpdateDomainNameserversResponse
+
         input = Types::UpdateDomainNameserversRequest.new(domain_name: domain_name, nameservers: nameservers, fi_auth_key: fi_auth_key)
         update_domain_nameservers(input)
       end
+
       def update_domain_nameservers(input : Types::UpdateDomainNameserversRequest) : Types::UpdateDomainNameserversResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DOMAIN_NAMESERVERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -697,13 +794,16 @@ module AwsSdk
 
       # This operation adds or updates tags for a specified domain. All tag operations are eventually
       # consistent; subsequent operations might not immediately represent all issued operations.
+
       def update_tags_for_domain(
         domain_name : String,
         tags_to_update : Array(Types::Tag)? = nil
       ) : Types::UpdateTagsForDomainResponse
+
         input = Types::UpdateTagsForDomainRequest.new(domain_name: domain_name, tags_to_update: tags_to_update)
         update_tags_for_domain(input)
       end
+
       def update_tags_for_domain(input : Types::UpdateTagsForDomainRequest) : Types::UpdateTagsForDomainResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_TAGS_FOR_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -714,15 +814,18 @@ module AwsSdk
 
       # Returns all the domain-related billing records for the current Amazon Web Services account for a
       # specified period
+
       def view_billing(
         end : Time? = nil,
         marker : String? = nil,
         max_items : Int32? = nil,
         start : Time? = nil
       ) : Types::ViewBillingResponse
+
         input = Types::ViewBillingRequest.new(end: end, marker: marker, max_items: max_items, start: start)
         view_billing(input)
       end
+
       def view_billing(input : Types::ViewBillingRequest) : Types::ViewBillingResponse
         request = Protocol::JsonRpc.build_request(Model::VIEW_BILLING, input, endpoint)
         request = request.with_headers(endpoint_headers)

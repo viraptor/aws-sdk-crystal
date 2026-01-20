@@ -1,0 +1,7 @@
+require "./runtime"
+require "./migrationhubstrategy/client"
+require "./migrationhubstrategy/errors"
+require "./migrationhubstrategy/model"
+require "./migrationhubstrategy/types"
+require "./migrationhubstrategy/protocol/rest_json"
+require "./customizations/migrationhubstrategy/customizations"

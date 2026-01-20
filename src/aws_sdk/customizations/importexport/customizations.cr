@@ -1,5 +1,5 @@
 module AwsSdk
-  module Importexport
+  module ImportExport
     module Customizations
     end
   end

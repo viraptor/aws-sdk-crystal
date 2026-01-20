@@ -5,18 +5,22 @@ module AwsSdk
       end
 
       # The service failed in an unexpected way.
+
       class InternalServerException < ServiceError
       end
 
       # Bad request. The request is missing required parameters or has invalid parameters.
+
       class InvalidRequestException < ServiceError
       end
 
       # The request failed because a limit was exceeded.
+
       class LimitExceededException < ServiceError
       end
 
       # A requested resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 

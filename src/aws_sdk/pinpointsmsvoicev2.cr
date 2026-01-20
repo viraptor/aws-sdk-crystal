@@ -1,0 +1,7 @@
+require "./runtime"
+require "./pinpointsmsvoicev2/client"
+require "./pinpointsmsvoicev2/errors"
+require "./pinpointsmsvoicev2/model"
+require "./pinpointsmsvoicev2/types"
+require "./pinpointsmsvoicev2/protocol/json_rpc"
+require "./customizations/pinpointsmsvoicev2/customizations"

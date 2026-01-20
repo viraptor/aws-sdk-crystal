@@ -1,6 +1,7 @@
 module AwsSdk
   module Organizations
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,12 +36,15 @@ module AwsSdk
       # the following handshakes : Invitation to join ( INVITE ) Approve all features request (
       # ENABLE_ALL_FEATURES ) For more information, see Responding to invitations and Enabling all features
       # in the Organizations User Guide .
+
       def accept_handshake(
         handshake_id : String
       ) : Types::AcceptHandshakeResponse
+
         input = Types::AcceptHandshakeRequest.new(handshake_id: handshake_id)
         accept_handshake(input)
       end
+
       def accept_handshake(input : Types::AcceptHandshakeRequest) : Types::AcceptHandshakeResponse
         request = Protocol::JsonRpc.build_request(Model::ACCEPT_HANDSHAKE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -56,13 +60,16 @@ module AwsSdk
       # SECURITYHUB_POLICY UPGRADE_ROLLOUT_POLICY INSPECTOR_POLICY BEDROCK_POLICY S3_POLICY
       # NETWORK_SECURITY_DIRECTOR_POLICY You can only call this operation from the management account or a
       # member account that is a delegated administrator.
+
       def attach_policy(
         policy_id : String,
         target_id : String
       ) : Nil
+
         input = Types::AttachPolicyRequest.new(policy_id: policy_id, target_id: target_id)
         attach_policy(input)
       end
+
       def attach_policy(input : Types::AttachPolicyRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::ATTACH_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -75,12 +82,15 @@ module AwsSdk
       # of the handshake can't cancel it, but can use DeclineHandshake to decline. After a handshake is
       # canceled, the recipient can no longer respond to the handshake. You can view canceled handshakes in
       # API responses for 30 days before they are deleted.
+
       def cancel_handshake(
         handshake_id : String
       ) : Types::CancelHandshakeResponse
+
         input = Types::CancelHandshakeRequest.new(handshake_id: handshake_id)
         cancel_handshake(input)
       end
+
       def cancel_handshake(input : Types::CancelHandshakeRequest) : Types::CancelHandshakeResponse
         request = Protocol::JsonRpc.build_request(Model::CANCEL_HANDSHAKE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -109,12 +119,15 @@ module AwsSdk
       # close is linked to an Amazon Web Services GovCloud (US) account, the CloseAccount request will close
       # both accounts. To learn important pre-closure details, see Closing an Amazon Web Services GovCloud
       # (US) account in the Amazon Web Services GovCloud User Guide .
+
       def close_account(
         account_id : String
       ) : Nil
+
         input = Types::CloseAccountRequest.new(account_id: account_id)
         close_account(input)
       end
+
       def close_account(input : Types::CloseAccountRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::CLOSE_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -160,6 +173,7 @@ module AwsSdk
       # If you disable it, only the account root user can access billing information. For information about
       # how to disable this switch for an account, see Granting access to your billing information and tools
       # .
+
       def create_account(
         account_name : String,
         email : String,
@@ -167,9 +181,11 @@ module AwsSdk
         role_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateAccountResponse
+
         input = Types::CreateAccountRequest.new(account_name: account_name, email: email, iam_user_access_to_billing: iam_user_access_to_billing, role_name: role_name, tags: tags)
         create_account(input)
       end
+
       def create_account(input : Types::CreateAccountRequest) : Types::CreateAccountResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -237,6 +253,7 @@ module AwsSdk
       # roles that have appropriate permissions can view billing information for the account. If you disable
       # it, only the account root user can access billing information. For information about how to disable
       # this switch for an account, see Granting access to your billing information and tools .
+
       def create_gov_cloud_account(
         account_name : String,
         email : String,
@@ -244,9 +261,11 @@ module AwsSdk
         role_name : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateGovCloudAccountResponse
+
         input = Types::CreateGovCloudAccountRequest.new(account_name: account_name, email: email, iam_user_access_to_billing: iam_user_access_to_billing, role_name: role_name, tags: tags)
         create_gov_cloud_account(input)
       end
+
       def create_gov_cloud_account(input : Types::CreateGovCloudAccountRequest) : Types::CreateGovCloudAccountResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_GOV_CLOUD_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -264,12 +283,15 @@ module AwsSdk
       # choose to create the organization supporting only the consolidated billing features by setting the
       # FeatureSet parameter to CONSOLIDATED_BILLING , no policy types are enabled by default and you can't
       # use organization policies.
+
       def create_organization(
         feature_set : String? = nil
       ) : Types::CreateOrganizationResponse
+
         input = Types::CreateOrganizationRequest.new(feature_set: feature_set)
         create_organization(input)
       end
+
       def create_organization(input : Types::CreateOrganizationRequest) : Types::CreateOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -285,14 +307,17 @@ module AwsSdk
       # OUs, see Managing organizational units (OUs) in the Organizations User Guide . If the request
       # includes tags, then the requester must have the organizations:TagResource permission. You can only
       # call this operation from the management account.
+
       def create_organizational_unit(
         name : String,
         parent_id : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateOrganizationalUnitResponse
+
         input = Types::CreateOrganizationalUnitRequest.new(name: name, parent_id: parent_id, tags: tags)
         create_organizational_unit(input)
       end
+
       def create_organizational_unit(input : Types::CreateOrganizationalUnitRequest) : Types::CreateOrganizationalUnitResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_ORGANIZATIONAL_UNIT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -306,6 +331,7 @@ module AwsSdk
       # Managing Organizations policies . If the request includes tags, then the requester must have the
       # organizations:TagResource permission. You can only call this operation from the management account
       # or a member account that is a delegated administrator.
+
       def create_policy(
         content : String,
         description : String,
@@ -313,9 +339,11 @@ module AwsSdk
         type : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreatePolicyResponse
+
         input = Types::CreatePolicyRequest.new(content: content, description: description, name: name, type: type, tags: tags)
         create_policy(input)
       end
+
       def create_policy(input : Types::CreatePolicyRequest) : Types::CreatePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -327,12 +355,15 @@ module AwsSdk
       # Declines a Handshake . Only the account that receives a handshake can call this operation. The
       # sender of the handshake can use CancelHandshake to cancel if the handshake hasn't yet been responded
       # to. You can view canceled handshakes in API responses for 30 days before they are deleted.
+
       def decline_handshake(
         handshake_id : String
       ) : Types::DeclineHandshakeResponse
+
         input = Types::DeclineHandshakeRequest.new(handshake_id: handshake_id)
         decline_handshake(input)
       end
+
       def decline_handshake(input : Types::DeclineHandshakeRequest) : Types::DeclineHandshakeResponse
         request = Protocol::JsonRpc.build_request(Model::DECLINE_HANDSHAKE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -343,6 +374,8 @@ module AwsSdk
 
       # Deletes the organization. You can delete an organization only by using credentials from the
       # management account. The organization must be empty of member accounts.
+
+
       def delete_organization : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_ORGANIZATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -354,12 +387,15 @@ module AwsSdk
       # Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts
       # and child OUs from the OU that you want to delete. You can only call this operation from the
       # management account.
+
       def delete_organizational_unit(
         organizational_unit_id : String
       ) : Nil
+
         input = Types::DeleteOrganizationalUnitRequest.new(organizational_unit_id: organizational_unit_id)
         delete_organizational_unit(input)
       end
+
       def delete_organizational_unit(input : Types::DeleteOrganizationalUnitRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_ORGANIZATIONAL_UNIT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -371,12 +407,15 @@ module AwsSdk
       # Deletes the specified policy from your organization. Before you perform this operation, you must
       # first detach the policy from all organizational units (OUs), roots, and accounts. You can only call
       # this operation from the management account or a member account that is a delegated administrator.
+
       def delete_policy(
         policy_id : String
       ) : Nil
+
         input = Types::DeletePolicyRequest.new(policy_id: policy_id)
         delete_policy(input)
       end
+
       def delete_policy(input : Types::DeletePolicyRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -387,6 +426,8 @@ module AwsSdk
 
       # Deletes the resource policy from your organization. You can only call this operation from the
       # management account.
+
+
       def delete_resource_policy : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_RESOURCE_POLICY, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -403,13 +444,16 @@ module AwsSdk
       # feature. For a current list of services that support it, see the column Supports Delegated
       # Administrator in the table at Amazon Web Services Services that you can use with Organizations in
       # the Organizations User Guide. You can only call this operation from the management account.
+
       def deregister_delegated_administrator(
         account_id : String,
         service_principal : String
       ) : Nil
+
         input = Types::DeregisterDelegatedAdministratorRequest.new(account_id: account_id, service_principal: service_principal)
         deregister_delegated_administrator(input)
       end
+
       def deregister_delegated_administrator(input : Types::DeregisterDelegatedAdministratorRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DEREGISTER_DELEGATED_ADMINISTRATOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -420,12 +464,15 @@ module AwsSdk
 
       # Retrieves Organizations-related information about the specified account. You can only call this
       # operation from the management account or a member account that is a delegated administrator.
+
       def describe_account(
         account_id : String
       ) : Types::DescribeAccountResponse
+
         input = Types::DescribeAccountRequest.new(account_id: account_id)
         describe_account(input)
       end
+
       def describe_account(input : Types::DescribeAccountRequest) : Types::DescribeAccountResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -436,12 +483,15 @@ module AwsSdk
 
       # Retrieves the current status of an asynchronous request to create an account. You can only call this
       # operation from the management account or a member account that is a delegated administrator.
+
       def describe_create_account_status(
         create_account_request_id : String
       ) : Types::DescribeCreateAccountStatusResponse
+
         input = Types::DescribeCreateAccountStatusRequest.new(create_account_request_id: create_account_request_id)
         describe_create_account_status(input)
       end
+
       def describe_create_account_status(input : Types::DescribeCreateAccountStatusRequest) : Types::DescribeCreateAccountStatusResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CREATE_ACCOUNT_STATUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -457,13 +507,16 @@ module AwsSdk
       # and resource control policies (RCPs). For more information about policy inheritance, see
       # Understanding management policy inheritance in the Organizations User Guide . You can call this
       # operation from any account in a organization.
+
       def describe_effective_policy(
         policy_type : String,
         target_id : String? = nil
       ) : Types::DescribeEffectivePolicyResponse
+
         input = Types::DescribeEffectivePolicyRequest.new(policy_type: policy_type, target_id: target_id)
         describe_effective_policy(input)
       end
+
       def describe_effective_policy(input : Types::DescribeEffectivePolicyRequest) : Types::DescribeEffectivePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EFFECTIVE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -476,12 +529,15 @@ module AwsSdk
       # Amazon Web Services accounts: a sender and a recipient. You can view ACCEPTED , DECLINED , or
       # CANCELED handshakes in API Responses for 30 days before they are deleted. You can call this
       # operation from any account in a organization.
+
       def describe_handshake(
         handshake_id : String
       ) : Types::DescribeHandshakeResponse
+
         input = Types::DescribeHandshakeRequest.new(handshake_id: handshake_id)
         describe_handshake(input)
       end
+
       def describe_handshake(input : Types::DescribeHandshakeRequest) : Types::DescribeHandshakeResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_HANDSHAKE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -494,6 +550,8 @@ module AwsSdk
       # operation from any account in a organization. Even if a policy type is shown as available in the
       # organization, you can disable it separately at the root level with DisablePolicyType . Use ListRoots
       # to see the status of policy types for a specified root.
+
+
       def describe_organization : Types::DescribeOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ORGANIZATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -504,12 +562,15 @@ module AwsSdk
 
       # Retrieves information about an organizational unit (OU). You can only call this operation from the
       # management account or a member account that is a delegated administrator.
+
       def describe_organizational_unit(
         organizational_unit_id : String
       ) : Types::DescribeOrganizationalUnitResponse
+
         input = Types::DescribeOrganizationalUnitRequest.new(organizational_unit_id: organizational_unit_id)
         describe_organizational_unit(input)
       end
+
       def describe_organizational_unit(input : Types::DescribeOrganizationalUnitRequest) : Types::DescribeOrganizationalUnitResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ORGANIZATIONAL_UNIT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -520,12 +581,15 @@ module AwsSdk
 
       # Retrieves information about a policy. You can only call this operation from the management account
       # or a member account that is a delegated administrator.
+
       def describe_policy(
         policy_id : String
       ) : Types::DescribePolicyResponse
+
         input = Types::DescribePolicyRequest.new(policy_id: policy_id)
         describe_policy(input)
       end
+
       def describe_policy(input : Types::DescribePolicyRequest) : Types::DescribePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -536,6 +600,8 @@ module AwsSdk
 
       # Retrieves information about a resource policy. You can only call this operation from the management
       # account or a member account that is a delegated administrator.
+
+
       def describe_resource_policy : Types::DescribeResourcePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_RESOURCE_POLICY, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -546,12 +612,15 @@ module AwsSdk
 
       # Returns details for a transfer. A transfer is an arrangement between two management accounts where
       # one account designates the other with specified responsibilities for their organization.
+
       def describe_responsibility_transfer(
         id : String
       ) : Types::DescribeResponsibilityTransferResponse
+
         input = Types::DescribeResponsibilityTransferRequest.new(id: id)
         describe_responsibility_transfer(input)
       end
+
       def describe_responsibility_transfer(input : Types::DescribeResponsibilityTransferRequest) : Types::DescribeResponsibilityTransferResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_RESPONSIBILITY_TRANSFER, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -570,13 +639,16 @@ module AwsSdk
       # "Deny" in the second SCP to override the "Effect": "Allow" in the FullAWSAccess policy (or any other
       # attached SCP), you're using the authorization strategy of a " deny list ". You can only call this
       # operation from the management account or a member account that is a delegated administrator.
+
       def detach_policy(
         policy_id : String,
         target_id : String
       ) : Nil
+
         input = Types::DetachPolicyRequest.new(policy_id: policy_id, target_id: target_id)
         detach_policy(input)
       end
+
       def detach_policy(input : Types::DetachPolicyRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DETACH_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -616,12 +688,15 @@ module AwsSdk
       # integrating other services with Organizations, including the list of services that work with
       # Organizations, see Using Organizations with other Amazon Web Services services in the Organizations
       # User Guide . You can only call this operation from the management account.
+
       def disable_aws_service_access(
         service_principal : String
       ) : Nil
+
         input = Types::DisableAWSServiceAccessRequest.new(service_principal: service_principal)
         disable_aws_service_access(input)
       end
+
       def disable_aws_service_access(input : Types::DisableAWSServiceAccessRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DISABLE_AWS_SERVICE_ACCESS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -640,13 +715,16 @@ module AwsSdk
       # policy types for a specified root, and then use this operation. You can only call this operation
       # from the management account or a member account that is a delegated administrator. To view the
       # status of available policy types in the organization, use ListRoots .
+
       def disable_policy_type(
         policy_type : String,
         root_id : String
       ) : Types::DisablePolicyTypeResponse
+
         input = Types::DisablePolicyTypeRequest.new(policy_type: policy_type, root_id: root_id)
         disable_policy_type(input)
       end
+
       def disable_policy_type(input : Types::DisablePolicyTypeRequest) : Types::DisablePolicyTypeResponse
         request = Protocol::JsonRpc.build_request(Model::DISABLE_POLICY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -668,12 +746,15 @@ module AwsSdk
       # services to integrate with Organizations, see Using Organizations with other Amazon Web Services
       # services in the Organizations User Guide . You can only call this operation from the management
       # account.
+
       def enable_aws_service_access(
         service_principal : String
       ) : Nil
+
         input = Types::EnableAWSServiceAccessRequest.new(service_principal: service_principal)
         enable_aws_service_access(input)
       end
+
       def enable_aws_service_access(input : Types::EnableAWSServiceAccessRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::ENABLE_AWS_SERVICE_ACCESS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -700,10 +781,12 @@ module AwsSdk
       # can do. The management account can apply policies that prevent accounts from leaving the
       # organization. Ensure that your account administrators are aware of this. You can only call this
       # operation from the management account.
+
       def enable_all_features : Types::EnableAllFeaturesResponse
         input = Types::EnableAllFeaturesRequest.new
         enable_all_features(input)
       end
+
       def enable_all_features(input : Types::EnableAllFeaturesRequest) : Types::EnableAllFeaturesResponse
         request = Protocol::JsonRpc.build_request(Model::ENABLE_ALL_FEATURES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -720,13 +803,16 @@ module AwsSdk
       # operation from the management account or a member account that is a delegated administrator. You can
       # enable a policy type in a root only if that policy type is available in the organization. To view
       # the status of available policy types in the organization, use ListRoots .
+
       def enable_policy_type(
         policy_type : String,
         root_id : String
       ) : Types::EnablePolicyTypeResponse
+
         input = Types::EnablePolicyTypeRequest.new(policy_type: policy_type, root_id: root_id)
         enable_policy_type(input)
       end
+
       def enable_policy_type(input : Types::EnablePolicyTypeRequest) : Types::EnablePolicyTypeResponse
         request = Protocol::JsonRpc.build_request(Model::ENABLE_POLICY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -743,14 +829,17 @@ module AwsSdk
       # If the error persists after an hour, contact Amazon Web Services Support . If the request includes
       # tags, then the requester must have the organizations:TagResource permission. You can only call this
       # operation from the management account.
+
       def invite_account_to_organization(
         target : Types::HandshakeParty,
         notes : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::InviteAccountToOrganizationResponse
+
         input = Types::InviteAccountToOrganizationRequest.new(target: target, notes: notes, tags: tags)
         invite_account_to_organization(input)
       end
+
       def invite_account_to_organization(input : Types::InviteAccountToOrganizationRequest) : Types::InviteAccountToOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::INVITE_ACCOUNT_TO_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -762,6 +851,7 @@ module AwsSdk
       # Sends an invitation to another organization's management account to designate your account with the
       # specified responsibilities for their organization. The invitation is implemented as a Handshake
       # whose details are in the response. You can only call this operation from the management account.
+
       def invite_organization_to_transfer_responsibility(
         source_name : String,
         start_timestamp : Time,
@@ -770,9 +860,11 @@ module AwsSdk
         notes : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::InviteOrganizationToTransferResponsibilityResponse
+
         input = Types::InviteOrganizationToTransferResponsibilityRequest.new(source_name: source_name, start_timestamp: start_timestamp, target: target, type: type, notes: notes, tags: tags)
         invite_organization_to_transfer_responsibility(input)
       end
+
       def invite_organization_to_transfer_responsibility(input : Types::InviteOrganizationToTransferResponsibilityRequest) : Types::InviteOrganizationToTransferResponsibilityResponse
         request = Protocol::JsonRpc.build_request(Model::INVITE_ORGANIZATION_TO_TRANSFER_RESPONSIBILITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -806,6 +898,8 @@ module AwsSdk
       # the account was created. Invited accounts aren't subject to this waiting period. If you are using an
       # organization principal to call LeaveOrganization across multiple accounts, you can only do this up
       # to 5 accounts per second in a single organization.
+
+
       def leave_organization : Nil
         request = Protocol::JsonRpc.build_request(Model::LEAVE_ORGANIZATION, nil, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -821,13 +915,16 @@ module AwsSdk
       # work with Organizations, see Using Organizations with other Amazon Web Services services in the
       # Organizations User Guide . You can only call this operation from the management account or a member
       # account that is a delegated administrator.
+
       def list_aws_service_access_for_organization(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAWSServiceAccessForOrganizationResponse
+
         input = Types::ListAWSServiceAccessForOrganizationRequest.new(max_results: max_results, next_token: next_token)
         list_aws_service_access_for_organization(input)
       end
+
       def list_aws_service_access_for_organization(input : Types::ListAWSServiceAccessForOrganizationRequest) : Types::ListAWSServiceAccessForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_AWS_SERVICE_ACCESS_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -843,13 +940,16 @@ module AwsSdk
       # available. Continue making requests until NextToken returns null. A null NextToken value indicates
       # that you have retrieved all available results. You can only call this operation from the management
       # account or a member account that is a delegated administrator.
+
       def list_accounts(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountsResponse
+
         input = Types::ListAccountsRequest.new(max_results: max_results, next_token: next_token)
         list_accounts(input)
       end
+
       def list_accounts(input : Types::ListAccountsRequest) : Types::ListAccountsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ACCOUNTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -867,14 +967,17 @@ module AwsSdk
       # results are available. Continue making requests until NextToken returns null. A null NextToken value
       # indicates that you have retrieved all available results. You can only call this operation from the
       # management account or a member account that is a delegated administrator.
+
       def list_accounts_for_parent(
         parent_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountsForParentResponse
+
         input = Types::ListAccountsForParentRequest.new(parent_id: parent_id, max_results: max_results, next_token: next_token)
         list_accounts_for_parent(input)
       end
+
       def list_accounts_for_parent(input : Types::ListAccountsForParentRequest) : Types::ListAccountsForParentResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ACCOUNTS_FOR_PARENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -887,14 +990,17 @@ module AwsSdk
       # policy is an effective policy that fails validation checks, resulting in the effective policy not
       # being fully enforced on all the intended accounts within an organization. You can only call this
       # operation from the management account or a member account that is a delegated administrator.
+
       def list_accounts_with_invalid_effective_policy(
         policy_type : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccountsWithInvalidEffectivePolicyResponse
+
         input = Types::ListAccountsWithInvalidEffectivePolicyRequest.new(policy_type: policy_type, max_results: max_results, next_token: next_token)
         list_accounts_with_invalid_effective_policy(input)
       end
+
       def list_accounts_with_invalid_effective_policy(input : Types::ListAccountsWithInvalidEffectivePolicyRequest) : Types::ListAccountsWithInvalidEffectivePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ACCOUNTS_WITH_INVALID_EFFECTIVE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -911,15 +1017,18 @@ module AwsSdk
       # returns null. A null NextToken value indicates that you have retrieved all available results. You
       # can only call this operation from the management account or a member account that is a delegated
       # administrator.
+
       def list_children(
         child_type : String,
         parent_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListChildrenResponse
+
         input = Types::ListChildrenRequest.new(child_type: child_type, parent_id: parent_id, max_results: max_results, next_token: next_token)
         list_children(input)
       end
+
       def list_children(input : Types::ListChildrenRequest) : Types::ListChildrenResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_CHILDREN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -935,14 +1044,17 @@ module AwsSdk
       # returns null. A null NextToken value indicates that you have retrieved all available results. You
       # can only call this operation from the management account or a member account that is a delegated
       # administrator.
+
       def list_create_account_status(
         max_results : Int32? = nil,
         next_token : String? = nil,
         states : Array(String)? = nil
       ) : Types::ListCreateAccountStatusResponse
+
         input = Types::ListCreateAccountStatusRequest.new(max_results: max_results, next_token: next_token, states: states)
         list_create_account_status(input)
       end
+
       def list_create_account_status(input : Types::ListCreateAccountStatusRequest) : Types::ListCreateAccountStatusResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_CREATE_ACCOUNT_STATUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -954,14 +1066,17 @@ module AwsSdk
       # Lists the Amazon Web Services accounts that are designated as delegated administrators in this
       # organization. You can only call this operation from the management account or a member account that
       # is a delegated administrator.
+
       def list_delegated_administrators(
         max_results : Int32? = nil,
         next_token : String? = nil,
         service_principal : String? = nil
       ) : Types::ListDelegatedAdministratorsResponse
+
         input = Types::ListDelegatedAdministratorsRequest.new(max_results: max_results, next_token: next_token, service_principal: service_principal)
         list_delegated_administrators(input)
       end
+
       def list_delegated_administrators(input : Types::ListDelegatedAdministratorsRequest) : Types::ListDelegatedAdministratorsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DELEGATED_ADMINISTRATORS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -973,14 +1088,17 @@ module AwsSdk
       # List the Amazon Web Services services for which the specified account is a delegated administrator.
       # You can only call this operation from the management account or a member account that is a delegated
       # administrator.
+
       def list_delegated_services_for_account(
         account_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDelegatedServicesForAccountResponse
+
         input = Types::ListDelegatedServicesForAccountRequest.new(account_id: account_id, max_results: max_results, next_token: next_token)
         list_delegated_services_for_account(input)
       end
+
       def list_delegated_services_for_account(input : Types::ListDelegatedServicesForAccountRequest) : Types::ListDelegatedServicesForAccountResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DELEGATED_SERVICES_FOR_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -992,15 +1110,18 @@ module AwsSdk
       # Lists all the validation errors on an effective policy for a specified account and policy type. You
       # can only call this operation from the management account or a member account that is a delegated
       # administrator.
+
       def list_effective_policy_validation_errors(
         account_id : String,
         policy_type : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEffectivePolicyValidationErrorsResponse
+
         input = Types::ListEffectivePolicyValidationErrorsRequest.new(account_id: account_id, policy_type: policy_type, max_results: max_results, next_token: next_token)
         list_effective_policy_validation_errors(input)
       end
+
       def list_effective_policy_validation_errors(input : Types::ListEffectivePolicyValidationErrorsRequest) : Types::ListEffectivePolicyValidationErrorsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_EFFECTIVE_POLICY_VALIDATION_ERRORS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1016,14 +1137,17 @@ module AwsSdk
       # return an empty set of results even when more results are available. Continue making requests until
       # NextToken returns null. A null NextToken value indicates that you have retrieved all available
       # results.
+
       def list_handshakes_for_account(
         filter : Types::HandshakeFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListHandshakesForAccountResponse
+
         input = Types::ListHandshakesForAccountRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_handshakes_for_account(input)
       end
+
       def list_handshakes_for_account(input : Types::ListHandshakesForAccountRequest) : Types::ListHandshakesForAccountResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_HANDSHAKES_FOR_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1039,14 +1163,17 @@ module AwsSdk
       # an empty result set. These operations can occasionally return an empty set of results even when more
       # results are available. Continue making requests until NextToken returns null. A null NextToken value
       # indicates that you have retrieved all available results.
+
       def list_handshakes_for_organization(
         filter : Types::HandshakeFilter? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListHandshakesForOrganizationResponse
+
         input = Types::ListHandshakesForOrganizationRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_handshakes_for_organization(input)
       end
+
       def list_handshakes_for_organization(input : Types::ListHandshakesForOrganizationRequest) : Types::ListHandshakesForOrganizationResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_HANDSHAKES_FOR_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1061,15 +1188,18 @@ module AwsSdk
       # operations can occasionally return an empty set of results even when more results are available.
       # Continue making requests until NextToken returns null. A null NextToken value indicates that you
       # have retrieved all available results.
+
       def list_inbound_responsibility_transfers(
         type : String,
         id : String? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListInboundResponsibilityTransfersResponse
+
         input = Types::ListInboundResponsibilityTransfersRequest.new(type: type, id: id, max_results: max_results, next_token: next_token)
         list_inbound_responsibility_transfers(input)
       end
+
       def list_inbound_responsibility_transfers(input : Types::ListInboundResponsibilityTransfersRequest) : Types::ListInboundResponsibilityTransfersResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_INBOUND_RESPONSIBILITY_TRANSFERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1084,14 +1214,17 @@ module AwsSdk
       # available. Continue making requests until NextToken returns null. A null NextToken value indicates
       # that you have retrieved all available results. You can only call this operation from the management
       # account or a member account that is a delegated administrator.
+
       def list_organizational_units_for_parent(
         parent_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListOrganizationalUnitsForParentResponse
+
         input = Types::ListOrganizationalUnitsForParentRequest.new(parent_id: parent_id, max_results: max_results, next_token: next_token)
         list_organizational_units_for_parent(input)
       end
+
       def list_organizational_units_for_parent(input : Types::ListOrganizationalUnitsForParentRequest) : Types::ListOrganizationalUnitsForParentResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ORGANIZATIONAL_UNITS_FOR_PARENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1106,14 +1239,17 @@ module AwsSdk
       # if you receive an empty result set. These operations can occasionally return an empty set of results
       # even when more results are available. Continue making requests until NextToken returns null. A null
       # NextToken value indicates that you have retrieved all available results.
+
       def list_outbound_responsibility_transfers(
         type : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListOutboundResponsibilityTransfersResponse
+
         input = Types::ListOutboundResponsibilityTransfersRequest.new(type: type, max_results: max_results, next_token: next_token)
         list_outbound_responsibility_transfers(input)
       end
+
       def list_outbound_responsibility_transfers(input : Types::ListOutboundResponsibilityTransfersRequest) : Types::ListOutboundResponsibilityTransfersResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_OUTBOUND_RESPONSIBILITY_TRANSFERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1130,14 +1266,17 @@ module AwsSdk
       # NextToken returns null. A null NextToken value indicates that you have retrieved all available
       # results. You can only call this operation from the management account or a member account that is a
       # delegated administrator. In the current release, a child can have only a single parent.
+
       def list_parents(
         child_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListParentsResponse
+
         input = Types::ListParentsRequest.new(child_id: child_id, max_results: max_results, next_token: next_token)
         list_parents(input)
       end
+
       def list_parents(input : Types::ListParentsRequest) : Types::ListParentsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_PARENTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1152,14 +1291,17 @@ module AwsSdk
       # available. Continue making requests until NextToken returns null. A null NextToken value indicates
       # that you have retrieved all available results. You can only call this operation from the management
       # account or a member account that is a delegated administrator.
+
       def list_policies(
         filter : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPoliciesResponse
+
         input = Types::ListPoliciesRequest.new(filter: filter, max_results: max_results, next_token: next_token)
         list_policies(input)
       end
+
       def list_policies(input : Types::ListPoliciesRequest) : Types::ListPoliciesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1175,15 +1317,18 @@ module AwsSdk
       # results are available. Continue making requests until NextToken returns null. A null NextToken value
       # indicates that you have retrieved all available results. You can only call this operation from the
       # management account or a member account that is a delegated administrator.
+
       def list_policies_for_target(
         filter : String,
         target_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListPoliciesForTargetResponse
+
         input = Types::ListPoliciesForTargetRequest.new(filter: filter, target_id: target_id, max_results: max_results, next_token: next_token)
         list_policies_for_target(input)
       end
+
       def list_policies_for_target(input : Types::ListPoliciesForTargetRequest) : Types::ListPoliciesForTargetResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_POLICIES_FOR_TARGET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1202,13 +1347,16 @@ module AwsSdk
       # features, you make policy types available for use in that organization. Individual policy types can
       # then be enabled and disabled in a root. To see the availability of a policy type in an organization,
       # use DescribeOrganization .
+
       def list_roots(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListRootsResponse
+
         input = Types::ListRootsRequest.new(max_results: max_results, next_token: next_token)
         list_roots(input)
       end
+
       def list_roots(input : Types::ListRootsRequest) : Types::ListRootsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ROOTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1221,13 +1369,16 @@ module AwsSdk
       # resources in Organizations. Amazon Web Services account Organization root Organizational unit (OU)
       # Policy (any type) You can only call this operation from the management account or a member account
       # that is a delegated administrator.
+
       def list_tags_for_resource(
         resource_id : String,
         next_token : String? = nil
       ) : Types::ListTagsForResourceResponse
+
         input = Types::ListTagsForResourceRequest.new(resource_id: resource_id, next_token: next_token)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Types::ListTagsForResourceResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1242,14 +1393,17 @@ module AwsSdk
       # when more results are available. Continue making requests until NextToken returns null. A null
       # NextToken value indicates that you have retrieved all available results. You can only call this
       # operation from the management account or a member account that is a delegated administrator.
+
       def list_targets_for_policy(
         policy_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListTargetsForPolicyResponse
+
         input = Types::ListTargetsForPolicyRequest.new(policy_id: policy_id, max_results: max_results, next_token: next_token)
         list_targets_for_policy(input)
       end
+
       def list_targets_for_policy(input : Types::ListTargetsForPolicyRequest) : Types::ListTargetsForPolicyResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_TARGETS_FOR_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1260,14 +1414,17 @@ module AwsSdk
 
       # Moves an account from its current source parent root or organizational unit (OU) to the specified
       # destination parent root or OU. You can only call this operation from the management account.
+
       def move_account(
         account_id : String,
         destination_parent_id : String,
         source_parent_id : String
       ) : Nil
+
         input = Types::MoveAccountRequest.new(account_id: account_id, destination_parent_id: destination_parent_id, source_parent_id: source_parent_id)
         move_account(input)
       end
+
       def move_account(input : Types::MoveAccountRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::MOVE_ACCOUNT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1277,13 +1434,16 @@ module AwsSdk
       end
 
       # Creates or updates a resource policy. You can only call this operation from the management account..
+
       def put_resource_policy(
         content : String,
         tags : Array(Types::Tag)? = nil
       ) : Types::PutResourcePolicyResponse
+
         input = Types::PutResourcePolicyRequest.new(content: content, tags: tags)
         put_resource_policy(input)
       end
+
       def put_resource_policy(input : Types::PutResourcePolicyRequest) : Types::PutResourcePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::PUT_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1299,13 +1459,16 @@ module AwsSdk
       # services that support it, see the column Supports Delegated Administrator in the table at Amazon Web
       # Services Services that you can use with Organizations in the Organizations User Guide. You can only
       # call this operation from the management account.
+
       def register_delegated_administrator(
         account_id : String,
         service_principal : String
       ) : Nil
+
         input = Types::RegisterDelegatedAdministratorRequest.new(account_id: account_id, service_principal: service_principal)
         register_delegated_administrator(input)
       end
+
       def register_delegated_administrator(input : Types::RegisterDelegatedAdministratorRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::REGISTER_DELEGATED_ADMINISTRATOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1330,12 +1493,15 @@ module AwsSdk
       # organization. After the account leaves the organization, all tags that were attached to the account
       # object in the organization are deleted. Amazon Web Services accounts outside of an organization do
       # not support tags.
+
       def remove_account_from_organization(
         account_id : String
       ) : Nil
+
         input = Types::RemoveAccountFromOrganizationRequest.new(account_id: account_id)
         remove_account_from_organization(input)
       end
+
       def remove_account_from_organization(input : Types::RemoveAccountFromOrganizationRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::REMOVE_ACCOUNT_FROM_ORGANIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1348,13 +1514,16 @@ module AwsSdk
       # resources in Organizations. Amazon Web Services account Organization root Organizational unit (OU)
       # Policy (any type) You can only call this operation from the management account or a member account
       # that is a delegated administrator.
+
       def tag_resource(
         resource_id : String,
         tags : Array(Types::Tag)
       ) : Nil
+
         input = Types::TagResourceRequest.new(resource_id: resource_id, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1365,13 +1534,16 @@ module AwsSdk
 
       # Ends a transfer. A transfer is an arrangement between two management accounts where one account
       # designates the other with specified responsibilities for their organization.
+
       def terminate_responsibility_transfer(
         id : String,
         end_timestamp : Time? = nil
       ) : Types::TerminateResponsibilityTransferResponse
+
         input = Types::TerminateResponsibilityTransferRequest.new(id: id, end_timestamp: end_timestamp)
         terminate_responsibility_transfer(input)
       end
+
       def terminate_responsibility_transfer(input : Types::TerminateResponsibilityTransferRequest) : Types::TerminateResponsibilityTransferResponse
         request = Protocol::JsonRpc.build_request(Model::TERMINATE_RESPONSIBILITY_TRANSFER, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1384,13 +1556,16 @@ module AwsSdk
       # following resources in Organizations. Amazon Web Services account Organization root Organizational
       # unit (OU) Policy (any type) You can only call this operation from the management account or a member
       # account that is a delegated administrator.
+
       def untag_resource(
         resource_id : String,
         tag_keys : Array(String)
       ) : Nil
+
         input = Types::UntagResourceRequest.new(resource_id: resource_id, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1402,13 +1577,16 @@ module AwsSdk
       # Renames the specified organizational unit (OU). The ID and ARN don't change. The child OUs and
       # accounts remain in place, and any attached policies of the OU remain attached. You can only call
       # this operation from the management account.
+
       def update_organizational_unit(
         organizational_unit_id : String,
         name : String? = nil
       ) : Types::UpdateOrganizationalUnitResponse
+
         input = Types::UpdateOrganizationalUnitRequest.new(organizational_unit_id: organizational_unit_id, name: name)
         update_organizational_unit(input)
       end
+
       def update_organizational_unit(input : Types::UpdateOrganizationalUnitRequest) : Types::UpdateOrganizationalUnitResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_ORGANIZATIONAL_UNIT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1420,15 +1598,18 @@ module AwsSdk
       # Updates an existing policy with a new name, description, or content. If you don't supply any
       # parameter, that value remains unchanged. You can't change a policy's type. You can only call this
       # operation from the management account or a member account that is a delegated administrator.
+
       def update_policy(
         policy_id : String,
         content : String? = nil,
         description : String? = nil,
         name : String? = nil
       ) : Types::UpdatePolicyResponse
+
         input = Types::UpdatePolicyRequest.new(policy_id: policy_id, content: content, description: description, name: name)
         update_policy(input)
       end
+
       def update_policy(input : Types::UpdatePolicyRequest) : Types::UpdatePolicyResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1440,13 +1621,16 @@ module AwsSdk
       # Updates a transfer. A transfer is the arrangement between two management accounts where one account
       # designates the other with specified responsibilities for their organization. You can update the name
       # assigned to a transfer.
+
       def update_responsibility_transfer(
         id : String,
         name : String
       ) : Types::UpdateResponsibilityTransferResponse
+
         input = Types::UpdateResponsibilityTransferRequest.new(id: id, name: name)
         update_responsibility_transfer(input)
       end
+
       def update_responsibility_transfer(input : Types::UpdateResponsibilityTransferRequest) : Types::UpdateResponsibilityTransferResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_RESPONSIBILITY_TRANSFER, input, endpoint)
         request = request.with_headers(endpoint_headers)

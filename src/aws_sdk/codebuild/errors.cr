@@ -5,27 +5,33 @@ module AwsSdk
       end
 
       # An Amazon Web Services service limit was exceeded for the calling Amazon Web Services account.
+
       class AccountLimitExceededException < ServiceError
       end
 
       # The CodeBuild access has been suspended for the calling Amazon Web Services account.
+
       class AccountSuspendedException < ServiceError
       end
 
       # The input value that was provided is not valid.
+
       class InvalidInputException < ServiceError
       end
 
       # There was a problem with the underlying OAuth provider.
+
       class OAuthProviderException < ServiceError
       end
 
       # The specified Amazon Web Services resource cannot be created, because an Amazon Web Services
       # resource with the same settings already exists.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # The specified Amazon Web Services resource cannot be found.
+
       class ResourceNotFoundException < ServiceError
       end
 

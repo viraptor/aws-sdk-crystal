@@ -1,6 +1,7 @@
 module AwsSdk
   module DynamoDB
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -35,13 +36,16 @@ module AwsSdk
       # response does not mean that all statements in the BatchExecuteStatement succeeded. Error details for
       # individual statements can be found under the Error field of the BatchStatementResponse for each
       # statement.
+
       def batch_execute_statement(
         statements : Array(Types::BatchStatementRequest),
         return_consumed_capacity : String? = nil
       ) : Types::BatchExecuteStatementOutput
+
         input = Types::BatchExecuteStatementInput.new(statements: statements, return_consumed_capacity: return_consumed_capacity)
         batch_execute_statement(input)
       end
+
       def batch_execute_statement(input : Types::BatchExecuteStatementInput) : Types::BatchExecuteStatementOutput
         request = Protocol::JsonRpc.build_request(Model::BATCH_EXECUTE_STATEMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -80,13 +84,16 @@ module AwsSdk
       # nonexistent items consume the minimum read capacity units according to the type of read. For more
       # information, see Working with Tables in the Amazon DynamoDB Developer Guide . BatchGetItem will
       # result in a ValidationException if the same key is specified multiple times.
+
       def batch_get_item(
         request_items : Hash(String, Types::KeysAndAttributes),
         return_consumed_capacity : String? = nil
       ) : Types::BatchGetItemOutput
+
         input = Types::BatchGetItemInput.new(request_items: request_items, return_consumed_capacity: return_consumed_capacity)
         batch_get_item(input)
       end
+
       def batch_get_item(input : Types::BatchGetItemInput) : Types::BatchGetItemOutput
         request = Protocol::JsonRpc.build_request(Model::BATCH_GET_ITEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -141,14 +148,17 @@ module AwsSdk
       # individual item in a batch exceeds 400 KB. The total request size exceeds 16 MB. Any individual
       # items with keys exceeding the key length limits. For a partition key, the limit is 2048 bytes and
       # for a sort key, the limit is 1024 bytes.
+
       def batch_write_item(
         request_items : Hash(String, Array(Types::WriteRequest)),
         return_consumed_capacity : String? = nil,
         return_item_collection_metrics : String? = nil
       ) : Types::BatchWriteItemOutput
+
         input = Types::BatchWriteItemInput.new(request_items: request_items, return_consumed_capacity: return_consumed_capacity, return_item_collection_metrics: return_item_collection_metrics)
         batch_write_item(input)
       end
+
       def batch_write_item(input : Types::BatchWriteItemInput) : Types::BatchWriteItemOutput
         request = Protocol::JsonRpc.build_request(Model::BATCH_WRITE_ITEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -169,13 +179,16 @@ module AwsSdk
       # made between 14:24:00 and 14:26:00. On-demand backup does not support causal consistency. Along with
       # data, the following are also included on the backups: Global secondary indexes (GSIs) Local
       # secondary indexes (LSIs) Streams Provisioned read and write capacity
+
       def create_backup(
         backup_name : String,
         table_name : String
       ) : Types::CreateBackupOutput
+
         input = Types::CreateBackupInput.new(backup_name: backup_name, table_name: table_name)
         create_backup(input)
       end
+
       def create_backup(input : Types::CreateBackupInput) : Types::CreateBackupOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -206,13 +219,16 @@ module AwsSdk
       # indexes. If you prefer to manage write capacity settings manually, you should provision equal
       # replicated write capacity units to your replica tables. You should also provision equal replicated
       # write capacity units to matching secondary indexes across your global table.
+
       def create_global_table(
         global_table_name : String,
         replication_group : Array(Types::Replica)
       ) : Types::CreateGlobalTableOutput
+
         input = Types::CreateGlobalTableInput.new(global_table_name: global_table_name, replication_group: replication_group)
         create_global_table(input)
       end
+
       def create_global_table(input : Types::CreateGlobalTableInput) : Types::CreateGlobalTableOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_GLOBAL_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -230,6 +246,7 @@ module AwsSdk
       # part of the CreateTable operation. If you want to create multiple tables with secondary indexes on
       # them, you must create the tables sequentially. Only one table with secondary indexes can be in the
       # CREATING state at any given time. You can use the DescribeTable action to check the table status.
+
       def create_table(
         attribute_definitions : Array(Types::AttributeDefinition),
         key_schema : Array(Types::KeySchemaElement),
@@ -247,9 +264,11 @@ module AwsSdk
         tags : Array(Types::Tag)? = nil,
         warm_throughput : Types::WarmThroughput? = nil
       ) : Types::CreateTableOutput
+
         input = Types::CreateTableInput.new(attribute_definitions: attribute_definitions, key_schema: key_schema, table_name: table_name, billing_mode: billing_mode, deletion_protection_enabled: deletion_protection_enabled, global_secondary_indexes: global_secondary_indexes, local_secondary_indexes: local_secondary_indexes, on_demand_throughput: on_demand_throughput, provisioned_throughput: provisioned_throughput, resource_policy: resource_policy, sse_specification: sse_specification, stream_specification: stream_specification, table_class: table_class, tags: tags, warm_throughput: warm_throughput)
         create_table(input)
       end
+
       def create_table(input : Types::CreateTableInput) : Types::CreateTableOutput
         request = Protocol::JsonRpc.build_request(Model::CREATE_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -260,12 +279,15 @@ module AwsSdk
 
       # Deletes an existing backup of a table. You can call DeleteBackup at a maximum rate of 10 times per
       # second.
+
       def delete_backup(
         backup_arn : String
       ) : Types::DeleteBackupOutput
+
         input = Types::DeleteBackupInput.new(backup_arn: backup_arn)
         delete_backup(input)
       end
+
       def delete_backup(input : Types::DeleteBackupInput) : Types::DeleteBackupOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -281,6 +303,7 @@ module AwsSdk
       # multiple times on the same item or attribute does not result in an error response. Conditional
       # deletes are useful for deleting items only if specific conditions are met. If those conditions are
       # met, DynamoDB performs the delete. Otherwise, the item is not deleted.
+
       def delete_item(
         key : Hash(String, Types::AttributeValue),
         table_name : String,
@@ -294,9 +317,11 @@ module AwsSdk
         return_values : String? = nil,
         return_values_on_condition_check_failure : String? = nil
       ) : Types::DeleteItemOutput
+
         input = Types::DeleteItemInput.new(key: key, table_name: table_name, condition_expression: condition_expression, conditional_operator: conditional_operator, expected: expected, expression_attribute_names: expression_attribute_names, expression_attribute_values: expression_attribute_values, return_consumed_capacity: return_consumed_capacity, return_item_collection_metrics: return_item_collection_metrics, return_values: return_values, return_values_on_condition_check_failure: return_values_on_condition_check_failure)
         delete_item(input)
       end
+
       def delete_item(input : Types::DeleteItemInput) : Types::DeleteItemOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_ITEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -315,13 +340,16 @@ module AwsSdk
       # GetResourcePolicy request immediately after running the DeleteResourcePolicy request, DynamoDB might
       # still return the deleted policy. This is because the policy for your resource might not have been
       # deleted yet. Wait for a few seconds, and then try the GetResourcePolicy request again.
+
       def delete_resource_policy(
         resource_arn : String,
         expected_revision_id : String? = nil
       ) : Types::DeleteResourcePolicyOutput
+
         input = Types::DeleteResourcePolicyInput.new(resource_arn: resource_arn, expected_revision_id: expected_revision_id)
         delete_resource_policy(input)
       end
+
       def delete_resource_policy(input : Types::DeleteResourcePolicyInput) : Types::DeleteResourcePolicyOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -341,12 +369,15 @@ module AwsSdk
       # DynamoDB Streams enabled on the table, then the corresponding stream on that table goes into the
       # DISABLED state, and the stream is automatically deleted after 24 hours. Use the DescribeTable action
       # to check the status of the table.
+
       def delete_table(
         table_name : String
       ) : Types::DeleteTableOutput
+
         input = Types::DeleteTableInput.new(table_name: table_name)
         delete_table(input)
       end
+
       def delete_table(input : Types::DeleteTableInput) : Types::DeleteTableOutput
         request = Protocol::JsonRpc.build_request(Model::DELETE_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -357,12 +388,15 @@ module AwsSdk
 
       # Describes an existing backup of a table. You can call DescribeBackup at a maximum rate of 10 times
       # per second.
+
       def describe_backup(
         backup_arn : String
       ) : Types::DescribeBackupOutput
+
         input = Types::DescribeBackupInput.new(backup_arn: backup_arn)
         describe_backup(input)
       end
+
       def describe_backup(input : Types::DescribeBackupInput) : Types::DescribeBackupOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -379,12 +413,15 @@ module AwsSdk
       # time. You can restore your table to any point in time in the last 35 days. You can set the recovery
       # period to any value between 1 and 35 days. You can call DescribeContinuousBackups at a maximum rate
       # of 10 times per second.
+
       def describe_continuous_backups(
         table_name : String
       ) : Types::DescribeContinuousBackupsOutput
+
         input = Types::DescribeContinuousBackupsInput.new(table_name: table_name)
         describe_continuous_backups(input)
       end
+
       def describe_continuous_backups(input : Types::DescribeContinuousBackupsInput) : Types::DescribeContinuousBackupsOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CONTINUOUS_BACKUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -394,13 +431,16 @@ module AwsSdk
       end
 
       # Returns information about contributor insights for a given table or global secondary index.
+
       def describe_contributor_insights(
         table_name : String,
         index_name : String? = nil
       ) : Types::DescribeContributorInsightsOutput
+
         input = Types::DescribeContributorInsightsInput.new(table_name: table_name, index_name: index_name)
         describe_contributor_insights(input)
       end
+
       def describe_contributor_insights(input : Types::DescribeContributorInsightsInput) : Types::DescribeContributorInsightsOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_CONTRIBUTOR_INSIGHTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -411,10 +451,12 @@ module AwsSdk
 
       # Returns the regional endpoint information. For more information on policy permissions, please see
       # Internetwork traffic privacy .
+
       def describe_endpoints : Types::DescribeEndpointsResponse
         input = Types::DescribeEndpointsRequest.new
         describe_endpoints(input)
       end
+
       def describe_endpoints(input : Types::DescribeEndpointsRequest) : Types::DescribeEndpointsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ENDPOINTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -424,12 +466,15 @@ module AwsSdk
       end
 
       # Describes an existing table export.
+
       def describe_export(
         export_arn : String
       ) : Types::DescribeExportOutput
+
         input = Types::DescribeExportInput.new(export_arn: export_arn)
         describe_export(input)
       end
+
       def describe_export(input : Types::DescribeExportInput) : Types::DescribeExportOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EXPORT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -445,12 +490,15 @@ module AwsSdk
       # version you're using, see Determining the global table version you are using . To update existing
       # global tables from version 2017.11.29 (Legacy) to version 2019.11.21 (Current), see Upgrading global
       # tables .
+
       def describe_global_table(
         global_table_name : String
       ) : Types::DescribeGlobalTableOutput
+
         input = Types::DescribeGlobalTableInput.new(global_table_name: global_table_name)
         describe_global_table(input)
       end
+
       def describe_global_table(input : Types::DescribeGlobalTableInput) : Types::DescribeGlobalTableOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_GLOBAL_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -466,12 +514,15 @@ module AwsSdk
       # version you're using, see Determining the global table version you are using . To update existing
       # global tables from version 2017.11.29 (Legacy) to version 2019.11.21 (Current), see Upgrading global
       # tables .
+
       def describe_global_table_settings(
         global_table_name : String
       ) : Types::DescribeGlobalTableSettingsOutput
+
         input = Types::DescribeGlobalTableSettingsInput.new(global_table_name: global_table_name)
         describe_global_table_settings(input)
       end
+
       def describe_global_table_settings(input : Types::DescribeGlobalTableSettingsInput) : Types::DescribeGlobalTableSettingsOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_GLOBAL_TABLE_SETTINGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -481,12 +532,15 @@ module AwsSdk
       end
 
       # Represents the properties of the import.
+
       def describe_import(
         import_arn : String
       ) : Types::DescribeImportOutput
+
         input = Types::DescribeImportInput.new(import_arn: import_arn)
         describe_import(input)
       end
+
       def describe_import(input : Types::DescribeImportInput) : Types::DescribeImportOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_IMPORT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -496,12 +550,15 @@ module AwsSdk
       end
 
       # Returns information about the status of Kinesis streaming.
+
       def describe_kinesis_streaming_destination(
         table_name : String
       ) : Types::DescribeKinesisStreamingDestinationOutput
+
         input = Types::DescribeKinesisStreamingDestinationInput.new(table_name: table_name)
         describe_kinesis_streaming_destination(input)
       end
+
       def describe_kinesis_streaming_destination(input : Types::DescribeKinesisStreamingDestinationInput) : Types::DescribeKinesisStreamingDestinationOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_KINESIS_STREAMING_DESTINATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -537,10 +594,12 @@ module AwsSdk
       # aggregate provisioned capacity over all your tables and GSIs cannot exceed either of the per-account
       # quotas. DescribeLimits should only be called periodically. You can expect throttling errors if you
       # call it more than once in a minute. The DescribeLimits Request element has no content.
+
       def describe_limits : Types::DescribeLimitsOutput
         input = Types::DescribeLimitsInput.new
         describe_limits(input)
       end
+
       def describe_limits(input : Types::DescribeLimitsInput) : Types::DescribeLimitsOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_LIMITS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -554,12 +613,15 @@ module AwsSdk
       # immediately after a CreateTable request, DynamoDB might return a ResourceNotFoundException . This is
       # because DescribeTable uses an eventually consistent query, and the metadata for your table might not
       # be available at that moment. Wait for a few seconds, and then try the DescribeTable request again.
+
       def describe_table(
         table_name : String
       ) : Types::DescribeTableOutput
+
         input = Types::DescribeTableInput.new(table_name: table_name)
         describe_table(input)
       end
+
       def describe_table(input : Types::DescribeTableInput) : Types::DescribeTableOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -569,12 +631,15 @@ module AwsSdk
       end
 
       # Describes auto scaling settings across replicas of the global table at once.
+
       def describe_table_replica_auto_scaling(
         table_name : String
       ) : Types::DescribeTableReplicaAutoScalingOutput
+
         input = Types::DescribeTableReplicaAutoScalingInput.new(table_name: table_name)
         describe_table_replica_auto_scaling(input)
       end
+
       def describe_table_replica_auto_scaling(input : Types::DescribeTableReplicaAutoScalingInput) : Types::DescribeTableReplicaAutoScalingOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TABLE_REPLICA_AUTO_SCALING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -584,12 +649,15 @@ module AwsSdk
       end
 
       # Gives a description of the Time to Live (TTL) status on the specified table.
+
       def describe_time_to_live(
         table_name : String
       ) : Types::DescribeTimeToLiveOutput
+
         input = Types::DescribeTimeToLiveInput.new(table_name: table_name)
         describe_time_to_live(input)
       end
+
       def describe_time_to_live(input : Types::DescribeTimeToLiveInput) : Types::DescribeTimeToLiveOutput
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_TIME_TO_LIVE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -600,14 +668,17 @@ module AwsSdk
 
       # Stops replication from the DynamoDB table to the Kinesis data stream. This is done without deleting
       # either of the resources.
+
       def disable_kinesis_streaming_destination(
         stream_arn : String,
         table_name : String,
         enable_kinesis_streaming_configuration : Types::EnableKinesisStreamingConfiguration? = nil
       ) : Types::KinesisStreamingDestinationOutput
+
         input = Types::KinesisStreamingDestinationInput.new(stream_arn: stream_arn, table_name: table_name, enable_kinesis_streaming_configuration: enable_kinesis_streaming_configuration)
         disable_kinesis_streaming_destination(input)
       end
+
       def disable_kinesis_streaming_destination(input : Types::KinesisStreamingDestinationInput) : Types::KinesisStreamingDestinationOutput
         request = Protocol::JsonRpc.build_request(Model::DISABLE_KINESIS_STREAMING_DESTINATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -619,14 +690,17 @@ module AwsSdk
       # Starts table data replication to the specified Kinesis data stream at a timestamp chosen during the
       # enable workflow. If this operation doesn't return results immediately, use
       # DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is ACTIVE.
+
       def enable_kinesis_streaming_destination(
         stream_arn : String,
         table_name : String,
         enable_kinesis_streaming_configuration : Types::EnableKinesisStreamingConfiguration? = nil
       ) : Types::KinesisStreamingDestinationOutput
+
         input = Types::KinesisStreamingDestinationInput.new(stream_arn: stream_arn, table_name: table_name, enable_kinesis_streaming_configuration: enable_kinesis_streaming_configuration)
         enable_kinesis_streaming_destination(input)
       end
+
       def enable_kinesis_streaming_destination(input : Types::KinesisStreamingDestinationInput) : Types::KinesisStreamingDestinationOutput
         request = Protocol::JsonRpc.build_request(Model::ENABLE_KINESIS_STREAMING_DESTINATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -644,6 +718,7 @@ module AwsSdk
       # maximum of 1 MB of data (and then apply any filtering to the results using WHERE clause). If
       # LastEvaluatedKey is present in the response, you need to paginate the result set. If NextToken is
       # present, you need to paginate the result set and include NextToken .
+
       def execute_statement(
         statement : String,
         consistent_read : Bool? = nil,
@@ -653,9 +728,11 @@ module AwsSdk
         return_consumed_capacity : String? = nil,
         return_values_on_condition_check_failure : String? = nil
       ) : Types::ExecuteStatementOutput
+
         input = Types::ExecuteStatementInput.new(statement: statement, consistent_read: consistent_read, limit: limit, next_token: next_token, parameters: parameters, return_consumed_capacity: return_consumed_capacity, return_values_on_condition_check_failure: return_values_on_condition_check_failure)
         execute_statement(input)
       end
+
       def execute_statement(input : Types::ExecuteStatementInput) : Types::ExecuteStatementOutput
         request = Protocol::JsonRpc.build_request(Model::EXECUTE_STATEMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -669,14 +746,17 @@ module AwsSdk
       # cannot mix both in one transaction. The EXISTS function is an exception and can be used to check the
       # condition of specific attributes of the item in a similar manner to ConditionCheck in the
       # TransactWriteItems API.
+
       def execute_transaction(
         transact_statements : Array(Types::ParameterizedStatement),
         client_request_token : String? = nil,
         return_consumed_capacity : String? = nil
       ) : Types::ExecuteTransactionOutput
+
         input = Types::ExecuteTransactionInput.new(transact_statements: transact_statements, client_request_token: client_request_token, return_consumed_capacity: return_consumed_capacity)
         execute_transaction(input)
       end
+
       def execute_transaction(input : Types::ExecuteTransactionInput) : Types::ExecuteTransactionOutput
         request = Protocol::JsonRpc.build_request(Model::EXECUTE_TRANSACTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -687,6 +767,7 @@ module AwsSdk
 
       # Exports table data to an S3 bucket. The table must have point in time recovery enabled, and you can
       # export data from any time within the point in time recovery window.
+
       def export_table_to_point_in_time(
         s3_bucket : String,
         table_arn : String,
@@ -700,9 +781,11 @@ module AwsSdk
         s3_sse_algorithm : String? = nil,
         s3_sse_kms_key_id : String? = nil
       ) : Types::ExportTableToPointInTimeOutput
+
         input = Types::ExportTableToPointInTimeInput.new(s3_bucket: s3_bucket, table_arn: table_arn, client_token: client_token, export_format: export_format, export_time: export_time, export_type: export_type, incremental_export_specification: incremental_export_specification, s3_bucket_owner: s3_bucket_owner, s3_prefix: s3_prefix, s3_sse_algorithm: s3_sse_algorithm, s3_sse_kms_key_id: s3_sse_kms_key_id)
         export_table_to_point_in_time(input)
       end
+
       def export_table_to_point_in_time(input : Types::ExportTableToPointInTimeInput) : Types::ExportTableToPointInTimeOutput
         request = Protocol::JsonRpc.build_request(Model::EXPORT_TABLE_TO_POINT_IN_TIME, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -716,6 +799,7 @@ module AwsSdk
       # response. GetItem provides an eventually consistent read by default. If your application requires a
       # strongly consistent read, set ConsistentRead to true . Although a strongly consistent read might
       # take more time than an eventually consistent read, it always returns the last updated value.
+
       def get_item(
         key : Hash(String, Types::AttributeValue),
         table_name : String,
@@ -725,9 +809,11 @@ module AwsSdk
         projection_expression : String? = nil,
         return_consumed_capacity : String? = nil
       ) : Types::GetItemOutput
+
         input = Types::GetItemInput.new(key: key, table_name: table_name, attributes_to_get: attributes_to_get, consistent_read: consistent_read, expression_attribute_names: expression_attribute_names, projection_expression: projection_expression, return_consumed_capacity: return_consumed_capacity)
         get_item(input)
       end
+
       def get_item(input : Types::GetItemInput) : Types::GetItemOutput
         request = Protocol::JsonRpc.build_request(Model::GET_ITEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -752,12 +838,15 @@ module AwsSdk
       # consistent, it will take some time to apply the policy to all requests to a resource. Policies that
       # you attach while creating a table using the CreateTable request will always be applied to all
       # requests for that table.
+
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyOutput
+
         input = Types::GetResourcePolicyInput.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
+
       def get_resource_policy(input : Types::GetResourcePolicyInput) : Types::GetResourcePolicyOutput
         request = Protocol::JsonRpc.build_request(Model::GET_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -767,6 +856,7 @@ module AwsSdk
       end
 
       # Imports table data from an S3 bucket.
+
       def import_table(
         input_format : String,
         s3_bucket_source : Types::S3BucketSource,
@@ -775,9 +865,11 @@ module AwsSdk
         input_compression_type : String? = nil,
         input_format_options : Types::InputFormatOptions? = nil
       ) : Types::ImportTableOutput
+
         input = Types::ImportTableInput.new(input_format: input_format, s3_bucket_source: s3_bucket_source, table_creation_parameters: table_creation_parameters, client_token: client_token, input_compression_type: input_compression_type, input_format_options: input_format_options)
         import_table(input)
       end
+
       def import_table(input : Types::ImportTableInput) : Types::ImportTableOutput
         request = Protocol::JsonRpc.build_request(Model::IMPORT_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -794,6 +886,7 @@ module AwsSdk
       # requested. You can call ListBackups a maximum of five times per second. If you want to retrieve the
       # complete list of backups made with Amazon Web Services Backup, use the Amazon Web Services Backup
       # list API.
+
       def list_backups(
         backup_type : String? = nil,
         exclusive_start_backup_arn : String? = nil,
@@ -802,9 +895,11 @@ module AwsSdk
         time_range_lower_bound : Time? = nil,
         time_range_upper_bound : Time? = nil
       ) : Types::ListBackupsOutput
+
         input = Types::ListBackupsInput.new(backup_type: backup_type, exclusive_start_backup_arn: exclusive_start_backup_arn, limit: limit, table_name: table_name, time_range_lower_bound: time_range_lower_bound, time_range_upper_bound: time_range_upper_bound)
         list_backups(input)
       end
+
       def list_backups(input : Types::ListBackupsInput) : Types::ListBackupsOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_BACKUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -814,14 +909,17 @@ module AwsSdk
       end
 
       # Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
+
       def list_contributor_insights(
         max_results : Int32? = nil,
         next_token : String? = nil,
         table_name : String? = nil
       ) : Types::ListContributorInsightsOutput
+
         input = Types::ListContributorInsightsInput.new(max_results: max_results, next_token: next_token, table_name: table_name)
         list_contributor_insights(input)
       end
+
       def list_contributor_insights(input : Types::ListContributorInsightsInput) : Types::ListContributorInsightsOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_CONTRIBUTOR_INSIGHTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -831,14 +929,17 @@ module AwsSdk
       end
 
       # Lists completed exports within the past 90 days.
+
       def list_exports(
         max_results : Int32? = nil,
         next_token : String? = nil,
         table_arn : String? = nil
       ) : Types::ListExportsOutput
+
         input = Types::ListExportsInput.new(max_results: max_results, next_token: next_token, table_arn: table_arn)
         list_exports(input)
       end
+
       def list_exports(input : Types::ListExportsInput) : Types::ListExportsOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_EXPORTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -854,14 +955,17 @@ module AwsSdk
       # To determine which version you're using, see Determining the global table version you are using . To
       # update existing global tables from version 2017.11.29 (Legacy) to version 2019.11.21 (Current), see
       # Upgrading global tables .
+
       def list_global_tables(
         exclusive_start_global_table_name : String? = nil,
         limit : Int32? = nil,
         region_name : String? = nil
       ) : Types::ListGlobalTablesOutput
+
         input = Types::ListGlobalTablesInput.new(exclusive_start_global_table_name: exclusive_start_global_table_name, limit: limit, region_name: region_name)
         list_global_tables(input)
       end
+
       def list_global_tables(input : Types::ListGlobalTablesInput) : Types::ListGlobalTablesOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_GLOBAL_TABLES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -871,14 +975,17 @@ module AwsSdk
       end
 
       # Lists completed imports within the past 90 days.
+
       def list_imports(
         next_token : String? = nil,
         page_size : Int32? = nil,
         table_arn : String? = nil
       ) : Types::ListImportsOutput
+
         input = Types::ListImportsInput.new(next_token: next_token, page_size: page_size, table_arn: table_arn)
         list_imports(input)
       end
+
       def list_imports(input : Types::ListImportsInput) : Types::ListImportsOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_IMPORTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -889,13 +996,16 @@ module AwsSdk
 
       # Returns an array of table names associated with the current account and endpoint. The output from
       # ListTables is paginated, with each page returning a maximum of 100 table names.
+
       def list_tables(
         exclusive_start_table_name : String? = nil,
         limit : Int32? = nil
       ) : Types::ListTablesOutput
+
         input = Types::ListTablesInput.new(exclusive_start_table_name: exclusive_start_table_name, limit: limit)
         list_tables(input)
       end
+
       def list_tables(input : Types::ListTablesInput) : Types::ListTablesOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_TABLES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -907,13 +1017,16 @@ module AwsSdk
       # List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per
       # second, per account. For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
       # Amazon DynamoDB Developer Guide .
+
       def list_tags_of_resource(
         resource_arn : String,
         next_token : String? = nil
       ) : Types::ListTagsOfResourceOutput
+
         input = Types::ListTagsOfResourceInput.new(resource_arn: resource_arn, next_token: next_token)
         list_tags_of_resource(input)
       end
+
       def list_tags_of_resource(input : Types::ListTagsOfResourceInput) : Types::ListTagsOfResourceOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_OF_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -936,6 +1049,7 @@ module AwsSdk
       # partition key for the table. Since every record must contain that attribute, the
       # attribute_not_exists function will only succeed if no matching item exists. For more information
       # about PutItem , see Working with Items in the Amazon DynamoDB Developer Guide .
+
       def put_item(
         item : Hash(String, Types::AttributeValue),
         table_name : String,
@@ -949,9 +1063,11 @@ module AwsSdk
         return_values : String? = nil,
         return_values_on_condition_check_failure : String? = nil
       ) : Types::PutItemOutput
+
         input = Types::PutItemInput.new(item: item, table_name: table_name, condition_expression: condition_expression, conditional_operator: conditional_operator, expected: expected, expression_attribute_names: expression_attribute_names, expression_attribute_values: expression_attribute_values, return_consumed_capacity: return_consumed_capacity, return_item_collection_metrics: return_item_collection_metrics, return_values: return_values, return_values_on_condition_check_failure: return_values_on_condition_check_failure)
         put_item(input)
       end
+
       def put_item(input : Types::PutItemInput) : Types::PutItemOutput
         request = Protocol::JsonRpc.build_request(Model::PUT_ITEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -970,15 +1086,18 @@ module AwsSdk
       # return the PolicyNotFoundException . This is because GetResourcePolicy uses an eventually consistent
       # query, and the metadata for your policy or table might not be available at that moment. Wait for a
       # few seconds, and then try the GetResourcePolicy request again.
+
       def put_resource_policy(
         policy : String,
         resource_arn : String,
         confirm_remove_self_resource_access : Bool? = nil,
         expected_revision_id : String? = nil
       ) : Types::PutResourcePolicyOutput
+
         input = Types::PutResourcePolicyInput.new(policy: policy, resource_arn: resource_arn, confirm_remove_self_resource_access: confirm_remove_self_resource_access, expected_revision_id: expected_revision_id)
         put_resource_policy(input)
       end
+
       def put_resource_policy(input : Types::PutResourcePolicyInput) : Types::PutResourcePolicyOutput
         request = Protocol::JsonRpc.build_request(Model::PUT_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1017,6 +1136,7 @@ module AwsSdk
       # secondary index, you can set the ConsistentRead parameter to true and obtain a strongly consistent
       # result. Global secondary indexes support eventually consistent reads only, so do not specify
       # ConsistentRead when querying a global secondary index.
+
       def query(
         table_name : String,
         attributes_to_get : Array(String)? = nil,
@@ -1036,9 +1156,11 @@ module AwsSdk
         scan_index_forward : Bool? = nil,
         select : String? = nil
       ) : Types::QueryOutput
+
         input = Types::QueryInput.new(table_name: table_name, attributes_to_get: attributes_to_get, conditional_operator: conditional_operator, consistent_read: consistent_read, exclusive_start_key: exclusive_start_key, expression_attribute_names: expression_attribute_names, expression_attribute_values: expression_attribute_values, filter_expression: filter_expression, index_name: index_name, key_condition_expression: key_condition_expression, key_conditions: key_conditions, limit: limit, projection_expression: projection_expression, query_filter: query_filter, return_consumed_capacity: return_consumed_capacity, scan_index_forward: scan_index_forward, select: select)
         query(input)
       end
+
       def query(input : Types::QueryInput) : Types::QueryOutput
         request = Protocol::JsonRpc.build_request(Model::QUERY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1052,6 +1174,7 @@ module AwsSdk
       # rate of 10 times per second. You must manually set up the following on the restored table: Auto
       # scaling policies IAM policies Amazon CloudWatch metrics and alarms Tags Stream settings Time to Live
       # (TTL) settings
+
       def restore_table_from_backup(
         backup_arn : String,
         target_table_name : String,
@@ -1062,9 +1185,11 @@ module AwsSdk
         provisioned_throughput_override : Types::ProvisionedThroughput? = nil,
         sse_specification_override : Types::SSESpecification? = nil
       ) : Types::RestoreTableFromBackupOutput
+
         input = Types::RestoreTableFromBackupInput.new(backup_arn: backup_arn, target_table_name: target_table_name, billing_mode_override: billing_mode_override, global_secondary_index_override: global_secondary_index_override, local_secondary_index_override: local_secondary_index_override, on_demand_throughput_override: on_demand_throughput_override, provisioned_throughput_override: provisioned_throughput_override, sse_specification_override: sse_specification_override)
         restore_table_from_backup(input)
       end
+
       def restore_table_from_backup(input : Types::RestoreTableFromBackupInput) : Types::RestoreTableFromBackupOutput
         request = Protocol::JsonRpc.build_request(Model::RESTORE_TABLE_FROM_BACKUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1084,6 +1209,7 @@ module AwsSdk
       # current settings of the source table at the time of restore. You must manually set up the following
       # on the restored table: Auto scaling policies IAM policies Amazon CloudWatch metrics and alarms Tags
       # Stream settings Time to Live (TTL) settings Point in time recovery settings
+
       def restore_table_to_point_in_time(
         target_table_name : String,
         billing_mode_override : String? = nil,
@@ -1097,9 +1223,11 @@ module AwsSdk
         source_table_name : String? = nil,
         use_latest_restorable_time : Bool? = nil
       ) : Types::RestoreTableToPointInTimeOutput
+
         input = Types::RestoreTableToPointInTimeInput.new(target_table_name: target_table_name, billing_mode_override: billing_mode_override, global_secondary_index_override: global_secondary_index_override, local_secondary_index_override: local_secondary_index_override, on_demand_throughput_override: on_demand_throughput_override, provisioned_throughput_override: provisioned_throughput_override, restore_date_time: restore_date_time, sse_specification_override: sse_specification_override, source_table_arn: source_table_arn, source_table_name: source_table_name, use_latest_restorable_time: use_latest_restorable_time)
         restore_table_to_point_in_time(input)
       end
+
       def restore_table_to_point_in_time(input : Types::RestoreTableToPointInTimeInput) : Types::RestoreTableToPointInTimeOutput
         request = Protocol::JsonRpc.build_request(Model::RESTORE_TABLE_TO_POINT_IN_TIME, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1133,6 +1261,7 @@ module AwsSdk
       # read at the item level. DynamoDB does not provide snapshot isolation for a scan operation when the
       # ConsistentRead parameter is set to true. Thus, a DynamoDB scan operation does not guarantee that all
       # reads in a scan see a consistent snapshot of the table when the scan operation was requested.
+
       def scan(
         table_name : String,
         attributes_to_get : Array(String)? = nil,
@@ -1151,9 +1280,11 @@ module AwsSdk
         select : String? = nil,
         total_segments : Int32? = nil
       ) : Types::ScanOutput
+
         input = Types::ScanInput.new(table_name: table_name, attributes_to_get: attributes_to_get, conditional_operator: conditional_operator, consistent_read: consistent_read, exclusive_start_key: exclusive_start_key, expression_attribute_names: expression_attribute_names, expression_attribute_values: expression_attribute_values, filter_expression: filter_expression, index_name: index_name, limit: limit, projection_expression: projection_expression, return_consumed_capacity: return_consumed_capacity, scan_filter: scan_filter, segment: segment, select: select, total_segments: total_segments)
         scan(input)
       end
+
       def scan(input : Types::ScanInput) : Types::ScanOutput
         request = Protocol::JsonRpc.build_request(Model::SCAN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1173,13 +1304,16 @@ module AwsSdk
       # eventually consistent. ListTagsOfResource API will only reflect the changes after a few seconds. For
       # an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the Amazon DynamoDB Developer
       # Guide .
+
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Nil
+
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1198,13 +1332,16 @@ module AwsSdk
       # read. There is insufficient provisioned capacity for the transaction to be completed. There is a
       # user error, such as an invalid data format. The aggregate size of the items in the transaction
       # exceeded 4 MB.
+
       def transact_get_items(
         transact_items : Array(Types::TransactGetItem),
         return_consumed_capacity : String? = nil
       ) : Types::TransactGetItemsOutput
+
         input = Types::TransactGetItemsInput.new(transact_items: transact_items, return_consumed_capacity: return_consumed_capacity)
         transact_get_items(input)
       end
+
       def transact_get_items(input : Types::TransactGetItemsInput) : Types::TransactGetItemsOutput
         request = Protocol::JsonRpc.build_request(Model::TRANSACT_GET_ITEMS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1240,15 +1377,18 @@ module AwsSdk
       # too large (bigger than 400 KB), a local secondary index (LSI) becomes too large, or a similar
       # validation error occurs because of changes made by the transaction. The aggregate size of the items
       # in the transaction exceeds 4 MB. There is a user error, such as an invalid data format.
+
       def transact_write_items(
         transact_items : Array(Types::TransactWriteItem),
         client_request_token : String? = nil,
         return_consumed_capacity : String? = nil,
         return_item_collection_metrics : String? = nil
       ) : Types::TransactWriteItemsOutput
+
         input = Types::TransactWriteItemsInput.new(transact_items: transact_items, client_request_token: client_request_token, return_consumed_capacity: return_consumed_capacity, return_item_collection_metrics: return_item_collection_metrics)
         transact_write_items(input)
       end
+
       def transact_write_items(input : Types::TransactWriteItemsInput) : Types::TransactWriteItemsOutput
         request = Protocol::JsonRpc.build_request(Model::TRANSACT_WRITE_ITEMS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1266,13 +1406,16 @@ module AwsSdk
       # or removal of tags using TagResource and UntagResource APIs is eventually consistent.
       # ListTagsOfResource API will only reflect the changes after a few seconds. For an overview on tagging
       # DynamoDB resources, see Tagging for DynamoDB in the Amazon DynamoDB Developer Guide .
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
+
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1289,13 +1432,16 @@ module AwsSdk
       # LatestRestorableDateTime . LatestRestorableDateTime is typically 5 minutes before the current time.
       # You can restore your table to any point in time in the last 35 days. You can set the
       # RecoveryPeriodInDays to any value between 1 and 35 days.
+
       def update_continuous_backups(
         point_in_time_recovery_specification : Types::PointInTimeRecoverySpecification,
         table_name : String
       ) : Types::UpdateContinuousBackupsOutput
+
         input = Types::UpdateContinuousBackupsInput.new(point_in_time_recovery_specification: point_in_time_recovery_specification, table_name: table_name)
         update_continuous_backups(input)
       end
+
       def update_continuous_backups(input : Types::UpdateContinuousBackupsInput) : Types::UpdateContinuousBackupsOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_CONTINUOUS_BACKUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1310,15 +1456,18 @@ module AwsSdk
       # Services Key Management Service (KMS) to encrypt this table’s partition key and sort key data with
       # an Amazon Web Services managed key or customer managed key, you should not enable CloudWatch
       # Contributor Insights for DynamoDB for this table.
+
       def update_contributor_insights(
         contributor_insights_action : String,
         table_name : String,
         contributor_insights_mode : String? = nil,
         index_name : String? = nil
       ) : Types::UpdateContributorInsightsOutput
+
         input = Types::UpdateContributorInsightsInput.new(contributor_insights_action: contributor_insights_action, table_name: table_name, contributor_insights_mode: contributor_insights_mode, index_name: index_name)
         update_contributor_insights(input)
       end
+
       def update_contributor_insights(input : Types::UpdateContributorInsightsInput) : Types::UpdateContributorInsightsOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_CONTRIBUTOR_INSIGHTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1343,13 +1492,16 @@ module AwsSdk
       # must have the same name. The global secondary indexes must have the same hash key and sort key (if
       # present). The global secondary indexes must have the same provisioned and maximum write capacity
       # units.
+
       def update_global_table(
         global_table_name : String,
         replica_updates : Array(Types::ReplicaUpdate)
       ) : Types::UpdateGlobalTableOutput
+
         input = Types::UpdateGlobalTableInput.new(global_table_name: global_table_name, replica_updates: replica_updates)
         update_global_table(input)
       end
+
       def update_global_table(input : Types::UpdateGlobalTableInput) : Types::UpdateGlobalTableOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_GLOBAL_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1364,6 +1516,7 @@ module AwsSdk
       # consumes less write capacity than 2017.11.29 (Legacy). To determine which version you're using, see
       # Determining the global table version you are using . To update existing global tables from version
       # 2017.11.29 (Legacy) to version 2019.11.21 (Current), see Upgrading global tables .
+
       def update_global_table_settings(
         global_table_name : String,
         global_table_billing_mode : String? = nil,
@@ -1372,9 +1525,11 @@ module AwsSdk
         global_table_provisioned_write_capacity_units : Int64? = nil,
         replica_settings_update : Array(Types::ReplicaSettingsUpdate)? = nil
       ) : Types::UpdateGlobalTableSettingsOutput
+
         input = Types::UpdateGlobalTableSettingsInput.new(global_table_name: global_table_name, global_table_billing_mode: global_table_billing_mode, global_table_global_secondary_index_settings_update: global_table_global_secondary_index_settings_update, global_table_provisioned_write_capacity_auto_scaling_settings_update: global_table_provisioned_write_capacity_auto_scaling_settings_update, global_table_provisioned_write_capacity_units: global_table_provisioned_write_capacity_units, replica_settings_update: replica_settings_update)
         update_global_table_settings(input)
       end
+
       def update_global_table_settings(input : Types::UpdateGlobalTableSettingsInput) : Types::UpdateGlobalTableSettingsOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_GLOBAL_TABLE_SETTINGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1388,6 +1543,7 @@ module AwsSdk
       # existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing
       # name-value pair if it has certain expected attribute values). You can also return the item's
       # attribute values in the same UpdateItem operation using the ReturnValues parameter.
+
       def update_item(
         key : Hash(String, Types::AttributeValue),
         table_name : String,
@@ -1403,9 +1559,11 @@ module AwsSdk
         return_values_on_condition_check_failure : String? = nil,
         update_expression : String? = nil
       ) : Types::UpdateItemOutput
+
         input = Types::UpdateItemInput.new(key: key, table_name: table_name, attribute_updates: attribute_updates, condition_expression: condition_expression, conditional_operator: conditional_operator, expected: expected, expression_attribute_names: expression_attribute_names, expression_attribute_values: expression_attribute_values, return_consumed_capacity: return_consumed_capacity, return_item_collection_metrics: return_item_collection_metrics, return_values: return_values, return_values_on_condition_check_failure: return_values_on_condition_check_failure, update_expression: update_expression)
         update_item(input)
       end
+
       def update_item(input : Types::UpdateItemInput) : Types::UpdateItemOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_ITEM, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1415,14 +1573,17 @@ module AwsSdk
       end
 
       # The command to update the Kinesis stream destination.
+
       def update_kinesis_streaming_destination(
         stream_arn : String,
         table_name : String,
         update_kinesis_streaming_configuration : Types::UpdateKinesisStreamingConfiguration? = nil
       ) : Types::UpdateKinesisStreamingDestinationOutput
+
         input = Types::UpdateKinesisStreamingDestinationInput.new(stream_arn: stream_arn, table_name: table_name, update_kinesis_streaming_configuration: update_kinesis_streaming_configuration)
         update_kinesis_streaming_destination(input)
       end
+
       def update_kinesis_streaming_destination(input : Types::UpdateKinesisStreamingDestinationInput) : Types::UpdateKinesisStreamingDestinationOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_KINESIS_STREAMING_DESTINATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1439,6 +1600,7 @@ module AwsSdk
       # executing, the table status changes from ACTIVE to UPDATING . While it's UPDATING , you can't issue
       # another UpdateTable request. When the table returns to the ACTIVE state, the UpdateTable operation
       # is complete.
+
       def update_table(
         table_name : String,
         attribute_definitions : Array(Types::AttributeDefinition)? = nil,
@@ -1455,9 +1617,11 @@ module AwsSdk
         table_class : String? = nil,
         warm_throughput : Types::WarmThroughput? = nil
       ) : Types::UpdateTableOutput
+
         input = Types::UpdateTableInput.new(table_name: table_name, attribute_definitions: attribute_definitions, billing_mode: billing_mode, deletion_protection_enabled: deletion_protection_enabled, global_secondary_index_updates: global_secondary_index_updates, global_table_witness_updates: global_table_witness_updates, multi_region_consistency: multi_region_consistency, on_demand_throughput: on_demand_throughput, provisioned_throughput: provisioned_throughput, replica_updates: replica_updates, sse_specification: sse_specification, stream_specification: stream_specification, table_class: table_class, warm_throughput: warm_throughput)
         update_table(input)
       end
+
       def update_table(input : Types::UpdateTableInput) : Types::UpdateTableOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_TABLE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1467,15 +1631,18 @@ module AwsSdk
       end
 
       # Updates auto scaling settings on your global tables at once.
+
       def update_table_replica_auto_scaling(
         table_name : String,
         global_secondary_index_updates : Array(Types::GlobalSecondaryIndexAutoScalingUpdate)? = nil,
         provisioned_write_capacity_auto_scaling_update : Types::AutoScalingSettingsUpdate? = nil,
         replica_updates : Array(Types::ReplicaAutoScalingUpdate)? = nil
       ) : Types::UpdateTableReplicaAutoScalingOutput
+
         input = Types::UpdateTableReplicaAutoScalingInput.new(table_name: table_name, global_secondary_index_updates: global_secondary_index_updates, provisioned_write_capacity_auto_scaling_update: provisioned_write_capacity_auto_scaling_update, replica_updates: replica_updates)
         update_table_replica_auto_scaling(input)
       end
+
       def update_table_replica_auto_scaling(input : Types::UpdateTableReplicaAutoScalingInput) : Types::UpdateTableReplicaAutoScalingOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_TABLE_REPLICA_AUTO_SCALING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1498,13 +1665,16 @@ module AwsSdk
       # scans. As items are deleted, they are removed from any local secondary index and global secondary
       # index immediately in the same eventually consistent way as a standard delete operation. For more
       # information, see Time To Live in the Amazon DynamoDB Developer Guide.
+
       def update_time_to_live(
         table_name : String,
         time_to_live_specification : Types::TimeToLiveSpecification
       ) : Types::UpdateTimeToLiveOutput
+
         input = Types::UpdateTimeToLiveInput.new(table_name: table_name, time_to_live_specification: time_to_live_specification)
         update_time_to_live(input)
       end
+
       def update_time_to_live(input : Types::UpdateTimeToLiveInput) : Types::UpdateTimeToLiveOutput
         request = Protocol::JsonRpc.build_request(Model::UPDATE_TIME_TO_LIVE, input, endpoint)
         request = request.with_headers(endpoint_headers)

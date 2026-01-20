@@ -1,7 +1,0 @@
-require "./runtime"
-require "./deployment_marketplace/client"
-require "./deployment_marketplace/errors"
-require "./deployment_marketplace/model"
-require "./deployment_marketplace/types"
-require "./deployment_marketplace/protocol/rest_json"
-require "./customizations/deployment_marketplace/customizations"

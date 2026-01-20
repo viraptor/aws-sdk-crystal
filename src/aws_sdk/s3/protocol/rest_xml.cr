@@ -44,311 +44,1382 @@ module AwsSdk
         end
 
         OPERATION_INPUT_SHAPES = {
+
+
           "AbortMultipartUpload" => "AbortMultipartUploadRequest",
+
+
           "CompleteMultipartUpload" => "CompleteMultipartUploadRequest",
+
+
           "CopyObject" => "CopyObjectRequest",
+
+
           "CreateBucket" => "CreateBucketRequest",
+
+
           "CreateBucketMetadataConfiguration" => "CreateBucketMetadataConfigurationRequest",
+
+
           "CreateBucketMetadataTableConfiguration" => "CreateBucketMetadataTableConfigurationRequest",
+
+
           "CreateMultipartUpload" => "CreateMultipartUploadRequest",
+
+
           "CreateSession" => "CreateSessionRequest",
+
+
           "DeleteBucket" => "DeleteBucketRequest",
+
+
           "DeleteBucketAnalyticsConfiguration" => "DeleteBucketAnalyticsConfigurationRequest",
+
+
           "DeleteBucketCors" => "DeleteBucketCorsRequest",
+
+
           "DeleteBucketEncryption" => "DeleteBucketEncryptionRequest",
+
+
           "DeleteBucketIntelligentTieringConfiguration" => "DeleteBucketIntelligentTieringConfigurationRequest",
+
+
           "DeleteBucketInventoryConfiguration" => "DeleteBucketInventoryConfigurationRequest",
+
+
           "DeleteBucketLifecycle" => "DeleteBucketLifecycleRequest",
+
+
           "DeleteBucketMetadataConfiguration" => "DeleteBucketMetadataConfigurationRequest",
+
+
           "DeleteBucketMetadataTableConfiguration" => "DeleteBucketMetadataTableConfigurationRequest",
+
+
           "DeleteBucketMetricsConfiguration" => "DeleteBucketMetricsConfigurationRequest",
+
+
           "DeleteBucketOwnershipControls" => "DeleteBucketOwnershipControlsRequest",
+
+
           "DeleteBucketPolicy" => "DeleteBucketPolicyRequest",
+
+
           "DeleteBucketReplication" => "DeleteBucketReplicationRequest",
+
+
           "DeleteBucketTagging" => "DeleteBucketTaggingRequest",
+
+
           "DeleteBucketWebsite" => "DeleteBucketWebsiteRequest",
+
+
           "DeleteObject" => "DeleteObjectRequest",
+
+
           "DeleteObjectTagging" => "DeleteObjectTaggingRequest",
+
+
           "DeleteObjects" => "DeleteObjectsRequest",
+
+
           "DeletePublicAccessBlock" => "DeletePublicAccessBlockRequest",
+
+
           "GetBucketAbac" => "GetBucketAbacRequest",
+
+
           "GetBucketAccelerateConfiguration" => "GetBucketAccelerateConfigurationRequest",
+
+
           "GetBucketAcl" => "GetBucketAclRequest",
+
+
           "GetBucketAnalyticsConfiguration" => "GetBucketAnalyticsConfigurationRequest",
+
+
           "GetBucketCors" => "GetBucketCorsRequest",
+
+
           "GetBucketEncryption" => "GetBucketEncryptionRequest",
+
+
           "GetBucketIntelligentTieringConfiguration" => "GetBucketIntelligentTieringConfigurationRequest",
+
+
           "GetBucketInventoryConfiguration" => "GetBucketInventoryConfigurationRequest",
+
+
           "GetBucketLifecycle" => "GetBucketLifecycleRequest",
+
+
           "GetBucketLifecycleConfiguration" => "GetBucketLifecycleConfigurationRequest",
+
+
           "GetBucketLocation" => "GetBucketLocationRequest",
+
+
           "GetBucketLogging" => "GetBucketLoggingRequest",
+
+
           "GetBucketMetadataConfiguration" => "GetBucketMetadataConfigurationRequest",
+
+
           "GetBucketMetadataTableConfiguration" => "GetBucketMetadataTableConfigurationRequest",
+
+
           "GetBucketMetricsConfiguration" => "GetBucketMetricsConfigurationRequest",
+
+
           "GetBucketNotification" => "GetBucketNotificationConfigurationRequest",
+
+
           "GetBucketNotificationConfiguration" => "GetBucketNotificationConfigurationRequest",
+
+
           "GetBucketOwnershipControls" => "GetBucketOwnershipControlsRequest",
+
+
           "GetBucketPolicy" => "GetBucketPolicyRequest",
+
+
           "GetBucketPolicyStatus" => "GetBucketPolicyStatusRequest",
+
+
           "GetBucketReplication" => "GetBucketReplicationRequest",
+
+
           "GetBucketRequestPayment" => "GetBucketRequestPaymentRequest",
+
+
           "GetBucketTagging" => "GetBucketTaggingRequest",
+
+
           "GetBucketVersioning" => "GetBucketVersioningRequest",
+
+
           "GetBucketWebsite" => "GetBucketWebsiteRequest",
+
+
           "GetObject" => "GetObjectRequest",
+
+
           "GetObjectAcl" => "GetObjectAclRequest",
+
+
           "GetObjectAttributes" => "GetObjectAttributesRequest",
+
+
           "GetObjectLegalHold" => "GetObjectLegalHoldRequest",
+
+
           "GetObjectLockConfiguration" => "GetObjectLockConfigurationRequest",
+
+
           "GetObjectRetention" => "GetObjectRetentionRequest",
+
+
           "GetObjectTagging" => "GetObjectTaggingRequest",
+
+
           "GetObjectTorrent" => "GetObjectTorrentRequest",
+
+
           "GetPublicAccessBlock" => "GetPublicAccessBlockRequest",
+
+
           "HeadBucket" => "HeadBucketRequest",
+
+
           "HeadObject" => "HeadObjectRequest",
+
+
           "ListBucketAnalyticsConfigurations" => "ListBucketAnalyticsConfigurationsRequest",
+
+
           "ListBucketIntelligentTieringConfigurations" => "ListBucketIntelligentTieringConfigurationsRequest",
+
+
           "ListBucketInventoryConfigurations" => "ListBucketInventoryConfigurationsRequest",
+
+
           "ListBucketMetricsConfigurations" => "ListBucketMetricsConfigurationsRequest",
+
+
           "ListBuckets" => "ListBucketsRequest",
+
+
           "ListDirectoryBuckets" => "ListDirectoryBucketsRequest",
+
+
           "ListMultipartUploads" => "ListMultipartUploadsRequest",
+
+
           "ListObjectVersions" => "ListObjectVersionsRequest",
+
+
           "ListObjects" => "ListObjectsRequest",
+
+
           "ListObjectsV2" => "ListObjectsV2Request",
+
+
           "ListParts" => "ListPartsRequest",
+
+
           "PutBucketAbac" => "PutBucketAbacRequest",
+
+
           "PutBucketAccelerateConfiguration" => "PutBucketAccelerateConfigurationRequest",
+
+
           "PutBucketAcl" => "PutBucketAclRequest",
+
+
           "PutBucketAnalyticsConfiguration" => "PutBucketAnalyticsConfigurationRequest",
+
+
           "PutBucketCors" => "PutBucketCorsRequest",
+
+
           "PutBucketEncryption" => "PutBucketEncryptionRequest",
+
+
           "PutBucketIntelligentTieringConfiguration" => "PutBucketIntelligentTieringConfigurationRequest",
+
+
           "PutBucketInventoryConfiguration" => "PutBucketInventoryConfigurationRequest",
+
+
           "PutBucketLifecycle" => "PutBucketLifecycleRequest",
+
+
           "PutBucketLifecycleConfiguration" => "PutBucketLifecycleConfigurationRequest",
+
+
           "PutBucketLogging" => "PutBucketLoggingRequest",
+
+
           "PutBucketMetricsConfiguration" => "PutBucketMetricsConfigurationRequest",
+
+
           "PutBucketNotification" => "PutBucketNotificationRequest",
+
+
           "PutBucketNotificationConfiguration" => "PutBucketNotificationConfigurationRequest",
+
+
           "PutBucketOwnershipControls" => "PutBucketOwnershipControlsRequest",
+
+
           "PutBucketPolicy" => "PutBucketPolicyRequest",
+
+
           "PutBucketReplication" => "PutBucketReplicationRequest",
+
+
           "PutBucketRequestPayment" => "PutBucketRequestPaymentRequest",
+
+
           "PutBucketTagging" => "PutBucketTaggingRequest",
+
+
           "PutBucketVersioning" => "PutBucketVersioningRequest",
+
+
           "PutBucketWebsite" => "PutBucketWebsiteRequest",
+
+
           "PutObject" => "PutObjectRequest",
+
+
           "PutObjectAcl" => "PutObjectAclRequest",
+
+
           "PutObjectLegalHold" => "PutObjectLegalHoldRequest",
+
+
           "PutObjectLockConfiguration" => "PutObjectLockConfigurationRequest",
+
+
           "PutObjectRetention" => "PutObjectRetentionRequest",
+
+
           "PutObjectTagging" => "PutObjectTaggingRequest",
+
+
           "PutPublicAccessBlock" => "PutPublicAccessBlockRequest",
+
+
           "RenameObject" => "RenameObjectRequest",
+
+
           "RestoreObject" => "RestoreObjectRequest",
+
+
           "SelectObjectContent" => "SelectObjectContentRequest",
+
+
           "UpdateBucketMetadataInventoryTableConfiguration" => "UpdateBucketMetadataInventoryTableConfigurationRequest",
+
+
           "UpdateBucketMetadataJournalTableConfiguration" => "UpdateBucketMetadataJournalTableConfigurationRequest",
+
+
           "UploadPart" => "UploadPartRequest",
+
+
           "UploadPartCopy" => "UploadPartCopyRequest",
+
+
           "WriteGetObjectResponse" => "WriteGetObjectResponseRequest",
+
         }
 
         OPERATION_OUTPUT_SHAPES = {
+
+
           "AbortMultipartUpload" => "AbortMultipartUploadOutput",
+
+
           "CompleteMultipartUpload" => "CompleteMultipartUploadOutput",
+
+
           "CopyObject" => "CopyObjectOutput",
+
+
           "CreateBucket" => "CreateBucketOutput",
+
+
+
+
           "CreateMultipartUpload" => "CreateMultipartUploadOutput",
+
+
           "CreateSession" => "CreateSessionOutput",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           "DeleteObject" => "DeleteObjectOutput",
+
+
           "DeleteObjectTagging" => "DeleteObjectTaggingOutput",
+
+
           "DeleteObjects" => "DeleteObjectsOutput",
+
+
+
           "GetBucketAbac" => "GetBucketAbacOutput",
+
+
           "GetBucketAccelerateConfiguration" => "GetBucketAccelerateConfigurationOutput",
+
+
           "GetBucketAcl" => "GetBucketAclOutput",
+
+
           "GetBucketAnalyticsConfiguration" => "GetBucketAnalyticsConfigurationOutput",
+
+
           "GetBucketCors" => "GetBucketCorsOutput",
+
+
           "GetBucketEncryption" => "GetBucketEncryptionOutput",
+
+
           "GetBucketIntelligentTieringConfiguration" => "GetBucketIntelligentTieringConfigurationOutput",
+
+
           "GetBucketInventoryConfiguration" => "GetBucketInventoryConfigurationOutput",
+
+
           "GetBucketLifecycle" => "GetBucketLifecycleOutput",
+
+
           "GetBucketLifecycleConfiguration" => "GetBucketLifecycleConfigurationOutput",
+
+
           "GetBucketLocation" => "GetBucketLocationOutput",
+
+
           "GetBucketLogging" => "GetBucketLoggingOutput",
+
+
           "GetBucketMetadataConfiguration" => "GetBucketMetadataConfigurationOutput",
+
+
           "GetBucketMetadataTableConfiguration" => "GetBucketMetadataTableConfigurationOutput",
+
+
           "GetBucketMetricsConfiguration" => "GetBucketMetricsConfigurationOutput",
+
+
           "GetBucketNotification" => "NotificationConfigurationDeprecated",
+
+
           "GetBucketNotificationConfiguration" => "NotificationConfiguration",
+
+
           "GetBucketOwnershipControls" => "GetBucketOwnershipControlsOutput",
+
+
           "GetBucketPolicy" => "GetBucketPolicyOutput",
+
+
           "GetBucketPolicyStatus" => "GetBucketPolicyStatusOutput",
+
+
           "GetBucketReplication" => "GetBucketReplicationOutput",
+
+
           "GetBucketRequestPayment" => "GetBucketRequestPaymentOutput",
+
+
           "GetBucketTagging" => "GetBucketTaggingOutput",
+
+
           "GetBucketVersioning" => "GetBucketVersioningOutput",
+
+
           "GetBucketWebsite" => "GetBucketWebsiteOutput",
+
+
           "GetObject" => "GetObjectOutput",
+
+
           "GetObjectAcl" => "GetObjectAclOutput",
+
+
           "GetObjectAttributes" => "GetObjectAttributesOutput",
+
+
           "GetObjectLegalHold" => "GetObjectLegalHoldOutput",
+
+
           "GetObjectLockConfiguration" => "GetObjectLockConfigurationOutput",
+
+
           "GetObjectRetention" => "GetObjectRetentionOutput",
+
+
           "GetObjectTagging" => "GetObjectTaggingOutput",
+
+
           "GetObjectTorrent" => "GetObjectTorrentOutput",
+
+
           "GetPublicAccessBlock" => "GetPublicAccessBlockOutput",
+
+
           "HeadBucket" => "HeadBucketOutput",
+
+
           "HeadObject" => "HeadObjectOutput",
+
+
           "ListBucketAnalyticsConfigurations" => "ListBucketAnalyticsConfigurationsOutput",
+
+
           "ListBucketIntelligentTieringConfigurations" => "ListBucketIntelligentTieringConfigurationsOutput",
+
+
           "ListBucketInventoryConfigurations" => "ListBucketInventoryConfigurationsOutput",
+
+
           "ListBucketMetricsConfigurations" => "ListBucketMetricsConfigurationsOutput",
+
+
           "ListBuckets" => "ListBucketsOutput",
+
+
           "ListDirectoryBuckets" => "ListDirectoryBucketsOutput",
+
+
           "ListMultipartUploads" => "ListMultipartUploadsOutput",
+
+
           "ListObjectVersions" => "ListObjectVersionsOutput",
+
+
           "ListObjects" => "ListObjectsOutput",
+
+
           "ListObjectsV2" => "ListObjectsV2Output",
+
+
           "ListParts" => "ListPartsOutput",
+
+
+
+
+
+
+
+
+
+
+
           "PutBucketLifecycleConfiguration" => "PutBucketLifecycleConfigurationOutput",
+
+
+
+
+
+
+
+
+
+
+
+
+
           "PutObject" => "PutObjectOutput",
+
+
           "PutObjectAcl" => "PutObjectAclOutput",
+
+
           "PutObjectLegalHold" => "PutObjectLegalHoldOutput",
+
+
           "PutObjectLockConfiguration" => "PutObjectLockConfigurationOutput",
+
+
           "PutObjectRetention" => "PutObjectRetentionOutput",
+
+
           "PutObjectTagging" => "PutObjectTaggingOutput",
+
+
+
           "RenameObject" => "RenameObjectOutput",
+
+
           "RestoreObject" => "RestoreObjectOutput",
+
+
           "SelectObjectContent" => "SelectObjectContentOutput",
+
+
+
+
           "UploadPart" => "UploadPartOutput",
+
+
           "UploadPartCopy" => "UploadPartCopyOutput",
+
+
         }
 
         OPERATION_INPUT_ROOTS = {
+
+
+
           "AbortMultipartUpload" => "AbortMultipartUploadRequest",
+
+
+
           "CompleteMultipartUpload" => "CompleteMultipartUploadRequest",
+
+
+
           "CopyObject" => "CopyObjectRequest",
+
+
+
           "CreateBucket" => "CreateBucketRequest",
+
+
+
           "CreateBucketMetadataConfiguration" => "CreateBucketMetadataConfigurationRequest",
+
+
+
           "CreateBucketMetadataTableConfiguration" => "CreateBucketMetadataTableConfigurationRequest",
+
+
+
           "CreateMultipartUpload" => "CreateMultipartUploadRequest",
+
+
+
           "CreateSession" => "CreateSessionRequest",
+
+
+
           "DeleteBucket" => "DeleteBucketRequest",
+
+
+
           "DeleteBucketAnalyticsConfiguration" => "DeleteBucketAnalyticsConfigurationRequest",
+
+
+
           "DeleteBucketCors" => "DeleteBucketCorsRequest",
+
+
+
           "DeleteBucketEncryption" => "DeleteBucketEncryptionRequest",
+
+
+
           "DeleteBucketIntelligentTieringConfiguration" => "DeleteBucketIntelligentTieringConfigurationRequest",
+
+
+
           "DeleteBucketInventoryConfiguration" => "DeleteBucketInventoryConfigurationRequest",
+
+
+
           "DeleteBucketLifecycle" => "DeleteBucketLifecycleRequest",
+
+
+
           "DeleteBucketMetadataConfiguration" => "DeleteBucketMetadataConfigurationRequest",
+
+
+
           "DeleteBucketMetadataTableConfiguration" => "DeleteBucketMetadataTableConfigurationRequest",
+
+
+
           "DeleteBucketMetricsConfiguration" => "DeleteBucketMetricsConfigurationRequest",
+
+
+
           "DeleteBucketOwnershipControls" => "DeleteBucketOwnershipControlsRequest",
+
+
+
           "DeleteBucketPolicy" => "DeleteBucketPolicyRequest",
+
+
+
           "DeleteBucketReplication" => "DeleteBucketReplicationRequest",
+
+
+
           "DeleteBucketTagging" => "DeleteBucketTaggingRequest",
+
+
+
           "DeleteBucketWebsite" => "DeleteBucketWebsiteRequest",
+
+
+
           "DeleteObject" => "DeleteObjectRequest",
+
+
+
           "DeleteObjectTagging" => "DeleteObjectTaggingRequest",
+
+
+
           "DeleteObjects" => "DeleteObjectsRequest",
+
+
+
           "DeletePublicAccessBlock" => "DeletePublicAccessBlockRequest",
+
+
+
           "GetBucketAbac" => "GetBucketAbacRequest",
+
+
+
           "GetBucketAccelerateConfiguration" => "GetBucketAccelerateConfigurationRequest",
+
+
+
           "GetBucketAcl" => "GetBucketAclRequest",
+
+
+
           "GetBucketAnalyticsConfiguration" => "GetBucketAnalyticsConfigurationRequest",
+
+
+
           "GetBucketCors" => "GetBucketCorsRequest",
+
+
+
           "GetBucketEncryption" => "GetBucketEncryptionRequest",
+
+
+
           "GetBucketIntelligentTieringConfiguration" => "GetBucketIntelligentTieringConfigurationRequest",
+
+
+
           "GetBucketInventoryConfiguration" => "GetBucketInventoryConfigurationRequest",
+
+
+
           "GetBucketLifecycle" => "GetBucketLifecycleRequest",
+
+
+
           "GetBucketLifecycleConfiguration" => "GetBucketLifecycleConfigurationRequest",
+
+
+
           "GetBucketLocation" => "GetBucketLocationRequest",
+
+
+
           "GetBucketLogging" => "GetBucketLoggingRequest",
+
+
+
           "GetBucketMetadataConfiguration" => "GetBucketMetadataConfigurationRequest",
+
+
+
           "GetBucketMetadataTableConfiguration" => "GetBucketMetadataTableConfigurationRequest",
+
+
+
           "GetBucketMetricsConfiguration" => "GetBucketMetricsConfigurationRequest",
+
+
+
           "GetBucketNotification" => "GetBucketNotificationConfigurationRequest",
+
+
+
           "GetBucketNotificationConfiguration" => "GetBucketNotificationConfigurationRequest",
+
+
+
           "GetBucketOwnershipControls" => "GetBucketOwnershipControlsRequest",
+
+
+
           "GetBucketPolicy" => "GetBucketPolicyRequest",
+
+
+
           "GetBucketPolicyStatus" => "GetBucketPolicyStatusRequest",
+
+
+
           "GetBucketReplication" => "GetBucketReplicationRequest",
+
+
+
           "GetBucketRequestPayment" => "GetBucketRequestPaymentRequest",
+
+
+
           "GetBucketTagging" => "GetBucketTaggingRequest",
+
+
+
           "GetBucketVersioning" => "GetBucketVersioningRequest",
+
+
+
           "GetBucketWebsite" => "GetBucketWebsiteRequest",
+
+
+
           "GetObject" => "GetObjectRequest",
+
+
+
           "GetObjectAcl" => "GetObjectAclRequest",
+
+
+
           "GetObjectAttributes" => "GetObjectAttributesRequest",
+
+
+
           "GetObjectLegalHold" => "GetObjectLegalHoldRequest",
+
+
+
           "GetObjectLockConfiguration" => "GetObjectLockConfigurationRequest",
+
+
+
           "GetObjectRetention" => "GetObjectRetentionRequest",
+
+
+
           "GetObjectTagging" => "GetObjectTaggingRequest",
+
+
+
           "GetObjectTorrent" => "GetObjectTorrentRequest",
+
+
+
           "GetPublicAccessBlock" => "GetPublicAccessBlockRequest",
+
+
+
           "HeadBucket" => "HeadBucketRequest",
+
+
+
           "HeadObject" => "HeadObjectRequest",
+
+
+
           "ListBucketAnalyticsConfigurations" => "ListBucketAnalyticsConfigurationsRequest",
+
+
+
           "ListBucketIntelligentTieringConfigurations" => "ListBucketIntelligentTieringConfigurationsRequest",
+
+
+
           "ListBucketInventoryConfigurations" => "ListBucketInventoryConfigurationsRequest",
+
+
+
           "ListBucketMetricsConfigurations" => "ListBucketMetricsConfigurationsRequest",
+
+
+
           "ListBuckets" => "ListBucketsRequest",
+
+
+
           "ListDirectoryBuckets" => "ListDirectoryBucketsRequest",
+
+
+
           "ListMultipartUploads" => "ListMultipartUploadsRequest",
+
+
+
           "ListObjectVersions" => "ListObjectVersionsRequest",
+
+
+
           "ListObjects" => "ListObjectsRequest",
+
+
+
           "ListObjectsV2" => "ListObjectsV2Request",
+
+
+
           "ListParts" => "ListPartsRequest",
+
+
+
           "PutBucketAbac" => "PutBucketAbacRequest",
+
+
+
           "PutBucketAccelerateConfiguration" => "PutBucketAccelerateConfigurationRequest",
+
+
+
           "PutBucketAcl" => "PutBucketAclRequest",
+
+
+
           "PutBucketAnalyticsConfiguration" => "PutBucketAnalyticsConfigurationRequest",
+
+
+
           "PutBucketCors" => "PutBucketCorsRequest",
+
+
+
           "PutBucketEncryption" => "PutBucketEncryptionRequest",
+
+
+
           "PutBucketIntelligentTieringConfiguration" => "PutBucketIntelligentTieringConfigurationRequest",
+
+
+
           "PutBucketInventoryConfiguration" => "PutBucketInventoryConfigurationRequest",
+
+
+
           "PutBucketLifecycle" => "PutBucketLifecycleRequest",
+
+
+
           "PutBucketLifecycleConfiguration" => "PutBucketLifecycleConfigurationRequest",
+
+
+
           "PutBucketLogging" => "PutBucketLoggingRequest",
+
+
+
           "PutBucketMetricsConfiguration" => "PutBucketMetricsConfigurationRequest",
+
+
+
           "PutBucketNotification" => "PutBucketNotificationRequest",
+
+
+
           "PutBucketNotificationConfiguration" => "PutBucketNotificationConfigurationRequest",
+
+
+
           "PutBucketOwnershipControls" => "PutBucketOwnershipControlsRequest",
+
+
+
           "PutBucketPolicy" => "PutBucketPolicyRequest",
+
+
+
           "PutBucketReplication" => "PutBucketReplicationRequest",
+
+
+
           "PutBucketRequestPayment" => "PutBucketRequestPaymentRequest",
+
+
+
           "PutBucketTagging" => "PutBucketTaggingRequest",
+
+
+
           "PutBucketVersioning" => "PutBucketVersioningRequest",
+
+
+
           "PutBucketWebsite" => "PutBucketWebsiteRequest",
+
+
+
           "PutObject" => "PutObjectRequest",
+
+
+
           "PutObjectAcl" => "PutObjectAclRequest",
+
+
+
           "PutObjectLegalHold" => "PutObjectLegalHoldRequest",
+
+
+
           "PutObjectLockConfiguration" => "PutObjectLockConfigurationRequest",
+
+
+
           "PutObjectRetention" => "PutObjectRetentionRequest",
+
+
+
           "PutObjectTagging" => "PutObjectTaggingRequest",
+
+
+
           "PutPublicAccessBlock" => "PutPublicAccessBlockRequest",
+
+
+
           "RenameObject" => "RenameObjectRequest",
+
+
+
           "RestoreObject" => "RestoreObjectRequest",
+
+
+
           "SelectObjectContent" => "SelectObjectContentRequest",
+
+
+
           "UpdateBucketMetadataInventoryTableConfiguration" => "UpdateBucketMetadataInventoryTableConfigurationRequest",
+
+
+
           "UpdateBucketMetadataJournalTableConfiguration" => "UpdateBucketMetadataJournalTableConfigurationRequest",
+
+
+
           "UploadPart" => "UploadPartRequest",
+
+
+
           "UploadPartCopy" => "UploadPartCopyRequest",
+
+
+
           "WriteGetObjectResponse" => "WriteGetObjectResponseRequest",
+
         }
 
         OPERATION_INPUT_NAMESPACES = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           "SelectObjectContent" => "http://s3.amazonaws.com/doc/2006-03-01/",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
         SHAPES = {
+
+
+
           "AbacStatus" => Shape.new(
             "AbacStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "BucketAbacStatus",
@@ -356,10 +1427,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AbortDate" => Shape.new(
             "AbortDate",
             "timestamp",
@@ -367,10 +1443,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AbortIncompleteMultipartUpload" => Shape.new(
             "AbortIncompleteMultipartUpload",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DaysAfterInitiation",
                 "DaysAfterInitiation",
@@ -378,14 +1463,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AbortMultipartUploadOutput" => Shape.new(
             "AbortMultipartUploadOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -393,14 +1488,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AbortMultipartUploadRequest" => Shape.new(
             "AbortMultipartUploadRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -408,6 +1513,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -415,6 +1525,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatchInitiatedTime",
                 "IfMatchInitiatedTime",
@@ -422,6 +1537,11 @@ module AwsSdk
                 "x-amz-if-match-initiated-time",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -429,6 +1549,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -436,6 +1561,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -443,10 +1573,15 @@ module AwsSdk
                 "uploadId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AbortRuleId" => Shape.new(
             "AbortRuleId",
             "string",
@@ -454,10 +1589,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AccelerateConfiguration" => Shape.new(
             "AccelerateConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "BucketAccelerateStatus",
@@ -465,10 +1609,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AcceptRanges" => Shape.new(
             "AcceptRanges",
             "string",
@@ -476,10 +1625,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AccessControlPolicy" => Shape.new(
             "AccessControlPolicy",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Grants",
                 "Grants",
@@ -487,6 +1645,11 @@ module AwsSdk
                 "AccessControlList",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -494,14 +1657,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AccessControlTranslation" => Shape.new(
             "AccessControlTranslation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "OwnerOverride",
@@ -509,10 +1682,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AccessKeyIdValue" => Shape.new(
             "AccessKeyIdValue",
             "string",
@@ -520,6 +1698,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AccessPointAlias" => Shape.new(
             "AccessPointAlias",
             "boolean",
@@ -527,6 +1709,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AccessPointArn" => Shape.new(
             "AccessPointArn",
             "string",
@@ -534,6 +1720,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AccountId" => Shape.new(
             "AccountId",
             "string",
@@ -541,6 +1731,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AllowQuotedRecordDelimiter" => Shape.new(
             "AllowQuotedRecordDelimiter",
             "boolean",
@@ -548,6 +1742,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AllowedHeader" => Shape.new(
             "AllowedHeader",
             "string",
@@ -555,6 +1753,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "AllowedHeaders" => Shape.new(
             "AllowedHeaders",
             "list",
@@ -568,6 +1774,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "AllowedMethod" => Shape.new(
             "AllowedMethod",
             "string",
@@ -575,6 +1786,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "AllowedMethods" => Shape.new(
             "AllowedMethods",
             "list",
@@ -588,6 +1807,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "AllowedOrigin" => Shape.new(
             "AllowedOrigin",
             "string",
@@ -595,6 +1819,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "AllowedOrigins" => Shape.new(
             "AllowedOrigins",
             "list",
@@ -608,10 +1840,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "AnalyticsAndOperator" => Shape.new(
             "AnalyticsAndOperator",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -619,6 +1861,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagSet",
@@ -626,14 +1873,24 @@ module AwsSdk
                 "Tag",
                 true
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AnalyticsConfiguration" => Shape.new(
             "AnalyticsConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "AnalyticsFilter",
@@ -641,6 +1898,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "AnalyticsId",
@@ -648,6 +1910,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClassAnalysis",
                 "StorageClassAnalysis",
@@ -655,10 +1922,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "AnalyticsConfigurationList" => Shape.new(
             "AnalyticsConfigurationList",
             "list",
@@ -672,10 +1948,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "AnalyticsExportDestination" => Shape.new(
             "AnalyticsExportDestination",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "S3BucketDestination",
                 "AnalyticsS3BucketDestination",
@@ -683,14 +1969,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AnalyticsFilter" => Shape.new(
             "AnalyticsFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "And",
                 "AnalyticsAndOperator",
@@ -698,6 +1994,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -705,6 +2006,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tag",
                 "Tag",
@@ -712,10 +2018,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AnalyticsId" => Shape.new(
             "AnalyticsId",
             "string",
@@ -723,10 +2034,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AnalyticsS3BucketDestination" => Shape.new(
             "AnalyticsS3BucketDestination",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -734,6 +2054,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketAccountId",
                 "AccountId",
@@ -741,6 +2066,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Format",
                 "AnalyticsS3ExportFileFormat",
@@ -748,6 +2078,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -755,10 +2090,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AnalyticsS3ExportFileFormat" => Shape.new(
             "AnalyticsS3ExportFileFormat",
             "string",
@@ -766,6 +2106,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ArchiveStatus" => Shape.new(
             "ArchiveStatus",
             "string",
@@ -773,10 +2117,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BlockedEncryptionTypes" => Shape.new(
             "BlockedEncryptionTypes",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EncryptionType",
                 "EncryptionTypeList",
@@ -784,10 +2137,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Body" => Shape.new(
             "Body",
             "blob",
@@ -795,10 +2153,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Bucket" => Shape.new(
             "Bucket",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketArn",
                 "S3RegionalOrS3ExpressBucketArnString",
@@ -806,6 +2173,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketRegion",
                 "BucketRegion",
@@ -813,6 +2185,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CreationDate",
                 "CreationDate",
@@ -820,6 +2197,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "BucketName",
@@ -827,10 +2209,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "BucketAbacStatus" => Shape.new(
             "BucketAbacStatus",
             "string",
@@ -838,6 +2225,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketAccelerateStatus" => Shape.new(
             "BucketAccelerateStatus",
             "string",
@@ -845,22 +2236,36 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketAlreadyExists" => Shape.new(
             "BucketAlreadyExists",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "BucketAlreadyOwnedByYou" => Shape.new(
             "BucketAlreadyOwnedByYou",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "BucketCannedACL" => Shape.new(
             "BucketCannedACL",
             "string",
@@ -868,10 +2273,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketInfo" => Shape.new(
             "BucketInfo",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DataRedundancy",
                 "DataRedundancy",
@@ -879,6 +2293,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "BucketType",
@@ -886,10 +2305,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "BucketKeyEnabled" => Shape.new(
             "BucketKeyEnabled",
             "boolean",
@@ -897,10 +2321,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketLifecycleConfiguration" => Shape.new(
             "BucketLifecycleConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "LifecycleRules",
@@ -908,10 +2341,15 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "BucketLocationConstraint" => Shape.new(
             "BucketLocationConstraint",
             "string",
@@ -919,6 +2357,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketLocationName" => Shape.new(
             "BucketLocationName",
             "string",
@@ -926,10 +2368,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketLoggingStatus" => Shape.new(
             "BucketLoggingStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "LoggingEnabled",
                 "LoggingEnabled",
@@ -937,10 +2388,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "BucketLogsPermission" => Shape.new(
             "BucketLogsPermission",
             "string",
@@ -948,6 +2404,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketName" => Shape.new(
             "BucketName",
             "string",
@@ -955,6 +2415,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketRegion" => Shape.new(
             "BucketRegion",
             "string",
@@ -962,6 +2426,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketType" => Shape.new(
             "BucketType",
             "string",
@@ -969,6 +2437,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BucketVersioningStatus" => Shape.new(
             "BucketVersioningStatus",
             "string",
@@ -976,6 +2448,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "Buckets" => Shape.new(
             "Buckets",
             "list",
@@ -989,6 +2469,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "BypassGovernanceRetention" => Shape.new(
             "BypassGovernanceRetention",
             "boolean",
@@ -996,6 +2481,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BytesProcessed" => Shape.new(
             "BytesProcessed",
             "long",
@@ -1003,6 +2492,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BytesReturned" => Shape.new(
             "BytesReturned",
             "long",
@@ -1010,6 +2503,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "BytesScanned" => Shape.new(
             "BytesScanned",
             "long",
@@ -1017,10 +2514,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CORSConfiguration" => Shape.new(
             "CORSConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CORSRules",
                 "CORSRules",
@@ -1028,14 +2534,24 @@ module AwsSdk
                 "CORSRule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CORSRule" => Shape.new(
             "CORSRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AllowedHeaders",
                 "AllowedHeaders",
@@ -1043,6 +2559,11 @@ module AwsSdk
                 "AllowedHeader",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "AllowedMethods",
                 "AllowedMethods",
@@ -1050,6 +2571,11 @@ module AwsSdk
                 "AllowedMethod",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "AllowedOrigins",
                 "AllowedOrigins",
@@ -1057,6 +2583,11 @@ module AwsSdk
                 "AllowedOrigin",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExposeHeaders",
                 "ExposeHeaders",
@@ -1064,6 +2595,11 @@ module AwsSdk
                 "ExposeHeader",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -1071,6 +2607,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxAgeSeconds",
                 "MaxAgeSeconds",
@@ -1078,10 +2619,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CORSRules" => Shape.new(
             "CORSRules",
             "list",
@@ -1095,10 +2645,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "CSVInput" => Shape.new(
             "CSVInput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AllowQuotedRecordDelimiter",
                 "AllowQuotedRecordDelimiter",
@@ -1106,6 +2666,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Comments",
                 "Comments",
@@ -1113,6 +2678,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FieldDelimiter",
                 "FieldDelimiter",
@@ -1120,6 +2690,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FileHeaderInfo",
                 "FileHeaderInfo",
@@ -1127,6 +2702,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QuoteCharacter",
                 "QuoteCharacter",
@@ -1134,6 +2714,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QuoteEscapeCharacter",
                 "QuoteEscapeCharacter",
@@ -1141,6 +2726,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordDelimiter",
                 "RecordDelimiter",
@@ -1148,14 +2738,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CSVOutput" => Shape.new(
             "CSVOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "FieldDelimiter",
                 "FieldDelimiter",
@@ -1163,6 +2763,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QuoteCharacter",
                 "QuoteCharacter",
@@ -1170,6 +2775,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QuoteEscapeCharacter",
                 "QuoteEscapeCharacter",
@@ -1177,6 +2787,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QuoteFields",
                 "QuoteFields",
@@ -1184,6 +2799,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordDelimiter",
                 "RecordDelimiter",
@@ -1191,10 +2811,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CacheControl" => Shape.new(
             "CacheControl",
             "string",
@@ -1202,10 +2827,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Checksum" => Shape.new(
             "Checksum",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -1213,6 +2847,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -1220,6 +2859,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -1227,6 +2871,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -1234,6 +2883,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -1241,6 +2895,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -1248,10 +2907,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChecksumAlgorithm" => Shape.new(
             "ChecksumAlgorithm",
             "string",
@@ -1259,6 +2923,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ChecksumAlgorithmList" => Shape.new(
             "ChecksumAlgorithmList",
             "list",
@@ -1272,6 +2944,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ChecksumCRC32" => Shape.new(
             "ChecksumCRC32",
             "string",
@@ -1279,6 +2956,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChecksumCRC32C" => Shape.new(
             "ChecksumCRC32C",
             "string",
@@ -1286,6 +2967,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChecksumCRC64NVME" => Shape.new(
             "ChecksumCRC64NVME",
             "string",
@@ -1293,6 +2978,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChecksumMode" => Shape.new(
             "ChecksumMode",
             "string",
@@ -1300,6 +2989,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChecksumSHA1" => Shape.new(
             "ChecksumSHA1",
             "string",
@@ -1307,6 +3000,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChecksumSHA256" => Shape.new(
             "ChecksumSHA256",
             "string",
@@ -1314,6 +3011,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChecksumType" => Shape.new(
             "ChecksumType",
             "string",
@@ -1321,6 +3022,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ClientToken" => Shape.new(
             "ClientToken",
             "string",
@@ -1328,6 +3033,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CloudFunction" => Shape.new(
             "CloudFunction",
             "string",
@@ -1335,10 +3044,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CloudFunctionConfiguration" => Shape.new(
             "CloudFunctionConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CloudFunction",
                 "CloudFunction",
@@ -1346,6 +3064,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Event",
                 "Event",
@@ -1353,6 +3076,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Events",
                 "EventList",
@@ -1360,6 +3088,11 @@ module AwsSdk
                 "Event",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "NotificationId",
@@ -1367,6 +3100,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InvocationRole",
                 "CloudFunctionInvocationRole",
@@ -1374,10 +3112,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CloudFunctionInvocationRole" => Shape.new(
             "CloudFunctionInvocationRole",
             "string",
@@ -1385,6 +3128,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Code" => Shape.new(
             "Code",
             "string",
@@ -1392,6 +3139,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Comments" => Shape.new(
             "Comments",
             "string",
@@ -1399,10 +3150,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CommonPrefix" => Shape.new(
             "CommonPrefix",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -1410,10 +3170,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CommonPrefixList" => Shape.new(
             "CommonPrefixList",
             "list",
@@ -1427,10 +3196,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "CompleteMultipartUploadOutput" => Shape.new(
             "CompleteMultipartUploadOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -1438,6 +3217,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -1445,6 +3229,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -1452,6 +3241,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -1459,6 +3253,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -1466,6 +3265,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -1473,6 +3277,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -1480,6 +3289,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -1487,6 +3301,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -1494,6 +3313,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "Expiration",
@@ -1501,6 +3325,11 @@ module AwsSdk
                 "x-amz-expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -1508,6 +3337,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "Location",
@@ -1515,6 +3349,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -1522,6 +3361,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -1529,6 +3373,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -1536,6 +3385,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -1543,14 +3397,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CompleteMultipartUploadRequest" => Shape.new(
             "CompleteMultipartUploadRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -1558,6 +3422,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -1565,6 +3434,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -1572,6 +3446,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -1579,6 +3458,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -1586,6 +3470,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -1593,6 +3482,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -1600,6 +3494,11 @@ module AwsSdk
                 "x-amz-checksum-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -1607,6 +3506,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatch",
                 "IfMatch",
@@ -1614,6 +3518,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfNoneMatch",
                 "IfNoneMatch",
@@ -1621,6 +3530,11 @@ module AwsSdk
                 "If-None-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -1628,6 +3542,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MpuObjectSize",
                 "MpuObjectSize",
@@ -1635,6 +3554,11 @@ module AwsSdk
                 "x-amz-mp-object-size",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MultipartUpload",
                 "CompletedMultipartUpload",
@@ -1642,6 +3566,11 @@ module AwsSdk
                 "CompleteMultipartUpload",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -1649,6 +3578,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -1656,6 +3590,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -1663,6 +3602,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -1670,6 +3614,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -1677,14 +3626,24 @@ module AwsSdk
                 "uploadId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CompletedMultipartUpload" => Shape.new(
             "CompletedMultipartUpload",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Parts",
                 "CompletedPartList",
@@ -1692,14 +3651,24 @@ module AwsSdk
                 "Part",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CompletedPart" => Shape.new(
             "CompletedPart",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -1707,6 +3676,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -1714,6 +3688,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -1721,6 +3700,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -1728,6 +3712,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -1735,6 +3724,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -1742,6 +3736,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -1749,10 +3748,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CompletedPartList" => Shape.new(
             "CompletedPartList",
             "list",
@@ -1766,6 +3774,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "CompressionType" => Shape.new(
             "CompressionType",
             "string",
@@ -1773,10 +3786,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Condition" => Shape.new(
             "Condition",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HttpErrorCodeReturnedEquals",
                 "HttpErrorCodeReturnedEquals",
@@ -1784,6 +3806,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyPrefixEquals",
                 "KeyPrefixEquals",
@@ -1791,10 +3818,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ConfirmRemoveSelfBucketAccess" => Shape.new(
             "ConfirmRemoveSelfBucketAccess",
             "boolean",
@@ -1802,6 +3834,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentDisposition" => Shape.new(
             "ContentDisposition",
             "string",
@@ -1809,6 +3845,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentEncoding" => Shape.new(
             "ContentEncoding",
             "string",
@@ -1816,6 +3856,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentLanguage" => Shape.new(
             "ContentLanguage",
             "string",
@@ -1823,6 +3867,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentLength" => Shape.new(
             "ContentLength",
             "long",
@@ -1830,6 +3878,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentMD5" => Shape.new(
             "ContentMD5",
             "string",
@@ -1837,6 +3889,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentRange" => Shape.new(
             "ContentRange",
             "string",
@@ -1844,6 +3900,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContentType" => Shape.new(
             "ContentType",
             "string",
@@ -1851,18 +3911,32 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ContinuationEvent" => Shape.new(
             "ContinuationEvent",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CopyObjectOutput" => Shape.new(
             "CopyObjectOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -1870,6 +3944,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopyObjectResult",
                 "CopyObjectResult",
@@ -1877,6 +3956,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceVersionId",
                 "CopySourceVersionId",
@@ -1884,6 +3968,11 @@ module AwsSdk
                 "x-amz-copy-source-version-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "Expiration",
@@ -1891,6 +3980,11 @@ module AwsSdk
                 "x-amz-expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -1898,6 +3992,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -1905,6 +4004,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -1912,6 +4016,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -1919,6 +4028,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -1926,6 +4040,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -1933,6 +4052,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -1940,14 +4064,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CopyObjectRequest" => Shape.new(
             "CopyObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ACL",
                 "ObjectCannedACL",
@@ -1955,6 +4089,11 @@ module AwsSdk
                 "x-amz-acl",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -1962,6 +4101,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -1969,6 +4113,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CacheControl",
                 "CacheControl",
@@ -1976,6 +4125,11 @@ module AwsSdk
                 "Cache-Control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -1983,6 +4137,11 @@ module AwsSdk
                 "x-amz-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentDisposition",
                 "ContentDisposition",
@@ -1990,6 +4149,11 @@ module AwsSdk
                 "Content-Disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentEncoding",
                 "ContentEncoding",
@@ -1997,6 +4161,11 @@ module AwsSdk
                 "Content-Encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLanguage",
                 "ContentLanguage",
@@ -2004,6 +4173,11 @@ module AwsSdk
                 "Content-Language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentType",
                 "ContentType",
@@ -2011,6 +4185,11 @@ module AwsSdk
                 "Content-Type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySource",
                 "CopySource",
@@ -2018,6 +4197,11 @@ module AwsSdk
                 "x-amz-copy-source",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfMatch",
                 "CopySourceIfMatch",
@@ -2025,6 +4209,11 @@ module AwsSdk
                 "x-amz-copy-source-if-match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfModifiedSince",
                 "CopySourceIfModifiedSince",
@@ -2032,6 +4221,11 @@ module AwsSdk
                 "x-amz-copy-source-if-modified-since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfNoneMatch",
                 "CopySourceIfNoneMatch",
@@ -2039,6 +4233,11 @@ module AwsSdk
                 "x-amz-copy-source-if-none-match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfUnmodifiedSince",
                 "CopySourceIfUnmodifiedSince",
@@ -2046,6 +4245,11 @@ module AwsSdk
                 "x-amz-copy-source-if-unmodified-since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceSSECustomerAlgorithm",
                 "CopySourceSSECustomerAlgorithm",
@@ -2053,6 +4257,11 @@ module AwsSdk
                 "x-amz-copy-source-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceSSECustomerKey",
                 "CopySourceSSECustomerKey",
@@ -2060,6 +4269,11 @@ module AwsSdk
                 "x-amz-copy-source-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceSSECustomerKeyMD5",
                 "CopySourceSSECustomerKeyMD5",
@@ -2067,6 +4281,11 @@ module AwsSdk
                 "x-amz-copy-source-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -2074,6 +4293,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedSourceBucketOwner",
                 "AccountId",
@@ -2081,6 +4305,11 @@ module AwsSdk
                 "x-amz-source-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expires",
                 "Expires",
@@ -2088,6 +4317,11 @@ module AwsSdk
                 "Expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantFullControl",
                 "GrantFullControl",
@@ -2095,6 +4329,11 @@ module AwsSdk
                 "x-amz-grant-full-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantRead",
                 "GrantRead",
@@ -2102,6 +4341,11 @@ module AwsSdk
                 "x-amz-grant-read",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantReadACP",
                 "GrantReadACP",
@@ -2109,6 +4353,11 @@ module AwsSdk
                 "x-amz-grant-read-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWriteACP",
                 "GrantWriteACP",
@@ -2116,6 +4365,11 @@ module AwsSdk
                 "x-amz-grant-write-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatch",
                 "IfMatch",
@@ -2123,6 +4377,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfNoneMatch",
                 "IfNoneMatch",
@@ -2130,6 +4389,11 @@ module AwsSdk
                 "If-None-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -2137,6 +4401,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metadata",
                 "Metadata",
@@ -2144,6 +4413,11 @@ module AwsSdk
                 "x-amz-meta-",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetadataDirective",
                 "MetadataDirective",
@@ -2151,6 +4425,11 @@ module AwsSdk
                 "x-amz-metadata-directive",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockLegalHoldStatus",
                 "ObjectLockLegalHoldStatus",
@@ -2158,6 +4437,11 @@ module AwsSdk
                 "x-amz-object-lock-legal-hold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockMode",
                 "ObjectLockMode",
@@ -2165,6 +4449,11 @@ module AwsSdk
                 "x-amz-object-lock-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockRetainUntilDate",
                 "ObjectLockRetainUntilDate",
@@ -2172,6 +4461,11 @@ module AwsSdk
                 "x-amz-object-lock-retain-until-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -2179,6 +4473,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -2186,6 +4485,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -2193,6 +4497,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -2200,6 +4509,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -2207,6 +4521,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -2214,6 +4533,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -2221,6 +4545,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -2228,6 +4557,11 @@ module AwsSdk
                 "x-amz-storage-class",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tagging",
                 "TaggingHeader",
@@ -2235,6 +4569,11 @@ module AwsSdk
                 "x-amz-tagging",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TaggingDirective",
                 "TaggingDirective",
@@ -2242,6 +4581,11 @@ module AwsSdk
                 "x-amz-tagging-directive",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WebsiteRedirectLocation",
                 "WebsiteRedirectLocation",
@@ -2249,14 +4593,24 @@ module AwsSdk
                 "x-amz-website-redirect-location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CopyObjectResult" => Shape.new(
             "CopyObjectResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -2264,6 +4618,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -2271,6 +4630,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -2278,6 +4642,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -2285,6 +4654,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -2292,6 +4666,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -2299,6 +4678,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -2306,6 +4690,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -2313,14 +4702,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CopyPartResult" => Shape.new(
             "CopyPartResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -2328,6 +4727,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -2335,6 +4739,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -2342,6 +4751,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -2349,6 +4763,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -2356,6 +4775,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -2363,6 +4787,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -2370,10 +4799,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CopySource" => Shape.new(
             "CopySource",
             "string",
@@ -2381,6 +4815,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceIfMatch" => Shape.new(
             "CopySourceIfMatch",
             "string",
@@ -2388,6 +4826,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceIfModifiedSince" => Shape.new(
             "CopySourceIfModifiedSince",
             "timestamp",
@@ -2395,6 +4837,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceIfNoneMatch" => Shape.new(
             "CopySourceIfNoneMatch",
             "string",
@@ -2402,6 +4848,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceIfUnmodifiedSince" => Shape.new(
             "CopySourceIfUnmodifiedSince",
             "timestamp",
@@ -2409,6 +4859,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceRange" => Shape.new(
             "CopySourceRange",
             "string",
@@ -2416,6 +4870,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceSSECustomerAlgorithm" => Shape.new(
             "CopySourceSSECustomerAlgorithm",
             "string",
@@ -2423,6 +4881,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceSSECustomerKey" => Shape.new(
             "CopySourceSSECustomerKey",
             "string",
@@ -2430,6 +4892,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceSSECustomerKeyMD5" => Shape.new(
             "CopySourceSSECustomerKeyMD5",
             "string",
@@ -2437,6 +4903,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CopySourceVersionId" => Shape.new(
             "CopySourceVersionId",
             "string",
@@ -2444,10 +4914,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CreateBucketConfiguration" => Shape.new(
             "CreateBucketConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketInfo",
@@ -2455,6 +4934,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "LocationInfo",
@@ -2462,6 +4946,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LocationConstraint",
                 "BucketLocationConstraint",
@@ -2469,6 +4958,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagSet",
@@ -2476,14 +4970,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateBucketMetadataConfigurationRequest" => Shape.new(
             "CreateBucketMetadataConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -2491,6 +4995,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -2498,6 +5007,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -2505,6 +5019,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -2512,6 +5031,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetadataConfiguration",
                 "MetadataConfiguration",
@@ -2519,14 +5043,24 @@ module AwsSdk
                 "MetadataConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateBucketMetadataTableConfigurationRequest" => Shape.new(
             "CreateBucketMetadataTableConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -2534,6 +5068,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -2541,6 +5080,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -2548,6 +5092,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -2555,6 +5104,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetadataTableConfiguration",
                 "MetadataTableConfiguration",
@@ -2562,14 +5116,24 @@ module AwsSdk
                 "MetadataTableConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateBucketOutput" => Shape.new(
             "CreateBucketOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketArn",
                 "S3RegionalOrS3ExpressBucketArnString",
@@ -2577,6 +5141,11 @@ module AwsSdk
                 "x-amz-bucket-arn",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "Location",
@@ -2584,14 +5153,24 @@ module AwsSdk
                 "Location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateBucketRequest" => Shape.new(
             "CreateBucketRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ACL",
                 "BucketCannedACL",
@@ -2599,6 +5178,11 @@ module AwsSdk
                 "x-amz-acl",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -2606,6 +5190,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CreateBucketConfiguration",
                 "CreateBucketConfiguration",
@@ -2613,6 +5202,11 @@ module AwsSdk
                 "CreateBucketConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantFullControl",
                 "GrantFullControl",
@@ -2620,6 +5214,11 @@ module AwsSdk
                 "x-amz-grant-full-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantRead",
                 "GrantRead",
@@ -2627,6 +5226,11 @@ module AwsSdk
                 "x-amz-grant-read",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantReadACP",
                 "GrantReadACP",
@@ -2634,6 +5238,11 @@ module AwsSdk
                 "x-amz-grant-read-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWrite",
                 "GrantWrite",
@@ -2641,6 +5250,11 @@ module AwsSdk
                 "x-amz-grant-write",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWriteACP",
                 "GrantWriteACP",
@@ -2648,6 +5262,11 @@ module AwsSdk
                 "x-amz-grant-write-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockEnabledForBucket",
                 "ObjectLockEnabledForBucket",
@@ -2655,6 +5274,11 @@ module AwsSdk
                 "x-amz-bucket-object-lock-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectOwnership",
                 "ObjectOwnership",
@@ -2662,14 +5286,24 @@ module AwsSdk
                 "x-amz-object-ownership",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateMultipartUploadOutput" => Shape.new(
             "CreateMultipartUploadOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AbortDate",
                 "AbortDate",
@@ -2677,6 +5311,11 @@ module AwsSdk
                 "x-amz-abort-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "AbortRuleId",
                 "AbortRuleId",
@@ -2684,6 +5323,11 @@ module AwsSdk
                 "x-amz-abort-rule-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -2691,6 +5335,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -2698,6 +5347,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -2705,6 +5359,11 @@ module AwsSdk
                 "x-amz-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -2712,6 +5371,11 @@ module AwsSdk
                 "x-amz-checksum-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -2719,6 +5383,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -2726,6 +5395,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -2733,6 +5407,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -2740,6 +5419,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -2747,6 +5431,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -2754,6 +5443,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -2761,6 +5455,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -2768,14 +5467,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateMultipartUploadRequest" => Shape.new(
             "CreateMultipartUploadRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ACL",
                 "ObjectCannedACL",
@@ -2783,6 +5492,11 @@ module AwsSdk
                 "x-amz-acl",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -2790,6 +5504,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -2797,6 +5516,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CacheControl",
                 "CacheControl",
@@ -2804,6 +5528,11 @@ module AwsSdk
                 "Cache-Control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -2811,6 +5540,11 @@ module AwsSdk
                 "x-amz-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -2818,6 +5552,11 @@ module AwsSdk
                 "x-amz-checksum-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentDisposition",
                 "ContentDisposition",
@@ -2825,6 +5564,11 @@ module AwsSdk
                 "Content-Disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentEncoding",
                 "ContentEncoding",
@@ -2832,6 +5576,11 @@ module AwsSdk
                 "Content-Encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLanguage",
                 "ContentLanguage",
@@ -2839,6 +5588,11 @@ module AwsSdk
                 "Content-Language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentType",
                 "ContentType",
@@ -2846,6 +5600,11 @@ module AwsSdk
                 "Content-Type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -2853,6 +5612,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expires",
                 "Expires",
@@ -2860,6 +5624,11 @@ module AwsSdk
                 "Expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantFullControl",
                 "GrantFullControl",
@@ -2867,6 +5636,11 @@ module AwsSdk
                 "x-amz-grant-full-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantRead",
                 "GrantRead",
@@ -2874,6 +5648,11 @@ module AwsSdk
                 "x-amz-grant-read",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantReadACP",
                 "GrantReadACP",
@@ -2881,6 +5660,11 @@ module AwsSdk
                 "x-amz-grant-read-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWriteACP",
                 "GrantWriteACP",
@@ -2888,6 +5672,11 @@ module AwsSdk
                 "x-amz-grant-write-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -2895,6 +5684,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metadata",
                 "Metadata",
@@ -2902,6 +5696,11 @@ module AwsSdk
                 "x-amz-meta-",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockLegalHoldStatus",
                 "ObjectLockLegalHoldStatus",
@@ -2909,6 +5708,11 @@ module AwsSdk
                 "x-amz-object-lock-legal-hold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockMode",
                 "ObjectLockMode",
@@ -2916,6 +5720,11 @@ module AwsSdk
                 "x-amz-object-lock-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockRetainUntilDate",
                 "ObjectLockRetainUntilDate",
@@ -2923,6 +5732,11 @@ module AwsSdk
                 "x-amz-object-lock-retain-until-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -2930,6 +5744,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -2937,6 +5756,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -2944,6 +5768,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -2951,6 +5780,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -2958,6 +5792,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -2965,6 +5804,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -2972,6 +5816,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -2979,6 +5828,11 @@ module AwsSdk
                 "x-amz-storage-class",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tagging",
                 "TaggingHeader",
@@ -2986,6 +5840,11 @@ module AwsSdk
                 "x-amz-tagging",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WebsiteRedirectLocation",
                 "WebsiteRedirectLocation",
@@ -2993,14 +5852,24 @@ module AwsSdk
                 "x-amz-website-redirect-location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateSessionOutput" => Shape.new(
             "CreateSessionOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -3008,6 +5877,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Credentials",
                 "SessionCredentials",
@@ -3015,6 +5889,11 @@ module AwsSdk
                 "Credentials",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -3022,6 +5901,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -3029,6 +5913,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -3036,14 +5925,24 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateSessionRequest" => Shape.new(
             "CreateSessionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3051,6 +5950,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -3058,6 +5962,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -3065,6 +5974,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -3072,6 +5986,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -3079,6 +5998,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SessionMode",
                 "SessionMode",
@@ -3086,10 +6010,15 @@ module AwsSdk
                 "x-amz-create-session-mode",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreationDate" => Shape.new(
             "CreationDate",
             "timestamp",
@@ -3097,6 +6026,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DataRedundancy" => Shape.new(
             "DataRedundancy",
             "string",
@@ -3104,6 +6037,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Date" => Shape.new(
             "Date",
             "timestamp",
@@ -3111,6 +6048,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Days" => Shape.new(
             "Days",
             "integer",
@@ -3118,6 +6059,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DaysAfterInitiation" => Shape.new(
             "DaysAfterInitiation",
             "integer",
@@ -3125,10 +6070,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DefaultRetention" => Shape.new(
             "DefaultRetention",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Days",
                 "Days",
@@ -3136,6 +6090,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Mode",
                 "ObjectLockRetentionMode",
@@ -3143,6 +6102,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Years",
                 "Years",
@@ -3150,14 +6114,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Delete" => Shape.new(
             "Delete",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Objects",
                 "ObjectIdentifierList",
@@ -3165,6 +6139,11 @@ module AwsSdk
                 "Object",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Quiet",
                 "Quiet",
@@ -3172,14 +6151,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketAnalyticsConfigurationRequest" => Shape.new(
             "DeleteBucketAnalyticsConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3187,6 +6176,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3194,6 +6188,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "AnalyticsId",
@@ -3201,14 +6200,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketCorsRequest" => Shape.new(
             "DeleteBucketCorsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3216,6 +6225,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3223,14 +6237,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketEncryptionRequest" => Shape.new(
             "DeleteBucketEncryptionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3238,6 +6262,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3245,14 +6274,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketIntelligentTieringConfigurationRequest" => Shape.new(
             "DeleteBucketIntelligentTieringConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3260,6 +6299,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3267,6 +6311,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "IntelligentTieringId",
@@ -3274,14 +6323,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketInventoryConfigurationRequest" => Shape.new(
             "DeleteBucketInventoryConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3289,6 +6348,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3296,6 +6360,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "InventoryId",
@@ -3303,14 +6372,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketLifecycleRequest" => Shape.new(
             "DeleteBucketLifecycleRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3318,6 +6397,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3325,14 +6409,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketMetadataConfigurationRequest" => Shape.new(
             "DeleteBucketMetadataConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3340,6 +6434,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3347,14 +6446,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketMetadataTableConfigurationRequest" => Shape.new(
             "DeleteBucketMetadataTableConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3362,6 +6471,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3369,14 +6483,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketMetricsConfigurationRequest" => Shape.new(
             "DeleteBucketMetricsConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3384,6 +6508,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3391,6 +6520,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "MetricsId",
@@ -3398,14 +6532,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketOwnershipControlsRequest" => Shape.new(
             "DeleteBucketOwnershipControlsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3413,6 +6557,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3420,14 +6569,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketPolicyRequest" => Shape.new(
             "DeleteBucketPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3435,6 +6594,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3442,14 +6606,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketReplicationRequest" => Shape.new(
             "DeleteBucketReplicationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3457,6 +6631,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3464,14 +6643,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketRequest" => Shape.new(
             "DeleteBucketRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3479,6 +6668,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3486,14 +6680,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketTaggingRequest" => Shape.new(
             "DeleteBucketTaggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3501,6 +6705,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3508,14 +6717,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteBucketWebsiteRequest" => Shape.new(
             "DeleteBucketWebsiteRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3523,6 +6742,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3530,10 +6754,15 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteMarker" => Shape.new(
             "DeleteMarker",
             "boolean",
@@ -3541,10 +6770,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DeleteMarkerEntry" => Shape.new(
             "DeleteMarkerEntry",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsLatest",
                 "IsLatest",
@@ -3552,6 +6790,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -3559,6 +6802,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -3566,6 +6814,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -3573,6 +6826,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -3580,14 +6838,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteMarkerReplication" => Shape.new(
             "DeleteMarkerReplication",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "DeleteMarkerReplicationStatus",
@@ -3595,10 +6863,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteMarkerReplicationStatus" => Shape.new(
             "DeleteMarkerReplicationStatus",
             "string",
@@ -3606,6 +6879,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DeleteMarkerVersionId" => Shape.new(
             "DeleteMarkerVersionId",
             "string",
@@ -3613,6 +6890,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "DeleteMarkers" => Shape.new(
             "DeleteMarkers",
             "list",
@@ -3626,10 +6911,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "DeleteObjectOutput" => Shape.new(
             "DeleteObjectOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarker",
                 "DeleteMarker",
@@ -3637,6 +6932,11 @@ module AwsSdk
                 "x-amz-delete-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -3644,6 +6944,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -3651,14 +6956,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteObjectRequest" => Shape.new(
             "DeleteObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3666,6 +6981,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BypassGovernanceRetention",
                 "BypassGovernanceRetention",
@@ -3673,6 +6993,11 @@ module AwsSdk
                 "x-amz-bypass-governance-retention",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3680,6 +7005,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatch",
                 "IfMatch",
@@ -3687,6 +7017,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatchLastModifiedTime",
                 "IfMatchLastModifiedTime",
@@ -3694,6 +7029,11 @@ module AwsSdk
                 "x-amz-if-match-last-modified-time",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatchSize",
                 "IfMatchSize",
@@ -3701,6 +7041,11 @@ module AwsSdk
                 "x-amz-if-match-size",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -3708,6 +7053,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MFA",
                 "MFA",
@@ -3715,6 +7065,11 @@ module AwsSdk
                 "x-amz-mfa",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -3722,6 +7077,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -3729,14 +7089,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteObjectTaggingOutput" => Shape.new(
             "DeleteObjectTaggingOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -3744,14 +7114,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteObjectTaggingRequest" => Shape.new(
             "DeleteObjectTaggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3759,6 +7139,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3766,6 +7151,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -3773,6 +7163,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -3780,14 +7175,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteObjectsOutput" => Shape.new(
             "DeleteObjectsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Deleted",
                 "DeletedObjects",
@@ -3795,6 +7200,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Errors",
                 "Errors",
@@ -3802,6 +7212,11 @@ module AwsSdk
                 "Error",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -3809,14 +7224,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteObjectsRequest" => Shape.new(
             "DeleteObjectsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3824,6 +7249,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BypassGovernanceRetention",
                 "BypassGovernanceRetention",
@@ -3831,6 +7261,11 @@ module AwsSdk
                 "x-amz-bypass-governance-retention",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -3838,6 +7273,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delete",
                 "Delete",
@@ -3845,6 +7285,11 @@ module AwsSdk
                 "Delete",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3852,6 +7297,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MFA",
                 "MFA",
@@ -3859,6 +7309,11 @@ module AwsSdk
                 "x-amz-mfa",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -3866,14 +7321,24 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeletePublicAccessBlockRequest" => Shape.new(
             "DeletePublicAccessBlockRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3881,6 +7346,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -3888,14 +7358,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeletedObject" => Shape.new(
             "DeletedObject",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarker",
                 "DeleteMarker",
@@ -3903,6 +7383,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarkerVersionId",
                 "DeleteMarkerVersionId",
@@ -3910,6 +7395,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -3917,6 +7407,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -3924,10 +7419,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "DeletedObjects" => Shape.new(
             "DeletedObjects",
             "list",
@@ -3941,6 +7445,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Delimiter" => Shape.new(
             "Delimiter",
             "string",
@@ -3948,6 +7457,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Description" => Shape.new(
             "Description",
             "string",
@@ -3955,10 +7468,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Destination" => Shape.new(
             "Destination",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessControlTranslation",
                 "AccessControlTranslation",
@@ -3966,6 +7488,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Account",
                 "AccountId",
@@ -3973,6 +7500,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -3980,6 +7512,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncryptionConfiguration",
                 "EncryptionConfiguration",
@@ -3987,6 +7524,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metrics",
                 "Metrics",
@@ -3994,6 +7536,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplicationTime",
                 "ReplicationTime",
@@ -4001,6 +7548,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -4008,14 +7560,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DestinationResult" => Shape.new(
             "DestinationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TableBucketArn",
                 "S3TablesBucketArn",
@@ -4023,6 +7585,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableBucketType",
                 "S3TablesBucketType",
@@ -4030,6 +7597,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableNamespace",
                 "S3TablesNamespace",
@@ -4037,10 +7609,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DirectoryBucketToken" => Shape.new(
             "DirectoryBucketToken",
             "string",
@@ -4048,6 +7625,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DisplayName" => Shape.new(
             "DisplayName",
             "string",
@@ -4055,6 +7636,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ETag" => Shape.new(
             "ETag",
             "string",
@@ -4062,6 +7647,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "EmailAddress" => Shape.new(
             "EmailAddress",
             "string",
@@ -4069,6 +7658,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "EnableRequestProgress" => Shape.new(
             "EnableRequestProgress",
             "boolean",
@@ -4076,6 +7669,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "EncodingType" => Shape.new(
             "EncodingType",
             "string",
@@ -4083,10 +7680,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Encryption" => Shape.new(
             "Encryption",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EncryptionType",
                 "ServerSideEncryption",
@@ -4094,6 +7700,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KMSContext",
                 "KMSContext",
@@ -4101,6 +7712,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KMSKeyId",
                 "SSEKMSKeyId",
@@ -4108,14 +7724,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "EncryptionConfiguration" => Shape.new(
             "EncryptionConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ReplicaKmsKeyID",
                 "ReplicaKmsKeyID",
@@ -4123,10 +7749,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "EncryptionType" => Shape.new(
             "EncryptionType",
             "string",
@@ -4134,6 +7765,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "EncryptionTypeList" => Shape.new(
             "EncryptionTypeList",
             "list",
@@ -4147,14 +7786,24 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "EncryptionTypeMismatch" => Shape.new(
             "EncryptionTypeMismatch",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "End" => Shape.new(
             "End",
             "long",
@@ -4162,18 +7811,32 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "EndEvent" => Shape.new(
             "EndEvent",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Error" => Shape.new(
             "Error",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Code",
                 "Code",
@@ -4181,6 +7844,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -4188,6 +7856,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "Message",
@@ -4195,6 +7868,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -4202,10 +7880,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ErrorCode" => Shape.new(
             "ErrorCode",
             "string",
@@ -4213,10 +7896,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ErrorDetails" => Shape.new(
             "ErrorDetails",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ErrorCode",
                 "ErrorCode",
@@ -4224,6 +7916,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ErrorMessage",
                 "ErrorMessage",
@@ -4231,14 +7928,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ErrorDocument" => Shape.new(
             "ErrorDocument",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -4246,10 +7953,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ErrorMessage" => Shape.new(
             "ErrorMessage",
             "string",
@@ -4257,6 +7969,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "Errors" => Shape.new(
             "Errors",
             "list",
@@ -4270,6 +7990,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Event" => Shape.new(
             "Event",
             "string",
@@ -4277,14 +8002,27 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "EventBridgeConfiguration" => Shape.new(
             "EventBridgeConfiguration",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "EventList" => Shape.new(
             "EventList",
             "list",
@@ -4298,10 +8036,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ExistingObjectReplication" => Shape.new(
             "ExistingObjectReplication",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ExistingObjectReplicationStatus",
@@ -4309,10 +8057,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ExistingObjectReplicationStatus" => Shape.new(
             "ExistingObjectReplicationStatus",
             "string",
@@ -4320,6 +8073,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Expiration" => Shape.new(
             "Expiration",
             "string",
@@ -4327,6 +8084,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ExpirationState" => Shape.new(
             "ExpirationState",
             "string",
@@ -4334,6 +8095,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ExpirationStatus" => Shape.new(
             "ExpirationStatus",
             "string",
@@ -4341,6 +8106,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ExpiredObjectDeleteMarker" => Shape.new(
             "ExpiredObjectDeleteMarker",
             "boolean",
@@ -4348,6 +8117,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Expires" => Shape.new(
             "Expires",
             "string",
@@ -4355,6 +8128,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ExposeHeader" => Shape.new(
             "ExposeHeader",
             "string",
@@ -4362,6 +8139,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ExposeHeaders" => Shape.new(
             "ExposeHeaders",
             "list",
@@ -4375,6 +8160,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Expression" => Shape.new(
             "Expression",
             "string",
@@ -4382,6 +8172,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ExpressionType" => Shape.new(
             "ExpressionType",
             "string",
@@ -4389,6 +8183,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FetchOwner" => Shape.new(
             "FetchOwner",
             "boolean",
@@ -4396,6 +8194,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FieldDelimiter" => Shape.new(
             "FieldDelimiter",
             "string",
@@ -4403,6 +8205,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FileHeaderInfo" => Shape.new(
             "FileHeaderInfo",
             "string",
@@ -4410,10 +8216,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FilterRule" => Shape.new(
             "FilterRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "FilterRuleName",
@@ -4421,6 +8236,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "FilterRuleValue",
@@ -4428,10 +8248,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "FilterRuleList" => Shape.new(
             "FilterRuleList",
             "list",
@@ -4445,6 +8274,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "FilterRuleName" => Shape.new(
             "FilterRuleName",
             "string",
@@ -4452,6 +8286,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FilterRuleValue" => Shape.new(
             "FilterRuleValue",
             "string",
@@ -4459,10 +8297,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GetBucketAbacOutput" => Shape.new(
             "GetBucketAbacOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AbacStatus",
                 "AbacStatus",
@@ -4470,14 +8317,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAbacRequest" => Shape.new(
             "GetBucketAbacRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4485,6 +8342,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4492,14 +8354,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAccelerateConfigurationOutput" => Shape.new(
             "GetBucketAccelerateConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -4507,6 +8379,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "BucketAccelerateStatus",
@@ -4514,14 +8391,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAccelerateConfigurationRequest" => Shape.new(
             "GetBucketAccelerateConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4529,6 +8416,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4536,6 +8428,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -4543,14 +8440,24 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAclOutput" => Shape.new(
             "GetBucketAclOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Grants",
                 "Grants",
@@ -4558,6 +8465,11 @@ module AwsSdk
                 "AccessControlList",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -4565,14 +8477,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAclRequest" => Shape.new(
             "GetBucketAclRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4580,6 +8502,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4587,14 +8514,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAnalyticsConfigurationOutput" => Shape.new(
             "GetBucketAnalyticsConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AnalyticsConfiguration",
                 "AnalyticsConfiguration",
@@ -4602,14 +8539,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketAnalyticsConfigurationRequest" => Shape.new(
             "GetBucketAnalyticsConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4617,6 +8564,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4624,6 +8576,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "AnalyticsId",
@@ -4631,14 +8588,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketCorsOutput" => Shape.new(
             "GetBucketCorsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CORSRules",
                 "CORSRules",
@@ -4646,14 +8613,24 @@ module AwsSdk
                 "CORSRule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketCorsRequest" => Shape.new(
             "GetBucketCorsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4661,6 +8638,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4668,14 +8650,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketEncryptionOutput" => Shape.new(
             "GetBucketEncryptionOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryptionConfiguration",
                 "ServerSideEncryptionConfiguration",
@@ -4683,14 +8675,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketEncryptionRequest" => Shape.new(
             "GetBucketEncryptionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4698,6 +8700,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4705,14 +8712,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketIntelligentTieringConfigurationOutput" => Shape.new(
             "GetBucketIntelligentTieringConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IntelligentTieringConfiguration",
                 "IntelligentTieringConfiguration",
@@ -4720,14 +8737,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketIntelligentTieringConfigurationRequest" => Shape.new(
             "GetBucketIntelligentTieringConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4735,6 +8762,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4742,6 +8774,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "IntelligentTieringId",
@@ -4749,14 +8786,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketInventoryConfigurationOutput" => Shape.new(
             "GetBucketInventoryConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "InventoryConfiguration",
                 "InventoryConfiguration",
@@ -4764,14 +8811,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketInventoryConfigurationRequest" => Shape.new(
             "GetBucketInventoryConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4779,6 +8836,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4786,6 +8848,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "InventoryId",
@@ -4793,14 +8860,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLifecycleConfigurationOutput" => Shape.new(
             "GetBucketLifecycleConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "LifecycleRules",
@@ -4808,6 +8885,11 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TransitionDefaultMinimumObjectSize",
                 "TransitionDefaultMinimumObjectSize",
@@ -4815,14 +8897,24 @@ module AwsSdk
                 "x-amz-transition-default-minimum-object-size",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLifecycleConfigurationRequest" => Shape.new(
             "GetBucketLifecycleConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4830,6 +8922,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4837,14 +8934,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLifecycleOutput" => Shape.new(
             "GetBucketLifecycleOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "Rules",
@@ -4852,14 +8959,24 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLifecycleRequest" => Shape.new(
             "GetBucketLifecycleRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4867,6 +8984,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4874,14 +8996,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLocationOutput" => Shape.new(
             "GetBucketLocationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "LocationConstraint",
                 "BucketLocationConstraint",
@@ -4889,14 +9021,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLocationRequest" => Shape.new(
             "GetBucketLocationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4904,6 +9046,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4911,14 +9058,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLoggingOutput" => Shape.new(
             "GetBucketLoggingOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "LoggingEnabled",
                 "LoggingEnabled",
@@ -4926,14 +9083,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketLoggingRequest" => Shape.new(
             "GetBucketLoggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4941,6 +9108,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4948,14 +9120,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetadataConfigurationOutput" => Shape.new(
             "GetBucketMetadataConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "GetBucketMetadataConfigurationResult",
                 "GetBucketMetadataConfigurationResult",
@@ -4963,14 +9145,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetadataConfigurationRequest" => Shape.new(
             "GetBucketMetadataConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -4978,6 +9170,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -4985,14 +9182,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetadataConfigurationResult" => Shape.new(
             "GetBucketMetadataConfigurationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MetadataConfigurationResult",
                 "MetadataConfigurationResult",
@@ -5000,14 +9207,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetadataTableConfigurationOutput" => Shape.new(
             "GetBucketMetadataTableConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "GetBucketMetadataTableConfigurationResult",
                 "GetBucketMetadataTableConfigurationResult",
@@ -5015,14 +9232,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetadataTableConfigurationRequest" => Shape.new(
             "GetBucketMetadataTableConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5030,6 +9257,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5037,14 +9269,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetadataTableConfigurationResult" => Shape.new(
             "GetBucketMetadataTableConfigurationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Error",
                 "ErrorDetails",
@@ -5052,6 +9294,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetadataTableConfigurationResult",
                 "MetadataTableConfigurationResult",
@@ -5059,6 +9306,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "MetadataTableStatus",
@@ -5066,14 +9318,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetricsConfigurationOutput" => Shape.new(
             "GetBucketMetricsConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MetricsConfiguration",
                 "MetricsConfiguration",
@@ -5081,14 +9343,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketMetricsConfigurationRequest" => Shape.new(
             "GetBucketMetricsConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5096,6 +9368,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5103,6 +9380,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "MetricsId",
@@ -5110,14 +9392,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketNotificationConfigurationRequest" => Shape.new(
             "GetBucketNotificationConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5125,6 +9417,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5132,14 +9429,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketOwnershipControlsOutput" => Shape.new(
             "GetBucketOwnershipControlsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "OwnershipControls",
                 "OwnershipControls",
@@ -5147,14 +9454,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketOwnershipControlsRequest" => Shape.new(
             "GetBucketOwnershipControlsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5162,6 +9479,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5169,14 +9491,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketPolicyOutput" => Shape.new(
             "GetBucketPolicyOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Policy",
                 "Policy",
@@ -5184,14 +9516,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketPolicyRequest" => Shape.new(
             "GetBucketPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5199,6 +9541,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5206,14 +9553,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketPolicyStatusOutput" => Shape.new(
             "GetBucketPolicyStatusOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "PolicyStatus",
                 "PolicyStatus",
@@ -5221,14 +9578,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketPolicyStatusRequest" => Shape.new(
             "GetBucketPolicyStatusRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5236,6 +9603,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5243,14 +9615,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketReplicationOutput" => Shape.new(
             "GetBucketReplicationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ReplicationConfiguration",
                 "ReplicationConfiguration",
@@ -5258,14 +9640,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketReplicationRequest" => Shape.new(
             "GetBucketReplicationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5273,6 +9665,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5280,14 +9677,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketRequestPaymentOutput" => Shape.new(
             "GetBucketRequestPaymentOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Payer",
                 "Payer",
@@ -5295,14 +9702,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketRequestPaymentRequest" => Shape.new(
             "GetBucketRequestPaymentRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5310,6 +9727,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5317,14 +9739,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketTaggingOutput" => Shape.new(
             "GetBucketTaggingOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TagSet",
                 "TagSet",
@@ -5332,14 +9764,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketTaggingRequest" => Shape.new(
             "GetBucketTaggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5347,6 +9789,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5354,14 +9801,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketVersioningOutput" => Shape.new(
             "GetBucketVersioningOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MFADelete",
                 "MFADeleteStatus",
@@ -5369,6 +9826,11 @@ module AwsSdk
                 "MfaDelete",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "BucketVersioningStatus",
@@ -5376,14 +9838,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketVersioningRequest" => Shape.new(
             "GetBucketVersioningRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5391,6 +9863,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5398,14 +9875,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketWebsiteOutput" => Shape.new(
             "GetBucketWebsiteOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ErrorDocument",
                 "ErrorDocument",
@@ -5413,6 +9900,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IndexDocument",
                 "IndexDocument",
@@ -5420,6 +9912,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RedirectAllRequestsTo",
                 "RedirectAllRequestsTo",
@@ -5427,6 +9924,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RoutingRules",
                 "RoutingRules",
@@ -5434,14 +9936,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetBucketWebsiteRequest" => Shape.new(
             "GetBucketWebsiteRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5449,6 +9961,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5456,14 +9973,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectAclOutput" => Shape.new(
             "GetObjectAclOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Grants",
                 "Grants",
@@ -5471,6 +9998,11 @@ module AwsSdk
                 "AccessControlList",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -5478,6 +10010,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -5485,14 +10022,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectAclRequest" => Shape.new(
             "GetObjectAclRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5500,6 +10047,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5507,6 +10059,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -5514,6 +10071,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -5521,6 +10083,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -5528,14 +10095,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectAttributesOutput" => Shape.new(
             "GetObjectAttributesOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Checksum",
                 "Checksum",
@@ -5543,6 +10120,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarker",
                 "DeleteMarker",
@@ -5550,6 +10132,11 @@ module AwsSdk
                 "x-amz-delete-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -5557,6 +10144,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -5564,6 +10156,11 @@ module AwsSdk
                 "Last-Modified",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectParts",
                 "GetObjectAttributesParts",
@@ -5571,6 +10168,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectSize",
                 "ObjectSize",
@@ -5578,6 +10180,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -5585,6 +10192,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -5592,6 +10204,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -5599,14 +10216,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectAttributesParts" => Shape.new(
             "GetObjectAttributesParts",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -5614,6 +10241,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxParts",
                 "MaxParts",
@@ -5621,6 +10253,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextPartNumberMarker",
                 "NextPartNumberMarker",
@@ -5628,6 +10265,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumberMarker",
                 "PartNumberMarker",
@@ -5635,6 +10277,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Parts",
                 "PartsList",
@@ -5642,6 +10289,11 @@ module AwsSdk
                 "Part",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TotalPartsCount",
                 "PartsCount",
@@ -5649,14 +10301,24 @@ module AwsSdk
                 "PartsCount",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectAttributesRequest" => Shape.new(
             "GetObjectAttributesRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5664,6 +10326,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5671,6 +10338,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -5678,6 +10350,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxParts",
                 "MaxParts",
@@ -5685,6 +10362,11 @@ module AwsSdk
                 "x-amz-max-parts",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectAttributes",
                 "ObjectAttributesList",
@@ -5692,6 +10374,11 @@ module AwsSdk
                 "x-amz-object-attributes",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumberMarker",
                 "PartNumberMarker",
@@ -5699,6 +10386,11 @@ module AwsSdk
                 "x-amz-part-number-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -5706,6 +10398,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -5713,6 +10410,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -5720,6 +10422,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -5727,6 +10434,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -5734,14 +10446,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectLegalHoldOutput" => Shape.new(
             "GetObjectLegalHoldOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "LegalHold",
                 "ObjectLockLegalHold",
@@ -5749,14 +10471,24 @@ module AwsSdk
                 "LegalHold",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectLegalHoldRequest" => Shape.new(
             "GetObjectLegalHoldRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5764,6 +10496,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5771,6 +10508,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -5778,6 +10520,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -5785,6 +10532,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -5792,14 +10544,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectLockConfigurationOutput" => Shape.new(
             "GetObjectLockConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockConfiguration",
                 "ObjectLockConfiguration",
@@ -5807,14 +10569,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectLockConfigurationRequest" => Shape.new(
             "GetObjectLockConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -5822,6 +10594,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -5829,14 +10606,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectOutput" => Shape.new(
             "GetObjectOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AcceptRanges",
                 "AcceptRanges",
@@ -5844,6 +10631,11 @@ module AwsSdk
                 "accept-ranges",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Body",
                 "Body",
@@ -5851,6 +10643,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -5858,6 +10655,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CacheControl",
                 "CacheControl",
@@ -5865,6 +10667,11 @@ module AwsSdk
                 "Cache-Control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -5872,6 +10679,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -5879,6 +10691,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -5886,6 +10703,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -5893,6 +10715,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -5900,6 +10727,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -5907,6 +10739,11 @@ module AwsSdk
                 "x-amz-checksum-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentDisposition",
                 "ContentDisposition",
@@ -5914,6 +10751,11 @@ module AwsSdk
                 "Content-Disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentEncoding",
                 "ContentEncoding",
@@ -5921,6 +10763,11 @@ module AwsSdk
                 "Content-Encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLanguage",
                 "ContentLanguage",
@@ -5928,6 +10775,11 @@ module AwsSdk
                 "Content-Language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLength",
                 "ContentLength",
@@ -5935,6 +10787,11 @@ module AwsSdk
                 "Content-Length",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentRange",
                 "ContentRange",
@@ -5942,6 +10799,11 @@ module AwsSdk
                 "Content-Range",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentType",
                 "ContentType",
@@ -5949,6 +10811,11 @@ module AwsSdk
                 "Content-Type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarker",
                 "DeleteMarker",
@@ -5956,6 +10823,11 @@ module AwsSdk
                 "x-amz-delete-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -5963,6 +10835,11 @@ module AwsSdk
                 "ETag",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "Expiration",
@@ -5970,6 +10847,11 @@ module AwsSdk
                 "x-amz-expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expires",
                 "Expires",
@@ -5977,6 +10859,11 @@ module AwsSdk
                 "Expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -5984,6 +10871,11 @@ module AwsSdk
                 "Last-Modified",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metadata",
                 "Metadata",
@@ -5991,6 +10883,11 @@ module AwsSdk
                 "x-amz-meta-",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MissingMeta",
                 "MissingMeta",
@@ -5998,6 +10895,11 @@ module AwsSdk
                 "x-amz-missing-meta",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockLegalHoldStatus",
                 "ObjectLockLegalHoldStatus",
@@ -6005,6 +10907,11 @@ module AwsSdk
                 "x-amz-object-lock-legal-hold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockMode",
                 "ObjectLockMode",
@@ -6012,6 +10919,11 @@ module AwsSdk
                 "x-amz-object-lock-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockRetainUntilDate",
                 "ObjectLockRetainUntilDate",
@@ -6019,6 +10931,11 @@ module AwsSdk
                 "x-amz-object-lock-retain-until-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartsCount",
                 "PartsCount",
@@ -6026,6 +10943,11 @@ module AwsSdk
                 "x-amz-mp-parts-count",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplicationStatus",
                 "ReplicationStatus",
@@ -6033,6 +10955,11 @@ module AwsSdk
                 "x-amz-replication-status",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -6040,6 +10967,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Restore",
                 "Restore",
@@ -6047,6 +10979,11 @@ module AwsSdk
                 "x-amz-restore",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -6054,6 +10991,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -6061,6 +11003,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -6068,6 +11015,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -6075,6 +11027,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -6082,6 +11039,11 @@ module AwsSdk
                 "x-amz-storage-class",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TagCount",
                 "TagCount",
@@ -6089,6 +11051,11 @@ module AwsSdk
                 "x-amz-tagging-count",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -6096,6 +11063,11 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WebsiteRedirectLocation",
                 "WebsiteRedirectLocation",
@@ -6103,14 +11075,24 @@ module AwsSdk
                 "x-amz-website-redirect-location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectRequest" => Shape.new(
             "GetObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6118,6 +11100,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumMode",
                 "ChecksumMode",
@@ -6125,6 +11112,11 @@ module AwsSdk
                 "x-amz-checksum-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6132,6 +11124,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatch",
                 "IfMatch",
@@ -6139,6 +11136,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfModifiedSince",
                 "IfModifiedSince",
@@ -6146,6 +11148,11 @@ module AwsSdk
                 "If-Modified-Since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfNoneMatch",
                 "IfNoneMatch",
@@ -6153,6 +11160,11 @@ module AwsSdk
                 "If-None-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfUnmodifiedSince",
                 "IfUnmodifiedSince",
@@ -6160,6 +11172,11 @@ module AwsSdk
                 "If-Unmodified-Since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -6167,6 +11184,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -6174,6 +11196,11 @@ module AwsSdk
                 "partNumber",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Range",
                 "Range",
@@ -6181,6 +11208,11 @@ module AwsSdk
                 "Range",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -6188,6 +11220,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseCacheControl",
                 "ResponseCacheControl",
@@ -6195,6 +11232,11 @@ module AwsSdk
                 "response-cache-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentDisposition",
                 "ResponseContentDisposition",
@@ -6202,6 +11244,11 @@ module AwsSdk
                 "response-content-disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentEncoding",
                 "ResponseContentEncoding",
@@ -6209,6 +11256,11 @@ module AwsSdk
                 "response-content-encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentLanguage",
                 "ResponseContentLanguage",
@@ -6216,6 +11268,11 @@ module AwsSdk
                 "response-content-language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentType",
                 "ResponseContentType",
@@ -6223,6 +11280,11 @@ module AwsSdk
                 "response-content-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseExpires",
                 "ResponseExpires",
@@ -6230,6 +11292,11 @@ module AwsSdk
                 "response-expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -6237,6 +11304,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -6244,6 +11316,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -6251,6 +11328,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -6258,10 +11340,15 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectResponseStatusCode" => Shape.new(
             "GetObjectResponseStatusCode",
             "integer",
@@ -6269,10 +11356,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GetObjectRetentionOutput" => Shape.new(
             "GetObjectRetentionOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Retention",
                 "ObjectLockRetention",
@@ -6280,14 +11376,24 @@ module AwsSdk
                 "Retention",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectRetentionRequest" => Shape.new(
             "GetObjectRetentionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6295,6 +11401,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6302,6 +11413,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -6309,6 +11425,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -6316,6 +11437,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -6323,14 +11449,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectTaggingOutput" => Shape.new(
             "GetObjectTaggingOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TagSet",
                 "TagSet",
@@ -6338,6 +11474,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -6345,14 +11486,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectTaggingRequest" => Shape.new(
             "GetObjectTaggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6360,6 +11511,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6367,6 +11523,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -6374,6 +11535,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -6381,6 +11547,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -6388,14 +11559,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectTorrentOutput" => Shape.new(
             "GetObjectTorrentOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Body",
                 "Body",
@@ -6403,6 +11584,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -6410,14 +11596,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetObjectTorrentRequest" => Shape.new(
             "GetObjectTorrentRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6425,6 +11621,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6432,6 +11633,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -6439,6 +11645,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -6446,14 +11657,24 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetPublicAccessBlockOutput" => Shape.new(
             "GetPublicAccessBlockOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "PublicAccessBlockConfiguration",
                 "PublicAccessBlockConfiguration",
@@ -6461,14 +11682,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetPublicAccessBlockRequest" => Shape.new(
             "GetPublicAccessBlockRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6476,6 +11707,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6483,14 +11719,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GlacierJobParameters" => Shape.new(
             "GlacierJobParameters",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Tier",
                 "Tier",
@@ -6498,14 +11744,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Grant" => Shape.new(
             "Grant",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Grantee",
                 "Grantee",
@@ -6513,6 +11769,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Permission",
                 "Permission",
@@ -6520,10 +11781,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GrantFullControl" => Shape.new(
             "GrantFullControl",
             "string",
@@ -6531,6 +11797,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GrantRead" => Shape.new(
             "GrantRead",
             "string",
@@ -6538,6 +11808,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GrantReadACP" => Shape.new(
             "GrantReadACP",
             "string",
@@ -6545,6 +11819,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GrantWrite" => Shape.new(
             "GrantWrite",
             "string",
@@ -6552,6 +11830,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GrantWriteACP" => Shape.new(
             "GrantWriteACP",
             "string",
@@ -6559,10 +11841,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Grantee" => Shape.new(
             "Grantee",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DisplayName",
                 "DisplayName",
@@ -6570,6 +11861,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EmailAddress",
                 "EmailAddress",
@@ -6577,6 +11873,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -6584,6 +11885,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "Type",
@@ -6591,6 +11897,11 @@ module AwsSdk
                 "xsi:type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "URI",
                 "URI",
@@ -6598,10 +11909,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "Grants" => Shape.new(
             "Grants",
             "list",
@@ -6615,10 +11935,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "HeadBucketOutput" => Shape.new(
             "HeadBucketOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessPointAlias",
                 "AccessPointAlias",
@@ -6626,6 +11956,11 @@ module AwsSdk
                 "x-amz-access-point-alias",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketArn",
                 "S3RegionalOrS3ExpressBucketArnString",
@@ -6633,6 +11968,11 @@ module AwsSdk
                 "x-amz-bucket-arn",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketLocationName",
                 "BucketLocationName",
@@ -6640,6 +11980,11 @@ module AwsSdk
                 "x-amz-bucket-location-name",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketLocationType",
                 "LocationType",
@@ -6647,6 +11992,11 @@ module AwsSdk
                 "x-amz-bucket-location-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketRegion",
                 "Region",
@@ -6654,14 +12004,24 @@ module AwsSdk
                 "x-amz-bucket-region",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HeadBucketRequest" => Shape.new(
             "HeadBucketRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6669,6 +12029,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6676,14 +12041,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HeadObjectOutput" => Shape.new(
             "HeadObjectOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AcceptRanges",
                 "AcceptRanges",
@@ -6691,6 +12066,11 @@ module AwsSdk
                 "accept-ranges",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ArchiveStatus",
                 "ArchiveStatus",
@@ -6698,6 +12078,11 @@ module AwsSdk
                 "x-amz-archive-status",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -6705,6 +12090,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CacheControl",
                 "CacheControl",
@@ -6712,6 +12102,11 @@ module AwsSdk
                 "Cache-Control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -6719,6 +12114,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -6726,6 +12126,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -6733,6 +12138,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -6740,6 +12150,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -6747,6 +12162,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -6754,6 +12174,11 @@ module AwsSdk
                 "x-amz-checksum-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentDisposition",
                 "ContentDisposition",
@@ -6761,6 +12186,11 @@ module AwsSdk
                 "Content-Disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentEncoding",
                 "ContentEncoding",
@@ -6768,6 +12198,11 @@ module AwsSdk
                 "Content-Encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLanguage",
                 "ContentLanguage",
@@ -6775,6 +12210,11 @@ module AwsSdk
                 "Content-Language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLength",
                 "ContentLength",
@@ -6782,6 +12222,11 @@ module AwsSdk
                 "Content-Length",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentRange",
                 "ContentRange",
@@ -6789,6 +12234,11 @@ module AwsSdk
                 "Content-Range",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentType",
                 "ContentType",
@@ -6796,6 +12246,11 @@ module AwsSdk
                 "Content-Type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarker",
                 "DeleteMarker",
@@ -6803,6 +12258,11 @@ module AwsSdk
                 "x-amz-delete-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -6810,6 +12270,11 @@ module AwsSdk
                 "ETag",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "Expiration",
@@ -6817,6 +12282,11 @@ module AwsSdk
                 "x-amz-expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expires",
                 "Expires",
@@ -6824,6 +12294,11 @@ module AwsSdk
                 "Expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -6831,6 +12306,11 @@ module AwsSdk
                 "Last-Modified",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metadata",
                 "Metadata",
@@ -6838,6 +12318,11 @@ module AwsSdk
                 "x-amz-meta-",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MissingMeta",
                 "MissingMeta",
@@ -6845,6 +12330,11 @@ module AwsSdk
                 "x-amz-missing-meta",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockLegalHoldStatus",
                 "ObjectLockLegalHoldStatus",
@@ -6852,6 +12342,11 @@ module AwsSdk
                 "x-amz-object-lock-legal-hold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockMode",
                 "ObjectLockMode",
@@ -6859,6 +12354,11 @@ module AwsSdk
                 "x-amz-object-lock-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockRetainUntilDate",
                 "ObjectLockRetainUntilDate",
@@ -6866,6 +12366,11 @@ module AwsSdk
                 "x-amz-object-lock-retain-until-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartsCount",
                 "PartsCount",
@@ -6873,6 +12378,11 @@ module AwsSdk
                 "x-amz-mp-parts-count",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplicationStatus",
                 "ReplicationStatus",
@@ -6880,6 +12390,11 @@ module AwsSdk
                 "x-amz-replication-status",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -6887,6 +12402,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Restore",
                 "Restore",
@@ -6894,6 +12414,11 @@ module AwsSdk
                 "x-amz-restore",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -6901,6 +12426,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -6908,6 +12438,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -6915,6 +12450,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -6922,6 +12462,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -6929,6 +12474,11 @@ module AwsSdk
                 "x-amz-storage-class",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TagCount",
                 "TagCount",
@@ -6936,6 +12486,11 @@ module AwsSdk
                 "x-amz-tagging-count",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -6943,6 +12498,11 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WebsiteRedirectLocation",
                 "WebsiteRedirectLocation",
@@ -6950,14 +12510,24 @@ module AwsSdk
                 "x-amz-website-redirect-location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HeadObjectRequest" => Shape.new(
             "HeadObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -6965,6 +12535,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumMode",
                 "ChecksumMode",
@@ -6972,6 +12547,11 @@ module AwsSdk
                 "x-amz-checksum-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -6979,6 +12559,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatch",
                 "IfMatch",
@@ -6986,6 +12571,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfModifiedSince",
                 "IfModifiedSince",
@@ -6993,6 +12583,11 @@ module AwsSdk
                 "If-Modified-Since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfNoneMatch",
                 "IfNoneMatch",
@@ -7000,6 +12595,11 @@ module AwsSdk
                 "If-None-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfUnmodifiedSince",
                 "IfUnmodifiedSince",
@@ -7007,6 +12607,11 @@ module AwsSdk
                 "If-Unmodified-Since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -7014,6 +12619,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -7021,6 +12631,11 @@ module AwsSdk
                 "partNumber",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Range",
                 "Range",
@@ -7028,6 +12643,11 @@ module AwsSdk
                 "Range",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -7035,6 +12655,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseCacheControl",
                 "ResponseCacheControl",
@@ -7042,6 +12667,11 @@ module AwsSdk
                 "response-cache-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentDisposition",
                 "ResponseContentDisposition",
@@ -7049,6 +12679,11 @@ module AwsSdk
                 "response-content-disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentEncoding",
                 "ResponseContentEncoding",
@@ -7056,6 +12691,11 @@ module AwsSdk
                 "response-content-encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentLanguage",
                 "ResponseContentLanguage",
@@ -7063,6 +12703,11 @@ module AwsSdk
                 "response-content-language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseContentType",
                 "ResponseContentType",
@@ -7070,6 +12715,11 @@ module AwsSdk
                 "response-content-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseExpires",
                 "ResponseExpires",
@@ -7077,6 +12727,11 @@ module AwsSdk
                 "response-expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -7084,6 +12739,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -7091,6 +12751,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -7098,6 +12763,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -7105,10 +12775,15 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostName" => Shape.new(
             "HostName",
             "string",
@@ -7116,6 +12791,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HttpErrorCodeReturnedEquals" => Shape.new(
             "HttpErrorCodeReturnedEquals",
             "string",
@@ -7123,6 +12802,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HttpRedirectCode" => Shape.new(
             "HttpRedirectCode",
             "string",
@@ -7130,6 +12813,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ID" => Shape.new(
             "ID",
             "string",
@@ -7137,14 +12824,23 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IdempotencyParameterMismatch" => Shape.new(
             "IdempotencyParameterMismatch",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "IfMatch" => Shape.new(
             "IfMatch",
             "string",
@@ -7152,6 +12848,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IfMatchInitiatedTime" => Shape.new(
             "IfMatchInitiatedTime",
             "timestamp",
@@ -7159,6 +12859,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IfMatchLastModifiedTime" => Shape.new(
             "IfMatchLastModifiedTime",
             "timestamp",
@@ -7166,6 +12870,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IfMatchSize" => Shape.new(
             "IfMatchSize",
             "long",
@@ -7173,6 +12881,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IfModifiedSince" => Shape.new(
             "IfModifiedSince",
             "timestamp",
@@ -7180,6 +12892,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IfNoneMatch" => Shape.new(
             "IfNoneMatch",
             "string",
@@ -7187,6 +12903,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IfUnmodifiedSince" => Shape.new(
             "IfUnmodifiedSince",
             "timestamp",
@@ -7194,10 +12914,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IndexDocument" => Shape.new(
             "IndexDocument",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Suffix",
                 "Suffix",
@@ -7205,10 +12934,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Initiated" => Shape.new(
             "Initiated",
             "timestamp",
@@ -7216,10 +12950,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Initiator" => Shape.new(
             "Initiator",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DisplayName",
                 "DisplayName",
@@ -7227,6 +12970,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -7234,14 +12982,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InputSerialization" => Shape.new(
             "InputSerialization",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CSV",
                 "CSVInput",
@@ -7249,6 +13007,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CompressionType",
                 "CompressionType",
@@ -7256,6 +13019,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "JSON",
                 "JSONInput",
@@ -7263,6 +13031,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Parquet",
                 "ParquetInput",
@@ -7270,10 +13043,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "IntelligentTieringAccessTier" => Shape.new(
             "IntelligentTieringAccessTier",
             "string",
@@ -7281,10 +13059,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IntelligentTieringAndOperator" => Shape.new(
             "IntelligentTieringAndOperator",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -7292,6 +13079,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagSet",
@@ -7299,14 +13091,24 @@ module AwsSdk
                 "Tag",
                 true
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "IntelligentTieringConfiguration" => Shape.new(
             "IntelligentTieringConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "IntelligentTieringFilter",
@@ -7314,6 +13116,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "IntelligentTieringId",
@@ -7321,6 +13128,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "IntelligentTieringStatus",
@@ -7328,6 +13140,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tierings",
                 "TieringList",
@@ -7335,10 +13152,19 @@ module AwsSdk
                 "Tiering",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "IntelligentTieringConfigurationList" => Shape.new(
             "IntelligentTieringConfigurationList",
             "list",
@@ -7352,6 +13178,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "IntelligentTieringDays" => Shape.new(
             "IntelligentTieringDays",
             "integer",
@@ -7359,10 +13190,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IntelligentTieringFilter" => Shape.new(
             "IntelligentTieringFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "And",
                 "IntelligentTieringAndOperator",
@@ -7370,6 +13210,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -7377,6 +13222,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tag",
                 "Tag",
@@ -7384,10 +13234,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "IntelligentTieringId" => Shape.new(
             "IntelligentTieringId",
             "string",
@@ -7395,6 +13250,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IntelligentTieringStatus" => Shape.new(
             "IntelligentTieringStatus",
             "string",
@@ -7402,10 +13261,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InvalidObjectState" => Shape.new(
             "InvalidObjectState",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessTier",
                 "IntelligentTieringAccessTier",
@@ -7413,6 +13281,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -7420,30 +13293,50 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidRequest" => Shape.new(
             "InvalidRequest",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidWriteOffset" => Shape.new(
             "InvalidWriteOffset",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryConfiguration" => Shape.new(
             "InventoryConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Destination",
                 "InventoryDestination",
@@ -7451,6 +13344,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "InventoryFilter",
@@ -7458,6 +13356,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "InventoryId",
@@ -7465,6 +13368,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IncludedObjectVersions",
                 "InventoryIncludedObjectVersions",
@@ -7472,6 +13380,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsEnabled",
                 "IsEnabled",
@@ -7479,6 +13392,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OptionalFields",
                 "InventoryOptionalFields",
@@ -7486,6 +13404,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Schedule",
                 "InventorySchedule",
@@ -7493,10 +13416,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "InventoryConfigurationList" => Shape.new(
             "InventoryConfigurationList",
             "list",
@@ -7510,6 +13442,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "InventoryConfigurationState" => Shape.new(
             "InventoryConfigurationState",
             "string",
@@ -7517,10 +13454,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InventoryDestination" => Shape.new(
             "InventoryDestination",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "S3BucketDestination",
                 "InventoryS3BucketDestination",
@@ -7528,14 +13474,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryEncryption" => Shape.new(
             "InventoryEncryption",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMS",
                 "SSEKMS",
@@ -7543,6 +13499,11 @@ module AwsSdk
                 "SSE-KMS",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSES3",
                 "SSES3",
@@ -7550,14 +13511,24 @@ module AwsSdk
                 "SSE-S3",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryFilter" => Shape.new(
             "InventoryFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -7565,10 +13536,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryFormat" => Shape.new(
             "InventoryFormat",
             "string",
@@ -7576,6 +13552,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InventoryFrequency" => Shape.new(
             "InventoryFrequency",
             "string",
@@ -7583,6 +13563,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InventoryId" => Shape.new(
             "InventoryId",
             "string",
@@ -7590,6 +13574,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InventoryIncludedObjectVersions" => Shape.new(
             "InventoryIncludedObjectVersions",
             "string",
@@ -7597,6 +13585,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InventoryOptionalField" => Shape.new(
             "InventoryOptionalField",
             "string",
@@ -7604,6 +13596,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "InventoryOptionalFields" => Shape.new(
             "InventoryOptionalFields",
             "list",
@@ -7617,10 +13617,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "InventoryS3BucketDestination" => Shape.new(
             "InventoryS3BucketDestination",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccountId",
                 "AccountId",
@@ -7628,6 +13638,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -7635,6 +13650,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Encryption",
                 "InventoryEncryption",
@@ -7642,6 +13662,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Format",
                 "InventoryFormat",
@@ -7649,6 +13674,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -7656,14 +13686,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventorySchedule" => Shape.new(
             "InventorySchedule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Frequency",
                 "InventoryFrequency",
@@ -7671,14 +13711,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryTableConfiguration" => Shape.new(
             "InventoryTableConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ConfigurationState",
                 "InventoryConfigurationState",
@@ -7686,6 +13736,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncryptionConfiguration",
                 "MetadataTableEncryptionConfiguration",
@@ -7693,14 +13748,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryTableConfigurationResult" => Shape.new(
             "InventoryTableConfigurationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ConfigurationState",
                 "InventoryConfigurationState",
@@ -7708,6 +13773,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Error",
                 "ErrorDetails",
@@ -7715,6 +13785,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableArn",
                 "S3TablesArn",
@@ -7722,6 +13797,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableName",
                 "S3TablesName",
@@ -7729,6 +13809,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableStatus",
                 "MetadataTableStatus",
@@ -7736,14 +13821,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InventoryTableConfigurationUpdates" => Shape.new(
             "InventoryTableConfigurationUpdates",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ConfigurationState",
                 "InventoryConfigurationState",
@@ -7751,6 +13846,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncryptionConfiguration",
                 "MetadataTableEncryptionConfiguration",
@@ -7758,10 +13858,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "IsEnabled" => Shape.new(
             "IsEnabled",
             "boolean",
@@ -7769,6 +13874,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IsLatest" => Shape.new(
             "IsLatest",
             "boolean",
@@ -7776,6 +13885,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IsPublic" => Shape.new(
             "IsPublic",
             "boolean",
@@ -7783,6 +13896,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IsRestoreInProgress" => Shape.new(
             "IsRestoreInProgress",
             "boolean",
@@ -7790,6 +13907,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IsTruncated" => Shape.new(
             "IsTruncated",
             "boolean",
@@ -7797,10 +13918,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "JSONInput" => Shape.new(
             "JSONInput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "JSONType",
@@ -7808,14 +13938,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "JSONOutput" => Shape.new(
             "JSONOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RecordDelimiter",
                 "RecordDelimiter",
@@ -7823,10 +13963,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "JSONType" => Shape.new(
             "JSONType",
             "string",
@@ -7834,10 +13979,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "JournalTableConfiguration" => Shape.new(
             "JournalTableConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EncryptionConfiguration",
                 "MetadataTableEncryptionConfiguration",
@@ -7845,6 +13999,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordExpiration",
                 "RecordExpiration",
@@ -7852,14 +14011,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "JournalTableConfigurationResult" => Shape.new(
             "JournalTableConfigurationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Error",
                 "ErrorDetails",
@@ -7867,6 +14036,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordExpiration",
                 "RecordExpiration",
@@ -7874,6 +14048,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableArn",
                 "S3TablesArn",
@@ -7881,6 +14060,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableName",
                 "S3TablesName",
@@ -7888,6 +14072,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableStatus",
                 "MetadataTableStatus",
@@ -7895,14 +14084,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "JournalTableConfigurationUpdates" => Shape.new(
             "JournalTableConfigurationUpdates",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RecordExpiration",
                 "RecordExpiration",
@@ -7910,10 +14109,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "KMSContext" => Shape.new(
             "KMSContext",
             "string",
@@ -7921,6 +14125,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "KeyCount" => Shape.new(
             "KeyCount",
             "integer",
@@ -7928,6 +14136,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "KeyMarker" => Shape.new(
             "KeyMarker",
             "string",
@@ -7935,6 +14147,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "KeyPrefixEquals" => Shape.new(
             "KeyPrefixEquals",
             "string",
@@ -7942,6 +14158,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "KmsKeyArn" => Shape.new(
             "KmsKeyArn",
             "string",
@@ -7949,6 +14169,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LambdaFunctionArn" => Shape.new(
             "LambdaFunctionArn",
             "string",
@@ -7956,10 +14180,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LambdaFunctionConfiguration" => Shape.new(
             "LambdaFunctionConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Events",
                 "EventList",
@@ -7967,6 +14200,11 @@ module AwsSdk
                 "Event",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "NotificationConfigurationFilter",
@@ -7974,6 +14212,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "NotificationId",
@@ -7981,6 +14224,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LambdaFunctionArn",
                 "LambdaFunctionArn",
@@ -7988,10 +14236,19 @@ module AwsSdk
                 "CloudFunction",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "LambdaFunctionConfigurationList" => Shape.new(
             "LambdaFunctionConfigurationList",
             "list",
@@ -8005,6 +14262,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "LastModified" => Shape.new(
             "LastModified",
             "timestamp",
@@ -8012,6 +14274,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LastModifiedTime" => Shape.new(
             "LastModifiedTime",
             "timestamp",
@@ -8019,10 +14285,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LifecycleConfiguration" => Shape.new(
             "LifecycleConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "Rules",
@@ -8030,14 +14305,24 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LifecycleExpiration" => Shape.new(
             "LifecycleExpiration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Date",
                 "Date",
@@ -8045,6 +14330,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Days",
                 "Days",
@@ -8052,6 +14342,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpiredObjectDeleteMarker",
                 "ExpiredObjectDeleteMarker",
@@ -8059,14 +14354,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LifecycleRule" => Shape.new(
             "LifecycleRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AbortIncompleteMultipartUpload",
                 "AbortIncompleteMultipartUpload",
@@ -8074,6 +14379,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "LifecycleExpiration",
@@ -8081,6 +14391,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "LifecycleRuleFilter",
@@ -8088,6 +14403,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -8095,6 +14415,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NoncurrentVersionExpiration",
                 "NoncurrentVersionExpiration",
@@ -8102,6 +14427,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NoncurrentVersionTransitions",
                 "NoncurrentVersionTransitionList",
@@ -8109,6 +14439,11 @@ module AwsSdk
                 "NoncurrentVersionTransition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8116,6 +14451,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ExpirationStatus",
@@ -8123,6 +14463,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Transitions",
                 "TransitionList",
@@ -8130,14 +14475,24 @@ module AwsSdk
                 "Transition",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LifecycleRuleAndOperator" => Shape.new(
             "LifecycleRuleAndOperator",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ObjectSizeGreaterThan",
                 "ObjectSizeGreaterThanBytes",
@@ -8145,6 +14500,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectSizeLessThan",
                 "ObjectSizeLessThanBytes",
@@ -8152,6 +14512,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8159,6 +14524,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagSet",
@@ -8166,14 +14536,24 @@ module AwsSdk
                 "Tag",
                 true
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LifecycleRuleFilter" => Shape.new(
             "LifecycleRuleFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "And",
                 "LifecycleRuleAndOperator",
@@ -8181,6 +14561,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectSizeGreaterThan",
                 "ObjectSizeGreaterThanBytes",
@@ -8188,6 +14573,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectSizeLessThan",
                 "ObjectSizeLessThanBytes",
@@ -8195,6 +14585,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8202,6 +14597,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tag",
                 "Tag",
@@ -8209,10 +14609,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "LifecycleRules" => Shape.new(
             "LifecycleRules",
             "list",
@@ -8226,10 +14635,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ListBucketAnalyticsConfigurationsOutput" => Shape.new(
             "ListBucketAnalyticsConfigurationsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AnalyticsConfigurationList",
                 "AnalyticsConfigurationList",
@@ -8237,6 +14656,11 @@ module AwsSdk
                 "AnalyticsConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8244,6 +14668,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8251,6 +14680,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextContinuationToken",
                 "NextToken",
@@ -8258,14 +14692,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketAnalyticsConfigurationsRequest" => Shape.new(
             "ListBucketAnalyticsConfigurationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8273,6 +14717,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8280,6 +14729,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -8287,14 +14741,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketIntelligentTieringConfigurationsOutput" => Shape.new(
             "ListBucketIntelligentTieringConfigurationsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8302,6 +14766,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IntelligentTieringConfigurationList",
                 "IntelligentTieringConfigurationList",
@@ -8309,6 +14778,11 @@ module AwsSdk
                 "IntelligentTieringConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8316,6 +14790,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextContinuationToken",
                 "NextToken",
@@ -8323,14 +14802,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketIntelligentTieringConfigurationsRequest" => Shape.new(
             "ListBucketIntelligentTieringConfigurationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8338,6 +14827,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8345,6 +14839,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -8352,14 +14851,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketInventoryConfigurationsOutput" => Shape.new(
             "ListBucketInventoryConfigurationsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8367,6 +14876,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InventoryConfigurationList",
                 "InventoryConfigurationList",
@@ -8374,6 +14888,11 @@ module AwsSdk
                 "InventoryConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8381,6 +14900,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextContinuationToken",
                 "NextToken",
@@ -8388,14 +14912,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketInventoryConfigurationsRequest" => Shape.new(
             "ListBucketInventoryConfigurationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8403,6 +14937,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8410,6 +14949,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -8417,14 +14961,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketMetricsConfigurationsOutput" => Shape.new(
             "ListBucketMetricsConfigurationsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8432,6 +14986,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8439,6 +14998,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetricsConfigurationList",
                 "MetricsConfigurationList",
@@ -8446,6 +15010,11 @@ module AwsSdk
                 "MetricsConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextContinuationToken",
                 "NextToken",
@@ -8453,14 +15022,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketMetricsConfigurationsRequest" => Shape.new(
             "ListBucketMetricsConfigurationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8468,6 +15047,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8475,6 +15059,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -8482,14 +15071,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketsOutput" => Shape.new(
             "ListBucketsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Buckets",
                 "Buckets",
@@ -8497,6 +15096,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "NextToken",
@@ -8504,6 +15108,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -8511,6 +15120,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8518,14 +15132,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListBucketsRequest" => Shape.new(
             "ListBucketsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketRegion",
                 "BucketRegion",
@@ -8533,6 +15157,11 @@ module AwsSdk
                 "bucket-region",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -8540,6 +15169,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxBuckets",
                 "MaxBuckets",
@@ -8547,6 +15181,11 @@ module AwsSdk
                 "max-buckets",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8554,14 +15193,24 @@ module AwsSdk
                 "prefix",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListDirectoryBucketsOutput" => Shape.new(
             "ListDirectoryBucketsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Buckets",
                 "Buckets",
@@ -8569,6 +15218,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "DirectoryBucketToken",
@@ -8576,14 +15230,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListDirectoryBucketsRequest" => Shape.new(
             "ListDirectoryBucketsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "DirectoryBucketToken",
@@ -8591,6 +15255,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxDirectoryBuckets",
                 "MaxDirectoryBuckets",
@@ -8598,14 +15267,24 @@ module AwsSdk
                 "max-directory-buckets",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListMultipartUploadsOutput" => Shape.new(
             "ListMultipartUploadsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8613,6 +15292,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CommonPrefixes",
                 "CommonPrefixList",
@@ -8620,6 +15304,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -8627,6 +15316,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -8634,6 +15328,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8641,6 +15340,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyMarker",
                 "KeyMarker",
@@ -8648,6 +15352,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxUploads",
                 "MaxUploads",
@@ -8655,6 +15364,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextKeyMarker",
                 "NextKeyMarker",
@@ -8662,6 +15376,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextUploadIdMarker",
                 "NextUploadIdMarker",
@@ -8669,6 +15388,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8676,6 +15400,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -8683,6 +15412,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadIdMarker",
                 "UploadIdMarker",
@@ -8690,6 +15424,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Uploads",
                 "MultipartUploadList",
@@ -8697,14 +15436,24 @@ module AwsSdk
                 "Upload",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListMultipartUploadsRequest" => Shape.new(
             "ListMultipartUploadsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8712,6 +15461,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -8719,6 +15473,11 @@ module AwsSdk
                 "delimiter",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -8726,6 +15485,11 @@ module AwsSdk
                 "encoding-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -8733,6 +15497,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyMarker",
                 "KeyMarker",
@@ -8740,6 +15509,11 @@ module AwsSdk
                 "key-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxUploads",
                 "MaxUploads",
@@ -8747,6 +15521,11 @@ module AwsSdk
                 "max-uploads",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8754,6 +15533,11 @@ module AwsSdk
                 "prefix",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -8761,6 +15545,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadIdMarker",
                 "UploadIdMarker",
@@ -8768,14 +15557,24 @@ module AwsSdk
                 "upload-id-marker",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListObjectVersionsOutput" => Shape.new(
             "ListObjectVersionsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CommonPrefixes",
                 "CommonPrefixList",
@@ -8783,6 +15582,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarkers",
                 "DeleteMarkers",
@@ -8790,6 +15594,11 @@ module AwsSdk
                 "DeleteMarker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -8797,6 +15606,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -8804,6 +15618,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8811,6 +15630,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyMarker",
                 "KeyMarker",
@@ -8818,6 +15642,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxKeys",
                 "MaxKeys",
@@ -8825,6 +15654,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "BucketName",
@@ -8832,6 +15666,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextKeyMarker",
                 "NextKeyMarker",
@@ -8839,6 +15678,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextVersionIdMarker",
                 "NextVersionIdMarker",
@@ -8846,6 +15690,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8853,6 +15702,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -8860,6 +15714,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionIdMarker",
                 "VersionIdMarker",
@@ -8867,6 +15726,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Versions",
                 "ObjectVersionList",
@@ -8874,14 +15738,24 @@ module AwsSdk
                 "Version",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListObjectVersionsRequest" => Shape.new(
             "ListObjectVersionsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -8889,6 +15763,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -8896,6 +15775,11 @@ module AwsSdk
                 "delimiter",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -8903,6 +15787,11 @@ module AwsSdk
                 "encoding-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -8910,6 +15799,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyMarker",
                 "KeyMarker",
@@ -8917,6 +15811,11 @@ module AwsSdk
                 "key-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxKeys",
                 "MaxKeys",
@@ -8924,6 +15823,11 @@ module AwsSdk
                 "max-keys",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OptionalObjectAttributes",
                 "OptionalObjectAttributesList",
@@ -8931,6 +15835,11 @@ module AwsSdk
                 "x-amz-optional-object-attributes",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -8938,6 +15847,11 @@ module AwsSdk
                 "prefix",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -8945,6 +15859,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionIdMarker",
                 "VersionIdMarker",
@@ -8952,14 +15871,24 @@ module AwsSdk
                 "version-id-marker",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListObjectsOutput" => Shape.new(
             "ListObjectsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CommonPrefixes",
                 "CommonPrefixList",
@@ -8967,6 +15896,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Contents",
                 "ObjectList",
@@ -8974,6 +15908,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -8981,6 +15920,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -8988,6 +15932,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -8995,6 +15944,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "Marker",
@@ -9002,6 +15956,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxKeys",
                 "MaxKeys",
@@ -9009,6 +15968,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "BucketName",
@@ -9016,6 +15980,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextMarker",
                 "NextMarker",
@@ -9023,6 +15992,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -9030,6 +16004,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -9037,14 +16016,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListObjectsRequest" => Shape.new(
             "ListObjectsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -9052,6 +16041,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -9059,6 +16053,11 @@ module AwsSdk
                 "delimiter",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -9066,6 +16065,11 @@ module AwsSdk
                 "encoding-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -9073,6 +16077,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "Marker",
@@ -9080,6 +16089,11 @@ module AwsSdk
                 "marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxKeys",
                 "MaxKeys",
@@ -9087,6 +16101,11 @@ module AwsSdk
                 "max-keys",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OptionalObjectAttributes",
                 "OptionalObjectAttributesList",
@@ -9094,6 +16113,11 @@ module AwsSdk
                 "x-amz-optional-object-attributes",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -9101,6 +16125,11 @@ module AwsSdk
                 "prefix",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -9108,14 +16137,24 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListObjectsV2Output" => Shape.new(
             "ListObjectsV2Output",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CommonPrefixes",
                 "CommonPrefixList",
@@ -9123,6 +16162,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Contents",
                 "ObjectList",
@@ -9130,6 +16174,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -9137,6 +16186,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -9144,6 +16198,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -9151,6 +16210,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -9158,6 +16222,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyCount",
                 "KeyCount",
@@ -9165,6 +16234,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxKeys",
                 "MaxKeys",
@@ -9172,6 +16246,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "BucketName",
@@ -9179,6 +16258,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextContinuationToken",
                 "NextToken",
@@ -9186,6 +16270,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -9193,6 +16282,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -9200,6 +16294,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartAfter",
                 "StartAfter",
@@ -9207,14 +16306,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListObjectsV2Request" => Shape.new(
             "ListObjectsV2Request",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -9222,6 +16331,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinuationToken",
                 "Token",
@@ -9229,6 +16343,11 @@ module AwsSdk
                 "continuation-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Delimiter",
                 "Delimiter",
@@ -9236,6 +16355,11 @@ module AwsSdk
                 "delimiter",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EncodingType",
                 "EncodingType",
@@ -9243,6 +16367,11 @@ module AwsSdk
                 "encoding-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -9250,6 +16379,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FetchOwner",
                 "FetchOwner",
@@ -9257,6 +16391,11 @@ module AwsSdk
                 "fetch-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxKeys",
                 "MaxKeys",
@@ -9264,6 +16403,11 @@ module AwsSdk
                 "max-keys",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OptionalObjectAttributes",
                 "OptionalObjectAttributesList",
@@ -9271,6 +16415,11 @@ module AwsSdk
                 "x-amz-optional-object-attributes",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -9278,6 +16427,11 @@ module AwsSdk
                 "prefix",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -9285,6 +16439,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartAfter",
                 "StartAfter",
@@ -9292,14 +16451,24 @@ module AwsSdk
                 "start-after",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListPartsOutput" => Shape.new(
             "ListPartsOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AbortDate",
                 "AbortDate",
@@ -9307,6 +16476,11 @@ module AwsSdk
                 "x-amz-abort-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "AbortRuleId",
                 "AbortRuleId",
@@ -9314,6 +16488,11 @@ module AwsSdk
                 "x-amz-abort-rule-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -9321,6 +16500,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -9328,6 +16512,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -9335,6 +16524,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Initiator",
                 "Initiator",
@@ -9342,6 +16536,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "IsTruncated",
@@ -9349,6 +16548,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -9356,6 +16560,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxParts",
                 "MaxParts",
@@ -9363,6 +16572,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextPartNumberMarker",
                 "NextPartNumberMarker",
@@ -9370,6 +16584,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -9377,6 +16596,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumberMarker",
                 "PartNumberMarker",
@@ -9384,6 +16608,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Parts",
                 "Parts",
@@ -9391,6 +16620,11 @@ module AwsSdk
                 "Part",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -9398,6 +16632,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -9405,6 +16644,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -9412,14 +16656,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListPartsRequest" => Shape.new(
             "ListPartsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -9427,6 +16681,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -9434,6 +16693,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -9441,6 +16705,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxParts",
                 "MaxParts",
@@ -9448,6 +16717,11 @@ module AwsSdk
                 "max-parts",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumberMarker",
                 "PartNumberMarker",
@@ -9455,6 +16729,11 @@ module AwsSdk
                 "part-number-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -9462,6 +16741,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -9469,6 +16753,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -9476,6 +16765,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -9483,6 +16777,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -9490,10 +16789,15 @@ module AwsSdk
                 "uploadId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Location" => Shape.new(
             "Location",
             "string",
@@ -9501,10 +16805,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LocationInfo" => Shape.new(
             "LocationInfo",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "LocationNameAsString",
@@ -9512,6 +16825,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "LocationType",
@@ -9519,10 +16837,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LocationNameAsString" => Shape.new(
             "LocationNameAsString",
             "string",
@@ -9530,6 +16853,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LocationPrefix" => Shape.new(
             "LocationPrefix",
             "string",
@@ -9537,6 +16864,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LocationType" => Shape.new(
             "LocationType",
             "string",
@@ -9544,10 +16875,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LoggingEnabled" => Shape.new(
             "LoggingEnabled",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TargetBucket",
                 "TargetBucket",
@@ -9555,6 +16895,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TargetGrants",
                 "TargetGrants",
@@ -9562,6 +16907,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TargetObjectKeyFormat",
                 "TargetObjectKeyFormat",
@@ -9569,6 +16919,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TargetPrefix",
                 "TargetPrefix",
@@ -9576,10 +16931,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MFA" => Shape.new(
             "MFA",
             "string",
@@ -9587,6 +16947,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MFADelete" => Shape.new(
             "MFADelete",
             "string",
@@ -9594,6 +16958,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MFADeleteStatus" => Shape.new(
             "MFADeleteStatus",
             "string",
@@ -9601,6 +16969,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Marker" => Shape.new(
             "Marker",
             "string",
@@ -9608,6 +16980,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxAgeSeconds" => Shape.new(
             "MaxAgeSeconds",
             "integer",
@@ -9615,6 +16991,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxBuckets" => Shape.new(
             "MaxBuckets",
             "integer",
@@ -9622,6 +17002,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxDirectoryBuckets" => Shape.new(
             "MaxDirectoryBuckets",
             "integer",
@@ -9629,6 +17013,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxKeys" => Shape.new(
             "MaxKeys",
             "integer",
@@ -9636,6 +17024,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxParts" => Shape.new(
             "MaxParts",
             "integer",
@@ -9643,6 +17035,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxUploads" => Shape.new(
             "MaxUploads",
             "integer",
@@ -9650,6 +17046,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Message" => Shape.new(
             "Message",
             "string",
@@ -9657,6 +17057,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Metadata" => Shape.new(
             "Metadata",
             "map",
@@ -9664,10 +17068,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MetadataConfiguration" => Shape.new(
             "MetadataConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "InventoryTableConfiguration",
                 "InventoryTableConfiguration",
@@ -9675,6 +17088,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "JournalTableConfiguration",
                 "JournalTableConfiguration",
@@ -9682,14 +17100,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetadataConfigurationResult" => Shape.new(
             "MetadataConfigurationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DestinationResult",
                 "DestinationResult",
@@ -9697,6 +17125,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InventoryTableConfigurationResult",
                 "InventoryTableConfigurationResult",
@@ -9704,6 +17137,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "JournalTableConfigurationResult",
                 "JournalTableConfigurationResult",
@@ -9711,10 +17149,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetadataDirective" => Shape.new(
             "MetadataDirective",
             "string",
@@ -9722,10 +17165,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MetadataEntry" => Shape.new(
             "MetadataEntry",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "MetadataKey",
@@ -9733,6 +17185,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "MetadataValue",
@@ -9740,10 +17197,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetadataKey" => Shape.new(
             "MetadataKey",
             "string",
@@ -9751,10 +17213,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MetadataTableConfiguration" => Shape.new(
             "MetadataTableConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "S3TablesDestination",
                 "S3TablesDestination",
@@ -9762,14 +17233,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetadataTableConfigurationResult" => Shape.new(
             "MetadataTableConfigurationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "S3TablesDestinationResult",
                 "S3TablesDestinationResult",
@@ -9777,14 +17258,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetadataTableEncryptionConfiguration" => Shape.new(
             "MetadataTableEncryptionConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "KmsKeyArn",
                 "KmsKeyArn",
@@ -9792,6 +17283,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SseAlgorithm",
                 "TableSseAlgorithm",
@@ -9799,10 +17295,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetadataTableStatus" => Shape.new(
             "MetadataTableStatus",
             "string",
@@ -9810,6 +17311,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MetadataValue" => Shape.new(
             "MetadataValue",
             "string",
@@ -9817,10 +17322,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Metrics" => Shape.new(
             "Metrics",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EventThreshold",
                 "ReplicationTimeValue",
@@ -9828,6 +17342,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "MetricsStatus",
@@ -9835,14 +17354,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetricsAndOperator" => Shape.new(
             "MetricsAndOperator",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessPointArn",
                 "AccessPointArn",
@@ -9850,6 +17379,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -9857,6 +17391,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagSet",
@@ -9864,14 +17403,24 @@ module AwsSdk
                 "Tag",
                 true
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetricsConfiguration" => Shape.new(
             "MetricsConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "MetricsFilter",
@@ -9879,6 +17428,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "MetricsId",
@@ -9886,10 +17440,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "MetricsConfigurationList" => Shape.new(
             "MetricsConfigurationList",
             "list",
@@ -9903,10 +17466,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "MetricsFilter" => Shape.new(
             "MetricsFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessPointArn",
                 "AccessPointArn",
@@ -9914,6 +17487,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "And",
                 "MetricsAndOperator",
@@ -9921,6 +17499,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -9928,6 +17511,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tag",
                 "Tag",
@@ -9935,10 +17523,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MetricsId" => Shape.new(
             "MetricsId",
             "string",
@@ -9946,6 +17539,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MetricsStatus" => Shape.new(
             "MetricsStatus",
             "string",
@@ -9953,6 +17550,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Minutes" => Shape.new(
             "Minutes",
             "integer",
@@ -9960,6 +17561,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MissingMeta" => Shape.new(
             "MissingMeta",
             "integer",
@@ -9967,6 +17572,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MpuObjectSize" => Shape.new(
             "MpuObjectSize",
             "long",
@@ -9974,10 +17583,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MultipartUpload" => Shape.new(
             "MultipartUpload",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -9985,6 +17603,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -9992,6 +17615,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Initiated",
                 "Initiated",
@@ -9999,6 +17627,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Initiator",
                 "Initiator",
@@ -10006,6 +17639,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -10013,6 +17651,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -10020,6 +17663,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -10027,6 +17675,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -10034,10 +17687,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "MultipartUploadId" => Shape.new(
             "MultipartUploadId",
             "string",
@@ -10045,6 +17703,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "MultipartUploadList" => Shape.new(
             "MultipartUploadList",
             "list",
@@ -10058,6 +17724,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "NextKeyMarker" => Shape.new(
             "NextKeyMarker",
             "string",
@@ -10065,6 +17736,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NextMarker" => Shape.new(
             "NextMarker",
             "string",
@@ -10072,6 +17747,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NextPartNumberMarker" => Shape.new(
             "NextPartNumberMarker",
             "integer",
@@ -10079,6 +17758,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NextToken" => Shape.new(
             "NextToken",
             "string",
@@ -10086,6 +17769,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NextUploadIdMarker" => Shape.new(
             "NextUploadIdMarker",
             "string",
@@ -10093,6 +17780,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NextVersionIdMarker" => Shape.new(
             "NextVersionIdMarker",
             "string",
@@ -10100,34 +17791,58 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NoSuchBucket" => Shape.new(
             "NoSuchBucket",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchKey" => Shape.new(
             "NoSuchKey",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchUpload" => Shape.new(
             "NoSuchUpload",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoncurrentVersionExpiration" => Shape.new(
             "NoncurrentVersionExpiration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "NewerNoncurrentVersions",
                 "VersionCount",
@@ -10135,6 +17850,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NoncurrentDays",
                 "Days",
@@ -10142,14 +17862,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoncurrentVersionTransition" => Shape.new(
             "NoncurrentVersionTransition",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "NewerNoncurrentVersions",
                 "VersionCount",
@@ -10157,6 +17887,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NoncurrentDays",
                 "Days",
@@ -10164,6 +17899,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "TransitionStorageClass",
@@ -10171,10 +17911,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "NoncurrentVersionTransitionList" => Shape.new(
             "NoncurrentVersionTransitionList",
             "list",
@@ -10188,10 +17937,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "NotificationConfiguration" => Shape.new(
             "NotificationConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EventBridgeConfiguration",
                 "EventBridgeConfiguration",
@@ -10199,6 +17958,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LambdaFunctionConfigurations",
                 "LambdaFunctionConfigurationList",
@@ -10206,6 +17970,11 @@ module AwsSdk
                 "CloudFunctionConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QueueConfigurations",
                 "QueueConfigurationList",
@@ -10213,6 +17982,11 @@ module AwsSdk
                 "QueueConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TopicConfigurations",
                 "TopicConfigurationList",
@@ -10220,14 +17994,24 @@ module AwsSdk
                 "TopicConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NotificationConfigurationDeprecated" => Shape.new(
             "NotificationConfigurationDeprecated",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CloudFunctionConfiguration",
                 "CloudFunctionConfiguration",
@@ -10235,6 +18019,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QueueConfiguration",
                 "QueueConfigurationDeprecated",
@@ -10242,6 +18031,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TopicConfiguration",
                 "TopicConfigurationDeprecated",
@@ -10249,14 +18043,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NotificationConfigurationFilter" => Shape.new(
             "NotificationConfigurationFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "S3KeyFilter",
@@ -10264,10 +18068,15 @@ module AwsSdk
                 "S3Key",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NotificationId" => Shape.new(
             "NotificationId",
             "string",
@@ -10275,10 +18084,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Object" => Shape.new(
             "Object",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithmList",
@@ -10286,6 +18104,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -10293,6 +18116,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -10300,6 +18128,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -10307,6 +18140,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -10314,6 +18152,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -10321,6 +18164,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RestoreStatus",
                 "RestoreStatus",
@@ -10328,6 +18176,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Size",
                 "Size",
@@ -10335,6 +18188,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "ObjectStorageClass",
@@ -10342,18 +18200,28 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectAlreadyInActiveTierError" => Shape.new(
             "ObjectAlreadyInActiveTierError",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectAttributes" => Shape.new(
             "ObjectAttributes",
             "string",
@@ -10361,6 +18229,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ObjectAttributesList" => Shape.new(
             "ObjectAttributesList",
             "list",
@@ -10374,6 +18250,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "ObjectCannedACL" => Shape.new(
             "ObjectCannedACL",
             "string",
@@ -10381,10 +18262,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectIdentifier" => Shape.new(
             "ObjectIdentifier",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -10392,6 +18282,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -10399,6 +18294,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModifiedTime",
                 "LastModifiedTime",
@@ -10406,6 +18306,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Size",
                 "Size",
@@ -10413,6 +18318,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -10420,10 +18330,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ObjectIdentifierList" => Shape.new(
             "ObjectIdentifierList",
             "list",
@@ -10437,6 +18356,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ObjectKey" => Shape.new(
             "ObjectKey",
             "string",
@@ -10444,6 +18368,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ObjectList" => Shape.new(
             "ObjectList",
             "list",
@@ -10457,10 +18389,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ObjectLockConfiguration" => Shape.new(
             "ObjectLockConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockEnabled",
                 "ObjectLockEnabled",
@@ -10468,6 +18410,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Rule",
                 "ObjectLockRule",
@@ -10475,10 +18422,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectLockEnabled" => Shape.new(
             "ObjectLockEnabled",
             "string",
@@ -10486,6 +18438,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectLockEnabledForBucket" => Shape.new(
             "ObjectLockEnabledForBucket",
             "boolean",
@@ -10493,10 +18449,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectLockLegalHold" => Shape.new(
             "ObjectLockLegalHold",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ObjectLockLegalHoldStatus",
@@ -10504,10 +18469,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectLockLegalHoldStatus" => Shape.new(
             "ObjectLockLegalHoldStatus",
             "string",
@@ -10515,6 +18485,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectLockMode" => Shape.new(
             "ObjectLockMode",
             "string",
@@ -10522,6 +18496,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectLockRetainUntilDate" => Shape.new(
             "ObjectLockRetainUntilDate",
             "timestamp",
@@ -10529,10 +18507,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectLockRetention" => Shape.new(
             "ObjectLockRetention",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Mode",
                 "ObjectLockRetentionMode",
@@ -10540,6 +18527,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RetainUntilDate",
                 "Date",
@@ -10547,10 +18539,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectLockRetentionMode" => Shape.new(
             "ObjectLockRetentionMode",
             "string",
@@ -10558,10 +18555,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectLockRule" => Shape.new(
             "ObjectLockRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DefaultRetention",
                 "DefaultRetention",
@@ -10569,10 +18575,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectLockToken" => Shape.new(
             "ObjectLockToken",
             "string",
@@ -10580,14 +18591,23 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectNotInActiveTierError" => Shape.new(
             "ObjectNotInActiveTierError",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectOwnership" => Shape.new(
             "ObjectOwnership",
             "string",
@@ -10595,10 +18615,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectPart" => Shape.new(
             "ObjectPart",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -10606,6 +18635,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -10613,6 +18647,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -10620,6 +18659,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -10627,6 +18671,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -10634,6 +18683,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -10641,6 +18695,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Size",
                 "Size",
@@ -10648,10 +18707,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectSize" => Shape.new(
             "ObjectSize",
             "long",
@@ -10659,6 +18723,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectSizeGreaterThanBytes" => Shape.new(
             "ObjectSizeGreaterThanBytes",
             "long",
@@ -10666,6 +18734,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectSizeLessThanBytes" => Shape.new(
             "ObjectSizeLessThanBytes",
             "long",
@@ -10673,6 +18745,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectStorageClass" => Shape.new(
             "ObjectStorageClass",
             "string",
@@ -10680,10 +18756,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ObjectVersion" => Shape.new(
             "ObjectVersion",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithmList",
@@ -10691,6 +18776,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -10698,6 +18788,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -10705,6 +18800,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsLatest",
                 "IsLatest",
@@ -10712,6 +18812,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -10719,6 +18824,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -10726,6 +18836,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "Owner",
@@ -10733,6 +18848,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RestoreStatus",
                 "RestoreStatus",
@@ -10740,6 +18860,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Size",
                 "Size",
@@ -10747,6 +18872,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "ObjectVersionStorageClass",
@@ -10754,6 +18884,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -10761,10 +18896,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ObjectVersionId" => Shape.new(
             "ObjectVersionId",
             "string",
@@ -10772,6 +18912,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ObjectVersionList" => Shape.new(
             "ObjectVersionList",
             "list",
@@ -10785,6 +18933,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ObjectVersionStorageClass" => Shape.new(
             "ObjectVersionStorageClass",
             "string",
@@ -10792,6 +18945,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "OptionalObjectAttributes" => Shape.new(
             "OptionalObjectAttributes",
             "string",
@@ -10799,6 +18956,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "OptionalObjectAttributesList" => Shape.new(
             "OptionalObjectAttributesList",
             "list",
@@ -10812,10 +18977,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "OutputLocation" => Shape.new(
             "OutputLocation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "S3",
                 "S3Location",
@@ -10823,14 +18998,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "OutputSerialization" => Shape.new(
             "OutputSerialization",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CSV",
                 "CSVOutput",
@@ -10838,6 +19023,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "JSON",
                 "JSONOutput",
@@ -10845,14 +19035,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Owner" => Shape.new(
             "Owner",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DisplayName",
                 "DisplayName",
@@ -10860,6 +19060,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -10867,10 +19072,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "OwnerOverride" => Shape.new(
             "OwnerOverride",
             "string",
@@ -10878,10 +19088,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "OwnershipControls" => Shape.new(
             "OwnershipControls",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "OwnershipControlsRules",
@@ -10889,14 +19108,24 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "OwnershipControlsRule" => Shape.new(
             "OwnershipControlsRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ObjectOwnership",
                 "ObjectOwnership",
@@ -10904,10 +19133,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "OwnershipControlsRules" => Shape.new(
             "OwnershipControlsRules",
             "list",
@@ -10921,18 +19159,33 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ParquetInput" => Shape.new(
             "ParquetInput",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Part" => Shape.new(
             "Part",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -10940,6 +19193,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -10947,6 +19205,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -10954,6 +19217,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -10961,6 +19229,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -10968,6 +19241,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -10975,6 +19253,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -10982,6 +19265,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -10989,6 +19277,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Size",
                 "Size",
@@ -10996,10 +19289,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PartNumber" => Shape.new(
             "PartNumber",
             "integer",
@@ -11007,6 +19305,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PartNumberMarker" => Shape.new(
             "PartNumberMarker",
             "integer",
@@ -11014,6 +19316,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PartitionDateSource" => Shape.new(
             "PartitionDateSource",
             "string",
@@ -11021,10 +19327,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PartitionedPrefix" => Shape.new(
             "PartitionedPrefix",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "PartitionDateSource",
                 "PartitionDateSource",
@@ -11032,10 +19347,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "Parts" => Shape.new(
             "Parts",
             "list",
@@ -11049,6 +19373,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "PartsCount" => Shape.new(
             "PartsCount",
             "integer",
@@ -11056,6 +19385,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "PartsList" => Shape.new(
             "PartsList",
             "list",
@@ -11069,6 +19406,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Payer" => Shape.new(
             "Payer",
             "string",
@@ -11076,6 +19418,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Permission" => Shape.new(
             "Permission",
             "string",
@@ -11083,6 +19429,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Policy" => Shape.new(
             "Policy",
             "string",
@@ -11090,10 +19440,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PolicyStatus" => Shape.new(
             "PolicyStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsPublic",
                 "IsPublic",
@@ -11101,10 +19460,15 @@ module AwsSdk
                 "IsPublic",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Prefix" => Shape.new(
             "Prefix",
             "string",
@@ -11112,6 +19476,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Priority" => Shape.new(
             "Priority",
             "integer",
@@ -11119,10 +19487,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Progress" => Shape.new(
             "Progress",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BytesProcessed",
                 "BytesProcessed",
@@ -11130,6 +19507,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BytesReturned",
                 "BytesReturned",
@@ -11137,6 +19519,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BytesScanned",
                 "BytesScanned",
@@ -11144,14 +19531,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ProgressEvent" => Shape.new(
             "ProgressEvent",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Details",
                 "Progress",
@@ -11159,10 +19556,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Protocol" => Shape.new(
             "Protocol",
             "string",
@@ -11170,10 +19572,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PublicAccessBlockConfiguration" => Shape.new(
             "PublicAccessBlockConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BlockPublicAcls",
                 "Setting",
@@ -11181,6 +19592,11 @@ module AwsSdk
                 "BlockPublicAcls",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BlockPublicPolicy",
                 "Setting",
@@ -11188,6 +19604,11 @@ module AwsSdk
                 "BlockPublicPolicy",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IgnorePublicAcls",
                 "Setting",
@@ -11195,6 +19616,11 @@ module AwsSdk
                 "IgnorePublicAcls",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RestrictPublicBuckets",
                 "Setting",
@@ -11202,14 +19628,24 @@ module AwsSdk
                 "RestrictPublicBuckets",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketAbacRequest" => Shape.new(
             "PutBucketAbacRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AbacStatus",
                 "AbacStatus",
@@ -11217,6 +19653,11 @@ module AwsSdk
                 "AbacStatus",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11224,6 +19665,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11231,6 +19677,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11238,6 +19689,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11245,14 +19701,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketAccelerateConfigurationRequest" => Shape.new(
             "PutBucketAccelerateConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccelerateConfiguration",
                 "AccelerateConfiguration",
@@ -11260,6 +19726,11 @@ module AwsSdk
                 "AccelerateConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11267,6 +19738,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11274,6 +19750,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11281,14 +19762,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketAclRequest" => Shape.new(
             "PutBucketAclRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ACL",
                 "BucketCannedACL",
@@ -11296,6 +19787,11 @@ module AwsSdk
                 "x-amz-acl",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "AccessControlPolicy",
                 "AccessControlPolicy",
@@ -11303,6 +19799,11 @@ module AwsSdk
                 "AccessControlPolicy",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11310,6 +19811,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11317,6 +19823,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11324,6 +19835,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11331,6 +19847,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantFullControl",
                 "GrantFullControl",
@@ -11338,6 +19859,11 @@ module AwsSdk
                 "x-amz-grant-full-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantRead",
                 "GrantRead",
@@ -11345,6 +19871,11 @@ module AwsSdk
                 "x-amz-grant-read",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantReadACP",
                 "GrantReadACP",
@@ -11352,6 +19883,11 @@ module AwsSdk
                 "x-amz-grant-read-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWrite",
                 "GrantWrite",
@@ -11359,6 +19895,11 @@ module AwsSdk
                 "x-amz-grant-write",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWriteACP",
                 "GrantWriteACP",
@@ -11366,14 +19907,24 @@ module AwsSdk
                 "x-amz-grant-write-acp",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketAnalyticsConfigurationRequest" => Shape.new(
             "PutBucketAnalyticsConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AnalyticsConfiguration",
                 "AnalyticsConfiguration",
@@ -11381,6 +19932,11 @@ module AwsSdk
                 "AnalyticsConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11388,6 +19944,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11395,6 +19956,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "AnalyticsId",
@@ -11402,14 +19968,24 @@ module AwsSdk
                 "id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketCorsRequest" => Shape.new(
             "PutBucketCorsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11417,6 +19993,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CORSConfiguration",
                 "CORSConfiguration",
@@ -11424,6 +20005,11 @@ module AwsSdk
                 "CORSConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11431,6 +20017,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11438,6 +20029,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11445,14 +20041,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketEncryptionRequest" => Shape.new(
             "PutBucketEncryptionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11460,6 +20066,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11467,6 +20078,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11474,6 +20090,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11481,6 +20102,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryptionConfiguration",
                 "ServerSideEncryptionConfiguration",
@@ -11488,14 +20114,24 @@ module AwsSdk
                 "ServerSideEncryptionConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketIntelligentTieringConfigurationRequest" => Shape.new(
             "PutBucketIntelligentTieringConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11503,6 +20139,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11510,6 +20151,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "IntelligentTieringId",
@@ -11517,6 +20163,11 @@ module AwsSdk
                 "id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IntelligentTieringConfiguration",
                 "IntelligentTieringConfiguration",
@@ -11524,14 +20175,24 @@ module AwsSdk
                 "IntelligentTieringConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketInventoryConfigurationRequest" => Shape.new(
             "PutBucketInventoryConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11539,6 +20200,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11546,6 +20212,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "InventoryId",
@@ -11553,6 +20224,11 @@ module AwsSdk
                 "id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InventoryConfiguration",
                 "InventoryConfiguration",
@@ -11560,14 +20236,24 @@ module AwsSdk
                 "InventoryConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketLifecycleConfigurationOutput" => Shape.new(
             "PutBucketLifecycleConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TransitionDefaultMinimumObjectSize",
                 "TransitionDefaultMinimumObjectSize",
@@ -11575,14 +20261,24 @@ module AwsSdk
                 "x-amz-transition-default-minimum-object-size",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketLifecycleConfigurationRequest" => Shape.new(
             "PutBucketLifecycleConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11590,6 +20286,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11597,6 +20298,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11604,6 +20310,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LifecycleConfiguration",
                 "BucketLifecycleConfiguration",
@@ -11611,6 +20322,11 @@ module AwsSdk
                 "LifecycleConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TransitionDefaultMinimumObjectSize",
                 "TransitionDefaultMinimumObjectSize",
@@ -11618,14 +20334,24 @@ module AwsSdk
                 "x-amz-transition-default-minimum-object-size",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketLifecycleRequest" => Shape.new(
             "PutBucketLifecycleRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11633,6 +20359,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11640,6 +20371,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11647,6 +20383,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11654,6 +20395,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LifecycleConfiguration",
                 "LifecycleConfiguration",
@@ -11661,14 +20407,24 @@ module AwsSdk
                 "LifecycleConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketLoggingRequest" => Shape.new(
             "PutBucketLoggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11676,6 +20432,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketLoggingStatus",
                 "BucketLoggingStatus",
@@ -11683,6 +20444,11 @@ module AwsSdk
                 "BucketLoggingStatus",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11690,6 +20456,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11697,6 +20468,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11704,14 +20480,24 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketMetricsConfigurationRequest" => Shape.new(
             "PutBucketMetricsConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11719,6 +20505,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11726,6 +20517,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "MetricsId",
@@ -11733,6 +20529,11 @@ module AwsSdk
                 "id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetricsConfiguration",
                 "MetricsConfiguration",
@@ -11740,14 +20541,24 @@ module AwsSdk
                 "MetricsConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketNotificationConfigurationRequest" => Shape.new(
             "PutBucketNotificationConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11755,6 +20566,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11762,6 +20578,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NotificationConfiguration",
                 "NotificationConfiguration",
@@ -11769,6 +20590,11 @@ module AwsSdk
                 "NotificationConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SkipDestinationValidation",
                 "SkipValidation",
@@ -11776,14 +20602,24 @@ module AwsSdk
                 "x-amz-skip-destination-validation",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketNotificationRequest" => Shape.new(
             "PutBucketNotificationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11791,6 +20627,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11798,6 +20639,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11805,6 +20651,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11812,6 +20663,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NotificationConfiguration",
                 "NotificationConfigurationDeprecated",
@@ -11819,14 +20675,24 @@ module AwsSdk
                 "NotificationConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketOwnershipControlsRequest" => Shape.new(
             "PutBucketOwnershipControlsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11834,6 +20700,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11841,6 +20712,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11848,6 +20724,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11855,6 +20736,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OwnershipControls",
                 "OwnershipControls",
@@ -11862,14 +20748,24 @@ module AwsSdk
                 "OwnershipControls",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketPolicyRequest" => Shape.new(
             "PutBucketPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11877,6 +20773,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11884,6 +20785,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ConfirmRemoveSelfBucketAccess",
                 "ConfirmRemoveSelfBucketAccess",
@@ -11891,6 +20797,11 @@ module AwsSdk
                 "x-amz-confirm-remove-self-bucket-access",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11898,6 +20809,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11905,6 +20821,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Policy",
                 "Policy",
@@ -11912,14 +20833,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketReplicationRequest" => Shape.new(
             "PutBucketReplicationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11927,6 +20858,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11934,6 +20870,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11941,6 +20882,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11948,6 +20894,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplicationConfiguration",
                 "ReplicationConfiguration",
@@ -11955,6 +20906,11 @@ module AwsSdk
                 "ReplicationConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Token",
                 "ObjectLockToken",
@@ -11962,14 +20918,24 @@ module AwsSdk
                 "x-amz-bucket-object-lock-token",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketRequestPaymentRequest" => Shape.new(
             "PutBucketRequestPaymentRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -11977,6 +20943,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -11984,6 +20955,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -11991,6 +20967,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -11998,6 +20979,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPaymentConfiguration",
                 "RequestPaymentConfiguration",
@@ -12005,14 +20991,24 @@ module AwsSdk
                 "RequestPaymentConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketTaggingRequest" => Shape.new(
             "PutBucketTaggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12020,6 +21016,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12027,6 +21028,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12034,6 +21040,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12041,6 +21052,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tagging",
                 "Tagging",
@@ -12048,14 +21064,24 @@ module AwsSdk
                 "Tagging",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketVersioningRequest" => Shape.new(
             "PutBucketVersioningRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12063,6 +21089,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12070,6 +21101,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12077,6 +21113,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12084,6 +21125,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MFA",
                 "MFA",
@@ -12091,6 +21137,11 @@ module AwsSdk
                 "x-amz-mfa",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersioningConfiguration",
                 "VersioningConfiguration",
@@ -12098,14 +21149,24 @@ module AwsSdk
                 "VersioningConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutBucketWebsiteRequest" => Shape.new(
             "PutBucketWebsiteRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12113,6 +21174,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12120,6 +21186,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12127,6 +21198,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12134,6 +21210,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WebsiteConfiguration",
                 "WebsiteConfiguration",
@@ -12141,14 +21222,24 @@ module AwsSdk
                 "WebsiteConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectAclOutput" => Shape.new(
             "PutObjectAclOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -12156,14 +21247,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectAclRequest" => Shape.new(
             "PutObjectAclRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ACL",
                 "ObjectCannedACL",
@@ -12171,6 +21272,11 @@ module AwsSdk
                 "x-amz-acl",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "AccessControlPolicy",
                 "AccessControlPolicy",
@@ -12178,6 +21284,11 @@ module AwsSdk
                 "AccessControlPolicy",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12185,6 +21296,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12192,6 +21308,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12199,6 +21320,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12206,6 +21332,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantFullControl",
                 "GrantFullControl",
@@ -12213,6 +21344,11 @@ module AwsSdk
                 "x-amz-grant-full-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantRead",
                 "GrantRead",
@@ -12220,6 +21356,11 @@ module AwsSdk
                 "x-amz-grant-read",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantReadACP",
                 "GrantReadACP",
@@ -12227,6 +21368,11 @@ module AwsSdk
                 "x-amz-grant-read-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWrite",
                 "GrantWrite",
@@ -12234,6 +21380,11 @@ module AwsSdk
                 "x-amz-grant-write",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWriteACP",
                 "GrantWriteACP",
@@ -12241,6 +21392,11 @@ module AwsSdk
                 "x-amz-grant-write-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -12248,6 +21404,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -12255,6 +21416,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -12262,14 +21428,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectLegalHoldOutput" => Shape.new(
             "PutObjectLegalHoldOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -12277,14 +21453,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectLegalHoldRequest" => Shape.new(
             "PutObjectLegalHoldRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12292,6 +21478,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12299,6 +21490,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12306,6 +21502,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12313,6 +21514,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -12320,6 +21526,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LegalHold",
                 "ObjectLockLegalHold",
@@ -12327,6 +21538,11 @@ module AwsSdk
                 "LegalHold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -12334,6 +21550,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -12341,14 +21562,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectLockConfigurationOutput" => Shape.new(
             "PutObjectLockConfigurationOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -12356,14 +21587,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectLockConfigurationRequest" => Shape.new(
             "PutObjectLockConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12371,6 +21612,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12378,6 +21624,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12385,6 +21636,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12392,6 +21648,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockConfiguration",
                 "ObjectLockConfiguration",
@@ -12399,6 +21660,11 @@ module AwsSdk
                 "ObjectLockConfiguration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -12406,6 +21672,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Token",
                 "ObjectLockToken",
@@ -12413,14 +21684,24 @@ module AwsSdk
                 "x-amz-bucket-object-lock-token",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectOutput" => Shape.new(
             "PutObjectOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -12428,6 +21709,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -12435,6 +21721,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -12442,6 +21733,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -12449,6 +21745,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -12456,6 +21757,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -12463,6 +21769,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumType",
                 "ChecksumType",
@@ -12470,6 +21781,11 @@ module AwsSdk
                 "x-amz-checksum-type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -12477,6 +21793,11 @@ module AwsSdk
                 "ETag",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "Expiration",
@@ -12484,6 +21805,11 @@ module AwsSdk
                 "x-amz-expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -12491,6 +21817,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -12498,6 +21829,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -12505,6 +21841,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -12512,6 +21853,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -12519,6 +21865,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -12526,6 +21877,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Size",
                 "Size",
@@ -12533,6 +21889,11 @@ module AwsSdk
                 "x-amz-object-size",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -12540,14 +21901,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectRequest" => Shape.new(
             "PutObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ACL",
                 "ObjectCannedACL",
@@ -12555,6 +21926,11 @@ module AwsSdk
                 "x-amz-acl",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Body",
                 "Body",
@@ -12562,6 +21938,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12569,6 +21950,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -12576,6 +21962,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CacheControl",
                 "CacheControl",
@@ -12583,6 +21974,11 @@ module AwsSdk
                 "Cache-Control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12590,6 +21986,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -12597,6 +21998,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -12604,6 +22010,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -12611,6 +22022,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -12618,6 +22034,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -12625,6 +22046,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentDisposition",
                 "ContentDisposition",
@@ -12632,6 +22058,11 @@ module AwsSdk
                 "Content-Disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentEncoding",
                 "ContentEncoding",
@@ -12639,6 +22070,11 @@ module AwsSdk
                 "Content-Encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLanguage",
                 "ContentLanguage",
@@ -12646,6 +22082,11 @@ module AwsSdk
                 "Content-Language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLength",
                 "ContentLength",
@@ -12653,6 +22094,11 @@ module AwsSdk
                 "Content-Length",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12660,6 +22106,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentType",
                 "ContentType",
@@ -12667,6 +22118,11 @@ module AwsSdk
                 "Content-Type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12674,6 +22130,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expires",
                 "Expires",
@@ -12681,6 +22142,11 @@ module AwsSdk
                 "Expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantFullControl",
                 "GrantFullControl",
@@ -12688,6 +22154,11 @@ module AwsSdk
                 "x-amz-grant-full-control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantRead",
                 "GrantRead",
@@ -12695,6 +22166,11 @@ module AwsSdk
                 "x-amz-grant-read",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantReadACP",
                 "GrantReadACP",
@@ -12702,6 +22178,11 @@ module AwsSdk
                 "x-amz-grant-read-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GrantWriteACP",
                 "GrantWriteACP",
@@ -12709,6 +22190,11 @@ module AwsSdk
                 "x-amz-grant-write-acp",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfMatch",
                 "IfMatch",
@@ -12716,6 +22202,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IfNoneMatch",
                 "IfNoneMatch",
@@ -12723,6 +22214,11 @@ module AwsSdk
                 "If-None-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -12730,6 +22226,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metadata",
                 "Metadata",
@@ -12737,6 +22238,11 @@ module AwsSdk
                 "x-amz-meta-",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockLegalHoldStatus",
                 "ObjectLockLegalHoldStatus",
@@ -12744,6 +22250,11 @@ module AwsSdk
                 "x-amz-object-lock-legal-hold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockMode",
                 "ObjectLockMode",
@@ -12751,6 +22262,11 @@ module AwsSdk
                 "x-amz-object-lock-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockRetainUntilDate",
                 "ObjectLockRetainUntilDate",
@@ -12758,6 +22274,11 @@ module AwsSdk
                 "x-amz-object-lock-retain-until-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -12765,6 +22286,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -12772,6 +22298,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -12779,6 +22310,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -12786,6 +22322,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSEncryptionContext",
                 "SSEKMSEncryptionContext",
@@ -12793,6 +22334,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-context",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -12800,6 +22346,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -12807,6 +22358,11 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -12814,6 +22370,11 @@ module AwsSdk
                 "x-amz-storage-class",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tagging",
                 "TaggingHeader",
@@ -12821,6 +22382,11 @@ module AwsSdk
                 "x-amz-tagging",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WebsiteRedirectLocation",
                 "WebsiteRedirectLocation",
@@ -12828,6 +22394,11 @@ module AwsSdk
                 "x-amz-website-redirect-location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "WriteOffsetBytes",
                 "WriteOffsetBytes",
@@ -12835,14 +22406,24 @@ module AwsSdk
                 "x-amz-write-offset-bytes",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectRetentionOutput" => Shape.new(
             "PutObjectRetentionOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -12850,14 +22431,24 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectRetentionRequest" => Shape.new(
             "PutObjectRetentionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12865,6 +22456,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BypassGovernanceRetention",
                 "BypassGovernanceRetention",
@@ -12872,6 +22468,11 @@ module AwsSdk
                 "x-amz-bypass-governance-retention",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12879,6 +22480,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12886,6 +22492,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12893,6 +22504,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -12900,6 +22516,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -12907,6 +22528,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Retention",
                 "ObjectLockRetention",
@@ -12914,6 +22540,11 @@ module AwsSdk
                 "Retention",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -12921,14 +22552,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectTaggingOutput" => Shape.new(
             "PutObjectTaggingOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -12936,14 +22577,24 @@ module AwsSdk
                 "x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutObjectTaggingRequest" => Shape.new(
             "PutObjectTaggingRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -12951,6 +22602,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -12958,6 +22614,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -12965,6 +22626,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -12972,6 +22638,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -12979,6 +22650,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -12986,6 +22662,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tagging",
                 "Tagging",
@@ -12993,6 +22674,11 @@ module AwsSdk
                 "Tagging",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -13000,14 +22686,24 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PutPublicAccessBlockRequest" => Shape.new(
             "PutPublicAccessBlockRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -13015,6 +22711,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -13022,6 +22723,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -13029,6 +22735,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -13036,6 +22747,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PublicAccessBlockConfiguration",
                 "PublicAccessBlockConfiguration",
@@ -13043,10 +22759,15 @@ module AwsSdk
                 "PublicAccessBlockConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "QueueArn" => Shape.new(
             "QueueArn",
             "string",
@@ -13054,10 +22775,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "QueueConfiguration" => Shape.new(
             "QueueConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Events",
                 "EventList",
@@ -13065,6 +22795,11 @@ module AwsSdk
                 "Event",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "NotificationConfigurationFilter",
@@ -13072,6 +22807,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "NotificationId",
@@ -13079,6 +22819,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QueueArn",
                 "QueueArn",
@@ -13086,14 +22831,24 @@ module AwsSdk
                 "Queue",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "QueueConfigurationDeprecated" => Shape.new(
             "QueueConfigurationDeprecated",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Event",
                 "Event",
@@ -13101,6 +22856,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Events",
                 "EventList",
@@ -13108,6 +22868,11 @@ module AwsSdk
                 "Event",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "NotificationId",
@@ -13115,6 +22880,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Queue",
                 "QueueArn",
@@ -13122,10 +22892,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "QueueConfigurationList" => Shape.new(
             "QueueConfigurationList",
             "list",
@@ -13139,6 +22918,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Quiet" => Shape.new(
             "Quiet",
             "boolean",
@@ -13146,6 +22930,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "QuoteCharacter" => Shape.new(
             "QuoteCharacter",
             "string",
@@ -13153,6 +22941,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "QuoteEscapeCharacter" => Shape.new(
             "QuoteEscapeCharacter",
             "string",
@@ -13160,6 +22952,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "QuoteFields" => Shape.new(
             "QuoteFields",
             "string",
@@ -13167,6 +22963,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Range" => Shape.new(
             "Range",
             "string",
@@ -13174,6 +22974,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RecordDelimiter" => Shape.new(
             "RecordDelimiter",
             "string",
@@ -13181,10 +22985,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RecordExpiration" => Shape.new(
             "RecordExpiration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Days",
                 "RecordExpirationDays",
@@ -13192,6 +23005,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "ExpirationState",
@@ -13199,10 +23017,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RecordExpirationDays" => Shape.new(
             "RecordExpirationDays",
             "integer",
@@ -13210,10 +23033,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RecordsEvent" => Shape.new(
             "RecordsEvent",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Payload",
                 "Body",
@@ -13221,14 +23053,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Redirect" => Shape.new(
             "Redirect",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostName",
                 "HostName",
@@ -13236,6 +23078,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HttpRedirectCode",
                 "HttpRedirectCode",
@@ -13243,6 +23090,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Protocol",
                 "Protocol",
@@ -13250,6 +23102,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplaceKeyPrefixWith",
                 "ReplaceKeyPrefixWith",
@@ -13257,6 +23114,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplaceKeyWith",
                 "ReplaceKeyWith",
@@ -13264,14 +23126,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RedirectAllRequestsTo" => Shape.new(
             "RedirectAllRequestsTo",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostName",
                 "HostName",
@@ -13279,6 +23151,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Protocol",
                 "Protocol",
@@ -13286,10 +23163,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Region" => Shape.new(
             "Region",
             "string",
@@ -13297,18 +23179,32 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RenameObjectOutput" => Shape.new(
             "RenameObjectOutput",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RenameObjectRequest" => Shape.new(
             "RenameObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -13316,6 +23212,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ClientToken",
                 "ClientToken",
@@ -13323,6 +23224,11 @@ module AwsSdk
                 "x-amz-client-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DestinationIfMatch",
                 "IfMatch",
@@ -13330,6 +23236,11 @@ module AwsSdk
                 "If-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DestinationIfModifiedSince",
                 "IfModifiedSince",
@@ -13337,6 +23248,11 @@ module AwsSdk
                 "If-Modified-Since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DestinationIfNoneMatch",
                 "IfNoneMatch",
@@ -13344,6 +23260,11 @@ module AwsSdk
                 "If-None-Match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DestinationIfUnmodifiedSince",
                 "IfUnmodifiedSince",
@@ -13351,6 +23272,11 @@ module AwsSdk
                 "If-Unmodified-Since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -13358,6 +23284,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RenameSource",
                 "RenameSource",
@@ -13365,6 +23296,11 @@ module AwsSdk
                 "x-amz-rename-source",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SourceIfMatch",
                 "RenameSourceIfMatch",
@@ -13372,6 +23308,11 @@ module AwsSdk
                 "x-amz-rename-source-if-match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SourceIfModifiedSince",
                 "RenameSourceIfModifiedSince",
@@ -13379,6 +23320,11 @@ module AwsSdk
                 "x-amz-rename-source-if-modified-since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SourceIfNoneMatch",
                 "RenameSourceIfNoneMatch",
@@ -13386,6 +23332,11 @@ module AwsSdk
                 "x-amz-rename-source-if-none-match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SourceIfUnmodifiedSince",
                 "RenameSourceIfUnmodifiedSince",
@@ -13393,10 +23344,15 @@ module AwsSdk
                 "x-amz-rename-source-if-unmodified-since",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RenameSource" => Shape.new(
             "RenameSource",
             "string",
@@ -13404,6 +23360,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RenameSourceIfMatch" => Shape.new(
             "RenameSourceIfMatch",
             "string",
@@ -13411,6 +23371,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RenameSourceIfModifiedSince" => Shape.new(
             "RenameSourceIfModifiedSince",
             "timestamp",
@@ -13418,6 +23382,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RenameSourceIfNoneMatch" => Shape.new(
             "RenameSourceIfNoneMatch",
             "string",
@@ -13425,6 +23393,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RenameSourceIfUnmodifiedSince" => Shape.new(
             "RenameSourceIfUnmodifiedSince",
             "timestamp",
@@ -13432,6 +23404,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplaceKeyPrefixWith" => Shape.new(
             "ReplaceKeyPrefixWith",
             "string",
@@ -13439,6 +23415,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplaceKeyWith" => Shape.new(
             "ReplaceKeyWith",
             "string",
@@ -13446,6 +23426,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplicaKmsKeyID" => Shape.new(
             "ReplicaKmsKeyID",
             "string",
@@ -13453,10 +23437,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplicaModifications" => Shape.new(
             "ReplicaModifications",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ReplicaModificationsStatus",
@@ -13464,10 +23457,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReplicaModificationsStatus" => Shape.new(
             "ReplicaModificationsStatus",
             "string",
@@ -13475,10 +23473,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplicationConfiguration" => Shape.new(
             "ReplicationConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Role",
                 "Role",
@@ -13486,6 +23493,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "ReplicationRules",
@@ -13493,14 +23505,24 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReplicationRule" => Shape.new(
             "ReplicationRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarkerReplication",
                 "DeleteMarkerReplication",
@@ -13508,6 +23530,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Destination",
                 "Destination",
@@ -13515,6 +23542,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExistingObjectReplication",
                 "ExistingObjectReplication",
@@ -13522,6 +23554,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "ReplicationRuleFilter",
@@ -13529,6 +23566,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -13536,6 +23578,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -13543,6 +23590,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Priority",
                 "Priority",
@@ -13550,6 +23602,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SourceSelectionCriteria",
                 "SourceSelectionCriteria",
@@ -13557,6 +23614,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ReplicationRuleStatus",
@@ -13564,14 +23626,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReplicationRuleAndOperator" => Shape.new(
             "ReplicationRuleAndOperator",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -13579,6 +23651,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagSet",
@@ -13586,14 +23663,24 @@ module AwsSdk
                 "Tag",
                 true
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReplicationRuleFilter" => Shape.new(
             "ReplicationRuleFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "And",
                 "ReplicationRuleAndOperator",
@@ -13601,6 +23688,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -13608,6 +23700,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tag",
                 "Tag",
@@ -13615,10 +23712,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReplicationRuleStatus" => Shape.new(
             "ReplicationRuleStatus",
             "string",
@@ -13626,6 +23728,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ReplicationRules" => Shape.new(
             "ReplicationRules",
             "list",
@@ -13639,6 +23749,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "ReplicationStatus" => Shape.new(
             "ReplicationStatus",
             "string",
@@ -13646,10 +23761,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplicationTime" => Shape.new(
             "ReplicationTime",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ReplicationTimeStatus",
@@ -13657,6 +23781,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Time",
                 "ReplicationTimeValue",
@@ -13664,10 +23793,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReplicationTimeStatus" => Shape.new(
             "ReplicationTimeStatus",
             "string",
@@ -13675,10 +23809,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReplicationTimeValue" => Shape.new(
             "ReplicationTimeValue",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Minutes",
                 "Minutes",
@@ -13686,10 +23829,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RequestCharged" => Shape.new(
             "RequestCharged",
             "string",
@@ -13697,6 +23845,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RequestPayer" => Shape.new(
             "RequestPayer",
             "string",
@@ -13704,10 +23856,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RequestPaymentConfiguration" => Shape.new(
             "RequestPaymentConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Payer",
                 "Payer",
@@ -13715,14 +23876,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RequestProgress" => Shape.new(
             "RequestProgress",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Enabled",
                 "EnableRequestProgress",
@@ -13730,10 +23901,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RequestRoute" => Shape.new(
             "RequestRoute",
             "string",
@@ -13741,6 +23917,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RequestToken" => Shape.new(
             "RequestToken",
             "string",
@@ -13748,6 +23928,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResponseCacheControl" => Shape.new(
             "ResponseCacheControl",
             "string",
@@ -13755,6 +23939,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResponseContentDisposition" => Shape.new(
             "ResponseContentDisposition",
             "string",
@@ -13762,6 +23950,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResponseContentEncoding" => Shape.new(
             "ResponseContentEncoding",
             "string",
@@ -13769,6 +23961,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResponseContentLanguage" => Shape.new(
             "ResponseContentLanguage",
             "string",
@@ -13776,6 +23972,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResponseContentType" => Shape.new(
             "ResponseContentType",
             "string",
@@ -13783,6 +23983,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResponseExpires" => Shape.new(
             "ResponseExpires",
             "timestamp",
@@ -13790,6 +23994,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Restore" => Shape.new(
             "Restore",
             "string",
@@ -13797,6 +24005,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RestoreExpiryDate" => Shape.new(
             "RestoreExpiryDate",
             "timestamp",
@@ -13804,10 +24016,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RestoreObjectOutput" => Shape.new(
             "RestoreObjectOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -13815,6 +24036,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RestoreOutputPath",
                 "RestoreOutputPath",
@@ -13822,14 +24048,24 @@ module AwsSdk
                 "x-amz-restore-output-path",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RestoreObjectRequest" => Shape.new(
             "RestoreObjectRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -13837,6 +24073,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -13844,6 +24085,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -13851,6 +24097,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -13858,6 +24109,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -13865,6 +24121,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RestoreRequest",
                 "RestoreRequest",
@@ -13872,6 +24133,11 @@ module AwsSdk
                 "RestoreRequest",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -13879,10 +24145,15 @@ module AwsSdk
                 "versionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RestoreOutputPath" => Shape.new(
             "RestoreOutputPath",
             "string",
@@ -13890,10 +24161,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RestoreRequest" => Shape.new(
             "RestoreRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Days",
                 "Days",
@@ -13901,6 +24181,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Description",
                 "Description",
@@ -13908,6 +24193,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GlacierJobParameters",
                 "GlacierJobParameters",
@@ -13915,6 +24205,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OutputLocation",
                 "OutputLocation",
@@ -13922,6 +24217,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SelectParameters",
                 "SelectParameters",
@@ -13929,6 +24229,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tier",
                 "Tier",
@@ -13936,6 +24241,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "RestoreRequestType",
@@ -13943,10 +24253,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "RestoreRequestType" => Shape.new(
             "RestoreRequestType",
             "string",
@@ -13954,10 +24269,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RestoreStatus" => Shape.new(
             "RestoreStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsRestoreInProgress",
                 "IsRestoreInProgress",
@@ -13965,6 +24289,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RestoreExpiryDate",
                 "RestoreExpiryDate",
@@ -13972,10 +24301,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Role" => Shape.new(
             "Role",
             "string",
@@ -13983,10 +24317,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RoutingRule" => Shape.new(
             "RoutingRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Condition",
                 "Condition",
@@ -13994,6 +24337,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Redirect",
                 "Redirect",
@@ -14001,10 +24349,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "RoutingRules" => Shape.new(
             "RoutingRules",
             "list",
@@ -14018,10 +24375,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "Rule" => Shape.new(
             "Rule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AbortIncompleteMultipartUpload",
                 "AbortIncompleteMultipartUpload",
@@ -14029,6 +24396,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "LifecycleExpiration",
@@ -14036,6 +24408,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ID",
                 "ID",
@@ -14043,6 +24420,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NoncurrentVersionExpiration",
                 "NoncurrentVersionExpiration",
@@ -14050,6 +24432,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NoncurrentVersionTransition",
                 "NoncurrentVersionTransition",
@@ -14057,6 +24444,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "Prefix",
@@ -14064,6 +24456,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ExpirationStatus",
@@ -14071,6 +24468,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Transition",
                 "Transition",
@@ -14078,10 +24480,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "Rules" => Shape.new(
             "Rules",
             "list",
@@ -14095,10 +24506,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "S3KeyFilter" => Shape.new(
             "S3KeyFilter",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "FilterRules",
                 "FilterRuleList",
@@ -14106,14 +24527,24 @@ module AwsSdk
                 "FilterRule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "S3Location" => Shape.new(
             "S3Location",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessControlList",
                 "Grants",
@@ -14121,6 +24552,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketName",
                 "BucketName",
@@ -14128,6 +24564,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CannedACL",
                 "ObjectCannedACL",
@@ -14135,6 +24576,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Encryption",
                 "Encryption",
@@ -14142,6 +24588,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Prefix",
                 "LocationPrefix",
@@ -14149,6 +24600,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -14156,6 +24612,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tagging",
                 "Tagging",
@@ -14163,6 +24624,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UserMetadata",
                 "UserMetadata",
@@ -14170,10 +24636,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "S3RegionalOrS3ExpressBucketArnString" => Shape.new(
             "S3RegionalOrS3ExpressBucketArnString",
             "string",
@@ -14181,6 +24652,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "S3TablesArn" => Shape.new(
             "S3TablesArn",
             "string",
@@ -14188,6 +24663,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "S3TablesBucketArn" => Shape.new(
             "S3TablesBucketArn",
             "string",
@@ -14195,6 +24674,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "S3TablesBucketType" => Shape.new(
             "S3TablesBucketType",
             "string",
@@ -14202,10 +24685,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "S3TablesDestination" => Shape.new(
             "S3TablesDestination",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TableBucketArn",
                 "S3TablesBucketArn",
@@ -14213,6 +24705,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableName",
                 "S3TablesName",
@@ -14220,14 +24717,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "S3TablesDestinationResult" => Shape.new(
             "S3TablesDestinationResult",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TableArn",
                 "S3TablesArn",
@@ -14235,6 +24742,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableBucketArn",
                 "S3TablesBucketArn",
@@ -14242,6 +24754,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableName",
                 "S3TablesName",
@@ -14249,6 +24766,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TableNamespace",
                 "S3TablesNamespace",
@@ -14256,10 +24778,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "S3TablesName" => Shape.new(
             "S3TablesName",
             "string",
@@ -14267,6 +24794,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "S3TablesNamespace" => Shape.new(
             "S3TablesNamespace",
             "string",
@@ -14274,6 +24805,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SSECustomerAlgorithm" => Shape.new(
             "SSECustomerAlgorithm",
             "string",
@@ -14281,6 +24816,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SSECustomerKey" => Shape.new(
             "SSECustomerKey",
             "string",
@@ -14288,6 +24827,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SSECustomerKeyMD5" => Shape.new(
             "SSECustomerKeyMD5",
             "string",
@@ -14295,10 +24838,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SSEKMS" => Shape.new(
             "SSEKMS",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "KeyId",
                 "SSEKMSKeyId",
@@ -14306,10 +24858,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SSEKMSEncryptionContext" => Shape.new(
             "SSEKMSEncryptionContext",
             "string",
@@ -14317,6 +24874,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SSEKMSKeyId" => Shape.new(
             "SSEKMSKeyId",
             "string",
@@ -14324,18 +24885,32 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SSES3" => Shape.new(
             "SSES3",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ScanRange" => Shape.new(
             "ScanRange",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "End",
                 "End",
@@ -14343,6 +24918,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Start",
                 "Start",
@@ -14350,14 +24930,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SelectObjectContentEventStream" => Shape.new(
             "SelectObjectContentEventStream",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Cont",
                 "ContinuationEvent",
@@ -14365,6 +24955,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "End",
                 "EndEvent",
@@ -14372,6 +24967,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Progress",
                 "ProgressEvent",
@@ -14379,6 +24979,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Records",
                 "RecordsEvent",
@@ -14386,6 +24991,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Stats",
                 "StatsEvent",
@@ -14393,14 +25003,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SelectObjectContentOutput" => Shape.new(
             "SelectObjectContentOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Payload",
                 "SelectObjectContentEventStream",
@@ -14408,14 +25028,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SelectObjectContentRequest" => Shape.new(
             "SelectObjectContentRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -14423,6 +25053,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -14430,6 +25065,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expression",
                 "Expression",
@@ -14437,6 +25077,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpressionType",
                 "ExpressionType",
@@ -14444,6 +25089,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InputSerialization",
                 "InputSerialization",
@@ -14451,6 +25101,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -14458,6 +25113,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OutputSerialization",
                 "OutputSerialization",
@@ -14465,6 +25125,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestProgress",
                 "RequestProgress",
@@ -14472,6 +25137,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -14479,6 +25149,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -14486,6 +25161,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -14493,6 +25173,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ScanRange",
                 "ScanRange",
@@ -14500,14 +25185,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SelectParameters" => Shape.new(
             "SelectParameters",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Expression",
                 "Expression",
@@ -14515,6 +25210,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpressionType",
                 "ExpressionType",
@@ -14522,6 +25222,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InputSerialization",
                 "InputSerialization",
@@ -14529,6 +25234,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OutputSerialization",
                 "OutputSerialization",
@@ -14536,10 +25246,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ServerSideEncryption" => Shape.new(
             "ServerSideEncryption",
             "string",
@@ -14547,10 +25262,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ServerSideEncryptionByDefault" => Shape.new(
             "ServerSideEncryptionByDefault",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "KMSMasterKeyID",
                 "SSEKMSKeyId",
@@ -14558,6 +25282,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEAlgorithm",
                 "ServerSideEncryption",
@@ -14565,14 +25294,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ServerSideEncryptionConfiguration" => Shape.new(
             "ServerSideEncryptionConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Rules",
                 "ServerSideEncryptionRules",
@@ -14580,14 +25319,24 @@ module AwsSdk
                 "Rule",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ServerSideEncryptionRule" => Shape.new(
             "ServerSideEncryptionRule",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ApplyServerSideEncryptionByDefault",
                 "ServerSideEncryptionByDefault",
@@ -14595,6 +25344,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BlockedEncryptionTypes",
                 "BlockedEncryptionTypes",
@@ -14602,6 +25356,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -14609,10 +25368,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ServerSideEncryptionRules" => Shape.new(
             "ServerSideEncryptionRules",
             "list",
@@ -14626,6 +25394,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "SessionCredentialValue" => Shape.new(
             "SessionCredentialValue",
             "string",
@@ -14633,10 +25406,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SessionCredentials" => Shape.new(
             "SessionCredentials",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessKeyId",
                 "AccessKeyIdValue",
@@ -14644,6 +25426,11 @@ module AwsSdk
                 "AccessKeyId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "SessionExpiration",
@@ -14651,6 +25438,11 @@ module AwsSdk
                 "Expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SecretAccessKey",
                 "SessionCredentialValue",
@@ -14658,6 +25450,11 @@ module AwsSdk
                 "SecretAccessKey",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SessionToken",
                 "SessionCredentialValue",
@@ -14665,10 +25462,15 @@ module AwsSdk
                 "SessionToken",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SessionExpiration" => Shape.new(
             "SessionExpiration",
             "timestamp",
@@ -14676,6 +25478,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SessionMode" => Shape.new(
             "SessionMode",
             "string",
@@ -14683,6 +25489,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Setting" => Shape.new(
             "Setting",
             "boolean",
@@ -14690,14 +25500,23 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SimplePrefix" => Shape.new(
             "SimplePrefix",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Size" => Shape.new(
             "Size",
             "long",
@@ -14705,6 +25524,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SkipValidation" => Shape.new(
             "SkipValidation",
             "boolean",
@@ -14712,10 +25535,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SourceSelectionCriteria" => Shape.new(
             "SourceSelectionCriteria",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ReplicaModifications",
                 "ReplicaModifications",
@@ -14723,6 +25555,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SseKmsEncryptedObjects",
                 "SseKmsEncryptedObjects",
@@ -14730,14 +25567,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SseKmsEncryptedObjects" => Shape.new(
             "SseKmsEncryptedObjects",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "SseKmsEncryptedObjectsStatus",
@@ -14745,10 +25592,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SseKmsEncryptedObjectsStatus" => Shape.new(
             "SseKmsEncryptedObjectsStatus",
             "string",
@@ -14756,6 +25608,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Start" => Shape.new(
             "Start",
             "long",
@@ -14763,6 +25619,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "StartAfter" => Shape.new(
             "StartAfter",
             "string",
@@ -14770,10 +25630,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Stats" => Shape.new(
             "Stats",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BytesProcessed",
                 "BytesProcessed",
@@ -14781,6 +25650,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BytesReturned",
                 "BytesReturned",
@@ -14788,6 +25662,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BytesScanned",
                 "BytesScanned",
@@ -14795,14 +25674,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "StatsEvent" => Shape.new(
             "StatsEvent",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Details",
                 "Stats",
@@ -14810,10 +25699,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "StorageClass" => Shape.new(
             "StorageClass",
             "string",
@@ -14821,10 +25715,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "StorageClassAnalysis" => Shape.new(
             "StorageClassAnalysis",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DataExport",
                 "StorageClassAnalysisDataExport",
@@ -14832,14 +25735,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "StorageClassAnalysisDataExport" => Shape.new(
             "StorageClassAnalysisDataExport",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Destination",
                 "AnalyticsExportDestination",
@@ -14847,6 +25760,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OutputSchemaVersion",
                 "StorageClassAnalysisSchemaVersion",
@@ -14854,10 +25772,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "StorageClassAnalysisSchemaVersion" => Shape.new(
             "StorageClassAnalysisSchemaVersion",
             "string",
@@ -14865,6 +25788,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Suffix" => Shape.new(
             "Suffix",
             "string",
@@ -14872,6 +25799,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TableSseAlgorithm" => Shape.new(
             "TableSseAlgorithm",
             "string",
@@ -14879,10 +25810,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Tag" => Shape.new(
             "Tag",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -14890,6 +25830,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "Value",
@@ -14897,10 +25842,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TagCount" => Shape.new(
             "TagCount",
             "integer",
@@ -14908,6 +25858,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TagSet" => Shape.new(
             "TagSet",
             "list",
@@ -14921,10 +25879,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "Tagging" => Shape.new(
             "Tagging",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TagSet",
                 "TagSet",
@@ -14932,10 +25900,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TaggingDirective" => Shape.new(
             "TaggingDirective",
             "string",
@@ -14943,6 +25916,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TaggingHeader" => Shape.new(
             "TaggingHeader",
             "string",
@@ -14950,6 +25927,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TargetBucket" => Shape.new(
             "TargetBucket",
             "string",
@@ -14957,10 +25938,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TargetGrant" => Shape.new(
             "TargetGrant",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Grantee",
                 "Grantee",
@@ -14968,6 +25958,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Permission",
                 "BucketLogsPermission",
@@ -14975,10 +25970,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TargetGrants" => Shape.new(
             "TargetGrants",
             "list",
@@ -14992,10 +25996,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "TargetObjectKeyFormat" => Shape.new(
             "TargetObjectKeyFormat",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "PartitionedPrefix",
                 "PartitionedPrefix",
@@ -15003,6 +26017,11 @@ module AwsSdk
                 "PartitionedPrefix",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SimplePrefix",
                 "SimplePrefix",
@@ -15010,10 +26029,15 @@ module AwsSdk
                 "SimplePrefix",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TargetPrefix" => Shape.new(
             "TargetPrefix",
             "string",
@@ -15021,6 +26045,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Tier" => Shape.new(
             "Tier",
             "string",
@@ -15028,10 +26056,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Tiering" => Shape.new(
             "Tiering",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AccessTier",
                 "IntelligentTieringAccessTier",
@@ -15039,6 +26076,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Days",
                 "IntelligentTieringDays",
@@ -15046,10 +26088,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TieringList" => Shape.new(
             "TieringList",
             "list",
@@ -15063,6 +26114,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Token" => Shape.new(
             "Token",
             "string",
@@ -15070,14 +26126,23 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TooManyParts" => Shape.new(
             "TooManyParts",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TopicArn" => Shape.new(
             "TopicArn",
             "string",
@@ -15085,10 +26150,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TopicConfiguration" => Shape.new(
             "TopicConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Events",
                 "EventList",
@@ -15096,6 +26170,11 @@ module AwsSdk
                 "Event",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Filter",
                 "NotificationConfigurationFilter",
@@ -15103,6 +26182,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "NotificationId",
@@ -15110,6 +26194,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TopicArn",
                 "TopicArn",
@@ -15117,14 +26206,24 @@ module AwsSdk
                 "Topic",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TopicConfigurationDeprecated" => Shape.new(
             "TopicConfigurationDeprecated",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Event",
                 "Event",
@@ -15132,6 +26231,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Events",
                 "EventList",
@@ -15139,6 +26243,11 @@ module AwsSdk
                 "Event",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "NotificationId",
@@ -15146,6 +26255,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Topic",
                 "TopicArn",
@@ -15153,10 +26267,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TopicConfigurationList" => Shape.new(
             "TopicConfigurationList",
             "list",
@@ -15170,10 +26293,20 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "Transition" => Shape.new(
             "Transition",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Date",
                 "Date",
@@ -15181,6 +26314,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Days",
                 "Days",
@@ -15188,6 +26326,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "TransitionStorageClass",
@@ -15195,10 +26338,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TransitionDefaultMinimumObjectSize" => Shape.new(
             "TransitionDefaultMinimumObjectSize",
             "string",
@@ -15206,6 +26354,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TransitionList" => Shape.new(
             "TransitionList",
             "list",
@@ -15219,6 +26375,11 @@ module AwsSdk
             ),
             true
           ),
+
+
+
+
+
           "TransitionStorageClass" => Shape.new(
             "TransitionStorageClass",
             "string",
@@ -15226,6 +26387,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Type" => Shape.new(
             "Type",
             "string",
@@ -15233,6 +26398,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "URI" => Shape.new(
             "URI",
             "string",
@@ -15240,10 +26409,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "UpdateBucketMetadataInventoryTableConfigurationRequest" => Shape.new(
             "UpdateBucketMetadataInventoryTableConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -15251,6 +26429,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -15258,6 +26441,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -15265,6 +26453,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -15272,6 +26465,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InventoryTableConfiguration",
                 "InventoryTableConfigurationUpdates",
@@ -15279,14 +26477,24 @@ module AwsSdk
                 "InventoryTableConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateBucketMetadataJournalTableConfigurationRequest" => Shape.new(
             "UpdateBucketMetadataJournalTableConfigurationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -15294,6 +26502,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -15301,6 +26514,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -15308,6 +26526,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -15315,6 +26538,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "JournalTableConfiguration",
                 "JournalTableConfigurationUpdates",
@@ -15322,10 +26550,15 @@ module AwsSdk
                 "JournalTableConfiguration",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UploadIdMarker" => Shape.new(
             "UploadIdMarker",
             "string",
@@ -15333,10 +26566,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "UploadPartCopyOutput" => Shape.new(
             "UploadPartCopyOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -15344,6 +26586,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopyPartResult",
                 "CopyPartResult",
@@ -15351,6 +26598,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceVersionId",
                 "CopySourceVersionId",
@@ -15358,6 +26610,11 @@ module AwsSdk
                 "x-amz-copy-source-version-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -15365,6 +26622,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -15372,6 +26634,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -15379,6 +26646,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -15386,6 +26658,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -15393,14 +26670,24 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UploadPartCopyRequest" => Shape.new(
             "UploadPartCopyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -15408,6 +26695,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySource",
                 "CopySource",
@@ -15415,6 +26707,11 @@ module AwsSdk
                 "x-amz-copy-source",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfMatch",
                 "CopySourceIfMatch",
@@ -15422,6 +26719,11 @@ module AwsSdk
                 "x-amz-copy-source-if-match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfModifiedSince",
                 "CopySourceIfModifiedSince",
@@ -15429,6 +26731,11 @@ module AwsSdk
                 "x-amz-copy-source-if-modified-since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfNoneMatch",
                 "CopySourceIfNoneMatch",
@@ -15436,6 +26743,11 @@ module AwsSdk
                 "x-amz-copy-source-if-none-match",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceIfUnmodifiedSince",
                 "CopySourceIfUnmodifiedSince",
@@ -15443,6 +26755,11 @@ module AwsSdk
                 "x-amz-copy-source-if-unmodified-since",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceRange",
                 "CopySourceRange",
@@ -15450,6 +26767,11 @@ module AwsSdk
                 "x-amz-copy-source-range",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceSSECustomerAlgorithm",
                 "CopySourceSSECustomerAlgorithm",
@@ -15457,6 +26779,11 @@ module AwsSdk
                 "x-amz-copy-source-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceSSECustomerKey",
                 "CopySourceSSECustomerKey",
@@ -15464,6 +26791,11 @@ module AwsSdk
                 "x-amz-copy-source-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CopySourceSSECustomerKeyMD5",
                 "CopySourceSSECustomerKeyMD5",
@@ -15471,6 +26803,11 @@ module AwsSdk
                 "x-amz-copy-source-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -15478,6 +26815,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedSourceBucketOwner",
                 "AccountId",
@@ -15485,6 +26827,11 @@ module AwsSdk
                 "x-amz-source-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -15492,6 +26839,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -15499,6 +26851,11 @@ module AwsSdk
                 "partNumber",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -15506,6 +26863,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -15513,6 +26875,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -15520,6 +26887,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -15527,6 +26899,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -15534,14 +26911,24 @@ module AwsSdk
                 "uploadId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UploadPartOutput" => Shape.new(
             "UploadPartOutput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -15549,6 +26936,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -15556,6 +26948,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -15563,6 +26960,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -15570,6 +26972,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -15577,6 +26984,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -15584,6 +26996,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -15591,6 +27008,11 @@ module AwsSdk
                 "ETag",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -15598,6 +27020,11 @@ module AwsSdk
                 "x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -15605,6 +27032,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -15612,6 +27044,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -15619,6 +27056,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -15626,14 +27068,24 @@ module AwsSdk
                 "x-amz-server-side-encryption",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UploadPartRequest" => Shape.new(
             "UploadPartRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Body",
                 "Body",
@@ -15641,6 +27093,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bucket",
                 "BucketName",
@@ -15648,6 +27105,11 @@ module AwsSdk
                 "Bucket",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumAlgorithm",
                 "ChecksumAlgorithm",
@@ -15655,6 +27117,11 @@ module AwsSdk
                 "x-amz-sdk-checksum-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -15662,6 +27129,11 @@ module AwsSdk
                 "x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -15669,6 +27141,11 @@ module AwsSdk
                 "x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -15676,6 +27153,11 @@ module AwsSdk
                 "x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -15683,6 +27165,11 @@ module AwsSdk
                 "x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -15690,6 +27177,11 @@ module AwsSdk
                 "x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLength",
                 "ContentLength",
@@ -15697,6 +27189,11 @@ module AwsSdk
                 "Content-Length",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentMD5",
                 "ContentMD5",
@@ -15704,6 +27201,11 @@ module AwsSdk
                 "Content-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ExpectedBucketOwner",
                 "AccountId",
@@ -15711,6 +27213,11 @@ module AwsSdk
                 "x-amz-expected-bucket-owner",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "ObjectKey",
@@ -15718,6 +27225,11 @@ module AwsSdk
                 "Key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartNumber",
                 "PartNumber",
@@ -15725,6 +27237,11 @@ module AwsSdk
                 "partNumber",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestPayer",
                 "RequestPayer",
@@ -15732,6 +27249,11 @@ module AwsSdk
                 "x-amz-request-payer",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -15739,6 +27261,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKey",
                 "SSECustomerKey",
@@ -15746,6 +27273,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -15753,6 +27285,11 @@ module AwsSdk
                 "x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "UploadId",
                 "MultipartUploadId",
@@ -15760,10 +27297,19 @@ module AwsSdk
                 "uploadId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "UserMetadata" => Shape.new(
             "UserMetadata",
             "list",
@@ -15777,6 +27323,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "Value" => Shape.new(
             "Value",
             "string",
@@ -15784,6 +27335,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "VersionCount" => Shape.new(
             "VersionCount",
             "integer",
@@ -15791,6 +27346,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "VersionIdMarker" => Shape.new(
             "VersionIdMarker",
             "string",
@@ -15798,10 +27357,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "VersioningConfiguration" => Shape.new(
             "VersioningConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MFADelete",
                 "MFADelete",
@@ -15809,6 +27377,11 @@ module AwsSdk
                 "MfaDelete",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "BucketVersioningStatus",
@@ -15816,14 +27389,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "WebsiteConfiguration" => Shape.new(
             "WebsiteConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ErrorDocument",
                 "ErrorDocument",
@@ -15831,6 +27414,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IndexDocument",
                 "IndexDocument",
@@ -15838,6 +27426,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RedirectAllRequestsTo",
                 "RedirectAllRequestsTo",
@@ -15845,6 +27438,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RoutingRules",
                 "RoutingRules",
@@ -15852,10 +27450,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "WebsiteRedirectLocation" => Shape.new(
             "WebsiteRedirectLocation",
             "string",
@@ -15863,10 +27466,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "WriteGetObjectResponseRequest" => Shape.new(
             "WriteGetObjectResponseRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AcceptRanges",
                 "AcceptRanges",
@@ -15874,6 +27486,11 @@ module AwsSdk
                 "x-amz-fwd-header-accept-ranges",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Body",
                 "Body",
@@ -15881,6 +27498,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "BucketKeyEnabled",
                 "BucketKeyEnabled",
@@ -15888,6 +27510,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CacheControl",
                 "CacheControl",
@@ -15895,6 +27522,11 @@ module AwsSdk
                 "x-amz-fwd-header-Cache-Control",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32",
                 "ChecksumCRC32",
@@ -15902,6 +27534,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-checksum-crc32",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC32C",
                 "ChecksumCRC32C",
@@ -15909,6 +27546,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-checksum-crc32c",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumCRC64NVME",
                 "ChecksumCRC64NVME",
@@ -15916,6 +27558,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-checksum-crc64nvme",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA1",
                 "ChecksumSHA1",
@@ -15923,6 +27570,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-checksum-sha1",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChecksumSHA256",
                 "ChecksumSHA256",
@@ -15930,6 +27582,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-checksum-sha256",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentDisposition",
                 "ContentDisposition",
@@ -15937,6 +27594,11 @@ module AwsSdk
                 "x-amz-fwd-header-Content-Disposition",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentEncoding",
                 "ContentEncoding",
@@ -15944,6 +27606,11 @@ module AwsSdk
                 "x-amz-fwd-header-Content-Encoding",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLanguage",
                 "ContentLanguage",
@@ -15951,6 +27618,11 @@ module AwsSdk
                 "x-amz-fwd-header-Content-Language",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentLength",
                 "ContentLength",
@@ -15958,6 +27630,11 @@ module AwsSdk
                 "Content-Length",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentRange",
                 "ContentRange",
@@ -15965,6 +27642,11 @@ module AwsSdk
                 "x-amz-fwd-header-Content-Range",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContentType",
                 "ContentType",
@@ -15972,6 +27654,11 @@ module AwsSdk
                 "x-amz-fwd-header-Content-Type",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DeleteMarker",
                 "DeleteMarker",
@@ -15979,6 +27666,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-delete-marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ETag",
                 "ETag",
@@ -15986,6 +27678,11 @@ module AwsSdk
                 "x-amz-fwd-header-ETag",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ErrorCode",
                 "ErrorCode",
@@ -15993,6 +27690,11 @@ module AwsSdk
                 "x-amz-fwd-error-code",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ErrorMessage",
                 "ErrorMessage",
@@ -16000,6 +27702,11 @@ module AwsSdk
                 "x-amz-fwd-error-message",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expiration",
                 "Expiration",
@@ -16007,6 +27714,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-expiration",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Expires",
                 "Expires",
@@ -16014,6 +27726,11 @@ module AwsSdk
                 "x-amz-fwd-header-Expires",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModified",
                 "LastModified",
@@ -16021,6 +27738,11 @@ module AwsSdk
                 "x-amz-fwd-header-Last-Modified",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Metadata",
                 "Metadata",
@@ -16028,6 +27750,11 @@ module AwsSdk
                 "x-amz-meta-",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MissingMeta",
                 "MissingMeta",
@@ -16035,6 +27762,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-missing-meta",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockLegalHoldStatus",
                 "ObjectLockLegalHoldStatus",
@@ -16042,6 +27774,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-object-lock-legal-hold",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockMode",
                 "ObjectLockMode",
@@ -16049,6 +27786,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-object-lock-mode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ObjectLockRetainUntilDate",
                 "ObjectLockRetainUntilDate",
@@ -16056,6 +27798,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-object-lock-retain-until-date",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PartsCount",
                 "PartsCount",
@@ -16063,6 +27810,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-mp-parts-count",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ReplicationStatus",
                 "ReplicationStatus",
@@ -16070,6 +27822,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-replication-status",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestCharged",
                 "RequestCharged",
@@ -16077,6 +27834,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-request-charged",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestRoute",
                 "RequestRoute",
@@ -16084,6 +27846,11 @@ module AwsSdk
                 "x-amz-request-route",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestToken",
                 "RequestToken",
@@ -16091,6 +27858,11 @@ module AwsSdk
                 "x-amz-request-token",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Restore",
                 "Restore",
@@ -16098,6 +27870,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-restore",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerAlgorithm",
                 "SSECustomerAlgorithm",
@@ -16105,6 +27882,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSECustomerKeyMD5",
                 "SSECustomerKeyMD5",
@@ -16112,6 +27894,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SSEKMSKeyId",
                 "SSEKMSKeyId",
@@ -16119,6 +27906,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-server-side-encryption-aws-kms-key-id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServerSideEncryption",
                 "ServerSideEncryption",
@@ -16126,6 +27918,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-server-side-encryption",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StatusCode",
                 "GetObjectResponseStatusCode",
@@ -16133,6 +27930,11 @@ module AwsSdk
                 "x-amz-fwd-status",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StorageClass",
                 "StorageClass",
@@ -16140,6 +27942,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-storage-class",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TagCount",
                 "TagCount",
@@ -16147,6 +27954,11 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-tagging-count",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VersionId",
                 "ObjectVersionId",
@@ -16154,10 +27966,15 @@ module AwsSdk
                 "x-amz-fwd-header-x-amz-version-id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "WriteOffsetBytes" => Shape.new(
             "WriteOffsetBytes",
             "long",
@@ -16165,6 +27982,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Years" => Shape.new(
             "Years",
             "integer",
@@ -16172,6 +27993,8 @@ module AwsSdk
             nil,
             false
           ),
+
+
         }
 
         def self.build_request(operation : Model::OperationModel, input, endpoint : String) : AwsSdk::Runtime::Http::Request

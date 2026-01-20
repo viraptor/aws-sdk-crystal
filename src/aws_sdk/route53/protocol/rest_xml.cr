@@ -44,253 +44,992 @@ module AwsSdk
         end
 
         OPERATION_INPUT_SHAPES = {
+
+
           "ActivateKeySigningKey" => "ActivateKeySigningKeyRequest",
+
+
           "AssociateVPCWithHostedZone" => "AssociateVPCWithHostedZoneRequest",
+
+
           "ChangeCidrCollection" => "ChangeCidrCollectionRequest",
+
+
           "ChangeResourceRecordSets" => "ChangeResourceRecordSetsRequest",
+
+
           "ChangeTagsForResource" => "ChangeTagsForResourceRequest",
+
+
           "CreateCidrCollection" => "CreateCidrCollectionRequest",
+
+
           "CreateHealthCheck" => "CreateHealthCheckRequest",
+
+
           "CreateHostedZone" => "CreateHostedZoneRequest",
+
+
           "CreateKeySigningKey" => "CreateKeySigningKeyRequest",
+
+
           "CreateQueryLoggingConfig" => "CreateQueryLoggingConfigRequest",
+
+
           "CreateReusableDelegationSet" => "CreateReusableDelegationSetRequest",
+
+
           "CreateTrafficPolicy" => "CreateTrafficPolicyRequest",
+
+
           "CreateTrafficPolicyInstance" => "CreateTrafficPolicyInstanceRequest",
+
+
           "CreateTrafficPolicyVersion" => "CreateTrafficPolicyVersionRequest",
+
+
           "CreateVPCAssociationAuthorization" => "CreateVPCAssociationAuthorizationRequest",
+
+
           "DeactivateKeySigningKey" => "DeactivateKeySigningKeyRequest",
+
+
           "DeleteCidrCollection" => "DeleteCidrCollectionRequest",
+
+
           "DeleteHealthCheck" => "DeleteHealthCheckRequest",
+
+
           "DeleteHostedZone" => "DeleteHostedZoneRequest",
+
+
           "DeleteKeySigningKey" => "DeleteKeySigningKeyRequest",
+
+
           "DeleteQueryLoggingConfig" => "DeleteQueryLoggingConfigRequest",
+
+
           "DeleteReusableDelegationSet" => "DeleteReusableDelegationSetRequest",
+
+
           "DeleteTrafficPolicy" => "DeleteTrafficPolicyRequest",
+
+
           "DeleteTrafficPolicyInstance" => "DeleteTrafficPolicyInstanceRequest",
+
+
           "DeleteVPCAssociationAuthorization" => "DeleteVPCAssociationAuthorizationRequest",
+
+
           "DisableHostedZoneDNSSEC" => "DisableHostedZoneDNSSECRequest",
+
+
           "DisassociateVPCFromHostedZone" => "DisassociateVPCFromHostedZoneRequest",
+
+
           "EnableHostedZoneDNSSEC" => "EnableHostedZoneDNSSECRequest",
+
+
           "GetAccountLimit" => "GetAccountLimitRequest",
+
+
           "GetChange" => "GetChangeRequest",
+
+
           "GetCheckerIpRanges" => "GetCheckerIpRangesRequest",
+
+
           "GetDNSSEC" => "GetDNSSECRequest",
+
+
           "GetGeoLocation" => "GetGeoLocationRequest",
+
+
           "GetHealthCheck" => "GetHealthCheckRequest",
+
+
           "GetHealthCheckCount" => "GetHealthCheckCountRequest",
+
+
           "GetHealthCheckLastFailureReason" => "GetHealthCheckLastFailureReasonRequest",
+
+
           "GetHealthCheckStatus" => "GetHealthCheckStatusRequest",
+
+
           "GetHostedZone" => "GetHostedZoneRequest",
+
+
           "GetHostedZoneCount" => "GetHostedZoneCountRequest",
+
+
           "GetHostedZoneLimit" => "GetHostedZoneLimitRequest",
+
+
           "GetQueryLoggingConfig" => "GetQueryLoggingConfigRequest",
+
+
           "GetReusableDelegationSet" => "GetReusableDelegationSetRequest",
+
+
           "GetReusableDelegationSetLimit" => "GetReusableDelegationSetLimitRequest",
+
+
           "GetTrafficPolicy" => "GetTrafficPolicyRequest",
+
+
           "GetTrafficPolicyInstance" => "GetTrafficPolicyInstanceRequest",
+
+
           "GetTrafficPolicyInstanceCount" => "GetTrafficPolicyInstanceCountRequest",
+
+
           "ListCidrBlocks" => "ListCidrBlocksRequest",
+
+
           "ListCidrCollections" => "ListCidrCollectionsRequest",
+
+
           "ListCidrLocations" => "ListCidrLocationsRequest",
+
+
           "ListGeoLocations" => "ListGeoLocationsRequest",
+
+
           "ListHealthChecks" => "ListHealthChecksRequest",
+
+
           "ListHostedZones" => "ListHostedZonesRequest",
+
+
           "ListHostedZonesByName" => "ListHostedZonesByNameRequest",
+
+
           "ListHostedZonesByVPC" => "ListHostedZonesByVPCRequest",
+
+
           "ListQueryLoggingConfigs" => "ListQueryLoggingConfigsRequest",
+
+
           "ListResourceRecordSets" => "ListResourceRecordSetsRequest",
+
+
           "ListReusableDelegationSets" => "ListReusableDelegationSetsRequest",
+
+
           "ListTagsForResource" => "ListTagsForResourceRequest",
+
+
           "ListTagsForResources" => "ListTagsForResourcesRequest",
+
+
           "ListTrafficPolicies" => "ListTrafficPoliciesRequest",
+
+
           "ListTrafficPolicyInstances" => "ListTrafficPolicyInstancesRequest",
+
+
           "ListTrafficPolicyInstancesByHostedZone" => "ListTrafficPolicyInstancesByHostedZoneRequest",
+
+
           "ListTrafficPolicyInstancesByPolicy" => "ListTrafficPolicyInstancesByPolicyRequest",
+
+
           "ListTrafficPolicyVersions" => "ListTrafficPolicyVersionsRequest",
+
+
           "ListVPCAssociationAuthorizations" => "ListVPCAssociationAuthorizationsRequest",
+
+
           "TestDNSAnswer" => "TestDNSAnswerRequest",
+
+
           "UpdateHealthCheck" => "UpdateHealthCheckRequest",
+
+
           "UpdateHostedZoneComment" => "UpdateHostedZoneCommentRequest",
+
+
           "UpdateHostedZoneFeatures" => "UpdateHostedZoneFeaturesRequest",
+
+
           "UpdateTrafficPolicyComment" => "UpdateTrafficPolicyCommentRequest",
+
+
           "UpdateTrafficPolicyInstance" => "UpdateTrafficPolicyInstanceRequest",
+
         }
 
         OPERATION_OUTPUT_SHAPES = {
+
+
           "ActivateKeySigningKey" => "ActivateKeySigningKeyResponse",
+
+
           "AssociateVPCWithHostedZone" => "AssociateVPCWithHostedZoneResponse",
+
+
           "ChangeCidrCollection" => "ChangeCidrCollectionResponse",
+
+
           "ChangeResourceRecordSets" => "ChangeResourceRecordSetsResponse",
+
+
           "ChangeTagsForResource" => "ChangeTagsForResourceResponse",
+
+
           "CreateCidrCollection" => "CreateCidrCollectionResponse",
+
+
           "CreateHealthCheck" => "CreateHealthCheckResponse",
+
+
           "CreateHostedZone" => "CreateHostedZoneResponse",
+
+
           "CreateKeySigningKey" => "CreateKeySigningKeyResponse",
+
+
           "CreateQueryLoggingConfig" => "CreateQueryLoggingConfigResponse",
+
+
           "CreateReusableDelegationSet" => "CreateReusableDelegationSetResponse",
+
+
           "CreateTrafficPolicy" => "CreateTrafficPolicyResponse",
+
+
           "CreateTrafficPolicyInstance" => "CreateTrafficPolicyInstanceResponse",
+
+
           "CreateTrafficPolicyVersion" => "CreateTrafficPolicyVersionResponse",
+
+
           "CreateVPCAssociationAuthorization" => "CreateVPCAssociationAuthorizationResponse",
+
+
           "DeactivateKeySigningKey" => "DeactivateKeySigningKeyResponse",
+
+
           "DeleteCidrCollection" => "DeleteCidrCollectionResponse",
+
+
           "DeleteHealthCheck" => "DeleteHealthCheckResponse",
+
+
           "DeleteHostedZone" => "DeleteHostedZoneResponse",
+
+
           "DeleteKeySigningKey" => "DeleteKeySigningKeyResponse",
+
+
           "DeleteQueryLoggingConfig" => "DeleteQueryLoggingConfigResponse",
+
+
           "DeleteReusableDelegationSet" => "DeleteReusableDelegationSetResponse",
+
+
           "DeleteTrafficPolicy" => "DeleteTrafficPolicyResponse",
+
+
           "DeleteTrafficPolicyInstance" => "DeleteTrafficPolicyInstanceResponse",
+
+
           "DeleteVPCAssociationAuthorization" => "DeleteVPCAssociationAuthorizationResponse",
+
+
           "DisableHostedZoneDNSSEC" => "DisableHostedZoneDNSSECResponse",
+
+
           "DisassociateVPCFromHostedZone" => "DisassociateVPCFromHostedZoneResponse",
+
+
           "EnableHostedZoneDNSSEC" => "EnableHostedZoneDNSSECResponse",
+
+
           "GetAccountLimit" => "GetAccountLimitResponse",
+
+
           "GetChange" => "GetChangeResponse",
+
+
           "GetCheckerIpRanges" => "GetCheckerIpRangesResponse",
+
+
           "GetDNSSEC" => "GetDNSSECResponse",
+
+
           "GetGeoLocation" => "GetGeoLocationResponse",
+
+
           "GetHealthCheck" => "GetHealthCheckResponse",
+
+
           "GetHealthCheckCount" => "GetHealthCheckCountResponse",
+
+
           "GetHealthCheckLastFailureReason" => "GetHealthCheckLastFailureReasonResponse",
+
+
           "GetHealthCheckStatus" => "GetHealthCheckStatusResponse",
+
+
           "GetHostedZone" => "GetHostedZoneResponse",
+
+
           "GetHostedZoneCount" => "GetHostedZoneCountResponse",
+
+
           "GetHostedZoneLimit" => "GetHostedZoneLimitResponse",
+
+
           "GetQueryLoggingConfig" => "GetQueryLoggingConfigResponse",
+
+
           "GetReusableDelegationSet" => "GetReusableDelegationSetResponse",
+
+
           "GetReusableDelegationSetLimit" => "GetReusableDelegationSetLimitResponse",
+
+
           "GetTrafficPolicy" => "GetTrafficPolicyResponse",
+
+
           "GetTrafficPolicyInstance" => "GetTrafficPolicyInstanceResponse",
+
+
           "GetTrafficPolicyInstanceCount" => "GetTrafficPolicyInstanceCountResponse",
+
+
           "ListCidrBlocks" => "ListCidrBlocksResponse",
+
+
           "ListCidrCollections" => "ListCidrCollectionsResponse",
+
+
           "ListCidrLocations" => "ListCidrLocationsResponse",
+
+
           "ListGeoLocations" => "ListGeoLocationsResponse",
+
+
           "ListHealthChecks" => "ListHealthChecksResponse",
+
+
           "ListHostedZones" => "ListHostedZonesResponse",
+
+
           "ListHostedZonesByName" => "ListHostedZonesByNameResponse",
+
+
           "ListHostedZonesByVPC" => "ListHostedZonesByVPCResponse",
+
+
           "ListQueryLoggingConfigs" => "ListQueryLoggingConfigsResponse",
+
+
           "ListResourceRecordSets" => "ListResourceRecordSetsResponse",
+
+
           "ListReusableDelegationSets" => "ListReusableDelegationSetsResponse",
+
+
           "ListTagsForResource" => "ListTagsForResourceResponse",
+
+
           "ListTagsForResources" => "ListTagsForResourcesResponse",
+
+
           "ListTrafficPolicies" => "ListTrafficPoliciesResponse",
+
+
           "ListTrafficPolicyInstances" => "ListTrafficPolicyInstancesResponse",
+
+
           "ListTrafficPolicyInstancesByHostedZone" => "ListTrafficPolicyInstancesByHostedZoneResponse",
+
+
           "ListTrafficPolicyInstancesByPolicy" => "ListTrafficPolicyInstancesByPolicyResponse",
+
+
           "ListTrafficPolicyVersions" => "ListTrafficPolicyVersionsResponse",
+
+
           "ListVPCAssociationAuthorizations" => "ListVPCAssociationAuthorizationsResponse",
+
+
           "TestDNSAnswer" => "TestDNSAnswerResponse",
+
+
           "UpdateHealthCheck" => "UpdateHealthCheckResponse",
+
+
           "UpdateHostedZoneComment" => "UpdateHostedZoneCommentResponse",
+
+
           "UpdateHostedZoneFeatures" => "UpdateHostedZoneFeaturesResponse",
+
+
           "UpdateTrafficPolicyComment" => "UpdateTrafficPolicyCommentResponse",
+
+
           "UpdateTrafficPolicyInstance" => "UpdateTrafficPolicyInstanceResponse",
+
         }
 
         OPERATION_INPUT_ROOTS = {
+
+
+
           "ActivateKeySigningKey" => "ActivateKeySigningKeyRequest",
+
+
+
           "AssociateVPCWithHostedZone" => "AssociateVPCWithHostedZoneRequest",
+
+
+
           "ChangeCidrCollection" => "ChangeCidrCollectionRequest",
+
+
+
           "ChangeResourceRecordSets" => "ChangeResourceRecordSetsRequest",
+
+
+
           "ChangeTagsForResource" => "ChangeTagsForResourceRequest",
+
+
+
           "CreateCidrCollection" => "CreateCidrCollectionRequest",
+
+
+
           "CreateHealthCheck" => "CreateHealthCheckRequest",
+
+
+
           "CreateHostedZone" => "CreateHostedZoneRequest",
+
+
+
           "CreateKeySigningKey" => "CreateKeySigningKeyRequest",
+
+
+
           "CreateQueryLoggingConfig" => "CreateQueryLoggingConfigRequest",
+
+
+
           "CreateReusableDelegationSet" => "CreateReusableDelegationSetRequest",
+
+
+
           "CreateTrafficPolicy" => "CreateTrafficPolicyRequest",
+
+
+
           "CreateTrafficPolicyInstance" => "CreateTrafficPolicyInstanceRequest",
+
+
+
           "CreateTrafficPolicyVersion" => "CreateTrafficPolicyVersionRequest",
+
+
+
           "CreateVPCAssociationAuthorization" => "CreateVPCAssociationAuthorizationRequest",
+
+
+
           "DeactivateKeySigningKey" => "DeactivateKeySigningKeyRequest",
+
+
+
           "DeleteCidrCollection" => "DeleteCidrCollectionRequest",
+
+
+
           "DeleteHealthCheck" => "DeleteHealthCheckRequest",
+
+
+
           "DeleteHostedZone" => "DeleteHostedZoneRequest",
+
+
+
           "DeleteKeySigningKey" => "DeleteKeySigningKeyRequest",
+
+
+
           "DeleteQueryLoggingConfig" => "DeleteQueryLoggingConfigRequest",
+
+
+
           "DeleteReusableDelegationSet" => "DeleteReusableDelegationSetRequest",
+
+
+
           "DeleteTrafficPolicy" => "DeleteTrafficPolicyRequest",
+
+
+
           "DeleteTrafficPolicyInstance" => "DeleteTrafficPolicyInstanceRequest",
+
+
+
           "DeleteVPCAssociationAuthorization" => "DeleteVPCAssociationAuthorizationRequest",
+
+
+
           "DisableHostedZoneDNSSEC" => "DisableHostedZoneDNSSECRequest",
+
+
+
           "DisassociateVPCFromHostedZone" => "DisassociateVPCFromHostedZoneRequest",
+
+
+
           "EnableHostedZoneDNSSEC" => "EnableHostedZoneDNSSECRequest",
+
+
+
           "GetAccountLimit" => "GetAccountLimitRequest",
+
+
+
           "GetChange" => "GetChangeRequest",
+
+
+
           "GetCheckerIpRanges" => "GetCheckerIpRangesRequest",
+
+
+
           "GetDNSSEC" => "GetDNSSECRequest",
+
+
+
           "GetGeoLocation" => "GetGeoLocationRequest",
+
+
+
           "GetHealthCheck" => "GetHealthCheckRequest",
+
+
+
           "GetHealthCheckCount" => "GetHealthCheckCountRequest",
+
+
+
           "GetHealthCheckLastFailureReason" => "GetHealthCheckLastFailureReasonRequest",
+
+
+
           "GetHealthCheckStatus" => "GetHealthCheckStatusRequest",
+
+
+
           "GetHostedZone" => "GetHostedZoneRequest",
+
+
+
           "GetHostedZoneCount" => "GetHostedZoneCountRequest",
+
+
+
           "GetHostedZoneLimit" => "GetHostedZoneLimitRequest",
+
+
+
           "GetQueryLoggingConfig" => "GetQueryLoggingConfigRequest",
+
+
+
           "GetReusableDelegationSet" => "GetReusableDelegationSetRequest",
+
+
+
           "GetReusableDelegationSetLimit" => "GetReusableDelegationSetLimitRequest",
+
+
+
           "GetTrafficPolicy" => "GetTrafficPolicyRequest",
+
+
+
           "GetTrafficPolicyInstance" => "GetTrafficPolicyInstanceRequest",
+
+
+
           "GetTrafficPolicyInstanceCount" => "GetTrafficPolicyInstanceCountRequest",
+
+
+
           "ListCidrBlocks" => "ListCidrBlocksRequest",
+
+
+
           "ListCidrCollections" => "ListCidrCollectionsRequest",
+
+
+
           "ListCidrLocations" => "ListCidrLocationsRequest",
+
+
+
           "ListGeoLocations" => "ListGeoLocationsRequest",
+
+
+
           "ListHealthChecks" => "ListHealthChecksRequest",
+
+
+
           "ListHostedZones" => "ListHostedZonesRequest",
+
+
+
           "ListHostedZonesByName" => "ListHostedZonesByNameRequest",
+
+
+
           "ListHostedZonesByVPC" => "ListHostedZonesByVPCRequest",
+
+
+
           "ListQueryLoggingConfigs" => "ListQueryLoggingConfigsRequest",
+
+
+
           "ListResourceRecordSets" => "ListResourceRecordSetsRequest",
+
+
+
           "ListReusableDelegationSets" => "ListReusableDelegationSetsRequest",
+
+
+
           "ListTagsForResource" => "ListTagsForResourceRequest",
+
+
+
           "ListTagsForResources" => "ListTagsForResourcesRequest",
+
+
+
           "ListTrafficPolicies" => "ListTrafficPoliciesRequest",
+
+
+
           "ListTrafficPolicyInstances" => "ListTrafficPolicyInstancesRequest",
+
+
+
           "ListTrafficPolicyInstancesByHostedZone" => "ListTrafficPolicyInstancesByHostedZoneRequest",
+
+
+
           "ListTrafficPolicyInstancesByPolicy" => "ListTrafficPolicyInstancesByPolicyRequest",
+
+
+
           "ListTrafficPolicyVersions" => "ListTrafficPolicyVersionsRequest",
+
+
+
           "ListVPCAssociationAuthorizations" => "ListVPCAssociationAuthorizationsRequest",
+
+
+
           "TestDNSAnswer" => "TestDNSAnswerRequest",
+
+
+
           "UpdateHealthCheck" => "UpdateHealthCheckRequest",
+
+
+
           "UpdateHostedZoneComment" => "UpdateHostedZoneCommentRequest",
+
+
+
           "UpdateHostedZoneFeatures" => "UpdateHostedZoneFeaturesRequest",
+
+
+
           "UpdateTrafficPolicyComment" => "UpdateTrafficPolicyCommentRequest",
+
+
+
           "UpdateTrafficPolicyInstance" => "UpdateTrafficPolicyInstanceRequest",
+
         }
 
         OPERATION_INPUT_NAMESPACES = {
+
+
+
+
+
+
+
           "AssociateVPCWithHostedZone" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "ChangeCidrCollection" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "ChangeResourceRecordSets" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "ChangeTagsForResource" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateCidrCollection" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateHealthCheck" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateHostedZone" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateKeySigningKey" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateQueryLoggingConfig" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateReusableDelegationSet" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateTrafficPolicy" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateTrafficPolicyInstance" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateTrafficPolicyVersion" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "CreateVPCAssociationAuthorization" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           "DeleteVPCAssociationAuthorization" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
+
+
+
           "DisassociateVPCFromHostedZone" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           "ListTagsForResources" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           "UpdateHealthCheck" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "UpdateHostedZoneComment" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "UpdateHostedZoneFeatures" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "UpdateTrafficPolicyComment" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
+
+
+
           "UpdateTrafficPolicyInstance" => "https://route53.amazonaws.com/doc/2013-04-01/",
+
         }
 
         SHAPES = {
+
+
+
           "ARN" => Shape.new(
             "ARN",
             "string",
@@ -298,6 +1037,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AWSAccountID" => Shape.new(
             "AWSAccountID",
             "string",
@@ -305,6 +1048,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AWSRegion" => Shape.new(
             "AWSRegion",
             "string",
@@ -312,6 +1059,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AcceleratedRecoveryEnabled" => Shape.new(
             "AcceleratedRecoveryEnabled",
             "boolean",
@@ -319,6 +1070,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AcceleratedRecoveryStatus" => Shape.new(
             "AcceleratedRecoveryStatus",
             "string",
@@ -326,10 +1081,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AccountLimit" => Shape.new(
             "AccountLimit",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "AccountLimitType",
@@ -337,6 +1101,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "LimitValue",
@@ -344,10 +1113,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AccountLimitType" => Shape.new(
             "AccountLimitType",
             "string",
@@ -355,10 +1129,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ActivateKeySigningKeyRequest" => Shape.new(
             "ActivateKeySigningKeyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -366,6 +1149,11 @@ module AwsSdk
                 "HostedZoneId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "SigningKeyName",
@@ -373,14 +1161,24 @@ module AwsSdk
                 "Name",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ActivateKeySigningKeyResponse" => Shape.new(
             "ActivateKeySigningKeyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -388,14 +1186,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AlarmIdentifier" => Shape.new(
             "AlarmIdentifier",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "AlarmName",
@@ -403,6 +1211,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Region",
                 "CloudWatchRegion",
@@ -410,10 +1223,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AlarmName" => Shape.new(
             "AlarmName",
             "string",
@@ -421,6 +1239,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AliasHealthEnabled" => Shape.new(
             "AliasHealthEnabled",
             "boolean",
@@ -428,10 +1250,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AliasTarget" => Shape.new(
             "AliasTarget",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DNSName",
                 "DNSName",
@@ -439,6 +1270,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EvaluateTargetHealth",
                 "AliasHealthEnabled",
@@ -446,6 +1282,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -453,10 +1294,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AssociateVPCComment" => Shape.new(
             "AssociateVPCComment",
             "string",
@@ -464,10 +1310,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "AssociateVPCWithHostedZoneRequest" => Shape.new(
             "AssociateVPCWithHostedZoneRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "AssociateVPCComment",
@@ -475,6 +1330,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -482,6 +1342,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -489,14 +1354,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "AssociateVPCWithHostedZoneResponse" => Shape.new(
             "AssociateVPCWithHostedZoneResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -504,10 +1379,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Bias" => Shape.new(
             "Bias",
             "integer",
@@ -515,10 +1395,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Change" => Shape.new(
             "Change",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Action",
                 "ChangeAction",
@@ -526,6 +1415,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceRecordSet",
                 "ResourceRecordSet",
@@ -533,10 +1427,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeAction" => Shape.new(
             "ChangeAction",
             "string",
@@ -544,10 +1443,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChangeBatch" => Shape.new(
             "ChangeBatch",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Changes",
                 "Changes",
@@ -555,6 +1463,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "ResourceDescription",
@@ -562,14 +1475,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeCidrCollectionRequest" => Shape.new(
             "ChangeCidrCollectionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Changes",
                 "CidrCollectionChanges",
@@ -577,6 +1500,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CollectionVersion",
                 "CollectionVersion",
@@ -584,6 +1512,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "UUID",
@@ -591,14 +1524,24 @@ module AwsSdk
                 "CidrCollectionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeCidrCollectionResponse" => Shape.new(
             "ChangeCidrCollectionResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ChangeId",
@@ -606,10 +1549,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeId" => Shape.new(
             "ChangeId",
             "string",
@@ -617,10 +1565,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChangeInfo" => Shape.new(
             "ChangeInfo",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "ResourceDescription",
@@ -628,6 +1585,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -635,6 +1597,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "ChangeStatus",
@@ -642,6 +1609,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SubmittedAt",
                 "TimeStamp",
@@ -649,14 +1621,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeResourceRecordSetsRequest" => Shape.new(
             "ChangeResourceRecordSetsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeBatch",
                 "ChangeBatch",
@@ -664,6 +1646,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -671,14 +1658,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeResourceRecordSetsResponse" => Shape.new(
             "ChangeResourceRecordSetsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -686,10 +1683,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeStatus" => Shape.new(
             "ChangeStatus",
             "string",
@@ -697,10 +1699,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ChangeTagsForResourceRequest" => Shape.new(
             "ChangeTagsForResourceRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AddTags",
                 "TagList",
@@ -708,6 +1719,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RemoveTagKeys",
                 "TagKeyList",
@@ -715,6 +1731,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceId",
                 "TagResourceId",
@@ -722,6 +1743,11 @@ module AwsSdk
                 "ResourceId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceType",
                 "TagResourceType",
@@ -729,18 +1755,32 @@ module AwsSdk
                 "ResourceType",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ChangeTagsForResourceResponse" => Shape.new(
             "ChangeTagsForResourceResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "Changes" => Shape.new(
             "Changes",
             "list",
@@ -754,6 +1794,15 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
+
+
+
+
           "CheckerIpRanges" => Shape.new(
             "CheckerIpRanges",
             "list",
@@ -767,6 +1816,15 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
+
+
+
+
           "ChildHealthCheckList" => Shape.new(
             "ChildHealthCheckList",
             "list",
@@ -780,6 +1838,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "Cidr" => Shape.new(
             "Cidr",
             "string",
@@ -787,10 +1850,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CidrBlockInUseException" => Shape.new(
             "CidrBlockInUseException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "ErrorMessage",
@@ -798,10 +1870,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CidrBlockSummaries" => Shape.new(
             "CidrBlockSummaries",
             "list",
@@ -815,10 +1896,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "CidrBlockSummary" => Shape.new(
             "CidrBlockSummary",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CidrBlock",
                 "Cidr",
@@ -826,6 +1917,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LocationName",
                 "CidrLocationNameDefaultNotAllowed",
@@ -833,14 +1929,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CidrCollection" => Shape.new(
             "CidrCollection",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Arn",
                 "ARN",
@@ -848,6 +1954,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "UUID",
@@ -855,6 +1966,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "CollectionName",
@@ -862,6 +1978,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Version",
                 "CollectionVersion",
@@ -869,14 +1990,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CidrCollectionAlreadyExistsException" => Shape.new(
             "CidrCollectionAlreadyExistsException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "ErrorMessage",
@@ -884,14 +2015,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CidrCollectionChange" => Shape.new(
             "CidrCollectionChange",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Action",
                 "CidrCollectionChangeAction",
@@ -899,6 +2040,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CidrList",
                 "CidrList",
@@ -906,6 +2052,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LocationName",
                 "CidrLocationNameDefaultNotAllowed",
@@ -913,10 +2064,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CidrCollectionChangeAction" => Shape.new(
             "CidrCollectionChangeAction",
             "string",
@@ -924,6 +2080,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CidrCollectionChanges" => Shape.new(
             "CidrCollectionChanges",
             "list",
@@ -937,10 +2101,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "CidrCollectionInUseException" => Shape.new(
             "CidrCollectionInUseException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "ErrorMessage",
@@ -948,14 +2122,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CidrCollectionVersionMismatchException" => Shape.new(
             "CidrCollectionVersionMismatchException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "ErrorMessage",
@@ -963,10 +2147,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CidrList" => Shape.new(
             "CidrList",
             "list",
@@ -980,6 +2173,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "CidrLocationNameDefaultAllowed" => Shape.new(
             "CidrLocationNameDefaultAllowed",
             "string",
@@ -987,6 +2185,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CidrLocationNameDefaultNotAllowed" => Shape.new(
             "CidrLocationNameDefaultNotAllowed",
             "string",
@@ -994,6 +2196,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CidrNonce" => Shape.new(
             "CidrNonce",
             "string",
@@ -1001,10 +2207,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CidrRoutingConfig" => Shape.new(
             "CidrRoutingConfig",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CollectionId",
                 "UUID",
@@ -1012,6 +2227,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LocationName",
                 "CidrLocationNameDefaultAllowed",
@@ -1019,14 +2239,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CloudWatchAlarmConfiguration" => Shape.new(
             "CloudWatchAlarmConfiguration",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ComparisonOperator",
                 "ComparisonOperator",
@@ -1034,6 +2264,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Dimensions",
                 "DimensionList",
@@ -1041,6 +2276,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EvaluationPeriods",
                 "EvaluationPeriods",
@@ -1048,6 +2288,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MetricName",
                 "MetricName",
@@ -1055,6 +2300,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Namespace",
                 "Namespace",
@@ -1062,6 +2312,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Period",
                 "Period",
@@ -1069,6 +2324,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Statistic",
                 "Statistic",
@@ -1076,6 +2336,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Threshold",
                 "Threshold",
@@ -1083,10 +2348,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CloudWatchLogsLogGroupArn" => Shape.new(
             "CloudWatchLogsLogGroupArn",
             "string",
@@ -1094,6 +2364,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CloudWatchRegion" => Shape.new(
             "CloudWatchRegion",
             "string",
@@ -1101,6 +2375,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "CollectionName" => Shape.new(
             "CollectionName",
             "string",
@@ -1108,6 +2386,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "CollectionSummaries" => Shape.new(
             "CollectionSummaries",
             "list",
@@ -1121,10 +2407,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "CollectionSummary" => Shape.new(
             "CollectionSummary",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Arn",
                 "ARN",
@@ -1132,6 +2428,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "UUID",
@@ -1139,6 +2440,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "CollectionName",
@@ -1146,6 +2452,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Version",
                 "CollectionVersion",
@@ -1153,10 +2464,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CollectionVersion" => Shape.new(
             "CollectionVersion",
             "long",
@@ -1164,6 +2480,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ComparisonOperator" => Shape.new(
             "ComparisonOperator",
             "string",
@@ -1171,10 +2491,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ConcurrentModification" => Shape.new(
             "ConcurrentModification",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1182,14 +2511,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ConflictingDomainExists" => Shape.new(
             "ConflictingDomainExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1197,14 +2536,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ConflictingTypes" => Shape.new(
             "ConflictingTypes",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1212,14 +2561,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Coordinates" => Shape.new(
             "Coordinates",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Latitude",
                 "Latitude",
@@ -1227,6 +2586,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Longitude",
                 "Longitude",
@@ -1234,14 +2598,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateCidrCollectionRequest" => Shape.new(
             "CreateCidrCollectionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "CidrNonce",
@@ -1249,6 +2623,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "CollectionName",
@@ -1256,14 +2635,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateCidrCollectionResponse" => Shape.new(
             "CreateCidrCollectionResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Collection",
                 "CidrCollection",
@@ -1271,6 +2660,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1278,14 +2672,24 @@ module AwsSdk
                 "Location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateHealthCheckRequest" => Shape.new(
             "CreateHealthCheckRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "HealthCheckNonce",
@@ -1293,6 +2697,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckConfig",
                 "HealthCheckConfig",
@@ -1300,14 +2709,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateHealthCheckResponse" => Shape.new(
             "CreateHealthCheckResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheck",
                 "HealthCheck",
@@ -1315,6 +2734,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1322,14 +2746,24 @@ module AwsSdk
                 "Location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateHostedZoneRequest" => Shape.new(
             "CreateHostedZoneRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "Nonce",
@@ -1337,6 +2771,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSetId",
                 "ResourceId",
@@ -1344,6 +2783,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneConfig",
                 "HostedZoneConfig",
@@ -1351,6 +2795,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DNSName",
@@ -1358,6 +2807,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -1365,14 +2819,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateHostedZoneResponse" => Shape.new(
             "CreateHostedZoneResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -1380,6 +2844,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSet",
                 "DelegationSet",
@@ -1387,6 +2856,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZone",
                 "HostedZone",
@@ -1394,6 +2868,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1401,6 +2880,11 @@ module AwsSdk
                 "Location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -1408,14 +2892,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateKeySigningKeyRequest" => Shape.new(
             "CreateKeySigningKeyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "Nonce",
@@ -1423,6 +2917,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1430,6 +2929,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyManagementServiceArn",
                 "SigningKeyString",
@@ -1437,6 +2941,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "SigningKeyName",
@@ -1444,6 +2953,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "SigningKeyStatus",
@@ -1451,14 +2965,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateKeySigningKeyResponse" => Shape.new(
             "CreateKeySigningKeyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -1466,6 +2990,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeySigningKey",
                 "KeySigningKey",
@@ -1473,6 +3002,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1480,14 +3014,24 @@ module AwsSdk
                 "Location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateQueryLoggingConfigRequest" => Shape.new(
             "CreateQueryLoggingConfigRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CloudWatchLogsLogGroupArn",
                 "CloudWatchLogsLogGroupArn",
@@ -1495,6 +3039,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1502,14 +3051,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateQueryLoggingConfigResponse" => Shape.new(
             "CreateQueryLoggingConfigResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1517,6 +3076,11 @@ module AwsSdk
                 "Location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QueryLoggingConfig",
                 "QueryLoggingConfig",
@@ -1524,14 +3088,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateReusableDelegationSetRequest" => Shape.new(
             "CreateReusableDelegationSetRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "Nonce",
@@ -1539,6 +3113,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1546,14 +3125,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateReusableDelegationSetResponse" => Shape.new(
             "CreateReusableDelegationSetResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSet",
                 "DelegationSet",
@@ -1561,6 +3150,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1568,14 +3162,24 @@ module AwsSdk
                 "Location",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateTrafficPolicyInstanceRequest" => Shape.new(
             "CreateTrafficPolicyInstanceRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1583,6 +3187,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DNSName",
@@ -1590,6 +3199,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TTL",
                 "TTL",
@@ -1597,6 +3211,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyId",
                 "TrafficPolicyId",
@@ -1604,6 +3223,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyVersion",
                 "TrafficPolicyVersion",
@@ -1611,14 +3235,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateTrafficPolicyInstanceResponse" => Shape.new(
             "CreateTrafficPolicyInstanceResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1626,6 +3260,11 @@ module AwsSdk
                 "Location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstance",
                 "TrafficPolicyInstance",
@@ -1633,14 +3272,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateTrafficPolicyRequest" => Shape.new(
             "CreateTrafficPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "TrafficPolicyComment",
@@ -1648,6 +3297,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Document",
                 "TrafficPolicyDocument",
@@ -1655,6 +3309,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "TrafficPolicyName",
@@ -1662,14 +3321,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateTrafficPolicyResponse" => Shape.new(
             "CreateTrafficPolicyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1677,6 +3346,11 @@ module AwsSdk
                 "Location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicy",
                 "TrafficPolicy",
@@ -1684,14 +3358,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateTrafficPolicyVersionRequest" => Shape.new(
             "CreateTrafficPolicyVersionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "TrafficPolicyComment",
@@ -1699,6 +3383,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Document",
                 "TrafficPolicyDocument",
@@ -1706,6 +3395,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -1713,14 +3407,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateTrafficPolicyVersionResponse" => Shape.new(
             "CreateTrafficPolicyVersionResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Location",
                 "ResourceURI",
@@ -1728,6 +3432,11 @@ module AwsSdk
                 "Location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicy",
                 "TrafficPolicy",
@@ -1735,14 +3444,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateVPCAssociationAuthorizationRequest" => Shape.new(
             "CreateVPCAssociationAuthorizationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1750,6 +3469,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -1757,14 +3481,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "CreateVPCAssociationAuthorizationResponse" => Shape.new(
             "CreateVPCAssociationAuthorizationResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1772,6 +3506,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -1779,10 +3518,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DNSName" => Shape.new(
             "DNSName",
             "string",
@@ -1790,6 +3534,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DNSRCode" => Shape.new(
             "DNSRCode",
             "string",
@@ -1797,10 +3545,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DNSSECNotFound" => Shape.new(
             "DNSSECNotFound",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1808,14 +3565,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DNSSECStatus" => Shape.new(
             "DNSSECStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ServeSignature",
                 "ServeSignature",
@@ -1823,6 +3590,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StatusMessage",
                 "SigningKeyStatusMessage",
@@ -1830,14 +3602,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeactivateKeySigningKeyRequest" => Shape.new(
             "DeactivateKeySigningKeyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -1845,6 +3627,11 @@ module AwsSdk
                 "HostedZoneId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "SigningKeyName",
@@ -1852,14 +3639,24 @@ module AwsSdk
                 "Name",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeactivateKeySigningKeyResponse" => Shape.new(
             "DeactivateKeySigningKeyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -1867,14 +3664,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DelegationSet" => Shape.new(
             "DelegationSet",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "Nonce",
@@ -1882,6 +3689,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -1889,6 +3701,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NameServers",
                 "DelegationSetNameServers",
@@ -1896,14 +3713,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DelegationSetAlreadyCreated" => Shape.new(
             "DelegationSetAlreadyCreated",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1911,14 +3738,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DelegationSetAlreadyReusable" => Shape.new(
             "DelegationSetAlreadyReusable",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1926,14 +3763,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DelegationSetInUse" => Shape.new(
             "DelegationSetInUse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1941,10 +3788,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "DelegationSetNameServers" => Shape.new(
             "DelegationSetNameServers",
             "list",
@@ -1958,10 +3814,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "DelegationSetNotAvailable" => Shape.new(
             "DelegationSetNotAvailable",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1969,14 +3835,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DelegationSetNotReusable" => Shape.new(
             "DelegationSetNotReusable",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -1984,10 +3860,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "DelegationSets" => Shape.new(
             "DelegationSets",
             "list",
@@ -2001,10 +3886,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "DeleteCidrCollectionRequest" => Shape.new(
             "DeleteCidrCollectionRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "UUID",
@@ -2012,22 +3907,37 @@ module AwsSdk
                 "CidrCollectionId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteCidrCollectionResponse" => Shape.new(
             "DeleteCidrCollectionResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteHealthCheckRequest" => Shape.new(
             "DeleteHealthCheckRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckId",
                 "HealthCheckId",
@@ -2035,22 +3945,37 @@ module AwsSdk
                 "HealthCheckId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteHealthCheckResponse" => Shape.new(
             "DeleteHealthCheckResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteHostedZoneRequest" => Shape.new(
             "DeleteHostedZoneRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -2058,14 +3983,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteHostedZoneResponse" => Shape.new(
             "DeleteHostedZoneResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -2073,14 +4008,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteKeySigningKeyRequest" => Shape.new(
             "DeleteKeySigningKeyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2088,6 +4033,11 @@ module AwsSdk
                 "HostedZoneId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "SigningKeyName",
@@ -2095,14 +4045,24 @@ module AwsSdk
                 "Name",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteKeySigningKeyResponse" => Shape.new(
             "DeleteKeySigningKeyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -2110,14 +4070,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteQueryLoggingConfigRequest" => Shape.new(
             "DeleteQueryLoggingConfigRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "QueryLoggingConfigId",
@@ -2125,22 +4095,37 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteQueryLoggingConfigResponse" => Shape.new(
             "DeleteQueryLoggingConfigResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteReusableDelegationSetRequest" => Shape.new(
             "DeleteReusableDelegationSetRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -2148,22 +4133,37 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteReusableDelegationSetResponse" => Shape.new(
             "DeleteReusableDelegationSetResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteTrafficPolicyInstanceRequest" => Shape.new(
             "DeleteTrafficPolicyInstanceRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyInstanceId",
@@ -2171,22 +4171,37 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteTrafficPolicyInstanceResponse" => Shape.new(
             "DeleteTrafficPolicyInstanceResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteTrafficPolicyRequest" => Shape.new(
             "DeleteTrafficPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -2194,6 +4209,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Version",
                 "TrafficPolicyVersion",
@@ -2201,22 +4221,37 @@ module AwsSdk
                 "Version",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteTrafficPolicyResponse" => Shape.new(
             "DeleteTrafficPolicyResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteVPCAssociationAuthorizationRequest" => Shape.new(
             "DeleteVPCAssociationAuthorizationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2224,6 +4259,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -2231,22 +4271,37 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DeleteVPCAssociationAuthorizationResponse" => Shape.new(
             "DeleteVPCAssociationAuthorizationResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Dimension" => Shape.new(
             "Dimension",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DimensionField",
@@ -2254,6 +4309,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "DimensionField",
@@ -2261,10 +4321,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DimensionField" => Shape.new(
             "DimensionField",
             "string",
@@ -2272,6 +4337,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "DimensionList" => Shape.new(
             "DimensionList",
             "list",
@@ -2285,10 +4358,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "DisableHostedZoneDNSSECRequest" => Shape.new(
             "DisableHostedZoneDNSSECRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2296,14 +4379,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DisableHostedZoneDNSSECResponse" => Shape.new(
             "DisableHostedZoneDNSSECResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -2311,10 +4404,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Disabled" => Shape.new(
             "Disabled",
             "boolean",
@@ -2322,6 +4420,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DisassociateVPCComment" => Shape.new(
             "DisassociateVPCComment",
             "string",
@@ -2329,10 +4431,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "DisassociateVPCFromHostedZoneRequest" => Shape.new(
             "DisassociateVPCFromHostedZoneRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "DisassociateVPCComment",
@@ -2340,6 +4451,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2347,6 +4463,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPC",
                 "VPC",
@@ -2354,14 +4475,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "DisassociateVPCFromHostedZoneResponse" => Shape.new(
             "DisassociateVPCFromHostedZoneResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -2369,14 +4500,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "EnableHostedZoneDNSSECRequest" => Shape.new(
             "EnableHostedZoneDNSSECRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2384,14 +4525,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "EnableHostedZoneDNSSECResponse" => Shape.new(
             "EnableHostedZoneDNSSECResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -2399,10 +4550,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "EnableSNI" => Shape.new(
             "EnableSNI",
             "boolean",
@@ -2410,6 +4566,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ErrorMessage" => Shape.new(
             "ErrorMessage",
             "string",
@@ -2417,6 +4577,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ErrorMessages" => Shape.new(
             "ErrorMessages",
             "list",
@@ -2430,6 +4598,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "EvaluationPeriods" => Shape.new(
             "EvaluationPeriods",
             "integer",
@@ -2437,6 +4610,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FailureReason" => Shape.new(
             "FailureReason",
             "string",
@@ -2444,6 +4621,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FailureThreshold" => Shape.new(
             "FailureThreshold",
             "integer",
@@ -2451,6 +4632,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "FullyQualifiedDomainName" => Shape.new(
             "FullyQualifiedDomainName",
             "string",
@@ -2458,10 +4643,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoLocation" => Shape.new(
             "GeoLocation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinentCode",
                 "GeoLocationContinentCode",
@@ -2469,6 +4663,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CountryCode",
                 "GeoLocationCountryCode",
@@ -2476,6 +4675,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SubdivisionCode",
                 "GeoLocationSubdivisionCode",
@@ -2483,10 +4687,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GeoLocationContinentCode" => Shape.new(
             "GeoLocationContinentCode",
             "string",
@@ -2494,6 +4703,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoLocationContinentName" => Shape.new(
             "GeoLocationContinentName",
             "string",
@@ -2501,6 +4714,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoLocationCountryCode" => Shape.new(
             "GeoLocationCountryCode",
             "string",
@@ -2508,6 +4725,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoLocationCountryName" => Shape.new(
             "GeoLocationCountryName",
             "string",
@@ -2515,10 +4736,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoLocationDetails" => Shape.new(
             "GeoLocationDetails",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinentCode",
                 "GeoLocationContinentCode",
@@ -2526,6 +4756,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ContinentName",
                 "GeoLocationContinentName",
@@ -2533,6 +4768,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CountryCode",
                 "GeoLocationCountryCode",
@@ -2540,6 +4780,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CountryName",
                 "GeoLocationCountryName",
@@ -2547,6 +4792,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SubdivisionCode",
                 "GeoLocationSubdivisionCode",
@@ -2554,6 +4804,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SubdivisionName",
                 "GeoLocationSubdivisionName",
@@ -2561,10 +4816,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "GeoLocationDetailsList" => Shape.new(
             "GeoLocationDetailsList",
             "list",
@@ -2578,6 +4842,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "GeoLocationSubdivisionCode" => Shape.new(
             "GeoLocationSubdivisionCode",
             "string",
@@ -2585,6 +4854,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoLocationSubdivisionName" => Shape.new(
             "GeoLocationSubdivisionName",
             "string",
@@ -2592,10 +4865,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "GeoProximityLocation" => Shape.new(
             "GeoProximityLocation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AWSRegion",
                 "AWSRegion",
@@ -2603,6 +4885,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Bias",
                 "Bias",
@@ -2610,6 +4897,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Coordinates",
                 "Coordinates",
@@ -2617,6 +4909,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LocalZoneGroup",
                 "LocalZoneGroup",
@@ -2624,14 +4921,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetAccountLimitRequest" => Shape.new(
             "GetAccountLimitRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "AccountLimitType",
@@ -2639,14 +4946,24 @@ module AwsSdk
                 "Type",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetAccountLimitResponse" => Shape.new(
             "GetAccountLimitResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Count",
                 "UsageCount",
@@ -2654,6 +4971,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Limit",
                 "AccountLimit",
@@ -2661,14 +4983,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetChangeRequest" => Shape.new(
             "GetChangeRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ChangeId",
@@ -2676,14 +5008,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetChangeResponse" => Shape.new(
             "GetChangeResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ChangeInfo",
                 "ChangeInfo",
@@ -2691,22 +5033,37 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetCheckerIpRangesRequest" => Shape.new(
             "GetCheckerIpRangesRequest",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetCheckerIpRangesResponse" => Shape.new(
             "GetCheckerIpRangesResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CheckerIpRanges",
                 "CheckerIpRanges",
@@ -2714,14 +5071,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetDNSSECRequest" => Shape.new(
             "GetDNSSECRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2729,14 +5096,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetDNSSECResponse" => Shape.new(
             "GetDNSSECResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "KeySigningKeys",
                 "KeySigningKeys",
@@ -2744,6 +5121,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "DNSSECStatus",
@@ -2751,14 +5133,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetGeoLocationRequest" => Shape.new(
             "GetGeoLocationRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ContinentCode",
                 "GeoLocationContinentCode",
@@ -2766,6 +5158,11 @@ module AwsSdk
                 "continentcode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CountryCode",
                 "GeoLocationCountryCode",
@@ -2773,6 +5170,11 @@ module AwsSdk
                 "countrycode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SubdivisionCode",
                 "GeoLocationSubdivisionCode",
@@ -2780,14 +5182,24 @@ module AwsSdk
                 "subdivisioncode",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetGeoLocationResponse" => Shape.new(
             "GetGeoLocationResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "GeoLocationDetails",
                 "GeoLocationDetails",
@@ -2795,22 +5207,37 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckCountRequest" => Shape.new(
             "GetHealthCheckCountRequest",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckCountResponse" => Shape.new(
             "GetHealthCheckCountResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckCount",
                 "HealthCheckCount",
@@ -2818,14 +5245,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckLastFailureReasonRequest" => Shape.new(
             "GetHealthCheckLastFailureReasonRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckId",
                 "HealthCheckId",
@@ -2833,14 +5270,24 @@ module AwsSdk
                 "HealthCheckId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckLastFailureReasonResponse" => Shape.new(
             "GetHealthCheckLastFailureReasonResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckObservations",
                 "HealthCheckObservations",
@@ -2848,14 +5295,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckRequest" => Shape.new(
             "GetHealthCheckRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckId",
                 "HealthCheckId",
@@ -2863,14 +5320,24 @@ module AwsSdk
                 "HealthCheckId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckResponse" => Shape.new(
             "GetHealthCheckResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheck",
                 "HealthCheck",
@@ -2878,14 +5345,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckStatusRequest" => Shape.new(
             "GetHealthCheckStatusRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckId",
                 "HealthCheckId",
@@ -2893,14 +5370,24 @@ module AwsSdk
                 "HealthCheckId",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHealthCheckStatusResponse" => Shape.new(
             "GetHealthCheckStatusResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckObservations",
                 "HealthCheckObservations",
@@ -2908,22 +5395,37 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHostedZoneCountRequest" => Shape.new(
             "GetHostedZoneCountRequest",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHostedZoneCountResponse" => Shape.new(
             "GetHostedZoneCountResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneCount",
                 "HostedZoneCount",
@@ -2931,14 +5433,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHostedZoneLimitRequest" => Shape.new(
             "GetHostedZoneLimitRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -2946,6 +5458,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "HostedZoneLimitType",
@@ -2953,14 +5470,24 @@ module AwsSdk
                 "Type",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHostedZoneLimitResponse" => Shape.new(
             "GetHostedZoneLimitResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Count",
                 "UsageCount",
@@ -2968,6 +5495,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Limit",
                 "HostedZoneLimit",
@@ -2975,14 +5507,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHostedZoneRequest" => Shape.new(
             "GetHostedZoneRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -2990,14 +5532,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetHostedZoneResponse" => Shape.new(
             "GetHostedZoneResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSet",
                 "DelegationSet",
@@ -3005,6 +5557,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZone",
                 "HostedZone",
@@ -3012,6 +5569,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPCs",
                 "VPCs",
@@ -3019,14 +5581,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetQueryLoggingConfigRequest" => Shape.new(
             "GetQueryLoggingConfigRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "QueryLoggingConfigId",
@@ -3034,14 +5606,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetQueryLoggingConfigResponse" => Shape.new(
             "GetQueryLoggingConfigResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "QueryLoggingConfig",
                 "QueryLoggingConfig",
@@ -3049,14 +5631,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetReusableDelegationSetLimitRequest" => Shape.new(
             "GetReusableDelegationSetLimitRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSetId",
                 "ResourceId",
@@ -3064,6 +5656,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "ReusableDelegationSetLimitType",
@@ -3071,14 +5668,24 @@ module AwsSdk
                 "Type",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetReusableDelegationSetLimitResponse" => Shape.new(
             "GetReusableDelegationSetLimitResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Count",
                 "UsageCount",
@@ -3086,6 +5693,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Limit",
                 "ReusableDelegationSetLimit",
@@ -3093,14 +5705,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetReusableDelegationSetRequest" => Shape.new(
             "GetReusableDelegationSetRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -3108,14 +5730,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetReusableDelegationSetResponse" => Shape.new(
             "GetReusableDelegationSetResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSet",
                 "DelegationSet",
@@ -3123,22 +5755,37 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetTrafficPolicyInstanceCountRequest" => Shape.new(
             "GetTrafficPolicyInstanceCountRequest",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetTrafficPolicyInstanceCountResponse" => Shape.new(
             "GetTrafficPolicyInstanceCountResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceCount",
                 "TrafficPolicyInstanceCount",
@@ -3146,14 +5793,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetTrafficPolicyInstanceRequest" => Shape.new(
             "GetTrafficPolicyInstanceRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyInstanceId",
@@ -3161,14 +5818,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetTrafficPolicyInstanceResponse" => Shape.new(
             "GetTrafficPolicyInstanceResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstance",
                 "TrafficPolicyInstance",
@@ -3176,14 +5843,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetTrafficPolicyRequest" => Shape.new(
             "GetTrafficPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -3191,6 +5868,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Version",
                 "TrafficPolicyVersion",
@@ -3198,14 +5880,24 @@ module AwsSdk
                 "Version",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "GetTrafficPolicyResponse" => Shape.new(
             "GetTrafficPolicyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicy",
                 "TrafficPolicy",
@@ -3213,14 +5905,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HealthCheck" => Shape.new(
             "HealthCheck",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "HealthCheckNonce",
@@ -3228,6 +5930,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CloudWatchAlarmConfiguration",
                 "CloudWatchAlarmConfiguration",
@@ -3235,6 +5942,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckConfig",
                 "HealthCheckConfig",
@@ -3242,6 +5954,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckVersion",
                 "HealthCheckVersion",
@@ -3249,6 +5966,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "HealthCheckId",
@@ -3256,6 +5978,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LinkedService",
                 "LinkedService",
@@ -3263,14 +5990,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HealthCheckAlreadyExists" => Shape.new(
             "HealthCheckAlreadyExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3278,14 +6015,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HealthCheckConfig" => Shape.new(
             "HealthCheckConfig",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AlarmIdentifier",
                 "AlarmIdentifier",
@@ -3293,6 +6040,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChildHealthChecks",
                 "ChildHealthCheckList",
@@ -3300,6 +6052,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Disabled",
                 "Disabled",
@@ -3307,6 +6064,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EnableSNI",
                 "EnableSNI",
@@ -3314,6 +6076,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FailureThreshold",
                 "FailureThreshold",
@@ -3321,6 +6088,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FullyQualifiedDomainName",
                 "FullyQualifiedDomainName",
@@ -3328,6 +6100,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthThreshold",
                 "HealthThreshold",
@@ -3335,6 +6112,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IPAddress",
                 "IPAddress",
@@ -3342,6 +6124,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InsufficientDataHealthStatus",
                 "InsufficientDataHealthStatus",
@@ -3349,6 +6136,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Inverted",
                 "Inverted",
@@ -3356,6 +6148,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MeasureLatency",
                 "MeasureLatency",
@@ -3363,6 +6160,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Port",
                 "Port",
@@ -3370,6 +6172,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Regions",
                 "HealthCheckRegionList",
@@ -3377,6 +6184,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RequestInterval",
                 "RequestInterval",
@@ -3384,6 +6196,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourcePath",
                 "ResourcePath",
@@ -3391,6 +6208,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RoutingControlArn",
                 "RoutingControlArn",
@@ -3398,6 +6220,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SearchString",
                 "SearchString",
@@ -3405,6 +6232,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "HealthCheckType",
@@ -3412,10 +6244,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HealthCheckCount" => Shape.new(
             "HealthCheckCount",
             "long",
@@ -3423,6 +6260,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HealthCheckId" => Shape.new(
             "HealthCheckId",
             "string",
@@ -3430,10 +6271,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HealthCheckInUse" => Shape.new(
             "HealthCheckInUse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3441,10 +6291,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HealthCheckNonce" => Shape.new(
             "HealthCheckNonce",
             "string",
@@ -3452,10 +6307,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HealthCheckObservation" => Shape.new(
             "HealthCheckObservation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IPAddress",
                 "IPAddress",
@@ -3463,6 +6327,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Region",
                 "HealthCheckRegion",
@@ -3470,6 +6339,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StatusReport",
                 "StatusReport",
@@ -3477,10 +6351,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "HealthCheckObservations" => Shape.new(
             "HealthCheckObservations",
             "list",
@@ -3494,6 +6377,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "HealthCheckRegion" => Shape.new(
             "HealthCheckRegion",
             "string",
@@ -3501,6 +6389,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "HealthCheckRegionList" => Shape.new(
             "HealthCheckRegionList",
             "list",
@@ -3514,6 +6410,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "HealthCheckType" => Shape.new(
             "HealthCheckType",
             "string",
@@ -3521,6 +6422,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HealthCheckVersion" => Shape.new(
             "HealthCheckVersion",
             "long",
@@ -3528,10 +6433,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HealthCheckVersionMismatch" => Shape.new(
             "HealthCheckVersionMismatch",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3539,10 +6453,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "HealthChecks" => Shape.new(
             "HealthChecks",
             "list",
@@ -3556,6 +6479,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "HealthThreshold" => Shape.new(
             "HealthThreshold",
             "integer",
@@ -3563,10 +6491,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HostedZone" => Shape.new(
             "HostedZone",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CallerReference",
                 "Nonce",
@@ -3574,6 +6511,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Config",
                 "HostedZoneConfig",
@@ -3581,6 +6523,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Features",
                 "HostedZoneFeatures",
@@ -3588,6 +6535,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -3595,6 +6547,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LinkedService",
                 "LinkedService",
@@ -3602,6 +6559,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DNSName",
@@ -3609,6 +6571,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceRecordSetCount",
                 "HostedZoneRRSetCount",
@@ -3616,14 +6583,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneAlreadyExists" => Shape.new(
             "HostedZoneAlreadyExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3631,14 +6608,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneConfig" => Shape.new(
             "HostedZoneConfig",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "ResourceDescription",
@@ -3646,6 +6633,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PrivateZone",
                 "IsPrivateZone",
@@ -3653,10 +6645,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneCount" => Shape.new(
             "HostedZoneCount",
             "long",
@@ -3664,10 +6661,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HostedZoneFailureReasons" => Shape.new(
             "HostedZoneFailureReasons",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AcceleratedRecovery",
                 "FailureReason",
@@ -3675,14 +6681,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneFeatures" => Shape.new(
             "HostedZoneFeatures",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AcceleratedRecoveryStatus",
                 "AcceleratedRecoveryStatus",
@@ -3690,6 +6706,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FailureReasons",
                 "HostedZoneFailureReasons",
@@ -3697,14 +6718,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneLimit" => Shape.new(
             "HostedZoneLimit",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "HostedZoneLimitType",
@@ -3712,6 +6743,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "LimitValue",
@@ -3719,10 +6755,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneLimitType" => Shape.new(
             "HostedZoneLimitType",
             "string",
@@ -3730,10 +6771,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HostedZoneNotEmpty" => Shape.new(
             "HostedZoneNotEmpty",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3741,14 +6791,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneNotFound" => Shape.new(
             "HostedZoneNotFound",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3756,14 +6816,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneNotPrivate" => Shape.new(
             "HostedZoneNotPrivate",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3771,14 +6841,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneOwner" => Shape.new(
             "HostedZoneOwner",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "OwningAccount",
                 "AWSAccountID",
@@ -3786,6 +6866,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "OwningService",
                 "HostedZoneOwningService",
@@ -3793,10 +6878,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneOwningService" => Shape.new(
             "HostedZoneOwningService",
             "string",
@@ -3804,10 +6894,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "HostedZonePartiallyDelegated" => Shape.new(
             "HostedZonePartiallyDelegated",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3815,10 +6914,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneRRSetCount" => Shape.new(
             "HostedZoneRRSetCount",
             "long",
@@ -3826,6 +6930,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "HostedZoneSummaries" => Shape.new(
             "HostedZoneSummaries",
             "list",
@@ -3839,10 +6951,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "HostedZoneSummary" => Shape.new(
             "HostedZoneSummary",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -3850,6 +6972,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DNSName",
@@ -3857,6 +6984,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Owner",
                 "HostedZoneOwner",
@@ -3864,10 +6996,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "HostedZoneType" => Shape.new(
             "HostedZoneType",
             "string",
@@ -3875,6 +7012,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "HostedZones" => Shape.new(
             "HostedZones",
             "list",
@@ -3888,6 +7033,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "IPAddress" => Shape.new(
             "IPAddress",
             "string",
@@ -3895,6 +7045,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IPAddressCidr" => Shape.new(
             "IPAddressCidr",
             "string",
@@ -3902,10 +7056,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IncompatibleVersion" => Shape.new(
             "IncompatibleVersion",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3913,14 +7076,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InsufficientCloudWatchLogsResourcePolicy" => Shape.new(
             "InsufficientCloudWatchLogsResourcePolicy",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3928,10 +7101,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InsufficientDataHealthStatus" => Shape.new(
             "InsufficientDataHealthStatus",
             "string",
@@ -3939,10 +7117,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "InvalidArgument" => Shape.new(
             "InvalidArgument",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3950,14 +7137,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidChangeBatch" => Shape.new(
             "InvalidChangeBatch",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3965,6 +7162,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "messages",
                 "ErrorMessages",
@@ -3972,14 +7174,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidDomainName" => Shape.new(
             "InvalidDomainName",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -3987,14 +7199,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidInput" => Shape.new(
             "InvalidInput",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4002,14 +7224,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidKMSArn" => Shape.new(
             "InvalidKMSArn",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4017,14 +7249,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidKeySigningKeyName" => Shape.new(
             "InvalidKeySigningKeyName",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4032,14 +7274,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidKeySigningKeyStatus" => Shape.new(
             "InvalidKeySigningKeyStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4047,14 +7299,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidPaginationToken" => Shape.new(
             "InvalidPaginationToken",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4062,14 +7324,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidSigningStatus" => Shape.new(
             "InvalidSigningStatus",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4077,14 +7349,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidTrafficPolicyDocument" => Shape.new(
             "InvalidTrafficPolicyDocument",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4092,14 +7374,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "InvalidVPCId" => Shape.new(
             "InvalidVPCId",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4107,10 +7399,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Inverted" => Shape.new(
             "Inverted",
             "boolean",
@@ -4118,6 +7415,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "IsPrivateZone" => Shape.new(
             "IsPrivateZone",
             "boolean",
@@ -4125,10 +7426,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "KeySigningKey" => Shape.new(
             "KeySigningKey",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CreatedDate",
                 "TimeStamp",
@@ -4136,6 +7446,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DNSKEYRecord",
                 "SigningKeyString",
@@ -4143,6 +7458,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DSRecord",
                 "SigningKeyString",
@@ -4150,6 +7470,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DigestAlgorithmMnemonic",
                 "SigningKeyString",
@@ -4157,6 +7482,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DigestAlgorithmType",
                 "SigningKeyInteger",
@@ -4164,6 +7494,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "DigestValue",
                 "SigningKeyString",
@@ -4171,6 +7506,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Flag",
                 "SigningKeyInteger",
@@ -4178,6 +7518,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KeyTag",
                 "SigningKeyTag",
@@ -4185,6 +7530,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "KmsArn",
                 "SigningKeyString",
@@ -4192,6 +7542,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LastModifiedDate",
                 "TimeStamp",
@@ -4199,6 +7554,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "SigningKeyName",
@@ -4206,6 +7566,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "PublicKey",
                 "SigningKeyString",
@@ -4213,6 +7578,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SigningAlgorithmMnemonic",
                 "SigningKeyString",
@@ -4220,6 +7590,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SigningAlgorithmType",
                 "SigningKeyInteger",
@@ -4227,6 +7602,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "SigningKeyStatus",
@@ -4234,6 +7614,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StatusMessage",
                 "SigningKeyStatusMessage",
@@ -4241,14 +7626,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "KeySigningKeyAlreadyExists" => Shape.new(
             "KeySigningKeyAlreadyExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4256,14 +7651,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "KeySigningKeyInParentDSRecord" => Shape.new(
             "KeySigningKeyInParentDSRecord",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4271,14 +7676,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "KeySigningKeyInUse" => Shape.new(
             "KeySigningKeyInUse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4286,14 +7701,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "KeySigningKeyWithActiveStatusNotFound" => Shape.new(
             "KeySigningKeyWithActiveStatusNotFound",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4301,10 +7726,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "KeySigningKeys" => Shape.new(
             "KeySigningKeys",
             "list",
@@ -4318,10 +7752,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "LastVPCAssociation" => Shape.new(
             "LastVPCAssociation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4329,10 +7773,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Latitude" => Shape.new(
             "Latitude",
             "string",
@@ -4340,6 +7789,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LimitValue" => Shape.new(
             "LimitValue",
             "long",
@@ -4347,10 +7800,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "LimitsExceeded" => Shape.new(
             "LimitsExceeded",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -4358,14 +7820,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LinkedService" => Shape.new(
             "LinkedService",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Description",
                 "ResourceDescription",
@@ -4373,6 +7845,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ServicePrincipal",
                 "ServicePrincipal",
@@ -4380,14 +7857,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListCidrBlocksRequest" => Shape.new(
             "ListCidrBlocksRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CollectionId",
                 "UUID",
@@ -4395,6 +7882,11 @@ module AwsSdk
                 "CidrCollectionId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LocationName",
                 "CidrLocationNameDefaultNotAllowed",
@@ -4402,6 +7894,11 @@ module AwsSdk
                 "location",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxResults",
                 "MaxResults",
@@ -4409,6 +7906,11 @@ module AwsSdk
                 "maxresults",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4416,14 +7918,24 @@ module AwsSdk
                 "nexttoken",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListCidrBlocksResponse" => Shape.new(
             "ListCidrBlocksResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CidrBlocks",
                 "CidrBlockSummaries",
@@ -4431,6 +7943,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4438,14 +7955,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListCidrCollectionsRequest" => Shape.new(
             "ListCidrCollectionsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MaxResults",
                 "MaxResults",
@@ -4453,6 +7980,11 @@ module AwsSdk
                 "maxresults",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4460,14 +7992,24 @@ module AwsSdk
                 "nexttoken",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListCidrCollectionsResponse" => Shape.new(
             "ListCidrCollectionsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CidrCollections",
                 "CollectionSummaries",
@@ -4475,6 +8017,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4482,14 +8029,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListCidrLocationsRequest" => Shape.new(
             "ListCidrLocationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CollectionId",
                 "UUID",
@@ -4497,6 +8054,11 @@ module AwsSdk
                 "CidrCollectionId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxResults",
                 "MaxResults",
@@ -4504,6 +8066,11 @@ module AwsSdk
                 "maxresults",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4511,14 +8078,24 @@ module AwsSdk
                 "nexttoken",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListCidrLocationsResponse" => Shape.new(
             "ListCidrLocationsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CidrLocations",
                 "LocationSummaries",
@@ -4526,6 +8103,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4533,14 +8115,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListGeoLocationsRequest" => Shape.new(
             "ListGeoLocationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4548,6 +8140,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartContinentCode",
                 "GeoLocationContinentCode",
@@ -4555,6 +8152,11 @@ module AwsSdk
                 "startcontinentcode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartCountryCode",
                 "GeoLocationCountryCode",
@@ -4562,6 +8164,11 @@ module AwsSdk
                 "startcountrycode",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartSubdivisionCode",
                 "GeoLocationSubdivisionCode",
@@ -4569,14 +8176,24 @@ module AwsSdk
                 "startsubdivisioncode",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListGeoLocationsResponse" => Shape.new(
             "ListGeoLocationsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "GeoLocationDetailsList",
                 "GeoLocationDetailsList",
@@ -4584,6 +8201,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -4591,6 +8213,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4598,6 +8225,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextContinentCode",
                 "GeoLocationContinentCode",
@@ -4605,6 +8237,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextCountryCode",
                 "GeoLocationCountryCode",
@@ -4612,6 +8249,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextSubdivisionCode",
                 "GeoLocationSubdivisionCode",
@@ -4619,14 +8261,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHealthChecksRequest" => Shape.new(
             "ListHealthChecksRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "PageMarker",
@@ -4634,6 +8286,11 @@ module AwsSdk
                 "marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4641,14 +8298,24 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHealthChecksResponse" => Shape.new(
             "ListHealthChecksResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthChecks",
                 "HealthChecks",
@@ -4656,6 +8323,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -4663,6 +8335,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "PageMarker",
@@ -4670,6 +8347,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4677,6 +8359,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextMarker",
                 "PageMarker",
@@ -4684,14 +8371,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHostedZonesByNameRequest" => Shape.new(
             "ListHostedZonesByNameRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DNSName",
                 "DNSName",
@@ -4699,6 +8396,11 @@ module AwsSdk
                 "dnsname",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -4706,6 +8408,11 @@ module AwsSdk
                 "hostedzoneid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4713,14 +8420,24 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHostedZonesByNameResponse" => Shape.new(
             "ListHostedZonesByNameResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DNSName",
                 "DNSName",
@@ -4728,6 +8445,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -4735,6 +8457,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZones",
                 "HostedZones",
@@ -4742,6 +8469,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -4749,6 +8481,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4756,6 +8493,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextDNSName",
                 "DNSName",
@@ -4763,6 +8505,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextHostedZoneId",
                 "ResourceId",
@@ -4770,14 +8517,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHostedZonesByVPCRequest" => Shape.new(
             "ListHostedZonesByVPCRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4785,6 +8542,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4792,6 +8554,11 @@ module AwsSdk
                 "nexttoken",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPCId",
                 "VPCId",
@@ -4799,6 +8566,11 @@ module AwsSdk
                 "vpcid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPCRegion",
                 "VPCRegion",
@@ -4806,14 +8578,24 @@ module AwsSdk
                 "vpcregion",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHostedZonesByVPCResponse" => Shape.new(
             "ListHostedZonesByVPCResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneSummaries",
                 "HostedZoneSummaries",
@@ -4821,6 +8603,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4828,6 +8615,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4835,14 +8627,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHostedZonesRequest" => Shape.new(
             "ListHostedZonesRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSetId",
                 "ResourceId",
@@ -4850,6 +8652,11 @@ module AwsSdk
                 "delegationsetid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneType",
                 "HostedZoneType",
@@ -4857,6 +8664,11 @@ module AwsSdk
                 "hostedzonetype",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "PageMarker",
@@ -4864,6 +8676,11 @@ module AwsSdk
                 "marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4871,14 +8688,24 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListHostedZonesResponse" => Shape.new(
             "ListHostedZonesResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZones",
                 "HostedZones",
@@ -4886,6 +8713,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -4893,6 +8725,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "PageMarker",
@@ -4900,6 +8737,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4907,6 +8749,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextMarker",
                 "PageMarker",
@@ -4914,14 +8761,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListQueryLoggingConfigsRequest" => Shape.new(
             "ListQueryLoggingConfigsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -4929,6 +8786,11 @@ module AwsSdk
                 "hostedzoneid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxResults",
                 "MaxResults",
@@ -4936,6 +8798,11 @@ module AwsSdk
                 "maxresults",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4943,14 +8810,24 @@ module AwsSdk
                 "nexttoken",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListQueryLoggingConfigsResponse" => Shape.new(
             "ListQueryLoggingConfigsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -4958,6 +8835,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "QueryLoggingConfigs",
                 "QueryLoggingConfigs",
@@ -4965,14 +8847,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListResourceRecordSetsRequest" => Shape.new(
             "ListResourceRecordSetsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -4980,6 +8872,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -4987,6 +8884,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartRecordIdentifier",
                 "ResourceRecordSetIdentifier",
@@ -4994,6 +8896,11 @@ module AwsSdk
                 "identifier",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartRecordName",
                 "DNSName",
@@ -5001,6 +8908,11 @@ module AwsSdk
                 "name",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "StartRecordType",
                 "RRType",
@@ -5008,14 +8920,24 @@ module AwsSdk
                 "type",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListResourceRecordSetsResponse" => Shape.new(
             "ListResourceRecordSetsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5023,6 +8945,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5030,6 +8957,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextRecordIdentifier",
                 "ResourceRecordSetIdentifier",
@@ -5037,6 +8969,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextRecordName",
                 "DNSName",
@@ -5044,6 +8981,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextRecordType",
                 "RRType",
@@ -5051,6 +8993,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceRecordSets",
                 "ResourceRecordSets",
@@ -5058,14 +9005,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListReusableDelegationSetsRequest" => Shape.new(
             "ListReusableDelegationSetsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "PageMarker",
@@ -5073,6 +9030,11 @@ module AwsSdk
                 "marker",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5080,14 +9042,24 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListReusableDelegationSetsResponse" => Shape.new(
             "ListReusableDelegationSetsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "DelegationSets",
                 "DelegationSets",
@@ -5095,6 +9067,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5102,6 +9079,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Marker",
                 "PageMarker",
@@ -5109,6 +9091,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5116,6 +9103,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextMarker",
                 "PageMarker",
@@ -5123,14 +9115,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTagsForResourceRequest" => Shape.new(
             "ListTagsForResourceRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ResourceId",
                 "TagResourceId",
@@ -5138,6 +9140,11 @@ module AwsSdk
                 "ResourceId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceType",
                 "TagResourceType",
@@ -5145,14 +9152,24 @@ module AwsSdk
                 "ResourceType",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTagsForResourceResponse" => Shape.new(
             "ListTagsForResourceResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ResourceTagSet",
                 "ResourceTagSet",
@@ -5160,14 +9177,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTagsForResourcesRequest" => Shape.new(
             "ListTagsForResourcesRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ResourceIds",
                 "TagResourceIdList",
@@ -5175,6 +9202,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceType",
                 "TagResourceType",
@@ -5182,14 +9214,24 @@ module AwsSdk
                 "ResourceType",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTagsForResourcesResponse" => Shape.new(
             "ListTagsForResourcesResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ResourceTagSets",
                 "ResourceTagSetList",
@@ -5197,14 +9239,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPoliciesRequest" => Shape.new(
             "ListTrafficPoliciesRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5212,6 +9264,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyIdMarker",
                 "TrafficPolicyId",
@@ -5219,14 +9276,24 @@ module AwsSdk
                 "trafficpolicyid",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPoliciesResponse" => Shape.new(
             "ListTrafficPoliciesResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5234,6 +9301,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5241,6 +9313,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyIdMarker",
                 "TrafficPolicyId",
@@ -5248,6 +9325,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicySummaries",
                 "TrafficPolicySummaries",
@@ -5255,14 +9337,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyInstancesByHostedZoneRequest" => Shape.new(
             "ListTrafficPolicyInstancesByHostedZoneRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -5270,6 +9362,11 @@ module AwsSdk
                 "id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5277,6 +9374,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceNameMarker",
                 "DNSName",
@@ -5284,6 +9386,11 @@ module AwsSdk
                 "trafficpolicyinstancename",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceTypeMarker",
                 "RRType",
@@ -5291,14 +9398,24 @@ module AwsSdk
                 "trafficpolicyinstancetype",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyInstancesByHostedZoneResponse" => Shape.new(
             "ListTrafficPolicyInstancesByHostedZoneResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5306,6 +9423,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5313,6 +9435,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceNameMarker",
                 "DNSName",
@@ -5320,6 +9447,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceTypeMarker",
                 "RRType",
@@ -5327,6 +9459,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstances",
                 "TrafficPolicyInstances",
@@ -5334,14 +9471,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyInstancesByPolicyRequest" => Shape.new(
             "ListTrafficPolicyInstancesByPolicyRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneIdMarker",
                 "ResourceId",
@@ -5349,6 +9496,11 @@ module AwsSdk
                 "hostedzoneid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5356,6 +9508,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyId",
                 "TrafficPolicyId",
@@ -5363,6 +9520,11 @@ module AwsSdk
                 "id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceNameMarker",
                 "DNSName",
@@ -5370,6 +9532,11 @@ module AwsSdk
                 "trafficpolicyinstancename",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceTypeMarker",
                 "RRType",
@@ -5377,6 +9544,11 @@ module AwsSdk
                 "trafficpolicyinstancetype",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyVersion",
                 "TrafficPolicyVersion",
@@ -5384,14 +9556,24 @@ module AwsSdk
                 "version",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyInstancesByPolicyResponse" => Shape.new(
             "ListTrafficPolicyInstancesByPolicyResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneIdMarker",
                 "ResourceId",
@@ -5399,6 +9581,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5406,6 +9593,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5413,6 +9605,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceNameMarker",
                 "DNSName",
@@ -5420,6 +9617,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceTypeMarker",
                 "RRType",
@@ -5427,6 +9629,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstances",
                 "TrafficPolicyInstances",
@@ -5434,14 +9641,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyInstancesRequest" => Shape.new(
             "ListTrafficPolicyInstancesRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneIdMarker",
                 "ResourceId",
@@ -5449,6 +9666,11 @@ module AwsSdk
                 "hostedzoneid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5456,6 +9678,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceNameMarker",
                 "DNSName",
@@ -5463,6 +9690,11 @@ module AwsSdk
                 "trafficpolicyinstancename",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceTypeMarker",
                 "RRType",
@@ -5470,14 +9702,24 @@ module AwsSdk
                 "trafficpolicyinstancetype",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyInstancesResponse" => Shape.new(
             "ListTrafficPolicyInstancesResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneIdMarker",
                 "ResourceId",
@@ -5485,6 +9727,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5492,6 +9739,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5499,6 +9751,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceNameMarker",
                 "DNSName",
@@ -5506,6 +9763,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceTypeMarker",
                 "RRType",
@@ -5513,6 +9775,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstances",
                 "TrafficPolicyInstances",
@@ -5520,14 +9787,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyVersionsRequest" => Shape.new(
             "ListTrafficPolicyVersionsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -5535,6 +9812,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5542,6 +9824,11 @@ module AwsSdk
                 "maxitems",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyVersionMarker",
                 "TrafficPolicyVersionMarker",
@@ -5549,14 +9836,24 @@ module AwsSdk
                 "trafficpolicyversion",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListTrafficPolicyVersionsResponse" => Shape.new(
             "ListTrafficPolicyVersionsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "IsTruncated",
                 "PageTruncated",
@@ -5564,6 +9861,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxItems",
                 "PageMaxItems",
@@ -5571,6 +9873,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicies",
                 "TrafficPolicies",
@@ -5578,6 +9885,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyVersionMarker",
                 "TrafficPolicyVersionMarker",
@@ -5585,14 +9897,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListVPCAssociationAuthorizationsRequest" => Shape.new(
             "ListVPCAssociationAuthorizationsRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -5600,6 +9922,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MaxResults",
                 "MaxResults",
@@ -5607,6 +9934,11 @@ module AwsSdk
                 "maxresults",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -5614,14 +9946,24 @@ module AwsSdk
                 "nexttoken",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ListVPCAssociationAuthorizationsResponse" => Shape.new(
             "ListVPCAssociationAuthorizationsResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -5629,6 +9971,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "NextToken",
                 "PaginationToken",
@@ -5636,6 +9983,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPCs",
                 "VPCs",
@@ -5643,10 +9995,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "LocalZoneGroup" => Shape.new(
             "LocalZoneGroup",
             "string",
@@ -5654,6 +10011,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "LocationSummaries" => Shape.new(
             "LocationSummaries",
             "list",
@@ -5667,10 +10032,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "LocationSummary" => Shape.new(
             "LocationSummary",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "LocationName",
                 "CidrLocationNameDefaultAllowed",
@@ -5678,10 +10053,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Longitude" => Shape.new(
             "Longitude",
             "string",
@@ -5689,6 +10069,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MaxResults" => Shape.new(
             "MaxResults",
             "string",
@@ -5696,6 +10080,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MeasureLatency" => Shape.new(
             "MeasureLatency",
             "boolean",
@@ -5703,6 +10091,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Message" => Shape.new(
             "Message",
             "string",
@@ -5710,6 +10102,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "MetricName" => Shape.new(
             "MetricName",
             "string",
@@ -5717,6 +10113,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Nameserver" => Shape.new(
             "Nameserver",
             "string",
@@ -5724,6 +10124,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Namespace" => Shape.new(
             "Namespace",
             "string",
@@ -5731,10 +10135,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NoSuchChange" => Shape.new(
             "NoSuchChange",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5742,14 +10155,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchCidrCollectionException" => Shape.new(
             "NoSuchCidrCollectionException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "ErrorMessage",
@@ -5757,14 +10180,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchCidrLocationException" => Shape.new(
             "NoSuchCidrLocationException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "ErrorMessage",
@@ -5772,14 +10205,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchCloudWatchLogsLogGroup" => Shape.new(
             "NoSuchCloudWatchLogsLogGroup",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5787,14 +10230,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchDelegationSet" => Shape.new(
             "NoSuchDelegationSet",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5802,14 +10255,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchGeoLocation" => Shape.new(
             "NoSuchGeoLocation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5817,14 +10280,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchHealthCheck" => Shape.new(
             "NoSuchHealthCheck",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5832,14 +10305,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchHostedZone" => Shape.new(
             "NoSuchHostedZone",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5847,14 +10330,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchKeySigningKey" => Shape.new(
             "NoSuchKeySigningKey",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5862,14 +10355,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchQueryLoggingConfig" => Shape.new(
             "NoSuchQueryLoggingConfig",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5877,14 +10380,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchTrafficPolicy" => Shape.new(
             "NoSuchTrafficPolicy",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5892,14 +10405,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "NoSuchTrafficPolicyInstance" => Shape.new(
             "NoSuchTrafficPolicyInstance",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5907,10 +10430,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Nonce" => Shape.new(
             "Nonce",
             "string",
@@ -5918,10 +10446,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "NotAuthorizedException" => Shape.new(
             "NotAuthorizedException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5929,10 +10466,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PageMarker" => Shape.new(
             "PageMarker",
             "string",
@@ -5940,6 +10482,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PageMaxItems" => Shape.new(
             "PageMaxItems",
             "string",
@@ -5947,6 +10493,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PageTruncated" => Shape.new(
             "PageTruncated",
             "boolean",
@@ -5954,6 +10504,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PaginationToken" => Shape.new(
             "PaginationToken",
             "string",
@@ -5961,6 +10515,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Period" => Shape.new(
             "Period",
             "integer",
@@ -5968,6 +10526,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Port" => Shape.new(
             "Port",
             "integer",
@@ -5975,10 +10537,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "PriorRequestNotComplete" => Shape.new(
             "PriorRequestNotComplete",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -5986,14 +10557,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "PublicZoneVPCAssociation" => Shape.new(
             "PublicZoneVPCAssociation",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6001,14 +10582,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "QueryLoggingConfig" => Shape.new(
             "QueryLoggingConfig",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CloudWatchLogsLogGroupArn",
                 "CloudWatchLogsLogGroupArn",
@@ -6016,6 +10607,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -6023,6 +10619,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "QueryLoggingConfigId",
@@ -6030,14 +10631,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "QueryLoggingConfigAlreadyExists" => Shape.new(
             "QueryLoggingConfigAlreadyExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6045,10 +10656,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "QueryLoggingConfigId" => Shape.new(
             "QueryLoggingConfigId",
             "string",
@@ -6056,6 +10672,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "QueryLoggingConfigs" => Shape.new(
             "QueryLoggingConfigs",
             "list",
@@ -6069,6 +10693,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "RData" => Shape.new(
             "RData",
             "string",
@@ -6076,6 +10705,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RRType" => Shape.new(
             "RRType",
             "string",
@@ -6083,6 +10716,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "RecordData" => Shape.new(
             "RecordData",
             "list",
@@ -6096,6 +10737,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "RecordDataEntry" => Shape.new(
             "RecordDataEntry",
             "string",
@@ -6103,6 +10749,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RequestInterval" => Shape.new(
             "RequestInterval",
             "integer",
@@ -6110,6 +10760,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResettableElementName" => Shape.new(
             "ResettableElementName",
             "string",
@@ -6117,6 +10771,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ResettableElementNameList" => Shape.new(
             "ResettableElementNameList",
             "list",
@@ -6130,6 +10792,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "ResourceDescription" => Shape.new(
             "ResourceDescription",
             "string",
@@ -6137,6 +10804,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourceId" => Shape.new(
             "ResourceId",
             "string",
@@ -6144,6 +10815,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourcePath" => Shape.new(
             "ResourcePath",
             "string",
@@ -6151,10 +10826,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourceRecord" => Shape.new(
             "ResourceRecord",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "RData",
@@ -6162,14 +10846,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ResourceRecordSet" => Shape.new(
             "ResourceRecordSet",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AliasTarget",
                 "AliasTarget",
@@ -6177,6 +10871,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "CidrRoutingConfig",
                 "CidrRoutingConfig",
@@ -6184,6 +10883,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Failover",
                 "ResourceRecordSetFailover",
@@ -6191,6 +10895,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GeoLocation",
                 "GeoLocation",
@@ -6198,6 +10907,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "GeoProximityLocation",
                 "GeoProximityLocation",
@@ -6205,6 +10919,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckId",
                 "HealthCheckId",
@@ -6212,6 +10931,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "MultiValueAnswer",
                 "ResourceRecordSetMultiValueAnswer",
@@ -6219,6 +10943,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DNSName",
@@ -6226,6 +10955,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Region",
                 "ResourceRecordSetRegion",
@@ -6233,6 +10967,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceRecords",
                 "ResourceRecords",
@@ -6240,6 +10979,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SetIdentifier",
                 "ResourceRecordSetIdentifier",
@@ -6247,6 +10991,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TTL",
                 "TTL",
@@ -6254,6 +11003,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstanceId",
                 "TrafficPolicyInstanceId",
@@ -6261,6 +11015,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "RRType",
@@ -6268,6 +11027,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Weight",
                 "ResourceRecordSetWeight",
@@ -6275,10 +11039,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ResourceRecordSetFailover" => Shape.new(
             "ResourceRecordSetFailover",
             "string",
@@ -6286,6 +11055,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourceRecordSetIdentifier" => Shape.new(
             "ResourceRecordSetIdentifier",
             "string",
@@ -6293,6 +11066,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourceRecordSetMultiValueAnswer" => Shape.new(
             "ResourceRecordSetMultiValueAnswer",
             "boolean",
@@ -6300,6 +11077,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourceRecordSetRegion" => Shape.new(
             "ResourceRecordSetRegion",
             "string",
@@ -6307,6 +11088,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ResourceRecordSetWeight" => Shape.new(
             "ResourceRecordSetWeight",
             "long",
@@ -6314,6 +11099,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ResourceRecordSets" => Shape.new(
             "ResourceRecordSets",
             "list",
@@ -6327,6 +11120,15 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
+
+
+
+
           "ResourceRecords" => Shape.new(
             "ResourceRecords",
             "list",
@@ -6340,10 +11142,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "ResourceTagSet" => Shape.new(
             "ResourceTagSet",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "ResourceId",
                 "TagResourceId",
@@ -6351,6 +11163,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourceType",
                 "TagResourceType",
@@ -6358,6 +11175,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Tags",
                 "TagList",
@@ -6365,10 +11187,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "ResourceTagSetList" => Shape.new(
             "ResourceTagSetList",
             "list",
@@ -6382,6 +11213,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "ResourceURI" => Shape.new(
             "ResourceURI",
             "string",
@@ -6389,10 +11225,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ReusableDelegationSetLimit" => Shape.new(
             "ReusableDelegationSetLimit",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "ReusableDelegationSetLimitType",
@@ -6400,6 +11245,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "LimitValue",
@@ -6407,10 +11257,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "ReusableDelegationSetLimitType" => Shape.new(
             "ReusableDelegationSetLimitType",
             "string",
@@ -6418,6 +11273,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "RoutingControlArn" => Shape.new(
             "RoutingControlArn",
             "string",
@@ -6425,6 +11284,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SearchString" => Shape.new(
             "SearchString",
             "string",
@@ -6432,6 +11295,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ServeSignature" => Shape.new(
             "ServeSignature",
             "string",
@@ -6439,6 +11306,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ServicePrincipal" => Shape.new(
             "ServicePrincipal",
             "string",
@@ -6446,6 +11317,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SigningKeyInteger" => Shape.new(
             "SigningKeyInteger",
             "integer",
@@ -6453,6 +11328,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SigningKeyName" => Shape.new(
             "SigningKeyName",
             "string",
@@ -6460,6 +11339,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SigningKeyStatus" => Shape.new(
             "SigningKeyStatus",
             "string",
@@ -6467,6 +11350,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SigningKeyStatusMessage" => Shape.new(
             "SigningKeyStatusMessage",
             "string",
@@ -6474,6 +11361,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SigningKeyString" => Shape.new(
             "SigningKeyString",
             "string",
@@ -6481,6 +11372,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "SigningKeyTag" => Shape.new(
             "SigningKeyTag",
             "integer",
@@ -6488,6 +11383,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Statistic" => Shape.new(
             "Statistic",
             "string",
@@ -6495,6 +11394,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Status" => Shape.new(
             "Status",
             "string",
@@ -6502,10 +11405,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "StatusReport" => Shape.new(
             "StatusReport",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "CheckedTime",
                 "TimeStamp",
@@ -6513,6 +11425,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Status",
                 "Status",
@@ -6520,10 +11437,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "SubnetMask" => Shape.new(
             "SubnetMask",
             "string",
@@ -6531,6 +11453,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TTL" => Shape.new(
             "TTL",
             "long",
@@ -6538,10 +11464,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "Tag" => Shape.new(
             "Tag",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Key",
                 "TagKey",
@@ -6549,6 +11484,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Value",
                 "TagValue",
@@ -6556,10 +11496,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TagKey" => Shape.new(
             "TagKey",
             "string",
@@ -6567,6 +11512,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TagKeyList" => Shape.new(
             "TagKeyList",
             "list",
@@ -6580,6 +11533,15 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
+
+
+
+
           "TagList" => Shape.new(
             "TagList",
             "list",
@@ -6593,6 +11555,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "TagResourceId" => Shape.new(
             "TagResourceId",
             "string",
@@ -6600,6 +11567,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TagResourceIdList" => Shape.new(
             "TagResourceIdList",
             "list",
@@ -6613,6 +11588,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "TagResourceType" => Shape.new(
             "TagResourceType",
             "string",
@@ -6620,6 +11600,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TagValue" => Shape.new(
             "TagValue",
             "string",
@@ -6627,10 +11611,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TestDNSAnswerRequest" => Shape.new(
             "TestDNSAnswerRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EDNS0ClientSubnetIP",
                 "IPAddress",
@@ -6638,6 +11631,11 @@ module AwsSdk
                 "edns0clientsubnetip",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EDNS0ClientSubnetMask",
                 "SubnetMask",
@@ -6645,6 +11643,11 @@ module AwsSdk
                 "edns0clientsubnetmask",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -6652,6 +11655,11 @@ module AwsSdk
                 "hostedzoneid",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordName",
                 "DNSName",
@@ -6659,6 +11667,11 @@ module AwsSdk
                 "recordname",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordType",
                 "RRType",
@@ -6666,6 +11679,11 @@ module AwsSdk
                 "recordtype",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResolverIP",
                 "IPAddress",
@@ -6673,14 +11691,24 @@ module AwsSdk
                 "resolverip",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TestDNSAnswerResponse" => Shape.new(
             "TestDNSAnswerResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Nameserver",
                 "Nameserver",
@@ -6688,6 +11716,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Protocol",
                 "TransportProtocol",
@@ -6695,6 +11728,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordData",
                 "RecordData",
@@ -6702,6 +11740,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordName",
                 "DNSName",
@@ -6709,6 +11752,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "RecordType",
                 "RRType",
@@ -6716,6 +11764,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResponseCode",
                 "DNSRCode",
@@ -6723,10 +11776,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "Threshold" => Shape.new(
             "Threshold",
             "double",
@@ -6734,10 +11792,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "ThrottlingException" => Shape.new(
             "ThrottlingException",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6745,10 +11812,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TimeStamp" => Shape.new(
             "TimeStamp",
             "timestamp",
@@ -6756,10 +11828,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TooManyHealthChecks" => Shape.new(
             "TooManyHealthChecks",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6767,14 +11848,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TooManyHostedZones" => Shape.new(
             "TooManyHostedZones",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6782,14 +11873,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TooManyKeySigningKeys" => Shape.new(
             "TooManyKeySigningKeys",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6797,14 +11898,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TooManyTrafficPolicies" => Shape.new(
             "TooManyTrafficPolicies",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6812,14 +11923,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TooManyTrafficPolicyInstances" => Shape.new(
             "TooManyTrafficPolicyInstances",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6827,14 +11948,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TooManyTrafficPolicyVersionsForCurrentPolicy" => Shape.new(
             "TooManyTrafficPolicyVersionsForCurrentPolicy",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6842,14 +11973,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TooManyVPCAssociationAuthorizations" => Shape.new(
             "TooManyVPCAssociationAuthorizations",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6857,10 +11998,19 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TrafficPolicies" => Shape.new(
             "TrafficPolicies",
             "list",
@@ -6874,10 +12024,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "TrafficPolicy" => Shape.new(
             "TrafficPolicy",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "TrafficPolicyComment",
@@ -6885,6 +12045,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Document",
                 "TrafficPolicyDocument",
@@ -6892,6 +12057,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -6899,6 +12069,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "TrafficPolicyName",
@@ -6906,6 +12081,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "RRType",
@@ -6913,6 +12093,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Version",
                 "TrafficPolicyVersion",
@@ -6920,14 +12105,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyAlreadyExists" => Shape.new(
             "TrafficPolicyAlreadyExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6935,10 +12130,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyComment" => Shape.new(
             "TrafficPolicyComment",
             "string",
@@ -6946,6 +12146,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyDocument" => Shape.new(
             "TrafficPolicyDocument",
             "string",
@@ -6953,6 +12157,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyId" => Shape.new(
             "TrafficPolicyId",
             "string",
@@ -6960,10 +12168,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyInUse" => Shape.new(
             "TrafficPolicyInUse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -6971,14 +12188,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyInstance" => Shape.new(
             "TrafficPolicyInstance",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -6986,6 +12213,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyInstanceId",
@@ -6993,6 +12225,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Message",
                 "Message",
@@ -7000,6 +12237,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "DNSName",
@@ -7007,6 +12249,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "State",
                 "TrafficPolicyInstanceState",
@@ -7014,6 +12261,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TTL",
                 "TTL",
@@ -7021,6 +12273,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyId",
                 "TrafficPolicyId",
@@ -7028,6 +12285,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyType",
                 "RRType",
@@ -7035,6 +12297,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyVersion",
                 "TrafficPolicyVersion",
@@ -7042,14 +12309,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyInstanceAlreadyExists" => Shape.new(
             "TrafficPolicyInstanceAlreadyExists",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -7057,10 +12334,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyInstanceCount" => Shape.new(
             "TrafficPolicyInstanceCount",
             "integer",
@@ -7068,6 +12350,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyInstanceId" => Shape.new(
             "TrafficPolicyInstanceId",
             "string",
@@ -7075,6 +12361,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyInstanceState" => Shape.new(
             "TrafficPolicyInstanceState",
             "string",
@@ -7082,6 +12372,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TrafficPolicyInstances" => Shape.new(
             "TrafficPolicyInstances",
             "list",
@@ -7095,6 +12393,11 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "TrafficPolicyName" => Shape.new(
             "TrafficPolicyName",
             "string",
@@ -7102,6 +12405,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "TrafficPolicySummaries" => Shape.new(
             "TrafficPolicySummaries",
             "list",
@@ -7115,10 +12426,20 @@ module AwsSdk
             ),
             false
           ),
+
+
+
+
+
           "TrafficPolicySummary" => Shape.new(
             "TrafficPolicySummary",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -7126,6 +12447,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "LatestVersion",
                 "TrafficPolicyVersion",
@@ -7133,6 +12459,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Name",
                 "TrafficPolicyName",
@@ -7140,6 +12471,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyCount",
                 "TrafficPolicyVersion",
@@ -7147,6 +12483,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Type",
                 "RRType",
@@ -7154,10 +12495,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyVersion" => Shape.new(
             "TrafficPolicyVersion",
             "integer",
@@ -7165,6 +12511,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TrafficPolicyVersionMarker" => Shape.new(
             "TrafficPolicyVersionMarker",
             "string",
@@ -7172,6 +12522,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "TransportProtocol" => Shape.new(
             "TransportProtocol",
             "string",
@@ -7179,6 +12533,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "UUID" => Shape.new(
             "UUID",
             "string",
@@ -7186,10 +12544,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "UpdateHealthCheckRequest" => Shape.new(
             "UpdateHealthCheckRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "AlarmIdentifier",
                 "AlarmIdentifier",
@@ -7197,6 +12564,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ChildHealthChecks",
                 "ChildHealthCheckList",
@@ -7204,6 +12576,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Disabled",
                 "Disabled",
@@ -7211,6 +12588,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "EnableSNI",
                 "EnableSNI",
@@ -7218,6 +12600,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FailureThreshold",
                 "FailureThreshold",
@@ -7225,6 +12612,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "FullyQualifiedDomainName",
                 "FullyQualifiedDomainName",
@@ -7232,6 +12624,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckId",
                 "HealthCheckId",
@@ -7239,6 +12636,11 @@ module AwsSdk
                 "HealthCheckId",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheckVersion",
                 "HealthCheckVersion",
@@ -7246,6 +12648,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HealthThreshold",
                 "HealthThreshold",
@@ -7253,6 +12660,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "IPAddress",
                 "IPAddress",
@@ -7260,6 +12672,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "InsufficientDataHealthStatus",
                 "InsufficientDataHealthStatus",
@@ -7267,6 +12684,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Inverted",
                 "Inverted",
@@ -7274,6 +12696,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Port",
                 "Port",
@@ -7281,6 +12708,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Regions",
                 "HealthCheckRegionList",
@@ -7288,6 +12720,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResetElements",
                 "ResettableElementNameList",
@@ -7295,6 +12732,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "ResourcePath",
                 "ResourcePath",
@@ -7302,6 +12744,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "SearchString",
                 "SearchString",
@@ -7309,14 +12756,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateHealthCheckResponse" => Shape.new(
             "UpdateHealthCheckResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HealthCheck",
                 "HealthCheck",
@@ -7324,14 +12781,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateHostedZoneCommentRequest" => Shape.new(
             "UpdateHostedZoneCommentRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "ResourceDescription",
@@ -7339,6 +12806,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "ResourceId",
@@ -7346,14 +12818,24 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateHostedZoneCommentResponse" => Shape.new(
             "UpdateHostedZoneCommentResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "HostedZone",
                 "HostedZone",
@@ -7361,14 +12843,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateHostedZoneFeaturesRequest" => Shape.new(
             "UpdateHostedZoneFeaturesRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "EnableAcceleratedRecovery",
                 "AcceleratedRecoveryEnabled",
@@ -7376,6 +12868,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "HostedZoneId",
                 "ResourceId",
@@ -7383,22 +12880,37 @@ module AwsSdk
                 "Id",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateHostedZoneFeaturesResponse" => Shape.new(
             "UpdateHostedZoneFeaturesResponse",
             "structure",
             [
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateTrafficPolicyCommentRequest" => Shape.new(
             "UpdateTrafficPolicyCommentRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Comment",
                 "TrafficPolicyComment",
@@ -7406,6 +12918,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyId",
@@ -7413,6 +12930,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "Version",
                 "TrafficPolicyVersion",
@@ -7420,14 +12942,24 @@ module AwsSdk
                 "Version",
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateTrafficPolicyCommentResponse" => Shape.new(
             "UpdateTrafficPolicyCommentResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicy",
                 "TrafficPolicy",
@@ -7435,14 +12967,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateTrafficPolicyInstanceRequest" => Shape.new(
             "UpdateTrafficPolicyInstanceRequest",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "Id",
                 "TrafficPolicyInstanceId",
@@ -7450,6 +12992,11 @@ module AwsSdk
                 "Id",
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TTL",
                 "TTL",
@@ -7457,6 +13004,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyId",
                 "TrafficPolicyId",
@@ -7464,6 +13016,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyVersion",
                 "TrafficPolicyVersion",
@@ -7471,14 +13028,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UpdateTrafficPolicyInstanceResponse" => Shape.new(
             "UpdateTrafficPolicyInstanceResponse",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "TrafficPolicyInstance",
                 "TrafficPolicyInstance",
@@ -7486,10 +13053,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "UsageCount" => Shape.new(
             "UsageCount",
             "long",
@@ -7497,10 +13069,19 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "VPC" => Shape.new(
             "VPC",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "VPCId",
                 "VPCId",
@@ -7508,6 +13089,11 @@ module AwsSdk
                 nil,
                 false
               ),
+
+
+
+
+
               ShapeMember.new(
                 "VPCRegion",
                 "VPCRegion",
@@ -7515,14 +13101,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "VPCAssociationAuthorizationNotFound" => Shape.new(
             "VPCAssociationAuthorizationNotFound",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -7530,14 +13126,24 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "VPCAssociationNotFound" => Shape.new(
             "VPCAssociationNotFound",
             "structure",
             [
+
+
+
+
+
               ShapeMember.new(
                 "message",
                 "ErrorMessage",
@@ -7545,10 +13151,15 @@ module AwsSdk
                 nil,
                 false
               ),
+
             ] of ShapeMember,
             nil,
             false
           ),
+
+
+
+
           "VPCId" => Shape.new(
             "VPCId",
             "string",
@@ -7556,6 +13167,10 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
           "VPCRegion" => Shape.new(
             "VPCRegion",
             "string",
@@ -7563,6 +13178,14 @@ module AwsSdk
             nil,
             false
           ),
+
+
+
+
+
+
+
+
           "VPCs" => Shape.new(
             "VPCs",
             "list",
@@ -7576,6 +13199,9 @@ module AwsSdk
             ),
             false
           ),
+
+
+
         }
 
         def self.build_request(operation : Model::OperationModel, input, endpoint : String) : AwsSdk::Runtime::Http::Request

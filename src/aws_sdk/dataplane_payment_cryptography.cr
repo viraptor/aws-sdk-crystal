@@ -1,7 +1,0 @@
-require "./runtime"
-require "./dataplane_payment_cryptography/client"
-require "./dataplane_payment_cryptography/errors"
-require "./dataplane_payment_cryptography/model"
-require "./dataplane_payment_cryptography/types"
-require "./dataplane_payment_cryptography/protocol/rest_json"
-require "./customizations/dataplane_payment_cryptography/customizations"

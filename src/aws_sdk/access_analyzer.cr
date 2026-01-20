@@ -1,7 +1,0 @@
-require "./runtime"
-require "./access_analyzer/client"
-require "./access_analyzer/errors"
-require "./access_analyzer/model"
-require "./access_analyzer/types"
-require "./access_analyzer/protocol/rest_json"
-require "./customizations/access_analyzer/customizations"

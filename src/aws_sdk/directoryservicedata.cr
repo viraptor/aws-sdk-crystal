@@ -1,0 +1,7 @@
+require "./runtime"
+require "./directoryservicedata/client"
+require "./directoryservicedata/errors"
+require "./directoryservicedata/model"
+require "./directoryservicedata/types"
+require "./directoryservicedata/protocol/rest_json"
+require "./customizations/directoryservicedata/customizations"

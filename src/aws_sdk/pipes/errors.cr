@@ -5,26 +5,32 @@ module AwsSdk
       end
 
       # An action you attempted resulted in an exception.
+
       class ConflictException < ServiceError
       end
 
       # This exception occurs due to unexpected causes.
+
       class InternalException < ServiceError
       end
 
       # An entity that you specified does not exist.
+
       class NotFoundException < ServiceError
       end
 
       # A quota has been exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # An action was throttled.
+
       class ThrottlingException < ServiceError
       end
 
       # Indicates that an error has occurred while performing a validate operation.
+
       class ValidationException < ServiceError
       end
 

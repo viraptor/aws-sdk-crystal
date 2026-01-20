@@ -1,0 +1,7 @@
+require "./runtime"
+require "./detective/client"
+require "./detective/errors"
+require "./detective/model"
+require "./detective/types"
+require "./detective/protocol/rest_json"
+require "./customizations/detective/customizations"

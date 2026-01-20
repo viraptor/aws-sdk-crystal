@@ -1,6 +1,7 @@
 module AwsSdk
   module Kendra
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -31,14 +32,17 @@ module AwsSdk
       # experience. You can create an Amazon Kendra experience such as a search application. For more
       # information on creating a search application experience, see Building a search experience with no
       # code .
+
       def associate_entities_to_experience(
         entity_list : Array(Types::EntityConfiguration),
         id : String,
         index_id : String
       ) : Types::AssociateEntitiesToExperienceResponse
+
         input = Types::AssociateEntitiesToExperienceRequest.new(entity_list: entity_list, id: id, index_id: index_id)
         associate_entities_to_experience(input)
       end
+
       def associate_entities_to_experience(input : Types::AssociateEntitiesToExperienceRequest) : Types::AssociateEntitiesToExperienceResponse
         request = Protocol::JsonRpc.build_request(Model::ASSOCIATE_ENTITIES_TO_EXPERIENCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -51,14 +55,17 @@ module AwsSdk
       # access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search
       # application. For more information on creating a search application experience, see Building a search
       # experience with no code .
+
       def associate_personas_to_entities(
         id : String,
         index_id : String,
         personas : Array(Types::EntityPersonaConfiguration)
       ) : Types::AssociatePersonasToEntitiesResponse
+
         input = Types::AssociatePersonasToEntitiesRequest.new(id: id, index_id: index_id, personas: personas)
         associate_personas_to_entities(input)
       end
+
       def associate_personas_to_entities(input : Types::AssociatePersonasToEntitiesRequest) : Types::AssociatePersonasToEntitiesResponse
         request = Protocol::JsonRpc.build_request(Model::ASSOCIATE_PERSONAS_TO_ENTITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -74,14 +81,17 @@ module AwsSdk
       # BatchGetDocumentStatus API to monitor the progress of deleting your documents. Deleting documents
       # from an index using BatchDeleteDocument could take up to an hour or more, depending on the number of
       # documents you want to delete.
+
       def batch_delete_document(
         document_id_list : Array(String),
         index_id : String,
         data_source_sync_job_metric_target : Types::DataSourceSyncJobMetricTarget? = nil
       ) : Types::BatchDeleteDocumentResponse
+
         input = Types::BatchDeleteDocumentRequest.new(document_id_list: document_id_list, index_id: index_id, data_source_sync_job_metric_target: data_source_sync_job_metric_target)
         batch_delete_document(input)
       end
+
       def batch_delete_document(input : Types::BatchDeleteDocumentRequest) : Types::BatchDeleteDocumentResponse
         request = Protocol::JsonRpc.build_request(Model::BATCH_DELETE_DOCUMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -93,13 +103,16 @@ module AwsSdk
       # Removes one or more sets of featured results. Features results are placed above all other results
       # for certain queries. If there's an exact match of a query, then one or more specific documents are
       # featured in the search results.
+
       def batch_delete_featured_results_set(
         featured_results_set_ids : Array(String),
         index_id : String
       ) : Types::BatchDeleteFeaturedResultsSetResponse
+
         input = Types::BatchDeleteFeaturedResultsSetRequest.new(featured_results_set_ids: featured_results_set_ids, index_id: index_id)
         batch_delete_featured_results_set(input)
       end
+
       def batch_delete_featured_results_set(input : Types::BatchDeleteFeaturedResultsSetRequest) : Types::BatchDeleteFeaturedResultsSetResponse
         request = Protocol::JsonRpc.build_request(Model::BATCH_DELETE_FEATURED_RESULTS_SET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -114,13 +127,16 @@ module AwsSdk
       # determine if they have been successfully indexed. You can also use the BatchGetDocumentStatus API to
       # check the status of the BatchDeleteDocument API. When a document is deleted from the index, Amazon
       # Kendra returns NOT_FOUND as the status.
+
       def batch_get_document_status(
         document_info_list : Array(Types::DocumentInfo),
         index_id : String
       ) : Types::BatchGetDocumentStatusResponse
+
         input = Types::BatchGetDocumentStatusRequest.new(document_info_list: document_info_list, index_id: index_id)
         batch_get_document_status(input)
       end
+
       def batch_get_document_status(input : Types::BatchGetDocumentStatusRequest) : Types::BatchGetDocumentStatusResponse
         request = Protocol::JsonRpc.build_request(Model::BATCH_GET_DOCUMENT_STATUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -137,15 +153,18 @@ module AwsSdk
       # processing the batch are sent to your Amazon Web Services CloudWatch log. You can also use the
       # BatchGetDocumentStatus API to monitor the progress of indexing your documents. For an example of
       # ingesting inline documents using Python and Java SDKs, see Adding files directly to an index .
+
       def batch_put_document(
         documents : Array(Types::Document),
         index_id : String,
         custom_document_enrichment_configuration : Types::CustomDocumentEnrichmentConfiguration? = nil,
         role_arn : String? = nil
       ) : Types::BatchPutDocumentResponse
+
         input = Types::BatchPutDocumentRequest.new(documents: documents, index_id: index_id, custom_document_enrichment_configuration: custom_document_enrichment_configuration, role_arn: role_arn)
         batch_put_document(input)
       end
+
       def batch_put_document(input : Types::BatchPutDocumentRequest) : Types::BatchPutDocumentResponse
         request = Protocol::JsonRpc.build_request(Model::BATCH_PUT_DOCUMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -160,12 +179,15 @@ module AwsSdk
       # suggestions, then please allow Amazon Kendra to collect enough queries to learn new suggestions.
       # ClearQuerySuggestions is currently not supported in the Amazon Web Services GovCloud (US-West)
       # region.
+
       def clear_query_suggestions(
         index_id : String
       ) : Nil
+
         input = Types::ClearQuerySuggestionsRequest.new(index_id: index_id)
         clear_query_suggestions(input)
       end
+
       def clear_query_suggestions(input : Types::ClearQuerySuggestionsRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::CLEAR_QUERY_SUGGESTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -192,6 +214,7 @@ module AwsSdk
       # BatchPutDocument API. You can't configure access control using CreateAccessControlConfiguration for
       # an Amazon Kendra Gen AI Enterprise Edition index. Amazon Kendra will return a ValidationException
       # error for a Gen_AI_ENTERPRISE_EDITION index.
+
       def create_access_control_configuration(
         index_id : String,
         name : String,
@@ -200,9 +223,11 @@ module AwsSdk
         description : String? = nil,
         hierarchical_access_control_list : Array(Types::HierarchicalPrincipal)? = nil
       ) : Types::CreateAccessControlConfigurationResponse
+
         input = Types::CreateAccessControlConfigurationRequest.new(index_id: index_id, name: name, access_control_list: access_control_list, client_token: client_token, description: description, hierarchical_access_control_list: hierarchical_access_control_list)
         create_access_control_configuration(input)
       end
+
       def create_access_control_configuration(input : Types::CreateAccessControlConfigurationRequest) : Types::CreateAccessControlConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_ACCESS_CONTROL_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -218,6 +243,7 @@ module AwsSdk
       # exception is raised. For an example of creating an index and data source using the Python SDK, see
       # Getting started with Python SDK . For an example of creating an index and data source using the Java
       # SDK, see Getting started with Java SDK .
+
       def create_data_source(
         index_id : String,
         name : String,
@@ -232,9 +258,11 @@ module AwsSdk
         tags : Array(Types::Tag)? = nil,
         vpc_configuration : Types::DataSourceVpcConfiguration? = nil
       ) : Types::CreateDataSourceResponse
+
         input = Types::CreateDataSourceRequest.new(index_id: index_id, name: name, type: type, client_token: client_token, configuration: configuration, custom_document_enrichment_configuration: custom_document_enrichment_configuration, description: description, language_code: language_code, role_arn: role_arn, schedule: schedule, tags: tags, vpc_configuration: vpc_configuration)
         create_data_source(input)
       end
+
       def create_data_source(input : Types::CreateDataSourceRequest) : Types::CreateDataSourceResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_DATA_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -246,6 +274,7 @@ module AwsSdk
       # Creates an Amazon Kendra experience such as a search application. For more information on creating a
       # search application experience, including using the Python and Java SDKs, see Building a search
       # experience with no code .
+
       def create_experience(
         index_id : String,
         name : String,
@@ -254,9 +283,11 @@ module AwsSdk
         description : String? = nil,
         role_arn : String? = nil
       ) : Types::CreateExperienceResponse
+
         input = Types::CreateExperienceRequest.new(index_id: index_id, name: name, client_token: client_token, configuration: configuration, description: description, role_arn: role_arn)
         create_experience(input)
       end
+
       def create_experience(input : Types::CreateExperienceRequest) : Types::CreateExperienceResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_EXPERIENCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -268,6 +299,7 @@ module AwsSdk
       # Creates a set of frequently ask questions (FAQs) using a specified FAQ file stored in an Amazon S3
       # bucket. Adding FAQs to an index is an asynchronous operation. For an example of adding an FAQ to an
       # index using Python and Java SDKs, see Using your FAQ file .
+
       def create_faq(
         index_id : String,
         name : String,
@@ -279,9 +311,11 @@ module AwsSdk
         language_code : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFaqResponse
+
         input = Types::CreateFaqRequest.new(index_id: index_id, name: name, role_arn: role_arn, s3_path: s3_path, client_token: client_token, description: description, file_format: file_format, language_code: language_code, tags: tags)
         create_faq(input)
       end
+
       def create_faq(input : Types::CreateFaqRequest) : Types::CreateFaqResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_FAQ, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -295,6 +329,7 @@ module AwsSdk
       # documents for featuring in the results. If a query contains an exact match, then one or more
       # specific documents are featured in the search results. You can create up to 50 sets of featured
       # results per index. You can request to increase this limit by contacting Support .
+
       def create_featured_results_set(
         featured_results_set_name : String,
         index_id : String,
@@ -305,9 +340,11 @@ module AwsSdk
         status : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateFeaturedResultsSetResponse
+
         input = Types::CreateFeaturedResultsSetRequest.new(featured_results_set_name: featured_results_set_name, index_id: index_id, client_token: client_token, description: description, featured_documents: featured_documents, query_texts: query_texts, status: status, tags: tags)
         create_featured_results_set(input)
       end
+
       def create_featured_results_set(input : Types::CreateFeaturedResultsSetRequest) : Types::CreateFeaturedResultsSetResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_FEATURED_RESULTS_SET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -323,6 +360,7 @@ module AwsSdk
       # of creating an index and data source using the Python SDK, see Getting started with Python SDK . For
       # an example of creating an index and data source using the Java SDK, see Getting started with Java
       # SDK .
+
       def create_index(
         name : String,
         role_arn : String,
@@ -335,9 +373,11 @@ module AwsSdk
         user_group_resolution_configuration : Types::UserGroupResolutionConfiguration? = nil,
         user_token_configurations : Array(Types::UserTokenConfiguration)? = nil
       ) : Types::CreateIndexResponse
+
         input = Types::CreateIndexRequest.new(name: name, role_arn: role_arn, client_token: client_token, description: description, edition: edition, server_side_encryption_configuration: server_side_encryption_configuration, tags: tags, user_context_policy: user_context_policy, user_group_resolution_configuration: user_group_resolution_configuration, user_token_configurations: user_token_configurations)
         create_index(input)
       end
+
       def create_index(input : Types::CreateIndexRequest) : Types::CreateIndexResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_INDEX, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -353,6 +393,7 @@ module AwsSdk
       # block lists, see Quotas for Amazon Kendra . CreateQuerySuggestionsBlockList is currently not
       # supported in the Amazon Web Services GovCloud (US-West) region. For an example of creating a block
       # list for query suggestions using the Python SDK, see Query suggestions block list .
+
       def create_query_suggestions_block_list(
         index_id : String,
         name : String,
@@ -362,9 +403,11 @@ module AwsSdk
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateQuerySuggestionsBlockListResponse
+
         input = Types::CreateQuerySuggestionsBlockListRequest.new(index_id: index_id, name: name, role_arn: role_arn, source_s3_path: source_s3_path, client_token: client_token, description: description, tags: tags)
         create_query_suggestions_block_list(input)
       end
+
       def create_query_suggestions_block_list(input : Types::CreateQuerySuggestionsBlockListRequest) : Types::CreateQuerySuggestionsBlockListResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_QUERY_SUGGESTIONS_BLOCK_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -375,6 +418,7 @@ module AwsSdk
 
       # Creates a thesaurus for an index. The thesaurus contains a list of synonyms in Solr format. For an
       # example of adding a thesaurus file to an index, see Adding custom synonyms to an index .
+
       def create_thesaurus(
         index_id : String,
         name : String,
@@ -384,9 +428,11 @@ module AwsSdk
         description : String? = nil,
         tags : Array(Types::Tag)? = nil
       ) : Types::CreateThesaurusResponse
+
         input = Types::CreateThesaurusRequest.new(index_id: index_id, name: name, role_arn: role_arn, source_s3_path: source_s3_path, client_token: client_token, description: description, tags: tags)
         create_thesaurus(input)
       end
+
       def create_thesaurus(input : Types::CreateThesaurusRequest) : Types::CreateThesaurusResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_THESAURUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -398,13 +444,16 @@ module AwsSdk
       # Deletes an access control configuration that you created for your documents in an index. This
       # includes user and group access information for your documents. This is useful for user context
       # filtering, where search results are filtered based on the user or their group access to documents.
+
       def delete_access_control_configuration(
         id : String,
         index_id : String
       ) : Types::DeleteAccessControlConfigurationResponse
+
         input = Types::DeleteAccessControlConfigurationRequest.new(id: id, index_id: index_id)
         delete_access_control_configuration(input)
       end
+
       def delete_access_control_configuration(input : Types::DeleteAccessControlConfigurationRequest) : Types::DeleteAccessControlConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_ACCESS_CONTROL_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -419,13 +468,16 @@ module AwsSdk
       # Deleting an entire data source or re-syncing your index after deleting specific documents from a
       # data source could take up to an hour or more, depending on the number of documents you want to
       # delete.
+
       def delete_data_source(
         id : String,
         index_id : String
       ) : Nil
+
         input = Types::DeleteDataSourceRequest.new(id: id, index_id: index_id)
         delete_data_source(input)
       end
+
       def delete_data_source(input : Types::DeleteDataSourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_DATA_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -436,13 +488,16 @@ module AwsSdk
 
       # Deletes your Amazon Kendra experience such as a search application. For more information on creating
       # a search application experience, see Building a search experience with no code .
+
       def delete_experience(
         id : String,
         index_id : String
       ) : Types::DeleteExperienceResponse
+
         input = Types::DeleteExperienceRequest.new(id: id, index_id: index_id)
         delete_experience(input)
       end
+
       def delete_experience(input : Types::DeleteExperienceRequest) : Types::DeleteExperienceResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_EXPERIENCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -452,13 +507,16 @@ module AwsSdk
       end
 
       # Removes a FAQ from an index.
+
       def delete_faq(
         id : String,
         index_id : String
       ) : Nil
+
         input = Types::DeleteFaqRequest.new(id: id, index_id: index_id)
         delete_faq(input)
       end
+
       def delete_faq(input : Types::DeleteFaqRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_FAQ, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -470,12 +528,15 @@ module AwsSdk
       # Deletes an Amazon Kendra index. An exception is not thrown if the index is already being deleted.
       # While the index is being deleted, the Status field returned by a call to the DescribeIndex API is
       # set to DELETING .
+
       def delete_index(
         id : String
       ) : Nil
+
         input = Types::DeleteIndexRequest.new(id: id)
         delete_index(input)
       end
+
       def delete_index(input : Types::DeleteIndexRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_INDEX, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -493,15 +554,18 @@ module AwsSdk
       # group when calling PutPrincipalMapping . You can update your internal list of users or sub groups
       # and input this list when calling PutPrincipalMapping . DeletePrincipalMapping is currently not
       # supported in the Amazon Web Services GovCloud (US-West) region.
+
       def delete_principal_mapping(
         group_id : String,
         index_id : String,
         data_source_id : String? = nil,
         ordering_id : Int64? = nil
       ) : Nil
+
         input = Types::DeletePrincipalMappingRequest.new(group_id: group_id, index_id: index_id, data_source_id: data_source_id, ordering_id: ordering_id)
         delete_principal_mapping(input)
       end
+
       def delete_principal_mapping(input : Types::DeletePrincipalMappingRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_PRINCIPAL_MAPPING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -514,13 +578,16 @@ module AwsSdk
       # effect right away. Amazon Kendra needs to refresh the entire suggestions list to add back the
       # queries that were previously blocked. DeleteQuerySuggestionsBlockList is currently not supported in
       # the Amazon Web Services GovCloud (US-West) region.
+
       def delete_query_suggestions_block_list(
         id : String,
         index_id : String
       ) : Nil
+
         input = Types::DeleteQuerySuggestionsBlockListRequest.new(id: id, index_id: index_id)
         delete_query_suggestions_block_list(input)
       end
+
       def delete_query_suggestions_block_list(input : Types::DeleteQuerySuggestionsBlockListRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_QUERY_SUGGESTIONS_BLOCK_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -530,13 +597,16 @@ module AwsSdk
       end
 
       # Deletes an Amazon Kendra thesaurus.
+
       def delete_thesaurus(
         id : String,
         index_id : String
       ) : Nil
+
         input = Types::DeleteThesaurusRequest.new(id: id, index_id: index_id)
         delete_thesaurus(input)
       end
+
       def delete_thesaurus(input : Types::DeleteThesaurusRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_THESAURUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -549,13 +619,16 @@ module AwsSdk
       # index. This includes user and group access information for your documents. This is useful for user
       # context filtering, where search results are filtered based on the user or their group access to
       # documents.
+
       def describe_access_control_configuration(
         id : String,
         index_id : String
       ) : Types::DescribeAccessControlConfigurationResponse
+
         input = Types::DescribeAccessControlConfigurationRequest.new(id: id, index_id: index_id)
         describe_access_control_configuration(input)
       end
+
       def describe_access_control_configuration(input : Types::DescribeAccessControlConfigurationRequest) : Types::DescribeAccessControlConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ACCESS_CONTROL_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -565,13 +638,16 @@ module AwsSdk
       end
 
       # Gets information about an Amazon Kendra data source connector.
+
       def describe_data_source(
         id : String,
         index_id : String
       ) : Types::DescribeDataSourceResponse
+
         input = Types::DescribeDataSourceRequest.new(id: id, index_id: index_id)
         describe_data_source(input)
       end
+
       def describe_data_source(input : Types::DescribeDataSourceRequest) : Types::DescribeDataSourceResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_DATA_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -583,13 +659,16 @@ module AwsSdk
       # Gets information about your Amazon Kendra experience such as a search application. For more
       # information on creating a search application experience, see Building a search experience with no
       # code .
+
       def describe_experience(
         id : String,
         index_id : String
       ) : Types::DescribeExperienceResponse
+
         input = Types::DescribeExperienceRequest.new(id: id, index_id: index_id)
         describe_experience(input)
       end
+
       def describe_experience(input : Types::DescribeExperienceRequest) : Types::DescribeExperienceResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_EXPERIENCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -599,13 +678,16 @@ module AwsSdk
       end
 
       # Gets information about a FAQ.
+
       def describe_faq(
         id : String,
         index_id : String
       ) : Types::DescribeFaqResponse
+
         input = Types::DescribeFaqRequest.new(id: id, index_id: index_id)
         describe_faq(input)
       end
+
       def describe_faq(input : Types::DescribeFaqRequest) : Types::DescribeFaqResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_FAQ, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -617,13 +699,16 @@ module AwsSdk
       # Gets information about a set of featured results. Features results are placed above all other
       # results for certain queries. If there's an exact match of a query, then one or more specific
       # documents are featured in the search results.
+
       def describe_featured_results_set(
         featured_results_set_id : String,
         index_id : String
       ) : Types::DescribeFeaturedResultsSetResponse
+
         input = Types::DescribeFeaturedResultsSetRequest.new(featured_results_set_id: featured_results_set_id, index_id: index_id)
         describe_featured_results_set(input)
       end
+
       def describe_featured_results_set(input : Types::DescribeFeaturedResultsSetRequest) : Types::DescribeFeaturedResultsSetResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_FEATURED_RESULTS_SET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -633,12 +718,15 @@ module AwsSdk
       end
 
       # Gets information about an Amazon Kendra index.
+
       def describe_index(
         id : String
       ) : Types::DescribeIndexResponse
+
         input = Types::DescribeIndexRequest.new(id: id)
         describe_index(input)
       end
+
       def describe_index(input : Types::DescribeIndexRequest) : Types::DescribeIndexResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_INDEX, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -653,14 +741,17 @@ module AwsSdk
       # apply after other actions, and useful error messages if an action could not be processed.
       # DescribePrincipalMapping is currently not supported in the Amazon Web Services GovCloud (US-West)
       # region.
+
       def describe_principal_mapping(
         group_id : String,
         index_id : String,
         data_source_id : String? = nil
       ) : Types::DescribePrincipalMappingResponse
+
         input = Types::DescribePrincipalMappingRequest.new(group_id: group_id, index_id: index_id, data_source_id: data_source_id)
         describe_principal_mapping(input)
       end
+
       def describe_principal_mapping(input : Types::DescribePrincipalMappingRequest) : Types::DescribePrincipalMappingResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_PRINCIPAL_MAPPING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -672,13 +763,16 @@ module AwsSdk
       # Gets information about a block list used for query suggestions for an index. This is used to check
       # the current settings that are applied to a block list. DescribeQuerySuggestionsBlockList is
       # currently not supported in the Amazon Web Services GovCloud (US-West) region.
+
       def describe_query_suggestions_block_list(
         id : String,
         index_id : String
       ) : Types::DescribeQuerySuggestionsBlockListResponse
+
         input = Types::DescribeQuerySuggestionsBlockListRequest.new(id: id, index_id: index_id)
         describe_query_suggestions_block_list(input)
       end
+
       def describe_query_suggestions_block_list(input : Types::DescribeQuerySuggestionsBlockListRequest) : Types::DescribeQuerySuggestionsBlockListResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_QUERY_SUGGESTIONS_BLOCK_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -690,12 +784,15 @@ module AwsSdk
       # Gets information on the settings of query suggestions for an index. This is used to check the
       # current settings applied to query suggestions. DescribeQuerySuggestionsConfig is currently not
       # supported in the Amazon Web Services GovCloud (US-West) region.
+
       def describe_query_suggestions_config(
         index_id : String
       ) : Types::DescribeQuerySuggestionsConfigResponse
+
         input = Types::DescribeQuerySuggestionsConfigRequest.new(index_id: index_id)
         describe_query_suggestions_config(input)
       end
+
       def describe_query_suggestions_config(input : Types::DescribeQuerySuggestionsConfigRequest) : Types::DescribeQuerySuggestionsConfigResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_QUERY_SUGGESTIONS_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -705,13 +802,16 @@ module AwsSdk
       end
 
       # Gets information about an Amazon Kendra thesaurus.
+
       def describe_thesaurus(
         id : String,
         index_id : String
       ) : Types::DescribeThesaurusResponse
+
         input = Types::DescribeThesaurusRequest.new(id: id, index_id: index_id)
         describe_thesaurus(input)
       end
+
       def describe_thesaurus(input : Types::DescribeThesaurusRequest) : Types::DescribeThesaurusResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_THESAURUS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -724,14 +824,17 @@ module AwsSdk
       # Kendra experience. You can create an Amazon Kendra experience such as a search application. For more
       # information on creating a search application experience, see Building a search experience with no
       # code .
+
       def disassociate_entities_from_experience(
         entity_list : Array(Types::EntityConfiguration),
         id : String,
         index_id : String
       ) : Types::DisassociateEntitiesFromExperienceResponse
+
         input = Types::DisassociateEntitiesFromExperienceRequest.new(entity_list: entity_list, id: id, index_id: index_id)
         disassociate_entities_from_experience(input)
       end
+
       def disassociate_entities_from_experience(input : Types::DisassociateEntitiesFromExperienceRequest) : Types::DisassociateEntitiesFromExperienceResponse
         request = Protocol::JsonRpc.build_request(Model::DISASSOCIATE_ENTITIES_FROM_EXPERIENCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -744,14 +847,17 @@ module AwsSdk
       # access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search
       # application. For more information on creating a search application experience, see Building a search
       # experience with no code .
+
       def disassociate_personas_from_entities(
         entity_ids : Array(String),
         id : String,
         index_id : String
       ) : Types::DisassociatePersonasFromEntitiesResponse
+
         input = Types::DisassociatePersonasFromEntitiesRequest.new(entity_ids: entity_ids, id: id, index_id: index_id)
         disassociate_personas_from_entities(input)
       end
+
       def disassociate_personas_from_entities(input : Types::DisassociatePersonasFromEntitiesRequest) : Types::DisassociatePersonasFromEntitiesResponse
         request = Protocol::JsonRpc.build_request(Model::DISASSOCIATE_PERSONAS_FROM_ENTITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -762,6 +868,7 @@ module AwsSdk
 
       # Fetches the queries that are suggested to your users. GetQuerySuggestions is currently not supported
       # in the Amazon Web Services GovCloud (US-West) region.
+
       def get_query_suggestions(
         index_id : String,
         query_text : String,
@@ -769,9 +876,11 @@ module AwsSdk
         max_suggestions_count : Int32? = nil,
         suggestion_types : Array(String)? = nil
       ) : Types::GetQuerySuggestionsResponse
+
         input = Types::GetQuerySuggestionsRequest.new(index_id: index_id, query_text: query_text, attribute_suggestions_config: attribute_suggestions_config, max_suggestions_count: max_suggestions_count, suggestion_types: suggestion_types)
         get_query_suggestions(input)
       end
+
       def get_query_suggestions(input : Types::GetQuerySuggestionsRequest) : Types::GetQuerySuggestionsResponse
         request = Protocol::JsonRpc.build_request(Model::GET_QUERY_SUGGESTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -782,6 +891,7 @@ module AwsSdk
 
       # Retrieves search metrics data. The data provides a snapshot of how your users interact with your
       # search application and how effective the application is.
+
       def get_snapshots(
         index_id : String,
         interval : String,
@@ -789,9 +899,11 @@ module AwsSdk
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetSnapshotsResponse
+
         input = Types::GetSnapshotsRequest.new(index_id: index_id, interval: interval, metric_type: metric_type, max_results: max_results, next_token: next_token)
         get_snapshots(input)
       end
+
       def get_snapshots(input : Types::GetSnapshotsRequest) : Types::GetSnapshotsResponse
         request = Protocol::JsonRpc.build_request(Model::GET_SNAPSHOTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -803,14 +915,17 @@ module AwsSdk
       # Lists one or more access control configurations for an index. This includes user and group access
       # information for your documents. This is useful for user context filtering, where search results are
       # filtered based on the user or their group access to documents.
+
       def list_access_control_configurations(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListAccessControlConfigurationsResponse
+
         input = Types::ListAccessControlConfigurationsRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_access_control_configurations(input)
       end
+
       def list_access_control_configurations(input : Types::ListAccessControlConfigurationsRequest) : Types::ListAccessControlConfigurationsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ACCESS_CONTROL_CONFIGURATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -820,6 +935,7 @@ module AwsSdk
       end
 
       # Gets statistics about synchronizing a data source connector.
+
       def list_data_source_sync_jobs(
         id : String,
         index_id : String,
@@ -828,9 +944,11 @@ module AwsSdk
         start_time_filter : Types::TimeRange? = nil,
         status_filter : String? = nil
       ) : Types::ListDataSourceSyncJobsResponse
+
         input = Types::ListDataSourceSyncJobsRequest.new(id: id, index_id: index_id, max_results: max_results, next_token: next_token, start_time_filter: start_time_filter, status_filter: status_filter)
         list_data_source_sync_jobs(input)
       end
+
       def list_data_source_sync_jobs(input : Types::ListDataSourceSyncJobsRequest) : Types::ListDataSourceSyncJobsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DATA_SOURCE_SYNC_JOBS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -840,14 +958,17 @@ module AwsSdk
       end
 
       # Lists the data source connectors that you have created.
+
       def list_data_sources(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDataSourcesResponse
+
         input = Types::ListDataSourcesRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_data_sources(input)
       end
+
       def list_data_sources(input : Types::ListDataSourcesRequest) : Types::ListDataSourcesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DATA_SOURCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -857,15 +978,18 @@ module AwsSdk
       end
 
       # Lists specific permissions of users and groups with access to your Amazon Kendra experience.
+
       def list_entity_personas(
         id : String,
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListEntityPersonasResponse
+
         input = Types::ListEntityPersonasRequest.new(id: id, index_id: index_id, max_results: max_results, next_token: next_token)
         list_entity_personas(input)
       end
+
       def list_entity_personas(input : Types::ListEntityPersonasRequest) : Types::ListEntityPersonasResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_ENTITY_PERSONAS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -878,14 +1002,17 @@ module AwsSdk
       # Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application.
       # For more information on creating a search application experience, see Building a search experience
       # with no code .
+
       def list_experience_entities(
         id : String,
         index_id : String,
         next_token : String? = nil
       ) : Types::ListExperienceEntitiesResponse
+
         input = Types::ListExperienceEntitiesRequest.new(id: id, index_id: index_id, next_token: next_token)
         list_experience_entities(input)
       end
+
       def list_experience_entities(input : Types::ListExperienceEntitiesRequest) : Types::ListExperienceEntitiesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_EXPERIENCE_ENTITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -897,14 +1024,17 @@ module AwsSdk
       # Lists one or more Amazon Kendra experiences. You can create an Amazon Kendra experience such as a
       # search application. For more information on creating a search application experience, see Building a
       # search experience with no code .
+
       def list_experiences(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListExperiencesResponse
+
         input = Types::ListExperiencesRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_experiences(input)
       end
+
       def list_experiences(input : Types::ListExperiencesRequest) : Types::ListExperiencesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_EXPERIENCES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -914,14 +1044,17 @@ module AwsSdk
       end
 
       # Gets a list of FAQs associated with an index.
+
       def list_faqs(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFaqsResponse
+
         input = Types::ListFaqsRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_faqs(input)
       end
+
       def list_faqs(input : Types::ListFaqsRequest) : Types::ListFaqsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_FAQS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -933,14 +1066,17 @@ module AwsSdk
       # Lists all your sets of featured results for a given index. Features results are placed above all
       # other results for certain queries. If there's an exact match of a query, then one or more specific
       # documents are featured in the search results.
+
       def list_featured_results_sets(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListFeaturedResultsSetsResponse
+
         input = Types::ListFeaturedResultsSetsRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_featured_results_sets(input)
       end
+
       def list_featured_results_sets(input : Types::ListFeaturedResultsSetsRequest) : Types::ListFeaturedResultsSetsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_FEATURED_RESULTS_SETS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -952,6 +1088,7 @@ module AwsSdk
       # Provides a list of groups that are mapped to users before a given ordering or timestamp identifier.
       # ListGroupsOlderThanOrderingId is currently not supported in the Amazon Web Services GovCloud
       # (US-West) region.
+
       def list_groups_older_than_ordering_id(
         index_id : String,
         ordering_id : Int64,
@@ -959,9 +1096,11 @@ module AwsSdk
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListGroupsOlderThanOrderingIdResponse
+
         input = Types::ListGroupsOlderThanOrderingIdRequest.new(index_id: index_id, ordering_id: ordering_id, data_source_id: data_source_id, max_results: max_results, next_token: next_token)
         list_groups_older_than_ordering_id(input)
       end
+
       def list_groups_older_than_ordering_id(input : Types::ListGroupsOlderThanOrderingIdRequest) : Types::ListGroupsOlderThanOrderingIdResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_GROUPS_OLDER_THAN_ORDERING_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -971,13 +1110,16 @@ module AwsSdk
       end
 
       # Lists the Amazon Kendra indexes that you created.
+
       def list_indices(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListIndicesResponse
+
         input = Types::ListIndicesRequest.new(max_results: max_results, next_token: next_token)
         list_indices(input)
       end
+
       def list_indices(input : Types::ListIndicesRequest) : Types::ListIndicesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_INDICES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -989,14 +1131,17 @@ module AwsSdk
       # Lists the block lists used for query suggestions for an index. For information on the current quota
       # limits for block lists, see Quotas for Amazon Kendra . ListQuerySuggestionsBlockLists is currently
       # not supported in the Amazon Web Services GovCloud (US-West) region.
+
       def list_query_suggestions_block_lists(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListQuerySuggestionsBlockListsResponse
+
         input = Types::ListQuerySuggestionsBlockListsRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_query_suggestions_block_lists(input)
       end
+
       def list_query_suggestions_block_lists(input : Types::ListQuerySuggestionsBlockListsRequest) : Types::ListQuerySuggestionsBlockListsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_QUERY_SUGGESTIONS_BLOCK_LISTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1007,12 +1152,15 @@ module AwsSdk
 
       # Gets a list of tags associated with a resource. Indexes, FAQs, data sources, and other resources can
       # have tags associated with them.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
+
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Types::ListTagsForResourceResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1022,14 +1170,17 @@ module AwsSdk
       end
 
       # Lists the thesauri for an index.
+
       def list_thesauri(
         index_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListThesauriResponse
+
         input = Types::ListThesauriRequest.new(index_id: index_id, max_results: max_results, next_token: next_token)
         list_thesauri(input)
       end
+
       def list_thesauri(input : Types::ListThesauriRequest) : Types::ListThesauriResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_THESAURI, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1046,6 +1197,7 @@ module AwsSdk
       # results. This is useful for user context filtering, where search results are filtered based on the
       # user or their group access to documents. For more information, see Filtering on user context . If
       # more than five PUT actions for a group are currently processing, a validation exception is thrown.
+
       def put_principal_mapping(
         group_id : String,
         group_members : Types::GroupMembers,
@@ -1054,9 +1206,11 @@ module AwsSdk
         ordering_id : Int64? = nil,
         role_arn : String? = nil
       ) : Nil
+
         input = Types::PutPrincipalMappingRequest.new(group_id: group_id, group_members: group_members, index_id: index_id, data_source_id: data_source_id, ordering_id: ordering_id, role_arn: role_arn)
         put_principal_mapping(input)
       end
+
       def put_principal_mapping(input : Types::PutPrincipalMappingRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::PUT_PRINCIPAL_MAPPING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1083,6 +1237,7 @@ module AwsSdk
       # AI Enterprise Edition index, you can only use ATTRIBUTE_FILTER to filter search results by user
       # context. If you're using an Amazon Kendra Gen AI Enterprise Edition index and you try to use
       # USER_TOKEN to configure user context policy, Amazon Kendra returns a ValidationException error.
+
       def query(
         index_id : String,
         attribute_filter : Types::AttributeFilter? = nil,
@@ -1100,9 +1255,11 @@ module AwsSdk
         user_context : Types::UserContext? = nil,
         visitor_id : String? = nil
       ) : Types::QueryResult
+
         input = Types::QueryRequest.new(index_id: index_id, attribute_filter: attribute_filter, collapse_configuration: collapse_configuration, document_relevance_override_configurations: document_relevance_override_configurations, facets: facets, page_number: page_number, page_size: page_size, query_result_type_filter: query_result_type_filter, query_text: query_text, requested_document_attributes: requested_document_attributes, sorting_configuration: sorting_configuration, sorting_configurations: sorting_configurations, spell_correction_configuration: spell_correction_configuration, user_context: user_context, visitor_id: visitor_id)
         query(input)
       end
+
       def query(input : Types::QueryRequest) : Types::QueryResult
         request = Protocol::JsonRpc.build_request(Model::QUERY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1129,6 +1286,7 @@ module AwsSdk
       # Gen AI Enterprise Edition index, you can only use ATTRIBUTE_FILTER to filter search results by user
       # context. If you're using an Amazon Kendra Gen AI Enterprise Edition index and you try to use
       # USER_TOKEN to configure user context policy, Amazon Kendra returns a ValidationException error.
+
       def retrieve(
         index_id : String,
         query_text : String,
@@ -1139,9 +1297,11 @@ module AwsSdk
         requested_document_attributes : Array(String)? = nil,
         user_context : Types::UserContext? = nil
       ) : Types::RetrieveResult
+
         input = Types::RetrieveRequest.new(index_id: index_id, query_text: query_text, attribute_filter: attribute_filter, document_relevance_override_configurations: document_relevance_override_configurations, page_number: page_number, page_size: page_size, requested_document_attributes: requested_document_attributes, user_context: user_context)
         retrieve(input)
       end
+
       def retrieve(input : Types::RetrieveRequest) : Types::RetrieveResult
         request = Protocol::JsonRpc.build_request(Model::RETRIEVE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1154,13 +1314,16 @@ module AwsSdk
       # progress, Amazon Kendra returns a ResourceInUseException exception. Re-syncing your data source with
       # your index after modifying, adding, or deleting documents from your data source respository could
       # take up to an hour or more, depending on the number of documents to sync.
+
       def start_data_source_sync_job(
         id : String,
         index_id : String
       ) : Types::StartDataSourceSyncJobResponse
+
         input = Types::StartDataSourceSyncJobRequest.new(id: id, index_id: index_id)
         start_data_source_sync_job(input)
       end
+
       def start_data_source_sync_job(input : Types::StartDataSourceSyncJobRequest) : Types::StartDataSourceSyncJobResponse
         request = Protocol::JsonRpc.build_request(Model::START_DATA_SOURCE_SYNC_JOB, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1171,13 +1334,16 @@ module AwsSdk
 
       # Stops a synchronization job that is currently running. You can't stop a scheduled synchronization
       # job.
+
       def stop_data_source_sync_job(
         id : String,
         index_id : String
       ) : Nil
+
         input = Types::StopDataSourceSyncJobRequest.new(id: id, index_id: index_id)
         stop_data_source_sync_job(input)
       end
+
       def stop_data_source_sync_job(input : Types::StopDataSourceSyncJobRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::STOP_DATA_SOURCE_SYNC_JOB, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1188,15 +1354,18 @@ module AwsSdk
 
       # Enables you to provide feedback to Amazon Kendra to improve the performance of your index.
       # SubmitFeedback is currently not supported in the Amazon Web Services GovCloud (US-West) region.
+
       def submit_feedback(
         index_id : String,
         query_id : String,
         click_feedback_items : Array(Types::ClickFeedback)? = nil,
         relevance_feedback_items : Array(Types::RelevanceFeedback)? = nil
       ) : Nil
+
         input = Types::SubmitFeedbackRequest.new(index_id: index_id, query_id: query_id, click_feedback_items: click_feedback_items, relevance_feedback_items: relevance_feedback_items)
         submit_feedback(input)
       end
+
       def submit_feedback(input : Types::SubmitFeedbackRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::SUBMIT_FEEDBACK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1207,13 +1376,16 @@ module AwsSdk
 
       # Adds the specified tag to the specified index, FAQ, data source, or other resource. If the tag
       # already exists, the existing value is replaced with the new value.
+
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
       ) : Types::TagResourceResponse
+
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Types::TagResourceResponse
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1223,13 +1395,16 @@ module AwsSdk
       end
 
       # Removes a tag from an index, FAQ, data source, or other resource.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
+
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Types::UntagResourceResponse
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1255,6 +1430,7 @@ module AwsSdk
       # API. You can't configure access control using CreateAccessControlConfiguration for an Amazon Kendra
       # Gen AI Enterprise Edition index. Amazon Kendra will return a ValidationException error for a
       # Gen_AI_ENTERPRISE_EDITION index.
+
       def update_access_control_configuration(
         id : String,
         index_id : String,
@@ -1263,9 +1439,11 @@ module AwsSdk
         hierarchical_access_control_list : Array(Types::HierarchicalPrincipal)? = nil,
         name : String? = nil
       ) : Types::UpdateAccessControlConfigurationResponse
+
         input = Types::UpdateAccessControlConfigurationRequest.new(id: id, index_id: index_id, access_control_list: access_control_list, description: description, hierarchical_access_control_list: hierarchical_access_control_list, name: name)
         update_access_control_configuration(input)
       end
+
       def update_access_control_configuration(input : Types::UpdateAccessControlConfigurationRequest) : Types::UpdateAccessControlConfigurationResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_ACCESS_CONTROL_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1275,6 +1453,7 @@ module AwsSdk
       end
 
       # Updates an Amazon Kendra data source connector.
+
       def update_data_source(
         id : String,
         index_id : String,
@@ -1287,9 +1466,11 @@ module AwsSdk
         schedule : String? = nil,
         vpc_configuration : Types::DataSourceVpcConfiguration? = nil
       ) : Nil
+
         input = Types::UpdateDataSourceRequest.new(id: id, index_id: index_id, configuration: configuration, custom_document_enrichment_configuration: custom_document_enrichment_configuration, description: description, language_code: language_code, name: name, role_arn: role_arn, schedule: schedule, vpc_configuration: vpc_configuration)
         update_data_source(input)
       end
+
       def update_data_source(input : Types::UpdateDataSourceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DATA_SOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1300,6 +1481,7 @@ module AwsSdk
 
       # Updates your Amazon Kendra experience such as a search application. For more information on creating
       # a search application experience, see Building a search experience with no code .
+
       def update_experience(
         id : String,
         index_id : String,
@@ -1308,9 +1490,11 @@ module AwsSdk
         name : String? = nil,
         role_arn : String? = nil
       ) : Nil
+
         input = Types::UpdateExperienceRequest.new(id: id, index_id: index_id, configuration: configuration, description: description, name: name, role_arn: role_arn)
         update_experience(input)
       end
+
       def update_experience(input : Types::UpdateExperienceRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_EXPERIENCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1323,6 +1507,7 @@ module AwsSdk
       # queries. You map specific queries to specific documents for featuring in the results. If a query
       # contains an exact match of a query, then one or more specific documents are featured in the search
       # results.
+
       def update_featured_results_set(
         featured_results_set_id : String,
         index_id : String,
@@ -1332,9 +1517,11 @@ module AwsSdk
         query_texts : Array(String)? = nil,
         status : String? = nil
       ) : Types::UpdateFeaturedResultsSetResponse
+
         input = Types::UpdateFeaturedResultsSetRequest.new(featured_results_set_id: featured_results_set_id, index_id: index_id, description: description, featured_documents: featured_documents, featured_results_set_name: featured_results_set_name, query_texts: query_texts, status: status)
         update_featured_results_set(input)
       end
+
       def update_featured_results_set(input : Types::UpdateFeaturedResultsSetRequest) : Types::UpdateFeaturedResultsSetResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_FEATURED_RESULTS_SET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1344,6 +1531,7 @@ module AwsSdk
       end
 
       # Updates an Amazon Kendra index.
+
       def update_index(
         id : String,
         capacity_units : Types::CapacityUnitsConfiguration? = nil,
@@ -1355,9 +1543,11 @@ module AwsSdk
         user_group_resolution_configuration : Types::UserGroupResolutionConfiguration? = nil,
         user_token_configurations : Array(Types::UserTokenConfiguration)? = nil
       ) : Nil
+
         input = Types::UpdateIndexRequest.new(id: id, capacity_units: capacity_units, description: description, document_metadata_configuration_updates: document_metadata_configuration_updates, name: name, role_arn: role_arn, user_context_policy: user_context_policy, user_group_resolution_configuration: user_group_resolution_configuration, user_token_configurations: user_token_configurations)
         update_index(input)
       end
+
       def update_index(input : Types::UpdateIndexRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_INDEX, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1373,6 +1563,7 @@ module AwsSdk
       # Amazon Kendra supports partial updates, so you only need to provide the fields you want to update.
       # UpdateQuerySuggestionsBlockList is currently not supported in the Amazon Web Services GovCloud
       # (US-West) region.
+
       def update_query_suggestions_block_list(
         id : String,
         index_id : String,
@@ -1381,9 +1572,11 @@ module AwsSdk
         role_arn : String? = nil,
         source_s3_path : Types::S3Path? = nil
       ) : Nil
+
         input = Types::UpdateQuerySuggestionsBlockListRequest.new(id: id, index_id: index_id, description: description, name: name, role_arn: role_arn, source_s3_path: source_s3_path)
         update_query_suggestions_block_list(input)
       end
+
       def update_query_suggestions_block_list(input : Types::UpdateQuerySuggestionsBlockListRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_QUERY_SUGGESTIONS_BLOCK_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1399,6 +1592,7 @@ module AwsSdk
       # on the updates made and the number of search queries in your index. You can still enable/disable
       # query suggestions at any time. UpdateQuerySuggestionsConfig is currently not supported in the Amazon
       # Web Services GovCloud (US-West) region.
+
       def update_query_suggestions_config(
         index_id : String,
         attribute_suggestions_config : Types::AttributeSuggestionsUpdateConfig? = nil,
@@ -1408,9 +1602,11 @@ module AwsSdk
         mode : String? = nil,
         query_log_look_back_window_in_days : Int32? = nil
       ) : Nil
+
         input = Types::UpdateQuerySuggestionsConfigRequest.new(index_id: index_id, attribute_suggestions_config: attribute_suggestions_config, include_queries_without_user_information: include_queries_without_user_information, minimum_number_of_querying_users: minimum_number_of_querying_users, minimum_query_count: minimum_query_count, mode: mode, query_log_look_back_window_in_days: query_log_look_back_window_in_days)
         update_query_suggestions_config(input)
       end
+
       def update_query_suggestions_config(input : Types::UpdateQuerySuggestionsConfigRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_QUERY_SUGGESTIONS_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1420,6 +1616,7 @@ module AwsSdk
       end
 
       # Updates a thesaurus for an index.
+
       def update_thesaurus(
         id : String,
         index_id : String,
@@ -1428,9 +1625,11 @@ module AwsSdk
         role_arn : String? = nil,
         source_s3_path : Types::S3Path? = nil
       ) : Nil
+
         input = Types::UpdateThesaurusRequest.new(id: id, index_id: index_id, description: description, name: name, role_arn: role_arn, source_s3_path: source_s3_path)
         update_thesaurus(input)
       end
+
       def update_thesaurus(input : Types::UpdateThesaurusRequest) : Nil
         request = Protocol::JsonRpc.build_request(Model::UPDATE_THESAURUS, input, endpoint)
         request = request.with_headers(endpoint_headers)

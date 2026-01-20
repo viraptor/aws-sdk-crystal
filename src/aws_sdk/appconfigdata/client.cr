@@ -27,12 +27,14 @@ module AwsSdk
       # GetLatestConfiguration response includes a NextPollConfigurationToken that should always replace the
       # token used for the just-completed call in preparation for the next one. GetLatestConfiguration is a
       # priced call. For more information, see Pricing .
+
       def get_latest_configuration(
         configuration_token : String
       ) : Protocol::Request
         input = Types::GetLatestConfigurationRequest.new(configuration_token: configuration_token)
         get_latest_configuration(input)
       end
+
       def get_latest_configuration(input : Types::GetLatestConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_LATEST_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -41,6 +43,7 @@ module AwsSdk
       # Starts a configuration session used to retrieve a deployed configuration. For more information about
       # this API action and to view example CLI commands that show how to use it with the
       # GetLatestConfiguration API action, see Retrieving the configuration in the AppConfig User Guide .
+
       def start_configuration_session(
         application_identifier : String,
         configuration_profile_identifier : String,
@@ -50,6 +53,7 @@ module AwsSdk
         input = Types::StartConfigurationSessionRequest.new(application_identifier: application_identifier, configuration_profile_identifier: configuration_profile_identifier, environment_identifier: environment_identifier, required_minimum_poll_interval_in_seconds: required_minimum_poll_interval_in_seconds)
         start_configuration_session(input)
       end
+
       def start_configuration_session(input : Types::StartConfigurationSessionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::START_CONFIGURATION_SESSION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

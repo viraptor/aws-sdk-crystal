@@ -5,22 +5,27 @@ module AwsSdk
       end
 
       # You do not have sufficient access to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # An internal service error occurred during the processing of your request. Try again later.
+
       class InternalServerException < ServiceError
       end
 
       # The requested resource does not exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request was denied due to request throttling.
+
       class ThrottlingException < ServiceError
       end
 
       # The request has invalid or missing parameters.
+
       class ValidationException < ServiceError
       end
 

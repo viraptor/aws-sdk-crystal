@@ -1,6 +1,7 @@
 module AwsSdk
-  module ElasticLoadBalancingV2
+  module ElasticLoadBalancing
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -27,36 +28,20 @@ module AwsSdk
         @runtime = AwsSdk::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers)
       end
 
-      # Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS
-      # listener. If the certificate in already in the certificate list, the call is successful but the
-      # certificate is not added again. For more information, see SSL certificates in the Application Load
-      # Balancers Guide or Server certificates in the Network Load Balancers Guide .
-      def add_listener_certificates(
-        certificates : Array(Types::Certificate),
-        listener_arn : String
-      ) : Types::AddListenerCertificatesOutput
-        input = Types::AddListenerCertificatesInput.new(certificates: certificates, listener_arn: listener_arn)
-        add_listener_certificates(input)
-      end
-      def add_listener_certificates(input : Types::AddListenerCertificatesInput) : Types::AddListenerCertificatesOutput
-        request = Protocol::Query.build_request(Model::ADD_LISTENER_CERTIFICATES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::AddListenerCertificatesOutput, "AddListenerCertificates")
-      end
+      # Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10
+      # tags. Each tag consists of a key and an optional value. If a tag with the same key is already
+      # associated with the load balancer, AddTags updates its value. For more information, see Tag Your
+      # Classic Load Balancer in the Classic Load Balancers Guide .
 
-      # Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your
-      # Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, trust
-      # stores, listeners, and rules. Each tag consists of a key and an optional value. If a resource
-      # already has a tag with the same key, AddTags updates its value.
       def add_tags(
-        resource_arns : Array(String),
+        load_balancer_names : Array(String),
         tags : Array(Types::Tag)
       ) : Types::AddTagsOutput
-        input = Types::AddTagsInput.new(resource_arns: resource_arns, tags: tags)
+
+        input = Types::AddTagsInput.new(load_balancer_names: load_balancer_names, tags: tags)
         add_tags(input)
       end
+
       def add_tags(input : Types::AddTagsInput) : Types::AddTagsOutput
         request = Protocol::Query.build_request(Model::ADD_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -65,289 +50,296 @@ module AwsSdk
         Protocol::Query.parse_response(response, Types::AddTagsOutput, "AddTags")
       end
 
-      # Adds the specified revocation file to the specified trust store.
-      def add_trust_store_revocations(
-        trust_store_arn : String,
-        revocation_contents : Array(Types::RevocationContent)? = nil
-      ) : Types::AddTrustStoreRevocationsOutput
-        input = Types::AddTrustStoreRevocationsInput.new(trust_store_arn: trust_store_arn, revocation_contents: revocation_contents)
-        add_trust_store_revocations(input)
+      # Associates one or more security groups with your load balancer in a virtual private cloud (VPC). The
+      # specified security groups override the previously associated security groups. For more information,
+      # see Security Groups for Load Balancers in a VPC in the Classic Load Balancers Guide .
+
+      def apply_security_groups_to_load_balancer(
+        load_balancer_name : String,
+        security_groups : Array(String)
+      ) : Types::ApplySecurityGroupsToLoadBalancerOutput
+
+        input = Types::ApplySecurityGroupsToLoadBalancerInput.new(load_balancer_name: load_balancer_name, security_groups: security_groups)
+        apply_security_groups_to_load_balancer(input)
       end
-      def add_trust_store_revocations(input : Types::AddTrustStoreRevocationsInput) : Types::AddTrustStoreRevocationsOutput
-        request = Protocol::Query.build_request(Model::ADD_TRUST_STORE_REVOCATIONS, input, endpoint)
+
+      def apply_security_groups_to_load_balancer(input : Types::ApplySecurityGroupsToLoadBalancerInput) : Types::ApplySecurityGroupsToLoadBalancerOutput
+        request = Protocol::Query.build_request(Model::APPLY_SECURITY_GROUPS_TO_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::AddTrustStoreRevocationsOutput, "AddTrustStoreRevocations")
+        Protocol::Query.parse_response(response, Types::ApplySecurityGroupsToLoadBalancerOutput, "ApplySecurityGroupsToLoadBalancer")
       end
 
-      # Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway
-      # Load Balancer. For more information, see the following: Listeners for your Application Load
-      # Balancers Listeners for your Network Load Balancers Listeners for your Gateway Load Balancers This
-      # operation is idempotent, which means that it completes at most one time. If you attempt to create
-      # multiple listeners with the same settings, each call succeeds.
-      def create_listener(
-        default_actions : Array(Types::Action),
-        load_balancer_arn : String,
-        alpn_policy : Array(String)? = nil,
-        certificates : Array(Types::Certificate)? = nil,
-        mutual_authentication : Types::MutualAuthenticationAttributes? = nil,
-        port : Int32? = nil,
-        protocol : String? = nil,
-        ssl_policy : String? = nil,
-        tags : Array(Types::Tag)? = nil
-      ) : Types::CreateListenerOutput
-        input = Types::CreateListenerInput.new(default_actions: default_actions, load_balancer_arn: load_balancer_arn, alpn_policy: alpn_policy, certificates: certificates, mutual_authentication: mutual_authentication, port: port, protocol: protocol, ssl_policy: ssl_policy, tags: tags)
-        create_listener(input)
+      # Adds one or more subnets to the set of configured subnets for the specified load balancer. The load
+      # balancer evenly distributes requests across all registered subnets. For more information, see Add or
+      # Remove Subnets for Your Load Balancer in a VPC in the Classic Load Balancers Guide .
+
+      def attach_load_balancer_to_subnets(
+        load_balancer_name : String,
+        subnets : Array(String)
+      ) : Types::AttachLoadBalancerToSubnetsOutput
+
+        input = Types::AttachLoadBalancerToSubnetsInput.new(load_balancer_name: load_balancer_name, subnets: subnets)
+        attach_load_balancer_to_subnets(input)
       end
-      def create_listener(input : Types::CreateListenerInput) : Types::CreateListenerOutput
-        request = Protocol::Query.build_request(Model::CREATE_LISTENER, input, endpoint)
+
+      def attach_load_balancer_to_subnets(input : Types::AttachLoadBalancerToSubnetsInput) : Types::AttachLoadBalancerToSubnetsOutput
+        request = Protocol::Query.build_request(Model::ATTACH_LOAD_BALANCER_TO_SUBNETS, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::CreateListenerOutput, "CreateListener")
+        Protocol::Query.parse_response(response, Types::AttachLoadBalancerToSubnetsOutput, "AttachLoadBalancerToSubnets")
       end
 
-      # Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. For more
-      # information, see the following: Application Load Balancers Network Load Balancers Gateway Load
-      # Balancers This operation is idempotent, which means that it completes at most one time. If you
-      # attempt to create multiple load balancers with the same settings, each call succeeds.
+      # Specifies the health check settings to use when evaluating the health state of your EC2 instances.
+      # For more information, see Configure Health Checks for Your Load Balancer in the Classic Load
+      # Balancers Guide .
+
+      def configure_health_check(
+        health_check : Types::HealthCheck,
+        load_balancer_name : String
+      ) : Types::ConfigureHealthCheckOutput
+
+        input = Types::ConfigureHealthCheckInput.new(health_check: health_check, load_balancer_name: load_balancer_name)
+        configure_health_check(input)
+      end
+
+      def configure_health_check(input : Types::ConfigureHealthCheckInput) : Types::ConfigureHealthCheckOutput
+        request = Protocol::Query.build_request(Model::CONFIGURE_HEALTH_CHECK, input, endpoint)
+        request = request.with_headers(endpoint_headers)
+        response = runtime.execute(request)
+        raise Protocol::Query.parse_error(response) if response.status >= 300
+        Protocol::Query.parse_response(response, Types::ConfigureHealthCheckOutput, "ConfigureHealthCheck")
+      end
+
+      # Generates a stickiness policy with sticky session lifetimes that follow that of an
+      # application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners. This
+      # policy is similar to the policy created by CreateLBCookieStickinessPolicy , except that the lifetime
+      # of the special Elastic Load Balancing cookie, AWSELB , follows the lifetime of the
+      # application-generated cookie specified in the policy configuration. The load balancer only inserts a
+      # new stickiness cookie when the application response includes a new application cookie. If the
+      # application cookie is explicitly removed or expires, the session stops being sticky until a new
+      # application cookie is issued. For more information, see Application-Controlled Session Stickiness in
+      # the Classic Load Balancers Guide .
+
+      def create_app_cookie_stickiness_policy(
+        cookie_name : String,
+        load_balancer_name : String,
+        policy_name : String
+      ) : Types::CreateAppCookieStickinessPolicyOutput
+
+        input = Types::CreateAppCookieStickinessPolicyInput.new(cookie_name: cookie_name, load_balancer_name: load_balancer_name, policy_name: policy_name)
+        create_app_cookie_stickiness_policy(input)
+      end
+
+      def create_app_cookie_stickiness_policy(input : Types::CreateAppCookieStickinessPolicyInput) : Types::CreateAppCookieStickinessPolicyOutput
+        request = Protocol::Query.build_request(Model::CREATE_APP_COOKIE_STICKINESS_POLICY, input, endpoint)
+        request = request.with_headers(endpoint_headers)
+        response = runtime.execute(request)
+        raise Protocol::Query.parse_error(response) if response.status >= 300
+        Protocol::Query.parse_response(response, Types::CreateAppCookieStickinessPolicyOutput, "CreateAppCookieStickinessPolicy")
+      end
+
+      # Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the
+      # browser (user-agent) or a specified expiration period. This policy can be associated only with
+      # HTTP/HTTPS listeners. When a load balancer implements this policy, the load balancer uses a special
+      # cookie to track the instance for each request. When the load balancer receives a request, it first
+      # checks to see if this cookie is present in the request. If so, the load balancer sends the request
+      # to the application server specified in the cookie. If not, the load balancer sends the request to a
+      # server that is chosen based on the existing load-balancing algorithm. A cookie is inserted into the
+      # response for binding subsequent requests from the same user to that server. The validity of the
+      # cookie is based on the cookie expiration time, which is specified in the policy configuration. For
+      # more information, see Duration-Based Session Stickiness in the Classic Load Balancers Guide .
+
+      def create_lb_cookie_stickiness_policy(
+        load_balancer_name : String,
+        policy_name : String,
+        cookie_expiration_period : Int64? = nil
+      ) : Types::CreateLBCookieStickinessPolicyOutput
+
+        input = Types::CreateLBCookieStickinessPolicyInput.new(load_balancer_name: load_balancer_name, policy_name: policy_name, cookie_expiration_period: cookie_expiration_period)
+        create_lb_cookie_stickiness_policy(input)
+      end
+
+      def create_lb_cookie_stickiness_policy(input : Types::CreateLBCookieStickinessPolicyInput) : Types::CreateLBCookieStickinessPolicyOutput
+        request = Protocol::Query.build_request(Model::CREATE_LB_COOKIE_STICKINESS_POLICY, input, endpoint)
+        request = request.with_headers(endpoint_headers)
+        response = runtime.execute(request)
+        raise Protocol::Query.parse_error(response) if response.status >= 300
+        Protocol::Query.parse_response(response, Types::CreateLBCookieStickinessPolicyOutput, "CreateLBCookieStickinessPolicy")
+      end
+
+      # Creates a Classic Load Balancer. You can add listeners, security groups, subnets, and tags when you
+      # create your load balancer, or you can add them later using CreateLoadBalancerListeners ,
+      # ApplySecurityGroupsToLoadBalancer , AttachLoadBalancerToSubnets , and AddTags . To describe your
+      # current load balancers, see DescribeLoadBalancers . When you are finished with a load balancer, you
+      # can delete it using DeleteLoadBalancer . You can create up to 20 load balancers per region per
+      # account. You can request an increase for the number of load balancers for your account. For more
+      # information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide .
+
       def create_load_balancer(
-        name : String,
-        customer_owned_ipv4_pool : String? = nil,
-        enable_prefix_for_ipv6_source_nat : String? = nil,
-        ip_address_type : String? = nil,
-        ipam_pools : Types::IpamPools? = nil,
+        listeners : Array(Types::Listener),
+        load_balancer_name : String,
+        availability_zones : Array(String)? = nil,
         scheme : String? = nil,
         security_groups : Array(String)? = nil,
-        subnet_mappings : Array(Types::SubnetMapping)? = nil,
         subnets : Array(String)? = nil,
-        tags : Array(Types::Tag)? = nil,
-        type : String? = nil
-      ) : Types::CreateLoadBalancerOutput
-        input = Types::CreateLoadBalancerInput.new(name: name, customer_owned_ipv4_pool: customer_owned_ipv4_pool, enable_prefix_for_ipv6_source_nat: enable_prefix_for_ipv6_source_nat, ip_address_type: ip_address_type, ipam_pools: ipam_pools, scheme: scheme, security_groups: security_groups, subnet_mappings: subnet_mappings, subnets: subnets, tags: tags, type: type)
+        tags : Array(Types::Tag)? = nil
+      ) : Types::CreateAccessPointOutput
+
+        input = Types::CreateAccessPointInput.new(listeners: listeners, load_balancer_name: load_balancer_name, availability_zones: availability_zones, scheme: scheme, security_groups: security_groups, subnets: subnets, tags: tags)
         create_load_balancer(input)
       end
-      def create_load_balancer(input : Types::CreateLoadBalancerInput) : Types::CreateLoadBalancerOutput
+
+      def create_load_balancer(input : Types::CreateAccessPointInput) : Types::CreateAccessPointOutput
         request = Protocol::Query.build_request(Model::CREATE_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::CreateLoadBalancerOutput, "CreateLoadBalancer")
+        Protocol::Query.parse_response(response, Types::CreateAccessPointOutput, "CreateLoadBalancer")
       end
 
-      # Creates a rule for the specified listener. The listener must be associated with an Application Load
-      # Balancer. Each rule consists of a priority, one or more actions, one or more conditions, and up to
-      # two optional transforms. Rules are evaluated in priority order, from the lowest value to the highest
-      # value. When the conditions for a rule are met, its actions are performed. If the conditions for no
-      # rules are met, the actions for the default rule are performed. For more information, see Listener
-      # rules in the Application Load Balancers Guide .
-      def create_rule(
-        actions : Array(Types::Action),
-        conditions : Array(Types::RuleCondition),
-        listener_arn : String,
-        priority : Int32,
-        tags : Array(Types::Tag)? = nil,
-        transforms : Array(Types::RuleTransform)? = nil
-      ) : Types::CreateRuleOutput
-        input = Types::CreateRuleInput.new(actions: actions, conditions: conditions, listener_arn: listener_arn, priority: priority, tags: tags, transforms: transforms)
-        create_rule(input)
+      # Creates one or more listeners for the specified load balancer. If a listener with the specified port
+      # does not already exist, it is created; otherwise, the properties of the new listener must match the
+      # properties of the existing listener. For more information, see Listeners for Your Classic Load
+      # Balancer in the Classic Load Balancers Guide .
+
+      def create_load_balancer_listeners(
+        listeners : Array(Types::Listener),
+        load_balancer_name : String
+      ) : Types::CreateLoadBalancerListenerOutput
+
+        input = Types::CreateLoadBalancerListenerInput.new(listeners: listeners, load_balancer_name: load_balancer_name)
+        create_load_balancer_listeners(input)
       end
-      def create_rule(input : Types::CreateRuleInput) : Types::CreateRuleOutput
-        request = Protocol::Query.build_request(Model::CREATE_RULE, input, endpoint)
+
+      def create_load_balancer_listeners(input : Types::CreateLoadBalancerListenerInput) : Types::CreateLoadBalancerListenerOutput
+        request = Protocol::Query.build_request(Model::CREATE_LOAD_BALANCER_LISTENERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::CreateRuleOutput, "CreateRule")
+        Protocol::Query.parse_response(response, Types::CreateLoadBalancerListenerOutput, "CreateLoadBalancerListeners")
       end
 
-      # Creates a target group. For more information, see the following: Target groups for your Application
-      # Load Balancers Target groups for your Network Load Balancers Target groups for your Gateway Load
-      # Balancers This operation is idempotent, which means that it completes at most one time. If you
-      # attempt to create multiple target groups with the same settings, each call succeeds.
-      def create_target_group(
-        name : String,
-        health_check_enabled : Bool? = nil,
-        health_check_interval_seconds : Int32? = nil,
-        health_check_path : String? = nil,
-        health_check_port : String? = nil,
-        health_check_protocol : String? = nil,
-        health_check_timeout_seconds : Int32? = nil,
-        healthy_threshold_count : Int32? = nil,
-        ip_address_type : String? = nil,
-        matcher : Types::Matcher? = nil,
-        port : Int32? = nil,
-        protocol : String? = nil,
-        protocol_version : String? = nil,
-        tags : Array(Types::Tag)? = nil,
-        target_control_port : Int32? = nil,
-        target_type : String? = nil,
-        unhealthy_threshold_count : Int32? = nil,
-        vpc_id : String? = nil
-      ) : Types::CreateTargetGroupOutput
-        input = Types::CreateTargetGroupInput.new(name: name, health_check_enabled: health_check_enabled, health_check_interval_seconds: health_check_interval_seconds, health_check_path: health_check_path, health_check_port: health_check_port, health_check_protocol: health_check_protocol, health_check_timeout_seconds: health_check_timeout_seconds, healthy_threshold_count: healthy_threshold_count, ip_address_type: ip_address_type, matcher: matcher, port: port, protocol: protocol, protocol_version: protocol_version, tags: tags, target_control_port: target_control_port, target_type: target_type, unhealthy_threshold_count: unhealthy_threshold_count, vpc_id: vpc_id)
-        create_target_group(input)
+      # Creates a policy with the specified attributes for the specified load balancer. Policies are
+      # settings that are saved for your load balancer and that can be applied to the listener or the
+      # application server, depending on the policy type.
+
+      def create_load_balancer_policy(
+        load_balancer_name : String,
+        policy_name : String,
+        policy_type_name : String,
+        policy_attributes : Array(Types::PolicyAttribute)? = nil
+      ) : Types::CreateLoadBalancerPolicyOutput
+
+        input = Types::CreateLoadBalancerPolicyInput.new(load_balancer_name: load_balancer_name, policy_name: policy_name, policy_type_name: policy_type_name, policy_attributes: policy_attributes)
+        create_load_balancer_policy(input)
       end
-      def create_target_group(input : Types::CreateTargetGroupInput) : Types::CreateTargetGroupOutput
-        request = Protocol::Query.build_request(Model::CREATE_TARGET_GROUP, input, endpoint)
+
+      def create_load_balancer_policy(input : Types::CreateLoadBalancerPolicyInput) : Types::CreateLoadBalancerPolicyOutput
+        request = Protocol::Query.build_request(Model::CREATE_LOAD_BALANCER_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::CreateTargetGroupOutput, "CreateTargetGroup")
+        Protocol::Query.parse_response(response, Types::CreateLoadBalancerPolicyOutput, "CreateLoadBalancerPolicy")
       end
 
-      # Creates a trust store. For more information, see Mutual TLS for Application Load Balancers .
-      def create_trust_store(
-        ca_certificates_bundle_s3_bucket : String,
-        ca_certificates_bundle_s3_key : String,
-        name : String,
-        ca_certificates_bundle_s3_object_version : String? = nil,
-        tags : Array(Types::Tag)? = nil
-      ) : Types::CreateTrustStoreOutput
-        input = Types::CreateTrustStoreInput.new(ca_certificates_bundle_s3_bucket: ca_certificates_bundle_s3_bucket, ca_certificates_bundle_s3_key: ca_certificates_bundle_s3_key, name: name, ca_certificates_bundle_s3_object_version: ca_certificates_bundle_s3_object_version, tags: tags)
-        create_trust_store(input)
-      end
-      def create_trust_store(input : Types::CreateTrustStoreInput) : Types::CreateTrustStoreOutput
-        request = Protocol::Query.build_request(Model::CREATE_TRUST_STORE, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::CreateTrustStoreOutput, "CreateTrustStore")
-      end
+      # Deletes the specified load balancer. If you are attempting to recreate a load balancer, you must
+      # reconfigure all settings. The DNS name associated with a deleted load balancer are no longer usable.
+      # The name and associated DNS record of the deleted load balancer no longer exist and traffic sent to
+      # any of its IP addresses is no longer delivered to your instances. If the load balancer does not
+      # exist or has already been deleted, the call to DeleteLoadBalancer still succeeds.
 
-      # Deletes the specified listener. Alternatively, your listener is deleted when you delete the load
-      # balancer to which it is attached.
-      def delete_listener(
-        listener_arn : String
-      ) : Types::DeleteListenerOutput
-        input = Types::DeleteListenerInput.new(listener_arn: listener_arn)
-        delete_listener(input)
-      end
-      def delete_listener(input : Types::DeleteListenerInput) : Types::DeleteListenerOutput
-        request = Protocol::Query.build_request(Model::DELETE_LISTENER, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeleteListenerOutput, "DeleteListener")
-      end
-
-      # Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
-      # Deleting a load balancer also deletes its listeners. You can't delete a load balancer if deletion
-      # protection is enabled. If the load balancer does not exist or has already been deleted, the call
-      # succeeds. Deleting a load balancer does not affect its registered targets. For example, your EC2
-      # instances continue to run and are still registered to their target groups. If you no longer need
-      # these EC2 instances, you can stop or terminate them.
       def delete_load_balancer(
-        load_balancer_arn : String
-      ) : Types::DeleteLoadBalancerOutput
-        input = Types::DeleteLoadBalancerInput.new(load_balancer_arn: load_balancer_arn)
+        load_balancer_name : String
+      ) : Types::DeleteAccessPointOutput
+
+        input = Types::DeleteAccessPointInput.new(load_balancer_name: load_balancer_name)
         delete_load_balancer(input)
       end
-      def delete_load_balancer(input : Types::DeleteLoadBalancerInput) : Types::DeleteLoadBalancerOutput
+
+      def delete_load_balancer(input : Types::DeleteAccessPointInput) : Types::DeleteAccessPointOutput
         request = Protocol::Query.build_request(Model::DELETE_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeleteLoadBalancerOutput, "DeleteLoadBalancer")
+        Protocol::Query.parse_response(response, Types::DeleteAccessPointOutput, "DeleteLoadBalancer")
       end
 
-      # Deletes the specified rule. You can't delete the default rule.
-      def delete_rule(
-        rule_arn : String
-      ) : Types::DeleteRuleOutput
-        input = Types::DeleteRuleInput.new(rule_arn: rule_arn)
-        delete_rule(input)
+      # Deletes the specified listeners from the specified load balancer.
+
+      def delete_load_balancer_listeners(
+        load_balancer_name : String,
+        load_balancer_ports : Array(Int32)
+      ) : Types::DeleteLoadBalancerListenerOutput
+
+        input = Types::DeleteLoadBalancerListenerInput.new(load_balancer_name: load_balancer_name, load_balancer_ports: load_balancer_ports)
+        delete_load_balancer_listeners(input)
       end
-      def delete_rule(input : Types::DeleteRuleInput) : Types::DeleteRuleOutput
-        request = Protocol::Query.build_request(Model::DELETE_RULE, input, endpoint)
+
+      def delete_load_balancer_listeners(input : Types::DeleteLoadBalancerListenerInput) : Types::DeleteLoadBalancerListenerOutput
+        request = Protocol::Query.build_request(Model::DELETE_LOAD_BALANCER_LISTENERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeleteRuleOutput, "DeleteRule")
+        Protocol::Query.parse_response(response, Types::DeleteLoadBalancerListenerOutput, "DeleteLoadBalancerListeners")
       end
 
-      # Deletes a shared trust store association.
-      def delete_shared_trust_store_association(
-        resource_arn : String,
-        trust_store_arn : String
-      ) : Types::DeleteSharedTrustStoreAssociationOutput
-        input = Types::DeleteSharedTrustStoreAssociationInput.new(resource_arn: resource_arn, trust_store_arn: trust_store_arn)
-        delete_shared_trust_store_association(input)
+      # Deletes the specified policy from the specified load balancer. This policy must not be enabled for
+      # any listeners.
+
+      def delete_load_balancer_policy(
+        load_balancer_name : String,
+        policy_name : String
+      ) : Types::DeleteLoadBalancerPolicyOutput
+
+        input = Types::DeleteLoadBalancerPolicyInput.new(load_balancer_name: load_balancer_name, policy_name: policy_name)
+        delete_load_balancer_policy(input)
       end
-      def delete_shared_trust_store_association(input : Types::DeleteSharedTrustStoreAssociationInput) : Types::DeleteSharedTrustStoreAssociationOutput
-        request = Protocol::Query.build_request(Model::DELETE_SHARED_TRUST_STORE_ASSOCIATION, input, endpoint)
+
+      def delete_load_balancer_policy(input : Types::DeleteLoadBalancerPolicyInput) : Types::DeleteLoadBalancerPolicyOutput
+        request = Protocol::Query.build_request(Model::DELETE_LOAD_BALANCER_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeleteSharedTrustStoreAssociationOutput, "DeleteSharedTrustStoreAssociation")
+        Protocol::Query.parse_response(response, Types::DeleteLoadBalancerPolicyOutput, "DeleteLoadBalancerPolicy")
       end
 
-      # Deletes the specified target group. You can delete a target group if it is not referenced by any
-      # actions. Deleting a target group also deletes any associated health checks. Deleting a target group
-      # does not affect its registered targets. For example, any EC2 instances continue to run until you
-      # stop or terminate them.
-      def delete_target_group(
-        target_group_arn : String
-      ) : Types::DeleteTargetGroupOutput
-        input = Types::DeleteTargetGroupInput.new(target_group_arn: target_group_arn)
-        delete_target_group(input)
+      # Deregisters the specified instances from the specified load balancer. After the instance is
+      # deregistered, it no longer receives traffic from the load balancer. You can use
+      # DescribeLoadBalancers to verify that the instance is deregistered from the load balancer. For more
+      # information, see Register or De-Register EC2 Instances in the Classic Load Balancers Guide .
+
+      def deregister_instances_from_load_balancer(
+        instances : Array(Types::Instance),
+        load_balancer_name : String
+      ) : Types::DeregisterEndPointsOutput
+
+        input = Types::DeregisterEndPointsInput.new(instances: instances, load_balancer_name: load_balancer_name)
+        deregister_instances_from_load_balancer(input)
       end
-      def delete_target_group(input : Types::DeleteTargetGroupInput) : Types::DeleteTargetGroupOutput
-        request = Protocol::Query.build_request(Model::DELETE_TARGET_GROUP, input, endpoint)
+
+      def deregister_instances_from_load_balancer(input : Types::DeregisterEndPointsInput) : Types::DeregisterEndPointsOutput
+        request = Protocol::Query.build_request(Model::DEREGISTER_INSTANCES_FROM_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeleteTargetGroupOutput, "DeleteTargetGroup")
+        Protocol::Query.parse_response(response, Types::DeregisterEndPointsOutput, "DeregisterInstancesFromLoadBalancer")
       end
 
-      # Deletes a trust store.
-      def delete_trust_store(
-        trust_store_arn : String
-      ) : Types::DeleteTrustStoreOutput
-        input = Types::DeleteTrustStoreInput.new(trust_store_arn: trust_store_arn)
-        delete_trust_store(input)
-      end
-      def delete_trust_store(input : Types::DeleteTrustStoreInput) : Types::DeleteTrustStoreOutput
-        request = Protocol::Query.build_request(Model::DELETE_TRUST_STORE, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeleteTrustStoreOutput, "DeleteTrustStore")
-      end
+      # Describes the current Elastic Load Balancing resource limits for your AWS account. For more
+      # information, see Limits for Your Classic Load Balancer in the Classic Load Balancers Guide .
 
-      # Deregisters the specified targets from the specified target group. After the targets are
-      # deregistered, they no longer receive traffic from the load balancer. The load balancer stops sending
-      # requests to targets that are deregistering, but uses connection draining to ensure that in-flight
-      # traffic completes on the existing connections. This deregistration delay is configured by default
-      # but can be updated for each target group. For more information, see the following: Deregistration
-      # delay in the Application Load Balancers User Guide Deregistration delay in the Network Load
-      # Balancers User Guide Deregistration delay in the Gateway Load Balancers User Guide Note: If the
-      # specified target does not exist, the action returns successfully.
-      def deregister_targets(
-        target_group_arn : String,
-        targets : Array(Types::TargetDescription)
-      ) : Types::DeregisterTargetsOutput
-        input = Types::DeregisterTargetsInput.new(target_group_arn: target_group_arn, targets: targets)
-        deregister_targets(input)
-      end
-      def deregister_targets(input : Types::DeregisterTargetsInput) : Types::DeregisterTargetsOutput
-        request = Protocol::Query.build_request(Model::DEREGISTER_TARGETS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DeregisterTargetsOutput, "DeregisterTargets")
-      end
-
-      # Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account.
-      # For more information, see the following: Quotas for your Application Load Balancers Quotas for your
-      # Network Load Balancers Quotas for your Gateway Load Balancers
       def describe_account_limits(
         marker : String? = nil,
         page_size : Int32? = nil
       ) : Types::DescribeAccountLimitsOutput
+
         input = Types::DescribeAccountLimitsInput.new(marker: marker, page_size: page_size)
         describe_account_limits(input)
       end
+
       def describe_account_limits(input : Types::DescribeAccountLimitsInput) : Types::DescribeAccountLimitsOutput
         request = Protocol::Query.build_request(Model::DESCRIBE_ACCOUNT_LIMITS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -356,87 +348,38 @@ module AwsSdk
         Protocol::Query.parse_response(response, Types::DescribeAccountLimitsOutput, "DescribeAccountLimits")
       end
 
-      # Describes the capacity reservation status for the specified load balancer.
-      def describe_capacity_reservation(
-        load_balancer_arn : String
-      ) : Types::DescribeCapacityReservationOutput
-        input = Types::DescribeCapacityReservationInput.new(load_balancer_arn: load_balancer_arn)
-        describe_capacity_reservation(input)
+      # Describes the state of the specified instances with respect to the specified load balancer. If no
+      # instances are specified, the call describes the state of all instances that are currently registered
+      # with the load balancer. If instances are specified, their state is returned even if they are no
+      # longer registered with the load balancer. The state of terminated instances is not returned.
+
+      def describe_instance_health(
+        load_balancer_name : String,
+        instances : Array(Types::Instance)? = nil
+      ) : Types::DescribeEndPointStateOutput
+
+        input = Types::DescribeEndPointStateInput.new(load_balancer_name: load_balancer_name, instances: instances)
+        describe_instance_health(input)
       end
-      def describe_capacity_reservation(input : Types::DescribeCapacityReservationInput) : Types::DescribeCapacityReservationOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_CAPACITY_RESERVATION, input, endpoint)
+
+      def describe_instance_health(input : Types::DescribeEndPointStateInput) : Types::DescribeEndPointStateOutput
+        request = Protocol::Query.build_request(Model::DESCRIBE_INSTANCE_HEALTH, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeCapacityReservationOutput, "DescribeCapacityReservation")
+        Protocol::Query.parse_response(response, Types::DescribeEndPointStateOutput, "DescribeInstanceHealth")
       end
 
-      # Describes the attributes for the specified listener.
-      def describe_listener_attributes(
-        listener_arn : String
-      ) : Types::DescribeListenerAttributesOutput
-        input = Types::DescribeListenerAttributesInput.new(listener_arn: listener_arn)
-        describe_listener_attributes(input)
-      end
-      def describe_listener_attributes(input : Types::DescribeListenerAttributesInput) : Types::DescribeListenerAttributesOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_LISTENER_ATTRIBUTES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeListenerAttributesOutput, "DescribeListenerAttributes")
-      end
+      # Describes the attributes for the specified load balancer.
 
-      # Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
-      # If the default certificate is also in the certificate list, it appears twice in the results (once
-      # with IsDefault set to true and once with IsDefault set to false). For more information, see SSL
-      # certificates in the Application Load Balancers Guide or Server certificates in the Network Load
-      # Balancers Guide .
-      def describe_listener_certificates(
-        listener_arn : String,
-        marker : String? = nil,
-        page_size : Int32? = nil
-      ) : Types::DescribeListenerCertificatesOutput
-        input = Types::DescribeListenerCertificatesInput.new(listener_arn: listener_arn, marker: marker, page_size: page_size)
-        describe_listener_certificates(input)
-      end
-      def describe_listener_certificates(input : Types::DescribeListenerCertificatesInput) : Types::DescribeListenerCertificatesOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_LISTENER_CERTIFICATES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeListenerCertificatesOutput, "DescribeListenerCertificates")
-      end
-
-      # Describes the specified listeners or the listeners for the specified Application Load Balancer,
-      # Network Load Balancer, or Gateway Load Balancer. You must specify either a load balancer or one or
-      # more listeners.
-      def describe_listeners(
-        listener_arns : Array(String)? = nil,
-        load_balancer_arn : String? = nil,
-        marker : String? = nil,
-        page_size : Int32? = nil
-      ) : Types::DescribeListenersOutput
-        input = Types::DescribeListenersInput.new(listener_arns: listener_arns, load_balancer_arn: load_balancer_arn, marker: marker, page_size: page_size)
-        describe_listeners(input)
-      end
-      def describe_listeners(input : Types::DescribeListenersInput) : Types::DescribeListenersOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_LISTENERS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeListenersOutput, "DescribeListeners")
-      end
-
-      # Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or
-      # Gateway Load Balancer. For more information, see the following: Load balancer attributes in the
-      # Application Load Balancers Guide Load balancer attributes in the Network Load Balancers Guide Load
-      # balancer attributes in the Gateway Load Balancers Guide
       def describe_load_balancer_attributes(
-        load_balancer_arn : String
+        load_balancer_name : String
       ) : Types::DescribeLoadBalancerAttributesOutput
-        input = Types::DescribeLoadBalancerAttributesInput.new(load_balancer_arn: load_balancer_arn)
+
+        input = Types::DescribeLoadBalancerAttributesInput.new(load_balancer_name: load_balancer_name)
         describe_load_balancer_attributes(input)
       end
+
       def describe_load_balancer_attributes(input : Types::DescribeLoadBalancerAttributesInput) : Types::DescribeLoadBalancerAttributesOutput
         request = Protocol::Query.build_request(Model::DESCRIBE_LOAD_BALANCER_ATTRIBUTES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -445,72 +388,83 @@ module AwsSdk
         Protocol::Query.parse_response(response, Types::DescribeLoadBalancerAttributesOutput, "DescribeLoadBalancerAttributes")
       end
 
-      # Describes the specified load balancers or all of your load balancers.
+      # Describes the specified policies. If you specify a load balancer name, the action returns the
+      # descriptions of all policies created for the load balancer. If you specify a policy name associated
+      # with your load balancer, the action returns the description of that policy. If you don't specify a
+      # load balancer name, the action returns descriptions of the specified sample policies, or
+      # descriptions of all sample policies. The names of the sample policies have the ELBSample- prefix.
+
+      def describe_load_balancer_policies(
+        load_balancer_name : String? = nil,
+        policy_names : Array(String)? = nil
+      ) : Types::DescribeLoadBalancerPoliciesOutput
+
+        input = Types::DescribeLoadBalancerPoliciesInput.new(load_balancer_name: load_balancer_name, policy_names: policy_names)
+        describe_load_balancer_policies(input)
+      end
+
+      def describe_load_balancer_policies(input : Types::DescribeLoadBalancerPoliciesInput) : Types::DescribeLoadBalancerPoliciesOutput
+        request = Protocol::Query.build_request(Model::DESCRIBE_LOAD_BALANCER_POLICIES, input, endpoint)
+        request = request.with_headers(endpoint_headers)
+        response = runtime.execute(request)
+        raise Protocol::Query.parse_error(response) if response.status >= 300
+        Protocol::Query.parse_response(response, Types::DescribeLoadBalancerPoliciesOutput, "DescribeLoadBalancerPolicies")
+      end
+
+      # Describes the specified load balancer policy types or all load balancer policy types. The
+      # description of each type indicates how it can be used. For example, some policies can be used only
+      # with layer 7 listeners, some policies can be used only with layer 4 listeners, and some policies can
+      # be used only with your EC2 instances. You can use CreateLoadBalancerPolicy to create a policy
+      # configuration for any of these policy types. Then, depending on the policy type, use either
+      # SetLoadBalancerPoliciesOfListener or SetLoadBalancerPoliciesForBackendServer to set the policy.
+
+      def describe_load_balancer_policy_types(
+        policy_type_names : Array(String)? = nil
+      ) : Types::DescribeLoadBalancerPolicyTypesOutput
+
+        input = Types::DescribeLoadBalancerPolicyTypesInput.new(policy_type_names: policy_type_names)
+        describe_load_balancer_policy_types(input)
+      end
+
+      def describe_load_balancer_policy_types(input : Types::DescribeLoadBalancerPolicyTypesInput) : Types::DescribeLoadBalancerPolicyTypesOutput
+        request = Protocol::Query.build_request(Model::DESCRIBE_LOAD_BALANCER_POLICY_TYPES, input, endpoint)
+        request = request.with_headers(endpoint_headers)
+        response = runtime.execute(request)
+        raise Protocol::Query.parse_error(response) if response.status >= 300
+        Protocol::Query.parse_response(response, Types::DescribeLoadBalancerPolicyTypesOutput, "DescribeLoadBalancerPolicyTypes")
+      end
+
+      # Describes the specified the load balancers. If no load balancers are specified, the call describes
+      # all of your load balancers.
+
       def describe_load_balancers(
-        load_balancer_arns : Array(String)? = nil,
+        load_balancer_names : Array(String)? = nil,
         marker : String? = nil,
-        names : Array(String)? = nil,
         page_size : Int32? = nil
-      ) : Types::DescribeLoadBalancersOutput
-        input = Types::DescribeLoadBalancersInput.new(load_balancer_arns: load_balancer_arns, marker: marker, names: names, page_size: page_size)
+      ) : Types::DescribeAccessPointsOutput
+
+        input = Types::DescribeAccessPointsInput.new(load_balancer_names: load_balancer_names, marker: marker, page_size: page_size)
         describe_load_balancers(input)
       end
-      def describe_load_balancers(input : Types::DescribeLoadBalancersInput) : Types::DescribeLoadBalancersOutput
+
+      def describe_load_balancers(input : Types::DescribeAccessPointsInput) : Types::DescribeAccessPointsOutput
         request = Protocol::Query.build_request(Model::DESCRIBE_LOAD_BALANCERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeLoadBalancersOutput, "DescribeLoadBalancers")
+        Protocol::Query.parse_response(response, Types::DescribeAccessPointsOutput, "DescribeLoadBalancers")
       end
 
-      # Describes the specified rules or the rules for the specified listener. You must specify either a
-      # listener or rules.
-      def describe_rules(
-        listener_arn : String? = nil,
-        marker : String? = nil,
-        page_size : Int32? = nil,
-        rule_arns : Array(String)? = nil
-      ) : Types::DescribeRulesOutput
-        input = Types::DescribeRulesInput.new(listener_arn: listener_arn, marker: marker, page_size: page_size, rule_arns: rule_arns)
-        describe_rules(input)
-      end
-      def describe_rules(input : Types::DescribeRulesInput) : Types::DescribeRulesOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_RULES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeRulesOutput, "DescribeRules")
-      end
+      # Describes the tags associated with the specified load balancers.
 
-      # Describes the specified policies or all policies used for SSL negotiation. For more information, see
-      # Security policies in the Application Load Balancers Guide and Security policies in the Network Load
-      # Balancers Guide .
-      def describe_ssl_policies(
-        load_balancer_type : String? = nil,
-        marker : String? = nil,
-        names : Array(String)? = nil,
-        page_size : Int32? = nil
-      ) : Types::DescribeSSLPoliciesOutput
-        input = Types::DescribeSSLPoliciesInput.new(load_balancer_type: load_balancer_type, marker: marker, names: names, page_size: page_size)
-        describe_ssl_policies(input)
-      end
-      def describe_ssl_policies(input : Types::DescribeSSLPoliciesInput) : Types::DescribeSSLPoliciesOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_SSL_POLICIES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeSSLPoliciesOutput, "DescribeSSLPolicies")
-      end
-
-      # Describes the tags for the specified Elastic Load Balancing resources. You can describe the tags for
-      # one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target
-      # groups, listeners, or rules.
       def describe_tags(
-        resource_arns : Array(String)
+        load_balancer_names : Array(String)
       ) : Types::DescribeTagsOutput
-        input = Types::DescribeTagsInput.new(resource_arns: resource_arns)
+
+        input = Types::DescribeTagsInput.new(load_balancer_names: load_balancer_names)
         describe_tags(input)
       end
+
       def describe_tags(input : Types::DescribeTagsInput) : Types::DescribeTagsOutput
         request = Protocol::Query.build_request(Model::DESCRIBE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -519,250 +473,92 @@ module AwsSdk
         Protocol::Query.parse_response(response, Types::DescribeTagsOutput, "DescribeTags")
       end
 
-      # Describes the attributes for the specified target group. For more information, see the following:
-      # Target group attributes in the Application Load Balancers Guide Target group attributes in the
-      # Network Load Balancers Guide Target group attributes in the Gateway Load Balancers Guide
-      def describe_target_group_attributes(
-        target_group_arn : String
-      ) : Types::DescribeTargetGroupAttributesOutput
-        input = Types::DescribeTargetGroupAttributesInput.new(target_group_arn: target_group_arn)
-        describe_target_group_attributes(input)
+      # Removes the specified subnets from the set of configured subnets for the load balancer. After a
+      # subnet is removed, all EC2 instances registered with the load balancer in the removed subnet go into
+      # the OutOfService state. Then, the load balancer balances the traffic among the remaining routable
+      # subnets.
+
+      def detach_load_balancer_from_subnets(
+        load_balancer_name : String,
+        subnets : Array(String)
+      ) : Types::DetachLoadBalancerFromSubnetsOutput
+
+        input = Types::DetachLoadBalancerFromSubnetsInput.new(load_balancer_name: load_balancer_name, subnets: subnets)
+        detach_load_balancer_from_subnets(input)
       end
-      def describe_target_group_attributes(input : Types::DescribeTargetGroupAttributesInput) : Types::DescribeTargetGroupAttributesOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_TARGET_GROUP_ATTRIBUTES, input, endpoint)
+
+      def detach_load_balancer_from_subnets(input : Types::DetachLoadBalancerFromSubnetsInput) : Types::DetachLoadBalancerFromSubnetsOutput
+        request = Protocol::Query.build_request(Model::DETACH_LOAD_BALANCER_FROM_SUBNETS, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeTargetGroupAttributesOutput, "DescribeTargetGroupAttributes")
+        Protocol::Query.parse_response(response, Types::DetachLoadBalancerFromSubnetsOutput, "DetachLoadBalancerFromSubnets")
       end
 
-      # Describes the specified target groups or all of your target groups. By default, all target groups
-      # are described. Alternatively, you can specify one of the following to filter the results: the ARN of
-      # the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
-      def describe_target_groups(
-        load_balancer_arn : String? = nil,
-        marker : String? = nil,
-        names : Array(String)? = nil,
-        page_size : Int32? = nil,
-        target_group_arns : Array(String)? = nil
-      ) : Types::DescribeTargetGroupsOutput
-        input = Types::DescribeTargetGroupsInput.new(load_balancer_arn: load_balancer_arn, marker: marker, names: names, page_size: page_size, target_group_arns: target_group_arns)
-        describe_target_groups(input)
+      # Removes the specified Availability Zones from the set of Availability Zones for the specified load
+      # balancer in EC2-Classic or a default VPC. For load balancers in a non-default VPC, use
+      # DetachLoadBalancerFromSubnets . There must be at least one Availability Zone registered with a load
+      # balancer at all times. After an Availability Zone is removed, all instances registered with the load
+      # balancer that are in the removed Availability Zone go into the OutOfService state. Then, the load
+      # balancer attempts to equally balance the traffic among its remaining Availability Zones. For more
+      # information, see Add or Remove Availability Zones in the Classic Load Balancers Guide .
+
+      def disable_availability_zones_for_load_balancer(
+        availability_zones : Array(String),
+        load_balancer_name : String
+      ) : Types::RemoveAvailabilityZonesOutput
+
+        input = Types::RemoveAvailabilityZonesInput.new(availability_zones: availability_zones, load_balancer_name: load_balancer_name)
+        disable_availability_zones_for_load_balancer(input)
       end
-      def describe_target_groups(input : Types::DescribeTargetGroupsInput) : Types::DescribeTargetGroupsOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_TARGET_GROUPS, input, endpoint)
+
+      def disable_availability_zones_for_load_balancer(input : Types::RemoveAvailabilityZonesInput) : Types::RemoveAvailabilityZonesOutput
+        request = Protocol::Query.build_request(Model::DISABLE_AVAILABILITY_ZONES_FOR_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeTargetGroupsOutput, "DescribeTargetGroups")
+        Protocol::Query.parse_response(response, Types::RemoveAvailabilityZonesOutput, "DisableAvailabilityZonesForLoadBalancer")
       end
 
-      # Describes the health of the specified targets or all of your targets.
-      def describe_target_health(
-        target_group_arn : String,
-        include : Array(String)? = nil,
-        targets : Array(Types::TargetDescription)? = nil
-      ) : Types::DescribeTargetHealthOutput
-        input = Types::DescribeTargetHealthInput.new(target_group_arn: target_group_arn, include: include, targets: targets)
-        describe_target_health(input)
+      # Adds the specified Availability Zones to the set of Availability Zones for the specified load
+      # balancer in EC2-Classic or a default VPC. For load balancers in a non-default VPC, use
+      # AttachLoadBalancerToSubnets . The load balancer evenly distributes requests across all its
+      # registered Availability Zones that contain instances. For more information, see Add or Remove
+      # Availability Zones in the Classic Load Balancers Guide .
+
+      def enable_availability_zones_for_load_balancer(
+        availability_zones : Array(String),
+        load_balancer_name : String
+      ) : Types::AddAvailabilityZonesOutput
+
+        input = Types::AddAvailabilityZonesInput.new(availability_zones: availability_zones, load_balancer_name: load_balancer_name)
+        enable_availability_zones_for_load_balancer(input)
       end
-      def describe_target_health(input : Types::DescribeTargetHealthInput) : Types::DescribeTargetHealthOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_TARGET_HEALTH, input, endpoint)
+
+      def enable_availability_zones_for_load_balancer(input : Types::AddAvailabilityZonesInput) : Types::AddAvailabilityZonesOutput
+        request = Protocol::Query.build_request(Model::ENABLE_AVAILABILITY_ZONES_FOR_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeTargetHealthOutput, "DescribeTargetHealth")
+        Protocol::Query.parse_response(response, Types::AddAvailabilityZonesOutput, "EnableAvailabilityZonesForLoadBalancer")
       end
 
-      # Describes all resources associated with the specified trust store.
-      def describe_trust_store_associations(
-        trust_store_arn : String,
-        marker : String? = nil,
-        page_size : Int32? = nil
-      ) : Types::DescribeTrustStoreAssociationsOutput
-        input = Types::DescribeTrustStoreAssociationsInput.new(trust_store_arn: trust_store_arn, marker: marker, page_size: page_size)
-        describe_trust_store_associations(input)
-      end
-      def describe_trust_store_associations(input : Types::DescribeTrustStoreAssociationsInput) : Types::DescribeTrustStoreAssociationsOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_TRUST_STORE_ASSOCIATIONS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeTrustStoreAssociationsOutput, "DescribeTrustStoreAssociations")
-      end
+      # Modifies the attributes of the specified load balancer. You can modify the load balancer attributes,
+      # such as AccessLogs , ConnectionDraining , and CrossZoneLoadBalancing by either enabling or disabling
+      # them. Or, you can modify the load balancer attribute ConnectionSettings by specifying an idle
+      # connection timeout value for your load balancer. For more information, see the following in the
+      # Classic Load Balancers Guide : Cross-Zone Load Balancing Connection Draining Access Logs Idle
+      # Connection Timeout
 
-      # Describes the revocation files in use by the specified trust store or revocation files.
-      def describe_trust_store_revocations(
-        trust_store_arn : String,
-        marker : String? = nil,
-        page_size : Int32? = nil,
-        revocation_ids : Array(Int64)? = nil
-      ) : Types::DescribeTrustStoreRevocationsOutput
-        input = Types::DescribeTrustStoreRevocationsInput.new(trust_store_arn: trust_store_arn, marker: marker, page_size: page_size, revocation_ids: revocation_ids)
-        describe_trust_store_revocations(input)
-      end
-      def describe_trust_store_revocations(input : Types::DescribeTrustStoreRevocationsInput) : Types::DescribeTrustStoreRevocationsOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_TRUST_STORE_REVOCATIONS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeTrustStoreRevocationsOutput, "DescribeTrustStoreRevocations")
-      end
-
-      # Describes all trust stores for the specified account.
-      def describe_trust_stores(
-        marker : String? = nil,
-        names : Array(String)? = nil,
-        page_size : Int32? = nil,
-        trust_store_arns : Array(String)? = nil
-      ) : Types::DescribeTrustStoresOutput
-        input = Types::DescribeTrustStoresInput.new(marker: marker, names: names, page_size: page_size, trust_store_arns: trust_store_arns)
-        describe_trust_stores(input)
-      end
-      def describe_trust_stores(input : Types::DescribeTrustStoresInput) : Types::DescribeTrustStoresOutput
-        request = Protocol::Query.build_request(Model::DESCRIBE_TRUST_STORES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::DescribeTrustStoresOutput, "DescribeTrustStores")
-      end
-
-      # Retrieves the resource policy for a specified resource.
-      def get_resource_policy(
-        resource_arn : String
-      ) : Types::GetResourcePolicyOutput
-        input = Types::GetResourcePolicyInput.new(resource_arn: resource_arn)
-        get_resource_policy(input)
-      end
-      def get_resource_policy(input : Types::GetResourcePolicyInput) : Types::GetResourcePolicyOutput
-        request = Protocol::Query.build_request(Model::GET_RESOURCE_POLICY, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::GetResourcePolicyOutput, "GetResourcePolicy")
-      end
-
-      # Retrieves the ca certificate bundle. This action returns a pre-signed S3 URI which is active for ten
-      # minutes.
-      def get_trust_store_ca_certificates_bundle(
-        trust_store_arn : String
-      ) : Types::GetTrustStoreCaCertificatesBundleOutput
-        input = Types::GetTrustStoreCaCertificatesBundleInput.new(trust_store_arn: trust_store_arn)
-        get_trust_store_ca_certificates_bundle(input)
-      end
-      def get_trust_store_ca_certificates_bundle(input : Types::GetTrustStoreCaCertificatesBundleInput) : Types::GetTrustStoreCaCertificatesBundleOutput
-        request = Protocol::Query.build_request(Model::GET_TRUST_STORE_CA_CERTIFICATES_BUNDLE, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::GetTrustStoreCaCertificatesBundleOutput, "GetTrustStoreCaCertificatesBundle")
-      end
-
-      # Retrieves the specified revocation file. This action returns a pre-signed S3 URI which is active for
-      # ten minutes.
-      def get_trust_store_revocation_content(
-        revocation_id : Int64,
-        trust_store_arn : String
-      ) : Types::GetTrustStoreRevocationContentOutput
-        input = Types::GetTrustStoreRevocationContentInput.new(revocation_id: revocation_id, trust_store_arn: trust_store_arn)
-        get_trust_store_revocation_content(input)
-      end
-      def get_trust_store_revocation_content(input : Types::GetTrustStoreRevocationContentInput) : Types::GetTrustStoreRevocationContentOutput
-        request = Protocol::Query.build_request(Model::GET_TRUST_STORE_REVOCATION_CONTENT, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::GetTrustStoreRevocationContentOutput, "GetTrustStoreRevocationContent")
-      end
-
-      # Modifies the capacity reservation of the specified load balancer. When modifying capacity
-      # reservation, you must include at least one MinimumLoadBalancerCapacity or ResetCapacityReservation .
-      def modify_capacity_reservation(
-        load_balancer_arn : String,
-        minimum_load_balancer_capacity : Types::MinimumLoadBalancerCapacity? = nil,
-        reset_capacity_reservation : Bool? = nil
-      ) : Types::ModifyCapacityReservationOutput
-        input = Types::ModifyCapacityReservationInput.new(load_balancer_arn: load_balancer_arn, minimum_load_balancer_capacity: minimum_load_balancer_capacity, reset_capacity_reservation: reset_capacity_reservation)
-        modify_capacity_reservation(input)
-      end
-      def modify_capacity_reservation(input : Types::ModifyCapacityReservationInput) : Types::ModifyCapacityReservationOutput
-        request = Protocol::Query.build_request(Model::MODIFY_CAPACITY_RESERVATION, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyCapacityReservationOutput, "ModifyCapacityReservation")
-      end
-
-      # [Application Load Balancers] Modify the IP pool associated to a load balancer.
-      def modify_ip_pools(
-        load_balancer_arn : String,
-        ipam_pools : Types::IpamPools? = nil,
-        remove_ipam_pools : Array(String)? = nil
-      ) : Types::ModifyIpPoolsOutput
-        input = Types::ModifyIpPoolsInput.new(load_balancer_arn: load_balancer_arn, ipam_pools: ipam_pools, remove_ipam_pools: remove_ipam_pools)
-        modify_ip_pools(input)
-      end
-      def modify_ip_pools(input : Types::ModifyIpPoolsInput) : Types::ModifyIpPoolsOutput
-        request = Protocol::Query.build_request(Model::MODIFY_IP_POOLS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyIpPoolsOutput, "ModifyIpPools")
-      end
-
-      # Replaces the specified properties of the specified listener. Any properties that you do not specify
-      # remain unchanged. Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security
-      # policy and default certificate properties. If you change the protocol from HTTP to HTTPS, or from
-      # TCP to TLS, you must add the security policy and default certificate properties. To add an item to a
-      # list, remove an item from a list, or update an item in a list, you must provide the entire list. For
-      # example, to add an action, specify a list with the current actions plus the new action.
-      def modify_listener(
-        listener_arn : String,
-        alpn_policy : Array(String)? = nil,
-        certificates : Array(Types::Certificate)? = nil,
-        default_actions : Array(Types::Action)? = nil,
-        mutual_authentication : Types::MutualAuthenticationAttributes? = nil,
-        port : Int32? = nil,
-        protocol : String? = nil,
-        ssl_policy : String? = nil
-      ) : Types::ModifyListenerOutput
-        input = Types::ModifyListenerInput.new(listener_arn: listener_arn, alpn_policy: alpn_policy, certificates: certificates, default_actions: default_actions, mutual_authentication: mutual_authentication, port: port, protocol: protocol, ssl_policy: ssl_policy)
-        modify_listener(input)
-      end
-      def modify_listener(input : Types::ModifyListenerInput) : Types::ModifyListenerOutput
-        request = Protocol::Query.build_request(Model::MODIFY_LISTENER, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyListenerOutput, "ModifyListener")
-      end
-
-      # Modifies the specified attributes of the specified listener.
-      def modify_listener_attributes(
-        attributes : Array(Types::ListenerAttribute),
-        listener_arn : String
-      ) : Types::ModifyListenerAttributesOutput
-        input = Types::ModifyListenerAttributesInput.new(attributes: attributes, listener_arn: listener_arn)
-        modify_listener_attributes(input)
-      end
-      def modify_listener_attributes(input : Types::ModifyListenerAttributesInput) : Types::ModifyListenerAttributesOutput
-        request = Protocol::Query.build_request(Model::MODIFY_LISTENER_ATTRIBUTES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyListenerAttributesOutput, "ModifyListenerAttributes")
-      end
-
-      # Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer,
-      # or Gateway Load Balancer. If any of the specified attributes can't be modified as requested, the
-      # call fails. Any existing attributes that you do not modify retain their current values.
       def modify_load_balancer_attributes(
-        attributes : Array(Types::LoadBalancerAttribute),
-        load_balancer_arn : String
+        load_balancer_attributes : Types::LoadBalancerAttributes,
+        load_balancer_name : String
       ) : Types::ModifyLoadBalancerAttributesOutput
-        input = Types::ModifyLoadBalancerAttributesInput.new(attributes: attributes, load_balancer_arn: load_balancer_arn)
+
+        input = Types::ModifyLoadBalancerAttributesInput.new(load_balancer_attributes: load_balancer_attributes, load_balancer_name: load_balancer_name)
         modify_load_balancer_attributes(input)
       end
+
       def modify_load_balancer_attributes(input : Types::ModifyLoadBalancerAttributesInput) : Types::ModifyLoadBalancerAttributesOutput
         request = Protocol::Query.build_request(Model::MODIFY_LOAD_BALANCER_ATTRIBUTES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -771,135 +567,48 @@ module AwsSdk
         Protocol::Query.parse_response(response, Types::ModifyLoadBalancerAttributesOutput, "ModifyLoadBalancerAttributes")
       end
 
-      # Replaces the specified properties of the specified rule. Any properties that you do not specify are
-      # unchanged. To add an item to a list, remove an item from a list, or update an item in a list, you
-      # must provide the entire list. For example, to add an action, specify a list with the current actions
-      # plus the new action.
-      def modify_rule(
-        rule_arn : String,
-        actions : Array(Types::Action)? = nil,
-        conditions : Array(Types::RuleCondition)? = nil,
-        reset_transforms : Bool? = nil,
-        transforms : Array(Types::RuleTransform)? = nil
-      ) : Types::ModifyRuleOutput
-        input = Types::ModifyRuleInput.new(rule_arn: rule_arn, actions: actions, conditions: conditions, reset_transforms: reset_transforms, transforms: transforms)
-        modify_rule(input)
+      # Adds the specified instances to the specified load balancer. The instance must be a running instance
+      # in the same network as the load balancer (EC2-Classic or the same VPC). If you have EC2-Classic
+      # instances and a load balancer in a VPC with ClassicLink enabled, you can link the EC2-Classic
+      # instances to that VPC and then register the linked EC2-Classic instances with the load balancer in
+      # the VPC. Note that RegisterInstanceWithLoadBalancer completes when the request has been registered.
+      # Instance registration takes a little time to complete. To check the state of the registered
+      # instances, use DescribeLoadBalancers or DescribeInstanceHealth . After the instance is registered,
+      # it starts receiving traffic and requests from the load balancer. Any instance that is not in one of
+      # the Availability Zones registered for the load balancer is moved to the OutOfService state. If an
+      # Availability Zone is added to the load balancer later, any instances registered with the load
+      # balancer move to the InService state. To deregister instances from a load balancer, use
+      # DeregisterInstancesFromLoadBalancer . For more information, see Register or De-Register EC2
+      # Instances in the Classic Load Balancers Guide .
+
+      def register_instances_with_load_balancer(
+        instances : Array(Types::Instance),
+        load_balancer_name : String
+      ) : Types::RegisterEndPointsOutput
+
+        input = Types::RegisterEndPointsInput.new(instances: instances, load_balancer_name: load_balancer_name)
+        register_instances_with_load_balancer(input)
       end
-      def modify_rule(input : Types::ModifyRuleInput) : Types::ModifyRuleOutput
-        request = Protocol::Query.build_request(Model::MODIFY_RULE, input, endpoint)
+
+      def register_instances_with_load_balancer(input : Types::RegisterEndPointsInput) : Types::RegisterEndPointsOutput
+        request = Protocol::Query.build_request(Model::REGISTER_INSTANCES_WITH_LOAD_BALANCER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyRuleOutput, "ModifyRule")
+        Protocol::Query.parse_response(response, Types::RegisterEndPointsOutput, "RegisterInstancesWithLoadBalancer")
       end
 
-      # Modifies the health checks used when evaluating the health state of the targets in the specified
-      # target group.
-      def modify_target_group(
-        target_group_arn : String,
-        health_check_enabled : Bool? = nil,
-        health_check_interval_seconds : Int32? = nil,
-        health_check_path : String? = nil,
-        health_check_port : String? = nil,
-        health_check_protocol : String? = nil,
-        health_check_timeout_seconds : Int32? = nil,
-        healthy_threshold_count : Int32? = nil,
-        matcher : Types::Matcher? = nil,
-        unhealthy_threshold_count : Int32? = nil
-      ) : Types::ModifyTargetGroupOutput
-        input = Types::ModifyTargetGroupInput.new(target_group_arn: target_group_arn, health_check_enabled: health_check_enabled, health_check_interval_seconds: health_check_interval_seconds, health_check_path: health_check_path, health_check_port: health_check_port, health_check_protocol: health_check_protocol, health_check_timeout_seconds: health_check_timeout_seconds, healthy_threshold_count: healthy_threshold_count, matcher: matcher, unhealthy_threshold_count: unhealthy_threshold_count)
-        modify_target_group(input)
-      end
-      def modify_target_group(input : Types::ModifyTargetGroupInput) : Types::ModifyTargetGroupOutput
-        request = Protocol::Query.build_request(Model::MODIFY_TARGET_GROUP, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyTargetGroupOutput, "ModifyTargetGroup")
-      end
+      # Removes one or more tags from the specified load balancer.
 
-      # Modifies the specified attributes of the specified target group.
-      def modify_target_group_attributes(
-        attributes : Array(Types::TargetGroupAttribute),
-        target_group_arn : String
-      ) : Types::ModifyTargetGroupAttributesOutput
-        input = Types::ModifyTargetGroupAttributesInput.new(attributes: attributes, target_group_arn: target_group_arn)
-        modify_target_group_attributes(input)
-      end
-      def modify_target_group_attributes(input : Types::ModifyTargetGroupAttributesInput) : Types::ModifyTargetGroupAttributesOutput
-        request = Protocol::Query.build_request(Model::MODIFY_TARGET_GROUP_ATTRIBUTES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyTargetGroupAttributesOutput, "ModifyTargetGroupAttributes")
-      end
-
-      # Update the ca certificate bundle for the specified trust store.
-      def modify_trust_store(
-        ca_certificates_bundle_s3_bucket : String,
-        ca_certificates_bundle_s3_key : String,
-        trust_store_arn : String,
-        ca_certificates_bundle_s3_object_version : String? = nil
-      ) : Types::ModifyTrustStoreOutput
-        input = Types::ModifyTrustStoreInput.new(ca_certificates_bundle_s3_bucket: ca_certificates_bundle_s3_bucket, ca_certificates_bundle_s3_key: ca_certificates_bundle_s3_key, trust_store_arn: trust_store_arn, ca_certificates_bundle_s3_object_version: ca_certificates_bundle_s3_object_version)
-        modify_trust_store(input)
-      end
-      def modify_trust_store(input : Types::ModifyTrustStoreInput) : Types::ModifyTrustStoreOutput
-        request = Protocol::Query.build_request(Model::MODIFY_TRUST_STORE, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::ModifyTrustStoreOutput, "ModifyTrustStore")
-      end
-
-      # Registers the specified targets with the specified target group. If the target is an EC2 instance,
-      # it must be in the running state when you register it. By default, the load balancer routes requests
-      # to registered targets using the protocol and port for the target group. Alternatively, you can
-      # override the port for a target when you register it. You can register each EC2 instance or IP
-      # address with the same target group multiple times using different ports. For more information, see
-      # the following: Register targets for your Application Load Balancer Register targets for your Network
-      # Load Balancer Register targets for your Gateway Load Balancer
-      def register_targets(
-        target_group_arn : String,
-        targets : Array(Types::TargetDescription)
-      ) : Types::RegisterTargetsOutput
-        input = Types::RegisterTargetsInput.new(target_group_arn: target_group_arn, targets: targets)
-        register_targets(input)
-      end
-      def register_targets(input : Types::RegisterTargetsInput) : Types::RegisterTargetsOutput
-        request = Protocol::Query.build_request(Model::REGISTER_TARGETS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::RegisterTargetsOutput, "RegisterTargets")
-      end
-
-      # Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
-      def remove_listener_certificates(
-        certificates : Array(Types::Certificate),
-        listener_arn : String
-      ) : Types::RemoveListenerCertificatesOutput
-        input = Types::RemoveListenerCertificatesInput.new(certificates: certificates, listener_arn: listener_arn)
-        remove_listener_certificates(input)
-      end
-      def remove_listener_certificates(input : Types::RemoveListenerCertificatesInput) : Types::RemoveListenerCertificatesOutput
-        request = Protocol::Query.build_request(Model::REMOVE_LISTENER_CERTIFICATES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::RemoveListenerCertificatesOutput, "RemoveListenerCertificates")
-      end
-
-      # Removes the specified tags from the specified Elastic Load Balancing resources. You can remove the
-      # tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers,
-      # target groups, listeners, or rules.
       def remove_tags(
-        resource_arns : Array(String),
-        tag_keys : Array(String)
+        load_balancer_names : Array(String),
+        tags : Array(Types::TagKeyOnly)
       ) : Types::RemoveTagsOutput
-        input = Types::RemoveTagsInput.new(resource_arns: resource_arns, tag_keys: tag_keys)
+
+        input = Types::RemoveTagsInput.new(load_balancer_names: load_balancer_names, tags: tags)
         remove_tags(input)
       end
+
       def remove_tags(input : Types::RemoveTagsInput) : Types::RemoveTagsOutput
         request = Protocol::Query.build_request(Model::REMOVE_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -908,95 +617,80 @@ module AwsSdk
         Protocol::Query.parse_response(response, Types::RemoveTagsOutput, "RemoveTags")
       end
 
-      # Removes the specified revocation file from the specified trust store.
-      def remove_trust_store_revocations(
-        revocation_ids : Array(Int64),
-        trust_store_arn : String
-      ) : Types::RemoveTrustStoreRevocationsOutput
-        input = Types::RemoveTrustStoreRevocationsInput.new(revocation_ids: revocation_ids, trust_store_arn: trust_store_arn)
-        remove_trust_store_revocations(input)
-      end
-      def remove_trust_store_revocations(input : Types::RemoveTrustStoreRevocationsInput) : Types::RemoveTrustStoreRevocationsOutput
-        request = Protocol::Query.build_request(Model::REMOVE_TRUST_STORE_REVOCATIONS, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::RemoveTrustStoreRevocationsOutput, "RemoveTrustStoreRevocations")
+      # Sets the certificate that terminates the specified listener's SSL connections. The specified
+      # certificate replaces any prior certificate that was used on the same load balancer and port. For
+      # more information about updating your SSL certificate, see Replace the SSL Certificate for Your Load
+      # Balancer in the Classic Load Balancers Guide .
+
+      def set_load_balancer_listener_ssl_certificate(
+        load_balancer_name : String,
+        load_balancer_port : Int32,
+        ssl_certificate_id : String
+      ) : Types::SetLoadBalancerListenerSSLCertificateOutput
+
+        input = Types::SetLoadBalancerListenerSSLCertificateInput.new(load_balancer_name: load_balancer_name, load_balancer_port: load_balancer_port, ssl_certificate_id: ssl_certificate_id)
+        set_load_balancer_listener_ssl_certificate(input)
       end
 
-      # Sets the type of IP addresses used by the subnets of the specified load balancer.
-      def set_ip_address_type(
-        ip_address_type : String,
-        load_balancer_arn : String
-      ) : Types::SetIpAddressTypeOutput
-        input = Types::SetIpAddressTypeInput.new(ip_address_type: ip_address_type, load_balancer_arn: load_balancer_arn)
-        set_ip_address_type(input)
-      end
-      def set_ip_address_type(input : Types::SetIpAddressTypeInput) : Types::SetIpAddressTypeOutput
-        request = Protocol::Query.build_request(Model::SET_IP_ADDRESS_TYPE, input, endpoint)
+      def set_load_balancer_listener_ssl_certificate(input : Types::SetLoadBalancerListenerSSLCertificateInput) : Types::SetLoadBalancerListenerSSLCertificateOutput
+        request = Protocol::Query.build_request(Model::SET_LOAD_BALANCER_LISTENER_SSL_CERTIFICATE, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::SetIpAddressTypeOutput, "SetIpAddressType")
+        Protocol::Query.parse_response(response, Types::SetLoadBalancerListenerSSLCertificateOutput, "SetLoadBalancerListenerSSLCertificate")
       end
 
-      # Sets the priorities of the specified rules. You can reorder the rules as long as there are no
-      # priority conflicts in the new order. Any existing rules that you do not specify retain their current
-      # priority.
-      def set_rule_priorities(
-        rule_priorities : Array(Types::RulePriorityPair)
-      ) : Types::SetRulePrioritiesOutput
-        input = Types::SetRulePrioritiesInput.new(rule_priorities: rule_priorities)
-        set_rule_priorities(input)
-      end
-      def set_rule_priorities(input : Types::SetRulePrioritiesInput) : Types::SetRulePrioritiesOutput
-        request = Protocol::Query.build_request(Model::SET_RULE_PRIORITIES, input, endpoint)
-        request = request.with_headers(endpoint_headers)
-        response = runtime.execute(request)
-        raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::SetRulePrioritiesOutput, "SetRulePriorities")
+      # Replaces the set of policies associated with the specified port on which the EC2 instance is
+      # listening with a new set of policies. At this time, only the back-end server authentication policy
+      # type can be applied to the instance ports; this policy type is composed of multiple public key
+      # policies. Each time you use SetLoadBalancerPoliciesForBackendServer to enable the policies, use the
+      # PolicyNames parameter to list the policies that you want to enable. You can use
+      # DescribeLoadBalancers or DescribeLoadBalancerPolicies to verify that the policy is associated with
+      # the EC2 instance. For more information about enabling back-end instance authentication, see
+      # Configure Back-end Instance Authentication in the Classic Load Balancers Guide . For more
+      # information about Proxy Protocol, see Configure Proxy Protocol Support in the Classic Load Balancers
+      # Guide .
+
+      def set_load_balancer_policies_for_backend_server(
+        instance_port : Int32,
+        load_balancer_name : String,
+        policy_names : Array(String)
+      ) : Types::SetLoadBalancerPoliciesForBackendServerOutput
+
+        input = Types::SetLoadBalancerPoliciesForBackendServerInput.new(instance_port: instance_port, load_balancer_name: load_balancer_name, policy_names: policy_names)
+        set_load_balancer_policies_for_backend_server(input)
       end
 
-      # Associates the specified security groups with the specified Application Load Balancer or Network
-      # Load Balancer. The specified security groups override the previously associated security groups. You
-      # can't perform this operation on a Network Load Balancer unless you specified a security group for
-      # the load balancer when you created it. You can't associate a security group with a Gateway Load
-      # Balancer.
-      def set_security_groups(
-        load_balancer_arn : String,
-        security_groups : Array(String),
-        enforce_security_group_inbound_rules_on_private_link_traffic : String? = nil
-      ) : Types::SetSecurityGroupsOutput
-        input = Types::SetSecurityGroupsInput.new(load_balancer_arn: load_balancer_arn, security_groups: security_groups, enforce_security_group_inbound_rules_on_private_link_traffic: enforce_security_group_inbound_rules_on_private_link_traffic)
-        set_security_groups(input)
-      end
-      def set_security_groups(input : Types::SetSecurityGroupsInput) : Types::SetSecurityGroupsOutput
-        request = Protocol::Query.build_request(Model::SET_SECURITY_GROUPS, input, endpoint)
+      def set_load_balancer_policies_for_backend_server(input : Types::SetLoadBalancerPoliciesForBackendServerInput) : Types::SetLoadBalancerPoliciesForBackendServerOutput
+        request = Protocol::Query.build_request(Model::SET_LOAD_BALANCER_POLICIES_FOR_BACKEND_SERVER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::SetSecurityGroupsOutput, "SetSecurityGroups")
+        Protocol::Query.parse_response(response, Types::SetLoadBalancerPoliciesForBackendServerOutput, "SetLoadBalancerPoliciesForBackendServer")
       end
 
-      # Enables the Availability Zones for the specified public subnets for the specified Application Load
-      # Balancer, Network Load Balancer or Gateway Load Balancer. The specified subnets replace the
-      # previously enabled subnets.
-      def set_subnets(
-        load_balancer_arn : String,
-        enable_prefix_for_ipv6_source_nat : String? = nil,
-        ip_address_type : String? = nil,
-        subnet_mappings : Array(Types::SubnetMapping)? = nil,
-        subnets : Array(String)? = nil
-      ) : Types::SetSubnetsOutput
-        input = Types::SetSubnetsInput.new(load_balancer_arn: load_balancer_arn, enable_prefix_for_ipv6_source_nat: enable_prefix_for_ipv6_source_nat, ip_address_type: ip_address_type, subnet_mappings: subnet_mappings, subnets: subnets)
-        set_subnets(input)
+      # Replaces the current set of policies for the specified load balancer port with the specified set of
+      # policies. To enable back-end server authentication, use SetLoadBalancerPoliciesForBackendServer .
+      # For more information about setting policies, see Update the SSL Negotiation Configuration ,
+      # Duration-Based Session Stickiness , and Application-Controlled Session Stickiness in the Classic
+      # Load Balancers Guide .
+
+      def set_load_balancer_policies_of_listener(
+        load_balancer_name : String,
+        load_balancer_port : Int32,
+        policy_names : Array(String)
+      ) : Types::SetLoadBalancerPoliciesOfListenerOutput
+
+        input = Types::SetLoadBalancerPoliciesOfListenerInput.new(load_balancer_name: load_balancer_name, load_balancer_port: load_balancer_port, policy_names: policy_names)
+        set_load_balancer_policies_of_listener(input)
       end
-      def set_subnets(input : Types::SetSubnetsInput) : Types::SetSubnetsOutput
-        request = Protocol::Query.build_request(Model::SET_SUBNETS, input, endpoint)
+
+      def set_load_balancer_policies_of_listener(input : Types::SetLoadBalancerPoliciesOfListenerInput) : Types::SetLoadBalancerPoliciesOfListenerOutput
+        request = Protocol::Query.build_request(Model::SET_LOAD_BALANCER_POLICIES_OF_LISTENER, input, endpoint)
         request = request.with_headers(endpoint_headers)
         response = runtime.execute(request)
         raise Protocol::Query.parse_error(response) if response.status >= 300
-        Protocol::Query.parse_response(response, Types::SetSubnetsOutput, "SetSubnets")
+        Protocol::Query.parse_response(response, Types::SetLoadBalancerPoliciesOfListenerOutput, "SetLoadBalancerPoliciesOfListener")
       end
     end
   end

@@ -26,12 +26,14 @@ module AwsSdk
       # source, Security Lake starts collecting logs and events from it. You can use this API only to enable
       # natively supported Amazon Web Services services as a source. Use CreateCustomLogSource to enable
       # data collection from a custom source.
+
       def create_aws_log_source(
         sources : Array(Types::AwsLogSourceConfiguration)
       ) : Protocol::Request
         input = Types::CreateAwsLogSourceRequest.new(sources: sources)
         create_aws_log_source(input)
       end
+
       def create_aws_log_source(input : Types::CreateAwsLogSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_AWS_LOG_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -43,6 +45,7 @@ module AwsSdk
       # a custom source name in Security Lake. This operation creates a partition in the Amazon S3 bucket
       # for Security Lake as the target location for log files from the custom source. In addition, this
       # operation also creates an associated Glue table and an Glue crawler.
+
       def create_custom_log_source(
         configuration : Types::CustomLogSourceConfiguration,
         source_name : String,
@@ -52,6 +55,7 @@ module AwsSdk
         input = Types::CreateCustomLogSourceRequest.new(configuration: configuration, source_name: source_name, event_classes: event_classes, source_version: source_version)
         create_custom_log_source(input)
       end
+
       def create_custom_log_source(input : Types::CreateCustomLogSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_CUSTOM_LOG_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -69,6 +73,7 @@ module AwsSdk
       # data accessible to subscribers. Security Lake also enables all the existing settings and resources
       # that it stores or maintains for your Amazon Web Services account in the current Region, including
       # security log and event data. For more information, see the Amazon Security Lake User Guide .
+
       def create_data_lake(
         configurations : Array(Types::DataLakeConfiguration),
         meta_store_manager_role_arn : String,
@@ -77,6 +82,7 @@ module AwsSdk
         input = Types::CreateDataLakeRequest.new(configurations: configurations, meta_store_manager_role_arn: meta_store_manager_role_arn, tags: tags)
         create_data_lake(input)
       end
+
       def create_data_lake(input : Types::CreateDataLakeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DATA_LAKE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -85,6 +91,7 @@ module AwsSdk
       # Creates the specified notification subscription in Amazon Security Lake for the organization you
       # specify. The notification subscription is created for exceptions that cannot be resolved by Security
       # Lake automatically.
+
       def create_data_lake_exception_subscription(
         notification_endpoint : String,
         subscription_protocol : String,
@@ -93,6 +100,7 @@ module AwsSdk
         input = Types::CreateDataLakeExceptionSubscriptionRequest.new(notification_endpoint: notification_endpoint, subscription_protocol: subscription_protocol, exception_time_to_live: exception_time_to_live)
         create_data_lake_exception_subscription(input)
       end
+
       def create_data_lake_exception_subscription(input : Types::CreateDataLakeExceptionSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DATA_LAKE_EXCEPTION_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -103,12 +111,14 @@ module AwsSdk
       # operation merges the new data lake organization configuration with the existing configuration for
       # Security Lake in your organization. If you want to create a new data lake organization
       # configuration, you must delete the existing one using DeleteDataLakeOrganizationConfiguration .
+
       def create_data_lake_organization_configuration(
         auto_enable_new_account : Array(Types::DataLakeAutoEnableNewAccountConfiguration)? = nil
       ) : Protocol::Request
         input = Types::CreateDataLakeOrganizationConfigurationRequest.new(auto_enable_new_account: auto_enable_new_account)
         create_data_lake_organization_configuration(input)
       end
+
       def create_data_lake_organization_configuration(input : Types::CreateDataLakeOrganizationConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_DATA_LAKE_ORGANIZATION_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -116,6 +126,7 @@ module AwsSdk
 
       # Creates a subscriber for accounts that are already enabled in Amazon Security Lake. You can create a
       # subscriber with access to data in the current Amazon Web Services Region.
+
       def create_subscriber(
         sources : Array(Types::LogSourceResource),
         subscriber_identity : Types::AwsIdentity,
@@ -127,6 +138,7 @@ module AwsSdk
         input = Types::CreateSubscriberRequest.new(sources: sources, subscriber_identity: subscriber_identity, subscriber_name: subscriber_name, access_types: access_types, subscriber_description: subscriber_description, tags: tags)
         create_subscriber(input)
       end
+
       def create_subscriber(input : Types::CreateSubscriberRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_SUBSCRIBER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -135,6 +147,7 @@ module AwsSdk
       # Notifies the subscriber when new data is written to the data lake for the sources that the
       # subscriber consumes in Security Lake. You can create only one subscriber notification per
       # subscriber.
+
       def create_subscriber_notification(
         configuration : Types::NotificationConfiguration,
         subscriber_id : String
@@ -142,6 +155,7 @@ module AwsSdk
         input = Types::CreateSubscriberNotificationRequest.new(configuration: configuration, subscriber_id: subscriber_id)
         create_subscriber_notification(input)
       end
+
       def create_subscriber_notification(input : Types::CreateSubscriberNotificationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::CREATE_SUBSCRIBER_NOTIFICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -153,12 +167,14 @@ module AwsSdk
       # new data from the source. However, subscribers can still consume data that Security Lake collected
       # from the source before removal. You can choose any source type in any Amazon Web Services Region for
       # either accounts that are part of a trusted organization or standalone accounts.
+
       def delete_aws_log_source(
         sources : Array(Types::AwsLogSourceConfiguration)
       ) : Protocol::Request
         input = Types::DeleteAwsLogSourceRequest.new(sources: sources)
         delete_aws_log_source(input)
       end
+
       def delete_aws_log_source(input : Types::DeleteAwsLogSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_AWS_LOG_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -166,6 +182,7 @@ module AwsSdk
 
       # Removes a custom log source from Amazon Security Lake, to stop sending data from the custom source
       # to Security Lake.
+
       def delete_custom_log_source(
         source_name : String,
         source_version : String? = nil
@@ -173,6 +190,7 @@ module AwsSdk
         input = Types::DeleteCustomLogSourceRequest.new(source_name: source_name, source_version: source_version)
         delete_custom_log_source(input)
       end
+
       def delete_custom_log_source(input : Types::DeleteCustomLogSourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_CUSTOM_LOG_SOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -185,12 +203,14 @@ module AwsSdk
       # Web Services Region. The DeleteDataLake operation does not delete the data that is stored in your
       # Amazon S3 bucket, which is owned by your Amazon Web Services account. For more information, see the
       # Amazon Security Lake User Guide .
+
       def delete_data_lake(
         regions : Array(String)
       ) : Protocol::Request
         input = Types::DeleteDataLakeRequest.new(regions: regions)
         delete_data_lake(input)
       end
+
       def delete_data_lake(input : Types::DeleteDataLakeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DATA_LAKE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -198,10 +218,12 @@ module AwsSdk
 
       # Deletes the specified notification subscription in Amazon Security Lake for the organization you
       # specify.
+
       def delete_data_lake_exception_subscription : Protocol::Request
         input = Types::DeleteDataLakeExceptionSubscriptionRequest.new
         delete_data_lake_exception_subscription(input)
       end
+
       def delete_data_lake_exception_subscription(input : Types::DeleteDataLakeExceptionSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DATA_LAKE_EXCEPTION_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -211,12 +233,14 @@ module AwsSdk
       # organization in Organizations. Only the delegated Security Lake administrator for an organization
       # can perform this operation. If the delegated Security Lake administrator performs this operation,
       # new member accounts won't automatically contribute data to the data lake.
+
       def delete_data_lake_organization_configuration(
         auto_enable_new_account : Array(Types::DataLakeAutoEnableNewAccountConfiguration)? = nil
       ) : Protocol::Request
         input = Types::DeleteDataLakeOrganizationConfigurationRequest.new(auto_enable_new_account: auto_enable_new_account)
         delete_data_lake_organization_configuration(input)
       end
+
       def delete_data_lake_organization_configuration(input : Types::DeleteDataLakeOrganizationConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_DATA_LAKE_ORGANIZATION_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -226,12 +250,14 @@ module AwsSdk
       # enabled in Amazon Security Lake. When you run DeleteSubscriber , the subscriber will no longer
       # consume data from Security Lake and the subscriber is removed. This operation deletes the subscriber
       # and removes access to data in the current Amazon Web Services Region.
+
       def delete_subscriber(
         subscriber_id : String
       ) : Protocol::Request
         input = Types::DeleteSubscriberRequest.new(subscriber_id: subscriber_id)
         delete_subscriber(input)
       end
+
       def delete_subscriber(input : Types::DeleteSubscriberRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_SUBSCRIBER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -239,12 +265,14 @@ module AwsSdk
 
       # Deletes the specified subscription notification in Amazon Security Lake for the organization you
       # specify.
+
       def delete_subscriber_notification(
         subscriber_id : String
       ) : Protocol::Request
         input = Types::DeleteSubscriberNotificationRequest.new(subscriber_id: subscriber_id)
         delete_subscriber_notification(input)
       end
+
       def delete_subscriber_notification(input : Types::DeleteSubscriberNotificationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DELETE_SUBSCRIBER_NOTIFICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -253,10 +281,12 @@ module AwsSdk
       # Deletes the Amazon Security Lake delegated administrator account for the organization. This API can
       # only be called by the organization management account. The organization management account cannot be
       # the delegated administrator account.
+
       def deregister_data_lake_delegated_administrator : Protocol::Request
         input = Types::DeregisterDataLakeDelegatedAdministratorRequest.new
         deregister_data_lake_delegated_administrator(input)
       end
+
       def deregister_data_lake_delegated_administrator(input : Types::DeregisterDataLakeDelegatedAdministratorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::DEREGISTER_DATA_LAKE_DELEGATED_ADMINISTRATOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -264,10 +294,12 @@ module AwsSdk
 
       # Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for
       # exception notifications.
+
       def get_data_lake_exception_subscription : Protocol::Request
         input = Types::GetDataLakeExceptionSubscriptionRequest.new
         get_data_lake_exception_subscription(input)
       end
+
       def get_data_lake_exception_subscription(input : Types::GetDataLakeExceptionSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DATA_LAKE_EXCEPTION_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -276,10 +308,12 @@ module AwsSdk
       # Retrieves the configuration that will be automatically set up for accounts added to the organization
       # after the organization has onboarded to Amazon Security Lake. This API does not take input
       # parameters.
+
       def get_data_lake_organization_configuration : Protocol::Request
         input = Types::GetDataLakeOrganizationConfigurationRequest.new
         get_data_lake_organization_configuration(input)
       end
+
       def get_data_lake_organization_configuration(input : Types::GetDataLakeOrganizationConfigurationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DATA_LAKE_ORGANIZATION_CONFIGURATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -287,6 +321,7 @@ module AwsSdk
 
       # Retrieves a snapshot of the current Region, including whether Amazon Security Lake is enabled for
       # those accounts and which sources Security Lake is collecting data from.
+
       def get_data_lake_sources(
         accounts : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -295,6 +330,7 @@ module AwsSdk
         input = Types::GetDataLakeSourcesRequest.new(accounts: accounts, max_results: max_results, next_token: next_token)
         get_data_lake_sources(input)
       end
+
       def get_data_lake_sources(input : Types::GetDataLakeSourcesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_DATA_LAKE_SOURCES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -302,12 +338,14 @@ module AwsSdk
 
       # Retrieves the subscription information for the specified subscription ID. You can get information
       # about a specific subscriber.
+
       def get_subscriber(
         subscriber_id : String
       ) : Protocol::Request
         input = Types::GetSubscriberRequest.new(subscriber_id: subscriber_id)
         get_subscriber(input)
       end
+
       def get_subscriber(input : Types::GetSubscriberRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::GET_SUBSCRIBER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -315,6 +353,7 @@ module AwsSdk
 
       # Lists the Amazon Security Lake exceptions that you can use to find the source of problems and fix
       # them.
+
       def list_data_lake_exceptions(
         max_results : Int32? = nil,
         next_token : String? = nil,
@@ -323,6 +362,7 @@ module AwsSdk
         input = Types::ListDataLakeExceptionsRequest.new(max_results: max_results, next_token: next_token, regions: regions)
         list_data_lake_exceptions(input)
       end
+
       def list_data_lake_exceptions(input : Types::ListDataLakeExceptionsRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DATA_LAKE_EXCEPTIONS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -330,18 +370,21 @@ module AwsSdk
 
       # Retrieves the Amazon Security Lake configuration object for the specified Amazon Web Services
       # Regions. You can use this operation to determine whether Security Lake is enabled for a Region.
+
       def list_data_lakes(
         regions : Array(String)? = nil
       ) : Protocol::Request
         input = Types::ListDataLakesRequest.new(regions: regions)
         list_data_lakes(input)
       end
+
       def list_data_lakes(input : Types::ListDataLakesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_DATA_LAKES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
       end
 
       # Retrieves the log sources.
+
       def list_log_sources(
         accounts : Array(String)? = nil,
         max_results : Int32? = nil,
@@ -352,6 +395,7 @@ module AwsSdk
         input = Types::ListLogSourcesRequest.new(accounts: accounts, max_results: max_results, next_token: next_token, regions: regions, sources: sources)
         list_log_sources(input)
       end
+
       def list_log_sources(input : Types::ListLogSourcesRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_LOG_SOURCES, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -359,6 +403,7 @@ module AwsSdk
 
       # Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of
       # subscriptions associated with a specific organization or Amazon Web Services account.
+
       def list_subscribers(
         max_results : Int32? = nil,
         next_token : String? = nil
@@ -366,6 +411,7 @@ module AwsSdk
         input = Types::ListSubscribersRequest.new(max_results: max_results, next_token: next_token)
         list_subscribers(input)
       end
+
       def list_subscribers(input : Types::ListSubscribersRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_SUBSCRIBERS, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -374,12 +420,14 @@ module AwsSdk
       # Retrieves the tags (keys and values) that are associated with an Amazon Security Lake resource: a
       # subscriber, or the data lake configuration for your Amazon Web Services account in a particular
       # Amazon Web Services Region.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Protocol::Request
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -388,12 +436,14 @@ module AwsSdk
       # Designates the Amazon Security Lake delegated administrator account for the organization. This API
       # can only be called by the organization management account. The organization management account
       # cannot be the delegated administrator account.
+
       def register_data_lake_delegated_administrator(
         account_id : String
       ) : Protocol::Request
         input = Types::RegisterDataLakeDelegatedAdministratorRequest.new(account_id: account_id)
         register_data_lake_delegated_administrator(input)
       end
+
       def register_data_lake_delegated_administrator(input : Types::RegisterDataLakeDelegatedAdministratorRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::REGISTER_DATA_LAKE_DELEGATED_ADMINISTRATOR, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -407,6 +457,7 @@ module AwsSdk
       # descriptor for a tag key. Tags can help you identify, categorize, and manage resources in different
       # ways, such as by owner, environment, or other criteria. For more information, see Tagging Amazon
       # Security Lake resources in the Amazon Security Lake User Guide .
+
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::Tag)
@@ -414,6 +465,7 @@ module AwsSdk
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::TAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -422,6 +474,7 @@ module AwsSdk
       # Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or
       # the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services
       # Region.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
@@ -429,6 +482,7 @@ module AwsSdk
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -446,6 +500,7 @@ module AwsSdk
       # encryptionConfiguration: {kmsKeyId: 'S3_MANAGED_KEY'} for that same Region will reset the key to
       # S3-managed . For more details about lifecycle management and how to update retention settings for
       # one or more Regions after enabling Security Lake, see the Amazon Security Lake User Guide .
+
       def update_data_lake(
         configurations : Array(Types::DataLakeConfiguration),
         meta_store_manager_role_arn : String? = nil
@@ -453,6 +508,7 @@ module AwsSdk
         input = Types::UpdateDataLakeRequest.new(configurations: configurations, meta_store_manager_role_arn: meta_store_manager_role_arn)
         update_data_lake(input)
       end
+
       def update_data_lake(input : Types::UpdateDataLakeRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DATA_LAKE, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -460,6 +516,7 @@ module AwsSdk
 
       # Updates the specified notification subscription in Amazon Security Lake for the organization you
       # specify.
+
       def update_data_lake_exception_subscription(
         notification_endpoint : String,
         subscription_protocol : String,
@@ -468,6 +525,7 @@ module AwsSdk
         input = Types::UpdateDataLakeExceptionSubscriptionRequest.new(notification_endpoint: notification_endpoint, subscription_protocol: subscription_protocol, exception_time_to_live: exception_time_to_live)
         update_data_lake_exception_subscription(input)
       end
+
       def update_data_lake_exception_subscription(input : Types::UpdateDataLakeExceptionSubscriptionRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_DATA_LAKE_EXCEPTION_SUBSCRIPTION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -475,6 +533,7 @@ module AwsSdk
 
       # Updates an existing subscription for the given Amazon Security Lake account ID. You can update a
       # subscriber by changing the sources that the subscriber consumes data from.
+
       def update_subscriber(
         subscriber_id : String,
         sources : Array(Types::LogSourceResource)? = nil,
@@ -485,6 +544,7 @@ module AwsSdk
         input = Types::UpdateSubscriberRequest.new(subscriber_id: subscriber_id, sources: sources, subscriber_description: subscriber_description, subscriber_identity: subscriber_identity, subscriber_name: subscriber_name)
         update_subscriber(input)
       end
+
       def update_subscriber(input : Types::UpdateSubscriberRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SUBSCRIBER, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
@@ -492,6 +552,7 @@ module AwsSdk
 
       # Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or switches the
       # notification subscription endpoint for a subscriber.
+
       def update_subscriber_notification(
         configuration : Types::NotificationConfiguration,
         subscriber_id : String
@@ -499,6 +560,7 @@ module AwsSdk
         input = Types::UpdateSubscriberNotificationRequest.new(configuration: configuration, subscriber_id: subscriber_id)
         update_subscriber_notification(input)
       end
+
       def update_subscriber_notification(input : Types::UpdateSubscriberNotificationRequest) : Protocol::Request
         request = Protocol::RestJson.build_request(Model::UPDATE_SUBSCRIBER_NOTIFICATION, input, endpoint)
         Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)

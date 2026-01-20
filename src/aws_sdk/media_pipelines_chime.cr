@@ -1,7 +1,0 @@
-require "./runtime"
-require "./media_pipelines_chime/client"
-require "./media_pipelines_chime/errors"
-require "./media_pipelines_chime/model"
-require "./media_pipelines_chime/types"
-require "./media_pipelines_chime/protocol/rest_json"
-require "./customizations/media_pipelines_chime/customizations"

@@ -4,32 +4,42 @@ module AwsSdk
       class ServiceError < Exception
       end
 
+
       class BadRequestException < ServiceError
       end
+
 
       class ConflictException < ServiceError
       end
 
+
       class ForbiddenException < ServiceError
       end
+
 
       class GoneException < ServiceError
       end
 
+
       class InternalServerErrorException < ServiceError
       end
+
 
       class NotFoundException < ServiceError
       end
 
+
       class PreconditionFailedException < ServiceError
       end
+
 
       class ServiceUnavailableException < ServiceError
       end
 
+
       class TooManyRequestsException < ServiceError
       end
+
 
       class UnauthorizedException < ServiceError
       end

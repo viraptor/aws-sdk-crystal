@@ -1,7 +1,7 @@
 require "json"
 
 module AwsSdk
-  module ApiGatewayV2
+  module APIGateway
     module Protocol
       struct Request
         getter method : String

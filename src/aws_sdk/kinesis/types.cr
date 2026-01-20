@@ -6,8 +6,10 @@ module AwsSdk
     module Types
 
       # Specifies that you do not have the permissions required to perform this operation.
+
       struct AccessDeniedException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -19,19 +21,23 @@ module AwsSdk
       end
 
       # Represents the input for AddTagsToStream .
+
       struct AddTagsToStreamInput
         include JSON::Serializable
 
         # A set of up to 50 key-value pairs to use to create the tags. A tag consists of a required key and an
         # optional value. You can add up to 50 tags per resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -44,17 +50,21 @@ module AwsSdk
       end
 
       # Output parameter of the GetRecords API. The existing child shard of the current shard.
+
       struct ChildShard
         include JSON::Serializable
+
 
         @[JSON::Field(key: "HashKeyRange")]
         getter hash_key_range : Types::HashKeyRange
 
         # The current shard that is the parent of the existing child shard.
+
         @[JSON::Field(key: "ParentShards")]
         getter parent_shards : Array(String)
 
         # The shard ID of the existing child shard of the current shard.
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String
 
@@ -68,6 +78,7 @@ module AwsSdk
 
       # An object that represents the details of the consumer you registered. This type of object is
       # returned by RegisterStreamConsumer .
+
       struct Consumer
         include JSON::Serializable
 
@@ -75,17 +86,21 @@ module AwsSdk
         # able to call SubscribeToShard . If you delete a consumer and then create a new one with the same
         # name, it won't have the same ARN. That's because consumer ARNs contain the creation timestamp. This
         # is important to keep in mind if you have IAM policies that reference consumer ARNs.
+
         @[JSON::Field(key: "ConsumerARN")]
         getter consumer_arn : String
+
 
         @[JSON::Field(key: "ConsumerCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter consumer_creation_timestamp : Time
 
         # The name of the consumer is something you choose when you register the consumer.
+
         @[JSON::Field(key: "ConsumerName")]
         getter consumer_name : String
 
         # A consumer can't read data while in the CREATING or DELETING states.
+
         @[JSON::Field(key: "ConsumerStatus")]
         getter consumer_status : String
 
@@ -100,6 +115,7 @@ module AwsSdk
 
       # An object that represents the details of a registered consumer. This type of object is returned by
       # DescribeStreamConsumer .
+
       struct ConsumerDescription
         include JSON::Serializable
 
@@ -107,21 +123,26 @@ module AwsSdk
         # able to call SubscribeToShard . If you delete a consumer and then create a new one with the same
         # name, it won't have the same ARN. That's because consumer ARNs contain the creation timestamp. This
         # is important to keep in mind if you have IAM policies that reference consumer ARNs.
+
         @[JSON::Field(key: "ConsumerARN")]
         getter consumer_arn : String
+
 
         @[JSON::Field(key: "ConsumerCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter consumer_creation_timestamp : Time
 
         # The name of the consumer is something you choose when you register the consumer.
+
         @[JSON::Field(key: "ConsumerName")]
         getter consumer_name : String
 
         # A consumer can't read data while in the CREATING or DELETING states.
+
         @[JSON::Field(key: "ConsumerStatus")]
         getter consumer_status : String
 
         # The ARN of the stream with which you registered the consumer.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
@@ -136,6 +157,7 @@ module AwsSdk
       end
 
       # Represents the input for CreateStream .
+
       struct CreateStreamInput
         include JSON::Serializable
 
@@ -143,31 +165,37 @@ module AwsSdk
         # the application that creates the stream. It is also scoped by Amazon Web Services Region. That is,
         # two streams in two different Amazon Web Services accounts can have the same name. Two streams in the
         # same Amazon Web Services account but in two different Regions can also have the same name.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String
 
         # The maximum record size of a single record in kibibyte (KiB) that you can write to, and read from a
         # stream.
+
         @[JSON::Field(key: "MaxRecordSizeInKiB")]
         getter max_record_size_in_ki_b : Int32?
 
         # The number of shards that the stream will use. The throughput of the stream is a function of the
         # number of shards; more shards are required for greater provisioned throughput.
+
         @[JSON::Field(key: "ShardCount")]
         getter shard_count : Int32?
 
         # Indicates the capacity mode of the data stream. Currently, in Kinesis Data Streams, you can choose
         # between an on-demand capacity mode and a provisioned capacity mode for your data streams.
+
         @[JSON::Field(key: "StreamModeDetails")]
         getter stream_mode_details : Types::StreamModeDetails?
 
         # A set of up to 50 key-value pairs to use to create the tags. A tag consists of a required key and an
         # optional value.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
         # The target warm throughput in MB/s that the stream should be scaled to handle. This represents the
         # throughput capacity that will be immediately available for write operations.
+
         @[JSON::Field(key: "WarmThroughputMiBps")]
         getter warm_throughput_mi_bps : Int32?
 
@@ -183,18 +211,22 @@ module AwsSdk
       end
 
       # Represents the input for DecreaseStreamRetentionPeriod .
+
       struct DecreaseStreamRetentionPeriodInput
         include JSON::Serializable
 
         # The new retention period of the stream, in hours. Must be less than the current retention period.
+
         @[JSON::Field(key: "RetentionPeriodHours")]
         getter retention_period_hours : Int32
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to modify.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -206,10 +238,12 @@ module AwsSdk
         end
       end
 
+
       struct DeleteResourcePolicyInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the data stream or consumer.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -220,19 +254,23 @@ module AwsSdk
       end
 
       # Represents the input for DeleteStream .
+
       struct DeleteStreamInput
         include JSON::Serializable
 
         # If this parameter is unset ( null ) or if you set it to false , and the stream has registered
         # consumers, the call to DeleteStream fails with a ResourceInUseException .
+
         @[JSON::Field(key: "EnforceConsumerDeletion")]
         getter enforce_consumer_deletion : Bool?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to delete.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -244,6 +282,7 @@ module AwsSdk
         end
       end
 
+
       struct DeregisterStreamConsumerInput
         include JSON::Serializable
 
@@ -251,15 +290,18 @@ module AwsSdk
         # of the consumer that you want to deregister, you can use the ListStreamConsumers operation to get a
         # list of the descriptions of all the consumers that are currently registered with a given data
         # stream. The description of a consumer contains its ARN.
+
         @[JSON::Field(key: "ConsumerARN")]
         getter consumer_arn : String?
 
         # The name that you gave to the consumer.
+
         @[JSON::Field(key: "ConsumerName")]
         getter consumer_name : String?
 
         # The ARN of the Kinesis data stream that the consumer is registered with. For more information, see
         # Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces .
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
@@ -271,6 +313,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeAccountSettingsInput
         include JSON::Serializable
 
@@ -278,11 +321,13 @@ module AwsSdk
         end
       end
 
+
       struct DescribeAccountSettingsOutput
         include JSON::Serializable
 
         # The current configuration of the minimum throughput billing commitment for your Amazon Web Services
         # account.
+
         @[JSON::Field(key: "MinimumThroughputBillingCommitment")]
         getter minimum_throughput_billing_commitment : Types::MinimumThroughputBillingCommitmentOutput?
 
@@ -292,6 +337,7 @@ module AwsSdk
         end
       end
 
+
       struct DescribeLimitsInput
         include JSON::Serializable
 
@@ -299,22 +345,27 @@ module AwsSdk
         end
       end
 
+
       struct DescribeLimitsOutput
         include JSON::Serializable
 
         # Indicates the number of data streams with the on-demand capacity mode.
+
         @[JSON::Field(key: "OnDemandStreamCount")]
         getter on_demand_stream_count : Int32
 
         # The maximum number of data streams with the on-demand capacity mode.
+
         @[JSON::Field(key: "OnDemandStreamCountLimit")]
         getter on_demand_stream_count_limit : Int32
 
         # The number of open shards.
+
         @[JSON::Field(key: "OpenShardCount")]
         getter open_shard_count : Int32
 
         # The maximum number of shards.
+
         @[JSON::Field(key: "ShardLimit")]
         getter shard_limit : Int32
 
@@ -327,19 +378,23 @@ module AwsSdk
         end
       end
 
+
       struct DescribeStreamConsumerInput
         include JSON::Serializable
 
         # The ARN returned by Kinesis Data Streams when you registered the consumer.
+
         @[JSON::Field(key: "ConsumerARN")]
         getter consumer_arn : String?
 
         # The name that you gave to the consumer.
+
         @[JSON::Field(key: "ConsumerName")]
         getter consumer_name : String?
 
         # The ARN of the Kinesis data stream that the consumer is registered with. For more information, see
         # Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces .
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
@@ -351,10 +406,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeStreamConsumerOutput
         include JSON::Serializable
 
         # An object that represents the details of the consumer.
+
         @[JSON::Field(key: "ConsumerDescription")]
         getter consumer_description : Types::ConsumerDescription
 
@@ -365,6 +422,7 @@ module AwsSdk
       end
 
       # Represents the input for DescribeStream .
+
       struct DescribeStreamInput
         include JSON::Serializable
 
@@ -372,19 +430,23 @@ module AwsSdk
         # describe the stream starting with the shard whose ID immediately follows ExclusiveStartShardId . If
         # you don't specify this parameter, the default behavior for DescribeStream is to describe the stream
         # starting with the first shard in the stream.
+
         @[JSON::Field(key: "ExclusiveStartShardId")]
         getter exclusive_start_shard_id : String?
 
         # The maximum number of shards to return in a single call. The default value is 100. If you specify a
         # value greater than 100, at most 100 results are returned.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to describe.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -398,11 +460,13 @@ module AwsSdk
       end
 
       # Represents the output for DescribeStream .
+
       struct DescribeStreamOutput
         include JSON::Serializable
 
         # The current status of the stream, the stream Amazon Resource Name (ARN), an array of shard objects
         # that comprise the stream, and whether there are more shards available.
+
         @[JSON::Field(key: "StreamDescription")]
         getter stream_description : Types::StreamDescription
 
@@ -412,14 +476,17 @@ module AwsSdk
         end
       end
 
+
       struct DescribeStreamSummaryInput
         include JSON::Serializable
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to describe.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -430,10 +497,12 @@ module AwsSdk
         end
       end
 
+
       struct DescribeStreamSummaryOutput
         include JSON::Serializable
 
         # A StreamDescriptionSummary containing information about the stream.
+
         @[JSON::Field(key: "StreamDescriptionSummary")]
         getter stream_description_summary : Types::StreamDescriptionSummary
 
@@ -444,6 +513,7 @@ module AwsSdk
       end
 
       # Represents the input for DisableEnhancedMonitoring .
+
       struct DisableEnhancedMonitoringInput
         include JSON::Serializable
 
@@ -452,14 +522,17 @@ module AwsSdk
         # WriteProvisionedThroughputExceeded ReadProvisionedThroughputExceeded IteratorAgeMilliseconds ALL For
         # more information, see Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch in
         # the Amazon Kinesis Data Streams Developer Guide .
+
         @[JSON::Field(key: "ShardLevelMetrics")]
         getter shard_level_metrics : Array(String)
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the Kinesis data stream for which to disable enhanced monitoring.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -472,6 +545,7 @@ module AwsSdk
       end
 
       # Represents the input for EnableEnhancedMonitoring .
+
       struct EnableEnhancedMonitoringInput
         include JSON::Serializable
 
@@ -480,14 +554,17 @@ module AwsSdk
         # WriteProvisionedThroughputExceeded ReadProvisionedThroughputExceeded IteratorAgeMilliseconds ALL For
         # more information, see Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch in
         # the Amazon Kinesis Data Streams Developer Guide .
+
         @[JSON::Field(key: "ShardLevelMetrics")]
         getter shard_level_metrics : Array(String)
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for which to enable enhanced monitoring.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -500,6 +577,7 @@ module AwsSdk
       end
 
       # Represents enhanced metrics types.
+
       struct EnhancedMetrics
         include JSON::Serializable
 
@@ -508,6 +586,7 @@ module AwsSdk
         # WriteProvisionedThroughputExceeded ReadProvisionedThroughputExceeded IteratorAgeMilliseconds ALL For
         # more information, see Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch in
         # the Amazon Kinesis Data Streams Developer Guide .
+
         @[JSON::Field(key: "ShardLevelMetrics")]
         getter shard_level_metrics : Array(String)?
 
@@ -518,22 +597,27 @@ module AwsSdk
       end
 
       # Represents the output for EnableEnhancedMonitoring and DisableEnhancedMonitoring .
+
       struct EnhancedMonitoringOutput
         include JSON::Serializable
 
         # Represents the current state of the metrics that are in the enhanced state before the operation.
+
         @[JSON::Field(key: "CurrentShardLevelMetrics")]
         getter current_shard_level_metrics : Array(String)?
 
         # Represents the list of all the metrics that would be in the enhanced state after the operation.
+
         @[JSON::Field(key: "DesiredShardLevelMetrics")]
         getter desired_shard_level_metrics : Array(String)?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the Kinesis data stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -547,10 +631,12 @@ module AwsSdk
       end
 
       # The provided iterator exceeds the maximum age allowed.
+
       struct ExpiredIteratorException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -561,8 +647,10 @@ module AwsSdk
       end
 
       # The pagination token passed to the operation is expired.
+
       struct ExpiredNextTokenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -574,21 +662,25 @@ module AwsSdk
       end
 
       # Represents the input for GetRecords .
+
       struct GetRecordsInput
         include JSON::Serializable
 
         # The position in the shard from which you want to start sequentially reading data records. A shard
         # iterator specifies this position using the sequence number of a data record in the shard.
+
         @[JSON::Field(key: "ShardIterator")]
         getter shard_iterator : String
 
         # The maximum number of records to return. Specify a value of up to 10,000. If you specify a value
         # that is greater than 10,000, GetRecords throws InvalidArgumentException . The default value is
         # 10,000.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
@@ -601,26 +693,31 @@ module AwsSdk
       end
 
       # Represents the output for GetRecords .
+
       struct GetRecordsOutput
         include JSON::Serializable
 
         # The data records retrieved from the shard.
+
         @[JSON::Field(key: "Records")]
         getter records : Array(Types::Record)
 
         # The list of the current shard's child shards, returned in the GetRecords API's response only when
         # the end of the current shard is reached.
+
         @[JSON::Field(key: "ChildShards")]
         getter child_shards : Array(Types::ChildShard)?
 
         # The number of milliseconds the GetRecords response is from the tip of the stream, indicating how far
         # behind current time the consumer is. A value of zero indicates that record processing is caught up,
         # and there are no new records to process at this moment.
+
         @[JSON::Field(key: "MillisBehindLatest")]
         getter millis_behind_latest : Int64?
 
         # The next position in the shard from which to start sequentially reading data records. If set to null
         # , the shard has been closed and the requested iterator does not return any more data.
+
         @[JSON::Field(key: "NextShardIterator")]
         getter next_shard_iterator : String?
 
@@ -633,10 +730,12 @@ module AwsSdk
         end
       end
 
+
       struct GetResourcePolicyInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the data stream or consumer.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -646,10 +745,12 @@ module AwsSdk
         end
       end
 
+
       struct GetResourcePolicyOutput
         include JSON::Serializable
 
         # Details of the resource policy. This is formatted as a JSON string.
+
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
@@ -660,10 +761,12 @@ module AwsSdk
       end
 
       # Represents the input for GetShardIterator .
+
       struct GetShardIteratorInput
         include JSON::Serializable
 
         # The shard ID of the Kinesis Data Streams shard to get the iterator for.
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String
 
@@ -676,19 +779,23 @@ module AwsSdk
         # reading at the last untrimmed record in the shard in the system, which is the oldest data record in
         # the shard. LATEST - Start reading just after the most recent record in the shard, so that you always
         # read the most recent data in the shard.
+
         @[JSON::Field(key: "ShardIteratorType")]
         getter shard_iterator_type : String
 
         # The sequence number of the data record in the shard from which to start reading. Used with shard
         # iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.
+
         @[JSON::Field(key: "StartingSequenceNumber")]
         getter starting_sequence_number : String?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the Amazon Kinesis data stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -697,6 +804,7 @@ module AwsSdk
         # 2016-04-04T19:58:46.480-00:00 or 1459799926.480 . If a record with this exact time stamp does not
         # exist, the iterator returned is for the next (later) record. If the time stamp is older than the
         # current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).
+
         @[JSON::Field(key: "Timestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter timestamp : Time?
 
@@ -712,11 +820,13 @@ module AwsSdk
       end
 
       # Represents the output for GetShardIterator .
+
       struct GetShardIteratorOutput
         include JSON::Serializable
 
         # The position in the shard from which to start reading data records sequentially. A shard iterator
         # specifies this position using the sequence number of a data record in a shard.
+
         @[JSON::Field(key: "ShardIterator")]
         getter shard_iterator : String?
 
@@ -728,14 +838,17 @@ module AwsSdk
 
       # The range of possible hash key values for the shard, which is a set of ordered contiguous positive
       # integers.
+
       struct HashKeyRange
         include JSON::Serializable
 
         # The ending hash key of the hash key range.
+
         @[JSON::Field(key: "EndingHashKey")]
         getter ending_hash_key : String
 
         # The starting hash key of the hash key range.
+
         @[JSON::Field(key: "StartingHashKey")]
         getter starting_hash_key : String
 
@@ -747,18 +860,22 @@ module AwsSdk
       end
 
       # Represents the input for IncreaseStreamRetentionPeriod .
+
       struct IncreaseStreamRetentionPeriodInput
         include JSON::Serializable
 
         # The new retention period of the stream, in hours. Must be more than the current retention period.
+
         @[JSON::Field(key: "RetentionPeriodHours")]
         getter retention_period_hours : Int32
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to modify.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -771,8 +888,10 @@ module AwsSdk
       end
 
       # The processing of the request failed because of an unknown error, exception, or failure.
+
       struct InternalFailureException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -785,10 +904,12 @@ module AwsSdk
 
       # A specified parameter exceeds its restrictions, is not supported, or can't be used. For more
       # information, see the returned message.
+
       struct InvalidArgumentException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -799,10 +920,12 @@ module AwsSdk
       end
 
       # The ciphertext references a key that doesn't exist or that you don't have access to.
+
       struct KMSAccessDeniedException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -813,10 +936,12 @@ module AwsSdk
       end
 
       # The request was rejected because the specified customer master key (CMK) isn't enabled.
+
       struct KMSDisabledException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -829,10 +954,12 @@ module AwsSdk
       # The request was rejected because the state of the specified resource isn't valid for this request.
       # For more information, see How Key State Affects Use of a Customer Master Key in the Amazon Web
       # Services Key Management Service Developer Guide .
+
       struct KMSInvalidStateException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -843,10 +970,12 @@ module AwsSdk
       end
 
       # The request was rejected because the specified entity or resource can't be found.
+
       struct KMSNotFoundException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -857,10 +986,12 @@ module AwsSdk
       end
 
       # The Amazon Web Services access key ID needs a subscription for the service.
+
       struct KMSOptInRequired
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -872,10 +1003,12 @@ module AwsSdk
 
       # The request was denied due to request throttling. For more information about throttling, see Limits
       # in the Amazon Web Services Key Management Service Developer Guide .
+
       struct KMSThrottlingException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -887,10 +1020,12 @@ module AwsSdk
 
       # The requested resource exceeds the maximum number allowed, or the number of concurrent stream
       # requests exceeds the maximum number allowed.
+
       struct LimitExceededException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -900,6 +1035,7 @@ module AwsSdk
         end
       end
 
+
       struct ListShardsInput
         include JSON::Serializable
 
@@ -907,6 +1043,7 @@ module AwsSdk
         # immediately follows ExclusiveStartShardId . If you don't specify this parameter, the default
         # behavior is for ListShards to list the shards starting with the first one in the stream. You cannot
         # specify this parameter if you specify NextToken .
+
         @[JSON::Field(key: "ExclusiveStartShardId")]
         getter exclusive_start_shard_id : String?
 
@@ -915,6 +1052,7 @@ module AwsSdk
         # most 1000 results are returned. When the number of shards to be listed is greater than the value of
         # MaxResults , the response contains a NextToken value that you can use in a subsequent call to
         # ListShards to list the next set of shards.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -930,6 +1068,7 @@ module AwsSdk
         # operation. Tokens expire after 300 seconds. When you obtain a value for NextToken in the response to
         # a call to ListShards , you have 300 seconds to use that value. If you specify an expired token in a
         # call to ListShards , you get ExpiredNextTokenException .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -945,10 +1084,12 @@ module AwsSdk
         # property. If you specify the AT_TIMESTAMP type, then all shards that were open at the provided
         # timestamp are returned. If you specify the FROM_TIMESTAMP type, then all shards starting from the
         # provided timestamp to TIP are returned.
+
         @[JSON::Field(key: "ShardFilter")]
         getter shard_filter : Types::ShardFilter?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
@@ -956,11 +1097,13 @@ module AwsSdk
         # you create a data stream and then delete it, and you later create another data stream with the same
         # name, you can use this input parameter to specify which of the two streams you want to list the
         # shards for. You cannot specify this parameter if you specify the NextToken parameter.
+
         @[JSON::Field(key: "StreamCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter stream_creation_timestamp : Time?
 
         # The name of the data stream whose shards you want to list. You cannot specify this parameter if you
         # specify the NextToken parameter.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -976,6 +1119,7 @@ module AwsSdk
         end
       end
 
+
       struct ListShardsOutput
         include JSON::Serializable
 
@@ -987,12 +1131,14 @@ module AwsSdk
         # ListShardsInput$NextToken . Tokens expire after 300 seconds. When you obtain a value for NextToken
         # in the response to a call to ListShards , you have 300 seconds to use that value. If you specify an
         # expired token in a call to ListShards , you get ExpiredNextTokenException .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
         # An array of JSON objects. Each object represents one shard and specifies the IDs of the shard, the
         # shard's parent, and the shard that's adjacent to the shard's parent. Each object also contains the
         # starting and ending hash keys and the starting and ending sequence numbers for the shard.
+
         @[JSON::Field(key: "Shards")]
         getter shards : Array(Types::Shard)?
 
@@ -1003,16 +1149,19 @@ module AwsSdk
         end
       end
 
+
       struct ListStreamConsumersInput
         include JSON::Serializable
 
         # The ARN of the Kinesis data stream for which you want to list the registered consumers. For more
         # information, see Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces .
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
         # The maximum number of consumers that you want a single call of ListStreamConsumers to return. The
         # default value is 100. If you specify a value greater than 100, at most 100 results are returned.
+
         @[JSON::Field(key: "MaxResults")]
         getter max_results : Int32?
 
@@ -1029,6 +1178,7 @@ module AwsSdk
         # next set of consumers. Tokens expire after 300 seconds. When you obtain a value for NextToken in the
         # response to a call to ListStreamConsumers , you have 300 seconds to use that value. If you specify
         # an expired token in a call to ListStreamConsumers , you get ExpiredNextTokenException .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1036,6 +1186,7 @@ module AwsSdk
         # you create a data stream and then delete it, and you later create another data stream with the same
         # name, you can use this input parameter to specify which of the two streams you want to list the
         # consumers for. You can't specify this parameter if you specify the NextToken parameter.
+
         @[JSON::Field(key: "StreamCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter stream_creation_timestamp : Time?
 
@@ -1048,10 +1199,12 @@ module AwsSdk
         end
       end
 
+
       struct ListStreamConsumersOutput
         include JSON::Serializable
 
         # An array of JSON objects. Each object represents one registered consumer.
+
         @[JSON::Field(key: "Consumers")]
         getter consumers : Array(Types::Consumer)?
 
@@ -1064,6 +1217,7 @@ module AwsSdk
         # after 300 seconds. When you obtain a value for NextToken in the response to a call to
         # ListStreamConsumers , you have 300 seconds to use that value. If you specify an expired token in a
         # call to ListStreamConsumers , you get ExpiredNextTokenException .
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
 
@@ -1075,17 +1229,21 @@ module AwsSdk
       end
 
       # Represents the input for ListStreams .
+
       struct ListStreamsInput
         include JSON::Serializable
 
         # The name of the stream to start the list with.
+
         @[JSON::Field(key: "ExclusiveStartStreamName")]
         getter exclusive_start_stream_name : String?
 
         # The maximum number of streams to list. The default value is 100. If you specify a value greater than
         # 100, at most 100 results are returned.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
+
 
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
@@ -1099,20 +1257,25 @@ module AwsSdk
       end
 
       # Represents the output for ListStreams .
+
       struct ListStreamsOutput
         include JSON::Serializable
 
         # If set to true , there are more streams available to list.
+
         @[JSON::Field(key: "HasMoreStreams")]
         getter has_more_streams : Bool
 
         # The names of the streams that are associated with the Amazon Web Services account making the
         # ListStreams request.
+
         @[JSON::Field(key: "StreamNames")]
         getter stream_names : Array(String)
 
+
         @[JSON::Field(key: "NextToken")]
         getter next_token : String?
+
 
         @[JSON::Field(key: "StreamSummaries")]
         getter stream_summaries : Array(Types::StreamSummary)?
@@ -1126,10 +1289,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Kinesis resource for which to list tags.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -1139,10 +1304,12 @@ module AwsSdk
         end
       end
 
+
       struct ListTagsForResourceOutput
         include JSON::Serializable
 
         # An array of tags associated with the specified Kinesis resource.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1153,25 +1320,30 @@ module AwsSdk
       end
 
       # Represents the input for ListTagsForStream .
+
       struct ListTagsForStreamInput
         include JSON::Serializable
 
         # The key to use as the starting point for the list of tags. If this parameter is set,
         # ListTagsForStream gets all tags that occur after ExclusiveStartTagKey .
+
         @[JSON::Field(key: "ExclusiveStartTagKey")]
         getter exclusive_start_tag_key : String?
 
         # The number of tags to return. If this number is less than the total number of tags associated with
         # the stream, HasMoreTags is set to true . To list additional tags, set ExclusiveStartTagKey to the
         # last key in the response.
+
         @[JSON::Field(key: "Limit")]
         getter limit : Int32?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1185,16 +1357,19 @@ module AwsSdk
       end
 
       # Represents the output for ListTagsForStream .
+
       struct ListTagsForStreamOutput
         include JSON::Serializable
 
         # If set to true , more tags are available. To request additional tags, set ExclusiveStartTagKey to
         # the key of the last tag returned.
+
         @[JSON::Field(key: "HasMoreTags")]
         getter has_more_tags : Bool
 
         # A list of tags associated with StreamName , starting with the first tag after ExclusiveStartTagKey
         # and up to the specified Limit .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)
 
@@ -1206,22 +1381,27 @@ module AwsSdk
       end
 
       # Represents the input for MergeShards .
+
       struct MergeShardsInput
         include JSON::Serializable
 
         # The shard ID of the adjacent shard for the merge.
+
         @[JSON::Field(key: "AdjacentShardToMerge")]
         getter adjacent_shard_to_merge : String
 
         # The shard ID of the shard to combine with the adjacent shard for the merge.
+
         @[JSON::Field(key: "ShardToMerge")]
         getter shard_to_merge : String
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for the merge.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1241,10 +1421,12 @@ module AwsSdk
       # minimum commitment period ends, the commitment will be scheduled for automatic disable at the
       # earliest allowed end time. You can cancel a pending disable by enabling the commitment again before
       # the earliest allowed end time.
+
       struct MinimumThroughputBillingCommitmentInput
         include JSON::Serializable
 
         # The desired status of the minimum throughput billing commitment.
+
         @[JSON::Field(key: "Status")]
         getter status : String
 
@@ -1255,22 +1437,27 @@ module AwsSdk
       end
 
       # Represents the current status of minimum throughput billing commitment for an account.
+
       struct MinimumThroughputBillingCommitmentOutput
         include JSON::Serializable
 
         # The current status of the minimum throughput billing commitment.
+
         @[JSON::Field(key: "Status")]
         getter status : String
 
         # The earliest timestamp when the commitment can be ended.
+
         @[JSON::Field(key: "EarliestAllowedEndAt", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter earliest_allowed_end_at : Time?
 
         # The timestamp when the commitment was ended.
+
         @[JSON::Field(key: "EndedAt", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter ended_at : Time?
 
         # The timestamp when the commitment was started.
+
         @[JSON::Field(key: "StartedAt", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter started_at : Time?
 
@@ -1287,10 +1474,12 @@ module AwsSdk
       # throughput. Reduce the frequency or size of your requests. For more information, see Streams Limits
       # in the Amazon Kinesis Data Streams Developer Guide , and Error Retries and Exponential Backoff in
       # Amazon Web Services in the Amazon Web Services General Reference .
+
       struct ProvisionedThroughputExceededException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -1301,12 +1490,14 @@ module AwsSdk
       end
 
       # Represents the input for PutRecord .
+
       struct PutRecordInput
         include JSON::Serializable
 
         # The data blob to put into the record, which is base64-encoded when the blob is serialized. When the
         # data blob (the payload before base64-encoding) is added to the partition key size, the total size
         # must not exceed the maximum record size (1 MiB).
+
         @[JSON::Field(key: "Data")]
         getter data : Bytes
 
@@ -1316,11 +1507,13 @@ module AwsSdk
         # specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer
         # values and to map associated data records to shards. As a result of this hashing mechanism, all data
         # records with the same partition key map to the same shard within the stream.
+
         @[JSON::Field(key: "PartitionKey")]
         getter partition_key : String
 
         # The hash value used to explicitly determine the shard the data record is assigned to by overriding
         # the partition key hash.
+
         @[JSON::Field(key: "ExplicitHashKey")]
         getter explicit_hash_key : String?
 
@@ -1328,14 +1521,17 @@ module AwsSdk
         # partition key. Usage: set the SequenceNumberForOrdering of record n to the sequence number of record
         # n-1 (as returned in the result when putting record n-1 ). If this parameter is not set, records are
         # coarsely ordered based on arrival time.
+
         @[JSON::Field(key: "SequenceNumberForOrdering")]
         getter sequence_number_for_ordering : String?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to put the data record into.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1351,22 +1547,26 @@ module AwsSdk
       end
 
       # Represents the output for PutRecord .
+
       struct PutRecordOutput
         include JSON::Serializable
 
         # The sequence number identifier that was assigned to the put data record. The sequence number for the
         # record is unique across all records in the stream. A sequence number is the identifier associated
         # with every record put into the stream.
+
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String
 
         # The shard ID of the shard where the data record was placed.
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String
 
         # The encryption type to use on the record. This parameter can be one of the following values: NONE :
         # Do not encrypt the records in the stream. KMS : Use server-side encryption on the records in the
         # stream using a customer-managed Amazon Web Services KMS key.
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String?
 
@@ -1379,18 +1579,22 @@ module AwsSdk
       end
 
       # A PutRecords request.
+
       struct PutRecordsInput
         include JSON::Serializable
 
         # The records associated with the request.
+
         @[JSON::Field(key: "Records")]
         getter records : Array(Types::PutRecordsRequestEntry)
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The stream name associated with the request.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1403,22 +1607,26 @@ module AwsSdk
       end
 
       # PutRecords results.
+
       struct PutRecordsOutput
         include JSON::Serializable
 
         # An array of successfully and unsuccessfully processed record results. A record that is successfully
         # added to a stream includes SequenceNumber and ShardId in the result. A record that fails to be added
         # to a stream includes ErrorCode and ErrorMessage in the result.
+
         @[JSON::Field(key: "Records")]
         getter records : Array(Types::PutRecordsResultEntry)
 
         # The encryption type used on the records. This parameter can be one of the following values: NONE :
         # Do not encrypt the records. KMS : Use server-side encryption on the records using a customer-managed
         # Amazon Web Services KMS key.
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String?
 
         # The number of unsuccessfully processed records in a PutRecords request.
+
         @[JSON::Field(key: "FailedRecordCount")]
         getter failed_record_count : Int32?
 
@@ -1431,12 +1639,14 @@ module AwsSdk
       end
 
       # Represents the output for PutRecords .
+
       struct PutRecordsRequestEntry
         include JSON::Serializable
 
         # The data blob to put into the record, which is base64-encoded when the blob is serialized. When the
         # data blob (the payload before base64-encoding) is added to the partition key size, the total size
         # must not exceed the maximum record size (1 MiB).
+
         @[JSON::Field(key: "Data")]
         getter data : Bytes
 
@@ -1446,11 +1656,13 @@ module AwsSdk
         # specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer
         # values and to map associated data records to shards. As a result of this hashing mechanism, all data
         # records with the same partition key map to the same shard within the stream.
+
         @[JSON::Field(key: "PartitionKey")]
         getter partition_key : String
 
         # The hash value used to determine explicitly the shard that the data record is assigned to by
         # overriding the partition key hash.
+
         @[JSON::Field(key: "ExplicitHashKey")]
         getter explicit_hash_key : String?
 
@@ -1465,11 +1677,13 @@ module AwsSdk
       # Represents the result of an individual record from a PutRecords request. A record that is
       # successfully added to a stream includes SequenceNumber and ShardId in the result. A record that
       # fails to be added to the stream includes ErrorCode and ErrorMessage in the result.
+
       struct PutRecordsResultEntry
         include JSON::Serializable
 
         # The error code for an individual record result. ErrorCodes can be either
         # ProvisionedThroughputExceededException or InternalFailure .
+
         @[JSON::Field(key: "ErrorCode")]
         getter error_code : String?
 
@@ -1477,14 +1691,17 @@ module AwsSdk
         # ProvisionedThroughputExceededException has an error message that includes the account ID, stream
         # name, and shard ID. An ErrorCode value of InternalFailure has the error message "Internal Service
         # Failure" .
+
         @[JSON::Field(key: "ErrorMessage")]
         getter error_message : String?
 
         # The sequence number for an individual record result.
+
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String?
 
         # The shard ID for an individual record result.
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String?
 
@@ -1497,15 +1714,18 @@ module AwsSdk
         end
       end
 
+
       struct PutResourcePolicyInput
         include JSON::Serializable
 
         # Details of the resource policy. It must include the identity of the principal and the actions
         # allowed on this resource. This is formatted as a JSON string.
+
         @[JSON::Field(key: "Policy")]
         getter policy : String
 
         # The Amazon Resource Name (ARN) of the data stream or consumer.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
@@ -1518,6 +1738,7 @@ module AwsSdk
 
       # The unit of data of the Kinesis data stream, which is composed of a sequence number, a partition
       # key, and a data blob.
+
       struct Record
         include JSON::Serializable
 
@@ -1525,24 +1746,29 @@ module AwsSdk
         # not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload
         # before base64-encoding) is added to the partition key size, the total size must not exceed the
         # maximum record size (1 MiB).
+
         @[JSON::Field(key: "Data")]
         getter data : Bytes
 
         # Identifies which shard in the stream the data record is assigned to.
+
         @[JSON::Field(key: "PartitionKey")]
         getter partition_key : String
 
         # The unique identifier of the record within its shard.
+
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String
 
         # The approximate time that the record was inserted into the stream.
+
         @[JSON::Field(key: "ApproximateArrivalTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter approximate_arrival_timestamp : Time?
 
         # The encryption type used on the record. This parameter can be one of the following values: NONE : Do
         # not encrypt the records in the stream. KMS : Use server-side encryption on the records in the stream
         # using a customer-managed Amazon Web Services KMS key.
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String?
 
@@ -1556,20 +1782,24 @@ module AwsSdk
         end
       end
 
+
       struct RegisterStreamConsumerInput
         include JSON::Serializable
 
         # For a given Kinesis data stream, each consumer must have a unique name. However, consumer names
         # don't have to be unique across data streams.
+
         @[JSON::Field(key: "ConsumerName")]
         getter consumer_name : String
 
         # The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see
         # Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces .
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
         # A set of up to 50 key-value pairs. A tag consists of a required key and an optional value.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)?
 
@@ -1581,11 +1811,13 @@ module AwsSdk
         end
       end
 
+
       struct RegisterStreamConsumerOutput
         include JSON::Serializable
 
         # An object that represents the details of the consumer you registered. When you register a consumer,
         # it gets an ARN that is generated by Kinesis Data Streams.
+
         @[JSON::Field(key: "Consumer")]
         getter consumer : Types::Consumer
 
@@ -1596,18 +1828,22 @@ module AwsSdk
       end
 
       # Represents the input for RemoveTagsFromStream .
+
       struct RemoveTagsFromStreamInput
         include JSON::Serializable
 
         # A list of tag keys. Each corresponding tag is removed from the stream.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1621,10 +1857,12 @@ module AwsSdk
 
       # The resource is not available for this operation. For successful operation, the resource must be in
       # the ACTIVE state.
+
       struct ResourceInUseException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -1635,10 +1873,12 @@ module AwsSdk
       end
 
       # The requested resource could not be found. The stream might not be specified correctly.
+
       struct ResourceNotFoundException
         include JSON::Serializable
 
         # A message that provides information about the error.
+
         @[JSON::Field(key: "message")]
         getter message : String?
 
@@ -1649,15 +1889,18 @@ module AwsSdk
       end
 
       # The range of possible sequence numbers for the shard.
+
       struct SequenceNumberRange
         include JSON::Serializable
 
         # The starting sequence number for the range.
+
         @[JSON::Field(key: "StartingSequenceNumber")]
         getter starting_sequence_number : String
 
         # The ending sequence number for the range. Shards that are in the OPEN state have an ending sequence
         # number of null .
+
         @[JSON::Field(key: "EndingSequenceNumber")]
         getter ending_sequence_number : String?
 
@@ -1669,27 +1912,33 @@ module AwsSdk
       end
 
       # A uniquely identified group of data records in a Kinesis data stream.
+
       struct Shard
         include JSON::Serializable
 
         # The range of possible hash key values for the shard, which is a set of ordered contiguous positive
         # integers.
+
         @[JSON::Field(key: "HashKeyRange")]
         getter hash_key_range : Types::HashKeyRange
 
         # The range of possible sequence numbers for the shard.
+
         @[JSON::Field(key: "SequenceNumberRange")]
         getter sequence_number_range : Types::SequenceNumberRange
 
         # The unique identifier of the shard within the stream.
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String
 
         # The shard ID of the shard adjacent to the shard's parent.
+
         @[JSON::Field(key: "AdjacentParentShardId")]
         getter adjacent_parent_shard_id : String?
 
         # The shard ID of the shard's parent.
+
         @[JSON::Field(key: "ParentShardId")]
         getter parent_shard_id : String?
 
@@ -1704,6 +1953,7 @@ module AwsSdk
       end
 
       # The request parameter used to filter out the response of the ListShards API.
+
       struct ShardFilter
         include JSON::Serializable
 
@@ -1718,17 +1968,20 @@ module AwsSdk
         # still open. FROM_TIMESTAMP - the response incldues all closed shards whose end timestamp is greater
         # than or equal to the given timestamp and also all open shards. Corrected to TRIM_HORIZON of the data
         # stream if FROM_TIMESTAMP is less than the TRIM_HORIZON value.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The exclusive start shardID speified in the ShardFilter parameter. This property can only be used if
         # the AFTER_SHARD_ID shard type is specified.
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String?
 
         # The timestamps specified in the ShardFilter parameter. A timestamp is a Unix epoch date with
         # precision in milliseconds. For example, 2016-04-04T19:58:46.480-00:00 or 1459799926.480. This
         # property can only be used if FROM_TIMESTAMP or AT_TIMESTAMP shard types are specified.
+
         @[JSON::Field(key: "Timestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter timestamp : Time?
 
@@ -1741,6 +1994,7 @@ module AwsSdk
       end
 
       # Represents the input for SplitShard .
+
       struct SplitShardInput
         include JSON::Serializable
 
@@ -1750,18 +2004,22 @@ module AwsSdk
         # NewStartingHashKey hash key value and all higher hash key values in hash key range are distributed
         # to one of the child shards. All the lower hash key values in the range are distributed to the other
         # child shard.
+
         @[JSON::Field(key: "NewStartingHashKey")]
         getter new_starting_hash_key : String
 
         # The shard ID of the shard to split.
+
         @[JSON::Field(key: "ShardToSplit")]
         getter shard_to_split : String
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for the shard split.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1774,10 +2032,12 @@ module AwsSdk
         end
       end
 
+
       struct StartStreamEncryptionInput
         include JSON::Serializable
 
         # The encryption type to use. The only valid value is KMS .
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String
 
@@ -1789,14 +2049,17 @@ module AwsSdk
         # arn:aws:kms:us-east-1:123456789012:alias/MyAliasName Globally unique key ID example:
         # 12345678-1234-1234-1234-123456789012 Alias name example: alias/MyAliasName Master key owned by
         # Kinesis Data Streams: alias/aws/kinesis
+
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream for which to start encrypting records.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1810,6 +2073,7 @@ module AwsSdk
       end
 
       # The starting position in the data stream from which to start streaming.
+
       struct StartingPosition
         include JSON::Serializable
 
@@ -1821,11 +2085,13 @@ module AwsSdk
         # untrimmed record in the shard, which is the oldest data record in the shard. LATEST : Start
         # streaming just after the most recent record in the shard, so that you always read the most recent
         # data in the shard.
+
         @[JSON::Field(key: "Type")]
         getter type : String
 
         # The sequence number of the data record in the shard from which to start streaming. To specify a
         # sequence number, set StartingPosition to AT_SEQUENCE_NUMBER or AFTER_SEQUENCE_NUMBER .
+
         @[JSON::Field(key: "SequenceNumber")]
         getter sequence_number : String?
 
@@ -1835,6 +2101,7 @@ module AwsSdk
         # exact time stamp does not exist, records will be streamed from the next (later) record. If the time
         # stamp is older than the current trim horizon, records will be streamed from the oldest untrimmed
         # data record ( TRIM_HORIZON ).
+
         @[JSON::Field(key: "Timestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter timestamp : Time?
 
@@ -1846,10 +2113,12 @@ module AwsSdk
         end
       end
 
+
       struct StopStreamEncryptionInput
         include JSON::Serializable
 
         # The encryption type. The only valid value is KMS .
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String
 
@@ -1861,14 +2130,17 @@ module AwsSdk
         # arn:aws:kms:us-east-1:123456789012:alias/MyAliasName Globally unique key ID example:
         # 12345678-1234-1234-1234-123456789012 Alias name example: alias/MyAliasName Master key owned by
         # Kinesis Data Streams: alias/aws/kinesis
+
         @[JSON::Field(key: "KeyId")]
         getter key_id : String
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream on which to stop encrypting records.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -1882,34 +2154,42 @@ module AwsSdk
       end
 
       # Represents the output for DescribeStream .
+
       struct StreamDescription
         include JSON::Serializable
 
         # Represents the current enhanced monitoring settings of the stream.
+
         @[JSON::Field(key: "EnhancedMonitoring")]
         getter enhanced_monitoring : Array(Types::EnhancedMetrics)
 
         # If set to true , more shards in the stream are available to describe.
+
         @[JSON::Field(key: "HasMoreShards")]
         getter has_more_shards : Bool
 
         # The current retention period, in hours. Minimum value of 24. Maximum value of 168.
+
         @[JSON::Field(key: "RetentionPeriodHours")]
         getter retention_period_hours : Int32
 
         # The shards that comprise the stream.
+
         @[JSON::Field(key: "Shards")]
         getter shards : Array(Types::Shard)
 
         # The Amazon Resource Name (ARN) for the stream being described.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
         # The approximate time that the stream was created.
+
         @[JSON::Field(key: "StreamCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter stream_creation_timestamp : Time
 
         # The name of the stream being described.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String
 
@@ -1920,12 +2200,14 @@ module AwsSdk
         # ready for read and write operations or deletion. You should perform read and write operations only
         # on an ACTIVE stream. UPDATING - Shards in the stream are being merged or split. Read and write
         # operations continue to work while the stream is in the UPDATING state.
+
         @[JSON::Field(key: "StreamStatus")]
         getter stream_status : String
 
         # The server-side encryption type used on the stream. This parameter can be one of the following
         # values: NONE : Do not encrypt the records in the stream. KMS : Use server-side encryption on the
         # records in the stream using a customer-managed Amazon Web Services KMS key.
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String?
 
@@ -1937,12 +2219,14 @@ module AwsSdk
         # arn:aws:kms:us-east-1:123456789012:alias/MyAliasName Globally unique key ID example:
         # 12345678-1234-1234-1234-123456789012 Alias name example: alias/MyAliasName Master key owned by
         # Kinesis Data Streams: alias/aws/kinesis
+
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # Specifies the capacity mode to which you want to set your data stream. Currently, in Kinesis Data
         # Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your
         # data streams.
+
         @[JSON::Field(key: "StreamModeDetails")]
         getter stream_mode_details : Types::StreamModeDetails?
 
@@ -1963,30 +2247,37 @@ module AwsSdk
       end
 
       # Represents the output for DescribeStreamSummary
+
       struct StreamDescriptionSummary
         include JSON::Serializable
 
         # Represents the current enhanced monitoring settings of the stream.
+
         @[JSON::Field(key: "EnhancedMonitoring")]
         getter enhanced_monitoring : Array(Types::EnhancedMetrics)
 
         # The number of open shards in the stream.
+
         @[JSON::Field(key: "OpenShardCount")]
         getter open_shard_count : Int32
 
         # The current retention period, in hours.
+
         @[JSON::Field(key: "RetentionPeriodHours")]
         getter retention_period_hours : Int32
 
         # The Amazon Resource Name (ARN) for the stream being described.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
         # The approximate time that the stream was created.
+
         @[JSON::Field(key: "StreamCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter stream_creation_timestamp : Time
 
         # The name of the stream being described.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String
 
@@ -1997,14 +2288,17 @@ module AwsSdk
         # ready for read and write operations or deletion. You should perform read and write operations only
         # on an ACTIVE stream. UPDATING - Shards in the stream are being merged or split. Read and write
         # operations continue to work while the stream is in the UPDATING state.
+
         @[JSON::Field(key: "StreamStatus")]
         getter stream_status : String
 
         # The number of enhanced fan-out consumers registered with the stream.
+
         @[JSON::Field(key: "ConsumerCount")]
         getter consumer_count : Int32?
 
         # The encryption type used. This value is one of the following: KMS NONE
+
         @[JSON::Field(key: "EncryptionType")]
         getter encryption_type : String?
 
@@ -2016,22 +2310,26 @@ module AwsSdk
         # arn:aws:kms:us-east-1:123456789012:alias/MyAliasName Globally unique key ID example:
         # 12345678-1234-1234-1234-123456789012 Alias name example: alias/MyAliasName Master key owned by
         # Kinesis Data Streams: alias/aws/kinesis
+
         @[JSON::Field(key: "KeyId")]
         getter key_id : String?
 
         # The maximum record size of a single record in kibibyte (KiB) that you can write to, and read from a
         # stream.
+
         @[JSON::Field(key: "MaxRecordSizeInKiB")]
         getter max_record_size_in_ki_b : Int32?
 
         # Specifies the capacity mode to which you want to set your data stream. Currently, in Kinesis Data
         # Streams, you can choose between an on-demand ycapacity mode and a provisioned capacity mode for your
         # data streams.
+
         @[JSON::Field(key: "StreamModeDetails")]
         getter stream_mode_details : Types::StreamModeDetails?
 
         # The warm throughput in MB/s for the stream. This represents the throughput capacity that will be
         # immediately available for write operations.
+
         @[JSON::Field(key: "WarmThroughput")]
         getter warm_throughput : Types::WarmThroughputObject?
 
@@ -2056,12 +2354,14 @@ module AwsSdk
       # Specifies the capacity mode to which you want to set your data stream. Currently, in Kinesis Data
       # Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your
       # data streams.
+
       struct StreamModeDetails
         include JSON::Serializable
 
         # Specifies the capacity mode to which you want to set your data stream. Currently, in Kinesis Data
         # Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your
         # data streams.
+
         @[JSON::Field(key: "StreamMode")]
         getter stream_mode : String
 
@@ -2072,24 +2372,30 @@ module AwsSdk
       end
 
       # The summary of a stream.
+
       struct StreamSummary
         include JSON::Serializable
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
         # The name of a stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String
 
         # The status of the stream.
+
         @[JSON::Field(key: "StreamStatus")]
         getter stream_status : String
 
         # The timestamp at which the stream was created.
+
         @[JSON::Field(key: "StreamCreationTimestamp", converter: AwsSdk::Runtime::UnixTimestampConverter)]
         getter stream_creation_timestamp : Time?
+
 
         @[JSON::Field(key: "StreamModeDetails")]
         getter stream_mode_details : Types::StreamModeDetails?
@@ -2106,25 +2412,30 @@ module AwsSdk
 
       # After you call SubscribeToShard , Kinesis Data Streams sends events of this type over an HTTP/2
       # connection to your consumer.
+
       struct SubscribeToShardEvent
         include JSON::Serializable
 
         # Use this as SequenceNumber in the next call to SubscribeToShard , with StartingPosition set to
         # AT_SEQUENCE_NUMBER or AFTER_SEQUENCE_NUMBER . Use ContinuationSequenceNumber for checkpointing
         # because it captures your shard progress even when no data is written to the shard.
+
         @[JSON::Field(key: "ContinuationSequenceNumber")]
         getter continuation_sequence_number : String
 
         # The number of milliseconds the read records are from the tip of the stream, indicating how far
         # behind current time the consumer is. A value of zero indicates that record processing is caught up,
         # and there are no new records to process at this moment.
+
         @[JSON::Field(key: "MillisBehindLatest")]
         getter millis_behind_latest : Int64
+
 
         @[JSON::Field(key: "Records")]
         getter records : Array(Types::Record)
 
         # The list of the child shards of the current shard, returned only at the end of the current shard.
+
         @[JSON::Field(key: "ChildShards")]
         getter child_shards : Array(Types::ChildShard)?
 
@@ -2139,39 +2450,50 @@ module AwsSdk
 
       # This is a tagged union for all of the types of events an enhanced fan-out consumer can receive over
       # HTTP/2 after a call to SubscribeToShard .
+
       struct SubscribeToShardEventStream
         include JSON::Serializable
 
         # After you call SubscribeToShard , Kinesis Data Streams sends events of this type to your consumer.
         # For an example of how to handle these events, see Enhanced Fan-Out Using the Kinesis Data Streams
         # API .
+
         @[JSON::Field(key: "SubscribeToShardEvent")]
         getter subscribe_to_shard_event : Types::SubscribeToShardEvent
 
         # The processing of the request failed because of an unknown error, exception, or failure.
+
         @[JSON::Field(key: "InternalFailureException")]
         getter internal_failure_exception : Types::InternalFailureException?
+
 
         @[JSON::Field(key: "KMSAccessDeniedException")]
         getter kms_access_denied_exception : Types::KMSAccessDeniedException?
 
+
         @[JSON::Field(key: "KMSDisabledException")]
         getter kms_disabled_exception : Types::KMSDisabledException?
+
 
         @[JSON::Field(key: "KMSInvalidStateException")]
         getter kms_invalid_state_exception : Types::KMSInvalidStateException?
 
+
         @[JSON::Field(key: "KMSNotFoundException")]
         getter kms_not_found_exception : Types::KMSNotFoundException?
+
 
         @[JSON::Field(key: "KMSOptInRequired")]
         getter kms_opt_in_required : Types::KMSOptInRequired?
 
+
         @[JSON::Field(key: "KMSThrottlingException")]
         getter kms_throttling_exception : Types::KMSThrottlingException?
 
+
         @[JSON::Field(key: "ResourceInUseException")]
         getter resource_in_use_exception : Types::ResourceInUseException?
+
 
         @[JSON::Field(key: "ResourceNotFoundException")]
         getter resource_not_found_exception : Types::ResourceNotFoundException?
@@ -2191,19 +2513,23 @@ module AwsSdk
         end
       end
 
+
       struct SubscribeToShardInput
         include JSON::Serializable
 
         # For this parameter, use the value you obtained when you called RegisterStreamConsumer .
+
         @[JSON::Field(key: "ConsumerARN")]
         getter consumer_arn : String
 
         # The ID of the shard you want to subscribe to. To see a list of all the shards for a given stream,
         # use ListShards .
+
         @[JSON::Field(key: "ShardId")]
         getter shard_id : String
 
         # The starting position in the data stream from which to start streaming.
+
         @[JSON::Field(key: "StartingPosition")]
         getter starting_position : Types::StartingPosition
 
@@ -2215,10 +2541,12 @@ module AwsSdk
         end
       end
 
+
       struct SubscribeToShardOutput
         include JSON::Serializable
 
         # The event stream that your consumer can use to read records from the shard.
+
         @[JSON::Field(key: "EventStream")]
         getter event_stream : Types::SubscribeToShardEventStream
 
@@ -2229,16 +2557,19 @@ module AwsSdk
       end
 
       # Metadata assigned to the stream or consumer, consisting of a key-value pair.
+
       struct Tag
         include JSON::Serializable
 
         # A unique identifier for the tag. Maximum length: 128 characters. Valid characters: Unicode letters,
         # digits, white space, _ . / = + - % @
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # An optional string, typically used to describe or define the tag. Maximum length: 256 characters.
         # Valid characters: Unicode letters, digits, white space, _ . / = + - % @
+
         @[JSON::Field(key: "Value")]
         getter value : String?
 
@@ -2249,16 +2580,19 @@ module AwsSdk
         end
       end
 
+
       struct TagResourceInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Kinesis resource to which to add tags.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # An array of tags to be added to the Kinesis resource. A tag consists of a required key and an
         # optional value. You can add up to 50 tags per resource. Tags may only contain Unicode letters,
         # digits, white space, or these symbols: _ . : / = + - @.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Hash(String, String)
 
@@ -2269,15 +2603,18 @@ module AwsSdk
         end
       end
 
+
       struct UntagResourceInput
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the Kinesis resource from which to remove tags.
+
         @[JSON::Field(key: "ResourceARN")]
         getter resource_arn : String
 
         # A list of tag key-value pairs. Existing tags of the resource whose keys are members of this list
         # will be removed from the Kinesis resource.
+
         @[JSON::Field(key: "TagKeys")]
         getter tag_keys : Array(String)
 
@@ -2288,10 +2625,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateAccountSettingsInput
         include JSON::Serializable
 
         # Specifies the minimum throughput billing commitment configuration for your account.
+
         @[JSON::Field(key: "MinimumThroughputBillingCommitment")]
         getter minimum_throughput_billing_commitment : Types::MinimumThroughputBillingCommitmentInput
 
@@ -2301,10 +2640,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateAccountSettingsOutput
         include JSON::Serializable
 
         # The updated configuration of the minimum throughput billing commitment for your account.
+
         @[JSON::Field(key: "MinimumThroughputBillingCommitment")]
         getter minimum_throughput_billing_commitment : Types::MinimumThroughputBillingCommitmentOutput?
 
@@ -2314,16 +2655,19 @@ module AwsSdk
         end
       end
 
+
       struct UpdateMaxRecordSizeInput
         include JSON::Serializable
 
         # The maximum record size of a single record in KiB that you can write to, and read from a stream.
         # Specify a value between 1024 and 10240 KiB (1 to 10 MiB). If you specify a value that is out of this
         # range, UpdateMaxRecordSize sends back an ValidationException message.
+
         @[JSON::Field(key: "MaxRecordSizeInKiB")]
         getter max_record_size_in_ki_b : Int32
 
         # The Amazon Resource Name (ARN) of the stream for the MaxRecordSize update.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
@@ -2334,10 +2678,12 @@ module AwsSdk
         end
       end
 
+
       struct UpdateShardCountInput
         include JSON::Serializable
 
         # The scaling type. Uniform scaling creates shards of equal size.
+
         @[JSON::Field(key: "ScalingType")]
         getter scaling_type : String
 
@@ -2347,14 +2693,17 @@ module AwsSdk
         # stream (the default limit for shard count per stream is 10000 per account per region), unless you
         # request a limit increase. Scale a stream with more than 10000 shards down unless you set this value
         # to less than 10000 shards.
+
         @[JSON::Field(key: "TargetShardCount")]
         getter target_shard_count : Int32
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -2367,22 +2716,27 @@ module AwsSdk
         end
       end
 
+
       struct UpdateShardCountOutput
         include JSON::Serializable
 
         # The current number of shards.
+
         @[JSON::Field(key: "CurrentShardCount")]
         getter current_shard_count : Int32?
 
         # The ARN of the stream.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
         # The updated number of shards.
+
         @[JSON::Field(key: "TargetShardCount")]
         getter target_shard_count : Int32?
 
@@ -2395,22 +2749,26 @@ module AwsSdk
         end
       end
 
+
       struct UpdateStreamModeInput
         include JSON::Serializable
 
         # Specifies the ARN of the data stream whose capacity mode you want to update.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String
 
         # Specifies the capacity mode to which you want to set your data stream. Currently, in Kinesis Data
         # Streams, you can choose between an on-demand capacity mode and a provisioned capacity mode for your
         # data streams.
+
         @[JSON::Field(key: "StreamModeDetails")]
         getter stream_mode_details : Types::StreamModeDetails
 
         # The target warm throughput in MB/s that the stream should be scaled to handle. This represents the
         # throughput capacity that will be immediately available for write operations. This field is only
         # valid when the stream mode is being updated to on-demand.
+
         @[JSON::Field(key: "WarmThroughputMiBps")]
         getter warm_throughput_mi_bps : Int32?
 
@@ -2422,19 +2780,23 @@ module AwsSdk
         end
       end
 
+
       struct UpdateStreamWarmThroughputInput
         include JSON::Serializable
 
         # The target warm throughput in MB/s that the stream should be scaled to handle. This represents the
         # throughput capacity that will be immediately available for write operations.
+
         @[JSON::Field(key: "WarmThroughputMiBps")]
         getter warm_throughput_mi_bps : Int32
 
         # The ARN of the stream to be updated.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream to be updated.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
@@ -2446,18 +2808,22 @@ module AwsSdk
         end
       end
 
+
       struct UpdateStreamWarmThroughputOutput
         include JSON::Serializable
 
         # The ARN of the stream that was updated.
+
         @[JSON::Field(key: "StreamARN")]
         getter stream_arn : String?
 
         # The name of the stream that was updated.
+
         @[JSON::Field(key: "StreamName")]
         getter stream_name : String?
 
         # Specifies the updated warm throughput configuration for your data stream.
+
         @[JSON::Field(key: "WarmThroughput")]
         getter warm_throughput : Types::WarmThroughputObject?
 
@@ -2471,8 +2837,10 @@ module AwsSdk
 
       # Specifies that you tried to invoke this API for a data stream with the on-demand capacity mode. This
       # API is only supported for data streams with the provisioned capacity mode.
+
       struct ValidationException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -2485,16 +2853,19 @@ module AwsSdk
 
       # Represents the warm throughput configuration on the stream. This is only present for On-Demand
       # Kinesis Data Streams in accounts that have MinimumThroughputBillingCommitment enabled.
+
       struct WarmThroughputObject
         include JSON::Serializable
 
         # The current warm throughput value on the stream. This is the write throughput in MiBps that the
         # stream is currently scaled to handle.
+
         @[JSON::Field(key: "CurrentMiBps")]
         getter current_mi_bps : Int32?
 
         # The target warm throughput value on the stream. This indicates that the stream is currently scaling
         # towards this target value.
+
         @[JSON::Field(key: "TargetMiBps")]
         getter target_mi_bps : Int32?
 

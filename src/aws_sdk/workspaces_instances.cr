@@ -1,7 +1,0 @@
-require "./runtime"
-require "./workspaces_instances/client"
-require "./workspaces_instances/errors"
-require "./workspaces_instances/model"
-require "./workspaces_instances/types"
-require "./workspaces_instances/protocol/json_rpc"
-require "./customizations/workspaces_instances/customizations"

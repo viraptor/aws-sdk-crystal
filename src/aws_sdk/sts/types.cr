@@ -5,10 +5,12 @@ module AwsSdk
   module STS
     module Types
 
+
       struct AssumeRoleRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the role to assume.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -24,6 +26,7 @@ module AwsSdk
         # validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric
         # characters with no spaces. You can also include underscores or any of the following characters:
         # +=,.@-
+
         @[JSON::Field(key: "RoleSessionName")]
         getter role_session_name : String
 
@@ -44,6 +47,7 @@ module AwsSdk
         # endpoint for a console sign-in token takes a SessionDuration parameter that specifies the maximum
         # length of the console session. For more information, see Creating a URL that Enables Federated Users
         # to Access the Amazon Web Services Management Console in the IAM User Guide .
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
@@ -58,6 +62,7 @@ module AwsSdk
         # regex used to validate this parameter is a string of characters consisting of upper- and lower-case
         # alphanumeric characters with no spaces. You can also include underscores or any of the following
         # characters: +=,.@:\/-
+
         @[JSON::Field(key: "ExternalId")]
         getter external_id : String?
 
@@ -76,6 +81,7 @@ module AwsSdk
         # can fail for this limit even if your plaintext meets the other requirements. The PackedPolicySize
         # response element indicates by percentage how close the policies and tags for your request are to the
         # upper size limit. For more information about role session permissions, see Session policies .
+
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -94,6 +100,7 @@ module AwsSdk
         # calls to access resources in the account that owns the role. You cannot use session policies to
         # grant more permissions than those allowed by the identity-based policy of the role that is being
         # assumed. For more information, see Session Policies in the IAM User Guide .
+
         @[JSON::Field(key: "PolicyArns")]
         getter policy_arns : Array(Types::PolicyDescriptorType)?
 
@@ -102,6 +109,7 @@ module AwsSdk
         # a ProvidedContext value that includes a single trusted context assertion and the ARN of the context
         # provider from which the trusted context assertion was generated.
         # [{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]
+
         @[JSON::Field(key: "ProvidedContexts")]
         getter provided_contexts : Array(Types::ProvidedContext)?
 
@@ -112,6 +120,7 @@ module AwsSdk
         # arn:aws:iam::123456789012:mfa/user ). The regex used to validate this parameter is a string of
         # characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also
         # include underscores or any of the following characters: +=/:,.@-
+
         @[JSON::Field(key: "SerialNumber")]
         getter serial_number : String?
 
@@ -126,6 +135,7 @@ module AwsSdk
         # lower-case alphanumeric characters with no spaces. You can also include underscores or any of the
         # following characters: +=,.@-. You cannot use a value that begins with the text aws: . This prefix is
         # reserved for Amazon Web Services internal use.
+
         @[JSON::Field(key: "SourceIdentity")]
         getter source_identity : String?
 
@@ -148,6 +158,7 @@ module AwsSdk
         # calling session. If you pass a session tag with the same key as an inherited tag, the operation
         # fails. To view the inherited tags for a session, see the CloudTrail logs. For more information, see
         # Viewing Session Tags in CloudTrail in the IAM User Guide .
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -156,6 +167,7 @@ module AwsSdk
         # requires MFA and if the TokenCode value is missing or expired, the AssumeRole call returns an
         # "access denied" error. The format for this parameter, as described by its regex pattern, is a
         # sequence of six numeric digits.
+
         @[JSON::Field(key: "TokenCode")]
         getter token_code : String?
 
@@ -165,6 +177,7 @@ module AwsSdk
         # optional. The transitive status of a session tag does not impact its packed binary size. If you
         # choose not to specify a transitive tag key, then no tags are passed from this session to any
         # subsequent sessions.
+
         @[JSON::Field(key: "TransitiveTagKeys")]
         getter transitive_tag_keys : Array(String)?
 
@@ -187,6 +200,7 @@ module AwsSdk
 
       # Contains the response to a successful AssumeRole request, including temporary Amazon Web Services
       # credentials that can be used to make Amazon Web Services requests.
+
       struct AssumeRoleResponse
         include JSON::Serializable
 
@@ -194,18 +208,21 @@ module AwsSdk
         # refer to the resulting temporary security credentials. For example, you can reference these
         # credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN
         # and ID include the RoleSessionName that you specified when you called AssumeRole .
+
         @[JSON::Field(key: "AssumedRoleUser")]
         getter assumed_role_user : Types::AssumedRoleUser?
 
         # The temporary security credentials, which include an access key ID, a secret access key, and a
         # security (or session) token. The size of the security token that STS API operations return is not
         # fixed. We strongly recommend that you make no assumptions about the maximum size.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
 
         # A percentage value that indicates the packed size of the session policies and session tags combined
         # passed in the request. The request fails if the packed size is greater than 100 percent, which means
         # the policies and tags exceeded the allowed space.
+
         @[JSON::Field(key: "PackedPolicySize")]
         getter packed_policy_size : Int32?
 
@@ -218,6 +235,7 @@ module AwsSdk
         # taken with assumed roles in the IAM User Guide . The regex used to validate this parameter is a
         # string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You
         # can also include underscores or any of the following characters: =,.@-
+
         @[JSON::Field(key: "SourceIdentity")]
         getter source_identity : String?
 
@@ -230,19 +248,23 @@ module AwsSdk
         end
       end
 
+
       struct AssumeRoleWithSAMLRequest
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the SAML provider in IAM that describes the IdP.
+
         @[JSON::Field(key: "PrincipalArn")]
         getter principal_arn : String
 
         # The Amazon Resource Name (ARN) of the role that the caller is assuming.
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
         # The base64 encoded SAML authentication response provided by the IdP. For more information, see
         # Configuring a Relying Party and Adding Claims in the IAM User Guide .
+
         @[JSON::Field(key: "SAMLAssertion")]
         getter saml_assertion : String
 
@@ -259,6 +281,7 @@ module AwsSdk
         # the federation endpoint for a console sign-in token takes a SessionDuration parameter that specifies
         # the maximum length of the console session. For more information, see Creating a URL that Enables
         # Federated Users to Access the Amazon Web Services Management Console in the IAM User Guide .
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
@@ -278,6 +301,7 @@ module AwsSdk
         # limit even if your plaintext meets the other requirements. The PackedPolicySize response element
         # indicates by percentage how close the policies and tags for your request are to the upper size
         # limit.
+
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -296,6 +320,7 @@ module AwsSdk
         # calls to access resources in the account that owns the role. You cannot use session policies to
         # grant more permissions than those allowed by the identity-based policy of the role that is being
         # assumed. For more information, see Session Policies in the IAM User Guide .
+
         @[JSON::Field(key: "PolicyArns")]
         getter policy_arns : Array(Types::PolicyDescriptorType)?
 
@@ -312,24 +337,29 @@ module AwsSdk
 
       # Contains the response to a successful AssumeRoleWithSAML request, including temporary Amazon Web
       # Services credentials that can be used to make Amazon Web Services requests.
+
       struct AssumeRoleWithSAMLResponse
         include JSON::Serializable
 
         # The identifiers for the temporary security credentials that the operation returns.
+
         @[JSON::Field(key: "AssumedRoleUser")]
         getter assumed_role_user : Types::AssumedRoleUser?
 
         # The value of the Recipient attribute of the SubjectConfirmationData element of the SAML assertion.
+
         @[JSON::Field(key: "Audience")]
         getter audience : String?
 
         # The temporary security credentials, which include an access key ID, a secret access key, and a
         # security (or session) token. The size of the security token that STS API operations return is not
         # fixed. We strongly recommend that you make no assumptions about the maximum size.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
 
         # The value of the Issuer element of the SAML assertion.
+
         @[JSON::Field(key: "Issuer")]
         getter issuer : String?
 
@@ -338,12 +368,14 @@ module AwsSdk
         # combination of NameQualifier and Subject can be used to uniquely identify a user. The following
         # pseudocode shows how the hash value is calculated: BASE64 ( SHA1 ( "https://example.com/saml" +
         # "123456789012" + "/MySAMLIdP" ) )
+
         @[JSON::Field(key: "NameQualifier")]
         getter name_qualifier : String?
 
         # A percentage value that indicates the packed size of the session policies and session tags combined
         # passed in the request. The request fails if the packed size is greater than 100 percent, which means
         # the policies and tags exceeded the allowed space.
+
         @[JSON::Field(key: "PackedPolicySize")]
         getter packed_policy_size : Int32?
 
@@ -359,10 +391,12 @@ module AwsSdk
         # the IAM User Guide . The regex used to validate this parameter is a string of characters consisting
         # of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or
         # any of the following characters: =,.@-
+
         @[JSON::Field(key: "SourceIdentity")]
         getter source_identity : String?
 
         # The value of the NameID element in the Subject element of the SAML assertion.
+
         @[JSON::Field(key: "Subject")]
         getter subject : String?
 
@@ -371,6 +405,7 @@ module AwsSdk
         # prefix urn:oasis:names:tc:SAML:2.0:nameid-format , that prefix is removed. For example,
         # urn:oasis:names:tc:SAML:2.0:nameid-format:transient is returned as transient . If the format
         # includes any other prefix, the format is returned with no modifications.
+
         @[JSON::Field(key: "SubjectType")]
         getter subject_type : String?
 
@@ -388,6 +423,7 @@ module AwsSdk
         end
       end
 
+
       struct AssumeRoleWithWebIdentityRequest
         include JSON::Serializable
 
@@ -399,6 +435,7 @@ module AwsSdk
         # creates a risk that a user from an unintended identity pool can assume the role. For more
         # information, see Trust policies for IAM roles in Basic (Classic) authentication in the Amazon
         # Cognito Developer Guide .
+
         @[JSON::Field(key: "RoleArn")]
         getter role_arn : String
 
@@ -412,6 +449,7 @@ module AwsSdk
         # validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric
         # characters with no spaces. You can also include underscores or any of the following characters:
         # =,.@-
+
         @[JSON::Field(key: "RoleSessionName")]
         getter role_session_name : String
 
@@ -420,6 +458,7 @@ module AwsSdk
         # web identity provider before the application makes an AssumeRoleWithWebIdentity call. Timestamps in
         # the token must be formatted as either an integer or a long integer. Tokens must be signed using
         # either RSA keys (RS256, RS384, or RS512) or ECDSA keys (ES256, ES384, or ES512).
+
         @[JSON::Field(key: "WebIdentityToken")]
         getter web_identity_token : String
 
@@ -434,6 +473,7 @@ module AwsSdk
         # console sign-in token takes a SessionDuration parameter that specifies the maximum length of the
         # console session. For more information, see Creating a URL that Enables Federated Users to Access the
         # Amazon Web Services Management Console in the IAM User Guide .
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
@@ -453,6 +493,7 @@ module AwsSdk
         # limit even if your plaintext meets the other requirements. The PackedPolicySize response element
         # indicates by percentage how close the policies and tags for your request are to the upper size
         # limit.
+
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -471,6 +512,7 @@ module AwsSdk
         # calls to access resources in the account that owns the role. You cannot use session policies to
         # grant more permissions than those allowed by the identity-based policy of the role that is being
         # assumed. For more information, see Session Policies in the IAM User Guide .
+
         @[JSON::Field(key: "PolicyArns")]
         getter policy_arns : Array(Types::PolicyDescriptorType)?
 
@@ -478,6 +520,7 @@ module AwsSdk
         # specify this value for an OpenID Connect identity provider. Currently www.amazon.com and
         # graph.facebook.com are the only supported identity providers for OAuth 2.0 access tokens. Do not
         # include URL schemes and port numbers. Do not specify this value for OpenID Connect ID tokens.
+
         @[JSON::Field(key: "ProviderId")]
         getter provider_id : String?
 
@@ -495,6 +538,7 @@ module AwsSdk
 
       # Contains the response to a successful AssumeRoleWithWebIdentity request, including temporary Amazon
       # Web Services credentials that can be used to make Amazon Web Services requests.
+
       struct AssumeRoleWithWebIdentityResponse
         include JSON::Serializable
 
@@ -502,29 +546,34 @@ module AwsSdk
         # refer to the resulting temporary security credentials. For example, you can reference these
         # credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN
         # and ID include the RoleSessionName that you specified when you called AssumeRole .
+
         @[JSON::Field(key: "AssumedRoleUser")]
         getter assumed_role_user : Types::AssumedRoleUser?
 
         # The intended audience (also known as client ID) of the web identity token. This is traditionally the
         # client identifier issued to the application that requested the web identity token.
+
         @[JSON::Field(key: "Audience")]
         getter audience : String?
 
         # The temporary security credentials, which include an access key ID, a secret access key, and a
         # security token. The size of the security token that STS API operations return is not fixed. We
         # strongly recommend that you make no assumptions about the maximum size.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
 
         # A percentage value that indicates the packed size of the session policies and session tags combined
         # passed in the request. The request fails if the packed size is greater than 100 percent, which means
         # the policies and tags exceeded the allowed space.
+
         @[JSON::Field(key: "PackedPolicySize")]
         getter packed_policy_size : Int32?
 
         # The issuing authority of the web identity token presented. For OpenID Connect ID tokens, this
         # contains the value of the iss field. For OAuth 2.0 access tokens, this contains the value of the
         # ProviderId parameter that was passed in the AssumeRoleWithWebIdentity request.
+
         @[JSON::Field(key: "Provider")]
         getter provider : String?
 
@@ -541,6 +590,7 @@ module AwsSdk
         # roles in the IAM User Guide . The regex used to validate this parameter is a string of characters
         # consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include
         # underscores or any of the following characters: =,.@-
+
         @[JSON::Field(key: "SourceIdentity")]
         getter source_identity : String?
 
@@ -549,6 +599,7 @@ module AwsSdk
         # is typically unique to the user and the application that acquired the WebIdentityToken (pairwise
         # identifier). For OpenID Connect ID tokens, this field contains the value returned by the identity
         # provider as the token's sub (Subject) claim.
+
         @[JSON::Field(key: "SubjectFromWebIdentityToken")]
         getter subject_from_web_identity_token : String?
 
@@ -564,10 +615,12 @@ module AwsSdk
         end
       end
 
+
       struct AssumeRootRequest
         include JSON::Serializable
 
         # The member account principal ARN or account ID.
+
         @[JSON::Field(key: "TargetPrincipal")]
         getter target_principal : String
 
@@ -575,12 +628,14 @@ module AwsSdk
         # must use one of following Amazon Web Services managed policies to scope root session actions:
         # IAMAuditRootUserCredentials IAMCreateRootUserPassword IAMDeleteRootUserCredentials
         # S3UnlockBucketPolicy SQSUnlockQueuePolicy
+
         @[JSON::Field(key: "TaskPolicyArn")]
         getter task_policy_arn : Types::PolicyDescriptorType
 
         # The duration, in seconds, of the privileged session. The value can range from 0 seconds up to the
         # maximum session duration of 900 seconds (15 minutes). If you specify a value higher than this
         # setting, the operation fails. By default, the value is set to 900 seconds.
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
@@ -592,12 +647,14 @@ module AwsSdk
         end
       end
 
+
       struct AssumeRootResponse
         include JSON::Serializable
 
         # The temporary security credentials, which include an access key ID, a secret access key, and a
         # security token. The size of the security token that STS API operations return is not fixed. We
         # strongly recommend that you make no assumptions about the maximum size.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
 
@@ -607,6 +664,7 @@ module AwsSdk
         # roles in the IAM User Guide . The regex used to validate this parameter is a string of characters
         # consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include
         # underscores or any of the following characters: =,.@-
+
         @[JSON::Field(key: "SourceIdentity")]
         getter source_identity : String?
 
@@ -618,16 +676,19 @@ module AwsSdk
       end
 
       # The identifiers for the temporary security credentials that the operation returns.
+
       struct AssumedRoleUser
         include JSON::Serializable
 
         # The ARN of the temporary security credentials that are returned from the AssumeRole action. For more
         # information about ARNs and how to use them in policies, see IAM Identifiers in the IAM User Guide .
+
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # A unique identifier that contains the role ID and the role session name of the role that is being
         # assumed. The role ID is generated by Amazon Web Services when the role is created.
+
         @[JSON::Field(key: "AssumedRoleId")]
         getter assumed_role_id : String
 
@@ -639,22 +700,27 @@ module AwsSdk
       end
 
       # Amazon Web Services credentials for API authentication.
+
       struct Credentials
         include JSON::Serializable
 
         # The access key ID that identifies the temporary security credentials.
+
         @[JSON::Field(key: "AccessKeyId")]
         getter access_key_id : String
 
         # The date on which the current credentials expire.
+
         @[JSON::Field(key: "Expiration")]
         getter expiration : Time
 
         # The secret access key that can be used to sign requests.
+
         @[JSON::Field(key: "SecretAccessKey")]
         getter secret_access_key : String
 
         # The token that users must pass to the service API to use the temporary credentials.
+
         @[JSON::Field(key: "SessionToken")]
         getter session_token : String
 
@@ -667,10 +733,12 @@ module AwsSdk
         end
       end
 
+
       struct DecodeAuthorizationMessageRequest
         include JSON::Serializable
 
         # The encoded message that was returned with the response.
+
         @[JSON::Field(key: "EncodedMessage")]
         getter encoded_message : String
 
@@ -682,10 +750,12 @@ module AwsSdk
 
       # A document that contains additional information about the authorization status of a request from an
       # encoded message that is returned in response to an Amazon Web Services request.
+
       struct DecodeAuthorizationMessageResponse
         include JSON::Serializable
 
         # The API returns a response with the decoded message.
+
         @[JSON::Field(key: "DecodedMessage")]
         getter decoded_message : String?
 
@@ -697,8 +767,10 @@ module AwsSdk
 
       # The web identity token that was passed is expired or is not valid. Get a new identity token from the
       # identity provider and then retry the request.
+
       struct ExpiredTokenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -711,8 +783,10 @@ module AwsSdk
 
       # The trade-in token provided in the request has expired and can no longer be exchanged for
       # credentials. Request a new token and retry the operation.
+
       struct ExpiredTradeInTokenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -724,16 +798,19 @@ module AwsSdk
       end
 
       # Identifiers for the federated user that is associated with the credentials.
+
       struct FederatedUser
         include JSON::Serializable
 
         # The ARN that specifies the federated user that is associated with the credentials. For more
         # information about ARNs and how to use them in policies, see IAM Identifiers in the IAM User Guide .
+
         @[JSON::Field(key: "Arn")]
         getter arn : String
 
         # The string that identifies the federated user associated with the credentials, similar to the unique
         # ID of an IAM user.
+
         @[JSON::Field(key: "FederatedUserId")]
         getter federated_user_id : String
 
@@ -744,11 +821,13 @@ module AwsSdk
         end
       end
 
+
       struct GetAccessKeyInfoRequest
         include JSON::Serializable
 
         # The identifier of an access key. This parameter allows (through its regex pattern) a string of
         # characters that can consist of any upper- or lowercase letter or digit.
+
         @[JSON::Field(key: "AccessKeyId")]
         getter access_key_id : String
 
@@ -758,10 +837,12 @@ module AwsSdk
         end
       end
 
+
       struct GetAccessKeyInfoResponse
         include JSON::Serializable
 
         # The number used to identify the Amazon Web Services account.
+
         @[JSON::Field(key: "Account")]
         getter account : String?
 
@@ -770,6 +851,7 @@ module AwsSdk
         )
         end
       end
+
 
       struct GetCallerIdentityRequest
         include JSON::Serializable
@@ -780,20 +862,24 @@ module AwsSdk
 
       # Contains the response to a successful GetCallerIdentity request, including information about the
       # entity making the request.
+
       struct GetCallerIdentityResponse
         include JSON::Serializable
 
         # The Amazon Web Services account ID number of the account that owns or contains the calling entity.
+
         @[JSON::Field(key: "Account")]
         getter account : String?
 
         # The Amazon Web Services ARN associated with the calling entity.
+
         @[JSON::Field(key: "Arn")]
         getter arn : String?
 
         # The unique identifier of the calling entity. The exact value depends on the type of entity that is
         # making the call. The values returned are those listed in the aws:userid column in the Principal
         # table found on the Policy Variables reference page in the IAM User Guide .
+
         @[JSON::Field(key: "UserId")]
         getter user_id : String?
 
@@ -805,11 +891,13 @@ module AwsSdk
         end
       end
 
+
       struct GetDelegatedAccessTokenRequest
         include JSON::Serializable
 
         # The token to exchange for temporary Amazon Web Services credentials. This token must be valid and
         # unexpired at the time of the request.
+
         @[JSON::Field(key: "TradeInToken")]
         getter trade_in_token : String
 
@@ -819,14 +907,17 @@ module AwsSdk
         end
       end
 
+
       struct GetDelegatedAccessTokenResponse
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the principal that was assumed when obtaining the delegated access
         # token. This ARN identifies the IAM entity whose permissions are granted by the temporary
         # credentials.
+
         @[JSON::Field(key: "AssumedPrincipal")]
         getter assumed_principal : String?
+
 
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
@@ -834,6 +925,7 @@ module AwsSdk
         # The percentage of the maximum policy size that is used by the session policy. The policy size is
         # calculated as the sum of all the session policies and permission boundaries attached to the session.
         # If the packed size exceeds 100%, the request fails.
+
         @[JSON::Field(key: "PackedPolicySize")]
         getter packed_policy_size : Int32?
 
@@ -845,6 +937,7 @@ module AwsSdk
         end
       end
 
+
       struct GetFederationTokenRequest
         include JSON::Serializable
 
@@ -853,6 +946,7 @@ module AwsSdk
         # resource-based policy, such as in an Amazon S3 bucket policy. The regex used to validate this
         # parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with
         # no spaces. You can also include underscores or any of the following characters: =,.@-
+
         @[JSON::Field(key: "Name")]
         getter name : String
 
@@ -861,6 +955,7 @@ module AwsSdk
         # the default. Sessions obtained using root user credentials are restricted to a maximum of 3,600
         # seconds (one hour). If the specified duration is longer than one hour, the session obtained by using
         # root user credentials defaults to one hour.
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
@@ -885,6 +980,7 @@ module AwsSdk
         # has a separate limit. Your request can fail for this limit even if your plaintext meets the other
         # requirements. The PackedPolicySize response element indicates by percentage how close the policies
         # and tags for your request are to the upper size limit.
+
         @[JSON::Field(key: "Policy")]
         getter policy : String?
 
@@ -910,6 +1006,7 @@ module AwsSdk
         # Your request can fail for this limit even if your plaintext meets the other requirements. The
         # PackedPolicySize response element indicates by percentage how close the policies and tags for your
         # request are to the upper size limit.
+
         @[JSON::Field(key: "PolicyArns")]
         getter policy_arns : Array(Types::PolicyDescriptorType)?
 
@@ -928,6 +1025,7 @@ module AwsSdk
         # Assume that the role has the Department = Marketing tag and you pass the department = engineering
         # session tag. Department and department are not saved as separate tags, and the session tag passed in
         # the request takes precedence over the role tag.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -943,24 +1041,28 @@ module AwsSdk
 
       # Contains the response to a successful GetFederationToken request, including temporary Amazon Web
       # Services credentials that can be used to make Amazon Web Services requests.
+
       struct GetFederationTokenResponse
         include JSON::Serializable
 
         # The temporary security credentials, which include an access key ID, a secret access key, and a
         # security (or session) token. The size of the security token that STS API operations return is not
         # fixed. We strongly recommend that you make no assumptions about the maximum size.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
 
         # Identifiers for the federated user associated with the credentials (such as
         # arn:aws:sts::123456789012:federated-user/Bob or 123456789012:Bob ). You can use the federated user's
         # ARN in your resource-based policies, such as an Amazon S3 bucket policy.
+
         @[JSON::Field(key: "FederatedUser")]
         getter federated_user : Types::FederatedUser?
 
         # A percentage value that indicates the packed size of the session policies and session tags combined
         # passed in the request. The request fails if the packed size is greater than 100 percent, which means
         # the policies and tags exceeded the allowed space.
+
         @[JSON::Field(key: "PackedPolicySize")]
         getter packed_policy_size : Int32?
 
@@ -972,6 +1074,7 @@ module AwsSdk
         end
       end
 
+
       struct GetSessionTokenRequest
         include JSON::Serializable
 
@@ -980,6 +1083,7 @@ module AwsSdk
         # (12 hours) as the default. Sessions for Amazon Web Services account owners are restricted to a
         # maximum of 3,600 seconds (one hour). If the duration is longer than one hour, the session for Amazon
         # Web Services account owners defaults to one hour.
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
@@ -991,6 +1095,7 @@ module AwsSdk
         # viewing the user's security credentials. The regex used to validate this parameter is a string of
         # characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also
         # include underscores or any of the following characters: =,.@:/-
+
         @[JSON::Field(key: "SerialNumber")]
         getter serial_number : String?
 
@@ -999,6 +1104,7 @@ module AwsSdk
         # code when requesting a set of temporary security credentials. A user who fails to provide the code
         # receives an "access denied" response when requesting resources that require MFA authentication. The
         # format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.
+
         @[JSON::Field(key: "TokenCode")]
         getter token_code : String?
 
@@ -1012,12 +1118,14 @@ module AwsSdk
 
       # Contains the response to a successful GetSessionToken request, including temporary Amazon Web
       # Services credentials that can be used to make Amazon Web Services requests.
+
       struct GetSessionTokenResponse
         include JSON::Serializable
 
         # The temporary security credentials, which include an access key ID, a secret access key, and a
         # security (or session) token. The size of the security token that STS API operations return is not
         # fixed. We strongly recommend that you make no assumptions about the maximum size.
+
         @[JSON::Field(key: "Credentials")]
         getter credentials : Types::Credentials?
 
@@ -1027,17 +1135,20 @@ module AwsSdk
         end
       end
 
+
       struct GetWebIdentityTokenRequest
         include JSON::Serializable
 
         # The intended recipient of the web identity token. This value populates the aud claim in the JWT and
         # should identify the service or application that will validate and use the token. The external
         # service should verify this claim to ensure the token was intended for their use.
+
         @[JSON::Field(key: "Audience")]
         getter audience : Array(String)
 
         # The cryptographic algorithm to use for signing the JSON Web Token (JWT). Valid values are RS256 (RSA
         # with SHA-256) and ES384 (ECDSA using P-384 curve with SHA-384).
+
         @[JSON::Field(key: "SigningAlgorithm")]
         getter signing_algorithm : String
 
@@ -1045,11 +1156,13 @@ module AwsSdk
         # from 60 seconds (1 minute) to 3600 seconds (1 hour). If not specified, the default duration is 300
         # seconds (5 minutes). The token is designed to be short-lived and should be used for proof of
         # identity, then exchanged for credentials or short-lived tokens in the external service.
+
         @[JSON::Field(key: "DurationSeconds")]
         getter duration_seconds : Int32?
 
         # An optional list of tags to include in the JSON Web Token (JWT). These tags are added as custom
         # claims to the JWT and can be used by the downstream service for authorization decisions.
+
         @[JSON::Field(key: "Tags")]
         getter tags : Array(Types::Tag)?
 
@@ -1062,12 +1175,14 @@ module AwsSdk
         end
       end
 
+
       struct GetWebIdentityTokenResponse
         include JSON::Serializable
 
         # The date and time when the web identity token expires, in UTC. The expiration is determined by
         # adding the DurationSeconds value to the time the token was issued. After this time, the token should
         # no longer be considered valid.
+
         @[JSON::Field(key: "Expiration")]
         getter expiration : Time?
 
@@ -1077,6 +1192,7 @@ module AwsSdk
         # passing tags as request parameters to the GetWebIdentityToken API. The token is signed using the
         # specified signing algorithm and can be verified using the verification keys available at the
         # issuer's JWKS endpoint.
+
         @[JSON::Field(key: "WebIdentityToken")]
         getter web_identity_token : String?
 
@@ -1091,8 +1207,10 @@ module AwsSdk
       # incoming identity token could not be reached. This is often a transient error caused by network
       # conditions. Retry the request a limited number of times so that you don't exceed the request rate.
       # If the error persists, the identity provider might be down or not responding.
+
       struct IDPCommunicationErrorException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1106,8 +1224,10 @@ module AwsSdk
       # The identity provider (IdP) reported that authentication failed. This might be because the claim is
       # invalid. If this error is returned for the AssumeRoleWithWebIdentity operation, it can also mean
       # that the claim has expired or has been explicitly revoked.
+
       struct IDPRejectedClaimException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1120,8 +1240,10 @@ module AwsSdk
 
       # The error returned if the message passed to DecodeAuthorizationMessage was invalid. This can happen
       # if the token contains invalid characters, such as line breaks, or if the message has expired.
+
       struct InvalidAuthorizationMessageException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1134,8 +1256,10 @@ module AwsSdk
 
       # The web identity token that was passed could not be validated by Amazon Web Services. Get a new
       # identity token from the identity provider and then retry the request.
+
       struct InvalidIdentityTokenException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1148,8 +1272,10 @@ module AwsSdk
 
       # The requested token payload size exceeds the maximum allowed size. Reduce the number of request tags
       # included in the GetWebIdentityToken API call to reduce the token payload size.
+
       struct JWTPayloadSizeExceededException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1162,8 +1288,10 @@ module AwsSdk
 
       # The request was rejected because the policy document was malformed. The error message describes the
       # specific error.
+
       struct MalformedPolicyDocumentException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1176,8 +1304,10 @@ module AwsSdk
 
       # The outbound web identity federation feature is not enabled for this account. To use this feature,
       # you must first enable it through the Amazon Web Services Management Console or API.
+
       struct OutboundWebIdentityFederationDisabledException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1195,8 +1325,10 @@ module AwsSdk
       # For more information, see Passing Session Tags in STS in the IAM User Guide . You could receive this
       # error even though you meet other defined session policy and session tag limits. For more
       # information, see IAM and STS Entity Character Limits in the IAM User Guide .
+
       struct PackedPolicyTooLargeException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1209,12 +1341,14 @@ module AwsSdk
 
       # A reference to the IAM managed policy that is passed as a session policy for a role session or a
       # federated user session.
+
       struct PolicyDescriptorType
         include JSON::Serializable
 
         # The Amazon Resource Name (ARN) of the IAM managed policy to use as a session policy for the role.
         # For more information about ARNs, see Amazon Resource Names (ARNs) and Amazon Web Services Service
         # Namespaces in the Amazon Web Services General Reference .
+
         @[JSON::Field(key: "arn")]
         getter arn : String?
 
@@ -1227,15 +1361,18 @@ module AwsSdk
       # Contains information about the provided context. This includes the signed and encrypted trusted
       # context assertion and the context provider ARN from which the trusted context assertion was
       # generated.
+
       struct ProvidedContext
         include JSON::Serializable
 
         # The signed and encrypted trusted context assertion generated by the context provider. The trusted
         # context assertion is signed and encrypted by Amazon Web Services STS.
+
         @[JSON::Field(key: "ContextAssertion")]
         getter context_assertion : String?
 
         # The context provider ARN from which the trusted context assertion was generated.
+
         @[JSON::Field(key: "ProviderArn")]
         getter provider_arn : String?
 
@@ -1250,8 +1387,10 @@ module AwsSdk
       # credentials. The account administrator must use the IAM console to activate STS in that region. For
       # more information, see Activating and Deactivating STS in an Amazon Web Services Region in the IAM
       # User Guide .
+
       struct RegionDisabledException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1265,8 +1404,10 @@ module AwsSdk
       # The requested token duration would extend the session beyond its original expiration time. You
       # cannot use this operation to extend the lifetime of a session beyond what was granted when the
       # session was originally created.
+
       struct SessionDurationEscalationException
         include JSON::Serializable
+
 
         @[JSON::Field(key: "message")]
         getter message : String?
@@ -1280,18 +1421,21 @@ module AwsSdk
       # You can pass custom key-value pair attributes when you assume a role or federate a user. These are
       # called session tags. You can then use the session tags to control access to resources. For more
       # information, see Tagging Amazon Web Services STS Sessions in the IAM User Guide .
+
       struct Tag
         include JSON::Serializable
 
         # The key for a session tag. You can pass up to 50 session tags. The plain text session tag keys can’t
         # exceed 128 characters. For these and additional limits, see IAM and STS Character Limits in the IAM
         # User Guide .
+
         @[JSON::Field(key: "Key")]
         getter key : String
 
         # The value for a session tag. You can pass up to 50 session tags. The plain text session tag values
         # can’t exceed 256 characters. For these and additional limits, see IAM and STS Character Limits in
         # the IAM User Guide .
+
         @[JSON::Field(key: "Value")]
         getter value : String
 

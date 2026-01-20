@@ -10,30 +10,37 @@ module AwsSdk
       # permissions. For more information, see Access Management in the IAM User Guide. Or, if you're using
       # CDN authorization, you will receive this exception if MediaPackage receives a throttling error from
       # Secrets Manager.
+
       class AccessDeniedException < ServiceError
       end
 
       # Updating or deleting this resource can cause an inconsistent state.
+
       class ConflictException < ServiceError
       end
 
       # Indicates that an error from the service occurred while trying to process a request.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource doesn't exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause a service quota to be exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request throughput limit was exceeded.
+
       class ThrottlingException < ServiceError
       end
 
       # The input failed to meet the constraints specified by the AWS service.
+
       class ValidationException < ServiceError
       end
 

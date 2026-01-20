@@ -2,7 +2,7 @@ require "json"
 require "../../runtime"
 
 module AwsSdk
-  module KinesisAnalyticsV2
+  module KinesisAnalytics
     module Protocol
       module JsonRpc
         CONTENT_TYPE = "application/x-amz-json-1.1"

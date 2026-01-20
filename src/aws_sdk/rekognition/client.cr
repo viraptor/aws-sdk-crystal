@@ -1,6 +1,7 @@
 module AwsSdk
   module Rekognition
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -45,6 +46,7 @@ module AwsSdk
       # ACTIVE - All associations or disassociations of FaceID(s) for a UserID are complete. CREATED - A
       # UserID has been created, but has no FaceID(s) associated with it. UPDATING - A UserID is being
       # updated and there are current associations or disassociations of FaceID(s) taking place.
+
       def associate_faces(
         collection_id : String,
         face_ids : Array(String),
@@ -52,9 +54,11 @@ module AwsSdk
         client_request_token : String? = nil,
         user_match_threshold : Float64? = nil
       ) : Types::AssociateFacesResponse
+
         input = Types::AssociateFacesRequest.new(collection_id: collection_id, face_ids: face_ids, user_id: user_id, client_request_token: client_request_token, user_match_threshold: user_match_threshold)
         associate_faces(input)
       end
+
       def associate_faces(input : Types::AssociateFacesRequest) : Types::AssociateFacesResponse
         request = Protocol::JsonRpc.build_request(Model::ASSOCIATE_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -94,15 +98,18 @@ module AwsSdk
       # stateless API operation. That is, data returned by this operation doesn't persist. For an example,
       # see Comparing Faces in Images in the Amazon Rekognition Developer Guide. This operation requires
       # permissions to perform the rekognition:CompareFaces action.
+
       def compare_faces(
         source_image : Types::Image,
         target_image : Types::Image,
         quality_filter : String? = nil,
         similarity_threshold : Float64? = nil
       ) : Types::CompareFacesResponse
+
         input = Types::CompareFacesRequest.new(source_image: source_image, target_image: target_image, quality_filter: quality_filter, similarity_threshold: similarity_threshold)
         compare_faces(input)
       end
+
       def compare_faces(input : Types::CompareFacesRequest) : Types::CompareFacesResponse
         request = Protocol::JsonRpc.build_request(Model::COMPARE_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -126,6 +133,7 @@ module AwsSdk
       # call DescribeProjectVersions and check the value of Status in the ProjectVersionDescription object.
       # The copy operation has finished when the value of Status is COPYING_COMPLETED . This operation
       # requires permissions to perform the rekognition:CopyProjectVersion action.
+
       def copy_project_version(
         destination_project_arn : String,
         output_config : Types::OutputConfig,
@@ -135,9 +143,11 @@ module AwsSdk
         kms_key_id : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CopyProjectVersionResponse
+
         input = Types::CopyProjectVersionRequest.new(destination_project_arn: destination_project_arn, output_config: output_config, source_project_arn: source_project_arn, source_project_version_arn: source_project_version_arn, version_name: version_name, kms_key_id: kms_key_id, tags: tags)
         copy_project_version(input)
       end
+
       def copy_project_version(input : Types::CopyProjectVersionRequest) : Types::CopyProjectVersionResponse
         request = Protocol::JsonRpc.build_request(Model::COPY_PROJECT_VERSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -154,13 +164,16 @@ module AwsSdk
       # case-sensitive. This operation requires permissions to perform the rekognition:CreateCollection
       # action. If you want to tag your collection, you also require permission to perform the
       # rekognition:TagResource operation.
+
       def create_collection(
         collection_id : String,
         tags : Hash(String, String)? = nil
       ) : Types::CreateCollectionResponse
+
         input = Types::CreateCollectionRequest.new(collection_id: collection_id, tags: tags)
         create_collection(input)
       end
+
       def create_collection(input : Types::CreateCollectionRequest) : Types::CreateCollectionResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_COLLECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -182,15 +195,18 @@ module AwsSdk
       # see Creating dataset in the Amazon Rekognition Custom Labels Developer Guide . This operation
       # requires permissions to perform the rekognition:CreateDataset action. If you want to copy an
       # existing dataset, you also require permission to perform the rekognition:ListDatasetEntries action.
+
       def create_dataset(
         dataset_type : String,
         project_arn : String,
         dataset_source : Types::DatasetSource? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateDatasetResponse
+
         input = Types::CreateDatasetRequest.new(dataset_type: dataset_type, project_arn: project_arn, dataset_source: dataset_source, tags: tags)
         create_dataset(input)
       end
+
       def create_dataset(input : Types::CreateDatasetRequest) : Types::CreateDatasetResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_DATASET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -206,14 +222,17 @@ module AwsSdk
       # sent instead. You can use AuditImagesLimit to limit the number of audit images returned when
       # GetFaceLivenessSessionResults is called. This number is between 0 and 4. By default, it is set to 0.
       # The limit is best effort and based on the duration of the selfie-video.
+
       def create_face_liveness_session(
         client_request_token : String? = nil,
         kms_key_id : String? = nil,
         settings : Types::CreateFaceLivenessSessionRequestSettings? = nil
       ) : Types::CreateFaceLivenessSessionResponse
+
         input = Types::CreateFaceLivenessSessionRequest.new(client_request_token: client_request_token, kms_key_id: kms_key_id, settings: settings)
         create_face_liveness_session(input)
       end
+
       def create_face_liveness_session(input : Types::CreateFaceLivenessSessionRequest) : Types::CreateFaceLivenessSessionResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_FACE_LIVENESS_SESSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -228,15 +247,18 @@ module AwsSdk
       # Custom Labels is used by default. For adapters, you can also choose whether or not to have the
       # project auto update by using the AutoUpdate argument. This operation requires permissions to perform
       # the rekognition:CreateProject action.
+
       def create_project(
         project_name : String,
         auto_update : String? = nil,
         feature : String? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateProjectResponse
+
         input = Types::CreateProjectRequest.new(project_name: project_name, auto_update: auto_update, feature: feature, tags: tags)
         create_project(input)
       end
+
       def create_project(input : Types::CreateProjectRequest) : Types::CreateProjectResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_PROJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -262,6 +284,7 @@ module AwsSdk
       # version for the project by specifying manifest files. Instead of training with a project without
       # associated datasets, we recommend that you use the manifest files to create training and test
       # datasets for the project.
+
       def create_project_version(
         output_config : Types::OutputConfig,
         project_arn : String,
@@ -273,9 +296,11 @@ module AwsSdk
         training_data : Types::TrainingData? = nil,
         version_description : String? = nil
       ) : Types::CreateProjectVersionResponse
+
         input = Types::CreateProjectVersionRequest.new(output_config: output_config, project_arn: project_arn, version_name: version_name, feature_config: feature_config, kms_key_id: kms_key_id, tags: tags, testing_data: testing_data, training_data: training_data, version_description: version_description)
         create_project_version(input)
       end
+
       def create_project_version(input : Types::CreateProjectVersionRequest) : Types::CreateProjectVersionResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_PROJECT_VERSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -303,6 +328,7 @@ module AwsSdk
       # processing the source video by calling StartStreamProcessor with the Name field. This operation
       # requires permissions to perform the rekognition:CreateStreamProcessor action. If you want to tag
       # your stream processor, you also require permission to perform the rekognition:TagResource operation.
+
       def create_stream_processor(
         input : Types::StreamProcessorInput,
         name : String,
@@ -315,9 +341,11 @@ module AwsSdk
         regions_of_interest : Array(Types::RegionOfInterest)? = nil,
         tags : Hash(String, String)? = nil
       ) : Types::CreateStreamProcessorResponse
+
         input = Types::CreateStreamProcessorRequest.new(input: input, name: name, output: output, role_arn: role_arn, settings: settings, data_sharing_preference: data_sharing_preference, kms_key_id: kms_key_id, notification_channel: notification_channel, regions_of_interest: regions_of_interest, tags: tags)
         create_stream_processor(input)
       end
+
       def create_stream_processor(input : Types::CreateStreamProcessorRequest) : Types::CreateStreamProcessorResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_STREAM_PROCESSOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -332,14 +360,17 @@ module AwsSdk
       # idempotency token that ensures a call to CreateUser completes only once. If the value is not
       # supplied, the AWS SDK generates an idempotency token for the requests. This prevents retries after a
       # network error results from making multiple CreateUser calls.
+
       def create_user(
         collection_id : String,
         user_id : String,
         client_request_token : String? = nil
       ) : Types::CreateUserResponse
+
         input = Types::CreateUserRequest.new(collection_id: collection_id, user_id: user_id, client_request_token: client_request_token)
         create_user(input)
       end
+
       def create_user(input : Types::CreateUserRequest) : Types::CreateUserResponse
         request = Protocol::JsonRpc.build_request(Model::CREATE_USER, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -351,12 +382,15 @@ module AwsSdk
       # Deletes the specified collection. Note that this operation removes all faces in the collection. For
       # an example, see Deleting a collection . This operation requires permissions to perform the
       # rekognition:DeleteCollection action.
+
       def delete_collection(
         collection_id : String
       ) : Types::DeleteCollectionResponse
+
         input = Types::DeleteCollectionRequest.new(collection_id: collection_id)
         delete_collection(input)
       end
+
       def delete_collection(input : Types::DeleteCollectionRequest) : Types::DeleteCollectionResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_COLLECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -372,12 +406,15 @@ module AwsSdk
       # You can't delete a dataset while it is creating ( Status = CREATE_IN_PROGRESS ) or if the dataset is
       # updating ( Status = UPDATE_IN_PROGRESS ). This operation requires permissions to perform the
       # rekognition:DeleteDataset action.
+
       def delete_dataset(
         dataset_arn : String
       ) : Types::DeleteDatasetResponse
+
         input = Types::DeleteDatasetRequest.new(dataset_arn: dataset_arn)
         delete_dataset(input)
       end
+
       def delete_dataset(input : Types::DeleteDatasetRequest) : Types::DeleteDatasetResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_DATASET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -388,13 +425,16 @@ module AwsSdk
 
       # Deletes faces from a collection. You specify a collection ID and an array of face IDs to remove from
       # the collection. This operation requires permissions to perform the rekognition:DeleteFaces action.
+
       def delete_faces(
         collection_id : String,
         face_ids : Array(String)
       ) : Types::DeleteFacesResponse
+
         input = Types::DeleteFacesRequest.new(collection_id: collection_id, face_ids: face_ids)
         delete_faces(input)
       end
+
       def delete_faces(input : Types::DeleteFacesRequest) : Types::DeleteFacesResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -409,12 +449,15 @@ module AwsSdk
       # DescribeProjects . The project is deleted when the project no longer appears in the response. Be
       # aware that deleting a given project will also delete any ProjectPolicies associated with that
       # project. This operation requires permissions to perform the rekognition:DeleteProject action.
+
       def delete_project(
         project_arn : String
       ) : Types::DeleteProjectResponse
+
         input = Types::DeleteProjectRequest.new(project_arn: project_arn)
         delete_project(input)
       end
+
       def delete_project(input : Types::DeleteProjectRequest) : Types::DeleteProjectResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_PROJECT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -427,14 +470,17 @@ module AwsSdk
       # To get a list of project policies attached to a project, call ListProjectPolicies . To attach a
       # project policy to a project, call PutProjectPolicy . This operation requires permissions to perform
       # the rekognition:DeleteProjectPolicy action.
+
       def delete_project_policy(
         policy_name : String,
         project_arn : String,
         policy_revision_id : String? = nil
       ) : Types::DeleteProjectPolicyResponse
+
         input = Types::DeleteProjectPolicyRequest.new(policy_name: policy_name, project_arn: project_arn, policy_revision_id: policy_revision_id)
         delete_project_policy(input)
       end
+
       def delete_project_policy(input : Types::DeleteProjectPolicyRequest) : Types::DeleteProjectPolicyResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_PROJECT_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -449,12 +495,15 @@ module AwsSdk
       # . To stop a project version call StopProjectVersion . If the project version is training, wait until
       # it finishes. This operation requires permissions to perform the rekognition:DeleteProjectVersion
       # action.
+
       def delete_project_version(
         project_version_arn : String
       ) : Types::DeleteProjectVersionResponse
+
         input = Types::DeleteProjectVersionRequest.new(project_version_arn: project_version_arn)
         delete_project_version(input)
       end
+
       def delete_project_version(input : Types::DeleteProjectVersionRequest) : Types::DeleteProjectVersionResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_PROJECT_VERSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -466,12 +515,15 @@ module AwsSdk
       # Deletes the stream processor identified by Name . You assign the value for Name when you create the
       # stream processor with CreateStreamProcessor . You might not be able to use the same name for a
       # stream processor for a few seconds after calling DeleteStreamProcessor .
+
       def delete_stream_processor(
         name : String
       ) : Types::DeleteStreamProcessorResponse
+
         input = Types::DeleteStreamProcessorRequest.new(name: name)
         delete_stream_processor(input)
       end
+
       def delete_stream_processor(input : Types::DeleteStreamProcessorRequest) : Types::DeleteStreamProcessorResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_STREAM_PROCESSOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -484,14 +536,17 @@ module AwsSdk
       # disassociated from the UserID before deleting the specified UserID. If the specified Collection or
       # UserID is already deleted or not found, a ResourceNotFoundException will be thrown. If the action is
       # successful with a 200 response, an empty HTTP body is returned.
+
       def delete_user(
         collection_id : String,
         user_id : String,
         client_request_token : String? = nil
       ) : Types::DeleteUserResponse
+
         input = Types::DeleteUserRequest.new(collection_id: collection_id, user_id: user_id, client_request_token: client_request_token)
         delete_user(input)
       end
+
       def delete_user(input : Types::DeleteUserRequest) : Types::DeleteUserResponse
         request = Protocol::JsonRpc.build_request(Model::DELETE_USER, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -504,12 +559,15 @@ module AwsSdk
       # number of faces indexed into a collection and the version of the model used by the collection for
       # face detection. For more information, see Describing a Collection in the Amazon Rekognition
       # Developer Guide.
+
       def describe_collection(
         collection_id : String
       ) : Types::DescribeCollectionResponse
+
         input = Types::DescribeCollectionRequest.new(collection_id: collection_id)
         describe_collection(input)
       end
+
       def describe_collection(input : Types::DescribeCollectionRequest) : Types::DescribeCollectionResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_COLLECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -522,12 +580,15 @@ module AwsSdk
       # Custom Labels dataset. You can get information such as the current status of a dataset and
       # statistics about the images and labels in a dataset. This operation requires permissions to perform
       # the rekognition:DescribeDataset action.
+
       def describe_dataset(
         dataset_arn : String
       ) : Types::DescribeDatasetResponse
+
         input = Types::DescribeDatasetRequest.new(dataset_arn: dataset_arn)
         describe_dataset(input)
       end
+
       def describe_dataset(input : Types::DescribeDatasetRequest) : Types::DescribeDatasetResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_DATASET, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -540,15 +601,18 @@ module AwsSdk
       # adapter versions in ProjectVersionArns . If you don't specify a value, descriptions for all
       # model/adapter versions in the project are returned. This operation requires permissions to perform
       # the rekognition:DescribeProjectVersions action.
+
       def describe_project_versions(
         project_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         version_names : Array(String)? = nil
       ) : Types::DescribeProjectVersionsResponse
+
         input = Types::DescribeProjectVersionsRequest.new(project_arn: project_arn, max_results: max_results, next_token: next_token, version_names: version_names)
         describe_project_versions(input)
       end
+
       def describe_project_versions(input : Types::DescribeProjectVersionsRequest) : Types::DescribeProjectVersionsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_PROJECT_VERSIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -559,15 +623,18 @@ module AwsSdk
 
       # Gets information about your Rekognition projects. This operation requires permissions to perform the
       # rekognition:DescribeProjects action.
+
       def describe_projects(
         features : Array(String)? = nil,
         max_results : Int32? = nil,
         next_token : String? = nil,
         project_names : Array(String)? = nil
       ) : Types::DescribeProjectsResponse
+
         input = Types::DescribeProjectsRequest.new(features: features, max_results: max_results, next_token: next_token, project_names: project_names)
         describe_projects(input)
       end
+
       def describe_projects(input : Types::DescribeProjectsRequest) : Types::DescribeProjectsResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_PROJECTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -579,12 +646,15 @@ module AwsSdk
       # Provides information about a stream processor created by CreateStreamProcessor . You can get
       # information about the input and output streams, the input parameters for the face recognition being
       # performed, and the current status of the stream processor.
+
       def describe_stream_processor(
         name : String
       ) : Types::DescribeStreamProcessorResponse
+
         input = Types::DescribeStreamProcessorRequest.new(name: name)
         describe_stream_processor(input)
       end
+
       def describe_stream_processor(input : Types::DescribeStreamProcessorRequest) : Types::DescribeStreamProcessorResponse
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_STREAM_PROCESSOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -615,15 +685,18 @@ module AwsSdk
       # API operation. That is, the operation does not persist any data. This operation requires permissions
       # to perform the rekognition:DetectCustomLabels action. For more information, see Analyzing an image
       # in the Amazon Rekognition Custom Labels Developer Guide.
+
       def detect_custom_labels(
         image : Types::Image,
         project_version_arn : String,
         max_results : Int32? = nil,
         min_confidence : Float64? = nil
       ) : Types::DetectCustomLabelsResponse
+
         input = Types::DetectCustomLabelsRequest.new(image: image, project_version_arn: project_version_arn, max_results: max_results, min_confidence: min_confidence)
         detect_custom_labels(input)
       end
+
       def detect_custom_labels(input : Types::DetectCustomLabelsRequest) : Types::DetectCustomLabelsResponse
         request = Protocol::JsonRpc.build_request(Model::DETECT_CUSTOM_LABELS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -643,13 +716,16 @@ module AwsSdk
       # operations, passing image bytes is not supported. The image must be either a PNG or JPEG formatted
       # file. This is a stateless API operation. That is, the operation does not persist any data. This
       # operation requires permissions to perform the rekognition:DetectFaces action.
+
       def detect_faces(
         image : Types::Image,
         attributes : Array(String)? = nil
       ) : Types::DetectFacesResponse
+
         input = Types::DetectFacesRequest.new(image: image, attributes: attributes)
         detect_faces(input)
       end
+
       def detect_faces(input : Types::DetectFacesRequest) : Types::DetectFacesResponse
         request = Protocol::JsonRpc.build_request(Model::DETECT_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -705,6 +781,7 @@ module AwsSdk
       # detected is a person, the operation doesn't provide the same facial details that the DetectFaces
       # operation provides. This is a stateless API operation that doesn't return any data. This operation
       # requires permissions to perform the rekognition:DetectLabels action.
+
       def detect_labels(
         image : Types::Image,
         features : Array(String)? = nil,
@@ -712,9 +789,11 @@ module AwsSdk
         min_confidence : Float64? = nil,
         settings : Types::DetectLabelsSettings? = nil
       ) : Types::DetectLabelsResponse
+
         input = Types::DetectLabelsRequest.new(image: image, features: features, max_labels: max_labels, min_confidence: min_confidence, settings: settings)
         detect_labels(input)
       end
+
       def detect_labels(input : Types::DetectLabelsRequest) : Types::DetectLabelsResponse
         request = Protocol::JsonRpc.build_request(Model::DETECT_LABELS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -733,15 +812,18 @@ module AwsSdk
       # passing image bytes is not supported. The image must be either a PNG or JPEG formatted file. You can
       # specify an adapter to use when retrieving label predictions by providing a ProjectVersionArn to the
       # ProjectVersion argument.
+
       def detect_moderation_labels(
         image : Types::Image,
         human_loop_config : Types::HumanLoopConfig? = nil,
         min_confidence : Float64? = nil,
         project_version : String? = nil
       ) : Types::DetectModerationLabelsResponse
+
         input = Types::DetectModerationLabelsRequest.new(image: image, human_loop_config: human_loop_config, min_confidence: min_confidence, project_version: project_version)
         detect_moderation_labels(input)
       end
+
       def detect_moderation_labels(input : Types::DetectModerationLabelsRequest) : Types::DetectModerationLabelsResponse
         request = Protocol::JsonRpc.build_request(Model::DETECT_MODERATION_LABELS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -765,13 +847,16 @@ module AwsSdk
       # persons detected where PPE adornment could not be determined. This is a stateless API operation.
       # That is, the operation does not persist any data. This operation requires permissions to perform the
       # rekognition:DetectProtectiveEquipment action.
+
       def detect_protective_equipment(
         image : Types::Image,
         summarization_attributes : Types::ProtectiveEquipmentSummarizationAttributes? = nil
       ) : Types::DetectProtectiveEquipmentResponse
+
         input = Types::DetectProtectiveEquipmentRequest.new(image: image, summarization_attributes: summarization_attributes)
         detect_protective_equipment(input)
       end
+
       def detect_protective_equipment(input : Types::DetectProtectiveEquipmentRequest) : Types::DetectProtectiveEquipmentResponse
         request = Protocol::JsonRpc.build_request(Model::DETECT_PROTECTIVE_EQUIPMENT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -797,13 +882,16 @@ module AwsSdk
       # a word, use the TextDetection object Type field. To be detected, text must be within +/- 90 degrees
       # orientation of the horizontal axis. For more information, see Detecting text in the Amazon
       # Rekognition Developer Guide.
+
       def detect_text(
         image : Types::Image,
         filters : Types::DetectTextFilters? = nil
       ) : Types::DetectTextResponse
+
         input = Types::DetectTextRequest.new(image: image, filters: filters)
         detect_text(input)
       end
+
       def detect_text(input : Types::DetectTextRequest) : Types::DetectTextResponse
         request = Protocol::JsonRpc.build_request(Model::DETECT_TEXT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -818,15 +906,18 @@ module AwsSdk
       # given UserID, it will be ignored and not be returned in the response. If a given face is already
       # associated with a different User or not found in the collection it will be returned as part of
       # UnsuccessfulDisassociations . You can remove 1 - 100 face IDs from a user at one time.
+
       def disassociate_faces(
         collection_id : String,
         face_ids : Array(String),
         user_id : String,
         client_request_token : String? = nil
       ) : Types::DisassociateFacesResponse
+
         input = Types::DisassociateFacesRequest.new(collection_id: collection_id, face_ids: face_ids, user_id: user_id, client_request_token: client_request_token)
         disassociate_faces(input)
       end
+
       def disassociate_faces(input : Types::DisassociateFacesRequest) : Types::DisassociateFacesResponse
         request = Protocol::JsonRpc.build_request(Model::DISASSOCIATE_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -846,12 +937,15 @@ module AwsSdk
       # field for the training dataset and the test dataset is UPDATE_COMPLETE . If the dataset split fails,
       # the value of Status is UPDATE_FAILED . This operation requires permissions to perform the
       # rekognition:DistributeDatasetEntries action.
+
       def distribute_dataset_entries(
         datasets : Array(Types::DistributeDataset)
       ) : Types::DistributeDatasetEntriesResponse
+
         input = Types::DistributeDatasetEntriesRequest.new(datasets: datasets)
         distribute_dataset_entries(input)
       end
+
       def distribute_dataset_entries(input : Types::DistributeDatasetEntriesRequest) : Types::DistributeDatasetEntriesResponse
         request = Protocol::JsonRpc.build_request(Model::DISTRIBUTE_DATASET_ENTRIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -865,12 +959,15 @@ module AwsSdk
       # the celebrity, this list is empty. For more information, see Getting information about a celebrity
       # in the Amazon Rekognition Developer Guide. This operation requires permissions to perform the
       # rekognition:GetCelebrityInfo action.
+
       def get_celebrity_info(
         id : String
       ) : Types::GetCelebrityInfoResponse
+
         input = Types::GetCelebrityInfoRequest.new(id: id)
         get_celebrity_info(input)
       end
+
       def get_celebrity_info(input : Types::GetCelebrityInfoRequest) : Types::GetCelebrityInfoResponse
         request = Protocol::JsonRpc.build_request(Model::GET_CELEBRITY_INFO, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -907,15 +1004,18 @@ module AwsSdk
       # pagination token for getting the next set of results. To get the next page of results, call
       # GetCelebrityDetection and populate the NextToken request parameter with the token value returned
       # from the previous call to GetCelebrityRecognition .
+
       def get_celebrity_recognition(
         job_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil
       ) : Types::GetCelebrityRecognitionResponse
+
         input = Types::GetCelebrityRecognitionRequest.new(job_id: job_id, max_results: max_results, next_token: next_token, sort_by: sort_by)
         get_celebrity_recognition(input)
       end
+
       def get_celebrity_recognition(input : Types::GetCelebrityRecognitionRequest) : Types::GetCelebrityRecognitionResponse
         request = Protocol::JsonRpc.build_request(Model::GET_CELEBRITY_RECOGNITION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -945,6 +1045,7 @@ module AwsSdk
       # To get the next page of results, call GetContentModeration and populate the NextToken request
       # parameter with the value of NextToken returned from the previous call to GetContentModeration . For
       # more information, see moderating content in the Amazon Rekognition Developer Guide.
+
       def get_content_moderation(
         job_id : String,
         aggregate_by : String? = nil,
@@ -952,9 +1053,11 @@ module AwsSdk
         next_token : String? = nil,
         sort_by : String? = nil
       ) : Types::GetContentModerationResponse
+
         input = Types::GetContentModerationRequest.new(job_id: job_id, aggregate_by: aggregate_by, max_results: max_results, next_token: next_token, sort_by: sort_by)
         get_content_moderation(input)
       end
+
       def get_content_moderation(input : Types::GetContentModerationRequest) : Types::GetContentModerationResponse
         request = Protocol::JsonRpc.build_request(Model::GET_CONTENT_MODERATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -977,14 +1080,17 @@ module AwsSdk
       # results, call GetFaceDetection and populate the NextToken request parameter with the token value
       # returned from the previous call to GetFaceDetection . Note that for the GetFaceDetection operation,
       # the returned values for FaceOccluded and EyeDirection will always be "null".
+
       def get_face_detection(
         job_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetFaceDetectionResponse
+
         input = Types::GetFaceDetectionRequest.new(job_id: job_id, max_results: max_results, next_token: next_token)
         get_face_detection(input)
       end
+
       def get_face_detection(input : Types::GetFaceDetectionRequest) : Types::GetFaceDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::GET_FACE_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -999,12 +1105,15 @@ module AwsSdk
       # bounding boxes. The Face Liveness confidence score ranges from 0 to 100. The number of audit images
       # returned by GetFaceLivenessSessionResults is defined by the AuditImagesLimit paramater when calling
       # CreateFaceLivenessSession . Reference images are always returned when possible.
+
       def get_face_liveness_session_results(
         session_id : String
       ) : Types::GetFaceLivenessSessionResultsResponse
+
         input = Types::GetFaceLivenessSessionResultsRequest.new(session_id: session_id)
         get_face_liveness_session_results(input)
       end
+
       def get_face_liveness_session_results(input : Types::GetFaceLivenessSessionResultsRequest) : Types::GetFaceLivenessSessionResultsResponse
         request = Protocol::JsonRpc.build_request(Model::GET_FACE_LIVENESS_SESSION_RESULTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1031,15 +1140,18 @@ module AwsSdk
       # more information, see FaceDetail in the Amazon Rekognition Developer Guide. By default, the Persons
       # array is sorted by the time, in milliseconds from the start of the video, persons are matched. You
       # can also sort by persons by specifying INDEX for the SORTBY input parameter.
+
       def get_face_search(
         job_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil
       ) : Types::GetFaceSearchResponse
+
         input = Types::GetFaceSearchRequest.new(job_id: job_id, max_results: max_results, next_token: next_token, sort_by: sort_by)
         get_face_search(input)
       end
+
       def get_face_search(input : Types::GetFaceSearchRequest) : Types::GetFaceSearchResponse
         request = Protocol::JsonRpc.build_request(Model::GET_FACE_SEARCH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1086,6 +1198,7 @@ module AwsSdk
       # from the previous call to GetLabelDetection . If you are retrieving results while using the Amazon
       # Simple Notification Service, note that you will receive an "ERROR" notification if the job
       # encounters an issue.
+
       def get_label_detection(
         job_id : String,
         aggregate_by : String? = nil,
@@ -1093,9 +1206,11 @@ module AwsSdk
         next_token : String? = nil,
         sort_by : String? = nil
       ) : Types::GetLabelDetectionResponse
+
         input = Types::GetLabelDetectionRequest.new(job_id: job_id, aggregate_by: aggregate_by, max_results: max_results, next_token: next_token, sort_by: sort_by)
         get_label_detection(input)
       end
+
       def get_label_detection(input : Types::GetLabelDetectionRequest) : Types::GetLabelDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::GET_LABEL_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1106,12 +1221,15 @@ module AwsSdk
 
       # Retrieves the results for a given media analysis job. Takes a JobId returned by
       # StartMediaAnalysisJob.
+
       def get_media_analysis_job(
         job_id : String
       ) : Types::GetMediaAnalysisJobResponse
+
         input = Types::GetMediaAnalysisJobRequest.new(job_id: job_id)
         get_media_analysis_job(input)
       end
+
       def get_media_analysis_job(input : Types::GetMediaAnalysisJobRequest) : Types::GetMediaAnalysisJobResponse
         request = Protocol::JsonRpc.build_request(Model::GET_MEDIA_ANALYSIS_JOB, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1140,15 +1258,18 @@ module AwsSdk
       # value of NextToken in the operation response contains a pagination token for getting the next set of
       # results. To get the next page of results, call GetPersonTracking and populate the NextToken request
       # parameter with the token value returned from the previous call to GetPersonTracking .
+
       def get_person_tracking(
         job_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil,
         sort_by : String? = nil
       ) : Types::GetPersonTrackingResponse
+
         input = Types::GetPersonTrackingRequest.new(job_id: job_id, max_results: max_results, next_token: next_token, sort_by: sort_by)
         get_person_tracking(input)
       end
+
       def get_person_tracking(input : Types::GetPersonTrackingRequest) : Types::GetPersonTrackingResponse
         request = Protocol::JsonRpc.build_request(Model::GET_PERSON_TRACKING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1176,14 +1297,17 @@ module AwsSdk
       # To get the next page of results, call GetSegmentDetection and populate the NextToken request
       # parameter with the token value returned from the previous call to GetSegmentDetection . For more
       # information, see Detecting video segments in stored video in the Amazon Rekognition Developer Guide.
+
       def get_segment_detection(
         job_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetSegmentDetectionResponse
+
         input = Types::GetSegmentDetectionRequest.new(job_id: job_id, max_results: max_results, next_token: next_token)
         get_segment_detection(input)
       end
+
       def get_segment_detection(input : Types::GetSegmentDetectionRequest) : Types::GetSegmentDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::GET_SEGMENT_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1208,14 +1332,17 @@ module AwsSdk
       # in the operation response contains a pagination token for getting the next set of results. To get
       # the next page of results, call GetTextDetection and populate the NextToken request parameter with
       # the token value returned from the previous call to GetTextDetection .
+
       def get_text_detection(
         job_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::GetTextDetectionResponse
+
         input = Types::GetTextDetectionRequest.new(job_id: job_id, max_results: max_results, next_token: next_token)
         get_text_detection(input)
       end
+
       def get_text_detection(input : Types::GetTextDetectionRequest) : Types::GetTextDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::GET_TEXT_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1268,6 +1395,7 @@ module AwsSdk
       # an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon Rekognition operations,
       # passing image bytes isn't supported. The image must be formatted as a PNG or JPEG file. This
       # operation requires permissions to perform the rekognition:IndexFaces action.
+
       def index_faces(
         collection_id : String,
         image : Types::Image,
@@ -1276,9 +1404,11 @@ module AwsSdk
         max_faces : Int32? = nil,
         quality_filter : String? = nil
       ) : Types::IndexFacesResponse
+
         input = Types::IndexFacesRequest.new(collection_id: collection_id, image: image, detection_attributes: detection_attributes, external_image_id: external_image_id, max_faces: max_faces, quality_filter: quality_filter)
         index_faces(input)
       end
+
       def index_faces(input : Types::IndexFacesRequest) : Types::IndexFacesResponse
         request = Protocol::JsonRpc.build_request(Model::INDEX_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1291,13 +1421,16 @@ module AwsSdk
       # provides a NextToken that you can use in the subsequent request to fetch the next set of collection
       # IDs. For an example, see Listing collections in the Amazon Rekognition Developer Guide. This
       # operation requires permissions to perform the rekognition:ListCollections action.
+
       def list_collections(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListCollectionsResponse
+
         input = Types::ListCollectionsRequest.new(max_results: max_results, next_token: next_token)
         list_collections(input)
       end
+
       def list_collections(input : Types::ListCollectionsRequest) : Types::ListCollectionsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_COLLECTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1315,6 +1448,7 @@ module AwsSdk
       # Rekognition Custom Labels creates during model training. You can filter the response in variety of
       # ways, such as choosing which labels to return and returning JSON Lines created after a specific
       # date. This operation requires permissions to perform the rekognition:ListDatasetEntries action.
+
       def list_dataset_entries(
         dataset_arn : String,
         contains_labels : Array(String)? = nil,
@@ -1324,9 +1458,11 @@ module AwsSdk
         next_token : String? = nil,
         source_ref_contains : String? = nil
       ) : Types::ListDatasetEntriesResponse
+
         input = Types::ListDatasetEntriesRequest.new(dataset_arn: dataset_arn, contains_labels: contains_labels, has_errors: has_errors, labeled: labeled, max_results: max_results, next_token: next_token, source_ref_contains: source_ref_contains)
         list_dataset_entries(input)
       end
+
       def list_dataset_entries(input : Types::ListDatasetEntriesRequest) : Types::ListDatasetEntriesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DATASET_ENTRIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1340,14 +1476,17 @@ module AwsSdk
       # images . Lists the labels in a dataset. Amazon Rekognition Custom Labels uses labels to describe
       # images. For more information, see Labeling images in the Amazon Rekognition Custom Labels Developer
       # Guide .
+
       def list_dataset_labels(
         dataset_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListDatasetLabelsResponse
+
         input = Types::ListDatasetLabelsRequest.new(dataset_arn: dataset_arn, max_results: max_results, next_token: next_token)
         list_dataset_labels(input)
       end
+
       def list_dataset_labels(input : Types::ListDatasetLabelsRequest) : Types::ListDatasetLabelsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_DATASET_LABELS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1360,6 +1499,7 @@ module AwsSdk
       # the bounding box coordinates, the confidence (that the bounding box contains a face), and face ID.
       # For an example, see Listing Faces in a Collection in the Amazon Rekognition Developer Guide. This
       # operation requires permissions to perform the rekognition:ListFaces action.
+
       def list_faces(
         collection_id : String,
         face_ids : Array(String)? = nil,
@@ -1367,9 +1507,11 @@ module AwsSdk
         next_token : String? = nil,
         user_id : String? = nil
       ) : Types::ListFacesResponse
+
         input = Types::ListFacesRequest.new(collection_id: collection_id, face_ids: face_ids, max_results: max_results, next_token: next_token, user_id: user_id)
         list_faces(input)
       end
+
       def list_faces(input : Types::ListFacesRequest) : Types::ListFacesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1379,13 +1521,16 @@ module AwsSdk
       end
 
       # Returns a list of media analysis jobs. Results are sorted by CreationTimestamp in descending order.
+
       def list_media_analysis_jobs(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListMediaAnalysisJobsResponse
+
         input = Types::ListMediaAnalysisJobsRequest.new(max_results: max_results, next_token: next_token)
         list_media_analysis_jobs(input)
       end
+
       def list_media_analysis_jobs(input : Types::ListMediaAnalysisJobsRequest) : Types::ListMediaAnalysisJobsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_MEDIA_ANALYSIS_JOBS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1398,14 +1543,17 @@ module AwsSdk
       # attached to a project. To attach a project policy to a project, call PutProjectPolicy . To remove a
       # project policy from a project, call DeleteProjectPolicy . This operation requires permissions to
       # perform the rekognition:ListProjectPolicies action.
+
       def list_project_policies(
         project_arn : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListProjectPoliciesResponse
+
         input = Types::ListProjectPoliciesRequest.new(project_arn: project_arn, max_results: max_results, next_token: next_token)
         list_project_policies(input)
       end
+
       def list_project_policies(input : Types::ListProjectPoliciesRequest) : Types::ListProjectPoliciesResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_PROJECT_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1415,13 +1563,16 @@ module AwsSdk
       end
 
       # Gets a list of stream processors that you have created with CreateStreamProcessor .
+
       def list_stream_processors(
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListStreamProcessorsResponse
+
         input = Types::ListStreamProcessorsRequest.new(max_results: max_results, next_token: next_token)
         list_stream_processors(input)
       end
+
       def list_stream_processors(input : Types::ListStreamProcessorsRequest) : Types::ListStreamProcessorsResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_STREAM_PROCESSORS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1432,12 +1583,15 @@ module AwsSdk
 
       # Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels
       # model. This operation requires permissions to perform the rekognition:ListTagsForResource action.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceResponse
+
         input = Types::ListTagsForResourceRequest.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Types::ListTagsForResourceResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1450,14 +1604,17 @@ module AwsSdk
       # faces without any identity) is not returned as part of this request. The results are sorted by
       # system generated primary key ID. If the response is truncated, NextToken is returned in the response
       # that can be used in the subsequent request to retrieve the next set of identities.
+
       def list_users(
         collection_id : String,
         max_results : Int32? = nil,
         next_token : String? = nil
       ) : Types::ListUsersResponse
+
         input = Types::ListUsersRequest.new(collection_id: collection_id, max_results: max_results, next_token: next_token)
         list_users(input)
       end
+
       def list_users(input : Types::ListUsersRequest) : Types::ListUsersResponse
         request = Protocol::JsonRpc.build_request(Model::LIST_USERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1478,15 +1635,18 @@ module AwsSdk
       # DeleteProjectPolicy . To get a list of project policies attached to a project, call
       # ListProjectPolicies . You copy a model version by calling CopyProjectVersion . This operation
       # requires permissions to perform the rekognition:PutProjectPolicy action.
+
       def put_project_policy(
         policy_document : String,
         policy_name : String,
         project_arn : String,
         policy_revision_id : String? = nil
       ) : Types::PutProjectPolicyResponse
+
         input = Types::PutProjectPolicyRequest.new(policy_document: policy_document, policy_name: policy_name, project_arn: project_arn, policy_revision_id: policy_revision_id)
         put_project_policy(input)
       end
+
       def put_project_policy(input : Types::PutProjectPolicyRequest) : Types::PutProjectPolicyResponse
         request = Protocol::JsonRpc.build_request(Model::PUT_PROJECT_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1512,12 +1672,15 @@ module AwsSdk
       # image must be either a PNG or JPEG formatted file. For an example, see Recognizing celebrities in an
       # image in the Amazon Rekognition Developer Guide. This operation requires permissions to perform the
       # rekognition:RecognizeCelebrities operation.
+
       def recognize_celebrities(
         image : Types::Image
       ) : Types::RecognizeCelebritiesResponse
+
         input = Types::RecognizeCelebritiesRequest.new(image: image)
         recognize_celebrities(input)
       end
+
       def recognize_celebrities(input : Types::RecognizeCelebritiesRequest) : Types::RecognizeCelebritiesResponse
         request = Protocol::JsonRpc.build_request(Model::RECOGNIZE_CELEBRITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1536,15 +1699,18 @@ module AwsSdk
       # confidence that the specific face matches the input face. For an example, see Searching for a face
       # using its face ID in the Amazon Rekognition Developer Guide. This operation requires permissions to
       # perform the rekognition:SearchFaces action.
+
       def search_faces(
         collection_id : String,
         face_id : String,
         face_match_threshold : Float64? = nil,
         max_faces : Int32? = nil
       ) : Types::SearchFacesResponse
+
         input = Types::SearchFacesRequest.new(collection_id: collection_id, face_id: face_id, face_match_threshold: face_match_threshold, max_faces: max_faces)
         search_faces(input)
       end
+
       def search_faces(input : Types::SearchFacesRequest) : Types::SearchFacesResponse
         request = Protocol::JsonRpc.build_request(Model::SEARCH_FACES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1576,6 +1742,7 @@ module AwsSdk
       # face model or higher. To get the version of the face model associated with a collection, call
       # DescribeCollection . This operation requires permissions to perform the
       # rekognition:SearchFacesByImage action.
+
       def search_faces_by_image(
         collection_id : String,
         image : Types::Image,
@@ -1583,9 +1750,11 @@ module AwsSdk
         max_faces : Int32? = nil,
         quality_filter : String? = nil
       ) : Types::SearchFacesByImageResponse
+
         input = Types::SearchFacesByImageRequest.new(collection_id: collection_id, image: image, face_match_threshold: face_match_threshold, max_faces: max_faces, quality_filter: quality_filter)
         search_faces_by_image(input)
       end
+
       def search_faces_by_image(input : Types::SearchFacesByImageRequest) : Types::SearchFacesByImageResponse
         request = Protocol::JsonRpc.build_request(Model::SEARCH_FACES_BY_IMAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1598,6 +1767,7 @@ module AwsSdk
       # the closest UserID (with a highest similarity) to associate a face. The request must be provided
       # with either FaceId or UserId . The operation returns an array of UserID that match the FaceId or
       # UserId , ordered by similarity score with the highest similarity first.
+
       def search_users(
         collection_id : String,
         face_id : String? = nil,
@@ -1605,9 +1775,11 @@ module AwsSdk
         user_id : String? = nil,
         user_match_threshold : Float64? = nil
       ) : Types::SearchUsersResponse
+
         input = Types::SearchUsersRequest.new(collection_id: collection_id, face_id: face_id, max_users: max_users, user_id: user_id, user_match_threshold: user_match_threshold)
         search_users(input)
       end
+
       def search_users(input : Types::SearchUsersRequest) : Types::SearchUsersResponse
         request = Protocol::JsonRpc.build_request(Model::SEARCH_USERS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1623,6 +1795,7 @@ module AwsSdk
       # detected in the supplied image, but not used for the search, is returned in an array of
       # UnsearchedFace objects. If no valid face is detected in the image, the response will contain an
       # empty UserMatches list and no SearchedFace object.
+
       def search_users_by_image(
         collection_id : String,
         image : Types::Image,
@@ -1630,9 +1803,11 @@ module AwsSdk
         quality_filter : String? = nil,
         user_match_threshold : Float64? = nil
       ) : Types::SearchUsersByImageResponse
+
         input = Types::SearchUsersByImageRequest.new(collection_id: collection_id, image: image, max_users: max_users, quality_filter: quality_filter, user_match_threshold: user_match_threshold)
         search_users_by_image(input)
       end
+
       def search_users_by_image(input : Types::SearchUsersByImageRequest) : Types::SearchUsersByImageResponse
         request = Protocol::JsonRpc.build_request(Model::SEARCH_USERS_BY_IMAGE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1651,15 +1826,18 @@ module AwsSdk
       # call GetCelebrityRecognition and pass the job identifier ( JobId ) from the initial call to
       # StartCelebrityRecognition . For more information, see Recognizing celebrities in the Amazon
       # Rekognition Developer Guide.
+
       def start_celebrity_recognition(
         video : Types::Video,
         client_request_token : String? = nil,
         job_tag : String? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartCelebrityRecognitionResponse
+
         input = Types::StartCelebrityRecognitionRequest.new(video: video, client_request_token: client_request_token, job_tag: job_tag, notification_channel: notification_channel)
         start_celebrity_recognition(input)
       end
+
       def start_celebrity_recognition(input : Types::StartCelebrityRecognitionRequest) : Types::StartCelebrityRecognitionResponse
         request = Protocol::JsonRpc.build_request(Model::START_CELEBRITY_RECOGNITION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1679,6 +1857,7 @@ module AwsSdk
       # GetContentModeration and pass the job identifier ( JobId ) from the initial call to
       # StartContentModeration . For more information, see Moderating content in the Amazon Rekognition
       # Developer Guide.
+
       def start_content_moderation(
         video : Types::Video,
         client_request_token : String? = nil,
@@ -1686,9 +1865,11 @@ module AwsSdk
         min_confidence : Float64? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartContentModerationResponse
+
         input = Types::StartContentModerationRequest.new(video: video, client_request_token: client_request_token, job_tag: job_tag, min_confidence: min_confidence, notification_channel: notification_channel)
         start_content_moderation(input)
       end
+
       def start_content_moderation(input : Types::StartContentModerationRequest) : Types::StartContentModerationResponse
         request = Protocol::JsonRpc.build_request(Model::START_CONTENT_MODERATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1706,6 +1887,7 @@ module AwsSdk
       # Amazon SNS topic is SUCCEEDED . If so, call GetFaceDetection and pass the job identifier ( JobId )
       # from the initial call to StartFaceDetection . For more information, see Detecting faces in a stored
       # video in the Amazon Rekognition Developer Guide.
+
       def start_face_detection(
         video : Types::Video,
         client_request_token : String? = nil,
@@ -1713,9 +1895,11 @@ module AwsSdk
         job_tag : String? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartFaceDetectionResponse
+
         input = Types::StartFaceDetectionRequest.new(video: video, client_request_token: client_request_token, face_attributes: face_attributes, job_tag: job_tag, notification_channel: notification_channel)
         start_face_detection(input)
       end
+
       def start_face_detection(input : Types::StartFaceDetectionRequest) : Types::StartFaceDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::START_FACE_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1733,6 +1917,7 @@ module AwsSdk
       # published to the Amazon SNS topic is SUCCEEDED . If so, call GetFaceSearch and pass the job
       # identifier ( JobId ) from the initial call to StartFaceSearch . For more information, see Searching
       # stored videos for faces .
+
       def start_face_search(
         collection_id : String,
         video : Types::Video,
@@ -1741,9 +1926,11 @@ module AwsSdk
         job_tag : String? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartFaceSearchResponse
+
         input = Types::StartFaceSearchRequest.new(collection_id: collection_id, video: video, client_request_token: client_request_token, face_match_threshold: face_match_threshold, job_tag: job_tag, notification_channel: notification_channel)
         start_face_search(input)
       end
+
       def start_face_search(input : Types::StartFaceSearchRequest) : Types::StartFaceSearchResponse
         request = Protocol::JsonRpc.build_request(Model::START_FACE_SEARCH, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1768,6 +1955,7 @@ module AwsSdk
       # can specify inclusive filters, exclusive filters, or a combination of inclusive and exclusive
       # filters. For more information on filtering, see Detecting labels in a video . You can specify
       # MinConfidence to control the confidence threshold for the labels returned. The default is 50.
+
       def start_label_detection(
         video : Types::Video,
         client_request_token : String? = nil,
@@ -1777,9 +1965,11 @@ module AwsSdk
         notification_channel : Types::NotificationChannel? = nil,
         settings : Types::LabelDetectionSettings? = nil
       ) : Types::StartLabelDetectionResponse
+
         input = Types::StartLabelDetectionRequest.new(video: video, client_request_token: client_request_token, features: features, job_tag: job_tag, min_confidence: min_confidence, notification_channel: notification_channel, settings: settings)
         start_label_detection(input)
       end
+
       def start_label_detection(input : Types::StartLabelDetectionRequest) : Types::StartLabelDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::START_LABEL_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1790,6 +1980,7 @@ module AwsSdk
 
       # Initiates a new media analysis job. Accepts a manifest file in an Amazon S3 bucket. The output is a
       # manifest file and a summary of the manifest stored in the Amazon S3 bucket.
+
       def start_media_analysis_job(
         input : Types::MediaAnalysisInput,
         operations_config : Types::MediaAnalysisOperationsConfig,
@@ -1798,9 +1989,11 @@ module AwsSdk
         job_name : String? = nil,
         kms_key_id : String? = nil
       ) : Types::StartMediaAnalysisJobResponse
+
         input = Types::StartMediaAnalysisJobRequest.new(input: input, operations_config: operations_config, output_config: output_config, client_request_token: client_request_token, job_name: job_name, kms_key_id: kms_key_id)
         start_media_analysis_job(input)
       end
+
       def start_media_analysis_job(input : Types::StartMediaAnalysisJobRequest) : Types::StartMediaAnalysisJobResponse
         request = Protocol::JsonRpc.build_request(Model::START_MEDIA_ANALYSIS_JOB, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1820,15 +2013,18 @@ module AwsSdk
       # results of the person detection operation, first check that the status value published to the Amazon
       # SNS topic is SUCCEEDED . If so, call GetPersonTracking and pass the job identifier ( JobId ) from
       # the initial call to StartPersonTracking .
+
       def start_person_tracking(
         video : Types::Video,
         client_request_token : String? = nil,
         job_tag : String? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartPersonTrackingResponse
+
         input = Types::StartPersonTrackingRequest.new(video: video, client_request_token: client_request_token, job_tag: job_tag, notification_channel: notification_channel)
         start_person_tracking(input)
       end
+
       def start_person_tracking(input : Types::StartPersonTrackingRequest) : Types::StartPersonTrackingResponse
         request = Protocol::JsonRpc.build_request(Model::START_PERSON_TRACKING, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1843,14 +2039,17 @@ module AwsSdk
       # calling DetectCustomLabels . You are charged for the amount of time that the model is running. To
       # stop a running model, call StopProjectVersion . This operation requires permissions to perform the
       # rekognition:StartProjectVersion action.
+
       def start_project_version(
         min_inference_units : Int32,
         project_version_arn : String,
         max_inference_units : Int32? = nil
       ) : Types::StartProjectVersionResponse
+
         input = Types::StartProjectVersionRequest.new(min_inference_units: min_inference_units, project_version_arn: project_version_arn, max_inference_units: max_inference_units)
         start_project_version(input)
       end
+
       def start_project_version(input : Types::StartProjectVersionRequest) : Types::StartProjectVersionResponse
         request = Protocol::JsonRpc.build_request(Model::START_PROJECT_VERSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1872,6 +2071,7 @@ module AwsSdk
       # SUCCEEDED . if so, call GetSegmentDetection and pass the job identifier ( JobId ) from the initial
       # call to StartSegmentDetection . For more information, see Detecting video segments in stored video
       # in the Amazon Rekognition Developer Guide.
+
       def start_segment_detection(
         segment_types : Array(String),
         video : Types::Video,
@@ -1880,9 +2080,11 @@ module AwsSdk
         job_tag : String? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartSegmentDetectionResponse
+
         input = Types::StartSegmentDetectionRequest.new(segment_types: segment_types, video: video, client_request_token: client_request_token, filters: filters, job_tag: job_tag, notification_channel: notification_channel)
         start_segment_detection(input)
       end
+
       def start_segment_detection(input : Types::StartSegmentDetectionRequest) : Types::StartSegmentDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::START_SEGMENT_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1896,14 +2098,17 @@ module AwsSdk
       # specified in the call to CreateStreamProcessor . If you are using a label detection stream processor
       # to detect labels, you need to provide a Start selector and a Stop selector to determine the length
       # of the stream processing time.
+
       def start_stream_processor(
         name : String,
         start_selector : Types::StreamProcessingStartSelector? = nil,
         stop_selector : Types::StreamProcessingStopSelector? = nil
       ) : Types::StartStreamProcessorResponse
+
         input = Types::StartStreamProcessorRequest.new(name: name, start_selector: start_selector, stop_selector: stop_selector)
         start_stream_processor(input)
       end
+
       def start_stream_processor(input : Types::StartStreamProcessorRequest) : Types::StartStreamProcessorResponse
         request = Protocol::JsonRpc.build_request(Model::START_STREAM_PROCESSOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1920,6 +2125,7 @@ module AwsSdk
       # results of the text detection operation, first check that the status value published to the Amazon
       # SNS topic is SUCCEEDED . if so, call GetTextDetection and pass the job identifier ( JobId ) from the
       # initial call to StartTextDetection .
+
       def start_text_detection(
         video : Types::Video,
         client_request_token : String? = nil,
@@ -1927,9 +2133,11 @@ module AwsSdk
         job_tag : String? = nil,
         notification_channel : Types::NotificationChannel? = nil
       ) : Types::StartTextDetectionResponse
+
         input = Types::StartTextDetectionRequest.new(video: video, client_request_token: client_request_token, filters: filters, job_tag: job_tag, notification_channel: notification_channel)
         start_text_detection(input)
       end
+
       def start_text_detection(input : Types::StartTextDetectionRequest) : Types::StartTextDetectionResponse
         request = Protocol::JsonRpc.build_request(Model::START_TEXT_DETECTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1942,12 +2150,15 @@ module AwsSdk
       # operation might take a while to complete. To check the current status, call DescribeProjectVersions
       # . Only applies to Custom Labels projects. This operation requires permissions to perform the
       # rekognition:StopProjectVersion action.
+
       def stop_project_version(
         project_version_arn : String
       ) : Types::StopProjectVersionResponse
+
         input = Types::StopProjectVersionRequest.new(project_version_arn: project_version_arn)
         stop_project_version(input)
       end
+
       def stop_project_version(input : Types::StopProjectVersionRequest) : Types::StopProjectVersionResponse
         request = Protocol::JsonRpc.build_request(Model::STOP_PROJECT_VERSION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1957,12 +2168,15 @@ module AwsSdk
       end
 
       # Stops a running stream processor that was created by CreateStreamProcessor .
+
       def stop_stream_processor(
         name : String
       ) : Types::StopStreamProcessorResponse
+
         input = Types::StopStreamProcessorRequest.new(name: name)
         stop_stream_processor(input)
       end
+
       def stop_stream_processor(input : Types::StopStreamProcessorRequest) : Types::StopStreamProcessorResponse
         request = Protocol::JsonRpc.build_request(Model::STOP_STREAM_PROCESSOR, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1974,13 +2188,16 @@ module AwsSdk
       # Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom
       # Labels model. For more information, see Tagging AWS Resources . This operation requires permissions
       # to perform the rekognition:TagResource action.
+
       def tag_resource(
         resource_arn : String,
         tags : Hash(String, String)
       ) : Types::TagResourceResponse
+
         input = Types::TagResourceRequest.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Types::TagResourceResponse
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1991,13 +2208,16 @@ module AwsSdk
 
       # Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels
       # model. This operation requires permissions to perform the rekognition:UntagResource action.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Types::UntagResourceResponse
+
         input = Types::UntagResourceRequest.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Types::UntagResourceResponse
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2022,13 +2242,16 @@ module AwsSdk
       # UPDATE_FAILED ). Currently, you can't access the terminal error information from the Amazon
       # Rekognition Custom Labels SDK. This operation requires permissions to perform the
       # rekognition:UpdateDatasetEntries action.
+
       def update_dataset_entries(
         changes : Types::DatasetChanges,
         dataset_arn : String
       ) : Types::UpdateDatasetEntriesResponse
+
         input = Types::UpdateDatasetEntriesRequest.new(changes: changes, dataset_arn: dataset_arn)
         update_dataset_entries(input)
       end
+
       def update_dataset_entries(input : Types::UpdateDatasetEntriesRequest) : Types::UpdateDatasetEntriesResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_DATASET_ENTRIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2039,6 +2262,7 @@ module AwsSdk
 
       # Allows you to update a stream processor. You can change some settings and regions of interest and
       # delete certain parameters.
+
       def update_stream_processor(
         name : String,
         data_sharing_preference_for_update : Types::StreamProcessorDataSharingPreference? = nil,
@@ -2046,9 +2270,11 @@ module AwsSdk
         regions_of_interest_for_update : Array(Types::RegionOfInterest)? = nil,
         settings_for_update : Types::StreamProcessorSettingsForUpdate? = nil
       ) : Types::UpdateStreamProcessorResponse
+
         input = Types::UpdateStreamProcessorRequest.new(name: name, data_sharing_preference_for_update: data_sharing_preference_for_update, parameters_to_delete: parameters_to_delete, regions_of_interest_for_update: regions_of_interest_for_update, settings_for_update: settings_for_update)
         update_stream_processor(input)
       end
+
       def update_stream_processor(input : Types::UpdateStreamProcessorRequest) : Types::UpdateStreamProcessorResponse
         request = Protocol::JsonRpc.build_request(Model::UPDATE_STREAM_PROCESSOR, input, endpoint)
         request = request.with_headers(endpoint_headers)

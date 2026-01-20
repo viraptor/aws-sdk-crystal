@@ -1,0 +1,7 @@
+require "./runtime"
+require "./opensearchserverless/client"
+require "./opensearchserverless/errors"
+require "./opensearchserverless/model"
+require "./opensearchserverless/types"
+require "./opensearchserverless/protocol/json_rpc"
+require "./customizations/opensearchserverless/customizations"

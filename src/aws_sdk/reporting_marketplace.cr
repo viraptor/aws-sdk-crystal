@@ -1,7 +1,0 @@
-require "./runtime"
-require "./reporting_marketplace/client"
-require "./reporting_marketplace/errors"
-require "./reporting_marketplace/model"
-require "./reporting_marketplace/types"
-require "./reporting_marketplace/protocol/rest_json"
-require "./customizations/reporting_marketplace/customizations"

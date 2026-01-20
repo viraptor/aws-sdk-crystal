@@ -1,0 +1,7 @@
+require "./runtime"
+require "./mwaa/client"
+require "./mwaa/errors"
+require "./mwaa/model"
+require "./mwaa/types"
+require "./mwaa/protocol/rest_json"
+require "./customizations/mwaa/customizations"

@@ -5,39 +5,48 @@ module AwsSdk
       end
 
       # You don't have permissions to access the resource.
+
       class AccessDeniedException < ServiceError
       end
 
       # The client attempted to remove a resource that is currently in use.
+
       class ConflictException < ServiceError
       end
 
       # Exception is thrown when an operation has been disabled.
+
       class DisabledOperationException < ServiceError
       end
 
       # The request failed because of an unknown error, exception, or failure (the failure is internal to
       # the service).
+
       class InternalException < ServiceError
       end
 
       # An invalid pagination token provided in the request.
+
       class InvalidPaginationTokenException < ServiceError
       end
 
       # You attempted to create more than the allowed number of tags.
+
       class LimitExceededException < ServiceError
       end
 
       # You attempted to create a resource that already exists.
+
       class ResourceAlreadyExistsException < ServiceError
       end
 
       # You attempted to access or delete a resource that does not exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # An exception for missing or invalid input fields.
+
       class ValidationException < ServiceError
       end
 

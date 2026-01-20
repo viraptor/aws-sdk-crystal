@@ -1,7 +1,0 @@
-require "./runtime"
-require "./messaging_chime/client"
-require "./messaging_chime/errors"
-require "./messaging_chime/model"
-require "./messaging_chime/types"
-require "./messaging_chime/protocol/rest_json"
-require "./customizations/messaging_chime/customizations"

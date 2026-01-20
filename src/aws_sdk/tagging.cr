@@ -1,7 +1,0 @@
-require "./runtime"
-require "./tagging/client"
-require "./tagging/errors"
-require "./tagging/model"
-require "./tagging/types"
-require "./tagging/protocol/json_rpc"
-require "./customizations/tagging/customizations"

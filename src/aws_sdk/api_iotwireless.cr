@@ -1,7 +1,0 @@
-require "./runtime"
-require "./api_iotwireless/client"
-require "./api_iotwireless/errors"
-require "./api_iotwireless/model"
-require "./api_iotwireless/types"
-require "./api_iotwireless/protocol/rest_json"
-require "./customizations/api_iotwireless/customizations"

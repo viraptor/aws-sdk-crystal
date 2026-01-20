@@ -7,31 +7,38 @@ module AwsSdk
       # An exception indicating Amazon Fraud Detector does not have the needed permissions. This can occur
       # if you submit a request, such as PutExternalModel , that specifies a role that is not in your
       # account.
+
       class AccessDeniedException < ServiceError
       end
 
       # An exception indicating there was a conflict during a delete operation.
+
       class ConflictException < ServiceError
       end
 
       # An exception indicating an internal server error.
+
       class InternalServerException < ServiceError
       end
 
       # An exception indicating the specified resource was not found.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # An exception indicating that the attached customer-owned (external) model threw an exception when
       # Amazon Fraud Detector invoked the model.
+
       class ResourceUnavailableException < ServiceError
       end
 
       # An exception indicating a throttling error.
+
       class ThrottlingException < ServiceError
       end
 
       # An exception indicating a specified value is not allowed.
+
       class ValidationException < ServiceError
       end
 

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./cleanrooms_ml/client"
-require "./cleanrooms_ml/errors"
-require "./cleanrooms_ml/model"
-require "./cleanrooms_ml/types"
-require "./cleanrooms_ml/protocol/rest_json"
-require "./customizations/cleanrooms_ml/customizations"

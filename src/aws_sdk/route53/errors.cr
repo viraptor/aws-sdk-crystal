@@ -5,24 +5,29 @@ module AwsSdk
       end
 
       # This CIDR block is already in use.
+
       class CidrBlockInUseException < ServiceError
       end
 
       # A CIDR collection with this name and a different caller reference already exists in this account.
+
       class CidrCollectionAlreadyExistsException < ServiceError
       end
 
       # This CIDR collection is in use, and isn't empty.
+
       class CidrCollectionInUseException < ServiceError
       end
 
       # The CIDR collection version you provided, doesn't match the one in the ListCidrCollections
       # operation.
+
       class CidrCollectionVersionMismatchException < ServiceError
       end
 
       # Another user submitted a request to create, update, or delete the object at the same time that you
       # did. Retry the request.
+
       class ConcurrentModification < ServiceError
       end
 
@@ -35,29 +40,35 @@ module AwsSdk
       # zone with the specified name already exists and is already associated with the Amazon VPC that you
       # specified. Associate VPCs with a private hosted zone: The VPC that you specified is already
       # associated with another hosted zone that has the same name.
+
       class ConflictingDomainExists < ServiceError
       end
 
       # You tried to update a traffic policy instance by using a traffic policy version that has a different
       # DNS type than the current type for the instance. You specified the type in the JSON document in the
       # CreateTrafficPolicy or CreateTrafficPolicyVersion request.
+
       class ConflictingTypes < ServiceError
       end
 
       # The hosted zone doesn't have any DNSSEC resources.
+
       class DNSSECNotFound < ServiceError
       end
 
       # A delegation set with the same owner and caller reference combination has already been created.
+
       class DelegationSetAlreadyCreated < ServiceError
       end
 
       # The specified delegation set has already been marked as reusable.
+
       class DelegationSetAlreadyReusable < ServiceError
       end
 
       # The specified delegation contains associated hosted zones which must be deleted before the reusable
       # delegation set can be deleted.
+
       class DelegationSetInUse < ServiceError
       end
 
@@ -65,10 +76,12 @@ module AwsSdk
       # common), but there is a limit to the number of hosted zones that have the same name. If you get this
       # error, Amazon Route 53 has reached that limit. If you own the domain name and Route 53 generates
       # this error, contact Customer Support.
+
       class DelegationSetNotAvailable < ServiceError
       end
 
       # A reusable delegation set with the specified ID does not exist.
+
       class DelegationSetNotReusable < ServiceError
       end
 
@@ -77,41 +90,50 @@ module AwsSdk
       # existing health check, and one or more values that differ from the existing health check that has
       # the same caller reference. The same value for CallerReference as a health check that you created and
       # later deleted, regardless of the other settings in the request.
+
       class HealthCheckAlreadyExists < ServiceError
       end
 
       # This error code is not in use.
+
       class HealthCheckInUse < ServiceError
       end
 
       # The value of HealthCheckVersion in the request doesn't match the value of HealthCheckVersion in the
       # health check.
+
       class HealthCheckVersionMismatch < ServiceError
       end
 
       # The hosted zone you're trying to create already exists. Amazon Route 53 returns this error when a
       # hosted zone has already been created with the specified CallerReference .
+
       class HostedZoneAlreadyExists < ServiceError
       end
 
       # The hosted zone contains resource records that are not SOA or NS records.
+
       class HostedZoneNotEmpty < ServiceError
       end
 
       # The specified HostedZone can't be found.
+
       class HostedZoneNotFound < ServiceError
       end
 
       # The specified hosted zone is a public hosted zone, not a private hosted zone.
+
       class HostedZoneNotPrivate < ServiceError
       end
 
       # The hosted zone nameservers don't match the parent nameservers. The hosted zone and parent must have
       # the same nameservers.
+
       class HostedZonePartiallyDelegated < ServiceError
       end
 
       # The resource you're trying to access is unsupported on this Amazon Route 53 endpoint.
+
       class IncompatibleVersion < ServiceError
       end
 
@@ -124,136 +146,167 @@ module AwsSdk
       # permissions for the KMS key. The Key management service (KMS) key you specified is marked as
       # disabled for the log group associated with query log. Update or provide a resource policy to grant
       # permissions for the KMS key.
+
       class InsufficientCloudWatchLogsResourcePolicy < ServiceError
       end
 
       # Parameter name is not valid.
+
       class InvalidArgument < ServiceError
       end
 
       # This exception contains a list of messages that might contain one or more error messages. Each error
       # message indicates one error in the change batch.
+
       class InvalidChangeBatch < ServiceError
       end
 
       # The specified domain name is not valid.
+
       class InvalidDomainName < ServiceError
       end
 
       # The input is not valid.
+
       class InvalidInput < ServiceError
       end
 
       # The KeyManagementServiceArn that you specified isn't valid to use with DNSSEC signing.
+
       class InvalidKMSArn < ServiceError
       end
 
       # The key-signing key (KSK) name that you specified isn't a valid name.
+
       class InvalidKeySigningKeyName < ServiceError
       end
 
       # The key-signing key (KSK) status isn't valid or another KSK has the status INTERNAL_FAILURE .
+
       class InvalidKeySigningKeyStatus < ServiceError
       end
 
       # The value that you specified to get the second or subsequent page of results is invalid.
+
       class InvalidPaginationToken < ServiceError
       end
 
       # Your hosted zone status isn't valid for this operation. In the hosted zone, change the status to
       # enable DNSSEC or disable DNSSEC .
+
       class InvalidSigningStatus < ServiceError
       end
 
       # The format of the traffic policy document that you specified in the Document element is not valid.
+
       class InvalidTrafficPolicyDocument < ServiceError
       end
 
       # The VPC ID that you specified either isn't a valid ID or the current account is not authorized to
       # access this VPC.
+
       class InvalidVPCId < ServiceError
       end
 
       # You've already created a key-signing key (KSK) with this name or with the same customer managed key
       # ARN.
+
       class KeySigningKeyAlreadyExists < ServiceError
       end
 
       # The key-signing key (KSK) is specified in a parent DS record.
+
       class KeySigningKeyInParentDSRecord < ServiceError
       end
 
       # The key-signing key (KSK) that you specified can't be deactivated because it's the only KSK for a
       # currently-enabled DNSSEC. Disable DNSSEC signing, or add or enable another KSK.
+
       class KeySigningKeyInUse < ServiceError
       end
 
       # A key-signing key (KSK) with ACTIVE status wasn't found.
+
       class KeySigningKeyWithActiveStatusNotFound < ServiceError
       end
 
       # The VPC that you're trying to disassociate from the private hosted zone is the last VPC that is
       # associated with the hosted zone. Amazon Route 53 doesn't support disassociating the last VPC from a
       # hosted zone.
+
       class LastVPCAssociation < ServiceError
       end
 
       # This operation can't be completed because the current account has reached the limit on the resource
       # you are trying to create. To request a higher limit, create a case with the Amazon Web Services
       # Support Center.
+
       class LimitsExceeded < ServiceError
       end
 
       # A change with the specified change ID does not exist.
+
       class NoSuchChange < ServiceError
       end
 
       # The CIDR collection you specified, doesn't exist.
+
       class NoSuchCidrCollectionException < ServiceError
       end
 
       # The CIDR collection location doesn't match any locations in your account.
+
       class NoSuchCidrLocationException < ServiceError
       end
 
       # There is no CloudWatch Logs log group with the specified ARN.
+
       class NoSuchCloudWatchLogsLogGroup < ServiceError
       end
 
       # A reusable delegation set with the specified ID does not exist.
+
       class NoSuchDelegationSet < ServiceError
       end
 
       # Amazon Route 53 doesn't support the specified geographic location. For a list of supported
       # geolocation codes, see the GeoLocation data type.
+
       class NoSuchGeoLocation < ServiceError
       end
 
       # No health check exists with the specified ID.
+
       class NoSuchHealthCheck < ServiceError
       end
 
       # No hosted zone exists with the ID that you specified.
+
       class NoSuchHostedZone < ServiceError
       end
 
       # The specified key-signing key (KSK) doesn't exist.
+
       class NoSuchKeySigningKey < ServiceError
       end
 
       # There is no DNS query logging configuration with the specified ID.
+
       class NoSuchQueryLoggingConfig < ServiceError
       end
 
       # No traffic policy exists with the specified ID.
+
       class NoSuchTrafficPolicy < ServiceError
       end
 
       # No traffic policy instance exists with the specified ID.
+
       class NoSuchTrafficPolicyInstance < ServiceError
       end
 
       # Associating the specified VPC with the specified hosted zone has not been authorized.
+
       class NotAuthorizedException < ServiceError
       end
 
@@ -261,20 +314,24 @@ module AwsSdk
       # subsequent requests for the same hosted zone and return an HTTP 400 error ( Bad request ). If Route
       # 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals of
       # increasing duration, before you try the request again.
+
       class PriorRequestNotComplete < ServiceError
       end
 
       # You're trying to associate a VPC with a public hosted zone. Amazon Route 53 doesn't support
       # associating a VPC with a public hosted zone.
+
       class PublicZoneVPCAssociation < ServiceError
       end
 
       # You can create only one query logging configuration for a hosted zone, and a query logging
       # configuration already exists for this hosted zone.
+
       class QueryLoggingConfigAlreadyExists < ServiceError
       end
 
       # The limit on the number of requests per second was exceeded.
+
       class ThrottlingException < ServiceError
       end
 
@@ -284,6 +341,7 @@ module AwsSdk
       # GetAccountLimit . To request a higher limit, create a case with the Amazon Web Services Support
       # Center. You have reached the maximum number of active health checks for an Amazon Web Services
       # account. To request a higher limit, create a case with the Amazon Web Services Support Center.
+
       class TooManyHealthChecks < ServiceError
       end
 
@@ -294,11 +352,13 @@ module AwsSdk
       # account, see GetAccountLimit . To get the current limit on hosted zones that can be associated with
       # a reusable delegation set, see GetReusableDelegationSetLimit . To request a higher limit, create a
       # case with the Amazon Web Services Support Center.
+
       class TooManyHostedZones < ServiceError
       end
 
       # You've reached the limit for the number of key-signing keys (KSKs). Remove at least one KSK, and
       # then try again.
+
       class TooManyKeySigningKeys < ServiceError
       end
 
@@ -306,6 +366,7 @@ module AwsSdk
       # of traffic policies. For information about default limits, see Limits in the Amazon Route 53
       # Developer Guide . To get the current limit for an account, see GetAccountLimit . To request a higher
       # limit, create a case with the Amazon Web Services Support Center.
+
       class TooManyTrafficPolicies < ServiceError
       end
 
@@ -314,6 +375,7 @@ module AwsSdk
       # Amazon Route 53 Developer Guide . For information about how to get the current limit for an account,
       # see GetAccountLimit . To request a higher limit, create a case with the Amazon Web Services Support
       # Center.
+
       class TooManyTrafficPolicyInstances < ServiceError
       end
 
@@ -322,6 +384,7 @@ module AwsSdk
       # versions, you can use GetTrafficPolicy to get the traffic policy document for a specified traffic
       # policy version, and then use CreateTrafficPolicy to create a new traffic policy using the traffic
       # policy document.
+
       class TooManyTrafficPolicyVersionsForCurrentPolicy < ServiceError
       end
 
@@ -329,26 +392,32 @@ module AwsSdk
       # zone. To authorize another VPC to be associated with the hosted zone, submit a
       # DeleteVPCAssociationAuthorization request to remove an existing authorization. To get a list of
       # existing authorizations, submit a ListVPCAssociationAuthorizations request.
+
       class TooManyVPCAssociationAuthorizations < ServiceError
       end
 
       # A traffic policy that has the same value for Name already exists.
+
       class TrafficPolicyAlreadyExists < ServiceError
       end
 
       # One or more traffic policy instances were created by using the specified traffic policy.
+
       class TrafficPolicyInUse < ServiceError
       end
 
       # There is already a traffic policy instance with the specified ID.
+
       class TrafficPolicyInstanceAlreadyExists < ServiceError
       end
 
       # The VPC that you specified is not authorized to be associated with the hosted zone.
+
       class VPCAssociationAuthorizationNotFound < ServiceError
       end
 
       # The specified VPC and hosted zone are not currently associated.
+
       class VPCAssociationNotFound < ServiceError
       end
 

@@ -1,7 +1,0 @@
-require "./runtime"
-require "./eks_auth/client"
-require "./eks_auth/errors"
-require "./eks_auth/model"
-require "./eks_auth/types"
-require "./eks_auth/protocol/rest_json"
-require "./customizations/eks_auth/customizations"

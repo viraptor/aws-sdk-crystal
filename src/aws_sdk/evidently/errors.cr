@@ -5,34 +5,42 @@ module AwsSdk
       end
 
       # You do not have sufficient permissions to perform this action.
+
       class AccessDeniedException < ServiceError
       end
 
       # A resource was in an inconsistent state during an update or a deletion.
+
       class ConflictException < ServiceError
       end
 
       # Unexpected error while processing the request. Retry the request.
+
       class InternalServerException < ServiceError
       end
 
       # The request references a resource that does not exist.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would cause a service quota to be exceeded.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The service was unavailable. Retry the request.
+
       class ServiceUnavailableException < ServiceError
       end
 
       # The request was denied because of request throttling. Retry the request.
+
       class ThrottlingException < ServiceError
       end
 
       # The value of a parameter in the request caused an error.
+
       class ValidationException < ServiceError
       end
 

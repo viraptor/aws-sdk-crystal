@@ -1,6 +1,7 @@
 module AwsSdk
   module CloudFront
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -39,13 +40,16 @@ module AwsSdk
       # distribution, prerequisites that you must complete, and other restrictions, see Moving an alternate
       # domain name to a different standard distribution or distribution tenant in the Amazon CloudFront
       # Developer Guide .
+
       def associate_alias(
-        alias : String,
+        alias_ : String,
         target_distribution_id : String
       ) : Nil
-        input = Types::AssociateAliasRequest.new(alias: alias, target_distribution_id: target_distribution_id)
+
+        input = Types::AssociateAliasRequest.new(alias_: alias_, target_distribution_id: target_distribution_id)
         associate_alias(input)
       end
+
       def associate_alias(input : Types::AssociateAliasRequest) : Nil
         request = Protocol::RestXml.build_request(Model::ASSOCIATE_ALIAS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -55,14 +59,17 @@ module AwsSdk
       end
 
       # Associates the WAF web ACL with a distribution tenant.
+
       def associate_distribution_tenant_web_acl(
         id : String,
         web_acl_arn : String,
         if_match : String? = nil
       ) : Types::AssociateDistributionTenantWebACLResult
+
         input = Types::AssociateDistributionTenantWebACLRequest.new(id: id, web_acl_arn: web_acl_arn, if_match: if_match)
         associate_distribution_tenant_web_acl(input)
       end
+
       def associate_distribution_tenant_web_acl(input : Types::AssociateDistributionTenantWebACLRequest) : Types::AssociateDistributionTenantWebACLResult
         request = Protocol::RestXml.build_request(Model::ASSOCIATE_DISTRIBUTION_TENANT_WEB_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -72,14 +79,17 @@ module AwsSdk
       end
 
       # Associates the WAF web ACL with a distribution.
+
       def associate_distribution_web_acl(
         id : String,
         web_acl_arn : String,
         if_match : String? = nil
       ) : Types::AssociateDistributionWebACLResult
+
         input = Types::AssociateDistributionWebACLRequest.new(id: id, web_acl_arn: web_acl_arn, if_match: if_match)
         associate_distribution_web_acl(input)
       end
+
       def associate_distribution_web_acl(input : Types::AssociateDistributionWebACLRequest) : Types::AssociateDistributionWebACLResult
         request = Protocol::RestXml.build_request(Model::ASSOCIATE_DISTRIBUTION_WEB_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -95,6 +105,7 @@ module AwsSdk
       # CreateContinuousDeploymentPolicy to incrementally move traffic to the staging distribution. This API
       # operation requires the following IAM permissions: GetDistribution CreateDistribution
       # CopyDistribution
+
       def copy_distribution(
         caller_reference : String,
         primary_distribution_id : String,
@@ -102,9 +113,11 @@ module AwsSdk
         if_match : String? = nil,
         staging : Bool? = nil
       ) : Types::CopyDistributionResult
+
         input = Types::CopyDistributionRequest.new(caller_reference: caller_reference, primary_distribution_id: primary_distribution_id, enabled: enabled, if_match: if_match, staging: staging)
         copy_distribution(input)
       end
+
       def copy_distribution(input : Types::CopyDistributionRequest) : Types::CopyDistributionResult
         request = Protocol::RestXml.build_request(Model::COPY_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -114,6 +127,7 @@ module AwsSdk
       end
 
       # Creates an Anycast static IP list.
+
       def create_anycast_ip_list(
         ip_count : Int32,
         name : String,
@@ -121,9 +135,11 @@ module AwsSdk
         ipam_cidr_configs : Array(Types::IpamCidrConfig)? = nil,
         tags : Types::Tags? = nil
       ) : Types::CreateAnycastIpListResult
+
         input = Types::CreateAnycastIpListRequest.new(ip_count: ip_count, name: name, ip_address_type: ip_address_type, ipam_cidr_configs: ipam_cidr_configs, tags: tags)
         create_anycast_ip_list(input)
       end
+
       def create_anycast_ip_list(input : Types::CreateAnycastIpListRequest) : Types::CreateAnycastIpListResult
         request = Protocol::RestXml.build_request(Model::CREATE_ANYCAST_IP_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -145,12 +161,15 @@ module AwsSdk
       # cache that matches the request's cache key. If you want to send values to the origin but not include
       # them in the cache key, use OriginRequestPolicy . For more information about cache policies, see
       # Controlling the cache key in the Amazon CloudFront Developer Guide .
+
       def create_cache_policy(
         cache_policy_config : Types::CachePolicyConfig
       ) : Types::CreateCachePolicyResult
+
         input = Types::CreateCachePolicyRequest.new(cache_policy_config: cache_policy_config)
         create_cache_policy(input)
       end
+
       def create_cache_policy(input : Types::CreateCachePolicyRequest) : Types::CreateCachePolicyResult
         request = Protocol::RestXml.build_request(Model::CREATE_CACHE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -163,12 +182,15 @@ module AwsSdk
       # origin access identity to require users to access your content using a CloudFront URL instead of the
       # Amazon S3 URL. For more information about how to use origin access identities, see Serving Private
       # Content through CloudFront in the Amazon CloudFront Developer Guide .
+
       def create_cloud_front_origin_access_identity(
         cloud_front_origin_access_identity_config : Types::CloudFrontOriginAccessIdentityConfig
       ) : Types::CreateCloudFrontOriginAccessIdentityResult
+
         input = Types::CreateCloudFrontOriginAccessIdentityRequest.new(cloud_front_origin_access_identity_config: cloud_front_origin_access_identity_config)
         create_cloud_front_origin_access_identity(input)
       end
+
       def create_cloud_front_origin_access_identity(input : Types::CreateCloudFrontOriginAccessIdentityRequest) : Types::CreateCloudFrontOriginAccessIdentityResult
         request = Protocol::RestXml.build_request(Model::CREATE_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -178,15 +200,18 @@ module AwsSdk
       end
 
       # Creates a connection function.
+
       def create_connection_function(
         connection_function_code : Bytes,
         connection_function_config : Types::FunctionConfig,
         name : String,
         tags : Types::Tags? = nil
       ) : Types::CreateConnectionFunctionResult
+
         input = Types::CreateConnectionFunctionRequest.new(connection_function_code: connection_function_code, connection_function_config: connection_function_config, name: name, tags: tags)
         create_connection_function(input)
       end
+
       def create_connection_function(input : Types::CreateConnectionFunctionRequest) : Types::CreateConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::CREATE_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -196,6 +221,7 @@ module AwsSdk
       end
 
       # Creates a connection group.
+
       def create_connection_group(
         name : String,
         anycast_ip_list_id : String? = nil,
@@ -203,9 +229,11 @@ module AwsSdk
         ipv6_enabled : Bool? = nil,
         tags : Types::Tags? = nil
       ) : Types::CreateConnectionGroupResult
+
         input = Types::CreateConnectionGroupRequest.new(name: name, anycast_ip_list_id: anycast_ip_list_id, enabled: enabled, ipv6_enabled: ipv6_enabled, tags: tags)
         create_connection_group(input)
       end
+
       def create_connection_group(input : Types::CreateConnectionGroupRequest) : Types::CreateConnectionGroupResult
         request = Protocol::RestXml.build_request(Model::CREATE_CONNECTION_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -221,12 +249,15 @@ module AwsSdk
       # continuous deployment policy to incrementally move traffic to the staging distribution. This
       # workflow enables you to test changes to a distribution's configuration before moving all of your
       # domain's production traffic to the new configuration.
+
       def create_continuous_deployment_policy(
         continuous_deployment_policy_config : Types::ContinuousDeploymentPolicyConfig
       ) : Types::CreateContinuousDeploymentPolicyResult
+
         input = Types::CreateContinuousDeploymentPolicyRequest.new(continuous_deployment_policy_config: continuous_deployment_policy_config)
         create_continuous_deployment_policy(input)
       end
+
       def create_continuous_deployment_policy(input : Types::CreateContinuousDeploymentPolicyRequest) : Types::CreateContinuousDeploymentPolicyResult
         request = Protocol::RestXml.build_request(Model::CREATE_CONTINUOUS_DEPLOYMENT_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -236,12 +267,15 @@ module AwsSdk
       end
 
       # Creates a CloudFront distribution.
+
       def create_distribution(
         distribution_config : Types::DistributionConfig
       ) : Types::CreateDistributionResult
+
         input = Types::CreateDistributionRequest.new(distribution_config: distribution_config)
         create_distribution(input)
       end
+
       def create_distribution(input : Types::CreateDistributionRequest) : Types::CreateDistributionResult
         request = Protocol::RestXml.build_request(Model::CREATE_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -251,6 +285,7 @@ module AwsSdk
       end
 
       # Creates a distribution tenant.
+
       def create_distribution_tenant(
         distribution_id : String,
         domains : Array(Types::DomainItem),
@@ -262,9 +297,11 @@ module AwsSdk
         parameters : Array(Types::Parameter)? = nil,
         tags : Types::Tags? = nil
       ) : Types::CreateDistributionTenantResult
+
         input = Types::CreateDistributionTenantRequest.new(distribution_id: distribution_id, domains: domains, name: name, connection_group_id: connection_group_id, customizations: customizations, enabled: enabled, managed_certificate_request: managed_certificate_request, parameters: parameters, tags: tags)
         create_distribution_tenant(input)
       end
+
       def create_distribution_tenant(input : Types::CreateDistributionTenantRequest) : Types::CreateDistributionTenantResult
         request = Protocol::RestXml.build_request(Model::CREATE_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -275,12 +312,15 @@ module AwsSdk
 
       # Create a new distribution with tags. This API operation requires the following IAM permissions:
       # CreateDistribution TagResource
+
       def create_distribution_with_tags(
         distribution_config_with_tags : Types::DistributionConfigWithTags
       ) : Types::CreateDistributionWithTagsResult
+
         input = Types::CreateDistributionWithTagsRequest.new(distribution_config_with_tags: distribution_config_with_tags)
         create_distribution_with_tags(input)
       end
+
       def create_distribution_with_tags(input : Types::CreateDistributionWithTagsRequest) : Types::CreateDistributionWithTagsResult
         request = Protocol::RestXml.build_request(Model::CREATE_DISTRIBUTION_WITH_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -290,12 +330,15 @@ module AwsSdk
       end
 
       # Create a new field-level encryption configuration.
+
       def create_field_level_encryption_config(
         field_level_encryption_config : Types::FieldLevelEncryptionConfig
       ) : Types::CreateFieldLevelEncryptionConfigResult
+
         input = Types::CreateFieldLevelEncryptionConfigRequest.new(field_level_encryption_config: field_level_encryption_config)
         create_field_level_encryption_config(input)
       end
+
       def create_field_level_encryption_config(input : Types::CreateFieldLevelEncryptionConfigRequest) : Types::CreateFieldLevelEncryptionConfigResult
         request = Protocol::RestXml.build_request(Model::CREATE_FIELD_LEVEL_ENCRYPTION_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -305,12 +348,15 @@ module AwsSdk
       end
 
       # Create a field-level encryption profile.
+
       def create_field_level_encryption_profile(
         field_level_encryption_profile_config : Types::FieldLevelEncryptionProfileConfig
       ) : Types::CreateFieldLevelEncryptionProfileResult
+
         input = Types::CreateFieldLevelEncryptionProfileRequest.new(field_level_encryption_profile_config: field_level_encryption_profile_config)
         create_field_level_encryption_profile(input)
       end
+
       def create_field_level_encryption_profile(input : Types::CreateFieldLevelEncryptionProfileRequest) : Types::CreateFieldLevelEncryptionProfileResult
         request = Protocol::RestXml.build_request(Model::CREATE_FIELD_LEVEL_ENCRYPTION_PROFILE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -326,14 +372,17 @@ module AwsSdk
       # you're ready to use your function with a CloudFront distribution, use PublishFunction to copy the
       # function from the DEVELOPMENT stage to LIVE . When it's live, you can attach the function to a
       # distribution's cache behavior, using the function's ARN.
+
       def create_function(
         function_code : Bytes,
         function_config : Types::FunctionConfig,
         name : String
       ) : Types::CreateFunctionResult
+
         input = Types::CreateFunctionRequest.new(function_code: function_code, function_config: function_config, name: name)
         create_function(input)
       end
+
       def create_function(input : Types::CreateFunctionRequest) : Types::CreateFunctionResult
         request = Protocol::RestXml.build_request(Model::CREATE_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -344,13 +393,16 @@ module AwsSdk
 
       # Create a new invalidation. For more information, see Invalidating files in the Amazon CloudFront
       # Developer Guide .
+
       def create_invalidation(
         distribution_id : String,
         invalidation_batch : Types::InvalidationBatch
       ) : Types::CreateInvalidationResult
+
         input = Types::CreateInvalidationRequest.new(distribution_id: distribution_id, invalidation_batch: invalidation_batch)
         create_invalidation(input)
       end
+
       def create_invalidation(input : Types::CreateInvalidationRequest) : Types::CreateInvalidationResult
         request = Protocol::RestXml.build_request(Model::CREATE_INVALIDATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -361,13 +413,16 @@ module AwsSdk
 
       # Creates an invalidation for a distribution tenant. For more information, see Invalidating files in
       # the Amazon CloudFront Developer Guide .
+
       def create_invalidation_for_distribution_tenant(
         id : String,
         invalidation_batch : Types::InvalidationBatch
       ) : Types::CreateInvalidationForDistributionTenantResult
+
         input = Types::CreateInvalidationForDistributionTenantRequest.new(id: id, invalidation_batch: invalidation_batch)
         create_invalidation_for_distribution_tenant(input)
       end
+
       def create_invalidation_for_distribution_tenant(input : Types::CreateInvalidationForDistributionTenantRequest) : Types::CreateInvalidationForDistributionTenantResult
         request = Protocol::RestXml.build_request(Model::CREATE_INVALIDATION_FOR_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -384,12 +439,15 @@ module AwsSdk
       # the key group. The signed URL or cookie contains information about which public key CloudFront
       # should use to verify the signature. For more information, see Serving private content in the Amazon
       # CloudFront Developer Guide .
+
       def create_key_group(
         key_group_config : Types::KeyGroupConfig
       ) : Types::CreateKeyGroupResult
+
         input = Types::CreateKeyGroupRequest.new(key_group_config: key_group_config)
         create_key_group(input)
       end
+
       def create_key_group(input : Types::CreateKeyGroupRequest) : Types::CreateKeyGroupResult
         request = Protocol::RestXml.build_request(Model::CREATE_KEY_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -401,14 +459,17 @@ module AwsSdk
       # Specifies the key value store resource to add to your account. In your account, the key value store
       # names must be unique. You can also import key value store data in JSON format from an S3 bucket by
       # providing a valid ImportSource that you own.
+
       def create_key_value_store(
         name : String,
         comment : String? = nil,
         import_source : Types::ImportSource? = nil
       ) : Types::CreateKeyValueStoreResult
+
         input = Types::CreateKeyValueStoreRequest.new(name: name, comment: comment, import_source: import_source)
         create_key_value_store(input)
       end
+
       def create_key_value_store(input : Types::CreateKeyValueStoreRequest) : Types::CreateKeyValueStoreResult
         request = Protocol::RestXml.build_request(Model::CREATE_KEY_VALUE_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -420,13 +481,16 @@ module AwsSdk
       # Enables or disables additional Amazon CloudWatch metrics for the specified CloudFront distribution.
       # The additional metrics incur an additional cost. For more information, see Viewing additional
       # CloudFront distribution metrics in the Amazon CloudFront Developer Guide .
+
       def create_monitoring_subscription(
         distribution_id : String,
         monitoring_subscription : Types::MonitoringSubscription
       ) : Types::CreateMonitoringSubscriptionResult
+
         input = Types::CreateMonitoringSubscriptionRequest.new(distribution_id: distribution_id, monitoring_subscription: monitoring_subscription)
         create_monitoring_subscription(input)
       end
+
       def create_monitoring_subscription(input : Types::CreateMonitoringSubscriptionRequest) : Types::CreateMonitoringSubscriptionResult
         request = Protocol::RestXml.build_request(Model::CREATE_MONITORING_SUBSCRIPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -441,12 +505,15 @@ module AwsSdk
       # viewers (users) to access the origin's content only through CloudFront. For more information about
       # using a CloudFront origin access control, see Restricting access to an Amazon Web Services origin in
       # the Amazon CloudFront Developer Guide .
+
       def create_origin_access_control(
         origin_access_control_config : Types::OriginAccessControlConfig
       ) : Types::CreateOriginAccessControlResult
+
         input = Types::CreateOriginAccessControlRequest.new(origin_access_control_config: origin_access_control_config)
         create_origin_access_control(input)
       end
+
       def create_origin_access_control(input : Types::CreateOriginAccessControlRequest) : Types::CreateOriginAccessControlResult
         request = Protocol::RestXml.build_request(Model::CREATE_ORIGIN_ACCESS_CONTROL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -467,12 +534,15 @@ module AwsSdk
       # that matches the request. If you want to send values to the origin and also include them in the
       # cache key, use CachePolicy . For more information about origin request policies, see Controlling
       # origin requests in the Amazon CloudFront Developer Guide .
+
       def create_origin_request_policy(
         origin_request_policy_config : Types::OriginRequestPolicyConfig
       ) : Types::CreateOriginRequestPolicyResult
+
         input = Types::CreateOriginRequestPolicyRequest.new(origin_request_policy_config: origin_request_policy_config)
         create_origin_request_policy(input)
       end
+
       def create_origin_request_policy(input : Types::CreateOriginRequestPolicyRequest) : Types::CreateOriginRequestPolicyResult
         request = Protocol::RestXml.build_request(Model::CREATE_ORIGIN_REQUEST_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -483,12 +553,15 @@ module AwsSdk
 
       # Uploads a public key to CloudFront that you can use with signed URLs and signed cookies , or with
       # field-level encryption .
+
       def create_public_key(
         public_key_config : Types::PublicKeyConfig
       ) : Types::CreatePublicKeyResult
+
         input = Types::CreatePublicKeyRequest.new(public_key_config: public_key_config)
         create_public_key(input)
       end
+
       def create_public_key(input : Types::CreatePublicKeyRequest) : Types::CreatePublicKeyResult
         request = Protocol::RestXml.build_request(Model::CREATE_PUBLIC_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -501,15 +574,18 @@ module AwsSdk
       # attach it to one or more cache behaviors to send real-time log data to the specified Amazon Kinesis
       # data stream. For more information about real-time log configurations, see Real-time logs in the
       # Amazon CloudFront Developer Guide .
+
       def create_realtime_log_config(
         end_points : Array(Types::EndPoint),
         fields : Array(String),
         name : String,
         sampling_rate : Int64
       ) : Types::CreateRealtimeLogConfigResult
+
         input = Types::CreateRealtimeLogConfigRequest.new(end_points: end_points, fields: fields, name: name, sampling_rate: sampling_rate)
         create_realtime_log_config(input)
       end
+
       def create_realtime_log_config(input : Types::CreateRealtimeLogConfigRequest) : Types::CreateRealtimeLogConfigResult
         request = Protocol::RestXml.build_request(Model::CREATE_REALTIME_LOG_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -527,12 +603,15 @@ module AwsSdk
       # response headers according to the configuration of the response headers policy. For more
       # information, see Adding or removing HTTP headers in CloudFront responses in the Amazon CloudFront
       # Developer Guide .
+
       def create_response_headers_policy(
         response_headers_policy_config : Types::ResponseHeadersPolicyConfig
       ) : Types::CreateResponseHeadersPolicyResult
+
         input = Types::CreateResponseHeadersPolicyRequest.new(response_headers_policy_config: response_headers_policy_config)
         create_response_headers_policy(input)
       end
+
       def create_response_headers_policy(input : Types::CreateResponseHeadersPolicyRequest) : Types::CreateResponseHeadersPolicyResult
         request = Protocol::RestXml.build_request(Model::CREATE_RESPONSE_HEADERS_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -544,12 +623,15 @@ module AwsSdk
       # This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
       # distributions on December 31, 2020. For more information, read the announcement on the Amazon
       # CloudFront discussion forum.
+
       def create_streaming_distribution(
         streaming_distribution_config : Types::StreamingDistributionConfig
       ) : Types::CreateStreamingDistributionResult
+
         input = Types::CreateStreamingDistributionRequest.new(streaming_distribution_config: streaming_distribution_config)
         create_streaming_distribution(input)
       end
+
       def create_streaming_distribution(input : Types::CreateStreamingDistributionRequest) : Types::CreateStreamingDistributionResult
         request = Protocol::RestXml.build_request(Model::CREATE_STREAMING_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -561,12 +643,15 @@ module AwsSdk
       # This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
       # distributions on December 31, 2020. For more information, read the announcement on the Amazon
       # CloudFront discussion forum.
+
       def create_streaming_distribution_with_tags(
         streaming_distribution_config_with_tags : Types::StreamingDistributionConfigWithTags
       ) : Types::CreateStreamingDistributionWithTagsResult
+
         input = Types::CreateStreamingDistributionWithTagsRequest.new(streaming_distribution_config_with_tags: streaming_distribution_config_with_tags)
         create_streaming_distribution_with_tags(input)
       end
+
       def create_streaming_distribution_with_tags(input : Types::CreateStreamingDistributionWithTagsRequest) : Types::CreateStreamingDistributionWithTagsResult
         request = Protocol::RestXml.build_request(Model::CREATE_STREAMING_DISTRIBUTION_WITH_TAGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -576,14 +661,17 @@ module AwsSdk
       end
 
       # Creates a trust store.
+
       def create_trust_store(
         ca_certificates_bundle_source : Types::CaCertificatesBundleSource,
         name : String,
         tags : Types::Tags? = nil
       ) : Types::CreateTrustStoreResult
+
         input = Types::CreateTrustStoreRequest.new(ca_certificates_bundle_source: ca_certificates_bundle_source, name: name, tags: tags)
         create_trust_store(input)
       end
+
       def create_trust_store(input : Types::CreateTrustStoreRequest) : Types::CreateTrustStoreResult
         request = Protocol::RestXml.build_request(Model::CREATE_TRUST_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -593,13 +681,16 @@ module AwsSdk
       end
 
       # Create an Amazon CloudFront VPC origin.
+
       def create_vpc_origin(
         vpc_origin_endpoint_config : Types::VpcOriginEndpointConfig,
         tags : Types::Tags? = nil
       ) : Types::CreateVpcOriginResult
+
         input = Types::CreateVpcOriginRequest.new(vpc_origin_endpoint_config: vpc_origin_endpoint_config, tags: tags)
         create_vpc_origin(input)
       end
+
       def create_vpc_origin(input : Types::CreateVpcOriginRequest) : Types::CreateVpcOriginResult
         request = Protocol::RestXml.build_request(Model::CREATE_VPC_ORIGIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -609,13 +700,16 @@ module AwsSdk
       end
 
       # Deletes an Anycast static IP list.
+
       def delete_anycast_ip_list(
         id : String,
         if_match : String
       ) : Nil
+
         input = Types::DeleteAnycastIpListRequest.new(id: id, if_match: if_match)
         delete_anycast_ip_list(input)
       end
+
       def delete_anycast_ip_list(input : Types::DeleteAnycastIpListRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_ANYCAST_IP_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -628,13 +722,16 @@ module AwsSdk
       # update your distributions to remove the cache policy from all cache behaviors, then delete the cache
       # policy. To delete a cache policy, you must provide the policy's identifier and version. To get these
       # values, you can use ListCachePolicies or GetCachePolicy .
+
       def delete_cache_policy(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteCachePolicyRequest.new(id: id, if_match: if_match)
         delete_cache_policy(input)
       end
+
       def delete_cache_policy(input : Types::DeleteCachePolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_CACHE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -644,13 +741,16 @@ module AwsSdk
       end
 
       # Delete an origin access identity.
+
       def delete_cloud_front_origin_access_identity(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteCloudFrontOriginAccessIdentityRequest.new(id: id, if_match: if_match)
         delete_cloud_front_origin_access_identity(input)
       end
+
       def delete_cloud_front_origin_access_identity(input : Types::DeleteCloudFrontOriginAccessIdentityRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -660,13 +760,16 @@ module AwsSdk
       end
 
       # Deletes a connection function.
+
       def delete_connection_function(
         id : String,
         if_match : String
       ) : Nil
+
         input = Types::DeleteConnectionFunctionRequest.new(id: id, if_match: if_match)
         delete_connection_function(input)
       end
+
       def delete_connection_function(input : Types::DeleteConnectionFunctionRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -676,13 +779,16 @@ module AwsSdk
       end
 
       # Deletes a connection group.
+
       def delete_connection_group(
         id : String,
         if_match : String
       ) : Nil
+
         input = Types::DeleteConnectionGroupRequest.new(id: id, if_match: if_match)
         delete_connection_group(input)
       end
+
       def delete_connection_group(input : Types::DeleteConnectionGroupRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_CONNECTION_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -694,13 +800,16 @@ module AwsSdk
       # Deletes a continuous deployment policy. You cannot delete a continuous deployment policy that's
       # attached to a primary distribution. First update your distribution to remove the continuous
       # deployment policy, then you can delete the policy.
+
       def delete_continuous_deployment_policy(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteContinuousDeploymentPolicyRequest.new(id: id, if_match: if_match)
         delete_continuous_deployment_policy(input)
       end
+
       def delete_continuous_deployment_policy(input : Types::DeleteContinuousDeploymentPolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_CONTINUOUS_DEPLOYMENT_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -711,13 +820,16 @@ module AwsSdk
 
       # Delete a distribution. Before you can delete a distribution, you must disable it, which requires
       # permission to update the distribution. Once deleted, a distribution cannot be recovered.
+
       def delete_distribution(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteDistributionRequest.new(id: id, if_match: if_match)
         delete_distribution(input)
       end
+
       def delete_distribution(input : Types::DeleteDistributionRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -729,13 +841,16 @@ module AwsSdk
       # Deletes a distribution tenant. If you use this API operation to delete a distribution tenant that is
       # currently enabled, the request will fail. To delete a distribution tenant, you must first disable
       # the distribution tenant by using the UpdateDistributionTenant API operation.
+
       def delete_distribution_tenant(
         id : String,
         if_match : String
       ) : Nil
+
         input = Types::DeleteDistributionTenantRequest.new(id: id, if_match: if_match)
         delete_distribution_tenant(input)
       end
+
       def delete_distribution_tenant(input : Types::DeleteDistributionTenantRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -745,13 +860,16 @@ module AwsSdk
       end
 
       # Remove a field-level encryption configuration.
+
       def delete_field_level_encryption_config(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteFieldLevelEncryptionConfigRequest.new(id: id, if_match: if_match)
         delete_field_level_encryption_config(input)
       end
+
       def delete_field_level_encryption_config(input : Types::DeleteFieldLevelEncryptionConfigRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_FIELD_LEVEL_ENCRYPTION_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -761,13 +879,16 @@ module AwsSdk
       end
 
       # Remove a field-level encryption profile.
+
       def delete_field_level_encryption_profile(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteFieldLevelEncryptionProfileRequest.new(id: id, if_match: if_match)
         delete_field_level_encryption_profile(input)
       end
+
       def delete_field_level_encryption_profile(input : Types::DeleteFieldLevelEncryptionProfileRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_FIELD_LEVEL_ENCRYPTION_PROFILE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -780,13 +901,16 @@ module AwsSdk
       # behavior. First, update your distributions to remove the function association from all cache
       # behaviors, then delete the function. To delete a function, you must provide the function's name and
       # version ( ETag value). To get these values, you can use ListFunctions and DescribeFunction .
+
       def delete_function(
         if_match : String,
         name : String
       ) : Nil
+
         input = Types::DeleteFunctionRequest.new(if_match: if_match, name: name)
         delete_function(input)
       end
+
       def delete_function(input : Types::DeleteFunctionRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -799,13 +923,16 @@ module AwsSdk
       # update your distributions to remove the key group from all cache behaviors, then delete the key
       # group. To delete a key group, you must provide the key group's identifier and version. To get these
       # values, use ListKeyGroups followed by GetKeyGroup or GetKeyGroupConfig .
+
       def delete_key_group(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteKeyGroupRequest.new(id: id, if_match: if_match)
         delete_key_group(input)
       end
+
       def delete_key_group(input : Types::DeleteKeyGroupRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_KEY_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -815,13 +942,16 @@ module AwsSdk
       end
 
       # Specifies the key value store to delete.
+
       def delete_key_value_store(
         if_match : String,
         name : String
       ) : Nil
+
         input = Types::DeleteKeyValueStoreRequest.new(if_match: if_match, name: name)
         delete_key_value_store(input)
       end
+
       def delete_key_value_store(input : Types::DeleteKeyValueStoreRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_KEY_VALUE_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -831,12 +961,15 @@ module AwsSdk
       end
 
       # Disables additional CloudWatch metrics for the specified CloudFront distribution.
+
       def delete_monitoring_subscription(
         distribution_id : String
       ) : Types::DeleteMonitoringSubscriptionResult
+
         input = Types::DeleteMonitoringSubscriptionRequest.new(distribution_id: distribution_id)
         delete_monitoring_subscription(input)
       end
+
       def delete_monitoring_subscription(input : Types::DeleteMonitoringSubscriptionRequest) : Types::DeleteMonitoringSubscriptionResult
         request = Protocol::RestXml.build_request(Model::DELETE_MONITORING_SUBSCRIPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -848,13 +981,16 @@ module AwsSdk
       # Deletes a CloudFront origin access control. You cannot delete an origin access control if it's in
       # use. First, update all distributions to remove the origin access control from all origins, then
       # delete the origin access control.
+
       def delete_origin_access_control(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteOriginAccessControlRequest.new(id: id, if_match: if_match)
         delete_origin_access_control(input)
       end
+
       def delete_origin_access_control(input : Types::DeleteOriginAccessControlRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_ORIGIN_ACCESS_CONTROL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -868,13 +1004,16 @@ module AwsSdk
       # behaviors, then delete the origin request policy. To delete an origin request policy, you must
       # provide the policy's identifier and version. To get the identifier, you can use
       # ListOriginRequestPolicies or GetOriginRequestPolicy .
+
       def delete_origin_request_policy(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteOriginRequestPolicyRequest.new(id: id, if_match: if_match)
         delete_origin_request_policy(input)
       end
+
       def delete_origin_request_policy(input : Types::DeleteOriginRequestPolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_ORIGIN_REQUEST_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -884,13 +1023,16 @@ module AwsSdk
       end
 
       # Remove a public key you previously added to CloudFront.
+
       def delete_public_key(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeletePublicKeyRequest.new(id: id, if_match: if_match)
         delete_public_key(input)
       end
+
       def delete_public_key(input : Types::DeletePublicKeyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_PUBLIC_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -905,13 +1047,16 @@ module AwsSdk
       # real-time log configuration, you can provide the configuration's name or its Amazon Resource Name
       # (ARN). You must provide at least one. If you provide both, CloudFront uses the name to identify the
       # real-time log configuration to delete.
+
       def delete_realtime_log_config(
         arn : String? = nil,
         name : String? = nil
       ) : Nil
+
         input = Types::DeleteRealtimeLogConfigRequest.new(arn: arn, name: name)
         delete_realtime_log_config(input)
       end
+
       def delete_realtime_log_config(input : Types::DeleteRealtimeLogConfigRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_REALTIME_LOG_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -921,12 +1066,15 @@ module AwsSdk
       end
 
       # Deletes the resource policy attached to the CloudFront resource.
+
       def delete_resource_policy(
         resource_arn : String
       ) : Nil
+
         input = Types::DeleteResourcePolicyRequest.new(resource_arn: resource_arn)
         delete_resource_policy(input)
       end
+
       def delete_resource_policy(input : Types::DeleteResourcePolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -940,13 +1088,16 @@ module AwsSdk
       # behaviors, then delete the response headers policy. To delete a response headers policy, you must
       # provide the policy's identifier and version. To get these values, you can use
       # ListResponseHeadersPolicies or GetResponseHeadersPolicy .
+
       def delete_response_headers_policy(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteResponseHeadersPolicyRequest.new(id: id, if_match: if_match)
         delete_response_headers_policy(input)
       end
+
       def delete_response_headers_policy(input : Types::DeleteResponseHeadersPolicyRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_RESPONSE_HEADERS_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -972,13 +1123,16 @@ module AwsSdk
       # DELETE Streaming Distribution request to confirm that the distribution was successfully deleted. For
       # information about deleting a distribution using the CloudFront console, see Deleting a Distribution
       # in the Amazon CloudFront Developer Guide .
+
       def delete_streaming_distribution(
         id : String,
         if_match : String? = nil
       ) : Nil
+
         input = Types::DeleteStreamingDistributionRequest.new(id: id, if_match: if_match)
         delete_streaming_distribution(input)
       end
+
       def delete_streaming_distribution(input : Types::DeleteStreamingDistributionRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_STREAMING_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -988,13 +1142,16 @@ module AwsSdk
       end
 
       # Deletes a trust store.
+
       def delete_trust_store(
         id : String,
         if_match : String
       ) : Nil
+
         input = Types::DeleteTrustStoreRequest.new(id: id, if_match: if_match)
         delete_trust_store(input)
       end
+
       def delete_trust_store(input : Types::DeleteTrustStoreRequest) : Nil
         request = Protocol::RestXml.build_request(Model::DELETE_TRUST_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1004,13 +1161,16 @@ module AwsSdk
       end
 
       # Delete an Amazon CloudFront VPC origin.
+
       def delete_vpc_origin(
         id : String,
         if_match : String
       ) : Types::DeleteVpcOriginResult
+
         input = Types::DeleteVpcOriginRequest.new(id: id, if_match: if_match)
         delete_vpc_origin(input)
       end
+
       def delete_vpc_origin(input : Types::DeleteVpcOriginRequest) : Types::DeleteVpcOriginResult
         request = Protocol::RestXml.build_request(Model::DELETE_VPC_ORIGIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1020,13 +1180,16 @@ module AwsSdk
       end
 
       # Describes a connection function.
+
       def describe_connection_function(
         identifier : String,
         stage : String? = nil
       ) : Types::DescribeConnectionFunctionResult
+
         input = Types::DescribeConnectionFunctionRequest.new(identifier: identifier, stage: stage)
         describe_connection_function(input)
       end
+
       def describe_connection_function(input : Types::DescribeConnectionFunctionRequest) : Types::DescribeConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::DESCRIBE_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1039,13 +1202,16 @@ module AwsSdk
       # code. To get a function's code, use GetFunction . To get configuration information and metadata
       # about a function, you must provide the function's name and stage. To get these values, you can use
       # ListFunctions .
+
       def describe_function(
         name : String,
         stage : String? = nil
       ) : Types::DescribeFunctionResult
+
         input = Types::DescribeFunctionRequest.new(name: name, stage: stage)
         describe_function(input)
       end
+
       def describe_function(input : Types::DescribeFunctionRequest) : Types::DescribeFunctionResult
         request = Protocol::RestXml.build_request(Model::DESCRIBE_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1055,12 +1221,15 @@ module AwsSdk
       end
 
       # Specifies the key value store and its configuration.
+
       def describe_key_value_store(
         name : String
       ) : Types::DescribeKeyValueStoreResult
+
         input = Types::DescribeKeyValueStoreRequest.new(name: name)
         describe_key_value_store(input)
       end
+
       def describe_key_value_store(input : Types::DescribeKeyValueStoreRequest) : Types::DescribeKeyValueStoreResult
         request = Protocol::RestXml.build_request(Model::DESCRIBE_KEY_VALUE_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1070,13 +1239,16 @@ module AwsSdk
       end
 
       # Disassociates a distribution tenant from the WAF web ACL.
+
       def disassociate_distribution_tenant_web_acl(
         id : String,
         if_match : String? = nil
       ) : Types::DisassociateDistributionTenantWebACLResult
+
         input = Types::DisassociateDistributionTenantWebACLRequest.new(id: id, if_match: if_match)
         disassociate_distribution_tenant_web_acl(input)
       end
+
       def disassociate_distribution_tenant_web_acl(input : Types::DisassociateDistributionTenantWebACLRequest) : Types::DisassociateDistributionTenantWebACLResult
         request = Protocol::RestXml.build_request(Model::DISASSOCIATE_DISTRIBUTION_TENANT_WEB_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1086,13 +1258,16 @@ module AwsSdk
       end
 
       # Disassociates a distribution from the WAF web ACL.
+
       def disassociate_distribution_web_acl(
         id : String,
         if_match : String? = nil
       ) : Types::DisassociateDistributionWebACLResult
+
         input = Types::DisassociateDistributionWebACLRequest.new(id: id, if_match: if_match)
         disassociate_distribution_web_acl(input)
       end
+
       def disassociate_distribution_web_acl(input : Types::DisassociateDistributionWebACLRequest) : Types::DisassociateDistributionWebACLResult
         request = Protocol::RestXml.build_request(Model::DISASSOCIATE_DISTRIBUTION_WEB_ACL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1102,12 +1277,15 @@ module AwsSdk
       end
 
       # Gets an Anycast static IP list.
+
       def get_anycast_ip_list(
         id : String
       ) : Types::GetAnycastIpListResult
+
         input = Types::GetAnycastIpListRequest.new(id: id)
         get_anycast_ip_list(input)
       end
+
       def get_anycast_ip_list(input : Types::GetAnycastIpListRequest) : Types::GetAnycastIpListResult
         request = Protocol::RestXml.build_request(Model::GET_ANYCAST_IP_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1121,12 +1299,15 @@ module AwsSdk
       # If the cache policy is attached to a distribution's cache behavior, you can get the policy's
       # identifier using ListDistributions or GetDistribution . If the cache policy is not attached to a
       # cache behavior, you can get the identifier using ListCachePolicies .
+
       def get_cache_policy(
         id : String
       ) : Types::GetCachePolicyResult
+
         input = Types::GetCachePolicyRequest.new(id: id)
         get_cache_policy(input)
       end
+
       def get_cache_policy(input : Types::GetCachePolicyRequest) : Types::GetCachePolicyResult
         request = Protocol::RestXml.build_request(Model::GET_CACHE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1139,12 +1320,15 @@ module AwsSdk
       # policy's identifier. If the cache policy is attached to a distribution's cache behavior, you can get
       # the policy's identifier using ListDistributions or GetDistribution . If the cache policy is not
       # attached to a cache behavior, you can get the identifier using ListCachePolicies .
+
       def get_cache_policy_config(
         id : String
       ) : Types::GetCachePolicyConfigResult
+
         input = Types::GetCachePolicyConfigRequest.new(id: id)
         get_cache_policy_config(input)
       end
+
       def get_cache_policy_config(input : Types::GetCachePolicyConfigRequest) : Types::GetCachePolicyConfigResult
         request = Protocol::RestXml.build_request(Model::GET_CACHE_POLICY_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1154,12 +1338,15 @@ module AwsSdk
       end
 
       # Get the information about an origin access identity.
+
       def get_cloud_front_origin_access_identity(
         id : String
       ) : Types::GetCloudFrontOriginAccessIdentityResult
+
         input = Types::GetCloudFrontOriginAccessIdentityRequest.new(id: id)
         get_cloud_front_origin_access_identity(input)
       end
+
       def get_cloud_front_origin_access_identity(input : Types::GetCloudFrontOriginAccessIdentityRequest) : Types::GetCloudFrontOriginAccessIdentityResult
         request = Protocol::RestXml.build_request(Model::GET_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1169,12 +1356,15 @@ module AwsSdk
       end
 
       # Get the configuration information about an origin access identity.
+
       def get_cloud_front_origin_access_identity_config(
         id : String
       ) : Types::GetCloudFrontOriginAccessIdentityConfigResult
+
         input = Types::GetCloudFrontOriginAccessIdentityConfigRequest.new(id: id)
         get_cloud_front_origin_access_identity_config(input)
       end
+
       def get_cloud_front_origin_access_identity_config(input : Types::GetCloudFrontOriginAccessIdentityConfigRequest) : Types::GetCloudFrontOriginAccessIdentityConfigResult
         request = Protocol::RestXml.build_request(Model::GET_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1184,13 +1374,16 @@ module AwsSdk
       end
 
       # Gets a connection function.
+
       def get_connection_function(
         identifier : String,
         stage : String? = nil
       ) : Types::GetConnectionFunctionResult
+
         input = Types::GetConnectionFunctionRequest.new(identifier: identifier, stage: stage)
         get_connection_function(input)
       end
+
       def get_connection_function(input : Types::GetConnectionFunctionRequest) : Types::GetConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::GET_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1200,12 +1393,15 @@ module AwsSdk
       end
 
       # Gets information about a connection group.
+
       def get_connection_group(
         identifier : String
       ) : Types::GetConnectionGroupResult
+
         input = Types::GetConnectionGroupRequest.new(identifier: identifier)
         get_connection_group(input)
       end
+
       def get_connection_group(input : Types::GetConnectionGroupRequest) : Types::GetConnectionGroupResult
         request = Protocol::RestXml.build_request(Model::GET_CONNECTION_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1215,12 +1411,15 @@ module AwsSdk
       end
 
       # Gets information about a connection group by using the endpoint that you specify.
+
       def get_connection_group_by_routing_endpoint(
         routing_endpoint : String
       ) : Types::GetConnectionGroupByRoutingEndpointResult
+
         input = Types::GetConnectionGroupByRoutingEndpointRequest.new(routing_endpoint: routing_endpoint)
         get_connection_group_by_routing_endpoint(input)
       end
+
       def get_connection_group_by_routing_endpoint(input : Types::GetConnectionGroupByRoutingEndpointRequest) : Types::GetConnectionGroupByRoutingEndpointResult
         request = Protocol::RestXml.build_request(Model::GET_CONNECTION_GROUP_BY_ROUTING_ENDPOINT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1231,12 +1430,15 @@ module AwsSdk
 
       # Gets a continuous deployment policy, including metadata (the policy's identifier and the date and
       # time when the policy was last modified).
+
       def get_continuous_deployment_policy(
         id : String
       ) : Types::GetContinuousDeploymentPolicyResult
+
         input = Types::GetContinuousDeploymentPolicyRequest.new(id: id)
         get_continuous_deployment_policy(input)
       end
+
       def get_continuous_deployment_policy(input : Types::GetContinuousDeploymentPolicyRequest) : Types::GetContinuousDeploymentPolicyResult
         request = Protocol::RestXml.build_request(Model::GET_CONTINUOUS_DEPLOYMENT_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1246,12 +1448,15 @@ module AwsSdk
       end
 
       # Gets configuration information about a continuous deployment policy.
+
       def get_continuous_deployment_policy_config(
         id : String
       ) : Types::GetContinuousDeploymentPolicyConfigResult
+
         input = Types::GetContinuousDeploymentPolicyConfigRequest.new(id: id)
         get_continuous_deployment_policy_config(input)
       end
+
       def get_continuous_deployment_policy_config(input : Types::GetContinuousDeploymentPolicyConfigRequest) : Types::GetContinuousDeploymentPolicyConfigResult
         request = Protocol::RestXml.build_request(Model::GET_CONTINUOUS_DEPLOYMENT_POLICY_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1261,12 +1466,15 @@ module AwsSdk
       end
 
       # Get the information about a distribution.
+
       def get_distribution(
         id : String
       ) : Types::GetDistributionResult
+
         input = Types::GetDistributionRequest.new(id: id)
         get_distribution(input)
       end
+
       def get_distribution(input : Types::GetDistributionRequest) : Types::GetDistributionResult
         request = Protocol::RestXml.build_request(Model::GET_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1276,12 +1484,15 @@ module AwsSdk
       end
 
       # Get the configuration information about a distribution.
+
       def get_distribution_config(
         id : String
       ) : Types::GetDistributionConfigResult
+
         input = Types::GetDistributionConfigRequest.new(id: id)
         get_distribution_config(input)
       end
+
       def get_distribution_config(input : Types::GetDistributionConfigRequest) : Types::GetDistributionConfigResult
         request = Protocol::RestXml.build_request(Model::GET_DISTRIBUTION_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1291,12 +1502,15 @@ module AwsSdk
       end
 
       # Gets information about a distribution tenant.
+
       def get_distribution_tenant(
         identifier : String
       ) : Types::GetDistributionTenantResult
+
         input = Types::GetDistributionTenantRequest.new(identifier: identifier)
         get_distribution_tenant(input)
       end
+
       def get_distribution_tenant(input : Types::GetDistributionTenantRequest) : Types::GetDistributionTenantResult
         request = Protocol::RestXml.build_request(Model::GET_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1306,12 +1520,15 @@ module AwsSdk
       end
 
       # Gets information about a distribution tenant by the associated domain.
+
       def get_distribution_tenant_by_domain(
         domain : String
       ) : Types::GetDistributionTenantByDomainResult
+
         input = Types::GetDistributionTenantByDomainRequest.new(domain: domain)
         get_distribution_tenant_by_domain(input)
       end
+
       def get_distribution_tenant_by_domain(input : Types::GetDistributionTenantByDomainRequest) : Types::GetDistributionTenantByDomainResult
         request = Protocol::RestXml.build_request(Model::GET_DISTRIBUTION_TENANT_BY_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1321,12 +1538,15 @@ module AwsSdk
       end
 
       # Get the field-level encryption configuration information.
+
       def get_field_level_encryption(
         id : String
       ) : Types::GetFieldLevelEncryptionResult
+
         input = Types::GetFieldLevelEncryptionRequest.new(id: id)
         get_field_level_encryption(input)
       end
+
       def get_field_level_encryption(input : Types::GetFieldLevelEncryptionRequest) : Types::GetFieldLevelEncryptionResult
         request = Protocol::RestXml.build_request(Model::GET_FIELD_LEVEL_ENCRYPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1336,12 +1556,15 @@ module AwsSdk
       end
 
       # Get the field-level encryption configuration information.
+
       def get_field_level_encryption_config(
         id : String
       ) : Types::GetFieldLevelEncryptionConfigResult
+
         input = Types::GetFieldLevelEncryptionConfigRequest.new(id: id)
         get_field_level_encryption_config(input)
       end
+
       def get_field_level_encryption_config(input : Types::GetFieldLevelEncryptionConfigRequest) : Types::GetFieldLevelEncryptionConfigResult
         request = Protocol::RestXml.build_request(Model::GET_FIELD_LEVEL_ENCRYPTION_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1351,12 +1574,15 @@ module AwsSdk
       end
 
       # Get the field-level encryption profile information.
+
       def get_field_level_encryption_profile(
         id : String
       ) : Types::GetFieldLevelEncryptionProfileResult
+
         input = Types::GetFieldLevelEncryptionProfileRequest.new(id: id)
         get_field_level_encryption_profile(input)
       end
+
       def get_field_level_encryption_profile(input : Types::GetFieldLevelEncryptionProfileRequest) : Types::GetFieldLevelEncryptionProfileResult
         request = Protocol::RestXml.build_request(Model::GET_FIELD_LEVEL_ENCRYPTION_PROFILE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1366,12 +1592,15 @@ module AwsSdk
       end
 
       # Get the field-level encryption profile configuration information.
+
       def get_field_level_encryption_profile_config(
         id : String
       ) : Types::GetFieldLevelEncryptionProfileConfigResult
+
         input = Types::GetFieldLevelEncryptionProfileConfigRequest.new(id: id)
         get_field_level_encryption_profile_config(input)
       end
+
       def get_field_level_encryption_profile_config(input : Types::GetFieldLevelEncryptionProfileConfigRequest) : Types::GetFieldLevelEncryptionProfileConfigResult
         request = Protocol::RestXml.build_request(Model::GET_FIELD_LEVEL_ENCRYPTION_PROFILE_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1383,13 +1612,16 @@ module AwsSdk
       # Gets the code of a CloudFront function. To get configuration information and metadata about a
       # function, use DescribeFunction . To get a function's code, you must provide the function's name and
       # stage. To get these values, you can use ListFunctions .
+
       def get_function(
         name : String,
         stage : String? = nil
       ) : Types::GetFunctionResult
+
         input = Types::GetFunctionRequest.new(name: name, stage: stage)
         get_function(input)
       end
+
       def get_function(input : Types::GetFunctionRequest) : Types::GetFunctionResult
         request = Protocol::RestXml.build_request(Model::GET_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1399,13 +1631,16 @@ module AwsSdk
       end
 
       # Get the information about an invalidation.
+
       def get_invalidation(
         distribution_id : String,
         id : String
       ) : Types::GetInvalidationResult
+
         input = Types::GetInvalidationRequest.new(distribution_id: distribution_id, id: id)
         get_invalidation(input)
       end
+
       def get_invalidation(input : Types::GetInvalidationRequest) : Types::GetInvalidationResult
         request = Protocol::RestXml.build_request(Model::GET_INVALIDATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1415,13 +1650,16 @@ module AwsSdk
       end
 
       # Gets information about a specific invalidation for a distribution tenant.
+
       def get_invalidation_for_distribution_tenant(
         distribution_tenant_id : String,
         id : String
       ) : Types::GetInvalidationForDistributionTenantResult
+
         input = Types::GetInvalidationForDistributionTenantRequest.new(distribution_tenant_id: distribution_tenant_id, id: id)
         get_invalidation_for_distribution_tenant(input)
       end
+
       def get_invalidation_for_distribution_tenant(input : Types::GetInvalidationForDistributionTenantRequest) : Types::GetInvalidationForDistributionTenantResult
         request = Protocol::RestXml.build_request(Model::GET_INVALIDATION_FOR_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1435,12 +1673,15 @@ module AwsSdk
       # distribution's cache behavior, you can get the key group's identifier using ListDistributions or
       # GetDistribution . If the key group is not referenced in a cache behavior, you can get the identifier
       # using ListKeyGroups .
+
       def get_key_group(
         id : String
       ) : Types::GetKeyGroupResult
+
         input = Types::GetKeyGroupRequest.new(id: id)
         get_key_group(input)
       end
+
       def get_key_group(input : Types::GetKeyGroupRequest) : Types::GetKeyGroupResult
         request = Protocol::RestXml.build_request(Model::GET_KEY_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1453,12 +1694,15 @@ module AwsSdk
       # identifier. If the key group is referenced in a distribution's cache behavior, you can get the key
       # group's identifier using ListDistributions or GetDistribution . If the key group is not referenced
       # in a cache behavior, you can get the identifier using ListKeyGroups .
+
       def get_key_group_config(
         id : String
       ) : Types::GetKeyGroupConfigResult
+
         input = Types::GetKeyGroupConfigRequest.new(id: id)
         get_key_group_config(input)
       end
+
       def get_key_group_config(input : Types::GetKeyGroupConfigRequest) : Types::GetKeyGroupConfigResult
         request = Protocol::RestXml.build_request(Model::GET_KEY_GROUP_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1468,12 +1712,15 @@ module AwsSdk
       end
 
       # Gets details about the CloudFront managed ACM certificate.
+
       def get_managed_certificate_details(
         identifier : String
       ) : Types::GetManagedCertificateDetailsResult
+
         input = Types::GetManagedCertificateDetailsRequest.new(identifier: identifier)
         get_managed_certificate_details(input)
       end
+
       def get_managed_certificate_details(input : Types::GetManagedCertificateDetailsRequest) : Types::GetManagedCertificateDetailsResult
         request = Protocol::RestXml.build_request(Model::GET_MANAGED_CERTIFICATE_DETAILS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1484,12 +1731,15 @@ module AwsSdk
 
       # Gets information about whether additional CloudWatch metrics are enabled for the specified
       # CloudFront distribution.
+
       def get_monitoring_subscription(
         distribution_id : String
       ) : Types::GetMonitoringSubscriptionResult
+
         input = Types::GetMonitoringSubscriptionRequest.new(distribution_id: distribution_id)
         get_monitoring_subscription(input)
       end
+
       def get_monitoring_subscription(input : Types::GetMonitoringSubscriptionRequest) : Types::GetMonitoringSubscriptionResult
         request = Protocol::RestXml.build_request(Model::GET_MONITORING_SUBSCRIPTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1499,12 +1749,15 @@ module AwsSdk
       end
 
       # Gets a CloudFront origin access control, including its unique identifier.
+
       def get_origin_access_control(
         id : String
       ) : Types::GetOriginAccessControlResult
+
         input = Types::GetOriginAccessControlRequest.new(id: id)
         get_origin_access_control(input)
       end
+
       def get_origin_access_control(input : Types::GetOriginAccessControlRequest) : Types::GetOriginAccessControlResult
         request = Protocol::RestXml.build_request(Model::GET_ORIGIN_ACCESS_CONTROL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1514,12 +1767,15 @@ module AwsSdk
       end
 
       # Gets a CloudFront origin access control configuration.
+
       def get_origin_access_control_config(
         id : String
       ) : Types::GetOriginAccessControlConfigResult
+
         input = Types::GetOriginAccessControlConfigRequest.new(id: id)
         get_origin_access_control_config(input)
       end
+
       def get_origin_access_control_config(input : Types::GetOriginAccessControlConfigRequest) : Types::GetOriginAccessControlConfigResult
         request = Protocol::RestXml.build_request(Model::GET_ORIGIN_ACCESS_CONTROL_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1534,12 +1790,15 @@ module AwsSdk
       # you can get the policy's identifier using ListDistributions or GetDistribution . If the origin
       # request policy is not attached to a cache behavior, you can get the identifier using
       # ListOriginRequestPolicies .
+
       def get_origin_request_policy(
         id : String
       ) : Types::GetOriginRequestPolicyResult
+
         input = Types::GetOriginRequestPolicyRequest.new(id: id)
         get_origin_request_policy(input)
       end
+
       def get_origin_request_policy(input : Types::GetOriginRequestPolicyRequest) : Types::GetOriginRequestPolicyResult
         request = Protocol::RestXml.build_request(Model::GET_ORIGIN_REQUEST_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1553,12 +1812,15 @@ module AwsSdk
       # behavior, you can get the policy's identifier using ListDistributions or GetDistribution . If the
       # origin request policy is not attached to a cache behavior, you can get the identifier using
       # ListOriginRequestPolicies .
+
       def get_origin_request_policy_config(
         id : String
       ) : Types::GetOriginRequestPolicyConfigResult
+
         input = Types::GetOriginRequestPolicyConfigRequest.new(id: id)
         get_origin_request_policy_config(input)
       end
+
       def get_origin_request_policy_config(input : Types::GetOriginRequestPolicyConfigRequest) : Types::GetOriginRequestPolicyConfigResult
         request = Protocol::RestXml.build_request(Model::GET_ORIGIN_REQUEST_POLICY_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1568,12 +1830,15 @@ module AwsSdk
       end
 
       # Gets a public key.
+
       def get_public_key(
         id : String
       ) : Types::GetPublicKeyResult
+
         input = Types::GetPublicKeyRequest.new(id: id)
         get_public_key(input)
       end
+
       def get_public_key(input : Types::GetPublicKeyRequest) : Types::GetPublicKeyResult
         request = Protocol::RestXml.build_request(Model::GET_PUBLIC_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1583,12 +1848,15 @@ module AwsSdk
       end
 
       # Gets a public key configuration.
+
       def get_public_key_config(
         id : String
       ) : Types::GetPublicKeyConfigResult
+
         input = Types::GetPublicKeyConfigRequest.new(id: id)
         get_public_key_config(input)
       end
+
       def get_public_key_config(input : Types::GetPublicKeyConfigRequest) : Types::GetPublicKeyConfigResult
         request = Protocol::RestXml.build_request(Model::GET_PUBLIC_KEY_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1600,13 +1868,16 @@ module AwsSdk
       # Gets a real-time log configuration. To get a real-time log configuration, you can provide the
       # configuration's name or its Amazon Resource Name (ARN). You must provide at least one. If you
       # provide both, CloudFront uses the name to identify the real-time log configuration to get.
+
       def get_realtime_log_config(
         arn : String? = nil,
         name : String? = nil
       ) : Types::GetRealtimeLogConfigResult
+
         input = Types::GetRealtimeLogConfigRequest.new(arn: arn, name: name)
         get_realtime_log_config(input)
       end
+
       def get_realtime_log_config(input : Types::GetRealtimeLogConfigRequest) : Types::GetRealtimeLogConfigResult
         request = Protocol::RestXml.build_request(Model::GET_REALTIME_LOG_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1616,12 +1887,15 @@ module AwsSdk
       end
 
       # Retrieves the resource policy for the specified CloudFront resource that you own and have shared.
+
       def get_resource_policy(
         resource_arn : String
       ) : Types::GetResourcePolicyResult
+
         input = Types::GetResourcePolicyRequest.new(resource_arn: resource_arn)
         get_resource_policy(input)
       end
+
       def get_resource_policy(input : Types::GetResourcePolicyRequest) : Types::GetResourcePolicyResult
         request = Protocol::RestXml.build_request(Model::GET_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1636,12 +1910,15 @@ module AwsSdk
       # get the policy's identifier using ListDistributions or GetDistribution . If the response headers
       # policy is not attached to a cache behavior, you can get the identifier using
       # ListResponseHeadersPolicies .
+
       def get_response_headers_policy(
         id : String
       ) : Types::GetResponseHeadersPolicyResult
+
         input = Types::GetResponseHeadersPolicyRequest.new(id: id)
         get_response_headers_policy(input)
       end
+
       def get_response_headers_policy(input : Types::GetResponseHeadersPolicyRequest) : Types::GetResponseHeadersPolicyResult
         request = Protocol::RestXml.build_request(Model::GET_RESPONSE_HEADERS_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1655,12 +1932,15 @@ module AwsSdk
       # cache behavior, you can get the policy's identifier using ListDistributions or GetDistribution . If
       # the response headers policy is not attached to a cache behavior, you can get the identifier using
       # ListResponseHeadersPolicies .
+
       def get_response_headers_policy_config(
         id : String
       ) : Types::GetResponseHeadersPolicyConfigResult
+
         input = Types::GetResponseHeadersPolicyConfigRequest.new(id: id)
         get_response_headers_policy_config(input)
       end
+
       def get_response_headers_policy_config(input : Types::GetResponseHeadersPolicyConfigRequest) : Types::GetResponseHeadersPolicyConfigResult
         request = Protocol::RestXml.build_request(Model::GET_RESPONSE_HEADERS_POLICY_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1670,12 +1950,15 @@ module AwsSdk
       end
 
       # Gets information about a specified RTMP distribution, including the distribution configuration.
+
       def get_streaming_distribution(
         id : String
       ) : Types::GetStreamingDistributionResult
+
         input = Types::GetStreamingDistributionRequest.new(id: id)
         get_streaming_distribution(input)
       end
+
       def get_streaming_distribution(input : Types::GetStreamingDistributionRequest) : Types::GetStreamingDistributionResult
         request = Protocol::RestXml.build_request(Model::GET_STREAMING_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1685,12 +1968,15 @@ module AwsSdk
       end
 
       # Get the configuration information about a streaming distribution.
+
       def get_streaming_distribution_config(
         id : String
       ) : Types::GetStreamingDistributionConfigResult
+
         input = Types::GetStreamingDistributionConfigRequest.new(id: id)
         get_streaming_distribution_config(input)
       end
+
       def get_streaming_distribution_config(input : Types::GetStreamingDistributionConfigRequest) : Types::GetStreamingDistributionConfigResult
         request = Protocol::RestXml.build_request(Model::GET_STREAMING_DISTRIBUTION_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1700,12 +1986,15 @@ module AwsSdk
       end
 
       # Gets a trust store.
+
       def get_trust_store(
         identifier : String
       ) : Types::GetTrustStoreResult
+
         input = Types::GetTrustStoreRequest.new(identifier: identifier)
         get_trust_store(input)
       end
+
       def get_trust_store(input : Types::GetTrustStoreRequest) : Types::GetTrustStoreResult
         request = Protocol::RestXml.build_request(Model::GET_TRUST_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1715,12 +2004,15 @@ module AwsSdk
       end
 
       # Get the details of an Amazon CloudFront VPC origin.
+
       def get_vpc_origin(
         id : String
       ) : Types::GetVpcOriginResult
+
         input = Types::GetVpcOriginRequest.new(id: id)
         get_vpc_origin(input)
       end
+
       def get_vpc_origin(input : Types::GetVpcOriginRequest) : Types::GetVpcOriginResult
         request = Protocol::RestXml.build_request(Model::GET_VPC_ORIGIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1730,13 +2022,16 @@ module AwsSdk
       end
 
       # Lists your Anycast static IP lists.
+
       def list_anycast_ip_lists(
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListAnycastIpListsResult
+
         input = Types::ListAnycastIpListsRequest.new(marker: marker, max_items: max_items)
         list_anycast_ip_lists(input)
       end
+
       def list_anycast_ip_lists(input : Types::ListAnycastIpListsRequest) : Types::ListAnycastIpListsResult
         request = Protocol::RestXml.build_request(Model::LIST_ANYCAST_IP_LISTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1751,14 +2046,17 @@ module AwsSdk
       # total number of items in the list exceeds the maximum that you specify, or the default maximum, the
       # response is paginated. To get the next page of items, send a subsequent request that specifies the
       # NextMarker value from the current response as the Marker value in the subsequent request.
+
       def list_cache_policies(
         marker : String? = nil,
         max_items : String? = nil,
         type : String? = nil
       ) : Types::ListCachePoliciesResult
+
         input = Types::ListCachePoliciesRequest.new(marker: marker, max_items: max_items, type: type)
         list_cache_policies(input)
       end
+
       def list_cache_policies(input : Types::ListCachePoliciesRequest) : Types::ListCachePoliciesResult
         request = Protocol::RestXml.build_request(Model::LIST_CACHE_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1768,13 +2066,16 @@ module AwsSdk
       end
 
       # Lists origin access identities.
+
       def list_cloud_front_origin_access_identities(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListCloudFrontOriginAccessIdentitiesResult
+
         input = Types::ListCloudFrontOriginAccessIdentitiesRequest.new(marker: marker, max_items: max_items)
         list_cloud_front_origin_access_identities(input)
       end
+
       def list_cloud_front_origin_access_identities(input : Types::ListCloudFrontOriginAccessIdentitiesRequest) : Types::ListCloudFrontOriginAccessIdentitiesResult
         request = Protocol::RestXml.build_request(Model::LIST_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1805,15 +2106,18 @@ module AwsSdk
       # list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get
       # the next page of items, send a subsequent request that specifies the NextMarker value from the
       # current response as the Marker value in the subsequent request.
+
       def list_conflicting_aliases(
-        alias : String,
+        alias_ : String,
         distribution_id : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListConflictingAliasesResult
-        input = Types::ListConflictingAliasesRequest.new(alias: alias, distribution_id: distribution_id, marker: marker, max_items: max_items)
+
+        input = Types::ListConflictingAliasesRequest.new(alias_: alias_, distribution_id: distribution_id, marker: marker, max_items: max_items)
         list_conflicting_aliases(input)
       end
+
       def list_conflicting_aliases(input : Types::ListConflictingAliasesRequest) : Types::ListConflictingAliasesResult
         request = Protocol::RestXml.build_request(Model::LIST_CONFLICTING_ALIASES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1823,14 +2127,17 @@ module AwsSdk
       end
 
       # Lists connection functions.
+
       def list_connection_functions(
         marker : String? = nil,
         max_items : Int32? = nil,
         stage : String? = nil
       ) : Types::ListConnectionFunctionsResult
+
         input = Types::ListConnectionFunctionsRequest.new(marker: marker, max_items: max_items, stage: stage)
         list_connection_functions(input)
       end
+
       def list_connection_functions(input : Types::ListConnectionFunctionsRequest) : Types::ListConnectionFunctionsResult
         request = Protocol::RestXml.build_request(Model::LIST_CONNECTION_FUNCTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1840,14 +2147,17 @@ module AwsSdk
       end
 
       # Lists the connection groups in your Amazon Web Services account.
+
       def list_connection_groups(
         association_filter : Types::ConnectionGroupAssociationFilter? = nil,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListConnectionGroupsResult
+
         input = Types::ListConnectionGroupsRequest.new(association_filter: association_filter, marker: marker, max_items: max_items)
         list_connection_groups(input)
       end
+
       def list_connection_groups(input : Types::ListConnectionGroupsRequest) : Types::ListConnectionGroupsResult
         request = Protocol::RestXml.build_request(Model::LIST_CONNECTION_GROUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1861,13 +2171,16 @@ module AwsSdk
       # items in the list exceeds the maximum that you specify, or the default maximum, the response is
       # paginated. To get the next page of items, send a subsequent request that specifies the NextMarker
       # value from the current response as the Marker value in the subsequent request.
+
       def list_continuous_deployment_policies(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListContinuousDeploymentPoliciesResult
+
         input = Types::ListContinuousDeploymentPoliciesRequest.new(marker: marker, max_items: max_items)
         list_continuous_deployment_policies(input)
       end
+
       def list_continuous_deployment_policies(input : Types::ListContinuousDeploymentPoliciesRequest) : Types::ListContinuousDeploymentPoliciesResult
         request = Protocol::RestXml.build_request(Model::LIST_CONTINUOUS_DEPLOYMENT_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1877,14 +2190,17 @@ module AwsSdk
       end
 
       # Lists the distribution tenants in your Amazon Web Services account.
+
       def list_distribution_tenants(
         association_filter : Types::DistributionTenantAssociationFilter? = nil,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListDistributionTenantsResult
+
         input = Types::ListDistributionTenantsRequest.new(association_filter: association_filter, marker: marker, max_items: max_items)
         list_distribution_tenants(input)
       end
+
       def list_distribution_tenants(input : Types::ListDistributionTenantsRequest) : Types::ListDistributionTenantsResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTION_TENANTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1895,15 +2211,18 @@ module AwsSdk
 
       # Lists distribution tenants by the customization that you specify. You must specify either the
       # CertificateArn parameter or WebACLArn parameter, but not both in the same request.
+
       def list_distribution_tenants_by_customization(
         certificate_arn : String? = nil,
         marker : String? = nil,
         max_items : Int32? = nil,
         web_acl_arn : String? = nil
       ) : Types::ListDistributionTenantsByCustomizationResult
+
         input = Types::ListDistributionTenantsByCustomizationRequest.new(certificate_arn: certificate_arn, marker: marker, max_items: max_items, web_acl_arn: web_acl_arn)
         list_distribution_tenants_by_customization(input)
       end
+
       def list_distribution_tenants_by_customization(input : Types::ListDistributionTenantsByCustomizationRequest) : Types::ListDistributionTenantsByCustomizationResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTION_TENANTS_BY_CUSTOMIZATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1913,13 +2232,16 @@ module AwsSdk
       end
 
       # List CloudFront distributions.
+
       def list_distributions(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsResult
+
         input = Types::ListDistributionsRequest.new(marker: marker, max_items: max_items)
         list_distributions(input)
       end
+
       def list_distributions(input : Types::ListDistributionsRequest) : Types::ListDistributionsResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1929,14 +2251,17 @@ module AwsSdk
       end
 
       # Lists the distributions in your account that are associated with the specified AnycastIpListId .
+
       def list_distributions_by_anycast_ip_list_id(
         anycast_ip_list_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByAnycastIpListIdResult
+
         input = Types::ListDistributionsByAnycastIpListIdRequest.new(anycast_ip_list_id: anycast_ip_list_id, marker: marker, max_items: max_items)
         list_distributions_by_anycast_ip_list_id(input)
       end
+
       def list_distributions_by_anycast_ip_list_id(input : Types::ListDistributionsByAnycastIpListIdRequest) : Types::ListDistributionsByAnycastIpListIdResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_ANYCAST_IP_LIST_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1951,14 +2276,17 @@ module AwsSdk
       # default maximum, the response is paginated. To get the next page of items, send a subsequent request
       # that specifies the NextMarker value from the current response as the Marker value in the subsequent
       # request.
+
       def list_distributions_by_cache_policy_id(
         cache_policy_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByCachePolicyIdResult
+
         input = Types::ListDistributionsByCachePolicyIdRequest.new(cache_policy_id: cache_policy_id, marker: marker, max_items: max_items)
         list_distributions_by_cache_policy_id(input)
       end
+
       def list_distributions_by_cache_policy_id(input : Types::ListDistributionsByCachePolicyIdRequest) : Types::ListDistributionsByCachePolicyIdResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_CACHE_POLICY_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1968,14 +2296,17 @@ module AwsSdk
       end
 
       # Lists distributions by connection function.
+
       def list_distributions_by_connection_function(
         connection_function_identifier : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListDistributionsByConnectionFunctionResult
+
         input = Types::ListDistributionsByConnectionFunctionRequest.new(connection_function_identifier: connection_function_identifier, marker: marker, max_items: max_items)
         list_distributions_by_connection_function(input)
       end
+
       def list_distributions_by_connection_function(input : Types::ListDistributionsByConnectionFunctionRequest) : Types::ListDistributionsByConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1985,14 +2316,17 @@ module AwsSdk
       end
 
       # Lists the distributions by the connection mode that you specify.
+
       def list_distributions_by_connection_mode(
         connection_mode : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListDistributionsByConnectionModeResult
+
         input = Types::ListDistributionsByConnectionModeRequest.new(connection_mode: connection_mode, marker: marker, max_items: max_items)
         list_distributions_by_connection_mode(input)
       end
+
       def list_distributions_by_connection_mode(input : Types::ListDistributionsByConnectionModeRequest) : Types::ListDistributionsByConnectionModeResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_CONNECTION_MODE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2007,14 +2341,17 @@ module AwsSdk
       # default maximum, the response is paginated. To get the next page of items, send a subsequent request
       # that specifies the NextMarker value from the current response as the Marker value in the subsequent
       # request.
+
       def list_distributions_by_key_group(
         key_group_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByKeyGroupResult
+
         input = Types::ListDistributionsByKeyGroupRequest.new(key_group_id: key_group_id, marker: marker, max_items: max_items)
         list_distributions_by_key_group(input)
       end
+
       def list_distributions_by_key_group(input : Types::ListDistributionsByKeyGroupRequest) : Types::ListDistributionsByKeyGroupResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_KEY_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2029,14 +2366,17 @@ module AwsSdk
       # specify, or the default maximum, the response is paginated. To get the next page of items, send a
       # subsequent request that specifies the NextMarker value from the current response as the Marker value
       # in the subsequent request.
+
       def list_distributions_by_origin_request_policy_id(
         origin_request_policy_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByOriginRequestPolicyIdResult
+
         input = Types::ListDistributionsByOriginRequestPolicyIdRequest.new(origin_request_policy_id: origin_request_policy_id, marker: marker, max_items: max_items)
         list_distributions_by_origin_request_policy_id(input)
       end
+
       def list_distributions_by_origin_request_policy_id(input : Types::ListDistributionsByOriginRequestPolicyIdRequest) : Types::ListDistributionsByOriginRequestPolicyIdResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_ORIGIN_REQUEST_POLICY_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2046,14 +2386,17 @@ module AwsSdk
       end
 
       # Lists the CloudFront distributions that are associated with the specified resource that you own.
+
       def list_distributions_by_owned_resource(
         resource_arn : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByOwnedResourceResult
+
         input = Types::ListDistributionsByOwnedResourceRequest.new(resource_arn: resource_arn, marker: marker, max_items: max_items)
         list_distributions_by_owned_resource(input)
       end
+
       def list_distributions_by_owned_resource(input : Types::ListDistributionsByOwnedResourceRequest) : Types::ListDistributionsByOwnedResourceResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_OWNED_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2070,15 +2413,18 @@ module AwsSdk
       # list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get
       # the next page of items, send a subsequent request that specifies the NextMarker value from the
       # current response as the Marker value in the subsequent request.
+
       def list_distributions_by_realtime_log_config(
         marker : String? = nil,
         max_items : String? = nil,
         realtime_log_config_arn : String? = nil,
         realtime_log_config_name : String? = nil
       ) : Types::ListDistributionsByRealtimeLogConfigResult
+
         input = Types::ListDistributionsByRealtimeLogConfigRequest.new(marker: marker, max_items: max_items, realtime_log_config_arn: realtime_log_config_arn, realtime_log_config_name: realtime_log_config_name)
         list_distributions_by_realtime_log_config(input)
       end
+
       def list_distributions_by_realtime_log_config(input : Types::ListDistributionsByRealtimeLogConfigRequest) : Types::ListDistributionsByRealtimeLogConfigResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_REALTIME_LOG_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2093,14 +2439,17 @@ module AwsSdk
       # specify, or the default maximum, the response is paginated. To get the next page of items, send a
       # subsequent request that specifies the NextMarker value from the current response as the Marker value
       # in the subsequent request.
+
       def list_distributions_by_response_headers_policy_id(
         response_headers_policy_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByResponseHeadersPolicyIdResult
+
         input = Types::ListDistributionsByResponseHeadersPolicyIdRequest.new(response_headers_policy_id: response_headers_policy_id, marker: marker, max_items: max_items)
         list_distributions_by_response_headers_policy_id(input)
       end
+
       def list_distributions_by_response_headers_policy_id(input : Types::ListDistributionsByResponseHeadersPolicyIdRequest) : Types::ListDistributionsByResponseHeadersPolicyIdResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_RESPONSE_HEADERS_POLICY_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2110,14 +2459,17 @@ module AwsSdk
       end
 
       # Lists distributions by trust store.
+
       def list_distributions_by_trust_store(
         trust_store_identifier : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByTrustStoreResult
+
         input = Types::ListDistributionsByTrustStoreRequest.new(trust_store_identifier: trust_store_identifier, marker: marker, max_items: max_items)
         list_distributions_by_trust_store(input)
       end
+
       def list_distributions_by_trust_store(input : Types::ListDistributionsByTrustStoreRequest) : Types::ListDistributionsByTrustStoreResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_TRUST_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2127,14 +2479,17 @@ module AwsSdk
       end
 
       # List CloudFront distributions by their VPC origin ID.
+
       def list_distributions_by_vpc_origin_id(
         vpc_origin_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByVpcOriginIdResult
+
         input = Types::ListDistributionsByVpcOriginIdRequest.new(vpc_origin_id: vpc_origin_id, marker: marker, max_items: max_items)
         list_distributions_by_vpc_origin_id(input)
       end
+
       def list_distributions_by_vpc_origin_id(input : Types::ListDistributionsByVpcOriginIdRequest) : Types::ListDistributionsByVpcOriginIdResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_VPC_ORIGIN_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2144,14 +2499,17 @@ module AwsSdk
       end
 
       # List the distributions that are associated with a specified WAF web ACL.
+
       def list_distributions_by_web_acl_id(
         web_acl_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListDistributionsByWebACLIdResult
+
         input = Types::ListDistributionsByWebACLIdRequest.new(web_acl_id: web_acl_id, marker: marker, max_items: max_items)
         list_distributions_by_web_acl_id(input)
       end
+
       def list_distributions_by_web_acl_id(input : Types::ListDistributionsByWebACLIdRequest) : Types::ListDistributionsByWebACLIdResult
         request = Protocol::RestXml.build_request(Model::LIST_DISTRIBUTIONS_BY_WEB_ACL_ID, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2179,15 +2537,18 @@ module AwsSdk
       # items in the list exceeds the maximum that you specify, or the default maximum, the response is
       # paginated. To get the next page of items, send a subsequent request that specifies the NextMarker
       # value from the current response as the Marker value in the subsequent request.
+
       def list_domain_conflicts(
         domain : String,
         domain_control_validation_resource : Types::DistributionResourceId,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListDomainConflictsResult
+
         input = Types::ListDomainConflictsRequest.new(domain: domain, domain_control_validation_resource: domain_control_validation_resource, marker: marker, max_items: max_items)
         list_domain_conflicts(input)
       end
+
       def list_domain_conflicts(input : Types::ListDomainConflictsRequest) : Types::ListDomainConflictsResult
         request = Protocol::RestXml.build_request(Model::LIST_DOMAIN_CONFLICTS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2198,13 +2559,16 @@ module AwsSdk
 
       # List all field-level encryption configurations that have been created in CloudFront for this
       # account.
+
       def list_field_level_encryption_configs(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListFieldLevelEncryptionConfigsResult
+
         input = Types::ListFieldLevelEncryptionConfigsRequest.new(marker: marker, max_items: max_items)
         list_field_level_encryption_configs(input)
       end
+
       def list_field_level_encryption_configs(input : Types::ListFieldLevelEncryptionConfigsRequest) : Types::ListFieldLevelEncryptionConfigsResult
         request = Protocol::RestXml.build_request(Model::LIST_FIELD_LEVEL_ENCRYPTION_CONFIGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2215,13 +2579,16 @@ module AwsSdk
 
       # Request a list of field-level encryption profiles that have been created in CloudFront for this
       # account.
+
       def list_field_level_encryption_profiles(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListFieldLevelEncryptionProfilesResult
+
         input = Types::ListFieldLevelEncryptionProfilesRequest.new(marker: marker, max_items: max_items)
         list_field_level_encryption_profiles(input)
       end
+
       def list_field_level_encryption_profiles(input : Types::ListFieldLevelEncryptionProfilesRequest) : Types::ListFieldLevelEncryptionProfilesResult
         request = Protocol::RestXml.build_request(Model::LIST_FIELD_LEVEL_ENCRYPTION_PROFILES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2236,14 +2603,17 @@ module AwsSdk
       # total number of items in the list exceeds the maximum that you specify, or the default maximum, the
       # response is paginated. To get the next page of items, send a subsequent request that specifies the
       # NextMarker value from the current response as the Marker value in the subsequent request.
+
       def list_functions(
         marker : String? = nil,
         max_items : String? = nil,
         stage : String? = nil
       ) : Types::ListFunctionsResult
+
         input = Types::ListFunctionsRequest.new(marker: marker, max_items: max_items, stage: stage)
         list_functions(input)
       end
+
       def list_functions(input : Types::ListFunctionsRequest) : Types::ListFunctionsResult
         request = Protocol::RestXml.build_request(Model::LIST_FUNCTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2253,14 +2623,17 @@ module AwsSdk
       end
 
       # Lists invalidation batches.
+
       def list_invalidations(
         distribution_id : String,
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListInvalidationsResult
+
         input = Types::ListInvalidationsRequest.new(distribution_id: distribution_id, marker: marker, max_items: max_items)
         list_invalidations(input)
       end
+
       def list_invalidations(input : Types::ListInvalidationsRequest) : Types::ListInvalidationsResult
         request = Protocol::RestXml.build_request(Model::LIST_INVALIDATIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2270,14 +2643,17 @@ module AwsSdk
       end
 
       # Lists the invalidations for a distribution tenant.
+
       def list_invalidations_for_distribution_tenant(
         id : String,
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListInvalidationsForDistributionTenantResult
+
         input = Types::ListInvalidationsForDistributionTenantRequest.new(id: id, marker: marker, max_items: max_items)
         list_invalidations_for_distribution_tenant(input)
       end
+
       def list_invalidations_for_distribution_tenant(input : Types::ListInvalidationsForDistributionTenantRequest) : Types::ListInvalidationsForDistributionTenantResult
         request = Protocol::RestXml.build_request(Model::LIST_INVALIDATIONS_FOR_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2291,13 +2667,16 @@ module AwsSdk
       # default maximum, the response is paginated. To get the next page of items, send a subsequent request
       # that specifies the NextMarker value from the current response as the Marker value in the subsequent
       # request.
+
       def list_key_groups(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListKeyGroupsResult
+
         input = Types::ListKeyGroupsRequest.new(marker: marker, max_items: max_items)
         list_key_groups(input)
       end
+
       def list_key_groups(input : Types::ListKeyGroupsRequest) : Types::ListKeyGroupsResult
         request = Protocol::RestXml.build_request(Model::LIST_KEY_GROUPS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2307,14 +2686,17 @@ module AwsSdk
       end
 
       # Specifies the key value stores to list.
+
       def list_key_value_stores(
         marker : String? = nil,
         max_items : String? = nil,
         status : String? = nil
       ) : Types::ListKeyValueStoresResult
+
         input = Types::ListKeyValueStoresRequest.new(marker: marker, max_items: max_items, status: status)
         list_key_value_stores(input)
       end
+
       def list_key_value_stores(input : Types::ListKeyValueStoresRequest) : Types::ListKeyValueStoresResult
         request = Protocol::RestXml.build_request(Model::LIST_KEY_VALUE_STORES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2330,13 +2712,16 @@ module AwsSdk
       # from the current response as the Marker value in the next request. If you're not using origin access
       # controls for your Amazon Web Services account, the ListOriginAccessControls operation doesn't return
       # the Items element in the response.
+
       def list_origin_access_controls(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListOriginAccessControlsResult
+
         input = Types::ListOriginAccessControlsRequest.new(marker: marker, max_items: max_items)
         list_origin_access_controls(input)
       end
+
       def list_origin_access_controls(input : Types::ListOriginAccessControlsRequest) : Types::ListOriginAccessControlsResult
         request = Protocol::RestXml.build_request(Model::LIST_ORIGIN_ACCESS_CONTROLS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2352,14 +2737,17 @@ module AwsSdk
       # maximum, the response is paginated. To get the next page of items, send a subsequent request that
       # specifies the NextMarker value from the current response as the Marker value in the subsequent
       # request.
+
       def list_origin_request_policies(
         marker : String? = nil,
         max_items : String? = nil,
         type : String? = nil
       ) : Types::ListOriginRequestPoliciesResult
+
         input = Types::ListOriginRequestPoliciesRequest.new(marker: marker, max_items: max_items, type: type)
         list_origin_request_policies(input)
       end
+
       def list_origin_request_policies(input : Types::ListOriginRequestPoliciesRequest) : Types::ListOriginRequestPoliciesResult
         request = Protocol::RestXml.build_request(Model::LIST_ORIGIN_REQUEST_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2369,13 +2757,16 @@ module AwsSdk
       end
 
       # List all public keys that have been added to CloudFront for this account.
+
       def list_public_keys(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListPublicKeysResult
+
         input = Types::ListPublicKeysRequest.new(marker: marker, max_items: max_items)
         list_public_keys(input)
       end
+
       def list_public_keys(input : Types::ListPublicKeysRequest) : Types::ListPublicKeysResult
         request = Protocol::RestXml.build_request(Model::LIST_PUBLIC_KEYS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2389,13 +2780,16 @@ module AwsSdk
       # specify, or the default maximum, the response is paginated. To get the next page of items, send a
       # subsequent request that specifies the NextMarker value from the current response as the Marker value
       # in the subsequent request.
+
       def list_realtime_log_configs(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListRealtimeLogConfigsResult
+
         input = Types::ListRealtimeLogConfigsRequest.new(marker: marker, max_items: max_items)
         list_realtime_log_configs(input)
       end
+
       def list_realtime_log_configs(input : Types::ListRealtimeLogConfigsRequest) : Types::ListRealtimeLogConfigsResult
         request = Protocol::RestXml.build_request(Model::LIST_REALTIME_LOG_CONFIGS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2411,14 +2805,17 @@ module AwsSdk
       # maximum, the response is paginated. To get the next page of items, send a subsequent request that
       # specifies the NextMarker value from the current response as the Marker value in the subsequent
       # request.
+
       def list_response_headers_policies(
         marker : String? = nil,
         max_items : String? = nil,
         type : String? = nil
       ) : Types::ListResponseHeadersPoliciesResult
+
         input = Types::ListResponseHeadersPoliciesRequest.new(marker: marker, max_items: max_items, type: type)
         list_response_headers_policies(input)
       end
+
       def list_response_headers_policies(input : Types::ListResponseHeadersPoliciesRequest) : Types::ListResponseHeadersPoliciesResult
         request = Protocol::RestXml.build_request(Model::LIST_RESPONSE_HEADERS_POLICIES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2428,13 +2825,16 @@ module AwsSdk
       end
 
       # List streaming distributions.
+
       def list_streaming_distributions(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListStreamingDistributionsResult
+
         input = Types::ListStreamingDistributionsRequest.new(marker: marker, max_items: max_items)
         list_streaming_distributions(input)
       end
+
       def list_streaming_distributions(input : Types::ListStreamingDistributionsRequest) : Types::ListStreamingDistributionsResult
         request = Protocol::RestXml.build_request(Model::LIST_STREAMING_DISTRIBUTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2445,12 +2845,15 @@ module AwsSdk
 
       # List tags for a CloudFront resource. For more information, see Tagging a distribution in the Amazon
       # CloudFront Developer Guide .
+
       def list_tags_for_resource(
         resource : String
       ) : Types::ListTagsForResourceResult
+
         input = Types::ListTagsForResourceRequest.new(resource: resource)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceRequest) : Types::ListTagsForResourceResult
         request = Protocol::RestXml.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2460,13 +2863,16 @@ module AwsSdk
       end
 
       # Lists trust stores.
+
       def list_trust_stores(
         marker : String? = nil,
         max_items : Int32? = nil
       ) : Types::ListTrustStoresResult
+
         input = Types::ListTrustStoresRequest.new(marker: marker, max_items: max_items)
         list_trust_stores(input)
       end
+
       def list_trust_stores(input : Types::ListTrustStoresRequest) : Types::ListTrustStoresResult
         request = Protocol::RestXml.build_request(Model::LIST_TRUST_STORES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2476,13 +2882,16 @@ module AwsSdk
       end
 
       # List the CloudFront VPC origins in your account.
+
       def list_vpc_origins(
         marker : String? = nil,
         max_items : String? = nil
       ) : Types::ListVpcOriginsResult
+
         input = Types::ListVpcOriginsRequest.new(marker: marker, max_items: max_items)
         list_vpc_origins(input)
       end
+
       def list_vpc_origins(input : Types::ListVpcOriginsRequest) : Types::ListVpcOriginsResult
         request = Protocol::RestXml.build_request(Model::LIST_VPC_ORIGINS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2492,13 +2901,16 @@ module AwsSdk
       end
 
       # Publishes a connection function.
+
       def publish_connection_function(
         id : String,
         if_match : String
       ) : Types::PublishConnectionFunctionResult
+
         input = Types::PublishConnectionFunctionRequest.new(id: id, if_match: if_match)
         publish_connection_function(input)
       end
+
       def publish_connection_function(input : Types::PublishConnectionFunctionRequest) : Types::PublishConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::PUBLISH_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2513,13 +2925,16 @@ module AwsSdk
       # function to a distribution's cache behavior, using the function's Amazon Resource Name (ARN). To
       # publish a function, you must provide the function's name and version ( ETag value). To get these
       # values, you can use ListFunctions and DescribeFunction .
+
       def publish_function(
         if_match : String,
         name : String
       ) : Types::PublishFunctionResult
+
         input = Types::PublishFunctionRequest.new(if_match: if_match, name: name)
         publish_function(input)
       end
+
       def publish_function(input : Types::PublishFunctionRequest) : Types::PublishFunctionResult
         request = Protocol::RestXml.build_request(Model::PUBLISH_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2529,13 +2944,16 @@ module AwsSdk
       end
 
       # Creates a resource control policy for a given CloudFront resource.
+
       def put_resource_policy(
         policy_document : String,
         resource_arn : String
       ) : Types::PutResourcePolicyResult
+
         input = Types::PutResourcePolicyRequest.new(policy_document: policy_document, resource_arn: resource_arn)
         put_resource_policy(input)
       end
+
       def put_resource_policy(input : Types::PutResourcePolicyRequest) : Types::PutResourcePolicyResult
         request = Protocol::RestXml.build_request(Model::PUT_RESOURCE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2546,13 +2964,16 @@ module AwsSdk
 
       # Add tags to a CloudFront resource. For more information, see Tagging a distribution in the Amazon
       # CloudFront Developer Guide .
+
       def tag_resource(
         resource : String,
         tags : Types::Tags
       ) : Nil
+
         input = Types::TagResourceRequest.new(resource: resource, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceRequest) : Nil
         request = Protocol::RestXml.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2562,15 +2983,18 @@ module AwsSdk
       end
 
       # Tests a connection function.
+
       def test_connection_function(
         connection_object : Bytes,
         id : String,
         if_match : String,
         stage : String? = nil
       ) : Types::TestConnectionFunctionResult
+
         input = Types::TestConnectionFunctionRequest.new(connection_object: connection_object, id: id, if_match: if_match, stage: stage)
         test_connection_function(input)
       end
+
       def test_connection_function(input : Types::TestConnectionFunctionRequest) : Types::TestConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::TEST_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2587,15 +3011,18 @@ module AwsSdk
       # CloudFront Developer Guide . To test a function, you provide the function's name and version ( ETag
       # value) along with the event object. To get the function's name and version, you can use
       # ListFunctions and DescribeFunction .
+
       def test_function(
         event_object : Bytes,
         if_match : String,
         name : String,
         stage : String? = nil
       ) : Types::TestFunctionResult
+
         input = Types::TestFunctionRequest.new(event_object: event_object, if_match: if_match, name: name, stage: stage)
         test_function(input)
       end
+
       def test_function(input : Types::TestFunctionRequest) : Types::TestFunctionResult
         request = Protocol::RestXml.build_request(Model::TEST_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2606,13 +3033,16 @@ module AwsSdk
 
       # Remove tags from a CloudFront resource. For more information, see Tagging a distribution in the
       # Amazon CloudFront Developer Guide .
+
       def untag_resource(
         resource : String,
         tag_keys : Types::TagKeys
       ) : Nil
+
         input = Types::UntagResourceRequest.new(resource: resource, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceRequest) : Nil
         request = Protocol::RestXml.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2622,14 +3052,17 @@ module AwsSdk
       end
 
       # Updates an Anycast static IP list.
+
       def update_anycast_ip_list(
         id : String,
         if_match : String,
         ip_address_type : String? = nil
       ) : Types::UpdateAnycastIpListResult
+
         input = Types::UpdateAnycastIpListRequest.new(id: id, if_match: if_match, ip_address_type: ip_address_type)
         update_anycast_ip_list(input)
       end
+
       def update_anycast_ip_list(input : Types::UpdateAnycastIpListRequest) : Types::UpdateAnycastIpListResult
         request = Protocol::RestXml.build_request(Model::UPDATE_ANYCAST_IP_LIST, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2646,14 +3079,17 @@ module AwsSdk
       # you modified and those that you didn't. If your minimum TTL is greater than 0, CloudFront will cache
       # content for at least the duration specified in the cache policy's minimum TTL, even if the
       # Cache-Control: no-cache , no-store , or private directives are present in the origin headers.
+
       def update_cache_policy(
         cache_policy_config : Types::CachePolicyConfig,
         id : String,
         if_match : String? = nil
       ) : Types::UpdateCachePolicyResult
+
         input = Types::UpdateCachePolicyRequest.new(cache_policy_config: cache_policy_config, id: id, if_match: if_match)
         update_cache_policy(input)
       end
+
       def update_cache_policy(input : Types::UpdateCachePolicyRequest) : Types::UpdateCachePolicyResult
         request = Protocol::RestXml.build_request(Model::UPDATE_CACHE_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2663,14 +3099,17 @@ module AwsSdk
       end
 
       # Update an origin access identity.
+
       def update_cloud_front_origin_access_identity(
         cloud_front_origin_access_identity_config : Types::CloudFrontOriginAccessIdentityConfig,
         id : String,
         if_match : String? = nil
       ) : Types::UpdateCloudFrontOriginAccessIdentityResult
+
         input = Types::UpdateCloudFrontOriginAccessIdentityRequest.new(cloud_front_origin_access_identity_config: cloud_front_origin_access_identity_config, id: id, if_match: if_match)
         update_cloud_front_origin_access_identity(input)
       end
+
       def update_cloud_front_origin_access_identity(input : Types::UpdateCloudFrontOriginAccessIdentityRequest) : Types::UpdateCloudFrontOriginAccessIdentityResult
         request = Protocol::RestXml.build_request(Model::UPDATE_CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2680,15 +3119,18 @@ module AwsSdk
       end
 
       # Updates a connection function.
+
       def update_connection_function(
         connection_function_code : Bytes,
         connection_function_config : Types::FunctionConfig,
         id : String,
         if_match : String
       ) : Types::UpdateConnectionFunctionResult
+
         input = Types::UpdateConnectionFunctionRequest.new(connection_function_code: connection_function_code, connection_function_config: connection_function_config, id: id, if_match: if_match)
         update_connection_function(input)
       end
+
       def update_connection_function(input : Types::UpdateConnectionFunctionRequest) : Types::UpdateConnectionFunctionResult
         request = Protocol::RestXml.build_request(Model::UPDATE_CONNECTION_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2698,6 +3140,7 @@ module AwsSdk
       end
 
       # Updates a connection group.
+
       def update_connection_group(
         id : String,
         if_match : String,
@@ -2705,9 +3148,11 @@ module AwsSdk
         enabled : Bool? = nil,
         ipv6_enabled : Bool? = nil
       ) : Types::UpdateConnectionGroupResult
+
         input = Types::UpdateConnectionGroupRequest.new(id: id, if_match: if_match, anycast_ip_list_id: anycast_ip_list_id, enabled: enabled, ipv6_enabled: ipv6_enabled)
         update_connection_group(input)
       end
+
       def update_connection_group(input : Types::UpdateConnectionGroupRequest) : Types::UpdateConnectionGroupResult
         request = Protocol::RestXml.build_request(Model::UPDATE_CONNECTION_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2725,14 +3170,17 @@ module AwsSdk
       # modify the fields in the continuous deployment policy configuration that you want to update. Use
       # UpdateContinuousDeploymentPolicy , providing the entire continuous deployment policy configuration,
       # including the fields that you modified and those that you didn't.
+
       def update_continuous_deployment_policy(
         continuous_deployment_policy_config : Types::ContinuousDeploymentPolicyConfig,
         id : String,
         if_match : String? = nil
       ) : Types::UpdateContinuousDeploymentPolicyResult
+
         input = Types::UpdateContinuousDeploymentPolicyRequest.new(continuous_deployment_policy_config: continuous_deployment_policy_config, id: id, if_match: if_match)
         update_continuous_deployment_policy(input)
       end
+
       def update_continuous_deployment_policy(input : Types::UpdateContinuousDeploymentPolicyRequest) : Types::UpdateContinuousDeploymentPolicyResult
         request = Protocol::RestXml.build_request(Model::UPDATE_CONTINUOUS_DEPLOYMENT_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2753,14 +3201,17 @@ module AwsSdk
       # replaces the existing configuration. The values that you specify in an UpdateDistribution request
       # are not merged into your existing configuration. Make sure to include all fields: the ones that you
       # modified and also the ones that you didn't.
+
       def update_distribution(
         distribution_config : Types::DistributionConfig,
         id : String,
         if_match : String? = nil
       ) : Types::UpdateDistributionResult
+
         input = Types::UpdateDistributionRequest.new(distribution_config: distribution_config, id: id, if_match: if_match)
         update_distribution(input)
       end
+
       def update_distribution(input : Types::UpdateDistributionRequest) : Types::UpdateDistributionResult
         request = Protocol::RestXml.build_request(Model::UPDATE_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2770,6 +3221,7 @@ module AwsSdk
       end
 
       # Updates a distribution tenant.
+
       def update_distribution_tenant(
         id : String,
         if_match : String,
@@ -2781,9 +3233,11 @@ module AwsSdk
         managed_certificate_request : Types::ManagedCertificateRequest? = nil,
         parameters : Array(Types::Parameter)? = nil
       ) : Types::UpdateDistributionTenantResult
+
         input = Types::UpdateDistributionTenantRequest.new(id: id, if_match: if_match, connection_group_id: connection_group_id, customizations: customizations, distribution_id: distribution_id, domains: domains, enabled: enabled, managed_certificate_request: managed_certificate_request, parameters: parameters)
         update_distribution_tenant(input)
       end
+
       def update_distribution_tenant(input : Types::UpdateDistributionTenantRequest) : Types::UpdateDistributionTenantResult
         request = Protocol::RestXml.build_request(Model::UPDATE_DISTRIBUTION_TENANT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2802,14 +3256,17 @@ module AwsSdk
       # the primary distribution. This action will disable the continuous deployment policy and move your
       # domain's traffic back to the primary distribution. This API operation requires the following IAM
       # permissions: GetDistribution UpdateDistribution
+
       def update_distribution_with_staging_config(
         id : String,
         if_match : String? = nil,
         staging_distribution_id : String? = nil
       ) : Types::UpdateDistributionWithStagingConfigResult
+
         input = Types::UpdateDistributionWithStagingConfigRequest.new(id: id, if_match: if_match, staging_distribution_id: staging_distribution_id)
         update_distribution_with_staging_config(input)
       end
+
       def update_distribution_with_staging_config(input : Types::UpdateDistributionWithStagingConfigRequest) : Types::UpdateDistributionWithStagingConfigResult
         request = Protocol::RestXml.build_request(Model::UPDATE_DISTRIBUTION_WITH_STAGING_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2828,14 +3285,17 @@ module AwsSdk
       # distribution tenant). For more information, including how to set up the target resource,
       # prerequisites that you must complete, and other restrictions, see Moving an alternate domain name to
       # a different standard distribution or distribution tenant in the Amazon CloudFront Developer Guide .
+
       def update_domain_association(
         domain : String,
         target_resource : Types::DistributionResourceId,
         if_match : String? = nil
       ) : Types::UpdateDomainAssociationResult
+
         input = Types::UpdateDomainAssociationRequest.new(domain: domain, target_resource: target_resource, if_match: if_match)
         update_domain_association(input)
       end
+
       def update_domain_association(input : Types::UpdateDomainAssociationRequest) : Types::UpdateDomainAssociationResult
         request = Protocol::RestXml.build_request(Model::UPDATE_DOMAIN_ASSOCIATION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2845,14 +3305,17 @@ module AwsSdk
       end
 
       # Update a field-level encryption configuration.
+
       def update_field_level_encryption_config(
         field_level_encryption_config : Types::FieldLevelEncryptionConfig,
         id : String,
         if_match : String? = nil
       ) : Types::UpdateFieldLevelEncryptionConfigResult
+
         input = Types::UpdateFieldLevelEncryptionConfigRequest.new(field_level_encryption_config: field_level_encryption_config, id: id, if_match: if_match)
         update_field_level_encryption_config(input)
       end
+
       def update_field_level_encryption_config(input : Types::UpdateFieldLevelEncryptionConfigRequest) : Types::UpdateFieldLevelEncryptionConfigResult
         request = Protocol::RestXml.build_request(Model::UPDATE_FIELD_LEVEL_ENCRYPTION_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2862,14 +3325,17 @@ module AwsSdk
       end
 
       # Update a field-level encryption profile.
+
       def update_field_level_encryption_profile(
         field_level_encryption_profile_config : Types::FieldLevelEncryptionProfileConfig,
         id : String,
         if_match : String? = nil
       ) : Types::UpdateFieldLevelEncryptionProfileResult
+
         input = Types::UpdateFieldLevelEncryptionProfileRequest.new(field_level_encryption_profile_config: field_level_encryption_profile_config, id: id, if_match: if_match)
         update_field_level_encryption_profile(input)
       end
+
       def update_field_level_encryption_profile(input : Types::UpdateFieldLevelEncryptionProfileRequest) : Types::UpdateFieldLevelEncryptionProfileResult
         request = Protocol::RestXml.build_request(Model::UPDATE_FIELD_LEVEL_ENCRYPTION_PROFILE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2882,15 +3348,18 @@ module AwsSdk
       # function. You cannot update a function's name. To update a function, you provide the function's name
       # and version ( ETag value) along with the updated function code. To get the name and version, you can
       # use ListFunctions and DescribeFunction .
+
       def update_function(
         function_code : Bytes,
         function_config : Types::FunctionConfig,
         if_match : String,
         name : String
       ) : Types::UpdateFunctionResult
+
         input = Types::UpdateFunctionRequest.new(function_code: function_code, function_config: function_config, if_match: if_match, name: name)
         update_function(input)
       end
+
       def update_function(input : Types::UpdateFunctionRequest) : Types::UpdateFunctionResult
         request = Protocol::RestXml.build_request(Model::UPDATE_FUNCTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2904,14 +3373,17 @@ module AwsSdk
       # Get the current key group with GetKeyGroup or GetKeyGroupConfig . Locally modify the fields in the
       # key group that you want to update. For example, add or remove public key IDs. Call UpdateKeyGroup
       # with the entire key group object, including the fields that you modified and those that you didn't.
+
       def update_key_group(
         id : String,
         key_group_config : Types::KeyGroupConfig,
         if_match : String? = nil
       ) : Types::UpdateKeyGroupResult
+
         input = Types::UpdateKeyGroupRequest.new(id: id, key_group_config: key_group_config, if_match: if_match)
         update_key_group(input)
       end
+
       def update_key_group(input : Types::UpdateKeyGroupRequest) : Types::UpdateKeyGroupResult
         request = Protocol::RestXml.build_request(Model::UPDATE_KEY_GROUP, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2921,14 +3393,17 @@ module AwsSdk
       end
 
       # Specifies the key value store to update.
+
       def update_key_value_store(
         comment : String,
         if_match : String,
         name : String
       ) : Types::UpdateKeyValueStoreResult
+
         input = Types::UpdateKeyValueStoreRequest.new(comment: comment, if_match: if_match, name: name)
         update_key_value_store(input)
       end
+
       def update_key_value_store(input : Types::UpdateKeyValueStoreRequest) : Types::UpdateKeyValueStoreResult
         request = Protocol::RestXml.build_request(Model::UPDATE_KEY_VALUE_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2938,14 +3413,17 @@ module AwsSdk
       end
 
       # Updates a CloudFront origin access control.
+
       def update_origin_access_control(
         id : String,
         origin_access_control_config : Types::OriginAccessControlConfig,
         if_match : String? = nil
       ) : Types::UpdateOriginAccessControlResult
+
         input = Types::UpdateOriginAccessControlRequest.new(id: id, origin_access_control_config: origin_access_control_config, if_match: if_match)
         update_origin_access_control(input)
       end
+
       def update_origin_access_control(input : Types::UpdateOriginAccessControlRequest) : Types::UpdateOriginAccessControlResult
         request = Protocol::RestXml.build_request(Model::UPDATE_ORIGIN_ACCESS_CONTROL, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2961,14 +3439,17 @@ module AwsSdk
       # origin request policy configuration that you want to update. Call UpdateOriginRequestPolicy by
       # providing the entire origin request policy configuration, including the fields that you modified and
       # those that you didn't.
+
       def update_origin_request_policy(
         id : String,
         origin_request_policy_config : Types::OriginRequestPolicyConfig,
         if_match : String? = nil
       ) : Types::UpdateOriginRequestPolicyResult
+
         input = Types::UpdateOriginRequestPolicyRequest.new(id: id, origin_request_policy_config: origin_request_policy_config, if_match: if_match)
         update_origin_request_policy(input)
       end
+
       def update_origin_request_policy(input : Types::UpdateOriginRequestPolicyRequest) : Types::UpdateOriginRequestPolicyResult
         request = Protocol::RestXml.build_request(Model::UPDATE_ORIGIN_REQUEST_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -2978,14 +3459,17 @@ module AwsSdk
       end
 
       # Update public key information. Note that the only value you can change is the comment.
+
       def update_public_key(
         id : String,
         public_key_config : Types::PublicKeyConfig,
         if_match : String? = nil
       ) : Types::UpdatePublicKeyResult
+
         input = Types::UpdatePublicKeyRequest.new(id: id, public_key_config: public_key_config, if_match: if_match)
         update_public_key(input)
       end
+
       def update_public_key(input : Types::UpdatePublicKeyRequest) : Types::UpdatePublicKeyResult
         request = Protocol::RestXml.build_request(Model::UPDATE_PUBLIC_KEY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3001,6 +3485,7 @@ module AwsSdk
       # configuration that you want to update. Call this API ( UpdateRealtimeLogConfig ) by providing the
       # entire real-time log configuration, including the parameters that you modified and those that you
       # didn't. You cannot update a real-time log configuration's Name or ARN .
+
       def update_realtime_log_config(
         arn : String? = nil,
         end_points : Array(Types::EndPoint)? = nil,
@@ -3008,9 +3493,11 @@ module AwsSdk
         name : String? = nil,
         sampling_rate : Int64? = nil
       ) : Types::UpdateRealtimeLogConfigResult
+
         input = Types::UpdateRealtimeLogConfigRequest.new(arn: arn, end_points: end_points, fields: fields, name: name, sampling_rate: sampling_rate)
         update_realtime_log_config(input)
       end
+
       def update_realtime_log_config(input : Types::UpdateRealtimeLogConfigRequest) : Types::UpdateRealtimeLogConfigResult
         request = Protocol::RestXml.build_request(Model::UPDATE_REALTIME_LOG_CONFIG, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3025,14 +3512,17 @@ module AwsSdk
       # Modify the fields in the response headers policy configuration that you want to update. Call
       # UpdateResponseHeadersPolicy , providing the entire response headers policy configuration, including
       # the fields that you modified and those that you didn't.
+
       def update_response_headers_policy(
         id : String,
         response_headers_policy_config : Types::ResponseHeadersPolicyConfig,
         if_match : String? = nil
       ) : Types::UpdateResponseHeadersPolicyResult
+
         input = Types::UpdateResponseHeadersPolicyRequest.new(id: id, response_headers_policy_config: response_headers_policy_config, if_match: if_match)
         update_response_headers_policy(input)
       end
+
       def update_response_headers_policy(input : Types::UpdateResponseHeadersPolicyRequest) : Types::UpdateResponseHeadersPolicyResult
         request = Protocol::RestXml.build_request(Model::UPDATE_RESPONSE_HEADERS_POLICY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3042,14 +3532,17 @@ module AwsSdk
       end
 
       # Update a streaming distribution.
+
       def update_streaming_distribution(
         id : String,
         streaming_distribution_config : Types::StreamingDistributionConfig,
         if_match : String? = nil
       ) : Types::UpdateStreamingDistributionResult
+
         input = Types::UpdateStreamingDistributionRequest.new(id: id, streaming_distribution_config: streaming_distribution_config, if_match: if_match)
         update_streaming_distribution(input)
       end
+
       def update_streaming_distribution(input : Types::UpdateStreamingDistributionRequest) : Types::UpdateStreamingDistributionResult
         request = Protocol::RestXml.build_request(Model::UPDATE_STREAMING_DISTRIBUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3059,14 +3552,17 @@ module AwsSdk
       end
 
       # Updates a trust store.
+
       def update_trust_store(
         ca_certificates_bundle_source : Types::CaCertificatesBundleSource,
         id : String,
         if_match : String
       ) : Types::UpdateTrustStoreResult
+
         input = Types::UpdateTrustStoreRequest.new(ca_certificates_bundle_source: ca_certificates_bundle_source, id: id, if_match: if_match)
         update_trust_store(input)
       end
+
       def update_trust_store(input : Types::UpdateTrustStoreRequest) : Types::UpdateTrustStoreResult
         request = Protocol::RestXml.build_request(Model::UPDATE_TRUST_STORE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3076,14 +3572,17 @@ module AwsSdk
       end
 
       # Update an Amazon CloudFront VPC origin in your account.
+
       def update_vpc_origin(
         id : String,
         if_match : String,
         vpc_origin_endpoint_config : Types::VpcOriginEndpointConfig
       ) : Types::UpdateVpcOriginResult
+
         input = Types::UpdateVpcOriginRequest.new(id: id, if_match: if_match, vpc_origin_endpoint_config: vpc_origin_endpoint_config)
         update_vpc_origin(input)
       end
+
       def update_vpc_origin(input : Types::UpdateVpcOriginRequest) : Types::UpdateVpcOriginResult
         request = Protocol::RestXml.build_request(Model::UPDATE_VPC_ORIGIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -3096,13 +3595,16 @@ module AwsSdk
       # name points to the correct routing endpoint of the connection group, such as
       # d111111abcdef8.cloudfront.net. You can use this API operation to troubleshoot and resolve DNS
       # configuration issues.
+
       def verify_dns_configuration(
         identifier : String,
         domain : String? = nil
       ) : Types::VerifyDnsConfigurationResult
+
         input = Types::VerifyDnsConfigurationRequest.new(identifier: identifier, domain: domain)
         verify_dns_configuration(input)
       end
+
       def verify_dns_configuration(input : Types::VerifyDnsConfigurationRequest) : Types::VerifyDnsConfigurationResult
         request = Protocol::RestXml.build_request(Model::VERIFY_DNS_CONFIGURATION, input, endpoint)
         request = request.with_headers(endpoint_headers)

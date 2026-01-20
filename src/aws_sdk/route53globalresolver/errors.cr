@@ -5,32 +5,39 @@ module AwsSdk
       end
 
       # You don't have permission to perform this operation. Check your IAM permissions and try again.
+
       class AccessDeniedException < ServiceError
       end
 
       # The request conflicts with the current state of the resource. This can occur when trying to modify a
       # resource that is not in a valid state for the requested operation.
+
       class ConflictException < ServiceError
       end
 
       # An internal server error occurred. Try again later.
+
       class InternalServerException < ServiceError
       end
 
       # The specified resource was not found. Verify the resource ID and try again.
+
       class ResourceNotFoundException < ServiceError
       end
 
       # The request would exceed one or more service quotas. Check your current usage and quotas, then try
       # again.
+
       class ServiceQuotaExceededException < ServiceError
       end
 
       # The request was throttled due to too many requests. Wait a moment and try again.
+
       class ThrottlingException < ServiceError
       end
 
       # The input parameters are invalid. Check the parameter values and try again.
+
       class ValidationException < ServiceError
       end
 

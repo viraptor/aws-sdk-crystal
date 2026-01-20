@@ -1,7 +1,0 @@
-require "./runtime"
-require "./api_detective/client"
-require "./api_detective/errors"
-require "./api_detective/model"
-require "./api_detective/types"
-require "./api_detective/protocol/rest_json"
-require "./customizations/api_detective/customizations"

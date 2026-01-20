@@ -1,0 +1,7 @@
+require "./runtime"
+require "./opensearch/client"
+require "./opensearch/errors"
+require "./opensearch/model"
+require "./opensearch/types"
+require "./opensearch/protocol/rest_json"
+require "./customizations/opensearch/customizations"

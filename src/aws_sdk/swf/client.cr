@@ -1,6 +1,7 @@
 module AwsSdk
   module SWF
     class Client
+
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String
@@ -40,6 +41,7 @@ module AwsSdk
       # associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and
       # example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
       # Developer Guide .
+
       def count_closed_workflow_executions(
         domain : String,
         close_status_filter : Types::CloseStatusFilter? = nil,
@@ -49,9 +51,11 @@ module AwsSdk
         tag_filter : Types::TagFilter? = nil,
         type_filter : Types::WorkflowTypeFilter? = nil
       ) : Types::WorkflowExecutionCount
+
         input = Types::CountClosedWorkflowExecutionsInput.new(domain: domain, close_status_filter: close_status_filter, close_time_filter: close_time_filter, execution_filter: execution_filter, start_time_filter: start_time_filter, tag_filter: tag_filter, type_filter: type_filter)
         count_closed_workflow_executions(input)
       end
+
       def count_closed_workflow_executions(input : Types::CountClosedWorkflowExecutionsInput) : Types::WorkflowExecutionCount
         request = Protocol::JsonRpc.build_request(Model::COUNT_CLOSED_WORKFLOW_EXECUTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -73,6 +77,7 @@ module AwsSdk
       # associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and
       # example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
       # Developer Guide .
+
       def count_open_workflow_executions(
         domain : String,
         start_time_filter : Types::ExecutionTimeFilter,
@@ -80,9 +85,11 @@ module AwsSdk
         tag_filter : Types::TagFilter? = nil,
         type_filter : Types::WorkflowTypeFilter? = nil
       ) : Types::WorkflowExecutionCount
+
         input = Types::CountOpenWorkflowExecutionsInput.new(domain: domain, start_time_filter: start_time_filter, execution_filter: execution_filter, tag_filter: tag_filter, type_filter: type_filter)
         count_open_workflow_executions(input)
       end
+
       def count_open_workflow_executions(input : Types::CountOpenWorkflowExecutionsInput) : Types::WorkflowExecutionCount
         request = Protocol::JsonRpc.build_request(Model::COUNT_OPEN_WORKFLOW_EXECUTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -102,13 +109,16 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def count_pending_activity_tasks(
         domain : String,
         task_list : Types::TaskList
       ) : Types::PendingTaskCount
+
         input = Types::CountPendingActivityTasksInput.new(domain: domain, task_list: task_list)
         count_pending_activity_tasks(input)
       end
+
       def count_pending_activity_tasks(input : Types::CountPendingActivityTasksInput) : Types::PendingTaskCount
         request = Protocol::JsonRpc.build_request(Model::COUNT_PENDING_ACTIVITY_TASKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -128,13 +138,16 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def count_pending_decision_tasks(
         domain : String,
         task_list : Types::TaskList
       ) : Types::PendingTaskCount
+
         input = Types::CountPendingDecisionTasksInput.new(domain: domain, task_list: task_list)
         count_pending_decision_tasks(input)
       end
+
       def count_pending_decision_tasks(input : Types::CountPendingDecisionTasksInput) : Types::PendingTaskCount
         request = Protocol::JsonRpc.build_request(Model::COUNT_PENDING_DECISION_TASKS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -155,13 +168,16 @@ module AwsSdk
       # or the parameter values fall outside the specified constraints, the action fails. The associated
       # event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def delete_activity_type(
         activity_type : Types::ActivityType,
         domain : String
       ) : Nil
+
         input = Types::DeleteActivityTypeInput.new(activity_type: activity_type, domain: domain)
         delete_activity_type(input)
       end
+
       def delete_activity_type(input : Types::DeleteActivityTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_ACTIVITY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -182,13 +198,16 @@ module AwsSdk
       # or the parameter values fall outside the specified constraints, the action fails. The associated
       # event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def delete_workflow_type(
         domain : String,
         workflow_type : Types::WorkflowType
       ) : Nil
+
         input = Types::DeleteWorkflowTypeInput.new(domain: domain, workflow_type: workflow_type)
         delete_workflow_type(input)
       end
+
       def delete_workflow_type(input : Types::DeleteWorkflowTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::DELETE_WORKFLOW_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -209,13 +228,16 @@ module AwsSdk
       # the action fails. The associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED
       # . For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in
       # the Amazon SWF Developer Guide .
+
       def deprecate_activity_type(
         activity_type : Types::ActivityType,
         domain : String
       ) : Nil
+
         input = Types::DeprecateActivityTypeInput.new(activity_type: activity_type, domain: domain)
         deprecate_activity_type(input)
       end
+
       def deprecate_activity_type(input : Types::DeprecateActivityTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::DEPRECATE_ACTIVITY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -237,12 +259,15 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def deprecate_domain(
         name : String
       ) : Nil
+
         input = Types::DeprecateDomainInput.new(name: name)
         deprecate_domain(input)
       end
+
       def deprecate_domain(input : Types::DeprecateDomainInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::DEPRECATE_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -265,13 +290,16 @@ module AwsSdk
       # the action fails. The associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED
       # . For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in
       # the Amazon SWF Developer Guide .
+
       def deprecate_workflow_type(
         domain : String,
         workflow_type : Types::WorkflowType
       ) : Nil
+
         input = Types::DeprecateWorkflowTypeInput.new(domain: domain, workflow_type: workflow_type)
         deprecate_workflow_type(input)
       end
+
       def deprecate_workflow_type(input : Types::DeprecateWorkflowTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::DEPRECATE_WORKFLOW_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -291,13 +319,16 @@ module AwsSdk
       # or the parameter values fall outside the specified constraints, the action fails. The associated
       # event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def describe_activity_type(
         activity_type : Types::ActivityType,
         domain : String
       ) : Types::ActivityTypeDetail
+
         input = Types::DescribeActivityTypeInput.new(activity_type: activity_type, domain: domain)
         describe_activity_type(input)
       end
+
       def describe_activity_type(input : Types::DescribeActivityTypeInput) : Types::ActivityTypeDetail
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_ACTIVITY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -314,12 +345,15 @@ module AwsSdk
       # the parameter values fall outside the specified constraints, the action fails. The associated event
       # attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def describe_domain(
         name : String
       ) : Types::DomainDetail
+
         input = Types::DescribeDomainInput.new(name: name)
         describe_domain(input)
       end
+
       def describe_domain(input : Types::DescribeDomainInput) : Types::DomainDetail
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -338,13 +372,16 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def describe_workflow_execution(
         domain : String,
         execution : Types::WorkflowExecution
       ) : Types::WorkflowExecutionDetail
+
         input = Types::DescribeWorkflowExecutionInput.new(domain: domain, execution: execution)
         describe_workflow_execution(input)
       end
+
       def describe_workflow_execution(input : Types::DescribeWorkflowExecutionInput) : Types::WorkflowExecutionDetail
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_WORKFLOW_EXECUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -365,13 +402,16 @@ module AwsSdk
       # associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and
       # example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
       # Developer Guide .
+
       def describe_workflow_type(
         domain : String,
         workflow_type : Types::WorkflowType
       ) : Types::WorkflowTypeDetail
+
         input = Types::DescribeWorkflowTypeInput.new(domain: domain, workflow_type: workflow_type)
         describe_workflow_type(input)
       end
+
       def describe_workflow_type(input : Types::DescribeWorkflowTypeInput) : Types::WorkflowTypeDetail
         request = Protocol::JsonRpc.build_request(Model::DESCRIBE_WORKFLOW_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -391,6 +431,7 @@ module AwsSdk
       # specified constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def get_workflow_execution_history(
         domain : String,
         execution : Types::WorkflowExecution,
@@ -398,9 +439,11 @@ module AwsSdk
         next_page_token : String? = nil,
         reverse_order : Bool? = nil
       ) : Types::History
+
         input = Types::GetWorkflowExecutionHistoryInput.new(domain: domain, execution: execution, maximum_page_size: maximum_page_size, next_page_token: next_page_token, reverse_order: reverse_order)
         get_workflow_execution_history(input)
       end
+
       def get_workflow_execution_history(input : Types::GetWorkflowExecutionHistoryInput) : Types::History
         request = Protocol::JsonRpc.build_request(Model::GET_WORKFLOW_EXECUTION_HISTORY, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -420,6 +463,7 @@ module AwsSdk
       # values fall outside the specified constraints, the action fails. The associated event attribute's
       # cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using
       # IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def list_activity_types(
         domain : String,
         registration_status : String,
@@ -428,9 +472,11 @@ module AwsSdk
         next_page_token : String? = nil,
         reverse_order : Bool? = nil
       ) : Types::ActivityTypeInfos
+
         input = Types::ListActivityTypesInput.new(domain: domain, registration_status: registration_status, maximum_page_size: maximum_page_size, name: name, next_page_token: next_page_token, reverse_order: reverse_order)
         list_activity_types(input)
       end
+
       def list_activity_types(input : Types::ListActivityTypesInput) : Types::ActivityTypeInfos
         request = Protocol::JsonRpc.build_request(Model::LIST_ACTIVITY_TYPES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -453,6 +499,7 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def list_closed_workflow_executions(
         domain : String,
         close_status_filter : Types::CloseStatusFilter? = nil,
@@ -465,9 +512,11 @@ module AwsSdk
         tag_filter : Types::TagFilter? = nil,
         type_filter : Types::WorkflowTypeFilter? = nil
       ) : Types::WorkflowExecutionInfos
+
         input = Types::ListClosedWorkflowExecutionsInput.new(domain: domain, close_status_filter: close_status_filter, close_time_filter: close_time_filter, execution_filter: execution_filter, maximum_page_size: maximum_page_size, next_page_token: next_page_token, reverse_order: reverse_order, start_time_filter: start_time_filter, tag_filter: tag_filter, type_filter: type_filter)
         list_closed_workflow_executions(input)
       end
+
       def list_closed_workflow_executions(input : Types::ListClosedWorkflowExecutionsInput) : Types::WorkflowExecutionInfos
         request = Protocol::JsonRpc.build_request(Model::LIST_CLOSED_WORKFLOW_EXECUTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -488,15 +537,18 @@ module AwsSdk
       # specified constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def list_domains(
         registration_status : String,
         maximum_page_size : Int32? = nil,
         next_page_token : String? = nil,
         reverse_order : Bool? = nil
       ) : Types::DomainInfos
+
         input = Types::ListDomainsInput.new(registration_status: registration_status, maximum_page_size: maximum_page_size, next_page_token: next_page_token, reverse_order: reverse_order)
         list_domains(input)
       end
+
       def list_domains(input : Types::ListDomainsInput) : Types::DomainInfos
         request = Protocol::JsonRpc.build_request(Model::LIST_DOMAINS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -519,6 +571,7 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def list_open_workflow_executions(
         domain : String,
         start_time_filter : Types::ExecutionTimeFilter,
@@ -529,9 +582,11 @@ module AwsSdk
         tag_filter : Types::TagFilter? = nil,
         type_filter : Types::WorkflowTypeFilter? = nil
       ) : Types::WorkflowExecutionInfos
+
         input = Types::ListOpenWorkflowExecutionsInput.new(domain: domain, start_time_filter: start_time_filter, execution_filter: execution_filter, maximum_page_size: maximum_page_size, next_page_token: next_page_token, reverse_order: reverse_order, tag_filter: tag_filter, type_filter: type_filter)
         list_open_workflow_executions(input)
       end
+
       def list_open_workflow_executions(input : Types::ListOpenWorkflowExecutionsInput) : Types::WorkflowExecutionInfos
         request = Protocol::JsonRpc.build_request(Model::LIST_OPEN_WORKFLOW_EXECUTIONS, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -541,12 +596,15 @@ module AwsSdk
       end
 
       # List tags for a given domain.
+
       def list_tags_for_resource(
         resource_arn : String
       ) : Types::ListTagsForResourceOutput
+
         input = Types::ListTagsForResourceInput.new(resource_arn: resource_arn)
         list_tags_for_resource(input)
       end
+
       def list_tags_for_resource(input : Types::ListTagsForResourceInput) : Types::ListTagsForResourceOutput
         request = Protocol::JsonRpc.build_request(Model::LIST_TAGS_FOR_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -564,6 +622,7 @@ module AwsSdk
       # values fall outside the specified constraints, the action fails. The associated event attribute's
       # cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using
       # IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def list_workflow_types(
         domain : String,
         registration_status : String,
@@ -572,9 +631,11 @@ module AwsSdk
         next_page_token : String? = nil,
         reverse_order : Bool? = nil
       ) : Types::WorkflowTypeInfos
+
         input = Types::ListWorkflowTypesInput.new(domain: domain, registration_status: registration_status, maximum_page_size: maximum_page_size, name: name, next_page_token: next_page_token, reverse_order: reverse_order)
         list_workflow_types(input)
       end
+
       def list_workflow_types(input : Types::ListWorkflowTypesInput) : Types::WorkflowTypeInfos
         request = Protocol::JsonRpc.build_request(Model::LIST_WORKFLOW_TYPES, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -599,14 +660,17 @@ module AwsSdk
       # constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def poll_for_activity_task(
         domain : String,
         task_list : Types::TaskList,
         identity : String? = nil
       ) : Types::ActivityTask
+
         input = Types::PollForActivityTaskInput.new(domain: domain, task_list: task_list, identity: identity)
         poll_for_activity_task(input)
       end
+
       def poll_for_activity_task(input : Types::PollForActivityTaskInput) : Types::ActivityTask
         request = Protocol::JsonRpc.build_request(Model::POLL_FOR_ACTIVITY_TASK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -636,6 +700,7 @@ module AwsSdk
       # the parameter values fall outside the specified constraints, the action fails. The associated event
       # attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def poll_for_decision_task(
         domain : String,
         task_list : Types::TaskList,
@@ -645,9 +710,11 @@ module AwsSdk
         reverse_order : Bool? = nil,
         start_at_previous_started_event : Bool? = nil
       ) : Types::DecisionTask
+
         input = Types::PollForDecisionTaskInput.new(domain: domain, task_list: task_list, identity: identity, maximum_page_size: maximum_page_size, next_page_token: next_page_token, reverse_order: reverse_order, start_at_previous_started_event: start_at_previous_started_event)
         poll_for_decision_task(input)
       end
+
       def poll_for_decision_task(input : Types::PollForDecisionTaskInput) : Types::DecisionTask
         request = Protocol::JsonRpc.build_request(Model::POLL_FOR_DECISION_TASK, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -679,13 +746,16 @@ module AwsSdk
       # specified constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def record_activity_task_heartbeat(
         task_token : String,
         details : String? = nil
       ) : Types::ActivityTaskStatus
+
         input = Types::RecordActivityTaskHeartbeatInput.new(task_token: task_token, details: details)
         record_activity_task_heartbeat(input)
       end
+
       def record_activity_task_heartbeat(input : Types::RecordActivityTaskHeartbeatInput) : Types::ActivityTaskStatus
         request = Protocol::JsonRpc.build_request(Model::RECORD_ACTIVITY_TASK_HEARTBEAT, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -707,6 +777,7 @@ module AwsSdk
       # outside the specified constraints, the action fails. The associated event attribute's cause
       # parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to
       # Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def register_activity_type(
         domain : String,
         name : String,
@@ -719,9 +790,11 @@ module AwsSdk
         default_task_start_to_close_timeout : String? = nil,
         description : String? = nil
       ) : Nil
+
         input = Types::RegisterActivityTypeInput.new(domain: domain, name: name, version: version, default_task_heartbeat_timeout: default_task_heartbeat_timeout, default_task_list: default_task_list, default_task_priority: default_task_priority, default_task_schedule_to_close_timeout: default_task_schedule_to_close_timeout, default_task_schedule_to_start_timeout: default_task_schedule_to_start_timeout, default_task_start_to_close_timeout: default_task_start_to_close_timeout, description: description)
         register_activity_type(input)
       end
+
       def register_activity_type(input : Types::RegisterActivityTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::REGISTER_ACTIVITY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -739,15 +812,18 @@ module AwsSdk
       # associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and
       # example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
       # Developer Guide .
+
       def register_domain(
         name : String,
         workflow_execution_retention_period_in_days : String,
         description : String? = nil,
         tags : Array(Types::ResourceTag)? = nil
       ) : Nil
+
         input = Types::RegisterDomainInput.new(name: name, workflow_execution_retention_period_in_days: workflow_execution_retention_period_in_days, description: description, tags: tags)
         register_domain(input)
       end
+
       def register_domain(input : Types::RegisterDomainInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::REGISTER_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -770,6 +846,7 @@ module AwsSdk
       # associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and
       # example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF
       # Developer Guide .
+
       def register_workflow_type(
         domain : String,
         name : String,
@@ -782,9 +859,11 @@ module AwsSdk
         default_task_start_to_close_timeout : String? = nil,
         description : String? = nil
       ) : Nil
+
         input = Types::RegisterWorkflowTypeInput.new(domain: domain, name: name, version: version, default_child_policy: default_child_policy, default_execution_start_to_close_timeout: default_execution_start_to_close_timeout, default_lambda_role: default_lambda_role, default_task_list: default_task_list, default_task_priority: default_task_priority, default_task_start_to_close_timeout: default_task_start_to_close_timeout, description: description)
         register_workflow_type(input)
       end
+
       def register_workflow_type(input : Types::RegisterWorkflowTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::REGISTER_WORKFLOW_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -808,14 +887,17 @@ module AwsSdk
       # the action fails. The associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED
       # . For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in
       # the Amazon SWF Developer Guide .
+
       def request_cancel_workflow_execution(
         domain : String,
         workflow_id : String,
         run_id : String? = nil
       ) : Nil
+
         input = Types::RequestCancelWorkflowExecutionInput.new(domain: domain, workflow_id: workflow_id, run_id: run_id)
         request_cancel_workflow_execution(input)
       end
+
       def request_cancel_workflow_execution(input : Types::RequestCancelWorkflowExecutionInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::REQUEST_CANCEL_WORKFLOW_EXECUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -839,13 +921,16 @@ module AwsSdk
       # the parameter values fall outside the specified constraints, the action fails. The associated event
       # attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def respond_activity_task_canceled(
         task_token : String,
         details : String? = nil
       ) : Nil
+
         input = Types::RespondActivityTaskCanceledInput.new(task_token: task_token, details: details)
         respond_activity_task_canceled(input)
       end
+
       def respond_activity_task_canceled(input : Types::RespondActivityTaskCanceledInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::RESPOND_ACTIVITY_TASK_CANCELED, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -870,13 +955,16 @@ module AwsSdk
       # the parameter values fall outside the specified constraints, the action fails. The associated event
       # attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def respond_activity_task_completed(
         task_token : String,
         result : String? = nil
       ) : Nil
+
         input = Types::RespondActivityTaskCompletedInput.new(task_token: task_token, result: result)
         respond_activity_task_completed(input)
       end
+
       def respond_activity_task_completed(input : Types::RespondActivityTaskCompletedInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::RESPOND_ACTIVITY_TASK_COMPLETED, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -898,14 +986,17 @@ module AwsSdk
       # outside the specified constraints, the action fails. The associated event attribute's cause
       # parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to
       # Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def respond_activity_task_failed(
         task_token : String,
         details : String? = nil,
         reason : String? = nil
       ) : Nil
+
         input = Types::RespondActivityTaskFailedInput.new(task_token: task_token, details: details, reason: reason)
         respond_activity_task_failed(input)
       end
+
       def respond_activity_task_failed(input : Types::RespondActivityTaskFailedInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::RESPOND_ACTIVITY_TASK_FAILED, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -924,6 +1015,7 @@ module AwsSdk
       # permissions on decisions as if they were actual API calls, including applying conditions to some
       # parameters. For more information, see Using IAM to Manage Access to Amazon SWF Workflows in the
       # Amazon SWF Developer Guide .
+
       def respond_decision_task_completed(
         task_token : String,
         decisions : Array(Types::Decision)? = nil,
@@ -931,9 +1023,11 @@ module AwsSdk
         task_list : Types::TaskList? = nil,
         task_list_schedule_to_start_timeout : String? = nil
       ) : Nil
+
         input = Types::RespondDecisionTaskCompletedInput.new(task_token: task_token, decisions: decisions, execution_context: execution_context, task_list: task_list, task_list_schedule_to_start_timeout: task_list_schedule_to_start_timeout)
         respond_decision_task_completed(input)
       end
+
       def respond_decision_task_completed(input : Types::RespondDecisionTaskCompletedInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::RESPOND_DECISION_TASK_COMPLETED, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -955,6 +1049,7 @@ module AwsSdk
       # specified constraints, the action fails. The associated event attribute's cause parameter is set to
       # OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to Manage Access to
       # Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def signal_workflow_execution(
         domain : String,
         signal_name : String,
@@ -962,9 +1057,11 @@ module AwsSdk
         input : String? = nil,
         run_id : String? = nil
       ) : Nil
+
         input = Types::SignalWorkflowExecutionInput.new(domain: domain, signal_name: signal_name, workflow_id: workflow_id, input: input, run_id: run_id)
         signal_workflow_execution(input)
       end
+
       def signal_workflow_execution(input : Types::SignalWorkflowExecutionInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::SIGNAL_WORKFLOW_EXECUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -988,6 +1085,7 @@ module AwsSdk
       # the action fails. The associated event attribute's cause parameter is set to OPERATION_NOT_PERMITTED
       # . For details and example IAM policies, see Using IAM to Manage Access to Amazon SWF Workflows in
       # the Amazon SWF Developer Guide .
+
       def start_workflow_execution(
         domain : String,
         workflow_id : String,
@@ -1001,9 +1099,11 @@ module AwsSdk
         task_priority : String? = nil,
         task_start_to_close_timeout : String? = nil
       ) : Types::Run
+
         input = Types::StartWorkflowExecutionInput.new(domain: domain, workflow_id: workflow_id, workflow_type: workflow_type, child_policy: child_policy, execution_start_to_close_timeout: execution_start_to_close_timeout, input: input, lambda_role: lambda_role, tag_list: tag_list, task_list: task_list, task_priority: task_priority, task_start_to_close_timeout: task_start_to_close_timeout)
         start_workflow_execution(input)
       end
+
       def start_workflow_execution(input : Types::StartWorkflowExecutionInput) : Types::Run
         request = Protocol::JsonRpc.build_request(Model::START_WORKFLOW_EXECUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1013,13 +1113,16 @@ module AwsSdk
       end
 
       # Add a tag to a Amazon SWF domain. Amazon SWF supports a maximum of 50 tags per resource.
+
       def tag_resource(
         resource_arn : String,
         tags : Array(Types::ResourceTag)
       ) : Nil
+
         input = Types::TagResourceInput.new(resource_arn: resource_arn, tags: tags)
         tag_resource(input)
       end
+
       def tag_resource(input : Types::TagResourceInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::TAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1043,6 +1146,7 @@ module AwsSdk
       # outside the specified constraints, the action fails. The associated event attribute's cause
       # parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM policies, see Using IAM to
       # Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def terminate_workflow_execution(
         domain : String,
         workflow_id : String,
@@ -1051,9 +1155,11 @@ module AwsSdk
         reason : String? = nil,
         run_id : String? = nil
       ) : Nil
+
         input = Types::TerminateWorkflowExecutionInput.new(domain: domain, workflow_id: workflow_id, child_policy: child_policy, details: details, reason: reason, run_id: run_id)
         terminate_workflow_execution(input)
       end
+
       def terminate_workflow_execution(input : Types::TerminateWorkflowExecutionInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::TERMINATE_WORKFLOW_EXECUTION, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1074,13 +1180,16 @@ module AwsSdk
       # or the parameter values fall outside the specified constraints, the action fails. The associated
       # event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def undeprecate_activity_type(
         activity_type : Types::ActivityType,
         domain : String
       ) : Nil
+
         input = Types::UndeprecateActivityTypeInput.new(activity_type: activity_type, domain: domain)
         undeprecate_activity_type(input)
       end
+
       def undeprecate_activity_type(input : Types::UndeprecateActivityTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNDEPRECATE_ACTIVITY_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1099,12 +1208,15 @@ module AwsSdk
       # the parameter values fall outside the specified constraints, the action fails. The associated event
       # attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def undeprecate_domain(
         name : String
       ) : Nil
+
         input = Types::UndeprecateDomainInput.new(name: name)
         undeprecate_domain(input)
       end
+
       def undeprecate_domain(input : Types::UndeprecateDomainInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNDEPRECATE_DOMAIN, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1125,13 +1237,16 @@ module AwsSdk
       # or the parameter values fall outside the specified constraints, the action fails. The associated
       # event attribute's cause parameter is set to OPERATION_NOT_PERMITTED . For details and example IAM
       # policies, see Using IAM to Manage Access to Amazon SWF Workflows in the Amazon SWF Developer Guide .
+
       def undeprecate_workflow_type(
         domain : String,
         workflow_type : Types::WorkflowType
       ) : Nil
+
         input = Types::UndeprecateWorkflowTypeInput.new(domain: domain, workflow_type: workflow_type)
         undeprecate_workflow_type(input)
       end
+
       def undeprecate_workflow_type(input : Types::UndeprecateWorkflowTypeInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNDEPRECATE_WORKFLOW_TYPE, input, endpoint)
         request = request.with_headers(endpoint_headers)
@@ -1141,13 +1256,16 @@ module AwsSdk
       end
 
       # Remove a tag from a Amazon SWF domain.
+
       def untag_resource(
         resource_arn : String,
         tag_keys : Array(String)
       ) : Nil
+
         input = Types::UntagResourceInput.new(resource_arn: resource_arn, tag_keys: tag_keys)
         untag_resource(input)
       end
+
       def untag_resource(input : Types::UntagResourceInput) : Nil
         request = Protocol::JsonRpc.build_request(Model::UNTAG_RESOURCE, input, endpoint)
         request = request.with_headers(endpoint_headers)
