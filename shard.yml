@@ -7,10 +7,10 @@ authors:
 repository: "https://github.com/viraptor/aws-sdk-crystal/"
 targets:
   generate-services:
-    main: src/crystal_sdk_generator/minimal_generator_entry.cr
+    main: build_tools/crystal_sdk_generator/minimal_generator_entry.cr
   cleanup:
-    main: src/tools.cr
+    main: build_tools/tools.cr
   update-apis:
-    main: src/tools.cr
+    main: build_tools/tools.cr
   sts_test:
     main: example/sts_test.cr

@@ -1,14 +1,14 @@
 require "./spec_helper"
 
-describe AwsSdk::Route53::Protocol::RestXml do
+describe Aws::Route53::Protocol::RestXml do
   it "builds ChangeResourceRecordSets with uri labels and xml body" do
-    record_set = AwsSdk::Route53::Types::ResourceRecordSet.new("example.com.", "A")
-    change = AwsSdk::Route53::Types::Change.new("CREATE", record_set)
-    change_batch = AwsSdk::Route53::Types::ChangeBatch.new([change])
-    input = AwsSdk::Route53::Types::ChangeResourceRecordSetsRequest.new(change_batch, "Z123456789")
+    record_set = Aws::Route53::Types::ResourceRecordSet.new("example.com.", "A")
+    change = Aws::Route53::Types::Change.new("CREATE", record_set)
+    change_batch = Aws::Route53::Types::ChangeBatch.new([change])
+    input = Aws::Route53::Types::ChangeResourceRecordSetsRequest.new(change_batch, "Z123456789")
 
-    request = AwsSdk::Route53::Protocol::RestXml.build_request(
-      AwsSdk::Route53::Model::CHANGE_RESOURCE_RECORD_SETS,
+    request = Aws::Route53::Protocol::RestXml.build_request(
+      Aws::Route53::Model::CHANGE_RESOURCE_RECORD_SETS,
       input,
       "https://route53.amazonaws.com"
     )
@@ -25,10 +25,10 @@ describe AwsSdk::Route53::Protocol::RestXml do
   end
 
   it "builds GetGeoLocation with query params and no body" do
-    input = AwsSdk::Route53::Types::GetGeoLocationRequest.new("EU", "FR", "IDF")
+    input = Aws::Route53::Types::GetGeoLocationRequest.new("EU", "FR", "IDF")
 
-    request = AwsSdk::Route53::Protocol::RestXml.build_request(
-      AwsSdk::Route53::Model::GET_GEO_LOCATION,
+    request = Aws::Route53::Protocol::RestXml.build_request(
+      Aws::Route53::Model::GET_GEO_LOCATION,
       input,
       "https://route53.amazonaws.com"
     )
@@ -42,7 +42,7 @@ describe AwsSdk::Route53::Protocol::RestXml do
   end
 
   it "parses body and headers in responses" do
-    response = AwsSdk::Runtime::Http::Response.new(
+    response = Aws::Runtime::Http::Response.new(
       201,
       {"Location" => "/2013-04-01/cidrcollection/abc"} of String => String,
       <<-XML
@@ -52,9 +52,9 @@ describe AwsSdk::Route53::Protocol::RestXml do
       XML
     )
 
-    output = AwsSdk::Route53::Protocol::RestXml.parse_response(
+    output = Aws::Route53::Protocol::RestXml.parse_response(
       response,
-      AwsSdk::Route53::Types::CreateCidrCollectionResponse,
+      Aws::Route53::Types::CreateCidrCollectionResponse,
       "CreateCidrCollection"
     )
 
@@ -63,7 +63,7 @@ describe AwsSdk::Route53::Protocol::RestXml do
   end
 
   it "parses error responses from body" do
-    response = AwsSdk::Runtime::Http::Response.new(
+    response = Aws::Runtime::Http::Response.new(
       400,
       {} of String => String,
       <<-XML
@@ -76,8 +76,8 @@ describe AwsSdk::Route53::Protocol::RestXml do
       XML
     )
 
-    error = AwsSdk::Route53::Protocol::RestXml.parse_error(response)
-    error.should be_a(AwsSdk::Route53::Errors::InvalidInput)
+    error = Aws::Route53::Protocol::RestXml.parse_error(response)
+    error.should be_a(Aws::Route53::Errors::InvalidInput)
     error.message.should eq("bad input")
   end
 end

@@ -1,0 +1,6 @@
+module Aws
+  module B2bi
+    module Customizations
+    end
+  end
+end

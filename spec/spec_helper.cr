@@ -1,12 +1,12 @@
 require "spec"
-require "../src/crystal_sdk_generator"
-require "../src/aws_sdk/kinesisvideowebrtcstorage"
-require "../src/aws_sdk/dynamodbstreams"
-require "../src/aws_sdk/importexport"
-require "../src/aws_sdk/cloudfront"
-require "../src/aws_sdk/route53"
-require "../src/aws_sdk/sts"
-require "../src/aws_sdk/ssm"
+require "../build_tools/crystal_sdk_generator"
+require "../src/kinesisvideowebrtcstorage"
+require "../src/dynamodbstreams"
+require "../src/importexport"
+require "../src/cloudfront"
+require "../src/route53"
+require "../src/sts"
+require "../src/ssm"
 
 module CrystalSdkGeneratorSpec
   API_PATH = File.expand_path("../apis/kinesis-video-webrtc-storage/2018-05-10/api-2.json", __DIR__)

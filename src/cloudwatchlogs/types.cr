@@ -1,0 +1,9550 @@
+require "json"
+
+module Aws
+  module CloudWatchLogs
+    module Types
+
+      # You don't have sufficient permissions to perform this action.
+
+      struct AccessDeniedException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # A structure that contains information about one CloudWatch Logs account policy.
+
+      struct AccountPolicy
+        include JSON::Serializable
+
+        # The Amazon Web Services account ID that the policy applies to.
+
+        @[JSON::Field(key: "accountId")]
+        getter account_id : String?
+
+        # The date and time that this policy was most recently updated.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The policy document for this account policy. The JSON specified in policyDocument can be up to
+        # 30,720 characters.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String?
+
+        # The name of the account policy.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # The type of policy for this account policy.
+
+        @[JSON::Field(key: "policyType")]
+        getter policy_type : String?
+
+        # The scope of the account policy.
+
+        @[JSON::Field(key: "scope")]
+        getter scope : String?
+
+        # The log group selection criteria that is used for this policy.
+
+        @[JSON::Field(key: "selectionCriteria")]
+        getter selection_criteria : String?
+
+        def initialize(
+          @account_id : String? = nil,
+          @last_updated_time : Int64? = nil,
+          @policy_document : String? = nil,
+          @policy_name : String? = nil,
+          @policy_type : String? = nil,
+          @scope : String? = nil,
+          @selection_criteria : String? = nil
+        )
+        end
+      end
+
+      # This object defines one key that will be added with the addKeys processor.
+
+      struct AddKeyEntry
+        include JSON::Serializable
+
+        # The key of the new entry to be added to the log event
+
+        @[JSON::Field(key: "key")]
+        getter key : String
+
+        # The value of the new entry to be added to the log event
+
+        @[JSON::Field(key: "value")]
+        getter value : String
+
+        # Specifies whether to overwrite the value if the key already exists in the log event. If you omit
+        # this, the default is false .
+
+        @[JSON::Field(key: "overwriteIfExists")]
+        getter overwrite_if_exists : Bool?
+
+        def initialize(
+          @key : String,
+          @value : String,
+          @overwrite_if_exists : Bool? = nil
+        )
+        end
+      end
+
+      # This processor adds new key-value pairs to the log event. For more information about this processor
+      # including examples, see addKeys in the CloudWatch Logs User Guide .
+
+      struct AddKeys
+        include JSON::Serializable
+
+        # An array of objects, where each object contains the information about one key to add to the log
+        # event.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::AddKeyEntry)
+
+        def initialize(
+          @entries : Array(Types::AddKeyEntry)
+        )
+        end
+      end
+
+      # Contains an aggregate summary of log groups grouped by data source characteristics, including the
+      # count of log groups and their grouping identifiers.
+
+      struct AggregateLogGroupSummary
+        include JSON::Serializable
+
+        # An array of key-value pairs that identify the data source characteristics used to group the log
+        # groups. The size and content of this array depends on the groupBy parameter specified in the
+        # request.
+
+        @[JSON::Field(key: "groupingIdentifiers")]
+        getter grouping_identifiers : Array(Types::GroupingIdentifier)?
+
+        # The number of log groups in this aggregate summary group.
+
+        @[JSON::Field(key: "logGroupCount")]
+        getter log_group_count : Int32?
+
+        def initialize(
+          @grouping_identifiers : Array(Types::GroupingIdentifier)? = nil,
+          @log_group_count : Int32? = nil
+        )
+        end
+      end
+
+      # This structure represents one anomaly that has been found by a logs anomaly detector. For more
+      # information about patterns and anomalies, see CreateLogAnomalyDetector .
+
+      struct Anomaly
+        include JSON::Serializable
+
+        # Specifies whether this anomaly is still ongoing.
+
+        @[JSON::Field(key: "active")]
+        getter active : Bool
+
+        # The ARN of the anomaly detector that identified this anomaly.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String
+
+        # The unique ID that CloudWatch Logs assigned to this anomaly.
+
+        @[JSON::Field(key: "anomalyId")]
+        getter anomaly_id : String
+
+        # A human-readable description of the anomaly. This description is generated by CloudWatch Logs.
+
+        @[JSON::Field(key: "description")]
+        getter description : String
+
+        # The date and time when the anomaly detector first saw this anomaly. It is specified as epoch time,
+        # which is the number of seconds since January 1, 1970, 00:00:00 UTC .
+
+        @[JSON::Field(key: "firstSeen")]
+        getter first_seen : Int64
+
+        # A map showing times when the anomaly detector ran, and the number of occurrences of this anomaly
+        # that were detected at each of those runs. The times are specified in epoch time, which is the number
+        # of seconds since January 1, 1970, 00:00:00 UTC .
+
+        @[JSON::Field(key: "histogram")]
+        getter histogram : Hash(String, Int64)
+
+        # The date and time when the anomaly detector most recently saw this anomaly. It is specified as epoch
+        # time, which is the number of seconds since January 1, 1970, 00:00:00 UTC .
+
+        @[JSON::Field(key: "lastSeen")]
+        getter last_seen : Int64
+
+        # An array of ARNS of the log groups that contained log events considered to be part of this anomaly.
+
+        @[JSON::Field(key: "logGroupArnList")]
+        getter log_group_arn_list : Array(String)
+
+        # An array of sample log event messages that are considered to be part of this anomaly.
+
+        @[JSON::Field(key: "logSamples")]
+        getter log_samples : Array(Types::LogEvent)
+
+        # The ID of the pattern used to help identify this anomaly.
+
+        @[JSON::Field(key: "patternId")]
+        getter pattern_id : String
+
+        # The pattern used to help identify this anomaly, in string format.
+
+        @[JSON::Field(key: "patternString")]
+        getter pattern_string : String
+
+        # An array of structures where each structure contains information about one token that makes up the
+        # pattern.
+
+        @[JSON::Field(key: "patternTokens")]
+        getter pattern_tokens : Array(Types::PatternToken)
+
+        # Indicates the current state of this anomaly. If it is still being treated as an anomaly, the value
+        # is Active . If you have suppressed this anomaly by using the UpdateAnomaly operation, the value is
+        # Suppressed . If this behavior is now considered to be normal, the value is Baseline .
+
+        @[JSON::Field(key: "state")]
+        getter state : String
+
+        # If this anomaly is suppressed, this field is true if the suppression is because the pattern is
+        # suppressed. If false , then only this particular anomaly is suppressed.
+
+        @[JSON::Field(key: "isPatternLevelSuppression")]
+        getter is_pattern_level_suppression : Bool?
+
+        # The pattern used to help identify this anomaly, in regular expression format.
+
+        @[JSON::Field(key: "patternRegex")]
+        getter pattern_regex : String?
+
+        # The priority level of this anomaly, as determined by CloudWatch Logs. Priority is computed based on
+        # log severity labels such as FATAL and ERROR and the amount of deviation from the baseline. Possible
+        # values are HIGH , MEDIUM , and LOW .
+
+        @[JSON::Field(key: "priority")]
+        getter priority : String?
+
+        # Indicates whether this anomaly is currently suppressed. To suppress an anomaly, use UpdateAnomaly .
+
+        @[JSON::Field(key: "suppressed")]
+        getter suppressed : Bool?
+
+        # If the anomaly is suppressed, this indicates when it was suppressed.
+
+        @[JSON::Field(key: "suppressedDate")]
+        getter suppressed_date : Int64?
+
+        # If the anomaly is suppressed, this indicates when the suppression will end. If this value is 0 , the
+        # anomaly was suppressed with no expiration, with the INFINITE value.
+
+        @[JSON::Field(key: "suppressedUntil")]
+        getter suppressed_until : Int64?
+
+        def initialize(
+          @active : Bool,
+          @anomaly_detector_arn : String,
+          @anomaly_id : String,
+          @description : String,
+          @first_seen : Int64,
+          @histogram : Hash(String, Int64),
+          @last_seen : Int64,
+          @log_group_arn_list : Array(String),
+          @log_samples : Array(Types::LogEvent),
+          @pattern_id : String,
+          @pattern_string : String,
+          @pattern_tokens : Array(Types::PatternToken),
+          @state : String,
+          @is_pattern_level_suppression : Bool? = nil,
+          @pattern_regex : String? = nil,
+          @priority : String? = nil,
+          @suppressed : Bool? = nil,
+          @suppressed_date : Int64? = nil,
+          @suppressed_until : Int64? = nil
+        )
+        end
+      end
+
+      # Contains information about one anomaly detector in the account.
+
+      struct AnomalyDetector
+        include JSON::Serializable
+
+        # The ARN of the anomaly detector.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String?
+
+        # Specifies the current status of the anomaly detector. To pause an anomaly detector, use the enabled
+        # parameter in the UpdateLogAnomalyDetector operation.
+
+        @[JSON::Field(key: "anomalyDetectorStatus")]
+        getter anomaly_detector_status : String?
+
+        # The number of days used as the life cycle of anomalies. After this time, anomalies are automatically
+        # baselined and the anomaly detector model will treat new occurrences of similar event as normal.
+
+        @[JSON::Field(key: "anomalyVisibilityTime")]
+        getter anomaly_visibility_time : Int64?
+
+        # The date and time when this anomaly detector was created.
+
+        @[JSON::Field(key: "creationTimeStamp")]
+        getter creation_time_stamp : Int64?
+
+        # The name of the anomaly detector.
+
+        @[JSON::Field(key: "detectorName")]
+        getter detector_name : String?
+
+        # Specifies how often the anomaly detector runs and look for anomalies.
+
+        @[JSON::Field(key: "evaluationFrequency")]
+        getter evaluation_frequency : String?
+
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        # The ARN of the KMS key assigned to this anomaly detector, if any.
+
+        @[JSON::Field(key: "kmsKeyId")]
+        getter kms_key_id : String?
+
+        # The date and time when this anomaly detector was most recently modified.
+
+        @[JSON::Field(key: "lastModifiedTimeStamp")]
+        getter last_modified_time_stamp : Int64?
+
+        # A list of the ARNs of the log groups that this anomaly detector watches.
+
+        @[JSON::Field(key: "logGroupArnList")]
+        getter log_group_arn_list : Array(String)?
+
+        def initialize(
+          @anomaly_detector_arn : String? = nil,
+          @anomaly_detector_status : String? = nil,
+          @anomaly_visibility_time : Int64? = nil,
+          @creation_time_stamp : Int64? = nil,
+          @detector_name : String? = nil,
+          @evaluation_frequency : String? = nil,
+          @filter_pattern : String? = nil,
+          @kms_key_id : String? = nil,
+          @last_modified_time_stamp : Int64? = nil,
+          @log_group_arn_list : Array(String)? = nil
+        )
+        end
+      end
+
+
+      struct AssociateKmsKeyRequest
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. This must be a
+        # symmetric KMS key. For more information, see Amazon Resource Names and Using Symmetric and
+        # Asymmetric Keys .
+
+        @[JSON::Field(key: "kmsKeyId")]
+        getter kms_key_id : String
+
+        # The name of the log group. In your AssociateKmsKey operation, you must specify either the
+        # resourceIdentifier parameter or the logGroup parameter, but you can't specify both.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # Specifies the target for this operation. You must specify one of the following: Specify the
+        # following ARN to have future GetQueryResults operations in this account encrypt the results with the
+        # specified KMS key. Replace REGION and ACCOUNT_ID with your Region and account ID. arn:aws:logs:
+        # REGION : ACCOUNT_ID :query-result:* Specify the ARN of a log group to have CloudWatch Logs use the
+        # KMS key to encrypt log events that are ingested and stored by that log group. The log group ARN must
+        # be in the following format. Replace REGION and ACCOUNT_ID with your Region and account ID.
+        # arn:aws:logs: REGION : ACCOUNT_ID :log-group: LOG_GROUP_NAME In your AssociateKmsKey operation, you
+        # must specify either the resourceIdentifier parameter or the logGroup parameter, but you can't
+        # specify both.
+
+        @[JSON::Field(key: "resourceIdentifier")]
+        getter resource_identifier : String?
+
+        def initialize(
+          @kms_key_id : String,
+          @log_group_name : String? = nil,
+          @resource_identifier : String? = nil
+        )
+        end
+      end
+
+
+      struct AssociateSourceToS3TableIntegrationRequest
+        include JSON::Serializable
+
+        # The data source to associate with the S3 Table Integration. Contains the name and type of the data
+        # source.
+
+        @[JSON::Field(key: "dataSource")]
+        getter data_source : Types::DataSource
+
+        # The Amazon Resource Name (ARN) of the S3 Table Integration to associate the data source with.
+
+        @[JSON::Field(key: "integrationArn")]
+        getter integration_arn : String
+
+        def initialize(
+          @data_source : Types::DataSource,
+          @integration_arn : String
+        )
+        end
+      end
+
+
+      struct AssociateSourceToS3TableIntegrationResponse
+        include JSON::Serializable
+
+        # The unique identifier for the association between the data source and S3 Table Integration.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String?
+
+        def initialize(
+          @identifier : String? = nil
+        )
+        end
+      end
+
+      # The CSV processor parses comma-separated values (CSV) from the log events into columns. For more
+      # information about this processor including examples, see csv in the CloudWatch Logs User Guide .
+
+      struct CSV
+        include JSON::Serializable
+
+        # An array of names to use for the columns in the transformed log event. If you omit this, default
+        # column names ( [column_1, column_2 ...] ) are used.
+
+        @[JSON::Field(key: "columns")]
+        getter columns : Array(String)?
+
+        # The character used to separate each column in the original comma-separated value log event. If you
+        # omit this, the processor looks for the comma , character as the delimiter.
+
+        @[JSON::Field(key: "delimiter")]
+        getter delimiter : String?
+
+        # The character used used as a text qualifier for a single column of data. If you omit this, the
+        # double quotation mark " character is used.
+
+        @[JSON::Field(key: "quoteCharacter")]
+        getter quote_character : String?
+
+        # The path to the field in the log event that has the comma separated values to be parsed. If you omit
+        # this value, the whole log message is processed.
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @columns : Array(String)? = nil,
+          @delimiter : String? = nil,
+          @quote_character : String? = nil,
+          @source : String? = nil
+        )
+        end
+      end
+
+
+      struct CancelExportTaskRequest
+        include JSON::Serializable
+
+        # The ID of the export task.
+
+        @[JSON::Field(key: "taskId")]
+        getter task_id : String
+
+        def initialize(
+          @task_id : String
+        )
+        end
+      end
+
+
+      struct CancelImportTaskRequest
+        include JSON::Serializable
+
+        # The ID of the import task to cancel.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String
+
+        def initialize(
+          @import_id : String
+        )
+        end
+      end
+
+
+      struct CancelImportTaskResponse
+        include JSON::Serializable
+
+        # The timestamp when the import task was created, expressed as the number of milliseconds after Jan 1,
+        # 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The ID of the cancelled import task.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String?
+
+        # Statistics about the import progress at the time of cancellation.
+
+        @[JSON::Field(key: "importStatistics")]
+        getter import_statistics : Types::ImportStatistics?
+
+        # The final status of the import task. This will be set to CANCELLED.
+
+        @[JSON::Field(key: "importStatus")]
+        getter import_status : String?
+
+        # The timestamp when the import task was cancelled, expressed as the number of milliseconds after Jan
+        # 1, 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @import_id : String? = nil,
+          @import_statistics : Types::ImportStatistics? = nil,
+          @import_status : String? = nil,
+          @last_updated_time : Int64? = nil
+        )
+        end
+      end
+
+      # A structure containing information about the deafult settings and available settings that you can
+      # use to configure a delivery or a delivery destination .
+
+      struct ConfigurationTemplate
+        include JSON::Serializable
+
+        # The action permissions that a caller needs to have to be able to successfully create a delivery
+        # source on the desired resource type when calling PutDeliverySource .
+
+        @[JSON::Field(key: "allowedActionForAllowVendedLogsDeliveryForResource")]
+        getter allowed_action_for_allow_vended_logs_delivery_for_resource : String?
+
+        # The valid values that a caller can use as field delimiters when calling CreateDelivery or
+        # UpdateDeliveryConfiguration on a delivery that delivers in Plain , W3C , or Raw format.
+
+        @[JSON::Field(key: "allowedFieldDelimiters")]
+        getter allowed_field_delimiters : Array(String)?
+
+        # The allowed fields that a caller can use in the recordFields parameter of a CreateDelivery or
+        # UpdateDeliveryConfiguration operation.
+
+        @[JSON::Field(key: "allowedFields")]
+        getter allowed_fields : Array(Types::RecordField)?
+
+        # The list of delivery destination output formats that are supported by this log source.
+
+        @[JSON::Field(key: "allowedOutputFormats")]
+        getter allowed_output_formats : Array(String)?
+
+        # The list of variable fields that can be used in the suffix path of a delivery that delivers to an S3
+        # bucket.
+
+        @[JSON::Field(key: "allowedSuffixPathFields")]
+        getter allowed_suffix_path_fields : Array(String)?
+
+        # A mapping that displays the default value of each property within a delivery's configuration, if it
+        # is not specified in the request.
+
+        @[JSON::Field(key: "defaultDeliveryConfigValues")]
+        getter default_delivery_config_values : Types::ConfigurationTemplateDeliveryConfigValues?
+
+        # A string specifying which destination type this configuration template applies to.
+
+        @[JSON::Field(key: "deliveryDestinationType")]
+        getter delivery_destination_type : String?
+
+        # A string specifying which log type this configuration template applies to.
+
+        @[JSON::Field(key: "logType")]
+        getter log_type : String?
+
+        # A string specifying which resource type this configuration template applies to.
+
+        @[JSON::Field(key: "resourceType")]
+        getter resource_type : String?
+
+        # A string specifying which service this configuration template applies to. For more information about
+        # supported services see Enable logging from Amazon Web Services services. .
+
+        @[JSON::Field(key: "service")]
+        getter service : String?
+
+        def initialize(
+          @allowed_action_for_allow_vended_logs_delivery_for_resource : String? = nil,
+          @allowed_field_delimiters : Array(String)? = nil,
+          @allowed_fields : Array(Types::RecordField)? = nil,
+          @allowed_output_formats : Array(String)? = nil,
+          @allowed_suffix_path_fields : Array(String)? = nil,
+          @default_delivery_config_values : Types::ConfigurationTemplateDeliveryConfigValues? = nil,
+          @delivery_destination_type : String? = nil,
+          @log_type : String? = nil,
+          @resource_type : String? = nil,
+          @service : String? = nil
+        )
+        end
+      end
+
+      # This structure contains the default values that are used for each configuration parameter when you
+      # use CreateDelivery to create a deliver under the current service type, resource type, and log type.
+
+      struct ConfigurationTemplateDeliveryConfigValues
+        include JSON::Serializable
+
+        # The default field delimiter that is used in a CreateDelivery operation when the field delimiter is
+        # not specified in that operation. The field delimiter is used only when the final output delivery is
+        # in Plain , W3C , or Raw format.
+
+        @[JSON::Field(key: "fieldDelimiter")]
+        getter field_delimiter : String?
+
+        # The default record fields that will be delivered when a list of record fields is not provided in a
+        # CreateDelivery operation.
+
+        @[JSON::Field(key: "recordFields")]
+        getter record_fields : Array(String)?
+
+        # The delivery parameters that are used when you create a delivery to a delivery destination that is
+        # an S3 Bucket.
+
+        @[JSON::Field(key: "s3DeliveryConfiguration")]
+        getter s3_delivery_configuration : Types::S3DeliveryConfiguration?
+
+        def initialize(
+          @field_delimiter : String? = nil,
+          @record_fields : Array(String)? = nil,
+          @s3_delivery_configuration : Types::S3DeliveryConfiguration? = nil
+        )
+        end
+      end
+
+      # This operation attempted to create a resource that already exists.
+
+      struct ConflictException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # This processor copies values within a log event. You can also use this processor to add metadata to
+      # log events by copying the values of the following metadata keys into the log events: @logGroupName ,
+      # @logGroupStream , @accountId , @regionName . For more information about this processor including
+      # examples, see copyValue in the CloudWatch Logs User Guide .
+
+      struct CopyValue
+        include JSON::Serializable
+
+        # An array of CopyValueEntry objects, where each object contains the information about one field value
+        # to copy.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::CopyValueEntry)
+
+        def initialize(
+          @entries : Array(Types::CopyValueEntry)
+        )
+        end
+      end
+
+      # This object defines one value to be copied with the copyValue processor.
+
+      struct CopyValueEntry
+        include JSON::Serializable
+
+        # The key to copy.
+
+        @[JSON::Field(key: "source")]
+        getter source : String
+
+        # The key of the field to copy the value to.
+
+        @[JSON::Field(key: "target")]
+        getter target : String
+
+        # Specifies whether to overwrite the value if the destination key already exists. If you omit this,
+        # the default is false .
+
+        @[JSON::Field(key: "overwriteIfExists")]
+        getter overwrite_if_exists : Bool?
+
+        def initialize(
+          @source : String,
+          @target : String,
+          @overwrite_if_exists : Bool? = nil
+        )
+        end
+      end
+
+
+      struct CreateDeliveryRequest
+        include JSON::Serializable
+
+        # The ARN of the delivery destination to use for this delivery.
+
+        @[JSON::Field(key: "deliveryDestinationArn")]
+        getter delivery_destination_arn : String
+
+        # The name of the delivery source to use for this delivery.
+
+        @[JSON::Field(key: "deliverySourceName")]
+        getter delivery_source_name : String
+
+        # The field delimiter to use between record fields when the final output format of a delivery is in
+        # Plain , W3C , or Raw format.
+
+        @[JSON::Field(key: "fieldDelimiter")]
+        getter field_delimiter : String?
+
+        # The list of record fields to be delivered to the destination, in order. If the delivery's log source
+        # has mandatory fields, they must be included in this list.
+
+        @[JSON::Field(key: "recordFields")]
+        getter record_fields : Array(String)?
+
+        # This structure contains parameters that are valid only when the delivery's delivery destination is
+        # an S3 bucket.
+
+        @[JSON::Field(key: "s3DeliveryConfiguration")]
+        getter s3_delivery_configuration : Types::S3DeliveryConfiguration?
+
+        # An optional list of key-value pairs to associate with the resource. For more information about
+        # tagging, see Tagging Amazon Web Services resources
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @delivery_destination_arn : String,
+          @delivery_source_name : String,
+          @field_delimiter : String? = nil,
+          @record_fields : Array(String)? = nil,
+          @s3_delivery_configuration : Types::S3DeliveryConfiguration? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateDeliveryResponse
+        include JSON::Serializable
+
+        # A structure that contains information about the delivery that you just created.
+
+        @[JSON::Field(key: "delivery")]
+        getter delivery : Types::Delivery?
+
+        def initialize(
+          @delivery : Types::Delivery? = nil
+        )
+        end
+      end
+
+
+      struct CreateExportTaskRequest
+        include JSON::Serializable
+
+        # The name of S3 bucket for the exported log data. The bucket must be in the same Amazon Web Services
+        # Region.
+
+        @[JSON::Field(key: "destination")]
+        getter destination : String
+
+        # The start time of the range for the request, expressed as the number of milliseconds after Jan 1,
+        # 1970 00:00:00 UTC . Events with a timestamp earlier than this time are not exported.
+
+        @[JSON::Field(key: "from")]
+        getter from : Int64
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The end time of the range for the request, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC . Events with a timestamp later than this time are not exported. You must specify a
+        # time that is not earlier than when this log group was created.
+
+        @[JSON::Field(key: "to")]
+        getter to : Int64
+
+        # The prefix used as the start of the key for every object exported. If you don't specify a value, the
+        # default is exportedlogs . The length of this parameter must comply with the S3 object key name
+        # length limits. The object key name is a sequence of Unicode characters with UTF-8 encoding, and can
+        # be up to 1,024 bytes.
+
+        @[JSON::Field(key: "destinationPrefix")]
+        getter destination_prefix : String?
+
+        # Export only log streams that match the provided prefix. If you don't specify a value, no prefix
+        # filter is applied.
+
+        @[JSON::Field(key: "logStreamNamePrefix")]
+        getter log_stream_name_prefix : String?
+
+        # The name of the export task.
+
+        @[JSON::Field(key: "taskName")]
+        getter task_name : String?
+
+        def initialize(
+          @destination : String,
+          @from : Int64,
+          @log_group_name : String,
+          @to : Int64,
+          @destination_prefix : String? = nil,
+          @log_stream_name_prefix : String? = nil,
+          @task_name : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateExportTaskResponse
+        include JSON::Serializable
+
+        # The ID of the export task.
+
+        @[JSON::Field(key: "taskId")]
+        getter task_id : String?
+
+        def initialize(
+          @task_id : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateImportTaskRequest
+        include JSON::Serializable
+
+        # The ARN of the IAM role that grants CloudWatch Logs permission to import from the CloudTrail Lake
+        # Event Data Store.
+
+        @[JSON::Field(key: "importRoleArn")]
+        getter import_role_arn : String
+
+        # The ARN of the source to import from.
+
+        @[JSON::Field(key: "importSourceArn")]
+        getter import_source_arn : String
+
+        # Optional filters to constrain the import by CloudTrail event time. Times are specified in Unix
+        # timestamp milliseconds. The range of data being imported must be within the specified source's
+        # retention period.
+
+        @[JSON::Field(key: "importFilter")]
+        getter import_filter : Types::ImportFilter?
+
+        def initialize(
+          @import_role_arn : String,
+          @import_source_arn : String,
+          @import_filter : Types::ImportFilter? = nil
+        )
+        end
+      end
+
+
+      struct CreateImportTaskResponse
+        include JSON::Serializable
+
+        # The timestamp when the import task was created, expressed as the number of milliseconds after Jan 1,
+        # 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The ARN of the CloudWatch Logs log group created as the destination for the imported events.
+
+        @[JSON::Field(key: "importDestinationArn")]
+        getter import_destination_arn : String?
+
+        # A unique identifier for the import task.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @import_destination_arn : String? = nil,
+          @import_id : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateLogAnomalyDetectorRequest
+        include JSON::Serializable
+
+        # An array containing the ARN of the log group that this anomaly detector will watch. You can specify
+        # only one log group ARN.
+
+        @[JSON::Field(key: "logGroupArnList")]
+        getter log_group_arn_list : Array(String)
+
+        # The number of days to have visibility on an anomaly. After this time period has elapsed for an
+        # anomaly, it will be automatically baselined and the anomaly detector will treat new occurrences of a
+        # similar anomaly as normal. Therefore, if you do not correct the cause of an anomaly during the time
+        # period specified in anomalyVisibilityTime , it will be considered normal going forward and will not
+        # be detected as an anomaly.
+
+        @[JSON::Field(key: "anomalyVisibilityTime")]
+        getter anomaly_visibility_time : Int64?
+
+        # A name for this anomaly detector.
+
+        @[JSON::Field(key: "detectorName")]
+        getter detector_name : String?
+
+        # Specifies how often the anomaly detector is to run and look for anomalies. Set this value according
+        # to the frequency that the log group receives new logs. For example, if the log group receives new
+        # log events every 10 minutes, then 15 minutes might be a good setting for evaluationFrequency .
+
+        @[JSON::Field(key: "evaluationFrequency")]
+        getter evaluation_frequency : String?
+
+        # You can use this parameter to limit the anomaly detection model to examine only log events that
+        # match the pattern you specify here. For more information, see Filter and Pattern Syntax .
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        # Optionally assigns a KMS key to secure this anomaly detector and its findings. If a key is assigned,
+        # the anomalies found and the model used by this detector are encrypted at rest with the key. If a key
+        # is assigned to an anomaly detector, a user must have permissions for both this key and for the
+        # anomaly detector to retrieve information about the anomalies that it finds. Make sure the value
+        # provided is a valid KMS key ARN. For more information about using a KMS key and to see the required
+        # IAM policy, see Use a KMS key with an anomaly detector .
+
+        @[JSON::Field(key: "kmsKeyId")]
+        getter kms_key_id : String?
+
+        # An optional list of key-value pairs to associate with the resource. For more information about
+        # tagging, see Tagging Amazon Web Services resources
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @log_group_arn_list : Array(String),
+          @anomaly_visibility_time : Int64? = nil,
+          @detector_name : String? = nil,
+          @evaluation_frequency : String? = nil,
+          @filter_pattern : String? = nil,
+          @kms_key_id : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateLogAnomalyDetectorResponse
+        include JSON::Serializable
+
+        # The ARN of the log anomaly detector that you just created.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String?
+
+        def initialize(
+          @anomaly_detector_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateLogGroupRequest
+        include JSON::Serializable
+
+        # A name for the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # Use this parameter to enable deletion protection for the new log group. When enabled on a log group,
+        # deletion protection blocks all deletion operations until it is explicitly disabled. By default log
+        # groups are created without deletion protection enabled.
+
+        @[JSON::Field(key: "deletionProtectionEnabled")]
+        getter deletion_protection_enabled : Bool?
+
+        # The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. For more information,
+        # see Amazon Resource Names .
+
+        @[JSON::Field(key: "kmsKeyId")]
+        getter kms_key_id : String?
+
+        # Use this parameter to specify the log group class for this log group. There are three classes: The
+        # Standard log class supports all CloudWatch Logs features. The Infrequent Access log class supports a
+        # subset of CloudWatch Logs features and incurs lower costs. Use the Delivery log class only for
+        # delivering Lambda logs to store in Amazon S3 or Amazon Data Firehose. Log events in log groups in
+        # the Delivery class are kept in CloudWatch Logs for only one day. This log class doesn't offer rich
+        # CloudWatch Logs capabilities such as CloudWatch Logs Insights queries. If you omit this parameter,
+        # the default of STANDARD is used. The value of logGroupClass can't be changed after a log group is
+        # created. For details about the features supported by each class, see Log classes
+
+        @[JSON::Field(key: "logGroupClass")]
+        getter log_group_class : String?
+
+        # The key-value pairs to use for the tags. You can grant users access to certain log groups while
+        # preventing them from accessing other log groups. To do so, tag your groups and use IAM policies that
+        # refer to those tags. To assign tags when you create a log group, you must have either the
+        # logs:TagResource or logs:TagLogGroup permission. For more information about tagging, see Tagging
+        # Amazon Web Services resources . For more information about using tags to control access, see
+        # Controlling access to Amazon Web Services resources using tags .
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @log_group_name : String,
+          @deletion_protection_enabled : Bool? = nil,
+          @kms_key_id : String? = nil,
+          @log_group_class : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct CreateLogStreamRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The name of the log stream.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String
+
+        def initialize(
+          @log_group_name : String,
+          @log_stream_name : String
+        )
+        end
+      end
+
+
+      struct CreateScheduledQueryRequest
+        include JSON::Serializable
+
+        # The ARN of the IAM role that grants permissions to execute the query and deliver results to the
+        # specified destination. The role must have permissions to read from the specified log groups and
+        # write to the destination.
+
+        @[JSON::Field(key: "executionRoleArn")]
+        getter execution_role_arn : String
+
+        # The name of the scheduled query. The name must be unique within your account and region. Valid
+        # characters are alphanumeric characters, hyphens, underscores, and periods. Length must be between 1
+        # and 255 characters.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        # The query language to use for the scheduled query. Valid values are LogsQL , PPL , and SQL .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String
+
+        # The query string to execute. This is the same query syntax used in CloudWatch Logs Insights. Maximum
+        # length is 10,000 characters.
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String
+
+        # A cron expression that defines when the scheduled query runs. The expression uses standard cron
+        # syntax and supports minute-level precision. Maximum length is 256 characters.
+
+        @[JSON::Field(key: "scheduleExpression")]
+        getter schedule_expression : String
+
+        # An optional description for the scheduled query to help identify its purpose and functionality.
+
+        @[JSON::Field(key: "description")]
+        getter description : String?
+
+        # Configuration for where to deliver query results. Currently supports Amazon S3 destinations for
+        # storing query output.
+
+        @[JSON::Field(key: "destinationConfiguration")]
+        getter destination_configuration : Types::DestinationConfiguration?
+
+        # An array of log group names or ARNs to query. You can specify between 1 and 50 log groups. Log
+        # groups can be identified by name or full ARN.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # The end time for the scheduled query in Unix epoch format. The query will stop executing after this
+        # time.
+
+        @[JSON::Field(key: "scheduleEndTime")]
+        getter schedule_end_time : Int64?
+
+        # The start time for the scheduled query in Unix epoch format. The query will not execute before this
+        # time.
+
+        @[JSON::Field(key: "scheduleStartTime")]
+        getter schedule_start_time : Int64?
+
+        # The time offset in seconds that defines the lookback period for the query. This determines how far
+        # back in time the query searches from the execution time.
+
+        @[JSON::Field(key: "startTimeOffset")]
+        getter start_time_offset : Int64?
+
+        # The initial state of the scheduled query. Valid values are ENABLED and DISABLED . Default is ENABLED
+        # .
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        # Key-value pairs to associate with the scheduled query for resource management and cost allocation.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        # The timezone for evaluating the schedule expression. This determines when the scheduled query
+        # executes relative to the specified timezone.
+
+        @[JSON::Field(key: "timezone")]
+        getter timezone : String?
+
+        def initialize(
+          @execution_role_arn : String,
+          @name : String,
+          @query_language : String,
+          @query_string : String,
+          @schedule_expression : String,
+          @description : String? = nil,
+          @destination_configuration : Types::DestinationConfiguration? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @schedule_end_time : Int64? = nil,
+          @schedule_start_time : Int64? = nil,
+          @start_time_offset : Int64? = nil,
+          @state : String? = nil,
+          @tags : Hash(String, String)? = nil,
+          @timezone : String? = nil
+        )
+        end
+      end
+
+
+      struct CreateScheduledQueryResponse
+        include JSON::Serializable
+
+        # The ARN of the created scheduled query.
+
+        @[JSON::Field(key: "scheduledQueryArn")]
+        getter scheduled_query_arn : String?
+
+        # The current state of the scheduled query.
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        def initialize(
+          @scheduled_query_arn : String? = nil,
+          @state : String? = nil
+        )
+        end
+      end
+
+      # The event was already logged. PutLogEvents actions are now always accepted and never return
+      # DataAlreadyAcceptedException regardless of whether a given batch of log events has already been
+      # accepted.
+
+      struct DataAlreadyAcceptedException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "expectedSequenceToken")]
+        getter expected_sequence_token : String?
+
+        def initialize(
+          @expected_sequence_token : String? = nil
+        )
+        end
+      end
+
+      # Represents a data source that categorizes logs by originating service and log type, providing
+      # service-based organization complementing traditional log groups.
+
+      struct DataSource
+        include JSON::Serializable
+
+        # The name of the data source.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        # The type of the data source.
+
+        @[JSON::Field(key: "type")]
+        getter type : String?
+
+        def initialize(
+          @name : String,
+          @type : String? = nil
+        )
+        end
+      end
+
+      # Filter criteria for data sources, used to specify which data sources to include in operations based
+      # on name and type.
+
+      struct DataSourceFilter
+        include JSON::Serializable
+
+        # The name pattern to filter data sources by.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        # The type pattern to filter data sources by.
+
+        @[JSON::Field(key: "type")]
+        getter type : String?
+
+        def initialize(
+          @name : String,
+          @type : String? = nil
+        )
+        end
+      end
+
+      # This processor converts a datetime string into a format that you specify. For more information about
+      # this processor including examples, see datetimeConverter in the CloudWatch Logs User Guide .
+
+      struct DateTimeConverter
+        include JSON::Serializable
+
+        # A list of patterns to match against the source field.
+
+        @[JSON::Field(key: "matchPatterns")]
+        getter match_patterns : Array(String)
+
+        # The key to apply the date conversion to.
+
+        @[JSON::Field(key: "source")]
+        getter source : String
+
+        # The JSON field to store the result in.
+
+        @[JSON::Field(key: "target")]
+        getter target : String
+
+        # The locale of the source field. If you omit this, the default of locale.ROOT is used.
+
+        @[JSON::Field(key: "locale")]
+        getter locale : String?
+
+        # The time zone of the source field. If you omit this, the default used is the UTC zone.
+
+        @[JSON::Field(key: "sourceTimezone")]
+        getter source_timezone : String?
+
+        # The datetime format to use for the converted data in the target field. If you omit this, the default
+        # of yyyy-MM-dd'T'HH:mm:ss.SSS'Z is used.
+
+        @[JSON::Field(key: "targetFormat")]
+        getter target_format : String?
+
+        # The time zone of the target field. If you omit this, the default used is the UTC zone.
+
+        @[JSON::Field(key: "targetTimezone")]
+        getter target_timezone : String?
+
+        def initialize(
+          @match_patterns : Array(String),
+          @source : String,
+          @target : String,
+          @locale : String? = nil,
+          @source_timezone : String? = nil,
+          @target_format : String? = nil,
+          @target_timezone : String? = nil
+        )
+        end
+      end
+
+
+      struct DeleteAccountPolicyRequest
+        include JSON::Serializable
+
+        # The name of the policy to delete.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String
+
+        # The type of policy to delete.
+
+        @[JSON::Field(key: "policyType")]
+        getter policy_type : String
+
+        def initialize(
+          @policy_name : String,
+          @policy_type : String
+        )
+        end
+      end
+
+
+      struct DeleteDataProtectionPolicyRequest
+        include JSON::Serializable
+
+        # The name or ARN of the log group that you want to delete the data protection policy for.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        def initialize(
+          @log_group_identifier : String
+        )
+        end
+      end
+
+
+      struct DeleteDeliveryDestinationPolicyRequest
+        include JSON::Serializable
+
+        # The name of the delivery destination that you want to delete the policy for.
+
+        @[JSON::Field(key: "deliveryDestinationName")]
+        getter delivery_destination_name : String
+
+        def initialize(
+          @delivery_destination_name : String
+        )
+        end
+      end
+
+
+      struct DeleteDeliveryDestinationRequest
+        include JSON::Serializable
+
+        # The name of the delivery destination that you want to delete. You can find a list of delivery
+        # destination names by using the DescribeDeliveryDestinations operation.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        def initialize(
+          @name : String
+        )
+        end
+      end
+
+
+      struct DeleteDeliveryRequest
+        include JSON::Serializable
+
+        # The unique ID of the delivery to delete. You can find the ID of a delivery with the
+        # DescribeDeliveries operation.
+
+        @[JSON::Field(key: "id")]
+        getter id : String
+
+        def initialize(
+          @id : String
+        )
+        end
+      end
+
+
+      struct DeleteDeliverySourceRequest
+        include JSON::Serializable
+
+        # The name of the delivery source that you want to delete.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        def initialize(
+          @name : String
+        )
+        end
+      end
+
+
+      struct DeleteDestinationRequest
+        include JSON::Serializable
+
+        # The name of the destination.
+
+        @[JSON::Field(key: "destinationName")]
+        getter destination_name : String
+
+        def initialize(
+          @destination_name : String
+        )
+        end
+      end
+
+
+      struct DeleteIndexPolicyRequest
+        include JSON::Serializable
+
+        # The log group to delete the index policy for. You can specify either the name or the ARN of the log
+        # group.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        def initialize(
+          @log_group_identifier : String
+        )
+        end
+      end
+
+
+      struct DeleteIndexPolicyResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteIntegrationRequest
+        include JSON::Serializable
+
+        # The name of the integration to delete. To find the name of your integration, use ListIntegrations .
+
+        @[JSON::Field(key: "integrationName")]
+        getter integration_name : String
+
+        # Specify true to force the deletion of the integration even if vended logs dashboards currently
+        # exist. The default is false .
+
+        @[JSON::Field(key: "force")]
+        getter force : Bool?
+
+        def initialize(
+          @integration_name : String,
+          @force : Bool? = nil
+        )
+        end
+      end
+
+
+      struct DeleteIntegrationResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # This processor deletes entries from a log event. These entries are key-value pairs. For more
+      # information about this processor including examples, see deleteKeys in the CloudWatch Logs User
+      # Guide .
+
+      struct DeleteKeys
+        include JSON::Serializable
+
+        # The list of keys to delete.
+
+        @[JSON::Field(key: "withKeys")]
+        getter with_keys : Array(String)
+
+        def initialize(
+          @with_keys : Array(String)
+        )
+        end
+      end
+
+
+      struct DeleteLogAnomalyDetectorRequest
+        include JSON::Serializable
+
+        # The ARN of the anomaly detector to delete. You can find the ARNs of log anomaly detectors in your
+        # account by using the ListLogAnomalyDetectors operation.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String
+
+        def initialize(
+          @anomaly_detector_arn : String
+        )
+        end
+      end
+
+
+      struct DeleteLogGroupRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        def initialize(
+          @log_group_name : String
+        )
+        end
+      end
+
+
+      struct DeleteLogStreamRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The name of the log stream.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String
+
+        def initialize(
+          @log_group_name : String,
+          @log_stream_name : String
+        )
+        end
+      end
+
+
+      struct DeleteMetricFilterRequest
+        include JSON::Serializable
+
+        # The name of the metric filter.
+
+        @[JSON::Field(key: "filterName")]
+        getter filter_name : String
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        def initialize(
+          @filter_name : String,
+          @log_group_name : String
+        )
+        end
+      end
+
+
+      struct DeleteQueryDefinitionRequest
+        include JSON::Serializable
+
+        # The ID of the query definition that you want to delete. You can use DescribeQueryDefinitions to
+        # retrieve the IDs of your saved query definitions.
+
+        @[JSON::Field(key: "queryDefinitionId")]
+        getter query_definition_id : String
+
+        def initialize(
+          @query_definition_id : String
+        )
+        end
+      end
+
+
+      struct DeleteQueryDefinitionResponse
+        include JSON::Serializable
+
+        # A value of TRUE indicates that the operation succeeded. FALSE indicates that the operation failed.
+
+        @[JSON::Field(key: "success")]
+        getter success : Bool?
+
+        def initialize(
+          @success : Bool? = nil
+        )
+        end
+      end
+
+
+      struct DeleteResourcePolicyRequest
+        include JSON::Serializable
+
+        # The expected revision ID of the resource policy. Required when deleting a resource-scoped policy to
+        # prevent concurrent modifications.
+
+        @[JSON::Field(key: "expectedRevisionId")]
+        getter expected_revision_id : String?
+
+        # The name of the policy to be revoked. This parameter is required.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # The ARN of the CloudWatch Logs resource for which the resource policy needs to be deleted
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String?
+
+        def initialize(
+          @expected_revision_id : String? = nil,
+          @policy_name : String? = nil,
+          @resource_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct DeleteRetentionPolicyRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        def initialize(
+          @log_group_name : String
+        )
+        end
+      end
+
+
+      struct DeleteScheduledQueryRequest
+        include JSON::Serializable
+
+        # The ARN or name of the scheduled query to delete.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String
+
+        def initialize(
+          @identifier : String
+        )
+        end
+      end
+
+
+      struct DeleteScheduledQueryResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct DeleteSubscriptionFilterRequest
+        include JSON::Serializable
+
+        # The name of the subscription filter.
+
+        @[JSON::Field(key: "filterName")]
+        getter filter_name : String
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        def initialize(
+          @filter_name : String,
+          @log_group_name : String
+        )
+        end
+      end
+
+
+      struct DeleteTransformerRequest
+        include JSON::Serializable
+
+        # Specify either the name or ARN of the log group to delete the transformer for. If the log group is
+        # in a source account and you are using a monitoring account, you must use the log group ARN.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        def initialize(
+          @log_group_identifier : String
+        )
+        end
+      end
+
+      # This structure contains information about one delivery in your account. A delivery is a connection
+      # between a logical delivery source and a logical delivery destination . For more information, see
+      # CreateDelivery . To update an existing delivery configuration, use UpdateDeliveryConfiguration .
+
+      struct Delivery
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) that uniquely identifies this delivery.
+
+        @[JSON::Field(key: "arn")]
+        getter arn : String?
+
+        # The ARN of the delivery destination that is associated with this delivery.
+
+        @[JSON::Field(key: "deliveryDestinationArn")]
+        getter delivery_destination_arn : String?
+
+        # Displays whether the delivery destination associated with this delivery is CloudWatch Logs, Amazon
+        # S3, Firehose, or X-Ray.
+
+        @[JSON::Field(key: "deliveryDestinationType")]
+        getter delivery_destination_type : String?
+
+        # The name of the delivery source that is associated with this delivery.
+
+        @[JSON::Field(key: "deliverySourceName")]
+        getter delivery_source_name : String?
+
+        # The field delimiter that is used between record fields when the final output format of a delivery is
+        # in Plain , W3C , or Raw format.
+
+        @[JSON::Field(key: "fieldDelimiter")]
+        getter field_delimiter : String?
+
+        # The unique ID that identifies this delivery in your account.
+
+        @[JSON::Field(key: "id")]
+        getter id : String?
+
+        # The record fields used in this delivery.
+
+        @[JSON::Field(key: "recordFields")]
+        getter record_fields : Array(String)?
+
+        # This structure contains delivery configurations that apply only when the delivery destination
+        # resource is an S3 bucket.
+
+        @[JSON::Field(key: "s3DeliveryConfiguration")]
+        getter s3_delivery_configuration : Types::S3DeliveryConfiguration?
+
+        # The tags that have been assigned to this delivery.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @delivery_destination_arn : String? = nil,
+          @delivery_destination_type : String? = nil,
+          @delivery_source_name : String? = nil,
+          @field_delimiter : String? = nil,
+          @id : String? = nil,
+          @record_fields : Array(String)? = nil,
+          @s3_delivery_configuration : Types::S3DeliveryConfiguration? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # This structure contains information about one delivery destination in your account. A delivery
+      # destination is an Amazon Web Services resource that represents an Amazon Web Services service that
+      # logs can be sent to. CloudWatch Logs, Amazon S3, Firehose, and X-Ray are supported as delivery
+      # destinations. To configure logs delivery between a supported Amazon Web Services service and a
+      # destination, you must do the following: Create a delivery source, which is a logical object that
+      # represents the resource that is actually sending the logs. For more information, see
+      # PutDeliverySource . Create a delivery destination , which is a logical object that represents the
+      # actual delivery destination. If you are delivering logs cross-account, you must use
+      # PutDeliveryDestinationPolicy in the destination account to assign an IAM policy to the destination.
+      # This policy allows delivery to that destination. Create a delivery by pairing exactly one delivery
+      # source and one delivery destination. For more information, see CreateDelivery . You can configure a
+      # single delivery source to send logs to multiple destinations by creating multiple deliveries. You
+      # can also create multiple deliveries to configure multiple delivery sources to send logs to the same
+      # delivery destination.
+
+      struct DeliveryDestination
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) that uniquely identifies this delivery destination.
+
+        @[JSON::Field(key: "arn")]
+        getter arn : String?
+
+        # A structure that contains the ARN of the Amazon Web Services resource that will receive the logs.
+
+        @[JSON::Field(key: "deliveryDestinationConfiguration")]
+        getter delivery_destination_configuration : Types::DeliveryDestinationConfiguration?
+
+        # Displays whether this delivery destination is CloudWatch Logs, Amazon S3, Firehose, or X-Ray.
+
+        @[JSON::Field(key: "deliveryDestinationType")]
+        getter delivery_destination_type : String?
+
+        # The name of this delivery destination.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # The format of the logs that are sent to this delivery destination.
+
+        @[JSON::Field(key: "outputFormat")]
+        getter output_format : String?
+
+        # The tags that have been assigned to this delivery destination.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @delivery_destination_configuration : Types::DeliveryDestinationConfiguration? = nil,
+          @delivery_destination_type : String? = nil,
+          @name : String? = nil,
+          @output_format : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # A structure that contains information about one logs delivery destination.
+
+      struct DeliveryDestinationConfiguration
+        include JSON::Serializable
+
+        # The ARN of the Amazon Web Services destination that this delivery destination represents. That
+        # Amazon Web Services destination can be a log group in CloudWatch Logs, an Amazon S3 bucket, or a
+        # delivery stream in Firehose.
+
+        @[JSON::Field(key: "destinationResourceArn")]
+        getter destination_resource_arn : String
+
+        def initialize(
+          @destination_resource_arn : String
+        )
+        end
+      end
+
+      # This structure contains information about one delivery source in your account. A delivery source is
+      # an Amazon Web Services resource that sends logs to an Amazon Web Services destination. The
+      # destination can be CloudWatch Logs, Amazon S3, or Firehose. Only some Amazon Web Services services
+      # support being configured as a delivery source. These services are listed as Supported [V2
+      # Permissions] in the table at Enabling logging from Amazon Web Services services. To configure logs
+      # delivery between a supported Amazon Web Services service and a destination, you must do the
+      # following: Create a delivery source, which is a logical object that represents the resource that is
+      # actually sending the logs. For more information, see PutDeliverySource . Create a delivery
+      # destination , which is a logical object that represents the actual delivery destination. For more
+      # information, see PutDeliveryDestination . If you are delivering logs cross-account, you must use
+      # PutDeliveryDestinationPolicy in the destination account to assign an IAM policy to the destination.
+      # This policy allows delivery to that destination. Create a delivery by pairing exactly one delivery
+      # source and one delivery destination. For more information, see CreateDelivery . You can configure a
+      # single delivery source to send logs to multiple destinations by creating multiple deliveries. You
+      # can also create multiple deliveries to configure multiple delivery sources to send logs to the same
+      # delivery destination.
+
+      struct DeliverySource
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) that uniquely identifies this delivery source.
+
+        @[JSON::Field(key: "arn")]
+        getter arn : String?
+
+        # The type of log that the source is sending. For valid values for this parameter, see the
+        # documentation for the source service.
+
+        @[JSON::Field(key: "logType")]
+        getter log_type : String?
+
+        # The unique name of the delivery source.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # This array contains the ARN of the Amazon Web Services resource that sends logs and is represented
+        # by this delivery source. Currently, only one ARN can be in the array.
+
+        @[JSON::Field(key: "resourceArns")]
+        getter resource_arns : Array(String)?
+
+        # The Amazon Web Services service that is sending logs.
+
+        @[JSON::Field(key: "service")]
+        getter service : String?
+
+        # The tags that have been assigned to this delivery source.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @arn : String? = nil,
+          @log_type : String? = nil,
+          @name : String? = nil,
+          @resource_arns : Array(String)? = nil,
+          @service : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct DescribeAccountPoliciesRequest
+        include JSON::Serializable
+
+        # Use this parameter to limit the returned policies to only the policies that match the policy type
+        # that you specify.
+
+        @[JSON::Field(key: "policyType")]
+        getter policy_type : String
+
+        # If you are using an account that is set up as a monitoring account for CloudWatch unified
+        # cross-account observability, you can use this to specify the account ID of a source account. If you
+        # do, the operation returns the account policy for the specified account. Currently, you can specify
+        # only one account ID in this parameter. If you omit this parameter, only the policy in the current
+        # account is returned.
+
+        @[JSON::Field(key: "accountIdentifiers")]
+        getter account_identifiers : Array(String)?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Use this parameter to limit the returned policies to only the policy with the name that you specify.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        def initialize(
+          @policy_type : String,
+          @account_identifiers : Array(String)? = nil,
+          @next_token : String? = nil,
+          @policy_name : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeAccountPoliciesResponse
+        include JSON::Serializable
+
+        # An array of structures that contain information about the CloudWatch Logs account policies that
+        # match the specified filters.
+
+        @[JSON::Field(key: "accountPolicies")]
+        getter account_policies : Array(Types::AccountPolicy)?
+
+        # The token to use when requesting the next set of items. The token expires after 24 hours.
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @account_policies : Array(Types::AccountPolicy)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeConfigurationTemplatesRequest
+        include JSON::Serializable
+
+        # Use this parameter to filter the response to include only the configuration templates that apply to
+        # the delivery destination types that you specify here.
+
+        @[JSON::Field(key: "deliveryDestinationTypes")]
+        getter delivery_destination_types : Array(String)?
+
+        # Use this parameter to limit the number of configuration templates that are returned in the response.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Use this parameter to filter the response to include only the configuration templates that apply to
+        # the log types that you specify here.
+
+        @[JSON::Field(key: "logTypes")]
+        getter log_types : Array(String)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Use this parameter to filter the response to include only the configuration templates that apply to
+        # the resource types that you specify here.
+
+        @[JSON::Field(key: "resourceTypes")]
+        getter resource_types : Array(String)?
+
+        # Use this parameter to filter the response to include only the configuration templates that apply to
+        # the Amazon Web Services service that you specify here.
+
+        @[JSON::Field(key: "service")]
+        getter service : String?
+
+        def initialize(
+          @delivery_destination_types : Array(String)? = nil,
+          @limit : Int32? = nil,
+          @log_types : Array(String)? = nil,
+          @next_token : String? = nil,
+          @resource_types : Array(String)? = nil,
+          @service : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeConfigurationTemplatesResponse
+        include JSON::Serializable
+
+        # An array of objects, where each object describes one configuration template that matches the filters
+        # that you specified in the request.
+
+        @[JSON::Field(key: "configurationTemplates")]
+        getter configuration_templates : Array(Types::ConfigurationTemplate)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @configuration_templates : Array(Types::ConfigurationTemplate)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDeliveriesRequest
+        include JSON::Serializable
+
+        # Optionally specify the maximum number of deliveries to return in the response.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDeliveriesResponse
+        include JSON::Serializable
+
+        # An array of structures. Each structure contains information about one delivery in the account.
+
+        @[JSON::Field(key: "deliveries")]
+        getter deliveries : Array(Types::Delivery)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @deliveries : Array(Types::Delivery)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDeliveryDestinationsRequest
+        include JSON::Serializable
+
+        # Optionally specify the maximum number of delivery destinations to return in the response.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDeliveryDestinationsResponse
+        include JSON::Serializable
+
+        # An array of structures. Each structure contains information about one delivery destination in the
+        # account.
+
+        @[JSON::Field(key: "deliveryDestinations")]
+        getter delivery_destinations : Array(Types::DeliveryDestination)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @delivery_destinations : Array(Types::DeliveryDestination)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDeliverySourcesRequest
+        include JSON::Serializable
+
+        # Optionally specify the maximum number of delivery sources to return in the response.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDeliverySourcesResponse
+        include JSON::Serializable
+
+        # An array of structures. Each structure contains information about one delivery source in the
+        # account.
+
+        @[JSON::Field(key: "deliverySources")]
+        getter delivery_sources : Array(Types::DeliverySource)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @delivery_sources : Array(Types::DeliverySource)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDestinationsRequest
+        include JSON::Serializable
+
+        # The prefix to match. If you don't specify a value, no prefix filter is applied.
+
+        @[JSON::Field(key: "DestinationNamePrefix")]
+        getter destination_name_prefix : String?
+
+        # The maximum number of items returned. If you don't specify a value, the default maximum value of 50
+        # items is used.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @destination_name_prefix : String? = nil,
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeDestinationsResponse
+        include JSON::Serializable
+
+        # The destinations.
+
+        @[JSON::Field(key: "destinations")]
+        getter destinations : Array(Types::Destination)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @destinations : Array(Types::Destination)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeExportTasksRequest
+        include JSON::Serializable
+
+        # The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The status code of the export task. Specifying a status code filters the results to zero or more
+        # export tasks.
+
+        @[JSON::Field(key: "statusCode")]
+        getter status_code : String?
+
+        # The ID of the export task. Specifying a task ID filters the results to one or zero export tasks.
+
+        @[JSON::Field(key: "taskId")]
+        getter task_id : String?
+
+        def initialize(
+          @limit : Int32? = nil,
+          @next_token : String? = nil,
+          @status_code : String? = nil,
+          @task_id : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeExportTasksResponse
+        include JSON::Serializable
+
+        # The export tasks.
+
+        @[JSON::Field(key: "exportTasks")]
+        getter export_tasks : Array(Types::ExportTask)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @export_tasks : Array(Types::ExportTask)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeFieldIndexesRequest
+        include JSON::Serializable
+
+        # An array containing the names or ARNs of the log groups that you want to retrieve field indexes for.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_group_identifiers : Array(String),
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeFieldIndexesResponse
+        include JSON::Serializable
+
+        # An array containing the field index information.
+
+        @[JSON::Field(key: "fieldIndexes")]
+        getter field_indexes : Array(Types::FieldIndex)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @field_indexes : Array(Types::FieldIndex)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeImportTaskBatchesRequest
+        include JSON::Serializable
+
+        # The ID of the import task to get batch information for.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String
+
+        # Optional filter to list import batches by their status. Accepts multiple status values: IN_PROGRESS,
+        # CANCELLED, COMPLETED and FAILED.
+
+        @[JSON::Field(key: "batchImportStatus")]
+        getter batch_import_status : Array(String)?
+
+        # The maximum number of import batches to return in the response. Default: 10
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The pagination token for the next set of results.
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @import_id : String,
+          @batch_import_status : Array(String)? = nil,
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeImportTaskBatchesResponse
+        include JSON::Serializable
+
+        # The list of import batches that match the request filters.
+
+        @[JSON::Field(key: "importBatches")]
+        getter import_batches : Array(Types::ImportBatch)?
+
+        # The ID of the import task.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String?
+
+        # The ARN of the source being imported from.
+
+        @[JSON::Field(key: "importSourceArn")]
+        getter import_source_arn : String?
+
+        # The token to use when requesting the next set of results. Not present if there are no additional
+        # results to retrieve.
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @import_batches : Array(Types::ImportBatch)? = nil,
+          @import_id : String? = nil,
+          @import_source_arn : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeImportTasksRequest
+        include JSON::Serializable
+
+        # Optional filter to describe a specific import task by its ID.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String?
+
+        # Optional filter to list imports from a specific source
+
+        @[JSON::Field(key: "importSourceArn")]
+        getter import_source_arn : String?
+
+        # Optional filter to list imports by their status. Valid values are IN_PROGRESS, CANCELLED, COMPLETED
+        # and FAILED.
+
+        @[JSON::Field(key: "importStatus")]
+        getter import_status : String?
+
+        # The maximum number of import tasks to return in the response. Default: 50
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The pagination token for the next set of results.
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @import_id : String? = nil,
+          @import_source_arn : String? = nil,
+          @import_status : String? = nil,
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeImportTasksResponse
+        include JSON::Serializable
+
+        # The list of import tasks that match the request filters.
+
+        @[JSON::Field(key: "imports")]
+        getter imports : Array(Types::Import)?
+
+        # The token to use when requesting the next set of results. Not present if there are no additional
+        # results to retrieve.
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @imports : Array(Types::Import)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeIndexPoliciesRequest
+        include JSON::Serializable
+
+        # An array containing the name or ARN of the log group that you want to retrieve field index policies
+        # for.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_group_identifiers : Array(String),
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeIndexPoliciesResponse
+        include JSON::Serializable
+
+        # An array containing the field index policies.
+
+        @[JSON::Field(key: "indexPolicies")]
+        getter index_policies : Array(Types::IndexPolicy)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @index_policies : Array(Types::IndexPolicy)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeLogGroupsRequest
+        include JSON::Serializable
+
+        # When includeLinkedAccounts is set to true , use this parameter to specify the list of accounts to
+        # search. You can specify as many as 20 account IDs in the array.
+
+        @[JSON::Field(key: "accountIdentifiers")]
+        getter account_identifiers : Array(String)?
+
+        # If you are using a monitoring account, set this to true to have the operation return log groups in
+        # the accounts listed in accountIdentifiers . If this parameter is set to true and accountIdentifiers
+        # contains a null value, the operation returns all log groups in the monitoring account and all log
+        # groups in all source accounts that are linked to the monitoring account. The default for this
+        # parameter is false .
+
+        @[JSON::Field(key: "includeLinkedAccounts")]
+        getter include_linked_accounts : Bool?
+
+        # The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Use this parameter to limit the results to only those log groups in the specified log group class.
+        # If you omit this parameter, log groups of all classes can be returned. Specifies the log group class
+        # for this log group. There are three classes: The Standard log class supports all CloudWatch Logs
+        # features. The Infrequent Access log class supports a subset of CloudWatch Logs features and incurs
+        # lower costs. Use the Delivery log class only for delivering Lambda logs to store in Amazon S3 or
+        # Amazon Data Firehose. Log events in log groups in the Delivery class are kept in CloudWatch Logs for
+        # only one day. This log class doesn't offer rich CloudWatch Logs capabilities such as CloudWatch Logs
+        # Insights queries. For details about the features supported by each class, see Log classes
+
+        @[JSON::Field(key: "logGroupClass")]
+        getter log_group_class : String?
+
+        # Use this array to filter the list of log groups returned. If you specify this parameter, the only
+        # other filter that you can choose to specify is includeLinkedAccounts . If you are using this
+        # operation in a monitoring account, you can specify the ARNs of log groups in source accounts and in
+        # the monitoring account itself. If you are using this operation in an account that is not a
+        # cross-account monitoring account, you can specify only log group names in the same account as the
+        # operation.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # If you specify a string for this parameter, the operation returns only log groups that have names
+        # that match the string based on a case-sensitive substring search. For example, if you specify
+        # DataLogs , log groups named DataLogs , aws/DataLogs , and GroupDataLogs would match, but datalogs ,
+        # Data/log/s and Groupdata would not match. If you specify logGroupNamePattern in your request, then
+        # only arn , creationTime , and logGroupName are included in the response. logGroupNamePattern and
+        # logGroupNamePrefix are mutually exclusive. Only one of these parameters can be passed.
+
+        @[JSON::Field(key: "logGroupNamePattern")]
+        getter log_group_name_pattern : String?
+
+        # The prefix to match. logGroupNamePrefix and logGroupNamePattern are mutually exclusive. Only one of
+        # these parameters can be passed.
+
+        @[JSON::Field(key: "logGroupNamePrefix")]
+        getter log_group_name_prefix : String?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @account_identifiers : Array(String)? = nil,
+          @include_linked_accounts : Bool? = nil,
+          @limit : Int32? = nil,
+          @log_group_class : String? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @log_group_name_pattern : String? = nil,
+          @log_group_name_prefix : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeLogGroupsResponse
+        include JSON::Serializable
+
+        # An array of structures, where each structure contains the information about one log group.
+
+        @[JSON::Field(key: "logGroups")]
+        getter log_groups : Array(Types::LogGroup)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_groups : Array(Types::LogGroup)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeLogStreamsRequest
+        include JSON::Serializable
+
+        # If the value is true, results are returned in descending order. If the value is to false, results
+        # are returned in ascending order. The default value is false.
+
+        @[JSON::Field(key: "descending")]
+        getter descending : Bool?
+
+        # The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Specify either the name or ARN of the log group to view. If the log group is in a source account and
+        # you are using a monitoring account, you must use the log group ARN. You must include either
+        # logGroupIdentifier or logGroupName , but not both.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The name of the log group. You must include either logGroupIdentifier or logGroupName , but not
+        # both.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The prefix to match. If orderBy is LastEventTime , you cannot specify this parameter.
+
+        @[JSON::Field(key: "logStreamNamePrefix")]
+        getter log_stream_name_prefix : String?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # If the value is LogStreamName , the results are ordered by log stream name. If the value is
+        # LastEventTime , the results are ordered by the event time. The default value is LogStreamName . If
+        # you order the results by event time, you cannot specify the logStreamNamePrefix parameter.
+        # lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch
+        # Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC .
+        # lastEventTimestamp updates on an eventual consistency basis. It typically updates in less than an
+        # hour from ingestion, but in rare situations might take longer.
+
+        @[JSON::Field(key: "orderBy")]
+        getter order_by : String?
+
+        def initialize(
+          @descending : Bool? = nil,
+          @limit : Int32? = nil,
+          @log_group_identifier : String? = nil,
+          @log_group_name : String? = nil,
+          @log_stream_name_prefix : String? = nil,
+          @next_token : String? = nil,
+          @order_by : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeLogStreamsResponse
+        include JSON::Serializable
+
+        # The log streams.
+
+        @[JSON::Field(key: "logStreams")]
+        getter log_streams : Array(Types::LogStream)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_streams : Array(Types::LogStream)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeMetricFiltersRequest
+        include JSON::Serializable
+
+        # The prefix to match. CloudWatch Logs uses the value that you set here only if you also include the
+        # logGroupName parameter in your request.
+
+        @[JSON::Field(key: "filterNamePrefix")]
+        getter filter_name_prefix : String?
+
+        # The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # Filters results to include only those with the specified metric name. If you include this parameter
+        # in your request, you must also include the metricNamespace parameter.
+
+        @[JSON::Field(key: "metricName")]
+        getter metric_name : String?
+
+        # Filters results to include only those in the specified namespace. If you include this parameter in
+        # your request, you must also include the metricName parameter.
+
+        @[JSON::Field(key: "metricNamespace")]
+        getter metric_namespace : String?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @filter_name_prefix : String? = nil,
+          @limit : Int32? = nil,
+          @log_group_name : String? = nil,
+          @metric_name : String? = nil,
+          @metric_namespace : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeMetricFiltersResponse
+        include JSON::Serializable
+
+        # The metric filters.
+
+        @[JSON::Field(key: "metricFilters")]
+        getter metric_filters : Array(Types::MetricFilter)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @metric_filters : Array(Types::MetricFilter)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeQueriesRequest
+        include JSON::Serializable
+
+        # Limits the returned queries to only those for the specified log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # Limits the number of returned queries to the specified number.
+
+        @[JSON::Field(key: "maxResults")]
+        getter max_results : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Limits the returned queries to only the queries that use the specified query language.
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        # Limits the returned queries to only those that have the specified status. Valid values are Cancelled
+        # , Complete , Failed , Running , and Scheduled .
+
+        @[JSON::Field(key: "status")]
+        getter status : String?
+
+        def initialize(
+          @log_group_name : String? = nil,
+          @max_results : Int32? = nil,
+          @next_token : String? = nil,
+          @query_language : String? = nil,
+          @status : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeQueriesResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The list of queries that match the request.
+
+        @[JSON::Field(key: "queries")]
+        getter queries : Array(Types::QueryInfo)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @queries : Array(Types::QueryInfo)? = nil
+        )
+        end
+      end
+
+
+      struct DescribeQueryDefinitionsRequest
+        include JSON::Serializable
+
+        # Limits the number of returned query definitions to the specified number.
+
+        @[JSON::Field(key: "maxResults")]
+        getter max_results : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Use this parameter to filter your results to only the query definitions that have names that start
+        # with the prefix you specify.
+
+        @[JSON::Field(key: "queryDefinitionNamePrefix")]
+        getter query_definition_name_prefix : String?
+
+        # The query language used for this query. For more information about the query languages that
+        # CloudWatch Logs supports, see Supported query languages .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        def initialize(
+          @max_results : Int32? = nil,
+          @next_token : String? = nil,
+          @query_definition_name_prefix : String? = nil,
+          @query_language : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeQueryDefinitionsResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The list of query definitions that match your request.
+
+        @[JSON::Field(key: "queryDefinitions")]
+        getter query_definitions : Array(Types::QueryDefinition)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @query_definitions : Array(Types::QueryDefinition)? = nil
+        )
+        end
+      end
+
+
+      struct DescribeResourcePoliciesRequest
+        include JSON::Serializable
+
+        # The maximum number of resource policies to be displayed with one call of this API.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Specifies the scope of the resource policy. Valid values are ACCOUNT or RESOURCE . When not
+        # specified, defaults to ACCOUNT .
+
+        @[JSON::Field(key: "policyScope")]
+        getter policy_scope : String?
+
+        # The ARN of the CloudWatch Logs resource for which to query the resource policy.
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String?
+
+        def initialize(
+          @limit : Int32? = nil,
+          @next_token : String? = nil,
+          @policy_scope : String? = nil,
+          @resource_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeResourcePoliciesResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The resource policies that exist in this account.
+
+        @[JSON::Field(key: "resourcePolicies")]
+        getter resource_policies : Array(Types::ResourcePolicy)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @resource_policies : Array(Types::ResourcePolicy)? = nil
+        )
+        end
+      end
+
+
+      struct DescribeSubscriptionFiltersRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The prefix to match. If you don't specify a value, no prefix filter is applied.
+
+        @[JSON::Field(key: "filterNamePrefix")]
+        getter filter_name_prefix : String?
+
+        # The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_group_name : String,
+          @filter_name_prefix : String? = nil,
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct DescribeSubscriptionFiltersResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The subscription filters.
+
+        @[JSON::Field(key: "subscriptionFilters")]
+        getter subscription_filters : Array(Types::SubscriptionFilter)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @subscription_filters : Array(Types::SubscriptionFilter)? = nil
+        )
+        end
+      end
+
+      # Represents a cross-account destination that receives subscription log events.
+
+      struct Destination
+        include JSON::Serializable
+
+        # An IAM policy document that governs which Amazon Web Services accounts can create subscription
+        # filters against this destination.
+
+        @[JSON::Field(key: "accessPolicy")]
+        getter access_policy : String?
+
+        # The ARN of this destination.
+
+        @[JSON::Field(key: "arn")]
+        getter arn : String?
+
+        # The creation time of the destination, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The name of the destination.
+
+        @[JSON::Field(key: "destinationName")]
+        getter destination_name : String?
+
+        # A role for impersonation, used when delivering log events to the target.
+
+        @[JSON::Field(key: "roleArn")]
+        getter role_arn : String?
+
+        # The Amazon Resource Name (ARN) of the physical target where the log events are delivered (for
+        # example, a Kinesis stream).
+
+        @[JSON::Field(key: "targetArn")]
+        getter target_arn : String?
+
+        def initialize(
+          @access_policy : String? = nil,
+          @arn : String? = nil,
+          @creation_time : Int64? = nil,
+          @destination_name : String? = nil,
+          @role_arn : String? = nil,
+          @target_arn : String? = nil
+        )
+        end
+      end
+
+      # Configuration for where to deliver scheduled query results. Specifies the destination type and
+      # associated settings for result delivery.
+
+      struct DestinationConfiguration
+        include JSON::Serializable
+
+        # Configuration for delivering query results to Amazon S3.
+
+        @[JSON::Field(key: "s3Configuration")]
+        getter s3_configuration : Types::S3Configuration
+
+        def initialize(
+          @s3_configuration : Types::S3Configuration
+        )
+        end
+      end
+
+
+      struct DisassociateKmsKeyRequest
+        include JSON::Serializable
+
+        # The name of the log group. In your DisassociateKmsKey operation, you must specify either the
+        # resourceIdentifier parameter or the logGroup parameter, but you can't specify both.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # Specifies the target for this operation. You must specify one of the following: Specify the ARN of a
+        # log group to stop having CloudWatch Logs use the KMS key to encrypt log events that are ingested and
+        # stored by that log group. After you run this operation, CloudWatch Logs encrypts ingested log events
+        # with the default CloudWatch Logs method. The log group ARN must be in the following format. Replace
+        # REGION and ACCOUNT_ID with your Region and account ID. arn:aws:logs: REGION : ACCOUNT_ID :log-group:
+        # LOG_GROUP_NAME Specify the following ARN to stop using this key to encrypt the results of future
+        # StartQuery operations in this account. Replace REGION and ACCOUNT_ID with your Region and account
+        # ID. arn:aws:logs: REGION : ACCOUNT_ID :query-result:* In your DisssociateKmsKey operation, you must
+        # specify either the resourceIdentifier parameter or the logGroup parameter, but you can't specify
+        # both.
+
+        @[JSON::Field(key: "resourceIdentifier")]
+        getter resource_identifier : String?
+
+        def initialize(
+          @log_group_name : String? = nil,
+          @resource_identifier : String? = nil
+        )
+        end
+      end
+
+
+      struct DisassociateSourceFromS3TableIntegrationRequest
+        include JSON::Serializable
+
+        # The unique identifier of the association to remove between the data source and S3 Table Integration.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String
+
+        def initialize(
+          @identifier : String
+        )
+        end
+      end
+
+
+      struct DisassociateSourceFromS3TableIntegrationResponse
+        include JSON::Serializable
+
+        # The unique identifier of the association that was removed.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String?
+
+        def initialize(
+          @identifier : String? = nil
+        )
+        end
+      end
+
+      # The entity associated with the log events in a PutLogEvents call.
+
+      struct Entity
+        include JSON::Serializable
+
+        # Additional attributes of the entity that are not used to specify the identity of the entity. A list
+        # of key-value pairs. For details about how to use the attributes, see How to add related information
+        # to telemetry in the CloudWatch User Guide .
+
+        @[JSON::Field(key: "attributes")]
+        getter attributes : Hash(String, String)?
+
+        # The attributes of the entity which identify the specific entity, as a list of key-value pairs.
+        # Entities with the same keyAttributes are considered to be the same entity. There are five allowed
+        # attributes (key names): Type , ResourceType , Identifier Name , and Environment . For details about
+        # how to use the key attributes, see How to add related information to telemetry in the CloudWatch
+        # User Guide .
+
+        @[JSON::Field(key: "keyAttributes")]
+        getter key_attributes : Hash(String, String)?
+
+        def initialize(
+          @attributes : Hash(String, String)? = nil,
+          @key_attributes : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # Represents an export task.
+
+      struct ExportTask
+        include JSON::Serializable
+
+        # The name of the S3 bucket to which the log data was exported.
+
+        @[JSON::Field(key: "destination")]
+        getter destination : String?
+
+        # The prefix that was used as the start of Amazon S3 key for every object exported.
+
+        @[JSON::Field(key: "destinationPrefix")]
+        getter destination_prefix : String?
+
+        # Execution information about the export task.
+
+        @[JSON::Field(key: "executionInfo")]
+        getter execution_info : Types::ExportTaskExecutionInfo?
+
+        # The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC . Events with
+        # a timestamp before this time are not exported.
+
+        @[JSON::Field(key: "from")]
+        getter from : Int64?
+
+        # The name of the log group from which logs data was exported.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The status of the export task.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::ExportTaskStatus?
+
+        # The ID of the export task.
+
+        @[JSON::Field(key: "taskId")]
+        getter task_id : String?
+
+        # The name of the export task.
+
+        @[JSON::Field(key: "taskName")]
+        getter task_name : String?
+
+        # The end time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC . Events with a
+        # timestamp later than this time are not exported.
+
+        @[JSON::Field(key: "to")]
+        getter to : Int64?
+
+        def initialize(
+          @destination : String? = nil,
+          @destination_prefix : String? = nil,
+          @execution_info : Types::ExportTaskExecutionInfo? = nil,
+          @from : Int64? = nil,
+          @log_group_name : String? = nil,
+          @status : Types::ExportTaskStatus? = nil,
+          @task_id : String? = nil,
+          @task_name : String? = nil,
+          @to : Int64? = nil
+        )
+        end
+      end
+
+      # Represents the status of an export task.
+
+      struct ExportTaskExecutionInfo
+        include JSON::Serializable
+
+        # The completion time of the export task, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC .
+
+        @[JSON::Field(key: "completionTime")]
+        getter completion_time : Int64?
+
+        # The creation time of the export task, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC .
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        def initialize(
+          @completion_time : Int64? = nil,
+          @creation_time : Int64? = nil
+        )
+        end
+      end
+
+      # Represents the status of an export task.
+
+      struct ExportTaskStatus
+        include JSON::Serializable
+
+        # The status code of the export task.
+
+        @[JSON::Field(key: "code")]
+        getter code : String?
+
+        # The status message related to the status code.
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        def initialize(
+          @code : String? = nil,
+          @message : String? = nil
+        )
+        end
+      end
+
+      # This structure describes one log event field that is used as an index in at least one index policy
+      # in this account.
+
+      struct FieldIndex
+        include JSON::Serializable
+
+        # The string that this field index matches.
+
+        @[JSON::Field(key: "fieldIndexName")]
+        getter field_index_name : String?
+
+        # The time and date of the earliest log event that matches this field index, after the index policy
+        # that contains it was created.
+
+        @[JSON::Field(key: "firstEventTime")]
+        getter first_event_time : Int64?
+
+        # The time and date of the most recent log event that matches this field index.
+
+        @[JSON::Field(key: "lastEventTime")]
+        getter last_event_time : Int64?
+
+        # The most recent time that CloudWatch Logs scanned ingested log events to search for this field index
+        # to improve the speed of future CloudWatch Logs Insights queries that search for this field index.
+
+        @[JSON::Field(key: "lastScanTime")]
+        getter last_scan_time : Int64?
+
+        # If this field index appears in an index policy that applies only to a single log group, the ARN of
+        # that log group is displayed here.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The type of index. Specify FACET for facet-based indexing or FIELD_INDEX for field-based indexing.
+        # This determines how the field is indexed and can be queried.
+
+        @[JSON::Field(key: "type")]
+        getter type : String?
+
+        def initialize(
+          @field_index_name : String? = nil,
+          @first_event_time : Int64? = nil,
+          @last_event_time : Int64? = nil,
+          @last_scan_time : Int64? = nil,
+          @log_group_identifier : String? = nil,
+          @type : String? = nil
+        )
+        end
+      end
+
+      # A structure containing the extracted fields from a log event. These fields are extracted based on
+      # the log format and can be used for structured querying and analysis.
+
+      struct FieldsData
+        include JSON::Serializable
+
+        # The actual log data content returned in the streaming response. This contains the fields and values
+        # of the log event in a structured format that can be parsed and processed by the client.
+
+        @[JSON::Field(key: "data")]
+        getter data : Bytes?
+
+        def initialize(
+          @data : Bytes? = nil
+        )
+        end
+      end
+
+
+      struct FilterLogEventsRequest
+        include JSON::Serializable
+
+        # The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC .
+        # Events with a timestamp later than this time are not returned.
+
+        @[JSON::Field(key: "endTime")]
+        getter end_time : Int64?
+
+        # The filter pattern to use. For more information, see Filter and Pattern Syntax . If not provided,
+        # all the events are matched.
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        # If the value is true, the operation attempts to provide responses that contain events from multiple
+        # log streams within the log group, interleaved in a single response. If the value is false, all the
+        # matched log events in the first log stream are searched first, then those in the next log stream,
+        # and so on. Important As of June 17, 2019, this parameter is ignored and the value is assumed to be
+        # true. The response from this operation always interleaves events from multiple log streams within a
+        # log group.
+
+        @[JSON::Field(key: "interleaved")]
+        getter interleaved : Bool?
+
+        # The maximum number of events to return. The default is 10,000 events.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Specify either the name or ARN of the log group to view log events from. If the log group is in a
+        # source account and you are using a monitoring account, you must use the log group ARN. You must
+        # include either logGroupIdentifier or logGroupName , but not both.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The name of the log group to search. You must include either logGroupIdentifier or logGroupName ,
+        # but not both.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # Filters the results to include only events from log streams that have names starting with this
+        # prefix. If you specify a value for both logStreamNamePrefix and logStreamNames , the action returns
+        # an InvalidParameterException error.
+
+        @[JSON::Field(key: "logStreamNamePrefix")]
+        getter log_stream_name_prefix : String?
+
+        # Filters the results to only logs from the log streams in this list. If you specify a value for both
+        # logStreamNames and logStreamNamePrefix , the action returns an InvalidParameterException error.
+
+        @[JSON::Field(key: "logStreamNames")]
+        getter log_stream_names : Array(String)?
+
+        # The token for the next set of events to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC
+        # . Events with a timestamp before this time are not returned.
+
+        @[JSON::Field(key: "startTime")]
+        getter start_time : Int64?
+
+        # Specify true to display the log event fields with all sensitive data unmasked and visible. The
+        # default is false . To use this operation with this parameter, you must be signed into an account
+        # with the logs:Unmask permission.
+
+        @[JSON::Field(key: "unmask")]
+        getter unmask : Bool?
+
+        def initialize(
+          @end_time : Int64? = nil,
+          @filter_pattern : String? = nil,
+          @interleaved : Bool? = nil,
+          @limit : Int32? = nil,
+          @log_group_identifier : String? = nil,
+          @log_group_name : String? = nil,
+          @log_stream_name_prefix : String? = nil,
+          @log_stream_names : Array(String)? = nil,
+          @next_token : String? = nil,
+          @start_time : Int64? = nil,
+          @unmask : Bool? = nil
+        )
+        end
+      end
+
+
+      struct FilterLogEventsResponse
+        include JSON::Serializable
+
+        # The matched events.
+
+        @[JSON::Field(key: "events")]
+        getter events : Array(Types::FilteredLogEvent)?
+
+        # The token to use when requesting the next set of items. The token expires after 24 hours. If the
+        # results don't include a nextToken , then pagination is finished.
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Important As of May 15, 2020, this parameter is no longer supported. This parameter returns an empty
+        # list. Indicates which log streams have been searched and whether each has been searched completely.
+
+        @[JSON::Field(key: "searchedLogStreams")]
+        getter searched_log_streams : Array(Types::SearchedLogStream)?
+
+        def initialize(
+          @events : Array(Types::FilteredLogEvent)? = nil,
+          @next_token : String? = nil,
+          @searched_log_streams : Array(Types::SearchedLogStream)? = nil
+        )
+        end
+      end
+
+      # Represents a matched event.
+
+      struct FilteredLogEvent
+        include JSON::Serializable
+
+        # The ID of the event.
+
+        @[JSON::Field(key: "eventId")]
+        getter event_id : String?
+
+        # The time the event was ingested, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
+        # UTC .
+
+        @[JSON::Field(key: "ingestionTime")]
+        getter ingestion_time : Int64?
+
+        # The name of the log stream to which this event belongs.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String?
+
+        # The data contained in the log event.
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        # The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC
+        # .
+
+        @[JSON::Field(key: "timestamp")]
+        getter timestamp : Int64?
+
+        def initialize(
+          @event_id : String? = nil,
+          @ingestion_time : Int64? = nil,
+          @log_stream_name : String? = nil,
+          @message : String? = nil,
+          @timestamp : Int64? = nil
+        )
+        end
+      end
+
+
+      struct GetDataProtectionPolicyRequest
+        include JSON::Serializable
+
+        # The name or ARN of the log group that contains the data protection policy that you want to see.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        def initialize(
+          @log_group_identifier : String
+        )
+        end
+      end
+
+
+      struct GetDataProtectionPolicyResponse
+        include JSON::Serializable
+
+        # The date and time that this policy was most recently updated.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The log group name or ARN that you specified in your request.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The data protection policy document for this log group.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String?
+
+        def initialize(
+          @last_updated_time : Int64? = nil,
+          @log_group_identifier : String? = nil,
+          @policy_document : String? = nil
+        )
+        end
+      end
+
+
+      struct GetDeliveryDestinationPolicyRequest
+        include JSON::Serializable
+
+        # The name of the delivery destination that you want to retrieve the policy of.
+
+        @[JSON::Field(key: "deliveryDestinationName")]
+        getter delivery_destination_name : String
+
+        def initialize(
+          @delivery_destination_name : String
+        )
+        end
+      end
+
+
+      struct GetDeliveryDestinationPolicyResponse
+        include JSON::Serializable
+
+        # The IAM policy for this delivery destination.
+
+        @[JSON::Field(key: "policy")]
+        getter policy : Types::Policy?
+
+        def initialize(
+          @policy : Types::Policy? = nil
+        )
+        end
+      end
+
+
+      struct GetDeliveryDestinationRequest
+        include JSON::Serializable
+
+        # The name of the delivery destination that you want to retrieve.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        def initialize(
+          @name : String
+        )
+        end
+      end
+
+
+      struct GetDeliveryDestinationResponse
+        include JSON::Serializable
+
+        # A structure containing information about the delivery destination.
+
+        @[JSON::Field(key: "deliveryDestination")]
+        getter delivery_destination : Types::DeliveryDestination?
+
+        def initialize(
+          @delivery_destination : Types::DeliveryDestination? = nil
+        )
+        end
+      end
+
+
+      struct GetDeliveryRequest
+        include JSON::Serializable
+
+        # The ID of the delivery that you want to retrieve.
+
+        @[JSON::Field(key: "id")]
+        getter id : String
+
+        def initialize(
+          @id : String
+        )
+        end
+      end
+
+
+      struct GetDeliveryResponse
+        include JSON::Serializable
+
+        # A structure that contains information about the delivery.
+
+        @[JSON::Field(key: "delivery")]
+        getter delivery : Types::Delivery?
+
+        def initialize(
+          @delivery : Types::Delivery? = nil
+        )
+        end
+      end
+
+
+      struct GetDeliverySourceRequest
+        include JSON::Serializable
+
+        # The name of the delivery source that you want to retrieve.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        def initialize(
+          @name : String
+        )
+        end
+      end
+
+
+      struct GetDeliverySourceResponse
+        include JSON::Serializable
+
+        # A structure containing information about the delivery source.
+
+        @[JSON::Field(key: "deliverySource")]
+        getter delivery_source : Types::DeliverySource?
+
+        def initialize(
+          @delivery_source : Types::DeliverySource? = nil
+        )
+        end
+      end
+
+
+      struct GetIntegrationRequest
+        include JSON::Serializable
+
+        # The name of the integration that you want to find information about. To find the name of your
+        # integration, use ListIntegrations
+
+        @[JSON::Field(key: "integrationName")]
+        getter integration_name : String
+
+        def initialize(
+          @integration_name : String
+        )
+        end
+      end
+
+
+      struct GetIntegrationResponse
+        include JSON::Serializable
+
+        # A structure that contains information about the integration configuration. For an integration with
+        # OpenSearch Service, this includes information about OpenSearch Service resources such as the
+        # collection, the workspace, and policies.
+
+        @[JSON::Field(key: "integrationDetails")]
+        getter integration_details : Types::IntegrationDetails?
+
+        # The name of the integration.
+
+        @[JSON::Field(key: "integrationName")]
+        getter integration_name : String?
+
+        # The current status of this integration.
+
+        @[JSON::Field(key: "integrationStatus")]
+        getter integration_status : String?
+
+        # The type of integration. Integrations with OpenSearch Service have the type OPENSEARCH .
+
+        @[JSON::Field(key: "integrationType")]
+        getter integration_type : String?
+
+        def initialize(
+          @integration_details : Types::IntegrationDetails? = nil,
+          @integration_name : String? = nil,
+          @integration_status : String? = nil,
+          @integration_type : String? = nil
+        )
+        end
+      end
+
+
+      struct GetLogAnomalyDetectorRequest
+        include JSON::Serializable
+
+        # The ARN of the anomaly detector to retrieve information about. You can find the ARNs of log anomaly
+        # detectors in your account by using the ListLogAnomalyDetectors operation.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String
+
+        def initialize(
+          @anomaly_detector_arn : String
+        )
+        end
+      end
+
+
+      struct GetLogAnomalyDetectorResponse
+        include JSON::Serializable
+
+        # Specifies whether the anomaly detector is currently active. To change its status, use the enabled
+        # parameter in the UpdateLogAnomalyDetector operation.
+
+        @[JSON::Field(key: "anomalyDetectorStatus")]
+        getter anomaly_detector_status : String?
+
+        # The number of days used as the life cycle of anomalies. After this time, anomalies are automatically
+        # baselined and the anomaly detector model will treat new occurrences of similar event as normal.
+
+        @[JSON::Field(key: "anomalyVisibilityTime")]
+        getter anomaly_visibility_time : Int64?
+
+        # The date and time when this anomaly detector was created.
+
+        @[JSON::Field(key: "creationTimeStamp")]
+        getter creation_time_stamp : Int64?
+
+        # The name of the log anomaly detector
+
+        @[JSON::Field(key: "detectorName")]
+        getter detector_name : String?
+
+        # Specifies how often the anomaly detector runs and look for anomalies. Set this value according to
+        # the frequency that the log group receives new logs. For example, if the log group receives new log
+        # events every 10 minutes, then setting evaluationFrequency to FIFTEEN_MIN might be appropriate.
+
+        @[JSON::Field(key: "evaluationFrequency")]
+        getter evaluation_frequency : String?
+
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        # The ARN of the KMS key assigned to this anomaly detector, if any.
+
+        @[JSON::Field(key: "kmsKeyId")]
+        getter kms_key_id : String?
+
+        # The date and time when this anomaly detector was most recently modified.
+
+        @[JSON::Field(key: "lastModifiedTimeStamp")]
+        getter last_modified_time_stamp : Int64?
+
+        # An array of structures, where each structure contains the ARN of a log group associated with this
+        # anomaly detector.
+
+        @[JSON::Field(key: "logGroupArnList")]
+        getter log_group_arn_list : Array(String)?
+
+        def initialize(
+          @anomaly_detector_status : String? = nil,
+          @anomaly_visibility_time : Int64? = nil,
+          @creation_time_stamp : Int64? = nil,
+          @detector_name : String? = nil,
+          @evaluation_frequency : String? = nil,
+          @filter_pattern : String? = nil,
+          @kms_key_id : String? = nil,
+          @last_modified_time_stamp : Int64? = nil,
+          @log_group_arn_list : Array(String)? = nil
+        )
+        end
+      end
+
+
+      struct GetLogEventsRequest
+        include JSON::Serializable
+
+        # The name of the log stream.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String
+
+        # The end of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC .
+        # Events with a timestamp equal to or later than this time are not included.
+
+        @[JSON::Field(key: "endTime")]
+        getter end_time : Int64?
+
+        # The maximum number of log events returned. If you don't specify a limit, the default is as many log
+        # events as can fit in a response size of 1 MB (up to 10,000 log events).
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Specify either the name or ARN of the log group to view events from. If the log group is in a source
+        # account and you are using a monitoring account, you must use the log group ARN. You must include
+        # either logGroupIdentifier or logGroupName , but not both.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The name of the log group. You must include either logGroupIdentifier or logGroupName , but not
+        # both.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The token for the next set of items to return. (You received this token from a previous call.)
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # If the value is true, the earliest log events are returned first. If the value is false, the latest
+        # log events are returned first. The default value is false. If you are using a previous
+        # nextForwardToken value as the nextToken in this operation, you must specify true for startFromHead .
+
+        @[JSON::Field(key: "startFromHead")]
+        getter start_from_head : Bool?
+
+        # The start of the time range, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC
+        # . Events with a timestamp equal to this time or later than this time are included. Events with a
+        # timestamp earlier than this time are not included.
+
+        @[JSON::Field(key: "startTime")]
+        getter start_time : Int64?
+
+        # Specify true to display the log event fields with all sensitive data unmasked and visible. The
+        # default is false . To use this operation with this parameter, you must be signed into an account
+        # with the logs:Unmask permission.
+
+        @[JSON::Field(key: "unmask")]
+        getter unmask : Bool?
+
+        def initialize(
+          @log_stream_name : String,
+          @end_time : Int64? = nil,
+          @limit : Int32? = nil,
+          @log_group_identifier : String? = nil,
+          @log_group_name : String? = nil,
+          @next_token : String? = nil,
+          @start_from_head : Bool? = nil,
+          @start_time : Int64? = nil,
+          @unmask : Bool? = nil
+        )
+        end
+      end
+
+
+      struct GetLogEventsResponse
+        include JSON::Serializable
+
+        # The events.
+
+        @[JSON::Field(key: "events")]
+        getter events : Array(Types::OutputLogEvent)?
+
+        # The token for the next set of items in the backward direction. The token expires after 24 hours.
+        # This token is not null. If you have reached the end of the stream, it returns the same token you
+        # passed in.
+
+        @[JSON::Field(key: "nextBackwardToken")]
+        getter next_backward_token : String?
+
+        # The token for the next set of items in the forward direction. The token expires after 24 hours. If
+        # you have reached the end of the stream, it returns the same token you passed in.
+
+        @[JSON::Field(key: "nextForwardToken")]
+        getter next_forward_token : String?
+
+        def initialize(
+          @events : Array(Types::OutputLogEvent)? = nil,
+          @next_backward_token : String? = nil,
+          @next_forward_token : String? = nil
+        )
+        end
+      end
+
+
+      struct GetLogFieldsRequest
+        include JSON::Serializable
+
+        # The name of the data source to retrieve log fields for.
+
+        @[JSON::Field(key: "dataSourceName")]
+        getter data_source_name : String
+
+        # The type of the data source to retrieve log fields for.
+
+        @[JSON::Field(key: "dataSourceType")]
+        getter data_source_type : String
+
+        def initialize(
+          @data_source_name : String,
+          @data_source_type : String
+        )
+        end
+      end
+
+
+      struct GetLogFieldsResponse
+        include JSON::Serializable
+
+        # The list of log fields for the specified data source, including field names and their data types.
+
+        @[JSON::Field(key: "logFields")]
+        getter log_fields : Array(Types::LogFieldsListItem)?
+
+        def initialize(
+          @log_fields : Array(Types::LogFieldsListItem)? = nil
+        )
+        end
+      end
+
+
+      struct GetLogGroupFieldsRequest
+        include JSON::Serializable
+
+        # Specify either the name or ARN of the log group to view. If the log group is in a source account and
+        # you are using a monitoring account, you must specify the ARN. You must include either
+        # logGroupIdentifier or logGroupName , but not both.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The name of the log group to search. You must include either logGroupIdentifier or logGroupName ,
+        # but not both.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The time to set as the center of the query. If you specify time , the 8 minutes before and 8 minutes
+        # after this time are searched. If you omit time , the most recent 15 minutes up to the current time
+        # are searched. The time value is specified as epoch time, which is the number of seconds since
+        # January 1, 1970, 00:00:00 UTC .
+
+        @[JSON::Field(key: "time")]
+        getter time : Int64?
+
+        def initialize(
+          @log_group_identifier : String? = nil,
+          @log_group_name : String? = nil,
+          @time : Int64? = nil
+        )
+        end
+      end
+
+
+      struct GetLogGroupFieldsResponse
+        include JSON::Serializable
+
+        # The array of fields found in the query. Each object in the array contains the name of the field,
+        # along with the percentage of time it appeared in the log events that were queried.
+
+        @[JSON::Field(key: "logGroupFields")]
+        getter log_group_fields : Array(Types::LogGroupField)?
+
+        def initialize(
+          @log_group_fields : Array(Types::LogGroupField)? = nil
+        )
+        end
+      end
+
+      # The parameters for the GetLogObject operation.
+
+      struct GetLogObjectRequest
+        include JSON::Serializable
+
+        # A pointer to the specific log object to retrieve. This is a required parameter that uniquely
+        # identifies the log object within CloudWatch Logs. The pointer is typically obtained from a previous
+        # query or filter operation.
+
+        @[JSON::Field(key: "logObjectPointer")]
+        getter log_object_pointer : String
+
+        # A boolean flag that indicates whether to unmask sensitive log data. When set to true, any masked or
+        # redacted data in the log object will be displayed in its original form. Default is false.
+
+        @[JSON::Field(key: "unmask")]
+        getter unmask : Bool?
+
+        def initialize(
+          @log_object_pointer : String,
+          @unmask : Bool? = nil
+        )
+        end
+      end
+
+      # The response from the GetLogObject operation.
+
+      struct GetLogObjectResponse
+        include JSON::Serializable
+
+        # A stream of structured log data returned by the GetLogObject operation. This stream contains log
+        # events with their associated metadata and extracted fields.
+
+        @[JSON::Field(key: "fieldStream")]
+        getter field_stream : Types::GetLogObjectResponseStream?
+
+        def initialize(
+          @field_stream : Types::GetLogObjectResponseStream? = nil
+        )
+        end
+      end
+
+      # A stream of structured log data returned by the GetLogObject operation. This stream contains log
+      # events with their associated metadata and extracted fields.
+
+      struct GetLogObjectResponseStream
+        include JSON::Serializable
+
+        # An internal error occurred during the streaming of log data. This exception is thrown when there's
+        # an issue with the internal streaming mechanism used by the GetLogObject operation.
+
+        @[JSON::Field(key: "InternalStreamingException")]
+        getter internal_streaming_exception : Types::InternalStreamingException?
+
+
+        @[JSON::Field(key: "fields")]
+        getter fields : Types::FieldsData?
+
+        def initialize(
+          @internal_streaming_exception : Types::InternalStreamingException? = nil,
+          @fields : Types::FieldsData? = nil
+        )
+        end
+      end
+
+
+      struct GetLogRecordRequest
+        include JSON::Serializable
+
+        # The pointer corresponding to the log event record you want to retrieve. You get this from the
+        # response of a GetQueryResults operation. In that response, the value of the @ptr field for a log
+        # event is the value to use as logRecordPointer to retrieve that complete log event record.
+
+        @[JSON::Field(key: "logRecordPointer")]
+        getter log_record_pointer : String
+
+        # Specify true to display the log event fields with all sensitive data unmasked and visible. The
+        # default is false . To use this operation with this parameter, you must be signed into an account
+        # with the logs:Unmask permission.
+
+        @[JSON::Field(key: "unmask")]
+        getter unmask : Bool?
+
+        def initialize(
+          @log_record_pointer : String,
+          @unmask : Bool? = nil
+        )
+        end
+      end
+
+
+      struct GetLogRecordResponse
+        include JSON::Serializable
+
+        # The requested log event, as a JSON string.
+
+        @[JSON::Field(key: "logRecord")]
+        getter log_record : Hash(String, String)?
+
+        def initialize(
+          @log_record : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct GetQueryResultsRequest
+        include JSON::Serializable
+
+        # The ID number of the query.
+
+        @[JSON::Field(key: "queryId")]
+        getter query_id : String
+
+        def initialize(
+          @query_id : String
+        )
+        end
+      end
+
+
+      struct GetQueryResultsResponse
+        include JSON::Serializable
+
+        # If you associated an KMS key with the CloudWatch Logs Insights query results in this account, this
+        # field displays the ARN of the key that's used to encrypt the query results when StartQuery stores
+        # them.
+
+        @[JSON::Field(key: "encryptionKey")]
+        getter encryption_key : String?
+
+        # The query language used for this query. For more information about the query languages that
+        # CloudWatch Logs supports, see Supported query languages .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        # The log events that matched the query criteria during the most recent time it ran. The results value
+        # is an array of arrays. Each log event is one object in the top-level array. Each of these log event
+        # objects is an array of field / value pairs.
+
+        @[JSON::Field(key: "results")]
+        getter results : Array(Array(Types::ResultField))?
+
+        # Includes the number of log events scanned by the query, the number of log events that matched the
+        # query criteria, and the total number of bytes in the scanned log events. These values reflect the
+        # full raw results of the query.
+
+        @[JSON::Field(key: "statistics")]
+        getter statistics : Types::QueryStatistics?
+
+        # The status of the most recent running of the query. Possible values are Cancelled , Complete ,
+        # Failed , Running , Scheduled , Timeout , and Unknown . Queries time out after 60 minutes of runtime.
+        # To avoid having your queries time out, reduce the time range being searched or partition your query
+        # into a number of queries.
+
+        @[JSON::Field(key: "status")]
+        getter status : String?
+
+        def initialize(
+          @encryption_key : String? = nil,
+          @query_language : String? = nil,
+          @results : Array(Array(Types::ResultField))? = nil,
+          @statistics : Types::QueryStatistics? = nil,
+          @status : String? = nil
+        )
+        end
+      end
+
+
+      struct GetScheduledQueryHistoryRequest
+        include JSON::Serializable
+
+        # The end time for the history query in Unix epoch format.
+
+        @[JSON::Field(key: "endTime")]
+        getter end_time : Int64
+
+        # The ARN or name of the scheduled query to retrieve history for.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String
+
+        # The start time for the history query in Unix epoch format.
+
+        @[JSON::Field(key: "startTime")]
+        getter start_time : Int64
+
+        # An array of execution statuses to filter the history results. Only executions with the specified
+        # statuses are returned.
+
+        @[JSON::Field(key: "executionStatuses")]
+        getter execution_statuses : Array(String)?
+
+        # The maximum number of history records to return. Valid range is 1 to 1000.
+
+        @[JSON::Field(key: "maxResults")]
+        getter max_results : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @end_time : Int64,
+          @identifier : String,
+          @start_time : Int64,
+          @execution_statuses : Array(String)? = nil,
+          @max_results : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct GetScheduledQueryHistoryResponse
+        include JSON::Serializable
+
+        # The name of the scheduled query.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The ARN of the scheduled query.
+
+        @[JSON::Field(key: "scheduledQueryArn")]
+        getter scheduled_query_arn : String?
+
+        # An array of execution history records for the scheduled query.
+
+        @[JSON::Field(key: "triggerHistory")]
+        getter trigger_history : Array(Types::TriggerHistoryRecord)?
+
+        def initialize(
+          @name : String? = nil,
+          @next_token : String? = nil,
+          @scheduled_query_arn : String? = nil,
+          @trigger_history : Array(Types::TriggerHistoryRecord)? = nil
+        )
+        end
+      end
+
+
+      struct GetScheduledQueryRequest
+        include JSON::Serializable
+
+        # The ARN or name of the scheduled query to retrieve.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String
+
+        def initialize(
+          @identifier : String
+        )
+        end
+      end
+
+
+      struct GetScheduledQueryResponse
+        include JSON::Serializable
+
+        # The timestamp when the scheduled query was created.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The description of the scheduled query.
+
+        @[JSON::Field(key: "description")]
+        getter description : String?
+
+        # Configuration for where query results are delivered.
+
+        @[JSON::Field(key: "destinationConfiguration")]
+        getter destination_configuration : Types::DestinationConfiguration?
+
+        # The ARN of the IAM role used to execute the query and deliver results.
+
+        @[JSON::Field(key: "executionRoleArn")]
+        getter execution_role_arn : String?
+
+        # The status of the most recent execution of the scheduled query.
+
+        @[JSON::Field(key: "lastExecutionStatus")]
+        getter last_execution_status : String?
+
+        # The timestamp when the scheduled query was last executed.
+
+        @[JSON::Field(key: "lastTriggeredTime")]
+        getter last_triggered_time : Int64?
+
+        # The timestamp when the scheduled query was last updated.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The log groups queried by the scheduled query.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # The name of the scheduled query.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # The query language used by the scheduled query.
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        # The query string executed by the scheduled query.
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String?
+
+        # The end time for the scheduled query in Unix epoch format.
+
+        @[JSON::Field(key: "scheduleEndTime")]
+        getter schedule_end_time : Int64?
+
+        # The cron expression that defines when the scheduled query runs.
+
+        @[JSON::Field(key: "scheduleExpression")]
+        getter schedule_expression : String?
+
+        # The start time for the scheduled query in Unix epoch format.
+
+        @[JSON::Field(key: "scheduleStartTime")]
+        getter schedule_start_time : Int64?
+
+        # The ARN of the scheduled query.
+
+        @[JSON::Field(key: "scheduledQueryArn")]
+        getter scheduled_query_arn : String?
+
+        # The time offset in seconds that defines the lookback period for the query.
+
+        @[JSON::Field(key: "startTimeOffset")]
+        getter start_time_offset : Int64?
+
+        # The current state of the scheduled query.
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        # The timezone used for evaluating the schedule expression.
+
+        @[JSON::Field(key: "timezone")]
+        getter timezone : String?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @description : String? = nil,
+          @destination_configuration : Types::DestinationConfiguration? = nil,
+          @execution_role_arn : String? = nil,
+          @last_execution_status : String? = nil,
+          @last_triggered_time : Int64? = nil,
+          @last_updated_time : Int64? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @name : String? = nil,
+          @query_language : String? = nil,
+          @query_string : String? = nil,
+          @schedule_end_time : Int64? = nil,
+          @schedule_expression : String? = nil,
+          @schedule_start_time : Int64? = nil,
+          @scheduled_query_arn : String? = nil,
+          @start_time_offset : Int64? = nil,
+          @state : String? = nil,
+          @timezone : String? = nil
+        )
+        end
+      end
+
+
+      struct GetTransformerRequest
+        include JSON::Serializable
+
+        # Specify either the name or ARN of the log group to return transformer information for. If the log
+        # group is in a source account and you are using a monitoring account, you must use the log group ARN.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        def initialize(
+          @log_group_identifier : String
+        )
+        end
+      end
+
+
+      struct GetTransformerResponse
+        include JSON::Serializable
+
+        # The creation time of the transformer, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The date and time when this transformer was most recently modified, expressed as the number of
+        # milliseconds after Jan 1, 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "lastModifiedTime")]
+        getter last_modified_time : Int64?
+
+        # The ARN of the log group that you specified in your request.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # This sructure contains the configuration of the requested transformer.
+
+        @[JSON::Field(key: "transformerConfig")]
+        getter transformer_config : Array(Types::Processor)?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @last_modified_time : Int64? = nil,
+          @log_group_identifier : String? = nil,
+          @transformer_config : Array(Types::Processor)? = nil
+        )
+        end
+      end
+
+      # This processor uses pattern matching to parse and structure unstructured data. This processor can
+      # also extract fields from log messages. For more information about this processor including examples,
+      # see grok in the CloudWatch Logs User Guide .
+
+      struct Grok
+        include JSON::Serializable
+
+        # The grok pattern to match against the log event. For a list of supported grok patterns, see
+        # Supported grok patterns .
+
+        @[JSON::Field(key: "match")]
+        getter match : String
+
+        # The path to the field in the log event that you want to parse. If you omit this value, the whole log
+        # message is parsed.
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @match : String,
+          @source : String? = nil
+        )
+        end
+      end
+
+      # A key-value pair that identifies how log groups are grouped in aggregate summaries.
+
+      struct GroupingIdentifier
+        include JSON::Serializable
+
+        # The key that identifies the grouping characteristic. The format of the key uses dot notation.
+        # Examples are, dataSource.Name , dataSource.Type , and dataSource.Format .
+
+        @[JSON::Field(key: "key")]
+        getter key : String?
+
+        # The value associated with the grouping characteristic. Examples are amazon_vpc , flow , and OCSF .
+
+        @[JSON::Field(key: "value")]
+        getter value : String?
+
+        def initialize(
+          @key : String? = nil,
+          @value : String? = nil
+        )
+        end
+      end
+
+      # An import job to move data from CloudTrail Event Data Store to CloudWatch.
+
+      struct Import
+        include JSON::Serializable
+
+        # The timestamp when the import task was created, expressed as the number of milliseconds after Jan 1,
+        # 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # Error message related to any failed imports
+
+        @[JSON::Field(key: "errorMessage")]
+        getter error_message : String?
+
+        # The ARN of the managed CloudWatch Logs log group where the events are being imported to.
+
+        @[JSON::Field(key: "importDestinationArn")]
+        getter import_destination_arn : String?
+
+        # The filter criteria used for this import task.
+
+        @[JSON::Field(key: "importFilter")]
+        getter import_filter : Types::ImportFilter?
+
+        # The unique identifier of the import task.
+
+        @[JSON::Field(key: "importId")]
+        getter import_id : String?
+
+        # The ARN of the CloudTrail Lake Event Data Store being imported from.
+
+        @[JSON::Field(key: "importSourceArn")]
+        getter import_source_arn : String?
+
+        # Statistics about the import progress
+
+        @[JSON::Field(key: "importStatistics")]
+        getter import_statistics : Types::ImportStatistics?
+
+        # The current status of the import task. Valid values are IN_PROGRESS, CANCELLED, COMPLETED and
+        # FAILED.
+
+        @[JSON::Field(key: "importStatus")]
+        getter import_status : String?
+
+        # The timestamp when the import task was last updated, expressed as the number of milliseconds after
+        # Jan 1, 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @error_message : String? = nil,
+          @import_destination_arn : String? = nil,
+          @import_filter : Types::ImportFilter? = nil,
+          @import_id : String? = nil,
+          @import_source_arn : String? = nil,
+          @import_statistics : Types::ImportStatistics? = nil,
+          @import_status : String? = nil,
+          @last_updated_time : Int64? = nil
+        )
+        end
+      end
+
+      # A collection of events being imported to CloudWatch
+
+      struct ImportBatch
+        include JSON::Serializable
+
+        # The unique identifier of the import batch.
+
+        @[JSON::Field(key: "batchId")]
+        getter batch_id : String
+
+        # The current status of the import batch. Valid values are IN_PROGRESS, CANCELLED, COMPLETED and
+        # FAILED.
+
+        @[JSON::Field(key: "status")]
+        getter status : String
+
+        # The error message if the batch failed to import. Only present when status is FAILED.
+
+        @[JSON::Field(key: "errorMessage")]
+        getter error_message : String?
+
+        def initialize(
+          @batch_id : String,
+          @status : String,
+          @error_message : String? = nil
+        )
+        end
+      end
+
+      # The filter criteria used for import tasks
+
+      struct ImportFilter
+        include JSON::Serializable
+
+        # The end of the time range for events to import, expressed as the number of milliseconds after Jan 1,
+        # 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "endEventTime")]
+        getter end_event_time : Int64?
+
+        # The start of the time range for events to import, expressed as the number of milliseconds after Jan
+        # 1, 1970 00:00:00 UTC.
+
+        @[JSON::Field(key: "startEventTime")]
+        getter start_event_time : Int64?
+
+        def initialize(
+          @end_event_time : Int64? = nil,
+          @start_event_time : Int64? = nil
+        )
+        end
+      end
+
+      # Statistics about the import progress
+
+      struct ImportStatistics
+        include JSON::Serializable
+
+        # The total number of bytes that have been imported to the managed log group.
+
+        @[JSON::Field(key: "bytesImported")]
+        getter bytes_imported : Int64?
+
+        def initialize(
+          @bytes_imported : Int64? = nil
+        )
+        end
+      end
+
+      # This structure contains information about one field index policy in this account.
+
+      struct IndexPolicy
+        include JSON::Serializable
+
+        # The date and time that this index policy was most recently updated.
+
+        @[JSON::Field(key: "lastUpdateTime")]
+        getter last_update_time : Int64?
+
+        # The ARN of the log group that this index policy applies to.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The policy document for this index policy, in JSON format.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String?
+
+        # The name of this policy. Responses about log group-level field index policies don't have this field,
+        # because those policies don't have names.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # This field indicates whether this is an account-level index policy or an index policy that applies
+        # only to a single log group.
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @last_update_time : Int64? = nil,
+          @log_group_identifier : String? = nil,
+          @policy_document : String? = nil,
+          @policy_name : String? = nil,
+          @source : String? = nil
+        )
+        end
+      end
+
+      # Represents a log event, which is a record of activity that was recorded by the application or
+      # resource being monitored.
+
+      struct InputLogEvent
+        include JSON::Serializable
+
+        # The raw event message. Each log event can be no larger than 1 MB.
+
+        @[JSON::Field(key: "message")]
+        getter message : String
+
+        # The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC
+        # .
+
+        @[JSON::Field(key: "timestamp")]
+        getter timestamp : Int64
+
+        def initialize(
+          @message : String,
+          @timestamp : Int64
+        )
+        end
+      end
+
+      # This structure contains information about the integration configuration. For an integration with
+      # OpenSearch Service, this includes information about OpenSearch Service resources such as the
+      # collection, the workspace, and policies. This structure is returned by a GetIntegration operation.
+
+      struct IntegrationDetails
+        include JSON::Serializable
+
+        # This structure contains complete information about one integration between CloudWatch Logs and
+        # OpenSearch Service.
+
+        @[JSON::Field(key: "openSearchIntegrationDetails")]
+        getter open_search_integration_details : Types::OpenSearchIntegrationDetails?
+
+        def initialize(
+          @open_search_integration_details : Types::OpenSearchIntegrationDetails? = nil
+        )
+        end
+      end
+
+      # This structure contains information about one CloudWatch Logs integration. This structure is
+      # returned by a ListIntegrations operation.
+
+      struct IntegrationSummary
+        include JSON::Serializable
+
+        # The name of this integration.
+
+        @[JSON::Field(key: "integrationName")]
+        getter integration_name : String?
+
+        # The current status of this integration.
+
+        @[JSON::Field(key: "integrationStatus")]
+        getter integration_status : String?
+
+        # The type of integration. Integrations with OpenSearch Service have the type OPENSEARCH .
+
+        @[JSON::Field(key: "integrationType")]
+        getter integration_type : String?
+
+        def initialize(
+          @integration_name : String? = nil,
+          @integration_status : String? = nil,
+          @integration_type : String? = nil
+        )
+        end
+      end
+
+      # An internal server error occurred while processing the request. This exception is returned when the
+      # service encounters an unexpected condition that prevents it from fulfilling the request.
+
+      struct InternalServerException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # An internal error occurred during the streaming of log data. This exception is thrown when there's
+      # an issue with the internal streaming mechanism used by the GetLogObject operation.
+
+      struct InternalStreamingException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        def initialize(
+          @message : String? = nil
+        )
+        end
+      end
+
+      # The operation is not valid on the specified resource.
+
+      struct InvalidOperationException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # A parameter is specified incorrectly.
+
+      struct InvalidParameterException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # The sequence token is not valid. You can get the correct sequence token in the expectedSequenceToken
+      # field in the InvalidSequenceTokenException message. PutLogEvents actions are now always accepted and
+      # never return InvalidSequenceTokenException regardless of receiving an invalid sequence token.
+
+      struct InvalidSequenceTokenException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "expectedSequenceToken")]
+        getter expected_sequence_token : String?
+
+        def initialize(
+          @expected_sequence_token : String? = nil
+        )
+        end
+      end
+
+      # You have reached the maximum number of resources that can be created.
+
+      struct LimitExceededException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct ListAggregateLogGroupSummariesRequest
+        include JSON::Serializable
+
+        # Specifies how to group the log groups in the summary.
+
+        @[JSON::Field(key: "groupBy")]
+        getter group_by : String
+
+        # When includeLinkedAccounts is set to true , use this parameter to specify the list of accounts to
+        # search. You can specify as many as 20 account IDs in the array.
+
+        @[JSON::Field(key: "accountIdentifiers")]
+        getter account_identifiers : Array(String)?
+
+        # Filters the results by data source characteristics to include only log groups associated with the
+        # specified data sources.
+
+        @[JSON::Field(key: "dataSources")]
+        getter data_sources : Array(Types::DataSourceFilter)?
+
+        # If you are using a monitoring account, set this to true to have the operation return log groups in
+        # the accounts listed in accountIdentifiers . If this parameter is set to true and accountIdentifiers
+        # contains a null value, the operation returns all log groups in the monitoring account and all log
+        # groups in all source accounts that are linked to the monitoring account. The default for this
+        # parameter is false .
+
+        @[JSON::Field(key: "includeLinkedAccounts")]
+        getter include_linked_accounts : Bool?
+
+        # The maximum number of aggregated summaries to return. If you omit this parameter, the default is up
+        # to 50 aggregated summaries.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Filters the results by log group class to include only log groups of the specified class.
+
+        @[JSON::Field(key: "logGroupClass")]
+        getter log_group_class : String?
+
+        # Use this parameter to limit the returned log groups to only those with names that match the pattern
+        # that you specify. This parameter is a regular expression that can match prefixes and substrings, and
+        # supports wildcard matching and matching multiple patterns, as in the following examples. Use ^ to
+        # match log group names by prefix. For a substring match, specify the string to match. All matches are
+        # case sensitive To match multiple patterns, separate them with a | as in the example
+        # ^/aws/lambda|discovery You can specify as many as five different regular expression patterns in this
+        # field, each of which must be between 3 and 24 characters. You can include the ^ symbol as many as
+        # five times, and include the | symbol as many as four times.
+
+        @[JSON::Field(key: "logGroupNamePattern")]
+        getter log_group_name_pattern : String?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @group_by : String,
+          @account_identifiers : Array(String)? = nil,
+          @data_sources : Array(Types::DataSourceFilter)? = nil,
+          @include_linked_accounts : Bool? = nil,
+          @limit : Int32? = nil,
+          @log_group_class : String? = nil,
+          @log_group_name_pattern : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListAggregateLogGroupSummariesResponse
+        include JSON::Serializable
+
+        # The list of aggregate log group summaries grouped by the specified data source characteristics.
+
+        @[JSON::Field(key: "aggregateLogGroupSummaries")]
+        getter aggregate_log_group_summaries : Array(Types::AggregateLogGroupSummary)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @aggregate_log_group_summaries : Array(Types::AggregateLogGroupSummary)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListAnomaliesRequest
+        include JSON::Serializable
+
+        # Use this to optionally limit the results to only the anomalies found by a certain anomaly detector.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String?
+
+        # The maximum number of items to return. If you don't specify a value, the default maximum value of 50
+        # items is used.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # You can specify this parameter if you want to the operation to return only anomalies that are
+        # currently either suppressed or unsuppressed.
+
+        @[JSON::Field(key: "suppressionState")]
+        getter suppression_state : String?
+
+        def initialize(
+          @anomaly_detector_arn : String? = nil,
+          @limit : Int32? = nil,
+          @next_token : String? = nil,
+          @suppression_state : String? = nil
+        )
+        end
+      end
+
+
+      struct ListAnomaliesResponse
+        include JSON::Serializable
+
+        # An array of structures, where each structure contains information about one anomaly that a log
+        # anomaly detector has found.
+
+        @[JSON::Field(key: "anomalies")]
+        getter anomalies : Array(Types::Anomaly)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @anomalies : Array(Types::Anomaly)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListIntegrationsRequest
+        include JSON::Serializable
+
+        # To limit the results to integrations that start with a certain name prefix, specify that name prefix
+        # here.
+
+        @[JSON::Field(key: "integrationNamePrefix")]
+        getter integration_name_prefix : String?
+
+        # To limit the results to integrations with a certain status, specify that status here.
+
+        @[JSON::Field(key: "integrationStatus")]
+        getter integration_status : String?
+
+        # To limit the results to integrations of a certain type, specify that type here.
+
+        @[JSON::Field(key: "integrationType")]
+        getter integration_type : String?
+
+        def initialize(
+          @integration_name_prefix : String? = nil,
+          @integration_status : String? = nil,
+          @integration_type : String? = nil
+        )
+        end
+      end
+
+
+      struct ListIntegrationsResponse
+        include JSON::Serializable
+
+        # An array, where each object in the array contains information about one CloudWatch Logs integration
+        # in this account.
+
+        @[JSON::Field(key: "integrationSummaries")]
+        getter integration_summaries : Array(Types::IntegrationSummary)?
+
+        def initialize(
+          @integration_summaries : Array(Types::IntegrationSummary)? = nil
+        )
+        end
+      end
+
+
+      struct ListLogAnomalyDetectorsRequest
+        include JSON::Serializable
+
+        # Use this to optionally filter the results to only include anomaly detectors that are associated with
+        # the specified log group.
+
+        @[JSON::Field(key: "filterLogGroupArn")]
+        getter filter_log_group_arn : String?
+
+        # The maximum number of items to return. If you don't specify a value, the default maximum value of 50
+        # items is used.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @filter_log_group_arn : String? = nil,
+          @limit : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLogAnomalyDetectorsResponse
+        include JSON::Serializable
+
+        # An array of structures, where each structure in the array contains information about one anomaly
+        # detector.
+
+        @[JSON::Field(key: "anomalyDetectors")]
+        getter anomaly_detectors : Array(Types::AnomalyDetector)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @anomaly_detectors : Array(Types::AnomalyDetector)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLogGroupsForQueryRequest
+        include JSON::Serializable
+
+        # The ID of the query to use. This query ID is from the response to your StartQuery operation.
+
+        @[JSON::Field(key: "queryId")]
+        getter query_id : String
+
+        # Limits the number of returned log groups to the specified number.
+
+        @[JSON::Field(key: "maxResults")]
+        getter max_results : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @query_id : String,
+          @max_results : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLogGroupsForQueryResponse
+        include JSON::Serializable
+
+        # An array of the names and ARNs of the log groups that were processed in the query.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_group_identifiers : Array(String)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLogGroupsRequest
+        include JSON::Serializable
+
+        # When includeLinkedAccounts is set to true , use this parameter to specify the list of accounts to
+        # search. You can specify as many as 20 account IDs in the array.
+
+        @[JSON::Field(key: "accountIdentifiers")]
+        getter account_identifiers : Array(String)?
+
+        # An array of data source filters to filter log groups by their associated data sources. You can
+        # filter by data source name, type, or both. Multiple filters within the same dimension are combined
+        # with OR logic, while filters across different dimensions are combined with AND logic.
+
+        @[JSON::Field(key: "dataSources")]
+        getter data_sources : Array(Types::DataSourceFilter)?
+
+        # An array of field index names to filter log groups that have specific field indexes. Only log groups
+        # containing all specified field indexes are returned. You can specify 1 to 20 field index names, each
+        # with 1 to 512 characters.
+
+        @[JSON::Field(key: "fieldIndexNames")]
+        getter field_index_names : Array(String)?
+
+        # If you are using a monitoring account, set this to true to have the operation return log groups in
+        # the accounts listed in accountIdentifiers . If this parameter is set to true and accountIdentifiers
+        # contains a null value, the operation returns all log groups in the monitoring account and all log
+        # groups in all source accounts that are linked to the monitoring account. The default for this
+        # parameter is false .
+
+        @[JSON::Field(key: "includeLinkedAccounts")]
+        getter include_linked_accounts : Bool?
+
+        # The maximum number of log groups to return. If you omit this parameter, the default is up to 50 log
+        # groups.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # Use this parameter to limit the results to only those log groups in the specified log group class.
+        # If you omit this parameter, log groups of all classes can be returned.
+
+        @[JSON::Field(key: "logGroupClass")]
+        getter log_group_class : String?
+
+        # Use this parameter to limit the returned log groups to only those with names that match the pattern
+        # that you specify. This parameter is a regular expression that can match prefixes and substrings, and
+        # supports wildcard matching and matching multiple patterns, as in the following examples. Use ^ to
+        # match log group names by prefix. For a substring match, specify the string to match. All matches are
+        # case sensitive To match multiple patterns, separate them with a | as in the example
+        # ^/aws/lambda|discovery You can specify as many as five different regular expression patterns in this
+        # field, each of which must be between 3 and 24 characters. You can include the ^ symbol as many as
+        # five times, and include the | symbol as many as four times.
+
+        @[JSON::Field(key: "logGroupNamePattern")]
+        getter log_group_name_pattern : String?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @account_identifiers : Array(String)? = nil,
+          @data_sources : Array(Types::DataSourceFilter)? = nil,
+          @field_index_names : Array(String)? = nil,
+          @include_linked_accounts : Bool? = nil,
+          @limit : Int32? = nil,
+          @log_group_class : String? = nil,
+          @log_group_name_pattern : String? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListLogGroupsResponse
+        include JSON::Serializable
+
+        # An array of structures, where each structure contains the information about one log group.
+
+        @[JSON::Field(key: "logGroups")]
+        getter log_groups : Array(Types::LogGroupSummary)?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @log_groups : Array(Types::LogGroupSummary)? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListScheduledQueriesRequest
+        include JSON::Serializable
+
+        # The maximum number of scheduled queries to return. Valid range is 1 to 1000.
+
+        @[JSON::Field(key: "maxResults")]
+        getter max_results : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # Filter scheduled queries by state. Valid values are ENABLED and DISABLED . If not specified, all
+        # scheduled queries are returned.
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        def initialize(
+          @max_results : Int32? = nil,
+          @next_token : String? = nil,
+          @state : String? = nil
+        )
+        end
+      end
+
+
+      struct ListScheduledQueriesResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # An array of scheduled query summary information.
+
+        @[JSON::Field(key: "scheduledQueries")]
+        getter scheduled_queries : Array(Types::ScheduledQuerySummary)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @scheduled_queries : Array(Types::ScheduledQuerySummary)? = nil
+        )
+        end
+      end
+
+
+      struct ListSourcesForS3TableIntegrationRequest
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) of the S3 Table Integration to list associations for.
+
+        @[JSON::Field(key: "integrationArn")]
+        getter integration_arn : String
+
+        # The maximum number of associations to return in a single call. Valid range is 1 to 100.
+
+        @[JSON::Field(key: "maxResults")]
+        getter max_results : Int32?
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        def initialize(
+          @integration_arn : String,
+          @max_results : Int32? = nil,
+          @next_token : String? = nil
+        )
+        end
+      end
+
+
+      struct ListSourcesForS3TableIntegrationResponse
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "nextToken")]
+        getter next_token : String?
+
+        # The list of data source associations for the specified S3 Table Integration.
+
+        @[JSON::Field(key: "sources")]
+        getter sources : Array(Types::S3TableIntegrationSource)?
+
+        def initialize(
+          @next_token : String? = nil,
+          @sources : Array(Types::S3TableIntegrationSource)? = nil
+        )
+        end
+      end
+
+
+      struct ListTagsForResourceRequest
+        include JSON::Serializable
+
+        # The ARN of the resource that you want to view tags for. The ARN format of a log group is
+        # arn:aws:logs: Region : account-id :log-group: log-group-name The ARN format of a destination is
+        # arn:aws:logs: Region : account-id :destination: destination-name For more information about ARN
+        # format, see CloudWatch Logs resources and operations .
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String
+
+        def initialize(
+          @resource_arn : String
+        )
+        end
+      end
+
+
+      struct ListTagsForResourceResponse
+        include JSON::Serializable
+
+        # The list of tags associated with the requested resource.&gt;
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct ListTagsLogGroupRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        def initialize(
+          @log_group_name : String
+        )
+        end
+      end
+
+
+      struct ListTagsLogGroupResponse
+        include JSON::Serializable
+
+        # The tags for the log group.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # This processor takes a list of objects that contain key fields, and converts them into a map of
+      # target keys. For more information about this processor including examples, see listToMap in the
+      # CloudWatch Logs User Guide .
+
+      struct ListToMap
+        include JSON::Serializable
+
+        # The key of the field to be extracted as keys in the generated map
+
+        @[JSON::Field(key: "key")]
+        getter key : String
+
+        # The key in the log event that has a list of objects that will be converted to a map.
+
+        @[JSON::Field(key: "source")]
+        getter source : String
+
+        # A Boolean value to indicate whether the list will be flattened into single items. Specify true to
+        # flatten the list. The default is false
+
+        @[JSON::Field(key: "flatten")]
+        getter flatten : Bool?
+
+        # If you set flatten to true , use flattenedElement to specify which element, first or last , to keep.
+        # You must specify this parameter if flatten is true
+
+        @[JSON::Field(key: "flattenedElement")]
+        getter flattened_element : String?
+
+        # The key of the field that will hold the generated map
+
+        @[JSON::Field(key: "target")]
+        getter target : String?
+
+        # If this is specified, the values that you specify in this parameter will be extracted from the
+        # source objects and put into the values of the generated map. Otherwise, original objects in the
+        # source list will be put into the values of the generated map.
+
+        @[JSON::Field(key: "valueKey")]
+        getter value_key : String?
+
+        def initialize(
+          @key : String,
+          @source : String,
+          @flatten : Bool? = nil,
+          @flattened_element : String? = nil,
+          @target : String? = nil,
+          @value_key : String? = nil
+        )
+        end
+      end
+
+      # This object contains the information for one log event returned in a Live Tail stream.
+
+      struct LiveTailSessionLogEvent
+        include JSON::Serializable
+
+        # The timestamp specifying when this log event was ingested into the log group.
+
+        @[JSON::Field(key: "ingestionTime")]
+        getter ingestion_time : Int64?
+
+        # The name or ARN of the log group that ingested this log event.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The name of the log stream that ingested this log event.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String?
+
+        # The log event message text.
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        # The timestamp specifying when this log event was created.
+
+        @[JSON::Field(key: "timestamp")]
+        getter timestamp : Int64?
+
+        def initialize(
+          @ingestion_time : Int64? = nil,
+          @log_group_identifier : String? = nil,
+          @log_stream_name : String? = nil,
+          @message : String? = nil,
+          @timestamp : Int64? = nil
+        )
+        end
+      end
+
+      # This object contains the metadata for one LiveTailSessionUpdate structure. It indicates whether that
+      # update includes only a sample of 500 log events out of a larger number of ingested log events, or if
+      # it contains all of the matching log events ingested during that second of time.
+
+      struct LiveTailSessionMetadata
+        include JSON::Serializable
+
+        # If this is true , then more than 500 log events matched the request for this update, and the
+        # sessionResults includes a sample of 500 of those events. If this is false , then 500 or fewer log
+        # events matched the request for this update, so no sampling was necessary. In this case, the
+        # sessionResults array includes all log events that matched your request during this time.
+
+        @[JSON::Field(key: "sampled")]
+        getter sampled : Bool?
+
+        def initialize(
+          @sampled : Bool? = nil
+        )
+        end
+      end
+
+      # This object contains information about this Live Tail session, including the log groups included and
+      # the log stream filters, if any.
+
+      struct LiveTailSessionStart
+        include JSON::Serializable
+
+        # An optional pattern to filter the results to include only log events that match the pattern. For
+        # example, a filter pattern of error 404 displays only log events that include both error and 404 .
+        # For more information about filter pattern syntax, see Filter and Pattern Syntax .
+
+        @[JSON::Field(key: "logEventFilterPattern")]
+        getter log_event_filter_pattern : String?
+
+        # An array of the names and ARNs of the log groups included in this Live Tail session.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # If your StartLiveTail operation request included a logStreamNamePrefixes parameter that filtered the
+        # session to only include log streams that have names that start with certain prefixes, these prefixes
+        # are listed here.
+
+        @[JSON::Field(key: "logStreamNamePrefixes")]
+        getter log_stream_name_prefixes : Array(String)?
+
+        # If your StartLiveTail operation request included a logStreamNames parameter that filtered the
+        # session to only include certain log streams, these streams are listed here.
+
+        @[JSON::Field(key: "logStreamNames")]
+        getter log_stream_names : Array(String)?
+
+        # The unique ID generated by CloudWatch Logs to identify this Live Tail session request.
+
+        @[JSON::Field(key: "requestId")]
+        getter request_id : String?
+
+        # The unique ID generated by CloudWatch Logs to identify this Live Tail session.
+
+        @[JSON::Field(key: "sessionId")]
+        getter session_id : String?
+
+        def initialize(
+          @log_event_filter_pattern : String? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @log_stream_name_prefixes : Array(String)? = nil,
+          @log_stream_names : Array(String)? = nil,
+          @request_id : String? = nil,
+          @session_id : String? = nil
+        )
+        end
+      end
+
+      # This object contains the log events and metadata for a Live Tail session.
+
+      struct LiveTailSessionUpdate
+        include JSON::Serializable
+
+        # This object contains the session metadata for a Live Tail session.
+
+        @[JSON::Field(key: "sessionMetadata")]
+        getter session_metadata : Types::LiveTailSessionMetadata?
+
+        # An array, where each member of the array includes the information for one log event in the Live Tail
+        # session. A sessionResults array can include as many as 500 log events. If the number of log events
+        # matching the request exceeds 500 per second, the log events are sampled down to 500 log events to be
+        # included in each sessionUpdate structure.
+
+        @[JSON::Field(key: "sessionResults")]
+        getter session_results : Array(Types::LiveTailSessionLogEvent)?
+
+        def initialize(
+          @session_metadata : Types::LiveTailSessionMetadata? = nil,
+          @session_results : Array(Types::LiveTailSessionLogEvent)? = nil
+        )
+        end
+      end
+
+      # This structure contains the information for one sample log event that is associated with an anomaly
+      # found by a log anomaly detector.
+
+      struct LogEvent
+        include JSON::Serializable
+
+        # The message content of the log event.
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        # The time stamp of the log event.
+
+        @[JSON::Field(key: "timestamp")]
+        getter timestamp : Int64?
+
+        def initialize(
+          @message : String? = nil,
+          @timestamp : Int64? = nil
+        )
+        end
+      end
+
+      # Defines the data type structure for a log field, including the type, element information, and nested
+      # fields for complex types.
+
+      struct LogFieldType
+        include JSON::Serializable
+
+        # For array or collection types, specifies the element type information.
+
+        @[JSON::Field(key: "element")]
+        getter element : Types::LogFieldType?
+
+        # For complex types, contains the nested field definitions.
+
+        @[JSON::Field(key: "fields")]
+        getter fields : Array(Types::LogFieldsListItem)?
+
+        # The data type of the log field.
+
+        @[JSON::Field(key: "type")]
+        getter type : String?
+
+        def initialize(
+          @element : Types::LogFieldType? = nil,
+          @fields : Array(Types::LogFieldsListItem)? = nil,
+          @type : String? = nil
+        )
+        end
+      end
+
+      # Represents a log field with its name and data type information for a specific data source.
+
+      struct LogFieldsListItem
+        include JSON::Serializable
+
+        # The name of the log field.
+
+        @[JSON::Field(key: "logFieldName")]
+        getter log_field_name : String?
+
+        # The data type information for the log field.
+
+        @[JSON::Field(key: "logFieldType")]
+        getter log_field_type : Types::LogFieldType?
+
+        def initialize(
+          @log_field_name : String? = nil,
+          @log_field_type : Types::LogFieldType? = nil
+        )
+        end
+      end
+
+      # Represents a log group.
+
+      struct LogGroup
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) of the log group. This version of the ARN includes a trailing :*
+        # after the log group name. Use this version to refer to the ARN in IAM policies when specifying
+        # permissions for most API actions. The exception is when specifying permissions for TagResource ,
+        # UntagResource , and ListTagsForResource . The permissions for those three actions require the ARN
+        # version that doesn't include a trailing :* .
+
+        @[JSON::Field(key: "arn")]
+        getter arn : String?
+
+        # The creation time of the log group, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # Displays whether this log group has a protection policy, or whether it had one in the past. For more
+        # information, see PutDataProtectionPolicy .
+
+        @[JSON::Field(key: "dataProtectionStatus")]
+        getter data_protection_status : String?
+
+        # Indicates whether deletion protection is enabled for this log group. When enabled, deletion
+        # protection blocks all deletion operations until it is explicitly disabled.
+
+        @[JSON::Field(key: "deletionProtectionEnabled")]
+        getter deletion_protection_enabled : Bool?
+
+        # Displays all the properties that this log group has inherited from account-level settings.
+
+        @[JSON::Field(key: "inheritedProperties")]
+        getter inherited_properties : Array(String)?
+
+        # The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data.
+
+        @[JSON::Field(key: "kmsKeyId")]
+        getter kms_key_id : String?
+
+        # The Amazon Resource Name (ARN) of the log group. This version of the ARN doesn't include a trailing
+        # :* after the log group name. Use this version to refer to the ARN in the following situations: In
+        # the logGroupIdentifier input field in many CloudWatch Logs APIs. In the resourceArn field in tagging
+        # APIs In IAM policies, when specifying permissions for TagResource , UntagResource , and
+        # ListTagsForResource .
+
+        @[JSON::Field(key: "logGroupArn")]
+        getter log_group_arn : String?
+
+        # This specifies the log group class for this log group. There are three classes: The Standard log
+        # class supports all CloudWatch Logs features. The Infrequent Access log class supports a subset of
+        # CloudWatch Logs features and incurs lower costs. Use the Delivery log class only for delivering
+        # Lambda logs to store in Amazon S3 or Amazon Data Firehose. Log events in log groups in the Delivery
+        # class are kept in CloudWatch Logs for only one day. This log class doesn't offer rich CloudWatch
+        # Logs capabilities such as CloudWatch Logs Insights queries. For details about the features supported
+        # by the Standard and Infrequent Access classes, see Log classes
+
+        @[JSON::Field(key: "logGroupClass")]
+        getter log_group_class : String?
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The number of metric filters.
+
+        @[JSON::Field(key: "metricFilterCount")]
+        getter metric_filter_count : Int32?
+
+
+        @[JSON::Field(key: "retentionInDays")]
+        getter retention_in_days : Int32?
+
+        # The number of bytes stored.
+
+        @[JSON::Field(key: "storedBytes")]
+        getter stored_bytes : Int64?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_time : Int64? = nil,
+          @data_protection_status : String? = nil,
+          @deletion_protection_enabled : Bool? = nil,
+          @inherited_properties : Array(String)? = nil,
+          @kms_key_id : String? = nil,
+          @log_group_arn : String? = nil,
+          @log_group_class : String? = nil,
+          @log_group_name : String? = nil,
+          @metric_filter_count : Int32? = nil,
+          @retention_in_days : Int32? = nil,
+          @stored_bytes : Int64? = nil
+        )
+        end
+      end
+
+      # The fields contained in log events found by a GetLogGroupFields operation, along with the percentage
+      # of queried log events in which each field appears.
+
+      struct LogGroupField
+        include JSON::Serializable
+
+        # The name of a log field.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # The percentage of log events queried that contained the field.
+
+        @[JSON::Field(key: "percent")]
+        getter percent : Int32?
+
+        def initialize(
+          @name : String? = nil,
+          @percent : Int32? = nil
+        )
+        end
+      end
+
+      # This structure contains information about one log group in your account.
+
+      struct LogGroupSummary
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) of the log group.
+
+        @[JSON::Field(key: "logGroupArn")]
+        getter log_group_arn : String?
+
+        # The log group class for this log group. For details about the features supported by each log group
+        # class, see Log classes
+
+        @[JSON::Field(key: "logGroupClass")]
+        getter log_group_class : String?
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        def initialize(
+          @log_group_arn : String? = nil,
+          @log_group_class : String? = nil,
+          @log_group_name : String? = nil
+        )
+        end
+      end
+
+      # Represents a log stream, which is a sequence of log events from a single emitter of logs.
+
+      struct LogStream
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) of the log stream.
+
+        @[JSON::Field(key: "arn")]
+        getter arn : String?
+
+        # The creation time of the stream, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
+        # UTC .
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The time of the first event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC
+        # .
+
+        @[JSON::Field(key: "firstEventTimestamp")]
+        getter first_event_timestamp : Int64?
+
+        # The time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed
+        # as the number of milliseconds after Jan 1, 1970 00:00:00 UTC . The lastEventTime value updates on an
+        # eventual consistency basis. It typically updates in less than an hour from ingestion, but in rare
+        # situations might take longer.
+
+        @[JSON::Field(key: "lastEventTimestamp")]
+        getter last_event_timestamp : Int64?
+
+        # The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC The
+        # lastIngestionTime value updates on an eventual consistency basis. It typically updates in less than
+        # an hour after ingestion, but in rare situations might take longer.
+
+        @[JSON::Field(key: "lastIngestionTime")]
+        getter last_ingestion_time : Int64?
+
+        # The name of the log stream.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String?
+
+        # The number of bytes stored. Important: As of June 17, 2019, this parameter is no longer supported
+        # for log streams, and is always reported as zero. This change applies only to log streams. The
+        # storedBytes parameter for log groups is not affected.
+
+        @[JSON::Field(key: "storedBytes")]
+        getter stored_bytes : Int64?
+
+        # The sequence token. The sequence token is now ignored in PutLogEvents actions. PutLogEvents actions
+        # are always accepted regardless of receiving an invalid sequence token. You don't need to obtain
+        # uploadSequenceToken to use a PutLogEvents action.
+
+        @[JSON::Field(key: "uploadSequenceToken")]
+        getter upload_sequence_token : String?
+
+        def initialize(
+          @arn : String? = nil,
+          @creation_time : Int64? = nil,
+          @first_event_timestamp : Int64? = nil,
+          @last_event_timestamp : Int64? = nil,
+          @last_ingestion_time : Int64? = nil,
+          @log_stream_name : String? = nil,
+          @stored_bytes : Int64? = nil,
+          @upload_sequence_token : String? = nil
+        )
+        end
+      end
+
+      # This processor converts a string to lowercase. For more information about this processor including
+      # examples, see lowerCaseString in the CloudWatch Logs User Guide .
+
+      struct LowerCaseString
+        include JSON::Serializable
+
+        # The array caontaining the keys of the fields to convert to lowercase.
+
+        @[JSON::Field(key: "withKeys")]
+        getter with_keys : Array(String)
+
+        def initialize(
+          @with_keys : Array(String)
+        )
+        end
+      end
+
+      # The query string is not valid. Details about this error are displayed in a QueryCompileError object.
+      # For more information, see QueryCompileError . For more information about valid query syntax, see
+      # CloudWatch Logs Insights Query Syntax .
+
+      struct MalformedQueryException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "queryCompileError")]
+        getter query_compile_error : Types::QueryCompileError?
+
+        def initialize(
+          @query_compile_error : Types::QueryCompileError? = nil
+        )
+        end
+      end
+
+      # Metric filters express how CloudWatch Logs would extract metric observations from ingested log
+      # events and transform them into metric data in a CloudWatch metric.
+
+      struct MetricFilter
+        include JSON::Serializable
+
+        # This parameter is valid only for log groups that have an active log transformer. For more
+        # information about log transformers, see PutTransformer . If this value is true , the metric filter
+        # is applied on the transformed version of the log events instead of the original ingested log events.
+
+        @[JSON::Field(key: "applyOnTransformedLogs")]
+        getter apply_on_transformed_logs : Bool?
+
+        # The creation time of the metric filter, expressed as the number of milliseconds after Jan 1, 1970
+        # 00:00:00 UTC .
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The list of system fields that are emitted as additional dimensions in the generated metrics.
+        # Returns the emitSystemFieldDimensions value if it was specified when the metric filter was created.
+
+        @[JSON::Field(key: "emitSystemFieldDimensions")]
+        getter emit_system_field_dimensions : Array(String)?
+
+        # The filter expression that specifies which log events are processed by this metric filter based on
+        # system fields. Returns the fieldSelectionCriteria value if it was specified when the metric filter
+        # was created.
+
+        @[JSON::Field(key: "fieldSelectionCriteria")]
+        getter field_selection_criteria : String?
+
+        # The name of the metric filter.
+
+        @[JSON::Field(key: "filterName")]
+        getter filter_name : String?
+
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The metric transformations.
+
+        @[JSON::Field(key: "metricTransformations")]
+        getter metric_transformations : Array(Types::MetricTransformation)?
+
+        def initialize(
+          @apply_on_transformed_logs : Bool? = nil,
+          @creation_time : Int64? = nil,
+          @emit_system_field_dimensions : Array(String)? = nil,
+          @field_selection_criteria : String? = nil,
+          @filter_name : String? = nil,
+          @filter_pattern : String? = nil,
+          @log_group_name : String? = nil,
+          @metric_transformations : Array(Types::MetricTransformation)? = nil
+        )
+        end
+      end
+
+      # Represents a matched event.
+
+      struct MetricFilterMatchRecord
+        include JSON::Serializable
+
+        # The raw event data.
+
+        @[JSON::Field(key: "eventMessage")]
+        getter event_message : String?
+
+        # The event number.
+
+        @[JSON::Field(key: "eventNumber")]
+        getter event_number : Int64?
+
+        # The values extracted from the event data by the filter.
+
+        @[JSON::Field(key: "extractedValues")]
+        getter extracted_values : Hash(String, String)?
+
+        def initialize(
+          @event_message : String? = nil,
+          @event_number : Int64? = nil,
+          @extracted_values : Hash(String, String)? = nil
+        )
+        end
+      end
+
+      # Indicates how to transform ingested log events to metric data in a CloudWatch metric.
+
+      struct MetricTransformation
+        include JSON::Serializable
+
+        # The name of the CloudWatch metric.
+
+        @[JSON::Field(key: "metricName")]
+        getter metric_name : String
+
+        # A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics
+        # that are similar. For more information, see Namespaces .
+
+        @[JSON::Field(key: "metricNamespace")]
+        getter metric_namespace : String
+
+        # The value to publish to the CloudWatch metric when a filter pattern matches a log event.
+
+        @[JSON::Field(key: "metricValue")]
+        getter metric_value : String
+
+        # (Optional) The value to emit when a filter pattern does not match a log event. This value can be
+        # null.
+
+        @[JSON::Field(key: "defaultValue")]
+        getter default_value : Float64?
+
+        # The fields to use as dimensions for the metric. One metric filter can include as many as three
+        # dimensions. Metrics extracted from log events are charged as custom metrics. To prevent unexpected
+        # high charges, do not specify high-cardinality fields such as IPAddress or requestID as dimensions.
+        # Each different value found for a dimension is treated as a separate metric and accrues charges as a
+        # separate custom metric. CloudWatch Logs disables a metric filter if it generates 1000 different
+        # name/value pairs for your specified dimensions within a certain amount of time. This helps to
+        # prevent accidental high charges. You can also set up a billing alarm to alert you if your charges
+        # are higher than expected. For more information, see Creating a Billing Alarm to Monitor Your
+        # Estimated Amazon Web Services Charges .
+
+        @[JSON::Field(key: "dimensions")]
+        getter dimensions : Hash(String, String)?
+
+        # The unit to assign to the metric. If you omit this, the unit is set as None .
+
+        @[JSON::Field(key: "unit")]
+        getter unit : String?
+
+        def initialize(
+          @metric_name : String,
+          @metric_namespace : String,
+          @metric_value : String,
+          @default_value : Float64? = nil,
+          @dimensions : Hash(String, String)? = nil,
+          @unit : String? = nil
+        )
+        end
+      end
+
+      # This object defines one key that will be moved with the moveKey processor.
+
+      struct MoveKeyEntry
+        include JSON::Serializable
+
+        # The key to move.
+
+        @[JSON::Field(key: "source")]
+        getter source : String
+
+        # The key to move to.
+
+        @[JSON::Field(key: "target")]
+        getter target : String
+
+        # Specifies whether to overwrite the value if the destination key already exists. If you omit this,
+        # the default is false .
+
+        @[JSON::Field(key: "overwriteIfExists")]
+        getter overwrite_if_exists : Bool?
+
+        def initialize(
+          @source : String,
+          @target : String,
+          @overwrite_if_exists : Bool? = nil
+        )
+        end
+      end
+
+      # This processor moves a key from one field to another. The original key is deleted. For more
+      # information about this processor including examples, see moveKeys in the CloudWatch Logs User Guide
+      # .
+
+      struct MoveKeys
+        include JSON::Serializable
+
+        # An array of objects, where each object contains the information about one key to move.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::MoveKeyEntry)
+
+        def initialize(
+          @entries : Array(Types::MoveKeyEntry)
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service application used for this
+      # integration. An OpenSearch Service application is the web application created by the integration
+      # with CloudWatch Logs. It hosts the vended logs dashboards.
+
+      struct OpenSearchApplication
+        include JSON::Serializable
+
+        # The Amazon Resource Name (ARN) of the application.
+
+        @[JSON::Field(key: "applicationArn")]
+        getter application_arn : String?
+
+        # The endpoint of the application.
+
+        @[JSON::Field(key: "applicationEndpoint")]
+        getter application_endpoint : String?
+
+        # The ID of the application.
+
+        @[JSON::Field(key: "applicationId")]
+        getter application_id : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @application_arn : String? = nil,
+          @application_endpoint : String? = nil,
+          @application_id : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service collection used for this
+      # integration. An OpenSearch Service collection is a logical grouping of one or more indexes that
+      # represent an analytics workload. For more information, see Creating and managing OpenSearch Service
+      # Serverless collections .
+
+      struct OpenSearchCollection
+        include JSON::Serializable
+
+        # The ARN of the collection.
+
+        @[JSON::Field(key: "collectionArn")]
+        getter collection_arn : String?
+
+        # The endpoint of the collection.
+
+        @[JSON::Field(key: "collectionEndpoint")]
+        getter collection_endpoint : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @collection_arn : String? = nil,
+          @collection_endpoint : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service data access policy used for this
+      # integration. The access policy defines the access controls for the collection. This data access
+      # policy was automatically created as part of the integration setup. For more information about
+      # OpenSearch Service data access policies, see Data access control for Amazon OpenSearch Serverless in
+      # the OpenSearch Service Developer Guide.
+
+      struct OpenSearchDataAccessPolicy
+        include JSON::Serializable
+
+        # The name of the data access policy.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @policy_name : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service data source used for this
+      # integration. This data source was created as part of the integration setup. An OpenSearch Service
+      # data source defines the source and destination for OpenSearch Service queries. It includes the role
+      # required to execute queries and write to collections. For more information about OpenSearch Service
+      # data sources , see Creating OpenSearch Service data source integrations with Amazon S3.
+
+      struct OpenSearchDataSource
+        include JSON::Serializable
+
+        # The name of the OpenSearch Service data source.
+
+        @[JSON::Field(key: "dataSourceName")]
+        getter data_source_name : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @data_source_name : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service encryption policy used for this
+      # integration. The encryption policy was created automatically when you created the integration. For
+      # more information, see Encryption policies in the OpenSearch Service Developer Guide.
+
+      struct OpenSearchEncryptionPolicy
+        include JSON::Serializable
+
+        # The name of the encryption policy.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @policy_name : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains complete information about one CloudWatch Logs integration. This structure
+      # is returned by a GetIntegration operation.
+
+      struct OpenSearchIntegrationDetails
+        include JSON::Serializable
+
+        # This structure contains information about the OpenSearch Service data access policy used for this
+        # integration. The access policy defines the access controls for the collection. This data access
+        # policy was automatically created as part of the integration setup. For more information about
+        # OpenSearch Service data access policies, see Data access control for Amazon OpenSearch Serverless in
+        # the OpenSearch Service Developer Guide.
+
+        @[JSON::Field(key: "accessPolicy")]
+        getter access_policy : Types::OpenSearchDataAccessPolicy?
+
+        # This structure contains information about the OpenSearch Service application used for this
+        # integration. An OpenSearch Service application is the web application that was created by the
+        # integration with CloudWatch Logs. It hosts the vended logs dashboards.
+
+        @[JSON::Field(key: "application")]
+        getter application : Types::OpenSearchApplication?
+
+        # This structure contains information about the OpenSearch Service collection used for this
+        # integration. This collection was created as part of the integration setup. An OpenSearch Service
+        # collection is a logical grouping of one or more indexes that represent an analytics workload. For
+        # more information, see Creating and managing OpenSearch Service Serverless collections .
+
+        @[JSON::Field(key: "collection")]
+        getter collection : Types::OpenSearchCollection?
+
+        # This structure contains information about the OpenSearch Service data source used for this
+        # integration. This data source was created as part of the integration setup. An OpenSearch Service
+        # data source defines the source and destination for OpenSearch Service queries. It includes the role
+        # required to execute queries and write to collections. For more information about OpenSearch Service
+        # data sources , see Creating OpenSearch Service data source integrations with Amazon S3.
+
+        @[JSON::Field(key: "dataSource")]
+        getter data_source : Types::OpenSearchDataSource?
+
+        # This structure contains information about the OpenSearch Service encryption policy used for this
+        # integration. The encryption policy was created automatically when you created the integration. For
+        # more information, see Encryption policies in the OpenSearch Service Developer Guide.
+
+        @[JSON::Field(key: "encryptionPolicy")]
+        getter encryption_policy : Types::OpenSearchEncryptionPolicy?
+
+        # This structure contains information about the OpenSearch Service data lifecycle policy used for this
+        # integration. The lifecycle policy determines the lifespan of the data in the collection. It was
+        # automatically created as part of the integration setup. For more information, see Using data
+        # lifecycle policies with OpenSearch Service Serverless in the OpenSearch Service Developer Guide.
+
+        @[JSON::Field(key: "lifecyclePolicy")]
+        getter lifecycle_policy : Types::OpenSearchLifecyclePolicy?
+
+        # This structure contains information about the OpenSearch Service network policy used for this
+        # integration. The network policy assigns network access settings to collections. For more
+        # information, see Network policies in the OpenSearch Service Developer Guide.
+
+        @[JSON::Field(key: "networkPolicy")]
+        getter network_policy : Types::OpenSearchNetworkPolicy?
+
+        # This structure contains information about the OpenSearch Service workspace used for this
+        # integration. An OpenSearch Service workspace is the collection of dashboards along with other
+        # OpenSearch Service tools. This workspace was created automatically as part of the integration setup.
+        # For more information, see Centralized OpenSearch user interface (Dashboards) with OpenSearch Service
+        # .
+
+        @[JSON::Field(key: "workspace")]
+        getter workspace : Types::OpenSearchWorkspace?
+
+        def initialize(
+          @access_policy : Types::OpenSearchDataAccessPolicy? = nil,
+          @application : Types::OpenSearchApplication? = nil,
+          @collection : Types::OpenSearchCollection? = nil,
+          @data_source : Types::OpenSearchDataSource? = nil,
+          @encryption_policy : Types::OpenSearchEncryptionPolicy? = nil,
+          @lifecycle_policy : Types::OpenSearchLifecyclePolicy? = nil,
+          @network_policy : Types::OpenSearchNetworkPolicy? = nil,
+          @workspace : Types::OpenSearchWorkspace? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service data lifecycle policy used for this
+      # integration. The lifecycle policy determines the lifespan of the data in the collection. It was
+      # automatically created as part of the integration setup. For more information, see Using data
+      # lifecycle policies with OpenSearch Service Serverless in the OpenSearch Service Developer Guide.
+
+      struct OpenSearchLifecyclePolicy
+        include JSON::Serializable
+
+        # The name of the lifecycle policy.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @policy_name : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service network policy used for this
+      # integration. The network policy assigns network access settings to collections. For more
+      # information, see Network policies in the OpenSearch Service Developer Guide.
+
+      struct OpenSearchNetworkPolicy
+        include JSON::Serializable
+
+        # The name of the network policy.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # This structure contains information about the status of this OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        def initialize(
+          @policy_name : String? = nil,
+          @status : Types::OpenSearchResourceStatus? = nil
+        )
+        end
+      end
+
+      # This structure contains configuration details about an integration between CloudWatch Logs and
+      # OpenSearch Service.
+
+      struct OpenSearchResourceConfig
+        include JSON::Serializable
+
+        # Specify the ARNs of IAM roles and IAM users who you want to grant permission to for viewing the
+        # dashboards. In addition to specifying these users here, you must also grant them the
+        # CloudWatchOpenSearchDashboardAccess IAM policy. For more information, see IAM policies for users .
+
+        @[JSON::Field(key: "dashboardViewerPrincipals")]
+        getter dashboard_viewer_principals : Array(String)
+
+        # Specify the ARN of an IAM role that CloudWatch Logs will use to create the integration. This role
+        # must have the permissions necessary to access the OpenSearch Service collection to be able to create
+        # the dashboards. For more information about the permissions needed, see Permissions that the
+        # integration needs in the CloudWatch Logs User Guide.
+
+        @[JSON::Field(key: "dataSourceRoleArn")]
+        getter data_source_role_arn : String
+
+        # Specify how many days that you want the data derived by OpenSearch Service to be retained in the
+        # index that the dashboard refers to. This also sets the maximum time period that you can choose when
+        # viewing data in the dashboard. Choosing a longer time frame will incur additional costs.
+
+        @[JSON::Field(key: "retentionDays")]
+        getter retention_days : Int32
+
+        # If you want to use an existing OpenSearch Service application for your integration with OpenSearch
+        # Service, specify it here. If you omit this, a new application will be created.
+
+        @[JSON::Field(key: "applicationArn")]
+        getter application_arn : String?
+
+        # To have the vended dashboard data encrypted with KMS instead of the CloudWatch Logs default
+        # encryption method, specify the ARN of the KMS key that you want to use.
+
+        @[JSON::Field(key: "kmsKeyArn")]
+        getter kms_key_arn : String?
+
+        def initialize(
+          @dashboard_viewer_principals : Array(String),
+          @data_source_role_arn : String,
+          @retention_days : Int32,
+          @application_arn : String? = nil,
+          @kms_key_arn : String? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the status of an OpenSearch Service resource.
+
+      struct OpenSearchResourceStatus
+        include JSON::Serializable
+
+        # The current status of this resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : String?
+
+        # A message with additional information about the status of this resource.
+
+        @[JSON::Field(key: "statusMessage")]
+        getter status_message : String?
+
+        def initialize(
+          @status : String? = nil,
+          @status_message : String? = nil
+        )
+        end
+      end
+
+      # This structure contains information about the OpenSearch Service workspace used for this
+      # integration. An OpenSearch Service workspace is the collection of dashboards along with other
+      # OpenSearch Service tools. This workspace was created automatically as part of the integration setup.
+      # For more information, see Centralized OpenSearch user interface (Dashboards) with OpenSearch Service
+      # .
+
+      struct OpenSearchWorkspace
+        include JSON::Serializable
+
+        # This structure contains information about the status of an OpenSearch Service resource.
+
+        @[JSON::Field(key: "status")]
+        getter status : Types::OpenSearchResourceStatus?
+
+        # The ID of this workspace.
+
+        @[JSON::Field(key: "workspaceId")]
+        getter workspace_id : String?
+
+        def initialize(
+          @status : Types::OpenSearchResourceStatus? = nil,
+          @workspace_id : String? = nil
+        )
+        end
+      end
+
+      # Multiple concurrent requests to update the same resource were in conflict.
+
+      struct OperationAbortedException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # Represents a log event.
+
+      struct OutputLogEvent
+        include JSON::Serializable
+
+        # The time the event was ingested, expressed as the number of milliseconds after Jan 1, 1970 00:00:00
+        # UTC .
+
+        @[JSON::Field(key: "ingestionTime")]
+        getter ingestion_time : Int64?
+
+        # The data contained in the log event.
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        # The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC
+        # .
+
+        @[JSON::Field(key: "timestamp")]
+        getter timestamp : Int64?
+
+        def initialize(
+          @ingestion_time : Int64? = nil,
+          @message : String? = nil,
+          @timestamp : Int64? = nil
+        )
+        end
+      end
+
+      # This processor parses CloudFront vended logs, extract fields, and convert them into JSON format.
+      # Encoded field values are decoded. Values that are integers and doubles are treated as such. For more
+      # information about this processor including examples, see parseCloudfront For more information about
+      # CloudFront log format, see Configure and use standard logs (access logs) . If you use this
+      # processor, it must be the first processor in your transformer.
+
+      struct ParseCloudfront
+        include JSON::Serializable
+
+        # Omit this parameter and the whole log message will be processed by this processor. No other value
+        # than @message is allowed for source .
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @source : String? = nil
+        )
+        end
+      end
+
+      # This processor parses log events that are in JSON format. It can extract JSON key-value pairs and
+      # place them under a destination that you specify. Additionally, because you must have at least one
+      # parse-type processor in a transformer, you can use ParseJSON as that processor for JSON-format logs,
+      # so that you can also apply other processors, such as mutate processors, to these logs. For more
+      # information about this processor including examples, see parseJSON in the CloudWatch Logs User Guide
+      # .
+
+      struct ParseJSON
+        include JSON::Serializable
+
+        # The location to put the parsed key value pair into. If you omit this parameter, it is placed under
+        # the root node.
+
+        @[JSON::Field(key: "destination")]
+        getter destination : String?
+
+        # Path to the field in the log event that will be parsed. Use dot notation to access child fields. For
+        # example, store.book
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @destination : String? = nil,
+          @source : String? = nil
+        )
+        end
+      end
+
+      # This processor parses a specified field in the original log event into key-value pairs. For more
+      # information about this processor including examples, see parseKeyValue in the CloudWatch Logs User
+      # Guide .
+
+      struct ParseKeyValue
+        include JSON::Serializable
+
+        # The destination field to put the extracted key-value pairs into
+
+        @[JSON::Field(key: "destination")]
+        getter destination : String?
+
+        # The field delimiter string that is used between key-value pairs in the original log events. If you
+        # omit this, the ampersand &amp; character is used.
+
+        @[JSON::Field(key: "fieldDelimiter")]
+        getter field_delimiter : String?
+
+        # If you want to add a prefix to all transformed keys, specify it here.
+
+        @[JSON::Field(key: "keyPrefix")]
+        getter key_prefix : String?
+
+        # The delimiter string to use between the key and value in each pair in the transformed log event. If
+        # you omit this, the equal = character is used.
+
+        @[JSON::Field(key: "keyValueDelimiter")]
+        getter key_value_delimiter : String?
+
+        # A value to insert into the value field in the result, when a key-value pair is not successfully
+        # split.
+
+        @[JSON::Field(key: "nonMatchValue")]
+        getter non_match_value : String?
+
+        # Specifies whether to overwrite the value if the destination key already exists. If you omit this,
+        # the default is false .
+
+        @[JSON::Field(key: "overwriteIfExists")]
+        getter overwrite_if_exists : Bool?
+
+        # Path to the field in the log event that will be parsed. Use dot notation to access child fields. For
+        # example, store.book
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @destination : String? = nil,
+          @field_delimiter : String? = nil,
+          @key_prefix : String? = nil,
+          @key_value_delimiter : String? = nil,
+          @non_match_value : String? = nil,
+          @overwrite_if_exists : Bool? = nil,
+          @source : String? = nil
+        )
+        end
+      end
+
+      # Use this processor to parse RDS for PostgreSQL vended logs, extract fields, and and convert them
+      # into a JSON format. This processor always processes the entire log event message. For more
+      # information about this processor including examples, see parsePostGres . For more information about
+      # RDS for PostgreSQL log format, see RDS for PostgreSQL database log filesTCP flag sequence . If you
+      # use this processor, it must be the first processor in your transformer.
+
+      struct ParsePostgres
+        include JSON::Serializable
+
+        # Omit this parameter and the whole log message will be processed by this processor. No other value
+        # than @message is allowed for source .
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @source : String? = nil
+        )
+        end
+      end
+
+      # Use this processor to parse Route 53 vended logs, extract fields, and and convert them into a JSON
+      # format. This processor always processes the entire log event message. For more information about
+      # this processor including examples, see parseRoute53 . If you use this processor, it must be the
+      # first processor in your transformer.
+
+      struct ParseRoute53
+        include JSON::Serializable
+
+        # Omit this parameter and the whole log message will be processed by this processor. No other value
+        # than @message is allowed for source .
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @source : String? = nil
+        )
+        end
+      end
+
+      # This processor converts logs into Open Cybersecurity Schema Framework (OCSF) events. For more
+      # information about this processor including examples, see parseToOCSF in the CloudWatch Logs User
+      # Guide .
+
+      struct ParseToOCSF
+        include JSON::Serializable
+
+        # Specify the service or process that produces the log events that will be converted with this
+        # processor.
+
+        @[JSON::Field(key: "eventSource")]
+        getter event_source : String
+
+        # Specify which version of the OCSF schema to use for the transformed log events.
+
+        @[JSON::Field(key: "ocsfVersion")]
+        getter ocsf_version : String
+
+        # The version of the OCSF mapping to use for parsing log data.
+
+        @[JSON::Field(key: "mappingVersion")]
+        getter mapping_version : String?
+
+        # The path to the field in the log event that you want to parse. If you omit this value, the whole log
+        # message is parsed.
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @event_source : String,
+          @ocsf_version : String,
+          @mapping_version : String? = nil,
+          @source : String? = nil
+        )
+        end
+      end
+
+      # Use this processor to parse Amazon VPC vended logs, extract fields, and and convert them into a JSON
+      # format. This processor always processes the entire log event message. This processor doesn't support
+      # custom log formats, such as NAT gateway logs. For more information about custom log formats in
+      # Amazon VPC, see parseVPC For more information about this processor including examples, see parseVPC
+      # . If you use this processor, it must be the first processor in your transformer.
+
+      struct ParseVPC
+        include JSON::Serializable
+
+        # Omit this parameter and the whole log message will be processed by this processor. No other value
+        # than @message is allowed for source .
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @source : String? = nil
+        )
+        end
+      end
+
+      # Use this processor to parse WAF vended logs, extract fields, and and convert them into a JSON
+      # format. This processor always processes the entire log event message. For more information about
+      # this processor including examples, see parseWAF . For more information about WAF log format, see Log
+      # examples for web ACL traffic . If you use this processor, it must be the first processor in your
+      # transformer.
+
+      struct ParseWAF
+        include JSON::Serializable
+
+        # Omit this parameter and the whole log message will be processed by this processor. No other value
+        # than @message is allowed for source .
+
+        @[JSON::Field(key: "source")]
+        getter source : String?
+
+        def initialize(
+          @source : String? = nil
+        )
+        end
+      end
+
+      # A structure that contains information about one pattern token related to an anomaly. For more
+      # information about patterns and tokens, see CreateLogAnomalyDetector .
+
+      struct PatternToken
+        include JSON::Serializable
+
+        # For a dynamic token, this indicates where in the pattern that this token appears, related to other
+        # dynamic tokens. The dynamic token that appears first has a value of 1 , the one that appears second
+        # is 2 , and so on.
+
+        @[JSON::Field(key: "dynamicTokenPosition")]
+        getter dynamic_token_position : Int32?
+
+        # Contains the values found for a dynamic token, and the number of times each value was found.
+
+        @[JSON::Field(key: "enumerations")]
+        getter enumerations : Hash(String, Int64)?
+
+        # A name that CloudWatch Logs assigned to this dynamic token to make the pattern more readable. The
+        # string part of the inferredTokenName gives you a clearer idea of the content of this token. The
+        # number part of the inferredTokenName shows where in the pattern this token appears, compared to
+        # other dynamic tokens. CloudWatch Logs assigns the string part of the name based on analyzing the
+        # content of the log events that contain it. For example, an inferred token name of IPAddress-3 means
+        # that the token represents an IP address, and this token is the third dynamic token in the pattern.
+
+        @[JSON::Field(key: "inferredTokenName")]
+        getter inferred_token_name : String?
+
+        # Specifies whether this is a dynamic token.
+
+        @[JSON::Field(key: "isDynamic")]
+        getter is_dynamic : Bool?
+
+        # The string represented by this token. If this is a dynamic token, the value will be &lt;*&gt;
+
+        @[JSON::Field(key: "tokenString")]
+        getter token_string : String?
+
+        def initialize(
+          @dynamic_token_position : Int32? = nil,
+          @enumerations : Hash(String, Int64)? = nil,
+          @inferred_token_name : String? = nil,
+          @is_dynamic : Bool? = nil,
+          @token_string : String? = nil
+        )
+        end
+      end
+
+      # A structure that contains information about one delivery destination policy.
+
+      struct Policy
+        include JSON::Serializable
+
+        # The contents of the delivery destination policy.
+
+        @[JSON::Field(key: "deliveryDestinationPolicy")]
+        getter delivery_destination_policy : String?
+
+        def initialize(
+          @delivery_destination_policy : String? = nil
+        )
+        end
+      end
+
+      # This structure contains the information about one processor in a log transformer.
+
+      struct Processor
+        include JSON::Serializable
+
+        # Use this parameter to include the addKeys processor in your transformer.
+
+        @[JSON::Field(key: "addKeys")]
+        getter add_keys : Types::AddKeys?
+
+        # Use this parameter to include the copyValue processor in your transformer.
+
+        @[JSON::Field(key: "copyValue")]
+        getter copy_value : Types::CopyValue?
+
+        # Use this parameter to include the CSV processor in your transformer.
+
+        @[JSON::Field(key: "csv")]
+        getter csv : Types::CSV?
+
+        # Use this parameter to include the datetimeConverter processor in your transformer.
+
+        @[JSON::Field(key: "dateTimeConverter")]
+        getter date_time_converter : Types::DateTimeConverter?
+
+        # Use this parameter to include the deleteKeys processor in your transformer.
+
+        @[JSON::Field(key: "deleteKeys")]
+        getter delete_keys : Types::DeleteKeys?
+
+        # Use this parameter to include the grok processor in your transformer.
+
+        @[JSON::Field(key: "grok")]
+        getter grok : Types::Grok?
+
+        # Use this parameter to include the listToMap processor in your transformer.
+
+        @[JSON::Field(key: "listToMap")]
+        getter list_to_map : Types::ListToMap?
+
+        # Use this parameter to include the lowerCaseString processor in your transformer.
+
+        @[JSON::Field(key: "lowerCaseString")]
+        getter lower_case_string : Types::LowerCaseString?
+
+        # Use this parameter to include the moveKeys processor in your transformer.
+
+        @[JSON::Field(key: "moveKeys")]
+        getter move_keys : Types::MoveKeys?
+
+        # Use this parameter to include the parseCloudfront processor in your transformer. If you use this
+        # processor, it must be the first processor in your transformer.
+
+        @[JSON::Field(key: "parseCloudfront")]
+        getter parse_cloudfront : Types::ParseCloudfront?
+
+        # Use this parameter to include the parseJSON processor in your transformer.
+
+        @[JSON::Field(key: "parseJSON")]
+        getter parse_json : Types::ParseJSON?
+
+        # Use this parameter to include the parseKeyValue processor in your transformer.
+
+        @[JSON::Field(key: "parseKeyValue")]
+        getter parse_key_value : Types::ParseKeyValue?
+
+        # Use this parameter to include the parsePostGres processor in your transformer. If you use this
+        # processor, it must be the first processor in your transformer.
+
+        @[JSON::Field(key: "parsePostgres")]
+        getter parse_postgres : Types::ParsePostgres?
+
+        # Use this parameter to include the parseRoute53 processor in your transformer. If you use this
+        # processor, it must be the first processor in your transformer.
+
+        @[JSON::Field(key: "parseRoute53")]
+        getter parse_route53 : Types::ParseRoute53?
+
+        # Use this parameter to convert logs into Open Cybersecurity Schema (OCSF) format.
+
+        @[JSON::Field(key: "parseToOCSF")]
+        getter parse_to_ocsf : Types::ParseToOCSF?
+
+        # Use this parameter to include the parseVPC processor in your transformer. If you use this processor,
+        # it must be the first processor in your transformer.
+
+        @[JSON::Field(key: "parseVPC")]
+        getter parse_vpc : Types::ParseVPC?
+
+        # Use this parameter to include the parseWAF processor in your transformer. If you use this processor,
+        # it must be the first processor in your transformer.
+
+        @[JSON::Field(key: "parseWAF")]
+        getter parse_waf : Types::ParseWAF?
+
+        # Use this parameter to include the renameKeys processor in your transformer.
+
+        @[JSON::Field(key: "renameKeys")]
+        getter rename_keys : Types::RenameKeys?
+
+        # Use this parameter to include the splitString processor in your transformer.
+
+        @[JSON::Field(key: "splitString")]
+        getter split_string : Types::SplitString?
+
+        # Use this parameter to include the substituteString processor in your transformer.
+
+        @[JSON::Field(key: "substituteString")]
+        getter substitute_string : Types::SubstituteString?
+
+        # Use this parameter to include the trimString processor in your transformer.
+
+        @[JSON::Field(key: "trimString")]
+        getter trim_string : Types::TrimString?
+
+        # Use this parameter to include the typeConverter processor in your transformer.
+
+        @[JSON::Field(key: "typeConverter")]
+        getter type_converter : Types::TypeConverter?
+
+        # Use this parameter to include the upperCaseString processor in your transformer.
+
+        @[JSON::Field(key: "upperCaseString")]
+        getter upper_case_string : Types::UpperCaseString?
+
+        def initialize(
+          @add_keys : Types::AddKeys? = nil,
+          @copy_value : Types::CopyValue? = nil,
+          @csv : Types::CSV? = nil,
+          @date_time_converter : Types::DateTimeConverter? = nil,
+          @delete_keys : Types::DeleteKeys? = nil,
+          @grok : Types::Grok? = nil,
+          @list_to_map : Types::ListToMap? = nil,
+          @lower_case_string : Types::LowerCaseString? = nil,
+          @move_keys : Types::MoveKeys? = nil,
+          @parse_cloudfront : Types::ParseCloudfront? = nil,
+          @parse_json : Types::ParseJSON? = nil,
+          @parse_key_value : Types::ParseKeyValue? = nil,
+          @parse_postgres : Types::ParsePostgres? = nil,
+          @parse_route53 : Types::ParseRoute53? = nil,
+          @parse_to_ocsf : Types::ParseToOCSF? = nil,
+          @parse_vpc : Types::ParseVPC? = nil,
+          @parse_waf : Types::ParseWAF? = nil,
+          @rename_keys : Types::RenameKeys? = nil,
+          @split_string : Types::SplitString? = nil,
+          @substitute_string : Types::SubstituteString? = nil,
+          @trim_string : Types::TrimString? = nil,
+          @type_converter : Types::TypeConverter? = nil,
+          @upper_case_string : Types::UpperCaseString? = nil
+        )
+        end
+      end
+
+
+      struct PutAccountPolicyRequest
+        include JSON::Serializable
+
+        # Specify the policy, in JSON. Data protection policy A data protection policy must include two JSON
+        # blocks: The first block must include both a DataIdentifer array and an Operation property with an
+        # Audit action. The DataIdentifer array lists the types of sensitive data that you want to mask. For
+        # more information about the available options, see Types of data that you can mask . The Operation
+        # property with an Audit action is required to find the sensitive data terms. This Audit action must
+        # contain a FindingsDestination object. You can optionally use that FindingsDestination object to list
+        # one or more destinations to send audit findings to. If you specify destinations such as log groups,
+        # Firehose streams, and S3 buckets, they must already exist. The second block must include both a
+        # DataIdentifer array and an Operation property with an Deidentify action. The DataIdentifer array
+        # must exactly match the DataIdentifer array in the first block of the policy. The Operation property
+        # with the Deidentify action is what actually masks the data, and it must contain the "MaskConfig": {}
+        # object. The "MaskConfig": {} object must be empty. For an example data protection policy, see the
+        # Examples section on this page. The contents of the two DataIdentifer arrays must match exactly. In
+        # addition to the two JSON blocks, the policyDocument can also include Name , Description , and
+        # Version fields. The Name is different than the operation's policyName parameter, and is used as a
+        # dimension when CloudWatch Logs reports audit findings metrics to CloudWatch. The JSON specified in
+        # policyDocument can be up to 30,720 characters long. Subscription filter policy A subscription filter
+        # policy can include the following attributes in a JSON block: DestinationArn The ARN of the
+        # destination to deliver log events to. Supported destinations are: An Kinesis Data Streams data
+        # stream in the same account as the subscription policy, for same-account delivery. An Firehose data
+        # stream in the same account as the subscription policy, for same-account delivery. A Lambda function
+        # in the same account as the subscription policy, for same-account delivery. A logical destination in
+        # a different account created with PutDestination , for cross-account delivery. Kinesis Data Streams
+        # and Firehose are supported as logical destinations. RoleArn The ARN of an IAM role that grants
+        # CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need
+        # to provide the ARN when you are working with a logical destination for cross-account delivery.
+        # FilterPattern A filter pattern for subscribing to a filtered stream of log events. Distribution The
+        # method used to distribute log data to the destination. By default, log data is grouped by log
+        # stream, but the grouping can be set to Random for a more even distribution. This property is only
+        # applicable when the destination is an Kinesis Data Streams data stream. Transformer policy A
+        # transformer policy must include one JSON block with the array of processors and their
+        # configurations. For more information about available processors, see Processors that you can use .
+        # Field index policy A field index filter policy can include the following attribute in a JSON block:
+        # Fields The array of field indexes to create. FieldsV2 The object of field indexes to create along
+        # with it's type. It must contain at least one field index. The following is an example of an index
+        # policy document that creates indexes with different types. "policyDocument": "{ \"Fields\": [
+        # \"TransactionId\" ], \"FieldsV2\": {\"RequestId\": {\"type\": \"FIELD_INDEX\"}, \"APIName\":
+        # {\"type\": \"FACET\"}, \"StatusCode\": {\"type\": \"FACET\"}}}" You can use FieldsV2 to specify the
+        # type for each field. Supported types are FIELD_INDEX and FACET . Field names within Fields and
+        # FieldsV2 must be mutually exclusive.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String
+
+        # A name for the policy. This must be unique within the account and cannot start with aws/ .
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String
+
+        # The type of policy that you're creating or updating.
+
+        @[JSON::Field(key: "policyType")]
+        getter policy_type : String
+
+        # Currently the only valid value for this parameter is ALL , which specifies that the data protection
+        # policy applies to all log groups in the account. If you omit this parameter, the default of ALL is
+        # used.
+
+        @[JSON::Field(key: "scope")]
+        getter scope : String?
+
+        # Use this parameter to apply the new policy to a subset of log groups in the account or a data source
+        # name and type combination. Specifying selectionCriteria is valid only when you specify
+        # SUBSCRIPTION_FILTER_POLICY , FIELD_INDEX_POLICY or TRANSFORMER_POLICY for policyType . If policyType
+        # is SUBSCRIPTION_FILTER_POLICY , the only supported selectionCriteria filter is LogGroupName NOT IN
+        # [] If policyType is TRANSFORMER_POLICY , the only supported selectionCriteria filter is
+        # LogGroupNamePrefix If policyType is FIELD_INDEX_POLICY , the supported selectionCriteria filters
+        # are: LogGroupNamePrefix DataSourceName AND DataSourceType When you specify selectionCriteria for a
+        # field index policy you can use either LogGroupNamePrefix by itself or DataSourceName and
+        # DataSourceType together. The selectionCriteria string can be up to 25KB in length. The length is
+        # determined by using its UTF-8 bytes. Using the selectionCriteria parameter with
+        # SUBSCRIPTION_FILTER_POLICY is useful to help prevent infinite loops. For more information, see Log
+        # recursion prevention .
+
+        @[JSON::Field(key: "selectionCriteria")]
+        getter selection_criteria : String?
+
+        def initialize(
+          @policy_document : String,
+          @policy_name : String,
+          @policy_type : String,
+          @scope : String? = nil,
+          @selection_criteria : String? = nil
+        )
+        end
+      end
+
+
+      struct PutAccountPolicyResponse
+        include JSON::Serializable
+
+        # The account policy that you created.
+
+        @[JSON::Field(key: "accountPolicy")]
+        getter account_policy : Types::AccountPolicy?
+
+        def initialize(
+          @account_policy : Types::AccountPolicy? = nil
+        )
+        end
+      end
+
+
+      struct PutDataProtectionPolicyRequest
+        include JSON::Serializable
+
+        # Specify either the log group name or log group ARN.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        # Specify the data protection policy, in JSON. This policy must include two JSON blocks: The first
+        # block must include both a DataIdentifer array and an Operation property with an Audit action. The
+        # DataIdentifer array lists the types of sensitive data that you want to mask. For more information
+        # about the available options, see Types of data that you can mask . The Operation property with an
+        # Audit action is required to find the sensitive data terms. This Audit action must contain a
+        # FindingsDestination object. You can optionally use that FindingsDestination object to list one or
+        # more destinations to send audit findings to. If you specify destinations such as log groups,
+        # Firehose streams, and S3 buckets, they must already exist. The second block must include both a
+        # DataIdentifer array and an Operation property with an Deidentify action. The DataIdentifer array
+        # must exactly match the DataIdentifer array in the first block of the policy. The Operation property
+        # with the Deidentify action is what actually masks the data, and it must contain the "MaskConfig": {}
+        # object. The "MaskConfig": {} object must be empty. For an example data protection policy, see the
+        # Examples section on this page. The contents of the two DataIdentifer arrays must match exactly. In
+        # addition to the two JSON blocks, the policyDocument can also include Name , Description , and
+        # Version fields. The Name is used as a dimension when CloudWatch Logs reports audit findings metrics
+        # to CloudWatch. The JSON specified in policyDocument can be up to 30,720 characters.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String
+
+        def initialize(
+          @log_group_identifier : String,
+          @policy_document : String
+        )
+        end
+      end
+
+
+      struct PutDataProtectionPolicyResponse
+        include JSON::Serializable
+
+        # The date and time that this policy was most recently updated.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The log group name or ARN that you specified in your request.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String?
+
+        # The data protection policy used for this log group.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String?
+
+        def initialize(
+          @last_updated_time : Int64? = nil,
+          @log_group_identifier : String? = nil,
+          @policy_document : String? = nil
+        )
+        end
+      end
+
+
+      struct PutDeliveryDestinationPolicyRequest
+        include JSON::Serializable
+
+        # The name of the delivery destination to assign this policy to.
+
+        @[JSON::Field(key: "deliveryDestinationName")]
+        getter delivery_destination_name : String
+
+        # The contents of the policy.
+
+        @[JSON::Field(key: "deliveryDestinationPolicy")]
+        getter delivery_destination_policy : String
+
+        def initialize(
+          @delivery_destination_name : String,
+          @delivery_destination_policy : String
+        )
+        end
+      end
+
+
+      struct PutDeliveryDestinationPolicyResponse
+        include JSON::Serializable
+
+        # The contents of the policy that you just created.
+
+        @[JSON::Field(key: "policy")]
+        getter policy : Types::Policy?
+
+        def initialize(
+          @policy : Types::Policy? = nil
+        )
+        end
+      end
+
+
+      struct PutDeliveryDestinationRequest
+        include JSON::Serializable
+
+        # A name for this delivery destination. This name must be unique for all delivery destinations in your
+        # account.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        # A structure that contains the ARN of the Amazon Web Services resource that will receive the logs.
+        # deliveryDestinationConfiguration is required for CloudWatch Logs, Amazon S3, Firehose log delivery
+        # destinations and not required for X-Ray trace delivery destinations. deliveryDestinationType is
+        # needed for X-Ray trace delivery destinations but not required for other logs delivery destinations.
+
+        @[JSON::Field(key: "deliveryDestinationConfiguration")]
+        getter delivery_destination_configuration : Types::DeliveryDestinationConfiguration?
+
+        # The type of delivery destination. This parameter specifies the target service where log data will be
+        # delivered. Valid values include: S3 - Amazon S3 for long-term storage and analytics CWL - CloudWatch
+        # Logs for centralized log management FH - Amazon Kinesis Data Firehose for real-time data streaming
+        # XRAY - Amazon Web Services X-Ray for distributed tracing and application monitoring The delivery
+        # destination type determines the format and configuration options available for log delivery.
+
+        @[JSON::Field(key: "deliveryDestinationType")]
+        getter delivery_destination_type : String?
+
+        # The format for the logs that this delivery destination will receive.
+
+        @[JSON::Field(key: "outputFormat")]
+        getter output_format : String?
+
+        # An optional list of key-value pairs to associate with the resource. For more information about
+        # tagging, see Tagging Amazon Web Services resources
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @name : String,
+          @delivery_destination_configuration : Types::DeliveryDestinationConfiguration? = nil,
+          @delivery_destination_type : String? = nil,
+          @output_format : String? = nil,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct PutDeliveryDestinationResponse
+        include JSON::Serializable
+
+        # A structure containing information about the delivery destination that you just created or updated.
+
+        @[JSON::Field(key: "deliveryDestination")]
+        getter delivery_destination : Types::DeliveryDestination?
+
+        def initialize(
+          @delivery_destination : Types::DeliveryDestination? = nil
+        )
+        end
+      end
+
+
+      struct PutDeliverySourceRequest
+        include JSON::Serializable
+
+        # Defines the type of log that the source is sending. For Amazon Bedrock Agents, the valid values are
+        # APPLICATION_LOGS and EVENT_LOGS . For Amazon Bedrock Knowledge Bases, the valid value is
+        # APPLICATION_LOGS . For Amazon Bedrock AgentCore Runtime, the valid values are APPLICATION_LOGS ,
+        # USAGE_LOGS and TRACES . For Amazon Bedrock AgentCore Tools, the valid values are APPLICATION_LOGS ,
+        # USAGE_LOGS and TRACES . For Amazon Bedrock AgentCore Identity, the valid values are APPLICATION_LOGS
+        # and TRACES . For Amazon Bedrock AgentCore Gateway, the valid values are APPLICATION_LOGS and TRACES
+        # . For CloudFront, the valid value is ACCESS_LOGS . For Amazon CodeWhisperer, the valid value is
+        # EVENT_LOGS . For Elemental MediaPackage, the valid values are EGRESS_ACCESS_LOGS and
+        # INGRESS_ACCESS_LOGS . For Elemental MediaTailor, the valid values are AD_DECISION_SERVER_LOGS ,
+        # MANIFEST_SERVICE_LOGS , and TRANSCODE_LOGS . For Entity Resolution, the valid value is WORKFLOW_LOGS
+        # . For IAM Identity Center, the valid value is ERROR_LOGS . For Network Firewall Proxy, the valid
+        # values are ALERT_LOGS , ALLOW_LOGS , and DENY_LOGS . For Network Load Balancer, the valid value is
+        # NLB_ACCESS_LOGS . For PCS, the valid values are PCS_SCHEDULER_LOGS and PCS_JOBCOMP_LOGS . For Quick
+        # Suite, the valid values are CHAT_LOGS and FEEDBACK_LOGS . For Amazon Web Services RTB Fabric, the
+        # valid values is APPLICATION_LOGS . For Amazon Q, the valid values are EVENT_LOGS and SYNC_JOB_LOGS .
+        # For Amazon SES mail manager, the valid values are APPLICATION_LOGS and TRAFFIC_POLICY_DEBUG_LOGS .
+        # For Amazon WorkMail, the valid values are ACCESS_CONTROL_LOGS , AUTHENTICATION_LOGS ,
+        # WORKMAIL_AVAILABILITY_PROVIDER_LOGS , WORKMAIL_MAILBOX_ACCESS_LOGS , and
+        # WORKMAIL_PERSONAL_ACCESS_TOKEN_LOGS . For Amazon VPC Route Server, the valid value is EVENT_LOGS .
+
+        @[JSON::Field(key: "logType")]
+        getter log_type : String
+
+        # A name for this delivery source. This name must be unique for all delivery sources in your account.
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        # The ARN of the Amazon Web Services resource that is generating and sending logs. For example,
+        # arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String
+
+        # An optional list of key-value pairs to associate with the resource. For more information about
+        # tagging, see Tagging Amazon Web Services resources
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @log_type : String,
+          @name : String,
+          @resource_arn : String,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct PutDeliverySourceResponse
+        include JSON::Serializable
+
+        # A structure containing information about the delivery source that was just created or updated.
+
+        @[JSON::Field(key: "deliverySource")]
+        getter delivery_source : Types::DeliverySource?
+
+        def initialize(
+          @delivery_source : Types::DeliverySource? = nil
+        )
+        end
+      end
+
+
+      struct PutDestinationPolicyRequest
+        include JSON::Serializable
+
+        # An IAM policy document that authorizes cross-account users to deliver their log events to the
+        # associated destination. This can be up to 5120 bytes.
+
+        @[JSON::Field(key: "accessPolicy")]
+        getter access_policy : String
+
+        # A name for an existing destination.
+
+        @[JSON::Field(key: "destinationName")]
+        getter destination_name : String
+
+        # Specify true if you are updating an existing destination policy to grant permission to an
+        # organization ID instead of granting permission to individual Amazon Web Services accounts. Before
+        # you update a destination policy this way, you must first update the subscription filters in the
+        # accounts that send logs to this destination. If you do not, the subscription filters might stop
+        # working. By specifying true for forceUpdate , you are affirming that you have already updated the
+        # subscription filters. For more information, see Updating an existing cross-account subscription If
+        # you omit this parameter, the default of false is used.
+
+        @[JSON::Field(key: "forceUpdate")]
+        getter force_update : Bool?
+
+        def initialize(
+          @access_policy : String,
+          @destination_name : String,
+          @force_update : Bool? = nil
+        )
+        end
+      end
+
+
+      struct PutDestinationRequest
+        include JSON::Serializable
+
+        # A name for the destination.
+
+        @[JSON::Field(key: "destinationName")]
+        getter destination_name : String
+
+        # The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazon Kinesis PutRecord
+        # operation on the destination stream.
+
+        @[JSON::Field(key: "roleArn")]
+        getter role_arn : String
+
+        # The ARN of an Amazon Kinesis stream to which to deliver matching log events.
+
+        @[JSON::Field(key: "targetArn")]
+        getter target_arn : String
+
+        # An optional list of key-value pairs to associate with the resource. For more information about
+        # tagging, see Tagging Amazon Web Services resources
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)?
+
+        def initialize(
+          @destination_name : String,
+          @role_arn : String,
+          @target_arn : String,
+          @tags : Hash(String, String)? = nil
+        )
+        end
+      end
+
+
+      struct PutDestinationResponse
+        include JSON::Serializable
+
+        # The destination.
+
+        @[JSON::Field(key: "destination")]
+        getter destination : Types::Destination?
+
+        def initialize(
+          @destination : Types::Destination? = nil
+        )
+        end
+      end
+
+
+      struct PutIndexPolicyRequest
+        include JSON::Serializable
+
+        # Specify either the log group name or log group ARN to apply this field index policy to. If you
+        # specify an ARN, use the format arn:aws:logs: region : account-id :log-group: log_group_name Don't
+        # include an * at the end.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        # The index policy document, in JSON format. The following is an example of an index policy document
+        # that creates indexes with different types. "policyDocument": "{"Fields": [ "TransactionId" ],
+        # "FieldsV2": {"RequestId": {"type": "FIELD_INDEX"}, "APIName": {"type": "FACET"}, "StatusCode":
+        # {"type": "FACET"}}}" You can use FieldsV2 to specify the type for each field. Supported types are
+        # FIELD_INDEX and FACET . Field names within Fields and FieldsV2 must be mutually exclusive. The
+        # policy document must include at least one field index. For more information about the fields that
+        # can be included and other restrictions, see Field index syntax and quotas .
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String
+
+        def initialize(
+          @log_group_identifier : String,
+          @policy_document : String
+        )
+        end
+      end
+
+
+      struct PutIndexPolicyResponse
+        include JSON::Serializable
+
+        # The index policy that you just created or updated.
+
+        @[JSON::Field(key: "indexPolicy")]
+        getter index_policy : Types::IndexPolicy?
+
+        def initialize(
+          @index_policy : Types::IndexPolicy? = nil
+        )
+        end
+      end
+
+
+      struct PutIntegrationRequest
+        include JSON::Serializable
+
+        # A name for the integration.
+
+        @[JSON::Field(key: "integrationName")]
+        getter integration_name : String
+
+        # The type of integration. Currently, the only supported type is OPENSEARCH .
+
+        @[JSON::Field(key: "integrationType")]
+        getter integration_type : String
+
+        # A structure that contains configuration information for the integration that you are creating.
+
+        @[JSON::Field(key: "resourceConfig")]
+        getter resource_config : Types::ResourceConfig
+
+        def initialize(
+          @integration_name : String,
+          @integration_type : String,
+          @resource_config : Types::ResourceConfig
+        )
+        end
+      end
+
+
+      struct PutIntegrationResponse
+        include JSON::Serializable
+
+        # The name of the integration that you just created.
+
+        @[JSON::Field(key: "integrationName")]
+        getter integration_name : String?
+
+        # The status of the integration that you just created. After you create an integration, it takes a few
+        # minutes to complete. During this time, you'll see the status as PROVISIONING .
+
+        @[JSON::Field(key: "integrationStatus")]
+        getter integration_status : String?
+
+        def initialize(
+          @integration_name : String? = nil,
+          @integration_status : String? = nil
+        )
+        end
+      end
+
+
+      struct PutLogEventsRequest
+        include JSON::Serializable
+
+        # The log events.
+
+        @[JSON::Field(key: "logEvents")]
+        getter log_events : Array(Types::InputLogEvent)
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The name of the log stream.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String
+
+        # The entity associated with the log events.
+
+        @[JSON::Field(key: "entity")]
+        getter entity : Types::Entity?
+
+        # The sequence token obtained from the response of the previous PutLogEvents call. The sequenceToken
+        # parameter is now ignored in PutLogEvents actions. PutLogEvents actions are now accepted and never
+        # return InvalidSequenceTokenException or DataAlreadyAcceptedException even if the sequence token is
+        # not valid.
+
+        @[JSON::Field(key: "sequenceToken")]
+        getter sequence_token : String?
+
+        def initialize(
+          @log_events : Array(Types::InputLogEvent),
+          @log_group_name : String,
+          @log_stream_name : String,
+          @entity : Types::Entity? = nil,
+          @sequence_token : String? = nil
+        )
+        end
+      end
+
+
+      struct PutLogEventsResponse
+        include JSON::Serializable
+
+        # The next sequence token. This field has been deprecated. The sequence token is now ignored in
+        # PutLogEvents actions. PutLogEvents actions are always accepted even if the sequence token is not
+        # valid. You can use parallel PutLogEvents actions on the same log stream and you do not need to wait
+        # for the response of a previous PutLogEvents action to obtain the nextSequenceToken value.
+
+        @[JSON::Field(key: "nextSequenceToken")]
+        getter next_sequence_token : String?
+
+        # Information about why the entity is rejected when calling PutLogEvents . Only returned when the
+        # entity is rejected. When the entity is rejected, the events may still be accepted.
+
+        @[JSON::Field(key: "rejectedEntityInfo")]
+        getter rejected_entity_info : Types::RejectedEntityInfo?
+
+        # The rejected events.
+
+        @[JSON::Field(key: "rejectedLogEventsInfo")]
+        getter rejected_log_events_info : Types::RejectedLogEventsInfo?
+
+        def initialize(
+          @next_sequence_token : String? = nil,
+          @rejected_entity_info : Types::RejectedEntityInfo? = nil,
+          @rejected_log_events_info : Types::RejectedLogEventsInfo? = nil
+        )
+        end
+      end
+
+
+      struct PutLogGroupDeletionProtectionRequest
+        include JSON::Serializable
+
+        # Whether to enable deletion protection. Type: Boolean Required: Yes
+
+        @[JSON::Field(key: "deletionProtectionEnabled")]
+        getter deletion_protection_enabled : Bool
+
+        # The name or ARN of the log group. Type: String Length Constraints: Minimum length of 1. Maximum
+        # length of 512. Pattern: [\.\-_/#A-Za-z0-9]+ Required: Yes
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        def initialize(
+          @deletion_protection_enabled : Bool,
+          @log_group_identifier : String
+        )
+        end
+      end
+
+
+      struct PutMetricFilterRequest
+        include JSON::Serializable
+
+        # A name for the metric filter.
+
+        @[JSON::Field(key: "filterName")]
+        getter filter_name : String
+
+        # A filter pattern for extracting metric data out of ingested log events.
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # A collection of information that defines how metric data gets emitted.
+
+        @[JSON::Field(key: "metricTransformations")]
+        getter metric_transformations : Array(Types::MetricTransformation)
+
+        # This parameter is valid only for log groups that have an active log transformer. For more
+        # information about log transformers, see PutTransformer . If the log group uses either a log-group
+        # level or account-level transformer, and you specify true , the metric filter will be applied on the
+        # transformed version of the log events instead of the original ingested log events.
+
+        @[JSON::Field(key: "applyOnTransformedLogs")]
+        getter apply_on_transformed_logs : Bool?
+
+        # A list of system fields to emit as additional dimensions in the generated metrics. Valid values are
+        # @aws.account and @aws.region . These dimensions help identify the source of centralized log data and
+        # count toward the total dimension limit for metric filters.
+
+        @[JSON::Field(key: "emitSystemFieldDimensions")]
+        getter emit_system_field_dimensions : Array(String)?
+
+        # A filter expression that specifies which log events should be processed by this metric filter based
+        # on system fields such as source account and source region. Uses selection criteria syntax with
+        # operators like = , != , AND , OR , IN , NOT IN . Example: @aws.region = "us-east-1" or @aws.account
+        # IN ["123456789012", "987654321098"] . Maximum length: 2000 characters.
+
+        @[JSON::Field(key: "fieldSelectionCriteria")]
+        getter field_selection_criteria : String?
+
+        def initialize(
+          @filter_name : String,
+          @filter_pattern : String,
+          @log_group_name : String,
+          @metric_transformations : Array(Types::MetricTransformation),
+          @apply_on_transformed_logs : Bool? = nil,
+          @emit_system_field_dimensions : Array(String)? = nil,
+          @field_selection_criteria : String? = nil
+        )
+        end
+      end
+
+
+      struct PutQueryDefinitionRequest
+        include JSON::Serializable
+
+        # A name for the query definition. If you are saving numerous query definitions, we recommend that you
+        # name them. This way, you can find the ones you want by using the first part of the name as a filter
+        # in the queryDefinitionNamePrefix parameter of DescribeQueryDefinitions .
+
+        @[JSON::Field(key: "name")]
+        getter name : String
+
+        # The query string to use for this definition. For more information, see CloudWatch Logs Insights
+        # Query Syntax .
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String
+
+        # Used as an idempotency token, to avoid returning an exception if the service receives the same
+        # request twice because of a network error.
+
+        @[JSON::Field(key: "clientToken")]
+        getter client_token : String?
+
+        # Use this parameter to include specific log groups as part of your query definition. If your query
+        # uses the OpenSearch Service query language, you specify the log group names inside the querystring
+        # instead of here. If you are updating an existing query definition for the Logs Insights QL or
+        # OpenSearch Service PPL and you omit this parameter, then the updated definition will contain no log
+        # groups.
+
+        @[JSON::Field(key: "logGroupNames")]
+        getter log_group_names : Array(String)?
+
+        # If you are updating a query definition, use this parameter to specify the ID of the query definition
+        # that you want to update. You can use DescribeQueryDefinitions to retrieve the IDs of your saved
+        # query definitions. If you are creating a query definition, do not specify this parameter. CloudWatch
+        # generates a unique ID for the new query definition and include it in the response to this operation.
+
+        @[JSON::Field(key: "queryDefinitionId")]
+        getter query_definition_id : String?
+
+        # Specify the query language to use for this query. The options are Logs Insights QL, OpenSearch PPL,
+        # and OpenSearch SQL. For more information about the query languages that CloudWatch Logs supports,
+        # see Supported query languages .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        def initialize(
+          @name : String,
+          @query_string : String,
+          @client_token : String? = nil,
+          @log_group_names : Array(String)? = nil,
+          @query_definition_id : String? = nil,
+          @query_language : String? = nil
+        )
+        end
+      end
+
+
+      struct PutQueryDefinitionResponse
+        include JSON::Serializable
+
+        # The ID of the query definition.
+
+        @[JSON::Field(key: "queryDefinitionId")]
+        getter query_definition_id : String?
+
+        def initialize(
+          @query_definition_id : String? = nil
+        )
+        end
+      end
+
+
+      struct PutResourcePolicyRequest
+        include JSON::Serializable
+
+        # The expected revision ID of the resource policy. Required when resourceArn is provided to prevent
+        # concurrent modifications. Use null when creating a resource policy for the first time.
+
+        @[JSON::Field(key: "expectedRevisionId")]
+        getter expected_revision_id : String?
+
+        # Details of the new policy, including the identity of the principal that is enabled to put logs to
+        # this account. This is formatted as a JSON string. This parameter is required. The following example
+        # creates a resource policy enabling the Route 53 service to put DNS query logs in to the specified
+        # log group. Replace "logArn" with the ARN of your CloudWatch Logs resource, such as a log group or
+        # log stream. CloudWatch Logs also supports aws:SourceArn and aws:SourceAccount condition context
+        # keys. In the example resource policy, you would replace the value of SourceArn with the resource
+        # making the call from Route 53 to CloudWatch Logs. You would also replace the value of SourceAccount
+        # with the Amazon Web Services account ID making that call. { "Version": "2012-10-17", "Statement": [
+        # { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [
+        # "route53.amazonaws.com" ] }, "Action": "logs:PutLogEvents", "Resource": "logArn", "Condition": {
+        # "ArnLike": { "aws:SourceArn": "myRoute53ResourceArn" }, "StringEquals": { "aws:SourceAccount":
+        # "myAwsAccountId" } } } ] }
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String?
+
+        # Name of the new policy. This parameter is required.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # The ARN of the CloudWatch Logs resource to which the resource policy needs to be added or attached.
+        # Currently only supports LogGroup ARN.
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String?
+
+        def initialize(
+          @expected_revision_id : String? = nil,
+          @policy_document : String? = nil,
+          @policy_name : String? = nil,
+          @resource_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct PutResourcePolicyResponse
+        include JSON::Serializable
+
+        # The new policy.
+
+        @[JSON::Field(key: "resourcePolicy")]
+        getter resource_policy : Types::ResourcePolicy?
+
+        # The revision ID of the created or updated resource policy. Only returned for resource-scoped
+        # policies.
+
+        @[JSON::Field(key: "revisionId")]
+        getter revision_id : String?
+
+        def initialize(
+          @resource_policy : Types::ResourcePolicy? = nil,
+          @revision_id : String? = nil
+        )
+        end
+      end
+
+
+      struct PutRetentionPolicyRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+
+        @[JSON::Field(key: "retentionInDays")]
+        getter retention_in_days : Int32
+
+        def initialize(
+          @log_group_name : String,
+          @retention_in_days : Int32
+        )
+        end
+      end
+
+
+      struct PutSubscriptionFilterRequest
+        include JSON::Serializable
+
+        # The ARN of the destination to deliver matching log events to. Currently, the supported destinations
+        # are: An Amazon Kinesis stream belonging to the same account as the subscription filter, for
+        # same-account delivery. A logical destination (specified using an ARN) belonging to a different
+        # account, for cross-account delivery. If you're setting up a cross-account subscription, the
+        # destination must have an IAM policy associated with it. The IAM policy must allow the sender to send
+        # logs to the destination. For more information, see PutDestinationPolicy . A Kinesis Data Firehose
+        # delivery stream belonging to the same account as the subscription filter, for same-account delivery.
+        # A Lambda function belonging to the same account as the subscription filter, for same-account
+        # delivery.
+
+        @[JSON::Field(key: "destinationArn")]
+        getter destination_arn : String
+
+        # A name for the subscription filter. If you are updating an existing filter, you must specify the
+        # correct name in filterName . To find the name of the filter currently associated with a log group,
+        # use DescribeSubscriptionFilters .
+
+        @[JSON::Field(key: "filterName")]
+        getter filter_name : String
+
+        # A filter pattern for subscribing to a filtered stream of log events.
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # This parameter is valid only for log groups that have an active log transformer. For more
+        # information about log transformers, see PutTransformer . If the log group uses either a log-group
+        # level or account-level transformer, and you specify true , the subscription filter will be applied
+        # on the transformed version of the log events instead of the original ingested log events.
+
+        @[JSON::Field(key: "applyOnTransformedLogs")]
+        getter apply_on_transformed_logs : Bool?
+
+        # The method used to distribute log data to the destination. By default, log data is grouped by log
+        # stream, but the grouping can be set to random for a more even distribution. This property is only
+        # applicable when the destination is an Amazon Kinesis data stream.
+
+        @[JSON::Field(key: "distribution")]
+        getter distribution : String?
+
+        # A list of system fields to include in the log events sent to the subscription destination. Valid
+        # values are @aws.account and @aws.region . These fields provide source information for centralized
+        # log data in the forwarded payload.
+
+        @[JSON::Field(key: "emitSystemFields")]
+        getter emit_system_fields : Array(String)?
+
+        # A filter expression that specifies which log events should be processed by this subscription filter
+        # based on system fields such as source account and source region. Uses selection criteria syntax with
+        # operators like = , != , AND , OR , IN , NOT IN . Example: @aws.region NOT IN ["cn-north-1"] or
+        # @aws.account = "123456789012" AND @aws.region = "us-east-1" . Maximum length: 2000 characters.
+
+        @[JSON::Field(key: "fieldSelectionCriteria")]
+        getter field_selection_criteria : String?
+
+        # The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the
+        # destination stream. You don't need to provide the ARN when you are working with a logical
+        # destination for cross-account delivery.
+
+        @[JSON::Field(key: "roleArn")]
+        getter role_arn : String?
+
+        def initialize(
+          @destination_arn : String,
+          @filter_name : String,
+          @filter_pattern : String,
+          @log_group_name : String,
+          @apply_on_transformed_logs : Bool? = nil,
+          @distribution : String? = nil,
+          @emit_system_fields : Array(String)? = nil,
+          @field_selection_criteria : String? = nil,
+          @role_arn : String? = nil
+        )
+        end
+      end
+
+
+      struct PutTransformerRequest
+        include JSON::Serializable
+
+        # Specify either the name or ARN of the log group to create the transformer for.
+
+        @[JSON::Field(key: "logGroupIdentifier")]
+        getter log_group_identifier : String
+
+        # This structure contains the configuration of this log transformer. A log transformer is an array of
+        # processors, where each processor applies one type of transformation to the log events that are
+        # ingested.
+
+        @[JSON::Field(key: "transformerConfig")]
+        getter transformer_config : Array(Types::Processor)
+
+        def initialize(
+          @log_group_identifier : String,
+          @transformer_config : Array(Types::Processor)
+        )
+        end
+      end
+
+      # Reserved.
+
+      struct QueryCompileError
+        include JSON::Serializable
+
+        # Reserved.
+
+        @[JSON::Field(key: "location")]
+        getter location : Types::QueryCompileErrorLocation?
+
+        # Reserved.
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        def initialize(
+          @location : Types::QueryCompileErrorLocation? = nil,
+          @message : String? = nil
+        )
+        end
+      end
+
+      # Reserved.
+
+      struct QueryCompileErrorLocation
+        include JSON::Serializable
+
+        # Reserved.
+
+        @[JSON::Field(key: "endCharOffset")]
+        getter end_char_offset : Int32?
+
+        # Reserved.
+
+        @[JSON::Field(key: "startCharOffset")]
+        getter start_char_offset : Int32?
+
+        def initialize(
+          @end_char_offset : Int32? = nil,
+          @start_char_offset : Int32? = nil
+        )
+        end
+      end
+
+      # This structure contains details about a saved CloudWatch Logs Insights query definition.
+
+      struct QueryDefinition
+        include JSON::Serializable
+
+        # The date that the query definition was most recently modified.
+
+        @[JSON::Field(key: "lastModified")]
+        getter last_modified : Int64?
+
+        # If this query definition contains a list of log groups that it is limited to, that list appears
+        # here.
+
+        @[JSON::Field(key: "logGroupNames")]
+        getter log_group_names : Array(String)?
+
+        # The name of the query definition.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # The unique ID of the query definition.
+
+        @[JSON::Field(key: "queryDefinitionId")]
+        getter query_definition_id : String?
+
+        # The query language used for this query. For more information about the query languages that
+        # CloudWatch Logs supports, see Supported query languages .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        # The query string to use for this definition. For more information, see CloudWatch Logs Insights
+        # Query Syntax .
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String?
+
+        def initialize(
+          @last_modified : Int64? = nil,
+          @log_group_names : Array(String)? = nil,
+          @name : String? = nil,
+          @query_definition_id : String? = nil,
+          @query_language : String? = nil,
+          @query_string : String? = nil
+        )
+        end
+      end
+
+      # Information about one CloudWatch Logs Insights query that matches the request in a DescribeQueries
+      # operation.
+
+      struct QueryInfo
+        include JSON::Serializable
+
+        # The date and time that this query was created.
+
+        @[JSON::Field(key: "createTime")]
+        getter create_time : Int64?
+
+        # The name of the log group scanned by this query.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The unique ID number of this query.
+
+        @[JSON::Field(key: "queryId")]
+        getter query_id : String?
+
+        # The query language used for this query. For more information about the query languages that
+        # CloudWatch Logs supports, see Supported query languages .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        # The query string used in this query.
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String?
+
+        # The status of this query. Possible values are Cancelled , Complete , Failed , Running , Scheduled ,
+        # and Unknown .
+
+        @[JSON::Field(key: "status")]
+        getter status : String?
+
+        def initialize(
+          @create_time : Int64? = nil,
+          @log_group_name : String? = nil,
+          @query_id : String? = nil,
+          @query_language : String? = nil,
+          @query_string : String? = nil,
+          @status : String? = nil
+        )
+        end
+      end
+
+      # Contains the number of log events scanned by the query, the number of log events that matched the
+      # query criteria, and the total number of bytes in the log events that were scanned. If the query
+      # involved log groups that have field index policies, the estimated number of skipped log events and
+      # the total bytes of those skipped log events are included. Using field indexes to skip log events in
+      # queries reduces scan volume and improves performance. For more information, see Create field indexes
+      # to improve query performance and reduce scan volume .
+
+      struct QueryStatistics
+        include JSON::Serializable
+
+        # The total number of bytes in the log events scanned during the query.
+
+        @[JSON::Field(key: "bytesScanned")]
+        getter bytes_scanned : Float64?
+
+        # An estimate of the number of bytes in the log events that were skipped when processing this query,
+        # because the query contained an indexed field. Skipping these entries lowers query costs and improves
+        # the query performance time. For more information about field indexes, see PutIndexPolicy .
+
+        @[JSON::Field(key: "estimatedBytesSkipped")]
+        getter estimated_bytes_skipped : Float64?
+
+        # An estimate of the number of log events that were skipped when processing this query, because the
+        # query contained an indexed field. Skipping these entries lowers query costs and improves the query
+        # performance time. For more information about field indexes, see PutIndexPolicy .
+
+        @[JSON::Field(key: "estimatedRecordsSkipped")]
+        getter estimated_records_skipped : Float64?
+
+        # The number of log groups that were scanned by this query.
+
+        @[JSON::Field(key: "logGroupsScanned")]
+        getter log_groups_scanned : Float64?
+
+        # The number of log events that matched the query string.
+
+        @[JSON::Field(key: "recordsMatched")]
+        getter records_matched : Float64?
+
+        # The total number of log events scanned during the query.
+
+        @[JSON::Field(key: "recordsScanned")]
+        getter records_scanned : Float64?
+
+        def initialize(
+          @bytes_scanned : Float64? = nil,
+          @estimated_bytes_skipped : Float64? = nil,
+          @estimated_records_skipped : Float64? = nil,
+          @log_groups_scanned : Float64? = nil,
+          @records_matched : Float64? = nil,
+          @records_scanned : Float64? = nil
+        )
+        end
+      end
+
+      # A structure that represents a valid record field header and whether it is mandatory.
+
+      struct RecordField
+        include JSON::Serializable
+
+        # If this is true , the record field must be present in the recordFields parameter provided to a
+        # CreateDelivery or UpdateDeliveryConfiguration operation.
+
+        @[JSON::Field(key: "mandatory")]
+        getter mandatory : Bool?
+
+        # The name to use when specifying this record field in a CreateDelivery or UpdateDeliveryConfiguration
+        # operation.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        def initialize(
+          @mandatory : Bool? = nil,
+          @name : String? = nil
+        )
+        end
+      end
+
+      # If an entity is rejected when a PutLogEvents request was made, this includes details about the
+      # reason for the rejection.
+
+      struct RejectedEntityInfo
+        include JSON::Serializable
+
+        # The type of error that caused the rejection of the entity when calling PutLogEvents .
+
+        @[JSON::Field(key: "errorType")]
+        getter error_type : String
+
+        def initialize(
+          @error_type : String
+        )
+        end
+      end
+
+      # Represents the rejected events.
+
+      struct RejectedLogEventsInfo
+        include JSON::Serializable
+
+        # The expired log events.
+
+        @[JSON::Field(key: "expiredLogEventEndIndex")]
+        getter expired_log_event_end_index : Int32?
+
+        # The index of the first log event that is too new. This field is inclusive.
+
+        @[JSON::Field(key: "tooNewLogEventStartIndex")]
+        getter too_new_log_event_start_index : Int32?
+
+        # The index of the last log event that is too old. This field is exclusive.
+
+        @[JSON::Field(key: "tooOldLogEventEndIndex")]
+        getter too_old_log_event_end_index : Int32?
+
+        def initialize(
+          @expired_log_event_end_index : Int32? = nil,
+          @too_new_log_event_start_index : Int32? = nil,
+          @too_old_log_event_end_index : Int32? = nil
+        )
+        end
+      end
+
+      # This object defines one key that will be renamed with the renameKey processor.
+
+      struct RenameKeyEntry
+        include JSON::Serializable
+
+        # The key to rename
+
+        @[JSON::Field(key: "key")]
+        getter key : String
+
+        # The string to use for the new key name
+
+        @[JSON::Field(key: "renameTo")]
+        getter rename_to : String
+
+        # Specifies whether to overwrite the existing value if the destination key already exists. The default
+        # is false
+
+        @[JSON::Field(key: "overwriteIfExists")]
+        getter overwrite_if_exists : Bool?
+
+        def initialize(
+          @key : String,
+          @rename_to : String,
+          @overwrite_if_exists : Bool? = nil
+        )
+        end
+      end
+
+      # Use this processor to rename keys in a log event. For more information about this processor
+      # including examples, see renameKeys in the CloudWatch Logs User Guide .
+
+      struct RenameKeys
+        include JSON::Serializable
+
+        # An array of RenameKeyEntry objects, where each object contains the information about a single key to
+        # rename.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::RenameKeyEntry)
+
+        def initialize(
+          @entries : Array(Types::RenameKeyEntry)
+        )
+        end
+      end
+
+      # The specified resource already exists.
+
+      struct ResourceAlreadyExistsException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # This structure contains configuration details about an integration between CloudWatch Logs and
+      # another entity.
+
+      struct ResourceConfig
+        include JSON::Serializable
+
+        # This structure contains configuration details about an integration between CloudWatch Logs and
+        # OpenSearch Service.
+
+        @[JSON::Field(key: "openSearchResourceConfig")]
+        getter open_search_resource_config : Types::OpenSearchResourceConfig?
+
+        def initialize(
+          @open_search_resource_config : Types::OpenSearchResourceConfig? = nil
+        )
+        end
+      end
+
+      # The specified resource does not exist.
+
+      struct ResourceNotFoundException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # A policy enabling one or more entities to put logs to a log group in this account.
+
+      struct ResourcePolicy
+        include JSON::Serializable
+
+        # Timestamp showing when this policy was last updated, expressed as the number of milliseconds after
+        # Jan 1, 1970 00:00:00 UTC .
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The details of the policy.
+
+        @[JSON::Field(key: "policyDocument")]
+        getter policy_document : String?
+
+        # The name of the resource policy.
+
+        @[JSON::Field(key: "policyName")]
+        getter policy_name : String?
+
+        # Specifies scope of the resource policy. Valid values are ACCOUNT or RESOURCE.
+
+        @[JSON::Field(key: "policyScope")]
+        getter policy_scope : String?
+
+        # The ARN of the CloudWatch Logs resource to which the resource policy is attached. Only populated for
+        # resource-scoped policies.
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String?
+
+        # The revision ID of the resource policy. Only populated for resource-scoped policies.
+
+        @[JSON::Field(key: "revisionId")]
+        getter revision_id : String?
+
+        def initialize(
+          @last_updated_time : Int64? = nil,
+          @policy_document : String? = nil,
+          @policy_name : String? = nil,
+          @policy_scope : String? = nil,
+          @resource_arn : String? = nil,
+          @revision_id : String? = nil
+        )
+        end
+      end
+
+      # Contains one field from one log event returned by a CloudWatch Logs Insights query, along with the
+      # value of that field. For more information about the fields that are generated by CloudWatch logs,
+      # see Supported Logs and Discovered Fields .
+
+      struct ResultField
+        include JSON::Serializable
+
+        # The log event field.
+
+        @[JSON::Field(key: "field")]
+        getter field : String?
+
+        # The value of this field.
+
+        @[JSON::Field(key: "value")]
+        getter value : String?
+
+        def initialize(
+          @field : String? = nil,
+          @value : String? = nil
+        )
+        end
+      end
+
+      # Configuration for Amazon S3 destination where scheduled query results are delivered.
+
+      struct S3Configuration
+        include JSON::Serializable
+
+        # The Amazon S3 URI where query results are delivered. Must be a valid S3 URI format.
+
+        @[JSON::Field(key: "destinationIdentifier")]
+        getter destination_identifier : String
+
+        # The ARN of the IAM role that grants permissions to write query results to the specified Amazon S3
+        # destination.
+
+        @[JSON::Field(key: "roleArn")]
+        getter role_arn : String
+
+        def initialize(
+          @destination_identifier : String,
+          @role_arn : String
+        )
+        end
+      end
+
+      # This structure contains delivery configurations that apply only when the delivery destination
+      # resource is an S3 bucket.
+
+      struct S3DeliveryConfiguration
+        include JSON::Serializable
+
+        # This parameter causes the S3 objects that contain delivered logs to use a prefix structure that
+        # allows for integration with Apache Hive.
+
+        @[JSON::Field(key: "enableHiveCompatiblePath")]
+        getter enable_hive_compatible_path : Bool?
+
+        # This string allows re-configuring the S3 object prefix to contain either static or variable
+        # sections. The valid variables to use in the suffix path will vary by each log source. To find the
+        # values supported for the suffix path for each log source, use the DescribeConfigurationTemplates
+        # operation and check the allowedSuffixPathFields field in the response.
+
+        @[JSON::Field(key: "suffixPath")]
+        getter suffix_path : String?
+
+        def initialize(
+          @enable_hive_compatible_path : Bool? = nil,
+          @suffix_path : String? = nil
+        )
+        end
+      end
+
+      # Represents a data source association with an S3 Table Integration, including its status and
+      # metadata.
+
+      struct S3TableIntegrationSource
+        include JSON::Serializable
+
+        # The timestamp when the data source association was created.
+
+        @[JSON::Field(key: "createdTimeStamp")]
+        getter created_time_stamp : Int64?
+
+        # The data source associated with the S3 Table Integration.
+
+        @[JSON::Field(key: "dataSource")]
+        getter data_source : Types::DataSource?
+
+        # The unique identifier for this data source association.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String?
+
+        # The current status of the data source association.
+
+        @[JSON::Field(key: "status")]
+        getter status : String?
+
+        # Additional information about the status of the data source association.
+
+        @[JSON::Field(key: "statusReason")]
+        getter status_reason : String?
+
+        def initialize(
+          @created_time_stamp : Int64? = nil,
+          @data_source : Types::DataSource? = nil,
+          @identifier : String? = nil,
+          @status : String? = nil,
+          @status_reason : String? = nil
+        )
+        end
+      end
+
+      # Information about a destination where scheduled query results are processed, including processing
+      # status and any error messages.
+
+      struct ScheduledQueryDestination
+        include JSON::Serializable
+
+        # The identifier for the destination where results are delivered.
+
+        @[JSON::Field(key: "destinationIdentifier")]
+        getter destination_identifier : String?
+
+        # The type of destination for query results.
+
+        @[JSON::Field(key: "destinationType")]
+        getter destination_type : String?
+
+        # Error message if destination processing failed.
+
+        @[JSON::Field(key: "errorMessage")]
+        getter error_message : String?
+
+        # The identifier of the processed result at the destination.
+
+        @[JSON::Field(key: "processedIdentifier")]
+        getter processed_identifier : String?
+
+        # The processing status of the destination delivery.
+
+        @[JSON::Field(key: "status")]
+        getter status : String?
+
+        def initialize(
+          @destination_identifier : String? = nil,
+          @destination_type : String? = nil,
+          @error_message : String? = nil,
+          @processed_identifier : String? = nil,
+          @status : String? = nil
+        )
+        end
+      end
+
+      # Summary information about a scheduled query, including basic configuration and execution status.
+
+      struct ScheduledQuerySummary
+        include JSON::Serializable
+
+        # The timestamp when the scheduled query was created.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # Configuration for where query results are delivered.
+
+        @[JSON::Field(key: "destinationConfiguration")]
+        getter destination_configuration : Types::DestinationConfiguration?
+
+        # The status of the most recent execution.
+
+        @[JSON::Field(key: "lastExecutionStatus")]
+        getter last_execution_status : String?
+
+        # The timestamp when the scheduled query was last executed.
+
+        @[JSON::Field(key: "lastTriggeredTime")]
+        getter last_triggered_time : Int64?
+
+        # The timestamp when the scheduled query was last updated.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The name of the scheduled query.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # The cron expression that defines when the scheduled query runs.
+
+        @[JSON::Field(key: "scheduleExpression")]
+        getter schedule_expression : String?
+
+        # The ARN of the scheduled query.
+
+        @[JSON::Field(key: "scheduledQueryArn")]
+        getter scheduled_query_arn : String?
+
+        # The current state of the scheduled query.
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        # The timezone used for evaluating the schedule expression.
+
+        @[JSON::Field(key: "timezone")]
+        getter timezone : String?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @destination_configuration : Types::DestinationConfiguration? = nil,
+          @last_execution_status : String? = nil,
+          @last_triggered_time : Int64? = nil,
+          @last_updated_time : Int64? = nil,
+          @name : String? = nil,
+          @schedule_expression : String? = nil,
+          @scheduled_query_arn : String? = nil,
+          @state : String? = nil,
+          @timezone : String? = nil
+        )
+        end
+      end
+
+      # Represents the search status of a log stream.
+
+      struct SearchedLogStream
+        include JSON::Serializable
+
+        # The name of the log stream.
+
+        @[JSON::Field(key: "logStreamName")]
+        getter log_stream_name : String?
+
+        # Indicates whether all the events in this log stream were searched.
+
+        @[JSON::Field(key: "searchedCompletely")]
+        getter searched_completely : Bool?
+
+        def initialize(
+          @log_stream_name : String? = nil,
+          @searched_completely : Bool? = nil
+        )
+        end
+      end
+
+      # This request exceeds a service quota.
+
+      struct ServiceQuotaExceededException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # The service cannot complete the request.
+
+      struct ServiceUnavailableException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # This exception is returned if an unknown error occurs during a Live Tail session.
+
+      struct SessionStreamingException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        def initialize(
+          @message : String? = nil
+        )
+        end
+      end
+
+      # This exception is returned in a Live Tail stream when the Live Tail session times out. Live Tail
+      # sessions time out after three hours.
+
+      struct SessionTimeoutException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        def initialize(
+          @message : String? = nil
+        )
+        end
+      end
+
+      # Use this processor to split a field into an array of strings using a delimiting character. For more
+      # information about this processor including examples, see splitString in the CloudWatch Logs User
+      # Guide .
+
+      struct SplitString
+        include JSON::Serializable
+
+        # An array of SplitStringEntry objects, where each object contains the information about one field to
+        # split.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::SplitStringEntry)
+
+        def initialize(
+          @entries : Array(Types::SplitStringEntry)
+        )
+        end
+      end
+
+      # This object defines one log field that will be split with the splitString processor.
+
+      struct SplitStringEntry
+        include JSON::Serializable
+
+        # The separator characters to split the string entry on.
+
+        @[JSON::Field(key: "delimiter")]
+        getter delimiter : String
+
+        # The key of the field to split.
+
+        @[JSON::Field(key: "source")]
+        getter source : String
+
+        def initialize(
+          @delimiter : String,
+          @source : String
+        )
+        end
+      end
+
+
+      struct StartLiveTailRequest
+        include JSON::Serializable
+
+        # An array where each item in the array is a log group to include in the Live Tail session. Specify
+        # each log group by its ARN. If you specify an ARN, the ARN can't end with an asterisk (*). You can
+        # include up to 10 log groups.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)
+
+        # An optional pattern to use to filter the results to include only log events that match the pattern.
+        # For example, a filter pattern of error 404 causes only log events that include both error and 404 to
+        # be included in the Live Tail stream. Regular expression filter patterns are supported. For more
+        # information about filter pattern syntax, see Filter and Pattern Syntax .
+
+        @[JSON::Field(key: "logEventFilterPattern")]
+        getter log_event_filter_pattern : String?
+
+        # If you specify this parameter, then only log events in the log streams that have names that start
+        # with the prefixes that you specify here are included in the Live Tail session. If you specify this
+        # field, you can't also specify the logStreamNames field. You can specify this parameter only if you
+        # specify only one log group in logGroupIdentifiers .
+
+        @[JSON::Field(key: "logStreamNamePrefixes")]
+        getter log_stream_name_prefixes : Array(String)?
+
+        # If you specify this parameter, then only log events in the log streams that you specify here are
+        # included in the Live Tail session. If you specify this field, you can't also specify the
+        # logStreamNamePrefixes field. You can specify this parameter only if you specify only one log group
+        # in logGroupIdentifiers .
+
+        @[JSON::Field(key: "logStreamNames")]
+        getter log_stream_names : Array(String)?
+
+        def initialize(
+          @log_group_identifiers : Array(String),
+          @log_event_filter_pattern : String? = nil,
+          @log_stream_name_prefixes : Array(String)? = nil,
+          @log_stream_names : Array(String)? = nil
+        )
+        end
+      end
+
+
+      struct StartLiveTailResponse
+        include JSON::Serializable
+
+        # An object that includes the stream returned by your request. It can include both log events and
+        # exceptions.
+
+        @[JSON::Field(key: "responseStream")]
+        getter response_stream : Types::StartLiveTailResponseStream?
+
+        def initialize(
+          @response_stream : Types::StartLiveTailResponseStream? = nil
+        )
+        end
+      end
+
+      # This object includes the stream returned by your StartLiveTail request.
+
+      struct StartLiveTailResponseStream
+        include JSON::Serializable
+
+        # This exception is returned if an unknown error occurs.
+
+        @[JSON::Field(key: "SessionStreamingException")]
+        getter session_streaming_exception : Types::SessionStreamingException?
+
+        # This exception is returned in the stream when the Live Tail session times out. Live Tail sessions
+        # time out after three hours.
+
+        @[JSON::Field(key: "SessionTimeoutException")]
+        getter session_timeout_exception : Types::SessionTimeoutException?
+
+        # This object contains information about this Live Tail session, including the log groups included and
+        # the log stream filters, if any.
+
+        @[JSON::Field(key: "sessionStart")]
+        getter session_start : Types::LiveTailSessionStart?
+
+        # This object contains the log events and session metadata.
+
+        @[JSON::Field(key: "sessionUpdate")]
+        getter session_update : Types::LiveTailSessionUpdate?
+
+        def initialize(
+          @session_streaming_exception : Types::SessionStreamingException? = nil,
+          @session_timeout_exception : Types::SessionTimeoutException? = nil,
+          @session_start : Types::LiveTailSessionStart? = nil,
+          @session_update : Types::LiveTailSessionUpdate? = nil
+        )
+        end
+      end
+
+
+      struct StartQueryRequest
+        include JSON::Serializable
+
+        # The end of the time range to query. The range is inclusive, so the specified end time is included in
+        # the query. Specified as epoch time, the number of seconds since January 1, 1970, 00:00:00 UTC .
+
+        @[JSON::Field(key: "endTime")]
+        getter end_time : Int64
+
+        # The query string to use. For more information, see CloudWatch Logs Insights Query Syntax .
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String
+
+        # The beginning of the time range to query. The range is inclusive, so the specified start time is
+        # included in the query. Specified as epoch time, the number of seconds since January 1, 1970,
+        # 00:00:00 UTC .
+
+        @[JSON::Field(key: "startTime")]
+        getter start_time : Int64
+
+        # The maximum number of log events to return in the query. If the query string uses the fields
+        # command, only the specified fields and their values are returned. The default is 10,000.
+
+        @[JSON::Field(key: "limit")]
+        getter limit : Int32?
+
+        # The list of log groups to query. You can include up to 50 log groups. You can specify them by the
+        # log group name or ARN. If a log group that you're querying is in a source account and you're using a
+        # monitoring account, you must specify the ARN of the log group here. The query definition must also
+        # be defined in the monitoring account. If you specify an ARN, use the format arn:aws:logs: region :
+        # account-id :log-group: log_group_name Don't include an * at the end. A StartQuery operation must
+        # include exactly one of the following parameters: logGroupName , logGroupNames , or
+        # logGroupIdentifiers . The exception is queries using the OpenSearch Service SQL query language,
+        # where you specify the log group names inside the querystring instead of here.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # The log group on which to perform the query. A StartQuery operation must include exactly one of the
+        # following parameters: logGroupName , logGroupNames , or logGroupIdentifiers . The exception is
+        # queries using the OpenSearch Service SQL query language, where you specify the log group names
+        # inside the querystring instead of here.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+        # The list of log groups to be queried. You can include up to 50 log groups. A StartQuery operation
+        # must include exactly one of the following parameters: logGroupName , logGroupNames , or
+        # logGroupIdentifiers . The exception is queries using the OpenSearch Service SQL query language,
+        # where you specify the log group names inside the querystring instead of here.
+
+        @[JSON::Field(key: "logGroupNames")]
+        getter log_group_names : Array(String)?
+
+        # Specify the query language to use for this query. The options are Logs Insights QL, OpenSearch PPL,
+        # and OpenSearch SQL. For more information about the query languages that CloudWatch Logs supports,
+        # see Supported query languages .
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        def initialize(
+          @end_time : Int64,
+          @query_string : String,
+          @start_time : Int64,
+          @limit : Int32? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @log_group_name : String? = nil,
+          @log_group_names : Array(String)? = nil,
+          @query_language : String? = nil
+        )
+        end
+      end
+
+
+      struct StartQueryResponse
+        include JSON::Serializable
+
+        # The unique ID of the query.
+
+        @[JSON::Field(key: "queryId")]
+        getter query_id : String?
+
+        def initialize(
+          @query_id : String? = nil
+        )
+        end
+      end
+
+
+      struct StopQueryRequest
+        include JSON::Serializable
+
+        # The ID number of the query to stop. To find this ID number, use DescribeQueries .
+
+        @[JSON::Field(key: "queryId")]
+        getter query_id : String
+
+        def initialize(
+          @query_id : String
+        )
+        end
+      end
+
+
+      struct StopQueryResponse
+        include JSON::Serializable
+
+        # This is true if the query was stopped by the StopQuery operation.
+
+        @[JSON::Field(key: "success")]
+        getter success : Bool?
+
+        def initialize(
+          @success : Bool? = nil
+        )
+        end
+      end
+
+      # Represents a subscription filter.
+
+      struct SubscriptionFilter
+        include JSON::Serializable
+
+        # This parameter is valid only for log groups that have an active log transformer. For more
+        # information about log transformers, see PutTransformer . If this value is true , the subscription
+        # filter is applied on the transformed version of the log events instead of the original ingested log
+        # events.
+
+        @[JSON::Field(key: "applyOnTransformedLogs")]
+        getter apply_on_transformed_logs : Bool?
+
+        # The creation time of the subscription filter, expressed as the number of milliseconds after Jan 1,
+        # 1970 00:00:00 UTC .
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The Amazon Resource Name (ARN) of the destination.
+
+        @[JSON::Field(key: "destinationArn")]
+        getter destination_arn : String?
+
+
+        @[JSON::Field(key: "distribution")]
+        getter distribution : String?
+
+        # The list of system fields that are included in the log events sent to the subscription destination.
+        # Returns the emitSystemFields value if it was specified when the subscription filter was created.
+
+        @[JSON::Field(key: "emitSystemFields")]
+        getter emit_system_fields : Array(String)?
+
+        # The filter expression that specifies which log events are processed by this subscription filter
+        # based on system fields. Returns the fieldSelectionCriteria value if it was specified when the
+        # subscription filter was created.
+
+        @[JSON::Field(key: "fieldSelectionCriteria")]
+        getter field_selection_criteria : String?
+
+        # The name of the subscription filter.
+
+        @[JSON::Field(key: "filterName")]
+        getter filter_name : String?
+
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String?
+
+
+        @[JSON::Field(key: "roleArn")]
+        getter role_arn : String?
+
+        def initialize(
+          @apply_on_transformed_logs : Bool? = nil,
+          @creation_time : Int64? = nil,
+          @destination_arn : String? = nil,
+          @distribution : String? = nil,
+          @emit_system_fields : Array(String)? = nil,
+          @field_selection_criteria : String? = nil,
+          @filter_name : String? = nil,
+          @filter_pattern : String? = nil,
+          @log_group_name : String? = nil,
+          @role_arn : String? = nil
+        )
+        end
+      end
+
+      # This processor matches a key’s value against a regular expression and replaces all matches with a
+      # replacement string. For more information about this processor including examples, see
+      # substituteString in the CloudWatch Logs User Guide .
+
+      struct SubstituteString
+        include JSON::Serializable
+
+        # An array of objects, where each object contains the information about one key to match and replace.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::SubstituteStringEntry)
+
+        def initialize(
+          @entries : Array(Types::SubstituteStringEntry)
+        )
+        end
+      end
+
+      # This object defines one log field key that will be replaced using the substituteString processor.
+
+      struct SubstituteStringEntry
+        include JSON::Serializable
+
+        # The regular expression string to be replaced. Special regex characters such as [ and ] must be
+        # escaped using \\ when using double quotes and with \ when using single quotes. For more information,
+        # see Class Pattern on the Oracle web site.
+
+        @[JSON::Field(key: "from")]
+        getter from : String
+
+        # The key to modify
+
+        @[JSON::Field(key: "source")]
+        getter source : String
+
+        # The string to be substituted for each match of from
+
+        @[JSON::Field(key: "to")]
+        getter to : String
+
+        def initialize(
+          @from : String,
+          @source : String,
+          @to : String
+        )
+        end
+      end
+
+      # If you are suppressing an anomaly temporariliy, this structure defines how long the suppression
+      # period is to be.
+
+      struct SuppressionPeriod
+        include JSON::Serializable
+
+        # Specifies whether the value of value is in seconds, minutes, or hours.
+
+        @[JSON::Field(key: "suppressionUnit")]
+        getter suppression_unit : String?
+
+        # Specifies the number of seconds, minutes or hours to suppress this anomaly. There is no maximum.
+
+        @[JSON::Field(key: "value")]
+        getter value : Int32?
+
+        def initialize(
+          @suppression_unit : String? = nil,
+          @value : Int32? = nil
+        )
+        end
+      end
+
+
+      struct TagLogGroupRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The key-value pairs to use for the tags.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)
+
+        def initialize(
+          @log_group_name : String,
+          @tags : Hash(String, String)
+        )
+        end
+      end
+
+
+      struct TagResourceRequest
+        include JSON::Serializable
+
+        # The ARN of the resource that you're adding tags to. The ARN format of a log group is arn:aws:logs:
+        # Region : account-id :log-group: log-group-name The ARN format of a destination is arn:aws:logs:
+        # Region : account-id :destination: destination-name For more information about ARN format, see
+        # CloudWatch Logs resources and operations .
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String
+
+        # The list of key-value pairs to associate with the resource.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Hash(String, String)
+
+        def initialize(
+          @resource_arn : String,
+          @tags : Hash(String, String)
+        )
+        end
+      end
+
+
+      struct TestMetricFilterRequest
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String
+
+        # The log event messages to test.
+
+        @[JSON::Field(key: "logEventMessages")]
+        getter log_event_messages : Array(String)
+
+        def initialize(
+          @filter_pattern : String,
+          @log_event_messages : Array(String)
+        )
+        end
+      end
+
+
+      struct TestMetricFilterResponse
+        include JSON::Serializable
+
+        # The matched events.
+
+        @[JSON::Field(key: "matches")]
+        getter matches : Array(Types::MetricFilterMatchRecord)?
+
+        def initialize(
+          @matches : Array(Types::MetricFilterMatchRecord)? = nil
+        )
+        end
+      end
+
+
+      struct TestTransformerRequest
+        include JSON::Serializable
+
+        # An array of the raw log events that you want to use to test this transformer.
+
+        @[JSON::Field(key: "logEventMessages")]
+        getter log_event_messages : Array(String)
+
+        # This structure contains the configuration of this log transformer that you want to test. A log
+        # transformer is an array of processors, where each processor applies one type of transformation to
+        # the log events that are ingested.
+
+        @[JSON::Field(key: "transformerConfig")]
+        getter transformer_config : Array(Types::Processor)
+
+        def initialize(
+          @log_event_messages : Array(String),
+          @transformer_config : Array(Types::Processor)
+        )
+        end
+      end
+
+
+      struct TestTransformerResponse
+        include JSON::Serializable
+
+        # An array where each member of the array includes both the original version and the transformed
+        # version of one of the log events that you input.
+
+        @[JSON::Field(key: "transformedLogs")]
+        getter transformed_logs : Array(Types::TransformedLogRecord)?
+
+        def initialize(
+          @transformed_logs : Array(Types::TransformedLogRecord)? = nil
+        )
+        end
+      end
+
+      # The request was throttled because of quota limits.
+
+      struct ThrottlingException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+      # A resource can have no more than 50 tags.
+
+      struct TooManyTagsException
+        include JSON::Serializable
+
+
+        @[JSON::Field(key: "message")]
+        getter message : String?
+
+        # The name of the resource.
+
+        @[JSON::Field(key: "resourceName")]
+        getter resource_name : String?
+
+        def initialize(
+          @message : String? = nil,
+          @resource_name : String? = nil
+        )
+        end
+      end
+
+      # This structure contains information for one log event that has been processed by a log transformer.
+
+      struct TransformedLogRecord
+        include JSON::Serializable
+
+        # The original log event message before it was transformed.
+
+        @[JSON::Field(key: "eventMessage")]
+        getter event_message : String?
+
+        # The event number.
+
+        @[JSON::Field(key: "eventNumber")]
+        getter event_number : Int64?
+
+        # The log event message after being transformed.
+
+        @[JSON::Field(key: "transformedEventMessage")]
+        getter transformed_event_message : String?
+
+        def initialize(
+          @event_message : String? = nil,
+          @event_number : Int64? = nil,
+          @transformed_event_message : String? = nil
+        )
+        end
+      end
+
+      # A record of a scheduled query execution, including execution status, timestamp, and destination
+      # processing results.
+
+      struct TriggerHistoryRecord
+        include JSON::Serializable
+
+        # Information about destination processing for this query execution.
+
+        @[JSON::Field(key: "destinations")]
+        getter destinations : Array(Types::ScheduledQueryDestination)?
+
+        # Error message if the query execution failed.
+
+        @[JSON::Field(key: "errorMessage")]
+        getter error_message : String?
+
+        # The execution status of the scheduled query run.
+
+        @[JSON::Field(key: "executionStatus")]
+        getter execution_status : String?
+
+        # The unique identifier for this query execution.
+
+        @[JSON::Field(key: "queryId")]
+        getter query_id : String?
+
+        # The timestamp when the scheduled query execution was triggered.
+
+        @[JSON::Field(key: "triggeredTimestamp")]
+        getter triggered_timestamp : Int64?
+
+        def initialize(
+          @destinations : Array(Types::ScheduledQueryDestination)? = nil,
+          @error_message : String? = nil,
+          @execution_status : String? = nil,
+          @query_id : String? = nil,
+          @triggered_timestamp : Int64? = nil
+        )
+        end
+      end
+
+      # Use this processor to remove leading and trailing whitespace. For more information about this
+      # processor including examples, see trimString in the CloudWatch Logs User Guide .
+
+      struct TrimString
+        include JSON::Serializable
+
+        # The array containing the keys of the fields to trim.
+
+        @[JSON::Field(key: "withKeys")]
+        getter with_keys : Array(String)
+
+        def initialize(
+          @with_keys : Array(String)
+        )
+        end
+      end
+
+      # Use this processor to convert a value type associated with the specified key to the specified type.
+      # It's a casting processor that changes the types of the specified fields. Values can be converted
+      # into one of the following datatypes: integer , double , string and boolean . For more information
+      # about this processor including examples, see trimString in the CloudWatch Logs User Guide .
+
+      struct TypeConverter
+        include JSON::Serializable
+
+        # An array of TypeConverterEntry objects, where each object contains the information about one field
+        # to change the type of.
+
+        @[JSON::Field(key: "entries")]
+        getter entries : Array(Types::TypeConverterEntry)
+
+        def initialize(
+          @entries : Array(Types::TypeConverterEntry)
+        )
+        end
+      end
+
+      # This object defines one value type that will be converted using the typeConverter processor.
+
+      struct TypeConverterEntry
+        include JSON::Serializable
+
+        # The key with the value that is to be converted to a different type.
+
+        @[JSON::Field(key: "key")]
+        getter key : String
+
+        # The type to convert the field value to. Valid values are integer , double , string and boolean .
+
+        @[JSON::Field(key: "type")]
+        getter type : String
+
+        def initialize(
+          @key : String,
+          @type : String
+        )
+        end
+      end
+
+      # The most likely cause is an Amazon Web Services access key ID or secret key that's not valid.
+
+      struct UnrecognizedClientException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UntagLogGroupRequest
+        include JSON::Serializable
+
+        # The name of the log group.
+
+        @[JSON::Field(key: "logGroupName")]
+        getter log_group_name : String
+
+        # The tag keys. The corresponding tags are removed from the log group.
+
+        @[JSON::Field(key: "tags")]
+        getter tags : Array(String)
+
+        def initialize(
+          @log_group_name : String,
+          @tags : Array(String)
+        )
+        end
+      end
+
+
+      struct UntagResourceRequest
+        include JSON::Serializable
+
+        # The ARN of the CloudWatch Logs resource that you're removing tags from. The ARN format of a log
+        # group is arn:aws:logs: Region : account-id :log-group: log-group-name The ARN format of a
+        # destination is arn:aws:logs: Region : account-id :destination: destination-name For more information
+        # about ARN format, see CloudWatch Logs resources and operations .
+
+        @[JSON::Field(key: "resourceArn")]
+        getter resource_arn : String
+
+        # The list of tag keys to remove from the resource.
+
+        @[JSON::Field(key: "tagKeys")]
+        getter tag_keys : Array(String)
+
+        def initialize(
+          @resource_arn : String,
+          @tag_keys : Array(String)
+        )
+        end
+      end
+
+
+      struct UpdateAnomalyRequest
+        include JSON::Serializable
+
+        # The ARN of the anomaly detector that this operation is to act on.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String
+
+        # If you are suppressing or unsuppressing an anomaly, specify its unique ID here. You can find anomaly
+        # IDs by using the ListAnomalies operation.
+
+        @[JSON::Field(key: "anomalyId")]
+        getter anomaly_id : String?
+
+        # Set this to true to prevent CloudWatch Logs from displaying this behavior as an anomaly in the
+        # future. The behavior is then treated as baseline behavior. However, if similar but more severe
+        # occurrences of this behavior occur in the future, those will still be reported as anomalies. The
+        # default is false
+
+        @[JSON::Field(key: "baseline")]
+        getter baseline : Bool?
+
+        # If you are suppressing or unsuppressing an pattern, specify its unique ID here. You can find pattern
+        # IDs by using the ListAnomalies operation.
+
+        @[JSON::Field(key: "patternId")]
+        getter pattern_id : String?
+
+        # If you are temporarily suppressing an anomaly or pattern, use this structure to specify how long the
+        # suppression is to last.
+
+        @[JSON::Field(key: "suppressionPeriod")]
+        getter suppression_period : Types::SuppressionPeriod?
+
+        # Use this to specify whether the suppression to be temporary or infinite. If you specify LIMITED ,
+        # you must also specify a suppressionPeriod . If you specify INFINITE , any value for
+        # suppressionPeriod is ignored.
+
+        @[JSON::Field(key: "suppressionType")]
+        getter suppression_type : String?
+
+        def initialize(
+          @anomaly_detector_arn : String,
+          @anomaly_id : String? = nil,
+          @baseline : Bool? = nil,
+          @pattern_id : String? = nil,
+          @suppression_period : Types::SuppressionPeriod? = nil,
+          @suppression_type : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateDeliveryConfigurationRequest
+        include JSON::Serializable
+
+        # The ID of the delivery to be updated by this request.
+
+        @[JSON::Field(key: "id")]
+        getter id : String
+
+        # The field delimiter to use between record fields when the final output format of a delivery is in
+        # Plain , W3C , or Raw format.
+
+        @[JSON::Field(key: "fieldDelimiter")]
+        getter field_delimiter : String?
+
+        # The list of record fields to be delivered to the destination, in order. If the delivery's log source
+        # has mandatory fields, they must be included in this list.
+
+        @[JSON::Field(key: "recordFields")]
+        getter record_fields : Array(String)?
+
+        # This structure contains parameters that are valid only when the delivery's delivery destination is
+        # an S3 bucket.
+
+        @[JSON::Field(key: "s3DeliveryConfiguration")]
+        getter s3_delivery_configuration : Types::S3DeliveryConfiguration?
+
+        def initialize(
+          @id : String,
+          @field_delimiter : String? = nil,
+          @record_fields : Array(String)? = nil,
+          @s3_delivery_configuration : Types::S3DeliveryConfiguration? = nil
+        )
+        end
+      end
+
+
+      struct UpdateDeliveryConfigurationResponse
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+
+
+      struct UpdateLogAnomalyDetectorRequest
+        include JSON::Serializable
+
+        # The ARN of the anomaly detector that you want to update.
+
+        @[JSON::Field(key: "anomalyDetectorArn")]
+        getter anomaly_detector_arn : String
+
+        # Use this parameter to pause or restart the anomaly detector.
+
+        @[JSON::Field(key: "enabled")]
+        getter enabled : Bool
+
+        # The number of days to use as the life cycle of anomalies. After this time, anomalies are
+        # automatically baselined and the anomaly detector model will treat new occurrences of similar event
+        # as normal. Therefore, if you do not correct the cause of an anomaly during this time, it will be
+        # considered normal going forward and will not be detected.
+
+        @[JSON::Field(key: "anomalyVisibilityTime")]
+        getter anomaly_visibility_time : Int64?
+
+        # Specifies how often the anomaly detector runs and look for anomalies. Set this value according to
+        # the frequency that the log group receives new logs. For example, if the log group receives new log
+        # events every 10 minutes, then setting evaluationFrequency to FIFTEEN_MIN might be appropriate.
+
+        @[JSON::Field(key: "evaluationFrequency")]
+        getter evaluation_frequency : String?
+
+
+        @[JSON::Field(key: "filterPattern")]
+        getter filter_pattern : String?
+
+        def initialize(
+          @anomaly_detector_arn : String,
+          @enabled : Bool,
+          @anomaly_visibility_time : Int64? = nil,
+          @evaluation_frequency : String? = nil,
+          @filter_pattern : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateScheduledQueryRequest
+        include JSON::Serializable
+
+        # The updated ARN of the IAM role that grants permissions to execute the query and deliver results.
+
+        @[JSON::Field(key: "executionRoleArn")]
+        getter execution_role_arn : String
+
+        # The ARN or name of the scheduled query to update.
+
+        @[JSON::Field(key: "identifier")]
+        getter identifier : String
+
+        # The updated query language for the scheduled query.
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String
+
+        # The updated query string to execute.
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String
+
+        # The updated cron expression that defines when the scheduled query runs.
+
+        @[JSON::Field(key: "scheduleExpression")]
+        getter schedule_expression : String
+
+        # An updated description for the scheduled query.
+
+        @[JSON::Field(key: "description")]
+        getter description : String?
+
+        # The updated configuration for where to deliver query results.
+
+        @[JSON::Field(key: "destinationConfiguration")]
+        getter destination_configuration : Types::DestinationConfiguration?
+
+        # The updated array of log group names or ARNs to query.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # The updated end time for the scheduled query in Unix epoch format.
+
+        @[JSON::Field(key: "scheduleEndTime")]
+        getter schedule_end_time : Int64?
+
+        # The updated start time for the scheduled query in Unix epoch format.
+
+        @[JSON::Field(key: "scheduleStartTime")]
+        getter schedule_start_time : Int64?
+
+        # The updated time offset in seconds that defines the lookback period for the query.
+
+        @[JSON::Field(key: "startTimeOffset")]
+        getter start_time_offset : Int64?
+
+        # The updated state of the scheduled query.
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        # The updated timezone for evaluating the schedule expression.
+
+        @[JSON::Field(key: "timezone")]
+        getter timezone : String?
+
+        def initialize(
+          @execution_role_arn : String,
+          @identifier : String,
+          @query_language : String,
+          @query_string : String,
+          @schedule_expression : String,
+          @description : String? = nil,
+          @destination_configuration : Types::DestinationConfiguration? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @schedule_end_time : Int64? = nil,
+          @schedule_start_time : Int64? = nil,
+          @start_time_offset : Int64? = nil,
+          @state : String? = nil,
+          @timezone : String? = nil
+        )
+        end
+      end
+
+
+      struct UpdateScheduledQueryResponse
+        include JSON::Serializable
+
+        # The timestamp when the scheduled query was originally created.
+
+        @[JSON::Field(key: "creationTime")]
+        getter creation_time : Int64?
+
+        # The description of the updated scheduled query.
+
+        @[JSON::Field(key: "description")]
+        getter description : String?
+
+        # The destination configuration of the updated scheduled query.
+
+        @[JSON::Field(key: "destinationConfiguration")]
+        getter destination_configuration : Types::DestinationConfiguration?
+
+        # The execution role ARN of the updated scheduled query.
+
+        @[JSON::Field(key: "executionRoleArn")]
+        getter execution_role_arn : String?
+
+        # The status of the most recent execution of the updated scheduled query.
+
+        @[JSON::Field(key: "lastExecutionStatus")]
+        getter last_execution_status : String?
+
+        # The timestamp when the updated scheduled query was last executed.
+
+        @[JSON::Field(key: "lastTriggeredTime")]
+        getter last_triggered_time : Int64?
+
+        # The timestamp when the scheduled query was last updated.
+
+        @[JSON::Field(key: "lastUpdatedTime")]
+        getter last_updated_time : Int64?
+
+        # The log groups queried by the updated scheduled query.
+
+        @[JSON::Field(key: "logGroupIdentifiers")]
+        getter log_group_identifiers : Array(String)?
+
+        # The name of the updated scheduled query.
+
+        @[JSON::Field(key: "name")]
+        getter name : String?
+
+        # The query language of the updated scheduled query.
+
+        @[JSON::Field(key: "queryLanguage")]
+        getter query_language : String?
+
+        # The query string of the updated scheduled query.
+
+        @[JSON::Field(key: "queryString")]
+        getter query_string : String?
+
+        # The end time of the updated scheduled query.
+
+        @[JSON::Field(key: "scheduleEndTime")]
+        getter schedule_end_time : Int64?
+
+        # The cron expression of the updated scheduled query.
+
+        @[JSON::Field(key: "scheduleExpression")]
+        getter schedule_expression : String?
+
+        # The start time of the updated scheduled query.
+
+        @[JSON::Field(key: "scheduleStartTime")]
+        getter schedule_start_time : Int64?
+
+        # The ARN of the updated scheduled query.
+
+        @[JSON::Field(key: "scheduledQueryArn")]
+        getter scheduled_query_arn : String?
+
+        # The time offset of the updated scheduled query.
+
+        @[JSON::Field(key: "startTimeOffset")]
+        getter start_time_offset : Int64?
+
+        # The state of the updated scheduled query.
+
+        @[JSON::Field(key: "state")]
+        getter state : String?
+
+        # The timezone of the updated scheduled query.
+
+        @[JSON::Field(key: "timezone")]
+        getter timezone : String?
+
+        def initialize(
+          @creation_time : Int64? = nil,
+          @description : String? = nil,
+          @destination_configuration : Types::DestinationConfiguration? = nil,
+          @execution_role_arn : String? = nil,
+          @last_execution_status : String? = nil,
+          @last_triggered_time : Int64? = nil,
+          @last_updated_time : Int64? = nil,
+          @log_group_identifiers : Array(String)? = nil,
+          @name : String? = nil,
+          @query_language : String? = nil,
+          @query_string : String? = nil,
+          @schedule_end_time : Int64? = nil,
+          @schedule_expression : String? = nil,
+          @schedule_start_time : Int64? = nil,
+          @scheduled_query_arn : String? = nil,
+          @start_time_offset : Int64? = nil,
+          @state : String? = nil,
+          @timezone : String? = nil
+        )
+        end
+      end
+
+      # This processor converts a string field to uppercase. For more information about this processor
+      # including examples, see upperCaseString in the CloudWatch Logs User Guide .
+
+      struct UpperCaseString
+        include JSON::Serializable
+
+        # The array of containing the keys of the field to convert to uppercase.
+
+        @[JSON::Field(key: "withKeys")]
+        getter with_keys : Array(String)
+
+        def initialize(
+          @with_keys : Array(String)
+        )
+        end
+      end
+
+      # One of the parameters for the request is not valid.
+
+      struct ValidationException
+        include JSON::Serializable
+
+        def initialize
+        end
+      end
+    end
+  end
+end

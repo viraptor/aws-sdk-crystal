@@ -1,20 +1,20 @@
 require "./spec_helper"
 
 class SsmStubTransport
-  include AwsSdk::Runtime::Transport
+  include Aws::Runtime::Transport
 
-  getter last_request : AwsSdk::Runtime::Http::Request?
+  getter last_request : Aws::Runtime::Http::Request?
 
-  def initialize(@response : AwsSdk::Runtime::Http::Response)
+  def initialize(@response : Aws::Runtime::Http::Response)
   end
 
-  def execute(request : AwsSdk::Runtime::Http::Request) : AwsSdk::Runtime::Http::Response
+  def execute(request : Aws::Runtime::Http::Request) : Aws::Runtime::Http::Response
     @last_request = request
     @response
   end
 end
 
-describe AwsSdk::SSM::Client do
+describe Aws::SSM::Client do
   it "executes signed GetParameter request and parses JSON responses" do
     ENV["AWS_REGION"] = "us-east-1"
     ENV["AWS_ACCESS_KEY_ID"] = "AKID"
@@ -23,11 +23,11 @@ describe AwsSdk::SSM::Client do
 
     response_body = %({"Parameter":{"Name":"test","Value":"value"}})
     transport = SsmStubTransport.new(
-      AwsSdk::Runtime::Http::Response.new(200, {} of String => String, response_body)
+      Aws::Runtime::Http::Response.new(200, {} of String => String, response_body)
     )
-    client = AwsSdk::SSM::Client.new(transport: transport)
+    client = Aws::SSM::Client.new(transport: transport)
 
-    output = client.get_parameter(AwsSdk::SSM::Types::GetParameterRequest.new("test"))
+    output = client.get_parameter(Aws::SSM::Types::GetParameterRequest.new("test"))
     output.parameter.not_nil!.name.should eq("test")
     output.parameter.not_nil!.value.should eq("value")
 
@@ -61,11 +61,11 @@ describe AwsSdk::SSM::Client do
     }
     JSON
     transport = SsmStubTransport.new(
-      AwsSdk::Runtime::Http::Response.new(200, {} of String => String, response_body)
+      Aws::Runtime::Http::Response.new(200, {} of String => String, response_body)
     )
-    client = AwsSdk::SSM::Client.new(transport: transport)
+    client = Aws::SSM::Client.new(transport: transport)
 
-    output = client.describe_parameters(AwsSdk::SSM::Types::DescribeParametersRequest.new)
+    output = client.describe_parameters(Aws::SSM::Types::DescribeParametersRequest.new)
     output.parameters.should_not be_nil
     output.parameters.not_nil!.size.should eq(1)
     output.parameters.not_nil!.first.name.should eq("/example")

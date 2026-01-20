@@ -1,0 +1,146 @@
+module Aws
+  module <%= info.module_name %>
+    class Client
+<% if info.protocol == "query" || info.protocol == "json_1.0" || info.protocol == "json_1.1" || info.protocol == "rest-xml" %>
+      getter endpoint : String
+      getter endpoint_headers : Hash(String, String)
+      getter region : String
+      getter credentials : Aws::Runtime::Credentials
+      getter transport : Aws::Runtime::Transport
+      getter runtime : Aws::Runtime::Client
+
+      def initialize(
+        endpoint : String? = nil,
+        region : String? = nil,
+        credentials : Aws::Runtime::Credentials? = nil,
+        profile : String? = nil,
+        use_fips : Bool? = nil,
+        use_dualstack : Bool? = nil,
+        transport : Aws::Runtime::Transport = Aws::Runtime::HttpTransport.new
+      )
+        @transport = transport
+        @region = region || Aws::Runtime::Defaults.resolve_region(profile, @transport)
+        @credentials = credentials || Aws::Runtime::Defaults.resolve_credentials(profile, @transport)
+        endpoint_provider = Aws::Runtime::EndpointProvider.new(Model::ENDPOINT_PREFIX, Model::ENDPOINT_RULE_SET_JSON)
+        endpoint_result = endpoint_provider.resolve(@region, endpoint, use_fips, use_dualstack)
+        @endpoint = endpoint_result.url
+        @endpoint_headers = endpoint_result.headers
+        @runtime = Aws::Runtime::Client.new(@endpoint, @region, Model::SIGNING_NAME, @credentials, @transport, @endpoint_headers)
+      end
+<% operations.each do |operation| -%>
+<% name = operation.name -%>
+<% method_name = to_snake_case(name) -%>
+<% constant_name = to_snake_case(name).upcase -%>
+<% input = operation.input -%>
+<% output = operation.output -%>
+<% output_type = output ? "Types::#{output.shape_name}" : "Nil" -%>
+<% input_shape = input ? model.shapes[input.shape_name]? : nil -%>
+<% input_members = input_shape && input_shape.structure? ? sorted_members(input_shape) : [] of String -%>
+
+<%= doc_lines(operation.documentation, 3) %>
+<% if input && input_members.empty? -%>
+      def <%= method_name %> : <%= output_type %>
+        input = Types::<%= input.shape_name %>.new
+        <%= method_name %>(input)
+      end
+<% elsif input -%>
+      def <%= method_name %>(
+<% input_members.each_with_index do |member_name, index| -%>
+<% ref = input_shape.not_nil!.members[member_name] -%>
+<% type_name = type_for_shape_ref(ref, model.shapes) -%>
+<% type_name = "#{type_name}?" unless ref.required -%>
+<% member_snake = param_name(member_name) -%>
+<% default = ref.required ? "" : " = nil" -%>
+<% suffix = index == input_members.size - 1 ? "" : "," -%>
+        <%= member_snake %> : <%= type_name %><%= default %><%= suffix %>
+<% end -%>
+      ) : <%= output_type %>
+<% args = input_members.map { |member_name| member_snake = param_name(member_name); "#{member_snake}: #{member_snake}" }.join(", ") %>
+        input = Types::<%= input.shape_name %>.new(<%= args %>)
+        <%= method_name %>(input)
+      end
+<% end -%>
+
+<% if input -%>
+      def <%= method_name %>(input : Types::<%= input.shape_name %>) : <%= output_type %>
+        request = Protocol::<%= protocol_module %>.build_request(Model::<%= constant_name %>, input, endpoint)
+<% else -%>
+      def <%= method_name %> : <%= output_type %>
+        request = Protocol::<%= protocol_module %>.build_request(Model::<%= constant_name %>, nil, endpoint)
+<% end -%>
+        request = request.with_headers(endpoint_headers)
+        response = runtime.execute(request)
+        raise Protocol::<%= protocol_module %>.parse_error(response) if response.status >= 300
+<% if output -%>
+        Protocol::<%= protocol_module %>.parse_response(response, <%= output_type %>, "<%= name %>")
+<% else -%>
+        nil
+<% end -%>
+      end
+<% end -%>
+<% else -%>
+      getter endpoint : String
+      getter endpoint_headers : Hash(String, String)
+      getter region : String
+
+      def initialize(
+        endpoint : String? = nil,
+        region : String? = nil,
+        profile : String? = nil,
+        use_fips : Bool? = nil,
+        use_dualstack : Bool? = nil
+      )
+        @region = region || Aws::Runtime::Defaults.resolve_region(profile)
+        endpoint_provider = Aws::Runtime::EndpointProvider.new(Model::ENDPOINT_PREFIX, Model::ENDPOINT_RULE_SET_JSON)
+        endpoint_result = endpoint_provider.resolve(@region, endpoint, use_fips, use_dualstack)
+        @endpoint = endpoint_result.url
+        @endpoint_headers = endpoint_result.headers
+      end
+<% operations.each do |operation| -%>
+<% name = operation.name -%>
+<% method_name = to_snake_case(name) -%>
+<% constant_name = to_snake_case(name).upcase -%>
+<% input = operation.input -%>
+<% input_shape = input ? model.shapes[input.shape_name]? : nil -%>
+<% input_members = input_shape && input_shape.structure? ? sorted_members(input_shape) : [] of String -%>
+
+<%= doc_lines(operation.documentation, 3) %>
+<% if input && input_members.empty? -%>
+      def <%= method_name %> : Protocol::Request
+        input = Types::<%= input.shape_name %>.new
+        <%= method_name %>(input)
+      end
+<% elsif input -%>
+      def <%= method_name %>(
+<% input_members.each_with_index do |member_name, index| -%>
+<% ref = input_shape.not_nil!.members[member_name] -%>
+<% type_name = type_for_shape_ref(ref, model.shapes) -%>
+<% type_name = "#{type_name}?" unless ref.required -%>
+<% member_snake = param_name(member_name) -%>
+<% default = ref.required ? "" : " = nil" -%>
+<% suffix = index == input_members.size - 1 ? "" : "," -%>
+        <%= member_snake %> : <%= type_name %><%= default %><%= suffix %>
+<% end -%>
+      ) : Protocol::Request
+<% args = input_members.map { |member_name| member_snake = param_name(member_name); "#{member_snake}: #{member_snake}" }.join(", ") -%>
+        input = Types::<%= input.shape_name %>.new(<%= args %>)
+        <%= method_name %>(input)
+      end
+<% end -%>
+
+<% if input -%>
+      def <%= method_name %>(input : Types::<%= input.shape_name %>) : Protocol::Request
+        request = Protocol::<%= protocol_module %>.build_request(Model::<%= constant_name %>, input, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+<% else -%>
+      def <%= method_name %> : Protocol::Request
+        request = Protocol::<%= protocol_module %>.build_request(Model::<%= constant_name %>, nil, endpoint)
+        Protocol::Request.new(request.method, request.uri, request.headers.merge(endpoint_headers), request.body)
+      end
+<% end -%>
+<% end -%>
+<% end -%>
+    end
+  end
+end

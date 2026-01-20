@@ -1,0 +1,41 @@
+module Aws
+  module <%= info.module_name %>
+    module Model
+      API_VERSION = "<%= api_version %>"
+      TARGET_PREFIX = "<%= target_prefix %>"
+      SIGNING_NAME = "<%= signing_name %>"
+      ENDPOINT_PREFIX = "<%= endpoint_prefix %>"
+<% if endpoint_rule_set -%>
+      ENDPOINT_RULE_SET_JSON = <<-JSON
+<% endpoint_rule_set.raw.to_json.each_line do |line| -%>
+        <%= line %>
+<% end -%>
+      JSON
+<% else -%>
+      ENDPOINT_RULE_SET_JSON = nil
+<% end -%>
+
+      struct OperationModel
+        getter name : String
+        getter http_method : String
+        getter request_uri : String
+
+        def initialize(@name : String, @http_method : String, @request_uri : String)
+          raise ArgumentError.new("request_uri must start with /") unless @request_uri.starts_with?("/")
+        end
+      end
+<% operations.each do |operation| -%>
+<% name = operation.name -%>
+<% method = operation.http_method || "POST" -%>
+<% request_uri = operation.request_uri || "/" -%>
+<% constant_name = to_snake_case(name).upcase -%>
+
+      <%= constant_name %> = OperationModel.new(
+        name: "<%= name %>",
+        http_method: "<%= method %>",
+        request_uri: "<%= request_uri %>"
+      )
+<% end -%>
+    end
+  end
+end

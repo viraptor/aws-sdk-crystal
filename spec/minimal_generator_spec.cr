@@ -9,16 +9,16 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "kinesisvideowebrtcstorage")
-      File.exists?(File.join(dir, "src", "aws_sdk", "kinesisvideowebrtcstorage.cr")).should be_true
-      File.exists?(File.join(dir, "src", "aws_sdk", "customizations", "kinesisvideowebrtcstorage", "customizations.cr")).should be_true
+      base = File.join(dir, "src", "kinesisvideowebrtcstorage")
+      File.exists?(File.join(dir, "src", "kinesisvideowebrtcstorage.cr")).should be_true
+      File.exists?(File.join(dir, "src", "customizations", "kinesisvideowebrtcstorage", "customizations.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true
       File.exists?(File.join(base, "types.cr")).should be_true
       File.exists?(File.join(base, "protocol", "rest_json.cr")).should be_true
 
-      File.read(File.join(dir, "src", "aws_sdk", "kinesisvideowebrtcstorage.cr")).should contain("customizations/kinesisvideowebrtcstorage/customizations")
+      File.read(File.join(dir, "src", "kinesisvideowebrtcstorage.cr")).should contain("customizations/kinesisvideowebrtcstorage/customizations")
       File.read(File.join(base, "client.cr")).should contain("class Client")
       File.read(File.join(base, "client.cr")).should contain("Join the ongoing one way-video")
       File.read(File.join(base, "protocol", "rest_json.cr")).should contain("module RestJson")
@@ -34,8 +34,8 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::DYNAMODB_STREAMS_API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "dynamodbstreams")
-      File.exists?(File.join(dir, "src", "aws_sdk", "dynamodbstreams.cr")).should be_true
+      base = File.join(dir, "src", "dynamodbstreams")
+      File.exists?(File.join(dir, "src", "dynamodbstreams.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true
@@ -57,8 +57,8 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::IMPORT_EXPORT_API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "importexport")
-      File.exists?(File.join(dir, "src", "aws_sdk", "importexport.cr")).should be_true
+      base = File.join(dir, "src", "importexport")
+      File.exists?(File.join(dir, "src", "importexport.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true
@@ -79,8 +79,8 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::STS_API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "sts")
-      File.exists?(File.join(dir, "src", "aws_sdk", "sts.cr")).should be_true
+      base = File.join(dir, "src", "sts")
+      File.exists?(File.join(dir, "src", "sts.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true
@@ -101,8 +101,8 @@ describe CrystalSdkGenerator::MinimalGenerator do
     begin
       CrystalSdkGenerator::MinimalGenerator.generate_service(CrystalSdkGeneratorSpec::CLOUDFRONT_API_PATH, dir)
 
-      base = File.join(dir, "src", "aws_sdk", "cloudfront")
-      File.exists?(File.join(dir, "src", "aws_sdk", "cloudfront.cr")).should be_true
+      base = File.join(dir, "src", "cloudfront")
+      File.exists?(File.join(dir, "src", "cloudfront.cr")).should be_true
       File.exists?(File.join(base, "client.cr")).should be_true
       File.exists?(File.join(base, "model.cr")).should be_true
       File.exists?(File.join(base, "errors.cr")).should be_true

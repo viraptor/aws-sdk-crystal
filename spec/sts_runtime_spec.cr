@@ -1,20 +1,20 @@
 require "./spec_helper"
 
 class StsStubTransport
-  include AwsSdk::Runtime::Transport
+  include Aws::Runtime::Transport
 
-  getter last_request : AwsSdk::Runtime::Http::Request?
+  getter last_request : Aws::Runtime::Http::Request?
 
-  def initialize(@response : AwsSdk::Runtime::Http::Response)
+  def initialize(@response : Aws::Runtime::Http::Response)
   end
 
-  def execute(request : AwsSdk::Runtime::Http::Request) : AwsSdk::Runtime::Http::Response
+  def execute(request : Aws::Runtime::Http::Request) : Aws::Runtime::Http::Response
     @last_request = request
     @response
   end
 end
 
-describe AwsSdk::STS::Client do
+describe Aws::STS::Client do
   it "executes signed GetCallerIdentity request" do
     ENV["AWS_REGION"] = "us-east-1"
     ENV["AWS_ACCESS_KEY_ID"] = "AKID"
@@ -35,11 +35,11 @@ describe AwsSdk::STS::Client do
     XML
 
     transport = StsStubTransport.new(
-      AwsSdk::Runtime::Http::Response.new(200, {} of String => String, response_xml)
+      Aws::Runtime::Http::Response.new(200, {} of String => String, response_xml)
     )
-    client = AwsSdk::STS::Client.new(transport: transport)
+    client = Aws::STS::Client.new(transport: transport)
 
-    output = client.get_caller_identity(AwsSdk::STS::Types::GetCallerIdentityRequest.new)
+    output = client.get_caller_identity(Aws::STS::Types::GetCallerIdentityRequest.new)
 
     output.account.should eq("123456789012")
     output.arn.should eq("arn:aws:iam::123456789012:user/test")
@@ -75,12 +75,12 @@ describe AwsSdk::STS::Client do
     XML
 
     transport = StsStubTransport.new(
-      AwsSdk::Runtime::Http::Response.new(403, {} of String => String, error_xml)
+      Aws::Runtime::Http::Response.new(403, {} of String => String, error_xml)
     )
-    client = AwsSdk::STS::Client.new(transport: transport)
+    client = Aws::STS::Client.new(transport: transport)
 
-    error = expect_raises(AwsSdk::STS::Errors::ServiceError) do
-      client.get_caller_identity(AwsSdk::STS::Types::GetCallerIdentityRequest.new)
+    error = expect_raises(Aws::STS::Errors::ServiceError) do
+      client.get_caller_identity(Aws::STS::Types::GetCallerIdentityRequest.new)
     end
     error.message.should eq("bad token")
   ensure
