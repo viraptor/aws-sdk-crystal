@@ -13,7 +13,6 @@ canonical source is https://codeberg.org/viraptor/aws-sdk-crystal
 ## Currently still missing
 
 - protocol `smithy-rpc-v2-cbor` (arc-region-switch, monitoring)
-- protocol `ec2` (ec2)
 - timeouts
 - plugins used in some Ruby SDKs
 

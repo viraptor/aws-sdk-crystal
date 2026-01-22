@@ -94,6 +94,8 @@ module CrystalSdkGenerator
         "rest_json"
       when "json_1.0", "json_1.1"
         "json_rpc"
+      when "ec2"
+        "ec2"
       when "query"
         "query"
       when "rest-xml"
@@ -109,6 +111,8 @@ module CrystalSdkGenerator
         "RestJson"
       when "json_1.0", "json_1.1"
         "JsonRpc"
+      when "ec2"
+        "Ec2"
       when "query"
         "Query"
       when "rest-xml"
@@ -170,6 +174,8 @@ module CrystalSdkGenerator
         render_rest_json(info)
       when "json_1.0", "json_1.1"
         render_json_rpc(info)
+      when "ec2"
+        render_ec2(model, info)
       when "query"
         render_query(info)
       when "rest-xml"
@@ -196,6 +202,14 @@ module CrystalSdkGenerator
     private def self.render_query(info : ServiceInfo) : String
       String.build do |io|
         ECR.embed("#{__DIR__}/templates/minimal_generator/protocol/query.ecr", io)
+      end
+    end
+
+    private def self.render_ec2(model : ServiceModel, info : ServiceInfo) : String
+      operations = model.operations.values.sort_by(&.name)
+      shapes = model.shapes.values.sort_by(&.name)
+      String.build do |io|
+        ECR.embed("#{__DIR__}/templates/minimal_generator/protocol/ec2.ecr", io)
       end
     end
 
