@@ -10,9 +10,12 @@ module Aws
         def initialize(
           @method : String,
           @uri : String,
-          @headers : Hash(String, String) = {} of String => String,
+          headers : Hash(String, String) = {} of String => String,
           @body : String? = nil
         )
+          normalized_headers = headers.reject { |key, _| key.downcase == "user-agent" }
+          normalized_headers["User-Agent"] = Aws::Runtime.user_agent
+          @headers = normalized_headers
         end
 
       def with_headers(extra : Hash(String, String)) : Request

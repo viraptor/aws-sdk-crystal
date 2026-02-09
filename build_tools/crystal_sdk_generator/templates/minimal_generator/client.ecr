@@ -1,7 +1,7 @@
 module Aws
   module <%= info.module_name %>
     class Client
-<% if info.protocol == "query" || info.protocol == "json_1.0" || info.protocol == "json_1.1" || info.protocol == "rest-xml" %>
+<% if info.protocol == "query" || info.protocol == "ec2" || info.protocol == "json_1.0" || info.protocol == "json_1.1" || info.protocol == "rest-xml" %>
       getter endpoint : String
       getter endpoint_headers : Hash(String, String)
       getter region : String

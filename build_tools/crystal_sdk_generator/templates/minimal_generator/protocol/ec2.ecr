@@ -1,0 +1,263 @@
+require "json"
+require "uri"
+require "xml"
+require "../../runtime"
+
+module Aws
+  module <%= info.module_name %>
+    module Protocol
+      module Ec2
+        CONTENT_TYPE = "application/x-www-form-urlencoded; charset=utf-8"
+
+        struct ShapeMember
+          getter name : String
+          getter shape : String
+          getter location_name : String?
+          getter flattened : Bool
+
+          def initialize(
+            @name : String,
+            @shape : String,
+            @location_name : String?,
+            @flattened : Bool
+          )
+          end
+        end
+
+        struct Shape
+          getter name : String
+          getter type : String
+          getter members : Array(ShapeMember)
+          getter list_member : ShapeMember?
+          getter flattened : Bool
+
+          def initialize(
+            @name : String,
+            @type : String,
+            @members : Array(ShapeMember),
+            @list_member : ShapeMember?,
+            @flattened : Bool
+          )
+          end
+        end
+
+        OPERATION_OUTPUT_SHAPES = {
+<% operations.each do |operation| -%>
+<% next unless (output = operation.output) -%>
+          "<%= operation.name %>" => "<%= output.shape_name %>",
+<% end -%>
+        }
+
+        SHAPES = {
+<% shapes.each do |shape| -%>
+<% shape_type = shape_type_name(shape) -%>
+<% if shape.type == ShapeType::Structure -%>
+          "<%= shape.name %>" => Shape.new(
+            "<%= shape.name %>",
+            "<%= shape_type %>",
+            [
+<% shape.members.keys.sort.each do |member_name| -%>
+<% ref = shape.members[member_name] -%>
+<% location_name = trait_string(ref.traits, "locationName") -%>
+<% flattened = trait_bool(ref.traits, "flattened") -%>
+              ShapeMember.new(
+                "<%= member_name %>",
+                "<%= ref.shape_name %>",
+                <%= location_name ? "\"#{location_name}\"" : "nil" %>,
+                <%= flattened %>
+              ),
+<% end -%>
+            ] of ShapeMember,
+            nil,
+            false
+          ),
+<% elsif shape.type == ShapeType::List -%>
+<% member_ref = shape.member -%>
+<% if member_ref -%>
+<% location_name = trait_string(member_ref.traits, "locationName") -%>
+<% flattened = trait_bool(shape.traits, "flattened") || trait_bool(member_ref.traits, "flattened") -%>
+          "<%= shape.name %>" => Shape.new(
+            "<%= shape.name %>",
+            "<%= shape_type %>",
+            [] of ShapeMember,
+            ShapeMember.new(
+              "member",
+              "<%= member_ref.shape_name %>",
+              <%= location_name ? "\"#{location_name}\"" : "nil" %>,
+              <%= trait_bool(member_ref.traits, "flattened") %>
+            ),
+            <%= flattened %>
+          ),
+<% end -%>
+<% else -%>
+          "<%= shape.name %>" => Shape.new(
+            "<%= shape.name %>",
+            "<%= shape_type %>",
+            [] of ShapeMember,
+            nil,
+            false
+          ),
+<% end -%>
+<% end -%>
+        }
+
+        def self.build_request(operation : Model::OperationModel, input, endpoint : String) : Aws::Runtime::Http::Request
+          raise ArgumentError.new("endpoint must not be empty") if endpoint.empty?
+          params = URI::Params.new
+          params.add("Action", operation.name)
+          params.add("Version", Model::API_VERSION) unless Model::API_VERSION.empty?
+          add_input_params(params, input)
+          uri = endpoint.rstrip("/") + "/"
+          headers = {"content-type" => CONTENT_TYPE}
+          Aws::Runtime::Http::Request.new("POST", uri, headers, params.to_s)
+        end
+
+        def self.parse_error(response : Aws::Runtime::Http::Response) : Exception
+          error_type = error_type_from_body(response.body)
+          message = error_message_from_body(response.body)
+          Errors.build(error_type, message)
+        end
+
+        def self.parse_response(response : Aws::Runtime::Http::Response, output_type : T.class, operation_name : String) : T forall T
+          body = response.body
+          return output_type.from_json("{}") unless body
+          document = XML.parse(body)
+          result = result_node(document, operation_name) || document.root
+          output_shape = OPERATION_OUTPUT_SHAPES[operation_name]?
+          payload = if result && output_shape
+                      parsed = parse_node(result, output_shape)
+                      parsed.as_h? || {} of String => JSON::Any
+                    else
+                      {} of String => JSON::Any
+                    end
+          output_type.from_json(JSON::Any.new(payload).to_json)
+        rescue ex : XML::Error | JSON::SerializableError
+          snippet = body ? body[0, 200] : ""
+          details = snippet.empty? ? "empty body" : "body=#{snippet}"
+          raise Aws::Runtime::Errors::ResponseParseError.new("Failed to parse #{operation_name} response (#{details}): #{ex.message}")
+        end
+
+        private def self.add_input_params(params : URI::Params, input) : Nil
+          return unless input
+          payload = JSON.parse(input.to_json).as_h
+          payload.each do |key, value|
+            add_param(params, key, value)
+          end
+        end
+
+        private def self.add_param(params : URI::Params, key : String, value : JSON::Any) : Nil
+          case value.raw
+          when Nil
+          when Array
+            value.as_a.each_with_index do |item, index|
+              add_param(params, "#{key}.#{index + 1}", item)
+            end
+          when Hash
+            params.add(key, value.to_json)
+          when String
+            params.add(key, value.as_s)
+          when Int64
+            params.add(key, value.as_i.to_s)
+          when Float64
+            params.add(key, value.as_f.to_s)
+          when Bool
+            params.add(key, value.as_bool ? "true" : "false")
+          else
+            params.add(key, value.to_json)
+          end
+        end
+
+        private def self.error_type_from_body(body : String?) : String?
+          return nil unless body
+          document = XML.parse(body)
+          node = document.xpath_node("//Error/Code")
+          node.try(&.content)
+        rescue XML::Error
+          nil
+        end
+
+        private def self.error_message_from_body(body : String?) : String?
+          return nil unless body
+          document = XML.parse(body)
+          node = document.xpath_node("//Error/Message")
+          node.try(&.content)
+        rescue XML::Error
+          nil
+        end
+
+        private def self.result_node(document : XML::Node, operation_name : String) : XML::Node?
+          document.xpath_node("//*[local-name()=\"#{operation_name}Result\"]") ||
+            document.root.try do |root|
+              root.children.find do |child|
+                child.element? && child.name.ends_with?("Result")
+              end
+            end
+        end
+
+        private def self.shape(name : String) : Shape
+          SHAPES[name]? || raise ArgumentError.new("shape not found: #{name}")
+        end
+
+        private def self.member_key(member : ShapeMember) : String
+          member.location_name || member.name
+        end
+
+        private def self.parse_node(node : XML::Node, shape_name : String) : JSON::Any
+          target = shape(shape_name)
+          case target.type
+          when "structure"
+            JSON::Any.new(parse_structure(node, target))
+          when "list"
+            JSON::Any.new(parse_list(node, target))
+          else
+            parse_scalar(target.type, node.content)
+          end
+        end
+
+        private def self.parse_structure(node : XML::Node, shape : Shape) : Hash(String, JSON::Any)
+          result = {} of String => JSON::Any
+          shape.members.each do |member|
+            key = member_key(member)
+            member_shape = shape(member.shape)
+            if member_shape.type == "list" && (member_shape.flattened || member.flattened)
+              list_member = member_shape.list_member
+              next unless list_member
+              item_name = list_member.location_name || "member"
+              items = node.children.select(&.element?).select { |child| child.name == item_name }
+              values = items.map { |child| parse_node(child, list_member.shape) }
+              result[key] = JSON::Any.new(values)
+            else
+              child = node.children.find { |item| item.element? && item.name == key }
+              next unless child
+              result[key] = parse_node(child, member.shape)
+            end
+          end
+          result
+        end
+
+        private def self.parse_list(node : XML::Node, shape : Shape) : Array(JSON::Any)
+          list_member = shape.list_member
+          return [] of JSON::Any unless list_member
+          member_name = list_member.location_name || "member"
+          items = node.children.select(&.element?).select { |child| child.name == member_name }
+          items.map { |child| parse_node(child, list_member.shape) }
+        end
+
+        private def self.parse_scalar(shape_type : String, value : String) : JSON::Any
+          case shape_type
+          when "integer", "short", "byte"
+            JSON::Any.new(value.to_i)
+          when "long", "bigInteger"
+            JSON::Any.new(value.to_i64)
+          when "float", "double", "bigDecimal"
+            JSON::Any.new(value.to_f)
+          when "boolean"
+            JSON::Any.new(value.downcase == "true")
+          else
+            JSON::Any.new(value)
+          end
+        end
+      end
+    end
+  end
+end
