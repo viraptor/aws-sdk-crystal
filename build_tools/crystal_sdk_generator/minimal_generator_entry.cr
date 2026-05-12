@@ -16,7 +16,11 @@ module CrystalSdkGenerator
     end
 
     api_paths.each do |api_path|
-      MinimalGenerator.generate_service(api_path, output_root)
+      begin
+        MinimalGenerator.generate_service(api_path, output_root)
+      rescue ex : UnsupportedProtocolError
+        STDERR.puts "skipping #{api_path}: #{ex.message}"
+      end
     end
   end
 
