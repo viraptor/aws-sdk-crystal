@@ -8,7 +8,10 @@ module Aws
     module Types
 <% shapes.each do |shape| -%>
 
-<%= doc_lines(shape.documentation, 3) %>
+<% shape_doc = doc_lines(shape.documentation, 3) -%>
+<% if !shape_doc.empty? -%>
+<%= shape_doc -%>
+<% end -%>
       struct <%= shape.name %>
         include JSON::Serializable
 <% members = shape.members.keys.sort_by do |member_name|
@@ -29,8 +32,11 @@ module Aws
 <% elsif type_name.gsub("?", "") == "Array(Bytes)" -%>
 <% converter = ", converter: Aws::Runtime::Base64BytesListConverter" -%>
 <% end -%>
+<% member_doc = doc_lines(ref.documentation, 4) -%>
 
-<%= doc_lines(ref.documentation, 4) %>
+<% if !member_doc.empty? -%>
+<%= member_doc -%>
+<% end -%>
         @[JSON::Field(key: "<%= json_key %>"<%= converter %>)]
         getter <%= member_snake %> : <%= type_name %>
 <% end -%>
